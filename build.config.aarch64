@@ -1,4 +1,7 @@
 ARCH=arm64
+
+PATH="/root/tc/proton/clang-13/bin:/root/super/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:/root/super/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin:${PATH}"
+
 CC=/usr/bin/ccache clang
 CXX=/usr/bin/ccache g++                            
 LD=ld.lld                                 
