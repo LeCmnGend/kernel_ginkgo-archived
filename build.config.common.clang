@@ -1,0 +1,4 @@
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.common
+CC="/usr/bin/ccache clang"
+LD=ld.lld
+CLANG_TRIPLE=aarch64-linux-gnu-
