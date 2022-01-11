@@ -496,7 +496,21 @@ static inline unsigned long cpufreq_scale(unsigned long old, u_int div,
  * ondemand governor will work on any processor with transition latency <= 10ms,
  * using appropriate sampling rate.
  */
-#define LATENCY_MULTIPLIER		(1000)
+ * For CPUs with transition latency > 10ms (mostly drivers with CPUFREQ_ETERNAL)
+ * this governor will not work. All times here are in us (micro seconds).
+ */
+
+#define MIN_SAMPLING_RATE_RATIO			(2)
+#define LATENCY_MULTIPLIER			(1000)
+#define MIN_LATENCY_MULTIPLIER			(20)
+#define TRANSITION_LATENCY_LIMIT		(10 * 1000 * 1000)
+
+/* Governor Events */
+#define CPUFREQ_GOV_START	1
+#define CPUFREQ_GOV_STOP	2
+#define CPUFREQ_GOV_LIMITS	3
+#define CPUFREQ_GOV_POLICY_INIT	4
+#define CPUFREQ_GOV_POLICY_EXIT	5
 
 struct cpufreq_governor {
 	char	name[CPUFREQ_NAME_LEN];
@@ -576,6 +590,44 @@ struct governor_attr {
 	ssize_t (*store)(struct gov_attr_set *attr_set, const char *buf,
 			 size_t count);
 };
+
+/* CPUFREQ DEFAULT GOVERNOR */
+/*
+ * Performance governor is fallback governor if any other gov failed to auto
+ * load due latency restrictions.
+ * Add pegasusQ governor
+ */
+#ifdef CONFIG_CPU_FREQ_GOV_PERFORMANCE
+extern struct cpufreq_governor cpufreq_gov_performance;
+#endif
+#ifdef CONFIG_CPU_FREQ_GOV_INTERACTIVE
+extern unsigned int cpufreq_interactive_get_hispeed_freq(int cpu);
+#endif
+#ifdef CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+#define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_performance)
+#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE)
+extern struct cpufreq_governor cpufreq_gov_powersave;
+#define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_powersave)
+#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE)
+extern struct cpufreq_governor cpufreq_gov_userspace;
+#define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_userspace)
+#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND)
+extern struct cpufreq_governor cpufreq_gov_ondemand;
+#define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_ondemand)
+#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE)
+extern struct cpufreq_governor cpufreq_gov_conservative;
+#define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_conservative)
+#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_INTERACTIVE)
+extern struct cpufreq_governor cpufreq_gov_interactive;
+#define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_interactive)
+#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL)
+extern struct cpufreq_governor schedutil_gov;
+#define CPUFREQ_DEFAULT_GOVERNOR	(&schedutil_gov)
+#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_PEGASUSQ)
+extern struct cpufreq_governor cpufreq_gov_lagfree;
+#define CPUFREQ_DEFAULT_GOVERNOR        (&cpufreq_gov_pegasusq)
+
+#endif
 
 /*********************************************************************
  *                     FREQUENCY TABLE HELPERS                       *
