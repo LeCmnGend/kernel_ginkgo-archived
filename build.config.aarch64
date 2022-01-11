@@ -1,24 +1,11 @@
 ARCH=arm64
 
-PATH="/root/tc/proton/clang-13/bin:/root/super/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin:/root/super/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin:${PATH}"
-
-CC="/usr/bin/ccache clang"
-CXX="/usr/bin/ccache g++"                          
-LD=ld.lld                                 
-AR=llvm-ar                                
-AS=llvm-as                                
-NM=llvm-nm                                
-OBJCOPY=llvm-objcopy                      
-OBJDUMP=llvm-objdump                      
-STRIP=llvm-strip                          
 CLANG_TRIPLE=aarch64-linux-gnu-
-CROSS_COMPILE=aarch64-linux-android-        
-CROSS_COMPILE_ARM32=arm-linux-gnueabi-
-GCCPATH=prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin
-GCCPATH_32=prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin
+CROSS_COMPILE=aarch64-linux-androidkernel-
 LINUX_GCC_CROSS_COMPILE_PREBUILTS_BIN=prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin
 
 FILES="
+arch/arm64/boot/Image
 arch/arm64/boot/Image.gz
 vmlinux
 System.map
