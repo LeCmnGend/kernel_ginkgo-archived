@@ -495,7 +495,7 @@ static inline unsigned long cpufreq_scale(unsigned long old, u_int div,
  * polling frequency is 1000 times the transition latency of the processor. The
  * ondemand governor will work on any processor with transition latency <= 10ms,
  * using appropriate sampling rate.
- */
+ *
  * For CPUs with transition latency > 10ms (mostly drivers with CPUFREQ_ETERNAL)
  * this governor will not work. All times here are in us (micro seconds).
  */
