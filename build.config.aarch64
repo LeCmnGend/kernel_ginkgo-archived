@@ -1,5 +1,6 @@
 ARCH=arm64
-CC=clang                                  
+CC=/usr/bin/ccache clang
+CXX=/usr/bin/ccache g++"                              
 LD=ld.lld                                 
 AR=llvm-ar                                
 AS=llvm-as                                
