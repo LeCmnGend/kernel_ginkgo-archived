@@ -3,5 +3,28 @@ KERNEL_DIR=common
 
 BUILDTOOLS_PREBUILT_BIN=build/build-tools/path/linux-x86
 
+
+ARCH=arm64
+
+CROSS_COMPILE=aarch64-linux-android-
+CROSS_COMPILE_ARM32=arm-linux-androideabi-
+DEFCONFIG=ginkgo-perf_defconfig
+
+CLANG_PREBUILT_BIN=prebuilts-master/clang/host/linux-x86/clang-r383902b1/bin/
+LD_LIBRARY_PATH=${ROOT_DIR}/prebuilts-master/clang/host/linux-x86/clang-r383902b1/lib64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH
+LINUX_GCC_CROSS_COMPILE_PREBUILTS_BIN=prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin
+LINUX_GCC_CROSS_COMPILE_ARM32_PREBUILTS_BIN=prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin
+
+LIBUFDT_PREBUILTS_BIN=prebuilts-master/misc/linux-x86/libufdt
+
+FILES="
+arch/arm64/boot/dtbo.img
+arch/arm64/boot/Image.lz4-dtb
+arch/arm64/boot/Image.lz4
+vmlinux
+.config
+"
+
 EXTRA_CMDS=''
 STOP_SHIP_TRACEPRINTK=1
