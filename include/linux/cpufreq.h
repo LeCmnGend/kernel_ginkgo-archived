@@ -476,7 +476,7 @@ static inline unsigned long cpufreq_scale(unsigned long old, u_int div,
 	result /= div;
 	return result;
 #endif
-}
+};
 
 /*********************************************************************
  *                          CPUFREQ GOVERNORS                        *
