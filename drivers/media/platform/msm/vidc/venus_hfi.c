@@ -23,6 +23,10 @@
 #include <linux/iommu.h>
 #include <linux/iopoll.h>
 #include <linux/of.h>
+<<<<<<< HEAD
+=======
+#include <linux/pm_qos.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/regulator/consumer.h>
 #include <linux/slab.h>
 #include <linux/workqueue.h>
@@ -83,7 +87,11 @@ const struct msm_vidc_gov_data DEFAULT_BUS_VOTE = {
 	.data_count = 0,
 };
 
+<<<<<<< HEAD
 const int max_packets = 480; /* 16 sessions x 30 packets */
+=======
+const int max_packets = 1000;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static void venus_hfi_pm_handler(struct work_struct *work);
 static DECLARE_DELAYED_WORK(venus_hfi_pm_work, venus_hfi_pm_handler);
@@ -2223,6 +2231,17 @@ static int venus_hfi_core_init(void *device)
 	__set_subcaches(device);
 	__dsp_send_hfi_queue(device);
 
+<<<<<<< HEAD
+=======
+	if (dev->res->pm_qos_latency_us) {
+#ifdef CONFIG_SMP
+		dev->qos.type = PM_QOS_REQ_AFFINE_IRQ;
+		dev->qos.irq = dev->hal_data->irq;
+#endif
+		pm_qos_add_request(&dev->qos, PM_QOS_CPU_DMA_LATENCY,
+				dev->res->pm_qos_latency_us);
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dprintk(VIDC_DBG, "Core inited successfully\n");
 	mutex_unlock(&dev->lock);
 	return rc;
@@ -2249,6 +2268,13 @@ static int venus_hfi_core_release(void *dev)
 
 	mutex_lock(&device->lock);
 	dprintk(VIDC_DBG, "Core releasing\n");
+<<<<<<< HEAD
+=======
+	if (device->res->pm_qos_latency_us &&
+		pm_qos_request_active(&device->qos))
+		pm_qos_remove_request(&device->qos);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__resume(device);
 	__set_state(device, VENUS_STATE_DEINIT);
 	__dsp_shutdown(device, 0);
@@ -4788,6 +4814,13 @@ static inline int __suspend(struct venus_hfi_device *device)
 
 	dprintk(VIDC_PROF, "Entering suspend\n");
 
+<<<<<<< HEAD
+=======
+	if (device->res->pm_qos_latency_us &&
+		pm_qos_request_active(&device->qos))
+		pm_qos_remove_request(&device->qos);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rc = __tzbsp_set_video_state(TZBSP_VIDEO_STATE_SUSPEND);
 	if (rc) {
 		dprintk(VIDC_WARN, "Failed to suspend video core %d\n", rc);
@@ -4847,6 +4880,18 @@ static inline int __resume(struct venus_hfi_device *device)
 	 */
 	__set_threshold_registers(device);
 
+<<<<<<< HEAD
+=======
+	if (device->res->pm_qos_latency_us) {
+#ifdef CONFIG_SMP
+		device->qos.type = PM_QOS_REQ_AFFINE_IRQ;
+		device->qos.irq = device->hal_data->irq;
+#endif
+		pm_qos_add_request(&device->qos, PM_QOS_CPU_DMA_LATENCY,
+				device->res->pm_qos_latency_us);
+	}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__sys_set_debug(device, msm_vidc_fw_debug);
 
 	__enable_subcaches(device);

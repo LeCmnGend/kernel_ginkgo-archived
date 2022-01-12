@@ -1391,7 +1391,11 @@ static int wm_adsp_create_control(struct wm_adsp *dsp,
 	ctl_work = kzalloc(sizeof(*ctl_work), GFP_KERNEL);
 	if (!ctl_work) {
 		ret = -ENOMEM;
+<<<<<<< HEAD
 		goto err_list_del;
+=======
+		goto err_ctl_cache;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	ctl_work->dsp = dsp;
@@ -1401,8 +1405,12 @@ static int wm_adsp_create_control(struct wm_adsp *dsp,
 
 	return 0;
 
+<<<<<<< HEAD
 err_list_del:
 	list_del(&ctl->list);
+=======
+err_ctl_cache:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kfree(ctl->cache);
 err_ctl_name:
 	kfree(ctl->name);

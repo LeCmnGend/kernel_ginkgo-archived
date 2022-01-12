@@ -363,9 +363,12 @@ static int hda_tegra_first_init(struct azx *chip, struct platform_device *pdev)
 	unsigned short gcap;
 	int irq_id = platform_get_irq(pdev, 0);
 
+<<<<<<< HEAD
 	if (irq_id < 0)
 		return irq_id;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = hda_tegra_init_chip(chip, pdev);
 	if (err)
 		return err;

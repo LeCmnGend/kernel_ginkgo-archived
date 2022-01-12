@@ -2547,9 +2547,13 @@ static int rockchip_gpio_to_irq(struct gpio_chip *gc, unsigned offset)
 	if (!bank->domain)
 		return -ENXIO;
 
+<<<<<<< HEAD
 	clk_enable(bank->clk);
 	virq = irq_create_mapping(bank->domain, offset);
 	clk_disable(bank->clk);
+=======
+	virq = irq_create_mapping(bank->domain, offset);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return (virq) ? : -ENXIO;
 }
@@ -3121,6 +3125,7 @@ static int __maybe_unused rockchip_pinctrl_suspend(struct device *dev)
 static int __maybe_unused rockchip_pinctrl_resume(struct device *dev)
 {
 	struct rockchip_pinctrl *info = dev_get_drvdata(dev);
+<<<<<<< HEAD
 	int ret;
 
 	if (info->ctrl->type == RK3288) {
@@ -3130,6 +3135,14 @@ static int __maybe_unused rockchip_pinctrl_resume(struct device *dev)
 		if (ret)
 			return ret;
 	}
+=======
+	int ret = regmap_write(info->regmap_base, RK3288_GRF_GPIO6C_IOMUX,
+			       rk3288_grf_gpio6c_iomux |
+			       GPIO6C6_SEL_WRITE_ENABLE);
+
+	if (ret)
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return pinctrl_force_default(info->pctl_dev);
 }

@@ -1202,9 +1202,12 @@ static enum hrtimer_restart inactive_task_timer(struct hrtimer *timer)
 
 	rq = task_rq_lock(p, &rf);
 
+<<<<<<< HEAD
 	sched_clock_tick();
 	update_rq_clock(rq);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!dl_task(p) || p->state == TASK_DEAD) {
 		struct dl_bw *dl_b = dl_bw_of(task_cpu(p));
 
@@ -1224,6 +1227,12 @@ static enum hrtimer_restart inactive_task_timer(struct hrtimer *timer)
 	if (dl_se->dl_non_contending == 0)
 		goto unlock;
 
+<<<<<<< HEAD
+=======
+	sched_clock_tick();
+	update_rq_clock(rq);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	sub_running_bw(dl_se->dl_bw, &rq->dl);
 	dl_se->dl_non_contending = 0;
 unlock:
@@ -1848,8 +1857,13 @@ static int find_later_rq(struct task_struct *task)
 				return this_cpu;
 			}
 
+<<<<<<< HEAD
 			best_cpu = cpumask_any_and_distribute(later_mask,
 							      sched_domain_span(sd));
+=======
+			best_cpu = cpumask_first_and(later_mask,
+							sched_domain_span(sd));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			/*
 			 * Last chance: if a cpu being in both later_mask
 			 * and current sd span is valid, that becomes our
@@ -1871,7 +1885,11 @@ static int find_later_rq(struct task_struct *task)
 	if (this_cpu != -1)
 		return this_cpu;
 
+<<<<<<< HEAD
 	cpu = cpumask_any_distribute(later_mask);
+=======
+	cpu = cpumask_any(later_mask);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (cpu < nr_cpu_ids)
 		return cpu;
 
@@ -2358,7 +2376,11 @@ int sched_dl_global_validate(void)
 	u64 period = global_rt_period();
 	u64 new_bw = to_ratio(period, runtime);
 	struct dl_bw *dl_b;
+<<<<<<< HEAD
 	int cpu, cpus, ret = 0;
+=======
+	int cpu, ret = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long flags;
 
 	/*
@@ -2373,10 +2395,16 @@ int sched_dl_global_validate(void)
 	for_each_possible_cpu(cpu) {
 		rcu_read_lock_sched();
 		dl_b = dl_bw_of(cpu);
+<<<<<<< HEAD
 		cpus = dl_bw_cpus(cpu);
 
 		raw_spin_lock_irqsave(&dl_b->lock, flags);
 		if (new_bw * cpus < dl_b->total_bw)
+=======
+
+		raw_spin_lock_irqsave(&dl_b->lock, flags);
+		if (new_bw < dl_b->total_bw)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			ret = -EBUSY;
 		raw_spin_unlock_irqrestore(&dl_b->lock, flags);
 

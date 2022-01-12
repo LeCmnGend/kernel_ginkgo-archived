@@ -1657,7 +1657,12 @@ static inline void set_tx_len(struct ksz_desc *desc, u32 len)
 
 #define HW_DELAY(hw, reg)			\
 	do {					\
+<<<<<<< HEAD
 		readw(hw->io + reg);		\
+=======
+		u16 dummy;			\
+		dummy = readw(hw->io + reg);	\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} while (0)
 
 /**

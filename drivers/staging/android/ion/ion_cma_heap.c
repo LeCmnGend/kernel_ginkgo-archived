@@ -278,6 +278,18 @@ static int ion_secure_cma_map_user(struct ion_heap *mapper,
 
 static int ion_secure_cma_pm_freeze(struct ion_heap *heap)
 {
+<<<<<<< HEAD
+=======
+	long sz;
+
+	sz = atomic_long_read(&heap->total_allocated);
+	if (sz) {
+		pr_err("%s: %lx bytes won't be saved across hibernation. Aborting.",
+		       __func__, sz);
+		return -EINVAL;
+	}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
 

@@ -2054,6 +2054,7 @@ static void record_and_restart(struct perf_event *event, unsigned long val,
 			left += period;
 			if (left <= 0)
 				left = period;
+<<<<<<< HEAD
 
 			/*
 			 * If address is not requested in the sample via
@@ -2065,6 +2066,9 @@ static void record_and_restart(struct perf_event *event, unsigned long val,
 			else
 				record = 1;
 
+=======
+			record = siar_valid(regs);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			event->hw.last_period = event->hw.sample_period;
 		}
 		if (left < 0x80000000LL)
@@ -2077,6 +2081,7 @@ static void record_and_restart(struct perf_event *event, unsigned long val,
 	perf_event_update_userpage(event);
 
 	/*
+<<<<<<< HEAD
 	 * Due to hardware limitation, sometimes SIAR could sample a kernel
 	 * address even when freeze on supervisor state (kernel) is set in
 	 * MMCR2. Check attr.exclude_kernel and address to drop the sample in
@@ -2088,6 +2093,8 @@ static void record_and_restart(struct perf_event *event, unsigned long val,
 		record = 0;
 
 	/*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * Finally record data if requested.
 	 */
 	if (record) {
@@ -2116,10 +2123,13 @@ static void record_and_restart(struct perf_event *event, unsigned long val,
 
 		if (perf_event_overflow(event, &data, regs))
 			power_pmu_stop(event, 0);
+<<<<<<< HEAD
 	} else if (period) {
 		/* Account for interrupt in case of invalid SIAR */
 		if (perf_event_account_interrupt(event))
 			power_pmu_stop(event, 0);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 }
 

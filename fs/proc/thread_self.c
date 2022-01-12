@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-2.0
+<<<<<<< HEAD
 #include <linux/cache.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/sched.h>
 #include <linux/slab.h>
 #include <linux/pid_namespace.h>
@@ -32,7 +35,11 @@ static const struct inode_operations proc_thread_self_inode_operations = {
 	.get_link	= proc_thread_self_get_link,
 };
 
+<<<<<<< HEAD
 static unsigned thread_self_inum __ro_after_init;
+=======
+static unsigned thread_self_inum;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 int proc_setup_thread_self(struct super_block *s)
 {

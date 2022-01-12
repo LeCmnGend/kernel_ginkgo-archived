@@ -38,12 +38,19 @@ struct list_lru binder_alloc_lru;
 static DEFINE_MUTEX(binder_alloc_mmap_lock);
 
 enum {
+<<<<<<< HEAD
 	BINDER_DEBUG_USER_ERROR             = 1U << 0,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	BINDER_DEBUG_OPEN_CLOSE             = 1U << 1,
 	BINDER_DEBUG_BUFFER_ALLOC           = 1U << 2,
 	BINDER_DEBUG_BUFFER_ALLOC_ASYNC     = 1U << 3,
 };
+<<<<<<< HEAD
 static uint32_t binder_alloc_debug_mask = 0;
+=======
+static uint32_t binder_alloc_debug_mask;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 module_param_named(debug_mask, binder_alloc_debug_mask,
 		   uint, 0644);
@@ -54,6 +61,7 @@ module_param_named(debug_mask, binder_alloc_debug_mask,
 			pr_info(x); \
 	} while (0)
 
+<<<<<<< HEAD
 static struct kmem_cache *binder_buffer_pool;
 
 int binder_buffer_pool_create(void)
@@ -70,6 +78,8 @@ void binder_buffer_pool_destroy(void)
 	kmem_cache_destroy(binder_buffer_pool);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct binder_buffer *binder_buffer_next(struct binder_buffer *buffer)
 {
 	return list_entry(buffer->entry.next, struct binder_buffer, entry);
@@ -360,6 +370,7 @@ static inline struct vm_area_struct *binder_alloc_get_vma(
 	return vma;
 }
 
+<<<<<<< HEAD
 static bool debug_low_async_space_locked(struct binder_alloc *alloc, int pid)
 {
 	/*
@@ -403,13 +414,19 @@ static bool debug_low_async_space_locked(struct binder_alloc *alloc, int pid)
 	return false;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct binder_buffer *binder_alloc_new_buf_locked(
 				struct binder_alloc *alloc,
 				size_t data_size,
 				size_t offsets_size,
 				size_t extra_buffers_size,
+<<<<<<< HEAD
 				int is_async,
 				int pid)
+=======
+				int is_async)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct rb_node *n = alloc->free_buffers.rb_node;
 	struct binder_buffer *buffer;
@@ -525,7 +542,11 @@ static struct binder_buffer *binder_alloc_new_buf_locked(
 	if (buffer_size != size) {
 		struct binder_buffer *new_buffer;
 
+<<<<<<< HEAD
 		new_buffer = kmem_cache_zalloc(binder_buffer_pool, GFP_KERNEL);
+=======
+		new_buffer = kzalloc(sizeof(*buffer), GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!new_buffer) {
 			pr_err("%s: %d failed to alloc new buffer struct\n",
 			       __func__, alloc->pid);
@@ -548,13 +569,17 @@ static struct binder_buffer *binder_alloc_new_buf_locked(
 	buffer->offsets_size = offsets_size;
 	buffer->async_transaction = is_async;
 	buffer->extra_buffers_size = extra_buffers_size;
+<<<<<<< HEAD
 	buffer->pid = pid;
 	buffer->oneway_spam_suspect = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (is_async) {
 		alloc->free_async_space -= size + sizeof(struct binder_buffer);
 		binder_alloc_debug(BINDER_DEBUG_BUFFER_ALLOC_ASYNC,
 			     "%d: binder_alloc_buf size %zd async free %zd\n",
 			      alloc->pid, size, alloc->free_async_space);
+<<<<<<< HEAD
 		if (alloc->free_async_space < alloc->buffer_size / 10) {
 			/*
 			 * Start detecting spammers once we have less than 20%
@@ -565,6 +590,8 @@ static struct binder_buffer *binder_alloc_new_buf_locked(
 		} else {
 			alloc->oneway_spam_detected = false;
 		}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	return buffer;
 
@@ -582,7 +609,10 @@ err_alloc_buf_struct_failed:
  * @offsets_size:       user specified buffer offset
  * @extra_buffers_size: size of extra space for meta-data (eg, security context)
  * @is_async:           buffer for async transaction
+<<<<<<< HEAD
  * @pid:				pid to attribute allocation to (used for debugging)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * Allocate a new buffer given the requested sizes. Returns
  * the kernel version of the buffer pointer. The size allocated
@@ -595,14 +625,22 @@ struct binder_buffer *binder_alloc_new_buf(struct binder_alloc *alloc,
 					   size_t data_size,
 					   size_t offsets_size,
 					   size_t extra_buffers_size,
+<<<<<<< HEAD
 					   int is_async,
 					   int pid)
+=======
+					   int is_async)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct binder_buffer *buffer;
 
 	mutex_lock(&alloc->mutex);
 	buffer = binder_alloc_new_buf_locked(alloc, data_size, offsets_size,
+<<<<<<< HEAD
 					     extra_buffers_size, is_async, pid);
+=======
+					     extra_buffers_size, is_async);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_unlock(&alloc->mutex);
 	return buffer;
 }
@@ -663,7 +701,11 @@ static void binder_delete_free_buffer(struct binder_alloc *alloc,
 					 buffer_start_page(buffer) + PAGE_SIZE);
 	}
 	list_del(&buffer->entry);
+<<<<<<< HEAD
 	kmem_cache_free(binder_buffer_pool, buffer);
+=======
+	kfree(buffer);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void binder_free_buf_locked(struct binder_alloc *alloc,
@@ -722,8 +764,11 @@ static void binder_free_buf_locked(struct binder_alloc *alloc,
 	binder_insert_free_buffer(alloc, buffer);
 }
 
+<<<<<<< HEAD
 static void binder_alloc_clear_buf(struct binder_alloc *alloc,
 				   struct binder_buffer *buffer);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * binder_alloc_free_buf() - free a binder buffer
  * @alloc:	binder_alloc for this proc
@@ -734,6 +779,7 @@ static void binder_alloc_clear_buf(struct binder_alloc *alloc,
 void binder_alloc_free_buf(struct binder_alloc *alloc,
 			    struct binder_buffer *buffer)
 {
+<<<<<<< HEAD
 	/*
 	 * We could eliminate the call to binder_alloc_clear_buf()
 	 * from binder_alloc_deferred_release() by moving this to
@@ -746,6 +792,8 @@ void binder_alloc_free_buf(struct binder_alloc *alloc,
 		binder_alloc_clear_buf(alloc, buffer);
 		buffer->clear_on_free = false;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_lock(&alloc->mutex);
 	binder_free_buf_locked(alloc, buffer);
 	mutex_unlock(&alloc->mutex);
@@ -791,7 +839,11 @@ int binder_alloc_mmap_handler(struct binder_alloc *alloc,
 	}
 	alloc->buffer_size = vma->vm_end - vma->vm_start;
 
+<<<<<<< HEAD
 	buffer = kmem_cache_zalloc(binder_buffer_pool, GFP_KERNEL);
+=======
+	buffer = kzalloc(sizeof(*buffer), GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!buffer) {
 		ret = -ENOMEM;
 		failure_string = "alloc buffer struct";
@@ -838,10 +890,13 @@ void binder_alloc_deferred_release(struct binder_alloc *alloc)
 		/* Transaction should already have been freed */
 		BUG_ON(buffer->transaction);
 
+<<<<<<< HEAD
 		if (buffer->clear_on_free) {
 			binder_alloc_clear_buf(alloc, buffer);
 			buffer->clear_on_free = false;
 		}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		binder_free_buf_locked(alloc, buffer);
 		buffers++;
 	}
@@ -853,7 +908,11 @@ void binder_alloc_deferred_release(struct binder_alloc *alloc)
 
 		list_del(&buffer->entry);
 		WARN_ON_ONCE(!list_empty(&alloc->buffers));
+<<<<<<< HEAD
 		kmem_cache_free(binder_buffer_pool, buffer);
+=======
+		kfree(buffer);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	page_count = 0;
@@ -1169,6 +1228,7 @@ static struct page *binder_alloc_get_page(struct binder_alloc *alloc,
 }
 
 /**
+<<<<<<< HEAD
  * binder_alloc_clear_buf() - zero out buffer
  * @alloc: binder_alloc for this proc
  * @buffer: binder buffer to be cleared
@@ -1199,6 +1259,8 @@ static void binder_alloc_clear_buf(struct binder_alloc *alloc,
 }
 
 /**
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * binder_alloc_copy_user_to_buffer() - copy src user to tgt user
  * @alloc: binder_alloc for this proc
  * @buffer: binder buffer to be accessed

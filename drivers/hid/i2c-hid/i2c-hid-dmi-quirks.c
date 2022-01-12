@@ -397,6 +397,7 @@ static const struct dmi_system_id i2c_hid_dmi_desc_override_table[] = {
 		},
 		.driver_data = (void *)&sipodev_desc
 	},
+<<<<<<< HEAD
 	{
 		.ident = "Vero K147",
 		.matches = {
@@ -405,6 +406,8 @@ static const struct dmi_system_id i2c_hid_dmi_desc_override_table[] = {
 		},
 		.driver_data = (void *)&sipodev_desc
 	},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ }	/* Terminate list */
 };
 

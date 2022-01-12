@@ -19,8 +19,11 @@
 
 #define TIMELINE_VAL_LENGTH		128
 
+<<<<<<< HEAD
 static struct kmem_cache *kmem_fence_pool;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void *sde_sync_get(uint64_t fd)
 {
 	/* force signed compare, fdget accepts an int argument */
@@ -93,9 +96,13 @@ uint32_t sde_sync_get_name_prefix(void *fence)
 struct sde_fence {
 	struct dma_fence base;
 	struct sde_fence_context *ctx;
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
 	char name[SDE_FENCE_NAME_SIZE];
 #endif
+=======
+	char name[SDE_FENCE_NAME_SIZE];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct list_head	fence_list;
 	int fd;
 };
@@ -120,6 +127,7 @@ static inline struct sde_fence *to_sde_fence(struct dma_fence *fence)
 
 static const char *sde_fence_get_driver_name(struct dma_fence *fence)
 {
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
 	struct sde_fence *f = to_sde_fence(fence);
 
@@ -127,10 +135,16 @@ static const char *sde_fence_get_driver_name(struct dma_fence *fence)
 #else
 	return "sde";
 #endif
+=======
+	struct sde_fence *f = to_sde_fence(fence);
+
+	return f->name;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static const char *sde_fence_get_timeline_name(struct dma_fence *fence)
 {
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
 	struct sde_fence *f = to_sde_fence(fence);
 
@@ -138,6 +152,11 @@ static const char *sde_fence_get_timeline_name(struct dma_fence *fence)
 #else
 	return "timeline";
 #endif
+=======
+	struct sde_fence *f = to_sde_fence(fence);
+
+	return f->ctx->name;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static bool sde_fence_enable_signaling(struct dma_fence *fence)
@@ -163,7 +182,11 @@ static void sde_fence_release(struct dma_fence *fence)
 	if (fence) {
 		f = to_sde_fence(fence);
 		kref_put(&f->ctx->kref, sde_fence_destroy);
+<<<<<<< HEAD
 		kmem_cache_free(kmem_fence_pool, f);
+=======
+		kfree(f);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 }
 
@@ -211,11 +234,16 @@ static int _sde_fence_create_fd(void *fence_ctx, uint32_t val)
 	signed int fd = -EINVAL;
 	struct sde_fence_context *ctx = fence_ctx;
 
+<<<<<<< HEAD
 	if (unlikely(!ctx)) {
+=======
+	if (!ctx) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		SDE_ERROR("invalid context\n");
 		goto exit;
 	}
 
+<<<<<<< HEAD
 	sde_fence = kmem_cache_zalloc(kmem_fence_pool, GFP_KERNEL);
 	if (unlikely(!sde_fence))
 		return -ENOMEM;
@@ -225,29 +253,51 @@ static int _sde_fence_create_fd(void *fence_ctx, uint32_t val)
 	snprintf(sde_fence->name, SDE_FENCE_NAME_SIZE, "sde_fence:%s:%u",
 						sde_fence->ctx->name, val);
 #endif
+=======
+	sde_fence = kzalloc(sizeof(*sde_fence), GFP_KERNEL);
+	if (!sde_fence)
+		return -ENOMEM;
+
+	sde_fence->ctx = fence_ctx;
+	snprintf(sde_fence->name, SDE_FENCE_NAME_SIZE, "sde_fence:%s:%u",
+						sde_fence->ctx->name, val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dma_fence_init(&sde_fence->base, &sde_fence_ops, &ctx->lock,
 		ctx->context, val);
 	kref_get(&ctx->kref);
 
 	/* create fd */
 	fd = get_unused_fd_flags(0);
+<<<<<<< HEAD
 	if (unlikely(fd < 0)) {
 #ifdef CONFIG_FENCE_DEBUG
 		SDE_ERROR("failed to get_unused_fd_flags(), %s\n",
 							sde_fence->name);
 #endif
+=======
+	if (fd < 0) {
+		SDE_ERROR("failed to get_unused_fd_flags(), %s\n",
+							sde_fence->name);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dma_fence_put(&sde_fence->base);
 		goto exit;
 	}
 
 	/* create fence */
 	sync_file = sync_file_create(&sde_fence->base);
+<<<<<<< HEAD
 	if (unlikely(sync_file == NULL)) {
 		put_unused_fd(fd);
 		fd = -EINVAL;
 #ifdef CONFIG_FENCE_DEBUG
 		SDE_ERROR("couldn't create fence, %s\n", sde_fence->name);
 #endif
+=======
+	if (sync_file == NULL) {
+		put_unused_fd(fd);
+		fd = -EINVAL;
+		SDE_ERROR("couldn't create fence, %s\n", sde_fence->name);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dma_fence_put(&sde_fence->base);
 		goto exit;
 	}
@@ -279,9 +329,13 @@ struct sde_fence_context *sde_fence_init(const char *name, uint32_t drm_id)
 		return ERR_PTR(-ENOMEM);
 	}
 
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
 	strlcpy(ctx->name, name, ARRAY_SIZE(ctx->name));
 #endif
+=======
+	strlcpy(ctx->name, name, ARRAY_SIZE(ctx->name));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ctx->drm_id = drm_id;
 	kref_init(&ctx->kref);
 	ctx->context = dma_fence_context_alloc(1);
@@ -362,7 +416,11 @@ int sde_fence_create(struct sde_fence_context *ctx, uint64_t *val,
 	int fd, rc = -EINVAL;
 	unsigned long flags;
 
+<<<<<<< HEAD
 	if (unlikely(!ctx || !val)) {
+=======
+	if (!ctx || !val) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		SDE_ERROR("invalid argument(s), fence %d, pval %d\n",
 				ctx != NULL, val != NULL);
 		return rc;
@@ -388,7 +446,11 @@ int sde_fence_create(struct sde_fence_context *ctx, uint64_t *val,
 
 	SDE_EVT32(ctx->drm_id, trigger_value, fd);
 
+<<<<<<< HEAD
 	if (likely(fd >= 0)) {
+=======
+	if (fd >= 0) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rc = 0;
 		_sde_fence_trigger(ctx, ktime_get(), false);
 	} else {
@@ -520,6 +582,7 @@ void sde_debugfs_timeline_dump(struct sde_fence_context *ctx,
 	}
 	spin_unlock(&ctx->list_lock);
 }
+<<<<<<< HEAD
 
 static int __init sde_kmem_pool_init(void)
 {
@@ -528,3 +591,5 @@ static int __init sde_kmem_pool_init(void)
 }
 
 module_init(sde_kmem_pool_init);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

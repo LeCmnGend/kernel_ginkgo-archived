@@ -148,8 +148,12 @@ struct usb_8dev_priv {
 	u8 *cmd_msg_buffer;
 
 	struct mutex usb_8dev_cmd_lock;
+<<<<<<< HEAD
 	void *rxbuf[MAX_RX_URBS];
 	dma_addr_t rxbuf_dma[MAX_RX_URBS];
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 /* tx frame */
@@ -745,7 +749,10 @@ static int usb_8dev_start(struct usb_8dev_priv *priv)
 	for (i = 0; i < MAX_RX_URBS; i++) {
 		struct urb *urb = NULL;
 		u8 *buf;
+<<<<<<< HEAD
 		dma_addr_t buf_dma;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		/* create a URB, and a buffer for it */
 		urb = usb_alloc_urb(0, GFP_KERNEL);
@@ -755,7 +762,11 @@ static int usb_8dev_start(struct usb_8dev_priv *priv)
 		}
 
 		buf = usb_alloc_coherent(priv->udev, RX_BUFFER_SIZE, GFP_KERNEL,
+<<<<<<< HEAD
 					 &buf_dma);
+=======
+					 &urb->transfer_dma);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!buf) {
 			netdev_err(netdev, "No memory left for USB buffer\n");
 			usb_free_urb(urb);
@@ -763,8 +774,11 @@ static int usb_8dev_start(struct usb_8dev_priv *priv)
 			break;
 		}
 
+<<<<<<< HEAD
 		urb->transfer_dma = buf_dma;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		usb_fill_bulk_urb(urb, priv->udev,
 				  usb_rcvbulkpipe(priv->udev,
 						  USB_8DEV_ENDP_DATA_RX),
@@ -782,9 +796,12 @@ static int usb_8dev_start(struct usb_8dev_priv *priv)
 			break;
 		}
 
+<<<<<<< HEAD
 		priv->rxbuf[i] = buf;
 		priv->rxbuf_dma[i] = buf_dma;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* Drop reference, USB core will take care of freeing it */
 		usb_free_urb(urb);
 	}
@@ -854,10 +871,13 @@ static void unlink_all_urbs(struct usb_8dev_priv *priv)
 
 	usb_kill_anchored_urbs(&priv->rx_submitted);
 
+<<<<<<< HEAD
 	for (i = 0; i < MAX_RX_URBS; ++i)
 		usb_free_coherent(priv->udev, RX_BUFFER_SIZE,
 				  priv->rxbuf[i], priv->rxbuf_dma[i]);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	usb_kill_anchored_urbs(&priv->tx_submitted);
 	atomic_set(&priv->active_tx_urbs, 0);
 

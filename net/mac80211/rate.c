@@ -941,8 +941,12 @@ int rate_control_set_rates(struct ieee80211_hw *hw,
 	if (old)
 		kfree_rcu(old, rcu_head);
 
+<<<<<<< HEAD
 	if (sta->uploaded)
 		drv_sta_rate_tbl_update(hw_to_local(hw), sta->sdata, pubsta);
+=======
+	drv_sta_rate_tbl_update(hw_to_local(hw), sta->sdata, pubsta);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	ieee80211_sta_set_expected_throughput(pubsta, sta_get_expected_throughput(sta));
 

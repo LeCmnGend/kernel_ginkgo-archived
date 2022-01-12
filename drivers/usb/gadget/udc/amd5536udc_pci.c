@@ -158,11 +158,14 @@ static int udc_pci_probe(
 	pci_set_master(pdev);
 	pci_try_set_mwi(pdev);
 
+<<<<<<< HEAD
 	dev->phys_addr = resource;
 	dev->irq = pdev->irq;
 	dev->pdev = pdev;
 	dev->dev = &pdev->dev;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* init dma pools */
 	if (use_dma) {
 		retval = init_dma_pools(dev);
@@ -170,6 +173,14 @@ static int udc_pci_probe(
 			goto err_dma;
 	}
 
+<<<<<<< HEAD
+=======
+	dev->phys_addr = resource;
+	dev->irq = pdev->irq;
+	dev->pdev = pdev;
+	dev->dev = &pdev->dev;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* general probing */
 	if (udc_probe(dev)) {
 		retval = -ENODEV;

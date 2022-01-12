@@ -541,6 +541,7 @@ static const struct samsung_gate_clock top1_gate_clks[] __initconst = {
 	GATE(CLK_ACLK_FSYS0_200, "aclk_fsys0_200", "dout_aclk_fsys0_200",
 		ENABLE_ACLK_TOP13, 28, CLK_SET_RATE_PARENT |
 		CLK_IS_CRITICAL, 0),
+<<<<<<< HEAD
 	/*
 	 * This clock is required for the CMU_FSYS1 registers access, keep it
 	 * enabled permanently until proper runtime PM support is added.
@@ -548,6 +549,10 @@ static const struct samsung_gate_clock top1_gate_clks[] __initconst = {
 	GATE(CLK_ACLK_FSYS1_200, "aclk_fsys1_200", "dout_aclk_fsys1_200",
 		ENABLE_ACLK_TOP13, 24, CLK_SET_RATE_PARENT |
 		CLK_IS_CRITICAL, 0),
+=======
+	GATE(CLK_ACLK_FSYS1_200, "aclk_fsys1_200", "dout_aclk_fsys1_200",
+		ENABLE_ACLK_TOP13, 24, CLK_SET_RATE_PARENT, 0),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	GATE(CLK_SCLK_PHY_FSYS1_26M, "sclk_phy_fsys1_26m",
 		"dout_sclk_phy_fsys1_26m", ENABLE_SCLK_TOP1_FSYS11,

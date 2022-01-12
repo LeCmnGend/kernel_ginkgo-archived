@@ -125,7 +125,11 @@ struct intel_uncore_box {
 #define UNCORE_BOX_FLAG_CTL_OFFS8	1 /* event config registers are 8-byte apart */
 
 struct uncore_event_desc {
+<<<<<<< HEAD
 	struct device_attribute attr;
+=======
+	struct kobj_attribute attr;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	const char *config;
 };
 
@@ -137,8 +141,13 @@ struct pci2phy_map {
 
 struct pci2phy_map *__find_pci2phy_map(int segment);
 
+<<<<<<< HEAD
 ssize_t uncore_event_show(struct device *dev,
 			  struct device_attribute *attr, char *buf);
+=======
+ssize_t uncore_event_show(struct kobject *kobj,
+			  struct kobj_attribute *attr, char *buf);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #define INTEL_UNCORE_EVENT_DESC(_name, _config)			\
 {								\
@@ -147,14 +156,23 @@ ssize_t uncore_event_show(struct device *dev,
 }
 
 #define DEFINE_UNCORE_FORMAT_ATTR(_var, _name, _format)			\
+<<<<<<< HEAD
 static ssize_t __uncore_##_var##_show(struct device *dev,		\
 				struct device_attribute *attr,		\
+=======
+static ssize_t __uncore_##_var##_show(struct kobject *kobj,		\
+				struct kobj_attribute *attr,		\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				char *page)				\
 {									\
 	BUILD_BUG_ON(sizeof(_format) >= PAGE_SIZE);			\
 	return sprintf(page, _format "\n");				\
 }									\
+<<<<<<< HEAD
 static struct device_attribute format_attr_##_var =			\
+=======
+static struct kobj_attribute format_attr_##_var =			\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__ATTR(_name, 0444, __uncore_##_var##_show, NULL)
 
 static inline unsigned uncore_pci_box_ctl(struct intel_uncore_box *box)

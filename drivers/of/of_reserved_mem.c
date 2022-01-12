@@ -161,9 +161,15 @@ static int __init __reserved_mem_alloc_size(unsigned long node,
 			ret = early_init_dt_alloc_reserved_memory_arch(size,
 					align, start, end, nomap, &base);
 			if (ret == 0) {
+<<<<<<< HEAD
 				pr_debug("allocated memory for '%s' node: base %pa, size %lu MiB\n",
 					uname, &base,
 					(unsigned long)(size / SZ_1M));
+=======
+				pr_debug("allocated memory for '%s' node: base %pa, size %ld MiB\n",
+					uname, &base,
+					(unsigned long)size / SZ_1M);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				break;
 			}
 			len -= t_len;
@@ -173,8 +179,13 @@ static int __init __reserved_mem_alloc_size(unsigned long node,
 		ret = early_init_dt_alloc_reserved_memory_arch(size, align,
 							0, 0, nomap, &base);
 		if (ret == 0)
+<<<<<<< HEAD
 			pr_debug("allocated memory for '%s' node: base %pa, size %lu MiB\n",
 				uname, &base, (unsigned long)(size / SZ_1M));
+=======
+			pr_debug("allocated memory for '%s' node: base %pa, size %ld MiB\n",
+				uname, &base, (unsigned long)size / SZ_1M);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	if (base == 0) {
@@ -225,6 +236,7 @@ static int __init __rmem_cmp(const void *a, const void *b)
 	if (ra->base > rb->base)
 		return 1;
 
+<<<<<<< HEAD
 	/*
 	 * Put the dynamic allocations (address == 0, size == 0) before static
 	 * allocations at address 0x0 so that overlap detection works
@@ -235,6 +247,8 @@ static int __init __rmem_cmp(const void *a, const void *b)
 	if (ra->size > rb->size)
 		return 1;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
 
@@ -252,7 +266,12 @@ static void __init __rmem_check_for_overlap(void)
 
 		this = &reserved_mem[i];
 		next = &reserved_mem[i + 1];
+<<<<<<< HEAD
 
+=======
+		if (!(this->base && next->base))
+			continue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (this->base + this->size > next->base) {
 			phys_addr_t this_end, next_end;
 

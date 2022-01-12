@@ -373,7 +373,11 @@ static int hid_submit_ctrl(struct hid_device *hid)
 	raw_report = usbhid->ctrl[usbhid->ctrltail].raw_report;
 	dir = usbhid->ctrl[usbhid->ctrltail].dir;
 
+<<<<<<< HEAD
 	len = hid_report_len(report);
+=======
+	len = ((report->size - 1) >> 3) + 1 + (report->id > 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (dir == USB_DIR_OUT) {
 		usbhid->urbctrl->pipe = usb_sndctrlpipe(hid_to_usb_dev(hid), 0);
 		usbhid->urbctrl->transfer_buffer_length = len;

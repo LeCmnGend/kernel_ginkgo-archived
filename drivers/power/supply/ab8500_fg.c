@@ -3229,7 +3229,10 @@ static const struct of_device_id ab8500_fg_match[] = {
 	{ .compatible = "stericsson,ab8500-fg", },
 	{ },
 };
+<<<<<<< HEAD
 MODULE_DEVICE_TABLE(of, ab8500_fg_match);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static struct platform_driver ab8500_fg_driver = {
 	.probe = ab8500_fg_probe,

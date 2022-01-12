@@ -355,7 +355,11 @@ static int at25_probe(struct spi_device *spi)
 	at25->nvmem_config.reg_read = at25_ee_read;
 	at25->nvmem_config.reg_write = at25_ee_write;
 	at25->nvmem_config.priv = at25;
+<<<<<<< HEAD
 	at25->nvmem_config.stride = 1;
+=======
+	at25->nvmem_config.stride = 4;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	at25->nvmem_config.word_size = 1;
 	at25->nvmem_config.size = chip.byte_len;
 

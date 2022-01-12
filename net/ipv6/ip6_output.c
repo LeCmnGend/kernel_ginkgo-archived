@@ -128,6 +128,7 @@ static int ip6_finish_output2(struct net *net, struct sock *sk, struct sk_buff *
 	return -EINVAL;
 }
 
+<<<<<<< HEAD
 static int
 ip6_finish_output_gso_slowpath_drop(struct net *net, struct sock *sk,
 				    struct sk_buff *skb, unsigned int mtu)
@@ -164,6 +165,10 @@ ip6_finish_output_gso_slowpath_drop(struct net *net, struct sock *sk,
 static int ip6_finish_output(struct net *net, struct sock *sk, struct sk_buff *skb)
 {
 	unsigned int mtu;
+=======
+static int ip6_finish_output(struct net *net, struct sock *sk, struct sk_buff *skb)
+{
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret;
 
 	ret = BPF_CGROUP_RUN_PROG_INET_EGRESS(sk, skb);
@@ -180,11 +185,15 @@ static int ip6_finish_output(struct net *net, struct sock *sk, struct sk_buff *s
 	}
 #endif
 
+<<<<<<< HEAD
 	mtu = ip6_skb_dst_mtu(skb);
 	if (skb_is_gso(skb) && !skb_gso_validate_mtu(skb, mtu))
 		return ip6_finish_output_gso_slowpath_drop(net, sk, skb, mtu);
 
 	if ((skb->len > mtu && !skb_is_gso(skb)) ||
+=======
+	if ((skb->len > ip6_skb_dst_mtu(skb) && !skb_is_gso(skb)) ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	    dst_allfrag(skb_dst(skb)) ||
 	    (IP6CB(skb)->frag_max_size && skb->len > IP6CB(skb)->frag_max_size))
 		return ip6_fragment(net, sk, skb, ip6_finish_output2);
@@ -508,6 +517,11 @@ int ip6_forward(struct sk_buff *skb)
 	 *	check and decrement ttl
 	 */
 	if (hdr->hop_limit <= 1) {
+<<<<<<< HEAD
+=======
+		/* Force OUTPUT device used as source address */
+		skb->dev = dst->dev;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		icmpv6_send(skb, ICMPV6_TIME_EXCEED, ICMPV6_EXC_HOPLIMIT, 0);
 		__IP6_INC_STATS(net, ip6_dst_idev(dst),
 				IPSTATS_MIB_INHDRERRORS);

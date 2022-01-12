@@ -1087,9 +1087,12 @@ int dma_async_device_register(struct dma_device *device)
 	dma_channel_rebalance();
 	mutex_unlock(&dma_list_mutex);
 
+<<<<<<< HEAD
 	if (!chancnt)
 		kfree(idr_ref);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 
 err_out:

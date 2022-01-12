@@ -118,6 +118,7 @@ __printf(2, 3)
 void seq_printf(struct seq_file *m, const char *fmt, ...);
 void seq_putc(struct seq_file *m, char c);
 void seq_puts(struct seq_file *m, const char *s);
+<<<<<<< HEAD
 void seq_put_decimal_ull_width(struct seq_file *m, const char *delimiter,
 			       unsigned long long num, unsigned int width);
 void seq_put_decimal_ull(struct seq_file *m, const char *delimiter,
@@ -126,6 +127,11 @@ void seq_put_decimal_ll(struct seq_file *m, const char *delimiter, long long num
 void seq_put_hex_ll(struct seq_file *m, const char *delimiter,
 		    unsigned long long v, unsigned int width);
 
+=======
+void seq_put_decimal_ull(struct seq_file *m, const char *delimiter,
+			 unsigned long long num);
+void seq_put_decimal_ll(struct seq_file *m, const char *delimiter, long long num);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void seq_escape(struct seq_file *m, const char *s, const char *esc);
 
 void seq_hex_dump(struct seq_file *m, const char *prefix_str, int prefix_type,
@@ -240,5 +246,8 @@ extern struct hlist_node *seq_hlist_start_percpu(struct hlist_head __percpu *hea
 
 extern struct hlist_node *seq_hlist_next_percpu(void *v, struct hlist_head __percpu *head, int *cpu, loff_t *pos);
 
+<<<<<<< HEAD
 void seq_file_init(void);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif

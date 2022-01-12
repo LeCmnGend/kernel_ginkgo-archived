@@ -335,10 +335,14 @@ int phy_ethtool_ksettings_set(struct phy_device *phydev,
 
 	phydev->autoneg = autoneg;
 
+<<<<<<< HEAD
 	if (autoneg == AUTONEG_DISABLE) {
 		phydev->speed = speed;
 		phydev->duplex = duplex;
 	}
+=======
+	phydev->speed = speed;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	phydev->advertising = advertising;
 
@@ -347,6 +351,11 @@ int phy_ethtool_ksettings_set(struct phy_device *phydev,
 	else
 		phydev->advertising &= ~ADVERTISED_Autoneg;
 
+<<<<<<< HEAD
+=======
+	phydev->duplex = duplex;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	phydev->mdix_ctrl = cmd->base.eth_tp_mdix_ctrl;
 
 	/* Restart the PHY */

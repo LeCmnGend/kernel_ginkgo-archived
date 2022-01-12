@@ -385,7 +385,10 @@ static struct ieee80211_hw *cw1200_init_common(const u8 *macaddr,
 				    CW1200_LINK_ID_MAX,
 				    cw1200_skb_dtor,
 				    priv)) {
+<<<<<<< HEAD
 		destroy_workqueue(priv->workqueue);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ieee80211_free_hw(hw);
 		return NULL;
 	}
@@ -397,7 +400,10 @@ static struct ieee80211_hw *cw1200_init_common(const u8 *macaddr,
 			for (; i > 0; i--)
 				cw1200_queue_deinit(&priv->tx_queue[i - 1]);
 			cw1200_queue_stats_deinit(&priv->tx_queue_stats);
+<<<<<<< HEAD
 			destroy_workqueue(priv->workqueue);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			ieee80211_free_hw(hw);
 			return NULL;
 		}

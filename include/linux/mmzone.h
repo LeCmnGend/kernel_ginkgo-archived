@@ -444,7 +444,11 @@ struct zone {
 	 * adjust_managed_page_count() should be used instead of directly
 	 * touching zone->managed_pages and totalram_pages.
 	 */
+<<<<<<< HEAD
 	atomic_long_t		managed_pages;
+=======
+	unsigned long		managed_pages;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long		spanned_pages;
 	unsigned long		present_pages;
 
@@ -533,11 +537,14 @@ enum pgdat_flags {
 	PGDAT_RECLAIM_LOCKED,		/* prevents concurrent reclaim */
 };
 
+<<<<<<< HEAD
 static inline unsigned long zone_managed_pages(struct zone *zone)
 {
 	return (unsigned long)atomic_long_read(&zone->managed_pages);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline unsigned long zone_end_pfn(const struct zone *zone)
 {
 	return zone->zone_start_pfn + zone->spanned_pages;
@@ -730,6 +737,15 @@ typedef struct pglist_data {
 	/* Fields commonly accessed by the page reclaim scanner */
 	struct lruvec		lruvec;
 
+<<<<<<< HEAD
+=======
+	/*
+	 * The target ratio of ACTIVE_ANON to INACTIVE_ANON pages on
+	 * this node's LRU.  Maintained by the pageout code.
+	 */
+	unsigned int inactive_ratio;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long		flags;
 
 	ZONE_PADDING(_pad2_)
@@ -792,8 +808,12 @@ static inline bool is_dev_zone(const struct zone *zone)
 #include <linux/memory_hotplug.h>
 
 void build_all_zonelists(pg_data_t *pgdat);
+<<<<<<< HEAD
 void wakeup_kswapd(struct zone *zone, gfp_t gfp_mask, int order,
 		   enum zone_type classzone_idx);
+=======
+void wakeup_kswapd(struct zone *zone, int order, enum zone_type classzone_idx);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 bool __zone_watermark_ok(struct zone *z, unsigned int order, unsigned long mark,
 			 int classzone_idx, unsigned int alloc_flags,
 			 long free_pages);
@@ -851,7 +871,11 @@ unsigned long __init node_memmap_size_bytes(int, unsigned long, unsigned long);
  */
 static inline bool managed_zone(struct zone *zone)
 {
+<<<<<<< HEAD
 	return zone_managed_pages(zone);
+=======
+	return zone->managed_pages;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /* Returns true if a zone has memory */
@@ -1303,7 +1327,11 @@ unsigned long __init node_memmap_size_bytes(int, unsigned long, unsigned long);
 
 /*
  * If it is possible to have holes within a MAX_ORDER_NR_PAGES, then we
+<<<<<<< HEAD
  * need to check pfn validity within that MAX_ORDER_NR_PAGES block.
+=======
+ * need to check pfn validility within that MAX_ORDER_NR_PAGES block.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * pfn_valid_within() should be used in this case; we optimise this away
  * when we have no holes within a MAX_ORDER_NR_PAGES block.
  */

@@ -65,8 +65,13 @@ static inline void mtdcrx(unsigned int reg, unsigned int val)
 #define mfdcr(rn)						\
 	({unsigned int rval;					\
 	if (__builtin_constant_p(rn) && rn < 1024)		\
+<<<<<<< HEAD
 		asm volatile("mfdcr %0, %1" : "=r" (rval)	\
 			      : "n" (rn));			\
+=======
+		asm volatile("mfdcr %0," __stringify(rn)	\
+		              : "=r" (rval));			\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	else if (likely(cpu_has_feature(CPU_FTR_INDEXED_DCR)))	\
 		rval = mfdcrx(rn);				\
 	else							\
@@ -76,8 +81,13 @@ static inline void mtdcrx(unsigned int reg, unsigned int val)
 #define mtdcr(rn, v)						\
 do {								\
 	if (__builtin_constant_p(rn) && rn < 1024)		\
+<<<<<<< HEAD
 		asm volatile("mtdcr %0, %1"			\
 			      : : "n" (rn), "r" (v));		\
+=======
+		asm volatile("mtdcr " __stringify(rn) ",%0"	\
+			      : : "r" (v)); 			\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	else if (likely(cpu_has_feature(CPU_FTR_INDEXED_DCR)))	\
 		mtdcrx(rn, v);					\
 	else							\

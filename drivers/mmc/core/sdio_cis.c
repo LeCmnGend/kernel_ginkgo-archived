@@ -24,17 +24,23 @@
 #include "sdio_cis.h"
 #include "sdio_ops.h"
 
+<<<<<<< HEAD
 #define SDIO_READ_CIS_TIMEOUT_MS  (10 * 1000) /* 10s */
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int cistpl_vers_1(struct mmc_card *card, struct sdio_func *func,
 			 const unsigned char *buf, unsigned size)
 {
 	unsigned i, nr_strings;
 	char **buffer, *string;
 
+<<<<<<< HEAD
 	if (size < 2)
 		return 0;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Find all null-terminated (including zero length) strings in
 	   the TPLLV1_INFO field. Trailing garbage is ignored. */
 	buf += 2;
@@ -60,7 +66,11 @@ static int cistpl_vers_1(struct mmc_card *card, struct sdio_func *func,
 
 	for (i = 0; i < nr_strings; i++) {
 		buffer[i] = string;
+<<<<<<< HEAD
 		memcpy(string, buf, strlen(buf) + 1);
+=======
+		strlcpy(string, buf, strlen(buf) + 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		string += strlen(string) + 1;
 		buf += strlen(buf) + 1;
 	}
@@ -272,8 +282,11 @@ static int sdio_read_cis(struct mmc_card *card, struct sdio_func *func)
 
 	do {
 		unsigned char tpl_code, tpl_link;
+<<<<<<< HEAD
 		unsigned long timeout = jiffies +
 			msecs_to_jiffies(SDIO_READ_CIS_TIMEOUT_MS);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		ret = mmc_io_rw_direct(card, 0, 0, ptr++, 0, &tpl_code);
 		if (ret)
@@ -334,8 +347,11 @@ static int sdio_read_cis(struct mmc_card *card, struct sdio_func *func)
 			prev = &this->next;
 
 			if (ret == -ENOENT) {
+<<<<<<< HEAD
 				if (time_after(jiffies, timeout))
 					break;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				/* warn about unknown tuples */
 				pr_warn_ratelimited("%s: queuing unknown"
 				       " CIS tuple 0x%02x (%u bytes)\n",

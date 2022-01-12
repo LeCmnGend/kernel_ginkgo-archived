@@ -389,6 +389,7 @@
 	};
 
 /include/ "qoriq-i2c-0.dtsi"
+<<<<<<< HEAD
 	i2c@118000 {
 		fsl,i2c-erratum-a004447;
 	};
@@ -406,6 +407,9 @@
 		fsl,i2c-erratum-a004447;
 	};
 
+=======
+/include/ "qoriq-i2c-1.dtsi"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /include/ "qoriq-duart-0.dtsi"
 /include/ "qoriq-duart-1.dtsi"
 /include/ "qoriq-gpio-0.dtsi"

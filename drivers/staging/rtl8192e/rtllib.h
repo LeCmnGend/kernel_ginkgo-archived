@@ -1110,7 +1110,11 @@ struct rtllib_network {
 	bool	bWithAironetIE;
 	bool	bCkipSupported;
 	bool	bCcxRmEnable;
+<<<<<<< HEAD
 	u8	CcxRmState[2];
+=======
+	u16	CcxRmState[2];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool	bMBssidValid;
 	u8	MBssidMask;
 	u8	MBssid[ETH_ALEN];

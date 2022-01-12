@@ -272,6 +272,10 @@ static int ip6_tnl_create2(struct net_device *dev)
 
 	strcpy(t->parms.name, dev->name);
 
+<<<<<<< HEAD
+=======
+	dev_hold(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ip6_tnl_link(ip6n, t);
 	return 0;
 
@@ -871,6 +875,7 @@ int ip6_tnl_rcv(struct ip6_tnl *t, struct sk_buff *skb,
 		struct metadata_dst *tun_dst,
 		bool log_ecn_err)
 {
+<<<<<<< HEAD
 	int (*dscp_ecn_decapsulate)(const struct ip6_tnl *t,
 				    const struct ipv6hdr *ipv6h,
 				    struct sk_buff *skb);
@@ -880,6 +885,9 @@ int ip6_tnl_rcv(struct ip6_tnl *t, struct sk_buff *skb,
 		dscp_ecn_decapsulate = ip4ip6_dscp_ecn_decapsulate;
 
 	return __ip6_tnl_rcv(t, skb, tpi, NULL, dscp_ecn_decapsulate,
+=======
+	return __ip6_tnl_rcv(t, skb, tpi, NULL, ip6ip6_dscp_ecn_decapsulate,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			     log_ecn_err);
 }
 EXPORT_SYMBOL(ip6_tnl_rcv);
@@ -1861,7 +1869,10 @@ ip6_tnl_dev_init_gen(struct net_device *dev)
 	dev->min_mtu = ETH_MIN_MTU;
 	dev->max_mtu = IP6_MAX_MTU - dev->hard_header_len;
 
+<<<<<<< HEAD
 	dev_hold(dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 
 destroy_dst:
@@ -1905,6 +1916,10 @@ static int __net_init ip6_fb_tnl_dev_init(struct net_device *dev)
 	struct ip6_tnl_net *ip6n = net_generic(net, ip6_tnl_net_id);
 
 	t->parms.proto = IPPROTO_IPV6;
+<<<<<<< HEAD
+=======
+	dev_hold(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	rcu_assign_pointer(ip6n->tnls_wc[0], t);
 	return 0;

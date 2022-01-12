@@ -1484,7 +1484,10 @@ static const struct of_device_id charger_manager_match[] = {
 	},
 	{},
 };
+<<<<<<< HEAD
 MODULE_DEVICE_TABLE(of, charger_manager_match);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static struct charger_desc *of_cm_parse_desc(struct device *dev)
 {

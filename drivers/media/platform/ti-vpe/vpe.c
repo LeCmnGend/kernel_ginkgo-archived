@@ -2470,8 +2470,11 @@ static int vpe_runtime_get(struct platform_device *pdev)
 
 	r = pm_runtime_get_sync(&pdev->dev);
 	WARN_ON(r < 0);
+<<<<<<< HEAD
 	if (r)
 		pm_runtime_put_noidle(&pdev->dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return r < 0 ? r : 0;
 }
 

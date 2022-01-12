@@ -33,6 +33,11 @@
 
 #define arch_spin_is_locked(x) ((x)->slock != 0)
 
+<<<<<<< HEAD
+=======
+#define arch_spin_lock_flags(lock, flags) arch_spin_lock(lock)
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void arch_spin_lock(arch_spinlock_t *lock)
 {
 	unsigned long tmp;
@@ -198,4 +203,10 @@ static inline void arch_read_unlock(arch_rwlock_t *rw)
 			: "memory");
 }
 
+<<<<<<< HEAD
+=======
+#define arch_read_lock_flags(lock, flags)	arch_read_lock(lock)
+#define arch_write_lock_flags(lock, flags)	arch_write_lock(lock)
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif	/* _XTENSA_SPINLOCK_H */

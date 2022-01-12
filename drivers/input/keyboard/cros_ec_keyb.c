@@ -196,7 +196,10 @@ static void cros_ec_keyb_process(struct cros_ec_keyb *ckdev,
 					"changed: [r%d c%d]: byte %02x\n",
 					row, col, new_state);
 
+<<<<<<< HEAD
 				input_event(idev, EV_MSC, MSC_SCAN, pos);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				input_report_key(idev, keycodes[pos],
 						 new_state);
 			}

@@ -542,6 +542,7 @@ bool nf_ct_delete(struct nf_conn *ct, u32 portid, int report)
 		return false;
 
 	tstamp = nf_conn_tstamp_find(ct);
+<<<<<<< HEAD
 	if (tstamp) {
 		s32 timeout = ct->timeout - nfct_time_stamp;
 
@@ -549,6 +550,10 @@ bool nf_ct_delete(struct nf_conn *ct, u32 portid, int report)
 		if (timeout < 0)
 			tstamp->stop -= jiffies_to_nsecs(-timeout);
 	}
+=======
+	if (tstamp && tstamp->stop == 0)
+		tstamp->stop = ktime_get_real_ns();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (nf_conntrack_event_report(IPCT_DESTROY, ct,
 				    portid, report) < 0) {
@@ -980,8 +985,12 @@ nf_conntrack_tuple_taken(const struct nf_conntrack_tuple *tuple,
 			 * Let nf_ct_resolve_clash() deal with this later.
 			 */
 			if (nf_ct_tuple_equal(&ignored_conntrack->tuplehash[IP_CT_DIR_ORIGINAL].tuple,
+<<<<<<< HEAD
 					      &ct->tuplehash[IP_CT_DIR_ORIGINAL].tuple) &&
 					      nf_ct_zone_equal(ct, zone, IP_CT_DIR_ORIGINAL))
+=======
+					      &ct->tuplehash[IP_CT_DIR_ORIGINAL].tuple))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				continue;
 
 			NF_CT_STAT_INC_ATOMIC(net, found);
@@ -2154,7 +2163,10 @@ static __always_inline unsigned int total_extension_size(void)
 
 int nf_conntrack_init_start(void)
 {
+<<<<<<< HEAD
 	unsigned long nr_pages = totalram_pages();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int max_factor = 8;
 	int ret = -ENOMEM;
 	int i;
@@ -2174,11 +2186,19 @@ int nf_conntrack_init_start(void)
 		 * >= 4GB machines have 65536 buckets.
 		 */
 		nf_conntrack_htable_size
+<<<<<<< HEAD
 			= (((nr_pages << PAGE_SHIFT) / 16384)
 			   / sizeof(struct hlist_head));
 		if (nr_pages > (4 * (1024 * 1024 * 1024 / PAGE_SIZE)))
 			nf_conntrack_htable_size = 65536;
 		else if (nr_pages > (1024 * 1024 * 1024 / PAGE_SIZE))
+=======
+			= (((totalram_pages << PAGE_SHIFT) / 16384)
+			   / sizeof(struct hlist_head));
+		if (totalram_pages > (4 * (1024 * 1024 * 1024 / PAGE_SIZE)))
+			nf_conntrack_htable_size = 65536;
+		else if (totalram_pages > (1024 * 1024 * 1024 / PAGE_SIZE))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			nf_conntrack_htable_size = 16384;
 		if (nf_conntrack_htable_size < 32)
 			nf_conntrack_htable_size = 32;

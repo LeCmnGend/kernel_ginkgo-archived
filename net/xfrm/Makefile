@@ -9,6 +9,9 @@ obj-$(CONFIG_XFRM) := xfrm_policy.o xfrm_state.o xfrm_hash.o \
 obj-$(CONFIG_XFRM_STATISTICS) += xfrm_proc.o
 obj-$(CONFIG_XFRM_ALGO) += xfrm_algo.o
 obj-$(CONFIG_XFRM_USER) += xfrm_user.o
+<<<<<<< HEAD
 obj-$(CONFIG_XFRM_USER_COMPAT) += xfrm_compat.o
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 obj-$(CONFIG_XFRM_IPCOMP) += xfrm_ipcomp.o
 obj-$(CONFIG_XFRM_INTERFACE) += xfrm_interface.o

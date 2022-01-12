@@ -85,6 +85,15 @@ config ARCH_DEFCONFIG
 	default "arch/sh/configs/shx3_defconfig" if SUPERH32
 	default "arch/sh/configs/cayman_defconfig" if SUPERH64
 
+<<<<<<< HEAD
+=======
+config RWSEM_GENERIC_SPINLOCK
+	def_bool y
+
+config RWSEM_XCHGADD_ALGORITHM
+	bool
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config GENERIC_BUG
 	def_bool y
 	depends on BUG && SUPERH32

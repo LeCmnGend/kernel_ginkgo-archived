@@ -33,6 +33,10 @@
 #include <linux/moduleparam.h>
 
 #include <drm/drmP.h>
+<<<<<<< HEAD
+=======
+#include <drm/drm_client.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <drm/drm_crtc.h>
 #include <drm/drm_fourcc.h>
 #include <drm/drm_crtc_helper.h>
@@ -257,8 +261,12 @@ void drm_kms_helper_poll_enable(struct drm_device *dev)
 	}
 
 	if (poll)
+<<<<<<< HEAD
 		queue_delayed_work(system_power_efficient_wq, 
 							&dev->mode_config.output_poll_work, delay);
+=======
+		schedule_delayed_work(&dev->mode_config.output_poll_work, delay);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL(drm_kms_helper_poll_enable);
 
@@ -466,8 +474,13 @@ retry:
 		 */
 		dev->mode_config.delayed_event = true;
 		if (dev->mode_config.poll_enabled)
+<<<<<<< HEAD
 			queue_delayed_work(system_power_efficient_wq, 
 								&dev->mode_config.output_poll_work, 0);
+=======
+			schedule_delayed_work(&dev->mode_config.output_poll_work,
+					      0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	/* Re-enable polling in case the global poll config changed. */
@@ -582,6 +595,11 @@ void drm_kms_helper_hotplug_event(struct drm_device *dev)
 	drm_sysfs_hotplug_event(dev);
 	if (dev->mode_config.funcs->output_poll_changed)
 		dev->mode_config.funcs->output_poll_changed(dev);
+<<<<<<< HEAD
+=======
+
+	drm_client_dev_hotplug(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL(drm_kms_helper_hotplug_event);
 
@@ -672,8 +690,12 @@ out:
 		drm_kms_helper_hotplug_event(dev);
 
 	if (repoll)
+<<<<<<< HEAD
 		queue_delayed_work(system_power_efficient_wq, delayed_work, 
 							DRM_OUTPUT_POLL_PERIOD);
+=======
+		schedule_delayed_work(delayed_work, DRM_OUTPUT_POLL_PERIOD);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /**

@@ -107,7 +107,10 @@ static inline u32 arch_timer_get_cntkctl(void)
 static inline void arch_timer_set_cntkctl(u32 cntkctl)
 {
 	asm volatile("mcr p15, 0, %0, c14, c1, 0" : : "r" (cntkctl));
+<<<<<<< HEAD
 	isb();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 #endif

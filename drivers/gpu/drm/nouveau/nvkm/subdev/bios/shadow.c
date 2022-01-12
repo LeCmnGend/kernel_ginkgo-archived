@@ -75,7 +75,11 @@ shadow_image(struct nvkm_bios *bios, int idx, u32 offset, struct shadow *mthd)
 	nvkm_debug(subdev, "%08x: type %02x, %d bytes\n",
 		   image.base, image.type, image.size);
 
+<<<<<<< HEAD
 	if (!shadow_fetch(bios, mthd, image.base + image.size)) {
+=======
+	if (!shadow_fetch(bios, mthd, image.size)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		nvkm_debug(subdev, "%08x: fetch failed\n", image.base);
 		return 0;
 	}

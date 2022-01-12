@@ -432,7 +432,11 @@ struct spu_hw {
 	u32 num_chan;
 };
 
+<<<<<<< HEAD
 struct bcm_device_private {
+=======
+struct device_private {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct platform_device *pdev;
 
 	struct spu_hw spu;
@@ -479,6 +483,10 @@ struct bcm_device_private {
 	struct mbox_chan **mbox;
 };
 
+<<<<<<< HEAD
 extern struct bcm_device_private iproc_priv;
+=======
+extern struct device_private iproc_priv;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #endif

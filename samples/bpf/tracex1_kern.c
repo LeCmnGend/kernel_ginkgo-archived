@@ -20,7 +20,11 @@
 SEC("kprobe/__netif_receive_skb_core")
 int bpf_prog1(struct pt_regs *ctx)
 {
+<<<<<<< HEAD
 	/* attaches to kprobe __netif_receive_skb_core,
+=======
+	/* attaches to kprobe netif_receive_skb,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * looks for packets on loobpack device and prints them
 	 */
 	char devname[IFNAMSIZ];
@@ -29,7 +33,11 @@ int bpf_prog1(struct pt_regs *ctx)
 	int len;
 
 	/* non-portable! works for the given kernel only */
+<<<<<<< HEAD
 	bpf_probe_read_kernel(&skb, sizeof(skb), (void *)PT_REGS_PARM1(ctx));
+=======
+	skb = (struct sk_buff *) PT_REGS_PARM1(ctx);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dev = _(skb->dev);
 	len = _(skb->len);
 

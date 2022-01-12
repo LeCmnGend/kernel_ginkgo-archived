@@ -329,7 +329,10 @@ static int match_revfn(u8 af, const char *name, u8 revision, int *bestp)
 	const struct xt_match *m;
 	int have_rev = 0;
 
+<<<<<<< HEAD
 	mutex_lock(&xt[af].mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	list_for_each_entry(m, &xt[af].match, list) {
 		if (strcmp(m->name, name) == 0) {
 			if (m->revision > *bestp)
@@ -338,7 +341,10 @@ static int match_revfn(u8 af, const char *name, u8 revision, int *bestp)
 				have_rev = 1;
 		}
 	}
+<<<<<<< HEAD
 	mutex_unlock(&xt[af].mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (af != NFPROTO_UNSPEC && !have_rev)
 		return match_revfn(NFPROTO_UNSPEC, name, revision, bestp);
@@ -351,7 +357,10 @@ static int target_revfn(u8 af, const char *name, u8 revision, int *bestp)
 	const struct xt_target *t;
 	int have_rev = 0;
 
+<<<<<<< HEAD
 	mutex_lock(&xt[af].mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	list_for_each_entry(t, &xt[af].target, list) {
 		if (strcmp(t->name, name) == 0) {
 			if (t->revision > *bestp)
@@ -360,7 +369,10 @@ static int target_revfn(u8 af, const char *name, u8 revision, int *bestp)
 				have_rev = 1;
 		}
 	}
+<<<<<<< HEAD
 	mutex_unlock(&xt[af].mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (af != NFPROTO_UNSPEC && !have_rev)
 		return target_revfn(NFPROTO_UNSPEC, name, revision, bestp);
@@ -374,10 +386,18 @@ int xt_find_revision(u8 af, const char *name, u8 revision, int target,
 {
 	int have_rev, best = -1;
 
+<<<<<<< HEAD
+=======
+	mutex_lock(&xt[af].mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (target == 1)
 		have_rev = target_revfn(af, name, revision, &best);
 	else
 		have_rev = match_revfn(af, name, revision, &best);
+<<<<<<< HEAD
+=======
+	mutex_unlock(&xt[af].mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Nothing at all?  Return 0 to try loading module. */
 	if (best == -1) {
@@ -638,7 +658,11 @@ void xt_compat_match_from_user(struct xt_entry_match *m, void **dstptr,
 {
 	const struct xt_match *match = m->u.kernel.match;
 	struct compat_xt_entry_match *cm = (struct compat_xt_entry_match *)m;
+<<<<<<< HEAD
 	int off = xt_compat_match_offset(match);
+=======
+	int pad, off = xt_compat_match_offset(match);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u_int16_t msize = cm->u.user.match_size;
 	char name[sizeof(m->u.user.name)];
 
@@ -648,6 +672,12 @@ void xt_compat_match_from_user(struct xt_entry_match *m, void **dstptr,
 		match->compat_from_user(m->data, cm->data);
 	else
 		memcpy(m->data, cm->data, msize - sizeof(*cm));
+<<<<<<< HEAD
+=======
+	pad = XT_ALIGN(match->matchsize) - match->matchsize;
+	if (pad > 0)
+		memset(m->data + match->matchsize, 0, pad);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	msize += off;
 	m->u.user.match_size = msize;
@@ -990,7 +1020,11 @@ void xt_compat_target_from_user(struct xt_entry_target *t, void **dstptr,
 {
 	const struct xt_target *target = t->u.kernel.target;
 	struct compat_xt_entry_target *ct = (struct compat_xt_entry_target *)t;
+<<<<<<< HEAD
 	int off = xt_compat_target_offset(target);
+=======
+	int pad, off = xt_compat_target_offset(target);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u_int16_t tsize = ct->u.user.target_size;
 	char name[sizeof(t->u.user.name)];
 
@@ -1000,6 +1034,12 @@ void xt_compat_target_from_user(struct xt_entry_target *t, void **dstptr,
 		target->compat_from_user(t->data, ct->data);
 	else
 		memcpy(t->data, ct->data, tsize - sizeof(*ct));
+<<<<<<< HEAD
+=======
+	pad = XT_ALIGN(target->targetsize) - target->targetsize;
+	if (pad > 0)
+		memset(t->data + target->targetsize, 0, pad);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	tsize += off;
 	t->u.user.target_size = tsize;
@@ -1240,9 +1280,12 @@ xt_replace_table(struct xt_table *table,
 	smp_wmb();
 	table->private = newinfo;
 
+<<<<<<< HEAD
 	/* make sure all cpus see new ->private value */
 	smp_mb();
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * Even though table entries have now been swapped, other CPU's
 	 * may still be using the old entries. This is okay, because

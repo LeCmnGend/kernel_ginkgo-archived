@@ -41,7 +41,11 @@ sub find_initcalls {
 
 	die "$0: object file $object doesn't exist?" if (! -f $object);
 
+<<<<<<< HEAD
 	open(my $fh, "\"$nm\" --just-symbol-name --defined-only \"$object\" 2>/dev/null |")
+=======
+	open(my $fh, "\"$nm\" -just-symbol-name -defined-only \"$object\" 2>/dev/null |")
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		or die "$0: failed to execute \"$nm\": $!";
 
 	my $initcalls = {};

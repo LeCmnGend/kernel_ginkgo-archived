@@ -115,7 +115,11 @@ static int ql_sem_spinlock(struct ql3_adapter *qdev,
 		value = readl(&port_regs->CommonRegs.semaphoreReg);
 		if ((value & (sem_mask >> 16)) == sem_bits)
 			return 0;
+<<<<<<< HEAD
 		mdelay(1000);
+=======
+		ssleep(1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} while (--seconds);
 	return -1;
 }
@@ -155,7 +159,11 @@ static int ql_wait_for_drvr_lock(struct ql3_adapter *qdev)
 				      "driver lock acquired\n");
 			return 1;
 		}
+<<<<<<< HEAD
 		mdelay(1000);
+=======
+		ssleep(1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} while (++i < 10);
 
 	netdev_err(qdev->ndev, "Timed out waiting for driver lock...\n");
@@ -3291,7 +3299,11 @@ static int ql_adapter_reset(struct ql3_adapter *qdev)
 		if ((value & ISP_CONTROL_SR) == 0)
 			break;
 
+<<<<<<< HEAD
 		mdelay(1000);
+=======
+		ssleep(1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} while ((--max_wait_time));
 
 	/*
@@ -3327,7 +3339,11 @@ static int ql_adapter_reset(struct ql3_adapter *qdev)
 						   ispControlStatus);
 			if ((value & ISP_CONTROL_FSR) == 0)
 				break;
+<<<<<<< HEAD
 			mdelay(1000);
+=======
+			ssleep(1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		} while ((--max_wait_time));
 	}
 	if (max_wait_time == 0)

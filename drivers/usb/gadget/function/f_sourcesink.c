@@ -435,8 +435,12 @@ no_iso:
 	ss_iso_sink_desc.bEndpointAddress = fs_iso_sink_desc.bEndpointAddress;
 
 	ret = usb_assign_descriptors(f, fs_source_sink_descs,
+<<<<<<< HEAD
 			hs_source_sink_descs, ss_source_sink_descs,
 			ss_source_sink_descs);
+=======
+			hs_source_sink_descs, ss_source_sink_descs, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret)
 		return ret;
 

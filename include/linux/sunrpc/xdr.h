@@ -26,7 +26,12 @@ struct rpc_rqst;
 #define XDR_QUADLEN(l)		(((l) + 3) >> 2)
 
 /*
+<<<<<<< HEAD
  * Generic opaque `network object.'
+=======
+ * Generic opaque `network object.' At the kernel level, this type
+ * is used only by lockd.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 #define XDR_MAX_NETOBJ		1024
 struct xdr_netobj {

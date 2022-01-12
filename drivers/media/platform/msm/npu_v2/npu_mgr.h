@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2018-2020, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2018-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -138,10 +142,18 @@ struct npu_host_ctx {
 	uint32_t err_irq_sts;
 	uint32_t wdg_irq_sts;
 	bool fw_error;
+<<<<<<< HEAD
+=======
+	bool dev_shuttingdown;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool cancel_work;
 	bool app_crashed;
 	struct notifier_block nb;
 	struct notifier_block panic_nb;
+<<<<<<< HEAD
+=======
+	struct notifier_block reboot_nb;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	void *notif_hdle;
 	spinlock_t bridge_mbox_lock;
 	bool bridge_mbox_pwr_on;

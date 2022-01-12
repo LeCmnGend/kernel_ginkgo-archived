@@ -243,7 +243,10 @@ static struct htb_class *htb_classify(struct sk_buff *skb, struct Qdisc *sch,
 		case TC_ACT_STOLEN:
 		case TC_ACT_TRAP:
 			*qerr = NET_XMIT_SUCCESS | __NET_XMIT_STOLEN;
+<<<<<<< HEAD
 			/* fall through */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		case TC_ACT_SHOT:
 			return NULL;
 		}
@@ -1027,7 +1030,11 @@ static int htb_init(struct Qdisc *sch, struct nlattr *opt)
 	if (!opt)
 		return -EINVAL;
 
+<<<<<<< HEAD
 	err = tcf_block_get(&q->block, &q->filter_list, sch);
+=======
+	err = tcf_block_get(&q->block, &q->filter_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		return err;
 
@@ -1330,7 +1337,10 @@ static int htb_change_class(struct Qdisc *sch, u32 classid,
 	struct nlattr *tb[TCA_HTB_MAX + 1];
 	struct tc_htb_opt *hopt;
 	u64 rate64, ceil64;
+<<<<<<< HEAD
 	int warn = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* extract all subattrs from opt attr */
 	if (!opt)
@@ -1390,7 +1400,11 @@ static int htb_change_class(struct Qdisc *sch, u32 classid,
 		if (!cl)
 			goto failure;
 
+<<<<<<< HEAD
 		err = tcf_block_get(&cl->block, &cl->filter_list, sch);
+=======
+		err = tcf_block_get(&cl->block, &cl->filter_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (err) {
 			kfree(cl);
 			goto failure;
@@ -1491,11 +1505,21 @@ static int htb_change_class(struct Qdisc *sch, u32 classid,
 		cl->quantum = min_t(u64, quantum, INT_MAX);
 
 		if (!hopt->quantum && cl->quantum < 1000) {
+<<<<<<< HEAD
 			warn = -1;
 			cl->quantum = 1000;
 		}
 		if (!hopt->quantum && cl->quantum > 200000) {
 			warn = 1;
+=======
+			pr_warn("HTB: quantum of class %X is small. Consider r2q change.\n",
+				cl->common.classid);
+			cl->quantum = 1000;
+		}
+		if (!hopt->quantum && cl->quantum > 200000) {
+			pr_warn("HTB: quantum of class %X is big. Consider r2q change.\n",
+				cl->common.classid);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			cl->quantum = 200000;
 		}
 		if (hopt->quantum)
@@ -1509,10 +1533,13 @@ static int htb_change_class(struct Qdisc *sch, u32 classid,
 
 	sch_tree_unlock(sch);
 
+<<<<<<< HEAD
 	if (warn)
 		pr_warn("HTB: quantum of class %X is %s. Consider r2q change.\n",
 			    cl->common.classid, (warn == -1 ? "small" : "big"));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	qdisc_class_hash_grow(sch, &q->clhash);
 
 	*arg = (unsigned long)cl;

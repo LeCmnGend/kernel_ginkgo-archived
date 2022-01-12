@@ -118,6 +118,7 @@ done:
 	return nfsd_return_attrs(nfserr, resp);
 }
 
+<<<<<<< HEAD
 /* Obsolete, replaced by MNTPROC_MNT. */
 static __be32
 nfsd_proc_root(struct svc_rqst *rqstp)
@@ -125,6 +126,8 @@ nfsd_proc_root(struct svc_rqst *rqstp)
 	return nfs_ok;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Look up a path name component
  * Note: the dentry in the resp->fh may be negative if the file
@@ -208,6 +211,7 @@ nfsd_proc_read(struct svc_rqst *rqstp)
 	return fh_getattr(&resp->fh, &resp->stat);
 }
 
+<<<<<<< HEAD
 /* Reserved */
 static __be32
 nfsd_proc_writecache(struct svc_rqst *rqstp)
@@ -215,6 +219,8 @@ nfsd_proc_writecache(struct svc_rqst *rqstp)
 	return nfs_ok;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Write data to a file
  * N.B. After this call resp->fh needs an fh_put
@@ -619,7 +625,10 @@ static const struct svc_procedure nfsd_procedures2[18] = {
 		.pc_xdrressize = ST+AT,
 	},
 	[NFSPROC_ROOT] = {
+<<<<<<< HEAD
 		.pc_func = nfsd_proc_root,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		.pc_decode = nfssvc_decode_void,
 		.pc_encode = nfssvc_encode_void,
 		.pc_argsize = sizeof(struct nfsd_void),
@@ -657,7 +666,10 @@ static const struct svc_procedure nfsd_procedures2[18] = {
 		.pc_xdrressize = ST+AT+1+NFSSVC_MAXBLKSIZE_V2/4,
 	},
 	[NFSPROC_WRITECACHE] = {
+<<<<<<< HEAD
 		.pc_func = nfsd_proc_writecache,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		.pc_decode = nfssvc_decode_void,
 		.pc_encode = nfssvc_encode_void,
 		.pc_argsize = sizeof(struct nfsd_void),

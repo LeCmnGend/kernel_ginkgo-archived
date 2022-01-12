@@ -187,7 +187,10 @@ enum chips { lm90, adm1032, lm99, lm86, max6657, max6659, adt7461, max6680,
 #define LM90_HAVE_EMERGENCY_ALARM (1 << 5)/* emergency alarm		*/
 #define LM90_HAVE_TEMP3		(1 << 6) /* 3rd temperature sensor	*/
 #define LM90_HAVE_BROKEN_ALERT	(1 << 7) /* Broken alert		*/
+<<<<<<< HEAD
 #define LM90_PAUSE_FOR_CONFIG	(1 << 8) /* Pause conversion for config	*/
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* LM90 status */
 #define LM90_STATUS_LTHRM	(1 << 0) /* local THERM limit tripped */
@@ -381,7 +384,10 @@ static const struct lm90_params lm90_params[] = {
 		.reg_local_ext = MAX6657_REG_R_LOCAL_TEMPL,
 	},
 	[max6657] = {
+<<<<<<< HEAD
 		.flags = LM90_PAUSE_FOR_CONFIG,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		.alert_alarms = 0x7c,
 		.max_convrate = 8,
 		.reg_local_ext = MAX6657_REG_R_LOCAL_TEMPL,
@@ -582,6 +588,7 @@ static inline int lm90_select_remote_channel(struct i2c_client *client,
 	return 0;
 }
 
+<<<<<<< HEAD
 static int lm90_write_convrate(struct i2c_client *client,
 			       struct lm90_data *data, int val)
 {
@@ -614,6 +621,8 @@ static int lm90_write_convrate(struct i2c_client *client,
 	return err;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Set conversion rate.
  * client->update_lock must be held when calling this function (unless we are
@@ -634,7 +643,11 @@ static int lm90_set_convrate(struct i2c_client *client, struct lm90_data *data,
 		if (interval >= update_interval * 3 / 4)
 			break;
 
+<<<<<<< HEAD
 	err = lm90_write_convrate(client, data, i);
+=======
+	err = i2c_smbus_write_byte_data(client, LM90_REG_W_CONVRATE, i);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	data->update_interval = DIV_ROUND_CLOSEST(update_interval, 64);
 	return err;
 }
@@ -1640,7 +1653,12 @@ static void lm90_restore_conf(void *_data)
 	struct i2c_client *client = data->client;
 
 	/* Restore initial configuration */
+<<<<<<< HEAD
 	lm90_write_convrate(client, data, data->convrate_orig);
+=======
+	i2c_smbus_write_byte_data(client, LM90_REG_W_CONVRATE,
+				  data->convrate_orig);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	i2c_smbus_write_byte_data(client, LM90_REG_W_CONFIG1,
 				  data->config_orig);
 }
@@ -1657,13 +1675,20 @@ static int lm90_init_client(struct i2c_client *client, struct lm90_data *data)
 	/*
 	 * Start the conversions.
 	 */
+<<<<<<< HEAD
+=======
+	lm90_set_convrate(client, data, 500);	/* 500ms; 2Hz conversion rate */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	config = lm90_read_reg(client, LM90_REG_R_CONFIG1);
 	if (config < 0)
 		return config;
 	data->config_orig = config;
 
+<<<<<<< HEAD
 	lm90_set_convrate(client, data, 500); /* 500ms; 2Hz conversion rate */
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Check Temperature Range Select */
 	if (data->kind == adt7461 || data->kind == tmp451) {
 		if (config & 0x04)

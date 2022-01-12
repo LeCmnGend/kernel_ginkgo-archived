@@ -150,7 +150,11 @@ struct gsi_chan_ctx {
 	struct completion compl;
 	bool allocated;
 	atomic_t poll_mode;
+<<<<<<< HEAD
 	union gsi_channel_scratch scratch;
+=======
+	union __packed gsi_channel_scratch scratch;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct gsi_chan_stats stats;
 	bool enable_dp_stats;
 	bool print_dp_stats;
@@ -169,7 +173,11 @@ struct gsi_evt_ctx {
 	struct completion compl;
 	struct gsi_chan_ctx *chan;
 	atomic_t chan_ref_cnt;
+<<<<<<< HEAD
 	union gsi_evt_scratch scratch;
+=======
+	union __packed gsi_evt_scratch scratch;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct gsi_evt_stats stats;
 };
 

@@ -450,7 +450,11 @@ static int spi_sh_probe(struct platform_device *pdev)
 		return irq;
 	}
 
+<<<<<<< HEAD
 	master = devm_spi_alloc_master(&pdev->dev, sizeof(struct spi_sh_data));
+=======
+	master = spi_alloc_master(&pdev->dev, sizeof(struct spi_sh_data));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (master == NULL) {
 		dev_err(&pdev->dev, "spi_alloc_master error.\n");
 		return -ENOMEM;
@@ -468,14 +472,24 @@ static int spi_sh_probe(struct platform_device *pdev)
 		break;
 	default:
 		dev_err(&pdev->dev, "No support width\n");
+<<<<<<< HEAD
 		return -ENODEV;
+=======
+		ret = -ENODEV;
+		goto error1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	ss->irq = irq;
 	ss->master = master;
 	ss->addr = devm_ioremap(&pdev->dev, res->start, resource_size(res));
 	if (ss->addr == NULL) {
 		dev_err(&pdev->dev, "ioremap error.\n");
+<<<<<<< HEAD
 		return -ENOMEM;
+=======
+		ret = -ENOMEM;
+		goto error1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	INIT_LIST_HEAD(&ss->queue);
 	spin_lock_init(&ss->lock);
@@ -485,7 +499,11 @@ static int spi_sh_probe(struct platform_device *pdev)
 	ret = request_irq(irq, spi_sh_irq, 0, "spi_sh", ss);
 	if (ret < 0) {
 		dev_err(&pdev->dev, "request_irq error\n");
+<<<<<<< HEAD
 		return ret;
+=======
+		goto error1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	master->num_chipselect = 2;
@@ -504,6 +522,12 @@ static int spi_sh_probe(struct platform_device *pdev)
 
  error3:
 	free_irq(irq, ss);
+<<<<<<< HEAD
+=======
+ error1:
+	spi_master_put(master);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 }
 

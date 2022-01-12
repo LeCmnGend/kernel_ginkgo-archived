@@ -102,13 +102,21 @@ static void tcp_rack_detect_loss(struct sock *sk, u32 *reo_timeout)
 	}
 }
 
+<<<<<<< HEAD
 bool tcp_rack_mark_lost(struct sock *sk)
+=======
+void tcp_rack_mark_lost(struct sock *sk)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct tcp_sock *tp = tcp_sk(sk);
 	u32 timeout;
 
 	if (!tp->rack.advanced)
+<<<<<<< HEAD
 		return false;
+=======
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Reset the advanced flag to avoid unnecessary queue scanning */
 	tp->rack.advanced = 0;
@@ -118,7 +126,10 @@ bool tcp_rack_mark_lost(struct sock *sk)
 		inet_csk_reset_xmit_timer(sk, ICSK_TIME_REO_TIMEOUT,
 					  timeout, inet_csk(sk)->icsk_rto);
 	}
+<<<<<<< HEAD
 	return !!timeout;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /* Record the most recently (re)sent time among the (s)acked packets

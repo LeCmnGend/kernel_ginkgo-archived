@@ -161,8 +161,12 @@ void jfs_evict_inode(struct inode *inode)
 			if (test_cflag(COMMIT_Freewmap, inode))
 				jfs_free_zero_link(inode);
 
+<<<<<<< HEAD
 			if (JFS_SBI(inode->i_sb)->ipimap)
 				diFree(inode);
+=======
+			diFree(inode);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 			/*
 			 * Free the inode from the quota allocation.

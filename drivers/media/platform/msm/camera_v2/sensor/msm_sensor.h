@@ -103,7 +103,10 @@ int msm_sensor_check_id(struct msm_sensor_ctrl_t *s_ctrl);
 int msm_sensor_match_id(struct msm_sensor_ctrl_t *s_ctrl);
 
 int msm_sensor_update_cfg(struct msm_sensor_ctrl_t *s_ctrl);
+<<<<<<< HEAD
 int msm_sensor_match_vendor_id(struct msm_sensor_ctrl_t *s_ctrl);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 int msm_sensor_free_sensor_data(struct msm_sensor_ctrl_t *s_ctrl);
 

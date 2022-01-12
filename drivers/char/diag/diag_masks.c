@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2008-2021, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2008-2020, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -2211,6 +2215,7 @@ int diag_copy_to_user_msg_mask(char __user *buf, size_t count,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
 	if ((count - (sizeof(int))) >=
 			mask_info->update_buf_client_len) {
 		err = copy_to_user(buf, mask_info->update_buf_client,
@@ -2218,6 +2223,10 @@ int diag_copy_to_user_msg_mask(char __user *buf, size_t count,
 	} else {
 		err = -EINVAL;
 	}
+=======
+	err = copy_to_user(buf, mask_info->update_buf_client,
+				mask_info->update_buf_client_len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err) {
 		pr_err("diag: In %s Unable to send msg masks to user space clients, err: %d\n",
 		       __func__, err);
@@ -2243,6 +2252,7 @@ int diag_copy_to_user_log_mask(char __user *buf, size_t count,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
 	if ((count - (sizeof(int))) >=
 			mask_info->update_buf_client_len) {
 		err = copy_to_user(buf, mask_info->update_buf_client,
@@ -2250,6 +2260,10 @@ int diag_copy_to_user_log_mask(char __user *buf, size_t count,
 	} else {
 		err = -EINVAL;
 	}
+=======
+	err = copy_to_user(buf, mask_info->update_buf_client,
+				mask_info->update_buf_client_len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err) {
 		pr_err("diag: In %s Unable to send msg masks to user space clients, err: %d\n",
 		       __func__, err);

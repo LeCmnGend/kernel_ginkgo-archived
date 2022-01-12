@@ -249,9 +249,15 @@ static void __init fpu__init_system_ctx_switch(void)
  */
 static void __init fpu__init_parse_early_param(void)
 {
+<<<<<<< HEAD
 	char arg[128];
 	char *argptr = arg;
 	int arglen, res, bit;
+=======
+	char arg[32];
+	char *argptr = arg;
+	int bit;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (cmdline_find_option_bool(boot_command_line, "no387"))
 		setup_clear_cpu_cap(X86_FEATURE_FPU);
@@ -271,6 +277,7 @@ static void __init fpu__init_parse_early_param(void)
 	if (cmdline_find_option_bool(boot_command_line, "noxsaves"))
 		setup_clear_cpu_cap(X86_FEATURE_XSAVES);
 
+<<<<<<< HEAD
 	arglen = cmdline_find_option(boot_command_line, "clearcpuid", arg, sizeof(arg));
 	if (arglen <= 0)
 		return;
@@ -291,6 +298,14 @@ static void __init fpu__init_parse_early_param(void)
 		}
 	} while (res == 2);
 	pr_cont("\n");
+=======
+	if (cmdline_find_option(boot_command_line, "clearcpuid", arg,
+				sizeof(arg)) &&
+	    get_option(&argptr, &bit) &&
+	    bit >= 0 &&
+	    bit < NCAPINTS * 32)
+		setup_clear_cpu_cap(bit);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /*

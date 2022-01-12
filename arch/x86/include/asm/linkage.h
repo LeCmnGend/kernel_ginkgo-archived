@@ -13,6 +13,7 @@
 
 #ifdef __ASSEMBLY__
 
+<<<<<<< HEAD
 /*
  * GLOBAL is DEPRECATED
  *
@@ -20,6 +21,11 @@
  * similar
  */
 #define GLOBAL(name)	SYM_ENTRY(name, SYM_L_GLOBAL, SYM_A_NONE)
+=======
+#define GLOBAL(name)	\
+	.globl name;	\
+	name:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #if defined(CONFIG_X86_64) || defined(CONFIG_X86_ALIGNMENT_16)
 #define __ALIGN		.p2align 4, 0x90

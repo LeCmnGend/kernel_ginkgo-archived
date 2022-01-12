@@ -1,6 +1,11 @@
 /* SPDX-License-Identifier: GPL-2.0 */
+<<<<<<< HEAD
 #ifndef LIBFDT_ENV_H
 #define LIBFDT_ENV_H
+=======
+#ifndef _LIBFDT_ENV_H
+#define _LIBFDT_ENV_H
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #include <linux/kernel.h>	/* For INT_MAX */
 #include <linux/string.h>
@@ -19,4 +24,8 @@ typedef __be64 fdt64_t;
 #define fdt64_to_cpu(x) be64_to_cpu(x)
 #define cpu_to_fdt64(x) cpu_to_be64(x)
 
+<<<<<<< HEAD
 #endif /* LIBFDT_ENV_H */
+=======
+#endif /* _LIBFDT_ENV_H */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

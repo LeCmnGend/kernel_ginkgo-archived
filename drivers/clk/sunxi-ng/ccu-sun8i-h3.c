@@ -315,7 +315,10 @@ static struct clk_div_table ths_div_table[] = {
 	{ .val = 1, .div = 2 },
 	{ .val = 2, .div = 4 },
 	{ .val = 3, .div = 6 },
+<<<<<<< HEAD
 	{ /* Sentinel */ },
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 static SUNXI_CCU_DIV_TABLE_WITH_GATE(ths_clk, "ths", "osc24M",
 				     0x074, 0, 2, ths_div_table, BIT(31), 0);

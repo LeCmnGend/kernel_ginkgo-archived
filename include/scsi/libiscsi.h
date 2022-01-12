@@ -145,9 +145,12 @@ struct iscsi_task {
 	void			*dd_data;	/* driver/transport data */
 };
 
+<<<<<<< HEAD
 /* invalid scsi_task pointer */
 #define	INVALID_SCSI_TASK	(struct iscsi_task *)-1l
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline int iscsi_task_has_unsol_data(struct iscsi_task *task)
 {
 	return task->unsol_r2t.data_length > task->unsol_r2t.sent;

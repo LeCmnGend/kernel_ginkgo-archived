@@ -301,6 +301,10 @@ static void p9_read_work(struct work_struct *work)
 {
 	int n, err;
 	struct p9_conn *m;
+<<<<<<< HEAD
+=======
+	int status = REQ_STATUS_ERROR;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	m = container_of(work, struct p9_conn, rq);
 
@@ -380,6 +384,7 @@ static void p9_read_work(struct work_struct *work)
 	if ((m->req) && (m->rc.offset == m->rc.capacity)) {
 		p9_debug(P9_DEBUG_TRANS, "got new packet\n");
 		spin_lock(&m->client->lock);
+<<<<<<< HEAD
 		if (m->req->status == REQ_STATUS_SENT) {
 			list_del(&m->req->req_list);
 			p9_client_cb(m->client, m->req, REQ_STATUS_RCVD);
@@ -395,6 +400,13 @@ static void p9_read_work(struct work_struct *work)
 			err = -EIO;
 			goto error;
 		}
+=======
+		if (m->req->status != REQ_STATUS_ERROR)
+			status = REQ_STATUS_RCVD;
+		list_del(&m->req->req_list);
+		/* update req->status while holding client->lock  */
+		p9_client_cb(m->client, m->req, status);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		spin_unlock(&m->client->lock);
 		m->rc.sdata = NULL;
 		m->rc.offset = 0;
@@ -721,6 +733,7 @@ static int p9_fd_cancelled(struct p9_client *client, struct p9_req_t *req)
 {
 	p9_debug(P9_DEBUG_TRANS, "client %p req %p\n", client, req);
 
+<<<<<<< HEAD
 	spin_lock(&client->lock);
 	/* Ignore cancelled request if message has been received
 	 * before lock.
@@ -735,6 +748,13 @@ static int p9_fd_cancelled(struct p9_client *client, struct p9_req_t *req)
 	 */
 	list_del(&req->req_list);
 	req->status = REQ_STATUS_FLSHD;
+=======
+	/* we haven't received a response for oldreq,
+	 * remove it from the list.
+	 */
+	spin_lock(&client->lock);
+	list_del(&req->req_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_unlock(&client->lock);
 
 	return 0;
@@ -829,6 +849,7 @@ static int p9_fd_open(struct p9_client *client, int rfd, int wfd)
 		return -ENOMEM;
 
 	ts->rd = fget(rfd);
+<<<<<<< HEAD
 	if (!ts->rd)
 		goto out_free_ts;
 	if (!(ts->rd->f_mode & FMODE_READ))
@@ -838,11 +859,23 @@ static int p9_fd_open(struct p9_client *client, int rfd, int wfd)
 		goto out_put_rd;
 	if (!(ts->wr->f_mode & FMODE_WRITE))
 		goto out_put_wr;
+=======
+	ts->wr = fget(wfd);
+	if (!ts->rd || !ts->wr) {
+		if (ts->rd)
+			fput(ts->rd);
+		if (ts->wr)
+			fput(ts->wr);
+		kfree(ts);
+		return -EIO;
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	client->trans = ts;
 	client->status = Connected;
 
 	return 0;
+<<<<<<< HEAD
 
 out_put_wr:
 	fput(ts->wr);
@@ -851,6 +884,8 @@ out_put_rd:
 out_free_ts:
 	kfree(ts);
 	return -EIO;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static int p9_socket_open(struct p9_client *client, struct socket *csocket)
@@ -1029,7 +1064,11 @@ p9_fd_create_unix(struct p9_client *client, const char *addr, char *args)
 
 	csocket = NULL;
 
+<<<<<<< HEAD
 	if (!addr || !strlen(addr))
+=======
+	if (addr == NULL)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EINVAL;
 
 	if (strlen(addr) >= UNIX_PATH_MAX) {

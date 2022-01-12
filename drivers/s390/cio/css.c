@@ -581,11 +581,14 @@ static int slow_eval_known_fn(struct subchannel *sch, void *data)
 		rc = css_evaluate_known_subchannel(sch, 1);
 		if (rc == -EAGAIN)
 			css_schedule_eval(sch->schid);
+<<<<<<< HEAD
 		/*
 		 * The loop might take long time for platforms with lots of
 		 * known devices. Allow scheduling here.
 		 */
 		cond_resched();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	return 0;
 }

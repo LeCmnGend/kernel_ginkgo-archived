@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2017-2019, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2017-2019, 2021 The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -750,10 +754,19 @@ static int cam_jpeg_mgr_prepare_hw_update(void *hw_mgr_priv,
 	}
 
 	if ((packet->num_cmd_buf > 5) || !packet->num_patches ||
+<<<<<<< HEAD
 		!packet->num_io_configs) {
 		CAM_ERR(CAM_JPEG, "wrong number of cmd/patch info: %u %u",
 			packet->num_cmd_buf,
 			packet->num_patches);
+=======
+		!packet->num_io_configs ||
+		(packet->num_io_configs > CAM_JPEG_IMAGE_MAX)) {
+		CAM_ERR(CAM_JPEG,
+			"wrong number of cmd/patch/io_configs info: %u %u %u",
+			packet->num_cmd_buf, packet->num_patches,
+			packet->num_io_configs);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EINVAL;
 	}
 

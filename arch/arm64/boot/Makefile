@@ -5,7 +5,11 @@
 # architecture-specific flags and dependencies.
 #
 # This file is subject to the terms and conditions of the GNU General Public
+<<<<<<< HEAD
 # License. See the file "COPYING" in the main directory of this archive
+=======
+# License.  See the file "COPYING" in the main directory of this archive
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 # for more details.
 #
 # Copyright (C) 2012, ARM Ltd.
@@ -18,7 +22,11 @@ include $(srctree)/arch/arm64/boot/dts/Makefile
 
 OBJCOPYFLAGS_Image :=-O binary -R .note -R .note.gnu.build-id -R .comment -S
 
+<<<<<<< HEAD
 targets := Image Image.bz2 Image.gz Image.lz4 Image.lzma Image.lzo dtbo.img
+=======
+targets := Image Image.bz2 Image.gz Image.lz4 Image.lzma Image.lzo
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 DTB_NAMES := $(subst $\",,$(CONFIG_BUILD_ARM64_APPENDED_DTB_IMAGE_NAMES))
 ifneq ($(DTB_NAMES),)
@@ -28,8 +36,11 @@ DTB_LIST := $(dtb-y)
 endif
 DTB_OBJS := $(shell find $(obj)/dts/ -name \*.dtb)
 
+<<<<<<< HEAD
 DTBO_OBJS := $(shell find $(obj)/dts/ -name \*.dtbo)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 # Add RTIC DTB to the DTB list if RTIC MPGen is enabled
 # Note, we keep this for compatibility with
 # BUILD_ARM64_APPENDED_DTB_IMAGE targets.
@@ -44,6 +55,7 @@ rtic_mp.dtb: vmlinux FORCE
 
 $(obj)/Image: vmlinux FORCE
 	$(call if_changed,objcopy)
+<<<<<<< HEAD
 	
 $(obj)/Image.bz2: $(obj)/Image FORCE
 	$(call if_changed,bzip2)
@@ -73,6 +85,34 @@ $(obj)/Image.gz-dtb: $(obj)/Image.gz $(DTB_OBJS) FORCE
 $(obj)/dtbo.img: $(DTBO_OBJS) FORCE
 	$(call if_changed,mkdtimg)
 
+=======
+
+$(obj)/Image.bz2: $(obj)/Image FORCE
+	$(call if_changed,bzip2)
+
+$(obj)/Image-dtb-hdr: $(obj)/Image FORCE
+	echo -n 'UNCOMPRESSED_IMG' > $@ && \
+	$(call size_append, $(filter-out FORCE,$^)) >> $@
+
+$(obj)/Image-dtb: $(obj)/Image-dtb-hdr $(obj)/Image $(DTB_OBJS) FORCE
+	$(call if_changed,cat)
+
+$(obj)/Image.gz: $(obj)/Image FORCE
+	$(call if_changed,gzip)
+
+$(obj)/Image.lz4: $(obj)/Image FORCE
+	$(call if_changed,lz4)
+
+$(obj)/Image.lzma: $(obj)/Image FORCE
+	$(call if_changed,lzma)
+
+$(obj)/Image.lzo: $(obj)/Image FORCE
+	$(call if_changed,lzo)
+
+$(obj)/Image.gz-dtb: $(obj)/Image.gz $(DTB_OBJS) FORCE
+	$(call if_changed,cat)
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 install:
 	$(CONFIG_SHELL) $(srctree)/$(src)/install.sh $(KERNELRELEASE) \
 	$(obj)/Image System.map "$(INSTALL_PATH)"

@@ -127,7 +127,11 @@ good_area:
 		case 1:		/* read, present */
 			goto acc_err;
 		case 0:		/* read, not present */
+<<<<<<< HEAD
 			if (!vma_is_accessible(vma))
+=======
+			if (!(vma->vm_flags & (VM_READ | VM_EXEC | VM_WRITE)))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				goto acc_err;
 	}
 

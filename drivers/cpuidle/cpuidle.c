@@ -37,6 +37,7 @@ static int enabled_devices;
 static int off __read_mostly;
 static int initialized __read_mostly;
 
+<<<<<<< HEAD
 #ifdef CONFIG_SMP
 static atomic_t idled = ATOMIC_INIT(0);
 
@@ -55,6 +56,8 @@ void cpuidle_clear_idle_cpu(unsigned int cpu)
 }
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int cpuidle_disabled(void)
 {
 	return off;
@@ -163,8 +166,12 @@ static void enter_s2idle_proper(struct cpuidle_driver *drv,
 	 */
 	stop_critical_timings();
 	drv->states[index].enter_s2idle(dev, drv, index);
+<<<<<<< HEAD
 	if (WARN_ON_ONCE(!irqs_disabled()))
 		local_irq_disable();
+=======
+	WARN_ON(!irqs_disabled());
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * timekeeping_resume() that will be called by tick_unfreeze() for the
 	 * first CPU executing it calls functions containing RCU read-side
@@ -258,6 +265,7 @@ int cpuidle_enter_state(struct cpuidle_device *dev, struct cpuidle_driver *drv,
 	if (!cpuidle_state_is_coupled(drv, index))
 		local_irq_enable();
 
+<<<<<<< HEAD
 	if (entered_state >= 0) {
 		/*
 		 * Update cpuidle counters
@@ -269,6 +277,19 @@ int cpuidle_enter_state(struct cpuidle_device *dev, struct cpuidle_driver *drv,
 			diff = INT_MAX;
 
 		dev->last_residency = (int)diff;
+=======
+	diff = ktime_us_delta(time_end, time_start);
+	if (diff > INT_MAX)
+		diff = INT_MAX;
+
+	dev->last_residency = (int) diff;
+
+	if (entered_state >= 0) {
+		/* Update cpuidle counters */
+		/* This can be moved to within driver enter routine
+		 * but that results in multiple copies of same code.
+		 */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dev->states_usage[entered_state].time += dev->last_residency;
 		dev->states_usage[entered_state].usage++;
 	} else {
@@ -659,6 +680,30 @@ int cpuidle_register(struct cpuidle_driver *drv,
 EXPORT_SYMBOL_GPL(cpuidle_register);
 
 #ifdef CONFIG_SMP
+<<<<<<< HEAD
+=======
+
+static void wake_up_idle_cpus(void *v)
+{
+	int cpu;
+	struct cpumask cpus;
+
+	preempt_disable();
+	if (v) {
+		cpumask_andnot(&cpus, v, cpu_isolated_mask);
+		cpumask_and(&cpus, &cpus, cpu_online_mask);
+	} else
+		cpumask_andnot(&cpus, cpu_online_mask, cpu_isolated_mask);
+
+	for_each_cpu(cpu, &cpus) {
+		if (cpu == smp_processor_id())
+			continue;
+		wake_up_if_idle(cpu);
+	}
+	preempt_enable();
+}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * This function gets called when a part of the kernel has a new latency
  * requirement.  This means we need to get only those processors out of their
@@ -668,6 +713,7 @@ EXPORT_SYMBOL_GPL(cpuidle_register);
 static int cpuidle_latency_notify(struct notifier_block *b,
 		unsigned long l, void *v)
 {
+<<<<<<< HEAD
 	unsigned long cpus = atomic_read(&idled) & *cpumask_bits(to_cpumask(v));
 
 	/* Use READ_ONCE to get the isolated mask outside cpu_add_remove_lock */
@@ -675,6 +721,9 @@ static int cpuidle_latency_notify(struct notifier_block *b,
 	if (cpus)
 		arch_send_wakeup_ipi_mask(to_cpumask(&cpus));
 
+=======
+	wake_up_idle_cpus(v);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return NOTIFY_OK;
 }
 

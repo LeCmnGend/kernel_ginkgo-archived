@@ -195,8 +195,13 @@ static int ipa_mhi_start_gsi_channel(enum ipa_client_type client,
 	struct gsi_evt_ring_props ev_props;
 	struct ipa_mhi_msi_info *msi;
 	struct gsi_chan_props ch_props;
+<<<<<<< HEAD
 	union gsi_channel_scratch ch_scratch;
 	union gsi_channel_scratch ch_scratch1;
+=======
+	union __packed gsi_channel_scratch ch_scratch;
+	union __packed gsi_channel_scratch ch_scratch1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct ipa3_ep_context *ep;
 	const struct ipa_gsi_ep_config *ep_cfg;
 	struct ipa_ep_cfg_ctrl ep_cfg_ctrl;
@@ -647,13 +652,21 @@ fail_reset_channel:
 
 int ipa3_mhi_resume_channels_internal(enum ipa_client_type client,
 		bool LPTransitionRejected, bool brstmode_enabled,
+<<<<<<< HEAD
 		union gsi_channel_scratch ch_scratch, u8 index,
+=======
+		union __packed gsi_channel_scratch ch_scratch, u8 index,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		bool is_switch_to_dbmode)
 {
 	int res;
 	int ipa_ep_idx;
 	struct ipa3_ep_context *ep;
+<<<<<<< HEAD
 	union gsi_channel_scratch gsi_ch_scratch;
+=======
+	union __packed gsi_channel_scratch gsi_ch_scratch;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	IPA_MHI_FUNC_ENTRY();
 

@@ -273,7 +273,10 @@ struct tcf_chain {
 
 struct tcf_block {
 	struct list_head chain_list;
+<<<<<<< HEAD
 	struct Qdisc *q;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 static inline void qdisc_cb_private_validate(const struct sk_buff *skb, int sz)

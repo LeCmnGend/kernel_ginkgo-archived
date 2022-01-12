@@ -152,7 +152,10 @@ static int do_isofs_readdir(struct inode *inode, struct file *file,
 			printk(KERN_NOTICE "iso9660: Corrupted directory entry"
 			       " in block %lu of inode %lu\n", block,
 			       inode->i_ino);
+<<<<<<< HEAD
 			brelse(bh);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return -EIO;
 		}
 

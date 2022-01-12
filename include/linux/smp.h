@@ -53,7 +53,11 @@ void on_each_cpu_cond(bool (*cond_func)(int cpu, void *info),
 		smp_call_func_t func, void *info, bool wait,
 		gfp_t gfp_flags);
 
+<<<<<<< HEAD
 int smp_call_function_single_async(int cpu, struct __call_single_data *csd);
+=======
+int smp_call_function_single_async(int cpu, call_single_data_t *csd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #ifdef CONFIG_SMP
 

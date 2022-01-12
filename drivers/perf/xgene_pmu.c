@@ -1474,6 +1474,20 @@ static char *xgene_pmu_dev_name(struct device *dev, u32 type, int id)
 }
 
 #if defined(CONFIG_ACPI)
+<<<<<<< HEAD
+=======
+static int acpi_pmu_dev_add_resource(struct acpi_resource *ares, void *data)
+{
+	struct resource *res = data;
+
+	if (ares->type == ACPI_RESOURCE_TYPE_FIXED_MEMORY32)
+		acpi_dev_resource_memory(ares, res);
+
+	/* Always tell the ACPI core to skip this resource */
+	return 1;
+}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct
 xgene_pmu_dev_ctx *acpi_get_pmu_hw_inf(struct xgene_pmu *xgene_pmu,
 				       struct acpi_device *adev, u32 type)
@@ -1485,7 +1499,10 @@ xgene_pmu_dev_ctx *acpi_get_pmu_hw_inf(struct xgene_pmu *xgene_pmu,
 	struct hw_pmu_info *inf;
 	void __iomem *dev_csr;
 	struct resource res;
+<<<<<<< HEAD
 	struct resource_entry *rentry;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int enable_bit;
 	int rc;
 
@@ -1494,6 +1511,7 @@ xgene_pmu_dev_ctx *acpi_get_pmu_hw_inf(struct xgene_pmu *xgene_pmu,
 		return NULL;
 
 	INIT_LIST_HEAD(&resource_list);
+<<<<<<< HEAD
 	rc = acpi_dev_get_resources(adev, &resource_list, NULL, NULL);
 	if (rc <= 0) {
 		dev_err(dev, "PMU type %d: No resources found\n", type);
@@ -1511,6 +1529,13 @@ xgene_pmu_dev_ctx *acpi_get_pmu_hw_inf(struct xgene_pmu *xgene_pmu,
 
 	if (rentry) {
 		dev_err(dev, "PMU type %d: No memory resource found\n", type);
+=======
+	rc = acpi_dev_get_resources(adev, &resource_list,
+				    acpi_pmu_dev_add_resource, &res);
+	acpi_dev_free_resource_list(&resource_list);
+	if (rc < 0) {
+		dev_err(dev, "PMU type %d: No resource address found\n", type);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return NULL;
 	}
 

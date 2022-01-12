@@ -1356,10 +1356,15 @@ static int jbd2_write_superblock(journal_t *journal, int write_flags)
 	int ret;
 
 	/* Buffer got discarded which means block device got invalidated */
+<<<<<<< HEAD
 	if (!buffer_mapped(bh)) {
 		unlock_buffer(bh);
 		return -EIO;
 	}
+=======
+	if (!buffer_mapped(bh))
+		return -EIO;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	trace_jbd2_write_superblock(journal, write_flags);
 	if (!(journal->j_flags & JBD2_BARRIER))

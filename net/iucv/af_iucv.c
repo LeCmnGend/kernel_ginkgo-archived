@@ -1552,8 +1552,12 @@ static int iucv_sock_shutdown(struct socket *sock, int how)
 		break;
 	}
 
+<<<<<<< HEAD
 	if ((how == SEND_SHUTDOWN || how == SHUTDOWN_MASK) &&
 	    sk->sk_state == IUCV_CONNECTED) {
+=======
+	if (how == SEND_SHUTDOWN || how == SHUTDOWN_MASK) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (iucv->transport == AF_IUCV_TRANS_IUCV) {
 			txmsg.class = 0;
 			txmsg.tag = 0;
@@ -1763,7 +1767,11 @@ static int iucv_callback_connreq(struct iucv_path *path,
 	}
 
 	/* Create the new socket */
+<<<<<<< HEAD
 	nsk = iucv_sock_alloc(NULL, sk->sk_protocol, GFP_ATOMIC, 0);
+=======
+	nsk = iucv_sock_alloc(NULL, sk->sk_type, GFP_ATOMIC, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!nsk) {
 		err = pr_iucv->path_sever(path, user_data);
 		iucv_path_free(path);
@@ -1973,7 +1981,11 @@ static int afiucv_hs_callback_syn(struct sock *sk, struct sk_buff *skb)
 		goto out;
 	}
 
+<<<<<<< HEAD
 	nsk = iucv_sock_alloc(NULL, sk->sk_protocol, GFP_ATOMIC, 0);
+=======
+	nsk = iucv_sock_alloc(NULL, sk->sk_type, GFP_ATOMIC, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bh_lock_sock(sk);
 	if ((sk->sk_state != IUCV_LISTEN) ||
 	    sk_acceptq_is_full(sk) ||

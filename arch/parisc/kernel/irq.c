@@ -380,11 +380,15 @@ static inline int eirr_to_irq(unsigned long eirr)
 /*
  * IRQ STACK - used for irq handler
  */
+<<<<<<< HEAD
 #ifdef CONFIG_64BIT
 #define IRQ_STACK_SIZE      (4096 << 4) /* 64k irq stack size */
 #else
 #define IRQ_STACK_SIZE      (4096 << 3) /* 32k irq stack size */
 #endif
+=======
+#define IRQ_STACK_SIZE      (4096 << 3) /* 32k irq stack size */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 union irq_stack_union {
 	unsigned long stack[IRQ_STACK_SIZE/sizeof(unsigned long)];

@@ -636,9 +636,15 @@ struct sms_msg_data2 {
 	u32 msg_data[2];
 };
 
+<<<<<<< HEAD
 struct sms_msg_data5 {
 	struct sms_msg_hdr x_msg_header;
 	u32 msg_data[5];
+=======
+struct sms_msg_data4 {
+	struct sms_msg_hdr x_msg_header;
+	u32 msg_data[4];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 struct sms_data_download {

@@ -34,7 +34,11 @@ static int enable_process_reclaim;
 module_param_named(enable_process_reclaim, enable_process_reclaim, int, 0644);
 
 /* The max number of pages tried to be reclaimed in a single run */
+<<<<<<< HEAD
 int per_swap_size = SWAP_CLUSTER_MAX * 256;
+=======
+int per_swap_size = SWAP_CLUSTER_MAX * 32;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 module_param_named(per_swap_size, per_swap_size, int, 0644);
 
 int reclaim_avg_efficiency;

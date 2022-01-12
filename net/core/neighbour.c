@@ -1275,7 +1275,11 @@ int neigh_update(struct neighbour *neigh, const u8 *lladdr, u8 new,
 			 * we can reinject the packet there.
 			 */
 			n2 = NULL;
+<<<<<<< HEAD
 			if (dst && dst->obsolete != DST_OBSOLETE_DEAD) {
+=======
+			if (dst) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				n2 = dst_neigh_lookup_skb(dst, skb);
 				if (n2)
 					n1 = n2;
@@ -2857,7 +2861,10 @@ static void *neigh_stat_seq_next(struct seq_file *seq, void *v, loff_t *pos)
 		*pos = cpu+1;
 		return per_cpu_ptr(tbl->stats, cpu);
 	}
+<<<<<<< HEAD
 	(*pos)++;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return NULL;
 }
 

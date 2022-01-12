@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 ifneq ($(CONFIG_MACH_XIAOMI),y)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 # SPDX-License-Identifier: GPL-2.0
 ifeq ($(TARGET_BOARD_TYPE),auto)
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
@@ -587,7 +590,10 @@ dtb-$(CONFIG_ARCH_SDM429W) += sdm429-wtp.dtb\
 endif
 
 endif
+<<<<<<< HEAD
 endif # CONFIG_MACH_XIAOMI
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 ifeq ($(CONFIG_ARM64),y)
 always		:= $(dtb-y)

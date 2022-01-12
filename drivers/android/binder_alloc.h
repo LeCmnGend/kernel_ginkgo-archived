@@ -32,11 +32,16 @@ struct binder_transaction;
  * @entry:              entry alloc->buffers
  * @rb_node:            node for allocated_buffers/free_buffers rb trees
  * @free:               %true if buffer is free
+<<<<<<< HEAD
  * @clear_on_free:      %true if buffer must be zeroed after use
  * @allow_user_free:    %true if user is allowed to free buffer
  * @async_transaction:  %true if buffer is in use for an async txn
  * @oneway_spam_suspect: %true if total async allocate size just exceed
  * spamming detect threshold
+=======
+ * @allow_user_free:    %true if user is allowed to free buffer
+ * @async_transaction:  %true if buffer is in use for an async txn
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * @debug_id:           unique ID for debugging
  * @transaction:        pointer to associated struct binder_transaction
  * @target_node:        struct binder_node associated with this buffer
@@ -44,7 +49,10 @@ struct binder_transaction;
  * @offsets_size:       size of array of offsets
  * @extra_buffers_size: size of space for other objects (like sg lists)
  * @user_data:          user pointer to base of buffer space
+<<<<<<< HEAD
  * @pid:                pid to attribute the buffer to (caller)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * Bookkeeping structure for binder transaction buffers
  */
@@ -53,11 +61,17 @@ struct binder_buffer {
 	struct rb_node rb_node; /* free entry by size or allocated entry */
 				/* by address */
 	unsigned free:1;
+<<<<<<< HEAD
 	unsigned clear_on_free:1;
 	unsigned allow_user_free:1;
 	unsigned async_transaction:1;
 	unsigned oneway_spam_suspect:1;
 	unsigned debug_id:27;
+=======
+	unsigned allow_user_free:1;
+	unsigned async_transaction:1;
+	unsigned debug_id:29;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	struct binder_transaction *transaction;
 
@@ -66,7 +80,10 @@ struct binder_buffer {
 	size_t offsets_size;
 	size_t extra_buffers_size;
 	void __user *user_data;
+<<<<<<< HEAD
 	int    pid;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 /**
@@ -99,8 +116,11 @@ struct binder_lru_page {
  * @buffer_size:        size of address space specified via mmap
  * @pid:                pid for associated binder_proc (invariant after init)
  * @pages_high:         high watermark of offset in @pages
+<<<<<<< HEAD
  * @oneway_spam_detected: %true if oneway spam detection fired, clear that
  * flag once the async buffer has returned to a healthy state
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * Bookkeeping structure for per-proc address space management for binder
  * buffers. It is normally initialized during binder_init() and binder_mmap()
@@ -121,7 +141,10 @@ struct binder_alloc {
 	uint32_t buffer_free;
 	int pid;
 	size_t pages_high;
+<<<<<<< HEAD
 	bool oneway_spam_detected;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 #ifdef CONFIG_ANDROID_BINDER_IPC_SELFTEST
@@ -136,8 +159,12 @@ extern struct binder_buffer *binder_alloc_new_buf(struct binder_alloc *alloc,
 						  size_t data_size,
 						  size_t offsets_size,
 						  size_t extra_buffers_size,
+<<<<<<< HEAD
 						  int is_async,
 						  int pid);
+=======
+						  int is_async);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern void binder_alloc_init(struct binder_alloc *alloc);
 extern int binder_alloc_shrinker_init(void);
 extern void binder_alloc_vma_close(struct binder_alloc *alloc);
@@ -154,8 +181,11 @@ extern void binder_alloc_print_allocated(struct seq_file *m,
 					 struct binder_alloc *alloc);
 void binder_alloc_print_pages(struct seq_file *m,
 			      struct binder_alloc *alloc);
+<<<<<<< HEAD
 extern int binder_buffer_pool_create(void);
 extern void binder_buffer_pool_destroy(void);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
  * binder_alloc_get_free_async_space() - get free space available for async

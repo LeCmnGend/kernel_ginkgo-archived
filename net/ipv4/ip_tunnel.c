@@ -752,11 +752,15 @@ void ip_tunnel_xmit(struct sk_buff *skb, struct net_device *dev,
 		goto tx_error;
 	}
 
+<<<<<<< HEAD
 	df = tnl_params->frag_off;
 	if (skb->protocol == htons(ETH_P_IP) && !tunnel->ignore_df)
 		df |= (inner_iph->frag_off & htons(IP_DF));
 
 	if (tnl_update_pmtu(dev, skb, rt, df, inner_iph)) {
+=======
+	if (tnl_update_pmtu(dev, skb, rt, tnl_params->frag_off, inner_iph)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ip_rt_put(rt);
 		goto tx_error;
 	}
@@ -784,6 +788,13 @@ void ip_tunnel_xmit(struct sk_buff *skb, struct net_device *dev,
 			ttl = ip4_dst_hoplimit(&rt->dst);
 	}
 
+<<<<<<< HEAD
+=======
+	df = tnl_params->frag_off;
+	if (skb->protocol == htons(ETH_P_IP) && !tunnel->ignore_df)
+		df |= (inner_iph->frag_off&htons(IP_DF));
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	max_headroom = LL_RESERVED_SPACE(rt->dst.dev) + sizeof(struct iphdr)
 			+ rt->dst.header_len + ip_encap_hlen(&tunnel->encap);
 	if (max_headroom > dev->needed_headroom)

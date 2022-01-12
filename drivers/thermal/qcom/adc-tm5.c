@@ -90,17 +90,23 @@ static struct adc_tm_reverse_scale_fn adc_tm_rscale_fn[] = {
 static int adc_tm5_get_temp(struct adc_tm_sensor *sensor, int *temp)
 {
 	int ret, milli_celsius;
+<<<<<<< HEAD
 	int emul_temp;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!sensor || !sensor->adc)
 		return -EINVAL;
 
+<<<<<<< HEAD
 	emul_temp = sensor->emul_temperature;
 	if (emul_temp) {
 		*temp = emul_temp;
 		return 0;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = iio_read_channel_processed(sensor->adc, &milli_celsius);
 	if (ret < 0)
 		return ret;
@@ -110,12 +116,15 @@ static int adc_tm5_get_temp(struct adc_tm_sensor *sensor, int *temp)
 	return 0;
 }
 
+<<<<<<< HEAD
 static int adc_tm5_set_emul_temp(struct adc_tm_sensor *sensor, int emul_temp)
 {
 	sensor->emul_temperature = emul_temp;
 	return 0;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int32_t adc_tm5_read_reg(struct adc_tm_chip *chip,
 					int16_t reg, u8 *data, int len)
 {
@@ -786,7 +795,10 @@ static int adc_tm5_set_trip_temp(struct adc_tm_sensor *sensor,
 	int ret;
 	uint32_t btm_chan = 0, btm_chan_idx = 0, mask = 0;
 	unsigned long flags;
+<<<<<<< HEAD
 	int emul_temp;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!sensor)
 		return -EINVAL;
@@ -807,6 +819,7 @@ static int adc_tm5_set_trip_temp(struct adc_tm_sensor *sensor,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
 	/* Set threshold to extremely value while emul temp set */
 	emul_temp = sensor->emul_temperature;
 	if (emul_temp) {
@@ -814,6 +827,8 @@ static int adc_tm5_set_trip_temp(struct adc_tm_sensor *sensor,
 		low_temp = INT_MIN;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pr_debug("requested a low temp- %d and high temp- %d\n",
 			tm_config.low_thr_temp, tm_config.high_thr_temp);
 	adc_tm_scale_therm_voltage_100k(&tm_config, chip->data);
@@ -957,6 +972,7 @@ static irqreturn_t adc_tm5_handler(int irq, void *data)
 				pr_err("adc_tm data_high read failed with %d\n",
 							ret);
 			code = ((data_high << ADC_TM_DATA_SHIFT) | data_low);
+<<<<<<< HEAD
 			/* skip it since voltage reading is zero */
 			if (!code) {
 				pr_err("Sensor:%s voltage is zero\n",
@@ -964,6 +980,8 @@ static irqreturn_t adc_tm5_handler(int irq, void *data)
 				i++;
 				continue;
 			}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 
 		spin_lock_irqsave(&chip->adc_tm_lock, flags);
@@ -1167,7 +1185,10 @@ static const struct adc_tm_ops ops_adc_tm5 = {
 	.set_trips	= adc_tm5_set_trip_temp,
 	.interrupts_reg = adc_tm5_register_interrupts,
 	.get_temp	= adc_tm5_get_temp,
+<<<<<<< HEAD
 	.set_emul_temp	= adc_tm5_set_emul_temp,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 const struct adc_tm_data data_adc_tm5 = {

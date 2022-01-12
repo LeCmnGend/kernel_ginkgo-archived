@@ -361,6 +361,7 @@ static int meson_probe_remote(struct platform_device *pdev,
 	return count;
 }
 
+<<<<<<< HEAD
 static void meson_drv_shutdown(struct platform_device *pdev)
 {
 	struct meson_drm *priv = dev_get_drvdata(&pdev->dev);
@@ -372,6 +373,8 @@ static void meson_drv_shutdown(struct platform_device *pdev)
 	drm_atomic_helper_shutdown(priv->drm);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int meson_drv_probe(struct platform_device *pdev)
 {
 	struct component_match *match = NULL;
@@ -416,7 +419,10 @@ MODULE_DEVICE_TABLE(of, dt_match);
 
 static struct platform_driver meson_drm_platform_driver = {
 	.probe      = meson_drv_probe,
+<<<<<<< HEAD
 	.shutdown   = meson_drv_shutdown,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.driver     = {
 		.name	= "meson-drm",
 		.of_match_table = dt_match,

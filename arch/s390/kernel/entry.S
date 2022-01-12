@@ -967,7 +967,10 @@ ENTRY(ext_int_handler)
  * Load idle PSW. The second "half" of this function is in .Lcleanup_idle.
  */
 ENTRY(psw_idle)
+<<<<<<< HEAD
 	stg	%r14,(__SF_GPRS+8*8)(%r15)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	stg	%r3,__SF_EMPTY(%r15)
 	larl	%r1,.Lpsw_idle_lpsw+4
 	stg	%r1,__SF_EMPTY+8(%r15)

@@ -395,6 +395,7 @@ static irqreturn_t st_lsm6dsx_handler_irq(int irq, void *private)
 static irqreturn_t st_lsm6dsx_handler_thread(int irq, void *private)
 {
 	struct st_lsm6dsx_hw *hw = private;
+<<<<<<< HEAD
 	int fifo_len = 0, len;
 
 	/*
@@ -418,6 +419,15 @@ static irqreturn_t st_lsm6dsx_handler_thread(int irq, void *private)
 	} while (len > 0);
 
 	return fifo_len ? IRQ_HANDLED : IRQ_NONE;
+=======
+	int count;
+
+	mutex_lock(&hw->fifo_lock);
+	count = st_lsm6dsx_read_fifo(hw);
+	mutex_unlock(&hw->fifo_lock);
+
+	return !count ? IRQ_NONE : IRQ_HANDLED;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static int st_lsm6dsx_buffer_preenable(struct iio_dev *iio_dev)

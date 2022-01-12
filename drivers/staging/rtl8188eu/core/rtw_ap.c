@@ -912,7 +912,10 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
 	/* SSID */
 	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _SSID_IE_, &ie_len, (pbss_network->IELength - _BEACON_IE_OFFSET_));
 	if (p && ie_len > 0) {
+<<<<<<< HEAD
 		ie_len = min_t(int, ie_len, sizeof(pbss_network->Ssid.Ssid));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		memset(&pbss_network->Ssid, 0, sizeof(struct ndis_802_11_ssid));
 		memcpy(pbss_network->Ssid.Ssid, (p + 2), ie_len);
 		pbss_network->Ssid.SsidLength = ie_len;
@@ -931,7 +934,10 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
 	/*  get supported rates */
 	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _SUPPORTEDRATES_IE_, &ie_len, (pbss_network->IELength - _BEACON_IE_OFFSET_));
 	if (p) {
+<<<<<<< HEAD
 		ie_len = min_t(int, ie_len, NDIS_802_11_LENGTH_RATES_EX);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		memcpy(supportRate, p + 2, ie_len);
 		supportRateNum = ie_len;
 	}
@@ -939,8 +945,11 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
 	/* get ext_supported rates */
 	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _EXT_SUPPORTEDRATES_IE_, &ie_len, pbss_network->IELength - _BEACON_IE_OFFSET_);
 	if (p) {
+<<<<<<< HEAD
 		ie_len = min_t(int, ie_len,
 			       NDIS_802_11_LENGTH_RATES_EX - supportRateNum);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		memcpy(supportRate + supportRateNum, p + 2, ie_len);
 		supportRateNum += ie_len;
 	}
@@ -1054,7 +1063,10 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
 
 		pht_cap->mcs.rx_mask[0] = 0xff;
 		pht_cap->mcs.rx_mask[1] = 0x0;
+<<<<<<< HEAD
 		ie_len = min_t(int, ie_len, sizeof(pmlmepriv->htpriv.ht_cap));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		memcpy(&pmlmepriv->htpriv.ht_cap, p+2, ie_len);
 	}
 

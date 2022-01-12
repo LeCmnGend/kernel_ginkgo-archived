@@ -466,12 +466,18 @@ int wl1251_cmd_scan(struct wl1251 *wl, u8 *ssid, size_t ssid_len,
 		cmd->channels[i].channel = channels[i]->hw_value;
 	}
 
+<<<<<<< HEAD
 	if (ssid) {
 		int len = clamp_val(ssid_len, 0, IEEE80211_MAX_SSID_LEN);
 
 		cmd->params.ssid_len = len;
 		memcpy(cmd->params.ssid, ssid, len);
 	}
+=======
+	cmd->params.ssid_len = ssid_len;
+	if (ssid)
+		memcpy(cmd->params.ssid, ssid, ssid_len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	ret = wl1251_cmd_send(wl, CMD_SCAN, cmd, sizeof(*cmd));
 	if (ret < 0) {

@@ -1739,7 +1739,11 @@ static struct dvb_usb_device_properties cxusb_bluebird_lgz201_properties = {
 
 	.size_of_priv     = sizeof(struct cxusb_state),
 
+<<<<<<< HEAD
 	.num_adapters = 1,
+=======
+	.num_adapters = 2,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.adapter = {
 		{
 		.num_frontends = 1,

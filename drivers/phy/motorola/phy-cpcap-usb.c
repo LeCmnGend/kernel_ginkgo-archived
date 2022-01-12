@@ -623,13 +623,18 @@ static int cpcap_usb_phy_probe(struct platform_device *pdev)
 	generic_phy = devm_phy_create(ddata->dev, NULL, &ops);
 	if (IS_ERR(generic_phy)) {
 		error = PTR_ERR(generic_phy);
+<<<<<<< HEAD
 		goto out_reg_disable;
+=======
+		return PTR_ERR(generic_phy);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	phy_set_drvdata(generic_phy, ddata);
 
 	phy_provider = devm_of_phy_provider_register(ddata->dev,
 						     of_phy_simple_xlate);
+<<<<<<< HEAD
 	if (IS_ERR(phy_provider)) {
 		error = PTR_ERR(phy_provider);
 		goto out_reg_disable;
@@ -638,27 +643,46 @@ static int cpcap_usb_phy_probe(struct platform_device *pdev)
 	error = cpcap_usb_init_optional_pins(ddata);
 	if (error)
 		goto out_reg_disable;
+=======
+	if (IS_ERR(phy_provider))
+		return PTR_ERR(phy_provider);
+
+	error = cpcap_usb_init_optional_pins(ddata);
+	if (error)
+		return error;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	cpcap_usb_init_optional_gpios(ddata);
 
 	error = cpcap_usb_init_iio(ddata);
 	if (error)
+<<<<<<< HEAD
 		goto out_reg_disable;
 
 	error = cpcap_usb_init_interrupts(pdev, ddata);
 	if (error)
 		goto out_reg_disable;
+=======
+		return error;
+
+	error = cpcap_usb_init_interrupts(pdev, ddata);
+	if (error)
+		return error;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	usb_add_phy_dev(&ddata->phy);
 	atomic_set(&ddata->active, 1);
 	schedule_delayed_work(&ddata->detect_work, msecs_to_jiffies(1));
 
 	return 0;
+<<<<<<< HEAD
 
 out_reg_disable:
 	regulator_disable(ddata->vusb);
 
 	return error;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static int cpcap_usb_phy_remove(struct platform_device *pdev)

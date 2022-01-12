@@ -40,6 +40,19 @@
 #include <linux/sched.h>
 #include <asm/unaligned.h>
 
+<<<<<<< HEAD
+=======
+#ifdef CONFIG_RANDOM32_SELFTEST
+static void __init prandom_state_selftest(void);
+#else
+static inline void prandom_state_selftest(void)
+{
+}
+#endif
+
+static DEFINE_PER_CPU(struct rnd_state, net_rand_state) __latent_entropy;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  *	prandom_u32_state - seeded pseudo-random number generator.
  *	@state: pointer to state structure holding seeded state.
@@ -60,6 +73,28 @@ u32 prandom_u32_state(struct rnd_state *state)
 EXPORT_SYMBOL(prandom_u32_state);
 
 /**
+<<<<<<< HEAD
+=======
+ *	prandom_u32 - pseudo random number generator
+ *
+ *	A 32 bit pseudo-random number is generated using a fast
+ *	algorithm suitable for simulation. This algorithm is NOT
+ *	considered safe for cryptographic use.
+ */
+u32 prandom_u32(void)
+{
+	struct rnd_state *state = &get_cpu_var(net_rand_state);
+	u32 res;
+
+	res = prandom_u32_state(state);
+	put_cpu_var(net_rand_state);
+
+	return res;
+}
+EXPORT_SYMBOL(prandom_u32);
+
+/**
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *	prandom_bytes_state - get the requested number of pseudo-random bytes
  *
  *	@state: pointer to state structure holding seeded state.
@@ -90,6 +125,23 @@ void prandom_bytes_state(struct rnd_state *state, void *buf, size_t bytes)
 }
 EXPORT_SYMBOL(prandom_bytes_state);
 
+<<<<<<< HEAD
+=======
+/**
+ *	prandom_bytes - get the requested number of pseudo-random bytes
+ *	@buf: where to copy the pseudo-random bytes to
+ *	@bytes: the requested number of bytes
+ */
+void prandom_bytes(void *buf, size_t bytes)
+{
+	struct rnd_state *state = &get_cpu_var(net_rand_state);
+
+	prandom_bytes_state(state, buf, bytes);
+	put_cpu_var(net_rand_state);
+}
+EXPORT_SYMBOL(prandom_bytes);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void prandom_warmup(struct rnd_state *state)
 {
 	/* Calling RNG ten times to satisfy recurrence condition */
@@ -105,6 +157,99 @@ static void prandom_warmup(struct rnd_state *state)
 	prandom_u32_state(state);
 }
 
+<<<<<<< HEAD
+=======
+static u32 __extract_hwseed(void)
+{
+	unsigned int val = 0;
+
+	(void)(arch_get_random_seed_int(&val) ||
+	       arch_get_random_int(&val));
+
+	return val;
+}
+
+static void prandom_seed_early(struct rnd_state *state, u32 seed,
+			       bool mix_with_hwseed)
+{
+#define LCG(x)	 ((x) * 69069U)	/* super-duper LCG */
+#define HWSEED() (mix_with_hwseed ? __extract_hwseed() : 0)
+	state->s1 = __seed(HWSEED() ^ LCG(seed),        2U);
+	state->s2 = __seed(HWSEED() ^ LCG(state->s1),   8U);
+	state->s3 = __seed(HWSEED() ^ LCG(state->s2),  16U);
+	state->s4 = __seed(HWSEED() ^ LCG(state->s3), 128U);
+}
+
+/**
+ *	prandom_seed - add entropy to pseudo random number generator
+ *	@seed: seed value
+ *
+ *	Add some additional seeding to the prandom pool.
+ */
+void prandom_seed(u32 entropy)
+{
+	int i;
+	/*
+	 * No locking on the CPUs, but then somewhat random results are, well,
+	 * expected.
+	 */
+	for_each_possible_cpu(i) {
+		struct rnd_state *state = &per_cpu(net_rand_state, i);
+
+		state->s1 = __seed(state->s1 ^ entropy, 2U);
+		prandom_warmup(state);
+	}
+}
+EXPORT_SYMBOL(prandom_seed);
+
+/*
+ *	Generate some initially weak seeding values to allow
+ *	to start the prandom_u32() engine.
+ */
+static int __init prandom_init(void)
+{
+	int i;
+
+	prandom_state_selftest();
+
+	for_each_possible_cpu(i) {
+		struct rnd_state *state = &per_cpu(net_rand_state, i);
+		u32 weak_seed = (i + jiffies) ^ random_get_entropy();
+
+		prandom_seed_early(state, weak_seed, true);
+		prandom_warmup(state);
+	}
+
+	return 0;
+}
+core_initcall(prandom_init);
+
+static void __prandom_timer(unsigned long dontcare);
+
+static DEFINE_TIMER(seed_timer, __prandom_timer, 0, 0);
+
+static void __prandom_timer(unsigned long dontcare)
+{
+	u32 entropy;
+	unsigned long expires;
+
+	get_random_bytes(&entropy, sizeof(entropy));
+	prandom_seed(entropy);
+
+	/* reseed every ~60 seconds, in [40 .. 80) interval with slack */
+	expires = 40 + prandom_u32_max(40);
+	seed_timer.expires = jiffies + msecs_to_jiffies(expires * MSEC_PER_SEC);
+
+	add_timer(&seed_timer);
+}
+
+static void __init __prandom_start_seed_timer(void)
+{
+	seed_timer.expires = jiffies + msecs_to_jiffies(40 * MSEC_PER_SEC);
+	add_timer(&seed_timer);
+}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void prandom_seed_full_state(struct rnd_state __percpu *pcpu_state)
 {
 	int i;
@@ -124,6 +269,54 @@ void prandom_seed_full_state(struct rnd_state __percpu *pcpu_state)
 }
 EXPORT_SYMBOL(prandom_seed_full_state);
 
+<<<<<<< HEAD
+=======
+/*
+ *	Generate better values after random number generator
+ *	is fully initialized.
+ */
+static void __prandom_reseed(bool late)
+{
+	unsigned long flags;
+	static bool latch = false;
+	static DEFINE_SPINLOCK(lock);
+
+	/* Asking for random bytes might result in bytes getting
+	 * moved into the nonblocking pool and thus marking it
+	 * as initialized. In this case we would double back into
+	 * this function and attempt to do a late reseed.
+	 * Ignore the pointless attempt to reseed again if we're
+	 * already waiting for bytes when the nonblocking pool
+	 * got initialized.
+	 */
+
+	/* only allow initial seeding (late == false) once */
+	if (!spin_trylock_irqsave(&lock, flags))
+		return;
+
+	if (latch && !late)
+		goto out;
+
+	latch = true;
+	prandom_seed_full_state(&net_rand_state);
+out:
+	spin_unlock_irqrestore(&lock, flags);
+}
+
+void prandom_reseed_late(void)
+{
+	__prandom_reseed(true);
+}
+
+static int __init prandom_reseed(void)
+{
+	__prandom_reseed(false);
+	__prandom_start_seed_timer();
+	return 0;
+}
+late_initcall(prandom_reseed);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_RANDOM32_SELFTEST
 static struct prandom_test1 {
 	u32 seed;
@@ -243,6 +436,7 @@ static struct prandom_test2 {
 	{  407983964U, 921U,  728767059U },
 };
 
+<<<<<<< HEAD
 static u32 __extract_hwseed(void)
 {
 	unsigned int val = 0;
@@ -265,6 +459,9 @@ static void prandom_seed_early(struct rnd_state *state, u32 seed,
 }
 
 static int __init prandom_state_selftest(void)
+=======
+static void __init prandom_state_selftest(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	int i, j, errors = 0, runs = 0;
 	bool error = false;
@@ -304,6 +501,7 @@ static int __init prandom_state_selftest(void)
 		pr_warn("prandom: %d/%d self tests failed\n", errors, runs);
 	else
 		pr_info("prandom: %d self tests passed\n", runs);
+<<<<<<< HEAD
 	return 0;
 }
 core_initcall(prandom_state_selftest);
@@ -567,3 +765,7 @@ static int __init prandom_init_late(void)
 	return ret;
 }
 late_initcall(prandom_init_late);
+=======
+}
+#endif
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

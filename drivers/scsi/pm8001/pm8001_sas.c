@@ -795,7 +795,11 @@ pm8001_exec_internal_task_abort(struct pm8001_hba_info *pm8001_ha,
 
 		res = pm8001_tag_alloc(pm8001_ha, &ccb_tag);
 		if (res)
+<<<<<<< HEAD
 			goto ex_err;
+=======
+			return res;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ccb = &pm8001_ha->ccb_info[ccb_tag];
 		ccb->device = pm8001_dev;
 		ccb->ccb_tag = ccb_tag;

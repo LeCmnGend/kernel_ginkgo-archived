@@ -39,7 +39,11 @@
  *   GPIO 4 <- headphone detect
  *   GPIO 5 -> enable ADC analog circuit for the left channel
  *   GPIO 6 -> enable ADC analog circuit for the right channel
+<<<<<<< HEAD
  *   GPIO 7 -> switch green rear output jack between CS4245 and the first
+=======
+ *   GPIO 7 -> switch green rear output jack between CS4245 and and the first
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *             channel of CS4361 (mechanical relay)
  *   GPIO 8 -> enable output to speakers
  *

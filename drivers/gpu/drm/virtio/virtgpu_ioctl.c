@@ -197,6 +197,7 @@ static int virtio_gpu_execbuffer_ioctl(struct drm_device *dev, void *data,
 	if (ret)
 		goto out_free;
 
+<<<<<<< HEAD
 	buf = kvmalloc(exbuf->size, GFP_USER);
 	if (!buf) {
 		ret = PTR_ERR(buf);
@@ -206,6 +207,13 @@ static int virtio_gpu_execbuffer_ioctl(struct drm_device *dev, void *data,
 		ret = PTR_ERR(buf);
 		goto out_memdup;
 	}
+=======
+	buf = memdup_user(u64_to_user_ptr(exbuf->command), exbuf->size);
+	if (IS_ERR(buf)) {
+		ret = PTR_ERR(buf);
+		goto out_unresv;
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	out_fence = virtio_gpu_fence_alloc(vgdev);
 	if(!out_fence) {
@@ -229,7 +237,10 @@ static int virtio_gpu_execbuffer_ioctl(struct drm_device *dev, void *data,
 			      vfpriv->ctx_id, out_fence);
 
 	ttm_eu_fence_buffer_objects(&ticket, &validate_list, &out_fence->f);
+<<<<<<< HEAD
 	dma_fence_put(&out_fence->f);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* fence the command bo */
 	virtio_gpu_unref_list(&validate_list);
@@ -237,7 +248,11 @@ static int virtio_gpu_execbuffer_ioctl(struct drm_device *dev, void *data,
 	return 0;
 
 out_memdup:
+<<<<<<< HEAD
 	kvfree(buf);
+=======
+	kfree(buf);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out_unresv:
 	ttm_eu_backoff_reservation(&ticket, &validate_list);
 out_free:
@@ -603,7 +618,11 @@ static int virtio_gpu_resource_create_blob_ioctl(struct drm_device *dev,
 	bool use_dma_api = !virtio_has_iommu_quirk(vgdev->vdev);
 	bool mappable = rc_blob->blob_flags & VIRTGPU_BLOB_FLAG_MAPPABLE;
 	bool has_guest = (rc_blob->blob_mem == VIRTGPU_BLOB_MEM_GUEST ||
+<<<<<<< HEAD
 			  rc_blob->blob_mem == VIRTGPU_BLOB_MEM_HOST3D_GUEST);
+=======
+		rc_blob->blob_mem == VIRTGPU_BLOB_MEM_HOST_GUEST);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	params.size = rc_blob->size;
 	params.blob_mem = rc_blob->blob_mem;
@@ -613,6 +632,7 @@ static int virtio_gpu_resource_create_blob_ioctl(struct drm_device *dev,
 		device_blob_mem = VIRTIO_GPU_BLOB_MEM_GUEST;
 
 	if (vgdev->has_virgl_3d) {
+<<<<<<< HEAD
 		if (rc_blob->blob_mem == VIRTGPU_BLOB_MEM_HOST3D) {
 			device_blob_mem = VIRTIO_GPU_BLOB_MEM_HOST3D;
 		} else if (rc_blob->blob_mem == VIRTGPU_BLOB_MEM_HOST3D_GUEST) {
@@ -622,6 +642,16 @@ static int virtio_gpu_resource_create_blob_ioctl(struct drm_device *dev,
 		if (rc_blob->blob_mem == VIRTGPU_BLOB_MEM_HOST3D)
 			device_blob_mem = VIRTIO_GPU_BLOB_MEM_HOSTSYS;
 		else if (rc_blob->blob_mem == VIRTGPU_BLOB_MEM_HOST3D_GUEST)
+=======
+		if (rc_blob->blob_mem == VIRTGPU_BLOB_MEM_HOST)
+			device_blob_mem = VIRTIO_GPU_BLOB_MEM_HOST3D;
+		else if (rc_blob->blob_mem == VIRTGPU_BLOB_MEM_HOST_GUEST)
+			device_blob_mem = VIRTIO_GPU_BLOB_MEM_HOST3D_GUEST;
+	} else {
+		if (rc_blob->blob_mem == VIRTGPU_BLOB_MEM_HOST)
+			device_blob_mem = VIRTIO_GPU_BLOB_MEM_HOSTSYS;
+		else if (rc_blob->blob_mem == VIRTGPU_BLOB_MEM_HOST_GUEST)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			device_blob_mem = VIRTIO_GPU_BLOB_MEM_HOSTSYS_GUEST;
 	}
 
@@ -663,6 +693,7 @@ static int virtio_gpu_resource_create_blob_ioctl(struct drm_device *dev,
                 nents = obj->pages->nents;
         }
 
+<<<<<<< HEAD
 	/* gets freed when the ring has consumed it */
 	ents = kzalloc(nents * sizeof(struct virtio_gpu_mem_entry), GFP_KERNEL);
 	if (!ents) {
@@ -670,6 +701,9 @@ static int virtio_gpu_resource_create_blob_ioctl(struct drm_device *dev,
 		goto err_free_obj;
 	}
 
+=======
+	ents = kzalloc(nents * sizeof(struct virtio_gpu_mem_entry), GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (has_guest) {
 		for_each_sg(obj->pages->sgl, sg, nents, si) {
 			ents[si].addr = cpu_to_le64(use_dma_api
@@ -683,7 +717,11 @@ static int virtio_gpu_resource_create_blob_ioctl(struct drm_device *dev,
 	fence = virtio_gpu_fence_alloc(vgdev);
 	if (!fence) {
 		ret = -ENOMEM;
+<<<<<<< HEAD
 		goto err_free_ents;
+=======
+		goto err_free_obj;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	virtio_gpu_cmd_resource_create_blob(vgdev, obj, vfpriv->ctx_id,
@@ -716,8 +754,11 @@ static int virtio_gpu_resource_create_blob_ioctl(struct drm_device *dev,
 
 err_fence_put:
 	dma_fence_put(&fence->f);
+<<<<<<< HEAD
 err_free_ents:
 	kfree(ents);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 err_free_obj:
 	drm_gem_object_release(&obj->gem_base);
 	return ret;

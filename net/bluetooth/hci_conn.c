@@ -1163,6 +1163,7 @@ int hci_conn_check_link_mode(struct hci_conn *conn)
 			return 0;
 	}
 
+<<<<<<< HEAD
 	 /* AES encryption is required for Level 4:
 	  *
 	  * BLUETOOTH CORE SPECIFICATION Version 5.2 | Vol 3, Part C
@@ -1180,6 +1181,8 @@ int hci_conn_check_link_mode(struct hci_conn *conn)
 		return 0;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (hci_conn_ssp_enabled(conn) &&
 	    !test_bit(HCI_CONN_ENCRYPT, &conn->flags))
 		return 0;

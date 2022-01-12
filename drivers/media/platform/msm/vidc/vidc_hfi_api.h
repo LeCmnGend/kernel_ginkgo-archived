@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2012-2019, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2012-2020, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -663,8 +667,13 @@ struct hal_heic_grid_enable {
 
 enum hal_flip {
 	HAL_FLIP_NONE,
+<<<<<<< HEAD
 	HAL_FLIP_HORIZONTAL,
 	HAL_FLIP_VERTICAL,
+=======
+	HAL_FLIP_VERTICAL,
+	HAL_FLIP_HORIZONTAL,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	HAL_FLIP_BOTH,
 	HAL_UNUSED_FLIP = 0x10000000,
 };

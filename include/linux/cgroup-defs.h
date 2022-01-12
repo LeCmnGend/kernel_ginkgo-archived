@@ -64,12 +64,15 @@ enum {
 	 * specified at mount time and thus is implemented here.
 	 */
 	CGRP_CPUSET_CLONE_CHILDREN,
+<<<<<<< HEAD
 
 	/* Control group has to be frozen. */
 	CGRP_FREEZE,
 
 	/* Cgroup is frozen. */
 	CGRP_FROZEN,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 /* cgroup_root->flags */
@@ -158,8 +161,13 @@ struct cgroup_subsys_state {
 	atomic_t online_cnt;
 
 	/* percpu_ref killing and RCU release */
+<<<<<<< HEAD
 	struct work_struct destroy_work;
 	struct rcu_work destroy_rwork;
+=======
+	struct rcu_head rcu_head;
+	struct work_struct destroy_work;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*
 	 * PI: the parent css.	Placed here for cache proximity to following
@@ -264,6 +272,7 @@ struct css_set {
 	struct rcu_head rcu_head;
 };
 
+<<<<<<< HEAD
 struct cgroup_freezer_state {
 	/* Should the cgroup and its descendants be frozen. */
 	bool freeze;
@@ -283,6 +292,8 @@ struct cgroup_freezer_state {
 	int nr_frozen_tasks;
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct cgroup {
 	/* self css with NULL ->ss, points back to this cgroup */
 	struct cgroup_subsys_state self;
@@ -407,9 +418,12 @@ struct cgroup {
 	/* used to store eBPF programs */
 	struct cgroup_bpf bpf;
 
+<<<<<<< HEAD
 	/* Used to store internal freezer state */
 	struct cgroup_freezer_state freezer;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* ids of the ancestors at each level including self */
 	int ancestor_ids[];
 };
@@ -547,7 +561,11 @@ struct cftype {
 
 /*
  * Control Group subsystem type.
+<<<<<<< HEAD
  * See Documentation/cgroup-v1/cgroups.txt for details
+=======
+ * See Documentation/cgroups/cgroups.txt for details
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 struct cgroup_subsys {
 	struct cgroup_subsys_state *(*css_alloc)(struct cgroup_subsys_state *parent_css);

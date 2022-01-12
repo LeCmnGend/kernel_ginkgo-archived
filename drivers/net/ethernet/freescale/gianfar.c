@@ -485,11 +485,15 @@ static struct net_device_stats *gfar_get_stats(struct net_device *dev)
 
 static int gfar_set_mac_addr(struct net_device *dev, void *p)
 {
+<<<<<<< HEAD
 	int ret;
 
 	ret = eth_mac_addr(dev, p);
 	if (ret)
 		return ret;
+=======
+	eth_mac_addr(dev, p);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	gfar_set_mac_for_addr(dev, 0, dev->dev_addr);
 
@@ -848,10 +852,15 @@ static int gfar_of_init(struct platform_device *ofdev, struct net_device **pdev)
 				continue;
 
 			err = gfar_parse_group(child, priv, model);
+<<<<<<< HEAD
 			if (err) {
 				of_node_put(child);
 				goto err_grp_init;
 			}
+=======
+			if (err)
+				goto err_grp_init;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 	} else { /* SQ_SG_MODE */
 		err = gfar_parse_group(np, priv, model);
@@ -1392,7 +1401,11 @@ static int gfar_probe(struct platform_device *ofdev)
 
 	if (dev->features & NETIF_F_IP_CSUM ||
 	    priv->device_flags & FSL_GIANFAR_DEV_HAS_TIMER)
+<<<<<<< HEAD
 		dev->needed_headroom = GMAC_FCB_LEN + GMAC_TXPAL_LEN;
+=======
+		dev->needed_headroom = GMAC_FCB_LEN;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Initializing some of the rx/tx queue level parameters */
 	for (i = 0; i < priv->num_tx_queues; i++) {
@@ -2374,12 +2387,28 @@ static netdev_tx_t gfar_start_xmit(struct sk_buff *skb, struct net_device *dev)
 		fcb_len = GMAC_FCB_LEN + GMAC_TXPAL_LEN;
 
 	/* make space for additional header when fcb is needed */
+<<<<<<< HEAD
 	if (fcb_len) {
 		if (unlikely(skb_cow_head(skb, fcb_len))) {
+=======
+	if (fcb_len && unlikely(skb_headroom(skb) < fcb_len)) {
+		struct sk_buff *skb_new;
+
+		skb_new = skb_realloc_headroom(skb, fcb_len);
+		if (!skb_new) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			dev->stats.tx_errors++;
 			dev_kfree_skb_any(skb);
 			return NETDEV_TX_OK;
 		}
+<<<<<<< HEAD
+=======
+
+		if (skb->sk)
+			skb_set_owner_w(skb_new, skb->sk);
+		dev_consume_skb_any(skb);
+		skb = skb_new;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	/* total number of fragments in the SKB */

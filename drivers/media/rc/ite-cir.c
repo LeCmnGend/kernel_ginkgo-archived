@@ -285,6 +285,7 @@ static irqreturn_t ite_cir_isr(int irq, void *data)
 	/* read the interrupt flags */
 	iflags = dev->params.get_irq_causes(dev);
 
+<<<<<<< HEAD
 	/* Check for RX overflow */
 	if (iflags & ITE_IRQ_RX_FIFO_OVERRUN) {
 		dev_warn(&dev->rdev->dev, "receive overflow\n");
@@ -293,6 +294,10 @@ static irqreturn_t ite_cir_isr(int irq, void *data)
 
 	/* check for the receive interrupt */
 	if (iflags & ITE_IRQ_RX_FIFO) {
+=======
+	/* check for the receive interrupt */
+	if (iflags & (ITE_IRQ_RX_FIFO | ITE_IRQ_RX_FIFO_OVERRUN)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* read the FIFO bytes */
 		rx_bytes =
 			dev->params.get_rx_bytes(dev, rx_buf,

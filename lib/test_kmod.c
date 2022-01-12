@@ -747,7 +747,11 @@ static int trigger_config_run_type(struct kmod_test_device *test_dev,
 		break;
 	case TEST_KMOD_FS_TYPE:
 		kfree_const(config->test_fs);
+<<<<<<< HEAD
 		config->test_fs = NULL;
+=======
+		config->test_driver = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		copied = config_copy_test_fs(config, test_str,
 					     strlen(test_str));
 		break;

@@ -136,7 +136,10 @@ static int watch_otherend(struct xenbus_device *dev)
 		container_of(dev->dev.bus, struct xen_bus_type, bus);
 
 	return xenbus_watch_pathfmt(dev, &dev->otherend_watch,
+<<<<<<< HEAD
 				    bus->otherend_will_handle,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				    bus->otherend_changed,
 				    "%s/%s", dev->otherend, "state");
 }
@@ -674,6 +677,7 @@ void unregister_xenstore_notifier(struct notifier_block *nb)
 }
 EXPORT_SYMBOL_GPL(unregister_xenstore_notifier);
 
+<<<<<<< HEAD
 static void xenbus_probe(void)
 {
 	xenstored_ready = 1;
@@ -774,6 +778,30 @@ int xen_set_callback_via(uint64_t via)
 	return ret;
 }
 EXPORT_SYMBOL_GPL(xen_set_callback_via);
+=======
+void xenbus_probe(struct work_struct *unused)
+{
+	xenstored_ready = 1;
+
+	/* Notify others that xenstore is up */
+	blocking_notifier_call_chain(&xenstore_chain, 0, NULL);
+}
+EXPORT_SYMBOL_GPL(xenbus_probe);
+
+static int __init xenbus_probe_initcall(void)
+{
+	if (!xen_domain())
+		return -ENODEV;
+
+	if (xen_initial_domain() || xen_hvm_domain())
+		return 0;
+
+	xenbus_probe(NULL);
+	return 0;
+}
+
+device_initcall(xenbus_probe_initcall);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* Set up event channel for xenstored which is run as a local process
  * (this is normally used only in dom0)
@@ -888,6 +916,7 @@ static int __init xenbus_init(void)
 		break;
 	}
 
+<<<<<<< HEAD
 	/*
 	 * HVM domains may not have a functional callback yet. In that
 	 * case let xs_init() be called from xenbus_probe(), which will
@@ -899,6 +928,13 @@ static int __init xenbus_init(void)
 			pr_warn("Error initializing xenstore comms: %i\n", err);
 			goto out_error;
 		}
+=======
+	/* Initialize the interface to xenstore. */
+	err = xs_init();
+	if (err) {
+		pr_warn("Error initializing xenstore comms: %i\n", err);
+		goto out_error;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	if ((xen_store_domain_type != XS_LOCAL) &&

@@ -78,12 +78,16 @@ static int uvc_mc_init_entity(struct uvc_video_chain *chain,
 	int ret;
 
 	if (UVC_ENTITY_TYPE(entity) != UVC_TT_STREAMING) {
+<<<<<<< HEAD
 		u32 function;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		v4l2_subdev_init(&entity->subdev, &uvc_subdev_ops);
 		strlcpy(entity->subdev.name, entity->name,
 			sizeof(entity->subdev.name));
 
+<<<<<<< HEAD
 		switch (UVC_ENTITY_TYPE(entity)) {
 		case UVC_VC_SELECTOR_UNIT:
 			function = MEDIA_ENT_F_VID_MUX;
@@ -117,6 +121,8 @@ static int uvc_mc_init_entity(struct uvc_video_chain *chain,
 
 		entity->subdev.entity.function = function;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = media_entity_pads_init(&entity->subdev.entity,
 					entity->num_pads, entity->pads);
 

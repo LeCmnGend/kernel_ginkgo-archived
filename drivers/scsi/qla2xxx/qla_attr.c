@@ -1914,8 +1914,11 @@ qla2x00_reset_host_stats(struct Scsi_Host *shost)
 	vha->qla_stats.jiffies_at_last_reset = get_jiffies_64();
 
 	if (IS_FWI2_CAPABLE(ha)) {
+<<<<<<< HEAD
 		int rval;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		stats = dma_alloc_coherent(&ha->pdev->dev,
 		    sizeof(*stats), &stats_dma, GFP_KERNEL);
 		if (!stats) {
@@ -1925,11 +1928,15 @@ qla2x00_reset_host_stats(struct Scsi_Host *shost)
 		}
 
 		/* reset firmware statistics */
+<<<<<<< HEAD
 		rval = qla24xx_get_isp_stats(base_vha, stats, stats_dma, BIT_0);
 		if (rval != QLA_SUCCESS)
 			ql_log(ql_log_warn, vha, 0x70de,
 			       "Resetting ISP statistics failed: rval = %d\n",
 			       rval);
+=======
+		qla24xx_get_isp_stats(base_vha, stats, stats_dma, BIT_0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		dma_free_coherent(&ha->pdev->dev, sizeof(*stats),
 		    stats, stats_dma);

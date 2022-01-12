@@ -59,7 +59,11 @@ static void __init setup_zero_pages(void)
 	order = 7;
 
 	/* Limit number of empty zero pages for small memory sizes */
+<<<<<<< HEAD
 	while (order > 2 && (totalram_pages() >> 10) < (1UL << order))
+=======
+	while (order > 2 && (totalram_pages >> 10) < (1UL << order))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		order--;
 
 	empty_zero_page = __get_free_pages(GFP_KERNEL | __GFP_ZERO, order);

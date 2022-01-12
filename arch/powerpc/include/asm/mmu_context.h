@@ -101,7 +101,11 @@ static inline void switch_mm(struct mm_struct *prev, struct mm_struct *next,
  */
 static inline void activate_mm(struct mm_struct *prev, struct mm_struct *next)
 {
+<<<<<<< HEAD
 	switch_mm_irqs_off(prev, next, current);
+=======
+	switch_mm(prev, next, current);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /* We don't currently use enter_lazy_tlb() for anything */
@@ -125,6 +129,10 @@ static inline void arch_exit_mmap(struct mm_struct *mm)
 }
 
 static inline void arch_unmap(struct mm_struct *mm,
+<<<<<<< HEAD
+=======
+			      struct vm_area_struct *vma,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			      unsigned long start, unsigned long end)
 {
 	if (start <= mm->context.vdso_base && mm->context.vdso_base < end)

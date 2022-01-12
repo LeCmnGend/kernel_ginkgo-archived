@@ -295,6 +295,7 @@ static void mrp_attr_destroy(struct mrp_applicant *app, struct mrp_attr *attr)
 	kfree(attr);
 }
 
+<<<<<<< HEAD
 static void mrp_attr_destroy_all(struct mrp_applicant *app)
 {
 	struct rb_node *node, *next;
@@ -308,6 +309,8 @@ static void mrp_attr_destroy_all(struct mrp_applicant *app)
 	}
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int mrp_pdu_init(struct mrp_applicant *app)
 {
 	struct sk_buff *skb;
@@ -912,7 +915,10 @@ void mrp_uninit_applicant(struct net_device *dev, struct mrp_application *appl)
 
 	spin_lock_bh(&app->lock);
 	mrp_mad_event(app, MRP_EVENT_TX);
+<<<<<<< HEAD
 	mrp_attr_destroy_all(app);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mrp_pdu_queue(app);
 	spin_unlock_bh(&app->lock);
 

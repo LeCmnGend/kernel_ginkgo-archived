@@ -32,6 +32,7 @@
  *	x0 - bytes not copied
  */
 	.macro ldrb1 ptr, regB, val
+<<<<<<< HEAD
 	uao_user_alternative 9997f, ldrb, ldtrb, \ptr, \regB, \val
 	.endm
 
@@ -65,11 +66,48 @@
 
 end	.req	x5
 srcin	.req	x15
+=======
+	uao_user_alternative 9998f, ldrb, ldtrb, \ptr, \regB, \val
+	.endm
+
+	.macro strb1 ptr, regB, val
+	uao_user_alternative 9998f, strb, sttrb, \ptr, \regB, \val
+	.endm
+
+	.macro ldrh1 ptr, regB, val
+	uao_user_alternative 9998f, ldrh, ldtrh, \ptr, \regB, \val
+	.endm
+
+	.macro strh1 ptr, regB, val
+	uao_user_alternative 9998f, strh, sttrh, \ptr, \regB, \val
+	.endm
+
+	.macro ldr1 ptr, regB, val
+	uao_user_alternative 9998f, ldr, ldtr, \ptr, \regB, \val
+	.endm
+
+	.macro str1 ptr, regB, val
+	uao_user_alternative 9998f, str, sttr, \ptr, \regB, \val
+	.endm
+
+	.macro ldp1 ptr, regB, regC, val
+	uao_ldp 9998f, \ptr, \regB, \regC, \val
+	.endm
+
+	.macro stp1 ptr, regB, regC, val
+	uao_stp 9998f, \ptr, \regB, \regC, \val
+	.endm
+
+end	.req	x5
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 ENTRY(__arch_copy_in_user)
 	uaccess_enable_not_uao x3, x4, x5
 	add	end, x0, x2
+<<<<<<< HEAD
 	mov	srcin, x1
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include "copy_template.S"
 	uaccess_disable_not_uao x3, x4
 	mov	x0, #0
@@ -78,12 +116,15 @@ ENDPROC(__arch_copy_in_user)
 
 	.section .fixup,"ax"
 	.align	2
+<<<<<<< HEAD
 9997:	cmp	dst, dstin
 	b.ne	9998f
 	// Before being absolutely sure we couldn't copy anything, try harder
 USER(9998f, ldtrb tmp1w, [srcin])
 USER(9998f, sttrb tmp1w, [dst])
 	add	dst, dst, #1
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 9998:	sub	x0, end, dst			// bytes not copied
 	uaccess_disable_not_uao x3, x4
 	ret

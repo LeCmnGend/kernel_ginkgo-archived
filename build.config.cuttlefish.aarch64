@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 . ${ROOT_DIR}/${KERNEL_DIR}/build.config.common
 . ${ROOT_DIR}/${KERNEL_DIR}/build.config.aarch64
+=======
+. ${ROOT_DIR}/common/build.config.common
+. ${ROOT_DIR}/common/build.config.aarch64
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 LZ4_RAMDISK=1
 DEFCONFIG=cuttlefish_defconfig

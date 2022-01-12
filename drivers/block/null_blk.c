@@ -16,8 +16,15 @@
 #include <linux/configfs.h>
 #include <linux/badblocks.h>
 
+<<<<<<< HEAD
 #define PAGE_SECTORS_SHIFT	(PAGE_SHIFT - SECTOR_SHIFT)
 #define PAGE_SECTORS		(1 << PAGE_SECTORS_SHIFT)
+=======
+#define SECTOR_SHIFT		9
+#define PAGE_SECTORS_SHIFT	(PAGE_SHIFT - SECTOR_SHIFT)
+#define PAGE_SECTORS		(1 << PAGE_SECTORS_SHIFT)
+#define SECTOR_SIZE		(1 << SECTOR_SHIFT)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define SECTOR_MASK		(PAGE_SECTORS - 1)
 
 #define FREE_BATCH		16
@@ -1133,7 +1140,11 @@ static int null_handle_rq(struct nullb_cmd *cmd)
 		len = bvec.bv_len;
 		err = null_transfer(nullb, bvec.bv_page, len, bvec.bv_offset,
 				     op_is_write(req_op(rq)), sector,
+<<<<<<< HEAD
 				     rq->cmd_flags & REQ_FUA);
+=======
+				     req_op(rq) & REQ_FUA);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (err) {
 			spin_unlock_irq(&nullb->lock);
 			return err;

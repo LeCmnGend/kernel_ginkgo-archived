@@ -1834,6 +1834,7 @@ static inline int xfrm_replay_state_esn_len(struct xfrm_replay_state_esn *replay
 static inline int xfrm_replay_clone(struct xfrm_state *x,
 				     struct xfrm_state *orig)
 {
+<<<<<<< HEAD
 
 	x->replay_esn = kmemdup(orig->replay_esn,
 				xfrm_replay_state_esn_len(orig->replay_esn),
@@ -1845,6 +1846,23 @@ static inline int xfrm_replay_clone(struct xfrm_state *x,
 				 GFP_KERNEL);
 	if (!x->preplay_esn)
 		return -ENOMEM;
+=======
+	x->replay_esn = kzalloc(xfrm_replay_state_esn_len(orig->replay_esn),
+				GFP_KERNEL);
+	if (!x->replay_esn)
+		return -ENOMEM;
+
+	x->replay_esn->bmp_len = orig->replay_esn->bmp_len;
+	x->replay_esn->replay_window = orig->replay_esn->replay_window;
+
+	x->preplay_esn = kmemdup(x->replay_esn,
+				 xfrm_replay_state_esn_len(x->replay_esn),
+				 GFP_KERNEL);
+	if (!x->preplay_esn) {
+		kfree(x->replay_esn);
+		return -ENOMEM;
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
 }
@@ -2022,6 +2040,7 @@ static inline int xfrm_tunnel_check(struct sk_buff *skb, struct xfrm_state *x,
 
 	return 0;
 }
+<<<<<<< HEAD
 
 extern const int xfrm_msg_min[XFRM_NR_MSGTYPES];
 extern const struct nla_policy xfrma_policy[XFRMA_MAX+1];
@@ -2056,4 +2075,6 @@ static inline void xfrm_put_translator(struct xfrm_translator *xtr)
 }
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif	/* _NET_XFRM_H */

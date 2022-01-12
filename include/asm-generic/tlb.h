@@ -15,6 +15,7 @@
 #ifndef _ASM_GENERIC__TLB_H
 #define _ASM_GENERIC__TLB_H
 
+<<<<<<< HEAD
 #include <linux/mmu_notifier.h>
 #include <linux/swap.h>
 #include <asm/pgalloc.h>
@@ -172,6 +173,43 @@ struct mmu_table_batch {
 #ifdef CONFIG_MMU_GATHER_RCU_TABLE_FREE
 	struct rcu_head		rcu;
 #endif
+=======
+#include <linux/swap.h>
+#include <asm/pgalloc.h>
+#include <asm/tlbflush.h>
+
+#ifdef CONFIG_HAVE_RCU_TABLE_FREE
+/*
+ * Semi RCU freeing of the page directories.
+ *
+ * This is needed by some architectures to implement software pagetable walkers.
+ *
+ * gup_fast() and other software pagetable walkers do a lockless page-table
+ * walk and therefore needs some synchronization with the freeing of the page
+ * directories. The chosen means to accomplish that is by disabling IRQs over
+ * the walk.
+ *
+ * Architectures that use IPIs to flush TLBs will then automagically DTRT,
+ * since we unlink the page, flush TLBs, free the page. Since the disabling of
+ * IRQs delays the completion of the TLB flush we can never observe an already
+ * freed page.
+ *
+ * Architectures that do not have this (PPC) need to delay the freeing by some
+ * other means, this is that means.
+ *
+ * What we do is batch the freed directory pages (tables) and RCU free them.
+ * We use the sched RCU variant, as that guarantees that IRQ/preempt disabling
+ * holds off grace periods.
+ *
+ * However, in order to batch these pages we need to allocate storage, this
+ * allocation is deep inside the MM code and can thus easily fail on memory
+ * pressure. To guarantee progress we fall back to single table freeing, see
+ * the implementation of tlb_remove_table_one().
+ *
+ */
+struct mmu_table_batch {
+	struct rcu_head		rcu;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned int		nr;
 	void			*tables[0];
 };
@@ -179,6 +217,7 @@ struct mmu_table_batch {
 #define MAX_TABLE_BATCH		\
 	((PAGE_SIZE - sizeof(struct mmu_table_batch)) / sizeof(void *))
 
+<<<<<<< HEAD
 extern void tlb_remove_table(struct mmu_gather *tlb, void *table);
 
 #else /* !CONFIG_MMU_GATHER_HAVE_TABLE_FREE */
@@ -210,6 +249,13 @@ extern void tlb_remove_table(struct mmu_gather *tlb, void *table);
 
 
 #ifndef CONFIG_MMU_GATHER_NO_GATHER
+=======
+extern void tlb_table_flush(struct mmu_gather *tlb);
+extern void tlb_remove_table(struct mmu_gather *tlb, void *table);
+
+#endif
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * If we can't allocate a page to make a big batch of page pointers
  * to work on, then just handle a few from the on-stack structure.
@@ -234,16 +280,21 @@ struct mmu_gather_batch {
  */
 #define MAX_GATHER_BATCH_COUNT	(10000UL/MAX_GATHER_BATCH)
 
+<<<<<<< HEAD
 extern bool __tlb_remove_page_size(struct mmu_gather *tlb, struct page *page,
 				   int page_size);
 #endif
 
 /*
  * struct mmu_gather is an opaque type used by the mm code for passing around
+=======
+/* struct mmu_gather is an opaque type used by the mm code for passing around
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * any data needed by arch specific code for tlb_remove_page.
  */
 struct mmu_gather {
 	struct mm_struct	*mm;
+<<<<<<< HEAD
 
 #ifdef CONFIG_MMU_GATHER_TABLE_FREE
 	struct mmu_table_batch	*batch;
@@ -296,6 +347,36 @@ struct mmu_gather {
 };
 
 void tlb_flush_mmu(struct mmu_gather *tlb);
+=======
+#ifdef CONFIG_HAVE_RCU_TABLE_FREE
+	struct mmu_table_batch	*batch;
+#endif
+	unsigned long		start;
+	unsigned long		end;
+	/* we are in the middle of an operation to clear
+	 * a full mm and can make some optimizations */
+	unsigned int		fullmm : 1,
+	/* we have performed an operation which
+	 * requires a complete flush of the tlb */
+				need_flush_all : 1;
+
+	struct mmu_gather_batch *active;
+	struct mmu_gather_batch	local;
+	struct page		*__pages[MMU_GATHER_BUNDLE];
+	unsigned int		batch_count;
+	int page_size;
+};
+
+#define HAVE_GENERIC_MMU_GATHER
+
+void arch_tlb_gather_mmu(struct mmu_gather *tlb,
+	struct mm_struct *mm, unsigned long start, unsigned long end);
+void tlb_flush_mmu(struct mmu_gather *tlb);
+void arch_tlb_finish_mmu(struct mmu_gather *tlb,
+			 unsigned long start, unsigned long end, bool force);
+extern bool __tlb_remove_page_size(struct mmu_gather *tlb, struct page *page,
+				   int page_size);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static inline void __tlb_adjust_range(struct mmu_gather *tlb,
 				      unsigned long address,
@@ -313,6 +394,7 @@ static inline void __tlb_reset_range(struct mmu_gather *tlb)
 		tlb->start = TASK_SIZE;
 		tlb->end = 0;
 	}
+<<<<<<< HEAD
 	tlb->freed_tables = 0;
 	tlb->cleared_ptes = 0;
 	tlb->cleared_pmds = 0;
@@ -419,6 +501,8 @@ static inline void tlb_flush_mmu_tlbonly(struct mmu_gather *tlb)
 	tlb_flush(tlb);
 	mmu_notifier_invalidate_range(tlb->mm, tlb->start, tlb->end);
 	__tlb_reset_range(tlb);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static inline void tlb_remove_page_size(struct mmu_gather *tlb,
@@ -442,6 +526,7 @@ static inline void tlb_remove_page(struct mmu_gather *tlb, struct page *page)
 	return tlb_remove_page_size(tlb, page, PAGE_SIZE);
 }
 
+<<<<<<< HEAD
 static inline void tlb_change_page_size(struct mmu_gather *tlb,
 						     unsigned int page_size)
 {
@@ -473,6 +558,23 @@ static inline unsigned long tlb_get_unmap_size(struct mmu_gather *tlb)
 {
 	return 1UL << tlb_get_unmap_shift(tlb);
 }
+=======
+#ifndef tlb_remove_check_page_size_change
+#define tlb_remove_check_page_size_change tlb_remove_check_page_size_change
+static inline void tlb_remove_check_page_size_change(struct mmu_gather *tlb,
+						     unsigned int page_size)
+{
+	/*
+	 * We don't care about page size change, just update
+	 * mmu_gather page size here so that debug checks
+	 * doesn't throw false warning.
+	 */
+#ifdef CONFIG_DEBUG_VM
+	tlb->page_size = page_size;
+#endif
+}
+#endif
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*
  * In the case of tlb vma handling, we can optimise these away in the
@@ -480,6 +582,7 @@ static inline unsigned long tlb_get_unmap_size(struct mmu_gather *tlb)
  * the vmas are adjusted to only cover the region to be torn down.
  */
 #ifndef tlb_start_vma
+<<<<<<< HEAD
 static inline void tlb_start_vma(struct mmu_gather *tlb, struct vm_area_struct *vma)
 {
 	if (tlb->fullmm)
@@ -504,6 +607,21 @@ static inline void tlb_end_vma(struct mmu_gather *tlb, struct vm_area_struct *vm
 	 */
 	tlb_flush_mmu_tlbonly(tlb);
 }
+=======
+#define tlb_start_vma(tlb, vma) do { } while (0)
+#endif
+
+#define __tlb_end_vma(tlb, vma)					\
+	do {							\
+		if (!tlb->fullmm && tlb->end) {			\
+			tlb_flush(tlb);				\
+			__tlb_reset_range(tlb);			\
+		}						\
+	} while (0)
+
+#ifndef tlb_end_vma
+#define tlb_end_vma	__tlb_end_vma
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 
 #ifndef __tlb_remove_tlb_entry
@@ -520,6 +638,7 @@ static inline void tlb_end_vma(struct mmu_gather *tlb, struct vm_area_struct *vm
 #define tlb_remove_tlb_entry(tlb, ptep, address)		\
 	do {							\
 		__tlb_adjust_range(tlb, address, PAGE_SIZE);	\
+<<<<<<< HEAD
 		tlb->cleared_ptes = 1;				\
 		__tlb_remove_tlb_entry(tlb, ptep, address);	\
 	} while (0)
@@ -533,6 +652,15 @@ static inline void tlb_end_vma(struct mmu_gather *tlb, struct vm_area_struct *vm
 		else if (_sz == PUD_SIZE)			\
 			tlb->cleared_puds = 1;			\
 		__tlb_remove_tlb_entry(tlb, ptep, address);	\
+=======
+		__tlb_remove_tlb_entry(tlb, ptep, address);	\
+	} while (0)
+
+#define tlb_remove_huge_tlb_entry(h, tlb, ptep, address)	     \
+	do {							     \
+		__tlb_adjust_range(tlb, address, huge_page_size(h)); \
+		__tlb_remove_tlb_entry(tlb, ptep, address);	     \
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} while (0)
 
 /**
@@ -546,7 +674,10 @@ static inline void tlb_end_vma(struct mmu_gather *tlb, struct vm_area_struct *vm
 #define tlb_remove_pmd_tlb_entry(tlb, pmdp, address)			\
 	do {								\
 		__tlb_adjust_range(tlb, address, HPAGE_PMD_SIZE);	\
+<<<<<<< HEAD
 		tlb->cleared_pmds = 1;					\
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__tlb_remove_pmd_tlb_entry(tlb, pmdp, address);		\
 	} while (0)
 
@@ -561,7 +692,10 @@ static inline void tlb_end_vma(struct mmu_gather *tlb, struct vm_area_struct *vm
 #define tlb_remove_pud_tlb_entry(tlb, pudp, address)			\
 	do {								\
 		__tlb_adjust_range(tlb, address, HPAGE_PUD_SIZE);	\
+<<<<<<< HEAD
 		tlb->cleared_puds = 1;					\
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__tlb_remove_pud_tlb_entry(tlb, pudp, address);		\
 	} while (0)
 
@@ -586,16 +720,23 @@ static inline void tlb_end_vma(struct mmu_gather *tlb, struct vm_area_struct *vm
 #define pte_free_tlb(tlb, ptep, address)			\
 	do {							\
 		__tlb_adjust_range(tlb, address, PAGE_SIZE);	\
+<<<<<<< HEAD
 		tlb->freed_tables = 1;				\
 		tlb->cleared_pmds = 1;				\
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__pte_free_tlb(tlb, ptep, address);		\
 	} while (0)
 
 #define pmd_free_tlb(tlb, pmdp, address)			\
 	do {							\
+<<<<<<< HEAD
 		__tlb_adjust_range(tlb, address, PAGE_SIZE);	\
 		tlb->freed_tables = 1;				\
 		tlb->cleared_puds = 1;				\
+=======
+		__tlb_adjust_range(tlb, address, PAGE_SIZE);		\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__pmd_free_tlb(tlb, pmdp, address);		\
 	} while (0)
 
@@ -603,8 +744,11 @@ static inline void tlb_end_vma(struct mmu_gather *tlb, struct vm_area_struct *vm
 #define pud_free_tlb(tlb, pudp, address)			\
 	do {							\
 		__tlb_adjust_range(tlb, address, PAGE_SIZE);	\
+<<<<<<< HEAD
 		tlb->freed_tables = 1;				\
 		tlb->cleared_p4ds = 1;				\
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__pud_free_tlb(tlb, pudp, address);		\
 	} while (0)
 #endif
@@ -612,16 +756,24 @@ static inline void tlb_end_vma(struct mmu_gather *tlb, struct vm_area_struct *vm
 #ifndef __ARCH_HAS_5LEVEL_HACK
 #define p4d_free_tlb(tlb, pudp, address)			\
 	do {							\
+<<<<<<< HEAD
 		__tlb_adjust_range(tlb, address, PAGE_SIZE);	\
 		tlb->freed_tables = 1;				\
+=======
+		__tlb_adjust_range(tlb, address, PAGE_SIZE);		\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__p4d_free_tlb(tlb, pudp, address);		\
 	} while (0)
 #endif
 
+<<<<<<< HEAD
 #endif /* CONFIG_MMU */
 
 #ifndef tlb_migrate_finish
 #define tlb_migrate_finish(mm) do {} while (0)
 #endif
+=======
+#define tlb_migrate_finish(mm) do {} while (0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #endif /* _ASM_GENERIC__TLB_H */

@@ -26,9 +26,12 @@ struct vmpressure {
 	struct mutex events_lock;
 
 	struct work_struct work;
+<<<<<<< HEAD
 
 	atomic_long_t users;
 	rwlock_t users_lock;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 struct mem_cgroup;
@@ -36,12 +39,17 @@ struct mem_cgroup;
 extern int vmpressure_notifier_register(struct notifier_block *nb);
 extern int vmpressure_notifier_unregister(struct notifier_block *nb);
 extern void vmpressure(gfp_t gfp, struct mem_cgroup *memcg, bool tree,
+<<<<<<< HEAD
 		       unsigned long scanned, unsigned long reclaimed,
 		       int order);
 extern void vmpressure_prio(gfp_t gfp, struct mem_cgroup *memcg, int prio,
 			    int order);
 extern bool vmpressure_inc_users(int order);
 extern void vmpressure_dec_users(void);
+=======
+		       unsigned long scanned, unsigned long reclaimed);
+extern void vmpressure_prio(gfp_t gfp, struct mem_cgroup *memcg, int prio);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #ifdef CONFIG_MEMCG
 extern void vmpressure_init(struct vmpressure *vmpr);

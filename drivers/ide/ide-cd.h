@@ -21,7 +21,15 @@
 
 /************************************************************************/
 
+<<<<<<< HEAD
 #define SECTORS_PER_FRAME	(CD_FRAMESIZE >> SECTOR_SHIFT)
+=======
+#define SECTOR_BITS 		9
+#ifndef SECTOR_SIZE
+#define SECTOR_SIZE		(1 << SECTOR_BITS)
+#endif
+#define SECTORS_PER_FRAME	(CD_FRAMESIZE >> SECTOR_BITS)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define SECTOR_BUFFER_SIZE	(CD_FRAMESIZE * 32)
 
 /* Capabilities Page size including 8 bytes of Mode Page Header */

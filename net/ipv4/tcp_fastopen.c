@@ -10,11 +10,15 @@
 #include <net/inetpeer.h>
 #include <net/tcp.h>
 
+<<<<<<< HEAD
 int sysctl_tcp_fastopen __read_mostly = TFO_CLIENT_ENABLE |
 					TFO_SERVER_ENABLE |
 					TFO_CLIENT_NO_COOKIE |
 					TFO_SERVER_COOKIE_NOT_REQD |
 					TFO_SERVER_WO_SOCKOPT1;
+=======
+int sysctl_tcp_fastopen __read_mostly = TFO_CLIENT_ENABLE;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 struct tcp_fastopen_context __rcu *tcp_fastopen_ctx;
 

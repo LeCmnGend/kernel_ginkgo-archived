@@ -15,8 +15,14 @@ generic-y += local64.h
 generic-y += mcs_spinlock.h
 generic-y += mm-arch-hooks.h
 generic-y += msi.h
+<<<<<<< HEAD
 generic-y += qrwlock.h
 generic-y += qspinlock.h
+=======
+generic-y += preempt.h
+generic-y += qrwlock.h
+generic-y += rwsem.h
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 generic-y += segment.h
 generic-y += serial.h
 generic-y += set_memory.h

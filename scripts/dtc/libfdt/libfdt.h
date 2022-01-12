@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 #ifndef LIBFDT_H
 #define LIBFDT_H
+=======
+#ifndef _LIBFDT_H
+#define _LIBFDT_H
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * libfdt - Flat Device Tree manipulation
  * Copyright (C) 2006 David Gibson, IBM Corporation.
@@ -54,7 +59,11 @@
 #include "libfdt_env.h"
 #include "fdt.h"
 
+<<<<<<< HEAD
 #define FDT_FIRST_SUPPORTED_VERSION	0x02
+=======
+#define FDT_FIRST_SUPPORTED_VERSION	0x10
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define FDT_LAST_SUPPORTED_VERSION	0x11
 
 /* Error codes: informative error codes */
@@ -225,12 +234,17 @@ int fdt_next_subnode(const void *fdt, int offset);
 #define fdt_size_dt_strings(fdt)	(fdt_get_header(fdt, size_dt_strings))
 #define fdt_size_dt_struct(fdt)		(fdt_get_header(fdt, size_dt_struct))
 
+<<<<<<< HEAD
 #define fdt_set_hdr_(name) \
+=======
+#define __fdt_set_hdr(name) \
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	static inline void fdt_set_##name(void *fdt, uint32_t val) \
 	{ \
 		struct fdt_header *fdth = (struct fdt_header *)fdt; \
 		fdth->name = cpu_to_fdt32(val); \
 	}
+<<<<<<< HEAD
 fdt_set_hdr_(magic);
 fdt_set_hdr_(totalsize);
 fdt_set_hdr_(off_dt_struct);
@@ -242,6 +256,19 @@ fdt_set_hdr_(boot_cpuid_phys);
 fdt_set_hdr_(size_dt_strings);
 fdt_set_hdr_(size_dt_struct);
 #undef fdt_set_hdr_
+=======
+__fdt_set_hdr(magic);
+__fdt_set_hdr(totalsize);
+__fdt_set_hdr(off_dt_struct);
+__fdt_set_hdr(off_dt_strings);
+__fdt_set_hdr(off_mem_rsvmap);
+__fdt_set_hdr(version);
+__fdt_set_hdr(last_comp_version);
+__fdt_set_hdr(boot_cpuid_phys);
+__fdt_set_hdr(size_dt_strings);
+__fdt_set_hdr(size_dt_struct);
+#undef __fdt_set_hdr
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
  * fdt_check_header - sanity check a device tree or possible device tree
@@ -527,9 +554,12 @@ int fdt_next_property_offset(const void *fdt, int offset);
  * offset.  If lenp is non-NULL, the length of the property value is
  * also returned, in the integer pointed to by lenp.
  *
+<<<<<<< HEAD
  * Note that this code only works on device tree versions >= 16. fdt_getprop()
  * works on all versions.
  *
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * returns:
  *	pointer to the structure representing the property
  *		if lenp is non-NULL, *lenp contains the length of the property
@@ -1317,6 +1347,7 @@ static inline int fdt_property_cell(void *fdt, const char *name, uint32_t val)
 {
 	return fdt_property_u32(fdt, name, val);
 }
+<<<<<<< HEAD
 
 /**
  * fdt_property_placeholder - add a new property and return a ptr to its value
@@ -1333,6 +1364,8 @@ static inline int fdt_property_cell(void *fdt, const char *name, uint32_t val)
  */
 int fdt_property_placeholder(void *fdt, const char *name, int len, void **valp);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define fdt_property_string(fdt, name, str) \
 	fdt_property(fdt, name, str, strlen(str)+1)
 int fdt_end_node(void *fdt);
@@ -1452,6 +1485,7 @@ int fdt_setprop(void *fdt, int nodeoffset, const char *name,
 		const void *val, int len);
 
 /**
+<<<<<<< HEAD
  * fdt_setprop_placeholder - allocate space for a property
  * @fdt: pointer to the device tree blob
  * @nodeoffset: offset of the node whose property to change
@@ -1483,6 +1517,8 @@ int fdt_setprop_placeholder(void *fdt, int nodeoffset, const char *name,
 			    int len, void **prop_data);
 
 /**
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * fdt_setprop_u32 - set a property to a 32-bit integer
  * @fdt: pointer to the device tree blob
  * @nodeoffset: offset of the node whose property to change
@@ -1899,4 +1935,8 @@ int fdt_overlay_apply(void *fdt, void *fdto);
 
 const char *fdt_strerror(int errval);
 
+<<<<<<< HEAD
 #endif /* LIBFDT_H */
+=======
+#endif /* _LIBFDT_H */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

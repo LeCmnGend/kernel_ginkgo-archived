@@ -118,7 +118,10 @@ static const struct i2c_device_id da9052_i2c_id[] = {
 	{"da9053-bc", DA9053_BC},
 	{}
 };
+<<<<<<< HEAD
 MODULE_DEVICE_TABLE(i2c, da9052_i2c_id);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #ifdef CONFIG_OF
 static const struct of_device_id dialog_dt_ids[] = {

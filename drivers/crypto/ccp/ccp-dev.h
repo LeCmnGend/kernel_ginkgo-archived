@@ -471,7 +471,10 @@ struct ccp_sg_workarea {
 	unsigned int sg_used;
 
 	struct scatterlist *dma_sg;
+<<<<<<< HEAD
 	struct scatterlist *dma_sg_head;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct device *dma_dev;
 	unsigned int dma_count;
 	enum dma_data_direction dma_dir;

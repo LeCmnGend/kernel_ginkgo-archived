@@ -1242,10 +1242,15 @@ int bnx2x_iov_init_one(struct bnx2x *bp, int int_mode_param,
 		goto failed;
 
 	/* SR-IOV capability was enabled but there are no VFs*/
+<<<<<<< HEAD
 	if (iov->total == 0) {
 		err = -EINVAL;
 		goto failed;
 	}
+=======
+	if (iov->total == 0)
+		goto failed;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	iov->nr_virtfn = min_t(u16, iov->total, num_vfs_param);
 

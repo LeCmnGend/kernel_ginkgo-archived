@@ -57,10 +57,13 @@ int fetch_kernel_version(unsigned int *puint,
 
 const char *perf_tip(const char *dirpath);
 
+<<<<<<< HEAD
 #ifndef HAVE_GET_CURRENT_DIR_NAME
 char *get_current_dir_name(void);
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifndef HAVE_SCHED_GETCPU_SUPPORT
 int sched_getcpu(void);
 #endif

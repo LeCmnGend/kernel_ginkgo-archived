@@ -257,7 +257,11 @@ tcf_chain_filter_chain_ptr_set(struct tcf_chain *chain,
 }
 
 int tcf_block_get(struct tcf_block **p_block,
+<<<<<<< HEAD
 		  struct tcf_proto __rcu **p_filter_chain, struct Qdisc *q)
+=======
+		  struct tcf_proto __rcu **p_filter_chain)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct tcf_block *block = kzalloc(sizeof(*block), GFP_KERNEL);
 	struct tcf_chain *chain;
@@ -273,7 +277,10 @@ int tcf_block_get(struct tcf_block **p_block,
 		goto err_chain_create;
 	}
 	tcf_chain_filter_chain_ptr_set(chain, p_filter_chain);
+<<<<<<< HEAD
 	block->q = q;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	*p_block = block;
 	return 0;
 

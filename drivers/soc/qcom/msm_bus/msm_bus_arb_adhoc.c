@@ -25,8 +25,11 @@
 #define NUM_LNODES	3
 #define MAX_STR_CL	50
 
+<<<<<<< HEAD
 #define DEBUG_REC_TRANSACTION 0
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct bus_search_type {
 	struct list_head link;
 	struct list_head node_list;
@@ -1265,8 +1268,12 @@ static int update_bw_adhoc(struct msm_bus_client_handle *cl, u64 ab, u64 ib)
 	if (!strcmp(test_cl, cl->name))
 		log_transaction = true;
 
+<<<<<<< HEAD
 	if (DEBUG_REC_TRANSACTION)
 		msm_bus_dbg_rec_transaction(cl, ab, ib);
+=======
+	msm_bus_dbg_rec_transaction(cl, ab, ib);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if ((cl->cur_act_ib == ib) && (cl->cur_act_ab == ab)) {
 		MSM_BUS_DBG("%s:no change in request", cl->name);
@@ -1327,9 +1334,13 @@ static int update_bw_context(struct msm_bus_client_handle *cl, u64 act_ab,
 
 	if (!slp_ab && !slp_ib)
 		cl->active_only = true;
+<<<<<<< HEAD
 	if (DEBUG_REC_TRANSACTION)
 		msm_bus_dbg_rec_transaction(cl, cl->cur_act_ab,
 					    cl->cur_dual_ib);
+=======
+	msm_bus_dbg_rec_transaction(cl, cl->cur_act_ab, cl->cur_dual_ib);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = update_path(cl->mas_dev, cl->slv, act_ib, act_ab, slp_ib,
 				slp_ab, cl->cur_act_ab, cl->cur_act_ab,
 				cl->first_hop, cl->active_only);

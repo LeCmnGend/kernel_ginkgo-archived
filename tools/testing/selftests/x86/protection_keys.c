@@ -613,6 +613,10 @@ int alloc_random_pkey(void)
 	int nr_alloced = 0;
 	int random_index;
 	memset(alloced_pkeys, 0, sizeof(alloced_pkeys));
+<<<<<<< HEAD
+=======
+	srand((unsigned int)time(NULL));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* allocate every possible key and make a note of which ones we got */
 	max_nr_pkey_allocs = NR_PKEYS;
@@ -1478,8 +1482,11 @@ int main(void)
 {
 	int nr_iterations = 22;
 
+<<<<<<< HEAD
 	srand((unsigned int)time(NULL));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	setup_handlers();
 
 	printf("has pku: %d\n", cpu_has_pku());

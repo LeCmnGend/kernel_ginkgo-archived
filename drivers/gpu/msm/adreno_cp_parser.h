@@ -134,7 +134,19 @@ static inline void adreno_ib_init_ib_obj(uint64_t gpuaddr,
 static inline int adreno_cp_parser_getreg(struct adreno_device *adreno_dev,
 					enum adreno_cp_addr_regs reg_enum)
 {
+<<<<<<< HEAD
 	return -EEXIST;
+=======
+	if (reg_enum == ADRENO_CP_ADDR_MAX)
+		return -EEXIST;
+
+	if (adreno_is_a3xx(adreno_dev))
+		return a3xx_cp_addr_regs[reg_enum];
+	else if (adreno_is_a4xx(adreno_dev))
+		return a4xx_cp_addr_regs[reg_enum];
+	else
+		return -EEXIST;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /*
@@ -152,6 +164,22 @@ static inline int adreno_cp_parser_regindex(struct adreno_device *adreno_dev,
 				enum adreno_cp_addr_regs start,
 				enum adreno_cp_addr_regs end)
 {
+<<<<<<< HEAD
+=======
+	int i;
+	const unsigned int *regs;
+
+	if (adreno_is_a4xx(adreno_dev))
+		regs = a4xx_cp_addr_regs;
+	else if (adreno_is_a3xx(adreno_dev))
+		regs = a3xx_cp_addr_regs;
+	else
+		return -EEXIST;
+
+	for (i = start; i <= end && i < ADRENO_CP_ADDR_MAX; i++)
+		if (regs[i] == offset)
+			return i;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return -EEXIST;
 }
 

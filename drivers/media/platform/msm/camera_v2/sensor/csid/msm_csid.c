@@ -75,7 +75,11 @@
 #define FALSE  0
 
 #define MAX_LANE_COUNT 4
+<<<<<<< HEAD
 #define CSID_TIMEOUT msecs_to_jiffies(800)
+=======
+#define CSID_TIMEOUT msecs_to_jiffies(100)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #undef CDBG
 #define CDBG(fmt, args...) pr_debug(fmt, ##args)

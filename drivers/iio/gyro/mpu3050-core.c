@@ -270,6 +270,7 @@ static int mpu3050_read_raw(struct iio_dev *indio_dev,
 	case IIO_CHAN_INFO_OFFSET:
 		switch (chan->type) {
 		case IIO_TEMP:
+<<<<<<< HEAD
 			/*
 			 * The temperature scaling is (x+23000)/280 Celsius
 			 * for the "best fit straight line" temperature range
@@ -280,6 +281,9 @@ static int mpu3050_read_raw(struct iio_dev *indio_dev,
 			 * Temperature value itself represents temperature of
 			 * the sensor die.
 			 */
+=======
+			/* The temperature scaling is (x+23000)/280 Celsius */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			*val = 23000;
 			return IIO_VAL_INT;
 		default:
@@ -336,7 +340,11 @@ static int mpu3050_read_raw(struct iio_dev *indio_dev,
 				goto out_read_raw_unlock;
 			}
 
+<<<<<<< HEAD
 			*val = (s16)be16_to_cpu(raw_val);
+=======
+			*val = be16_to_cpu(raw_val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			ret = IIO_VAL_INT;
 
 			goto out_read_raw_unlock;
@@ -558,8 +566,11 @@ static irqreturn_t mpu3050_trigger_handler(int irq, void *p)
 					       MPU3050_FIFO_R,
 					       &fifo_values[offset],
 					       toread);
+<<<<<<< HEAD
 			if (ret)
 				goto out_trigger_unlock;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 			dev_dbg(mpu3050->dev,
 				"%04x %04x %04x %04x %04x\n",

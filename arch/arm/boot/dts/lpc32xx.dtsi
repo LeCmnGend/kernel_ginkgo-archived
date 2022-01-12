@@ -323,6 +323,12 @@
 
 					clocks = <&xtal_32k>, <&xtal>;
 					clock-names = "xtal_32k", "xtal";
+<<<<<<< HEAD
+=======
+
+					assigned-clocks = <&clk LPC32XX_CLK_HCLK_PLL>;
+					assigned-clock-rates = <208000000>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				};
 			};
 

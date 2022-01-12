@@ -964,7 +964,11 @@ static int qmp_mbox_probe(struct platform_device *pdev)
 								mdev->name);
 
 	ret = devm_request_irq(&pdev->dev, mdev->rx_irq_line, qmp_irq_handler,
+<<<<<<< HEAD
 		IRQF_TRIGGER_RISING | IRQF_SHARED,
+=======
+		IRQF_TRIGGER_RISING | IRQF_NO_SUSPEND | IRQF_SHARED,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		edge_node->name, mdev);
 	if (ret < 0) {
 		qmp_mbox_remove(pdev);

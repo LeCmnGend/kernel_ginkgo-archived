@@ -220,16 +220,21 @@ static __inline__ void __clear_bit_unlock(int nr, volatile unsigned long *addr)
  */
 static __inline__ int fls(unsigned int x)
 {
+<<<<<<< HEAD
 	int lz;
 
 	if (__builtin_constant_p(x))
 		return x ? 32 - __builtin_clz(x) : 0;
 	asm("cntlzw %0,%1" : "=r" (lz) : "r" (x));
 	return 32 - lz;
+=======
+	return 32 - __builtin_clz(x);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 #include <asm-generic/bitops/builtin-__fls.h>
 
+<<<<<<< HEAD
 /*
  * 64-bit can do this using one cntlzd (count leading zeroes doubleword)
  * instruction; for 32-bit we use the generic version, which does two
@@ -248,6 +253,12 @@ static __inline__ int fls64(__u64 x)
 #else
 #include <asm-generic/bitops/fls64.h>
 #endif
+=======
+static __inline__ int fls64(__u64 x)
+{
+	return 64 - __builtin_clzll(x);
+}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #ifdef CONFIG_PPC64
 unsigned int __arch_hweight8(unsigned int w);

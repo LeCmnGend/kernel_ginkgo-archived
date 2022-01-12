@@ -1068,7 +1068,11 @@ static int ipa3_wdi2_gsi_alloc_evt_ring(
 			enum ipa_client_type client,
 			unsigned long *evt_ring_hdl)
 {
+<<<<<<< HEAD
 	union gsi_evt_scratch evt_scratch;
+=======
+	union __packed gsi_evt_scratch evt_scratch;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int result = -EFAULT;
 
 	/* GSI EVENT RING allocation */
@@ -1187,7 +1191,11 @@ int ipa3_connect_gsi_wdi_pipe(struct ipa_wdi_in_params *in,
 	struct ipa_ep_cfg_ctrl ep_cfg_ctrl;
 	struct gsi_chan_props gsi_channel_props;
 	struct gsi_evt_ring_props gsi_evt_ring_props;
+<<<<<<< HEAD
 	union gsi_channel_scratch gsi_scratch;
+=======
+	union __packed gsi_channel_scratch gsi_scratch;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	phys_addr_t pa;
 	unsigned long va;
 	unsigned long wifi_rx_ri_addr = 0;
@@ -2456,7 +2464,11 @@ int ipa3_disable_gsi_wdi_pipe(u32 clnt_hdl)
 			}
 		}
 		usleep_range(IPA_UC_POLL_SLEEP_USEC * IPA_UC_POLL_SLEEP_USEC,
+<<<<<<< HEAD
 			IPA_UC_POLL_SLEEP_USEC * IPA_UC_POLL_SLEEP_USEC * 1.2);
+=======
+			IPA_UC_POLL_SLEEP_USEC * IPA_UC_POLL_SLEEP_USEC);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	}
 
@@ -2650,7 +2662,11 @@ int ipa3_resume_gsi_wdi_pipe(u32 clnt_hdl)
 	struct ipa3_ep_context *ep;
 	struct ipa_ep_cfg_ctrl ep_cfg_ctrl;
 	struct gsi_chan_info chan_info;
+<<<<<<< HEAD
 	union gsi_channel_scratch gsi_scratch;
+=======
+	union __packed gsi_channel_scratch gsi_scratch;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct IpaHwOffloadStatsAllocCmdData_t *pcmd_t = NULL;
 
 	IPADBG("ep=%d\n", clnt_hdl);
@@ -2787,7 +2803,11 @@ int ipa3_suspend_gsi_wdi_pipe(u32 clnt_hdl)
 	struct ipahal_ep_cfg_ctrl_scnd ep_ctrl_scnd = { 0 };
 	int retry_cnt = 0;
 	struct gsi_chan_info chan_info;
+<<<<<<< HEAD
 	union gsi_channel_scratch gsi_scratch;
+=======
+	union __packed gsi_channel_scratch gsi_scratch;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct IpaHwOffloadStatsAllocCmdData_t *pcmd_t = NULL;
 
 	ipa_ep_idx = ipa3_get_ep_mapping(ipa3_get_client_mapping(clnt_hdl));
@@ -3030,8 +3050,13 @@ int ipa3_write_qmapid_gsi_wdi_pipe(u32 clnt_hdl, u8 qmap_id)
 {
 	int result = 0;
 	struct ipa3_ep_context *ep;
+<<<<<<< HEAD
 	union gsi_wdi_channel_scratch3_reg gsi_scratch3;
 	union gsi_wdi2_channel_scratch2_reg gsi_scratch2;
+=======
+	union __packed gsi_wdi_channel_scratch3_reg gsi_scratch3;
+	union __packed gsi_wdi2_channel_scratch2_reg gsi_scratch2;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	ep = &ipa3_ctx->ep[clnt_hdl];
 	IPA_ACTIVE_CLIENTS_INC_EP(ipa3_get_client_mapping(clnt_hdl));

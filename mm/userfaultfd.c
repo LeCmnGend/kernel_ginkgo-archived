@@ -272,7 +272,11 @@ retry:
 		 */
 		idx = linear_page_index(dst_vma, dst_addr);
 		mapping = dst_vma->vm_file->f_mapping;
+<<<<<<< HEAD
 		hash = hugetlb_fault_mutex_hash(h, mapping, idx);
+=======
+		hash = hugetlb_fault_mutex_hash(h, mapping, idx, dst_addr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mutex_lock(&hugetlb_fault_mutex_table[hash]);
 
 		err = -ENOMEM;

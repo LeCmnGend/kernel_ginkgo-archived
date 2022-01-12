@@ -22,7 +22,10 @@
 #include <linux/delay.h>
 #include <linux/cpumask.h>
 #include <linux/mm.h>
+<<<<<<< HEAD
 #include <linux/kmemleak.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #include <asm/prom.h>
 #include <asm/io.h>
@@ -631,7 +634,10 @@ static bool xive_native_provision_pages(void)
 			pr_err("Failed to allocate provisioning page\n");
 			return false;
 		}
+<<<<<<< HEAD
 		kmemleak_ignore(p);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		opal_xive_donate_page(chip, __pa(p));
 	}
 	return true;

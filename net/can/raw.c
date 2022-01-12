@@ -84,7 +84,11 @@ struct raw_sock {
 	struct sock sk;
 	int bound;
 	int ifindex;
+<<<<<<< HEAD
 	struct list_head notifier;
+=======
+	struct notifier_block notifier;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int loopback;
 	int recv_own_msgs;
 	int fd_frames;
@@ -96,10 +100,13 @@ struct raw_sock {
 	struct uniqframe __percpu *uniq;
 };
 
+<<<<<<< HEAD
 static LIST_HEAD(raw_notifier_list);
 static DEFINE_SPINLOCK(raw_notifier_lock);
 static struct raw_sock *raw_busy_notifier;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Return pointer to store the extra msg flags for raw_recvmsg().
  * We use the space of one unsigned int beyond the 'struct sockaddr_can'
@@ -270,6 +277,7 @@ static int raw_enable_allfilters(struct net *net, struct net_device *dev,
 	return err;
 }
 
+<<<<<<< HEAD
 static void raw_notify(struct raw_sock *ro, unsigned long msg,
 		       struct net_device *dev)
 {
@@ -280,6 +288,23 @@ static void raw_notify(struct raw_sock *ro, unsigned long msg,
 
 	if (ro->ifindex != dev->ifindex)
 		return;
+=======
+static int raw_notifier(struct notifier_block *nb,
+			unsigned long msg, void *ptr)
+{
+	struct net_device *dev = netdev_notifier_info_to_dev(ptr);
+	struct raw_sock *ro = container_of(nb, struct raw_sock, notifier);
+	struct sock *sk = &ro->sk;
+
+	if (!net_eq(dev_net(dev), sock_net(sk)))
+		return NOTIFY_DONE;
+
+	if (dev->type != ARPHRD_CAN)
+		return NOTIFY_DONE;
+
+	if (ro->ifindex != dev->ifindex)
+		return NOTIFY_DONE;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	switch (msg) {
 
@@ -308,6 +333,7 @@ static void raw_notify(struct raw_sock *ro, unsigned long msg,
 			sk->sk_error_report(sk);
 		break;
 	}
+<<<<<<< HEAD
 }
 
 static int raw_notifier(struct notifier_block *nb, unsigned long msg,
@@ -330,6 +356,9 @@ static int raw_notifier(struct notifier_block *nb, unsigned long msg,
 	}
 	raw_busy_notifier = NULL;
 	spin_unlock(&raw_notifier_lock);
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return NOTIFY_DONE;
 }
 
@@ -358,9 +387,15 @@ static int raw_init(struct sock *sk)
 		return -ENOMEM;
 
 	/* set notifier */
+<<<<<<< HEAD
 	spin_lock(&raw_notifier_lock);
 	list_add_tail(&ro->notifier, &raw_notifier_list);
 	spin_unlock(&raw_notifier_lock);
+=======
+	ro->notifier.notifier_call = raw_notifier;
+
+	register_netdevice_notifier(&ro->notifier);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
 }
@@ -375,6 +410,7 @@ static int raw_release(struct socket *sock)
 
 	ro = raw_sk(sk);
 
+<<<<<<< HEAD
 	spin_lock(&raw_notifier_lock);
 	while (raw_busy_notifier == ro) {
 		spin_unlock(&raw_notifier_lock);
@@ -383,6 +419,9 @@ static int raw_release(struct socket *sock)
 	}
 	list_del(&ro->notifier);
 	spin_unlock(&raw_notifier_lock);
+=======
+	unregister_netdevice_notifier(&ro->notifier);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	lock_sock(sk);
 
@@ -549,6 +588,7 @@ static int raw_setsockopt(struct socket *sock, int level, int optname,
 				return -EFAULT;
 		}
 
+<<<<<<< HEAD
 		rtnl_lock();
 		lock_sock(sk);
 
@@ -561,6 +601,12 @@ static int raw_setsockopt(struct socket *sock, int level, int optname,
 				goto out_fil;
 			}
 		}
+=======
+		lock_sock(sk);
+
+		if (ro->bound && ro->ifindex)
+			dev = dev_get_by_index(sock_net(sk), ro->ifindex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		if (ro->bound) {
 			/* (try to) register the new filters */
@@ -599,7 +645,10 @@ static int raw_setsockopt(struct socket *sock, int level, int optname,
 			dev_put(dev);
 
 		release_sock(sk);
+<<<<<<< HEAD
 		rtnl_unlock();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		break;
 
@@ -612,6 +661,7 @@ static int raw_setsockopt(struct socket *sock, int level, int optname,
 
 		err_mask &= CAN_ERR_MASK;
 
+<<<<<<< HEAD
 		rtnl_lock();
 		lock_sock(sk);
 
@@ -622,6 +672,12 @@ static int raw_setsockopt(struct socket *sock, int level, int optname,
 				goto out_err;
 			}
 		}
+=======
+		lock_sock(sk);
+
+		if (ro->bound && ro->ifindex)
+			dev = dev_get_by_index(sock_net(sk), ro->ifindex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		/* remove current error mask */
 		if (ro->bound) {
@@ -645,7 +701,10 @@ static int raw_setsockopt(struct socket *sock, int level, int optname,
 			dev_put(dev);
 
 		release_sock(sk);
+<<<<<<< HEAD
 		rtnl_unlock();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		break;
 
@@ -913,10 +972,13 @@ static const struct can_proto raw_can_proto = {
 	.prot       = &raw_proto,
 };
 
+<<<<<<< HEAD
 static struct notifier_block canraw_notifier = {
 	.notifier_call = raw_notifier
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static __init int raw_module_init(void)
 {
 	int err;
@@ -926,8 +988,11 @@ static __init int raw_module_init(void)
 	err = can_proto_register(&raw_can_proto);
 	if (err < 0)
 		printk(KERN_ERR "can: registration of raw protocol failed\n");
+<<<<<<< HEAD
 	else
 		register_netdevice_notifier(&canraw_notifier);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return err;
 }
@@ -935,7 +1000,10 @@ static __init int raw_module_init(void)
 static __exit void raw_module_exit(void)
 {
 	can_proto_unregister(&raw_can_proto);
+<<<<<<< HEAD
 	unregister_netdevice_notifier(&canraw_notifier);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 module_init(raw_module_init);

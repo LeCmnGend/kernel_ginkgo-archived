@@ -16,7 +16,10 @@
 #include <linux/phy.h>
 #include <linux/slab.h>
 #include <linux/interrupt.h>
+<<<<<<< HEAD
 #include <linux/of_mdio.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/of_net.h>
 #include <linux/if_ether.h>
 #include <linux/if_vlan.h>
@@ -879,6 +882,7 @@ static int cvm_oct_probe(struct platform_device *pdev)
 				break;
 			}
 
+<<<<<<< HEAD
 			if (priv->of_node && of_phy_is_fixed_link(priv->of_node)) {
 				if (of_phy_register_fixed_link(priv->of_node)) {
 					netdev_err(dev, "Failed to register fixed link for interface %d, port %d\n",
@@ -887,6 +891,8 @@ static int cvm_oct_probe(struct platform_device *pdev)
 				}
 			}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (!dev->netdev_ops) {
 				free_netdev(dev);
 			} else if (register_netdev(dev) < 0) {

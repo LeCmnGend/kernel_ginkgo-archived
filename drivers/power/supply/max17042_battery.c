@@ -1051,7 +1051,11 @@ static int max17042_probe(struct i2c_client *client,
 	}
 
 	if (client->irq) {
+<<<<<<< HEAD
 		unsigned int flags = IRQF_ONESHOT;
+=======
+		unsigned int flags = IRQF_TRIGGER_FALLING | IRQF_ONESHOT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		/*
 		 * On ACPI systems the IRQ may be handled by ACPI-event code,

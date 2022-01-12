@@ -16,8 +16,13 @@
 
 #define CDC_D_REVISION1			(0xf000)
 #define CDC_D_PERPH_SUBTYPE		(0xf005)
+<<<<<<< HEAD
 #define CDC_D_INT_EN_SET		(0xf015)
 #define CDC_D_INT_EN_CLR		(0xf016)
+=======
+#define CDC_D_INT_EN_SET		(0x015)
+#define CDC_D_INT_EN_CLR		(0x016)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define MBHC_SWITCH_INT			BIT(7)
 #define MBHC_MIC_ELECTRICAL_INS_REM_DET	BIT(6)
 #define MBHC_BUTTON_PRESS_DET		BIT(5)

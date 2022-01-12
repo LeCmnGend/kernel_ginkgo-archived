@@ -475,12 +475,15 @@ static int __init init_sdcardfs_fs(void)
 
 	pr_info("Registering sdcardfs " SDCARDFS_VERSION "\n");
 
+<<<<<<< HEAD
 	kmem_file_info_pool = KMEM_CACHE(sdcardfs_file_info, SLAB_HWCACHE_ALIGN);
 	if (!kmem_file_info_pool) {
 		err = -ENOMEM;
 		goto err;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = sdcardfs_init_inode_cache();
 	if (err)
 		goto out;
@@ -497,7 +500,10 @@ out:
 		sdcardfs_destroy_dentry_cache();
 		packagelist_exit();
 	}
+<<<<<<< HEAD
 err:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return err;
 }
 
@@ -507,7 +513,10 @@ static void __exit exit_sdcardfs_fs(void)
 	sdcardfs_destroy_dentry_cache();
 	packagelist_exit();
 	unregister_filesystem(&sdcardfs_fs_type);
+<<<<<<< HEAD
 	kmem_cache_destroy(kmem_file_info_pool);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pr_info("Completed sdcardfs module unload\n");
 }
 

@@ -1528,6 +1528,7 @@ err_irq:
 	arizona_irq_exit(arizona);
 err_pm:
 	pm_runtime_disable(arizona->dev);
+<<<<<<< HEAD
 
 	switch (arizona->pdata.clk32k_src) {
 	case ARIZONA_32KZ_MCLK1:
@@ -1537,6 +1538,8 @@ err_pm:
 	default:
 		break;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 err_reset:
 	arizona_enable_reset(arizona);
 	regulator_disable(arizona->dcvdd);
@@ -1559,6 +1562,7 @@ int arizona_dev_exit(struct arizona *arizona)
 	regulator_disable(arizona->dcvdd);
 	regulator_put(arizona->dcvdd);
 
+<<<<<<< HEAD
 	switch (arizona->pdata.clk32k_src) {
 	case ARIZONA_32KZ_MCLK1:
 	case ARIZONA_32KZ_MCLK2:
@@ -1568,6 +1572,8 @@ int arizona_dev_exit(struct arizona *arizona)
 		break;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mfd_remove_devices(arizona->dev);
 	arizona_free_irq(arizona, ARIZONA_IRQ_UNDERCLOCKED, arizona);
 	arizona_free_irq(arizona, ARIZONA_IRQ_OVERCLOCKED, arizona);

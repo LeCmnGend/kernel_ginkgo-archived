@@ -304,10 +304,15 @@ static int s3fwrn5_fw_request_firmware(struct s3fwrn5_fw_info *fw_info)
 	if (ret < 0)
 		return ret;
 
+<<<<<<< HEAD
 	if (fw->fw->size < S3FWRN5_FW_IMAGE_HEADER_SIZE) {
 		release_firmware(fw->fw);
 		return -EINVAL;
 	}
+=======
+	if (fw->fw->size < S3FWRN5_FW_IMAGE_HEADER_SIZE)
+		return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	memcpy(fw->date, fw->fw->data + 0x00, 12);
 	fw->date[12] = '\0';

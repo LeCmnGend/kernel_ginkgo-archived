@@ -148,7 +148,11 @@ static loff_t nfs4_file_llseek(struct file *filep, loff_t offset, int whence)
 	case SEEK_HOLE:
 	case SEEK_DATA:
 		ret = nfs42_proc_llseek(filep, offset, whence);
+<<<<<<< HEAD
 		if (ret != -EOPNOTSUPP)
+=======
+		if (ret != -ENOTSUPP)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return ret;
 	default:
 		return nfs_file_llseek(filep, offset, whence);

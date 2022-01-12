@@ -41,7 +41,11 @@ extern int mincore_huge_pmd(struct vm_area_struct *vma, pmd_t *pmd,
 			unsigned long addr, unsigned long end,
 			unsigned char *vec);
 extern bool move_huge_pmd(struct vm_area_struct *vma, unsigned long old_addr,
+<<<<<<< HEAD
 			 unsigned long new_addr,
+=======
+			 unsigned long new_addr, unsigned long old_end,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			 pmd_t *old_pmd, pmd_t *new_pmd);
 extern int change_huge_pmd(struct vm_area_struct *vma, pmd_t *pmd,
 			unsigned long addr, pgprot_t newprot,

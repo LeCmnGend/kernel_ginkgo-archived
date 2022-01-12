@@ -210,6 +210,7 @@
 		status = "ok";
 		compatible = "adi,adv7533";
 		reg = <0x39>;
+<<<<<<< HEAD
 		adi,dsi-lanes = <4>;
 		ports {
 			#address-cells = <1>;
@@ -221,6 +222,8 @@
 				reg = <1>;
 			};
 		};
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	};
 };
 

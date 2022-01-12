@@ -544,10 +544,13 @@ static int set_protocol(struct cm4000_dev *dev, struct ptsreq *ptsreq)
 		io_read_num_rec_bytes(iobase, &num_bytes_read);
 		if (num_bytes_read >= 4) {
 			DEBUGP(2, dev, "NumRecBytes = %i\n", num_bytes_read);
+<<<<<<< HEAD
 			if (num_bytes_read > 4) {
 				rc = -EIO;
 				goto exit_setprotocol;
 			}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			break;
 		}
 		mdelay(10);

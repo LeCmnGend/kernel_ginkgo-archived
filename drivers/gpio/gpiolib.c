@@ -108,6 +108,12 @@ struct gpio_desc *gpio_to_desc(unsigned gpio)
 
 	spin_unlock_irqrestore(&gpio_lock, flags);
 
+<<<<<<< HEAD
+=======
+	if (!gpio_is_valid(gpio))
+		WARN(1, "invalid GPIO %d\n", gpio);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return NULL;
 }
 EXPORT_SYMBOL_GPL(gpio_to_desc);

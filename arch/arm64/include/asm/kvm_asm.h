@@ -83,6 +83,7 @@ extern u32 __init_stage2_translation(void);
 		*__hyp_this_cpu_ptr(sym);				\
 	 })
 
+<<<<<<< HEAD
 #define __KVM_EXTABLE(from, to)						\
 	"	.pushsection	__kvm_ex_table, \"a\"\n"		\
 	"	.align		3\n"					\
@@ -111,6 +112,8 @@ extern u32 __init_stage2_translation(void);
 } )
 
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #else /* __ASSEMBLY__ */
 
 .macro hyp_adr_this_cpu reg, sym, tmp
@@ -135,6 +138,7 @@ extern u32 __init_stage2_translation(void);
 	kern_hyp_va	\vcpu
 .endm
 
+<<<<<<< HEAD
 /*
  * KVM extable for unexpected exceptions.
  * In the same format _asm_extable, but output to a different section so that
@@ -150,6 +154,8 @@ extern u32 __init_stage2_translation(void);
 	.popsection
 .endm
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 
 #endif /* __ARM_KVM_ASM_H__ */

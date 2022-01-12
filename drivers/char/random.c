@@ -470,6 +470,10 @@ struct entropy_store {
 	unsigned short add_ptr;
 	unsigned short input_rotate;
 	int entropy_count;
+<<<<<<< HEAD
+=======
+	int entropy_total;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned int initialized:1;
 	unsigned int last_data_init:1;
 	__u8 last_data[EXTRACT_SIZE];
@@ -642,7 +646,11 @@ static void process_random_ready_list(void)
  */
 static void credit_entropy_bits(struct entropy_store *r, int nbits)
 {
+<<<<<<< HEAD
 	int entropy_count, orig, has_initialized = 0;
+=======
+	int entropy_count, orig;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	const int pool_size = r->poolinfo->poolfracbits;
 	int nfrac = nbits << ENTROPY_SHIFT;
 
@@ -697,6 +705,7 @@ retry:
 		entropy_count = 0;
 	} else if (entropy_count > pool_size)
 		entropy_count = pool_size;
+<<<<<<< HEAD
 	if ((r == &blocking_pool) && !r->initialized &&
 	    (entropy_count >> ENTROPY_SHIFT) > 128)
 		has_initialized = 1;
@@ -719,10 +728,30 @@ retry:
 		if (crng_init < 2) {
 			if (entropy_bits < 128)
 				return;
+=======
+	if (cmpxchg(&r->entropy_count, orig, entropy_count) != orig)
+		goto retry;
+
+	r->entropy_total += nbits;
+	if (!r->initialized && r->entropy_total > 128) {
+		r->initialized = 1;
+		r->entropy_total = 0;
+	}
+
+	trace_credit_entropy_bits(r->name, nbits,
+				  entropy_count >> ENTROPY_SHIFT,
+				  r->entropy_total, _RET_IP_);
+
+	if (r == &input_pool) {
+		int entropy_bits = entropy_count >> ENTROPY_SHIFT;
+
+		if (crng_init < 2 && entropy_bits >= 128) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			crng_reseed(&primary_crng, r);
 			entropy_bits = r->entropy_count >> ENTROPY_SHIFT;
 		}
 
+<<<<<<< HEAD
 		/* initialize the blocking pool if necessary */
 		if (entropy_bits >= random_read_wakeup_bits &&
 		    !other->initialized) {
@@ -744,6 +773,27 @@ retry:
 		    (ENTROPY_BITS(r) > 6 * r->poolinfo->poolbytes) &&
 		    (ENTROPY_BITS(other) <= 6 * other->poolinfo->poolbytes))
 			schedule_work(&other->push_work);
+=======
+		/* should we wake readers? */
+		if (entropy_bits >= random_read_wakeup_bits) {
+			wake_up_interruptible(&random_read_wait);
+			kill_fasync(&fasync, SIGIO, POLL_IN);
+		}
+		/* If the input pool is getting full, send some
+		 * entropy to the blocking pool until it is 75% full.
+		 */
+		if (entropy_bits > random_write_wakeup_bits &&
+		    r->initialized &&
+		    r->entropy_total >= 2*random_read_wakeup_bits) {
+			struct entropy_store *other = &blocking_pool;
+
+			if (other->entropy_count <=
+			    3 * other->poolinfo->poolfracbits / 4) {
+				schedule_work(&other->push_work);
+				r->entropy_total = 0;
+			}
+		}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 }
 
@@ -1076,6 +1126,10 @@ static ssize_t extract_crng_user(void __user *buf, size_t nbytes)
 struct timer_rand_state {
 	cycles_t last_time;
 	long last_delta, last_delta2;
+<<<<<<< HEAD
+=======
+	unsigned dont_count_entropy:1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 #define INIT_TIMER_RAND_STATE { INITIAL_JIFFIES, };
@@ -1126,6 +1180,11 @@ static void add_timer_randomness(struct timer_rand_state *state, unsigned num)
 	} sample;
 	long delta, delta2, delta3;
 
+<<<<<<< HEAD
+=======
+	preempt_disable();
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	sample.jiffies = jiffies;
 	sample.cycles = random_get_entropy();
 	sample.num = num;
@@ -1137,6 +1196,7 @@ static void add_timer_randomness(struct timer_rand_state *state, unsigned num)
 	 * We take into account the first, second and third-order deltas
 	 * in order to make our estimate.
 	 */
+<<<<<<< HEAD
 	delta = sample.jiffies - state->last_time;
 	state->last_time = sample.jiffies;
 
@@ -1163,6 +1223,38 @@ static void add_timer_randomness(struct timer_rand_state *state, unsigned num)
 	 * and limit entropy entimate to 12 bits.
 	 */
 	credit_entropy_bits(r, min_t(int, fls(delta>>1), 11));
+=======
+
+	if (!state->dont_count_entropy) {
+		delta = sample.jiffies - state->last_time;
+		state->last_time = sample.jiffies;
+
+		delta2 = delta - state->last_delta;
+		state->last_delta = delta;
+
+		delta3 = delta2 - state->last_delta2;
+		state->last_delta2 = delta2;
+
+		if (delta < 0)
+			delta = -delta;
+		if (delta2 < 0)
+			delta2 = -delta2;
+		if (delta3 < 0)
+			delta3 = -delta3;
+		if (delta > delta2)
+			delta = delta2;
+		if (delta > delta3)
+			delta = delta3;
+
+		/*
+		 * delta is now minimum absolute delta.
+		 * Round down by 1 bit on general principles,
+		 * and limit entropy entimate to 12 bits.
+		 */
+		credit_entropy_bits(r, min_t(int, fls(delta>>1), 11));
+	}
+	preempt_enable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 void add_input_randomness(unsigned int type, unsigned int code,
@@ -1544,11 +1636,14 @@ static ssize_t extract_entropy_user(struct entropy_store *r, void __user *buf,
 	int large_request = (nbytes > 256);
 
 	trace_extract_entropy_user(r->name, nbytes, ENTROPY_BITS(r), _RET_IP_);
+<<<<<<< HEAD
 	if (!r->initialized && r->pull) {
 		xfer_secondary_pool(r, ENTROPY_BITS(r->pull)/8);
 		if (!r->initialized)
 			return 0;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	xfer_secondary_pool(r, nbytes);
 	nbytes = account(r, nbytes, 0, 0);
 
@@ -1645,6 +1740,7 @@ void get_random_bytes(void *buf, int nbytes)
 }
 EXPORT_SYMBOL(get_random_bytes);
 
+<<<<<<< HEAD
 
 /*
  * Each time the timer fires, we expect that we got an unpredictable
@@ -1695,6 +1791,8 @@ static void try_to_generate_entropy(void)
 	mix_pool_bytes(&input_pool, &stack.now, sizeof(stack.now));
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Wait for the urandom pool to be seeded and thus guaranteed to supply
  * cryptographically secure random numbers. This applies to: the /dev/urandom
@@ -1709,6 +1807,7 @@ int wait_for_random_bytes(void)
 {
 	if (likely(crng_ready()))
 		return 0;
+<<<<<<< HEAD
 
 	do {
 		int ret;
@@ -1720,6 +1819,9 @@ int wait_for_random_bytes(void)
 	} while (!crng_ready());
 
 	return 0;
+=======
+	return wait_event_interruptible(crng_init_wait, crng_ready());
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL(wait_for_random_bytes);
 
@@ -1790,6 +1892,7 @@ EXPORT_SYMBOL(del_random_ready_callback);
  * key known by the NSA).  So it's useful if we need the speed, but
  * only if we're willing to trust the hardware manufacturer not to
  * have put in a back door.
+<<<<<<< HEAD
  *
  * Return number of bytes filled in.
  */
@@ -1815,6 +1918,32 @@ int __must_check get_random_bytes_arch(void *buf, int nbytes)
 }
 EXPORT_SYMBOL(get_random_bytes_arch);
 
+=======
+ */
+void get_random_bytes_arch(void *buf, int nbytes)
+{
+	char *p = buf;
+
+	trace_get_random_bytes_arch(nbytes, _RET_IP_);
+	while (nbytes) {
+		unsigned long v;
+		int chunk = min(nbytes, (int)sizeof(unsigned long));
+
+		if (!arch_get_random_long(&v))
+			break;
+		
+		memcpy(p, &v, chunk);
+		p += chunk;
+		nbytes -= chunk;
+	}
+
+	if (nbytes)
+		get_random_bytes(p, nbytes);
+}
+EXPORT_SYMBOL(get_random_bytes_arch);
+
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * init_std_data - initialize pool with system data
  *
@@ -1906,8 +2035,13 @@ _random_read(int nonblock, char __user *buf, size_t nbytes)
 			return -EAGAIN;
 
 		wait_event_interruptible(random_read_wait,
+<<<<<<< HEAD
 		    blocking_pool.initialized &&
 		    (ENTROPY_BITS(&input_pool) >= random_read_wakeup_bits));
+=======
+			ENTROPY_BITS(&input_pool) >=
+			random_read_wakeup_bits);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (signal_pending(current))
 			return -ERESTARTSYS;
 	}
@@ -2048,7 +2182,11 @@ static long random_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 			return -EPERM;
 		if (crng_init < 2)
 			return -ENODATA;
+<<<<<<< HEAD
 		crng_reseed(&primary_crng, &input_pool);
+=======
+		crng_reseed(&primary_crng, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		crng_global_init_time = jiffies - 1;
 		return 0;
 	default:
@@ -2066,7 +2204,10 @@ const struct file_operations random_fops = {
 	.write = random_write,
 	.poll  = random_poll,
 	.unlocked_ioctl = random_ioctl,
+<<<<<<< HEAD
 	.compat_ioctl = compat_ptr_ioctl,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.fasync = random_fasync,
 	.llseek = noop_llseek,
 };
@@ -2075,7 +2216,10 @@ const struct file_operations urandom_fops = {
 	.read  = urandom_read,
 	.write = random_write,
 	.unlocked_ioctl = random_ioctl,
+<<<<<<< HEAD
 	.compat_ioctl = compat_ptr_ioctl,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.fasync = random_fasync,
 	.llseek = noop_llseek,
 };

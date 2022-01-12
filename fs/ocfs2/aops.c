@@ -2309,7 +2309,11 @@ static int ocfs2_dio_end_io_write(struct inode *inode,
 	struct ocfs2_alloc_context *meta_ac = NULL;
 	handle_t *handle = NULL;
 	loff_t end = offset + bytes;
+<<<<<<< HEAD
 	int ret = 0, credits = 0;
+=======
+	int ret = 0, credits = 0, locked = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	ocfs2_init_dealloc_ctxt(&dealloc);
 
@@ -2320,6 +2324,16 @@ static int ocfs2_dio_end_io_write(struct inode *inode,
 	    !dwc->dw_orphaned)
 		goto out;
 
+<<<<<<< HEAD
+=======
+	/* ocfs2_file_write_iter will get i_mutex, so we need not lock if we
+	 * are in that context. */
+	if (dwc->dw_writer_pid != task_pid_nr(current)) {
+		inode_lock(inode);
+		locked = 1;
+	}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = ocfs2_inode_lock(inode, &di_bh, 1);
 	if (ret < 0) {
 		mlog_errno(ret);
@@ -2394,6 +2408,11 @@ out:
 	if (meta_ac)
 		ocfs2_free_alloc_context(meta_ac);
 	ocfs2_run_deallocs(osb, &dealloc);
+<<<<<<< HEAD
+=======
+	if (locked)
+		inode_unlock(inode);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ocfs2_dio_free_write_ctx(inode, dwc);
 
 	return ret;

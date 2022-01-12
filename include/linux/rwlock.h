@@ -38,6 +38,7 @@ do {								\
  extern int do_raw_write_trylock(rwlock_t *lock);
  extern void do_raw_write_unlock(rwlock_t *lock) __releases(lock);
 #else
+<<<<<<< HEAD
 
 #ifndef arch_read_lock_flags
 # define arch_read_lock_flags(lock, flags)	arch_read_lock(lock)
@@ -47,6 +48,8 @@ do {								\
 # define arch_write_lock_flags(lock, flags)	arch_write_lock(lock)
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 # define do_raw_read_lock(rwlock)	do {__acquire(lock); arch_read_lock(&(rwlock)->raw_lock); } while (0)
 # define do_raw_read_lock_flags(lock, flags) \
 		do {__acquire(lock); arch_read_lock_flags(&(lock)->raw_lock, *(flags)); } while (0)

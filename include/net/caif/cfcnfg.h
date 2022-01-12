@@ -62,7 +62,11 @@ void cfcnfg_remove(struct cfcnfg *cfg);
  * @fcs:	Specify if checksum is used in CAIF Framing Layer.
  * @head_room:	Head space needed by link specific protocol.
  */
+<<<<<<< HEAD
 int
+=======
+void
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 cfcnfg_add_phy_layer(struct cfcnfg *cnfg,
 		     struct net_device *dev, struct cflayer *phy_layer,
 		     enum cfcnfg_phy_preference pref,

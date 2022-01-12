@@ -1348,8 +1348,13 @@ static int posix_cpu_nsleep(const clockid_t which_clock, int flags,
 		if (flags & TIMER_ABSTIME)
 			return -ERESTARTNOHAND;
 
+<<<<<<< HEAD
 		restart_block->nanosleep.clockid = which_clock;
 		set_restart_fn(restart_block, posix_cpu_nsleep_restart);
+=======
+		restart_block->fn = posix_cpu_nsleep_restart;
+		restart_block->nanosleep.clockid = which_clock;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	return error;
 }

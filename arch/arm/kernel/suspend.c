@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-2.0
+<<<<<<< HEAD
 #include <linux/ftrace.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/init.h>
 #include <linux/slab.h>
 #include <linux/mm_types.h>
@@ -28,6 +31,7 @@ int cpu_suspend(unsigned long arg, int (*fn)(unsigned long))
 		return -EINVAL;
 
 	/*
+<<<<<<< HEAD
 	 * Function graph tracer state gets incosistent when the kernel
 	 * calls functions that never return (aka suspend finishers) hence
 	 * disable graph tracing during their execution.
@@ -35,15 +39,20 @@ int cpu_suspend(unsigned long arg, int (*fn)(unsigned long))
 	pause_graph_tracing();
 
 	/*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * Provide a temporary page table with an identity mapping for
 	 * the MMU-enable code, required for resuming.  On successful
 	 * resume (indicated by a zero return code), we need to switch
 	 * back to the correct page tables.
 	 */
 	ret = __cpu_suspend(arg, fn, __mpidr);
+<<<<<<< HEAD
 
 	unpause_graph_tracing();
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret == 0) {
 		cpu_switch_mm(mm->pgd, mm);
 		local_flush_bp_all();
@@ -57,6 +66,7 @@ int cpu_suspend(unsigned long arg, int (*fn)(unsigned long))
 int cpu_suspend(unsigned long arg, int (*fn)(unsigned long))
 {
 	u32 __mpidr = cpu_logical_map(smp_processor_id());
+<<<<<<< HEAD
 	int ret;
 
 	pause_graph_tracing();
@@ -64,6 +74,9 @@ int cpu_suspend(unsigned long arg, int (*fn)(unsigned long))
 	unpause_graph_tracing();
 
 	return ret;
+=======
+	return __cpu_suspend(arg, fn, __mpidr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 #define	idmap_pgd	NULL
 #endif

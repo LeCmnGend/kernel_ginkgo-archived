@@ -200,6 +200,7 @@ static int uhdlc_init(struct ucc_hdlc_private *priv)
 
 	priv->rx_skbuff = kzalloc(priv->rx_ring_size * sizeof(*priv->rx_skbuff),
 				  GFP_KERNEL);
+<<<<<<< HEAD
 	if (!priv->rx_skbuff) {
 		ret = -ENOMEM;
 		goto free_ucc_pram;
@@ -211,6 +212,15 @@ static int uhdlc_init(struct ucc_hdlc_private *priv)
 		ret = -ENOMEM;
 		goto free_rx_skbuff;
 	}
+=======
+	if (!priv->rx_skbuff)
+		goto free_ucc_pram;
+
+	priv->tx_skbuff = kzalloc(priv->tx_ring_size * sizeof(*priv->tx_skbuff),
+				  GFP_KERNEL);
+	if (!priv->tx_skbuff)
+		goto free_rx_skbuff;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	priv->skb_curtx = 0;
 	priv->skb_dirtytx = 0;

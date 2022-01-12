@@ -20,6 +20,7 @@
 #ifdef CONFIG_COMPAT
 #include <linux/compat.h>
 
+<<<<<<< HEAD
 struct compat_sigcontext {
 	/* We always set these two fields to 0 */
 	compat_ulong_t			trap_no;
@@ -65,6 +66,9 @@ struct compat_rt_sigframe {
 	struct compat_siginfo		info;
 	struct compat_sigframe		sig;
 };
+=======
+#define AARCH32_KERN_SIGRET_CODE_OFFSET	0x500
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 int compat_setup_frame(int usig, struct ksignal *ksig, sigset_t *set,
 		       struct pt_regs *regs);

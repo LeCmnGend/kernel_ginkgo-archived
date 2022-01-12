@@ -1019,8 +1019,11 @@ static int ath10k_usb_probe(struct usb_interface *interface,
 
 	ar_usb = ath10k_usb_priv(ar);
 	ret = ath10k_usb_create(ar, interface);
+<<<<<<< HEAD
 	if (ret)
 		goto err;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ar_usb->ar = ar;
 
 	ar->dev_id = product_id;
@@ -1033,7 +1036,11 @@ static int ath10k_usb_probe(struct usb_interface *interface,
 	ret = ath10k_core_register(ar, &bus_params);
 	if (ret) {
 		ath10k_warn(ar, "failed to register driver core: %d\n", ret);
+<<<<<<< HEAD
 		goto err_usb_destroy;
+=======
+		goto err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	/* TODO: remove this once USB support is fully implemented */
@@ -1041,9 +1048,12 @@ static int ath10k_usb_probe(struct usb_interface *interface,
 
 	return 0;
 
+<<<<<<< HEAD
 err_usb_destroy:
 	ath10k_usb_destroy(ar);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 err:
 	ath10k_core_destroy(ar);
 

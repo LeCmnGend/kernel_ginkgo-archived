@@ -127,7 +127,11 @@ config PNFS_BLOCK
 config PNFS_FLEXFILE_LAYOUT
 	tristate
 	depends on NFS_V4_1 && NFS_V3
+<<<<<<< HEAD
 	default NFS_V4
+=======
+	default m
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 config NFS_V4_1_IMPLEMENTATION_ID_DOMAIN
 	string "NFSv4.1 Implementation ID Domain"

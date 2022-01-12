@@ -617,7 +617,11 @@ static int snd_us16x08_eq_put(struct snd_kcontrol *kcontrol,
 static int snd_us16x08_meter_info(struct snd_kcontrol *kcontrol,
 	struct snd_ctl_elem_info *uinfo)
 {
+<<<<<<< HEAD
 	uinfo->count = 34;
+=======
+	uinfo->count = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	uinfo->type = SNDRV_CTL_ELEM_TYPE_INTEGER;
 	uinfo->value.integer.max = 0x7FFF;
 	uinfo->value.integer.min = 0;

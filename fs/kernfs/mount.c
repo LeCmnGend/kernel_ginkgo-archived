@@ -240,9 +240,12 @@ static int kernfs_fill_super(struct super_block *sb, unsigned long magic)
 		sb->s_export_op = &kernfs_export_ops;
 	sb->s_time_gran = 1;
 
+<<<<<<< HEAD
 	/* sysfs dentries and inodes don't require IO to create */
 	sb->s_shrink.seeks = 0;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* get root inode, initialize and unlock it */
 	mutex_lock(&kernfs_mutex);
 	inode = kernfs_get_inode(sb, info->root->kn);
@@ -323,7 +326,10 @@ struct dentry *kernfs_mount_ns(struct file_system_type *fs_type, int flags,
 
 	info->root = root;
 	info->ns = ns;
+<<<<<<< HEAD
 	INIT_LIST_HEAD(&info->node);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	sb = sget_userns(fs_type, kernfs_test_super, kernfs_set_super, flags,
 			 &init_user_ns, info);
@@ -409,7 +415,11 @@ struct super_block *kernfs_pin_sb(struct kernfs_root *root, const void *ns)
 
 void __init kernfs_init(void)
 {
+<<<<<<< HEAD
 	init_kernfs_file_pool();
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * the slab is freed in RCU context, so kernfs_find_and_get_node_by_ino
 	 * can access the slab lock free. This could introduce stale nodes,

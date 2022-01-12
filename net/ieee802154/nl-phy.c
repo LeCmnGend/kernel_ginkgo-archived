@@ -249,10 +249,15 @@ int ieee802154_add_iface(struct sk_buff *skb, struct genl_info *info)
 	}
 
 	if (nla_put_string(msg, IEEE802154_ATTR_PHY_NAME, wpan_phy_name(phy)) ||
+<<<<<<< HEAD
 	    nla_put_string(msg, IEEE802154_ATTR_DEV_NAME, dev->name)) {
 		rc = -EMSGSIZE;
 		goto nla_put_failure;
 	}
+=======
+	    nla_put_string(msg, IEEE802154_ATTR_DEV_NAME, dev->name))
+		goto nla_put_failure;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dev_put(dev);
 
 	wpan_phy_put(phy);

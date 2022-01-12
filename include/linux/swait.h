@@ -25,8 +25,13 @@
  *    all wakeups are TASK_NORMAL in order to avoid O(n) lookups for the right
  *    sleeper state.
  *
+<<<<<<< HEAD
  *  - the !exclusive mode; because that leads to O(n) wakeups, everything is
  *    exclusive.
+=======
+ *  - the exclusive mode; because this requires preserving the list order
+ *    and this is hard.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  *  - custom wake callback functions; because you cannot give any guarantees
  *    about random code. This also allows swait to be used in RT, such that
@@ -155,10 +160,16 @@ extern long prepare_to_swait_event(struct swait_queue_head *q, struct swait_queu
 extern void __finish_swait(struct swait_queue_head *q, struct swait_queue *wait);
 extern void finish_swait(struct swait_queue_head *q, struct swait_queue *wait);
 
+<<<<<<< HEAD
 /* as per ___wait_event() but for swait, therefore "exclusive == 1" */
 #define ___swait_event(wq, condition, state, ret, cmd)			\
 ({									\
 	__label__ __out;						\
+=======
+/* as per ___wait_event() but for swait, therefore "exclusive == 0" */
+#define ___swait_event(wq, condition, state, ret, cmd)			\
+({									\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct swait_queue __wait;					\
 	long __ret = ret;						\
 									\
@@ -171,13 +182,21 @@ extern void finish_swait(struct swait_queue_head *q, struct swait_queue *wait);
 									\
 		if (___wait_is_interruptible(state) && __int) {		\
 			__ret = __int;					\
+<<<<<<< HEAD
 			goto __out;					\
+=======
+			break;						\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}							\
 									\
 		cmd;							\
 	}								\
 	finish_swait(&wq, &__wait);					\
+<<<<<<< HEAD
 __out:	__ret;								\
+=======
+	__ret;								\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 })
 
 #define __swait_event(wq, condition)					\

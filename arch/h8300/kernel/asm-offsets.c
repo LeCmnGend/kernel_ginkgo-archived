@@ -63,9 +63,12 @@ int main(void)
 	OFFSET(TI_FLAGS, thread_info, flags);
 	OFFSET(TI_CPU, thread_info, cpu);
 	OFFSET(TI_PRE, thread_info, preempt_count);
+<<<<<<< HEAD
 #ifdef CONFIG_PREEMPTION
 	DEFINE(TI_PRE_COUNT, offsetof(struct thread_info, preempt_count));
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
 }

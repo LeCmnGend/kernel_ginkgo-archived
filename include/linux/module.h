@@ -362,7 +362,10 @@ struct module {
 	unsigned int num_gpl_syms;
 	const struct kernel_symbol *gpl_syms;
 	const s32 *gpl_crcs;
+<<<<<<< HEAD
 	bool using_gplonly_symbols;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #ifdef CONFIG_UNUSED_SYMBOLS
 	/* unused exported symbols. */
@@ -528,6 +531,7 @@ struct module *find_module(const char *name);
 struct symsearch {
 	const struct kernel_symbol *start, *stop;
 	const s32 *crcs;
+<<<<<<< HEAD
 	enum mod_license {
 		NOT_GPL_ONLY,
 		GPL_ONLY,
@@ -536,6 +540,36 @@ struct symsearch {
 	bool unused;
 };
 
+=======
+	enum {
+		NOT_GPL_ONLY,
+		GPL_ONLY,
+		WILL_BE_GPL_ONLY,
+	} licence;
+	bool unused;
+};
+
+/*
+ * Search for an exported symbol by name.
+ *
+ * Must be called with module_mutex held or preemption disabled.
+ */
+const struct kernel_symbol *find_symbol(const char *name,
+					struct module **owner,
+					const s32 **crc,
+					bool gplok,
+					bool warn);
+
+/*
+ * Walk the exported symbol table
+ *
+ * Must be called with module_mutex held or preemption disabled.
+ */
+bool each_symbol_section(bool (*fn)(const struct symsearch *arr,
+				    struct module *owner,
+				    void *data), void *data);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Returns 0 and fills in value, defined and namebuf, or -ERANGE if
    symnum out of range. */
 int module_get_kallsym(unsigned int symnum, unsigned long *value, char *type,
@@ -583,6 +617,10 @@ static inline void __module_get(struct module *module)
 #define symbol_put_addr(p) do { } while (0)
 
 #endif /* CONFIG_MODULE_UNLOAD */
+<<<<<<< HEAD
+=======
+int ref_module(struct module *a, struct module *b);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* This is a #define so the string doesn't get put in every .o file */
 #define module_name(mod)			\

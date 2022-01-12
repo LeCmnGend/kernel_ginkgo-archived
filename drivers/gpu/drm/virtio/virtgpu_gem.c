@@ -121,11 +121,14 @@ int virtio_gpu_mode_dumb_mmap(struct drm_file *file_priv,
 	if (gobj == NULL)
 		return -ENOENT;
 	obj = gem_to_virtio_gpu_obj(gobj);
+<<<<<<< HEAD
 	if (obj->blob && !obj->waited_on_map) {
 		virtio_gpu_object_wait(obj, false);
 		obj->waited_on_map = true;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	*offset_p = virtio_gpu_object_mmap_offset(obj);
 	drm_gem_object_put_unlocked(gobj);
 	return 0;
@@ -139,7 +142,11 @@ int virtio_gpu_gem_object_open(struct drm_gem_object *obj,
 	struct virtio_gpu_object *qobj = gem_to_virtio_gpu_obj(obj);
 	int r;
 
+<<<<<<< HEAD
 	if (!vgdev->has_virgl_3d || !qobj->hw_res_handle)
+=======
+	if (!vgdev->has_virgl_3d)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return 0;
 
 	r = virtio_gpu_object_reserve(qobj, false);

@@ -1618,7 +1618,11 @@ int ipa_reset_all_drop_stats(void)
 int ipa_debugfs_init_stats(struct dentry *parent) { return 0; }
 #else
 #define IPA_MAX_MSG_LEN 4096
+<<<<<<< HEAD
 static char *dbg_buff;
+=======
+static char dbg_buff[IPA_MAX_MSG_LEN];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static ssize_t ipa_debugfs_reset_quota_stats(struct file *file,
 	const char __user *ubuf, size_t count, loff_t *ppos)
@@ -1628,12 +1632,20 @@ static ssize_t ipa_debugfs_reset_quota_stats(struct file *file,
 	int ret;
 
 	mutex_lock(&ipa3_ctx->lock);
+<<<<<<< HEAD
 	if (IPA_MAX_MSG_LEN < count + 1) {
+=======
+	if (sizeof(dbg_buff) < count + 1) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = -EFAULT;
 		goto bail;
 	}
 
+<<<<<<< HEAD
 	missing = ipa_safe_copy_from_user(dbg_buff, ubuf, count);
+=======
+	missing = copy_from_user(dbg_buff, ubuf, min(sizeof(dbg_buff), count));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (missing) {
 		ret = -EFAULT;
 		goto bail;
@@ -1727,12 +1739,20 @@ static ssize_t ipa_debugfs_reset_tethering_stats(struct file *file,
 	int ret;
 
 	mutex_lock(&ipa3_ctx->lock);
+<<<<<<< HEAD
 	if (IPA_MAX_MSG_LEN < count + 1) {
+=======
+	if (sizeof(dbg_buff) < count + 1) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = -EFAULT;
 		goto bail;
 	}
 
+<<<<<<< HEAD
 	missing = ipa_safe_copy_from_user(dbg_buff, ubuf, count);
+=======
+	missing = copy_from_user(dbg_buff, ubuf, min(sizeof(dbg_buff), count));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (missing) {
 		ret = -EFAULT;
 		goto bail;
@@ -1861,12 +1881,20 @@ static ssize_t ipa_debugfs_control_flt_rt_stats(struct file *file,
 	}
 
 	mutex_lock(&ipa3_ctx->lock);
+<<<<<<< HEAD
 	if (IPA_MAX_MSG_LEN < count + 1) {
+=======
+	if (sizeof(dbg_buff) < count + 1) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = -EFAULT;
 		goto bail;
 	}
 
+<<<<<<< HEAD
 	missing = ipa_safe_copy_from_user(dbg_buff, ubuf, count);
+=======
+	missing = copy_from_user(dbg_buff, ubuf, min(sizeof(dbg_buff), count));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (missing) {
 		ret = -EFAULT;
 		goto bail;
@@ -1962,12 +1990,20 @@ static ssize_t ipa_debugfs_reset_drop_stats(struct file *file,
 	int ret;
 
 	mutex_lock(&ipa3_ctx->lock);
+<<<<<<< HEAD
 	if (IPA_MAX_MSG_LEN < count + 1) {
+=======
+	if (sizeof(dbg_buff) < count + 1) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = -EFAULT;
 		goto bail;
 	}
 
+<<<<<<< HEAD
 	missing = ipa_safe_copy_from_user(dbg_buff, ubuf, count);
+=======
+	missing = copy_from_user(dbg_buff, ubuf, min(sizeof(dbg_buff), count));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (missing) {
 		ret = -EFAULT;
 		goto bail;
@@ -2166,10 +2202,13 @@ int ipa_debugfs_init_stats(struct dentry *parent)
 		return -EFAULT;
 	}
 
+<<<<<<< HEAD
 	dbg_buff = kmalloc(IPA_MAX_MSG_LEN * sizeof(char), GFP_KERNEL);
 	if (!dbg_buff)
 		return -ENOMEM;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	file = debugfs_create_file("quota", read_write_mode, dent, NULL,
 		&ipa3_quota_ops);
 	if (IS_ERR_OR_NULL(file)) {
@@ -2208,6 +2247,7 @@ int ipa_debugfs_init_stats(struct dentry *parent)
 	return 0;
 fail:
 	debugfs_remove_recursive(dent);
+<<<<<<< HEAD
 	kfree(dbg_buff);
 	return -EFAULT;
 }
@@ -2216,4 +2256,8 @@ void ipa_debugfs_remove_stats(void)
 {
 	kfree(dbg_buff);
 }
+=======
+	return -EFAULT;
+}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif

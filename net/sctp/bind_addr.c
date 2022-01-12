@@ -285,19 +285,37 @@ int sctp_raw_to_bind_addrs(struct sctp_bind_addr *bp, __u8 *raw_addr_list,
 		rawaddr = (union sctp_addr_param *)raw_addr_list;
 
 		af = sctp_get_af_specific(param_type2af(param->type));
+<<<<<<< HEAD
 		if (unlikely(!af) ||
 		    !af->from_addr_param(&addr, rawaddr, htons(port), 0)) {
 			retval = -EINVAL;
 			goto out_err;
 		}
 
+=======
+		if (unlikely(!af)) {
+			retval = -EINVAL;
+			sctp_bind_addr_clean(bp);
+			break;
+		}
+
+		af->from_addr_param(&addr, rawaddr, htons(port), 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (sctp_bind_addr_state(bp, &addr) != -1)
 			goto next;
 		retval = sctp_add_bind_addr(bp, &addr, sizeof(addr),
 					    SCTP_ADDR_SRC, gfp);
+<<<<<<< HEAD
 		if (retval)
 			/* Can't finish building the list, clean up. */
 			goto out_err;
+=======
+		if (retval) {
+			/* Can't finish building the list, clean up. */
+			sctp_bind_addr_clean(bp);
+			break;
+		}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 next:
 		len = ntohs(param->length);
@@ -306,12 +324,15 @@ next:
 	}
 
 	return retval;
+<<<<<<< HEAD
 
 out_err:
 	if (retval)
 		sctp_bind_addr_clean(bp);
 
 	return retval;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /********************************************************************

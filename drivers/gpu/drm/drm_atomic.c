@@ -30,8 +30,11 @@
 #include <drm/drm_atomic.h>
 #include <drm/drm_mode.h>
 #include <drm/drm_print.h>
+<<<<<<< HEAD
 #include <linux/devfreq_boost.h>
 #include <linux/pm_qos.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/sync_file.h>
 
 #include "drm_crtc_internal.h"
@@ -2206,8 +2209,13 @@ static void complete_crtc_signaling(struct drm_device *dev,
 	kfree(fence_state);
 }
 
+<<<<<<< HEAD
 static int __drm_mode_atomic_ioctl(struct drm_device *dev, void *data,
 				   struct drm_file *file_priv)
+=======
+int drm_mode_atomic_ioctl(struct drm_device *dev,
+			  void *data, struct drm_file *file_priv)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct drm_mode_atomic *arg = data;
 	uint32_t __user *objs_ptr = (uint32_t __user *)(unsigned long)(arg->objs_ptr);
@@ -2249,10 +2257,13 @@ static int __drm_mode_atomic_ioctl(struct drm_device *dev, void *data,
 			(arg->flags & DRM_MODE_PAGE_FLIP_EVENT))
 		return -EINVAL;
 
+<<<<<<< HEAD
 	if (!(arg->flags & DRM_MODE_ATOMIC_TEST_ONLY) &&
 			df_boost_within_input(3250))
 		devfreq_boost_kick(DEVFREQ_CPU_DDR_BW);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	drm_modeset_acquire_init(&ctx, 0);
 
 	state = drm_atomic_state_alloc(dev);
@@ -2377,6 +2388,7 @@ out:
 
 	return ret;
 }
+<<<<<<< HEAD
 
 void set_cpus_allowed_common(struct task_struct *p,
 			     const struct cpumask *new_mask);
@@ -2406,3 +2418,5 @@ int drm_mode_atomic_ioctl(struct drm_device *dev, void *data,
 
 	return ret;
 }
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

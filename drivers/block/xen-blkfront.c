@@ -937,8 +937,12 @@ static void blkif_set_queue_limits(struct blkfront_info *info)
 	if (info->feature_discard) {
 		queue_flag_set_unlocked(QUEUE_FLAG_DISCARD, rq);
 		blk_queue_max_discard_sectors(rq, get_capacity(gd));
+<<<<<<< HEAD
 		rq->limits.discard_granularity = info->discard_granularity ?:
 						 info->physical_sector_size;
+=======
+		rq->limits.discard_granularity = info->discard_granularity;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rq->limits.discard_alignment = info->discard_alignment;
 		if (info->feature_secdiscard)
 			queue_flag_set_unlocked(QUEUE_FLAG_SECERASE, rq);
@@ -2156,12 +2160,28 @@ static void blkfront_closing(struct blkfront_info *info)
 
 static void blkfront_setup_discard(struct blkfront_info *info)
 {
+<<<<<<< HEAD
 	info->feature_discard = 1;
 	info->discard_granularity = xenbus_read_unsigned(info->xbdev->otherend,
 							 "discard-granularity",
 							 0);
 	info->discard_alignment = xenbus_read_unsigned(info->xbdev->otherend,
 						       "discard-alignment", 0);
+=======
+	int err;
+	unsigned int discard_granularity;
+	unsigned int discard_alignment;
+
+	info->feature_discard = 1;
+	err = xenbus_gather(XBT_NIL, info->xbdev->otherend,
+		"discard-granularity", "%u", &discard_granularity,
+		"discard-alignment", "%u", &discard_alignment,
+		NULL);
+	if (!err) {
+		info->discard_granularity = discard_granularity;
+		info->discard_alignment = discard_alignment;
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	info->feature_secdiscard =
 		!!xenbus_read_unsigned(info->xbdev->otherend, "discard-secure",
 				       0);

@@ -518,13 +518,20 @@ int ahci_platform_init_host(struct platform_device *pdev,
 	int i, irq, n_ports, rc;
 
 	irq = platform_get_irq(pdev, 0);
+<<<<<<< HEAD
 	if (irq < 0) {
+=======
+	if (irq <= 0) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (irq != -EPROBE_DEFER)
 			dev_err(dev, "no irq\n");
 		return irq;
 	}
+<<<<<<< HEAD
 	if (!irq)
 		return -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	hpriv->irq = irq;
 

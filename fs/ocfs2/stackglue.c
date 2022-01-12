@@ -510,7 +510,15 @@ static ssize_t ocfs2_loaded_cluster_plugins_show(struct kobject *kobj,
 	list_for_each_entry(p, &ocfs2_stack_list, sp_list) {
 		ret = snprintf(buf, remain, "%s\n",
 			       p->sp_name);
+<<<<<<< HEAD
 		if (ret >= remain) {
+=======
+		if (ret < 0) {
+			total = ret;
+			break;
+		}
+		if (ret == remain) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			/* snprintf() didn't fit */
 			total = -E2BIG;
 			break;
@@ -537,7 +545,11 @@ static ssize_t ocfs2_active_cluster_plugin_show(struct kobject *kobj,
 	if (active_stack) {
 		ret = snprintf(buf, PAGE_SIZE, "%s\n",
 			       active_stack->sp_name);
+<<<<<<< HEAD
 		if (ret >= PAGE_SIZE)
+=======
+		if (ret == PAGE_SIZE)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			ret = -E2BIG;
 	}
 	spin_unlock(&ocfs2_stack_lock);

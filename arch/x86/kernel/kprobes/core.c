@@ -173,8 +173,11 @@ NOKPROBE_SYMBOL(skip_prefixes);
 int can_boost(struct insn *insn, void *addr)
 {
 	kprobe_opcode_t opcode;
+<<<<<<< HEAD
 	insn_byte_t prefix;
 	int i;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (search_exception_tables((unsigned long)addr))
 		return 0;	/* Page fault may occur on this address. */
@@ -187,6 +190,7 @@ int can_boost(struct insn *insn, void *addr)
 	if (insn->opcode.nbytes != 1)
 		return 0;
 
+<<<<<<< HEAD
 	for_each_insn_prefix(insn, i, prefix) {
 		insn_attr_t attr;
 
@@ -195,6 +199,11 @@ int can_boost(struct insn *insn, void *addr)
 		if (prefix == 0x2e || inat_is_address_size_prefix(attr))
 			return 0;
 	}
+=======
+	/* Can't boost Address-size override prefix */
+	if (unlikely(inat_is_address_size_prefix(insn->attr)))
+		return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	opcode = insn->opcode.bytes[0];
 
@@ -219,8 +228,13 @@ int can_boost(struct insn *insn, void *addr)
 		/* clear and set flags are boostable */
 		return (opcode == 0xf5 || (0xf7 < opcode && opcode < 0xfe));
 	default:
+<<<<<<< HEAD
 		/* call is not boostable */
 		return opcode != 0x9a;
+=======
+		/* CS override prefix and call are not boostable */
+		return (opcode != 0x2e && opcode != 0x9a);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 }
 
@@ -1029,11 +1043,14 @@ int kprobe_fault_handler(struct pt_regs *regs, int trapnr)
 		 * So clear it by resetting the current kprobe:
 		 */
 		regs->flags &= ~X86_EFLAGS_TF;
+<<<<<<< HEAD
 		/*
 		 * Since the single step (trap) has been cancelled,
 		 * we need to restore BTF here.
 		 */
 		restore_btf();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		/*
 		 * If the TF flag was set before the kprobe hit,

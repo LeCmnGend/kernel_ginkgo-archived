@@ -556,11 +556,17 @@ void notrace cpu_init(void)
 	 * In Thumb-2, msr with an immediate value is not allowed.
 	 */
 #ifdef CONFIG_THUMB2_KERNEL
+<<<<<<< HEAD
 #define PLC_l	"l"
 #define PLC_r	"r"
 #else
 #define PLC_l	"I"
 #define PLC_r	"I"
+=======
+#define PLC	"r"
+#else
+#define PLC	"I"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 
 	/*
@@ -582,6 +588,7 @@ void notrace cpu_init(void)
 	"msr	cpsr_c, %9"
 	    :
 	    : "r" (stk),
+<<<<<<< HEAD
 	      PLC_r (PSR_F_BIT | PSR_I_BIT | IRQ_MODE),
 	      "I" (offsetof(struct stack, irq[0])),
 	      PLC_r (PSR_F_BIT | PSR_I_BIT | ABT_MODE),
@@ -591,6 +598,17 @@ void notrace cpu_init(void)
 	      PLC_r (PSR_F_BIT | PSR_I_BIT | FIQ_MODE),
 	      "I" (offsetof(struct stack, fiq[0])),
 	      PLC_l (PSR_F_BIT | PSR_I_BIT | SVC_MODE)
+=======
+	      PLC (PSR_F_BIT | PSR_I_BIT | IRQ_MODE),
+	      "I" (offsetof(struct stack, irq[0])),
+	      PLC (PSR_F_BIT | PSR_I_BIT | ABT_MODE),
+	      "I" (offsetof(struct stack, abt[0])),
+	      PLC (PSR_F_BIT | PSR_I_BIT | UND_MODE),
+	      "I" (offsetof(struct stack, und[0])),
+	      PLC (PSR_F_BIT | PSR_I_BIT | FIQ_MODE),
+	      "I" (offsetof(struct stack, fiq[0])),
+	      PLC (PSR_F_BIT | PSR_I_BIT | SVC_MODE)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	    : "r14");
 #endif
 }

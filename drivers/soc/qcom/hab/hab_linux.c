@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2019-2020, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2019-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -94,7 +98,11 @@ static long hab_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
 	void *send_data;
 	unsigned char data[256] = { 0 };
 	long ret = 0;
+<<<<<<< HEAD
 	char names[30];
+=======
+	char names[30] = { 0 };
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (_IOC_SIZE(cmd) && (cmd & IOC_IN)) {
 		if (_IOC_SIZE(cmd) > sizeof(data))

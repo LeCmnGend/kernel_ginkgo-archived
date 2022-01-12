@@ -801,9 +801,13 @@ typedef int (*trace_func_graph_ent_t)(struct ftrace_graph_ent *); /* entry */
 #ifdef CONFIG_FUNCTION_GRAPH_TRACER
 
 /* for init task */
+<<<<<<< HEAD
 #define INIT_FTRACE_GRAPH				\
 	.ret_stack		= NULL,			\
 	.tracing_graph_pause	= ATOMIC_INIT(0),
+=======
+#define INIT_FTRACE_GRAPH		.ret_stack = NULL,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*
  * Stack of return addresses for functions

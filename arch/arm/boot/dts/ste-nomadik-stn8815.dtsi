@@ -756,14 +756,22 @@
 			status = "disabled";
 		};
 
+<<<<<<< HEAD
 		vica: interrupt-controller@10140000 {
+=======
+		vica: intc@10140000 {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			compatible = "arm,versatile-vic";
 			interrupt-controller;
 			#interrupt-cells = <1>;
 			reg = <0x10140000 0x20>;
 		};
 
+<<<<<<< HEAD
 		vicb: interrupt-controller@10140020 {
+=======
+		vicb: intc@10140020 {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			compatible = "arm,versatile-vic";
 			interrupt-controller;
 			#interrupt-cells = <1>;

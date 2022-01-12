@@ -97,7 +97,11 @@ void free_pgd_slow(struct mm_struct *mm, pgd_t *pgd)
 	pte = pmd_pgtable(*pmd);
 	pmd_clear(pmd);
 	pte_free(mm, pte);
+<<<<<<< HEAD
 	mm_dec_nr_ptes(mm);
+=======
+	atomic_long_dec(&mm->nr_ptes);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pmd_free(mm, pmd);
 	mm_dec_nr_pmds(mm);
 free:

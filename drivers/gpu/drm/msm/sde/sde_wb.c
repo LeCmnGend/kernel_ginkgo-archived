@@ -825,7 +825,10 @@ static struct platform_driver sde_wb_driver = {
 		.name = "sde_wb",
 		.of_match_table = dt_match,
 		.suppress_bind_attrs = true,
+<<<<<<< HEAD
 		.probe_type = PROBE_FORCE_SYNCHRONOUS,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	},
 };
 

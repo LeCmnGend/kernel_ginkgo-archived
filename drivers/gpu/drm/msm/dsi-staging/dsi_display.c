@@ -1,6 +1,9 @@
 /*
  * Copyright (c) 2016-2021, The Linux Foundation. All rights reserved.
+<<<<<<< HEAD
  * Copyright (C) 2019 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -5032,6 +5035,7 @@ error:
 	return rc;
 }
 
+<<<<<<< HEAD
 static ssize_t sysfs_hbm_read(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
@@ -5146,15 +5150,20 @@ static struct attribute_group display_fs_attrs_group = {
 	.attrs = display_fs_attrs,
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int dsi_display_sysfs_init(struct dsi_display *display)
 {
 	int rc = 0;
 	struct device *dev = &display->pdev->dev;
 
+<<<<<<< HEAD
 	rc = sysfs_create_group(&dev->kobj, &display_fs_attrs_group);
 	if (rc)
 		pr_err("failed to create display device attributes");
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (display->panel->panel_mode == DSI_OP_CMD_MODE)
 		rc = sysfs_create_group(&dev->kobj,
 			&dynamic_dsi_clock_fs_attrs_group);
@@ -5607,7 +5616,10 @@ int dsi_display_dev_probe(struct platform_device *pdev)
 	display->pdev = pdev;
 	display->boot_disp = boot_disp;
 	display->dsi_type = dsi_type;
+<<<<<<< HEAD
 	display->is_prim_display = true;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	dsi_display_parse_cmdline_topology(display, index);
 

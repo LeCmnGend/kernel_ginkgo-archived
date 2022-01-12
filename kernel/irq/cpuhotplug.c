@@ -127,10 +127,14 @@ static bool migrate_one_irq(struct irq_desc *desc)
 			return false;
 		}
 
+<<<<<<< HEAD
 		if (irqd_has_set(&desc->irq_data, IRQF_PERF_CRITICAL))
 			default_affinity = cpu_perf_mask;
 		else
 			default_affinity = desc->affinity_hint ? : irq_default_affinity;
+=======
+		default_affinity = desc->affinity_hint ? : irq_default_affinity;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
 		 * The order of preference for selecting a fallback CPU is
 		 *
@@ -203,11 +207,17 @@ void irq_migrate_all_off_this_cpu(void)
 		raw_spin_lock(&desc->lock);
 		affinity_broken = migrate_one_irq(desc);
 		raw_spin_unlock(&desc->lock);
+<<<<<<< HEAD
 		if (cpumask_intersects(cpumask_of(smp_processor_id()), cpu_perf_mask))
 			reaffine_perf_irqs();
 
 		if (affinity_broken) {
 			pr_debug_ratelimited("IRQ %u: no longer affine to CPU%u\n",
+=======
+
+		if (affinity_broken) {
+			pr_info_ratelimited("IRQ %u: no longer affine to CPU%u\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					    irq, smp_processor_id());
 		}
 	}
@@ -251,8 +261,11 @@ int irq_affinity_online_cpu(unsigned int cpu)
 		raw_spin_lock_irq(&desc->lock);
 		irq_restore_affinity_of_irq(desc, cpu);
 		raw_spin_unlock_irq(&desc->lock);
+<<<<<<< HEAD
 		if (cpumask_intersects(cpumask_of(cpu), cpu_perf_mask))
 			reaffine_perf_irqs();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	irq_unlock_sparse();
 

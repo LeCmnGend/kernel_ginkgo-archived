@@ -58,14 +58,21 @@ static inline void macvlan_count_rx(const struct macvlan_dev *vlan,
 	if (likely(success)) {
 		struct vlan_pcpu_stats *pcpu_stats;
 
+<<<<<<< HEAD
 		pcpu_stats = get_cpu_ptr(vlan->pcpu_stats);
+=======
+		pcpu_stats = this_cpu_ptr(vlan->pcpu_stats);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		u64_stats_update_begin(&pcpu_stats->syncp);
 		pcpu_stats->rx_packets++;
 		pcpu_stats->rx_bytes += len;
 		if (multicast)
 			pcpu_stats->rx_multicast++;
 		u64_stats_update_end(&pcpu_stats->syncp);
+<<<<<<< HEAD
 		put_cpu_ptr(vlan->pcpu_stats);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
 		this_cpu_inc(vlan->pcpu_stats->rx_errors);
 	}

@@ -113,12 +113,17 @@ static int da903x_led_probe(struct platform_device *pdev)
 	led->flags = pdata->flags;
 	led->master = pdev->dev.parent;
 
+<<<<<<< HEAD
 	ret = led_classdev_register(led->master, &led->cdev);
+=======
+	ret = devm_led_classdev_register(led->master, &led->cdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret) {
 		dev_err(&pdev->dev, "failed to register LED %d\n", id);
 		return ret;
 	}
 
+<<<<<<< HEAD
 	platform_set_drvdata(pdev, led);
 
 	return 0;
@@ -130,6 +135,8 @@ static int da903x_led_remove(struct platform_device *pdev)
 
 	led_classdev_unregister(&led->cdev);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
 
@@ -138,7 +145,10 @@ static struct platform_driver da903x_led_driver = {
 		.name	= "da903x-led",
 	},
 	.probe		= da903x_led_probe,
+<<<<<<< HEAD
 	.remove		= da903x_led_remove,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 module_platform_driver(da903x_led_driver);

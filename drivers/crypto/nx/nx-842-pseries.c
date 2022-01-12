@@ -553,15 +553,23 @@ static int nx842_OF_set_defaults(struct nx842_devdata *devdata)
  * The status field indicates if the device is enabled when the status
  * is 'okay'.  Otherwise the device driver will be disabled.
  *
+<<<<<<< HEAD
  * @devdata: struct nx842_devdata to use for dev_info
  * @prop: struct property point containing the maxsyncop for the update
+=======
+ * @prop - struct property point containing the maxsyncop for the update
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * Returns:
  *  0 - Device is available
  *  -ENODEV - Device is not available
  */
+<<<<<<< HEAD
 static int nx842_OF_upd_status(struct nx842_devdata *devdata,
 			       struct property *prop)
+=======
+static int nx842_OF_upd_status(struct property *prop)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	const char *status = (const char *)prop->value;
 
@@ -775,7 +783,11 @@ static int nx842_OF_upd(struct property *new_prop)
 		goto out;
 
 	/* Perform property updates */
+<<<<<<< HEAD
 	ret = nx842_OF_upd_status(new_devdata, status);
+=======
+	ret = nx842_OF_upd_status(status);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret)
 		goto error_out;
 
@@ -1088,7 +1100,10 @@ static struct vio_device_id nx842_vio_driver_ids[] = {
 	{"ibm,compression-v1", "ibm,compression"},
 	{"", ""},
 };
+<<<<<<< HEAD
 MODULE_DEVICE_TABLE(vio, nx842_vio_driver_ids);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static struct vio_driver nx842_vio_driver = {
 	.name = KBUILD_MODNAME,

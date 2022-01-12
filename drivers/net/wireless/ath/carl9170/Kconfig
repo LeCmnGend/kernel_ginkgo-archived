@@ -15,11 +15,21 @@ config CARL9170
 
 config CARL9170_LEDS
 	bool "SoftLED Support"
+<<<<<<< HEAD
 	default y
 	depends on CARL9170
 	depends on MAC80211_LEDS
 	help
 	  This option is necessary, if you want your device's LEDs to blink.
+=======
+	depends on CARL9170
+	select MAC80211_LEDS
+	select LEDS_CLASS
+	select NEW_LEDS
+	default y
+	help
+	  This option is necessary, if you want your device' LEDs to blink
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	  Say Y, unless you need the LEDs for firmware debugging.
 

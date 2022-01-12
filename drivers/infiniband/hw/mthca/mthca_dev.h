@@ -105,6 +105,10 @@ enum {
 	MTHCA_OPCODE_ATOMIC_CS      = 0x11,
 	MTHCA_OPCODE_ATOMIC_FA      = 0x12,
 	MTHCA_OPCODE_BIND_MW        = 0x18,
+<<<<<<< HEAD
+=======
+	MTHCA_OPCODE_INVALID        = 0xff
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 enum {

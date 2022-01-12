@@ -1416,7 +1416,11 @@ static int nozomi_card_init(struct pci_dev *pdev,
 			NOZOMI_NAME, dc);
 	if (unlikely(ret)) {
 		dev_err(&pdev->dev, "can't request irq %d\n", pdev->irq);
+<<<<<<< HEAD
 		goto err_free_all_kfifo;
+=======
+		goto err_free_kfifo;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	DBG1("base_addr: %p", dc->base_addr);
@@ -1454,6 +1458,7 @@ static int nozomi_card_init(struct pci_dev *pdev,
 	return 0;
 
 err_free_tty:
+<<<<<<< HEAD
 	for (i--; i >= 0; i--) {
 		tty_unregister_device(ntty_driver, dc->index_start + i);
 		tty_port_destroy(&dc->port[i].port);
@@ -1463,6 +1468,14 @@ err_free_all_kfifo:
 	i = MAX_PORT;
 err_free_kfifo:
 	for (i--; i >= PORT_MDM; i--)
+=======
+	for (i = 0; i < MAX_PORT; ++i) {
+		tty_unregister_device(ntty_driver, dc->index_start + i);
+		tty_port_destroy(&dc->port[i].port);
+	}
+err_free_kfifo:
+	for (i = 0; i < MAX_PORT; i++)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		kfifo_free(&dc->port[i].fifo_ul);
 err_free_sbuf:
 	kfree(dc->send_buf);

@@ -1089,20 +1089,30 @@ static int pasemi_mac_open(struct net_device *dev)
 
 	mac->tx = pasemi_mac_setup_tx_resources(dev);
 
+<<<<<<< HEAD
 	if (!mac->tx) {
 		ret = -ENOMEM;
 		goto out_tx_ring;
 	}
+=======
+	if (!mac->tx)
+		goto out_tx_ring;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* We might already have allocated rings in case mtu was changed
 	 * before interface was brought up.
 	 */
 	if (dev->mtu > 1500 && !mac->num_cs) {
 		pasemi_mac_setup_csrings(mac);
+<<<<<<< HEAD
 		if (!mac->num_cs) {
 			ret = -ENOMEM;
 			goto out_tx_ring;
 		}
+=======
+		if (!mac->num_cs)
+			goto out_tx_ring;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	/* Zero out rmon counters */

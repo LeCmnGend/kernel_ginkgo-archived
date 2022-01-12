@@ -313,8 +313,14 @@ static void tlan_remove_one(struct pci_dev *pdev)
 	pci_release_regions(pdev);
 #endif
 
+<<<<<<< HEAD
 	cancel_work_sync(&priv->tlan_tqueue);
 	free_netdev(dev);
+=======
+	free_netdev(dev);
+
+	cancel_work_sync(&priv->tlan_tqueue);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void tlan_start(struct net_device *dev)
@@ -671,6 +677,10 @@ module_exit(tlan_exit);
 static void  __init tlan_eisa_probe(void)
 {
 	long	ioaddr;
+<<<<<<< HEAD
+=======
+	int	rc = -ENODEV;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int	irq;
 	u16	device_id;
 
@@ -735,7 +745,12 @@ static void  __init tlan_eisa_probe(void)
 
 
 		/* Setup the newly found eisa adapter */
+<<<<<<< HEAD
 		tlan_probe1(NULL, ioaddr, irq, 12, NULL);
+=======
+		rc = tlan_probe1(NULL, ioaddr, irq,
+				 12, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		continue;
 
 out:

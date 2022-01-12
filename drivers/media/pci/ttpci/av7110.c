@@ -423,15 +423,24 @@ static void debiirq(unsigned long cookie)
 	case DATA_CI_GET:
 	{
 		u8 *data = av7110->debi_virt;
+<<<<<<< HEAD
 		u8 data_0 = data[0];
 
 		if (data_0 < 2 && data[2] == 0xff) {
+=======
+
+		if ((data[0] < 2) && data[2] == 0xff) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			int flags = 0;
 			if (data[5] > 0)
 				flags |= CA_CI_MODULE_PRESENT;
 			if (data[5] > 5)
 				flags |= CA_CI_MODULE_READY;
+<<<<<<< HEAD
 			av7110->ci_slot[data_0].flags = flags;
+=======
+			av7110->ci_slot[data[0]].flags = flags;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		} else
 			ci_get_data(&av7110->ci_rbuffer,
 				    av7110->debi_virt,

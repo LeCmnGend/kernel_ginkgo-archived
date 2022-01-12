@@ -559,7 +559,13 @@ ieee802154_llsec_parse_key_id(struct genl_info *info,
 	desc->mode = nla_get_u8(info->attrs[IEEE802154_ATTR_LLSEC_KEY_MODE]);
 
 	if (desc->mode == IEEE802154_SCF_KEY_IMPLICIT) {
+<<<<<<< HEAD
 		if (!info->attrs[IEEE802154_ATTR_PAN_ID])
+=======
+		if (!info->attrs[IEEE802154_ATTR_PAN_ID] &&
+		    !(info->attrs[IEEE802154_ATTR_SHORT_ADDR] ||
+		      info->attrs[IEEE802154_ATTR_HW_ADDR]))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return -EINVAL;
 
 		desc->device_addr.pan_id = nla_get_shortaddr(info->attrs[IEEE802154_ATTR_PAN_ID]);
@@ -568,9 +574,12 @@ ieee802154_llsec_parse_key_id(struct genl_info *info,
 			desc->device_addr.mode = IEEE802154_ADDR_SHORT;
 			desc->device_addr.short_addr = nla_get_shortaddr(info->attrs[IEEE802154_ATTR_SHORT_ADDR]);
 		} else {
+<<<<<<< HEAD
 			if (!info->attrs[IEEE802154_ATTR_HW_ADDR])
 				return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			desc->device_addr.mode = IEEE802154_ADDR_LONG;
 			desc->device_addr.extended_addr = nla_get_hwaddr(info->attrs[IEEE802154_ATTR_HW_ADDR]);
 		}
@@ -688,10 +697,15 @@ int ieee802154_llsec_getparams(struct sk_buff *skb, struct genl_info *info)
 	    nla_put_u8(msg, IEEE802154_ATTR_LLSEC_SECLEVEL, params.out_level) ||
 	    nla_put_u32(msg, IEEE802154_ATTR_LLSEC_FRAME_COUNTER,
 			be32_to_cpu(params.frame_counter)) ||
+<<<<<<< HEAD
 	    ieee802154_llsec_fill_key_id(msg, &params.out_key)) {
 		rc = -ENOBUFS;
 		goto out_free;
 	}
+=======
+	    ieee802154_llsec_fill_key_id(msg, &params.out_key))
+		goto out_free;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	dev_put(dev);
 

@@ -1460,7 +1460,11 @@ static int ath9k_htc_set_key(struct ieee80211_hw *hw,
 		}
 		break;
 	case DISABLE_KEY:
+<<<<<<< HEAD
 		ath_key_delete(common, key->hw_key_idx);
+=======
+		ath_key_delete(common, key);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 	default:
 		ret = -EINVAL;

@@ -88,7 +88,10 @@ struct adc_tm_sensor {
 	bool				low_thr_triggered;
 	struct workqueue_struct		*req_wq;
 	struct work_struct		work;
+<<<<<<< HEAD
 	int				emul_temperature;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 struct adc_tm_client_info {
@@ -117,7 +120,10 @@ struct adc_tm_ops {
 	int (*set_trips)(struct adc_tm_sensor *, int, int);
 	int (*interrupts_reg)(struct adc_tm_chip *);
 	int (*shutdown)(struct adc_tm_chip *);
+<<<<<<< HEAD
 	int (*set_emul_temp)(struct adc_tm_sensor *, int);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 struct adc_tm_chip {

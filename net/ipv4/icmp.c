@@ -743,6 +743,7 @@ void __icmp_send(struct sk_buff *skb_in, int type, int code, __be32 info,
 		icmp_param.data_len = room;
 	icmp_param.head_len = sizeof(struct icmphdr);
 
+<<<<<<< HEAD
 	/* if we don't have a source address at this point, fall back to the
 	 * dummy address instead of sending out a packet with a source address
 	 * of 0.0.0.0
@@ -750,6 +751,8 @@ void __icmp_send(struct sk_buff *skb_in, int type, int code, __be32 info,
 	if (!fl4.saddr)
 		fl4.saddr = htonl(INADDR_DUMMY);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	icmp_push_reply(&icmp_param, &fl4, &ipc, &rt);
 ende:
 	ip_rt_put(rt);
@@ -761,6 +764,7 @@ out:;
 }
 EXPORT_SYMBOL(__icmp_send);
 
+<<<<<<< HEAD
 #if IS_ENABLED(CONFIG_NF_NAT)
 #include <net/netfilter/nf_conntrack.h>
 void icmp_ndo_send(struct sk_buff *skb_in, int type, int code, __be32 info)
@@ -795,6 +799,8 @@ out:
 }
 EXPORT_SYMBOL(icmp_ndo_send);
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static void icmp_socket_deliver(struct sk_buff *skb, u32 info)
 {

@@ -209,7 +209,14 @@ typedef struct _ODM_RATE_ADAPTIVE {
 
 #define AVG_THERMAL_NUM		8
 #define IQK_Matrix_REG_NUM	8
+<<<<<<< HEAD
 #define IQK_Matrix_Settings_NUM	14 /* Channels_2_4G_NUM */
+=======
+#define IQK_Matrix_Settings_NUM	(14 + 24 + 21) /*   Channels_2_4G_NUM
+						* + Channels_5G_20M_NUM
+						* + Channels_5G
+						*/
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #define		DM_Type_ByFW			0
 #define		DM_Type_ByDriver		1

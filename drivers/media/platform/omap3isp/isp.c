@@ -2304,10 +2304,15 @@ static int isp_probe(struct platform_device *pdev)
 		mem = platform_get_resource(pdev, IORESOURCE_MEM, i);
 		isp->mmio_base[map_idx] =
 			devm_ioremap_resource(isp->dev, mem);
+<<<<<<< HEAD
 		if (IS_ERR(isp->mmio_base[map_idx])) {
 			ret = PTR_ERR(isp->mmio_base[map_idx]);
 			goto error;
 		}
+=======
+		if (IS_ERR(isp->mmio_base[map_idx]))
+			return PTR_ERR(isp->mmio_base[map_idx]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	ret = isp_get_clocks(isp);

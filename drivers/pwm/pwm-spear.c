@@ -231,6 +231,13 @@ static int spear_pwm_probe(struct platform_device *pdev)
 static int spear_pwm_remove(struct platform_device *pdev)
 {
 	struct spear_pwm_chip *pc = platform_get_drvdata(pdev);
+<<<<<<< HEAD
+=======
+	int i;
+
+	for (i = 0; i < NUM_PWM; i++)
+		pwm_disable(&pc->chip.pwms[i]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* clk was prepared in probe, hence unprepare it here */
 	clk_unprepare(pc->clk);

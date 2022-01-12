@@ -523,7 +523,11 @@ void xlgmac_get_all_hw_features(struct xlgmac_pdata *pdata)
 
 void xlgmac_print_all_hw_features(struct xlgmac_pdata *pdata)
 {
+<<<<<<< HEAD
 	char __maybe_unused *str = NULL;
+=======
+	char *str = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	XLGMAC_PR("\n");
 	XLGMAC_PR("=====================================================\n");

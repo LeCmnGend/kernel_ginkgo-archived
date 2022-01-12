@@ -303,14 +303,22 @@ void tcp_delack_timer_handler(struct sock *sk)
 	icsk->icsk_ack.pending &= ~ICSK_ACK_TIMER;
 
 	if (inet_csk_ack_scheduled(sk)) {
+<<<<<<< HEAD
 		if (!inet_csk_in_pingpong_mode(sk)) {
+=======
+		if (!icsk->icsk_ack.pingpong) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			/* Delayed ACK missed: inflate ATO. */
 			icsk->icsk_ack.ato = min(icsk->icsk_ack.ato << 1, icsk->icsk_rto);
 		} else {
 			/* Delayed ACK missed: leave pingpong mode and
 			 * deflate ATO.
 			 */
+<<<<<<< HEAD
 			inet_csk_exit_pingpong_mode(sk);
+=======
+			icsk->icsk_ack.pingpong = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			icsk->icsk_ack.ato      = TCP_ATO_MIN;
 		}
 		tcp_mstamp_refresh(tcp_sk(sk));
@@ -600,7 +608,10 @@ void tcp_write_timer_handler(struct sock *sk)
 		goto out;
 	}
 
+<<<<<<< HEAD
 	tcp_rate_check_app_limited(sk);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	tcp_mstamp_refresh(tcp_sk(sk));
 	event = icsk->icsk_pending;
 

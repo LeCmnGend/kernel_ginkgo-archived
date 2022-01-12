@@ -152,8 +152,11 @@ static inline struct crypto_acomp *crypto_acomp_reqtfm(struct acomp_req *req)
  * crypto_free_acomp() -- free ACOMPRESS tfm handle
  *
  * @tfm:	ACOMPRESS tfm handle allocated with crypto_alloc_acomp()
+<<<<<<< HEAD
  *
  * If @tfm is a NULL or error pointer, this function does nothing.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 static inline void crypto_free_acomp(struct crypto_acomp *tfm)
 {

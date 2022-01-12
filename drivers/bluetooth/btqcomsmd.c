@@ -154,6 +154,7 @@ static int btqcomsmd_probe(struct platform_device *pdev)
 
 	btq->cmd_channel = qcom_wcnss_open_channel(wcnss, "APPS_RIVA_BT_CMD",
 						   btqcomsmd_cmd_callback, btq);
+<<<<<<< HEAD
 	if (IS_ERR(btq->cmd_channel)) {
 		ret = PTR_ERR(btq->cmd_channel);
 		goto destroy_acl_channel;
@@ -164,6 +165,14 @@ static int btqcomsmd_probe(struct platform_device *pdev)
 		ret = -ENOMEM;
 		goto destroy_cmd_channel;
 	}
+=======
+	if (IS_ERR(btq->cmd_channel))
+		return PTR_ERR(btq->cmd_channel);
+
+	hdev = hci_alloc_dev();
+	if (!hdev)
+		return -ENOMEM;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	hci_set_drvdata(hdev, btq);
 	btq->hdev = hdev;
@@ -177,12 +186,20 @@ static int btqcomsmd_probe(struct platform_device *pdev)
 	hdev->set_bdaddr = qca_set_bdaddr_rome;
 
 	ret = hci_register_dev(hdev);
+<<<<<<< HEAD
 	if (ret < 0)
 		goto hci_free_dev;
+=======
+	if (ret < 0) {
+		hci_free_dev(hdev);
+		return ret;
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	platform_set_drvdata(pdev, btq);
 
 	return 0;
+<<<<<<< HEAD
 
 hci_free_dev:
 	hci_free_dev(hdev);
@@ -192,6 +209,8 @@ destroy_acl_channel:
 	rpmsg_destroy_ept(btq->acl_channel);
 
 	return ret;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static int btqcomsmd_remove(struct platform_device *pdev)

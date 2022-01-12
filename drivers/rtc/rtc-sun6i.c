@@ -230,7 +230,11 @@ static void __init sun6i_rtc_clk_init(struct device_node *node)
 								300000000);
 	if (IS_ERR(rtc->int_osc)) {
 		pr_crit("Couldn't register the internal oscillator\n");
+<<<<<<< HEAD
 		goto err;
+=======
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	parents[0] = clk_hw_get_name(rtc->int_osc);
@@ -246,7 +250,11 @@ static void __init sun6i_rtc_clk_init(struct device_node *node)
 	rtc->losc = clk_register(NULL, &rtc->hw);
 	if (IS_ERR(rtc->losc)) {
 		pr_crit("Couldn't register the LOSC clock\n");
+<<<<<<< HEAD
 		goto err_register;
+=======
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	of_property_read_string_index(node, "clock-output-names", 1,
@@ -257,7 +265,11 @@ static void __init sun6i_rtc_clk_init(struct device_node *node)
 					  &rtc->lock);
 	if (IS_ERR(rtc->ext_losc)) {
 		pr_crit("Couldn't register the LOSC external gate\n");
+<<<<<<< HEAD
 		goto err_register;
+=======
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	clk_data->num = 2;
@@ -266,8 +278,11 @@ static void __init sun6i_rtc_clk_init(struct device_node *node)
 	of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
 	return;
 
+<<<<<<< HEAD
 err_register:
 	clk_hw_unregister_fixed_rate(rtc->int_osc);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 err:
 	kfree(clk_data);
 }

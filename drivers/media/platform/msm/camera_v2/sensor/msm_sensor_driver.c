@@ -746,6 +746,7 @@ static int32_t msm_sensor_driver_is_special_support(
 	return rc;
 }
 
+<<<<<<< HEAD
 static struct kobject *msm_sensor_device=NULL;
 static char module_info[256] = {0};
 
@@ -1039,6 +1040,9 @@ int32_t msm_sensorid_init_device_name(void)
 	return 0 ;
 }
 
+=======
+/* static function definition */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int32_t msm_sensor_driver_probe(void *setting,
 	struct msm_sensor_info_t *probed_info, char *entity_name)
 {
@@ -1106,7 +1110,11 @@ int32_t msm_sensor_driver_probe(void *setting,
 			slave_info32->sensor_id_info.sensor_id_mask;
 		slave_info->sensor_id_info.sensor_id =
 			slave_info32->sensor_id_info.sensor_id;
+<<<<<<< HEAD
 		slave_info->vendor_id_info = slave_info32->vendor_id_info;
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		slave_info->sensor_id_info.setting.addr_type =
 			slave_info32->sensor_id_info.setting.addr_type;
 		slave_info->sensor_id_info.setting.data_type =
@@ -1288,8 +1296,12 @@ int32_t msm_sensor_driver_probe(void *setting,
 		if (slave_info->sensor_id_info.sensor_id ==
 			s_ctrl->sensordata->cam_slave_info->sensor_id_info
 			.sensor_id && !(strcmp(slave_info->sensor_name,
+<<<<<<< HEAD
 			s_ctrl->sensordata->cam_slave_info->sensor_name))&& (slave_info->vendor_id_info.vendor_id ==
 			s_ctrl->sensordata->cam_slave_info->vendor_id_info.vendor_id)) {
+=======
+			s_ctrl->sensordata->cam_slave_info->sensor_name))) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			pr_err("slot%d: sensor name: %s sensor id%d already probed\n",
 				slave_info->camera_id,
 				slave_info->sensor_name,
@@ -1390,7 +1402,10 @@ CSID_TG:
 	s_ctrl->sensordata->actuator_name = slave_info->actuator_name;
 	s_ctrl->sensordata->ois_name = slave_info->ois_name;
 	s_ctrl->sensordata->flash_name = slave_info->flash_name;
+<<<<<<< HEAD
 	s_ctrl->sensordata->vendor_id_info = &(slave_info->vendor_id_info);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * Update eeporm subdevice Id by input eeprom name
 	 */
@@ -1451,23 +1466,36 @@ CSID_TG:
 		goto camera_power_down;
 	}
 
+<<<<<<< HEAD
 //	/* Power down */
 //	s_ctrl->func_tbl->sensor_power_down(s_ctrl);
+=======
+	/* Power down */
+	s_ctrl->func_tbl->sensor_power_down(s_ctrl);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	rc = msm_sensor_fill_slave_info_init_params(
 		slave_info,
 		s_ctrl->sensordata->sensor_info);
 	if (rc < 0) {
 		pr_err("%s Fill slave info failed", slave_info->sensor_name);
+<<<<<<< HEAD
 		//goto free_camera_info;
 		goto camera_power_down;
+=======
+		goto free_camera_info;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	rc = msm_sensor_validate_slave_info(s_ctrl->sensordata->sensor_info);
 	if (rc < 0) {
 		pr_err("%s Validate slave info failed",
 			slave_info->sensor_name);
+<<<<<<< HEAD
 		//goto free_camera_info;
 		goto camera_power_down;
+=======
+		goto free_camera_info;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	/* Update sensor mount angle and position in media entity flag */
 	is_yuv = (slave_info->output_format == MSM_SENSOR_YCBCR) ? 1 : 0;
@@ -1482,6 +1510,7 @@ CSID_TG:
 	s_ctrl->sensordata->cam_slave_info = slave_info;
 
 	msm_sensor_fill_sensor_info(s_ctrl, probed_info, entity_name);
+<<<<<<< HEAD
 	msm_sensor_init_device_name();
 	msm_sensor_set_module_info(s_ctrl);
 	msm_sensorid_init_device_name();
@@ -1489,6 +1518,8 @@ CSID_TG:
 
 	/* Power down */
 	s_ctrl->func_tbl->sensor_power_down(s_ctrl);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*
 	 * Set probe succeeded flag to 1 so that no other camera shall

@@ -1354,10 +1354,16 @@ static int sdhci_esdhc_imx_remove(struct platform_device *pdev)
 	struct sdhci_host *host = platform_get_drvdata(pdev);
 	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
 	struct pltfm_imx_data *imx_data = sdhci_pltfm_priv(pltfm_host);
+<<<<<<< HEAD
 	int dead;
 
 	pm_runtime_get_sync(&pdev->dev);
 	dead = (readl(host->ioaddr + SDHCI_INT_STATUS) == 0xffffffff);
+=======
+	int dead = (readl(host->ioaddr + SDHCI_INT_STATUS) == 0xffffffff);
+
+	pm_runtime_get_sync(&pdev->dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pm_runtime_disable(&pdev->dev);
 	pm_runtime_put_noidle(&pdev->dev);
 

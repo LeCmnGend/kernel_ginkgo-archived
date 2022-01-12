@@ -2519,7 +2519,11 @@ static int rtl8192_read_eeprom_info(struct net_device *dev)
 				ret = eprom_read(dev, (EEPROM_TxPwIndex_CCK >> 1));
 				if (ret < 0)
 					return ret;
+<<<<<<< HEAD
 				priv->EEPROMTxPowerLevelCCK = ((u16)ret & 0xff00) >> 8;
+=======
+				priv->EEPROMTxPowerLevelCCK = ((u16)ret & 0xff) >> 8;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			} else
 				priv->EEPROMTxPowerLevelCCK = 0x10;
 			RT_TRACE(COMP_EPROM, "CCK Tx Power Levl: 0x%02x\n", priv->EEPROMTxPowerLevelCCK);
@@ -3418,7 +3422,11 @@ static void rtl819x_update_rxcounts(struct r8192_priv *priv, u32 *TotalRxBcnNum,
 			     u32 *TotalRxDataNum)
 {
 	u16			SlotIndex;
+<<<<<<< HEAD
 	u16			i;
+=======
+	u8			i;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	*TotalRxBcnNum = 0;
 	*TotalRxDataNum = 0;

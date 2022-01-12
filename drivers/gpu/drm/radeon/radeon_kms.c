@@ -531,7 +531,10 @@ static int radeon_info_ioctl(struct drm_device *dev, void *data, struct drm_file
 			*value = rdev->config.si.backend_enable_mask;
 		} else {
 			DRM_DEBUG_KMS("BACKEND_ENABLED_MASK is si+ only!\n");
+<<<<<<< HEAD
 			return -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 		break;
 	case RADEON_INFO_MAX_SCLK:
@@ -660,10 +663,15 @@ int radeon_driver_open_kms(struct drm_device *dev, struct drm_file *file_priv)
 	file_priv->driver_priv = NULL;
 
 	r = pm_runtime_get_sync(dev->dev);
+<<<<<<< HEAD
 	if (r < 0) {
 		pm_runtime_put_autosuspend(dev->dev);
 		return r;
 	}
+=======
+	if (r < 0)
+		return r;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* new gpu have virtual address space support */
 	if (rdev->family >= CHIP_CAYMAN) {

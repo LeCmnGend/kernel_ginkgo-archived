@@ -1857,7 +1857,10 @@ out_free_netdev:
 	free_netdev(netdev);
 out_pci_release:
 	pci_release_mem_regions(pdev);
+<<<<<<< HEAD
 	pci_disable_pcie_error_reporting(pdev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out_pci_disable:
 	pci_disable_device(pdev);
 	return err;
@@ -1905,16 +1908,25 @@ static int alx_resume(struct device *dev)
 
 	if (!netif_running(alx->dev))
 		return 0;
+<<<<<<< HEAD
+=======
+	netif_device_attach(alx->dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	rtnl_lock();
 	err = __alx_open(alx, true);
 	rtnl_unlock();
+<<<<<<< HEAD
 	if (err)
 		return err;
 
 	netif_device_attach(alx->dev);
 
 	return 0;
+=======
+
+	return err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static SIMPLE_DEV_PM_OPS(alx_pm_ops, alx_suspend, alx_resume);

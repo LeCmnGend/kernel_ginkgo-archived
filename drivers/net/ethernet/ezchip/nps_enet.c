@@ -623,7 +623,11 @@ static s32 nps_enet_probe(struct platform_device *pdev)
 
 	/* Get IRQ number */
 	priv->irq = platform_get_irq(pdev, 0);
+<<<<<<< HEAD
 	if (priv->irq < 0) {
+=======
+	if (!priv->irq) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dev_err(dev, "failed to retrieve <irq Rx-Tx> value from device tree\n");
 		err = -ENODEV;
 		goto out_netdev;
@@ -658,8 +662,13 @@ static s32 nps_enet_remove(struct platform_device *pdev)
 	struct nps_enet_priv *priv = netdev_priv(ndev);
 
 	unregister_netdev(ndev);
+<<<<<<< HEAD
 	netif_napi_del(&priv->napi);
 	free_netdev(ndev);
+=======
+	free_netdev(ndev);
+	netif_napi_del(&priv->napi);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
 }

@@ -274,6 +274,7 @@ struct device *serdev_tty_port_register(struct tty_port *port,
 	 * be ignored.
 	 */
 	if (parent->bus == &platform_bus_type) {
+<<<<<<< HEAD
 		if (pdev_tty_port) {
 			unsigned long pdev_idx;
 			int tty_len = strlen(drv->name);
@@ -284,6 +285,14 @@ struct device *serdev_tty_port_register(struct tty_port *port,
 					platform = true;
 				}
 			}
+=======
+		char tty_port_name[7];
+
+		sprintf(tty_port_name, "%s%d", drv->name, idx);
+		if (pdev_tty_port &&
+		    !strcmp(pdev_tty_port, tty_port_name)) {
+			platform = true;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 	}
 

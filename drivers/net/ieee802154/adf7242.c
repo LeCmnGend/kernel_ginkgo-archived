@@ -834,9 +834,13 @@ static int adf7242_rx(struct adf7242_local *lp)
 	int ret;
 	u8 lqi, len_u8, *data;
 
+<<<<<<< HEAD
 	ret = adf7242_read_reg(lp, 0, &len_u8);
 	if (ret)
 		return ret;
+=======
+	adf7242_read_reg(lp, 0, &len_u8);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	len = len_u8;
 

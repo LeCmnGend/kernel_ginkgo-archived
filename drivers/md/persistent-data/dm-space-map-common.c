@@ -337,8 +337,11 @@ int sm_ll_find_free_block(struct ll_disk *ll, dm_block_t begin,
 	 */
 	begin = do_div(index_begin, ll->entries_per_block);
 	end = do_div(end, ll->entries_per_block);
+<<<<<<< HEAD
 	if (end == 0)
 		end = ll->entries_per_block;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	for (i = index_begin; i < index_end; i++, begin = 0) {
 		struct dm_block *blk;

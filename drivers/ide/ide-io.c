@@ -531,6 +531,14 @@ repeat:
 		 * above to return us whatever is in the queue. Since we call
 		 * ide_do_request() ourselves, we end up taking requests while
 		 * the queue is blocked...
+<<<<<<< HEAD
+=======
+		 * 
+		 * We let requests forced at head of queue with ide-preempt
+		 * though. I hope that doesn't happen too much, hopefully not
+		 * unless the subdriver triggers such a thing in its own PM
+		 * state machine.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		 */
 		if ((drive->dev_flags & IDE_DFLAG_BLOCKED) &&
 		    ata_pm_request(rq) == 0 &&

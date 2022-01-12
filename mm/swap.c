@@ -833,10 +833,14 @@ EXPORT_SYMBOL(release_pages);
  */
 void __pagevec_release(struct pagevec *pvec)
 {
+<<<<<<< HEAD
 	if (!pvec->drained) {
 		lru_add_drain();
 		pvec->drained = true;
 	}
+=======
+	lru_add_drain();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	release_pages(pvec->pages, pagevec_count(pvec), pvec->cold);
 	pagevec_reinit(pvec);
 }
@@ -1013,7 +1017,11 @@ EXPORT_SYMBOL(pagevec_lookup_range_nr_tag);
  */
 void __init swap_setup(void)
 {
+<<<<<<< HEAD
 	unsigned long megs = totalram_pages() >> (20 - PAGE_SHIFT);
+=======
+	unsigned long megs = totalram_pages >> (20 - PAGE_SHIFT);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Use a smaller cluster for small-memory machines */
 	if (megs < 16)

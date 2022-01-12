@@ -579,10 +579,13 @@ static int qcom_vadc_map_voltage_temp(const struct vadc_map_pt *pts,
 	if (!pts)
 		return -EINVAL;
 
+<<<<<<< HEAD
 	if (!input) {
 		pr_err("%s: input voltage is zero\n", __func__);
 		return -EINVAL;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Check if table is descending or ascending */
 	if (tablesize > 1) {
 		if (pts[0].x < pts[1].x)

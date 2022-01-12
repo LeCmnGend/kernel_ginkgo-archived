@@ -70,11 +70,15 @@ struct as3935_state {
 	unsigned long noise_tripped;
 	u32 tune_cap;
 	u32 nflwdth_reg;
+<<<<<<< HEAD
 	/* Ensure timestamp is naturally aligned */
 	struct {
 		u8 chan;
 		s64 timestamp __aligned(8);
 	} scan;
+=======
+	u8 buffer[16]; /* 8-bit data + 56-bit padding + 64-bit timestamp */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u8 buf[2] ____cacheline_aligned;
 };
 
@@ -241,8 +245,13 @@ static irqreturn_t as3935_trigger_handler(int irq, void *private)
 	if (ret)
 		goto err_read;
 
+<<<<<<< HEAD
 	st->scan.chan = val & AS3935_DATA_MASK;
 	iio_push_to_buffers_with_timestamp(indio_dev, &st->scan,
+=======
+	st->buffer[0] = val & AS3935_DATA_MASK;
+	iio_push_to_buffers_with_timestamp(indio_dev, &st->buffer,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					   iio_get_time_ns(indio_dev));
 err_read:
 	iio_trigger_notify_done(indio_dev->trig);

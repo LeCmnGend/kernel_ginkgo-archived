@@ -926,8 +926,11 @@ static struct msm_vidc_platform_data sdmshrike_data = {
 	.csc_data.vpe_csc_custom_limit_coeff = vpe_csc_custom_limit_coeff,
 	.efuse_data = NULL,
 	.efuse_data_length = 0,
+<<<<<<< HEAD
 	.heic_image_capability = &default_heic_image_capability,
 	.hevc_image_capability = &default_hevc_image_capability,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.sku_version = 0,
 	.vpu_ver = VPU_VERSION_5,
 };

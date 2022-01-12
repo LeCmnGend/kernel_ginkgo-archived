@@ -498,9 +498,12 @@ static int do_blk_trace_setup(struct request_queue *q, char *name, dev_t dev,
 	if (!buts->buf_size || !buts->buf_nr)
 		return -EINVAL;
 
+<<<<<<< HEAD
 	if (!blk_debugfs_root)
 		return -ENOENT;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	strncpy(buts->name, name, BLKTRACE_BDEV_SIZE);
 	buts->name[BLKTRACE_BDEV_SIZE - 1] = '\0';
 
@@ -533,6 +536,7 @@ static int do_blk_trace_setup(struct request_queue *q, char *name, dev_t dev,
 	if (!bt->msg_data)
 		goto err;
 
+<<<<<<< HEAD
 #ifdef CONFIG_BLK_DEBUG_FS
 	/*
 	 * When tracing whole make_request drivers (multiqueue) block devices,
@@ -560,6 +564,18 @@ static int do_blk_trace_setup(struct request_queue *q, char *name, dev_t dev,
 		ret = -ENOENT;
 		goto err;
 	}
+=======
+	ret = -ENOENT;
+
+	if (!blk_debugfs_root)
+		goto err;
+
+	dir = debugfs_lookup(buts->name, blk_debugfs_root);
+	if (!dir)
+		bt->dir = dir = debugfs_create_dir(buts->name, blk_debugfs_root);
+	if (!dir)
+		goto err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	bt->dev = dev;
 	atomic_set(&bt->dropped, 0);
@@ -603,6 +619,11 @@ static int do_blk_trace_setup(struct request_queue *q, char *name, dev_t dev,
 
 	ret = 0;
 err:
+<<<<<<< HEAD
+=======
+	if (dir && !bt->dir)
+		dput(dir);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret)
 		blk_trace_free(bt);
 	return ret;

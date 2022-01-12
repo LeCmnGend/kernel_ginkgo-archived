@@ -14,12 +14,21 @@
 #include <asm/mach/pci.h>
 #include <asm/mach-types.h>
 
+<<<<<<< HEAD
 static int irqmap_personal_server[] = {
+=======
+static int irqmap_personal_server[] __initdata = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	IRQ_IN0, IRQ_IN1, IRQ_IN2, IRQ_IN3, 0, 0, 0,
 	IRQ_DOORBELLHOST, IRQ_DMA1, IRQ_DMA2, IRQ_PCI
 };
 
+<<<<<<< HEAD
 static int personal_server_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+=======
+static int __init personal_server_map_irq(const struct pci_dev *dev, u8 slot,
+	u8 pin)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	unsigned char line;
 

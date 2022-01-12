@@ -350,6 +350,10 @@ static struct ip6_tnl *ip6gre_tunnel_locate(struct net *net,
 	if (!(nt->parms.o_flags & TUNNEL_SEQ))
 		dev->features |= NETIF_F_LLTX;
 
+<<<<<<< HEAD
+=======
+	dev_hold(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ip6gre_tunnel_link(ign, nt);
 	return nt;
 
@@ -1123,6 +1127,11 @@ static void ip6gre_fb_tunnel_init(struct net_device *dev)
 	strcpy(tunnel->parms.name, dev->name);
 
 	tunnel->hlen		= sizeof(struct ipv6hdr) + 4;
+<<<<<<< HEAD
+=======
+
+	dev_hold(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 
@@ -1166,6 +1175,7 @@ static void ip6gre_destroy_tunnels(struct net *net, struct list_head *head)
 static int __net_init ip6gre_init_net(struct net *net)
 {
 	struct ip6gre_net *ign = net_generic(net, ip6gre_net_id);
+<<<<<<< HEAD
 	struct net_device *ndev;
 	int err;
 
@@ -1176,6 +1186,17 @@ static int __net_init ip6gre_init_net(struct net *net)
 		goto err_alloc_dev;
 	}
 	ign->fb_tunnel_dev = ndev;
+=======
+	int err;
+
+	ign->fb_tunnel_dev = alloc_netdev(sizeof(struct ip6_tnl), "ip6gre0",
+					  NET_NAME_UNKNOWN,
+					  ip6gre_tunnel_setup);
+	if (!ign->fb_tunnel_dev) {
+		err = -ENOMEM;
+		goto err_alloc_dev;
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dev_net_set(ign->fb_tunnel_dev, net);
 	/* FB netdevice is special: we have one, and only one per netns.
 	 * Allowing to move it to another netns is clearly unsafe.
@@ -1195,7 +1216,11 @@ static int __net_init ip6gre_init_net(struct net *net)
 	return 0;
 
 err_reg_dev:
+<<<<<<< HEAD
 	free_netdev(ndev);
+=======
+	free_netdev(ign->fb_tunnel_dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 err_alloc_dev:
 	return err;
 }

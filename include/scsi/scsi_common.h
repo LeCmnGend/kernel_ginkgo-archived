@@ -25,6 +25,7 @@ scsi_command_size(const unsigned char *cmnd)
 		scsi_varlen_cdb_length(cmnd) : COMMAND_SIZE(cmnd[0]);
 }
 
+<<<<<<< HEAD
 static inline unsigned char
 scsi_command_control(const unsigned char *cmnd)
 {
@@ -32,6 +33,8 @@ scsi_command_control(const unsigned char *cmnd)
 		cmnd[1] : cmnd[COMMAND_SIZE(cmnd[0]) - 1];
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Returns a human-readable name for the device */
 extern const char *scsi_device_type(unsigned type);
 

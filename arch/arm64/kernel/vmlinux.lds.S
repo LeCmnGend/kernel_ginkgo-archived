@@ -24,6 +24,7 @@ ENTRY(_text)
 
 jiffies = jiffies_64;
 
+<<<<<<< HEAD
 
 #define HYPERVISOR_EXTABLE					\
 	. = ALIGN(SZ_8);					\
@@ -31,6 +32,8 @@ jiffies = jiffies_64;
 	*(__kvm_ex_table)					\
 	VMLINUX_SYMBOL(__stop___kvm_ex_table) = .;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define HYPERVISOR_TEXT					\
 	/*						\
 	 * Align to 4 KB so that			\
@@ -46,7 +49,10 @@ jiffies = jiffies_64;
 	VMLINUX_SYMBOL(__hyp_idmap_text_end) = .;	\
 	VMLINUX_SYMBOL(__hyp_text_start) = .;		\
 	*(.hyp.text)					\
+<<<<<<< HEAD
 	HYPERVISOR_EXTABLE				\
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	VMLINUX_SYMBOL(__hyp_text_end) = .;
 
 #define IDMAP_TEXT					\
@@ -76,6 +82,15 @@ jiffies = jiffies_64;
 #define TRAMP_TEXT
 #endif
 
+<<<<<<< HEAD
+=======
+#define RTIC_BSS					\
+	. = ALIGN(PAGE_SIZE);				\
+	VMLINUX_SYMBOL(__bss_rtic_start) = .;	\
+	KEEP(*(.bss.rtic))			\
+	. = ALIGN(PAGE_SIZE);				\
+	VMLINUX_SYMBOL(__bss_rtic_end) = .;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * The size of the PE/COFF section that covers the kernel image, which
  * runs from stext to _edata, must be a round multiple of the PE/COFF
@@ -255,6 +270,13 @@ SECTIONS
 	STABS_DEBUG
 
 	HEAD_SYMBOLS
+<<<<<<< HEAD
+=======
+
+	.bss : {			/* bss segment		*/
+         RTIC_BSS
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /*

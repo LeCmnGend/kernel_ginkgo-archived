@@ -82,6 +82,11 @@ static int test_body(void)
 	ebb_global_disable();
 	ebb_freeze_pmcs();
 
+<<<<<<< HEAD
+=======
+	count_pmc(1, sample_period);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dump_ebb_state();
 
 	if (mmcr0_mismatch)

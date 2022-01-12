@@ -1562,7 +1562,10 @@ struct radeon_dpm {
 	void                    *priv;
 	u32			new_active_crtcs;
 	int			new_active_crtc_count;
+<<<<<<< HEAD
 	int			high_pixelclock_count;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32			current_active_crtcs;
 	int			current_active_crtc_count;
 	bool single_display;

@@ -35,7 +35,11 @@
 #include "list.h"
 #include "sysfs_utils.h"
 
+<<<<<<< HEAD
 extern struct udev *udev_context;
+=======
+struct udev *udev_context;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static int32_t read_attr_usbip_status(struct usbip_usb_device *udev)
 {

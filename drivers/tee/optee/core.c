@@ -86,6 +86,19 @@ int optee_from_msg_param(struct tee_param *params, size_t num_params,
 				return rc;
 			p->u.memref.shm_offs = mp->u.tmem.buf_ptr - pa;
 			p->u.memref.shm = shm;
+<<<<<<< HEAD
+=======
+
+			/* Check that the memref is covered by the shm object */
+			if (p->u.memref.size) {
+				size_t o = p->u.memref.shm_offs +
+					   p->u.memref.size - 1;
+
+				rc = tee_shm_get_pa(shm, o, NULL);
+				if (rc)
+					return rc;
+			}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			break;
 		default:
 			return -EINVAL;

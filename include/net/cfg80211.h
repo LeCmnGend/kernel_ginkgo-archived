@@ -4619,8 +4619,12 @@ unsigned int ieee80211_get_mesh_hdrlen(struct ieee80211s_hdr *meshhdr);
  * Return: 0 on success. Non-zero on error.
  */
 int ieee80211_data_to_8023_exthdr(struct sk_buff *skb, struct ethhdr *ehdr,
+<<<<<<< HEAD
 				  const u8 *addr, enum nl80211_iftype iftype,
 				  bool is_amsdu);
+=======
+				  const u8 *addr, enum nl80211_iftype iftype);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
  * ieee80211_data_to_8023 - convert an 802.11 data frame to 802.3
@@ -4632,7 +4636,11 @@ int ieee80211_data_to_8023_exthdr(struct sk_buff *skb, struct ethhdr *ehdr,
 static inline int ieee80211_data_to_8023(struct sk_buff *skb, const u8 *addr,
 					 enum nl80211_iftype iftype)
 {
+<<<<<<< HEAD
 	return ieee80211_data_to_8023_exthdr(skb, NULL, addr, iftype, false);
+=======
+	return ieee80211_data_to_8023_exthdr(skb, NULL, addr, iftype);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /**

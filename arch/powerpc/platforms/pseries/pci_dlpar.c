@@ -66,7 +66,10 @@ EXPORT_SYMBOL_GPL(init_phb_dynamic);
 int remove_phb_dynamic(struct pci_controller *phb)
 {
 	struct pci_bus *b = phb->bus;
+<<<<<<< HEAD
 	struct pci_host_bridge *host_bridge = to_pci_host_bridge(b->bridge);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct resource *res;
 	int rc, i;
 
@@ -93,8 +96,12 @@ int remove_phb_dynamic(struct pci_controller *phb)
 	/* Remove the PCI bus and unregister the bridge device from sysfs */
 	phb->bus = NULL;
 	pci_remove_bus(b);
+<<<<<<< HEAD
 	host_bridge->bus = NULL;
 	device_unregister(&host_bridge->dev);
+=======
+	device_unregister(b->bridge);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Now release the IO resource */
 	if (res->flags & IORESOURCE_IO)

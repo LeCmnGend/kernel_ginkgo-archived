@@ -169,5 +169,10 @@ void a6xx_crashdump_init(struct adreno_device *adreno_dev);
 int a6xx_gmu_sptprac_enable(struct adreno_device *adreno_dev);
 void a6xx_gmu_sptprac_disable(struct adreno_device *adreno_dev);
 bool a6xx_gmu_sptprac_is_on(struct adreno_device *adreno_dev);
+<<<<<<< HEAD
+=======
+size_t a6xx_snapshot_preemption(struct kgsl_device *device, u8 *buf,
+		size_t remain, void *priv);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 u64 a6xx_gmu_read_ao_counter(struct kgsl_device *device);
 #endif

@@ -373,7 +373,11 @@ static inline unsigned int xt_write_recseq_begin(void)
 	 * since addend is most likely 1
 	 */
 	__this_cpu_add(xt_recseq.sequence, addend);
+<<<<<<< HEAD
 	smp_mb();
+=======
+	smp_wmb();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return addend;
 }

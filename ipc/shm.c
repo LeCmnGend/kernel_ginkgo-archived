@@ -181,7 +181,11 @@ static void shm_rcu_free(struct rcu_head *head)
 							rcu);
 	struct shmid_kernel *shp = container_of(ptr, struct shmid_kernel,
 							shm_perm);
+<<<<<<< HEAD
 	security_shm_free(&shp->shm_perm);
+=======
+	security_shm_free(shp);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kvfree(shp);
 }
 
@@ -574,7 +578,11 @@ static int newseg(struct ipc_namespace *ns, struct ipc_params *params)
 	shp->mlock_user = NULL;
 
 	shp->shm_perm.security = NULL;
+<<<<<<< HEAD
 	error = security_shm_alloc(&shp->shm_perm);
+=======
+	error = security_shm_alloc(shp);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (error) {
 		kvfree(shp);
 		return error;
@@ -654,7 +662,14 @@ no_file:
  */
 static inline int shm_security(struct kern_ipc_perm *ipcp, int shmflg)
 {
+<<<<<<< HEAD
 	return security_shm_associate(ipcp, shmflg);
+=======
+	struct shmid_kernel *shp;
+
+	shp = container_of(ipcp, struct shmid_kernel, shm_perm);
+	return security_shm_associate(shp, shmflg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /*
@@ -851,7 +866,11 @@ static int shmctl_down(struct ipc_namespace *ns, int shmid, int cmd,
 
 	shp = container_of(ipcp, struct shmid_kernel, shm_perm);
 
+<<<<<<< HEAD
 	err = security_shm_shmctl(&shp->shm_perm, cmd);
+=======
+	err = security_shm_shmctl(shp, cmd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		goto out_unlock1;
 
@@ -949,7 +968,11 @@ static int shmctl_stat(struct ipc_namespace *ns, int shmid,
 	if (ipcperms(ns, &shp->shm_perm, S_IRUGO))
 		goto out_unlock;
 
+<<<<<<< HEAD
 	err = security_shm_shmctl(&shp->shm_perm, cmd);
+=======
+	err = security_shm_shmctl(shp, cmd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		goto out_unlock;
 
@@ -984,7 +1007,11 @@ static int shmctl_do_lock(struct ipc_namespace *ns, int shmid, int cmd)
 	}
 
 	audit_ipc_obj(&(shp->shm_perm));
+<<<<<<< HEAD
 	err = security_shm_shmctl(&shp->shm_perm, cmd);
+=======
+	err = security_shm_shmctl(shp, cmd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		goto out_unlock1;
 
@@ -1357,7 +1384,11 @@ long do_shmat(int shmid, char __user *shmaddr, int shmflg,
 	if (ipcperms(ns, &shp->shm_perm, acc_mode))
 		goto out_unlock;
 
+<<<<<<< HEAD
 	err = security_shm_shmat(&shp->shm_perm, shmaddr, shmflg);
+=======
+	err = security_shm_shmat(shp, shmaddr, shmflg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		goto out_unlock;
 
@@ -1429,7 +1460,11 @@ long do_shmat(int shmid, char __user *shmaddr, int shmflg,
 			goto invalid;
 	}
 
+<<<<<<< HEAD
 	addr = do_mmap(file, addr, size, prot, flags, 0, &populate, NULL);
+=======
+	addr = do_mmap_pgoff(file, addr, size, prot, flags, 0, &populate, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	*raddr = addr;
 	err = 0;
 	if (IS_ERR_VALUE(addr))

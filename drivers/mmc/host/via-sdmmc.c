@@ -865,9 +865,12 @@ static void via_sdc_data_isr(struct via_crdr_mmc_host *host, u16 intmask)
 {
 	BUG_ON(intmask == 0);
 
+<<<<<<< HEAD
 	if (!host->data)
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (intmask & VIA_CRDR_SDSTS_DT)
 		host->data->error = -ETIMEDOUT;
 	else if (intmask & (VIA_CRDR_SDSTS_RC | VIA_CRDR_SDSTS_WC))
@@ -1278,6 +1281,7 @@ static void via_init_sdc_pm(struct via_crdr_mmc_host *host)
 static int via_sd_suspend(struct pci_dev *pcidev, pm_message_t state)
 {
 	struct via_crdr_mmc_host *host;
+<<<<<<< HEAD
 	unsigned long flags;
 
 	host = pci_get_drvdata(pcidev);
@@ -1286,6 +1290,13 @@ static int via_sd_suspend(struct pci_dev *pcidev, pm_message_t state)
 	via_save_pcictrlreg(host);
 	via_save_sdcreg(host);
 	spin_unlock_irqrestore(&host->lock, flags);
+=======
+
+	host = pci_get_drvdata(pcidev);
+
+	via_save_pcictrlreg(host);
+	via_save_sdcreg(host);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	pci_save_state(pcidev);
 	pci_enable_wake(pcidev, pci_choose_state(pcidev, state), 0);

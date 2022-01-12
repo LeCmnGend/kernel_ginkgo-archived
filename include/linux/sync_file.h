@@ -30,6 +30,17 @@
  */
 struct sync_file {
 	struct file		*file;
+<<<<<<< HEAD
+=======
+	/**
+	 * @user_name:
+	 *
+	 * Name of the sync file provided by userspace, for merged fences.
+	 * Otherwise generated through driver callbacks (in which case the
+	 * entire array is 0).
+	 */
+	char			user_name[32];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_DEBUG_FS
 	struct list_head	sync_file_list;
 #endif
@@ -45,5 +56,9 @@ struct sync_file {
 
 struct sync_file *sync_file_create(struct dma_fence *fence);
 struct dma_fence *sync_file_get_fence(int fd);
+<<<<<<< HEAD
+=======
+char *sync_file_get_name(struct sync_file *sync_file, char *buf, int len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #endif /* _LINUX_SYNC_H */

@@ -1018,9 +1018,13 @@ static irqreturn_t qpnp_lcdb_sc_irq_handler(int irq, void *data)
 	int rc;
 	u8 val, val2[2] = {0};
 
+<<<<<<< HEAD
 	mutex_lock(&lcdb->lcdb_mutex);
 	rc = qpnp_lcdb_read(lcdb, lcdb->base + INT_RT_STATUS_REG, &val, 1);
 	mutex_unlock(&lcdb->lcdb_mutex);
+=======
+	rc = qpnp_lcdb_read(lcdb, lcdb->base + INT_RT_STATUS_REG, &val, 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (rc < 0)
 		goto irq_handled;
 
@@ -1060,6 +1064,7 @@ static irqreturn_t qpnp_lcdb_sc_irq_handler(int irq, void *data)
 			/* blanking time */
 			usleep_range(2000, 2100);
 			/* Read the SC status again to confirm true SC */
+<<<<<<< HEAD
 			mutex_lock(&lcdb->lcdb_mutex);
 			/*
 			 * Wait for the completion of LCDB module enable,
@@ -1069,6 +1074,10 @@ static irqreturn_t qpnp_lcdb_sc_irq_handler(int irq, void *data)
 			rc = qpnp_lcdb_read(lcdb,
 				lcdb->base + INT_RT_STATUS_REG, &val, 1);
 			mutex_unlock(&lcdb->lcdb_mutex);
+=======
+			rc = qpnp_lcdb_read(lcdb,
+				lcdb->base + INT_RT_STATUS_REG, &val, 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (rc < 0)
 				goto irq_handled;
 

@@ -68,7 +68,10 @@ struct osm_entry {
 };
 
 struct clk_osm {
+<<<<<<< HEAD
 	struct device *dev;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct clk_hw hw;
 	struct osm_entry osm_table[OSM_TABLE_SIZE];
 	struct dentry *debugfs;
@@ -86,6 +89,7 @@ struct clk_osm {
 	cpumask_t related_cpus;
 };
 
+<<<<<<< HEAD
 struct clk_osm_boost {
 	struct clk_osm *c;
 	unsigned int max_index;
@@ -93,6 +97,8 @@ struct clk_osm_boost {
 
 static DEFINE_PER_CPU(struct clk_osm_boost, clk_boost_pcpu);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static bool is_sdmshrike;
 static bool is_sm6150;
 static bool is_sdmmagpie;
@@ -615,12 +621,18 @@ static unsigned int
 osm_cpufreq_fast_switch(struct cpufreq_policy *policy, unsigned int target_freq)
 {
 	int index;
+<<<<<<< HEAD
 	unsigned int relation;
 
 	relation = target_freq < policy->max ? CPUFREQ_RELATION_L :
 					       CPUFREQ_RELATION_H;
 
 	index = cpufreq_frequency_table_target(policy, target_freq, relation);
+=======
+
+	index = cpufreq_frequency_table_target(policy, target_freq,
+							CPUFREQ_RELATION_L);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (index < 0)
 		return 0;
 
@@ -644,6 +656,7 @@ static unsigned int osm_cpufreq_get(unsigned int cpu)
 	return policy->freq_table[index].frequency;
 }
 
+<<<<<<< HEAD
 static bool osm_dt_find_freq(u32 *of_table, int of_len, long frequency)
 {
 	int i;
@@ -659,15 +672,22 @@ static bool osm_dt_find_freq(u32 *of_table, int of_len, long frequency)
 	return false;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int osm_cpufreq_cpu_init(struct cpufreq_policy *policy)
 {
 	struct cpufreq_frequency_table *table;
 	struct clk_osm *c, *parent;
 	struct clk_hw *p_hw;
+<<<<<<< HEAD
 	int ret, of_len;
 	unsigned int i, cpu;
 	u32 *of_table = NULL;
 	char tbl_name[] = "qcom,cpufreq-table-##";
+=======
+	int ret;
+	unsigned int i;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	c = osm_configure_policy(policy);
 	if (!c) {
@@ -684,6 +704,7 @@ static int osm_cpufreq_cpu_init(struct cpufreq_policy *policy)
 	parent = to_clk_osm(p_hw);
 	c->vbase = parent->vbase;
 
+<<<<<<< HEAD
 	snprintf(tbl_name, sizeof(tbl_name), "qcom,cpufreq-table-%d", policy->cpu);
 	if (of_find_property(parent->dev->of_node, tbl_name, &of_len) && of_len > 0) {
 		of_len /= sizeof(*of_table);
@@ -704,6 +725,8 @@ static int osm_cpufreq_cpu_init(struct cpufreq_policy *policy)
 		}
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	table = kcalloc(parent->osm_table_size + 1, sizeof(*table), GFP_KERNEL);
 	if (!table)
 		return -ENOMEM;
@@ -724,10 +747,13 @@ static int osm_cpufreq_cpu_init(struct cpufreq_policy *policy)
 			table[i].frequency = (XO_RATE * lval) / 1000;
 		table[i].driver_data = table[i].frequency;
 
+<<<<<<< HEAD
 		/* Ignore frequency if not present in DT table */
 		if (!osm_dt_find_freq(of_table, of_len, table[i].frequency))
 			table[i].frequency = CPUFREQ_ENTRY_INVALID;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (core_count == SINGLE_CORE_COUNT)
 			table[i].frequency = CPUFREQ_ENTRY_INVALID;
 
@@ -754,6 +780,7 @@ static int osm_cpufreq_cpu_init(struct cpufreq_policy *policy)
 	policy->dvfs_possible_from_any_cpu = true;
 	policy->fast_switch_possible = true;
 	policy->driver_data = c;
+<<<<<<< HEAD
 	for_each_cpu(cpu, &c->related_cpus) {
 		per_cpu(clk_boost_pcpu, cpu).c = c;
 		per_cpu(clk_boost_pcpu, cpu).max_index = i - 1;
@@ -766,6 +793,14 @@ static int osm_cpufreq_cpu_init(struct cpufreq_policy *policy)
 
 err:
 	kfree(of_table);
+=======
+
+	cpumask_copy(policy->cpus, &c->related_cpus);
+
+	return 0;
+
+err:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kfree(table);
 	return ret;
 }
@@ -797,6 +832,7 @@ static struct cpufreq_driver qcom_osm_cpufreq_driver = {
 	.boost_enabled	= true,
 };
 
+<<<<<<< HEAD
 static int cpuhp_osm_online(unsigned int cpu)
 {
 	struct clk_osm_boost *b = &per_cpu(clk_boost_pcpu, cpu);
@@ -807,6 +843,8 @@ static int cpuhp_osm_online(unsigned int cpu)
 	return 0;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static u32 find_voltage(struct clk_osm *c, unsigned long rate)
 {
 	struct osm_entry *table = c->osm_table;
@@ -1004,7 +1042,10 @@ static int clk_osm_read_lut(struct platform_device *pdev, struct clk_osm *c)
 {
 	u32 data, src, lval, i, j = c->osm_table_size;
 
+<<<<<<< HEAD
 	c->dev = &pdev->dev;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	for (i = 0; i < c->osm_table_size; i++) {
 		data = clk_osm_read_reg(c, FREQ_REG + i * OSM_REG_SIZE);
 		src = ((data & GENMASK(31, 30)) >> 30);
@@ -1321,11 +1362,14 @@ static int clk_cpu_osm_driver_probe(struct platform_device *pdev)
 	if (rc)
 		goto provider_err;
 
+<<<<<<< HEAD
 	rc = cpuhp_setup_state_nocalls(CPUHP_AP_ONLINE, "osm-cpufreq:online",
 				       cpuhp_osm_online, NULL);
 	if (rc)
 		dev_err(&pdev->dev, "CPUHP callback setup failed, rc=%d\n", rc);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pr_info("OSM CPUFreq driver inited\n");
 	return 0;
 

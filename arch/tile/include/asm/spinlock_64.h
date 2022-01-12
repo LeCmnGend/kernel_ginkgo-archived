@@ -75,6 +75,12 @@ static inline void arch_spin_lock(arch_spinlock_t *lock)
 /* Try to get the lock, and return whether we succeeded. */
 int arch_spin_trylock(arch_spinlock_t *lock);
 
+<<<<<<< HEAD
+=======
+/* We cannot take an interrupt after getting a ticket, so don't enable them. */
+#define arch_spin_lock_flags(lock, flags) arch_spin_lock(lock)
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Read-write spinlocks, allowing multiple readers
  * but only one writer.
@@ -153,4 +159,10 @@ static inline int arch_write_trylock(arch_rwlock_t *rw)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
+#define arch_read_lock_flags(lock, flags) arch_read_lock(lock)
+#define arch_write_lock_flags(lock, flags) arch_write_lock(lock)
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* _ASM_TILE_SPINLOCK_64_H */

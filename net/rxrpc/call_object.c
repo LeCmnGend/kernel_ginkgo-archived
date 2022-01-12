@@ -275,7 +275,11 @@ struct rxrpc_call *rxrpc_new_client_call(struct rxrpc_sock *rx,
 	 */
 	ret = rxrpc_connect_call(call, cp, srx, gfp);
 	if (ret < 0)
+<<<<<<< HEAD
 		goto error_attached_to_socket;
+=======
+		goto error;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	trace_rxrpc_call(call, rxrpc_call_connected, atomic_read(&call->usage),
 			 here, NULL);
@@ -295,6 +299,7 @@ struct rxrpc_call *rxrpc_new_client_call(struct rxrpc_sock *rx,
 error_dup_user_ID:
 	write_unlock(&rx->call_lock);
 	release_sock(&rx->sk);
+<<<<<<< HEAD
 	__rxrpc_set_call_completion(call, RXRPC_CALL_LOCAL_ERROR,
 				    RX_CALL_DEAD, -EEXIST);
 	trace_rxrpc_call(call, rxrpc_call_error, atomic_read(&call->usage),
@@ -318,6 +323,20 @@ error_attached_to_socket:
 				    RX_CALL_DEAD, ret);
 	_leave(" = c=%08x [err]", call->debug_id);
 	return call;
+=======
+	ret = -EEXIST;
+
+error:
+	__rxrpc_set_call_completion(call, RXRPC_CALL_LOCAL_ERROR,
+				    RX_CALL_DEAD, ret);
+	trace_rxrpc_call(call, rxrpc_call_error, atomic_read(&call->usage),
+			 here, ERR_PTR(ret));
+	rxrpc_release_call(rx, call);
+	mutex_unlock(&call->user_mutex);
+	rxrpc_put_call(call, rxrpc_call_put);
+	_leave(" = %d", ret);
+	return ERR_PTR(ret);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /*

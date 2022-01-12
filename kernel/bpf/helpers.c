@@ -112,6 +112,7 @@ BPF_CALL_0(bpf_ktime_get_ns)
 
 const struct bpf_func_proto bpf_ktime_get_ns_proto = {
 	.func		= bpf_ktime_get_ns,
+<<<<<<< HEAD
 	.gpl_only	= false,
 	.ret_type	= RET_INTEGER,
 };
@@ -125,6 +126,9 @@ BPF_CALL_0(bpf_ktime_get_boot_ns)
 const struct bpf_func_proto bpf_ktime_get_boot_ns_proto = {
 	.func		= bpf_ktime_get_boot_ns,
 	.gpl_only	= false,
+=======
+	.gpl_only	= true,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.ret_type	= RET_INTEGER,
 };
 

@@ -281,8 +281,13 @@ static inline void arch_bprm_mm_init(struct mm_struct *mm,
 	mpx_mm_init(mm);
 }
 
+<<<<<<< HEAD
 static inline void arch_unmap(struct mm_struct *mm, unsigned long start,
 			      unsigned long end)
+=======
+static inline void arch_unmap(struct mm_struct *mm, struct vm_area_struct *vma,
+			      unsigned long start, unsigned long end)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	/*
 	 * mpx_notify_unmap() goes and reads a rarely-hot
@@ -302,7 +307,11 @@ static inline void arch_unmap(struct mm_struct *mm, unsigned long start,
 	 * consistently wrong.
 	 */
 	if (unlikely(cpu_feature_enabled(X86_FEATURE_MPX)))
+<<<<<<< HEAD
 		mpx_notify_unmap(mm, start, end);
+=======
+		mpx_notify_unmap(mm, vma, start, end);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 #ifdef CONFIG_X86_INTEL_MEMORY_PROTECTION_KEYS

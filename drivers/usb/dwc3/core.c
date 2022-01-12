@@ -1411,7 +1411,11 @@ static int dwc3_probe(struct platform_device *pdev)
 		goto err0;
 	}
 
+<<<<<<< HEAD
 	dwc->dwc_wq = alloc_ordered_workqueue("dwc_wq", 0);
+=======
+	dwc->dwc_wq = alloc_ordered_workqueue("dwc_wq", WQ_HIGHPRI);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!dwc->dwc_wq) {
 		dev_err(dev,
 			"%s: Unable to create workqueue dwc_wq\n", __func__);

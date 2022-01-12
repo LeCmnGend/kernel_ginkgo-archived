@@ -149,8 +149,12 @@ static inline bool is_ttbr1_addr(unsigned long addr)
 void show_pte(unsigned long addr)
 {
 	struct mm_struct *mm;
+<<<<<<< HEAD
 	pgd_t *pgdp;
 	pgd_t pgd;
+=======
+	pgd_t *pgd;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (is_ttbr0_addr(addr)) {
 		/* TTBR0 */
@@ -169,6 +173,7 @@ void show_pte(unsigned long addr)
 		return;
 	}
 
+<<<<<<< HEAD
 	pr_alert("%s pgtable: %luk pages, %u-bit VAs, pgdp = %p\n",
 		 mm == &init_mm ? "swapper" : "user", PAGE_SIZE / SZ_1K,
 		 VA_BITS, mm->pgd);
@@ -200,6 +205,35 @@ void show_pte(unsigned long addr)
 		pte = READ_ONCE(*ptep);
 		pr_cont(", pte=%016llx", pte_val(pte));
 		pte_unmap(ptep);
+=======
+	pr_alert("%s pgtable: %luk pages, %u-bit VAs, pgd = %p\n",
+		 mm == &init_mm ? "swapper" : "user", PAGE_SIZE / SZ_1K,
+		 VA_BITS, mm->pgd);
+	pgd = pgd_offset(mm, addr);
+	pr_alert("[%016lx] *pgd=%016llx", addr, pgd_val(*pgd));
+
+	do {
+		pud_t *pud;
+		pmd_t *pmd;
+		pte_t *pte;
+
+		if (pgd_none(*pgd) || pgd_bad(*pgd))
+			break;
+
+		pud = pud_offset(pgd, addr);
+		pr_cont(", *pud=%016llx", pud_val(*pud));
+		if (pud_none(*pud) || pud_bad(*pud))
+			break;
+
+		pmd = pmd_offset(pud, addr);
+		pr_cont(", *pmd=%016llx", pmd_val(*pmd));
+		if (pmd_none(*pmd) || pmd_bad(*pmd))
+			break;
+
+		pte = pte_offset_map(pmd, addr);
+		pr_cont(", *pte=%016llx", pte_val(*pte));
+		pte_unmap(pte);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} while(0);
 
 	pr_cont("\n");
@@ -220,9 +254,14 @@ int ptep_set_access_flags(struct vm_area_struct *vma,
 			  pte_t entry, int dirty)
 {
 	pteval_t old_pteval, pteval;
+<<<<<<< HEAD
 	pte_t pte = READ_ONCE(*ptep);
 
 	if (pte_same(pte, entry))
+=======
+
+	if (pte_same(*ptep, entry))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return 0;
 
 	/* only preserve the access flags and write permission */
@@ -235,7 +274,11 @@ int ptep_set_access_flags(struct vm_area_struct *vma,
 	 * (calculated as: a & b == ~(~a | ~b)).
 	 */
 	pte_val(entry) ^= PTE_RDONLY;
+<<<<<<< HEAD
 	pteval = pte_val(pte);
+=======
+	pteval = READ_ONCE(pte_val(*ptep));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	do {
 		old_pteval = pteval;
 		pteval ^= PTE_RDONLY;

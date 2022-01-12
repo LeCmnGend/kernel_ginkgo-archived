@@ -15,11 +15,18 @@ obj-$(CONFIG_NET)		+= $(tmp-y)
 obj-$(CONFIG_LLC)		+= llc/
 obj-$(CONFIG_NET)		+= ethernet/ 802/ sched/ netlink/ bpf/
 obj-$(CONFIG_NETFILTER)		+= netfilter/
+<<<<<<< HEAD
 obj-$(CONFIG_WIREGUARD)		+= wireguard/
 obj-$(CONFIG_INET)		+= ipv4/
 obj-$(CONFIG_TLS)		+= tls/
 obj-$(CONFIG_XFRM)		+= xfrm/
 obj-$(CONFIG_UNIX_SCM)		+= unix/
+=======
+obj-$(CONFIG_INET)		+= ipv4/
+obj-$(CONFIG_TLS)		+= tls/
+obj-$(CONFIG_XFRM)		+= xfrm/
+obj-$(CONFIG_UNIX)		+= unix/
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 obj-$(CONFIG_NET)		+= ipv6/
 obj-$(CONFIG_PACKET)		+= packet/
 obj-$(CONFIG_NET_KEY)		+= key/

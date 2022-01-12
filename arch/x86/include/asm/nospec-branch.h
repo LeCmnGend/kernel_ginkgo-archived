@@ -330,7 +330,11 @@ DECLARE_STATIC_KEY_FALSE(mds_idle_clear);
  * combination with microcode which triggers a CPU buffer flush when the
  * instruction is executed.
  */
+<<<<<<< HEAD
 static __always_inline void mds_clear_cpu_buffers(void)
+=======
+static inline void mds_clear_cpu_buffers(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	static const u16 ds = __KERNEL_DS;
 
@@ -351,7 +355,11 @@ static __always_inline void mds_clear_cpu_buffers(void)
  *
  * Clear CPU buffers if the corresponding static key is enabled
  */
+<<<<<<< HEAD
 static __always_inline void mds_user_clear_cpu_buffers(void)
+=======
+static inline void mds_user_clear_cpu_buffers(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	if (static_branch_likely(&mds_user_clear))
 		mds_clear_cpu_buffers();

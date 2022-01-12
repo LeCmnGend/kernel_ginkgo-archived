@@ -263,6 +263,7 @@ config DEVFREQ_GOV_CDSPL3
 	  CDSP resource manager will use this governor to vote for L3 clock
 	  for IO-coherent traffic generated from CDSP
 
+<<<<<<< HEAD
 config DEVFREQ_BOOST
 	bool "Devfreq Boost"
 	help
@@ -296,6 +297,8 @@ config DEVFREQ_CPU_DDR_BW_BOOST_FREQ
 
 endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 source "drivers/devfreq/event/Kconfig"
 
 endif # PM_DEVFREQ

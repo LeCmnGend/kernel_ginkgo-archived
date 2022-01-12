@@ -3,7 +3,10 @@ config SCSI_BNX2_ISCSI
 	depends on NET
 	depends on PCI
 	depends on (IPV6 || IPV6=n)
+<<<<<<< HEAD
 	depends on MMU
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select SCSI_ISCSI_ATTRS
 	select NETDEVICES
 	select ETHERNET

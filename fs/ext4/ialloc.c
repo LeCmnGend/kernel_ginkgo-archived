@@ -407,7 +407,11 @@ static void get_orlov_stats(struct super_block *sb, ext4_group_t g,
  *
  * We always try to spread first-level directories.
  *
+<<<<<<< HEAD
  * If there are blockgroups with both free inodes and free clusters counts
+=======
+ * If there are blockgroups with both free inodes and free blocks counts
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * not worse than average we return one with smallest directory count.
  * Otherwise we simply return a random group.
  *
@@ -416,7 +420,11 @@ static void get_orlov_stats(struct super_block *sb, ext4_group_t g,
  * It's OK to put directory into a group unless
  * it has too many directories already (max_dirs) or
  * it has too few free inodes left (min_inodes) or
+<<<<<<< HEAD
  * it has too few free clusters left (min_clusters) or
+=======
+ * it has too few free blocks left (min_blocks) or
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Parent's group is preferred, if it doesn't satisfy these
  * conditions we search cyclically through the rest. If none
  * of the groups look good we just look for a group with more
@@ -432,7 +440,11 @@ static int find_group_orlov(struct super_block *sb, struct inode *parent,
 	ext4_group_t real_ngroups = ext4_get_groups_count(sb);
 	int inodes_per_group = EXT4_INODES_PER_GROUP(sb);
 	unsigned int freei, avefreei, grp_free;
+<<<<<<< HEAD
 	ext4_fsblk_t freec, avefreec;
+=======
+	ext4_fsblk_t freeb, avefreec;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned int ndirs;
 	int max_dirs, min_inodes;
 	ext4_grpblk_t min_clusters;
@@ -451,8 +463,14 @@ static int find_group_orlov(struct super_block *sb, struct inode *parent,
 
 	freei = percpu_counter_read_positive(&sbi->s_freeinodes_counter);
 	avefreei = freei / ngroups;
+<<<<<<< HEAD
 	freec = percpu_counter_read_positive(&sbi->s_freeclusters_counter);
 	avefreec = freec;
+=======
+	freeb = EXT4_C2B(sbi,
+		percpu_counter_read_positive(&sbi->s_freeclusters_counter));
+	avefreec = freeb;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	do_div(avefreec, ngroups);
 	ndirs = percpu_counter_read_positive(&sbi->s_dirs_counter);
 
@@ -1127,7 +1145,13 @@ got:
 			   inode->i_ino);
 		goto out;
 	}
+<<<<<<< HEAD
 	inode->i_generation = prandom_u32();
+=======
+	spin_lock(&sbi->s_next_gen_lock);
+	inode->i_generation = sbi->s_next_generation++;
+	spin_unlock(&sbi->s_next_gen_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Precompute checksum seed for inode metadata */
 	if (ext4_has_metadata_csum(sb)) {
@@ -1367,7 +1391,10 @@ int ext4_init_inode_table(struct super_block *sb, ext4_group_t group,
 	handle_t *handle;
 	ext4_fsblk_t blk;
 	int num, ret = 0, used_blks = 0;
+<<<<<<< HEAD
 	unsigned long used_inos = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* This should not happen, but just to be sure check this */
 	if (sb_rdonly(sb)) {
@@ -1398,6 +1425,7 @@ int ext4_init_inode_table(struct super_block *sb, ext4_group_t group,
 	 * used inodes so we need to skip blocks with used inodes in
 	 * inode table.
 	 */
+<<<<<<< HEAD
 	if (!(gdp->bg_flags & cpu_to_le16(EXT4_BG_INODE_UNINIT))) {
 		used_inos = EXT4_INODES_PER_GROUP(sb) -
 			    ext4_itable_unused_count(sb, gdp);
@@ -1429,6 +1457,24 @@ int ext4_init_inode_table(struct super_block *sb, ext4_group_t group,
 			ret = 1;
 			goto err_out;
 		}
+=======
+	if (!(gdp->bg_flags & cpu_to_le16(EXT4_BG_INODE_UNINIT)))
+		used_blks = DIV_ROUND_UP((EXT4_INODES_PER_GROUP(sb) -
+			    ext4_itable_unused_count(sb, gdp)),
+			    sbi->s_inodes_per_block);
+
+	if ((used_blks < 0) || (used_blks > sbi->s_itb_per_group) ||
+	    ((group == 0) && ((EXT4_INODES_PER_GROUP(sb) -
+			       ext4_itable_unused_count(sb, gdp)) <
+			      EXT4_FIRST_INO(sb)))) {
+		ext4_error(sb, "Something is wrong with group %u: "
+			   "used itable blocks: %d; "
+			   "itable unused count: %u",
+			   group, used_blks,
+			   ext4_itable_unused_count(sb, gdp));
+		ret = 1;
+		goto err_out;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	blk = ext4_inode_table(sb, gdp) + used_blks;

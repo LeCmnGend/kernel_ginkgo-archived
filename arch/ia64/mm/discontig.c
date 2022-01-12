@@ -100,7 +100,11 @@ static int __init build_node_maps(unsigned long start, unsigned long len,
  * acpi_boot_init() (which builds the node_to_cpu_mask array) hasn't been
  * called yet.  Note that node 0 will also count all non-existent cpus.
  */
+<<<<<<< HEAD
 static int early_nr_cpus_node(int node)
+=======
+static int __meminit early_nr_cpus_node(int node)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	int cpu, n = 0;
 
@@ -115,7 +119,11 @@ static int early_nr_cpus_node(int node)
  * compute_pernodesize - compute size of pernode data
  * @node: the node id.
  */
+<<<<<<< HEAD
 static unsigned long compute_pernodesize(int node)
+=======
+static unsigned long __meminit compute_pernodesize(int node)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	unsigned long pernodesize = 0, cpus;
 
@@ -412,7 +420,11 @@ static void __init reserve_pernode_space(void)
 	}
 }
 
+<<<<<<< HEAD
 static void scatter_node_data(void)
+=======
+static void __meminit scatter_node_data(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	pg_data_t **dst;
 	int node;

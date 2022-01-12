@@ -8,7 +8,10 @@
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
  */
+<<<<<<< HEAD
 #include <linux/cpufreq.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #include "sched.h"
 
@@ -62,6 +65,7 @@ void cpufreq_remove_update_util_hook(int cpu)
 	rcu_assign_pointer(per_cpu(cpufreq_update_util_data, cpu), NULL);
 }
 EXPORT_SYMBOL_GPL(cpufreq_remove_update_util_hook);
+<<<<<<< HEAD
 
 /**
  * cpufreq_can_do_remote_dvfs - Check if cpufreq policy can be updated.
@@ -78,3 +82,5 @@ bool cpufreq_can_do_remote_dvfs(struct cpufreq_policy *policy)
 		(policy->dvfs_possible_from_any_cpu &&
 		 rcu_dereference_sched(*this_cpu_ptr(&cpufreq_update_util_data)));
 }
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

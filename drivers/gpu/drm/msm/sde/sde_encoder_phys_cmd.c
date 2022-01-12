@@ -663,9 +663,15 @@ static int _sde_encoder_phys_cmd_poll_write_pointer_started(
 	}
 
 	if (phys_enc->has_intf_te)
+<<<<<<< HEAD
 		ret = hw_intf->ops.get_vsync_info(hw_intf, &info, false);
 	else
 		ret = hw_pp->ops.get_vsync_info(hw_pp, &info, false);
+=======
+		ret = hw_intf->ops.get_vsync_info(hw_intf, &info);
+	else
+		ret = hw_pp->ops.get_vsync_info(hw_pp, &info);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (ret)
 		return ret;
@@ -714,13 +720,21 @@ static bool _sde_encoder_phys_cmd_is_ongoing_pptx(
 		if (!hw_intf || !hw_intf->ops.get_vsync_info)
 			return false;
 
+<<<<<<< HEAD
 		hw_intf->ops.get_vsync_info(hw_intf, &info, true);
+=======
+		hw_intf->ops.get_vsync_info(hw_intf, &info);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
 		hw_pp = phys_enc->hw_pp;
 		if (!hw_pp || !hw_pp->ops.get_vsync_info)
 			return false;
 
+<<<<<<< HEAD
 		hw_pp->ops.get_vsync_info(hw_pp, &info, true);
+=======
+		hw_pp->ops.get_vsync_info(hw_pp, &info);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	SDE_EVT32(DRMID(phys_enc->parent),
@@ -1173,12 +1187,16 @@ static void sde_encoder_phys_cmd_enable(struct sde_encoder_phys *phys_enc)
 static bool sde_encoder_phys_cmd_is_autorefresh_enabled(
 		struct sde_encoder_phys *phys_enc)
 {
+<<<<<<< HEAD
 	struct sde_encoder_phys_cmd *cmd_enc;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct sde_hw_pingpong *hw_pp;
 	struct sde_hw_intf *hw_intf;
 	struct sde_hw_autorefresh cfg;
 	int ret;
 
+<<<<<<< HEAD
 	if (!phys_enc)
 		return 0;
 
@@ -1187,6 +1205,9 @@ static bool sde_encoder_phys_cmd_is_autorefresh_enabled(
 		return 0;
 
 	if (!phys_enc->hw_pp || !phys_enc->hw_intf)
+=======
+	if (!phys_enc || !phys_enc->hw_pp || !phys_enc->hw_intf)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return 0;
 
 	if (!sde_encoder_phys_cmd_is_master(phys_enc))
@@ -1279,14 +1300,22 @@ static int sde_encoder_phys_cmd_get_write_line_count(
 		if (!hw_intf->ops.get_vsync_info)
 			return -EINVAL;
 
+<<<<<<< HEAD
 		if (hw_intf->ops.get_vsync_info(hw_intf, &info, true))
+=======
+		if (hw_intf->ops.get_vsync_info(hw_intf, &info))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return -EINVAL;
 	} else {
 		hw_pp = phys_enc->hw_pp;
 		if (!hw_pp->ops.get_vsync_info)
 			return -EINVAL;
 
+<<<<<<< HEAD
 		if (hw_pp->ops.get_vsync_info(hw_pp, &info, true))
+=======
+		if (hw_pp->ops.get_vsync_info(hw_pp, &info))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return -EINVAL;
 	}
 

@@ -26,10 +26,13 @@
 #include "sde_core_irq.h"
 #include "dsi_panel.h"
 
+<<<<<<< HEAD
 #ifdef CONFIG_DRM_MSM_KCAL_CTRL
 #include "sde_hw_kcal_ctrl.h"
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct sde_cp_node {
 	u32 property_id;
 	u32 prop_flags;
@@ -1029,12 +1032,15 @@ exit:
 
 }
 
+<<<<<<< HEAD
 #ifdef CONFIG_DRM_MSM_KCAL_CTRL
 struct drm_crtc *g_pcc_crtc;
 struct drm_property *g_pcc_property;
 uint64_t g_pcc_val;
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int sde_cp_crtc_set_property(struct drm_crtc *crtc,
 				struct drm_property *property,
 				uint64_t val)
@@ -1068,6 +1074,7 @@ int sde_cp_crtc_set_property(struct drm_crtc *crtc,
 		goto exit;
 	}
 
+<<<<<<< HEAD
 #ifdef CONFIG_DRM_MSM_KCAL_CTRL
 	if (prop_node->feature == SDE_CP_CRTC_DSPP_PCC) {
 		pr_debug("%s pcc kad kcal\n",__func__);
@@ -1077,6 +1084,8 @@ int sde_cp_crtc_set_property(struct drm_crtc *crtc,
 	}
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/**
 	 * sde_crtc is virtual ensure that hardware has been attached to the
 	 * crtc. Check LM and dspp counts based on whether feature is a
@@ -1137,6 +1146,7 @@ exit:
 	return ret;
 }
 
+<<<<<<< HEAD
 #ifdef CONFIG_DRM_MSM_KCAL_CTRL
 void kcal_force_update(void) {
 	if (g_pcc_crtc) {
@@ -1147,6 +1157,8 @@ void kcal_force_update(void) {
 EXPORT_SYMBOL(kcal_force_update);
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int sde_cp_crtc_get_property(struct drm_crtc *crtc,
 			     struct drm_property *property, uint64_t *val)
 {

@@ -20,7 +20,26 @@
 # error "please don't include this file directly"
 #endif
 
+<<<<<<< HEAD
 #include <asm-generic/qspinlock_types.h>
+=======
+#include <linux/types.h>
+
+#define TICKET_SHIFT	16
+
+typedef struct {
+#ifdef __AARCH64EB__
+	u16 next;
+	u16 owner;
+#else
+	u16 owner;
+	u16 next;
+#endif
+} __aligned(4) arch_spinlock_t;
+
+#define __ARCH_SPIN_LOCK_UNLOCKED	{ 0 , 0 }
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <asm-generic/qrwlock_types.h>
 
 #endif

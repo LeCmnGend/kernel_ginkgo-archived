@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #!/usr/bin/env perl
+=======
+#!/usr/bin/perl
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 use strict;
 
 # Copyright (c) 2017 Mauro Carvalho Chehab <mchehab@kernel.org>

@@ -1763,9 +1763,13 @@ static void br_multicast_pim(struct net_bridge *br,
 	    pim_hdr_type(pimhdr) != PIM_TYPE_HELLO)
 		return;
 
+<<<<<<< HEAD
 	spin_lock(&br->multicast_lock);
 	br_multicast_mark_router(br, port);
 	spin_unlock(&br->multicast_lock);
+=======
+	br_multicast_mark_router(br, port);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static int br_multicast_ipv4_rcv(struct net_bridge *br,

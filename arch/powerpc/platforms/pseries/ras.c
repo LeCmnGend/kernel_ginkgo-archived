@@ -115,6 +115,10 @@ static void handle_system_shutdown(char event_modifier)
 	case EPOW_SHUTDOWN_ON_UPS:
 		pr_emerg("Loss of system power detected. System is running on"
 			 " UPS/battery. Check RTAS error log for details\n");
+<<<<<<< HEAD
+=======
+		orderly_poweroff(true);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 
 	case EPOW_SHUTDOWN_LOSS_OF_CRITICAL_FUNCTIONS:

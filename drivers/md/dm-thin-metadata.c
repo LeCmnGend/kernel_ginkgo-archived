@@ -698,6 +698,7 @@ static int __create_persistent_data_objects(struct dm_pool_metadata *pmd, bool f
 					  THIN_MAX_CONCURRENT_LOCKS);
 	if (IS_ERR(pmd->bm)) {
 		DMERR("could not create block manager");
+<<<<<<< HEAD
 		r = PTR_ERR(pmd->bm);
 		pmd->bm = NULL;
 		return r;
@@ -708,6 +709,14 @@ static int __create_persistent_data_objects(struct dm_pool_metadata *pmd, bool f
 		dm_block_manager_destroy(pmd->bm);
 		pmd->bm = NULL;
 	}
+=======
+		return PTR_ERR(pmd->bm);
+	}
+
+	r = __open_or_format_metadata(pmd, format_device);
+	if (r)
+		dm_block_manager_destroy(pmd->bm);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return r;
 }

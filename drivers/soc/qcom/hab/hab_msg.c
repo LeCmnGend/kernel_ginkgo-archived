@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2016-2019, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2016-2019, 2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -169,13 +173,24 @@ static int hab_receive_create_export_ack(struct physical_channel *pchan,
 	if (sizebytes > sizeof(ack_recvd->ack)) {
 		pr_err("pchan %s read size too large %zd %zd\n",
 			pchan->name, sizebytes, sizeof(ack_recvd->ack));
+<<<<<<< HEAD
+=======
+		kfree(ack_recvd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EINVAL;
 	}
 
 	if (physical_channel_read(pchan,
 		&ack_recvd->ack,
+<<<<<<< HEAD
 		sizebytes) != sizebytes)
 		return -EIO;
+=======
+		sizebytes) != sizebytes) {
+		kfree(ack_recvd);
+		return -EIO;
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	hab_spin_lock(&ctx->expq_lock, irqs_disabled);
 	list_add_tail(&ack_recvd->node, &ctx->exp_rxq);

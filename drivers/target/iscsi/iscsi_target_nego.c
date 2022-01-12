@@ -554,11 +554,19 @@ static bool iscsi_target_sk_check_and_clear(struct iscsi_conn *conn, unsigned in
 
 static void iscsi_target_login_drop(struct iscsi_conn *conn, struct iscsi_login *login)
 {
+<<<<<<< HEAD
+=======
+	struct iscsi_np *np = login->np;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool zero_tsih = login->zero_tsih;
 
 	iscsi_remove_failed_auth_entry(conn);
 	iscsi_target_nego_release(conn);
+<<<<<<< HEAD
 	iscsi_target_login_sess_out(conn, zero_tsih, true);
+=======
+	iscsi_target_login_sess_out(conn, np, zero_tsih, true);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void iscsi_target_login_timeout(unsigned long data)

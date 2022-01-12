@@ -250,9 +250,14 @@ err_out:
 static int tipc_nl_compat_dumpit(struct tipc_nl_compat_cmd_dump *cmd,
 				 struct tipc_nl_compat_msg *msg)
 {
+<<<<<<< HEAD
 	struct nlmsghdr *nlh;
 	struct sk_buff *arg;
 	int err;
+=======
+	int err;
+	struct sk_buff *arg;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (msg->req_type && (!msg->req_size ||
 			      !TLV_CHECK_TYPE(msg->req, msg->req_type)))
@@ -281,6 +286,7 @@ static int tipc_nl_compat_dumpit(struct tipc_nl_compat_cmd_dump *cmd,
 		return -ENOMEM;
 	}
 
+<<<<<<< HEAD
 	nlh = nlmsg_put(arg, 0, 0, tipc_genl_family.id, 0, NLM_F_MULTI);
 	if (!nlh) {
 		kfree_skb(arg);
@@ -290,6 +296,8 @@ static int tipc_nl_compat_dumpit(struct tipc_nl_compat_cmd_dump *cmd,
 	}
 	nlmsg_end(arg, nlh);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = __tipc_nl_compat_dumpit(cmd, msg, arg);
 	if (err) {
 		kfree_skb(msg->rep);
@@ -662,7 +670,11 @@ static int tipc_nl_compat_link_dump(struct tipc_nl_compat_msg *msg,
 	if (err)
 		return err;
 
+<<<<<<< HEAD
 	link_info.dest = htonl(nla_get_flag(link[TIPC_NLA_LINK_DEST]));
+=======
+	link_info.dest = nla_get_flag(link[TIPC_NLA_LINK_DEST]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	link_info.up = htonl(nla_get_flag(link[TIPC_NLA_LINK_UP]));
 	nla_strlcpy(link_info.str, link[TIPC_NLA_LINK_NAME],
 		    TIPC_MAX_LINK_NAME);

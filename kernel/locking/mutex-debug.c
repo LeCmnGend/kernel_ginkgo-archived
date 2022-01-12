@@ -36,7 +36,11 @@ void debug_mutex_lock_common(struct mutex *lock, struct mutex_waiter *waiter)
 
 void debug_mutex_wake_waiter(struct mutex *lock, struct mutex_waiter *waiter)
 {
+<<<<<<< HEAD
 	lockdep_assert_held(&lock->wait_lock);
+=======
+	SMP_DEBUG_LOCKS_WARN_ON(!spin_is_locked(&lock->wait_lock));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	DEBUG_LOCKS_WARN_ON(list_empty(&lock->wait_list));
 	DEBUG_LOCKS_WARN_ON(waiter->magic != waiter);
 	DEBUG_LOCKS_WARN_ON(list_empty(&waiter->list));
@@ -51,7 +55,11 @@ void debug_mutex_free_waiter(struct mutex_waiter *waiter)
 void debug_mutex_add_waiter(struct mutex *lock, struct mutex_waiter *waiter,
 			    struct task_struct *task)
 {
+<<<<<<< HEAD
 	lockdep_assert_held(&lock->wait_lock);
+=======
+	SMP_DEBUG_LOCKS_WARN_ON(!spin_is_locked(&lock->wait_lock));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Mark the current thread as blocked on the lock: */
 	task->blocked_on = waiter;

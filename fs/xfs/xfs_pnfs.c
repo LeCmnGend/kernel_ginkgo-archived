@@ -140,7 +140,11 @@ xfs_fs_map_blocks(
 		goto out_unlock;
 	error = invalidate_inode_pages2(inode->i_mapping);
 	if (WARN_ON_ONCE(error))
+<<<<<<< HEAD
 		goto out_unlock;
+=======
+		return error;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	end_fsb = XFS_B_TO_FSB(mp, (xfs_ufsize_t)offset + length);
 	offset_fsb = XFS_B_TO_FSBT(mp, offset);

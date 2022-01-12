@@ -1029,14 +1029,22 @@ cfg80211_bss_update(struct cfg80211_registered_device *rdev,
 			 * be grouped with this beacon for updates ...
 			 */
 			if (!cfg80211_combine_bsses(rdev, new)) {
+<<<<<<< HEAD
 				bss_ref_put(rdev, new);
+=======
+				kfree(new);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				goto drop;
 			}
 		}
 
 		if (rdev->bss_entries >= bss_entries_limit &&
 		    !cfg80211_bss_expire_oldest(rdev)) {
+<<<<<<< HEAD
 			bss_ref_put(rdev, new);
+=======
+			kfree(new);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			goto drop;
 		}
 

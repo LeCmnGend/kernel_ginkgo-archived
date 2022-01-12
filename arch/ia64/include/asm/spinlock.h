@@ -127,7 +127,10 @@ static __always_inline void arch_spin_lock_flags(arch_spinlock_t *lock,
 {
 	arch_spin_lock(lock);
 }
+<<<<<<< HEAD
 #define arch_spin_lock_flags	arch_spin_lock_flags
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #define arch_read_can_lock(rw)		(*(volatile int *)(rw) >= 0)
 #define arch_write_can_lock(rw)	(*(volatile int *)(rw) == 0)
@@ -158,7 +161,10 @@ arch_read_lock_flags(arch_rwlock_t *lock, unsigned long flags)
 		: "p6", "p7", "r2", "memory");
 }
 
+<<<<<<< HEAD
 #define arch_read_lock_flags arch_read_lock_flags
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define arch_read_lock(lock) arch_read_lock_flags(lock, 0)
 
 #else /* !ASM_SUPPORTED */
@@ -211,7 +217,10 @@ arch_write_lock_flags(arch_rwlock_t *lock, unsigned long flags)
 		: "ar.ccv", "p6", "p7", "r2", "r29", "memory");
 }
 
+<<<<<<< HEAD
 #define arch_write_lock_flags arch_write_lock_flags
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define arch_write_lock(rw) arch_write_lock_flags(rw, 0)
 
 #define arch_write_trylock(rw)							\
@@ -235,6 +244,11 @@ static inline void arch_write_unlock(arch_rwlock_t *x)
 
 #else /* !ASM_SUPPORTED */
 
+<<<<<<< HEAD
+=======
+#define arch_write_lock_flags(l, flags) arch_write_lock(l)
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define arch_write_lock(l)								\
 ({											\
 	__u64 ia64_val, ia64_set_val = ia64_dep_mi(-1, 0, 31, 1);			\
@@ -274,4 +288,11 @@ static inline int arch_read_trylock(arch_rwlock_t *x)
 	return (u32)ia64_cmpxchg4_acq((__u32 *)(x), new.word, old.word) == old.word;
 }
 
+<<<<<<< HEAD
+=======
+#define arch_spin_relax(lock)	cpu_relax()
+#define arch_read_relax(lock)	cpu_relax()
+#define arch_write_relax(lock)	cpu_relax()
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /*  _ASM_IA64_SPINLOCK_H */

@@ -4032,7 +4032,11 @@ static int auto_attach(struct comedi_device *dev,
 	init_stc_registers(dev);
 
 	retval = request_irq(pcidev->irq, handle_interrupt, IRQF_SHARED,
+<<<<<<< HEAD
 			     "cb_pcidas64", dev);
+=======
+			     dev->board_name, dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (retval) {
 		dev_dbg(dev->class_dev, "unable to allocate irq %u\n",
 			pcidev->irq);

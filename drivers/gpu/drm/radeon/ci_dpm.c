@@ -4342,7 +4342,11 @@ static int ci_set_mc_special_registers(struct radeon_device *rdev,
 					table->mc_reg_table_entry[k].mc_data[j] |= 0x100;
 			}
 			j++;
+<<<<<<< HEAD
 			if (j >= SMU7_DISCRETE_MC_REGISTER_ARRAY_SIZE)
+=======
+			if (j > SMU7_DISCRETE_MC_REGISTER_ARRAY_SIZE)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				return -EINVAL;
 
 			if (!pi->mem_gddr5) {

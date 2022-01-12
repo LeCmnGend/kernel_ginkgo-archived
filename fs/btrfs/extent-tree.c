@@ -1170,11 +1170,20 @@ int btrfs_get_extent_inline_ref_type(const struct extent_buffer *eb,
 			if (type == BTRFS_SHARED_BLOCK_REF_KEY) {
 				ASSERT(eb->fs_info);
 				/*
+<<<<<<< HEAD
 				 * Every shared one has parent tree block,
 				 * which must be aligned to sector size.
 				 */
 				if (offset &&
 				    IS_ALIGNED(offset, eb->fs_info->sectorsize))
+=======
+				 * Every shared one has parent tree
+				 * block, which must be aligned to
+				 * nodesize.
+				 */
+				if (offset &&
+				    IS_ALIGNED(offset, eb->fs_info->nodesize))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					return type;
 			}
 		} else if (is_data == BTRFS_REF_TYPE_DATA) {
@@ -1183,11 +1192,20 @@ int btrfs_get_extent_inline_ref_type(const struct extent_buffer *eb,
 			if (type == BTRFS_SHARED_DATA_REF_KEY) {
 				ASSERT(eb->fs_info);
 				/*
+<<<<<<< HEAD
 				 * Every shared one has parent tree block,
 				 * which must be aligned to sector size.
 				 */
 				if (offset &&
 				    IS_ALIGNED(offset, eb->fs_info->sectorsize))
+=======
+				 * Every shared one has parent tree
+				 * block, which must be aligned to
+				 * nodesize.
+				 */
+				if (offset &&
+				    IS_ALIGNED(offset, eb->fs_info->nodesize))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					return type;
 			}
 		} else {
@@ -1197,9 +1215,14 @@ int btrfs_get_extent_inline_ref_type(const struct extent_buffer *eb,
 	}
 
 	btrfs_print_leaf((struct extent_buffer *)eb);
+<<<<<<< HEAD
 	btrfs_err(eb->fs_info,
 		  "eb %llu iref 0x%lx invalid extent inline ref type %d",
 		  eb->start, (unsigned long)iref, type);
+=======
+	btrfs_err(eb->fs_info, "eb %llu invalid extent inline ref type %d",
+		  eb->start, type);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	WARN_ON(1);
 
 	return BTRFS_REF_TYPE_INVALID;
@@ -9364,6 +9387,11 @@ out:
 	 */
 	if (!for_reloc && root_dropped == false)
 		btrfs_add_dead_root(root);
+<<<<<<< HEAD
+=======
+	if (err && err != -EAGAIN)
+		btrfs_handle_fs_error(fs_info, err, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return err;
 }
 

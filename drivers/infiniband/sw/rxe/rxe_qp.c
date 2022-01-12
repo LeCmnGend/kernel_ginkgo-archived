@@ -258,7 +258,10 @@ static int rxe_qp_init_req(struct rxe_dev *rxe, struct rxe_qp *qp,
 	if (err) {
 		vfree(qp->sq.queue->buf);
 		kfree(qp->sq.queue);
+<<<<<<< HEAD
 		qp->sq.queue = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return err;
 	}
 
@@ -312,7 +315,10 @@ static int rxe_qp_init_resp(struct rxe_dev *rxe, struct rxe_qp *qp,
 		if (err) {
 			vfree(qp->rq.queue->buf);
 			kfree(qp->rq.queue);
+<<<<<<< HEAD
 			qp->rq.queue = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return err;
 		}
 	}
@@ -372,11 +378,14 @@ int rxe_qp_from_init(struct rxe_dev *rxe, struct rxe_qp *qp, struct rxe_pd *pd,
 err2:
 	rxe_queue_cleanup(qp->sq.queue);
 err1:
+<<<<<<< HEAD
 	qp->pd = NULL;
 	qp->rcq = NULL;
 	qp->scq = NULL;
 	qp->srq = NULL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (srq)
 		rxe_drop_ref(srq);
 	rxe_drop_ref(scq);
@@ -600,16 +609,25 @@ int rxe_qp_from_attr(struct rxe_qp *qp, struct ib_qp_attr *attr, int mask,
 	struct ib_gid_attr sgid_attr;
 
 	if (mask & IB_QP_MAX_QP_RD_ATOMIC) {
+<<<<<<< HEAD
 		int max_rd_atomic = attr->max_rd_atomic ?
 			roundup_pow_of_two(attr->max_rd_atomic) : 0;
+=======
+		int max_rd_atomic = __roundup_pow_of_two(attr->max_rd_atomic);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		qp->attr.max_rd_atomic = max_rd_atomic;
 		atomic_set(&qp->req.rd_atomic, max_rd_atomic);
 	}
 
 	if (mask & IB_QP_MAX_DEST_RD_ATOMIC) {
+<<<<<<< HEAD
 		int max_dest_rd_atomic = attr->max_dest_rd_atomic ?
 			roundup_pow_of_two(attr->max_dest_rd_atomic) : 0;
+=======
+		int max_dest_rd_atomic =
+			__roundup_pow_of_two(attr->max_dest_rd_atomic);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		qp->attr.max_dest_rd_atomic = max_dest_rd_atomic;
 

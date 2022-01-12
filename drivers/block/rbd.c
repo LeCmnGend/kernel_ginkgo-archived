@@ -51,6 +51,18 @@
 #define RBD_DEBUG	/* Activate rbd_assert() calls */
 
 /*
+<<<<<<< HEAD
+=======
+ * The basic unit of block I/O is a sector.  It is interpreted in a
+ * number of contexts in Linux (blk, bio, genhd), but the default is
+ * universally 512 bytes.  These symbols are just slightly more
+ * meaningful than the bare numbers they represent.
+ */
+#define	SECTOR_SHIFT	9
+#define	SECTOR_SIZE	(1ULL << SECTOR_SHIFT)
+
+/*
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Increment the given counter and return its updated value.
  * If the counter is already 0 it will not be incremented.
  * If the counter is already at its maximum value returns
@@ -4534,9 +4546,12 @@ static ssize_t rbd_config_info_show(struct device *dev,
 {
 	struct rbd_device *rbd_dev = dev_to_rbd_dev(dev);
 
+<<<<<<< HEAD
 	if (!capable(CAP_SYS_ADMIN))
 		return -EPERM;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return sprintf(buf, "%s\n", rbd_dev->config_info);
 }
 
@@ -4638,9 +4653,12 @@ static ssize_t rbd_image_refresh(struct device *dev,
 	struct rbd_device *rbd_dev = dev_to_rbd_dev(dev);
 	int ret;
 
+<<<<<<< HEAD
 	if (!capable(CAP_SYS_ADMIN))
 		return -EPERM;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = rbd_dev_refresh(rbd_dev);
 	if (ret)
 		return ret;
@@ -6165,9 +6183,12 @@ static ssize_t do_rbd_add(struct bus_type *bus,
 	bool read_only;
 	int rc;
 
+<<<<<<< HEAD
 	if (!capable(CAP_SYS_ADMIN))
 		return -EPERM;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!try_module_get(THIS_MODULE))
 		return -ENODEV;
 
@@ -6320,9 +6341,12 @@ static ssize_t do_rbd_remove(struct bus_type *bus,
 	bool force = false;
 	int ret;
 
+<<<<<<< HEAD
 	if (!capable(CAP_SYS_ADMIN))
 		return -EPERM;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dev_id = -1;
 	opt_buf[0] = '\0';
 	sscanf(buf, "%d %5s", &dev_id, opt_buf);

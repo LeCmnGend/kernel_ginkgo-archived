@@ -251,10 +251,13 @@ static void reg_r(struct gspca_dev *gspca_dev,
 		PERR("reg_r: buffer overflow\n");
 		return;
 	}
+<<<<<<< HEAD
 	if (len == 0) {
 		PERR("reg_r: zero-length read\n");
 		return;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (gspca_dev->usb_err < 0)
 		return;
 	ret = usb_control_msg(gspca_dev->dev,
@@ -263,7 +266,11 @@ static void reg_r(struct gspca_dev *gspca_dev,
 			USB_DIR_IN | USB_TYPE_VENDOR | USB_RECIP_DEVICE,
 			0,		/* value */
 			index,
+<<<<<<< HEAD
 			gspca_dev->usb_buf, len,
+=======
+			len ? gspca_dev->usb_buf : NULL, len,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			500);
 	if (ret < 0) {
 		pr_err("reg_r err %d\n", ret);
@@ -738,7 +745,11 @@ static int sd_start(struct gspca_dev *gspca_dev)
 		case MegaImageVI:
 			reg_w_riv(gspca_dev, 0xf0, 0, 0);
 			spca504B_WaitCmdStatus(gspca_dev);
+<<<<<<< HEAD
 			reg_w_riv(gspca_dev, 0xf0, 4, 0);
+=======
+			reg_r(gspca_dev, 0xf0, 4, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			spca504B_WaitCmdStatus(gspca_dev);
 			break;
 		default:

@@ -25,6 +25,7 @@
 
 #include "power.h"
 
+<<<<<<< HEAD
 //Boeffla config 1.1.0
 #ifdef CONFIG_BOEFFLA_WL_BLOCKER
 	#include "boeffla_wl_blocker.h"
@@ -38,6 +39,8 @@
 
 
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifndef CONFIG_SUSPEND
 suspend_state_t pm_suspend_target_state;
 #define pm_suspend_target_state	(PM_SUSPEND_ON)
@@ -609,6 +612,7 @@ static void wakeup_source_activate(struct wakeup_source *ws)
 
 	trace_wakeup_source_activate(ws->name, cec);
 }
+<<<<<<< HEAD
 /**
  * Add boeffla config here
  */
@@ -664,6 +668,8 @@ static bool check_for_block(struct wakeup_source *ws)
 
 
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
  * wakeup_source_report_event - Report wakeup event using the given source.
@@ -672,6 +678,7 @@ static bool check_for_block(struct wakeup_source *ws)
  */
 static void wakeup_source_report_event(struct wakeup_source *ws, bool hard)
 {
+<<<<<<< HEAD
 	#ifdef CONFIG_BOEFFLA_WL_BLOCKER
 	if (!check_for_block(ws))	// AP: check if wakelock is on wakelock blocker list
 	{
@@ -686,6 +693,15 @@ static void wakeup_source_report_event(struct wakeup_source *ws, bool hard)
 	#ifdef CONFIG_BOEFFLA_WL_BLOCKER
 	}
 	#endif
+=======
+	ws->event_count++;
+	/* This is racy, but the counter is approximate anyway. */
+	if (events_check_enabled)
+		ws->wakeup_count++;
+
+	if (!ws->active)
+		wakeup_source_activate(ws);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (hard)
 		pm_system_wakeup();
@@ -978,9 +994,12 @@ void pm_print_active_wakeup_sources(void)
 	list_for_each_entry_rcu(ws, &wakeup_sources, entry) {
 		if (ws->active) {
 			pr_debug("active wakeup source: %s\n", ws->name);
+<<<<<<< HEAD
 			#ifdef CONFIG_BOEFFLA_WL_BLOCKER
 				if (!check_for_block(ws))	// AP: check if wakelock is on wakelock blocker list
 			#endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			active = 1;
 		} else if (!active &&
 			   (!last_activity_ws ||

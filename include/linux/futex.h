@@ -11,6 +11,12 @@ struct inode;
 struct mm_struct;
 struct task_struct;
 
+<<<<<<< HEAD
+=======
+long do_futex(u32 __user *uaddr, int op, u32 val, ktime_t *timeout,
+	      u32 __user *uaddr2, u32 val2, u32 val3);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Futexes are matched on equal values of this key.
  * The key type depends on whether it's a shared or private mapping.
@@ -71,8 +77,11 @@ static inline void futex_init_task(struct task_struct *tsk)
 	mutex_init(&tsk->futex_exit_mutex);
 }
 
+<<<<<<< HEAD
 long do_futex(u32 __user *uaddr, int op, u32 val, ktime_t *timeout,
 	      u32 __user *uaddr2, u32 val2, u32 val3);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void futex_exit_recursive(struct task_struct *tsk);
 void futex_exit_release(struct task_struct *tsk);
 void futex_exec_release(struct task_struct *tsk);

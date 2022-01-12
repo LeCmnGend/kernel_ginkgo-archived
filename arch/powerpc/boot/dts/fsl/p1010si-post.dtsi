@@ -122,6 +122,7 @@
 	};
 
 /include/ "pq3-i2c-0.dtsi"
+<<<<<<< HEAD
 	i2c@3000 {
 		fsl,i2c-erratum-a004447;
 	};
@@ -131,6 +132,9 @@
 		fsl,i2c-erratum-a004447;
 	};
 
+=======
+/include/ "pq3-i2c-1.dtsi"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /include/ "pq3-duart-0.dtsi"
 /include/ "pq3-espi-0.dtsi"
 	spi0: spi@7000 {

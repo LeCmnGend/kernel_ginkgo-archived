@@ -285,7 +285,11 @@ void tcp_v4_mtu_reduced(struct sock *sk)
 
 	if ((1 << sk->sk_state) & (TCPF_LISTEN | TCPF_CLOSE))
 		return;
+<<<<<<< HEAD
 	mtu = READ_ONCE(tcp_sk(sk)->mtu_info);
+=======
+	mtu = tcp_sk(sk)->mtu_info;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dst = inet_csk_update_pmtu(sk, mtu);
 	if (!dst)
 		return;
@@ -453,7 +457,11 @@ void tcp_v4_err(struct sk_buff *icmp_skb, u32 info)
 			if (sk->sk_state == TCP_LISTEN)
 				goto out;
 
+<<<<<<< HEAD
 			WRITE_ONCE(tp->mtu_info, info);
+=======
+			tp->mtu_info = info;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (!sock_owned_by_user(sk)) {
 				tcp_v4_mtu_reduced(sk);
 			} else {
@@ -2310,7 +2318,11 @@ static void get_tcp4_sock(struct sock *sk, struct seq_file *f, int i)
 		refcount_read(&sk->sk_refcnt), sk,
 		jiffies_to_clock_t(icsk->icsk_rto),
 		jiffies_to_clock_t(icsk->icsk_ack.ato),
+<<<<<<< HEAD
 		(icsk->icsk_ack.quick << 1) | inet_csk_in_pingpong_mode(sk),
+=======
+		(icsk->icsk_ack.quick << 1) | icsk->icsk_ack.pingpong,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		tp->snd_cwnd,
 		state == TCP_LISTEN ?
 		    fastopenq->max_qlen :
@@ -2487,7 +2499,11 @@ static int __net_init tcp_sk_init(struct net *net)
 		*per_cpu_ptr(net->ipv4.tcp_sk, cpu) = sk;
 	}
 
+<<<<<<< HEAD
 	net->ipv4.sysctl_tcp_ecn = 1;
+=======
+	net->ipv4.sysctl_tcp_ecn = 2;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	net->ipv4.sysctl_tcp_ecn_fallback = 1;
 
 	net->ipv4.sysctl_tcp_base_mss = TCP_BASE_MSS;
@@ -2501,7 +2517,11 @@ static int __net_init tcp_sk_init(struct net *net)
 
 	net->ipv4.sysctl_tcp_syn_retries = TCP_SYN_RETRIES;
 	net->ipv4.sysctl_tcp_synack_retries = TCP_SYNACK_RETRIES;
+<<<<<<< HEAD
 	net->ipv4.sysctl_tcp_syncookies = 0;
+=======
+	net->ipv4.sysctl_tcp_syncookies = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	net->ipv4.sysctl_tcp_reordering = TCP_FASTRETRANS_THRESH;
 	net->ipv4.sysctl_tcp_retries1 = TCP_RETR1;
 	net->ipv4.sysctl_tcp_retries2 = TCP_RETR2;
@@ -2517,7 +2537,11 @@ static int __net_init tcp_sk_init(struct net *net)
 	net->ipv4.sysctl_max_syn_backlog = max(128, cnt / 256);
 	net->ipv4.sysctl_tcp_sack = 1;
 	net->ipv4.sysctl_tcp_window_scaling = 1;
+<<<<<<< HEAD
 	net->ipv4.sysctl_tcp_timestamps = 0;
+=======
+	net->ipv4.sysctl_tcp_timestamps = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	net->ipv4.sysctl_tcp_default_init_rwnd = TCP_INIT_CWND * 2;
 
 	return 0;

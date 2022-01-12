@@ -619,8 +619,11 @@ struct l2cap_ops {
 	struct sk_buff		*(*alloc_skb) (struct l2cap_chan *chan,
 					       unsigned long hdr_len,
 					       unsigned long len, int nb);
+<<<<<<< HEAD
 	int			(*filter) (struct l2cap_chan * chan,
 					   struct sk_buff *skb);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 struct l2cap_conn {

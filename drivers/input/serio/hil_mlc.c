@@ -74,7 +74,11 @@ EXPORT_SYMBOL(hil_mlc_unregister);
 static LIST_HEAD(hil_mlcs);
 static DEFINE_RWLOCK(hil_mlcs_lock);
 static struct timer_list	hil_mlcs_kicker;
+<<<<<<< HEAD
 static int			hil_mlcs_probe, hil_mlc_stop;
+=======
+static int			hil_mlcs_probe;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static void hil_mlcs_process(unsigned long unused);
 static DECLARE_TASKLET_DISABLED(hil_mlcs_tasklet, hil_mlcs_process, 0);
@@ -704,6 +708,7 @@ static int hilse_donode(hil_mlc *mlc)
 		if (!mlc->ostarted) {
 			mlc->ostarted = 1;
 			mlc->opacket = pack;
+<<<<<<< HEAD
 			rc = mlc->out(mlc);
 			nextidx = HILSEN_DOZE;
 			write_unlock_irqrestore(&mlc->lock, flags);
@@ -711,6 +716,11 @@ static int hilse_donode(hil_mlc *mlc)
 				hil_mlc_stop = 1;
 				return 1;
 			}
+=======
+			mlc->out(mlc);
+			nextidx = HILSEN_DOZE;
+			write_unlock_irqrestore(&mlc->lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			break;
 		}
 		mlc->ostarted = 0;
@@ -721,6 +731,7 @@ static int hilse_donode(hil_mlc *mlc)
 
 	case HILSE_CTS:
 		write_lock_irqsave(&mlc->lock, flags);
+<<<<<<< HEAD
 		rc = mlc->cts(mlc);
 		nextidx = rc ? node->bad : node->good;
 		write_unlock_irqrestore(&mlc->lock, flags);
@@ -728,6 +739,10 @@ static int hilse_donode(hil_mlc *mlc)
 			hil_mlc_stop = 1;
 			return 1;
 		}
+=======
+		nextidx = mlc->cts(mlc) ? node->bad : node->good;
+		write_unlock_irqrestore(&mlc->lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 
 	default:
@@ -795,12 +810,15 @@ static void hil_mlcs_process(unsigned long unused)
 
 static void hil_mlcs_timer(unsigned long data)
 {
+<<<<<<< HEAD
 	if (hil_mlc_stop) {
 		/* could not send packet - stop immediately. */
 		pr_warn(PREFIX "HIL seems stuck - Disabling HIL MLC.\n");
 		return;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	hil_mlcs_probe = 1;
 	tasklet_schedule(&hil_mlcs_tasklet);
 	/* Re-insert the periodic task. */

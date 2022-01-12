@@ -22,7 +22,11 @@
 #include "ipahal/ipahal.h"
 #include "ipahal/ipahal_fltrt.h"
 
+<<<<<<< HEAD
 #define IPA_WAN_AGGR_PKT_CNT 1
+=======
+#define IPA_WAN_AGGR_PKT_CNT 5
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define IPA_WAN_NAPI_MAX_FRAMES (NAPI_WEIGHT / IPA_WAN_AGGR_PKT_CNT)
 #define IPA_WAN_PAGE_ORDER 3
 #define IPA_LAST_DESC_CNT 0xFFFF
@@ -4396,6 +4400,7 @@ static void ipa_gsi_irq_rx_notify_cb(struct gsi_chan_xfer_notify *notify)
 
 	sys = (struct ipa3_sys_context *)notify->chan_user_data;
 
+<<<<<<< HEAD
 	/*
 	 * In suspend just before stopping the channel possible to receive
 	 * the IEOB interrupt and xfer pointer will not be processed in this
@@ -4404,6 +4409,10 @@ static void ipa_gsi_irq_rx_notify_cb(struct gsi_chan_xfer_notify *notify)
 	 * overwritten. To avoid this process all data in polling context.
 	 */
 	sys->ep->xfer_notify_valid = false;
+=======
+
+	sys->ep->xfer_notify_valid = true;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	sys->ep->xfer_notify = *notify;
 
 	switch (notify->evt_id) {
@@ -4438,7 +4447,11 @@ static void ipa_dma_gsi_irq_rx_notify_cb(struct gsi_chan_xfer_notify *notify)
 		return;
 	}
 
+<<<<<<< HEAD
 	sys->ep->xfer_notify_valid = false;
+=======
+	sys->ep->xfer_notify_valid = true;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	sys->ep->xfer_notify = *notify;
 
 	switch (notify->evt_id) {
@@ -4643,7 +4656,11 @@ static int ipa_gsi_setup_transfer_ring(struct ipa3_ep_context *ep,
 	u32 ring_size, struct ipa3_sys_context *user_data, gfp_t mem_flag)
 {
 	dma_addr_t dma_addr;
+<<<<<<< HEAD
 	union gsi_channel_scratch ch_scratch;
+=======
+	union __packed gsi_channel_scratch ch_scratch;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct gsi_chan_props gsi_channel_props;
 	const struct ipa_gsi_ep_config *gsi_ep_info;
 	int result;

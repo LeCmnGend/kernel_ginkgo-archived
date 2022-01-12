@@ -276,7 +276,11 @@ minstrel_tx_status(void *priv, struct ieee80211_supported_band *sband,
 	success = !!(info->flags & IEEE80211_TX_STAT_ACK);
 
 	for (i = 0; i < IEEE80211_TX_MAX_RATES; i++) {
+<<<<<<< HEAD
 		if (ar[i].idx < 0 || !ar[i].count)
+=======
+		if (ar[i].idx < 0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			break;
 
 		ndx = rix_to_ndx(mi, ar[i].idx);
@@ -289,6 +293,15 @@ minstrel_tx_status(void *priv, struct ieee80211_supported_band *sband,
 			mi->r[ndx].stats.success += success;
 	}
 
+<<<<<<< HEAD
+=======
+	if ((info->flags & IEEE80211_TX_CTL_RATE_CTRL_PROBE) && (i >= 0))
+		mi->sample_packets++;
+
+	if (mi->sample_deferred > 0)
+		mi->sample_deferred--;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (time_after(jiffies, mi->last_stats_update +
 				(mp->update_interval * HZ) / 1000))
 		minstrel_update_stats(mp, mi);
@@ -367,7 +380,11 @@ minstrel_get_rate(void *priv, struct ieee80211_sta *sta,
 		return;
 
 	delta = (mi->total_packets * sampling_ratio / 100) -
+<<<<<<< HEAD
 			mi->sample_packets;
+=======
+			(mi->sample_packets + mi->sample_deferred / 2);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* delta < 0: no sampling required */
 	prev_sample = mi->prev_sample;
@@ -376,6 +393,10 @@ minstrel_get_rate(void *priv, struct ieee80211_sta *sta,
 		return;
 
 	if (mi->total_packets >= 10000) {
+<<<<<<< HEAD
+=======
+		mi->sample_deferred = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mi->sample_packets = 0;
 		mi->total_packets = 0;
 	} else if (delta > mi->n_rates * 2) {
@@ -400,8 +421,24 @@ minstrel_get_rate(void *priv, struct ieee80211_sta *sta,
 	 * rate sampling method should be used.
 	 * Respect such rates that are not sampled for 20 interations.
 	 */
+<<<<<<< HEAD
 	if (msr->perfect_tx_time < mr->perfect_tx_time ||
 	    msr->stats.sample_skipped >= 20) {
+=======
+	if (mrr_capable &&
+	    msr->perfect_tx_time > mr->perfect_tx_time &&
+	    msr->stats.sample_skipped < 20) {
+		/* Only use IEEE80211_TX_CTL_RATE_CTRL_PROBE to mark
+		 * packets that have the sampling rate deferred to the
+		 * second MRR stage. Increase the sample counter only
+		 * if the deferred sample rate was actually used.
+		 * Use the sample_deferred counter to make sure that
+		 * the sampling is not done in large bursts */
+		info->flags |= IEEE80211_TX_CTL_RATE_CTRL_PROBE;
+		rate++;
+		mi->sample_deferred++;
+	} else {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!msr->sample_limit)
 			return;
 
@@ -421,7 +458,10 @@ minstrel_get_rate(void *priv, struct ieee80211_sta *sta,
 
 	rate->idx = mi->r[ndx].rix;
 	rate->count = minstrel_get_retry_count(&mi->r[ndx], info);
+<<<<<<< HEAD
 	info->flags |= IEEE80211_TX_CTL_RATE_CTRL_PROBE;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 

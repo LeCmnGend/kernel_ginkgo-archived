@@ -2554,6 +2554,10 @@ lpfc_nvmet_unsol_issue_abort(struct lpfc_hba *phba,
 	bf_set(wqe_rcvoxid, &wqe_abts->xmit_sequence.wqe_com, xri);
 
 	/* Word 10 */
+<<<<<<< HEAD
+=======
+	bf_set(wqe_dbde, &wqe_abts->xmit_sequence.wqe_com, 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bf_set(wqe_iod, &wqe_abts->xmit_sequence.wqe_com, LPFC_WQE_IOD_WRITE);
 	bf_set(wqe_lenloc, &wqe_abts->xmit_sequence.wqe_com,
 	       LPFC_WQE_LENLOC_WORD12);

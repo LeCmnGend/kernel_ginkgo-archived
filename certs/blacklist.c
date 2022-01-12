@@ -157,7 +157,11 @@ static int __init blacklist_init(void)
 			      KEY_USR_VIEW | KEY_USR_READ |
 			      KEY_USR_SEARCH,
 			      KEY_ALLOC_NOT_IN_QUOTA |
+<<<<<<< HEAD
 			      KEY_ALLOC_SET_KEEP,
+=======
+			      KEY_FLAG_KEEP,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			      NULL, NULL);
 	if (IS_ERR(blacklist_keyring))
 		panic("Can't allocate system blacklist keyring\n");

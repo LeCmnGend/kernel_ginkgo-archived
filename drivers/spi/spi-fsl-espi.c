@@ -556,14 +556,22 @@ static void fsl_espi_cpu_irq(struct fsl_espi *espi, u32 events)
 static irqreturn_t fsl_espi_irq(s32 irq, void *context_data)
 {
 	struct fsl_espi *espi = context_data;
+<<<<<<< HEAD
 	u32 events, mask;
+=======
+	u32 events;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	spin_lock(&espi->lock);
 
 	/* Get interrupt events(tx/rx) */
 	events = fsl_espi_read_reg(espi, ESPI_SPIE);
+<<<<<<< HEAD
 	mask = fsl_espi_read_reg(espi, ESPI_SPIM);
 	if (!(events & mask)) {
+=======
+	if (!events) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		spin_unlock(&espi->lock);
 		return IRQ_NONE;
 	}

@@ -65,7 +65,11 @@ static void scm_disable_sdi(void);
  * There is no API from TZ to re-enable the registers.
  * So the SDI cannot be re-enabled when it already by-passed.
  */
+<<<<<<< HEAD
 static int download_mode = 0;
+=======
+static int download_mode = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static bool force_warm_reboot;
 
 #ifdef CONFIG_QCOM_DLOAD_MODE
@@ -162,7 +166,11 @@ static bool get_dload_mode(void)
 	return dload_mode_enabled;
 }
 
+<<<<<<< HEAD
 static __maybe_unused void enable_emergency_dload_mode(void)
+=======
+static void enable_emergency_dload_mode(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	int ret;
 
@@ -313,7 +321,11 @@ static void msm_restart_prepare(const char *cmd)
 		pr_info("Forcing a warm reset of the system\n");
 
 	/* Hard reset the PMIC unless memory contents must be maintained. */
+<<<<<<< HEAD
 	if (in_panic || force_warm_reboot || need_warm_reset)
+=======
+	if (force_warm_reboot || need_warm_reset)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		qpnp_pon_system_pwr_off(PON_POWER_OFF_WARM_RESET);
 	else
 		qpnp_pon_system_pwr_off(PON_POWER_OFF_HARD_RESET);
@@ -352,7 +364,11 @@ static void msm_restart_prepare(const char *cmd)
 				__raw_writel(0x6f656d00 | (code & 0xff),
 					     restart_reason);
 		} else if (!strncmp(cmd, "edl", 3)) {
+<<<<<<< HEAD
 			pr_info("Rebooting to EDL is unavailable\n");
+=======
+			enable_emergency_dload_mode();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		} else {
 			__raw_writel(0x77665501, restart_reason);
 		}

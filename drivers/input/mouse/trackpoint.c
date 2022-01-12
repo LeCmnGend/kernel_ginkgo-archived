@@ -20,12 +20,19 @@
 #include "trackpoint.h"
 
 static const char * const trackpoint_variants[] = {
+<<<<<<< HEAD
 	[TP_VARIANT_IBM]		= "IBM",
 	[TP_VARIANT_ALPS]		= "ALPS",
 	[TP_VARIANT_ELAN]		= "Elan",
 	[TP_VARIANT_NXP]		= "NXP",
 	[TP_VARIANT_JYT_SYNAPTICS]	= "JYT_Synaptics",
 	[TP_VARIANT_SYNAPTICS]		= "Synaptics",
+=======
+	[TP_VARIANT_IBM]	= "IBM",
+	[TP_VARIANT_ALPS]	= "ALPS",
+	[TP_VARIANT_ELAN]	= "Elan",
+	[TP_VARIANT_NXP]	= "NXP",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 /*
@@ -297,8 +304,11 @@ static int trackpoint_start_protocol(struct psmouse *psmouse,
 	case TP_VARIANT_ALPS:
 	case TP_VARIANT_ELAN:
 	case TP_VARIANT_NXP:
+<<<<<<< HEAD
 	case TP_VARIANT_JYT_SYNAPTICS:
 	case TP_VARIANT_SYNAPTICS:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (variant_id)
 			*variant_id = param[0];
 		if (firmware_id)

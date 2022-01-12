@@ -25,9 +25,12 @@ struct reciprocal_value {
 	u8 sh1, sh2;
 };
 
+<<<<<<< HEAD
 /* "reciprocal_value" and "reciprocal_divide" together implement the basic
  * version of the algorithm described in Figure 4.1 of the paper.
  */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct reciprocal_value reciprocal_value(u32 d);
 
 static inline u32 reciprocal_divide(u32 a, struct reciprocal_value R)
@@ -36,6 +39,7 @@ static inline u32 reciprocal_divide(u32 a, struct reciprocal_value R)
 	return (t + ((a - t) >> R.sh1)) >> R.sh2;
 }
 
+<<<<<<< HEAD
 struct reciprocal_value_adv {
 	u32 m;
 	u8 sh, exp;
@@ -101,4 +105,6 @@ struct reciprocal_value_adv {
  */
 struct reciprocal_value_adv reciprocal_value_adv(u32 d, u8 prec);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* _LINUX_RECIPROCAL_DIV_H */

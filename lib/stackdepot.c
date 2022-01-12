@@ -78,7 +78,11 @@ static void *stack_slabs[STACK_ALLOC_MAX_SLABS];
 static int depot_index;
 static int next_slab_inited;
 static size_t depot_offset;
+<<<<<<< HEAD
 static DEFINE_RAW_SPINLOCK(depot_lock);
+=======
+static DEFINE_SPINLOCK(depot_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static bool init_stack_slab(void **prealloc)
 {
@@ -252,7 +256,11 @@ depot_stack_handle_t depot_save_stack(struct stack_trace *trace,
 			prealloc = page_address(page);
 	}
 
+<<<<<<< HEAD
 	raw_spin_lock_irqsave(&depot_lock, flags);
+=======
+	spin_lock_irqsave(&depot_lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	found = find_stack(*bucket, trace->entries, trace->nr_entries, hash);
 	if (!found) {
@@ -276,7 +284,11 @@ depot_stack_handle_t depot_save_stack(struct stack_trace *trace,
 		WARN_ON(!init_stack_slab(&prealloc));
 	}
 
+<<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&depot_lock, flags);
+=======
+	spin_unlock_irqrestore(&depot_lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 exit:
 	if (prealloc) {
 		/* Nobody used this memory, ok to free it. */

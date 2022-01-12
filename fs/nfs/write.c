@@ -406,19 +406,26 @@ nfs_destroy_unlinked_subrequests(struct nfs_page *destroy_list,
 		destroy_list = (subreq->wb_this_page == old_head) ?
 				   NULL : subreq->wb_this_page;
 
+<<<<<<< HEAD
 		/* Note: lock subreq in order to change subreq->wb_head */
 		nfs_page_set_headlock(subreq);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		WARN_ON_ONCE(old_head != subreq->wb_head);
 
 		/* make sure old group is not used */
 		subreq->wb_this_page = subreq;
+<<<<<<< HEAD
 		subreq->wb_head = subreq;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		clear_bit(PG_REMOVE, &subreq->wb_flags);
 
 		/* Note: races with nfs_page_group_destroy() */
 		if (!kref_read(&subreq->wb_kref)) {
 			/* Check if we raced with nfs_page_group_destroy() */
+<<<<<<< HEAD
 			if (test_and_clear_bit(PG_TEARDOWN, &subreq->wb_flags)) {
 				nfs_page_clear_headlock(subreq);
 				nfs_free_request(subreq);
@@ -428,6 +435,14 @@ nfs_destroy_unlinked_subrequests(struct nfs_page *destroy_list,
 		}
 		nfs_page_clear_headlock(subreq);
 
+=======
+			if (test_and_clear_bit(PG_TEARDOWN, &subreq->wb_flags))
+				nfs_free_request(subreq);
+			continue;
+		}
+
+		subreq->wb_head = subreq;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		nfs_release_request(old_head);
 
 		if (test_and_clear_bit(PG_INODE_REF, &subreq->wb_flags)) {
@@ -2141,7 +2156,11 @@ int __init nfs_init_writepagecache(void)
 	 * This allows larger machines to have larger/more transfers.
 	 * Limit the default to 256M
 	 */
+<<<<<<< HEAD
 	nfs_congestion_kb = (16*int_sqrt(totalram_pages())) << (PAGE_SHIFT-10);
+=======
+	nfs_congestion_kb = (16*int_sqrt(totalram_pages)) << (PAGE_SHIFT-10);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (nfs_congestion_kb > 256*1024)
 		nfs_congestion_kb = 256*1024;
 

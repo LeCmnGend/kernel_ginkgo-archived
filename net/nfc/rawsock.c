@@ -117,7 +117,11 @@ static int rawsock_connect(struct socket *sock, struct sockaddr *_addr,
 	if (addr->target_idx > dev->target_next_idx - 1 ||
 	    addr->target_idx < dev->target_next_idx - dev->n_targets) {
 		rc = -EINVAL;
+<<<<<<< HEAD
 		goto put_dev;
+=======
+		goto error;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	rc = nfc_activate_target(dev, addr->target_idx, addr->nfc_protocol);
@@ -344,6 +348,7 @@ static int rawsock_create(struct net *net, struct socket *sock,
 	if ((sock->type != SOCK_SEQPACKET) && (sock->type != SOCK_RAW))
 		return -ESOCKTNOSUPPORT;
 
+<<<<<<< HEAD
 	if (sock->type == SOCK_RAW) {
 		if (!ns_capable(net->user_ns, CAP_NET_RAW))
 			return -EPERM;
@@ -351,6 +356,12 @@ static int rawsock_create(struct net *net, struct socket *sock,
 	} else {
 		sock->ops = &rawsock_ops;
 	}
+=======
+	if (sock->type == SOCK_RAW)
+		sock->ops = &rawsock_raw_ops;
+	else
+		sock->ops = &rawsock_ops;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	sk = sk_alloc(net, PF_NFC, GFP_ATOMIC, nfc_proto->proto, kern);
 	if (!sk)

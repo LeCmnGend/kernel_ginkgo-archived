@@ -4679,7 +4679,11 @@ static int fg_awake_cb(struct votable *votable, void *data, int awake,
 	struct fg_dev *fg = data;
 
 	if (awake)
+<<<<<<< HEAD
 		pm_wakeup_event(fg->dev, 500);
+=======
+		pm_stay_awake(fg->dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	else
 		pm_relax(fg->dev);
 

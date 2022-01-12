@@ -327,12 +327,15 @@ static int set_sample_rate_v1(struct snd_usb_audio *chip, int iface,
 	}
 
 	crate = data[0] | (data[1] << 8) | (data[2] << 16);
+<<<<<<< HEAD
 	if (!crate) {
 		dev_info(&dev->dev, "failed to read current rate; disabling the check\n");
 		chip->sample_rate_read_error = 3; /* three strikes, see above */
 		return 0;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (crate != rate) {
 		dev_warn(&dev->dev, "current rate %d is different from the runtime rate %d\n", crate, rate);
 		// runtime->rate = crate;

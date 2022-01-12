@@ -56,7 +56,11 @@ int msm_wait_fence(struct msm_fence_context *fctx, uint32_t fence,
 	int ret;
 
 	if (fence > fctx->last_fence) {
+<<<<<<< HEAD
 		DRM_ERROR_RATELIMITED("%s: waiting on invalid fence: %u (of %u)\n",
+=======
+		DRM_ERROR("%s: waiting on invalid fence: %u (of %u)\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				fctx->name, fence, fctx->last_fence);
 		return -EINVAL;
 	}

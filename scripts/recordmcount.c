@@ -415,7 +415,11 @@ static uint32_t (*w2)(uint16_t);
 static int
 is_mcounted_section_name(char const *const txtname)
 {
+<<<<<<< HEAD
 	return strncmp(".text",          txtname, 5) == 0 ||
+=======
+	return strcmp(".text",           txtname) == 0 ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		strcmp(".init.text",     txtname) == 0 ||
 		strcmp(".ref.text",      txtname) == 0 ||
 		strcmp(".sched.text",    txtname) == 0 ||

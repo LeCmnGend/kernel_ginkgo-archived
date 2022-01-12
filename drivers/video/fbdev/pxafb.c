@@ -2449,8 +2449,13 @@ static int pxafb_remove(struct platform_device *dev)
 
 	free_pages_exact(fbi->video_mem, fbi->video_mem_size);
 
+<<<<<<< HEAD
 	dma_free_coherent(&dev->dev, fbi->dma_buff_size, fbi->dma_buff,
 			  fbi->dma_buff_phys);
+=======
+	dma_free_wc(&dev->dev, fbi->dma_buff_size, fbi->dma_buff,
+		    fbi->dma_buff_phys);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	iounmap(fbi->mmio_base);
 

@@ -720,9 +720,15 @@ void gfs2_clear_rgrpd(struct gfs2_sbd *sdp)
 		}
 
 		gfs2_free_clones(rgd);
+<<<<<<< HEAD
 		return_all_reservations(rgd);
 		kfree(rgd->rd_bits);
 		rgd->rd_bits = NULL;
+=======
+		kfree(rgd->rd_bits);
+		rgd->rd_bits = NULL;
+		return_all_reservations(rgd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		kmem_cache_free(gfs2_rgrpd_cachep, rgd);
 	}
 }
@@ -990,10 +996,13 @@ static int gfs2_ri_update(struct gfs2_inode *ip)
 	if (error < 0)
 		return error;
 
+<<<<<<< HEAD
 	if (RB_EMPTY_ROOT(&sdp->sd_rindex_tree)) {
 		fs_err(sdp, "no resource groups found in the file system.\n");
 		return -ENOENT;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	set_rgrp_preferences(sdp);
 
 	sdp->sd_rindex_uptodate = 1;
@@ -1365,9 +1374,12 @@ int gfs2_fitrim(struct file *filp, void __user *argp)
 	if (!capable(CAP_SYS_ADMIN))
 		return -EPERM;
 
+<<<<<<< HEAD
 	if (!test_bit(SDF_JOURNAL_LIVE, &sdp->sd_flags))
 		return -EROFS;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!blk_queue_discard(q))
 		return -EOPNOTSUPP;
 

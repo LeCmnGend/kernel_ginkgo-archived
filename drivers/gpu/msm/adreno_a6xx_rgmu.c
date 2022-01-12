@@ -22,6 +22,10 @@
 #include "a6xx_reg.h"
 #include "adreno_a6xx.h"
 #include "adreno_trace.h"
+<<<<<<< HEAD
+=======
+#include "adreno_snapshot.h"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* RGMU timeouts */
 #define RGMU_IDLE_TIMEOUT		100	/* ms */
@@ -571,6 +575,26 @@ static void a6xx_rgmu_halt_execution(struct kgsl_device *device)
 
 }
 
+<<<<<<< HEAD
+=======
+/*
+ * a6xx_rgmu_snapshot() - A6XX GMU snapshot function
+ * @adreno_dev: Device being snapshotted
+ * @snapshot: Pointer to the snapshot instance
+ *
+ * This is where all of the A6XX GMU specific bits and pieces are grabbed
+ * into the snapshot memory
+ */
+static void a6xx_rgmu_snapshot(struct adreno_device *adreno_dev,
+		struct kgsl_snapshot *snapshot)
+{
+	struct kgsl_device *device = KGSL_DEVICE(adreno_dev);
+
+	adreno_snapshot_registers(device, snapshot, a6xx_rgmu_registers,
+					ARRAY_SIZE(a6xx_rgmu_registers) / 2);
+}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct gmu_dev_ops adreno_a6xx_rgmudev = {
 	.load_firmware = a6xx_rgmu_load_firmware,
 	.oob_set = a6xx_rgmu_oob_set,
@@ -583,6 +607,10 @@ struct gmu_dev_ops adreno_a6xx_rgmudev = {
 	.wait_for_lowest_idle = a6xx_rgmu_wait_for_lowest_idle,
 	.ifpc_store = a6xx_rgmu_ifpc_store,
 	.ifpc_show = a6xx_rgmu_ifpc_show,
+<<<<<<< HEAD
+=======
+	.snapshot = a6xx_rgmu_snapshot,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.halt_execution = a6xx_rgmu_halt_execution,
 	.read_ao_counter = a6xx_gmu_read_ao_counter,
 	.gmu2host_intr_mask = RGMU_OOB_IRQ_MASK,

@@ -107,6 +107,7 @@ scpi_show_sensor(struct device *dev, struct device_attribute *attr, char *buf)
 
 	scpi_scale_reading(&value, sensor);
 
+<<<<<<< HEAD
 	/*
 	 * Temperature sensor values are treated as signed values based on
 	 * observation even though that is not explicitly specified, and
@@ -116,6 +117,8 @@ scpi_show_sensor(struct device *dev, struct device_attribute *attr, char *buf)
 	if (sensor->info.class == TEMPERATURE)
 		return sprintf(buf, "%lld\n", (s64)value);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return sprintf(buf, "%llu\n", value);
 }
 

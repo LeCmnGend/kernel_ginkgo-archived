@@ -374,7 +374,11 @@ static unsigned long task_seg_base(struct task_struct *task,
 		 */
 		mutex_lock(&task->mm->context.lock);
 		ldt = task->mm->context.ldt;
+<<<<<<< HEAD
 		if (unlikely(!ldt || idx >= ldt->nr_entries))
+=======
+		if (unlikely(idx >= ldt->nr_entries))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			base = 0;
 		else
 			base = get_desc_base(ldt->entries + idx);

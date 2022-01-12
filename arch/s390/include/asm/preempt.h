@@ -8,8 +8,11 @@
 
 #ifdef CONFIG_HAVE_MARCH_Z196_FEATURES
 
+<<<<<<< HEAD
 /* We use the MSB mostly because its available */
 #define PREEMPT_NEED_RESCHED	0x80000000
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define PREEMPT_ENABLED	(0 + PREEMPT_NEED_RESCHED)
 
 static inline int preempt_count(void)

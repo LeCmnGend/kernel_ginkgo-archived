@@ -108,7 +108,11 @@ struct ion_prefetch_regions {
 };
 
 struct ion_prefetch_data {
+<<<<<<< HEAD
 	__u64 unused;
+=======
+	__u64 len;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__u64 regions;
 	__u32 heap_id;
 	__u32 nr_regions;

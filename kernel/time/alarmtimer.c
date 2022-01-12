@@ -71,7 +71,11 @@ static void alarmtimer_triggered_func(void *p)
 
 	if (!(rtc->irq_data & RTC_AF))
 		return;
+<<<<<<< HEAD
 	__pm_wakeup_event(ws, MSEC_PER_SEC / 2);
+=======
+	__pm_wakeup_event(ws, 2 * MSEC_PER_SEC);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static struct rtc_task alarmtimer_rtc_task = {
@@ -311,8 +315,15 @@ static int alarmtimer_suspend(struct device *dev)
 	if (min == 0)
 		return 0;
 
+<<<<<<< HEAD
 	if (ktime_to_ns(min) < NSEC_PER_SEC / 2)
 		__pm_wakeup_event(ws, MSEC_PER_SEC / 2);
+=======
+	if (ktime_to_ns(min) < 2 * NSEC_PER_SEC) {
+		__pm_wakeup_event(ws, 2 * MSEC_PER_SEC);
+		return -EBUSY;
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	trace_alarmtimer_suspend(expires, type);
 
@@ -325,7 +336,11 @@ static int alarmtimer_suspend(struct device *dev)
 	/* Set alarm, if in the past reject suspend briefly to handle */
 	ret = rtc_timer_start(rtc, &rtctimer, now, 0);
 	if (ret < 0)
+<<<<<<< HEAD
 		__pm_wakeup_event(ws, MSEC_PER_SEC / 2);
+=======
+		__pm_wakeup_event(ws, MSEC_PER_SEC);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 }
 
@@ -845,9 +860,15 @@ static int alarm_timer_nsleep(const clockid_t which_clock, int flags,
 	if (flags == TIMER_ABSTIME)
 		return -ERESTARTNOHAND;
 
+<<<<<<< HEAD
 	restart->nanosleep.clockid = type;
 	restart->nanosleep.expires = exp;
 	set_restart_fn(restart, alarm_timer_nsleep_restart);
+=======
+	restart->fn = alarm_timer_nsleep_restart;
+	restart->nanosleep.clockid = type;
+	restart->nanosleep.expires = exp;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 }
 

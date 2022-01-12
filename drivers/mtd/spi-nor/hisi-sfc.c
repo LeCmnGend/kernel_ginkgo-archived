@@ -408,10 +408,15 @@ static int hisi_spi_nor_register_all(struct hifmc_host *host)
 
 	for_each_available_child_of_node(dev->of_node, np) {
 		ret = hisi_spi_nor_register(np, host);
+<<<<<<< HEAD
 		if (ret) {
 			of_node_put(np);
 			goto fail;
 		}
+=======
+		if (ret)
+			goto fail;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		if (host->num_chip == HIFMC_MAX_CHIP_NUM) {
 			dev_warn(dev, "Flash device number exceeds the maximum chipselect number\n");

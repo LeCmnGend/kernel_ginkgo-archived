@@ -109,6 +109,16 @@ config LOCKDEP_SUPPORT
 	bool
 	default y
 
+<<<<<<< HEAD
+=======
+config RWSEM_GENERIC_SPINLOCK
+	bool
+
+config RWSEM_XCHGADD_ALGORITHM
+	bool
+	default y
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config GENERIC_LOCKBREAK
 	bool
 	default y
@@ -147,7 +157,10 @@ config PPC
 	select ARCH_USE_BUILTIN_BSWAP
 	select ARCH_USE_CMPXCHG_LOCKREF		if PPC64
 	select ARCH_WANT_IPC_PARSE_VERSION
+<<<<<<< HEAD
 	select ARCH_WANT_IRQS_OFF_ACTIVATE_MM
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select ARCH_WEAK_RELEASE_ACQUIRE
 	select BINFMT_ELF
 	select BUILDTIME_EXTABLE_SORT
@@ -201,7 +214,11 @@ config PPC
 	select HAVE_MEMBLOCK_NODE_MAP
 	select HAVE_MOD_ARCH_SPECIFIC
 	select HAVE_NMI				if PERF_EVENTS || (PPC64 && PPC_BOOK3S)
+<<<<<<< HEAD
 	select HAVE_HARDLOCKUP_DETECTOR_ARCH	if PPC64 && PPC_BOOK3S && SMP
+=======
+	select HAVE_HARDLOCKUP_DETECTOR_ARCH	if (PPC64 && PPC_BOOK3S)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select HAVE_OPROFILE
 	select HAVE_OPTPROBES			if PPC64
 	select HAVE_PERF_EVENTS
@@ -210,8 +227,11 @@ config PPC
 	select HAVE_PERF_REGS
 	select HAVE_PERF_USER_STACK_DUMP
 	select HAVE_RCU_TABLE_FREE		if SMP
+<<<<<<< HEAD
 	select HAVE_RCU_TABLE_NO_INVALIDATE	if HAVE_RCU_TABLE_FREE
 	select HAVE_MMU_GATHER_PAGE_SIZE
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select HAVE_REGS_AND_STACK_ACCESS_API
 	select HAVE_SYSCALL_TRACEPOINTS
 	select HAVE_VIRT_CPU_ACCOUNTING
@@ -730,7 +750,11 @@ config PPC_64K_PAGES
 
 config PPC_256K_PAGES
 	bool "256k page size"
+<<<<<<< HEAD
 	depends on 44x && !STDBINUTILS && !PPC_47x
+=======
+	depends on 44x && !STDBINUTILS
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	help
 	  Make the page size 256k.
 
@@ -1022,6 +1046,7 @@ config FSL_RIO
 
 source "drivers/rapidio/Kconfig"
 
+<<<<<<< HEAD
 config PPC_RTAS_FILTER
 	bool "Enable filtering of RTAS syscalls"
 	default y
@@ -1035,6 +1060,8 @@ config PPC_RTAS_FILTER
 	  Say Y unless you know what you are doing and the filter is causing
 	  problems for you.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 endmenu
 
 config NONSTATIC_KERNEL

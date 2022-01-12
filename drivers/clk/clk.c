@@ -63,12 +63,15 @@ static DEFINE_MUTEX(vdd_class_list_lock);
  */
 static LIST_HEAD(clk_rate_change_list);
 
+<<<<<<< HEAD
 static struct hlist_head *all_lists[] = {
 	&clk_root_list,
 	&clk_orphan_list,
 	NULL,
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /***    private data structures    ***/
 
 struct clk_core {
@@ -767,10 +770,17 @@ static void clk_core_unprepare(struct clk_core *core)
 	if (!core)
 		return;
 
+<<<<<<< HEAD
 	if (core->prepare_count == 0)
 		return;
 
 	if (core->prepare_count == 1 && core->flags & CLK_IS_CRITICAL)
+=======
+	if (WARN_ON(core->prepare_count == 0))
+		return;
+
+	if (WARN_ON(core->prepare_count == 1 && core->flags & CLK_IS_CRITICAL))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return;
 
 	if (--core->prepare_count > 0)
@@ -906,10 +916,17 @@ static void clk_core_disable(struct clk_core *core)
 	if (!core)
 		return;
 
+<<<<<<< HEAD
 	if (core->enable_count == 0)
 		return;
 
 	if (core->enable_count == 1 && core->flags & CLK_IS_CRITICAL)
+=======
+	if (WARN_ON(core->enable_count == 0))
+		return;
+
+	if (WARN_ON(core->enable_count == 1 && core->flags & CLK_IS_CRITICAL))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return;
 
 	if (--core->enable_count > 0)
@@ -2699,6 +2716,15 @@ static u32 debug_suspend;
 static DEFINE_MUTEX(clk_debug_lock);
 static HLIST_HEAD(clk_debug_list);
 
+<<<<<<< HEAD
+=======
+static struct hlist_head *all_lists[] = {
+	&clk_root_list,
+	&clk_orphan_list,
+	NULL,
+};
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct hlist_head *orphan_list[] = {
 	&clk_orphan_list,
 	NULL,
@@ -3982,6 +4008,7 @@ static const struct clk_ops clk_nodrv_ops = {
 	.set_parent	= clk_nodrv_set_parent,
 };
 
+<<<<<<< HEAD
 static void clk_core_evict_parent_cache_subtree(struct clk_core *root,
 						struct clk_core *target)
 {
@@ -4010,6 +4037,8 @@ static void clk_core_evict_parent_cache(struct clk_core *core)
 
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * clk_unregister - unregister a currently registered clock
  * @clk: clock to unregister
@@ -4048,8 +4077,11 @@ void clk_unregister(struct clk *clk)
 			clk_core_set_parent(child, NULL);
 	}
 
+<<<<<<< HEAD
 	clk_core_evict_parent_cache(clk->core);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	hlist_del_init(&clk->core->child_node);
 
 	if (clk->core->prepare_count)
@@ -4433,6 +4465,7 @@ int clk_notifier_register(struct clk *clk, struct notifier_block *nb)
 	/* search the list of notifiers for this clk */
 	list_for_each_entry(cn, &clk_notifier_list, node)
 		if (cn->clk == clk)
+<<<<<<< HEAD
 			goto found;
 
 	/* if clk wasn't in the notifier list, allocate new clk_notifier */
@@ -4446,6 +4479,22 @@ int clk_notifier_register(struct clk *clk, struct notifier_block *nb)
 	list_add(&cn->node, &clk_notifier_list);
 
 found:
+=======
+			break;
+
+	/* if clk wasn't in the notifier list, allocate new clk_notifier */
+	if (cn->clk != clk) {
+		cn = kzalloc(sizeof(*cn), GFP_KERNEL);
+		if (!cn)
+			goto out;
+
+		cn->clk = clk;
+		srcu_init_notifier_head(&cn->notifier_head);
+
+		list_add(&cn->node, &clk_notifier_list);
+	}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = srcu_notifier_chain_register(&cn->notifier_head, nb);
 
 	clk->core->notifier_count++;
@@ -4470,14 +4519,20 @@ EXPORT_SYMBOL_GPL(clk_notifier_register);
  */
 int clk_notifier_unregister(struct clk *clk, struct notifier_block *nb)
 {
+<<<<<<< HEAD
 	struct clk_notifier *cn;
 	int ret = -ENOENT;
+=======
+	struct clk_notifier *cn = NULL;
+	int ret = -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!clk || !nb)
 		return -EINVAL;
 
 	clk_prepare_lock();
 
+<<<<<<< HEAD
 	list_for_each_entry(cn, &clk_notifier_list, node) {
 		if (cn->clk == clk) {
 			ret = srcu_notifier_chain_unregister(&cn->notifier_head, nb);
@@ -4492,6 +4547,26 @@ int clk_notifier_unregister(struct clk *clk, struct notifier_block *nb)
 			}
 			break;
 		}
+=======
+	list_for_each_entry(cn, &clk_notifier_list, node)
+		if (cn->clk == clk)
+			break;
+
+	if (cn->clk == clk) {
+		ret = srcu_notifier_chain_unregister(&cn->notifier_head, nb);
+
+		clk->core->notifier_count--;
+
+		/* XXX the notifier code should handle this better */
+		if (!cn->notifier_head.head) {
+			srcu_cleanup_notifier_head(&cn->notifier_head);
+			list_del(&cn->node);
+			kfree(cn);
+		}
+
+	} else {
+		ret = -ENOENT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	clk_prepare_unlock();

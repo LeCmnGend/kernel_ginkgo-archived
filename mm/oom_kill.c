@@ -56,8 +56,11 @@ int sysctl_oom_dump_tasks = 1;
 int sysctl_reap_mem_on_sigkill;
 
 DEFINE_MUTEX(oom_lock);
+<<<<<<< HEAD
 /* Serializes oom_score_adj and oom_score_adj_min updates */
 DEFINE_MUTEX(oom_adj_mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #ifdef CONFIG_NUMA
 /**
@@ -206,7 +209,11 @@ unsigned long oom_badness(struct task_struct *p, struct mem_cgroup *memcg,
 	 * task's rss, pagetable and swap space use.
 	 */
 	points = get_mm_rss(p->mm) + get_mm_counter(p->mm, MM_SWAPENTS) +
+<<<<<<< HEAD
 		mm_pgtables_bytes(p->mm) / PAGE_SIZE;
+=======
+		atomic_long_read(&p->mm->nr_ptes) + mm_nr_pmds(p->mm);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	task_unlock(p);
 
 	/* Normalize to oom_score_adj units */
@@ -244,7 +251,11 @@ static enum oom_constraint constrained_alloc(struct oom_control *oc)
 	}
 
 	/* Default to all available memory */
+<<<<<<< HEAD
 	oc->totalpages = totalram_pages() + total_swap_pages;
+=======
+	oc->totalpages = totalram_pages + total_swap_pages;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!IS_ENABLED(CONFIG_NUMA))
 		return CONSTRAINT_NONE;
@@ -367,15 +378,24 @@ static void select_bad_process(struct oom_control *oc)
  * Dumps the current memory state of all eligible tasks.  Tasks not in the same
  * memcg, not in the same cpuset, or bound to a disjoint set of mempolicy nodes
  * are not shown.
+<<<<<<< HEAD
  * State information includes task's pid, uid, tgid, vm size, rss,
  * pgtables_bytes, swapents, oom_score_adj value, and name.
+=======
+ * State information includes task's pid, uid, tgid, vm size, rss, nr_ptes,
+ * swapents, oom_score_adj value, and name.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 void dump_tasks(struct mem_cgroup *memcg, const nodemask_t *nodemask)
 {
 	struct task_struct *p;
 	struct task_struct *task;
 
+<<<<<<< HEAD
 	pr_info("[ pid ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name\n");
+=======
+	pr_info("[ pid ]   uid  tgid total_vm      rss nr_ptes nr_pmds swapents oom_score_adj name\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rcu_read_lock();
 	for_each_process(p) {
 		if (oom_unkillable_task(p, memcg, nodemask))
@@ -391,10 +411,18 @@ void dump_tasks(struct mem_cgroup *memcg, const nodemask_t *nodemask)
 			continue;
 		}
 
+<<<<<<< HEAD
 		pr_info("[%5d] %5d %5d %8lu %8lu %8ld %8lu         %5hd %s\n",
 			task->pid, from_kuid(&init_user_ns, task_uid(task)),
 			task->tgid, task->mm->total_vm, get_mm_rss(task->mm),
 			mm_pgtables_bytes(task->mm),
+=======
+		pr_info("[%5d] %5d %5d %8lu %8lu %7ld %7ld %8lu         %5hd %s\n",
+			task->pid, from_kuid(&init_user_ns, task_uid(task)),
+			task->tgid, task->mm->total_vm, get_mm_rss(task->mm),
+			atomic_long_read(&task->mm->nr_ptes),
+			mm_nr_pmds(task->mm),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			get_mm_counter(task->mm, MM_SWAPENTS),
 			task->signal->oom_score_adj, task->comm);
 		task_unlock(task);
@@ -704,7 +732,11 @@ void exit_oom_victim(void)
 void oom_killer_enable(void)
 {
 	oom_killer_disabled = false;
+<<<<<<< HEAD
 	pr_debug("OOM killer enabled.\n");
+=======
+	pr_info("OOM killer enabled.\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /**
@@ -741,7 +773,11 @@ bool oom_killer_disable(signed long timeout)
 		oom_killer_enable();
 		return false;
 	}
+<<<<<<< HEAD
 	pr_debug("OOM killer disabled.\n");
+=======
+	pr_info("OOM killer disabled.\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return true;
 }
@@ -907,7 +943,11 @@ static void oom_kill_process(struct oom_control *oc, const char *message)
 
 	/* Raise event before sending signal: task reaper must see this */
 	count_vm_event(OOM_KILL);
+<<<<<<< HEAD
 	memcg_memory_event_mm(mm, MEMCG_OOM_KILL);
+=======
+	count_memcg_event_mm(mm, OOM_KILL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*
 	 * We should send SIGKILL before granting access to memory reserves
@@ -1017,7 +1057,11 @@ bool out_of_memory(struct oom_control *oc)
 	unsigned long freed = 0;
 	enum oom_constraint constraint = CONSTRAINT_NONE;
 
+<<<<<<< HEAD
 	if (oom_killer_disabled || IS_ENABLED(CONFIG_ANDROID_SIMPLE_LMK))
+=======
+	if (oom_killer_disabled)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return false;
 
 	if (try_online_one_block(numa_node_id())) {

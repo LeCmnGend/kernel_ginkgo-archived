@@ -412,8 +412,12 @@ void mdiobus_unregister(struct mii_bus *bus)
 	struct mdio_device *mdiodev;
 	int i;
 
+<<<<<<< HEAD
 	if (WARN_ON_ONCE(bus->state != MDIOBUS_REGISTERED))
 		return;
+=======
+	BUG_ON(bus->state != MDIOBUS_REGISTERED);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bus->state = MDIOBUS_UNREGISTERED;
 
 	for (i = 0; i < PHY_MAX_ADDR; i++) {

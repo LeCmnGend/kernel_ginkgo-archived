@@ -775,6 +775,7 @@ void __init cpuhp_threads_init(void)
 	kthread_unpark(this_cpu_read(cpuhp_state.thread));
 }
 
+<<<<<<< HEAD
 /*
  *
  * Serialize hotplug trainwrecks outside of the cpu_hotplug_lock
@@ -826,6 +827,9 @@ static void cpu_up_down_serialize_trainwrecks(bool tasks_frozen)
 #define arch_clear_mm_cpumask_cpu(cpu, mm) cpumask_clear_cpu(cpu, mm_cpumask(mm))
 #endif
 
+=======
+#ifdef CONFIG_HOTPLUG_CPU
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * clear_tasks_mm_cpumask - Safely clear tasks' mm_cpumask for a CPU
  * @cpu: a CPU id
@@ -861,7 +865,11 @@ void clear_tasks_mm_cpumask(int cpu)
 		t = find_lock_task_mm(p);
 		if (!t)
 			continue;
+<<<<<<< HEAD
 		arch_clear_mm_cpumask_cpu(cpu, t->mm);
+=======
+		cpumask_clear_cpu(cpu, mm_cpumask(t->mm));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		task_unlock(t);
 	}
 	rcu_read_unlock();
@@ -1069,7 +1077,10 @@ out:
 	 */
 	lockup_detector_cleanup();
 	arch_smt_update();
+<<<<<<< HEAD
 	cpu_up_down_serialize_trainwrecks(tasks_frozen);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 }
 
@@ -1221,7 +1232,10 @@ out:
 	trace_cpuhp_latency(cpu, 1, start_time, ret);
 	cpus_write_unlock();
 	arch_smt_update();
+<<<<<<< HEAD
 	cpu_up_down_serialize_trainwrecks(tasks_frozen);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 }
 
@@ -1315,7 +1329,10 @@ int freeze_secondary_cpus(int primary)
 	int cpu, error = 0;
 
 	cpu_maps_update_begin();
+<<<<<<< HEAD
 	unaffine_perf_irqs();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!cpu_online(primary))
 		primary = cpumask_first(cpu_online_mask);
 	/*
@@ -1390,10 +1407,17 @@ void enable_nonboot_cpus(void)
 		error = _cpu_up(cpu, 1, CPUHP_ONLINE);
 		trace_suspend_resume(TPS("CPU_ON"), cpu, false);
 		if (!error) {
+<<<<<<< HEAD
 			pr_debug("CPU%d is up\n", cpu);
 			cpu_device = get_cpu_device(cpu);
 			if (!cpu_device)
 				pr_debug("%s: failed to get cpu%d device\n",
+=======
+			pr_info("CPU%d is up\n", cpu);
+			cpu_device = get_cpu_device(cpu);
+			if (!cpu_device)
+				pr_err("%s: failed to get cpu%d device\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				       __func__, cpu);
 			else
 				kobject_uevent(&cpu_device->kobj, KOBJ_ONLINE);
@@ -1405,7 +1429,10 @@ void enable_nonboot_cpus(void)
 	arch_enable_nonboot_cpus_end();
 
 	cpumask_clear(frozen_cpus);
+<<<<<<< HEAD
 	reaffine_perf_irqs();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out:
 	cpu_maps_update_done();
 }
@@ -1588,13 +1615,19 @@ static struct cpuhp_step cpuhp_ap_states[] = {
 		.startup.single		= NULL,
 		.teardown.single	= smpcfd_dying_cpu,
 	},
+<<<<<<< HEAD
 #ifndef CONFIG_CLOCK_CPU_OSM
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Entry state on starting. Interrupts enabled from here on. Transient
 	 * state for synchronsization */
 	[CPUHP_AP_ONLINE] = {
 		.name			= "ap:online",
 	},
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Handle smpboot threads park/unpark */
 	[CPUHP_AP_SMPBOOT_THREADS] = {
 		.name			= "smpboot/threads:online",
@@ -2409,6 +2442,7 @@ EXPORT_SYMBOL(__cpu_active_mask);
 struct cpumask __cpu_isolated_mask __read_mostly;
 EXPORT_SYMBOL(__cpu_isolated_mask);
 
+<<<<<<< HEAD
 #if CONFIG_LITTLE_CPU_MASK
 static const unsigned long lp_cpu_bits = CONFIG_LITTLE_CPU_MASK;
 const struct cpumask *const cpu_lp_mask = to_cpumask(&lp_cpu_bits);
@@ -2425,6 +2459,8 @@ const struct cpumask *const cpu_perf_mask = cpu_possible_mask;
 #endif
 EXPORT_SYMBOL(cpu_perf_mask);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void init_cpu_present(const struct cpumask *src)
 {
 	cpumask_copy(&__cpu_present_mask, src);

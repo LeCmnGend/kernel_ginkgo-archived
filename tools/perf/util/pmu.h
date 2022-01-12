@@ -79,7 +79,10 @@ int perf_pmu__new_format(struct list_head *list, char *name,
 			 int config, unsigned long *bits);
 void perf_pmu__set_format(unsigned long *bits, long from, long to);
 int perf_pmu__format_parse(char *dir, struct list_head *head);
+<<<<<<< HEAD
 void perf_pmu__del_formats(struct list_head *formats);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 struct perf_pmu *perf_pmu__scan(struct perf_pmu *pmu);
 

@@ -311,7 +311,11 @@ static int tps65090_charger_probe(struct platform_device *pdev)
 
 	if (irq != -ENXIO) {
 		ret = devm_request_threaded_irq(&pdev->dev, irq, NULL,
+<<<<<<< HEAD
 			tps65090_charger_isr, IRQF_ONESHOT, "tps65090-charger", cdata);
+=======
+			tps65090_charger_isr, 0, "tps65090-charger", cdata);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (ret) {
 			dev_err(cdata->dev,
 				"Unable to register irq %d err %d\n", irq,

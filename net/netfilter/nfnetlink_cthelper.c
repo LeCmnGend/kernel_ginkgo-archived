@@ -370,6 +370,7 @@ static int
 nfnl_cthelper_update(const struct nlattr * const tb[],
 		     struct nf_conntrack_helper *helper)
 {
+<<<<<<< HEAD
 	u32 size;
 	int ret;
 
@@ -378,6 +379,12 @@ nfnl_cthelper_update(const struct nlattr * const tb[],
 		if (size != helper->data_len)
 			return -EBUSY;
 	}
+=======
+	int ret;
+
+	if (tb[NFCTH_PRIV_DATA_LEN])
+		return -EBUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (tb[NFCTH_POLICY]) {
 		ret = nfnl_cthelper_update_policy(helper, tb[NFCTH_POLICY]);

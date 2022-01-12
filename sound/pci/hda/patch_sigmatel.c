@@ -863,7 +863,11 @@ static int stac_auto_create_beep_ctls(struct hda_codec *codec,
 	static struct snd_kcontrol_new beep_vol_ctl =
 		HDA_CODEC_VOLUME(NULL, 0, 0, 0);
 
+<<<<<<< HEAD
 	/* check for mute support for the amp */
+=======
+	/* check for mute support for the the amp */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if ((caps & AC_AMPCAP_MUTE) >> AC_AMPCAP_MUTE_SHIFT) {
 		const struct snd_kcontrol_new *temp;
 		if (spec->anabeep_nid == nid)

@@ -1343,7 +1343,11 @@ int ib_get_eth_speed(struct ib_device *dev, u8 port_num, u8 *speed, u8 *width)
 
 	dev_put(netdev);
 
+<<<<<<< HEAD
 	if (!rc && lksettings.base.speed != (u32)SPEED_UNKNOWN) {
+=======
+	if (!rc) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		netdev_speed = lksettings.base.speed;
 	} else {
 		netdev_speed = SPEED_1000;

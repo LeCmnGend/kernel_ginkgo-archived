@@ -672,6 +672,7 @@ static inline int read_direntry(struct jffs2_sb_info *c, struct jffs2_raw_node_r
 			jffs2_free_full_dirent(fd);
 			return -EIO;
 		}
+<<<<<<< HEAD
 
 #ifdef CONFIG_JFFS2_SUMMARY
 		/*
@@ -688,6 +689,8 @@ static inline int read_direntry(struct jffs2_sb_info *c, struct jffs2_raw_node_r
 			return 0;
 		}
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	fd->nhash = full_name_hash(NULL, fd->name, rd->nsize);

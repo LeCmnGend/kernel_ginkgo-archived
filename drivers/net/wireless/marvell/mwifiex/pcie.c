@@ -368,8 +368,11 @@ static void mwifiex_pcie_reset_prepare(struct pci_dev *pdev)
 	clear_bit(MWIFIEX_IFACE_WORK_DEVICE_DUMP, &card->work_flags);
 	clear_bit(MWIFIEX_IFACE_WORK_CARD_RESET, &card->work_flags);
 	mwifiex_dbg(adapter, INFO, "%s, successful\n", __func__);
+<<<<<<< HEAD
 
 	card->pci_reset_ongoing = true;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /*
@@ -398,8 +401,11 @@ static void mwifiex_pcie_reset_done(struct pci_dev *pdev)
 		dev_err(&pdev->dev, "reinit failed: %d\n", ret);
 	else
 		mwifiex_dbg(adapter, INFO, "%s, successful\n", __func__);
+<<<<<<< HEAD
 
 	card->pci_reset_ongoing = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static const struct pci_error_handlers mwifiex_pcie_err_handler = {
@@ -1070,7 +1076,11 @@ static int mwifiex_pcie_delete_cmdrsp_buf(struct mwifiex_adapter *adapter)
 static int mwifiex_pcie_alloc_sleep_cookie_buf(struct mwifiex_adapter *adapter)
 {
 	struct pcie_service_card *card = adapter->card;
+<<<<<<< HEAD
 	u32 *cookie;
+=======
+	u32 tmp;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	card->sleep_cookie_vbase = pci_alloc_consistent(card->dev, sizeof(u32),
 						     &card->sleep_cookie_pbase);
@@ -1079,11 +1089,21 @@ static int mwifiex_pcie_alloc_sleep_cookie_buf(struct mwifiex_adapter *adapter)
 			    "pci_alloc_consistent failed!\n");
 		return -ENOMEM;
 	}
+<<<<<<< HEAD
 	cookie = (u32 *)card->sleep_cookie_vbase;
 	/* Init val of Sleep Cookie */
 	*cookie = FW_AWAKE_COOKIE;
 
 	mwifiex_dbg(adapter, INFO, "alloc_scook: sleep cookie=0x%x\n", *cookie);
+=======
+	/* Init val of Sleep Cookie */
+	tmp = FW_AWAKE_COOKIE;
+	put_unaligned(tmp, card->sleep_cookie_vbase);
+
+	mwifiex_dbg(adapter, INFO,
+		    "alloc_scook: sleep cookie=0x%x\n",
+		    get_unaligned(card->sleep_cookie_vbase));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
 }
@@ -2982,6 +3002,7 @@ static void mwifiex_cleanup_pcie(struct mwifiex_adapter *adapter)
 	int ret;
 	u32 fw_status;
 
+<<<<<<< HEAD
 	/* Perform the cancel_work_sync() only when we're not resetting
 	 * the card. It's because that function never returns if we're
 	 * in reset path. If we're here when resetting the card, it means
@@ -2995,6 +3016,9 @@ static void mwifiex_cleanup_pcie(struct mwifiex_adapter *adapter)
 		mwifiex_dbg(adapter, MSG,
 			    "skipped cancel_work_sync() because we're in card reset failure path\n");
 	}
+=======
+	cancel_work_sync(&card->work);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	ret = mwifiex_read_reg(adapter, reg->fw_status, &fw_status);
 	if (fw_status == FIRMWARE_READY_PCIE) {

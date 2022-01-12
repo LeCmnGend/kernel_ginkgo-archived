@@ -63,7 +63,11 @@ struct twl4030_keypad {
 	bool		autorepeat;
 	unsigned int	n_rows;
 	unsigned int	n_cols;
+<<<<<<< HEAD
 	int		irq;
+=======
+	unsigned int	irq;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	struct device *dbg_dev;
 	struct input_dev *input;
@@ -389,8 +393,15 @@ static int twl4030_kp_probe(struct platform_device *pdev)
 	}
 
 	kp->irq = platform_get_irq(pdev, 0);
+<<<<<<< HEAD
 	if (kp->irq < 0)
 		return kp->irq;
+=======
+	if (!kp->irq) {
+		dev_err(&pdev->dev, "no keyboard irq assigned\n");
+		return -EINVAL;
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	error = matrix_keypad_build_keymap(keymap_data, NULL,
 					   TWL4030_MAX_ROWS,

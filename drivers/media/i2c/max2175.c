@@ -511,7 +511,11 @@ static void max2175_set_bbfilter(struct max2175 *ctx)
 	}
 }
 
+<<<<<<< HEAD
 static int max2175_set_csm_mode(struct max2175 *ctx,
+=======
+static bool max2175_set_csm_mode(struct max2175 *ctx,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			  enum max2175_csm_mode new_mode)
 {
 	int ret = max2175_poll_csm_ready(ctx);

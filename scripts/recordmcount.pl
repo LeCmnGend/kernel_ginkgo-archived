@@ -142,11 +142,14 @@ my %text_sections = (
      ".text.unlikely" => 1,
 );
 
+<<<<<<< HEAD
 # Acceptable section-prefixes to record.
 my %text_section_prefixes = (
      ".text." => 1,
 );
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 # Note: we are nice to C-programmers here, thus we skip the '||='-idiom.
 $objdump = 'objdump' if (!$objdump);
 $objcopy = 'objcopy' if (!$objcopy);
@@ -268,11 +271,15 @@ if ($arch eq "x86_64") {
 
     # force flags for this arch
     $ld .= " -m shlelf_linux";
+<<<<<<< HEAD
     if ($endian eq "big") {
         $objcopy .= " -O elf32-shbig-linux";
     } else {
         $objcopy .= " -O elf32-sh-linux";
     }
+=======
+    $objcopy .= " -O elf32-sh-linux";
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 } elsif ($arch eq "powerpc") {
     $local_regex = "^[0-9a-fA-F]+\\s+t\\s+(\\.?\\S+)";
@@ -512,6 +519,7 @@ while (<IN>) {
 
 	# Only record text sections that we know are safe
 	$read_function = defined($text_sections{$1});
+<<<<<<< HEAD
 	if (!$read_function) {
 	    foreach my $prefix (keys %text_section_prefixes) {
 	        if (substr($1, 0, length $prefix) eq $prefix) {
@@ -520,6 +528,8 @@ while (<IN>) {
 	        }
 	    }
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	# print out any recorded offsets
 	update_funcs();
 

@@ -236,8 +236,14 @@ static int xen_blkif_map(struct xen_blkif_ring *ring, grant_ref_t *gref,
 		BUG();
 	}
 
+<<<<<<< HEAD
 	err = bind_interdomain_evtchn_to_irqhandler_lateeoi(blkif->domid,
 			evtchn, xen_blkif_be_int, 0, "blkif-backend", ring);
+=======
+	err = bind_interdomain_evtchn_to_irqhandler(blkif->domid, evtchn,
+						    xen_blkif_be_int, 0,
+						    "blkif-backend", ring);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err < 0) {
 		xenbus_unmap_ring_vfree(blkif->be->dev, ring->blk_ring);
 		ring->blk_rings.common.sring = NULL;
@@ -263,7 +269,10 @@ static int xen_blkif_disconnect(struct xen_blkif *blkif)
 
 		if (ring->xenblkd) {
 			kthread_stop(ring->xenblkd);
+<<<<<<< HEAD
 			ring->xenblkd = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			wake_up(&ring->shutdown_wq);
 		}
 
@@ -651,8 +660,12 @@ static int xen_blkbk_probe(struct xenbus_device *dev,
 	/* setup back pointer */
 	be->blkif->be = be;
 
+<<<<<<< HEAD
 	err = xenbus_watch_pathfmt(dev, &be->backend_watch, NULL,
 				   backend_changed,
+=======
+	err = xenbus_watch_pathfmt(dev, &be->backend_watch, backend_changed,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				   "%s/%s", dev->nodename, "physical-device");
 	if (err)
 		goto fail;

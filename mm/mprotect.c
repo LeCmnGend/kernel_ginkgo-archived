@@ -569,12 +569,15 @@ static int do_mprotect_pkey(unsigned long start, size_t len,
 			goto out;
 		}
 
+<<<<<<< HEAD
 		/* Allow architectures to sanity-check the new flags */
 		if (!arch_validate_flags(newflags)) {
 			error = -EINVAL;
 			goto out;
 		}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		error = security_file_mprotect(vma, reqprot, prot);
 		if (error)
 			goto out;

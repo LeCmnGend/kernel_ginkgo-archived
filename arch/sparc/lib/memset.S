@@ -142,7 +142,10 @@ __bzero:
 	ZERO_LAST_BLOCKS(%o0, 0x48, %g2)
 	ZERO_LAST_BLOCKS(%o0, 0x08, %g2)
 13:
+<<<<<<< HEAD
 	EXT(12b, 13b, 21f)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	be	8f
 	 andcc	%o1, 4, %g0
 

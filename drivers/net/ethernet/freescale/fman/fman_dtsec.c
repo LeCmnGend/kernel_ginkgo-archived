@@ -1159,7 +1159,11 @@ int dtsec_del_hash_mac_address(struct fman_mac *dtsec, enet_addr_t *eth_addr)
 		list_for_each(pos,
 			      &dtsec->multicast_addr_hash->lsts[bucket]) {
 			hash_entry = ETH_HASH_ENTRY_OBJ(pos);
+<<<<<<< HEAD
 			if (hash_entry && hash_entry->addr == addr) {
+=======
+			if (hash_entry->addr == addr) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				list_del_init(&hash_entry->node);
 				kfree(hash_entry);
 				break;
@@ -1172,7 +1176,11 @@ int dtsec_del_hash_mac_address(struct fman_mac *dtsec, enet_addr_t *eth_addr)
 		list_for_each(pos,
 			      &dtsec->unicast_addr_hash->lsts[bucket]) {
 			hash_entry = ETH_HASH_ENTRY_OBJ(pos);
+<<<<<<< HEAD
 			if (hash_entry && hash_entry->addr == addr) {
+=======
+			if (hash_entry->addr == addr) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				list_del_init(&hash_entry->node);
 				kfree(hash_entry);
 				break;

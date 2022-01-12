@@ -144,12 +144,20 @@ typedef struct user_fpsimd_state elf_fpregset_t;
 })
 
 /* update AT_VECTOR_SIZE_ARCH if the number of NEW_AUX_ENT entries changes */
+<<<<<<< HEAD
 #define _SET_AUX_ENT_VDSO						\
 do {									\
 	NEW_AUX_ENT(AT_SYSINFO_EHDR,					\
 		    (Elf64_Off)current->mm->context.vdso);		\
 } while (0)
 #define ARCH_DLINFO _SET_AUX_ENT_VDSO
+=======
+#define ARCH_DLINFO							\
+do {									\
+	NEW_AUX_ENT(AT_SYSINFO_EHDR,					\
+		    (elf_addr_t)current->mm->context.vdso);		\
+} while (0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #define ARCH_HAS_SETUP_ADDITIONAL_PAGES
 struct linux_binprm;
@@ -197,11 +205,15 @@ typedef compat_elf_greg_t		compat_elf_gregset_t[COMPAT_ELF_NGREG];
 ({									\
 	set_thread_flag(TIF_32BIT);					\
  })
+<<<<<<< HEAD
 #ifdef CONFIG_VDSO32
 #define COMPAT_ARCH_DLINFO		_SET_AUX_ENT_VDSO
 #else
 #define COMPAT_ARCH_DLINFO
 #endif
+=======
+#define COMPAT_ARCH_DLINFO
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern int aarch32_setup_vectors_page(struct linux_binprm *bprm,
 				      int uses_interp);
 #define compat_arch_setup_additional_pages \

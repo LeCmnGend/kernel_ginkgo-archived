@@ -11,15 +11,21 @@
  * option) any later version.
  */
 
+<<<<<<< HEAD
 #define DISABLE_BRANCH_PROFILING
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/types.h>
 #include <linux/kernel.h>
 #include <linux/string.h>
 #include <linux/libfdt.h>
 
 #include <asm/addrspace.h>
+<<<<<<< HEAD
 #include <asm/unaligned.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*
  * These two variables specify the free mem region
@@ -127,7 +133,11 @@ void decompress_kernel(unsigned long boot_heap_start)
 		dtb_size = fdt_totalsize((void *)&__appended_dtb);
 
 		/* last four bytes is always image size in little endian */
+<<<<<<< HEAD
 		image_size = get_unaligned_le32((void *)&__image_end - 4);
+=======
+		image_size = le32_to_cpup((void *)&__image_end - 4);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		/* copy dtb to where the booted kernel will expect it */
 		memcpy((void *)VMLINUX_LOAD_ADDRESS_ULL + image_size,

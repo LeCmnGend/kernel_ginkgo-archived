@@ -395,7 +395,12 @@ static int build_insn(const struct bpf_insn *insn, struct jit_ctx *ctx)
 			break;
 		case BPF_MOD:
 			emit(A64_UDIV(is64, tmp, dst, src), ctx);
+<<<<<<< HEAD
 			emit(A64_MSUB(is64, dst, dst, tmp, src), ctx);
+=======
+			emit(A64_MUL(is64, tmp, tmp, src), ctx);
+			emit(A64_SUB(is64, dst, dst, tmp), ctx);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			break;
 		}
 		break;
@@ -502,7 +507,12 @@ emit_bswap_uxt:
 	case BPF_ALU64 | BPF_MOD | BPF_K:
 		emit_a64_mov_i(is64, tmp2, imm, ctx);
 		emit(A64_UDIV(is64, tmp, dst, tmp2), ctx);
+<<<<<<< HEAD
 		emit(A64_MSUB(is64, dst, dst, tmp, tmp2), ctx);
+=======
+		emit(A64_MUL(is64, tmp, tmp, tmp2), ctx);
+		emit(A64_SUB(is64, dst, dst, tmp), ctx);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 	case BPF_ALU | BPF_LSH | BPF_K:
 	case BPF_ALU64 | BPF_LSH | BPF_K:

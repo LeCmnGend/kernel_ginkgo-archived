@@ -25,7 +25,10 @@ typedef atomic64_t atomic_long_t;
 
 #define ATOMIC_LONG_INIT(i)	ATOMIC64_INIT(i)
 #define ATOMIC_LONG_PFX(x)	atomic64 ## x
+<<<<<<< HEAD
 #define ATOMIC_LONG_TYPE	s64
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #else
 
@@ -33,7 +36,10 @@ typedef atomic_t atomic_long_t;
 
 #define ATOMIC_LONG_INIT(i)	ATOMIC_INIT(i)
 #define ATOMIC_LONG_PFX(x)	atomic ## x
+<<<<<<< HEAD
 #define ATOMIC_LONG_TYPE	int
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #endif
 
@@ -92,6 +98,7 @@ ATOMIC_LONG_ADD_SUB_OP(sub, _release)
 #define atomic_long_cmpxchg(l, old, new) \
 	(ATOMIC_LONG_PFX(_cmpxchg)((ATOMIC_LONG_PFX(_t) *)(l), (old), (new)))
 
+<<<<<<< HEAD
 
 #define atomic_long_try_cmpxchg_relaxed(l, old, new) \
 	(ATOMIC_LONG_PFX(_try_cmpxchg_relaxed)((ATOMIC_LONG_PFX(_t) *)(l), \
@@ -107,6 +114,8 @@ ATOMIC_LONG_ADD_SUB_OP(sub, _release)
 				       (ATOMIC_LONG_TYPE *)(old), (ATOMIC_LONG_TYPE)(new)))
 
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define atomic_long_xchg_relaxed(v, new) \
 	(ATOMIC_LONG_PFX(_xchg_relaxed)((ATOMIC_LONG_PFX(_t) *)(v), (new)))
 #define atomic_long_xchg_acquire(v, new) \
@@ -261,8 +270,11 @@ static inline long atomic_long_add_unless(atomic_long_t *l, long a, long u)
 #define atomic_long_inc_not_zero(l) \
 	ATOMIC_LONG_PFX(_inc_not_zero)((ATOMIC_LONG_PFX(_t) *)(l))
 
+<<<<<<< HEAD
 #define atomic_long_cond_read_relaxed(v, c) \
 	ATOMIC_LONG_PFX(_cond_read_relaxed)((ATOMIC_LONG_PFX(_t) *)(v), (c))
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define atomic_long_cond_read_acquire(v, c) \
 	ATOMIC_LONG_PFX(_cond_read_acquire)((ATOMIC_LONG_PFX(_t) *)(v), (c))
 

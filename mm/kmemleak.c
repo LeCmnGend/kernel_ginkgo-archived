@@ -564,10 +564,18 @@ static struct kmemleak_object *create_object(unsigned long ptr, size_t size,
 	struct kmemleak_object *object, *parent;
 	struct rb_node **link, *rb_parent;
 
+<<<<<<< HEAD
 	while (1) {
 		object = kmem_cache_alloc(object_cache, gfp_kmemleak_mask(gfp));
 		if (object)
 			break;
+=======
+	object = kmem_cache_alloc(object_cache, gfp_kmemleak_mask(gfp));
+	if (!object) {
+		pr_warn("Cannot allocate a kmemleak_object structure\n");
+		kmemleak_disable();
+		return NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	INIT_LIST_HEAD(&object->object_list);
@@ -2041,7 +2049,11 @@ void __init kmemleak_init(void)
 	create_object((unsigned long)__bss_start, __bss_stop - __bss_start,
 		      KMEMLEAK_GREY, GFP_ATOMIC);
 	/* only register .data..ro_after_init if not within .data */
+<<<<<<< HEAD
 	if (&__start_ro_after_init < &_sdata || &__end_ro_after_init > &_edata)
+=======
+	if (__start_ro_after_init < _sdata || __end_ro_after_init > _edata)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		create_object((unsigned long)__start_ro_after_init,
 			      __end_ro_after_init - __start_ro_after_init,
 			      KMEMLEAK_GREY, GFP_ATOMIC);

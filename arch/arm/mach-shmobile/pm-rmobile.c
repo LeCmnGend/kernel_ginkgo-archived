@@ -336,7 +336,10 @@ static int __init rmobile_init_pm_domains(void)
 
 		pmd = of_get_child_by_name(np, "pm-domains");
 		if (!pmd) {
+<<<<<<< HEAD
 			iounmap(base);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			pr_warn("%pOF lacks pm-domains node\n", np);
 			continue;
 		}

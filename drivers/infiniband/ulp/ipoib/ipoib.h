@@ -509,7 +509,11 @@ void ipoib_ib_dev_cleanup(struct net_device *dev);
 
 int ipoib_ib_dev_open_default(struct net_device *dev);
 int ipoib_ib_dev_open(struct net_device *dev);
+<<<<<<< HEAD
 void ipoib_ib_dev_stop(struct net_device *dev);
+=======
+int ipoib_ib_dev_stop(struct net_device *dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void ipoib_ib_dev_up(struct net_device *dev);
 void ipoib_ib_dev_down(struct net_device *dev);
 int ipoib_ib_dev_stop_default(struct net_device *dev);

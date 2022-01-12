@@ -1262,7 +1262,11 @@ ip_vs_add_service(struct netns_ipvs *ipvs, struct ip_vs_service_user_kern *u,
 	ip_vs_addr_copy(svc->af, &svc->addr, &u->addr);
 	svc->port = u->port;
 	svc->fwmark = u->fwmark;
+<<<<<<< HEAD
 	svc->flags = u->flags & ~IP_VS_SVC_F_HASHED;
+=======
+	svc->flags = u->flags;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	svc->timeout = u->timeout * HZ;
 	svc->netmask = u->netmask;
 	svc->ipvs = ipvs;
@@ -2425,10 +2429,13 @@ do_ip_vs_set_ctl(struct sock *sk, int cmd, void __user *user, unsigned int len)
 		/* Set timeout values for (tcp tcpfin udp) */
 		ret = ip_vs_set_timeout(ipvs, (struct ip_vs_timeout_user *)arg);
 		goto out_unlock;
+<<<<<<< HEAD
 	} else if (!len) {
 		/* No more commands with len == 0 below */
 		ret = -EINVAL;
 		goto out_unlock;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	usvc_compat = (struct ip_vs_service_user *)arg;
@@ -2505,6 +2512,12 @@ do_ip_vs_set_ctl(struct sock *sk, int cmd, void __user *user, unsigned int len)
 		break;
 	case IP_VS_SO_SET_DELDEST:
 		ret = ip_vs_del_dest(svc, &udest);
+<<<<<<< HEAD
+=======
+		break;
+	default:
+		ret = -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
   out_unlock:

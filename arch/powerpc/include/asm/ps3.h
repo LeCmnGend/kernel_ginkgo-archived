@@ -83,7 +83,10 @@ struct ps3_dma_region_ops;
  * @bus_addr: The 'translated' bus address of the region.
  * @len: The length in bytes of the region.
  * @offset: The offset from the start of memory of the region.
+<<<<<<< HEAD
  * @dma_mask: Device dma_mask.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * @ioid: The IOID of the device who owns this region
  * @chunk_list: Opaque variable used by the ioc page manager.
  * @region_ops: struct ps3_dma_region_ops - dma region operations
@@ -98,7 +101,10 @@ struct ps3_dma_region {
 	enum ps3_dma_region_type region_type;
 	unsigned long len;
 	unsigned long offset;
+<<<<<<< HEAD
 	u64 dma_mask;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* driver variables  (set by ps3_dma_region_create) */
 	unsigned long bus_addr;

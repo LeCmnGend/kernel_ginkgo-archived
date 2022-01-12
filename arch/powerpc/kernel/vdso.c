@@ -704,7 +704,11 @@ int vdso_getcpu_init(void)
 	node = cpu_to_node(cpu);
 	WARN_ON_ONCE(node > 0xffff);
 
+<<<<<<< HEAD
 	val = (cpu & 0xffff) | ((node & 0xffff) << 16);
+=======
+	val = (cpu & 0xfff) | ((node & 0xffff) << 16);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mtspr(SPRN_SPRG_VDSO_WRITE, val);
 	get_paca()->sprg_vdso = val;
 

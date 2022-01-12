@@ -225,14 +225,23 @@ void free_rmid(u32 rmid)
 		list_add_tail(&entry->list, &rmid_free_lru);
 }
 
+<<<<<<< HEAD
 static u64 __mon_event_count(u32 rmid, struct rmid_read *rr)
+=======
+static int __mon_event_count(u32 rmid, struct rmid_read *rr)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	u64 chunks, shift, tval;
 	struct mbm_state *m;
 
 	tval = __rmid_read(rmid, rr->evtid);
 	if (tval & (RMID_VAL_ERROR | RMID_VAL_UNAVAIL)) {
+<<<<<<< HEAD
 		return tval;
+=======
+		rr->val = tval;
+		return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	switch (rr->evtid) {
 	case QOS_L3_OCCUP_EVENT_ID:
@@ -244,6 +253,15 @@ static u64 __mon_event_count(u32 rmid, struct rmid_read *rr)
 	case QOS_L3_MBM_LOCAL_EVENT_ID:
 		m = &rr->d->mbm_local[rmid];
 		break;
+<<<<<<< HEAD
+=======
+	default:
+		/*
+		 * Code would never reach here because
+		 * an invalid event id would fail the __rmid_read.
+		 */
+		return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	if (rr->first) {
@@ -271,6 +289,7 @@ void mon_event_count(void *info)
 	struct rdtgroup *rdtgrp, *entry;
 	struct rmid_read *rr = info;
 	struct list_head *head;
+<<<<<<< HEAD
 	u64 ret_val;
 
 	rdtgrp = rr->rgrp;
@@ -281,11 +300,22 @@ void mon_event_count(void *info)
 	 * For Ctrl groups read data from child monitor groups and
 	 * add them together. Count events which are read successfully.
 	 * Discard the rmid_read's reporting errors.
+=======
+
+	rdtgrp = rr->rgrp;
+
+	if (__mon_event_count(rdtgrp->mon.rmid, rr))
+		return;
+
+	/*
+	 * For Ctrl groups read data from child monitor groups.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 */
 	head = &rdtgrp->mon.crdtgrp_list;
 
 	if (rdtgrp->type == RDTCTRL_GROUP) {
 		list_for_each_entry(entry, head, mon.crdtgrp_list) {
+<<<<<<< HEAD
 			if (__mon_event_count(entry->mon.rmid, rr) == 0)
 				ret_val = 0;
 		}
@@ -294,6 +324,12 @@ void mon_event_count(void *info)
 	/* Report error if none of rmid_reads are successful */
 	if (ret_val)
 		rr->val = ret_val;
+=======
+			if (__mon_event_count(entry->mon.rmid, rr))
+				return;
+		}
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void mbm_update(struct rdt_domain *d, int rmid)

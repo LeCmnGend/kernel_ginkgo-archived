@@ -870,7 +870,11 @@ ssize_t simple_attr_write(struct file *file, const char __user *buf,
 			  size_t len, loff_t *ppos)
 {
 	struct simple_attr *attr;
+<<<<<<< HEAD
 	unsigned long long val;
+=======
+	u64 val;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	size_t size;
 	ssize_t ret;
 
@@ -888,9 +892,13 @@ ssize_t simple_attr_write(struct file *file, const char __user *buf,
 		goto out;
 
 	attr->set_buf[size] = '\0';
+<<<<<<< HEAD
 	ret = kstrtoull(attr->set_buf, 0, &val);
 	if (ret)
 		goto out;
+=======
+	val = simple_strtoll(attr->set_buf, NULL, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = attr->set(attr->data, val);
 	if (ret == 0)
 		ret = len; /* on success, claim we got the whole input */

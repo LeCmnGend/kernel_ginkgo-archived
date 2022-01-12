@@ -179,7 +179,11 @@ FTRACE_ENTRY(kernel_stack, stack_entry,
 
 	F_STRUCT(
 		__field(	int,		size	)
+<<<<<<< HEAD
 		__array(	unsigned long,	caller,	FTRACE_STACK_ENTRIES	)
+=======
+		__dynamic_array(unsigned long,	caller	)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	),
 
 	F_printk("\t=> (" IP_FMT ")\n\t=> (" IP_FMT ")\n\t=> (" IP_FMT ")\n"

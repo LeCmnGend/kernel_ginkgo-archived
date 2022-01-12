@@ -595,7 +595,11 @@ static void close_connection(struct connection *con, bool and_other,
 	}
 	if (con->othercon && and_other) {
 		/* Will only re-enter once. */
+<<<<<<< HEAD
 		close_connection(con->othercon, false, tx, rx);
+=======
+		close_connection(con->othercon, false, true, true);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	if (con->rx_page) {
 		__free_page(con->rx_page);

@@ -114,7 +114,11 @@ static int mlx4_buddy_init(struct mlx4_buddy *buddy, int max_order)
 		goto err_out;
 
 	for (i = 0; i <= buddy->max_order; ++i) {
+<<<<<<< HEAD
 		s = BITS_TO_LONGS(1UL << (buddy->max_order - i));
+=======
+		s = BITS_TO_LONGS(1 << (buddy->max_order - i));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		buddy->bits[i] = kvmalloc_array(s, sizeof(long), GFP_KERNEL | __GFP_ZERO);
 		if (!buddy->bits[i])
 			goto err_out_free;

@@ -319,14 +319,23 @@ static ssize_t dump_attr_read(struct file *filep, struct kobject *kobj,
 	return count;
 }
 
+<<<<<<< HEAD
 static void create_dump_obj(uint32_t id, size_t size, uint32_t type)
+=======
+static struct dump_obj *create_dump_obj(uint32_t id, size_t size,
+					uint32_t type)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct dump_obj *dump;
 	int rc;
 
 	dump = kzalloc(sizeof(*dump), GFP_KERNEL);
 	if (!dump)
+<<<<<<< HEAD
 		return;
+=======
+		return NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	dump->kobj.kset = dump_kset;
 
@@ -346,6 +355,7 @@ static void create_dump_obj(uint32_t id, size_t size, uint32_t type)
 	rc = kobject_add(&dump->kobj, NULL, "0x%x-0x%x", type, id);
 	if (rc) {
 		kobject_put(&dump->kobj);
+<<<<<<< HEAD
 		return;
 	}
 
@@ -379,18 +389,43 @@ static void create_dump_obj(uint32_t id, size_t size, uint32_t type)
 	/* Drop our reference */
 	kobject_put(&dump->kobj);
 	return;
+=======
+		return NULL;
+	}
+
+	rc = sysfs_create_bin_file(&dump->kobj, &dump->dump_attr);
+	if (rc) {
+		kobject_put(&dump->kobj);
+		return NULL;
+	}
+
+	pr_info("%s: New platform dump. ID = 0x%x Size %u\n",
+		__func__, dump->id, dump->size);
+
+	kobject_uevent(&dump->kobj, KOBJ_ADD);
+
+	return dump;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static irqreturn_t process_dump(int irq, void *data)
 {
 	int rc;
 	uint32_t dump_id, dump_size, dump_type;
+<<<<<<< HEAD
+=======
+	struct dump_obj *dump;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	char name[22];
 	struct kobject *kobj;
 
 	rc = dump_read_info(&dump_id, &dump_size, &dump_type);
 	if (rc != OPAL_SUCCESS)
+<<<<<<< HEAD
 		return IRQ_HANDLED;
+=======
+		return rc;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	sprintf(name, "0x%x-0x%x", dump_type, dump_id);
 
@@ -402,10 +437,19 @@ static irqreturn_t process_dump(int irq, void *data)
 	if (kobj) {
 		/* Drop reference added by kset_find_obj() */
 		kobject_put(kobj);
+<<<<<<< HEAD
 		return IRQ_HANDLED;
 	}
 
 	create_dump_obj(dump_id, dump_size, dump_type);
+=======
+		return 0;
+	}
+
+	dump = create_dump_obj(dump_id, dump_size, dump_type);
+	if (!dump)
+		return -1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return IRQ_HANDLED;
 }

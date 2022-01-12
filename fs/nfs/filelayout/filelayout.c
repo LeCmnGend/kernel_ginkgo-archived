@@ -717,7 +717,11 @@ filelayout_decode_layout(struct pnfs_layout_hdr *flo,
 		if (unlikely(!p))
 			goto out_err;
 		fl->fh_array[i]->size = be32_to_cpup(p++);
+<<<<<<< HEAD
 		if (fl->fh_array[i]->size > NFS_MAXFHSIZE) {
+=======
+		if (sizeof(struct nfs_fh) < fl->fh_array[i]->size) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			printk(KERN_ERR "NFS: Too big fh %d received %d\n",
 			       i, fl->fh_array[i]->size);
 			goto out_err;

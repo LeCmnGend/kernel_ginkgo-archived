@@ -695,7 +695,11 @@ static int get_maxfds(void)
 	struct rlimit rlim;
 
 	if (getrlimit(RLIMIT_NOFILE, &rlim) == 0)
+<<<<<<< HEAD
 		return min(rlim.rlim_max / 2, (rlim_t)512);
+=======
+		return min((int)rlim.rlim_max / 2, 512);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 512;
 }

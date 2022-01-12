@@ -340,9 +340,12 @@ config PM_GENERIC_DOMAINS_OF
 
 config CPU_PM
 	bool
+<<<<<<< HEAD
 	depends on SUSPEND || CPU_IDLE
 
 config BOEFFLA_WL_BLOCKER
 	bool "Boeffla generic wakelock blocker driver"
 	depends on PM
 	default N
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

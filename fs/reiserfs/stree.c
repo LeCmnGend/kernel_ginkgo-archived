@@ -387,6 +387,7 @@ void pathrelse(struct treepath *search_path)
 	search_path->path_length = ILLEGAL_PATH_ELEMENT_OFFSET;
 }
 
+<<<<<<< HEAD
 static int has_valid_deh_location(struct buffer_head *bh, struct item_head *ih)
 {
 	struct reiserfs_de_head *deh;
@@ -405,6 +406,8 @@ static int has_valid_deh_location(struct buffer_head *bh, struct item_head *ih)
 	return 1;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int is_leaf(char *buf, int blocksize, struct buffer_head *bh)
 {
 	struct block_head *blkh;
@@ -472,6 +475,7 @@ static int is_leaf(char *buf, int blocksize, struct buffer_head *bh)
 					 "(second one): %h", ih);
 			return 0;
 		}
+<<<<<<< HEAD
 		if (is_direntry_le_ih(ih)) {
 			if (ih_item_len(ih) < (ih_entry_count(ih) * IH_SIZE)) {
 				reiserfs_warning(NULL, "reiserfs-5093",
@@ -481,6 +485,8 @@ static int is_leaf(char *buf, int blocksize, struct buffer_head *bh)
 			}
 			return has_valid_deh_location(bh, ih);
 		}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		prev_location = ih_location(ih);
 	}
 

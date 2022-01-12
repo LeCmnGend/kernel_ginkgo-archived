@@ -1,5 +1,9 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2014-2019, The Linux Foundation. All rights reserved.
+=======
+ * Copyright (c) 2014-2018, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -424,6 +428,7 @@ static irqreturn_t bcl_handle_ibat(int irq, void *data)
 {
 	struct bcl_peripheral_data *perph_data =
 		(struct bcl_peripheral_data *)data;
+<<<<<<< HEAD
 	bool irq_enabled = false;
 
 	mutex_lock(&perph_data->state_trans_lock);
@@ -433,6 +438,23 @@ static irqreturn_t bcl_handle_ibat(int irq, void *data)
 	if (irq_enabled)
 		of_thermal_handle_trip(perph_data->tz_dev);
 
+=======
+
+	mutex_lock(&perph_data->state_trans_lock);
+	if (!perph_data->irq_enabled) {
+		WARN_ON(1);
+		disable_irq_nosync(irq);
+		perph_data->irq_enabled = false;
+		goto exit_intr;
+	}
+	mutex_unlock(&perph_data->state_trans_lock);
+	of_thermal_handle_trip(perph_data->tz_dev);
+
+	return IRQ_HANDLED;
+
+exit_intr:
+	mutex_unlock(&perph_data->state_trans_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return IRQ_HANDLED;
 }
 
@@ -440,6 +462,7 @@ static irqreturn_t bcl_handle_vbat(int irq, void *data)
 {
 	struct bcl_peripheral_data *perph_data =
 		(struct bcl_peripheral_data *)data;
+<<<<<<< HEAD
 	bool irq_enabled = false;
 
 	mutex_lock(&perph_data->state_trans_lock);
@@ -449,6 +472,23 @@ static irqreturn_t bcl_handle_vbat(int irq, void *data)
 	if (irq_enabled)
 		of_thermal_handle_trip(perph_data->tz_dev);
 
+=======
+
+	mutex_lock(&perph_data->state_trans_lock);
+	if (!perph_data->irq_enabled) {
+		WARN_ON(1);
+		disable_irq_nosync(irq);
+		perph_data->irq_enabled = false;
+		goto exit_intr;
+	}
+	mutex_unlock(&perph_data->state_trans_lock);
+	of_thermal_handle_trip(perph_data->tz_dev);
+
+	return IRQ_HANDLED;
+
+exit_intr:
+	mutex_unlock(&perph_data->state_trans_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return IRQ_HANDLED;
 }
 

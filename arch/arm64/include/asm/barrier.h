@@ -127,6 +127,7 @@ do {									\
 	__u.__val;							\
 })
 
+<<<<<<< HEAD
 #define smp_cond_load_relaxed(ptr, cond_expr)				\
 ({									\
 	typeof(ptr) __PTR = (ptr);					\
@@ -140,6 +141,8 @@ do {									\
 	VAL;								\
 })
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define smp_cond_load_acquire(ptr, cond_expr)				\
 ({									\
 	typeof(ptr) __PTR = (ptr);					\

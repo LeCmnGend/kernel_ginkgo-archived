@@ -18,9 +18,12 @@ static struct msr __percpu *msrs;
 /* Per-node stuff */
 static struct ecc_settings **ecc_stngs;
 
+<<<<<<< HEAD
 /* Device for the PCI component */
 static struct device *pci_ctl_dev;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Valid scrub rates for the K8 hardware memory scrubber. We map the scrubbing
  * bandwidth to a valid bit pattern. The 'set' operation finds the 'matching-
@@ -2557,9 +2560,12 @@ reserve_mc_sibling_devs(struct amd64_pvt *pvt, u16 pci_id1, u16 pci_id2)
 			return -ENODEV;
 		}
 
+<<<<<<< HEAD
 		if (!pci_ctl_dev)
 			pci_ctl_dev = &pvt->F0->dev;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		edac_dbg(1, "F0: %s\n", pci_name(pvt->F0));
 		edac_dbg(1, "F3: %s\n", pci_name(pvt->F3));
 		edac_dbg(1, "F6: %s\n", pci_name(pvt->F6));
@@ -2584,9 +2590,12 @@ reserve_mc_sibling_devs(struct amd64_pvt *pvt, u16 pci_id1, u16 pci_id2)
 		return -ENODEV;
 	}
 
+<<<<<<< HEAD
 	if (!pci_ctl_dev)
 		pci_ctl_dev = &pvt->F2->dev;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	edac_dbg(1, "F1: %s\n", pci_name(pvt->F1));
 	edac_dbg(1, "F2: %s\n", pci_name(pvt->F2));
 	edac_dbg(1, "F3: %s\n", pci_name(pvt->F3));
@@ -3437,10 +3446,28 @@ static void remove_one_instance(unsigned int nid)
 
 static void setup_pci_device(void)
 {
+<<<<<<< HEAD
 	if (pci_ctl)
 		return;
 
 	pci_ctl = edac_pci_create_generic_ctl(pci_ctl_dev, EDAC_MOD_STR);
+=======
+	struct mem_ctl_info *mci;
+	struct amd64_pvt *pvt;
+
+	if (pci_ctl)
+		return;
+
+	mci = edac_mc_find(0);
+	if (!mci)
+		return;
+
+	pvt = mci->pvt_info;
+	if (pvt->umc)
+		pci_ctl = edac_pci_create_generic_ctl(&pvt->F0->dev, EDAC_MOD_STR);
+	else
+		pci_ctl = edac_pci_create_generic_ctl(&pvt->F2->dev, EDAC_MOD_STR);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!pci_ctl) {
 		pr_warn("%s(): Unable to create PCI control\n", __func__);
 		pr_warn("%s(): PCI error report via EDAC not set\n", __func__);
@@ -3515,8 +3542,11 @@ static int __init amd64_edac_init(void)
 	return 0;
 
 err_pci:
+<<<<<<< HEAD
 	pci_ctl_dev = NULL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	msrs_free(msrs);
 	msrs = NULL;
 
@@ -3548,8 +3578,11 @@ static void __exit amd64_edac_exit(void)
 	kfree(ecc_stngs);
 	ecc_stngs = NULL;
 
+<<<<<<< HEAD
 	pci_ctl_dev = NULL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	msrs_free(msrs);
 	msrs = NULL;
 }

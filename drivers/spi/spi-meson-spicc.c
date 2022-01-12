@@ -599,8 +599,11 @@ static int meson_spicc_remove(struct platform_device *pdev)
 
 	clk_disable_unprepare(spicc->core);
 
+<<<<<<< HEAD
 	spi_master_put(spicc->master);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
 

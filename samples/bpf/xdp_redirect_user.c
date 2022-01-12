@@ -139,5 +139,9 @@ int main(int argc, char **argv)
 	poll_stats(2, ifindex_out);
 
 out:
+<<<<<<< HEAD
 	return ret;
+=======
+	return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

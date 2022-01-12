@@ -951,7 +951,11 @@ static int gpmc_cs_remap(int cs, u32 base)
 	int ret;
 	u32 old_base, size;
 
+<<<<<<< HEAD
 	if (cs >= gpmc_cs_num) {
+=======
+	if (cs > gpmc_cs_num) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		pr_err("%s: requested chip-select is disabled\n", __func__);
 		return -ENODEV;
 	}
@@ -986,7 +990,11 @@ int gpmc_cs_request(int cs, unsigned long size, unsigned long *base)
 	struct resource *res = &gpmc->mem;
 	int r = -1;
 
+<<<<<<< HEAD
 	if (cs >= gpmc_cs_num) {
+=======
+	if (cs > gpmc_cs_num) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		pr_err("%s: requested chip-select is disabled\n", __func__);
 		return -ENODEV;
 	}
@@ -1028,8 +1036,13 @@ EXPORT_SYMBOL(gpmc_cs_request);
 
 void gpmc_cs_free(int cs)
 {
+<<<<<<< HEAD
 	struct gpmc_cs_data *gpmc;
 	struct resource *res;
+=======
+	struct gpmc_cs_data *gpmc = &gpmc_cs[cs];
+	struct resource *res = &gpmc->mem;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	spin_lock(&gpmc_mem_lock);
 	if (cs >= gpmc_cs_num || cs < 0 || !gpmc_cs_reserved(cs)) {
@@ -1038,9 +1051,12 @@ void gpmc_cs_free(int cs)
 		spin_unlock(&gpmc_mem_lock);
 		return;
 	}
+<<<<<<< HEAD
 	gpmc = &gpmc_cs[cs];
 	res = &gpmc->mem;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	gpmc_cs_disable_mem(cs);
 	if (res->flags)
 		release_resource(res);

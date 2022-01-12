@@ -711,7 +711,11 @@ isac_release(struct isac_hw *isac)
 {
 	if (isac->type & IPAC_TYPE_ISACX)
 		WriteISAC(isac, ISACX_MASK, 0xff);
+<<<<<<< HEAD
 	else if (isac->type != 0)
+=======
+	else
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		WriteISAC(isac, ISAC_MASK, 0xff);
 	if (isac->dch.timer.function != NULL) {
 		del_timer(&isac->dch.timer);

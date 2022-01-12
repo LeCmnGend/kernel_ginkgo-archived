@@ -1170,6 +1170,7 @@ stop_rr_fcf_flogi:
 			phba->fcf.fcf_redisc_attempted = 0; /* reset */
 			goto out;
 		}
+<<<<<<< HEAD
 	} else if (vport->port_state > LPFC_FLOGI &&
 		   vport->fc_flag & FC_PT2PT) {
 		/*
@@ -1179,6 +1180,8 @@ stop_rr_fcf_flogi:
 		 */
 		if (!sp->cmn.fPort)
 			goto out;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 flogifail:
@@ -4113,9 +4116,13 @@ lpfc_cmpl_els_rsp(struct lpfc_hba *phba, struct lpfc_iocbq *cmdiocb,
 out:
 	if (ndlp && NLP_CHK_NODE_ACT(ndlp) && shost) {
 		spin_lock_irq(shost->host_lock);
+<<<<<<< HEAD
 		if (mbox)
 			ndlp->nlp_flag &= ~NLP_ACC_REGLOGIN;
 		ndlp->nlp_flag &= ~NLP_RM_DFLT_RPI;
+=======
+		ndlp->nlp_flag &= ~(NLP_ACC_REGLOGIN | NLP_RM_DFLT_RPI);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		spin_unlock_irq(shost->host_lock);
 
 		/* If the node is not being used by another discovery thread,

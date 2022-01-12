@@ -64,7 +64,11 @@ static inline unsigned long find_zero(unsigned long mask)
  */
 static inline unsigned long load_unaligned_zeropad(const void *addr)
 {
+<<<<<<< HEAD
 	unsigned long ret, tmp;
+=======
+	unsigned long ret, offset;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Load word from unaligned pointer addr */
 	asm(
@@ -72,9 +76,15 @@ static inline unsigned long load_unaligned_zeropad(const void *addr)
 	"2:\n"
 	"	.pushsection .fixup,\"ax\"\n"
 	"	.align 2\n"
+<<<<<<< HEAD
 	"3:	bic	%1, %2, #0x7\n"
 	"	ldr	%0, [%1]\n"
 	"	and	%1, %2, #0x7\n"
+=======
+	"3:	and	%1, %2, #0x7\n"
+	"	bic	%2, %2, #0x7\n"
+	"	ldr	%0, [%2]\n"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	"	lsl	%1, %1, #0x3\n"
 #ifndef __AARCH64EB__
 	"	lsr	%0, %0, %1\n"
@@ -84,7 +94,11 @@ static inline unsigned long load_unaligned_zeropad(const void *addr)
 	"	b	2b\n"
 	"	.popsection\n"
 	_ASM_EXTABLE(1b, 3b)
+<<<<<<< HEAD
 	: "=&r" (ret), "=&r" (tmp)
+=======
+	: "=&r" (ret), "=&r" (offset)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	: "r" (addr), "Q" (*(unsigned long *)addr));
 
 	return ret;

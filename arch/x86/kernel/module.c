@@ -126,7 +126,10 @@ int apply_relocate(Elf32_Shdr *sechdrs,
 			*location += sym->st_value;
 			break;
 		case R_386_PC32:
+<<<<<<< HEAD
 		case R_386_PLT32:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			/* Add the value, subtract its position */
 			*location += sym->st_value - (uint32_t)location;
 			break;

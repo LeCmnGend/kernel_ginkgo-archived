@@ -41,6 +41,7 @@
  * and don't forget to CC: the USB development list <linux-usb@vger.kernel.org>
  */
 
+<<<<<<< HEAD
 /* Reported-by: Till Dörges <doerges@pre-sense.de> */
 UNUSUAL_DEV(0x054c, 0x087d, 0x0000, 0x9999,
 		"Sony",
@@ -52,10 +53,14 @@ UNUSUAL_DEV(0x054c, 0x087d, 0x0000, 0x9999,
  *  Initially Reported-by: Julian Groß <julian.g@posteo.de>
  *  Further reports David C. Partridge <david.partridge@perdrix.co.uk>
  */
+=======
+/* Reported-by: Julian Groß <julian.g@posteo.de> */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 UNUSUAL_DEV(0x059f, 0x105f, 0x0000, 0x9999,
 		"LaCie",
 		"2Big Quadra USB3",
 		USB_SC_DEVICE, USB_PR_DEVICE, NULL,
+<<<<<<< HEAD
 		US_FL_NO_REPORT_OPCODES | US_FL_NO_SAME),
 
 /* Reported-by: Julian Sikorski <belegdol@gmail.com> */
@@ -64,6 +69,9 @@ UNUSUAL_DEV(0x059f, 0x1061, 0x0000, 0x9999,
 		"Rugged USB3-FW",
 		USB_SC_DEVICE, USB_PR_DEVICE, NULL,
 		US_FL_IGNORE_UAS),
+=======
+		US_FL_NO_REPORT_OPCODES),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*
  * Apricorn USB3 dongle sometimes returns "USBSUSBSUSBS" in response to SCSI
@@ -173,6 +181,7 @@ UNUSUAL_DEV(0x152d, 0x0578, 0x0000, 0x9999,
 		USB_SC_DEVICE, USB_PR_DEVICE, NULL,
 		US_FL_BROKEN_FUA),
 
+<<<<<<< HEAD
 /* Reported-by: Thinh Nguyen <thinhn@synopsys.com> */
 UNUSUAL_DEV(0x154b, 0xf00b, 0x0000, 0x9999,
 		"PNY",
@@ -187,6 +196,8 @@ UNUSUAL_DEV(0x154b, 0xf00d, 0x0000, 0x9999,
 		USB_SC_DEVICE, USB_PR_DEVICE, NULL,
 		US_FL_NO_ATA_1X),
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Reported-by: Hans de Goede <hdegoede@redhat.com> */
 UNUSUAL_DEV(0x2109, 0x0711, 0x0000, 0x9999,
 		"VIA",

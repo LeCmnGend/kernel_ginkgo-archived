@@ -58,8 +58,13 @@ struct ti_syscon_reset_data {
 	unsigned int nr_controls;
 };
 
+<<<<<<< HEAD
 #define to_ti_syscon_reset_data(_rcdev)	\
 	container_of(_rcdev, struct ti_syscon_reset_data, rcdev)
+=======
+#define to_ti_syscon_reset_data(rcdev)	\
+	container_of(rcdev, struct ti_syscon_reset_data, rcdev)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
  * ti_syscon_reset_assert() - assert device reset

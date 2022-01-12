@@ -1744,7 +1744,10 @@ static int fman_port_probe(struct platform_device *of_dev)
 	struct fman_port *port;
 	struct fman *fman;
 	struct device_node *fm_node, *port_node;
+<<<<<<< HEAD
 	struct platform_device *fm_pdev;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct resource res;
 	struct resource *dev_res;
 	u32 val;
@@ -1769,6 +1772,7 @@ static int fman_port_probe(struct platform_device *of_dev)
 		goto return_err;
 	}
 
+<<<<<<< HEAD
 	fm_pdev = of_find_device_by_node(fm_node);
 	of_node_put(fm_node);
 	if (!fm_pdev) {
@@ -1777,6 +1781,10 @@ static int fman_port_probe(struct platform_device *of_dev)
 	}
 
 	fman = dev_get_drvdata(&fm_pdev->dev);
+=======
+	fman = dev_get_drvdata(&of_find_device_by_node(fm_node)->dev);
+	of_node_put(fm_node);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!fman) {
 		err = -EINVAL;
 		goto return_err;

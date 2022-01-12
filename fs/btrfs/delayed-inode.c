@@ -1064,10 +1064,19 @@ static int __btrfs_update_delayed_inode(struct btrfs_trans_handle *trans,
 	nofs_flag = memalloc_nofs_save();
 	ret = btrfs_lookup_inode(trans, root, path, &key, mod);
 	memalloc_nofs_restore(nofs_flag);
+<<<<<<< HEAD
 	if (ret > 0)
 		ret = -ENOENT;
 	if (ret < 0)
 		goto out;
+=======
+	if (ret > 0) {
+		btrfs_release_path(path);
+		return -ENOENT;
+	} else if (ret < 0) {
+		return ret;
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	leaf = path->nodes[0];
 	inode_item = btrfs_item_ptr(leaf, path->slots[0],
@@ -1105,6 +1114,7 @@ err_out:
 	btrfs_delayed_inode_release_metadata(fs_info, node);
 	btrfs_release_delayed_inode(node);
 
+<<<<<<< HEAD
 	/*
 	 * If we fail to update the delayed inode we need to abort the
 	 * transaction, because we could leave the inode with the improper
@@ -1113,6 +1123,8 @@ err_out:
 	if (ret && ret != -ENOENT)
 		btrfs_abort_transaction(trans, ret);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 
 search:

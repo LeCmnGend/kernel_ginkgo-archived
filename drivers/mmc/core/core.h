@@ -70,10 +70,21 @@ void mmc_set_initial_state(struct mmc_host *host);
 
 static inline void mmc_delay(unsigned int ms)
 {
+<<<<<<< HEAD
 	if (ms <= 20)
 		usleep_range(ms * 1000, ms * 1250);
 	else
 		msleep(ms);
+=======
+	if (ms < 1000 / HZ) {
+		cond_resched();
+		mdelay(ms);
+	} else if (ms < jiffies_to_msecs(2)) {
+		usleep_range(ms * 1000, (ms + 1) * 1000);
+	} else {
+		msleep(ms);
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 void mmc_rescan(struct work_struct *work);

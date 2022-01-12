@@ -156,7 +156,10 @@ END(EV_Extension)
 tracesys:
 	; save EFA in case tracer wants the PC of traced task
 	; using ERET won't work since next-PC has already committed
+<<<<<<< HEAD
 	lr  r12, [efa]
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	GET_CURR_TASK_FIELD_PTR   TASK_THREAD, r11
 	st  r12, [r11, THREAD_FAULT_ADDR]	; thread.fault_address
 
@@ -169,7 +172,11 @@ tracesys:
 
 	; Do the Sys Call as we normally would.
 	; Validate the Sys Call number
+<<<<<<< HEAD
 	cmp     r8,  NR_syscalls - 1
+=======
+	cmp     r8,  NR_syscalls
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mov.hi  r0, -ENOSYS
 	bhi     tracesys_exit
 
@@ -199,6 +206,7 @@ tracesys_exit:
 ; Breakpoint TRAP
 ; ---------------------------------------------
 trap_with_param:
+<<<<<<< HEAD
 
 	; stop_pc info by gdb needs this info
 	lr  r0, [efa]
@@ -208,6 +216,11 @@ trap_with_param:
 	;   and get out of CPU exception mode
 	FAKE_RET_FROM_EXCPN
 
+=======
+	mov r0, r12	; EFA in case ptracer/gdb wants stop_pc
+	mov r1, sp
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	; Save callee regs in case gdb wants to have a look
 	; SP will grow up by size of CALLEE Reg-File
 	; NOTE: clobbers r12
@@ -234,6 +247,13 @@ ENTRY(EV_Trap)
 
 	EXCEPTION_PROLOGUE
 
+<<<<<<< HEAD
+=======
+	lr  r12, [efa]
+
+	FAKE_RET_FROM_EXCPN
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	;============ TRAP 1   :breakpoints
 	; Check ECR for trap with arg (PROLOGUE ensures r9 has ECR)
 	bmsk.f 0, r9, 7
@@ -241,9 +261,12 @@ ENTRY(EV_Trap)
 
 	;============ TRAP  (no param): syscall top level
 
+<<<<<<< HEAD
 	; First return from Exception to pure K mode (Exception/IRQs renabled)
 	FAKE_RET_FROM_EXCPN
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	; If syscall tracing ongoing, invoke pre-post-hooks
 	GET_CURR_THR_INFO_FLAGS   r10
 	btst r10, TIF_SYSCALL_TRACE
@@ -252,7 +275,11 @@ ENTRY(EV_Trap)
 	;============ Normal syscall case
 
 	; syscall num shd not exceed the total system calls avail
+<<<<<<< HEAD
 	cmp     r8,  NR_syscalls - 1
+=======
+	cmp     r8,  NR_syscalls
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mov.hi  r0, -ENOSYS
 	bhi     .Lret_from_system_call
 

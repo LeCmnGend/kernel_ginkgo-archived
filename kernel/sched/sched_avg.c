@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2012, 2015-2019, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2012, 2015-2018, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -29,6 +33,7 @@ static DEFINE_PER_CPU(u64, nr_big_prod_sum);
 static DEFINE_PER_CPU(u64, nr);
 static DEFINE_PER_CPU(u64, nr_max);
 
+<<<<<<< HEAD
 static DEFINE_PER_CPU(spinlock_t, nr_lock) = __SPIN_LOCK_UNLOCKED(nr_lock);
 static s64 last_get_time;
 
@@ -44,6 +49,15 @@ static DEFINE_PER_CPU(u64, hyst_time);
 
 #define NR_THRESHOLD_PCT		15
 #define MAX_RTGB_TIME (sysctl_sched_coloc_busy_hyst_max_ms * NSEC_PER_MSEC)
+=======
+static DEFINE_PER_CPU(unsigned long, iowait_prod_sum);
+static DEFINE_PER_CPU(spinlock_t, nr_lock) = __SPIN_LOCK_UNLOCKED(nr_lock);
+static s64 last_get_time;
+
+static DEFINE_PER_CPU(atomic64_t, last_busy_time) = ATOMIC64_INIT(0);
+
+#define NR_THRESHOLD_PCT		15
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
  * sched_get_nr_running_avg
@@ -60,7 +74,10 @@ void sched_get_nr_running_avg(struct sched_avg_stats *stats)
 	u64 curr_time = sched_clock();
 	u64 period = curr_time - last_get_time;
 	u64 tmp_nr, tmp_misfit;
+<<<<<<< HEAD
 	bool any_hyst_time = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!period)
 		return;
@@ -93,20 +110,31 @@ void sched_get_nr_running_avg(struct sched_avg_stats *stats)
 		stats[cpu].nr_misfit = (int)div64_u64((tmp_misfit +
 						NR_THRESHOLD_PCT), 100);
 		stats[cpu].nr_max = per_cpu(nr_max, cpu);
+<<<<<<< HEAD
 		stats[cpu].nr_scaled = tmp_nr;
 
 		trace_sched_get_nr_running_avg(cpu, stats[cpu].nr,
 				stats[cpu].nr_misfit, stats[cpu].nr_max,
 				stats[cpu].nr_scaled);
+=======
+
+		trace_sched_get_nr_running_avg(cpu, stats[cpu].nr,
+				stats[cpu].nr_misfit, stats[cpu].nr_max);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		per_cpu(last_time, cpu) = curr_time;
 		per_cpu(nr_prod_sum, cpu) = 0;
 		per_cpu(nr_big_prod_sum, cpu) = 0;
+<<<<<<< HEAD
+=======
+		per_cpu(iowait_prod_sum, cpu) = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		per_cpu(nr_max, cpu) = per_cpu(nr, cpu);
 
 		spin_unlock_irqrestore(&per_cpu(nr_lock, cpu), flags);
 	}
 
+<<<<<<< HEAD
 	for_each_possible_cpu(cpu) {
 		if (per_cpu(hyst_time, cpu)) {
 			any_hyst_time = true;
@@ -116,11 +144,14 @@ void sched_get_nr_running_avg(struct sched_avg_stats *stats)
 	if (any_hyst_time && get_rtgb_active_time() >= MAX_RTGB_TIME)
 		sched_update_hyst_times();
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	last_get_time = curr_time;
 
 }
 EXPORT_SYMBOL(sched_get_nr_running_avg);
 
+<<<<<<< HEAD
 #ifdef CONFIG_SCHED_WALT
 void sched_update_hyst_times(void)
 {
@@ -145,11 +176,20 @@ void sched_update_hyst_times(void)
 #define BUSY_NR_RUN		3
 #define BUSY_LOAD_FACTOR	10
 static inline void update_busy_hyst_end_time(int cpu, bool dequeue,
+=======
+#define BUSY_NR_RUN		3
+#define BUSY_LOAD_FACTOR	10
+static inline void update_last_busy_time(int cpu, bool dequeue,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				unsigned long prev_nr_run, u64 curr_time)
 {
 	bool nr_run_trigger = false, load_trigger = false;
 
+<<<<<<< HEAD
 	if (!per_cpu(hyst_time, cpu))
+=======
+	if (!hmp_capable() || is_min_capacity_cpu(cpu))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return;
 
 	if (prev_nr_run >= BUSY_NR_RUN && per_cpu(nr, cpu) < BUSY_NR_RUN)
@@ -160,6 +200,7 @@ static inline void update_busy_hyst_end_time(int cpu, bool dequeue,
 		load_trigger = true;
 
 	if (nr_run_trigger || load_trigger)
+<<<<<<< HEAD
 		atomic64_set(&per_cpu(busy_hyst_end_time, cpu),
 				curr_time + per_cpu(hyst_time, cpu));
 }
@@ -169,6 +210,10 @@ static inline void update_busy_hyst_end_time(int cpu, bool dequeue,
 {
 }
 #endif
+=======
+		atomic64_set(&per_cpu(last_busy_time, cpu), curr_time);
+}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
  * sched_update_nr_prod
@@ -198,10 +243,18 @@ void sched_update_nr_prod(int cpu, long delta, bool inc)
 	if (per_cpu(nr, cpu) > per_cpu(nr_max, cpu))
 		per_cpu(nr_max, cpu) = per_cpu(nr, cpu);
 
+<<<<<<< HEAD
 	update_busy_hyst_end_time(cpu, !inc, nr_running, curr_time);
 
 	per_cpu(nr_prod_sum, cpu) += nr_running * diff;
 	per_cpu(nr_big_prod_sum, cpu) += walt_big_tasks(cpu) * diff;
+=======
+	update_last_busy_time(cpu, !inc, nr_running, curr_time);
+
+	per_cpu(nr_prod_sum, cpu) += nr_running * diff;
+	per_cpu(nr_big_prod_sum, cpu) += walt_big_tasks(cpu) * diff;
+	per_cpu(iowait_prod_sum, cpu) += nr_iowait_cpu(cpu) * diff;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_unlock_irqrestore(&per_cpu(nr_lock, cpu), flags);
 }
 EXPORT_SYMBOL(sched_update_nr_prod);
@@ -223,8 +276,16 @@ unsigned int sched_get_cpu_util(int cpu)
 	capacity = capacity_orig_of(cpu);
 
 #ifdef CONFIG_SCHED_WALT
+<<<<<<< HEAD
 	util = rq->prev_runnable_sum + rq->grp_time.prev_runnable_sum;
 	util = div64_u64(util, sched_ravg_window >> SCHED_CAPACITY_SHIFT);
+=======
+	if (!walt_disabled && sysctl_sched_use_walt_cpu_util) {
+		util = rq->prev_runnable_sum + rq->grp_time.prev_runnable_sum;
+		util = div64_u64(util,
+				 sched_ravg_window >> SCHED_CAPACITY_SHIFT);
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 	raw_spin_unlock_irqrestore(&rq->lock, flags);
 
@@ -233,6 +294,7 @@ unsigned int sched_get_cpu_util(int cpu)
 	return busy;
 }
 
+<<<<<<< HEAD
 #ifdef CONFIG_SCHED_WALT
 u64 sched_lpm_disallowed_time(int cpu)
 {
@@ -245,3 +307,9 @@ u64 sched_lpm_disallowed_time(int cpu)
 	return 0;
 }
 #endif
+=======
+u64 sched_get_cpu_last_busy_time(int cpu)
+{
+	return atomic64_read(&per_cpu(last_busy_time, cpu));
+}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

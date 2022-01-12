@@ -1249,7 +1249,10 @@ static int __init acpi_init(void)
 	init_acpi_device_notify();
 	result = acpi_bus_init();
 	if (result) {
+<<<<<<< HEAD
 		kobject_put(acpi_kobj);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		disable_acpi();
 		return result;
 	}

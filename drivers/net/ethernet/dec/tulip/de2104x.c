@@ -91,7 +91,11 @@ MODULE_PARM_DESC (rx_copybreak, "de2104x Breakpoint at which Rx packets are copi
 #define DSL			CONFIG_DE2104X_DSL
 #endif
 
+<<<<<<< HEAD
 #define DE_RX_RING_SIZE		128
+=======
+#define DE_RX_RING_SIZE		64
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define DE_TX_RING_SIZE		64
 #define DE_RING_BYTES		\
 		((sizeof(struct de_desc) * DE_RX_RING_SIZE) +	\

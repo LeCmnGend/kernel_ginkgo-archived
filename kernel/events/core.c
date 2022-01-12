@@ -98,7 +98,11 @@ static void remote_function(void *data)
  * retry due to any failures in smp_call_function_single(), such as if the
  * task_cpu() goes offline concurrently.
  *
+<<<<<<< HEAD
  * returns @func return value or -ESRCH or -ENXIO when the process isn't running
+=======
+ * returns @func return value or -ESRCH when the process isn't running
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 static int
 task_function_call(struct task_struct *p, remote_function_f func, void *info)
@@ -114,8 +118,12 @@ task_function_call(struct task_struct *p, remote_function_f func, void *info)
 	for (;;) {
 		ret = smp_call_function_single(task_cpu(p), remote_function,
 					       &data, 1);
+<<<<<<< HEAD
 		if (!ret)
 			ret = data.ret;
+=======
+		ret = !ret ? data.ret : -EAGAIN;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		if (ret != -EAGAIN)
 			break;
@@ -442,7 +450,11 @@ int sysctl_perf_event_mlock __read_mostly = 512 + (PAGE_SIZE / 1024); /* 'free' 
  */
 #define DEFAULT_MAX_SAMPLE_RATE		100000
 #define DEFAULT_SAMPLE_PERIOD_NS	(NSEC_PER_SEC / DEFAULT_MAX_SAMPLE_RATE)
+<<<<<<< HEAD
 #define DEFAULT_CPU_TIME_MAX_PERCENT	5
+=======
+#define DEFAULT_CPU_TIME_MAX_PERCENT	25
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 int sysctl_perf_event_sample_rate __read_mostly	= DEFAULT_MAX_SAMPLE_RATE;
 
@@ -4039,9 +4051,13 @@ find_get_context(struct pmu *pmu, struct task_struct *task,
 		cpuctx = per_cpu_ptr(pmu->pmu_cpu_context, cpu);
 		ctx = &cpuctx->ctx;
 		get_ctx(ctx);
+<<<<<<< HEAD
 		raw_spin_lock_irqsave(&ctx->lock, flags);
 		++ctx->pin_count;
 		raw_spin_unlock_irqrestore(&ctx->lock, flags);
+=======
+		++ctx->pin_count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		return ctx;
 	}
@@ -5412,11 +5428,18 @@ static void perf_pmu_output_stop(struct perf_event *event);
 static void perf_mmap_close(struct vm_area_struct *vma)
 {
 	struct perf_event *event = vma->vm_file->private_data;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct ring_buffer *rb = ring_buffer_get(event);
 	struct user_struct *mmap_user = rb->mmap_user;
 	int mmap_locked = rb->mmap_locked;
 	unsigned long size = perf_data_size(rb);
+<<<<<<< HEAD
 	bool detach_rest = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (event->pmu->event_unmapped)
 		event->pmu->event_unmapped(event, vma->vm_mm);
@@ -5447,8 +5470,12 @@ static void perf_mmap_close(struct vm_area_struct *vma)
 		mutex_unlock(&event->mmap_mutex);
 	}
 
+<<<<<<< HEAD
 	if (atomic_dec_and_test(&rb->mmap_count))
 		detach_rest = true;
+=======
+	atomic_dec(&rb->mmap_count);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!atomic_dec_and_mutex_lock(&event->mmap_count, &event->mmap_mutex))
 		goto out_put;
@@ -5457,7 +5484,11 @@ static void perf_mmap_close(struct vm_area_struct *vma)
 	mutex_unlock(&event->mmap_mutex);
 
 	/* If there's still other mmap()s of this buffer, we're done. */
+<<<<<<< HEAD
 	if (!detach_rest)
+=======
+	if (atomic_read(&rb->mmap_count))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto out_put;
 
 	/*
@@ -8801,7 +8832,10 @@ perf_event_parse_addr_filter(struct perf_event *event, char *fstr,
 			if (token == IF_SRC_FILE || token == IF_SRC_FILEADDR) {
 				int fpos = filter->range ? 2 : 1;
 
+<<<<<<< HEAD
 				kfree(filename);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				filename = match_strdup(&args[fpos]);
 				if (!filename) {
 					ret = -ENOMEM;
@@ -8840,13 +8874,21 @@ perf_event_parse_addr_filter(struct perf_event *event, char *fstr,
 				 */
 				ret = -EOPNOTSUPP;
 				if (!event->ctx->task)
+<<<<<<< HEAD
 					goto fail;
+=======
+					goto fail_free_name;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 				/* look up the path and grab its inode */
 				ret = kern_path(filename, LOOKUP_FOLLOW,
 						&filter->path);
 				if (ret)
+<<<<<<< HEAD
 					goto fail;
+=======
+					goto fail_free_name;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 				kfree(filename);
 				filename = NULL;
@@ -8869,13 +8911,22 @@ perf_event_parse_addr_filter(struct perf_event *event, char *fstr,
 	if (state != IF_STATE_ACTION)
 		goto fail;
 
+<<<<<<< HEAD
 	kfree(filename);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kfree(orig);
 
 	return 0;
 
+<<<<<<< HEAD
 fail:
 	kfree(filename);
+=======
+fail_free_name:
+	kfree(filename);
+fail:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	free_filters_list(filters);
 	kfree(orig);
 

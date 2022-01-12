@@ -172,7 +172,11 @@ unsigned long __rounddown_pow_of_two(unsigned long n)
 #define roundup_pow_of_two(n)			\
 (						\
 	__builtin_constant_p(n) ? (		\
+<<<<<<< HEAD
 		((n) == 1) ? 1 :		\
+=======
+		(n == 1) ? 1 :			\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		(1UL << (ilog2((n) - 1) + 1))	\
 				   ) :		\
 	__roundup_pow_of_two(n)			\

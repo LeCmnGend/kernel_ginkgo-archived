@@ -29,7 +29,10 @@
 #include <linux/timer.h>
 #include <linux/context_tracking.h>
 #include <linux/rq_stats.h>
+<<<<<<< HEAD
 #include <linux/mm.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #include <asm/irq_regs.h>
 
@@ -824,7 +827,10 @@ static void tick_nohz_stop_tick(struct tick_sched *ts, int cpu)
 	if (!ts->tick_stopped) {
 		calc_load_nohz_start();
 		cpu_load_update_nohz_start();
+<<<<<<< HEAD
 		quiet_vmstat();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		ts->last_tick = hrtimer_get_expires(&ts->sched_timer);
 		ts->tick_stopped = 1;
@@ -1409,6 +1415,7 @@ void tick_setup_sched_timer(void)
 #endif /* HIGH_RES_TIMERS */
 
 #if defined CONFIG_NO_HZ_COMMON || defined CONFIG_HIGH_RES_TIMERS
+<<<<<<< HEAD
 
 static inline void clear_tick_sched(struct tick_sched *ts)
 {
@@ -1420,6 +1427,8 @@ static inline void clear_tick_sched(struct tick_sched *ts)
 	ts->iowait_sleeptime = iowait_sleeptime;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void tick_cancel_sched_timer(int cpu)
 {
 	struct tick_sched *ts = &per_cpu(tick_cpu_sched, cpu);
@@ -1429,7 +1438,11 @@ void tick_cancel_sched_timer(int cpu)
 		hrtimer_cancel(&ts->sched_timer);
 # endif
 
+<<<<<<< HEAD
 	clear_tick_sched(ts);
+=======
+	memset(ts, 0, sizeof(*ts));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 #endif
 

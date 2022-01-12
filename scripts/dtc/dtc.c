@@ -31,7 +31,11 @@ int reservenum;		/* Number of memory reservation slots */
 int minsize;		/* Minimum blob size */
 int padsize;		/* Additional padding to blob */
 int alignsize;		/* Additional padding to blob accroding to the alignsize */
+<<<<<<< HEAD
 int phandle_format = PHANDLE_EPAPR;	/* Use linux,phandle or phandle properties */
+=======
+int phandle_format = PHANDLE_BOTH;	/* Use linux,phandle or phandle properties */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int generate_symbols;	/* enable symbols & fixup support */
 int generate_fixups;		/* suppress generation of fixups on symbol support */
 int auto_label_aliases;		/* auto generate labels -> aliases */
@@ -59,6 +63,11 @@ static void fill_fullpaths(struct node *tree, const char *prefix)
 }
 
 /* Usage related data. */
+<<<<<<< HEAD
+=======
+#define FDT_VERSION(version)	_FDT_VERSION(version)
+#define _FDT_VERSION(version)	#version
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static const char usage_synopsis[] = "dtc [options] <input file>";
 static const char usage_short_opts[] = "qI:O:o:V:d:R:S:p:a:fb:i:H:sW:E:@Ahv";
 static struct option const usage_long_opts[] = {
@@ -96,7 +105,11 @@ static const char * const usage_opts_help[] = {
 	 "\t\tdts - device tree source text\n"
 	 "\t\tdtb - device tree blob\n"
 	 "\t\tasm - assembler source",
+<<<<<<< HEAD
 	"\n\tBlob version to produce, defaults to "stringify(DEFAULT_FDT_VERSION)" (for dtb and asm output)",
+=======
+	"\n\tBlob version to produce, defaults to "FDT_VERSION(DEFAULT_FDT_VERSION)" (for dtb and asm output)",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	"\n\tOutput dependency file",
 	"\n\tMake space for <number> reserve map entries (for dtb and asm output)",
 	"\n\tMake the blob at least <bytes> long (extra space)",
@@ -317,14 +330,21 @@ int main(int argc, char *argv[])
 		dti->boot_cpuid_phys = cmdline_boot_cpuid;
 
 	fill_fullpaths(dti->dt, "");
+<<<<<<< HEAD
+=======
+	process_checks(force, dti);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* on a plugin, generate by default */
 	if (dti->dtsflags & DTSF_PLUGIN) {
 		generate_fixups = 1;
 	}
 
+<<<<<<< HEAD
 	process_checks(force, dti);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (auto_label_aliases)
 		generate_label_tree(dti, "aliases", false);
 

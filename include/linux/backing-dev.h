@@ -13,7 +13,10 @@
 #include <linux/fs.h>
 #include <linux/sched.h>
 #include <linux/blkdev.h>
+<<<<<<< HEAD
 #include <linux/device.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/writeback.h>
 #include <linux/blk-cgroup.h>
 #include <linux/backing-dev-defs.h>
@@ -502,6 +505,7 @@ static inline int bdi_rw_congested(struct backing_dev_info *bdi)
 				  (1 << WB_async_congested));
 }
 
+<<<<<<< HEAD
 extern const char *bdi_unknown_name;
 
 static inline const char *bdi_dev_name(struct backing_dev_info *bdi)
@@ -511,4 +515,6 @@ static inline const char *bdi_dev_name(struct backing_dev_info *bdi)
 	return dev_name(bdi->dev);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif	/* _LINUX_BACKING_DEV_H */

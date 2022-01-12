@@ -430,7 +430,11 @@ static bool each_symbol_in_section(const struct symsearch *arr,
 }
 
 /* Returns true as soon as fn returns true, otherwise false. */
+<<<<<<< HEAD
 static bool each_symbol_section(bool (*fn)(const struct symsearch *arr,
+=======
+bool each_symbol_section(bool (*fn)(const struct symsearch *arr,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				    struct module *owner,
 				    void *data),
 			 void *data)
@@ -491,6 +495,10 @@ static bool each_symbol_section(bool (*fn)(const struct symsearch *arr,
 	}
 	return false;
 }
+<<<<<<< HEAD
+=======
+EXPORT_SYMBOL_GPL(each_symbol_section);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 struct find_symbol_arg {
 	/* Input */
@@ -502,7 +510,10 @@ struct find_symbol_arg {
 	struct module *owner;
 	const s32 *crc;
 	const struct kernel_symbol *sym;
+<<<<<<< HEAD
 	enum mod_license license;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 static bool check_symbol(const struct symsearch *syms,
@@ -512,9 +523,15 @@ static bool check_symbol(const struct symsearch *syms,
 	struct find_symbol_arg *fsa = data;
 
 	if (!fsa->gplok) {
+<<<<<<< HEAD
 		if (syms->license == GPL_ONLY)
 			return false;
 		if (syms->license == WILL_BE_GPL_ONLY && fsa->warn) {
+=======
+		if (syms->licence == GPL_ONLY)
+			return false;
+		if (syms->licence == WILL_BE_GPL_ONLY && fsa->warn) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			pr_warn("Symbol %s is being used by a non-GPL module, "
 				"which will not be allowed in the future\n",
 				fsa->name);
@@ -536,7 +553,10 @@ static bool check_symbol(const struct symsearch *syms,
 	fsa->owner = owner;
 	fsa->crc = symversion(syms->crcs, symnum);
 	fsa->sym = &syms->start[symnum];
+<<<<<<< HEAD
 	fsa->license = syms->license;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return true;
 }
 
@@ -566,10 +586,16 @@ static bool find_symbol_in_section(const struct symsearch *syms,
 
 /* Find a symbol and return it, along with, (optional) crc and
  * (optional) module which owns it.  Needs preempt disabled or module_mutex. */
+<<<<<<< HEAD
 static const struct kernel_symbol *find_symbol(const char *name,
 					struct module **owner,
 					const s32 **crc,
 					enum mod_license *license,
+=======
+const struct kernel_symbol *find_symbol(const char *name,
+					struct module **owner,
+					const s32 **crc,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					bool gplok,
 					bool warn)
 {
@@ -584,14 +610,21 @@ static const struct kernel_symbol *find_symbol(const char *name,
 			*owner = fsa.owner;
 		if (crc)
 			*crc = fsa.crc;
+<<<<<<< HEAD
 		if (license)
 			*license = fsa.license;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return fsa.sym;
 	}
 
 	pr_debug("Failed to find symbol %s\n", name);
 	return NULL;
 }
+<<<<<<< HEAD
+=======
+EXPORT_SYMBOL_GPL(find_symbol);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*
  * Search for module by name: must hold module_mutex (or preempt disabled
@@ -853,7 +886,11 @@ static int add_module_usage(struct module *a, struct module *b)
 }
 
 /* Module a uses b: caller needs module_mutex() */
+<<<<<<< HEAD
 static int ref_module(struct module *a, struct module *b)
+=======
+int ref_module(struct module *a, struct module *b)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	int err;
 
@@ -872,6 +909,10 @@ static int ref_module(struct module *a, struct module *b)
 	}
 	return 0;
 }
+<<<<<<< HEAD
+=======
+EXPORT_SYMBOL_GPL(ref_module);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* Clear the unload stuff of the module. */
 static void module_unload_free(struct module *mod)
@@ -1060,7 +1101,11 @@ void __symbol_put(const char *symbol)
 	struct module *owner;
 
 	preempt_disable();
+<<<<<<< HEAD
 	if (!find_symbol(symbol, &owner, NULL, NULL, true, false))
+=======
+	if (!find_symbol(symbol, &owner, NULL, true, false))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		BUG();
 	module_put(owner);
 	preempt_enable();
@@ -1152,10 +1197,18 @@ static inline void module_unload_free(struct module *mod)
 {
 }
 
+<<<<<<< HEAD
 static int ref_module(struct module *a, struct module *b)
 {
 	return strong_try_module_get(b);
 }
+=======
+int ref_module(struct module *a, struct module *b)
+{
+	return strong_try_module_get(b);
+}
+EXPORT_SYMBOL_GPL(ref_module);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static inline int module_unload_init(struct module *mod)
 {
@@ -1339,7 +1392,11 @@ static inline int check_modstruct_version(const struct load_info *info,
 	 */
 	preempt_disable();
 	if (!find_symbol(VMLINUX_SYMBOL_STR(module_layout), NULL,
+<<<<<<< HEAD
 			 &crc, NULL, true, false)) {
+=======
+			 &crc, true, false)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		preempt_enable();
 		BUG();
 	}
@@ -1380,6 +1437,7 @@ static inline int same_magic(const char *amagic, const char *bmagic,
 }
 #endif /* CONFIG_MODVERSIONS */
 
+<<<<<<< HEAD
 static bool inherit_taint(struct module *mod, struct module *owner)
 {
 	if (!owner || !test_bit(TAINT_PROPRIETARY_MODULE, &owner->taints))
@@ -1399,6 +1457,8 @@ static bool inherit_taint(struct module *mod, struct module *owner)
 	return true;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Resolve a symbol for this module.  I.e. if we find one, record usage. */
 static const struct kernel_symbol *resolve_symbol(struct module *mod,
 						  const struct load_info *info,
@@ -1408,7 +1468,10 @@ static const struct kernel_symbol *resolve_symbol(struct module *mod,
 	struct module *owner;
 	const struct kernel_symbol *sym;
 	const s32 *crc;
+<<<<<<< HEAD
 	enum mod_license license;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int err;
 
 	/*
@@ -1418,11 +1481,16 @@ static const struct kernel_symbol *resolve_symbol(struct module *mod,
 	 */
 	sched_annotate_sleep();
 	mutex_lock(&module_mutex);
+<<<<<<< HEAD
 	sym = find_symbol(name, &owner, &crc, &license,
+=======
+	sym = find_symbol(name, &owner, &crc,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			  !(mod->taints & (1 << TAINT_PROPRIETARY_MODULE)), true);
 	if (!sym)
 		goto unlock;
 
+<<<<<<< HEAD
 	if (license == GPL_ONLY)
 		mod->using_gplonly_symbols = true;
 
@@ -1431,6 +1499,8 @@ static const struct kernel_symbol *resolve_symbol(struct module *mod,
 		goto getname;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!check_version(info, name, mod, crc)) {
 		sym = ERR_PTR(-EINVAL);
 		goto getname;
@@ -1818,6 +1888,10 @@ static int mod_sysfs_init(struct module *mod)
 	if (err)
 		mod_kobject_put(mod);
 
+<<<<<<< HEAD
+=======
+	/* delay uevent until full sysfs population */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out:
 	return err;
 }
@@ -1854,6 +1928,10 @@ static int mod_sysfs_setup(struct module *mod,
 	add_sect_attrs(mod, info);
 	add_notes_attrs(mod, info);
 
+<<<<<<< HEAD
+=======
+	kobject_uevent(&mod->mkobj.kobj, KOBJ_ADD);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 
 out_unreg_modinfo_attrs:
@@ -2241,7 +2319,11 @@ void *__symbol_get(const char *symbol)
 	const struct kernel_symbol *sym;
 
 	preempt_disable();
+<<<<<<< HEAD
 	sym = find_symbol(symbol, &owner, NULL, NULL, true, true);
+=======
+	sym = find_symbol(symbol, &owner, NULL, true, true);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (sym && strong_try_module_get(owner))
 		sym = NULL;
 	preempt_enable();
@@ -2276,7 +2358,11 @@ static int verify_export_symbols(struct module *mod)
 
 	for (i = 0; i < ARRAY_SIZE(arr); i++) {
 		for (s = arr[i].sym; s < arr[i].sym + arr[i].num; s++) {
+<<<<<<< HEAD
 			if (find_symbol(s->name, &owner, NULL, NULL, true, false)) {
+=======
+			if (find_symbol(s->name, &owner, NULL, true, false)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				pr_err("%s: exports duplicate symbol %s"
 				       " (owned by %s)\n",
 				       mod->name, s->name, module_name(owner));
@@ -2287,6 +2373,7 @@ static int verify_export_symbols(struct module *mod)
 	return 0;
 }
 
+<<<<<<< HEAD
 static bool ignore_undef_symbol(Elf_Half emachine, const char *name)
 {
 	/*
@@ -2302,6 +2389,8 @@ static bool ignore_undef_symbol(Elf_Half emachine, const char *name)
 	return false;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Change all symbols so that st_value encodes the pointer directly. */
 static int simplify_symbols(struct module *mod, const struct load_info *info)
 {
@@ -2347,10 +2436,15 @@ static int simplify_symbols(struct module *mod, const struct load_info *info)
 				break;
 			}
 
+<<<<<<< HEAD
 			/* Ok if weak or ignored.  */
 			if (!ksym &&
 			    (ELF_ST_BIND(sym[i].st_info) == STB_WEAK ||
 			     ignore_undef_symbol(info->hdr->e_machine, name)))
+=======
+			/* Ok if weak.  */
+			if (!ksym && ELF_ST_BIND(sym[i].st_info) == STB_WEAK)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				break;
 
 			pr_warn("%s: Unknown symbol %s (err %li)\n",
@@ -3541,9 +3635,12 @@ static noinline int do_init_module(struct module *mod)
 	blocking_notifier_call_chain(&module_notify_list,
 				     MODULE_STATE_LIVE, mod);
 
+<<<<<<< HEAD
 	/* Delay uevent until module has finished its init routine */
 	kobject_uevent(&mod->mkobj.kobj, KOBJ_ADD);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * We need to finish all async code before the module init sequence
 	 * is done.  This has potential to deadlock.  For example, a newly
@@ -3872,7 +3969,10 @@ static int load_module(struct load_info *info, const char __user *uargs,
 				     MODULE_STATE_GOING, mod);
 	klp_module_going(mod);
  bug_cleanup:
+<<<<<<< HEAD
 	mod->state = MODULE_STATE_GOING;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* module_bug_cleanup needs module_mutex protection */
 	mutex_lock(&module_mutex);
 	module_bug_cleanup(mod);
@@ -4399,6 +4499,10 @@ struct module *__module_address(unsigned long addr)
 	}
 	return mod;
 }
+<<<<<<< HEAD
+=======
+EXPORT_SYMBOL_GPL(__module_address);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*
  * is_module_text_address - is this address inside module code?
@@ -4437,6 +4541,10 @@ struct module *__module_text_address(unsigned long addr)
 	}
 	return mod;
 }
+<<<<<<< HEAD
+=======
+EXPORT_SYMBOL_GPL(__module_text_address);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* Don't grab lock, we're oopsing. */
 void print_modules(void)

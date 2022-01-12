@@ -134,6 +134,7 @@ struct node *name_node(struct node *node, char *name)
 	return node;
 }
 
+<<<<<<< HEAD
 struct node *omit_node_if_unused(struct node *node)
 {
 	node->omit_if_unused = 1;
@@ -148,6 +149,8 @@ struct node *reference_node(struct node *node)
 	return node;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct node *merge_nodes(struct node *old_node, struct node *new_node)
 {
 	struct property *new_prop, *old_prop;
@@ -230,6 +233,7 @@ struct node *merge_nodes(struct node *old_node, struct node *new_node)
 	return old_node;
 }
 
+<<<<<<< HEAD
 struct node * add_orphan_node(struct node *dt, struct node *new_node, char *ref)
 {
 	static unsigned int next_orphan_fragment = 0;
@@ -259,6 +263,8 @@ struct node * add_orphan_node(struct node *dt, struct node *new_node, char *ref)
 	return dt;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct node *chain_node(struct node *first, struct node *list)
 {
 	assert(first->next_sibling == NULL);
@@ -439,12 +445,15 @@ cell_t propval_cell(struct property *prop)
 	return fdt32_to_cpu(*((fdt32_t *)prop->val.val));
 }
 
+<<<<<<< HEAD
 cell_t propval_cell_n(struct property *prop, int n)
 {
 	assert(prop->val.len / sizeof(cell_t) >= n);
 	return fdt32_to_cpu(*((fdt32_t *)prop->val.val + n));
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct property *get_property_by_label(struct node *tree, const char *label,
 				       struct node **node)
 {
@@ -527,8 +536,12 @@ struct node *get_node_by_path(struct node *tree, const char *path)
 	p = strchr(path, '/');
 
 	for_each_child(tree, child) {
+<<<<<<< HEAD
 		if (p && (strlen(child->name) == p-path) &&
 		    strprefixeq(path, p - path, child->name))
+=======
+		if (p && strneq(path, child->name, p-path))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return get_node_by_path(child, p+1);
 		else if (!p && streq(path, child->name))
 			return child;
@@ -561,10 +574,14 @@ struct node *get_node_by_phandle(struct node *tree, cell_t phandle)
 {
 	struct node *child, *node;
 
+<<<<<<< HEAD
 	if ((phandle == 0) || (phandle == -1)) {
 		assert(generate_fixups);
 		return NULL;
 	}
+=======
+	assert((phandle != 0) && (phandle != -1));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (tree->phandle == phandle) {
 		if (tree->deleted)

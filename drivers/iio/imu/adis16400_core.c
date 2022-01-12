@@ -288,7 +288,12 @@ static int adis16400_initial_setup(struct iio_dev *indio_dev)
 		if (ret)
 			goto err_ret;
 
+<<<<<<< HEAD
 		if (sscanf(indio_dev->name, "adis%u\n", &device_id) != 1) {
+=======
+		ret = sscanf(indio_dev->name, "adis%u\n", &device_id);
+		if (ret != 1) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			ret = -EINVAL;
 			goto err_ret;
 		}

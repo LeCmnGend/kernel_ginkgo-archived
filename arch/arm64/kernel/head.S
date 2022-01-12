@@ -849,7 +849,10 @@ __primary_switch:
 
 	tlbi	vmalle1				// Remove any stale TLB entries
 	dsb	nsh
+<<<<<<< HEAD
 	isb
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	msr	sctlr_el1, x19			// re-enable the MMU
 	isb

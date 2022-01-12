@@ -138,6 +138,7 @@ int main(int argc, char **argv)
 			device_name = optarg;
 			break;
 		case 'o':
+<<<<<<< HEAD
 			/*
 			 * Avoid overflow. Do not immediately error, we want to
 			 * be able to accurately report on the amount of times
@@ -146,6 +147,9 @@ int main(int argc, char **argv)
 			if (i < GPIOHANDLES_MAX)
 				lines[i] = strtoul(optarg, NULL, 10);
 
+=======
+			lines[i] = strtoul(optarg, NULL, 10);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			i++;
 			break;
 		case '?':
@@ -153,6 +157,7 @@ int main(int argc, char **argv)
 			return -1;
 		}
 	}
+<<<<<<< HEAD
 
 	if (i >= GPIOHANDLES_MAX) {
 		fprintf(stderr,
@@ -161,6 +166,8 @@ int main(int argc, char **argv)
 		return -1;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	nlines = i;
 
 	if (!device_name || !nlines) {

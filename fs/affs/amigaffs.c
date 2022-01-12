@@ -419,6 +419,7 @@ affs_mode_to_prot(struct inode *inode)
 	u32 prot = AFFS_I(inode)->i_protect;
 	umode_t mode = inode->i_mode;
 
+<<<<<<< HEAD
 	/*
 	 * First, clear all RWED bits for owner, group, other.
 	 * Then, recalculate them afresh.
@@ -439,31 +440,42 @@ affs_mode_to_prot(struct inode *inode)
 		  | FIBF_OTR_WRITE   | FIBF_OTR_DELETE);
 
 	/* Classic single-user AmigaOS flags. These are inverted. */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!(mode & 0100))
 		prot |= FIBF_NOEXECUTE;
 	if (!(mode & 0400))
 		prot |= FIBF_NOREAD;
 	if (!(mode & 0200))
 		prot |= FIBF_NOWRITE;
+<<<<<<< HEAD
 
 	/* Multi-user extended flags. Not inverted. */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (mode & 0010)
 		prot |= FIBF_GRP_EXECUTE;
 	if (mode & 0040)
 		prot |= FIBF_GRP_READ;
 	if (mode & 0020)
 		prot |= FIBF_GRP_WRITE;
+<<<<<<< HEAD
 	if (mode & 0070)
 		prot |= FIBF_GRP_DELETE;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (mode & 0001)
 		prot |= FIBF_OTR_EXECUTE;
 	if (mode & 0004)
 		prot |= FIBF_OTR_READ;
 	if (mode & 0002)
 		prot |= FIBF_OTR_WRITE;
+<<<<<<< HEAD
 	if (mode & 0007)
 		prot |= FIBF_OTR_DELETE;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	AFFS_I(inode)->i_protect = prot;
 }

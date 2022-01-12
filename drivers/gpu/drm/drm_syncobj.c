@@ -355,6 +355,10 @@ static int drm_syncobj_handle_to_fd(struct drm_file *file_private,
 		return PTR_ERR(file);
 	}
 
+<<<<<<< HEAD
+=======
+	drm_syncobj_get(syncobj);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	fd_install(fd, file);
 
 	*p_fd = fd;

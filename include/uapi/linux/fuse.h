@@ -269,7 +269,10 @@ struct fuse_file_lock {
 #define FUSE_PARALLEL_DIROPS    (1 << 18)
 #define FUSE_HANDLE_KILLPRIV	(1 << 19)
 #define FUSE_POSIX_ACL		(1 << 20)
+<<<<<<< HEAD
 #define FUSE_SHORTCIRCUIT	(1 << 30)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
  * CUSE INIT request/reply flags

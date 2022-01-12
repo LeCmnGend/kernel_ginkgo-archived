@@ -1495,7 +1495,11 @@ static int smsc75xx_bind(struct usbnet *dev, struct usb_interface *intf)
 	ret = smsc75xx_wait_ready(dev, 0);
 	if (ret < 0) {
 		netdev_warn(dev->net, "device not ready in smsc75xx_bind\n");
+<<<<<<< HEAD
 		goto free_pdata;
+=======
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	smsc75xx_init_mac_address(dev);
@@ -1504,7 +1508,11 @@ static int smsc75xx_bind(struct usbnet *dev, struct usb_interface *intf)
 	ret = smsc75xx_reset(dev);
 	if (ret < 0) {
 		netdev_warn(dev->net, "smsc75xx_reset error %d\n", ret);
+<<<<<<< HEAD
 		goto cancel_work;
+=======
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	dev->net->netdev_ops = &smsc75xx_netdev_ops;
@@ -1514,6 +1522,7 @@ static int smsc75xx_bind(struct usbnet *dev, struct usb_interface *intf)
 	dev->hard_mtu = dev->net->mtu + dev->net->hard_header_len;
 	dev->net->max_mtu = MAX_SINGLE_PACKET_SIZE;
 	return 0;
+<<<<<<< HEAD
 
 cancel_work:
 	cancel_work_sync(&pdata->set_multicast);
@@ -1521,6 +1530,8 @@ free_pdata:
 	kfree(pdata);
 	dev->data[0] = 0;
 	return ret;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void smsc75xx_unbind(struct usbnet *dev, struct usb_interface *intf)
@@ -1530,6 +1541,10 @@ static void smsc75xx_unbind(struct usbnet *dev, struct usb_interface *intf)
 		cancel_work_sync(&pdata->set_multicast);
 		netif_dbg(dev, ifdown, dev->net, "free pdata\n");
 		kfree(pdata);
+<<<<<<< HEAD
+=======
+		pdata = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dev->data[0] = 0;
 	}
 }

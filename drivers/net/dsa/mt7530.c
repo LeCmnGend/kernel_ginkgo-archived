@@ -54,7 +54,10 @@ static const struct mt7530_mib_desc mt7530_mib[] = {
 	MIB_DESC(2, 0x48, "TxBytes"),
 	MIB_DESC(1, 0x60, "RxDrop"),
 	MIB_DESC(1, 0x64, "RxFiltering"),
+<<<<<<< HEAD
 	MIB_DESC(1, 0x68, "RxUnicast"),
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	MIB_DESC(1, 0x6c, "RxMulticast"),
 	MIB_DESC(1, 0x70, "RxBroadcast"),
 	MIB_DESC(1, 0x74, "RxAlignErr"),

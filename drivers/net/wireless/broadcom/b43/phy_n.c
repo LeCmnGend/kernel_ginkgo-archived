@@ -5320,7 +5320,11 @@ static void b43_nphy_restore_cal(struct b43_wldev *dev)
 
 	for (i = 0; i < 4; i++) {
 		if (dev->phy.rev >= 3)
+<<<<<<< HEAD
 			coef[i] = table[i];
+=======
+			table[i] = coef[i];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		else
 			coef[i] = 0;
 	}

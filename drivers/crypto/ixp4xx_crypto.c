@@ -333,7 +333,11 @@ static void free_buf_chain(struct device *dev, struct buffer_desc *buf,u32 phys)
 
 		buf1 = buf->next;
 		phys1 = buf->phys_next;
+<<<<<<< HEAD
 		dma_unmap_single(dev, buf->phys_addr, buf->buf_len, buf->dir);
+=======
+		dma_unmap_single(dev, buf->phys_next, buf->buf_len, buf->dir);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dma_pool_free(buffer_pool, buf, phys);
 		buf = buf1;
 		phys = phys1;
@@ -531,7 +535,11 @@ static void release_ixp_crypto(struct device *dev)
 
 	if (crypt_virt) {
 		dma_free_coherent(dev,
+<<<<<<< HEAD
 			NPE_QLEN * sizeof(struct crypt_ctl),
+=======
+			NPE_QLEN_TOTAL * sizeof( struct crypt_ctl),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			crypt_virt, crypt_phys);
 	}
 	return;

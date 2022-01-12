@@ -107,6 +107,7 @@
 
 #include <asm/sections.h>
 
+<<<<<<< HEAD
 #define v1printk(a...) do {		\
 	if (verbose)			\
 		printk(KERN_INFO a);	\
@@ -121,6 +122,21 @@
 	printk(KERN_ERR a);		\
 	WARN_ON(1);			\
 } while (0)
+=======
+#define v1printk(a...) do { \
+	if (verbose) \
+		printk(KERN_INFO a); \
+	} while (0)
+#define v2printk(a...) do { \
+	if (verbose > 1) \
+		printk(KERN_INFO a); \
+		touch_nmi_watchdog();	\
+	} while (0)
+#define eprintk(a...) do { \
+		printk(KERN_ERR a); \
+		WARN_ON(1); \
+	} while (0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define MAX_CONFIG_LEN		40
 
 static struct kgdb_io kgdbts_io_ops;

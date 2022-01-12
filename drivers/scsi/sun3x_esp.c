@@ -233,9 +233,13 @@ static int esp_sun3x_probe(struct platform_device *dev)
 	if (!esp->command_block)
 		goto fail_unmap_regs_dma;
 
+<<<<<<< HEAD
 	host->irq = err = platform_get_irq(dev, 0);
 	if (err < 0)
 		goto fail_unmap_command_block;
+=======
+	host->irq = platform_get_irq(dev, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = request_irq(host->irq, scsi_esp_intr, IRQF_SHARED,
 			  "SUN3X ESP", esp);
 	if (err < 0)

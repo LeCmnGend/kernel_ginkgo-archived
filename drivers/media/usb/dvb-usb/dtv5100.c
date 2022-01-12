@@ -35,7 +35,10 @@ static int dtv5100_i2c_msg(struct dvb_usb_device *d, u8 addr,
 			   u8 *wbuf, u16 wlen, u8 *rbuf, u16 rlen)
 {
 	struct dtv5100_state *st = d->priv;
+<<<<<<< HEAD
 	unsigned int pipe;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u8 request;
 	u8 type;
 	u16 value;
@@ -44,7 +47,10 @@ static int dtv5100_i2c_msg(struct dvb_usb_device *d, u8 addr,
 	switch (wlen) {
 	case 1:
 		/* write { reg }, read { value } */
+<<<<<<< HEAD
 		pipe = usb_rcvctrlpipe(d->udev, 0);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		request = (addr == DTV5100_DEMOD_ADDR ? DTV5100_DEMOD_READ :
 							DTV5100_TUNER_READ);
 		type = USB_TYPE_VENDOR | USB_DIR_IN;
@@ -52,7 +58,10 @@ static int dtv5100_i2c_msg(struct dvb_usb_device *d, u8 addr,
 		break;
 	case 2:
 		/* write { reg, value } */
+<<<<<<< HEAD
 		pipe = usb_sndctrlpipe(d->udev, 0);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		request = (addr == DTV5100_DEMOD_ADDR ? DTV5100_DEMOD_WRITE :
 							DTV5100_TUNER_WRITE);
 		type = USB_TYPE_VENDOR | USB_DIR_OUT;
@@ -66,7 +75,11 @@ static int dtv5100_i2c_msg(struct dvb_usb_device *d, u8 addr,
 
 	memcpy(st->data, rbuf, rlen);
 	msleep(1); /* avoid I2C errors */
+<<<<<<< HEAD
 	return usb_control_msg(d->udev, pipe, request,
+=======
+	return usb_control_msg(d->udev, usb_rcvctrlpipe(d->udev, 0), request,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			       type, value, index, st->data, rlen,
 			       DTV5100_USB_TIMEOUT);
 }
@@ -153,7 +166,11 @@ static int dtv5100_probe(struct usb_interface *intf,
 
 	/* initialize non qt1010/zl10353 part? */
 	for (i = 0; dtv5100_init[i].request; i++) {
+<<<<<<< HEAD
 		ret = usb_control_msg(udev, usb_sndctrlpipe(udev, 0),
+=======
+		ret = usb_control_msg(udev, usb_rcvctrlpipe(udev, 0),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				      dtv5100_init[i].request,
 				      USB_TYPE_VENDOR | USB_DIR_OUT,
 				      dtv5100_init[i].value,

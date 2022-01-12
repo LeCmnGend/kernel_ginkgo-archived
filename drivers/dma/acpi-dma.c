@@ -131,13 +131,20 @@ static void acpi_dma_parse_csrt(struct acpi_device *adev, struct acpi_dma *adma)
 		if (ret < 0) {
 			dev_warn(&adev->dev,
 				 "error in parsing resource group\n");
+<<<<<<< HEAD
 			break;
+=======
+			return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 
 		grp = (struct acpi_csrt_group *)((void *)grp + grp->length);
 	}
+<<<<<<< HEAD
 
 	acpi_put_table((struct acpi_table_header *)csrt);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /**

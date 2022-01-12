@@ -59,7 +59,10 @@ config SPARC64
 	select HAVE_KRETPROBES
 	select HAVE_KPROBES
 	select HAVE_RCU_TABLE_FREE if SMP
+<<<<<<< HEAD
 	select HAVE_RCU_TABLE_NO_INVALIDATE if HAVE_RCU_TABLE_FREE
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select HAVE_MEMBLOCK
 	select HAVE_MEMBLOCK_NODE_MAP
 	select HAVE_ARCH_TRANSPARENT_HUGEPAGE
@@ -206,6 +209,17 @@ config NR_CPUS
 
 source kernel/Kconfig.hz
 
+<<<<<<< HEAD
+=======
+config RWSEM_GENERIC_SPINLOCK
+	bool
+	default y if SPARC32
+
+config RWSEM_XCHGADD_ALGORITHM
+	bool
+	default y if SPARC64
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config GENERIC_HWEIGHT
 	bool
 	default y
@@ -567,7 +581,11 @@ config COMPAT
 	bool
 	depends on SPARC64
 	default y
+<<<<<<< HEAD
 	select COMPAT_BINFMT_ELF if BINFMT_ELF
+=======
+	select COMPAT_BINFMT_ELF
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select HAVE_UID16
 	select ARCH_WANT_OLD_COMPAT_IPC
 	select COMPAT_OLD_SIGACTION

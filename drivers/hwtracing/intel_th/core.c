@@ -223,6 +223,7 @@ static ssize_t port_show(struct device *dev, struct device_attribute *attr,
 
 static DEVICE_ATTR_RO(port);
 
+<<<<<<< HEAD
 static void intel_th_trace_prepare(struct intel_th_device *thdev)
 {
 	struct intel_th_device *hub = to_intel_th_hub(thdev);
@@ -239,6 +240,8 @@ static void intel_th_trace_prepare(struct intel_th_device *thdev)
 	pm_runtime_put(&thdev->dev);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int intel_th_output_activate(struct intel_th_device *thdev)
 {
 	struct intel_th_driver *thdrv =
@@ -259,7 +262,10 @@ static int intel_th_output_activate(struct intel_th_device *thdev)
 	if (ret)
 		goto fail_put;
 
+<<<<<<< HEAD
 	intel_th_trace_prepare(thdev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (thdrv->activate)
 		ret = thdrv->activate(thdev);
 	else

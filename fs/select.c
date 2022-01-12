@@ -1007,9 +1007,16 @@ static long do_restart_poll(struct restart_block *restart_block)
 
 	ret = do_sys_poll(ufds, nfds, to);
 
+<<<<<<< HEAD
 	if (ret == -EINTR)
 		ret = set_restart_fn(restart_block, do_restart_poll);
 
+=======
+	if (ret == -EINTR) {
+		restart_block->fn = do_restart_poll;
+		ret = -ERESTART_RESTARTBLOCK;
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 }
 
@@ -1031,6 +1038,10 @@ SYSCALL_DEFINE3(poll, struct pollfd __user *, ufds, unsigned int, nfds,
 		struct restart_block *restart_block;
 
 		restart_block = &current->restart_block;
+<<<<<<< HEAD
+=======
+		restart_block->fn = do_restart_poll;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		restart_block->poll.ufds = ufds;
 		restart_block->poll.nfds = nfds;
 
@@ -1041,7 +1052,11 @@ SYSCALL_DEFINE3(poll, struct pollfd __user *, ufds, unsigned int, nfds,
 		} else
 			restart_block->poll.has_timeout = 0;
 
+<<<<<<< HEAD
 		ret = set_restart_fn(restart_block, do_restart_poll);
+=======
+		ret = -ERESTART_RESTARTBLOCK;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	return ret;
 }

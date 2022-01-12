@@ -79,6 +79,7 @@ unsigned long __cmpxchg_u32(volatile unsigned int *ptr, unsigned int old, unsign
 	_atomic_spin_unlock_irqrestore(ptr, flags);
 	return (unsigned long)prev;
 }
+<<<<<<< HEAD
 
 u8 __cmpxchg_u8(volatile u8 *ptr, u8 old, u8 new)
 {
@@ -91,3 +92,5 @@ u8 __cmpxchg_u8(volatile u8 *ptr, u8 old, u8 new)
 	_atomic_spin_unlock_irqrestore(ptr, flags);
 	return prev;
 }
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

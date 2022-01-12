@@ -79,7 +79,11 @@ int llc_sap_action_send_xid_c(struct llc_sap *sap, struct sk_buff *skb)
 	struct llc_sap_state_ev *ev = llc_sap_ev(skb);
 	int rc;
 
+<<<<<<< HEAD
 	llc_pdu_header_init(skb, LLC_PDU_TYPE_U_XID, ev->saddr.lsap,
+=======
+	llc_pdu_header_init(skb, LLC_PDU_TYPE_U, ev->saddr.lsap,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			    ev->daddr.lsap, LLC_PDU_CMD);
 	llc_pdu_init_as_xid_cmd(skb, LLC_XID_NULL_CLASS_2, 0);
 	rc = llc_mac_hdr_init(skb, ev->saddr.mac, ev->daddr.mac);

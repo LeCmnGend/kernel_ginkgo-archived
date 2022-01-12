@@ -2338,12 +2338,19 @@ smiapp_sysfs_nvm_read(struct device *dev, struct device_attribute *attr,
 		if (rval < 0) {
 			if (rval != -EBUSY && rval != -EAGAIN)
 				pm_runtime_set_active(&client->dev);
+<<<<<<< HEAD
 			pm_runtime_put_noidle(&client->dev);
+=======
+			pm_runtime_put(&client->dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return -ENODEV;
 		}
 
 		if (smiapp_read_nvm(sensor, sensor->nvm)) {
+<<<<<<< HEAD
 			pm_runtime_put(&client->dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			dev_err(&client->dev, "nvm read failed\n");
 			return -ENODEV;
 		}

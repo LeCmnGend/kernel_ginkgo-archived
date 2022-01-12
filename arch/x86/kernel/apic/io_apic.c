@@ -1042,6 +1042,7 @@ static int mp_map_pin_to_irq(u32 gsi, int idx, int ioapic, int pin,
 	if (idx >= 0 && test_bit(mp_irqs[idx].srcbus, mp_bus_not_pci)) {
 		irq = mp_irqs[idx].srcbusirq;
 		legacy = mp_is_legacy_irq(irq);
+<<<<<<< HEAD
 		/*
 		 * IRQ2 is unusable for historical reasons on systems which
 		 * have a legacy PIC. See the comment vs. IRQ2 further down.
@@ -1052,6 +1053,8 @@ static int mp_map_pin_to_irq(u32 gsi, int idx, int ioapic, int pin,
 		 */
 		if (legacy && irq == PIC_CASCADE_IR)
 			return -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	mutex_lock(&ioapic_mutex);
@@ -2170,7 +2173,10 @@ static inline void __init check_timer(void)
 	legacy_pic->init(0);
 	legacy_pic->make_irq(0);
 	apic_write(APIC_LVT0, APIC_DM_EXTINT);
+<<<<<<< HEAD
 	legacy_pic->unmask(0);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	unlock_ExtINT_logic();
 
@@ -2263,6 +2269,7 @@ static int mp_irqdomain_create(int ioapic)
 
 static void ioapic_destroy_irqdomain(int idx)
 {
+<<<<<<< HEAD
 	struct ioapic_domain_cfg *cfg = &ioapics[idx].irqdomain_cfg;
 	struct fwnode_handle *fn = ioapics[idx].irqdomain->fwnode;
 
@@ -2270,6 +2277,10 @@ static void ioapic_destroy_irqdomain(int idx)
 		irq_domain_remove(ioapics[idx].irqdomain);
 		if (!cfg->dev)
 			irq_domain_free_fwnode(fn);
+=======
+	if (ioapics[idx].irqdomain) {
+		irq_domain_remove(ioapics[idx].irqdomain);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ioapics[idx].irqdomain = NULL;
 	}
 }

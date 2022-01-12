@@ -42,10 +42,15 @@ nouveau_gem_object_del(struct drm_gem_object *gem)
 	int ret;
 
 	ret = pm_runtime_get_sync(dev);
+<<<<<<< HEAD
 	if (WARN_ON(ret < 0 && ret != -EACCES)) {
 		pm_runtime_put_autosuspend(dev);
 		return;
 	}
+=======
+	if (WARN_ON(ret < 0 && ret != -EACCES))
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (gem->import_attach)
 		drm_prime_gem_destroy(gem, nvbo->bo.sg);

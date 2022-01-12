@@ -206,8 +206,12 @@ enum {
 #define DEF_MID_DISCARD_ISSUE_TIME	500	/* 500 ms, if device busy */
 #define DEF_MAX_DISCARD_ISSUE_TIME	60000	/* 60 s, if no candidates */
 #define DEF_DISCARD_URGENT_UTIL		80	/* do more discard over 80% */
+<<<<<<< HEAD
 #define DEF_MAX_DISCARD_URGENT_ISSUE_TIME	10000	/* 10 s, if no candidates on high utilization */
 #define DEF_CP_INTERVAL			200	/* 200 secs */
+=======
+#define DEF_CP_INTERVAL			60	/* 60 secs */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define DEF_IDLE_INTERVAL		5	/* 5 secs */
 #define DEF_DISABLE_INTERVAL		5	/* 5 secs */
 #define DEF_DISABLE_QUICK_INTERVAL	1	/* 1 secs */
@@ -605,8 +609,13 @@ enum {
 
 #define DEFAULT_RETRY_IO_COUNT	8	/* maximum retry read IO count */
 
+<<<<<<< HEAD
 /* congestion wait timeout value, default: 6ms */
 #define	DEFAULT_IO_TIMEOUT	(msecs_to_jiffies(6))
+=======
+/* congestion wait timeout value, default: 20ms */
+#define	DEFAULT_IO_TIMEOUT	(msecs_to_jiffies(20))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* maximum retry quota flush count */
 #define DEFAULT_RETRY_QUOTA_FLUSH_COUNT		8
@@ -798,7 +807,10 @@ struct f2fs_inode_info {
 	struct task_struct *inmem_task;	/* store inmemory task */
 	struct mutex inmem_lock;	/* lock for inmemory pages */
 	struct extent_tree *extent_tree;	/* cached extent_tree entry */
+<<<<<<< HEAD
 	struct list_head xattr_dirty_list;	/* list for xattr changed inodes */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* avoid racing between foreground op and gc */
 	struct rw_semaphore i_gc_rwsem[2];
@@ -1131,7 +1143,10 @@ enum cp_reason_type {
 	CP_FASTBOOT_MODE,
 	CP_SPEC_LOG_NUM,
 	CP_RECOVER_DIR,
+<<<<<<< HEAD
 	CP_PARENT_XATTR_SET,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 enum iostat_type {
@@ -1432,7 +1447,10 @@ struct f2fs_sb_info {
 	struct inode *meta_inode;		/* cache meta blocks */
 	struct mutex cp_mutex;			/* checkpoint procedure lock */
 	struct rw_semaphore cp_rwsem;		/* blocking FS operations */
+<<<<<<< HEAD
 	struct rw_semaphore cp_quota_rwsem;    	/* blocking quota sync operations */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct rw_semaphore node_write;		/* locking node writes */
 	struct rw_semaphore node_change;	/* locking node change */
 	wait_queue_head_t cp_wait;
@@ -1445,8 +1463,11 @@ struct f2fs_sb_info {
 	struct list_head fsync_node_list;	/* node list head */
 	unsigned int fsync_seg_id;		/* sequence id */
 	unsigned int fsync_node_num;		/* number of node entries */
+<<<<<<< HEAD
 	spinlock_t xattr_set_dir_ilist_lock;	/* lock for dir inode list*/
 	struct list_head xattr_set_dir_ilist;	/* xattr changed dir inode list */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* for orphan inode, use 0'th array */
 	unsigned int max_orphans;		/* max orphan inodes */
@@ -1942,14 +1963,20 @@ static inline void f2fs_unlock_op(struct f2fs_sb_info *sbi)
 
 static inline void f2fs_lock_all(struct f2fs_sb_info *sbi)
 {
+<<<<<<< HEAD
 	down_write(&sbi->cp_quota_rwsem);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	down_write(&sbi->cp_rwsem);
 }
 
 static inline void f2fs_unlock_all(struct f2fs_sb_info *sbi)
 {
 	up_write(&sbi->cp_rwsem);
+<<<<<<< HEAD
 	up_write(&sbi->cp_quota_rwsem);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static inline int __get_cp_reason(struct f2fs_sb_info *sbi)
@@ -3391,7 +3418,11 @@ struct page *f2fs_get_meta_page(struct f2fs_sb_info *sbi, pgoff_t index);
 struct page *f2fs_get_meta_page_nofail(struct f2fs_sb_info *sbi, pgoff_t index);
 struct page *f2fs_get_tmp_page(struct f2fs_sb_info *sbi, pgoff_t index);
 bool f2fs_is_valid_blkaddr(struct f2fs_sb_info *sbi,
+<<<<<<< HEAD
 					block_t blkaddr, int type);
+=======
+			block_t blkaddr, int type);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int f2fs_ra_meta_pages(struct f2fs_sb_info *sbi, block_t start, int nrpages,
 			int type, bool sync);
 void f2fs_ra_meta_pages_cond(struct f2fs_sb_info *sbi, pgoff_t index);
@@ -3780,6 +3811,7 @@ int f2fs_inline_data_fiemap(struct inode *inode,
 			__u64 start, __u64 len);
 
 /*
+<<<<<<< HEAD
  * xattr.c
  */
 void f2fs_inode_xattr_set(struct inode *inode);
@@ -3788,6 +3820,8 @@ void f2fs_clear_xattr_set_ilist(struct f2fs_sb_info *sbi);
 int f2fs_parent_inode_xattr_set(struct inode *inode);
 
 /*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * shrinker.c
  */
 unsigned long f2fs_shrink_count(struct shrinker *shrink,

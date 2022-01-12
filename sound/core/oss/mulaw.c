@@ -329,8 +329,13 @@ int snd_pcm_plugin_build_mulaw(struct snd_pcm_substream *plug,
 		snd_BUG();
 		return -EINVAL;
 	}
+<<<<<<< HEAD
 	if (!snd_pcm_format_linear(format->format))
 		return -EINVAL;
+=======
+	if (snd_BUG_ON(!snd_pcm_format_linear(format->format)))
+		return -ENXIO;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	err = snd_pcm_plugin_build(plug, "Mu-Law<->linear conversion",
 				   src_format, dst_format,

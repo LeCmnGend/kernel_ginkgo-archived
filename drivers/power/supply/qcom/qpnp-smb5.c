@@ -1,5 +1,8 @@
 /* Copyright (c) 2018-2020 The Linux Foundation. All rights reserved.
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -31,6 +34,7 @@
 #include "smb5-lib.h"
 #include "schgm-flash.h"
 
+<<<<<<< HEAD
 #include <linux/notifier.h>
 #include <linux/msm_drm_notify.h>
 #include <linux/fb.h>
@@ -52,6 +56,8 @@ int LctThermal =0;
 //extern int hwc_check_global;
 //extern bool is_poweroff_charge;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct smb_params smb5_pmi632_params = {
 	.fcc			= {
 		.name   = "fast charge current",
@@ -814,7 +820,11 @@ static int smb5_usb_get_prop(struct power_supply *psy,
 		val->intval = get_client_vote(chg->usb_icl_votable, PD_VOTER);
 		break;
 	case POWER_SUPPLY_PROP_CURRENT_MAX:
+<<<<<<< HEAD
 		val->intval = get_effective_result(chg->usb_icl_votable);
+=======
+		rc = smblib_get_prop_input_current_max(chg, val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 	case POWER_SUPPLY_PROP_TYPE:
 		val->intval = POWER_SUPPLY_TYPE_USB_PD;
@@ -1042,7 +1052,11 @@ static int smb5_usb_set_prop(struct power_supply *psy,
 		smblib_rerun_apsd(chg);
 		break;
 	default:
+<<<<<<< HEAD
 		pr_debug("set prop %d is not supported\n", psp);
+=======
+		pr_err("set prop %d is not supported\n", psp);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rc = -EINVAL;
 		break;
 	}
@@ -1083,11 +1097,18 @@ static int smb5_init_usb_psy(struct smb5 *chip)
 	struct power_supply_config usb_cfg = {};
 	struct smb_charger *chg = &chip->chg;
 
+<<<<<<< HEAD
     chg->usb_psy_desc = usb_psy_desc;
 	usb_cfg.drv_data = chip;
 	usb_cfg.of_node = chg->dev->of_node;
 	chg->usb_psy = devm_power_supply_register(chg->dev,
 						  &chg->usb_psy_desc,
+=======
+	usb_cfg.drv_data = chip;
+	usb_cfg.of_node = chg->dev->of_node;
+	chg->usb_psy = devm_power_supply_register(chg->dev,
+						  &usb_psy_desc,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 						  &usb_cfg);
 	if (IS_ERR(chg->usb_psy)) {
 		pr_err("Couldn't register USB power supply\n");
@@ -1159,7 +1180,11 @@ static int smb5_usb_port_set_prop(struct power_supply *psy,
 
 	switch (psp) {
 	default:
+<<<<<<< HEAD
 		pr_debug("Set prop %d is not supported in pc_port\n",
+=======
+		pr_err_ratelimited("Set prop %d is not supported in pc_port\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				psp);
 		rc = -EINVAL;
 		break;
@@ -1611,11 +1636,17 @@ static enum power_supply_property smb5_batt_props[] = {
 	POWER_SUPPLY_PROP_RECHARGE_SOC,
 	POWER_SUPPLY_PROP_CHARGE_FULL,
 	POWER_SUPPLY_PROP_FORCE_RECHARGE,
+<<<<<<< HEAD
 	POWER_SUPPLY_PROP_TIME_TO_FULL_NOW,
 	POWER_SUPPLY_PROP_FCC_STEPPER_ENABLE,
 	POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN,
 	POWER_SUPPLY_PROP_CHARGING_ENABLED,
 	POWER_SUPPLY_PROP_SYSTEM_TEMP_LEVEL,
+=======
+	POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN,
+	POWER_SUPPLY_PROP_TIME_TO_FULL_NOW,
+	POWER_SUPPLY_PROP_FCC_STEPPER_ENABLE,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 #define DEBUG_ACCESSORY_TEMP_DECIDEGC	250
@@ -1681,6 +1712,11 @@ static int smb5_batt_get_prop(struct power_supply *psy,
 	case POWER_SUPPLY_PROP_CURRENT_NOW:
 		rc = smblib_get_prop_from_bms(chg,
 				POWER_SUPPLY_PROP_CURRENT_NOW, val);
+<<<<<<< HEAD
+=======
+		if (!rc)
+			val->intval *= (-1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 	case POWER_SUPPLY_PROP_CURRENT_QNOVO:
 		val->intval = get_client_vote_locked(chg->fcc_votable,
@@ -1704,7 +1740,11 @@ static int smb5_batt_get_prop(struct power_supply *psy,
 						POWER_SUPPLY_PROP_TEMP, val);
 		break;
 	case POWER_SUPPLY_PROP_TECHNOLOGY:
+<<<<<<< HEAD
 		val->intval = POWER_SUPPLY_TECHNOLOGY_LIPO;
+=======
+		val->intval = POWER_SUPPLY_TECHNOLOGY_LION;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 	case POWER_SUPPLY_PROP_CHARGE_DONE:
 		rc = smblib_get_prop_batt_charge_done(chg, val);
@@ -1750,6 +1790,13 @@ static int smb5_batt_get_prop(struct power_supply *psy,
 	case POWER_SUPPLY_PROP_FORCE_RECHARGE:
 		val->intval = 0;
 		break;
+<<<<<<< HEAD
+=======
+	case POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN:
+		rc = smblib_get_prop_from_bms(chg,
+				POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN, val);
+		break;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case POWER_SUPPLY_PROP_TIME_TO_FULL_NOW:
 		rc = smblib_get_prop_from_bms(chg,
 				POWER_SUPPLY_PROP_TIME_TO_FULL_NOW, val);
@@ -1757,6 +1804,7 @@ static int smb5_batt_get_prop(struct power_supply *psy,
 	case POWER_SUPPLY_PROP_FCC_STEPPER_ENABLE:
 		val->intval = chg->fcc_stepper_enable;
 		break;
+<<<<<<< HEAD
 	case POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN:
 		val->intval = 4000;
 		break;
@@ -1766,6 +1814,8 @@ static int smb5_batt_get_prop(struct power_supply *psy,
 	case POWER_SUPPLY_PROP_SYSTEM_TEMP_LEVEL:
 		rc = smblib_get_prop_system_temp_level(chg, val);
 		break;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	default:
 		pr_err("batt power supply prop %d not supported\n", psp);
 		return -EINVAL;
@@ -1864,12 +1914,15 @@ static int smb5_batt_set_prop(struct power_supply *psy,
 			vote(chg->chg_disable_votable, FORCE_RECHARGE_VOTER,
 					false, 0);
 		break;
+<<<<<<< HEAD
 	case POWER_SUPPLY_PROP_CHARGING_ENABLED:
 		rc = smblib_set_prop_battery_charging_enabled(chg, val);
 		break;
 	case POWER_SUPPLY_PROP_SYSTEM_TEMP_LEVEL:
 		rc = smblib_set_prop_system_temp_level(chg, val);
 		break;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case POWER_SUPPLY_PROP_FCC_STEPPER_ENABLE:
 		chg->fcc_stepper_enable = val->intval;
 		break;
@@ -1894,7 +1947,10 @@ static int smb5_batt_prop_is_writeable(struct power_supply *psy,
 	case POWER_SUPPLY_PROP_INPUT_CURRENT_LIMITED:
 	case POWER_SUPPLY_PROP_STEP_CHARGING_ENABLED:
 	case POWER_SUPPLY_PROP_DIE_HEALTH:
+<<<<<<< HEAD
 	case POWER_SUPPLY_PROP_CHARGING_ENABLED:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return 1;
 	default:
 		break;
@@ -2705,10 +2761,16 @@ static int smb5_init_hw(struct smb5 *chip)
 	 */
 	if (chg->chg_param.smb_version == PMI632_SUBTYPE) {
 		schgm_flash_init(chg);
+<<<<<<< HEAD
 	}
 
 	smblib_rerun_apsd_if_required(chg);
 
+=======
+		smblib_rerun_apsd_if_required(chg);
+	}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Use ICL results from HW */
 	rc = smblib_icl_override(chg, HW_AUTO_MODE);
 	if (rc < 0) {
@@ -2969,6 +3031,7 @@ static int smb5_init_hw(struct smb5 *chip)
 		return rc;
 	}
 
+<<<<<<< HEAD
 	rc = smblib_masked_write(chg,USBIN_9V_AICL_THRESHOLD_REG,USBIN_9V_AICL_MASK,USBIN_9V_AICL_THRESHOLD_CFG);
 	if(rc < 0){
 		dev_err(chg->dev, "Couldn't configure USBIN_9V_AICL_THRESHOLD_REG rc=%d\n",
@@ -2987,6 +3050,8 @@ static int smb5_init_hw(struct smb5 *chip)
 				rc);
 		return rc;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (chg->connector_pull_up != -EINVAL) {
 		rc = smb5_configure_internal_pull(chg, CONN_THERM,
 				get_valid_pullup(chg->connector_pull_up));
@@ -3516,6 +3581,7 @@ static void smb5_create_debugfs(struct smb5 *chip)
 
 #endif
 
+<<<<<<< HEAD
 static ssize_t lct_thermal_call_status_show(struct device *dev,
 					struct device_attribute *attr, char *buf)
 {
@@ -3609,6 +3675,8 @@ static int lct_unregister_powermanger(struct smb_charger *chg)
 
 
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int smb5_show_charger_status(struct smb5 *chip)
 {
 	struct smb_charger *chg = &chip->chg;
@@ -3655,7 +3723,10 @@ static int smb5_probe(struct platform_device *pdev)
 	struct smb5 *chip;
 	struct smb_charger *chg;
 	int rc = 0;
+<<<<<<< HEAD
 	unsigned char attr_count2;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	chip = devm_kzalloc(&pdev->dev, sizeof(*chip), GFP_KERNEL);
 	if (!chip)
@@ -3805,6 +3876,7 @@ static int smb5_probe(struct platform_device *pdev)
 		pr_err("Couldn't initialize batt psy rc=%d\n", rc);
 		goto cleanup;
 	}
+<<<<<<< HEAD
 	pr_info("enter sysfs create file thermal\n");
 	for (attr_count2 = 0; attr_count2 < ARRAY_SIZE(attrs2); attr_count2++) {
 		    rc = sysfs_create_file(&chg->dev->kobj,
@@ -3815,6 +3887,9 @@ static int smb5_probe(struct platform_device *pdev)
 						&attrs2[attr_count2].attr);
 			}
 		}
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Register android dual-role class */
 	rc = smb5_init_dual_role_class(chip);
 	if (rc < 0) {
@@ -3852,6 +3927,7 @@ static int smb5_probe(struct platform_device *pdev)
 
 	device_init_wakeup(chg->dev, true);
 
+<<<<<<< HEAD
 	lct_therm_lvl_reserved.intval= 0;
 	lct_therm_level.intval= 0;
 	lct_backlight_off = false;
@@ -3859,6 +3935,8 @@ static int smb5_probe(struct platform_device *pdev)
 	/* register suspend and resume fucntion*/
 	lct_register_powermanger(chg);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pr_info("QPNP SMB5 probed successfully\n");
 
 	return rc;
@@ -3876,6 +3954,7 @@ static int smb5_remove(struct platform_device *pdev)
 {
 	struct smb5 *chip = platform_get_drvdata(pdev);
 	struct smb_charger *chg = &chip->chg;
+<<<<<<< HEAD
 	unsigned char attr_count2;
 
 	for (attr_count2 = 0; attr_count2 < ARRAY_SIZE(attrs2); attr_count2++) {
@@ -3883,6 +3962,8 @@ static int smb5_remove(struct platform_device *pdev)
 							&attrs2[attr_count2].attr);
 			}
 	lct_unregister_powermanger(chg);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* force enable APSD */
 	smblib_masked_write(chg, USBIN_OPTIONS_1_CFG_REG,

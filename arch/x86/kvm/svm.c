@@ -389,9 +389,12 @@ static void recalc_intercepts(struct vcpu_svm *svm)
 	c->intercept_dr = h->intercept_dr | g->intercept_dr;
 	c->intercept_exceptions = h->intercept_exceptions | g->intercept_exceptions;
 	c->intercept = h->intercept | g->intercept;
+<<<<<<< HEAD
 
 	c->intercept |= (1ULL << INTERCEPT_VMLOAD);
 	c->intercept |= (1ULL << INTERCEPT_VMSAVE);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static inline struct vmcb *get_host_vmcb(struct vcpu_svm *svm)
@@ -1211,7 +1214,16 @@ static __init int svm_hardware_setup(void)
 		}
 	}
 
+<<<<<<< HEAD
 	vgif = false; /* Disabled for CVE-2021-3653 */
+=======
+	if (vgif) {
+		if (!boot_cpu_has(X86_FEATURE_VGIF))
+			vgif = false;
+		else
+			pr_info("Virtual GIF supported\n");
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
 
@@ -3159,6 +3171,7 @@ static bool nested_svm_vmrun(struct vcpu_svm *svm)
 	svm->nested.intercept            = nested_vmcb->control.intercept;
 
 	svm_flush_tlb(&svm->vcpu, true);
+<<<<<<< HEAD
 
 	svm->vmcb->control.int_ctl &=
 			V_INTR_MASKING_MASK | V_GIF_ENABLE_MASK | V_GIF_MASK;
@@ -3166,6 +3179,9 @@ static bool nested_svm_vmrun(struct vcpu_svm *svm)
 	svm->vmcb->control.int_ctl |= nested_vmcb->control.int_ctl &
 			(V_TPR_MASK | V_IRQ_INJECTION_BITS_MASK);
 
+=======
+	svm->vmcb->control.int_ctl = nested_vmcb->control.int_ctl | V_INTR_MASKING_MASK;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (nested_vmcb->control.int_ctl & V_INTR_MASKING_MASK)
 		svm->vcpu.arch.hflags |= HF_VINTR_MASK;
 	else
@@ -3536,7 +3552,11 @@ static int cr_interception(struct vcpu_svm *svm)
 	err = 0;
 	if (cr >= 16) { /* mov to cr */
 		cr -= 16;
+<<<<<<< HEAD
 		val = kvm_register_readl(&svm->vcpu, reg);
+=======
+		val = kvm_register_read(&svm->vcpu, reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		switch (cr) {
 		case 0:
 			if (!check_selective_cr0_intercepted(svm, val))
@@ -3581,7 +3601,11 @@ static int cr_interception(struct vcpu_svm *svm)
 			kvm_queue_exception(&svm->vcpu, UD_VECTOR);
 			return 1;
 		}
+<<<<<<< HEAD
 		kvm_register_writel(&svm->vcpu, reg, val);
+=======
+		kvm_register_write(&svm->vcpu, reg, val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	return kvm_complete_insn_gp(&svm->vcpu, err);
 }
@@ -3611,13 +3635,21 @@ static int dr_interception(struct vcpu_svm *svm)
 	if (dr >= 16) { /* mov to DRn */
 		if (!kvm_require_dr(&svm->vcpu, dr - 16))
 			return 1;
+<<<<<<< HEAD
 		val = kvm_register_readl(&svm->vcpu, reg);
+=======
+		val = kvm_register_read(&svm->vcpu, reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		kvm_set_dr(&svm->vcpu, dr - 16, val);
 	} else {
 		if (!kvm_require_dr(&svm->vcpu, dr))
 			return 1;
 		kvm_get_dr(&svm->vcpu, dr, &val);
+<<<<<<< HEAD
 		kvm_register_writel(&svm->vcpu, reg, val);
+=======
+		kvm_register_write(&svm->vcpu, reg, val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	return kvm_skip_emulated_instruction(&svm->vcpu);
@@ -4866,7 +4898,10 @@ static int svm_update_pi_irte(struct kvm *kvm, unsigned int host_irq,
 			 * - Tell IOMMU to use legacy mode for this interrupt.
 			 * - Retrieve ga_tag of prior interrupt remapping data.
 			 */
+<<<<<<< HEAD
 			pi.prev_ga_tag = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			pi.is_guest_mode = false;
 			ret = irq_set_vcpu_affinity(host_irq, &pi);
 

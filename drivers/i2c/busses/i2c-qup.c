@@ -846,8 +846,12 @@ static int qup_i2c_bam_do_xfer(struct qup_i2c_dev *qup, struct i2c_msg *msg,
 	if (ret || qup->bus_err || qup->qup_err) {
 		reinit_completion(&qup->xfer);
 
+<<<<<<< HEAD
 		ret = qup_i2c_change_state(qup, QUP_RUN_STATE);
 		if (ret) {
+=======
+		if (qup_i2c_change_state(qup, QUP_RUN_STATE)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			dev_err(qup->dev, "change to run state timed out");
 			goto desc_err;
 		}

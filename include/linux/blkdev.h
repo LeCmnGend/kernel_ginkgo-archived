@@ -119,8 +119,11 @@ typedef __u32 __bitwise req_flags_t;
 /* Look at ->special_vec for the actual data payload instead of the
    bio chain. */
 #define RQF_SPECIAL_PAYLOAD	((__force req_flags_t)(1 << 18))
+<<<<<<< HEAD
 /* increased nr_pending for this request */
 #define RQF_PM_ADDED		((__force req_flags_t)(1 << 19))
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* flags that prevent us from merging requests: */
 #define RQF_NOMERGE_FLAGS \
@@ -659,15 +662,25 @@ struct request_queue {
 #define QUEUE_FLAG_QUIESCED    28	/* queue has been quiesced */
 #define QUEUE_FLAG_PREEMPT_ONLY 29	/* only process REQ_PREEMPT requests */
 
+<<<<<<< HEAD
 #define QUEUE_FLAG_DEFAULT	((1 << QUEUE_FLAG_NONROT) |		\
 				 (1 << QUEUE_FLAG_STACKABLE)	|	\
 				 (1 << QUEUE_FLAG_WC)		|	\
 				 (1 << QUEUE_FLAG_SAME_COMP))
+=======
+#define QUEUE_FLAG_DEFAULT	((1 << QUEUE_FLAG_IO_STAT) |		\
+				 (1 << QUEUE_FLAG_STACKABLE)	|	\
+				 (1 << QUEUE_FLAG_SAME_COMP)	|	\
+				 (1 << QUEUE_FLAG_ADD_RANDOM))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #define QUEUE_FLAG_MQ_DEFAULT	((1 << QUEUE_FLAG_IO_STAT) |		\
 				 (1 << QUEUE_FLAG_STACKABLE)	|	\
 				 (1 << QUEUE_FLAG_SAME_COMP)	|	\
+<<<<<<< HEAD
 				 (1 << QUEUE_FLAG_WC)		|	\
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				 (1 << QUEUE_FLAG_POLL))
 
 /*
@@ -1030,6 +1043,7 @@ static inline struct request_queue *bdev_get_queue(struct block_device *bdev)
 }
 
 /*
+<<<<<<< HEAD
  * The basic unit of block I/O is a sector. It is used in a number of contexts
  * in Linux (blk, bio, genhd). The size of one sector is 512 = 2**9
  * bytes. Variables of type sector_t represent an offset or size that is a
@@ -1043,6 +1057,8 @@ static inline struct request_queue *bdev_get_queue(struct block_device *bdev)
 #endif
 
 /*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * blk_rq_pos()			: the current sector
  * blk_rq_bytes()		: bytes left in the entire request
  * blk_rq_cur_bytes()		: bytes left in the current segment
@@ -1069,12 +1085,20 @@ extern unsigned int blk_rq_err_bytes(const struct request *rq);
 
 static inline unsigned int blk_rq_sectors(const struct request *rq)
 {
+<<<<<<< HEAD
 	return blk_rq_bytes(rq) >> SECTOR_SHIFT;
+=======
+	return blk_rq_bytes(rq) >> 9;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static inline unsigned int blk_rq_cur_sectors(const struct request *rq)
 {
+<<<<<<< HEAD
 	return blk_rq_cur_bytes(rq) >> SECTOR_SHIFT;
+=======
+	return blk_rq_cur_bytes(rq) >> 9;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /*
@@ -1094,8 +1118,12 @@ static inline unsigned int blk_queue_get_max_sectors(struct request_queue *q,
 						     int op)
 {
 	if (unlikely(op == REQ_OP_DISCARD || op == REQ_OP_SECURE_ERASE))
+<<<<<<< HEAD
 		return min(q->limits.max_discard_sectors,
 			   UINT_MAX >> SECTOR_SHIFT);
+=======
+		return min(q->limits.max_discard_sectors, UINT_MAX >> 9);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (unlikely(op == REQ_OP_WRITE_SAME))
 		return q->limits.max_write_same_sectors;
@@ -1381,7 +1409,10 @@ static inline struct request *blk_map_queue_find_tag(struct blk_queue_tag *bqt,
 }
 
 extern int blkdev_issue_flush(struct block_device *, gfp_t, sector_t *);
+<<<<<<< HEAD
 extern void blkdev_issue_flush_nowait(struct block_device *, gfp_t);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern int blkdev_issue_write_same(struct block_device *bdev, sector_t sector,
 		sector_t nr_sects, gfp_t gfp_mask, struct page *page);
 
@@ -1405,21 +1436,31 @@ extern int blkdev_issue_zeroout(struct block_device *bdev, sector_t sector,
 static inline int sb_issue_discard(struct super_block *sb, sector_t block,
 		sector_t nr_blocks, gfp_t gfp_mask, unsigned long flags)
 {
+<<<<<<< HEAD
 	return blkdev_issue_discard(sb->s_bdev,
 				    block << (sb->s_blocksize_bits -
 					      SECTOR_SHIFT),
 				    nr_blocks << (sb->s_blocksize_bits -
 						  SECTOR_SHIFT),
+=======
+	return blkdev_issue_discard(sb->s_bdev, block << (sb->s_blocksize_bits - 9),
+				    nr_blocks << (sb->s_blocksize_bits - 9),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				    gfp_mask, flags);
 }
 static inline int sb_issue_zeroout(struct super_block *sb, sector_t block,
 		sector_t nr_blocks, gfp_t gfp_mask)
 {
 	return blkdev_issue_zeroout(sb->s_bdev,
+<<<<<<< HEAD
 				    block << (sb->s_blocksize_bits -
 					      SECTOR_SHIFT),
 				    nr_blocks << (sb->s_blocksize_bits -
 						  SECTOR_SHIFT),
+=======
+				    block << (sb->s_blocksize_bits - 9),
+				    nr_blocks << (sb->s_blocksize_bits - 9),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				    gfp_mask, 0);
 }
 
@@ -1526,8 +1567,12 @@ static inline int queue_alignment_offset(struct request_queue *q)
 static inline int queue_limit_alignment_offset(struct queue_limits *lim, sector_t sector)
 {
 	unsigned int granularity = max(lim->physical_block_size, lim->io_min);
+<<<<<<< HEAD
 	unsigned int alignment = sector_div(sector, granularity >> SECTOR_SHIFT)
 		<< SECTOR_SHIFT;
+=======
+	unsigned int alignment = sector_div(sector, granularity >> 9) << 9;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return (granularity + lim->alignment_offset - alignment) % granularity;
 }
@@ -1561,8 +1606,13 @@ static inline int queue_limit_discard_alignment(struct queue_limits *lim, sector
 		return 0;
 
 	/* Why are these in bytes, not sectors? */
+<<<<<<< HEAD
 	alignment = lim->discard_alignment >> SECTOR_SHIFT;
 	granularity = lim->discard_granularity >> SECTOR_SHIFT;
+=======
+	alignment = lim->discard_alignment >> 9;
+	granularity = lim->discard_granularity >> 9;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!granularity)
 		return 0;
 
@@ -1573,7 +1623,11 @@ static inline int queue_limit_discard_alignment(struct queue_limits *lim, sector
 	offset = (granularity + alignment - offset) % granularity;
 
 	/* Turn it back into bytes, gaah */
+<<<<<<< HEAD
 	return offset << SECTOR_SHIFT;
+=======
+	return offset << 9;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static inline int bdev_discard_alignment(struct block_device *bdev)
@@ -1773,33 +1827,67 @@ int kblockd_schedule_delayed_work_on(int cpu, struct delayed_work *dwork, unsign
 int kblockd_mod_delayed_work_on(int cpu, struct delayed_work *dwork, unsigned long delay);
 
 #ifdef CONFIG_BLK_CGROUP
+<<<<<<< HEAD
 static inline void set_start_time_ns(struct request *req)
 {
 	req->start_time_ns = ktime_get_ns();
+=======
+/*
+ * This should not be using sched_clock(). A real patch is in progress
+ * to fix this up, until that is in place we need to disable preemption
+ * around sched_clock() in this function and set_io_start_time_ns().
+ */
+static inline void set_start_time_ns(struct request *req)
+{
+	preempt_disable();
+	req->start_time_ns = sched_clock();
+	preempt_enable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static inline void set_io_start_time_ns(struct request *req)
 {
+<<<<<<< HEAD
 	req->io_start_time_ns = ktime_get_ns();
 }
 
 static inline u64 rq_start_time_ns(struct request *req)
+=======
+	preempt_disable();
+	req->io_start_time_ns = sched_clock();
+	preempt_enable();
+}
+
+static inline uint64_t rq_start_time_ns(struct request *req)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
         return req->start_time_ns;
 }
 
+<<<<<<< HEAD
 static inline u64 rq_io_start_time_ns(struct request *req)
+=======
+static inline uint64_t rq_io_start_time_ns(struct request *req)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
         return req->io_start_time_ns;
 }
 #else
 static inline void set_start_time_ns(struct request *req) {}
 static inline void set_io_start_time_ns(struct request *req) {}
+<<<<<<< HEAD
 static inline u64 rq_start_time_ns(struct request *req)
 {
 	return 0;
 }
 static inline u64 rq_io_start_time_ns(struct request *req)
+=======
+static inline uint64_t rq_start_time_ns(struct request *req)
+{
+	return 0;
+}
+static inline uint64_t rq_io_start_time_ns(struct request *req)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	return 0;
 }
@@ -2117,10 +2205,13 @@ static inline int blkdev_issue_flush(struct block_device *bdev, gfp_t gfp_mask,
 	return 0;
 }
 
+<<<<<<< HEAD
 static inline void blkdev_issue_flush_nowait(struct block_device *bdev, gfp_t gfp_mask)
 {
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* CONFIG_BLOCK */
 
 #endif

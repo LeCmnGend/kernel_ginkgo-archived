@@ -1219,7 +1219,11 @@ int bcm_qspi_probe(struct platform_device *pdev,
 	if (!of_match_node(bcm_qspi_of_match, dev->of_node))
 		return -ENODEV;
 
+<<<<<<< HEAD
 	master = devm_spi_alloc_master(dev, sizeof(struct bcm_qspi));
+=======
+	master = spi_alloc_master(dev, sizeof(struct bcm_qspi));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!master) {
 		dev_err(dev, "error allocating spi_master\n");
 		return -ENOMEM;
@@ -1253,17 +1257,33 @@ int bcm_qspi_probe(struct platform_device *pdev,
 
 	if (res) {
 		qspi->base[MSPI]  = devm_ioremap_resource(dev, res);
+<<<<<<< HEAD
 		if (IS_ERR(qspi->base[MSPI]))
 			return PTR_ERR(qspi->base[MSPI]);
 	} else {
 		return 0;
+=======
+		if (IS_ERR(qspi->base[MSPI])) {
+			ret = PTR_ERR(qspi->base[MSPI]);
+			goto qspi_resource_err;
+		}
+	} else {
+		goto qspi_resource_err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "bspi");
 	if (res) {
 		qspi->base[BSPI]  = devm_ioremap_resource(dev, res);
+<<<<<<< HEAD
 		if (IS_ERR(qspi->base[BSPI]))
 			return PTR_ERR(qspi->base[BSPI]);
+=======
+		if (IS_ERR(qspi->base[BSPI])) {
+			ret = PTR_ERR(qspi->base[BSPI]);
+			goto qspi_resource_err;
+		}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		qspi->bspi_mode = true;
 	} else {
 		qspi->bspi_mode = false;
@@ -1274,14 +1294,28 @@ int bcm_qspi_probe(struct platform_device *pdev,
 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "cs_reg");
 	if (res) {
 		qspi->base[CHIP_SELECT]  = devm_ioremap_resource(dev, res);
+<<<<<<< HEAD
 		if (IS_ERR(qspi->base[CHIP_SELECT]))
 			return PTR_ERR(qspi->base[CHIP_SELECT]);
+=======
+		if (IS_ERR(qspi->base[CHIP_SELECT])) {
+			ret = PTR_ERR(qspi->base[CHIP_SELECT]);
+			goto qspi_resource_err;
+		}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	qspi->dev_ids = kcalloc(num_irqs, sizeof(struct bcm_qspi_dev_id),
 				GFP_KERNEL);
+<<<<<<< HEAD
 	if (!qspi->dev_ids)
 		return -ENOMEM;
+=======
+	if (!qspi->dev_ids) {
+		ret = -ENOMEM;
+		goto qspi_resource_err;
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	for (val = 0; val < num_irqs; val++) {
 		irq = -1;
@@ -1357,7 +1391,11 @@ int bcm_qspi_probe(struct platform_device *pdev,
 	qspi->xfer_mode.addrlen = -1;
 	qspi->xfer_mode.hp = -1;
 
+<<<<<<< HEAD
 	ret = spi_register_master(master);
+=======
+	ret = devm_spi_register_master(&pdev->dev, master);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret < 0) {
 		dev_err(dev, "can't register master\n");
 		goto qspi_reg_err;
@@ -1370,6 +1408,11 @@ qspi_reg_err:
 	clk_disable_unprepare(qspi->clk);
 qspi_probe_err:
 	kfree(qspi->dev_ids);
+<<<<<<< HEAD
+=======
+qspi_resource_err:
+	spi_master_put(master);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 }
 /* probe function to be called by SoC specific platform driver probe */
@@ -1379,10 +1422,17 @@ int bcm_qspi_remove(struct platform_device *pdev)
 {
 	struct bcm_qspi *qspi = platform_get_drvdata(pdev);
 
+<<<<<<< HEAD
 	spi_unregister_master(qspi->master);
 	bcm_qspi_hw_uninit(qspi);
 	clk_disable_unprepare(qspi->clk);
 	kfree(qspi->dev_ids);
+=======
+	bcm_qspi_hw_uninit(qspi);
+	clk_disable_unprepare(qspi->clk);
+	kfree(qspi->dev_ids);
+	spi_unregister_master(qspi->master);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
 }

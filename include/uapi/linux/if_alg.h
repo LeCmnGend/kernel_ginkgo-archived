@@ -24,6 +24,7 @@ struct sockaddr_alg {
 	__u8	salg_name[64];
 };
 
+<<<<<<< HEAD
 /*
  * Linux v4.12 and later removed the 64-byte limit on salg_name[]; it's now an
  * arbitrary-length field.  We had to keep the original struct above for source
@@ -40,6 +41,8 @@ struct sockaddr_alg_new {
 	__u8	salg_name[];
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct af_alg_iv {
 	__u32	ivlen;
 	__u8	iv[0];

@@ -826,6 +826,7 @@ static int __mmc_blk_ioctl_cmd(struct mmc_card *card, struct mmc_blk_data *md,
 	}
 
 	/*
+<<<<<<< HEAD
 	 * Make sure to update CACHE_CTRL in case it was changed. The cache
 	 * will get turned back on if the card is re-initialized, e.g.
 	 * suspend/resume or hw reset in recovery.
@@ -838,6 +839,8 @@ static int __mmc_blk_ioctl_cmd(struct mmc_card *card, struct mmc_blk_data *md,
 	}
 
 	/*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * According to the SD specs, some commands require a delay after
 	 * issuing the command.
 	 */

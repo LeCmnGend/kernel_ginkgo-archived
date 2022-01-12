@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2012-2020, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2012-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -1080,7 +1084,11 @@ static int __ipa_del_flt_rule(u32 rule_hdl)
 
 	list_del(&entry->link);
 	entry->tbl->rule_cnt--;
+<<<<<<< HEAD
 	if (entry->rt_tbl)
+=======
+	if (entry->rt_tbl && !ipa3_check_idr_if_freed(entry->rt_tbl))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		entry->rt_tbl->ref_cnt--;
 	IPADBG("del flt rule rule_cnt=%d rule_id=%d\n",
 		entry->tbl->rule_cnt, entry->rule_id);

@@ -445,7 +445,11 @@ static void mtk_desc_dma_free(struct mtk_cryp *cryp)
 static int mtk_desc_ring_alloc(struct mtk_cryp *cryp)
 {
 	struct mtk_ring **ring = cryp->ring;
+<<<<<<< HEAD
 	int i;
+=======
+	int i, err = ENOMEM;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	for (i = 0; i < MTK_RING_MAX; i++) {
 		ring[i] = kzalloc(sizeof(**ring), GFP_KERNEL);
@@ -472,14 +476,23 @@ static int mtk_desc_ring_alloc(struct mtk_cryp *cryp)
 	return 0;
 
 err_cleanup:
+<<<<<<< HEAD
 	do {
+=======
+	for (; i--; ) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dma_free_coherent(cryp->dev, MTK_DESC_RING_SZ,
 				  ring[i]->res_base, ring[i]->res_dma);
 		dma_free_coherent(cryp->dev, MTK_DESC_RING_SZ,
 				  ring[i]->cmd_base, ring[i]->cmd_dma);
 		kfree(ring[i]);
+<<<<<<< HEAD
 	} while (i--);
 	return -ENOMEM;
+=======
+	}
+	return err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static int mtk_crypto_probe(struct platform_device *pdev)

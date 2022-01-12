@@ -157,7 +157,11 @@ void set_bh_page(struct buffer_head *bh,
 		struct page *page, unsigned long offset);
 int try_to_free_buffers(struct page *);
 struct buffer_head *alloc_page_buffers(struct page *page, unsigned long size,
+<<<<<<< HEAD
 		bool retry);
+=======
+		int retry);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void create_empty_buffers(struct page *, unsigned long,
 			unsigned long b_state);
 void end_buffer_read_sync(struct buffer_head *bh, int uptodate);

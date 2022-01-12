@@ -124,7 +124,11 @@ static int pch_ptp_match(struct sk_buff *skb, u16 uid_hi, u32 uid_lo, u16 seqid)
 {
 	u8 *data = skb->data;
 	unsigned int offset;
+<<<<<<< HEAD
 	u16 hi, id;
+=======
+	u16 *hi, *id;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32 lo;
 
 	if (ptp_classify_raw(skb) == PTP_CLASS_NONE)
@@ -135,11 +139,22 @@ static int pch_ptp_match(struct sk_buff *skb, u16 uid_hi, u32 uid_lo, u16 seqid)
 	if (skb->len < offset + OFF_PTP_SEQUENCE_ID + sizeof(seqid))
 		return 0;
 
+<<<<<<< HEAD
 	hi = get_unaligned_be16(data + offset + OFF_PTP_SOURCE_UUID + 0);
 	lo = get_unaligned_be32(data + offset + OFF_PTP_SOURCE_UUID + 2);
 	id = get_unaligned_be16(data + offset + OFF_PTP_SEQUENCE_ID);
 
 	return (uid_hi == hi && uid_lo == lo && seqid == id);
+=======
+	hi = (u16 *)(data + offset + OFF_PTP_SOURCE_UUID);
+	id = (u16 *)(data + offset + OFF_PTP_SEQUENCE_ID);
+
+	memcpy(&lo, &hi[1], sizeof(lo));
+
+	return (uid_hi == *hi &&
+		uid_lo == lo &&
+		seqid  == *id);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void
@@ -149,6 +164,10 @@ pch_rx_timestamp(struct pch_gbe_adapter *adapter, struct sk_buff *skb)
 	struct pci_dev *pdev;
 	u64 ns;
 	u32 hi, lo, val;
+<<<<<<< HEAD
+=======
+	u16 uid, seq;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!adapter->hwts_rx_en)
 		return;
@@ -164,7 +183,14 @@ pch_rx_timestamp(struct pch_gbe_adapter *adapter, struct sk_buff *skb)
 	lo = pch_src_uuid_lo_read(pdev);
 	hi = pch_src_uuid_hi_read(pdev);
 
+<<<<<<< HEAD
 	if (!pch_ptp_match(skb, hi, lo, hi >> 16))
+=======
+	uid = hi & 0xffff;
+	seq = (hi >> 16) & 0xffff;
+
+	if (!pch_ptp_match(skb, htons(uid), htonl(lo), htons(seq)))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto out;
 
 	ns = pch_rx_snap_read(pdev);
@@ -2592,6 +2618,7 @@ static int pch_gbe_probe(struct pci_dev *pdev,
 	adapter->pdev = pdev;
 	adapter->hw.back = adapter;
 	adapter->hw.reg = pcim_iomap_table(pdev)[PCH_GBE_PCI_BAR];
+<<<<<<< HEAD
 
 	adapter->pdata = (struct pch_gbe_privdata *)pci_id->driver_data;
 	if (adapter->pdata && adapter->pdata->platform_init) {
@@ -2599,6 +2626,11 @@ static int pch_gbe_probe(struct pci_dev *pdev,
 		if (ret)
 			goto err_free_netdev;
 	}
+=======
+	adapter->pdata = (struct pch_gbe_privdata *)pci_id->driver_data;
+	if (adapter->pdata && adapter->pdata->platform_init)
+		adapter->pdata->platform_init(pdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	adapter->ptp_pdev = pci_get_bus_and_slot(adapter->pdev->bus->number,
 					       PCI_DEVFN(12, 4));
@@ -2693,7 +2725,11 @@ err_free_netdev:
  */
 static int pch_gbe_minnow_platform_init(struct pci_dev *pdev)
 {
+<<<<<<< HEAD
 	unsigned long flags = GPIOF_OUT_INIT_HIGH;
+=======
+	unsigned long flags = GPIOF_DIR_OUT | GPIOF_INIT_HIGH | GPIOF_EXPORT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned gpio = MINNOW_PHY_RESET_GPIO;
 	int ret;
 

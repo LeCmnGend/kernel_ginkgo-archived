@@ -208,7 +208,11 @@ static long cmm_alloc_pages(long nr)
 
 		pa->page[pa->index++] = addr;
 		loaned_pages++;
+<<<<<<< HEAD
 		totalram_pages_dec();
+=======
+		totalram_pages--;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		spin_unlock(&cmm_lock);
 		nr--;
 	}
@@ -247,7 +251,11 @@ static long cmm_free_pages(long nr)
 		free_page(addr);
 		loaned_pages--;
 		nr--;
+<<<<<<< HEAD
 		totalram_pages_inc();
+=======
+		totalram_pages++;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	spin_unlock(&cmm_lock);
 	cmm_dbg("End request with %ld pages unfulfilled\n", nr);
@@ -291,7 +299,11 @@ static void cmm_get_mpp(void)
 	int rc;
 	struct hvcall_mpp_data mpp_data;
 	signed long active_pages_target, page_loan_request, target;
+<<<<<<< HEAD
 	signed long total_pages = totalram_pages() + loaned_pages;
+=======
+	signed long total_pages = totalram_pages + loaned_pages;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	signed long min_mem_pages = (min_mem_mb * 1024 * 1024) / PAGE_SIZE;
 
 	rc = h_get_mpp(&mpp_data);
@@ -322,7 +334,11 @@ static void cmm_get_mpp(void)
 
 	cmm_dbg("delta = %ld, loaned = %lu, target = %lu, oom = %lu, totalram = %lu\n",
 		page_loan_request, loaned_pages, loaned_pages_target,
+<<<<<<< HEAD
 		oom_freed_pages, totalram_pages());
+=======
+		oom_freed_pages, totalram_pages);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static struct notifier_block cmm_oom_nb = {
@@ -586,7 +602,11 @@ static int cmm_mem_going_offline(void *arg)
 			free_page(pa_curr->page[idx]);
 			freed++;
 			loaned_pages--;
+<<<<<<< HEAD
 			totalram_pages_inc();
+=======
+			totalram_pages++;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			pa_curr->page[idx] = pa_last->page[--pa_last->index];
 			if (pa_last->index == 0) {
 				if (pa_curr == pa_last)

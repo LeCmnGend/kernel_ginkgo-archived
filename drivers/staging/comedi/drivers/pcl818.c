@@ -422,7 +422,11 @@ static int pcl818_ai_eoc(struct comedi_device *dev,
 
 static bool pcl818_ai_write_sample(struct comedi_device *dev,
 				   struct comedi_subdevice *s,
+<<<<<<< HEAD
 				   unsigned int chan, unsigned short val)
+=======
+				   unsigned int chan, unsigned int val)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct pcl818_private *devpriv = dev->private;
 	struct comedi_cmd *cmd = &s->async->cmd;

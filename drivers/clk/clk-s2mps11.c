@@ -211,7 +211,10 @@ static int s2mps11_clk_probe(struct platform_device *pdev)
 	return ret;
 
 err_reg:
+<<<<<<< HEAD
 	of_node_put(s2mps11_clks[0].clk_np);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	while (--i >= 0)
 		clkdev_drop(s2mps11_clks[i].lookup);
 

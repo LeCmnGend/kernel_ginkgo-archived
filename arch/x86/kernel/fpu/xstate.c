@@ -405,6 +405,7 @@ static void __init print_xstate_offset_size(void)
 }
 
 /*
+<<<<<<< HEAD
  * All supported features have either init state all zeros or are
  * handled in setup_init_fpu() individually. This is an explicit
  * feature list and does not use XFEATURE_MASK*SUPPORTED to catch
@@ -423,14 +424,19 @@ static void __init print_xstate_offset_size(void)
 	 XFEATURE_MASK_BNDCSR)
 
 /*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * setup the xstate image representing the init state
  */
 static void __init setup_init_fpu_buf(void)
 {
 	static int on_boot_cpu __initdata = 1;
 
+<<<<<<< HEAD
 	BUILD_BUG_ON(XCNTXT_MASK != XFEATURES_INIT_FPSTATE_HANDLED);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	WARN_ON_FPU(!on_boot_cpu);
 	on_boot_cpu = 0;
 
@@ -449,6 +455,7 @@ static void __init setup_init_fpu_buf(void)
 	copy_kernel_to_xregs_booting(&init_fpstate.xsave);
 
 	/*
+<<<<<<< HEAD
 	 * All components are now in init state. Read the state back so
 	 * that init_fpstate contains all non-zero init state. This only
 	 * works with XSAVE, but not with XSAVEOPT and XSAVES because
@@ -465,6 +472,12 @@ static void __init setup_init_fpu_buf(void)
 	 * here.
 	 */
 	fxsave(&init_fpstate.fxsave);
+=======
+	 * Dump the init state again. This is to identify the init state
+	 * of any feature which is not represented by all zero's.
+	 */
+	copy_xregs_to_kernel_booting(&init_fpstate.xsave);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static int xfeature_uncompacted_offset(int xfeature_nr)
@@ -939,6 +952,11 @@ const void *get_xsave_field_ptr(int xsave_state)
 
 #ifdef CONFIG_ARCH_HAS_PKEYS
 
+<<<<<<< HEAD
+=======
+#define NR_VALID_PKRU_BITS (CONFIG_NR_PROTECTION_KEYS * 2)
+#define PKRU_VALID_MASK (NR_VALID_PKRU_BITS - 1)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * This will go out and modify PKRU register to set the access
  * rights for @pkey to @init_val.
@@ -957,6 +975,7 @@ int arch_set_user_pkey_access(struct task_struct *tsk, int pkey,
 	if (!boot_cpu_has(X86_FEATURE_OSPKE))
 		return -EINVAL;
 
+<<<<<<< HEAD
 	/*
 	 * This code should only be called with valid 'pkey'
 	 * values originating from in-kernel users.  Complain
@@ -964,6 +983,8 @@ int arch_set_user_pkey_access(struct task_struct *tsk, int pkey,
 	 */
 	WARN_ON_ONCE(pkey >= arch_max_pkey());
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Set the bits we need in PKRU:  */
 	if (init_val & PKEY_DISABLE_ACCESS)
 		new_pkru_bits |= PKRU_AD_BIT;

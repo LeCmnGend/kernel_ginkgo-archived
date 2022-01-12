@@ -30,7 +30,10 @@
 #include <asm/insn.h>
 #include <asm/sections.h>
 
+<<<<<<< HEAD
 #if defined(CONFIG_MODULES) || defined(CONFIG_BPF_JIT)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void *module_alloc(unsigned long size)
 {
 	u64 module_alloc_end = module_alloc_base + MODULES_VSIZE;
@@ -72,6 +75,7 @@ void *module_alloc(unsigned long size)
 	return p;
 }
 
+<<<<<<< HEAD
 void module_memfree(void *module_region)
 {
 	vfree(module_region);
@@ -79,6 +83,8 @@ void module_memfree(void *module_region)
 #endif /* CONFIG_MODULES || CONFIG_BPF_JIT */
 
 #ifdef CONFIG_MODULES
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 enum aarch64_reloc_op {
 	RELOC_OP_NONE,
 	RELOC_OP_ABS,
@@ -442,4 +448,7 @@ int module_finalize(const Elf_Ehdr *hdr,
 
 	return 0;
 }
+<<<<<<< HEAD
 #endif /* CONFIG_MODULES */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

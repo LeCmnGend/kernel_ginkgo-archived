@@ -2290,7 +2290,11 @@ static int preview_init_entities(struct isp_prev_device *prev)
 	me->ops = &preview_media_ops;
 	ret = media_entity_pads_init(me, PREV_PADS_NUM, pads);
 	if (ret < 0)
+<<<<<<< HEAD
 		goto error_handler_free;
+=======
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	preview_init_formats(sd, NULL);
 
@@ -2323,8 +2327,11 @@ error_video_out:
 	omap3isp_video_cleanup(&prev->video_in);
 error_video_in:
 	media_entity_cleanup(&prev->subdev.entity);
+<<<<<<< HEAD
 error_handler_free:
 	v4l2_ctrl_handler_free(&prev->ctrls);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 }
 

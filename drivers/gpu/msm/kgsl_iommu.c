@@ -226,9 +226,14 @@ static void kgsl_iommu_remove_global(struct kgsl_mmu *mmu,
 static void kgsl_iommu_add_global(struct kgsl_mmu *mmu,
 		struct kgsl_memdesc *memdesc, const char *name)
 {
+<<<<<<< HEAD
 	u32 bit;
 	u64 size = kgsl_memdesc_footprint(memdesc);
 	int start = 0;
+=======
+	u32 bit, start = 0;
+	u64 size = kgsl_memdesc_footprint(memdesc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (memdesc->gpuaddr != 0)
 		return;
@@ -777,11 +782,16 @@ static bool kgsl_iommu_suppress_pagefault(uint64_t faultaddr, int write,
 	return kgsl_iommu_uche_overfetch(private, faultaddr);
 }
 
+<<<<<<< HEAD
 static struct kgsl_process_private *kgsl_iommu_get_process(u64 ptbase)
+=======
+static struct kgsl_process_private *kgsl_iommu_identify_process(u64 ptbase)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct kgsl_process_private *p = NULL;
 	struct kgsl_iommu_pt *iommu_pt;
 
+<<<<<<< HEAD
 	spin_lock(&kgsl_driver.proclist_lock);
 	list_for_each_entry(p, &kgsl_driver.process_list, list) {
 		iommu_pt = p->pagetable->priv;
@@ -789,11 +799,22 @@ static struct kgsl_process_private *kgsl_iommu_get_process(u64 ptbase)
 			if (!kgsl_process_private_get(p))
 				p = NULL;
 			spin_unlock(&kgsl_driver.proclist_lock);
+=======
+	mutex_lock(&kgsl_driver.process_mutex);
+	list_for_each_entry(p, &kgsl_driver.process_list, list) {
+		iommu_pt = p->pagetable->priv;
+		if (iommu_pt->ttbr0 == ptbase) {
+			mutex_unlock(&kgsl_driver.process_mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return p;
 		}
 	}
 
+<<<<<<< HEAD
 	spin_unlock(&kgsl_driver.proclist_lock);
+=======
+	mutex_unlock(&kgsl_driver.process_mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return p;
 }
 
@@ -842,14 +863,25 @@ static int kgsl_iommu_fault_handler(struct iommu_domain *domain,
 		fault_type = "transaction stalled";
 
 	ptbase = KGSL_IOMMU_GET_CTX_REG_Q(ctx, TTBR0);
+<<<<<<< HEAD
 	private = kgsl_iommu_get_process(ptbase);
 
 	if (private)
+=======
+	private = kgsl_iommu_identify_process(ptbase);
+
+	if (!kgsl_process_private_get(private))
+		private = NULL;
+	else
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		pid = pid_nr(private->pid);
 
 	if (kgsl_iommu_suppress_pagefault(addr, write, private)) {
 		iommu->pagefault_suppression_count++;
+<<<<<<< HEAD
 		kgsl_process_private_put(private);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return ret;
 	}
 

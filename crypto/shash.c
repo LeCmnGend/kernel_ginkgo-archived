@@ -25,6 +25,7 @@
 
 static const struct crypto_type crypto_shash_type;
 
+<<<<<<< HEAD
 static int shash_no_setkey(struct crypto_shash *tfm, const u8 *key,
 			   unsigned int keylen)
 {
@@ -43,6 +44,14 @@ bool crypto_shash_alg_has_setkey(struct shash_alg *alg)
 	return alg->setkey != shash_no_setkey;
 }
 EXPORT_SYMBOL_GPL(crypto_shash_alg_has_setkey);
+=======
+int shash_no_setkey(struct crypto_shash *tfm, const u8 *key,
+		    unsigned int keylen)
+{
+	return -ENOSYS;
+}
+EXPORT_SYMBOL_GPL(shash_no_setkey);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static int shash_setkey_unaligned(struct crypto_shash *tfm, const u8 *key,
 				  unsigned int keylen)

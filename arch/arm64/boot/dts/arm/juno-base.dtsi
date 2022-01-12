@@ -513,13 +513,21 @@
 		clocks {
 			compatible = "arm,scpi-clocks";
 
+<<<<<<< HEAD
 			scpi_dvfs: clocks-0 {
+=======
+			scpi_dvfs: scpi-dvfs {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				compatible = "arm,scpi-dvfs-clocks";
 				#clock-cells = <1>;
 				clock-indices = <0>, <1>, <2>;
 				clock-output-names = "atlclk", "aplclk","gpuclk";
 			};
+<<<<<<< HEAD
 			scpi_clk: clocks-1 {
+=======
+			scpi_clk: scpi-clk {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				compatible = "arm,scpi-variable-clocks";
 				#clock-cells = <1>;
 				clock-indices = <3>;
@@ -527,7 +535,11 @@
 			};
 		};
 
+<<<<<<< HEAD
 		scpi_devpd: power-controller {
+=======
+		scpi_devpd: scpi-power-domains {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			compatible = "arm,scpi-power-domains";
 			num-domains = <2>;
 			#power-domain-cells = <1>;

@@ -152,8 +152,13 @@ struct drm_virtgpu_get_caps {
 
 struct drm_virtgpu_resource_create_blob {
 #define VIRTGPU_BLOB_MEM_GUEST              0x0001
+<<<<<<< HEAD
 #define VIRTGPU_BLOB_MEM_HOST3D             0x0002
 #define VIRTGPU_BLOB_MEM_HOST3D_GUEST       0x0003
+=======
+#define VIRTGPU_BLOB_MEM_HOST               0x0002
+#define VIRTGPU_BLOB_MEM_HOST_GUEST         0x0003
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #define VIRTGPU_BLOB_FLAG_MAPPABLE          0x0001
 #define VIRTGPU_BLOB_FLAG_SHAREABLE         0x0002

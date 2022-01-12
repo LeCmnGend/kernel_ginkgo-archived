@@ -36,7 +36,11 @@
 
 #define AT91_SHDW_MR	0x04		/* Shut Down Mode Register */
 #define AT91_SHDW_WKUPDBC_SHIFT	24
+<<<<<<< HEAD
 #define AT91_SHDW_WKUPDBC_MASK	GENMASK(26, 24)
+=======
+#define AT91_SHDW_WKUPDBC_MASK	GENMASK(31, 16)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define AT91_SHDW_WKUPDBC(x)	(((x) << AT91_SHDW_WKUPDBC_SHIFT) \
 						& AT91_SHDW_WKUPDBC_MASK)
 

@@ -538,15 +538,23 @@ static bool rcar_i2c_slave_irq(struct rcar_i2c_priv *priv)
 			rcar_i2c_write(priv, ICSIER, SDR | SSR | SAR);
 		}
 
+<<<<<<< HEAD
 		/* Clear SSR, too, because of old STOPs to other clients than us */
 		rcar_i2c_write(priv, ICSSR, ~(SAR | SSR) & 0xff);
+=======
+		rcar_i2c_write(priv, ICSSR, ~SAR & 0xff);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	/* master sent stop */
 	if (ssr_filtered & SSR) {
 		i2c_slave_event(priv->slave, I2C_SLAVE_STOP, &value);
+<<<<<<< HEAD
 		rcar_i2c_write(priv, ICSCR, SIE | SDBS); /* clear our NACK */
 		rcar_i2c_write(priv, ICSIER, SAR);
+=======
+		rcar_i2c_write(priv, ICSIER, SAR | SSR);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rcar_i2c_write(priv, ICSSR, ~SSR & 0xff);
 	}
 
@@ -804,7 +812,11 @@ static int rcar_reg_slave(struct i2c_client *slave)
 	priv->slave = slave;
 	rcar_i2c_write(priv, ICSAR, slave->addr);
 	rcar_i2c_write(priv, ICSSR, 0);
+<<<<<<< HEAD
 	rcar_i2c_write(priv, ICSIER, SAR);
+=======
+	rcar_i2c_write(priv, ICSIER, SAR | SSR);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rcar_i2c_write(priv, ICSCR, SIE | SDBS);
 
 	return 0;
@@ -816,6 +828,7 @@ static int rcar_unreg_slave(struct i2c_client *slave)
 
 	WARN_ON(!priv->slave);
 
+<<<<<<< HEAD
 	/* ensure no irq is running before clearing ptr */
 	disable_irq(priv->irq);
 	rcar_i2c_write(priv, ICSIER, 0);
@@ -824,6 +837,14 @@ static int rcar_unreg_slave(struct i2c_client *slave)
 	rcar_i2c_write(priv, ICSCR, SDBS);
 	rcar_i2c_write(priv, ICSAR, 0); /* Gen2: must be 0 if not using slave */
 
+=======
+	/* disable irqs and ensure none is running before clearing ptr */
+	rcar_i2c_write(priv, ICSIER, 0);
+	rcar_i2c_write(priv, ICSCR, 0);
+	rcar_i2c_write(priv, ICSAR, 0); /* Gen2: must be 0 if not using slave */
+
+	synchronize_irq(priv->irq);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	priv->slave = NULL;
 
 	pm_runtime_put(rcar_i2c_priv_to_dev(priv));

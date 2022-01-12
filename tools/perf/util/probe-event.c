@@ -197,10 +197,15 @@ struct map *get_target_map(const char *target, struct nsinfo *nsi, bool user)
 		struct map *map;
 
 		map = dso__new_map(target);
+<<<<<<< HEAD
 		if (map && map->dso) {
 			nsinfo__put(map->dso->nsinfo);
 			map->dso->nsinfo = nsinfo__get(nsi);
 		}
+=======
+		if (map && map->dso)
+			map->dso->nsinfo = nsinfo__get(nsi);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return map;
 	} else {
 		return kernel_get_module_map(target);

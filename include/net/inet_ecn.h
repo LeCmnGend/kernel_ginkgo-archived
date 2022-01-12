@@ -4,7 +4,10 @@
 
 #include <linux/ip.h>
 #include <linux/skbuff.h>
+<<<<<<< HEAD
 #include <linux/if_vlan.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #include <net/inet_sock.h>
 #include <net/dsfield.h>

@@ -17,8 +17,13 @@
  *                                                                   USA
  */
 
+<<<<<<< HEAD
 #ifndef SRCPOS_H
 #define SRCPOS_H
+=======
+#ifndef _SRCPOS_H_
+#define _SRCPOS_H_
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #include <stdio.h>
 #include <stdbool.h>
@@ -114,4 +119,8 @@ extern void PRINTF(3, 4) srcpos_error(struct srcpos *pos, const char *prefix,
 
 extern void srcpos_set_line(char *f, int l);
 
+<<<<<<< HEAD
 #endif /* SRCPOS_H */
+=======
+#endif /* _SRCPOS_H_ */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

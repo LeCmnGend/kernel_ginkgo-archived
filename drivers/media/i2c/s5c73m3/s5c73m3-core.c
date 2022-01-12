@@ -1394,7 +1394,11 @@ static int __s5c73m3_power_on(struct s5c73m3 *state)
 	s5c73m3_gpio_deassert(state, STBY);
 	usleep_range(100, 200);
 
+<<<<<<< HEAD
 	s5c73m3_gpio_deassert(state, RSET);
+=======
+	s5c73m3_gpio_deassert(state, RST);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	usleep_range(50, 100);
 
 	return 0;
@@ -1409,7 +1413,11 @@ static int __s5c73m3_power_off(struct s5c73m3 *state)
 {
 	int i, ret;
 
+<<<<<<< HEAD
 	if (s5c73m3_gpio_assert(state, RSET))
+=======
+	if (s5c73m3_gpio_assert(state, RST))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		usleep_range(10, 50);
 
 	if (s5c73m3_gpio_assert(state, STBY))
@@ -1614,7 +1622,11 @@ static int s5c73m3_get_platform_data(struct s5c73m3 *state)
 
 		state->mclk_frequency = pdata->mclk_frequency;
 		state->gpio[STBY] = pdata->gpio_stby;
+<<<<<<< HEAD
 		state->gpio[RSET] = pdata->gpio_reset;
+=======
+		state->gpio[RST] = pdata->gpio_reset;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return 0;
 	}
 

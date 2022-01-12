@@ -578,6 +578,10 @@ static inline void dma_free_attrs(struct device *dev, size_t size,
 	const struct dma_map_ops *ops = get_dma_ops(dev);
 
 	BUG_ON(!ops);
+<<<<<<< HEAD
+=======
+	WARN_ON(irqs_disabled());
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (dma_release_from_dev_coherent(dev, get_order(size), cpu_addr))
 		return;

@@ -2478,8 +2478,12 @@ static int cma_resolve_ib_route(struct rdma_id_private *id_priv, int timeout_ms)
 	work->new_state = RDMA_CM_ROUTE_RESOLVED;
 	work->event.event = RDMA_CM_EVENT_ROUTE_RESOLVED;
 
+<<<<<<< HEAD
 	if (!route->path_rec)
 		route->path_rec = kmalloc(sizeof *route->path_rec, GFP_KERNEL);
+=======
+	route->path_rec = kmalloc(sizeof *route->path_rec, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!route->path_rec) {
 		ret = -ENOMEM;
 		goto err1;

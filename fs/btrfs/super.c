@@ -939,8 +939,13 @@ out:
 	return error;
 }
 
+<<<<<<< HEAD
 char *btrfs_get_subvol_name_from_objectid(struct btrfs_fs_info *fs_info,
 					  u64 subvol_objectid)
+=======
+static char *get_subvol_name_from_objectid(struct btrfs_fs_info *fs_info,
+					   u64 subvol_objectid)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct btrfs_root *root = fs_info->tree_root;
 	struct btrfs_root *fs_root;
@@ -1221,7 +1226,10 @@ static int btrfs_show_options(struct seq_file *seq, struct dentry *dentry)
 {
 	struct btrfs_fs_info *info = btrfs_sb(dentry->d_sb);
 	char *compress_type;
+<<<<<<< HEAD
 	const char *subvol_name;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (btrfs_test_opt(info, DEGRADED))
 		seq_puts(seq, ",degraded");
@@ -1308,6 +1316,7 @@ static int btrfs_show_options(struct seq_file *seq, struct dentry *dentry)
 #endif
 	seq_printf(seq, ",subvolid=%llu",
 		  BTRFS_I(d_inode(dentry))->root->root_key.objectid);
+<<<<<<< HEAD
 	subvol_name = btrfs_get_subvol_name_from_objectid(info,
 			BTRFS_I(d_inode(dentry))->root->root_key.objectid);
 	if (!IS_ERR(subvol_name)) {
@@ -1315,6 +1324,10 @@ static int btrfs_show_options(struct seq_file *seq, struct dentry *dentry)
 		seq_escape(seq, subvol_name, " \t\n\\");
 		kfree(subvol_name);
 	}
+=======
+	seq_puts(seq, ",subvol=");
+	seq_dentry(seq, dentry, " \t\n\\");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
 
@@ -1433,8 +1446,13 @@ static struct dentry *mount_subvol(const char *subvol_name, u64 subvol_objectid,
 				goto out;
 			}
 		}
+<<<<<<< HEAD
 		subvol_name = btrfs_get_subvol_name_from_objectid(
 					btrfs_sb(mnt->mnt_sb), subvol_objectid);
+=======
+		subvol_name = get_subvol_name_from_objectid(btrfs_sb(mnt->mnt_sb),
+							    subvol_objectid);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (IS_ERR(subvol_name)) {
 			root = ERR_CAST(subvol_name);
 			subvol_name = NULL;
@@ -1784,6 +1802,7 @@ static int btrfs_remount(struct super_block *sb, int *flags, char *data)
 		btrfs_scrub_cancel(fs_info);
 		btrfs_pause_balance(fs_info);
 
+<<<<<<< HEAD
 		/*
 		 * Pause the qgroup rescan worker if it is running. We don't want
 		 * it to be still running after we are in RO mode, as after that,
@@ -1792,6 +1811,8 @@ static int btrfs_remount(struct super_block *sb, int *flags, char *data)
 		 */
 		btrfs_qgroup_wait_for_completion(fs_info, false);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = btrfs_commit_super(fs_info);
 		if (ret)
 			goto restore;

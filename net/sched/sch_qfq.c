@@ -496,6 +496,14 @@ static int qfq_change_class(struct Qdisc *sch, u32 classid, u32 parentid,
 
 	if (cl->qdisc != &noop_qdisc)
 		qdisc_hash_add(cl->qdisc, true);
+<<<<<<< HEAD
+=======
+	sch_tree_lock(sch);
+	qdisc_class_hash_insert(&q->clhash, &cl->common);
+	sch_tree_unlock(sch);
+
+	qdisc_class_hash_grow(sch, &q->clhash);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 set_change_agg:
 	sch_tree_lock(sch);
@@ -513,11 +521,16 @@ set_change_agg:
 	}
 	if (existing)
 		qfq_deact_rm_from_agg(q, cl);
+<<<<<<< HEAD
 	else
 		qdisc_class_hash_insert(&q->clhash, &cl->common);
 	qfq_add_to_agg(q, new_agg, cl);
 	sch_tree_unlock(sch);
 	qdisc_class_hash_grow(sch, &q->clhash);
+=======
+	qfq_add_to_agg(q, new_agg, cl);
+	sch_tree_unlock(sch);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	*arg = (unsigned long)cl;
 	return 0;
@@ -707,7 +720,10 @@ static struct qfq_class *qfq_classify(struct sk_buff *skb, struct Qdisc *sch,
 		case TC_ACT_STOLEN:
 		case TC_ACT_TRAP:
 			*qerr = NET_XMIT_SUCCESS | __NET_XMIT_STOLEN;
+<<<<<<< HEAD
 			/* fall through */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		case TC_ACT_SHOT:
 			return NULL;
 		}
@@ -1418,7 +1434,11 @@ static int qfq_init_qdisc(struct Qdisc *sch, struct nlattr *opt)
 	int i, j, err;
 	u32 max_cl_shift, maxbudg_shift, max_classes;
 
+<<<<<<< HEAD
 	err = tcf_block_get(&q->block, &q->filter_list, sch);
+=======
+	err = tcf_block_get(&q->block, &q->filter_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		return err;
 

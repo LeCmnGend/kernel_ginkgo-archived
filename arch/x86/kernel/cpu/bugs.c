@@ -733,13 +733,19 @@ spectre_v2_user_select_mitigation(enum spectre_v2_mitigation_cmd v2_cmd)
 	if (boot_cpu_has(X86_FEATURE_IBPB)) {
 		setup_force_cpu_cap(X86_FEATURE_USE_IBPB);
 
+<<<<<<< HEAD
 		spectre_v2_user_ibpb = mode;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		switch (cmd) {
 		case SPECTRE_V2_USER_CMD_FORCE:
 		case SPECTRE_V2_USER_CMD_PRCTL_IBPB:
 		case SPECTRE_V2_USER_CMD_SECCOMP_IBPB:
 			static_branch_enable(&switch_mm_always_ibpb);
+<<<<<<< HEAD
 			spectre_v2_user_ibpb = SPECTRE_V2_USER_STRICT;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			break;
 		case SPECTRE_V2_USER_CMD_PRCTL:
 		case SPECTRE_V2_USER_CMD_AUTO:
@@ -753,6 +759,11 @@ spectre_v2_user_select_mitigation(enum spectre_v2_mitigation_cmd v2_cmd)
 		pr_info("mitigation: Enabling %s Indirect Branch Prediction Barrier\n",
 			static_key_enabled(&switch_mm_always_ibpb) ?
 			"always-on" : "conditional");
+<<<<<<< HEAD
+=======
+
+		spectre_v2_user_ibpb = mode;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	/*
@@ -1240,6 +1251,7 @@ static int ssb_prctl_set(struct task_struct *task, unsigned long ctrl)
 	return 0;
 }
 
+<<<<<<< HEAD
 static bool is_spec_ib_user_controlled(void)
 {
 	return spectre_v2_user_ibpb == SPECTRE_V2_USER_PRCTL ||
@@ -1248,6 +1260,8 @@ static bool is_spec_ib_user_controlled(void)
 		spectre_v2_user_stibp == SPECTRE_V2_USER_SECCOMP;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int ib_prctl_set(struct task_struct *task, unsigned long ctrl)
 {
 	switch (ctrl) {
@@ -1255,6 +1269,7 @@ static int ib_prctl_set(struct task_struct *task, unsigned long ctrl)
 		if (spectre_v2_user_ibpb == SPECTRE_V2_USER_NONE &&
 		    spectre_v2_user_stibp == SPECTRE_V2_USER_NONE)
 			return 0;
+<<<<<<< HEAD
 
 		/*
 		 * With strict mode for both IBPB and STIBP, the instruction
@@ -1275,6 +1290,19 @@ static int ib_prctl_set(struct task_struct *task, unsigned long ctrl)
 		    task_spec_ib_force_disable(task))
 			return -EPERM;
 
+=======
+		/*
+		 * Indirect branch speculation is always disabled in strict
+		 * mode. It can neither be enabled if it was force-disabled
+		 * by a  previous prctl call.
+
+		 */
+		if (spectre_v2_user_ibpb == SPECTRE_V2_USER_STRICT ||
+		    spectre_v2_user_stibp == SPECTRE_V2_USER_STRICT ||
+		    spectre_v2_user_stibp == SPECTRE_V2_USER_STRICT_PREFERRED ||
+		    task_spec_ib_force_disable(task))
+			return -EPERM;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		task_clear_spec_ib_disable(task);
 		task_update_spec_tif(task);
 		break;
@@ -1287,10 +1315,17 @@ static int ib_prctl_set(struct task_struct *task, unsigned long ctrl)
 		if (spectre_v2_user_ibpb == SPECTRE_V2_USER_NONE &&
 		    spectre_v2_user_stibp == SPECTRE_V2_USER_NONE)
 			return -EPERM;
+<<<<<<< HEAD
 
 		if (!is_spec_ib_user_controlled())
 			return 0;
 
+=======
+		if (spectre_v2_user_ibpb == SPECTRE_V2_USER_STRICT ||
+		    spectre_v2_user_stibp == SPECTRE_V2_USER_STRICT ||
+		    spectre_v2_user_stibp == SPECTRE_V2_USER_STRICT_PREFERRED)
+			return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		task_set_spec_ib_disable(task);
 		if (ctrl == PR_SPEC_FORCE_DISABLE)
 			task_set_spec_ib_force_disable(task);
@@ -1353,17 +1388,32 @@ static int ib_prctl_get(struct task_struct *task)
 	if (spectre_v2_user_ibpb == SPECTRE_V2_USER_NONE &&
 	    spectre_v2_user_stibp == SPECTRE_V2_USER_NONE)
 		return PR_SPEC_ENABLE;
+<<<<<<< HEAD
 	else if (is_spec_ib_user_controlled()) {
+=======
+	else if (spectre_v2_user_ibpb == SPECTRE_V2_USER_STRICT ||
+	    spectre_v2_user_stibp == SPECTRE_V2_USER_STRICT ||
+	    spectre_v2_user_stibp == SPECTRE_V2_USER_STRICT_PREFERRED)
+		return PR_SPEC_DISABLE;
+	else if (spectre_v2_user_ibpb == SPECTRE_V2_USER_PRCTL ||
+	    spectre_v2_user_ibpb == SPECTRE_V2_USER_SECCOMP ||
+	    spectre_v2_user_stibp == SPECTRE_V2_USER_PRCTL ||
+	    spectre_v2_user_stibp == SPECTRE_V2_USER_SECCOMP) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (task_spec_ib_force_disable(task))
 			return PR_SPEC_PRCTL | PR_SPEC_FORCE_DISABLE;
 		if (task_spec_ib_disable(task))
 			return PR_SPEC_PRCTL | PR_SPEC_DISABLE;
 		return PR_SPEC_PRCTL | PR_SPEC_ENABLE;
+<<<<<<< HEAD
 	} else if (spectre_v2_user_ibpb == SPECTRE_V2_USER_STRICT ||
 	    spectre_v2_user_stibp == SPECTRE_V2_USER_STRICT ||
 	    spectre_v2_user_stibp == SPECTRE_V2_USER_STRICT_PREFERRED)
 		return PR_SPEC_DISABLE;
 	else
+=======
+	} else
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return PR_SPEC_NOT_AFFECTED;
 }
 

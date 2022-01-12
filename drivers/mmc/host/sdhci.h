@@ -259,7 +259,10 @@
 
 /* 60-FB reserved */
 
+<<<<<<< HEAD
 #define SDHCI_PRESET_FOR_HIGH_SPEED	0x64
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define SDHCI_PRESET_FOR_SDR12 0x66
 #define SDHCI_PRESET_FOR_SDR25 0x68
 #define SDHCI_PRESET_FOR_SDR50 0x6A

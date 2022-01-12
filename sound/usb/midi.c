@@ -1805,6 +1805,7 @@ static int snd_usbmidi_create_endpoints(struct snd_usb_midi *umidi,
 	return 0;
 }
 
+<<<<<<< HEAD
 static struct usb_ms_endpoint_descriptor *find_usb_ms_endpoint_descriptor(
 					struct usb_host_endpoint *hostep)
 {
@@ -1827,6 +1828,8 @@ static struct usb_ms_endpoint_descriptor *find_usb_ms_endpoint_descriptor(
 	return NULL;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Returns MIDIStreaming device capabilities.
  */
@@ -1864,6 +1867,7 @@ static int snd_usbmidi_get_ms_info(struct snd_usb_midi *umidi,
 		ep = get_ep_desc(hostep);
 		if (!usb_endpoint_xfer_bulk(ep) && !usb_endpoint_xfer_int(ep))
 			continue;
+<<<<<<< HEAD
 		ms_ep = find_usb_ms_endpoint_descriptor(hostep);
 		if (!ms_ep)
 			continue;
@@ -1872,6 +1876,13 @@ static int snd_usbmidi_get_ms_info(struct snd_usb_midi *umidi,
 		if (ms_ep->bNumEmbMIDIJack > 0x10)
 			continue;
 		if (ms_ep->bLength < sizeof(*ms_ep) + ms_ep->bNumEmbMIDIJack)
+=======
+		ms_ep = (struct usb_ms_endpoint_descriptor *)hostep->extra;
+		if (hostep->extralen < 4 ||
+		    ms_ep->bLength < 4 ||
+		    ms_ep->bDescriptorType != USB_DT_CS_ENDPOINT ||
+		    ms_ep->bDescriptorSubtype != UAC_MS_GENERAL)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			continue;
 		if (usb_endpoint_dir_out(ep)) {
 			if (endpoints[epidx].out_ep) {
@@ -2125,8 +2136,11 @@ static int snd_usbmidi_detect_roland(struct snd_usb_midi *umidi,
 		    cs_desc[1] == USB_DT_CS_INTERFACE &&
 		    cs_desc[2] == 0xf1 &&
 		    cs_desc[3] == 0x02) {
+<<<<<<< HEAD
 			if (cs_desc[4] > 0x10 || cs_desc[5] > 0x10)
 				continue;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			endpoint->in_cables  = (1 << cs_desc[4]) - 1;
 			endpoint->out_cables = (1 << cs_desc[5]) - 1;
 			return snd_usbmidi_detect_endpoints(umidi, endpoint, 1);

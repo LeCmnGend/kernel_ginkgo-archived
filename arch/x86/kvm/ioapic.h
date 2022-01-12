@@ -43,13 +43,21 @@ struct kvm_vcpu;
 
 struct dest_map {
 	/* vcpu bitmap where IRQ has been sent */
+<<<<<<< HEAD
 	DECLARE_BITMAP(map, KVM_MAX_VCPU_ID + 1);
+=======
+	DECLARE_BITMAP(map, KVM_MAX_VCPU_ID);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*
 	 * Vector sent to a given vcpu, only valid when
 	 * the vcpu's bit in map is set
 	 */
+<<<<<<< HEAD
 	u8 vectors[KVM_MAX_VCPU_ID + 1];
+=======
+	u8 vectors[KVM_MAX_VCPU_ID];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 

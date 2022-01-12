@@ -26,6 +26,7 @@
 
 #define JUMP_LABEL_NOP_SIZE		AARCH64_INSN_SIZE
 
+<<<<<<< HEAD
 static __always_inline bool arch_static_branch(struct static_key *key,
 					       bool branch)
 {
@@ -36,6 +37,15 @@ static __always_inline bool arch_static_branch(struct static_key *key,
 		 "	.long		1b - ., %l[l_yes] - .	\n\t"
 		 "	.quad		%c0 - .			\n\t"
 		 "	.popsection				\n\t"
+=======
+static __always_inline bool arch_static_branch(struct static_key *key, bool branch)
+{
+	asm_volatile_goto("1: nop\n\t"
+		 ".pushsection __jump_table,  \"aw\"\n\t"
+		 ".align 3\n\t"
+		 ".quad 1b, %l[l_yes], %c0\n\t"
+		 ".popsection\n\t"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		 :  :  "i"(&((char *)key)[branch]) :  : l_yes);
 
 	return false;
@@ -43,6 +53,7 @@ l_yes:
 	return true;
 }
 
+<<<<<<< HEAD
 static __always_inline bool arch_static_branch_jump(struct static_key *key,
 						    bool branch)
 {
@@ -53,6 +64,15 @@ static __always_inline bool arch_static_branch_jump(struct static_key *key,
 		 "	.long		1b - ., %l[l_yes] - .	\n\t"
 		 "	.quad		%c0 - .			\n\t"
 		 "	.popsection				\n\t"
+=======
+static __always_inline bool arch_static_branch_jump(struct static_key *key, bool branch)
+{
+	asm_volatile_goto("1: b %l[l_yes]\n\t"
+		 ".pushsection __jump_table,  \"aw\"\n\t"
+		 ".align 3\n\t"
+		 ".quad 1b, %l[l_yes], %c0\n\t"
+		 ".popsection\n\t"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		 :  :  "i"(&((char *)key)[branch]) :  : l_yes);
 
 	return false;
@@ -60,5 +80,16 @@ l_yes:
 	return true;
 }
 
+<<<<<<< HEAD
+=======
+typedef u64 jump_label_t;
+
+struct jump_entry {
+	jump_label_t code;
+	jump_label_t target;
+	jump_label_t key;
+};
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif  /* __ASSEMBLY__ */
 #endif	/* __ASM_JUMP_LABEL_H */

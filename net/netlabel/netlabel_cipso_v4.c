@@ -581,7 +581,10 @@ list_start:
 
 		break;
 	}
+<<<<<<< HEAD
 	cipso_v4_doi_putdef(doi_def);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rcu_read_unlock();
 
 	genlmsg_end(ans_skb, data);
@@ -590,14 +593,20 @@ list_start:
 list_retry:
 	/* XXX - this limit is a guesstimate */
 	if (nlsze_mult < 4) {
+<<<<<<< HEAD
 		cipso_v4_doi_putdef(doi_def);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rcu_read_unlock();
 		kfree_skb(ans_skb);
 		nlsze_mult *= 2;
 		goto list_start;
 	}
 list_failure_lock:
+<<<<<<< HEAD
 	cipso_v4_doi_putdef(doi_def);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rcu_read_unlock();
 list_failure:
 	kfree_skb(ans_skb);

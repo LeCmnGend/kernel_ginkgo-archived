@@ -513,6 +513,12 @@ static int m_can_do_rx_poll(struct net_device *dev, int quota)
 	}
 
 	while ((rxfs & RXFS_FFL_MASK) && (quota > 0)) {
+<<<<<<< HEAD
+=======
+		if (rxfs & RXFS_RFL)
+			netdev_warn(dev, "Rx FIFO 0 Message Lost\n");
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		m_can_read_fifo(dev, rxfs);
 
 		quota--;
@@ -668,7 +674,11 @@ static int m_can_handle_state_change(struct net_device *dev,
 	unsigned int ecr;
 
 	switch (new_state) {
+<<<<<<< HEAD
 	case CAN_STATE_ERROR_WARNING:
+=======
+	case CAN_STATE_ERROR_ACTIVE:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* error warning state */
 		priv->can.can_stats.error_warning++;
 		priv->can.state = CAN_STATE_ERROR_WARNING;
@@ -697,7 +707,11 @@ static int m_can_handle_state_change(struct net_device *dev,
 	__m_can_get_berr_counter(dev, &bec);
 
 	switch (new_state) {
+<<<<<<< HEAD
 	case CAN_STATE_ERROR_WARNING:
+=======
+	case CAN_STATE_ERROR_ACTIVE:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* error warning state */
 		cf->can_id |= CAN_ERR_CRTL;
 		cf->data[1] = (bec.txerr > bec.rxerr) ?
@@ -969,7 +983,11 @@ static const struct can_bittiming_const m_can_bittiming_const_31X = {
 	.name = KBUILD_MODNAME,
 	.tseg1_min = 2,		/* Time segment 1 = prop_seg + phase_seg1 */
 	.tseg1_max = 256,
+<<<<<<< HEAD
 	.tseg2_min = 2,		/* Time segment 2 = phase_seg2 */
+=======
+	.tseg2_min = 1,		/* Time segment 2 = phase_seg2 */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.tseg2_max = 128,
 	.sjw_max = 128,
 	.brp_min = 1,

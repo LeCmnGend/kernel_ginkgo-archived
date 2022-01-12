@@ -1211,8 +1211,11 @@ void __init setup_arch(char **cmdline_p)
 	reserve_initrd();
 
 	acpi_table_upgrade();
+<<<<<<< HEAD
 	/* Look for ACPI tables and reserve memory occupied by them. */
 	acpi_boot_table_init();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	vsmp_init();
 
@@ -1220,6 +1223,14 @@ void __init setup_arch(char **cmdline_p)
 
 	early_platform_quirks();
 
+<<<<<<< HEAD
+=======
+	/*
+	 * Parse the ACPI tables for possible boot-time SMP configuration.
+	 */
+	acpi_boot_table_init();
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	early_acpi_boot_init();
 
 	initmem_init();

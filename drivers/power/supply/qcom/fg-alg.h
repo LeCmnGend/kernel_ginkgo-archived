@@ -1,5 +1,8 @@
 /* Copyright (c) 2018-2019, The Linux Foundation. All rights reserved.
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -157,7 +160,10 @@ void clear_cycle_count(struct cycle_counter *counter);
 void cycle_count_update(struct cycle_counter *counter, int batt_soc,
 		int charge_status, bool charge_done, bool input_present);
 int get_cycle_count(struct cycle_counter *counter, int *count);
+<<<<<<< HEAD
 int set_cycle_count(struct cycle_counter *counter, int count);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int get_cycle_counts(struct cycle_counter *counter, const char **buf);
 int cycle_count_init(struct cycle_counter *counter);
 void cap_learning_abort(struct cap_learning *cl);

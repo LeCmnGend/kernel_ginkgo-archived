@@ -490,6 +490,7 @@ static void sctp_v6_to_sk_daddr(union sctp_addr *addr, struct sock *sk)
 }
 
 /* Initialize a sctp_addr from an address parameter. */
+<<<<<<< HEAD
 static bool sctp_v6_from_addr_param(union sctp_addr *addr,
 				    union sctp_addr_param *param,
 				    __be16 port, int iif)
@@ -497,13 +498,22 @@ static bool sctp_v6_from_addr_param(union sctp_addr *addr,
 	if (ntohs(param->v6.param_hdr.length) < sizeof(struct sctp_ipv6addr_param))
 		return false;
 
+=======
+static void sctp_v6_from_addr_param(union sctp_addr *addr,
+				    union sctp_addr_param *param,
+				    __be16 port, int iif)
+{
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	addr->v6.sin6_family = AF_INET6;
 	addr->v6.sin6_port = port;
 	addr->v6.sin6_flowinfo = 0; /* BUG */
 	addr->v6.sin6_addr = param->v6.addr;
 	addr->v6.sin6_scope_id = iif;
+<<<<<<< HEAD
 
 	return true;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /* Initialize an address parameter from a sctp_addr and return the length

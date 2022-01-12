@@ -2,6 +2,14 @@
 #ifndef _SPARC_TLB_H
 #define _SPARC_TLB_H
 
+<<<<<<< HEAD
+=======
+#define tlb_start_vma(tlb, vma) \
+do {								\
+	flush_cache_range(vma, vma->vm_start, vma->vm_end);	\
+} while (0)
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define tlb_end_vma(tlb, vma) \
 do {								\
 	flush_tlb_range(vma, vma->vm_start, vma->vm_end);	\

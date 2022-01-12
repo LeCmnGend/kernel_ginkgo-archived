@@ -428,12 +428,15 @@ static LIST_HEAD(spi_controller_list);
  */
 static DEFINE_MUTEX(board_lock);
 
+<<<<<<< HEAD
 /*
  * Prevents addition of devices with same chip select and
  * addition of devices below an unregistering controller.
  */
 static DEFINE_MUTEX(spi_add_lock);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * spi_alloc_device - Allocate a new SPI device
  * @ctlr: Controller to which device is connected
@@ -512,6 +515,10 @@ static int spi_dev_check(struct device *dev, void *data)
  */
 int spi_add_device(struct spi_device *spi)
 {
+<<<<<<< HEAD
+=======
+	static DEFINE_MUTEX(spi_add_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct spi_controller *ctlr = spi->controller;
 	struct device *dev = ctlr->dev.parent;
 	int status;
@@ -539,6 +546,7 @@ int spi_add_device(struct spi_device *spi)
 		goto done;
 	}
 
+<<<<<<< HEAD
 	/* Controller may unregister concurrently */
 	if (IS_ENABLED(CONFIG_SPI_DYNAMIC) &&
 	    !device_is_registered(&ctlr->dev)) {
@@ -546,6 +554,8 @@ int spi_add_device(struct spi_device *spi)
 		goto done;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ctlr->cs_gpios)
 		spi->cs_gpio = ctlr->cs_gpios[spi->chip_select];
 
@@ -1125,6 +1135,11 @@ out:
 	if (msg->status && ctlr->handle_err)
 		ctlr->handle_err(ctlr, msg);
 
+<<<<<<< HEAD
+=======
+	spi_res_release(ctlr, msg);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spi_finalize_current_message(ctlr);
 
 	return ret;
@@ -1249,6 +1264,7 @@ static void __spi_pump_messages(struct spi_controller *ctlr, bool in_kthread)
 		ret = ctlr->prepare_transfer_hardware(ctlr);
 		if (ret) {
 			dev_err(&ctlr->dev,
+<<<<<<< HEAD
 				"failed to prepare transfer hardware: %d\n",
 				ret);
 
@@ -1258,6 +1274,12 @@ static void __spi_pump_messages(struct spi_controller *ctlr, bool in_kthread)
 			ctlr->cur_msg->status = ret;
 			spi_finalize_current_message(ctlr);
 
+=======
+				"failed to prepare transfer hardware\n");
+
+			if (ctlr->auto_runtime_pm)
+				pm_runtime_put(ctlr->dev.parent);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			mutex_unlock(&ctlr->io_mutex);
 			return;
 		}
@@ -1387,6 +1409,7 @@ void spi_finalize_current_message(struct spi_controller *ctlr)
 
 	spi_unmap_msg(ctlr, mesg);
 
+<<<<<<< HEAD
 	/* In the prepare_messages callback the spi bus has the opportunity to
 	 * split a transfer to smaller chunks.
 	 * Release splited transfers here since spi_map_msg is done on the
@@ -1394,6 +1417,8 @@ void spi_finalize_current_message(struct spi_controller *ctlr)
 	 */
 	spi_res_release(ctlr, mesg);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ctlr->cur_msg_prepared && ctlr->unprepare_message) {
 		ret = ctlr->unprepare_message(ctlr, mesg);
 		if (ret) {
@@ -1675,7 +1700,10 @@ of_register_spi_device(struct spi_controller *ctlr, struct device_node *nc)
 	/* Store a pointer to the node in the device structure */
 	of_node_get(nc);
 	spi->dev.of_node = nc;
+<<<<<<< HEAD
 	spi->dev.fwnode = of_fwnode_handle(nc);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Register the new device */
 	rc = spi_add_device(spi);
@@ -2049,6 +2077,7 @@ struct spi_controller *__spi_alloc_controller(struct device *dev,
 }
 EXPORT_SYMBOL_GPL(__spi_alloc_controller);
 
+<<<<<<< HEAD
 static void devm_spi_release_controller(struct device *dev, void *ctlr)
 {
 	spi_controller_put(*(struct spi_controller **)ctlr);
@@ -2093,6 +2122,8 @@ struct spi_controller *__devm_spi_alloc_controller(struct device *dev,
 }
 EXPORT_SYMBOL_GPL(__devm_spi_alloc_controller);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_OF
 static int of_spi_register_master(struct spi_controller *ctlr)
 {
@@ -2332,10 +2363,13 @@ void spi_unregister_controller(struct spi_controller *ctlr)
 	struct spi_controller *found;
 	int id = ctlr->bus_num;
 
+<<<<<<< HEAD
 	/* Prevent addition of new devices, unregister existing ones */
 	if (IS_ENABLED(CONFIG_SPI_DYNAMIC))
 		mutex_lock(&spi_add_lock);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	device_for_each_child(&ctlr->dev, NULL, __unregister);
 
 	/* First make sure that this controller was ever added */
@@ -2350,6 +2384,7 @@ void spi_unregister_controller(struct spi_controller *ctlr)
 	list_del(&ctlr->list);
 	mutex_unlock(&board_lock);
 
+<<<<<<< HEAD
 	device_del(&ctlr->dev);
 
 	/* Release the last reference on the controller if its driver
@@ -2358,14 +2393,20 @@ void spi_unregister_controller(struct spi_controller *ctlr)
 	if (!ctlr->devm_allocated)
 		put_device(&ctlr->dev);
 
+=======
+	device_unregister(&ctlr->dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* free bus id */
 	mutex_lock(&board_lock);
 	if (found == ctlr)
 		idr_remove(&spi_master_idr, id);
 	mutex_unlock(&board_lock);
+<<<<<<< HEAD
 
 	if (IS_ENABLED(CONFIG_SPI_DYNAMIC))
 		mutex_unlock(&spi_add_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL_GPL(spi_unregister_controller);
 

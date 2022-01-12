@@ -1,5 +1,8 @@
 /* Copyright (c) 2017-2020 The Linux Foundation. All rights reserved.
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -1194,7 +1197,11 @@ stepper_exit:
 	cp_configure_ilim(chip, FCC_VOTER, chip->slave_fcc_ua / 2);
 
 	if (reschedule_ms) {
+<<<<<<< HEAD
 		queue_delayed_work(system_power_efficient_wq, &chip->fcc_stepper_work,
+=======
+		schedule_delayed_work(&chip->fcc_stepper_work,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				msecs_to_jiffies(reschedule_ms));
 		pr_debug("Rescheduling FCC_STEPPER work\n");
 		return;
@@ -1216,15 +1223,21 @@ static bool is_batt_available(struct pl_data *chip)
 }
 
 #define PARALLEL_FLOAT_VOLTAGE_DELTA_UV 50000
+<<<<<<< HEAD
 static u8 cycle_flag = 0;
 extern u8 set_cycle_flag;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int pl_fv_vote_callback(struct votable *votable, void *data,
 			int fv_uv, const char *client)
 {
 	struct pl_data *chip = data;
 	union power_supply_propval pval = {0, };
 	int rc = 0;
+<<<<<<< HEAD
 	int charge_cycle_count;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (fv_uv < 0)
 		return 0;
@@ -1232,6 +1245,7 @@ static int pl_fv_vote_callback(struct votable *votable, void *data,
 	if (!chip->main_psy)
 		return 0;
 
+<<<<<<< HEAD
 	rc = power_supply_get_property(chip->batt_psy,
 			POWER_SUPPLY_PROP_CYCLE_COUNT,&pval);
 	charge_cycle_count = pval.intval;
@@ -1260,6 +1274,9 @@ static int pl_fv_vote_callback(struct votable *votable, void *data,
 		else
 			pval.intval = fv_uv- 10000;
 	}
+=======
+	pval.intval = fv_uv;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	rc = power_supply_set_property(chip->main_psy,
 			POWER_SUPPLY_PROP_VOLTAGE_MAX, &pval);
@@ -1341,7 +1358,11 @@ static int usb_icl_vote_callback(struct votable *votable, void *data,
 	if (icl_ua <= 1400000)
 		vote(chip->pl_enable_votable_indirect, USBIN_I_VOTER, false, 0);
 	else
+<<<<<<< HEAD
 		queue_delayed_work(system_power_efficient_wq, &chip->status_change_work,
+=======
+		schedule_delayed_work(&chip->status_change_work,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 						msecs_to_jiffies(PL_DELAY_MS));
 
 	/* rerun AICL */
@@ -1478,7 +1499,11 @@ static int pl_disable_vote_callback(struct votable *votable,
 			if (chip->step_fcc) {
 				vote(chip->pl_awake_votable, FCC_STEPPER_VOTER,
 					true, 0);
+<<<<<<< HEAD
 				queue_delayed_work(system_power_efficient_wq, &chip->fcc_stepper_work,
+=======
+				schedule_delayed_work(&chip->fcc_stepper_work,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					0);
 			}
 		} else {
@@ -1595,7 +1620,11 @@ static int pl_disable_vote_callback(struct votable *votable,
 			if (chip->step_fcc) {
 				vote(chip->pl_awake_votable, FCC_STEPPER_VOTER,
 					true, 0);
+<<<<<<< HEAD
 				queue_delayed_work(system_power_efficient_wq, &chip->fcc_stepper_work,
+=======
+				schedule_delayed_work(&chip->fcc_stepper_work,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					0);
 			}
 		}
@@ -1632,7 +1661,11 @@ static int pl_awake_vote_callback(struct votable *votable,
 	struct pl_data *chip = data;
 
 	if (awake)
+<<<<<<< HEAD
 		__pm_wakeup_event(chip->pl_ws, 500);
+=======
+		__pm_stay_awake(chip->pl_ws);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	else
 		__pm_relax(chip->pl_ws);
 
@@ -1942,7 +1975,11 @@ static int pl_notifier_call(struct notifier_block *nb,
 	if ((strcmp(psy->desc->name, "parallel") == 0)
 	    || (strcmp(psy->desc->name, "battery") == 0)
 	    || (strcmp(psy->desc->name, "main") == 0))
+<<<<<<< HEAD
 		queue_delayed_work(system_power_efficient_wq, &chip->status_change_work, 0);
+=======
+		schedule_delayed_work(&chip->status_change_work, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return NOTIFY_OK;
 }

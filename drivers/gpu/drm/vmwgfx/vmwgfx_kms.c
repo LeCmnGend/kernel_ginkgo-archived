@@ -2707,7 +2707,11 @@ int vmw_kms_fbdev_init_data(struct vmw_private *dev_priv,
 		++i;
 	}
 
+<<<<<<< HEAD
 	if (&con->head == &dev_priv->dev->mode_config.connector_list) {
+=======
+	if (i != unit) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		DRM_ERROR("Could not find initial display unit.\n");
 		return -EINVAL;
 	}
@@ -2729,13 +2733,22 @@ int vmw_kms_fbdev_init_data(struct vmw_private *dev_priv,
 			break;
 	}
 
+<<<<<<< HEAD
 	if (&mode->head == &con->modes) {
+=======
+	if (mode->type & DRM_MODE_TYPE_PREFERRED)
+		*p_mode = mode;
+	else {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		WARN_ONCE(true, "Could not find initial preferred mode.\n");
 		*p_mode = list_first_entry(&con->modes,
 					   struct drm_display_mode,
 					   head);
+<<<<<<< HEAD
 	} else {
 		*p_mode = mode;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	return 0;

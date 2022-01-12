@@ -29,7 +29,10 @@
 #include <linux/list.h>
 #include <linux/io.h>
 #include <linux/platform_device.h>
+<<<<<<< HEAD
 #include <linux/pm_runtime.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/clk.h>
 #include <linux/of.h>
 #include <linux/of_device.h>
@@ -386,7 +389,10 @@ static int c_can_plat_probe(struct platform_device *pdev)
 	platform_set_drvdata(pdev, dev);
 	SET_NETDEV_DEV(dev, &pdev->dev);
 
+<<<<<<< HEAD
 	pm_runtime_enable(priv->device);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = register_c_can_dev(dev);
 	if (ret) {
 		dev_err(&pdev->dev, "registering %s failed (err=%d)\n",
@@ -399,7 +405,10 @@ static int c_can_plat_probe(struct platform_device *pdev)
 	return 0;
 
 exit_free_device:
+<<<<<<< HEAD
 	pm_runtime_disable(priv->device);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	free_c_can_dev(dev);
 exit:
 	dev_err(&pdev->dev, "probe failed\n");
@@ -410,10 +419,16 @@ exit:
 static int c_can_plat_remove(struct platform_device *pdev)
 {
 	struct net_device *dev = platform_get_drvdata(pdev);
+<<<<<<< HEAD
 	struct c_can_priv *priv = netdev_priv(dev);
 
 	unregister_c_can_dev(dev);
 	pm_runtime_disable(priv->device);
+=======
+
+	unregister_c_can_dev(dev);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	free_c_can_dev(dev);
 
 	return 0;

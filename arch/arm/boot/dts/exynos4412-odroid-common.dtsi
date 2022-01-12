@@ -265,7 +265,11 @@
 	max77686: pmic@09 {
 		compatible = "maxim,max77686";
 		interrupt-parent = <&gpx3>;
+<<<<<<< HEAD
 		interrupts = <2 IRQ_TYPE_LEVEL_LOW>;
+=======
+		interrupts = <2 IRQ_TYPE_NONE>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		pinctrl-names = "default";
 		pinctrl-0 = <&max77686_irq>;
 		reg = <0x09>;

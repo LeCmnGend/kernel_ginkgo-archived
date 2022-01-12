@@ -476,7 +476,11 @@ enum gpu_coresight_sources {
  * @dispatcher: Container for adreno GPU dispatcher
  * @pwron_fixup: Command buffer to run a post-power collapse shader workaround
  * @pwron_fixup_dwords: Number of dwords in the command buffer
+<<<<<<< HEAD
  * @pwr_on_work: Work struct for turning on the GPU
+=======
+ * @input_work: Work struct for turning on the GPU after a touch event
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * @busy_data: Struct holding GPU VBIF busy stats
  * @ram_cycles_lo: Number of DDR clock cycles for the monitor session (Only
  * DDR channel 0 read cycles in case of GBIF)
@@ -556,7 +560,11 @@ struct adreno_device {
 	struct adreno_dispatcher dispatcher;
 	struct kgsl_memdesc pwron_fixup;
 	unsigned int pwron_fixup_dwords;
+<<<<<<< HEAD
 	struct work_struct pwr_on_work;
+=======
+	struct work_struct input_work;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct adreno_busy_data busy_data;
 	unsigned int ram_cycles_lo;
 	unsigned int ram_cycles_lo_ch1_read;
@@ -590,6 +598,10 @@ struct adreno_device {
 	unsigned int speed_bin;
 	unsigned int quirks;
 
+<<<<<<< HEAD
+=======
+	struct coresight_device *csdev[GPU_CORESIGHT_MAX];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	uint32_t gpmu_throttle_counters[ADRENO_GPMU_THROTTLE_COUNTERS];
 	struct work_struct irq_storm_work;
 
@@ -968,6 +980,12 @@ struct adreno_gpudev {
 
 	struct adreno_perfcounters *perfcounters;
 	const struct adreno_invalid_countables *invalid_countables;
+<<<<<<< HEAD
+=======
+	struct adreno_snapshot_data *snapshot_data;
+
+	struct adreno_coresight *coresight[GPU_CORESIGHT_MAX];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	struct adreno_irq *irq;
 	int num_prio_levels;
@@ -976,6 +994,11 @@ struct adreno_gpudev {
 	unsigned int gbif_arb_halt_mask;
 	unsigned int gbif_gx_halt_mask;
 	/* GPU specific function hooks */
+<<<<<<< HEAD
+=======
+	void (*irq_trace)(struct adreno_device *, unsigned int status);
+	void (*snapshot)(struct adreno_device *, struct kgsl_snapshot *);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	void (*platform_setup)(struct adreno_device *);
 	void (*init)(struct adreno_device *);
 	void (*remove)(struct adreno_device *);
@@ -1030,6 +1053,11 @@ struct adreno_gpudev {
 	int (*perfcounter_update)(struct adreno_device *adreno_dev,
 				struct adreno_perfcount_register *reg,
 				bool update_reg);
+<<<<<<< HEAD
+=======
+	size_t (*snapshot_preemption)(struct kgsl_device *, u8 *,
+				 size_t, void *);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	void (*zap_shader_unload)(struct adreno_device *);
 	int (*secure_pt_hibernate)(struct adreno_device *);
 	int (*secure_pt_restore)(struct adreno_device *);
@@ -1119,6 +1147,10 @@ extern struct adreno_gpudev adreno_a5xx_gpudev;
 extern struct adreno_gpudev adreno_a6xx_gpudev;
 
 extern int adreno_wake_nice;
+<<<<<<< HEAD
+=======
+extern unsigned int adreno_wake_timeout;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 int adreno_start(struct kgsl_device *device, int priority);
 int adreno_soft_reset(struct kgsl_device *device);
@@ -1146,9 +1178,15 @@ void adreno_shadermem_regread(struct kgsl_device *device,
 						unsigned int offsetwords,
 						unsigned int *value);
 
+<<<<<<< HEAD
 static inline void adreno_snapshot(struct kgsl_device *device,
 		struct kgsl_snapshot *snapshot,
 		struct kgsl_context *context) {}
+=======
+void adreno_snapshot(struct kgsl_device *device,
+		struct kgsl_snapshot *snapshot,
+		struct kgsl_context *context);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 int adreno_reset(struct kgsl_device *device, int fault);
 

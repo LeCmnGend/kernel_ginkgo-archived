@@ -687,6 +687,7 @@ int vkdb_printf(enum kdb_msgsrc src, const char *fmt, va_list ap)
 			size_avail = sizeof(kdb_buffer) - len;
 			goto kdb_print_out;
 		}
+<<<<<<< HEAD
 		if (kdb_grepping_flag >= KDB_GREPPING_FLAG_SEARCH) {
 			/*
 			 * This was a interactive search (using '/' at more
@@ -697,6 +698,14 @@ int vkdb_printf(enum kdb_msgsrc src, const char *fmt, va_list ap)
 			*cphold = replaced_byte;
 			kdb_grepping_flag = 0;
 		}
+=======
+		if (kdb_grepping_flag >= KDB_GREPPING_FLAG_SEARCH)
+			/*
+			 * This was a interactive search (using '/' at more
+			 * prompt) and it has completed. Clear the flag.
+			 */
+			kdb_grepping_flag = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
 		 * at this point the string is a full line and
 		 * should be printed, up to the null.

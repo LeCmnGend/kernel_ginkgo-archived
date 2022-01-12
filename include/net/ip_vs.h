@@ -1607,16 +1607,29 @@ static inline void ip_vs_conn_drop_conntrack(struct ip_vs_conn *cp)
 }
 #endif /* CONFIG_IP_VS_NFCT */
 
+<<<<<<< HEAD
 /* Using old conntrack that can not be redirected to another real server? */
 static inline bool ip_vs_conn_uses_old_conntrack(struct ip_vs_conn *cp,
 						 struct sk_buff *skb)
+=======
+/* Really using conntrack? */
+static inline bool ip_vs_conn_uses_conntrack(struct ip_vs_conn *cp,
+					     struct sk_buff *skb)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 #ifdef CONFIG_IP_VS_NFCT
 	enum ip_conntrack_info ctinfo;
 	struct nf_conn *ct;
 
+<<<<<<< HEAD
 	ct = nf_ct_get(skb, &ctinfo);
 	if (ct && nf_ct_is_confirmed(ct))
+=======
+	if (!(cp->flags & IP_VS_CONN_F_NFCT))
+		return false;
+	ct = nf_ct_get(skb, &ctinfo);
+	if (ct)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return true;
 #endif
 	return false;

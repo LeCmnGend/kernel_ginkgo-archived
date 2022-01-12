@@ -1385,12 +1385,19 @@ static int __init max310x_uart_init(void)
 		return ret;
 
 #ifdef CONFIG_SPI_MASTER
+<<<<<<< HEAD
 	ret = spi_register_driver(&max310x_spi_driver);
 	if (ret)
 		uart_unregister_driver(&max310x_uart);
 #endif
 
 	return ret;
+=======
+	spi_register_driver(&max310x_spi_driver);
+#endif
+
+	return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 module_init(max310x_uart_init);
 

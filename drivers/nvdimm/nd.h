@@ -29,6 +29,10 @@ enum {
 	 * BTT instance
 	 */
 	ND_MAX_LANES = 256,
+<<<<<<< HEAD
+=======
+	SECTOR_SHIFT = 9,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	INT_LBASIZE_ALIGNMENT = 64,
 	NVDIMM_IO_ATOMIC = 1,
 };

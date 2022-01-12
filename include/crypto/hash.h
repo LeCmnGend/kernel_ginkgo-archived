@@ -253,8 +253,11 @@ static inline struct crypto_tfm *crypto_ahash_tfm(struct crypto_ahash *tfm)
 /**
  * crypto_free_ahash() - zeroize and free the ahash handle
  * @tfm: cipher handle to be freed
+<<<<<<< HEAD
  *
  * If @tfm is a NULL or error pointer, this function does nothing.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 static inline void crypto_free_ahash(struct crypto_ahash *tfm)
 {
@@ -691,8 +694,11 @@ static inline struct crypto_tfm *crypto_shash_tfm(struct crypto_shash *tfm)
 /**
  * crypto_free_shash() - zeroize and free the message digest handle
  * @tfm: cipher handle to be freed
+<<<<<<< HEAD
  *
  * If @tfm is a NULL or error pointer, this function does nothing.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 static inline void crypto_free_shash(struct crypto_shash *tfm)
 {

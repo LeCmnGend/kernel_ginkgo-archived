@@ -144,7 +144,11 @@ static inline u64 __raw_readq_no_log(const volatile void __iomem *addr)
 ({									\
 	unsigned long tmp;						\
 									\
+<<<<<<< HEAD
 	dma_rmb();								\
+=======
+	rmb();								\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 									\
 	/*								\
 	 * Create a dummy control dependency from the IO read to any	\
@@ -157,7 +161,11 @@ static inline u64 __raw_readq_no_log(const volatile void __iomem *addr)
 		     : "memory");					\
 })
 
+<<<<<<< HEAD
 #define __iowmb()		dma_wmb()
+=======
+#define __iowmb()		wmb()
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #define mmiowb()		do { } while (0)
 

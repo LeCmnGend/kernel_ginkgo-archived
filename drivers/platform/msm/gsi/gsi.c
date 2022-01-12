@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2015-2021, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2015-2020, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -18,7 +22,10 @@
 #include <linux/msm_gsi.h>
 #include <linux/platform_device.h>
 #include <linux/delay.h>
+<<<<<<< HEAD
 #include <linux/slab.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include "gsi.h"
 #include "gsi_reg.h"
 #include "gsi_emulation.h"
@@ -542,6 +549,7 @@ static void gsi_process_chan(struct gsi_xfer_compl_evt *evt,
 			ch_ctx->ring.rp_local = rp;
 		}
 
+<<<<<<< HEAD
 		/*
 		 * Increment RP local only in polling context to avoid
 		 * sys len mismatch.
@@ -550,6 +558,11 @@ static void gsi_process_chan(struct gsi_xfer_compl_evt *evt,
 					GSI_CHAN_DIR_FROM_GSI))
 			/* the element at RP is also processed */
 			gsi_incr_ring_rp(&ch_ctx->ring);
+=======
+
+		/* the element at RP is also processed */
+		gsi_incr_ring_rp(&ch_ctx->ring);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		ch_ctx->ring.rp = ch_ctx->ring.rp_local;
 		rp_idx = gsi_find_idx_from_addr(&ch_ctx->ring, rp);
@@ -559,6 +572,7 @@ static void gsi_process_chan(struct gsi_xfer_compl_evt *evt,
 		notify->veid = evt->veid;
 	}
 
+<<<<<<< HEAD
 
 	WARN_ON(!ch_ctx->user_data[rp_idx].valid);
 	notify->xfer_user_data = ch_ctx->user_data[rp_idx].p;
@@ -573,6 +587,13 @@ static void gsi_process_chan(struct gsi_xfer_compl_evt *evt,
 		ch_ctx->stats.completed++;
 		ch_ctx->user_data[rp_idx].valid = false;
 	}
+=======
+	ch_ctx->stats.completed++;
+
+	WARN_ON(!ch_ctx->user_data[rp_idx].valid);
+	notify->xfer_user_data = ch_ctx->user_data[rp_idx].p;
+	ch_ctx->user_data[rp_idx].valid = false;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	notify->chan_user_data = ch_ctx->props.chan_user_data;
 	notify->evt_id = evt->code;
@@ -581,6 +602,10 @@ static void gsi_process_chan(struct gsi_xfer_compl_evt *evt,
 	if (callback) {
 		if (atomic_read(&ch_ctx->poll_mode)) {
 			GSIERR("Calling client callback in polling mode\n");
+<<<<<<< HEAD
+=======
+			WARN_ON(1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 		ch_ctx->props.xfer_cb(notify);
 	}
@@ -590,11 +615,15 @@ static void gsi_process_evt_re(struct gsi_evt_ctx *ctx,
 		struct gsi_chan_xfer_notify *notify, bool callback)
 {
 	struct gsi_xfer_compl_evt *evt;
+<<<<<<< HEAD
 	struct gsi_chan_ctx *ch_ctx;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	evt = (struct gsi_xfer_compl_evt *)(ctx->ring.base_va +
 			ctx->ring.rp_local - ctx->ring.base);
 	gsi_process_chan(evt, notify, callback);
+<<<<<<< HEAD
 	/*
 	 * Increment RP local only in polling context to avoid
 	 * sys len mismatch.
@@ -602,6 +631,8 @@ static void gsi_process_evt_re(struct gsi_evt_ctx *ctx,
 	ch_ctx = &gsi_ctx->chan[evt->chid];
 	if (callback && ch_ctx->props.dir == GSI_CHAN_DIR_FROM_GSI)
 		return;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	gsi_incr_ring_rp(&ctx->ring);
 	/* recycle this element */
 	gsi_incr_ring_wp(&ctx->ring);
@@ -1767,7 +1798,11 @@ int gsi_alloc_evt_ring(struct gsi_evt_ring_props *props, unsigned long dev_hdl,
 EXPORT_SYMBOL(gsi_alloc_evt_ring);
 
 static void __gsi_write_evt_ring_scratch(unsigned long evt_ring_hdl,
+<<<<<<< HEAD
 		union gsi_evt_scratch val)
+=======
+		union __packed gsi_evt_scratch val)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	gsi_writel(val.data.word1, gsi_ctx->base +
 		GSI_EE_n_EV_CH_k_SCRATCH_0_OFFS(evt_ring_hdl,
@@ -1778,7 +1813,11 @@ static void __gsi_write_evt_ring_scratch(unsigned long evt_ring_hdl,
 }
 
 int gsi_write_evt_ring_scratch(unsigned long evt_ring_hdl,
+<<<<<<< HEAD
 		union gsi_evt_scratch val)
+=======
+		union __packed gsi_evt_scratch val)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct gsi_evt_ctx *ctx;
 
@@ -2335,7 +2374,11 @@ int gsi_alloc_channel(struct gsi_chan_props *props, unsigned long dev_hdl,
 {
 	struct gsi_chan_ctx *ctx;
 	uint32_t val;
+<<<<<<< HEAD
 	int res, size;
+=======
+	int res;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ee;
 	enum gsi_ch_cmd_opcode op = GSI_CH_ALLOCATE;
 	uint8_t erindex;
@@ -2396,8 +2439,14 @@ int gsi_alloc_channel(struct gsi_chan_props *props, unsigned long dev_hdl,
 	if (props->prot == GSI_CHAN_PROT_GCI)
 		user_data_size += GSI_VEID_MAX;
 
+<<<<<<< HEAD
 	size = user_data_size * sizeof(*user_data);
 	user_data = kzalloc(size, GFP_KERNEL);
+=======
+	user_data = devm_kzalloc(gsi_ctx->dev,
+		user_data_size * sizeof(*user_data),
+		GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (user_data == NULL) {
 		GSIERR("context not allocated\n");
 		return -GSI_STATUS_RES_ALLOC_FAILURE;
@@ -2422,14 +2471,22 @@ int gsi_alloc_channel(struct gsi_chan_props *props, unsigned long dev_hdl,
 		if (res == 0) {
 			GSIERR("chan_hdl=%u timed out\n", props->ch_id);
 			mutex_unlock(&gsi_ctx->mlock);
+<<<<<<< HEAD
 			kfree(user_data);
+=======
+			devm_kfree(gsi_ctx->dev, user_data);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return -GSI_STATUS_TIMED_OUT;
 		}
 		if (ctx->state != GSI_CHAN_STATE_ALLOCATED) {
 			GSIERR("chan_hdl=%u allocation failed state=%d\n",
 					props->ch_id, ctx->state);
 			mutex_unlock(&gsi_ctx->mlock);
+<<<<<<< HEAD
 			kfree(user_data);
+=======
+			devm_kfree(gsi_ctx->dev, user_data);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return -GSI_STATUS_RES_ALLOC_FAILURE;
 		}
 		mutex_unlock(&gsi_ctx->mlock);
@@ -2442,7 +2499,11 @@ int gsi_alloc_channel(struct gsi_chan_props *props, unsigned long dev_hdl,
 		GSI_NO_EVT_ERINDEX;
 	if (erindex != GSI_NO_EVT_ERINDEX && erindex >= GSI_EVT_RING_MAX) {
 		GSIERR("invalid erindex %u\n", erindex);
+<<<<<<< HEAD
 		kfree(user_data);
+=======
+		devm_kfree(gsi_ctx->dev, user_data);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -GSI_STATUS_INVALID_PARAMS;
 	}
 
@@ -2524,7 +2585,11 @@ static int gsi_alloc_ap_channel(unsigned int chan_hdl)
 }
 
 static void __gsi_write_channel_scratch(unsigned long chan_hdl,
+<<<<<<< HEAD
 		union gsi_channel_scratch val)
+=======
+		union __packed gsi_channel_scratch val)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	gsi_writel(val.data.word1, gsi_ctx->base +
 		GSI_EE_n_GSI_CH_k_SCRATCH_0_OFFS(chan_hdl,
@@ -2551,7 +2616,11 @@ static void __gsi_write_wdi3_channel_scratch2_reg(unsigned long chan_hdl,
 
 
 int gsi_write_channel_scratch3_reg(unsigned long chan_hdl,
+<<<<<<< HEAD
 		union gsi_wdi_channel_scratch3_reg val)
+=======
+		union __packed gsi_wdi_channel_scratch3_reg val)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct gsi_chan_ctx *ctx;
 
@@ -2614,7 +2683,11 @@ int gsi_write_channel_scratch2_reg(unsigned long chan_hdl,
 EXPORT_SYMBOL(gsi_write_channel_scratch2_reg);
 
 static void __gsi_read_channel_scratch(unsigned long chan_hdl,
+<<<<<<< HEAD
 		union gsi_channel_scratch *val)
+=======
+		union __packed gsi_channel_scratch * val)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	val->data.word1 = gsi_readl(gsi_ctx->base +
 		GSI_EE_n_GSI_CH_k_SCRATCH_0_OFFS(chan_hdl,
@@ -2644,10 +2717,17 @@ static void __gsi_read_wdi3_channel_scratch2_reg(unsigned long chan_hdl,
 }
 
 
+<<<<<<< HEAD
 static union gsi_channel_scratch __gsi_update_mhi_channel_scratch(
 	unsigned long chan_hdl, struct gsi_mhi_channel_scratch mscr)
 {
 	union gsi_channel_scratch scr;
+=======
+static union __packed gsi_channel_scratch __gsi_update_mhi_channel_scratch(
+	unsigned long chan_hdl, struct __packed gsi_mhi_channel_scratch mscr)
+{
+	union __packed gsi_channel_scratch scr;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* below sequence is not atomic. assumption is sequencer specific fields
 	 * will remain unchanged across this sequence
@@ -2699,7 +2779,11 @@ static union gsi_channel_scratch __gsi_update_mhi_channel_scratch(
 }
 
 int gsi_write_channel_scratch(unsigned long chan_hdl,
+<<<<<<< HEAD
 		union gsi_channel_scratch val)
+=======
+		union __packed gsi_channel_scratch val)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct gsi_chan_ctx *ctx;
 
@@ -2767,7 +2851,11 @@ EXPORT_SYMBOL(gsi_write_wdi3_channel_scratch2_reg);
 
 
 int gsi_read_channel_scratch(unsigned long chan_hdl,
+<<<<<<< HEAD
 		union gsi_channel_scratch *val)
+=======
+		union __packed gsi_channel_scratch *val)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct gsi_chan_ctx *ctx;
 
@@ -2834,7 +2922,11 @@ EXPORT_SYMBOL(gsi_read_wdi3_channel_scratch2_reg);
 
 
 int gsi_update_mhi_channel_scratch(unsigned long chan_hdl,
+<<<<<<< HEAD
 		struct gsi_mhi_channel_scratch mscr)
+=======
+		struct __packed gsi_mhi_channel_scratch mscr)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct gsi_chan_ctx *ctx;
 
@@ -3278,7 +3370,11 @@ int gsi_dealloc_channel(unsigned long chan_hdl)
 								ctx->state);
 		mutex_unlock(&gsi_ctx->mlock);
 	}
+<<<<<<< HEAD
 	kfree(ctx->user_data);
+=======
+	devm_kfree(gsi_ctx->dev, ctx->user_data);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ctx->allocated = false;
 	if (ctx->evtr && (ctx->props.prot != GSI_CHAN_PROT_GCI))
 		atomic_dec(&ctx->evtr->chan_ref_cnt);

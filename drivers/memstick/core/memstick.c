@@ -469,6 +469,10 @@ static void memstick_check(struct work_struct *work)
 			host->card = card;
 			if (device_register(&card->dev)) {
 				put_device(&card->dev);
+<<<<<<< HEAD
+=======
+				kfree(host->card);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				host->card = NULL;
 			}
 		} else

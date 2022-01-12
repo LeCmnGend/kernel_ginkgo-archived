@@ -127,7 +127,13 @@ static inline void tlb_remove_page_size(struct mmu_gather *tlb,
 	return tlb_remove_page(tlb, page);
 }
 
+<<<<<<< HEAD
 static inline void tlb_change_page_size(struct mmu_gather *tlb, unsigned int page_size)
+=======
+#define tlb_remove_check_page_size_change tlb_remove_check_page_size_change
+static inline void tlb_remove_check_page_size_change(struct mmu_gather *tlb,
+						     unsigned int page_size)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 }
 

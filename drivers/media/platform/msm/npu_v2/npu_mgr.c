@@ -22,6 +22,10 @@
 #include "npu_common.h"
 #include <soc/qcom/subsystem_notif.h>
 #include <soc/qcom/subsystem_restart.h>
+<<<<<<< HEAD
+=======
+#include <linux/reboot.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* -------------------------------------------------------------------------
  * Defines
@@ -286,6 +290,53 @@ int load_fw(struct npu_device *npu_dev)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
+static void complete_pending_commands(struct npu_host_ctx *host_ctx)
+{
+	struct npu_network *network = NULL;
+	struct npu_kevent kevt;
+	struct npu_network_cmd *cmd;
+	struct npu_misc_cmd *misc_cmd;
+	int i;
+
+	/* flush all pending npu cmds */
+	for (i = 0; i < MAX_LOADED_NETWORK; i++) {
+		network = &host_ctx->networks[i];
+		if (!network->is_valid || !network->fw_error)
+			continue;
+
+		if (network->is_async) {
+			NPU_DBG("async cmd, queue ssr event\n");
+			kevt.evt.type = MSM_NPU_EVENT_TYPE_SSR;
+			kevt.evt.u.ssr.network_hdl =
+				network->network_hdl;
+			if (npu_queue_event(network->client, &kevt))
+				NPU_ERR("queue npu event failed\n");
+
+			while (!list_empty(&network->cmd_list)) {
+				cmd = list_first_entry(&network->cmd_list,
+					struct npu_network_cmd, list);
+				npu_dequeue_network_cmd(network, cmd);
+				npu_free_network_cmd(host_ctx, cmd);
+			}
+		} else {
+			list_for_each_entry(cmd, &network->cmd_list, list) {
+				NPU_INFO("complete network %llx trans_id %d\n",
+					network->id, cmd->trans_id);
+				complete(&cmd->cmd_done);
+			}
+		}
+	}
+
+	list_for_each_entry(misc_cmd, &host_ctx->misc_cmd_list, list) {
+		NPU_INFO("complete misc cmd trans_id %d\n",
+			misc_cmd->trans_id);
+		complete(&misc_cmd->cmd_done);
+	}
+}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int unload_fw(struct npu_device *npu_dev)
 {
 	struct npu_host_ctx *host_ctx = &npu_dev->host_ctx;
@@ -301,7 +352,13 @@ int unload_fw(struct npu_device *npu_dev)
 		mutex_unlock(&host_ctx->lock);
 		return 0;
 	} else if (host_ctx->fw_state == FW_ENABLED) {
+<<<<<<< HEAD
 		NPU_ERR("fw is enabled now, can't be unloaded\n");
+=======
+		NPU_ERR("fw is enabled now, device is shutting down?\n");
+		host_ctx->dev_shuttingdown = true;
+		complete_pending_commands(host_ctx);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mutex_unlock(&host_ctx->lock);
 		return -EBUSY;
 	}
@@ -321,6 +378,14 @@ static int enable_fw_nolock(struct npu_device *npu_dev)
 	struct npu_host_ctx *host_ctx = &npu_dev->host_ctx;
 	int ret = 0;
 
+<<<<<<< HEAD
+=======
+	if (host_ctx->dev_shuttingdown) {
+		NPU_ERR("device is shutting down, ignore enable request\n");
+		return -EIO;
+	}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (host_ctx->fw_state == FW_UNLOADED) {
 		ret = load_fw_nolock(npu_dev,
 			host_ctx->auto_pil_disable ? true : false);
@@ -456,6 +521,14 @@ static int disable_fw_nolock(struct npu_device *npu_dev)
 	if (host_ctx->fw_ref_cnt > 0)
 		return ret;
 
+<<<<<<< HEAD
+=======
+	if (host_ctx->dev_shuttingdown) {
+		NPU_ERR("device is shutting down, ignore disable request\n");
+		return -EIO;
+	}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* turn on auto ACK for warm shuts down */
 	npu_cc_reg_write(npu_dev, NPU_CC_NPU_CPC_RSC_CTRL, 3);
 	reinit_completion(&host_ctx->fw_shutdown_done);
@@ -698,6 +771,27 @@ static int npu_panic_handler(struct notifier_block *this,
 	return NOTIFY_DONE;
 }
 
+<<<<<<< HEAD
+=======
+static int npu_reboot_handler(struct notifier_block *this,
+				unsigned long code, void *unused)
+{
+	struct npu_host_ctx *host_ctx =
+		container_of(this, struct npu_host_ctx, reboot_nb);
+
+	NPU_INFO("Device is rebooting with code %d\n", code);
+
+	if ((code == NOTIFY_DONE) || (code == SYS_POWER_OFF)) {
+		mutex_lock(&host_ctx->lock);
+		host_ctx->dev_shuttingdown = true;
+		complete_pending_commands(host_ctx);
+		mutex_unlock(&host_ctx->lock);
+	}
+
+	return NOTIFY_DONE;
+}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void npu_update_pwr_work(struct work_struct *work)
 {
 	int ret;
@@ -750,6 +844,16 @@ int npu_host_init(struct npu_device *npu_dev)
 		goto fail;
 	}
 
+<<<<<<< HEAD
+=======
+	host_ctx->reboot_nb.notifier_call = npu_reboot_handler;
+	ret = register_reboot_notifier(&host_ctx->reboot_nb);
+	if (ret) {
+		NPU_ERR("register reboot notifier failed\n");
+		goto fail;
+	}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	host_ctx->panic_nb.notifier_call = npu_panic_handler;
 	ret = atomic_notifier_chain_register(&panic_notifier_list,
 		&host_ctx->panic_nb);
@@ -824,6 +928,10 @@ fail:
 	if (host_ctx->notif_hdle)
 		subsys_notif_unregister_notifier(host_ctx->notif_hdle,
 			&host_ctx->nb);
+<<<<<<< HEAD
+=======
+	unregister_reboot_notifier(&host_ctx->reboot_nb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_destroy(&host_ctx->lock);
 	return ret;
 }
@@ -839,6 +947,10 @@ void npu_host_deinit(struct npu_device *npu_dev)
 	destroy_workqueue(host_ctx->wq);
 	destroy_workqueue(host_ctx->wq_pri);
 	subsys_notif_unregister_notifier(host_ctx->notif_hdle, &host_ctx->nb);
+<<<<<<< HEAD
+=======
+	unregister_reboot_notifier(&host_ctx->reboot_nb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_destroy(&host_ctx->lock);
 }
 
@@ -932,9 +1044,12 @@ static int host_error_hdlr(struct npu_device *npu_dev, bool force)
 {
 	struct npu_host_ctx *host_ctx = &npu_dev->host_ctx;
 	struct npu_network *network = NULL;
+<<<<<<< HEAD
 	struct npu_kevent kevt;
 	struct npu_network_cmd *cmd;
 	struct npu_misc_cmd *misc_cmd;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool fw_alive = true;
 	int i, ret = 0;
 
@@ -946,6 +1061,15 @@ static int host_error_hdlr(struct npu_device *npu_dev, bool force)
 		return 0;
 	}
 
+<<<<<<< HEAD
+=======
+	if (host_ctx->dev_shuttingdown) {
+		NPU_INFO("device is shutting down, igonre error handler\n");
+		mutex_unlock(&host_ctx->lock);
+		return -EIO;
+	}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (host_ctx->wdg_irq_sts) {
 		NPU_INFO("watchdog irq triggered\n");
 		fw_alive = false;
@@ -1055,6 +1179,7 @@ fw_start_done:
 	}
 
 	complete(&host_ctx->fw_deinit_done);
+<<<<<<< HEAD
 
 	/* flush all pending npu cmds */
 	for (i = 0; i < MAX_LOADED_NETWORK; i++) {
@@ -1090,6 +1215,10 @@ fw_start_done:
 			misc_cmd->trans_id);
 		complete(&misc_cmd->cmd_done);
 	}
+=======
+	complete_pending_commands(host_ctx);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_unlock(&host_ctx->lock);
 
 	return ret;
@@ -2067,6 +2196,10 @@ static int npu_send_network_cmd(struct npu_device *npu_dev,
 	WARN_ON(!mutex_is_locked(&host_ctx->lock));
 
 	if (network->fw_error || host_ctx->fw_error ||
+<<<<<<< HEAD
+=======
+		host_ctx->dev_shuttingdown ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		(host_ctx->fw_state != FW_ENABLED)) {
 		NPU_ERR("fw is in error state or disabled\n");
 		ret = -EIO;
@@ -2092,7 +2225,12 @@ static int npu_send_misc_cmd(struct npu_device *npu_dev, uint32_t q_idx,
 
 	WARN_ON(!mutex_is_locked(&host_ctx->lock));
 
+<<<<<<< HEAD
 	if (host_ctx->fw_error || (host_ctx->fw_state != FW_ENABLED)) {
+=======
+	if (host_ctx->fw_error || host_ctx->dev_shuttingdown ||
+		(host_ctx->fw_state != FW_ENABLED)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		NPU_ERR("fw is in error state or disabled\n");
 		ret = -EIO;
 	} else {
@@ -2529,6 +2667,15 @@ retry:
 		goto free_load_cmd;
 	}
 
+<<<<<<< HEAD
+=======
+	if (host_ctx->dev_shuttingdown) {
+		ret = -EIO;
+		NPU_ERR("device is shutting down\n");
+		goto free_load_cmd;
+	}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!ret) {
 		NPU_ERR("npu: NPU_IPC_CMD_LOAD time out %lld:%d\n",
 			network->id, load_cmd->trans_id);
@@ -2614,6 +2761,14 @@ int32_t npu_host_unload_network(struct npu_client *client,
 		goto free_network;
 	}
 
+<<<<<<< HEAD
+=======
+	if (host_ctx->dev_shuttingdown) {
+		NPU_ERR("device is shutting down, skip unload network in fw\n");
+		goto free_network;
+	}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	NPU_DBG("Unload network %lld\n", network->id);
 	/* prepare IPC packet for UNLOAD */
 	unload_packet.header.cmd_type = NPU_IPC_CMD_UNLOAD;
@@ -2667,7 +2822,11 @@ retry:
 
 	mutex_lock(&host_ctx->lock);
 
+<<<<<<< HEAD
 	if (network->fw_error) {
+=======
+	if (network->fw_error || host_ctx->dev_shuttingdown) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = -EIO;
 		NPU_ERR("fw is in error state during unload network\n");
 		goto free_network;
@@ -2757,6 +2916,15 @@ int32_t npu_host_exec_network_v2(struct npu_client *client,
 		goto exec_v2_done;
 	}
 
+<<<<<<< HEAD
+=======
+	if (host_ctx->dev_shuttingdown) {
+		NPU_ERR("device is shutting down\n");
+		ret = -EIO;
+		goto exec_v2_done;
+	}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (network->is_async && !async_ioctl) {
 		NPU_ERR("network is in async mode\n");
 		ret = -EINVAL;
@@ -2847,6 +3015,15 @@ retry:
 		goto free_exec_cmd;
 	}
 
+<<<<<<< HEAD
+=======
+	if (host_ctx->dev_shuttingdown) {
+		ret = -EIO;
+		NPU_ERR("device is shutting down during execute_v2 network\n");
+		goto free_exec_cmd;
+	}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!ret) {
 		NPU_ERR("npu: %llx:%d NPU_IPC_CMD_EXECUTE_V2 time out\n",
 			network->id, exec_cmd->trans_id);

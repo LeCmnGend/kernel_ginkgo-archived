@@ -184,10 +184,15 @@ nouveau_fbcon_open(struct fb_info *info, int user)
 	struct nouveau_fbdev *fbcon = info->par;
 	struct nouveau_drm *drm = nouveau_drm(fbcon->helper.dev);
 	int ret = pm_runtime_get_sync(drm->dev->dev);
+<<<<<<< HEAD
 	if (ret < 0 && ret != -EACCES) {
 		pm_runtime_put(drm->dev->dev);
 		return ret;
 	}
+=======
+	if (ret < 0 && ret != -EACCES)
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
 
@@ -312,7 +317,11 @@ nouveau_fbcon_create(struct drm_fb_helper *helper,
 	struct nouveau_framebuffer *fb;
 	struct nouveau_channel *chan;
 	struct nouveau_bo *nvbo;
+<<<<<<< HEAD
 	struct drm_mode_fb_cmd2 mode_cmd = {};
+=======
+	struct drm_mode_fb_cmd2 mode_cmd;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret;
 
 	mode_cmd.width = sizes->surface_width;
@@ -545,7 +554,10 @@ fini:
 	drm_fb_helper_fini(&fbcon->helper);
 free:
 	kfree(fbcon);
+<<<<<<< HEAD
 	drm->fbcon = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 }
 

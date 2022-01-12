@@ -86,7 +86,10 @@ static int __init ipc_init(void)
 {
 	int err_sem, err_msg;
 
+<<<<<<< HEAD
 	proc_mkdir("sysvipc", NULL);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err_sem = sem_init();
 	WARN(err_sem, "ipc: sysv sem_init failed: %d\n", err_sem);
 	err_msg = msg_init();

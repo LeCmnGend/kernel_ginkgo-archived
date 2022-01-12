@@ -182,7 +182,11 @@ static int rgmu_enable_clks(struct kgsl_device *device)
 
 	/* Let us set gpu clk to default power level */
 	ret = rgmu_clk_set_rate(rgmu->gpu_clk,
+<<<<<<< HEAD
 			rgmu->gpu_freqs[pwr->num_pwrlevels - 1]);
+=======
+			rgmu->gpu_freqs[pwr->default_pwrlevel]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret)
 		return ret;
 

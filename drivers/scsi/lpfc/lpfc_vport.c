@@ -644,6 +644,7 @@ lpfc_vport_delete(struct fc_vport *fc_vport)
 		    vport->port_state < LPFC_VPORT_READY)
 			return -EAGAIN;
 	}
+<<<<<<< HEAD
 
 	/*
 	 * Take early refcount for outstanding I/O requests we schedule during
@@ -654,6 +655,29 @@ lpfc_vport_delete(struct fc_vport *fc_vport)
 	if (!scsi_host_get(shost))
 		return VPORT_INVAL;
 
+=======
+	/*
+	 * This is a bit of a mess.  We want to ensure the shost doesn't get
+	 * torn down until we're done with the embedded lpfc_vport structure.
+	 *
+	 * Beyond holding a reference for this function, we also need a
+	 * reference for outstanding I/O requests we schedule during delete
+	 * processing.  But once we scsi_remove_host() we can no longer obtain
+	 * a reference through scsi_host_get().
+	 *
+	 * So we take two references here.  We release one reference at the
+	 * bottom of the function -- after delinking the vport.  And we
+	 * release the other at the completion of the unreg_vpi that get's
+	 * initiated after we've disposed of all other resources associated
+	 * with the port.
+	 */
+	if (!scsi_host_get(shost))
+		return VPORT_INVAL;
+	if (!scsi_host_get(shost)) {
+		scsi_host_put(shost);
+		return VPORT_INVAL;
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	lpfc_free_sysfs_attr(vport);
 
 	lpfc_debugfs_terminate(vport);
@@ -800,9 +824,14 @@ skip_logo:
 		if (!(vport->vpi_state & LPFC_VPI_REGISTERED) ||
 				lpfc_mbx_unreg_vpi(vport))
 			scsi_host_put(shost);
+<<<<<<< HEAD
 	} else {
 		scsi_host_put(shost);
 	}
+=======
+	} else
+		scsi_host_put(shost);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	lpfc_free_vpi(phba, vport->vpi);
 	vport->work_port_events = 0;

@@ -179,8 +179,12 @@ struct ath_frame_info {
 	s8 txq;
 	u8 keyix;
 	u8 rtscts_rate;
+<<<<<<< HEAD
 	u8 retries : 6;
 	u8 dyn_smps : 1;
+=======
+	u8 retries : 7;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u8 baw_tracked : 1;
 	u8 tx_power;
 	enum ath9k_key_type keytype:2;

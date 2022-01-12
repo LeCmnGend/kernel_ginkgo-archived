@@ -50,6 +50,12 @@ aes-arm64-y := aes-cipher-core.o aes-cipher-glue.o
 obj-$(CONFIG_CRYPTO_AES_ARM64_BS) += aes-neon-bs.o
 aes-neon-bs-y := aes-neonbs-core.o aes-neonbs-glue.o
 
+<<<<<<< HEAD
+=======
+AFLAGS_aes-ce.o		:= -DINTERLEAVE=4
+AFLAGS_aes-neon.o	:= -DINTERLEAVE=4
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 CFLAGS_aes-glue-ce.o	:= -DUSE_V8_CRYPTO_EXTENSIONS
 
 $(obj)/aes-glue-%.o: $(src)/aes-glue.c FORCE

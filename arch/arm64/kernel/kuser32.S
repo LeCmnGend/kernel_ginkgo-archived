@@ -20,13 +20,25 @@
  *
  * AArch32 user helpers.
  *
+<<<<<<< HEAD
  * These helpers are provided for compatibility with AArch32 binaries that
  * still need them. They are installed at a fixed address by
  * aarch32_setup_additional_pages().
+=======
+ * Each segment is 32-byte aligned and will be moved to the top of the high
+ * vector page.  New segments (if ever needed) must be added in front of
+ * existing ones.  This mechanism should be used only for things that are
+ * really small and justified, and not be abused freely.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * See Documentation/arm/kernel_user_helpers.txt for formal definitions.
  */
 
+<<<<<<< HEAD
+=======
+#include <asm/unistd.h>
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.align	5
 	.globl	__kuser_helper_start
 __kuser_helper_start:
@@ -74,3 +86,45 @@ __kuser_helper_version:			// 0xffff0ffc
 	.word	((__kuser_helper_end - __kuser_helper_start) >> 5)
 	.globl	__kuser_helper_end
 __kuser_helper_end:
+<<<<<<< HEAD
+=======
+
+/*
+ * AArch32 sigreturn code
+ *
+ * For ARM syscalls, the syscall number has to be loaded into r7.
+ * We do not support an OABI userspace.
+ *
+ * For Thumb syscalls, we also pass the syscall number via r7. We therefore
+ * need two 16-bit instructions.
+ */
+	.globl __aarch32_sigret_code_start
+__aarch32_sigret_code_start:
+
+	/*
+	 * ARM Code
+	 */
+	.byte	__NR_compat_sigreturn, 0x70, 0xa0, 0xe3	// mov	r7, #__NR_compat_sigreturn
+	.byte	__NR_compat_sigreturn, 0x00, 0x00, 0xef	// svc	#__NR_compat_sigreturn
+
+	/*
+	 * Thumb code
+	 */
+	.byte	__NR_compat_sigreturn, 0x27			// svc	#__NR_compat_sigreturn
+	.byte	__NR_compat_sigreturn, 0xdf			// mov	r7, #__NR_compat_sigreturn
+
+	/*
+	 * ARM code
+	 */
+	.byte	__NR_compat_rt_sigreturn, 0x70, 0xa0, 0xe3	// mov	r7, #__NR_compat_rt_sigreturn
+	.byte	__NR_compat_rt_sigreturn, 0x00, 0x00, 0xef	// svc	#__NR_compat_rt_sigreturn
+
+	/*
+	 * Thumb code
+	 */
+	.byte	__NR_compat_rt_sigreturn, 0x27			// svc	#__NR_compat_rt_sigreturn
+	.byte	__NR_compat_rt_sigreturn, 0xdf			// mov	r7, #__NR_compat_rt_sigreturn
+
+        .globl __aarch32_sigret_code_end
+__aarch32_sigret_code_end:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

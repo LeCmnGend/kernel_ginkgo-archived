@@ -30,7 +30,11 @@ static inline void seq_buf_clear(struct seq_buf *s)
 }
 
 static inline void
+<<<<<<< HEAD
 seq_buf_init(struct seq_buf *s, char *buf, unsigned int size)
+=======
+seq_buf_init(struct seq_buf *s, unsigned char *buf, unsigned int size)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	s->buffer = buf;
 	s->size = size;

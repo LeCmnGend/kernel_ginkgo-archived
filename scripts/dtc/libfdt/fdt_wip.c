@@ -82,7 +82,11 @@ int fdt_setprop_inplace(void *fdt, int nodeoffset, const char *name,
 	int proplen;
 
 	propval = fdt_getprop(fdt, nodeoffset, name, &proplen);
+<<<<<<< HEAD
 	if (!propval)
+=======
+	if (! propval)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return proplen;
 
 	if (proplen != len)
@@ -93,7 +97,11 @@ int fdt_setprop_inplace(void *fdt, int nodeoffset, const char *name,
 						   val, len);
 }
 
+<<<<<<< HEAD
 static void fdt_nop_region_(void *start, int len)
+=======
+static void _fdt_nop_region(void *start, int len)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	fdt32_t *p;
 
@@ -107,15 +115,26 @@ int fdt_nop_property(void *fdt, int nodeoffset, const char *name)
 	int len;
 
 	prop = fdt_get_property_w(fdt, nodeoffset, name, &len);
+<<<<<<< HEAD
 	if (!prop)
 		return len;
 
 	fdt_nop_region_(prop, len + sizeof(*prop));
+=======
+	if (! prop)
+		return len;
+
+	_fdt_nop_region(prop, len + sizeof(*prop));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
 }
 
+<<<<<<< HEAD
 int fdt_node_end_offset_(void *fdt, int offset)
+=======
+int _fdt_node_end_offset(void *fdt, int offset)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	int depth = 0;
 
@@ -129,11 +148,19 @@ int fdt_nop_node(void *fdt, int nodeoffset)
 {
 	int endoffset;
 
+<<<<<<< HEAD
 	endoffset = fdt_node_end_offset_(fdt, nodeoffset);
 	if (endoffset < 0)
 		return endoffset;
 
 	fdt_nop_region_(fdt_offset_ptr_w(fdt, nodeoffset, 0),
+=======
+	endoffset = _fdt_node_end_offset(fdt, nodeoffset);
+	if (endoffset < 0)
+		return endoffset;
+
+	_fdt_nop_region(fdt_offset_ptr_w(fdt, nodeoffset, 0),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			endoffset - nodeoffset);
 	return 0;
 }

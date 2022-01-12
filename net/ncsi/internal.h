@@ -68,6 +68,18 @@ enum {
 	NCSI_MODE_MAX
 };
 
+<<<<<<< HEAD
+=======
+enum {
+	NCSI_FILTER_BASE	= 0,
+	NCSI_FILTER_VLAN	= 0,
+	NCSI_FILTER_UC,
+	NCSI_FILTER_MC,
+	NCSI_FILTER_MIXED,
+	NCSI_FILTER_MAX
+};
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct ncsi_channel_version {
 	u32 version;		/* Supported BCD encoded NCSI version */
 	u32 alpha2;		/* Supported BCD encoded NCSI version */
@@ -89,6 +101,7 @@ struct ncsi_channel_mode {
 	u32 data[8];	/* Data entries                */
 };
 
+<<<<<<< HEAD
 struct ncsi_channel_mac_filter {
 	u8	n_uc;
 	u8	n_mc;
@@ -101,6 +114,13 @@ struct ncsi_channel_vlan_filter {
 	u8	n_vids;
 	u64	bitmap;
 	u16	*vids;
+=======
+struct ncsi_channel_filter {
+	u32 index;	/* Index of channel filters          */
+	u32 total;	/* Total entries in the filter table */
+	u64 bitmap;	/* Bitmap of valid entries           */
+	u32 data[];	/* Data for the valid entries        */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 struct ncsi_channel_stats {
@@ -184,9 +204,13 @@ struct ncsi_channel {
 	struct ncsi_channel_version version;
 	struct ncsi_channel_cap	    caps[NCSI_CAP_MAX];
 	struct ncsi_channel_mode    modes[NCSI_MODE_MAX];
+<<<<<<< HEAD
 	/* Filtering Settings */
 	struct ncsi_channel_mac_filter	mac_filter;
 	struct ncsi_channel_vlan_filter	vlan_filter;
+=======
+	struct ncsi_channel_filter  *filters[NCSI_FILTER_MAX];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct ncsi_channel_stats   stats;
 	struct {
 		struct timer_list   timer;
@@ -276,8 +300,11 @@ struct ncsi_dev_priv {
 	unsigned int        package_num;     /* Number of packages         */
 	struct list_head    packages;        /* List of packages           */
 	struct ncsi_channel *hot_channel;    /* Channel was ever active    */
+<<<<<<< HEAD
 	struct ncsi_package *force_package;  /* Force a specific package   */
 	struct ncsi_channel *force_channel;  /* Force a specific channel   */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct ncsi_request requests[256];   /* Request table              */
 	unsigned int        request_id;      /* Last used request ID       */
 #define NCSI_REQ_START_IDX	1
@@ -320,6 +347,12 @@ extern spinlock_t ncsi_dev_lock;
 	list_for_each_entry_rcu(nc, &np->channels, node)
 
 /* Resources */
+<<<<<<< HEAD
+=======
+int ncsi_find_filter(struct ncsi_channel *nc, int table, void *data);
+int ncsi_add_filter(struct ncsi_channel *nc, int table, void *data);
+int ncsi_remove_filter(struct ncsi_channel *nc, int table, int index);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void ncsi_start_channel_monitor(struct ncsi_channel *nc);
 void ncsi_stop_channel_monitor(struct ncsi_channel *nc);
 struct ncsi_channel *ncsi_find_channel(struct ncsi_package *np,

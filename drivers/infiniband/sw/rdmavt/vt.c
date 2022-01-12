@@ -97,7 +97,13 @@ struct rvt_dev_info *rvt_alloc_device(size_t size, int nports)
 	if (!rdi)
 		return rdi;
 
+<<<<<<< HEAD
 	rdi->ports = kcalloc(nports, sizeof(*rdi->ports), GFP_KERNEL);
+=======
+	rdi->ports = kcalloc(nports,
+			     sizeof(struct rvt_ibport **),
+			     GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!rdi->ports)
 		ib_dealloc_device(&rdi->ibdev);
 

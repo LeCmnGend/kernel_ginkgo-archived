@@ -151,7 +151,11 @@ static void __meminit mm_compute_batch(void)
 	s32 batch = max_t(s32, nr*2, 32);
 
 	/* batch size set to 0.4% of (total memory/#cpus), or max int32 */
+<<<<<<< HEAD
 	memsized_batch = min_t(u64, (totalram_pages()/nr)/256, 0x7fffffff);
+=======
+	memsized_batch = min_t(u64, (totalram_pages/nr)/256, 0x7fffffff);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	vm_committed_as_batch = max_t(s32, memsized_batch, batch);
 }

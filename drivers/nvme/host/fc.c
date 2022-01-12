@@ -1492,7 +1492,11 @@ __nvme_fc_init_request(struct nvme_fc_ctrl *ctrl,
 	if (fc_dma_mapping_error(ctrl->lport->dev, op->fcp_req.cmddma)) {
 		dev_err(ctrl->dev,
 			"FCP Op failed - cmdiu dma mapping failed.\n");
+<<<<<<< HEAD
 		ret = -EFAULT;
+=======
+		ret = EFAULT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto out_on_error;
 	}
 
@@ -1502,7 +1506,11 @@ __nvme_fc_init_request(struct nvme_fc_ctrl *ctrl,
 	if (fc_dma_mapping_error(ctrl->lport->dev, op->fcp_req.rspdma)) {
 		dev_err(ctrl->dev,
 			"FCP Op failed - rspiu dma mapping failed.\n");
+<<<<<<< HEAD
 		ret = -EFAULT;
+=======
+		ret = EFAULT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	atomic_set(&op->state, FCPOP_STATE_IDLE);
@@ -1566,7 +1574,10 @@ nvme_fc_term_aen_ops(struct nvme_fc_ctrl *ctrl)
 	struct nvme_fc_fcp_op *aen_op;
 	int i;
 
+<<<<<<< HEAD
 	cancel_work_sync(&ctrl->ctrl.async_event_work);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	aen_op = ctrl->aen_ops;
 	for (i = 0; i < NVME_FC_NR_AEN_COMMANDS; i++, aen_op++) {
 		if (!aen_op->fcp_req.private)
@@ -3012,14 +3023,22 @@ nvme_fc_create_ctrl(struct device *dev, struct nvmf_ctrl_options *opts)
 	spin_lock_irqsave(&nvme_fc_lock, flags);
 	list_for_each_entry(lport, &nvme_fc_lport_list, port_list) {
 		if (lport->localport.node_name != laddr.nn ||
+<<<<<<< HEAD
 		    lport->localport.port_name != laddr.pn ||
 		    lport->localport.port_state != FC_OBJSTATE_ONLINE)
+=======
+		    lport->localport.port_name != laddr.pn)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			continue;
 
 		list_for_each_entry(rport, &lport->endp_list, endp_list) {
 			if (rport->remoteport.node_name != raddr.nn ||
+<<<<<<< HEAD
 			    rport->remoteport.port_name != raddr.pn ||
 			    rport->remoteport.port_state != FC_OBJSTATE_ONLINE)
+=======
+			    rport->remoteport.port_name != raddr.pn)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				continue;
 
 			/* if fail to get reference fall through. Will error */

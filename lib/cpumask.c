@@ -33,11 +33,18 @@ EXPORT_SYMBOL(cpumask_next);
 int cpumask_next_and(int n, const struct cpumask *src1p,
 		     const struct cpumask *src2p)
 {
+<<<<<<< HEAD
 	/* -1 is a legal arg here. */
 	if (n != -1)
 		cpumask_check(n);
 	return find_next_and_bit(cpumask_bits(src1p), cpumask_bits(src2p),
 		nr_cpumask_bits, n + 1);
+=======
+	while ((n = cpumask_next(n, src1p)) < nr_cpu_ids)
+		if (cpumask_test_cpu(n, src2p))
+			break;
+	return n;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL(cpumask_next_and);
 
@@ -228,6 +235,7 @@ unsigned int cpumask_local_spread(unsigned int i, int node)
 	BUG();
 }
 EXPORT_SYMBOL(cpumask_local_spread);
+<<<<<<< HEAD
 
 static DEFINE_PER_CPU(int, distribute_cpu_mask_prev);
 
@@ -275,3 +283,5 @@ int cpumask_any_distribute(const struct cpumask *srcp)
 	return next;
 }
 EXPORT_SYMBOL(cpumask_any_distribute);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

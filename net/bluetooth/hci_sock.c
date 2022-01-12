@@ -59,6 +59,7 @@ struct hci_pinfo {
 	char              comm[TASK_COMM_LEN];
 };
 
+<<<<<<< HEAD
 static struct hci_dev *hci_hdev_from_sock(struct sock *sk)
 {
 	struct hci_dev *hdev = hci_pi(sk)->hdev;
@@ -70,6 +71,8 @@ static struct hci_dev *hci_hdev_from_sock(struct sock *sk)
 	return hdev;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void hci_sock_set_flag(struct sock *sk, int nr)
 {
 	set_bit(nr, &hci_pi(sk)->flags);
@@ -758,6 +761,7 @@ void hci_sock_dev_event(struct hci_dev *hdev, int event)
 	if (event == HCI_DEV_UNREG) {
 		struct sock *sk;
 
+<<<<<<< HEAD
 		/* Wake up sockets using this dead device */
 		read_lock(&hci_sk_list.lock);
 		sk_for_each(sk, &hci_sk_list.head) {
@@ -765,6 +769,21 @@ void hci_sock_dev_event(struct hci_dev *hdev, int event)
 				sk->sk_err = EPIPE;
 				sk->sk_state_change(sk);
 			}
+=======
+		/* Detach sockets from device */
+		read_lock(&hci_sk_list.lock);
+		sk_for_each(sk, &hci_sk_list.head) {
+			bh_lock_sock_nested(sk);
+			if (hci_pi(sk)->hdev == hdev) {
+				hci_pi(sk)->hdev = NULL;
+				sk->sk_err = EPIPE;
+				sk->sk_state = BT_OPEN;
+				sk->sk_state_change(sk);
+
+				hci_dev_put(hdev);
+			}
+			bh_unlock_sock(sk);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 		read_unlock(&hci_sk_list.lock);
 	}
@@ -923,10 +942,17 @@ static int hci_sock_blacklist_del(struct hci_dev *hdev, void __user *arg)
 static int hci_sock_bound_ioctl(struct sock *sk, unsigned int cmd,
 				unsigned long arg)
 {
+<<<<<<< HEAD
 	struct hci_dev *hdev = hci_hdev_from_sock(sk);
 
 	if (IS_ERR(hdev))
 		return PTR_ERR(hdev);
+=======
+	struct hci_dev *hdev = hci_pi(sk)->hdev;
+
+	if (!hdev)
+		return -EBADFD;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (hci_dev_test_flag(hdev, HCI_USER_CHANNEL))
 		return -EBUSY;
@@ -1080,6 +1106,7 @@ static int hci_sock_bind(struct socket *sock, struct sockaddr *addr,
 
 	lock_sock(sk);
 
+<<<<<<< HEAD
 	/* Allow detaching from dead device and attaching to alive device, if
 	 * the caller wants to re-bind (instead of close) this socket in
 	 * response to hci_sock_dev_event(HCI_DEV_UNREG) notification.
@@ -1092,6 +1119,8 @@ static int hci_sock_bind(struct socket *sock, struct sockaddr *addr,
 	}
 	hdev = NULL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (sk->sk_state == BT_BOUND) {
 		err = -EALREADY;
 		goto done;
@@ -1368,9 +1397,15 @@ static int hci_sock_getname(struct socket *sock, struct sockaddr *addr,
 
 	lock_sock(sk);
 
+<<<<<<< HEAD
 	hdev = hci_hdev_from_sock(sk);
 	if (IS_ERR(hdev)) {
 		err = PTR_ERR(hdev);
+=======
+	hdev = hci_pi(sk)->hdev;
+	if (!hdev) {
+		err = -EBADFD;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto done;
 	}
 
@@ -1730,9 +1765,15 @@ static int hci_sock_sendmsg(struct socket *sock, struct msghdr *msg,
 		goto done;
 	}
 
+<<<<<<< HEAD
 	hdev = hci_hdev_from_sock(sk);
 	if (IS_ERR(hdev)) {
 		err = PTR_ERR(hdev);
+=======
+	hdev = hci_pi(sk)->hdev;
+	if (!hdev) {
+		err = -EBADFD;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto done;
 	}
 

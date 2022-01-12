@@ -726,7 +726,11 @@ acpi_os_table_override(struct acpi_table_header *existing_table,
 }
 
 /*
+<<<<<<< HEAD
  * acpi_locate_initial_tables()
+=======
+ * acpi_table_init()
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * find RSDP, find and checksum SDT/XSDT.
  * checksum all tables, print SDT/XSDT
@@ -734,7 +738,11 @@ acpi_os_table_override(struct acpi_table_header *existing_table,
  * result: sdt_entry[] is initialized
  */
 
+<<<<<<< HEAD
 int __init acpi_locate_initial_tables(void)
+=======
+int __init acpi_table_init(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	acpi_status status;
 
@@ -749,6 +757,7 @@ int __init acpi_locate_initial_tables(void)
 	status = acpi_initialize_tables(initial_tables, ACPI_MAX_TABLES, 0);
 	if (ACPI_FAILURE(status))
 		return -EINVAL;
+<<<<<<< HEAD
 
 	return 0;
 }
@@ -788,6 +797,11 @@ int __init acpi_table_init(void)
 
 	acpi_table_init_complete();
 
+=======
+	acpi_table_initrd_scan();
+
+	check_multiple_madt();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
 

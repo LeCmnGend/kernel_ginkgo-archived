@@ -363,9 +363,15 @@ enum v4l2_hsv_encoding {
 
 enum v4l2_quantization {
 	/*
+<<<<<<< HEAD
 	 * The default for R'G'B' quantization is always full range.
 	 * For Y'CbCr the quantization is always limited range, except
 	 * for COLORSPACE_JPEG: this is full range.
+=======
+	 * The default for R'G'B' quantization is always full range, except
+	 * for the BT2020 colorspace. For Y'CbCr the quantization is always
+	 * limited range, except for COLORSPACE_JPEG: this is full range.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 */
 	V4L2_QUANTIZATION_DEFAULT     = 0,
 	V4L2_QUANTIZATION_FULL_RANGE  = 1,
@@ -374,6 +380,7 @@ enum v4l2_quantization {
 
 /*
  * Determine how QUANTIZATION_DEFAULT should map to a proper quantization.
+<<<<<<< HEAD
  * This depends on whether the image is RGB or not, the colorspace.
  * The Y'CbCr encoding is not used anymore, but is still there for backwards
  * compatibility.
@@ -381,6 +388,16 @@ enum v4l2_quantization {
 #define V4L2_MAP_QUANTIZATION_DEFAULT(is_rgb_or_hsv, colsp, ycbcr_enc) \
 	(((is_rgb_or_hsv) || (colsp) == V4L2_COLORSPACE_JPEG) ? \
 	 V4L2_QUANTIZATION_FULL_RANGE : V4L2_QUANTIZATION_LIM_RANGE)
+=======
+ * This depends on whether the image is RGB or not, the colorspace and the
+ * Y'CbCr encoding.
+ */
+#define V4L2_MAP_QUANTIZATION_DEFAULT(is_rgb_or_hsv, colsp, ycbcr_enc) \
+	(((is_rgb_or_hsv) && (colsp) == V4L2_COLORSPACE_BT2020) ? \
+	 V4L2_QUANTIZATION_LIM_RANGE : \
+	 (((is_rgb_or_hsv) || (colsp) == V4L2_COLORSPACE_JPEG) ? \
+	 V4L2_QUANTIZATION_FULL_RANGE : V4L2_QUANTIZATION_LIM_RANGE))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 enum v4l2_priority {
 	V4L2_PRIORITY_UNSET       = 0,  /* not initialized */

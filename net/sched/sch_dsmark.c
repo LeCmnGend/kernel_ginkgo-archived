@@ -344,7 +344,11 @@ static int dsmark_init(struct Qdisc *sch, struct nlattr *opt)
 	if (!opt)
 		goto errout;
 
+<<<<<<< HEAD
 	err = tcf_block_get(&p->block, &p->filter_list, sch);
+=======
+	err = tcf_block_get(&p->block, &p->filter_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		return err;
 
@@ -397,8 +401,12 @@ static void dsmark_reset(struct Qdisc *sch)
 	struct dsmark_qdisc_data *p = qdisc_priv(sch);
 
 	pr_debug("%s(sch %p,[qdisc %p])\n", __func__, sch, p);
+<<<<<<< HEAD
 	if (p->q)
 		qdisc_reset(p->q);
+=======
+	qdisc_reset(p->q);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	sch->qstats.backlog = 0;
 	sch->q.qlen = 0;
 }

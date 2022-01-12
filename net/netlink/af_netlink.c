@@ -429,6 +429,7 @@ void netlink_table_ungrab(void)
 static inline void
 netlink_lock_table(void)
 {
+<<<<<<< HEAD
 	unsigned long flags;
 
 	/* read_lock() synchronizes us to netlink_table_grab */
@@ -436,6 +437,13 @@ netlink_lock_table(void)
 	read_lock_irqsave(&nl_table_lock, flags);
 	atomic_inc(&nl_table_users);
 	read_unlock_irqrestore(&nl_table_lock, flags);
+=======
+	/* read_lock() synchronizes us to netlink_table_grab */
+
+	read_lock(&nl_table_lock);
+	atomic_inc(&nl_table_users);
+	read_unlock(&nl_table_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static inline void

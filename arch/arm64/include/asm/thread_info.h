@@ -43,6 +43,7 @@ struct thread_info {
 #ifdef CONFIG_ARM64_SW_TTBR0_PAN
 	u64			ttbr0;		/* saved TTBR0_EL1 */
 #endif
+<<<<<<< HEAD
 #ifdef CONFIG_SHADOW_CALL_STACK
 	void			*shadow_call_stack;
 #endif
@@ -58,6 +59,12 @@ struct thread_info {
 #endif
 		} preempt;
 	};
+=======
+	int			preempt_count;	/* 0 => preemptable, <0 => bug */
+#ifdef CONFIG_SHADOW_CALL_STACK
+	void			*shadow_call_stack;
+#endif
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 #define INIT_THREAD_INFO(tsk)						\

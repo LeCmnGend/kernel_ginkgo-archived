@@ -554,10 +554,13 @@
  *	@new points to the new credentials.
  *	@old points to the original credentials.
  *	Transfer data from original creds to new creds
+<<<<<<< HEAD
  * @cred_getsecid:
  *	Retrieve the security identifier of the cred structure @c
  *	@c contains the credentials, secid will be placed into @secid.
  *	In case of failure, @secid will be set to zero.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * @kernel_act_as:
  *	Set the credentials for a kernel service to act as (subjective context).
  *	@new points to the credentials to be modified.
@@ -1545,7 +1548,10 @@ union security_list_options {
 	int (*cred_prepare)(struct cred *new, const struct cred *old,
 				gfp_t gfp);
 	void (*cred_transfer)(struct cred *new, const struct cred *old);
+<<<<<<< HEAD
 	void (*cred_getsecid)(const struct cred *c, u32 *secid);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int (*kernel_act_as)(struct cred *new, u32 secid);
 	int (*kernel_create_files_as)(struct cred *new, struct inode *inode);
 	int (*kernel_module_request)(char *kmod_name);
@@ -1580,6 +1586,7 @@ union security_list_options {
 	int (*msg_msg_alloc_security)(struct msg_msg *msg);
 	void (*msg_msg_free_security)(struct msg_msg *msg);
 
+<<<<<<< HEAD
 	int (*msg_queue_alloc_security)(struct kern_ipc_perm *msq);
 	void (*msg_queue_free_security)(struct kern_ipc_perm *msq);
 	int (*msg_queue_associate)(struct kern_ipc_perm *msq, int msqflg);
@@ -1602,6 +1609,30 @@ union security_list_options {
 	int (*sem_associate)(struct kern_ipc_perm *sma, int semflg);
 	int (*sem_semctl)(struct kern_ipc_perm *sma, int cmd);
 	int (*sem_semop)(struct kern_ipc_perm *sma, struct sembuf *sops,
+=======
+	int (*msg_queue_alloc_security)(struct msg_queue *msq);
+	void (*msg_queue_free_security)(struct msg_queue *msq);
+	int (*msg_queue_associate)(struct msg_queue *msq, int msqflg);
+	int (*msg_queue_msgctl)(struct msg_queue *msq, int cmd);
+	int (*msg_queue_msgsnd)(struct msg_queue *msq, struct msg_msg *msg,
+				int msqflg);
+	int (*msg_queue_msgrcv)(struct msg_queue *msq, struct msg_msg *msg,
+				struct task_struct *target, long type,
+				int mode);
+
+	int (*shm_alloc_security)(struct shmid_kernel *shp);
+	void (*shm_free_security)(struct shmid_kernel *shp);
+	int (*shm_associate)(struct shmid_kernel *shp, int shmflg);
+	int (*shm_shmctl)(struct shmid_kernel *shp, int cmd);
+	int (*shm_shmat)(struct shmid_kernel *shp, char __user *shmaddr,
+				int shmflg);
+
+	int (*sem_alloc_security)(struct sem_array *sma);
+	void (*sem_free_security)(struct sem_array *sma);
+	int (*sem_associate)(struct sem_array *sma, int semflg);
+	int (*sem_semctl)(struct sem_array *sma, int cmd);
+	int (*sem_semop)(struct sem_array *sma, struct sembuf *sops,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				unsigned nsops, int alter);
 
 	int (*netlink_send)(struct sock *sk, struct sk_buff *skb);
@@ -1837,7 +1868,10 @@ struct security_hook_heads {
 	struct list_head cred_free;
 	struct list_head cred_prepare;
 	struct list_head cred_transfer;
+<<<<<<< HEAD
 	struct list_head cred_getsecid;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct list_head kernel_act_as;
 	struct list_head kernel_create_files_as;
 	struct list_head kernel_read_file;

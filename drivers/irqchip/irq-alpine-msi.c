@@ -165,7 +165,12 @@ static int alpine_msix_middle_domain_alloc(struct irq_domain *domain,
 	return 0;
 
 err_sgi:
+<<<<<<< HEAD
 	irq_domain_free_irqs_parent(domain, virq, i - 1);
+=======
+	while (--i >= 0)
+		irq_domain_free_irqs_parent(domain, virq, i);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	alpine_msix_free_sgi(priv, sgi, nr_irqs);
 	return err;
 }

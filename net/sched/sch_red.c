@@ -169,7 +169,10 @@ static int red_change(struct Qdisc *sch, struct nlattr *opt)
 	struct Qdisc *child = NULL;
 	int err;
 	u32 max_P;
+<<<<<<< HEAD
 	u8 *stab;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (opt == NULL)
 		return -EINVAL;
@@ -185,9 +188,13 @@ static int red_change(struct Qdisc *sch, struct nlattr *opt)
 	max_P = tb[TCA_RED_MAX_P] ? nla_get_u32(tb[TCA_RED_MAX_P]) : 0;
 
 	ctl = nla_data(tb[TCA_RED_PARMS]);
+<<<<<<< HEAD
 	stab = nla_data(tb[TCA_RED_STAB]);
 	if (!red_check_params(ctl->qth_min, ctl->qth_max, ctl->Wlog,
 			      ctl->Scell_log, stab))
+=======
+	if (!red_check_params(ctl->qth_min, ctl->qth_max, ctl->Wlog))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EINVAL;
 
 	if (ctl->limit > 0) {
@@ -212,7 +219,11 @@ static int red_change(struct Qdisc *sch, struct nlattr *opt)
 	red_set_parms(&q->parms,
 		      ctl->qth_min, ctl->qth_max, ctl->Wlog,
 		      ctl->Plog, ctl->Scell_log,
+<<<<<<< HEAD
 		      stab,
+=======
+		      nla_data(tb[TCA_RED_STAB]),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		      max_P);
 	red_set_vars(&q->vars);
 

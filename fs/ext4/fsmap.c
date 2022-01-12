@@ -121,9 +121,12 @@ static int ext4_getfsmap_helper(struct super_block *sb,
 
 	/* Are we just counting mappings? */
 	if (info->gfi_head->fmh_count == 0) {
+<<<<<<< HEAD
 		if (info->gfi_head->fmh_entries == UINT_MAX)
 			return EXT4_QUERY_RANGE_ABORT;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (rec_fsblk > info->gfi_next_fsblk)
 			info->gfi_head->fmh_entries++;
 

@@ -220,9 +220,12 @@ static int mei_cl_irq_read(struct mei_cl *cl, struct mei_cl_cb *cb,
 		return ret;
 	}
 
+<<<<<<< HEAD
 	pm_runtime_mark_last_busy(dev->dev);
 	pm_request_autosuspend(dev->dev);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	list_move_tail(&cb->list, &cl->rd_pending);
 
 	return 0;

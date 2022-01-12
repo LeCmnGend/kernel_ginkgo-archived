@@ -16,9 +16,12 @@
 #include <linux/file.h>
 #include <linux/quotaops.h>
 #include <linux/uuid.h>
+<<<<<<< HEAD
 #include <linux/quotaops.h>
 #include <linux/random.h>
 #include <linux/uuid.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/uaccess.h>
 #include <linux/delay.h>
 #include "ext4_jbd2.h"
@@ -106,6 +109,10 @@ static long swap_inode_boot_loader(struct super_block *sb,
 	int err;
 	struct inode *inode_bl;
 	struct ext4_inode_info *ei_bl;
+<<<<<<< HEAD
+=======
+	struct ext4_sb_info *sbi = EXT4_SB(sb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (inode->i_nlink != 1 || !S_ISREG(inode->i_mode))
 		return -EINVAL;
@@ -164,8 +171,15 @@ static long swap_inode_boot_loader(struct super_block *sb,
 
 	inode->i_ctime = inode_bl->i_ctime = current_time(inode);
 
+<<<<<<< HEAD
 	inode->i_generation = prandom_u32();
 	inode_bl->i_generation = prandom_u32();
+=======
+	spin_lock(&sbi->s_next_gen_lock);
+	inode->i_generation = sbi->s_next_generation++;
+	inode_bl->i_generation = sbi->s_next_generation++;
+	spin_unlock(&sbi->s_next_gen_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	ext4_discard_preallocations(inode);
 
@@ -1050,10 +1064,14 @@ resizefs_out:
 			err = ext4_journal_get_write_access(handle, sbi->s_sbh);
 			if (err)
 				goto pwsalt_err_journal;
+<<<<<<< HEAD
 			lock_buffer(sbi->s_sbh);
 			generate_random_uuid(sbi->s_es->s_encrypt_pw_salt);
 			ext4_superblock_csum_set(sb);
 			unlock_buffer(sbi->s_sbh);
+=======
+			generate_random_uuid(sbi->s_es->s_encrypt_pw_salt);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			err = ext4_handle_dirty_metadata(handle, NULL,
 							 sbi->s_sbh);
 		pwsalt_err_journal:

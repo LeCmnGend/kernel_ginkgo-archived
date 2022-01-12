@@ -797,7 +797,11 @@ static int getoptions(char *c, struct trusted_key_payload *pay,
 		case Opt_migratable:
 			if (*args[0].from == '0')
 				pay->migratable = 0;
+<<<<<<< HEAD
 			else if (*args[0].from != '1')
+=======
+			else
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				return -EINVAL;
 			break;
 		case Opt_pcrlock:

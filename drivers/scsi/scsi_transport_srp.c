@@ -555,6 +555,7 @@ int srp_reconnect_rport(struct srp_rport *rport)
 	res = mutex_lock_interruptible(&rport->mutex);
 	if (res)
 		goto out;
+<<<<<<< HEAD
 	if (rport->state != SRP_RPORT_FAIL_FAST && rport->state != SRP_RPORT_LOST)
 		/*
 		 * sdev state must be SDEV_TRANSPORT_OFFLINE, transition
@@ -563,6 +564,9 @@ int srp_reconnect_rport(struct srp_rport *rport)
 		 * treats SDEV_TRANSPORT_OFFLINE like SDEV_BLOCK.
 		 */
 		scsi_target_block(&shost->shost_gendev);
+=======
+	scsi_target_block(&shost->shost_gendev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	res = rport->state != SRP_RPORT_LOST ? i->f->reconnect(rport) : -ENODEV;
 	pr_debug("%s (state %d): transport.reconnect() returned %d\n",
 		 dev_name(&shost->shost_gendev), rport->state, res);

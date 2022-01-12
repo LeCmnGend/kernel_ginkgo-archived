@@ -239,15 +239,19 @@ static const struct pci_device_id intel_th_pci_id_table[] = {
 		.driver_data = (kernel_ulong_t)&intel_th_2x,
 	},
 	{
+<<<<<<< HEAD
 		/* Alder Lake-P */
 		PCI_DEVICE(PCI_VENDOR_ID_INTEL, 0x51a6),
 		.driver_data = (kernel_ulong_t)&intel_th_2x,
 	},
 	{
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* Emmitsburg PCH */
 		PCI_DEVICE(PCI_VENDOR_ID_INTEL, 0x1bcc),
 		.driver_data = (kernel_ulong_t)&intel_th_2x,
 	},
+<<<<<<< HEAD
 	{
 		/* Alder Lake-M */
 		PCI_DEVICE(PCI_VENDOR_ID_INTEL, 0x54a6),
@@ -258,6 +262,8 @@ static const struct pci_device_id intel_th_pci_id_table[] = {
 		PCI_DEVICE(PCI_VENDOR_ID_INTEL, 0x4c19),
 		.driver_data = (kernel_ulong_t)&intel_th_2x,
 	},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ 0 },
 };
 

@@ -234,7 +234,11 @@ static void acpi_gpiochip_request_irq(struct acpi_gpio_chip *acpi_gpio,
 	int ret, value;
 
 	ret = request_threaded_irq(event->irq, NULL, event->handler,
+<<<<<<< HEAD
 				   event->irqflags | IRQF_ONESHOT, "ACPI:Event", event);
+=======
+				   event->irqflags, "ACPI:Event", event);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret) {
 		dev_err(acpi_gpio->chip->parent,
 			"Failed to setup interrupt handler for %d\n",
@@ -1406,6 +1410,7 @@ static const struct dmi_system_id gpiolib_acpi_quirks[] = {
 	},
 	{
 		/*
+<<<<<<< HEAD
 		 * The Dell Venue 10 Pro 5055, with Bay Trail SoC + TI PMIC uses an
 		 * external embedded-controller connected via I2C + an ACPI GPIO
 		 * event handler on INT33FFC:02 pin 12, causing spurious wakeups.
@@ -1420,6 +1425,8 @@ static const struct dmi_system_id gpiolib_acpi_quirks[] = {
 	},
 	{
 		/*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		 * HP X2 10 models with Cherry Trail SoC + TI PMIC use an
 		 * external embedded-controller connected via I2C + an ACPI GPIO
 		 * event handler on INT33FF:01 pin 0, causing spurious wakeups.

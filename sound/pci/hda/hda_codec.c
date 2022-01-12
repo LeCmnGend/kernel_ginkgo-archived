@@ -3394,7 +3394,11 @@ EXPORT_SYMBOL_GPL(snd_hda_set_power_save);
  * @nid: NID to check / update
  *
  * Check whether the given NID is in the amp list.  If it's in the list,
+<<<<<<< HEAD
  * check the current AMP status, and update the power-status according
+=======
+ * check the current AMP status, and update the the power-status according
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * to the mute status.
  *
  * This function is supposed to be set or called from the check_power_status

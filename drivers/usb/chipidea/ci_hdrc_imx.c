@@ -64,8 +64,12 @@ static const struct ci_hdrc_imx_platform_flag imx6sx_usb_data = {
 
 static const struct ci_hdrc_imx_platform_flag imx6ul_usb_data = {
 	.flags = CI_HDRC_SUPPORTS_RUNTIME_PM |
+<<<<<<< HEAD
 		CI_HDRC_TURN_VBUS_EARLY_ON |
 		CI_HDRC_DISABLE_DEVICE_STREAMING,
+=======
+		CI_HDRC_TURN_VBUS_EARLY_ON,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 static const struct ci_hdrc_imx_platform_flag imx7d_usb_data = {
@@ -134,6 +138,7 @@ static struct imx_usbmisc_data *usbmisc_get_init_data(struct device *dev)
 	misc_pdev = of_find_device_by_node(args.np);
 	of_node_put(args.np);
 
+<<<<<<< HEAD
 	if (!misc_pdev)
 		return ERR_PTR(-EPROBE_DEFER);
 
@@ -141,6 +146,11 @@ static struct imx_usbmisc_data *usbmisc_get_init_data(struct device *dev)
 		put_device(&misc_pdev->dev);
 		return ERR_PTR(-EPROBE_DEFER);
 	}
+=======
+	if (!misc_pdev || !platform_get_drvdata(misc_pdev))
+		return ERR_PTR(-EPROBE_DEFER);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	data->dev = &misc_pdev->dev;
 
 	if (of_find_property(np, "disable-over-current", NULL))

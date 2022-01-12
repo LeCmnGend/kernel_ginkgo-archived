@@ -3889,7 +3889,10 @@ static int sde_plane_sspp_atomic_update(struct drm_plane *plane,
 	struct drm_crtc *crtc;
 	struct drm_framebuffer *fb;
 	struct sde_rect src, dst;
+<<<<<<< HEAD
  	bool is_rt;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool q16_data = true;
 	int idx;
 
@@ -4033,16 +4036,23 @@ static int sde_plane_sspp_atomic_update(struct drm_plane *plane,
 
 	_sde_plane_set_scanout(plane, pstate, &psde->pipe_cfg, fb);
 
+<<<<<<< HEAD
 	if (is_rt != psde->is_rt_pipe) {
 		psde->is_rt_pipe = is_rt;
 		pstate->dirty |= SDE_PLANE_DIRTY_QOS;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* early out if nothing dirty */
 	if (!pstate->dirty)
 		return 0;
 	pstate->pending = true;
 
+<<<<<<< HEAD
+=======
+	psde->is_rt_pipe = (sde_crtc_get_client_type(crtc) != NRT_CLIENT);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	_sde_plane_set_qos_ctrl(plane, false, SDE_PLANE_QOS_PANIC_CTRL);
 
 	/* update secure session flag */
@@ -4251,11 +4261,16 @@ static int sde_plane_sspp_atomic_update(struct drm_plane *plane,
 				&psde->sharp_cfg);
 	}
 
+<<<<<<< HEAD
 	if (pstate->dirty & (SDE_PLANE_DIRTY_QOS | SDE_PLANE_DIRTY_RECTS |
 			     SDE_PLANE_DIRTY_FORMAT)) {
 		_sde_plane_set_qos_lut(plane, fb);
 		_sde_plane_set_danger_lut(plane, fb);
 	}
+=======
+	_sde_plane_set_qos_lut(plane, fb);
+	_sde_plane_set_danger_lut(plane, fb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (plane->type != DRM_PLANE_TYPE_CURSOR) {
 		_sde_plane_set_qos_ctrl(plane, true, SDE_PLANE_QOS_PANIC_CTRL);
@@ -4264,8 +4279,12 @@ static int sde_plane_sspp_atomic_update(struct drm_plane *plane,
 			_sde_plane_set_ts_prefill(plane, pstate);
 	}
 
+<<<<<<< HEAD
 	if (pstate->dirty & SDE_PLANE_DIRTY_QOS)
 		_sde_plane_set_qos_remap(plane);
+=======
+	_sde_plane_set_qos_remap(plane);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* clear dirty */
 	pstate->dirty = 0x0;

@@ -379,9 +379,17 @@ static int i801_check_post(struct i801_priv *priv, int status)
 		dev_err(&priv->pci_dev->dev, "Transaction timeout\n");
 		/* try to stop the current command */
 		dev_dbg(&priv->pci_dev->dev, "Terminating the current operation\n");
+<<<<<<< HEAD
 		outb_p(SMBHSTCNT_KILL, SMBHSTCNT(priv));
 		usleep_range(1000, 2000);
 		outb_p(0, SMBHSTCNT(priv));
+=======
+		outb_p(inb_p(SMBHSTCNT(priv)) | SMBHSTCNT_KILL,
+		       SMBHSTCNT(priv));
+		usleep_range(1000, 2000);
+		outb_p(inb_p(SMBHSTCNT(priv)) & (~SMBHSTCNT_KILL),
+		       SMBHSTCNT(priv));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		/* Check if it worked */
 		status = inb_p(SMBHSTSTS(priv));
@@ -1497,6 +1505,7 @@ static inline int i801_acpi_probe(struct i801_priv *priv) { return 0; }
 static inline void i801_acpi_remove(struct i801_priv *priv) { }
 #endif
 
+<<<<<<< HEAD
 static unsigned char i801_setup_hstcfg(struct i801_priv *priv)
 {
 	unsigned char hstcfg = priv->original_hstcfg;
@@ -1507,6 +1516,8 @@ static unsigned char i801_setup_hstcfg(struct i801_priv *priv)
 	return hstcfg;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int i801_probe(struct pci_dev *dev, const struct pci_device_id *id)
 {
 	unsigned char temp;
@@ -1610,10 +1621,21 @@ static int i801_probe(struct pci_dev *dev, const struct pci_device_id *id)
 		return err;
 	}
 
+<<<<<<< HEAD
 	pci_read_config_byte(priv->pci_dev, SMBHSTCFG, &priv->original_hstcfg);
 	temp = i801_setup_hstcfg(priv);
 	if (!(priv->original_hstcfg & SMBHSTCFG_HST_EN))
 		dev_info(&dev->dev, "Enabling SMBus device\n");
+=======
+	pci_read_config_byte(priv->pci_dev, SMBHSTCFG, &temp);
+	priv->original_hstcfg = temp;
+	temp &= ~SMBHSTCFG_I2C_EN;	/* SMBus timing */
+	if (!(temp & SMBHSTCFG_HST_EN)) {
+		dev_info(&dev->dev, "Enabling SMBus device\n");
+		temp |= SMBHSTCFG_HST_EN;
+	}
+	pci_write_config_byte(priv->pci_dev, SMBHSTCFG, temp);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (temp & SMBHSTCFG_SMB_SMI_EN) {
 		dev_dbg(&dev->dev, "SMBus using interrupt SMI#\n");
@@ -1740,7 +1762,10 @@ static int i801_resume(struct device *dev)
 	struct pci_dev *pci_dev = to_pci_dev(dev);
 	struct i801_priv *priv = pci_get_drvdata(pci_dev);
 
+<<<<<<< HEAD
 	i801_setup_hstcfg(priv);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	i801_enable_host_notify(&priv->adapter);
 
 	return 0;

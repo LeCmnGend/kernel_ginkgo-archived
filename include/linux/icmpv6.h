@@ -3,7 +3,10 @@
 #define _LINUX_ICMPV6_H
 
 #include <linux/skbuff.h>
+<<<<<<< HEAD
 #include <linux/ipv6.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <uapi/linux/icmpv6.h>
 
 static inline struct icmp6hdr *icmp6_hdr(const struct sk_buff *skb)
@@ -14,6 +17,7 @@ static inline struct icmp6hdr *icmp6_hdr(const struct sk_buff *skb)
 #include <linux/netdevice.h>
 
 #if IS_ENABLED(CONFIG_IPV6)
+<<<<<<< HEAD
 
 typedef void ip6_icmp_send_t(struct sk_buff *skb, u8 type, u8 code, __u32 info,
 			     const struct in6_addr *force_saddr,
@@ -62,16 +66,31 @@ static inline void icmpv6_ndo_send(struct sk_buff *skb_in, u8 type, u8 code, __u
 }
 #endif
 
+=======
+extern void icmpv6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info);
+
+typedef void ip6_icmp_send_t(struct sk_buff *skb, u8 type, u8 code, __u32 info,
+			     const struct in6_addr *force_saddr);
+extern int inet6_register_icmp_sender(ip6_icmp_send_t *fn);
+extern int inet6_unregister_icmp_sender(ip6_icmp_send_t *fn);
+int ip6_err_gen_icmpv6_unreach(struct sk_buff *skb, int nhs, int type,
+			       unsigned int data_len);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #else
 
 static inline void icmpv6_send(struct sk_buff *skb,
 			       u8 type, u8 code, __u32 info)
 {
+<<<<<<< HEAD
 }
 
 static inline void icmpv6_ndo_send(struct sk_buff *skb,
 				   u8 type, u8 code, __u32 info)
 {
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 #endif
 

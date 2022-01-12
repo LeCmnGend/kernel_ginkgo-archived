@@ -819,7 +819,11 @@ static int natsemi_probe1(struct pci_dev *pdev, const struct pci_device_id *ent)
 		printk(version);
 #endif
 
+<<<<<<< HEAD
 	i = pcim_enable_device(pdev);
+=======
+	i = pci_enable_device(pdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (i) return i;
 
 	/* natsemi has a non-standard PM control register
@@ -852,7 +856,11 @@ static int natsemi_probe1(struct pci_dev *pdev, const struct pci_device_id *ent)
 	ioaddr = ioremap(iostart, iosize);
 	if (!ioaddr) {
 		i = -ENOMEM;
+<<<<<<< HEAD
 		goto err_pci_request_regions;
+=======
+		goto err_ioremap;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	/* Work around the dropped serial bit. */
@@ -974,6 +982,12 @@ static int natsemi_probe1(struct pci_dev *pdev, const struct pci_device_id *ent)
  err_register_netdev:
 	iounmap(ioaddr);
 
+<<<<<<< HEAD
+=======
+ err_ioremap:
+	pci_release_regions(pdev);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  err_pci_request_regions:
 	free_netdev(dev);
 	return i;
@@ -3241,6 +3255,10 @@ static void natsemi_remove1(struct pci_dev *pdev)
 
 	NATSEMI_REMOVE_FILE(pdev, dspcfg_workaround);
 	unregister_netdev (dev);
+<<<<<<< HEAD
+=======
+	pci_release_regions (pdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	iounmap(ioaddr);
 	free_netdev (dev);
 }

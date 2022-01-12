@@ -2243,7 +2243,11 @@ static int eni_init_one(struct pci_dev *pci_dev,
 
 	rc = dma_set_mask_and_coherent(&pci_dev->dev, DMA_BIT_MASK(32));
 	if (rc < 0)
+<<<<<<< HEAD
 		goto err_disable;
+=======
+		goto out;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	rc = -ENOMEM;
 	eni_dev = kmalloc(sizeof(struct eni_dev), GFP_KERNEL);
@@ -2279,8 +2283,12 @@ out:
 	return rc;
 
 err_eni_release:
+<<<<<<< HEAD
 	dev->phy = NULL;
 	iounmap(ENI_DEV(dev)->ioaddr);
+=======
+	eni_do_release(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 err_unregister:
 	atm_dev_deregister(dev);
 err_free_consistent:

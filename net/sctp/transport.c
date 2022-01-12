@@ -151,7 +151,11 @@ void sctp_transport_free(struct sctp_transport *transport)
 
 	/* Delete the ICMP proto unreachable timer if it's active. */
 	if (del_timer(&transport->proto_unreach_timer))
+<<<<<<< HEAD
 		sctp_transport_put(transport);
+=======
+		sctp_association_put(transport->asoc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	sctp_transport_put(transport);
 }

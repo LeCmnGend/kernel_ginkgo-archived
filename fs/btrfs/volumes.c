@@ -16,7 +16,10 @@
  * Boston, MA 021110-1307, USA.
  */
 #include <linux/sched.h>
+<<<<<<< HEAD
 #include <linux/sched/mm.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/bio.h>
 #include <linux/slab.h>
 #include <linux/buffer_head.h>
@@ -2432,6 +2435,12 @@ int btrfs_init_new_device(struct btrfs_fs_info *fs_info, const char *device_path
 	tmp = btrfs_super_num_devices(fs_info->super_copy);
 	btrfs_set_super_num_devices(fs_info->super_copy, tmp + 1);
 
+<<<<<<< HEAD
+=======
+	/* add sysfs device entry */
+	btrfs_sysfs_add_device_link(fs_info->fs_devices, device);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * we've got more storage, clear any full flags on the space
 	 * infos
@@ -2439,10 +2448,13 @@ int btrfs_init_new_device(struct btrfs_fs_info *fs_info, const char *device_path
 	btrfs_clear_space_info_full(fs_info);
 
 	mutex_unlock(&fs_info->chunk_mutex);
+<<<<<<< HEAD
 
 	/* Add sysfs device entry */
 	btrfs_sysfs_add_device_link(fs_info->fs_devices, device);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_unlock(&fs_info->fs_devices->device_list_mutex);
 
 	if (seeding_dev) {
@@ -4176,7 +4188,10 @@ static int btrfs_uuid_scan_kthread(void *data)
 			goto skip;
 		}
 update_tree:
+<<<<<<< HEAD
 		btrfs_release_path(path);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!btrfs_is_empty_uuid(root_item.uuid)) {
 			ret = btrfs_uuid_tree_add(trans, fs_info,
 						  root_item.uuid,
@@ -4202,7 +4217,10 @@ update_tree:
 		}
 
 skip:
+<<<<<<< HEAD
 		btrfs_release_path(path);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (trans) {
 			ret = btrfs_end_transaction(trans);
 			trans = NULL;
@@ -4210,6 +4228,10 @@ skip:
 				break;
 		}
 
+<<<<<<< HEAD
+=======
+		btrfs_release_path(path);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (key.offset < (u64)-1) {
 			key.offset++;
 		} else if (key.type < BTRFS_ROOT_ITEM_KEY) {
@@ -6280,6 +6302,7 @@ static struct btrfs_device *add_missing_dev(struct btrfs_fs_devices *fs_devices,
 					    u64 devid, u8 *dev_uuid)
 {
 	struct btrfs_device *device;
+<<<<<<< HEAD
 	unsigned int nofs_flag;
 
 	/*
@@ -6291,6 +6314,10 @@ static struct btrfs_device *add_missing_dev(struct btrfs_fs_devices *fs_devices,
 	nofs_flag = memalloc_nofs_save();
 	device = btrfs_alloc_device(NULL, &devid, dev_uuid);
 	memalloc_nofs_restore(nofs_flag);
+=======
+
+	device = btrfs_alloc_device(NULL, &devid, dev_uuid);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (IS_ERR(device))
 		return NULL;
 
@@ -6406,6 +6433,7 @@ static int btrfs_check_chunk_valid(struct btrfs_fs_info *fs_info,
 		return -EIO;
 	}
 
+<<<<<<< HEAD
 	if (!is_power_of_2(type & BTRFS_BLOCK_GROUP_PROFILE_MASK) &&
 	    (type & BTRFS_BLOCK_GROUP_PROFILE_MASK) != 0) {
 		btrfs_err(fs_info,
@@ -6413,6 +6441,8 @@ static int btrfs_check_chunk_valid(struct btrfs_fs_info *fs_info,
 			  type & BTRFS_BLOCK_GROUP_PROFILE_MASK);
 		return -EUCLEAN;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if ((type & BTRFS_BLOCK_GROUP_TYPE_MASK) == 0) {
 		btrfs_err(fs_info, "missing chunk type flag: 0x%llx", type);
 		return -EIO;

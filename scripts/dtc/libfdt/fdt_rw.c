@@ -55,8 +55,13 @@
 
 #include "libfdt_internal.h"
 
+<<<<<<< HEAD
 static int fdt_blocks_misordered_(const void *fdt,
 				  int mem_rsv_size, int struct_size)
+=======
+static int _fdt_blocks_misordered(const void *fdt,
+			      int mem_rsv_size, int struct_size)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	return (fdt_off_mem_rsvmap(fdt) < FDT_ALIGN(sizeof(struct fdt_header), 8))
 		|| (fdt_off_dt_struct(fdt) <
@@ -67,13 +72,21 @@ static int fdt_blocks_misordered_(const void *fdt,
 		    (fdt_off_dt_strings(fdt) + fdt_size_dt_strings(fdt)));
 }
 
+<<<<<<< HEAD
 static int fdt_rw_check_header_(void *fdt)
+=======
+static int _fdt_rw_check_header(void *fdt)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	FDT_CHECK_HEADER(fdt);
 
 	if (fdt_version(fdt) < 17)
 		return -FDT_ERR_BADVERSION;
+<<<<<<< HEAD
 	if (fdt_blocks_misordered_(fdt, sizeof(struct fdt_reserve_entry),
+=======
+	if (_fdt_blocks_misordered(fdt, sizeof(struct fdt_reserve_entry),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				   fdt_size_dt_struct(fdt)))
 		return -FDT_ERR_BADLAYOUT;
 	if (fdt_version(fdt) > 17)
@@ -84,20 +97,36 @@ static int fdt_rw_check_header_(void *fdt)
 
 #define FDT_RW_CHECK_HEADER(fdt) \
 	{ \
+<<<<<<< HEAD
 		int err_; \
 		if ((err_ = fdt_rw_check_header_(fdt)) != 0) \
 			return err_; \
 	}
 
 static inline int fdt_data_size_(void *fdt)
+=======
+		int __err; \
+		if ((__err = _fdt_rw_check_header(fdt)) != 0) \
+			return __err; \
+	}
+
+static inline int _fdt_data_size(void *fdt)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	return fdt_off_dt_strings(fdt) + fdt_size_dt_strings(fdt);
 }
 
+<<<<<<< HEAD
 static int fdt_splice_(void *fdt, void *splicepoint, int oldlen, int newlen)
 {
 	char *p = splicepoint;
 	char *end = (char *)fdt + fdt_data_size_(fdt);
+=======
+static int _fdt_splice(void *fdt, void *splicepoint, int oldlen, int newlen)
+{
+	char *p = splicepoint;
+	char *end = (char *)fdt + _fdt_data_size(fdt);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (((p + oldlen) < p) || ((p + oldlen) > end))
 		return -FDT_ERR_BADOFFSET;
@@ -109,12 +138,20 @@ static int fdt_splice_(void *fdt, void *splicepoint, int oldlen, int newlen)
 	return 0;
 }
 
+<<<<<<< HEAD
 static int fdt_splice_mem_rsv_(void *fdt, struct fdt_reserve_entry *p,
+=======
+static int _fdt_splice_mem_rsv(void *fdt, struct fdt_reserve_entry *p,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			       int oldn, int newn)
 {
 	int delta = (newn - oldn) * sizeof(*p);
 	int err;
+<<<<<<< HEAD
 	err = fdt_splice_(fdt, p, oldn * sizeof(*p), newn * sizeof(*p));
+=======
+	err = _fdt_splice(fdt, p, oldn * sizeof(*p), newn * sizeof(*p));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		return err;
 	fdt_set_off_dt_struct(fdt, fdt_off_dt_struct(fdt) + delta);
@@ -122,13 +159,21 @@ static int fdt_splice_mem_rsv_(void *fdt, struct fdt_reserve_entry *p,
 	return 0;
 }
 
+<<<<<<< HEAD
 static int fdt_splice_struct_(void *fdt, void *p,
+=======
+static int _fdt_splice_struct(void *fdt, void *p,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			      int oldlen, int newlen)
 {
 	int delta = newlen - oldlen;
 	int err;
 
+<<<<<<< HEAD
 	if ((err = fdt_splice_(fdt, p, oldlen, newlen)))
+=======
+	if ((err = _fdt_splice(fdt, p, oldlen, newlen)))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return err;
 
 	fdt_set_size_dt_struct(fdt, fdt_size_dt_struct(fdt) + delta);
@@ -136,20 +181,32 @@ static int fdt_splice_struct_(void *fdt, void *p,
 	return 0;
 }
 
+<<<<<<< HEAD
 static int fdt_splice_string_(void *fdt, int newlen)
+=======
+static int _fdt_splice_string(void *fdt, int newlen)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	void *p = (char *)fdt
 		+ fdt_off_dt_strings(fdt) + fdt_size_dt_strings(fdt);
 	int err;
 
+<<<<<<< HEAD
 	if ((err = fdt_splice_(fdt, p, 0, newlen)))
+=======
+	if ((err = _fdt_splice(fdt, p, 0, newlen)))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return err;
 
 	fdt_set_size_dt_strings(fdt, fdt_size_dt_strings(fdt) + newlen);
 	return 0;
 }
 
+<<<<<<< HEAD
 static int fdt_find_add_string_(void *fdt, const char *s)
+=======
+static int _fdt_find_add_string(void *fdt, const char *s)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	char *strtab = (char *)fdt + fdt_off_dt_strings(fdt);
 	const char *p;
@@ -157,13 +214,21 @@ static int fdt_find_add_string_(void *fdt, const char *s)
 	int len = strlen(s) + 1;
 	int err;
 
+<<<<<<< HEAD
 	p = fdt_find_string_(strtab, fdt_size_dt_strings(fdt), s);
+=======
+	p = _fdt_find_string(strtab, fdt_size_dt_strings(fdt), s);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (p)
 		/* found it */
 		return (p - strtab);
 
 	new = strtab + fdt_size_dt_strings(fdt);
+<<<<<<< HEAD
 	err = fdt_splice_string_(fdt, len);
+=======
+	err = _fdt_splice_string(fdt, len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		return err;
 
@@ -178,8 +243,13 @@ int fdt_add_mem_rsv(void *fdt, uint64_t address, uint64_t size)
 
 	FDT_RW_CHECK_HEADER(fdt);
 
+<<<<<<< HEAD
 	re = fdt_mem_rsv_w_(fdt, fdt_num_mem_rsv(fdt));
 	err = fdt_splice_mem_rsv_(fdt, re, 0, 1);
+=======
+	re = _fdt_mem_rsv_w(fdt, fdt_num_mem_rsv(fdt));
+	err = _fdt_splice_mem_rsv(fdt, re, 0, 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		return err;
 
@@ -190,27 +260,45 @@ int fdt_add_mem_rsv(void *fdt, uint64_t address, uint64_t size)
 
 int fdt_del_mem_rsv(void *fdt, int n)
 {
+<<<<<<< HEAD
 	struct fdt_reserve_entry *re = fdt_mem_rsv_w_(fdt, n);
+=======
+	struct fdt_reserve_entry *re = _fdt_mem_rsv_w(fdt, n);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	FDT_RW_CHECK_HEADER(fdt);
 
 	if (n >= fdt_num_mem_rsv(fdt))
 		return -FDT_ERR_NOTFOUND;
 
+<<<<<<< HEAD
 	return fdt_splice_mem_rsv_(fdt, re, 1, 0);
 }
 
 static int fdt_resize_property_(void *fdt, int nodeoffset, const char *name,
+=======
+	return _fdt_splice_mem_rsv(fdt, re, 1, 0);
+}
+
+static int _fdt_resize_property(void *fdt, int nodeoffset, const char *name,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				int len, struct fdt_property **prop)
 {
 	int oldlen;
 	int err;
 
 	*prop = fdt_get_property_w(fdt, nodeoffset, name, &oldlen);
+<<<<<<< HEAD
 	if (!*prop)
 		return oldlen;
 
 	if ((err = fdt_splice_struct_(fdt, (*prop)->data, FDT_TAGALIGN(oldlen),
+=======
+	if (! (*prop))
+		return oldlen;
+
+	if ((err = _fdt_splice_struct(fdt, (*prop)->data, FDT_TAGALIGN(oldlen),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				      FDT_TAGALIGN(len))))
 		return err;
 
@@ -218,7 +306,11 @@ static int fdt_resize_property_(void *fdt, int nodeoffset, const char *name,
 	return 0;
 }
 
+<<<<<<< HEAD
 static int fdt_add_property_(void *fdt, int nodeoffset, const char *name,
+=======
+static int _fdt_add_property(void *fdt, int nodeoffset, const char *name,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			     int len, struct fdt_property **prop)
 {
 	int proplen;
@@ -226,6 +318,7 @@ static int fdt_add_property_(void *fdt, int nodeoffset, const char *name,
 	int namestroff;
 	int err;
 
+<<<<<<< HEAD
 	if ((nextoffset = fdt_check_node_offset_(fdt, nodeoffset)) < 0)
 		return nextoffset;
 
@@ -237,6 +330,19 @@ static int fdt_add_property_(void *fdt, int nodeoffset, const char *name,
 	proplen = sizeof(**prop) + FDT_TAGALIGN(len);
 
 	err = fdt_splice_struct_(fdt, *prop, 0, proplen);
+=======
+	if ((nextoffset = _fdt_check_node_offset(fdt, nodeoffset)) < 0)
+		return nextoffset;
+
+	namestroff = _fdt_find_add_string(fdt, name);
+	if (namestroff < 0)
+		return namestroff;
+
+	*prop = _fdt_offset_ptr_w(fdt, nextoffset);
+	proplen = sizeof(**prop) + FDT_TAGALIGN(len);
+
+	err = _fdt_splice_struct(fdt, *prop, 0, proplen);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		return err;
 
@@ -260,7 +366,11 @@ int fdt_set_name(void *fdt, int nodeoffset, const char *name)
 
 	newlen = strlen(name);
 
+<<<<<<< HEAD
 	err = fdt_splice_struct_(fdt, namep, FDT_TAGALIGN(oldlen+1),
+=======
+	err = _fdt_splice_struct(fdt, namep, FDT_TAGALIGN(oldlen+1),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				 FDT_TAGALIGN(newlen+1));
 	if (err)
 		return err;
@@ -269,14 +379,20 @@ int fdt_set_name(void *fdt, int nodeoffset, const char *name)
 	return 0;
 }
 
+<<<<<<< HEAD
 int fdt_setprop_placeholder(void *fdt, int nodeoffset, const char *name,
 			    int len, void **prop_data)
+=======
+int fdt_setprop(void *fdt, int nodeoffset, const char *name,
+		const void *val, int len)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct fdt_property *prop;
 	int err;
 
 	FDT_RW_CHECK_HEADER(fdt);
 
+<<<<<<< HEAD
 	err = fdt_resize_property_(fdt, nodeoffset, name, len, &prop);
 	if (err == -FDT_ERR_NOTFOUND)
 		err = fdt_add_property_(fdt, nodeoffset, name, len, &prop);
@@ -294,11 +410,20 @@ int fdt_setprop(void *fdt, int nodeoffset, const char *name,
 	int err;
 
 	err = fdt_setprop_placeholder(fdt, nodeoffset, name, len, &prop_data);
+=======
+	err = _fdt_resize_property(fdt, nodeoffset, name, len, &prop);
+	if (err == -FDT_ERR_NOTFOUND)
+		err = _fdt_add_property(fdt, nodeoffset, name, len, &prop);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		return err;
 
 	if (len)
+<<<<<<< HEAD
 		memcpy(prop_data, val, len);
+=======
+		memcpy(prop->data, val, len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
 
@@ -313,7 +438,11 @@ int fdt_appendprop(void *fdt, int nodeoffset, const char *name,
 	prop = fdt_get_property_w(fdt, nodeoffset, name, &oldlen);
 	if (prop) {
 		newlen = len + oldlen;
+<<<<<<< HEAD
 		err = fdt_splice_struct_(fdt, prop->data,
+=======
+		err = _fdt_splice_struct(fdt, prop->data,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					 FDT_TAGALIGN(oldlen),
 					 FDT_TAGALIGN(newlen));
 		if (err)
@@ -321,7 +450,11 @@ int fdt_appendprop(void *fdt, int nodeoffset, const char *name,
 		prop->len = cpu_to_fdt32(newlen);
 		memcpy(prop->data + oldlen, val, len);
 	} else {
+<<<<<<< HEAD
 		err = fdt_add_property_(fdt, nodeoffset, name, len, &prop);
+=======
+		err = _fdt_add_property(fdt, nodeoffset, name, len, &prop);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (err)
 			return err;
 		memcpy(prop->data, val, len);
@@ -337,11 +470,19 @@ int fdt_delprop(void *fdt, int nodeoffset, const char *name)
 	FDT_RW_CHECK_HEADER(fdt);
 
 	prop = fdt_get_property_w(fdt, nodeoffset, name, &len);
+<<<<<<< HEAD
 	if (!prop)
 		return len;
 
 	proplen = sizeof(*prop) + FDT_TAGALIGN(len);
 	return fdt_splice_struct_(fdt, prop, proplen, 0);
+=======
+	if (! prop)
+		return len;
+
+	proplen = sizeof(*prop) + FDT_TAGALIGN(len);
+	return _fdt_splice_struct(fdt, prop, proplen, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 int fdt_add_subnode_namelen(void *fdt, int parentoffset,
@@ -369,10 +510,17 @@ int fdt_add_subnode_namelen(void *fdt, int parentoffset,
 		tag = fdt_next_tag(fdt, offset, &nextoffset);
 	} while ((tag == FDT_PROP) || (tag == FDT_NOP));
 
+<<<<<<< HEAD
 	nh = fdt_offset_ptr_w_(fdt, offset);
 	nodelen = sizeof(*nh) + FDT_TAGALIGN(namelen+1) + FDT_TAGSIZE;
 
 	err = fdt_splice_struct_(fdt, nh, 0, nodelen);
+=======
+	nh = _fdt_offset_ptr_w(fdt, offset);
+	nodelen = sizeof(*nh) + FDT_TAGALIGN(namelen+1) + FDT_TAGSIZE;
+
+	err = _fdt_splice_struct(fdt, nh, 0, nodelen);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		return err;
 
@@ -396,6 +544,7 @@ int fdt_del_node(void *fdt, int nodeoffset)
 
 	FDT_RW_CHECK_HEADER(fdt);
 
+<<<<<<< HEAD
 	endoffset = fdt_node_end_offset_(fdt, nodeoffset);
 	if (endoffset < 0)
 		return endoffset;
@@ -405,6 +554,17 @@ int fdt_del_node(void *fdt, int nodeoffset)
 }
 
 static void fdt_packblocks_(const char *old, char *new,
+=======
+	endoffset = _fdt_node_end_offset(fdt, nodeoffset);
+	if (endoffset < 0)
+		return endoffset;
+
+	return _fdt_splice_struct(fdt, _fdt_offset_ptr_w(fdt, nodeoffset),
+				  endoffset - nodeoffset, 0);
+}
+
+static void _fdt_packblocks(const char *old, char *new,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			    int mem_rsv_size, int struct_size)
 {
 	uint32_t mem_rsv_off, struct_off, strings_off;
@@ -450,7 +610,11 @@ int fdt_open_into(const void *fdt, void *buf, int bufsize)
 			return struct_size;
 	}
 
+<<<<<<< HEAD
 	if (!fdt_blocks_misordered_(fdt, mem_rsv_size, struct_size)) {
+=======
+	if (!_fdt_blocks_misordered(fdt, mem_rsv_size, struct_size)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* no further work necessary */
 		err = fdt_move(fdt, buf, bufsize);
 		if (err)
@@ -478,7 +642,11 @@ int fdt_open_into(const void *fdt, void *buf, int bufsize)
 			return -FDT_ERR_NOSPACE;
 	}
 
+<<<<<<< HEAD
 	fdt_packblocks_(fdt, tmp, mem_rsv_size, struct_size);
+=======
+	_fdt_packblocks(fdt, tmp, mem_rsv_size, struct_size);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	memmove(buf, tmp, newsize);
 
 	fdt_set_magic(buf, FDT_MAGIC);
@@ -498,8 +666,13 @@ int fdt_pack(void *fdt)
 
 	mem_rsv_size = (fdt_num_mem_rsv(fdt)+1)
 		* sizeof(struct fdt_reserve_entry);
+<<<<<<< HEAD
 	fdt_packblocks_(fdt, fdt, mem_rsv_size, fdt_size_dt_struct(fdt));
 	fdt_set_totalsize(fdt, fdt_data_size_(fdt));
+=======
+	_fdt_packblocks(fdt, fdt, mem_rsv_size, fdt_size_dt_struct(fdt));
+	fdt_set_totalsize(fdt, _fdt_data_size(fdt));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
 }

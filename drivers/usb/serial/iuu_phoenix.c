@@ -359,11 +359,18 @@ static void iuu_led_activity_on(struct urb *urb)
 	struct usb_serial_port *port = urb->context;
 	int result;
 	char *buf_ptr = port->write_urb->transfer_buffer;
+<<<<<<< HEAD
 
 	if (xmas) {
 		buf_ptr[0] = IUU_SET_LED;
 		get_random_bytes(buf_ptr + 1, 6);
 		buf_ptr[7] = 1;
+=======
+	*buf_ptr++ = IUU_SET_LED;
+	if (xmas) {
+		get_random_bytes(buf_ptr, 6);
+		*(buf_ptr+7) = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
 		iuu_rgbf_fill_buffer(buf_ptr, 255, 255, 0, 0, 0, 0, 255);
 	}
@@ -381,6 +388,7 @@ static void iuu_led_activity_off(struct urb *urb)
 	struct usb_serial_port *port = urb->context;
 	int result;
 	char *buf_ptr = port->write_urb->transfer_buffer;
+<<<<<<< HEAD
 
 	if (xmas) {
 		iuu_rxcmd(urb);
@@ -389,6 +397,15 @@ static void iuu_led_activity_off(struct urb *urb)
 
 	iuu_rgbf_fill_buffer(buf_ptr, 0, 0, 255, 255, 0, 0, 255);
 
+=======
+	if (xmas) {
+		iuu_rxcmd(urb);
+		return;
+	} else {
+		*buf_ptr++ = IUU_SET_LED;
+		iuu_rgbf_fill_buffer(buf_ptr, 0, 0, 255, 255, 0, 0, 255);
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	usb_fill_bulk_urb(port->write_urb, port->serial->dev,
 			  usb_sndbulkpipe(port->serial->dev,
 					  port->bulk_out_endpointAddress),
@@ -543,12 +560,17 @@ static int iuu_uart_flush(struct usb_serial_port *port)
 	struct device *dev = &port->dev;
 	int i;
 	int status;
+<<<<<<< HEAD
 	u8 *rxcmd;
+=======
+	u8 rxcmd = IUU_UART_RX;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct iuu_private *priv = usb_get_serial_port_data(port);
 
 	if (iuu_led(port, 0xF000, 0, 0, 0xFF) < 0)
 		return -EIO;
 
+<<<<<<< HEAD
 	rxcmd = kmalloc(1, GFP_KERNEL);
 	if (!rxcmd)
 		return -ENOMEM;
@@ -560,12 +582,23 @@ static int iuu_uart_flush(struct usb_serial_port *port)
 		if (status != IUU_OPERATION_OK) {
 			dev_dbg(dev, "%s - uart_flush_write error\n", __func__);
 			goto out_free;
+=======
+	for (i = 0; i < 2; i++) {
+		status = bulk_immediate(port, &rxcmd, 1);
+		if (status != IUU_OPERATION_OK) {
+			dev_dbg(dev, "%s - uart_flush_write error\n", __func__);
+			return status;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 
 		status = read_immediate(port, &priv->len, 1);
 		if (status != IUU_OPERATION_OK) {
 			dev_dbg(dev, "%s - uart_flush_read error\n", __func__);
+<<<<<<< HEAD
 			goto out_free;
+=======
+			return status;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 
 		if (priv->len > 0) {
@@ -573,16 +606,23 @@ static int iuu_uart_flush(struct usb_serial_port *port)
 			status = read_immediate(port, priv->buf, priv->len);
 			if (status != IUU_OPERATION_OK) {
 				dev_dbg(dev, "%s - uart_flush_read error\n", __func__);
+<<<<<<< HEAD
 				goto out_free;
+=======
+				return status;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			}
 		}
 	}
 	dev_dbg(dev, "%s - uart_flush_read OK!\n", __func__);
 	iuu_led(port, 0, 0xF000, 0, 0xFF);
+<<<<<<< HEAD
 
 out_free:
 	kfree(rxcmd);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return status;
 }
 

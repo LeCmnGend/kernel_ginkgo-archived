@@ -1290,7 +1290,10 @@ static int ks_wlan_set_scan(struct net_device *dev,
 {
 	struct ks_wlan_private *priv = netdev_priv(dev);
 	struct iw_scan_req *req = NULL;
+<<<<<<< HEAD
 	int len;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	DPRINTK(2, "\n");
 
@@ -1302,9 +1305,14 @@ static int ks_wlan_set_scan(struct net_device *dev,
 	if (wrqu->data.length == sizeof(struct iw_scan_req) &&
 	    wrqu->data.flags & IW_SCAN_THIS_ESSID) {
 		req = (struct iw_scan_req *)extra;
+<<<<<<< HEAD
 		len = min_t(int, req->essid_len, IW_ESSID_MAX_SIZE);
 		priv->scan_ssid_len = len;
 		memcpy(priv->scan_ssid, req->essid, len);
+=======
+		priv->scan_ssid_len = req->essid_len;
+		memcpy(priv->scan_ssid, req->essid, priv->scan_ssid_len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
 		priv->scan_ssid_len = 0;
 	}

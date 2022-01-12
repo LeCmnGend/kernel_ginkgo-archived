@@ -445,7 +445,11 @@ try_again:
 	    list_empty(&rx->recvmsg_q) &&
 	    rx->sk.sk_state != RXRPC_SERVER_LISTENING) {
 		release_sock(&rx->sk);
+<<<<<<< HEAD
 		return -EAGAIN;
+=======
+		return -ENODATA;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	if (list_empty(&rx->recvmsg_q)) {
@@ -522,7 +526,11 @@ try_again:
 			goto error_unlock_call;
 	}
 
+<<<<<<< HEAD
 	if (msg->msg_name && call->peer) {
+=======
+	if (msg->msg_name) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		struct sockaddr_rxrpc *srx = msg->msg_name;
 		size_t len = sizeof(call->peer->srx);
 

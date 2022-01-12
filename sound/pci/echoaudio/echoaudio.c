@@ -2215,6 +2215,10 @@ static int snd_echo_resume(struct device *dev)
 	if (err < 0) {
 		kfree(commpage_bak);
 		dev_err(dev, "resume init_hw err=%d\n", err);
+<<<<<<< HEAD
+=======
+		snd_echo_free(chip);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return err;
 	}
 
@@ -2241,6 +2245,10 @@ static int snd_echo_resume(struct device *dev)
 	if (request_irq(pci->irq, snd_echo_interrupt, IRQF_SHARED,
 			KBUILD_MODNAME, chip)) {
 		dev_err(chip->card->dev, "cannot grab irq\n");
+<<<<<<< HEAD
+=======
+		snd_echo_free(chip);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EBUSY;
 	}
 	chip->irq = pci->irq;

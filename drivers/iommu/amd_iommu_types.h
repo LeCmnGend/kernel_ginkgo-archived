@@ -255,7 +255,11 @@
 #define DTE_IRQ_REMAP_INTCTL_MASK	(0x3ULL << 60)
 #define DTE_IRQ_TABLE_LEN_MASK	(0xfULL << 1)
 #define DTE_IRQ_REMAP_INTCTL    (2ULL << 60)
+<<<<<<< HEAD
 #define DTE_IRQ_TABLE_LEN       (9ULL << 1)
+=======
+#define DTE_IRQ_TABLE_LEN       (8ULL << 1)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define DTE_IRQ_REMAP_ENABLE    1ULL
 
 #define PAGE_MODE_NONE    0x00
@@ -404,11 +408,15 @@ extern bool amd_iommu_np_cache;
 /* Only true if all IOMMUs support device IOTLBs */
 extern bool amd_iommu_iotlb_sup;
 
+<<<<<<< HEAD
 /*
  * AMD IOMMU hardware only support 512 IRTEs despite
  * the architectural limitation of 2048 entries.
  */
 #define MAX_IRQS_PER_TABLE	512
+=======
+#define MAX_IRQS_PER_TABLE	256
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define IRQ_TABLE_ALIGNMENT	128
 
 struct irq_remap_table {

@@ -18,8 +18,11 @@
 #ifndef _ACPI_INTERNAL_H_
 #define _ACPI_INTERNAL_H_
 
+<<<<<<< HEAD
 #include <linux/idr.h>
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define PREFIX "ACPI: "
 
 int early_acpi_osi_init(void);
@@ -99,11 +102,17 @@ void acpi_scan_table_handler(u32 event, void *table, void *context);
 
 extern struct list_head acpi_bus_id_list;
 
+<<<<<<< HEAD
 #define ACPI_MAX_DEVICE_INSTANCES	4096
 
 struct acpi_device_bus_id {
 	const char *bus_id;
 	struct ida instance_ida;
+=======
+struct acpi_device_bus_id {
+	char bus_id[15];
+	unsigned int instance_no;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct list_head node;
 };
 

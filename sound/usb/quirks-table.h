@@ -2479,6 +2479,7 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 	}
 },
 
+<<<<<<< HEAD
 {
 	USB_DEVICE_VENDOR_SPEC(0x0944, 0x0204),
 	.driver_info = (unsigned long) & (const struct snd_usb_audio_quirk) {
@@ -2489,6 +2490,8 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 	}
 },
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* AKAI devices */
 {
 	USB_DEVICE(0x09e8, 0x0062),
@@ -3341,6 +3344,7 @@ AU0828_DEVICE(0x2040, 0x7270, "Hauppauge", "HVR-950Q"),
  * they pretend to be 96kHz mono as a workaround for stereo being broken
  * by that...
  *
+<<<<<<< HEAD
  * They also have an issue with initial stream alignment that causes the
  * channels to be swapped and out of phase, which is dealt with in quirks.c.
  */
@@ -3352,6 +3356,13 @@ AU0828_DEVICE(0x2040, 0x7270, "Hauppauge", "HVR-950Q"),
 	.idProduct = 0x2109,
 	.bInterfaceClass = USB_CLASS_AUDIO,
 	.bInterfaceSubClass = USB_SUBCLASS_AUDIOCONTROL,
+=======
+ * They also have swapped L-R channels, but that's for userspace to deal
+ * with.
+ */
+{
+	USB_DEVICE(0x534d, 0x2109),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.driver_info = (unsigned long) &(const struct snd_usb_audio_quirk) {
 		.vendor_name = "MacroSilicon",
 		.product_name = "MS2109",
@@ -3390,6 +3401,7 @@ AU0828_DEVICE(0x2040, 0x7270, "Hauppauge", "HVR-950Q"),
 		}
 	}
 },
+<<<<<<< HEAD
 {
 	/*
 	 * PIONEER DJ DDJ-RB
@@ -3446,5 +3458,7 @@ AU0828_DEVICE(0x2040, 0x7270, "Hauppauge", "HVR-950Q"),
 		}
 	}
 },
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #undef USB_DEVICE_VENDOR_SPEC

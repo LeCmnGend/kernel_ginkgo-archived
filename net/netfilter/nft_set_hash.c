@@ -364,6 +364,7 @@ static void nft_rhash_destroy(const struct nft_set *set)
 				    (void *)set);
 }
 
+<<<<<<< HEAD
 /* Number of buckets is stored in u32, so cap our result to 1U<<31 */
 #define NFT_MAX_BUCKETS (1U << 31)
 
@@ -375,6 +376,11 @@ static u32 nft_hash_buckets(u32 size)
 		return NFT_MAX_BUCKETS;
 
 	return roundup_pow_of_two(val);
+=======
+static u32 nft_hash_buckets(u32 size)
+{
+	return roundup_pow_of_two(size * 4 / 3);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static bool nft_rhash_estimate(const struct nft_set_desc *desc, u32 features,

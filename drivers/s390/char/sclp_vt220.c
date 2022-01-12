@@ -35,8 +35,13 @@
 #define SCLP_VT220_MINOR		65
 #define SCLP_VT220_DRIVER_NAME		"sclp_vt220"
 #define SCLP_VT220_DEVICE_NAME		"ttysclp"
+<<<<<<< HEAD
 #define SCLP_VT220_CONSOLE_NAME		"ttysclp"
 #define SCLP_VT220_CONSOLE_INDEX	0	/* console=ttysclp0 */
+=======
+#define SCLP_VT220_CONSOLE_NAME		"ttyS"
+#define SCLP_VT220_CONSOLE_INDEX	1	/* console=ttyS1 */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* Representation of a single write request */
 struct sclp_vt220_request {

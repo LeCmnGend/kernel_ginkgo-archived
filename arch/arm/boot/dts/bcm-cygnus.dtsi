@@ -446,7 +446,11 @@
 			status = "disabled";
 		};
 
+<<<<<<< HEAD
 		nand_controller: nand-controller@18046000 {
+=======
+		nand: nand@18046000 {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			compatible = "brcm,nand-iproc", "brcm,brcmnand-v6.1";
 			reg = <0x18046000 0x600>, <0xf8105408 0x600>,
 			      <0x18046f00 0x20>;

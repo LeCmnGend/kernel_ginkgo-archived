@@ -2415,6 +2415,11 @@ static int resize_stripes(struct r5conf *conf, int newsize)
 	} else
 		err = -ENOMEM;
 
+<<<<<<< HEAD
+=======
+	mutex_unlock(&conf->cache_size_mutex);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	conf->slab_cache = sc;
 	conf->active_name = 1-conf->active_name;
 
@@ -2437,8 +2442,11 @@ static int resize_stripes(struct r5conf *conf, int newsize)
 
 	if (!err)
 		conf->pool_size = newsize;
+<<<<<<< HEAD
 	mutex_unlock(&conf->cache_size_mutex);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return err;
 }
 
@@ -3593,7 +3601,10 @@ static int need_this_block(struct stripe_head *sh, struct stripe_head_state *s,
 	 * is missing/faulty, then we need to read everything we can.
 	 */
 	if (sh->raid_conf->level != 6 &&
+<<<<<<< HEAD
 	    sh->raid_conf->rmw_level != PARITY_DISABLE_RMW &&
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	    sh->sector < sh->raid_conf->mddev->recovery_cp)
 		/* reconstruct-write isn't being forced */
 		return 0;
@@ -4830,7 +4841,11 @@ static void handle_stripe(struct stripe_head *sh)
 	 * or to load a block that is being partially written.
 	 */
 	if (s.to_read || s.non_overwrite
+<<<<<<< HEAD
 	    || (s.to_write && s.failed)
+=======
+	    || (conf->level == 6 && s.to_write && s.failed)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	    || (s.syncing && (s.uptodate + s.compute < disks))
 	    || s.replacing
 	    || s.expanding)

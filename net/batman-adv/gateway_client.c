@@ -674,10 +674,15 @@ batadv_gw_dhcp_recipient_get(struct sk_buff *skb, unsigned int *header_len,
 
 	chaddr_offset = *header_len + BATADV_DHCP_CHADDR_OFFSET;
 	/* store the client address if the message is going to a client */
+<<<<<<< HEAD
 	if (ret == BATADV_DHCP_TO_CLIENT) {
 		if (!pskb_may_pull(skb, chaddr_offset + ETH_ALEN))
 			return BATADV_DHCP_NO;
 
+=======
+	if (ret == BATADV_DHCP_TO_CLIENT &&
+	    pskb_may_pull(skb, chaddr_offset + ETH_ALEN)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* check if the DHCP packet carries an Ethernet DHCP */
 		p = skb->data + *header_len + BATADV_DHCP_HTYPE_OFFSET;
 		if (*p != BATADV_DHCP_HTYPE_ETHERNET)

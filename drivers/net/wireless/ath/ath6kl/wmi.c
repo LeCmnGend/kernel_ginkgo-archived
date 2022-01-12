@@ -2648,11 +2648,14 @@ int ath6kl_wmi_delete_pstream_cmd(struct wmi *wmi, u8 if_idx, u8 traffic_class,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
 	if (tsid >= 16) {
 		ath6kl_err("invalid tsid: %d\n", tsid);
 		return -EINVAL;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	skb = ath6kl_wmi_get_new_buf(sizeof(*cmd));
 	if (!skb)
 		return -ENOMEM;

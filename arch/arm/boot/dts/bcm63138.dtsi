@@ -175,7 +175,11 @@
 			status = "disabled";
 		};
 
+<<<<<<< HEAD
 		nand_controller: nand-controller@2000 {
+=======
+		nand: nand@2000 {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			#address-cells = <1>;
 			#size-cells = <0>;
 			compatible = "brcm,nand-bcm63138", "brcm,brcmnand-v7.0", "brcm,brcmnand";

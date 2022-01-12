@@ -350,7 +350,10 @@ static int __init mock_device_init(void)
 	err = platform_driver_register(&gpio_mockup_driver);
 	if (err) {
 		platform_device_unregister(pdev);
+<<<<<<< HEAD
 		debugfs_remove_recursive(gpio_mockup_dbg_dir);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return err;
 	}
 

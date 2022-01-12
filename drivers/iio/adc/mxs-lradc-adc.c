@@ -124,8 +124,12 @@ struct mxs_lradc_adc {
 	struct device		*dev;
 
 	void __iomem		*base;
+<<<<<<< HEAD
 	/* Maximum of 8 channels + 8 byte ts */
 	u32			buffer[10] __aligned(8);
+=======
+	u32			buffer[10];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct iio_trigger	*trig;
 	struct completion	completion;
 	spinlock_t		lock;

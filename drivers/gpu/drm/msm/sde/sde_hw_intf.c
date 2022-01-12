@@ -613,7 +613,11 @@ static int sde_hw_intf_connect_external_te(struct sde_hw_intf *intf,
 }
 
 static int sde_hw_intf_get_vsync_info(struct sde_hw_intf *intf,
+<<<<<<< HEAD
 		struct sde_hw_pp_vsync_info *info, bool wr_ptr_only)
+=======
+		struct sde_hw_pp_vsync_info *info)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct sde_hw_blk_reg_map *c = &intf->hw;
 	u32 val;
@@ -623,6 +627,7 @@ static int sde_hw_intf_get_vsync_info(struct sde_hw_intf *intf,
 
 	c = &intf->hw;
 
+<<<<<<< HEAD
 	if (!wr_ptr_only) {
 		val = SDE_REG_READ(c, INTF_TEAR_VSYNC_INIT_VAL);
 		info->rd_ptr_init_val = val & 0xffff;
@@ -631,6 +636,14 @@ static int sde_hw_intf_get_vsync_info(struct sde_hw_intf *intf,
 		info->rd_ptr_frame_count = (val & 0xffff0000) >> 16;
 		info->rd_ptr_line_count = val & 0xffff;
 	}
+=======
+	val = SDE_REG_READ(c, INTF_TEAR_VSYNC_INIT_VAL);
+	info->rd_ptr_init_val = val & 0xffff;
+
+	val = SDE_REG_READ(c, INTF_TEAR_INT_COUNT_VAL);
+	info->rd_ptr_frame_count = (val & 0xffff0000) >> 16;
+	info->rd_ptr_line_count = val & 0xffff;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	val = SDE_REG_READ(c, INTF_TEAR_LINE_COUNT);
 	info->wr_ptr_line_count = val & 0xffff;

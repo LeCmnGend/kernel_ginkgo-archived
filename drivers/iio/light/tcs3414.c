@@ -56,11 +56,15 @@ struct tcs3414_data {
 	u8 control;
 	u8 gain;
 	u8 timing;
+<<<<<<< HEAD
 	/* Ensure timestamp is naturally aligned */
 	struct {
 		u16 chans[4];
 		s64 timestamp __aligned(8);
 	} scan;
+=======
+	u16 buffer[8]; /* 4x 16-bit + 8 bytes timestamp */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 #define TCS3414_CHANNEL(_color, _si, _addr) { \
@@ -216,10 +220,17 @@ static irqreturn_t tcs3414_trigger_handler(int irq, void *p)
 		if (ret < 0)
 			goto done;
 
+<<<<<<< HEAD
 		data->scan.chans[j++] = ret;
 	}
 
 	iio_push_to_buffers_with_timestamp(indio_dev, &data->scan,
+=======
+		data->buffer[j++] = ret;
+	}
+
+	iio_push_to_buffers_with_timestamp(indio_dev, data->buffer,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		iio_get_time_ns(indio_dev));
 
 done:

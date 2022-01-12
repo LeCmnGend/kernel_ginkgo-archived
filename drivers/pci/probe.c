@@ -2014,7 +2014,10 @@ static struct pci_dev *pci_scan_device(struct pci_bus *bus, int devfn)
 	pci_set_of_node(dev);
 
 	if (pci_setup_device(dev)) {
+<<<<<<< HEAD
 		pci_release_of_node(dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		pci_bus_put(dev->bus);
 		kfree(dev);
 		return NULL;

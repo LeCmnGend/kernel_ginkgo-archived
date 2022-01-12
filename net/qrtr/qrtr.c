@@ -20,6 +20,10 @@
 #include <linux/rwsem.h>
 #include <linux/ipc_logging.h>
 #include <linux/uidgid.h>
+<<<<<<< HEAD
+=======
+#include <linux/pm_wakeup.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #include <net/sock.h>
 #include <uapi/linux/sched/types.h>
@@ -160,6 +164,10 @@ static struct work_struct qrtr_backup_work;
  * @task: task to run the worker thread
  * @read_data: scheduled work for recv work
  * @say_hello: scheduled work for initiating hello
+<<<<<<< HEAD
+=======
+ * @ws: wakeupsource avoid system suspend
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * @ilc: ipc logging context reference
  */
 struct qrtr_node {
@@ -183,6 +191,11 @@ struct qrtr_node {
 	struct kthread_work read_data;
 	struct kthread_work say_hello;
 
+<<<<<<< HEAD
+=======
+	struct wakeup_source *ws;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	void *ilc;
 };
 
@@ -372,6 +385,10 @@ static void __qrtr_node_release(struct kref *kref)
 	}
 	mutex_unlock(&node->qrtr_tx_lock);
 
+<<<<<<< HEAD
+=======
+	wakeup_source_unregister(node->ws);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kthread_flush_worker(&node->kworker);
 	kthread_stop(node->task);
 
@@ -644,10 +661,23 @@ static void qrtr_node_assign(struct qrtr_node *node, unsigned int nid)
 		node->nid = nid;
 	up_write(&qrtr_node_lock);
 
+<<<<<<< HEAD
 	if (!node->ilc) {
 		snprintf(name, sizeof(name), "qrtr_%d", nid);
 		node->ilc = ipc_log_context_create(QRTR_LOG_PAGE_CNT, name, 0);
 	}
+=======
+	snprintf(name, sizeof(name), "qrtr_%d", nid);
+	if (!node->ilc) {
+		node->ilc = ipc_log_context_create(QRTR_LOG_PAGE_CNT, name, 0);
+	}
+	/* create wakeup source for only  NID = 0.
+	 * From other nodes sensor service stream samples
+	 * cause APPS suspend problems and power drain issue.
+	 */
+	if (!node->ws && nid == 0)
+		node->ws = wakeup_source_register(NULL, name);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /**
@@ -830,6 +860,11 @@ int qrtr_endpoint_post(struct qrtr_endpoint *ep, const void *data, size_t len)
 	    cb->type != QRTR_TYPE_RESUME_TX)
 		goto err;
 
+<<<<<<< HEAD
+=======
+	__pm_wakeup_event(node->ws, 0);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	skb->data_len = size;
 	skb->len = size;
 	skb_store_bits(skb, 0, data + hdrlen, size);

@@ -57,8 +57,21 @@ DEFINE_MUTEX(xs_response_mutex);
 static int xenbus_irq;
 static struct task_struct *xenbus_task;
 
+<<<<<<< HEAD
 static irqreturn_t wake_waiting(int irq, void *unused)
 {
+=======
+static DECLARE_WORK(probe_work, xenbus_probe);
+
+
+static irqreturn_t wake_waiting(int irq, void *unused)
+{
+	if (unlikely(xenstored_ready == 0)) {
+		xenstored_ready = 1;
+		schedule_work(&probe_work);
+	}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	wake_up(&xb_waitq);
 	return IRQ_HANDLED;
 }

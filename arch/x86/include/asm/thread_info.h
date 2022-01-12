@@ -229,6 +229,7 @@ static inline int arch_within_stack_frames(const void * const stack,
 
 #endif
 
+<<<<<<< HEAD
 /*
  * Thread-synchronous status.
  *
@@ -254,6 +255,12 @@ static inline void arch_set_restart_data(struct restart_block *restart)
 		ti->status &= ~TS_COMPAT_RESTART;
 }
 #endif
+=======
+#ifdef CONFIG_COMPAT
+#define TS_I386_REGS_POKED	0x0004	/* regs poked by 32-bit ptracer */
+#endif
+#ifndef __ASSEMBLY__
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #ifdef CONFIG_X86_32
 #define in_ia32_syscall() true

@@ -585,7 +585,12 @@ vmci_transport_queue_pair_alloc(struct vmci_qp **qpair,
 			       peer, flags, VMCI_NO_PRIVILEGE_FLAGS);
 out:
 	if (err < 0) {
+<<<<<<< HEAD
 		pr_err_once("Could not attach to queue pair with %d\n", err);
+=======
+		pr_err("Could not attach to queue pair with %d\n",
+		       err);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		err = vmci_transport_error_to_vsock_error(err);
 	}
 

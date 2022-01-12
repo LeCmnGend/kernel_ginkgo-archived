@@ -123,6 +123,12 @@ struct stm32_usart_info stm32h7_info = {
 /* Dummy bits */
 #define USART_SR_DUMMY_RX	BIT(16)
 
+<<<<<<< HEAD
+=======
+/* USART_ICR (F7) */
+#define USART_CR_TC		BIT(6)
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* USART_DR */
 #define USART_DR_MASK		GENMASK(8, 0)
 

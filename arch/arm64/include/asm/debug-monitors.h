@@ -95,6 +95,7 @@ struct step_hook {
 	int (*fn)(struct pt_regs *regs, unsigned int esr);
 };
 
+<<<<<<< HEAD
 void register_user_step_hook(struct step_hook *hook);
 void unregister_user_step_hook(struct step_hook *hook);
 
@@ -113,6 +114,20 @@ void unregister_user_break_hook(struct break_hook *hook);
 
 void register_kernel_break_hook(struct break_hook *hook);
 void unregister_kernel_break_hook(struct break_hook *hook);
+=======
+void register_step_hook(struct step_hook *hook);
+void unregister_step_hook(struct step_hook *hook);
+
+struct break_hook {
+	struct list_head node;
+	u32 esr_val;
+	u32 esr_mask;
+	int (*fn)(struct pt_regs *regs, unsigned int esr);
+};
+
+void register_break_hook(struct break_hook *hook);
+void unregister_break_hook(struct break_hook *hook);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 u8 debug_monitors_arch(void);
 

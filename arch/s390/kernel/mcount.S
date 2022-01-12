@@ -60,13 +60,21 @@ ENTRY(ftrace_caller)
 #ifdef CONFIG_HAVE_MARCH_Z196_FEATURES
 	aghik	%r2,%r0,-MCOUNT_INSN_SIZE
 	lgrl	%r4,function_trace_op
+<<<<<<< HEAD
 	lgrl	%r1,ftrace_func
+=======
+	lgrl	%r1,ftrace_trace_function
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #else
 	lgr	%r2,%r0
 	aghi	%r2,-MCOUNT_INSN_SIZE
 	larl	%r4,function_trace_op
 	lg	%r4,0(%r4)
+<<<<<<< HEAD
 	larl	%r1,ftrace_func
+=======
+	larl	%r1,ftrace_trace_function
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	lg	%r1,0(%r1)
 #endif
 	lgr	%r3,%r14

@@ -29,6 +29,11 @@
  */
 enum vxge_hw_status vxge_hw_vpath_intr_enable(struct __vxge_hw_vpath_handle *vp)
 {
+<<<<<<< HEAD
+=======
+	u64 val64;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct __vxge_hw_virtualpath *vpath;
 	struct vxge_hw_vpath_reg __iomem *vp_reg;
 	enum vxge_hw_status status = VXGE_HW_OK;
@@ -81,7 +86,11 @@ enum vxge_hw_status vxge_hw_vpath_intr_enable(struct __vxge_hw_vpath_handle *vp)
 	__vxge_hw_pio_mem_write32_upper((u32)VXGE_HW_INTR_MASK_ALL,
 			&vp_reg->xgmac_vp_int_status);
 
+<<<<<<< HEAD
 	readq(&vp_reg->vpath_general_int_status);
+=======
+	val64 = readq(&vp_reg->vpath_general_int_status);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Mask unwanted interrupts */
 
@@ -154,6 +163,11 @@ exit:
 enum vxge_hw_status vxge_hw_vpath_intr_disable(
 			struct __vxge_hw_vpath_handle *vp)
 {
+<<<<<<< HEAD
+=======
+	u64 val64;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct __vxge_hw_virtualpath *vpath;
 	enum vxge_hw_status status = VXGE_HW_OK;
 	struct vxge_hw_vpath_reg __iomem *vp_reg;
@@ -174,6 +188,11 @@ enum vxge_hw_status vxge_hw_vpath_intr_disable(
 		(u32)VXGE_HW_INTR_MASK_ALL,
 		&vp_reg->vpath_general_int_mask);
 
+<<<<<<< HEAD
+=======
+	val64 = VXGE_HW_TIM_CLR_INT_EN_VP(1 << (16 - vpath->vp_id));
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	writeq(VXGE_HW_INTR_MASK_ALL, &vp_reg->kdfcctl_errors_mask);
 
 	__vxge_hw_pio_mem_write32_upper((u32)VXGE_HW_INTR_MASK_ALL,
@@ -480,7 +499,13 @@ void vxge_hw_device_unmask_all(struct __vxge_hw_device *hldev)
  */
 void vxge_hw_device_flush_io(struct __vxge_hw_device *hldev)
 {
+<<<<<<< HEAD
 	readl(&hldev->common_reg->titan_general_int_status);
+=======
+	u32 val32;
+
+	val32 = readl(&hldev->common_reg->titan_general_int_status);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /**
@@ -1737,8 +1762,13 @@ void vxge_hw_fifo_txdl_free(struct __vxge_hw_fifo *fifo, void *txdlh)
 enum vxge_hw_status
 vxge_hw_vpath_mac_addr_add(
 	struct __vxge_hw_vpath_handle *vp,
+<<<<<<< HEAD
 	u8 *macaddr,
 	u8 *macaddr_mask,
+=======
+	u8 (macaddr)[ETH_ALEN],
+	u8 (macaddr_mask)[ETH_ALEN],
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	enum vxge_hw_vpath_mac_addr_add_mode duplicate_mode)
 {
 	u32 i;
@@ -1800,8 +1830,13 @@ exit:
 enum vxge_hw_status
 vxge_hw_vpath_mac_addr_get(
 	struct __vxge_hw_vpath_handle *vp,
+<<<<<<< HEAD
 	u8 *macaddr,
 	u8 *macaddr_mask)
+=======
+	u8 (macaddr)[ETH_ALEN],
+	u8 (macaddr_mask)[ETH_ALEN])
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	u32 i;
 	u64 data1 = 0ULL;
@@ -1852,8 +1887,13 @@ exit:
 enum vxge_hw_status
 vxge_hw_vpath_mac_addr_get_next(
 	struct __vxge_hw_vpath_handle *vp,
+<<<<<<< HEAD
 	u8 *macaddr,
 	u8 *macaddr_mask)
+=======
+	u8 (macaddr)[ETH_ALEN],
+	u8 (macaddr_mask)[ETH_ALEN])
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	u32 i;
 	u64 data1 = 0ULL;
@@ -1905,8 +1945,13 @@ exit:
 enum vxge_hw_status
 vxge_hw_vpath_mac_addr_delete(
 	struct __vxge_hw_vpath_handle *vp,
+<<<<<<< HEAD
 	u8 *macaddr,
 	u8 *macaddr_mask)
+=======
+	u8 (macaddr)[ETH_ALEN],
+	u8 (macaddr_mask)[ETH_ALEN])
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	u32 i;
 	u64 data1 = 0ULL;
@@ -2396,6 +2441,10 @@ enum vxge_hw_status vxge_hw_vpath_poll_rx(struct __vxge_hw_ring *ring)
 	u8 t_code;
 	enum vxge_hw_status status = VXGE_HW_OK;
 	void *first_rxdh;
+<<<<<<< HEAD
+=======
+	u64 val64 = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int new_count = 0;
 
 	ring->cmpl_cnt = 0;
@@ -2423,7 +2472,12 @@ enum vxge_hw_status vxge_hw_vpath_poll_rx(struct __vxge_hw_ring *ring)
 			}
 			writeq(VXGE_HW_PRC_RXD_DOORBELL_NEW_QW_CNT(new_count),
 				&ring->vp_reg->prc_rxd_doorbell);
+<<<<<<< HEAD
 			readl(&ring->common_reg->titan_general_int_status);
+=======
+			val64 =
+			  readl(&ring->common_reg->titan_general_int_status);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			ring->doorbell_cnt = 0;
 		}
 	}

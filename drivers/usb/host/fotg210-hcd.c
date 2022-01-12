@@ -5598,7 +5598,11 @@ static int fotg210_hcd_probe(struct platform_device *pdev)
 	struct usb_hcd *hcd;
 	struct resource *res;
 	int irq;
+<<<<<<< HEAD
 	int retval;
+=======
+	int retval = -ENODEV;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct fotg210_hcd *fotg210;
 
 	if (usb_disabled())
@@ -5618,7 +5622,11 @@ static int fotg210_hcd_probe(struct platform_device *pdev)
 	hcd = usb_create_hcd(&fotg210_fotg210_hc_driver, dev,
 			dev_name(dev));
 	if (!hcd) {
+<<<<<<< HEAD
 		dev_err(dev, "failed to create hcd\n");
+=======
+		dev_err(dev, "failed to create hcd with err %d\n", retval);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		retval = -ENOMEM;
 		goto fail_create_hcd;
 	}

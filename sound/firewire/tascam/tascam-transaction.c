@@ -210,7 +210,11 @@ static void midi_port_work(struct work_struct *work)
 
 	/* Set interval to next transaction. */
 	port->next_ktime = ktime_add_ns(ktime_get(),
+<<<<<<< HEAD
 			port->consume_bytes * 8 * (NSEC_PER_SEC / 31250));
+=======
+				port->consume_bytes * 8 * NSEC_PER_SEC / 31250);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Start this transaction. */
 	port->idling = false;

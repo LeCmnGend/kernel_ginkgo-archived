@@ -304,10 +304,15 @@ static int intel_gtt_setup_scratch_page(void)
 	if (intel_private.needs_dmar) {
 		dma_addr = pci_map_page(intel_private.pcidev, page, 0,
 				    PAGE_SIZE, PCI_DMA_BIDIRECTIONAL);
+<<<<<<< HEAD
 		if (pci_dma_mapping_error(intel_private.pcidev, dma_addr)) {
 			__free_page(page);
 			return -EINVAL;
 		}
+=======
+		if (pci_dma_mapping_error(intel_private.pcidev, dma_addr))
+			return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		intel_private.scratch_page_dma = dma_addr;
 	} else

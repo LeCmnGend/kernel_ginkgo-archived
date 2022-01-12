@@ -9,7 +9,10 @@
  * failure case.
  */
 #define CMPXCHG_LOOP(CODE, SUCCESS) do {					\
+<<<<<<< HEAD
 	int retry = 100;							\
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct lockref old;							\
 	BUILD_BUG_ON(sizeof(old) != 8);						\
 	old.lock_count = READ_ONCE(lockref->lock_count);			\
@@ -22,8 +25,11 @@
 		if (likely(old.lock_count == prev.lock_count)) {		\
 			SUCCESS;						\
 		}								\
+<<<<<<< HEAD
 		if (!--retry)							\
 			break;							\
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		cpu_relax();							\
 	}									\
 } while (0)

@@ -272,7 +272,10 @@ static int __fpu__restore_sig(void __user *buf, void __user *buf_fx, int size)
 	int state_size = fpu_kernel_xstate_size;
 	u64 xfeatures = 0;
 	int fx_only = 0;
+<<<<<<< HEAD
 	int ret = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	ia32_fxstate &= (IS_ENABLED(CONFIG_X86_32) ||
 			 IS_ENABLED(CONFIG_IA32_EMULATION));
@@ -282,6 +285,7 @@ static int __fpu__restore_sig(void __user *buf, void __user *buf_fx, int size)
 		return 0;
 	}
 
+<<<<<<< HEAD
 	if (!access_ok(VERIFY_READ, buf, size)) {
 		ret = -EACCES;
 		goto out_err;
@@ -297,6 +301,17 @@ static int __fpu__restore_sig(void __user *buf, void __user *buf_fx, int size)
 			goto out_err;
 		return 0;
 	}
+=======
+	if (!access_ok(VERIFY_READ, buf, size))
+		return -EACCES;
+
+	fpu__initialize(fpu);
+
+	if (!static_cpu_has(X86_FEATURE_FPU))
+		return fpregs_soft_set(current, NULL,
+				       0, sizeof(struct user_i387_ia32_struct),
+				       NULL, buf) != 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (use_xsave()) {
 		struct _fpx_sw_bytes fx_sw_user;
@@ -356,7 +371,10 @@ static int __fpu__restore_sig(void __user *buf, void __user *buf_fx, int size)
 		fpu__restore(fpu);
 		local_bh_enable();
 
+<<<<<<< HEAD
 		/* Failure is already handled */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return err;
 	} else {
 		/*
@@ -364,6 +382,7 @@ static int __fpu__restore_sig(void __user *buf, void __user *buf_fx, int size)
 		 * state to the registers directly (with exceptions handled).
 		 */
 		user_fpu_begin();
+<<<<<<< HEAD
 		if (!copy_user_to_fpregs_zeroing(buf_fx, xfeatures, fx_only))
 			return 0;
 		ret = -1;
@@ -372,6 +391,15 @@ static int __fpu__restore_sig(void __user *buf, void __user *buf_fx, int size)
 out_err:
 	fpu__clear(fpu);
 	return ret;
+=======
+		if (copy_user_to_fpregs_zeroing(buf_fx, xfeatures, fx_only)) {
+			fpu__clear(fpu);
+			return -1;
+		}
+	}
+
+	return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static inline int xstate_sigframe_size(void)

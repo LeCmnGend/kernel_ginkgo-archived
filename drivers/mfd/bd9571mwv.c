@@ -183,9 +183,15 @@ static int bd9571mwv_probe(struct i2c_client *client,
 		return ret;
 	}
 
+<<<<<<< HEAD
 	ret = devm_mfd_add_devices(bd->dev, PLATFORM_DEVID_AUTO,
 				   bd9571mwv_cells, ARRAY_SIZE(bd9571mwv_cells),
 				   NULL, 0, regmap_irq_get_domain(bd->irq_data));
+=======
+	ret = mfd_add_devices(bd->dev, PLATFORM_DEVID_AUTO, bd9571mwv_cells,
+			      ARRAY_SIZE(bd9571mwv_cells), NULL, 0,
+			      regmap_irq_get_domain(bd->irq_data));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret) {
 		regmap_del_irq_chip(bd->irq, bd->irq_data);
 		return ret;

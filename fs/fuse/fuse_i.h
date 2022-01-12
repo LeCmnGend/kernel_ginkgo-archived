@@ -155,9 +155,12 @@ struct fuse_file {
 
 	/** Has flock been performed on this file? */
 	bool flock:1;
+<<<<<<< HEAD
 
 	/* the read write file */
 	struct file *rw_lower_file;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 /** One input argument of a request */
@@ -238,10 +241,13 @@ struct fuse_args {
 		unsigned numargs;
 		struct fuse_arg args[2];
 	} out;
+<<<<<<< HEAD
 
 	/** fuse shortcircuit file  */
 	struct file *private_lower_rw_file;
 	char *iname;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 #define FUSE_ARGS(args) struct fuse_args args = {}
@@ -284,8 +290,11 @@ struct fuse_io_priv {
  * FR_SENT:		request is in userspace, waiting for an answer
  * FR_FINISHED:		request is finished
  * FR_PRIVATE:		request is on private list
+<<<<<<< HEAD
  *
  * FR_BOOST:		request can be boost
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 enum fuse_req_flag {
 	FR_ISREPLY,
@@ -299,10 +308,13 @@ enum fuse_req_flag {
 	FR_SENT,
 	FR_FINISHED,
 	FR_PRIVATE,
+<<<<<<< HEAD
 
 #ifdef CONFIG_FUSE_SHORTCIRCUIT
 	FR_BOOST = 30,
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 /**
@@ -397,10 +409,13 @@ struct fuse_req {
 
 	/** Request is stolen from fuse_file->reserved_req */
 	struct file *stolen_file;
+<<<<<<< HEAD
 
 	/** fuse shortcircuit file  */
 	struct file *private_lower_rw_file;
 	char *iname;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 struct fuse_iqueue {
@@ -561,9 +576,12 @@ struct fuse_conn {
 	/** handle fs handles killing suid/sgid/cap on write/chown/trunc */
 	unsigned handle_killpriv:1;
 
+<<<<<<< HEAD
 	/** Shortcircuited IO. */
 	unsigned shortcircuit_io:1;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * The following bitfields are only for optimization purposes
 	 * and hence races in setting them will not cause malfunction
@@ -1005,6 +1023,9 @@ extern const struct xattr_handler *fuse_acl_xattr_handlers[];
 struct posix_acl;
 struct posix_acl *fuse_get_acl(struct inode *inode, int type);
 int fuse_set_acl(struct inode *inode, struct posix_acl *acl, int type);
+<<<<<<< HEAD
 extern int sct_mode;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #endif /* _FS_FUSE_I_H */

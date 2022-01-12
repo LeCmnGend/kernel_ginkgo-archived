@@ -1261,6 +1261,7 @@ static void __init l2c310_of_parse(const struct device_node *np,
 
 	ret = of_property_read_u32(np, "prefetch-data", &val);
 	if (ret == 0) {
+<<<<<<< HEAD
 		if (val) {
 			prefetch |= L310_PREFETCH_CTRL_DATA_PREFETCH;
 			*aux_val |= L310_PREFETCH_CTRL_DATA_PREFETCH;
@@ -1269,12 +1270,19 @@ static void __init l2c310_of_parse(const struct device_node *np,
 			*aux_val &= ~L310_PREFETCH_CTRL_DATA_PREFETCH;
 		}
 		*aux_mask &= ~L310_PREFETCH_CTRL_DATA_PREFETCH;
+=======
+		if (val)
+			prefetch |= L310_PREFETCH_CTRL_DATA_PREFETCH;
+		else
+			prefetch &= ~L310_PREFETCH_CTRL_DATA_PREFETCH;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else if (ret != -EINVAL) {
 		pr_err("L2C-310 OF prefetch-data property value is missing\n");
 	}
 
 	ret = of_property_read_u32(np, "prefetch-instr", &val);
 	if (ret == 0) {
+<<<<<<< HEAD
 		if (val) {
 			prefetch |= L310_PREFETCH_CTRL_INSTR_PREFETCH;
 			*aux_val |= L310_PREFETCH_CTRL_INSTR_PREFETCH;
@@ -1283,6 +1291,12 @@ static void __init l2c310_of_parse(const struct device_node *np,
 			*aux_val &= ~L310_PREFETCH_CTRL_INSTR_PREFETCH;
 		}
 		*aux_mask &= ~L310_PREFETCH_CTRL_INSTR_PREFETCH;
+=======
+		if (val)
+			prefetch |= L310_PREFETCH_CTRL_INSTR_PREFETCH;
+		else
+			prefetch &= ~L310_PREFETCH_CTRL_INSTR_PREFETCH;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else if (ret != -EINVAL) {
 		pr_err("L2C-310 OF prefetch-instr property value is missing\n");
 	}

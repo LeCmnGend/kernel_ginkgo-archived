@@ -427,12 +427,23 @@ static int hfs_fill_super(struct super_block *sb, void *data, int silent)
 	if (!res) {
 		if (fd.entrylength > sizeof(rec) || fd.entrylength < 0) {
 			res =  -EIO;
+<<<<<<< HEAD
 			goto bail_hfs_find;
 		}
 		hfs_bnode_read(fd.bnode, &rec, fd.entryoffset, fd.entrylength);
 	}
 	if (res)
 		goto bail_hfs_find;
+=======
+			goto bail;
+		}
+		hfs_bnode_read(fd.bnode, &rec, fd.entryoffset, fd.entrylength);
+	}
+	if (res) {
+		hfs_find_exit(&fd);
+		goto bail_no_root;
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	res = -EINVAL;
 	root_inode = hfs_iget(sb, &fd.search_key->cat, &rec);
 	hfs_find_exit(&fd);
@@ -448,8 +459,11 @@ static int hfs_fill_super(struct super_block *sb, void *data, int silent)
 	/* everything's okay */
 	return 0;
 
+<<<<<<< HEAD
 bail_hfs_find:
 	hfs_find_exit(&fd);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 bail_no_root:
 	pr_err("get root inode failed\n");
 bail:

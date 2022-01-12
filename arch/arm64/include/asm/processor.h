@@ -71,9 +71,15 @@
 
 #define STACK_TOP_MAX		TASK_SIZE_64
 #ifdef CONFIG_COMPAT
+<<<<<<< HEAD
 #define AARCH32_KUSER_HELPERS_BASE 0xffff0000
 #define STACK_TOP		(test_thread_flag(TIF_32BIT) ? \
 				AARCH32_KUSER_HELPERS_BASE : STACK_TOP_MAX)
+=======
+#define AARCH32_VECTORS_BASE	0xffff0000
+#define STACK_TOP		(test_thread_flag(TIF_32BIT) ? \
+				AARCH32_VECTORS_BASE : STACK_TOP_MAX)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #else
 #define STACK_TOP		STACK_TOP_MAX
 #endif /* CONFIG_COMPAT */
@@ -125,6 +131,7 @@ struct thread_struct {
 	struct debug_info	debug;		/* debugging */
 };
 
+<<<<<<< HEAD
 /*
  * Everything usercopied to/from thread_struct is statically-sized, so
  * no hardened usercopy whitelist is needed.
@@ -135,6 +142,8 @@ static inline void arch_thread_struct_whitelist(unsigned long *offset,
 	*offset = *size = 0;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_COMPAT
 #define task_user_tls(t)						\
 ({									\
@@ -232,20 +241,32 @@ extern struct task_struct *cpu_switch_to(struct task_struct *prev,
 #define ARCH_HAS_PREFETCH
 static inline void prefetch(const void *ptr)
 {
+<<<<<<< HEAD
 	asm volatile("prfm pldl1keep, %a0\n" : : "p" (ptr));
+=======
+	asm volatile("prfm pldl1keep, [%x0]\n" : : "r" (ptr));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 #define ARCH_HAS_PREFETCHW
 static inline void prefetchw(const void *ptr)
 {
+<<<<<<< HEAD
 	asm volatile("prfm pstl1keep, %a0\n" : : "p" (ptr));
+=======
+	asm volatile("prfm pstl1keep, [%x0]\n" : : "r" (ptr));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 #define ARCH_HAS_SPINLOCK_PREFETCH
 static inline void spin_lock_prefetch(const void *ptr)
 {
 	asm volatile(ARM64_LSE_ATOMIC_INSN(
+<<<<<<< HEAD
 		     "prfm pstl1strm, %a0",
+=======
+		     "prfm pstl1strm, [%x0]",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		     "nop") : : "p" (ptr));
 }
 

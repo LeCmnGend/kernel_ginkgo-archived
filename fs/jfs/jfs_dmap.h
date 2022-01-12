@@ -196,7 +196,11 @@ typedef union dmtree {
 #define	dmt_leafidx	t1.leafidx
 #define	dmt_height	t1.height
 #define	dmt_budmin	t1.budmin
+<<<<<<< HEAD
 #define	dmt_stree	t2.stree
+=======
+#define	dmt_stree	t1.stree
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*
  *	on-disk aggregate disk allocation map descriptor.

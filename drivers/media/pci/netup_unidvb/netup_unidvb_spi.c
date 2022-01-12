@@ -184,7 +184,11 @@ int netup_spi_init(struct netup_unidvb_dev *ndev)
 	struct spi_master *master;
 	struct netup_spi *nspi;
 
+<<<<<<< HEAD
 	master = devm_spi_alloc_master(&ndev->pci_dev->dev,
+=======
+	master = spi_alloc_master(&ndev->pci_dev->dev,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		sizeof(struct netup_spi));
 	if (!master) {
 		dev_err(&ndev->pci_dev->dev,
@@ -217,7 +221,10 @@ int netup_spi_init(struct netup_unidvb_dev *ndev)
 		ndev->pci_slot,
 		ndev->pci_func);
 	if (!spi_new_device(master, &netup_spi_board)) {
+<<<<<<< HEAD
 		spi_unregister_master(master);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ndev->spi = NULL;
 		dev_err(&ndev->pci_dev->dev,
 			"%s(): unable to create SPI device\n", __func__);
@@ -236,13 +243,20 @@ void netup_spi_release(struct netup_unidvb_dev *ndev)
 	if (!spi)
 		return;
 
+<<<<<<< HEAD
 	spi_unregister_master(spi->master);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_irqsave(&spi->lock, flags);
 	reg = readw(&spi->regs->control_stat);
 	writew(reg | NETUP_SPI_CTRL_IRQ, &spi->regs->control_stat);
 	reg = readw(&spi->regs->control_stat);
 	writew(reg & ~NETUP_SPI_CTRL_IMASK, &spi->regs->control_stat);
 	spin_unlock_irqrestore(&spi->lock, flags);
+<<<<<<< HEAD
+=======
+	spi_unregister_master(spi->master);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ndev->spi = NULL;
 }
 

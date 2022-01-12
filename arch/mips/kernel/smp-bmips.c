@@ -240,8 +240,11 @@ static int bmips_boot_secondary(int cpu, struct task_struct *idle)
  */
 static void bmips_init_secondary(void)
 {
+<<<<<<< HEAD
 	bmips_cpu_setup();
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	switch (current_cpu_type()) {
 	case CPU_BMIPS4350:
 	case CPU_BMIPS4380:
@@ -574,7 +577,11 @@ asmlinkage void __weak plat_wired_tlb_setup(void)
 	 */
 }
 
+<<<<<<< HEAD
 void bmips_cpu_setup(void)
+=======
+void __init bmips_cpu_setup(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	void __iomem __maybe_unused *cbr = BMIPS_GET_CBR();
 	u32 __maybe_unused cfg;

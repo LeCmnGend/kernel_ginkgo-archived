@@ -456,8 +456,11 @@ static struct reada_extent *reada_find_extent(struct btrfs_fs_info *fs_info,
 		}
 		have_zone = 1;
 	}
+<<<<<<< HEAD
 	if (!have_zone)
 		radix_tree_delete(&fs_info->reada_tree, index);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_unlock(&fs_info->reada_lock);
 	btrfs_dev_replace_unlock(&fs_info->dev_replace, 0);
 

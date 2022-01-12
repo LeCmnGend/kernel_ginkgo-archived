@@ -71,7 +71,11 @@ void __prepare_to_swait(struct swait_queue_head *q, struct swait_queue *wait)
 {
 	wait->task = current;
 	if (list_empty(&wait->task_list))
+<<<<<<< HEAD
 		list_add_tail(&wait->task_list, &q->task_list);
+=======
+		list_add(&wait->task_list, &q->task_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 void prepare_to_swait(struct swait_queue_head *q, struct swait_queue *wait, int state)
@@ -87,6 +91,7 @@ EXPORT_SYMBOL(prepare_to_swait);
 
 long prepare_to_swait_event(struct swait_queue_head *q, struct swait_queue *wait, int state)
 {
+<<<<<<< HEAD
 	unsigned long flags;
 	long ret = 0;
 
@@ -105,6 +110,14 @@ long prepare_to_swait_event(struct swait_queue_head *q, struct swait_queue *wait
 	raw_spin_unlock_irqrestore(&q->lock, flags);
 
 	return ret;
+=======
+	if (signal_pending_state(state, current))
+		return -ERESTARTSYS;
+
+	prepare_to_swait(q, wait, state);
+
+	return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL(prepare_to_swait_event);
 

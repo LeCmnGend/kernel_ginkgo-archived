@@ -85,7 +85,10 @@ struct virtio_gpu_object {
 	void *vmap;
 	bool dumb;
 	bool blob;
+<<<<<<< HEAD
 	bool waited_on_map;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct ttm_place                placement_code;
 	struct ttm_placement		placement;
 	struct ttm_buffer_object	tbo;

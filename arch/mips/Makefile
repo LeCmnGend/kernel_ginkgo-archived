@@ -314,7 +314,11 @@ LDFLAGS			+= -m $(ld-emul)
 
 ifdef CONFIG_MIPS
 CHECKFLAGS += $(shell $(CC) $(KBUILD_CFLAGS) -dM -E -x c /dev/null | \
+<<<<<<< HEAD
 	egrep -vw '__GNUC_(MINOR_|PATCHLEVEL_)?_' | \
+=======
+	egrep -vw '__GNUC_(|MINOR_|PATCHLEVEL_)_' | \
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	sed -e "s/^\#define /-D'/" -e "s/ /'='/" -e "s/$$/'/" -e 's/\$$/&&/g')
 ifdef CONFIG_64BIT
 CHECKFLAGS		+= -m64

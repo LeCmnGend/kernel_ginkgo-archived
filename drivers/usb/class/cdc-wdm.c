@@ -57,9 +57,12 @@ MODULE_DEVICE_TABLE (usb, wdm_ids);
 
 #define WDM_MAX			16
 
+<<<<<<< HEAD
 /* we cannot wait forever at flush() */
 #define WDM_FLUSH_TIMEOUT	(30 * HZ)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* CDC-WMC r1.1 requires wMaxCommand to be "at least 256 decimal (0x100)" */
 #define WDM_DEFAULT_BUFSIZE	256
 
@@ -150,7 +153,11 @@ static void wdm_out_callback(struct urb *urb)
 	kfree(desc->outbuf);
 	desc->outbuf = NULL;
 	clear_bit(WDM_IN_USE, &desc->flags);
+<<<<<<< HEAD
 	wake_up_all(&desc->wait);
+=======
+	wake_up(&desc->wait);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /* forward declaration */
@@ -393,9 +400,12 @@ static ssize_t wdm_write
 	if (test_bit(WDM_RESETTING, &desc->flags))
 		r = -EIO;
 
+<<<<<<< HEAD
 	if (test_bit(WDM_DISCONNECTING, &desc->flags))
 		r = -ENODEV;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (r < 0) {
 		rv = r;
 		goto out_free_mem_pm;
@@ -427,7 +437,10 @@ static ssize_t wdm_write
 	if (rv < 0) {
 		desc->outbuf = NULL;
 		clear_bit(WDM_IN_USE, &desc->flags);
+<<<<<<< HEAD
 		wake_up_all(&desc->wait); /* for wdm_wait_for_response() */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dev_err(&desc->intf->dev, "Tx URB error: %d\n", rv);
 		rv = usb_translate_errors(rv);
 		goto out_free_mem_pm;
@@ -587,6 +600,7 @@ err:
 	return rv;
 }
 
+<<<<<<< HEAD
 static int wdm_wait_for_response(struct file *file, long timeout)
 {
 	struct wdm_device *desc = file->private_data;
@@ -639,6 +653,30 @@ static int wdm_fsync(struct file *file, loff_t start, loff_t end, int datasync)
 static int wdm_flush(struct file *file, fl_owner_t id)
 {
 	return wdm_wait_for_response(file, WDM_FLUSH_TIMEOUT);
+=======
+static int wdm_flush(struct file *file, fl_owner_t id)
+{
+	struct wdm_device *desc = file->private_data;
+
+	wait_event(desc->wait,
+			/*
+			 * needs both flags. We cannot do with one
+			 * because resetting it would cause a race
+			 * with write() yet we need to signal
+			 * a disconnect
+			 */
+			!test_bit(WDM_IN_USE, &desc->flags) ||
+			test_bit(WDM_DISCONNECTING, &desc->flags));
+
+	/* cannot dereference desc->intf if WDM_DISCONNECTING */
+	if (test_bit(WDM_DISCONNECTING, &desc->flags))
+		return -ENODEV;
+	if (desc->werr < 0)
+		dev_err(&desc->intf->dev, "Error in flush path: %d\n",
+			desc->werr);
+
+	return usb_translate_errors(desc->werr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static unsigned int wdm_poll(struct file *file, struct poll_table_struct *wait)
@@ -763,7 +801,10 @@ static const struct file_operations wdm_fops = {
 	.owner =	THIS_MODULE,
 	.read =		wdm_read,
 	.write =	wdm_write,
+<<<<<<< HEAD
 	.fsync =	wdm_fsync,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.open =		wdm_open,
 	.flush =	wdm_flush,
 	.release =	wdm_release,

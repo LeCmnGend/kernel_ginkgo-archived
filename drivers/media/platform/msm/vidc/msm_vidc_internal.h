@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2012-2020, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2012-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -177,6 +181,10 @@ struct recon_buf {
 struct eos_buf {
 	struct list_head list;
 	struct msm_smem smem;
+<<<<<<< HEAD
+=======
+	u32 is_queued;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 struct internal_buf {
@@ -500,6 +508,10 @@ struct msm_vidc_inst {
 	struct work_struct batch_work;
 	bool decode_batching;
 	u32 max_filled_length;
+<<<<<<< HEAD
+=======
+	bool operating_rate_set;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 extern struct msm_vidc_drv *vidc_driver;

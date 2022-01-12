@@ -1174,10 +1174,15 @@ mptscsih_remove(struct pci_dev *pdev)
 	MPT_SCSI_HOST		*hd;
 	int sz1;
 
+<<<<<<< HEAD
 	if (host == NULL)
 		hd = NULL;
 	else
 		hd = shost_priv(host);
+=======
+	if((hd = shost_priv(host)) == NULL)
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	mptscsih_shutdown(pdev);
 
@@ -1193,15 +1198,24 @@ mptscsih_remove(struct pci_dev *pdev)
 	    "Free'd ScsiLookup (%d) memory\n",
 	    ioc->name, sz1));
 
+<<<<<<< HEAD
 	if (hd)
 		kfree(hd->info_kbuf);
+=======
+	kfree(hd->info_kbuf);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* NULL the Scsi_Host pointer
 	 */
 	ioc->sh = NULL;
 
+<<<<<<< HEAD
 	if (host)
 		scsi_host_put(host);
+=======
+	scsi_host_put(host);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mpt_detach(pdev);
 
 }

@@ -1208,7 +1208,12 @@ static void tegra_dma_free_chan_resources(struct dma_chan *dc)
 
 	dev_dbg(tdc2dev(tdc), "Freeing channel %d\n", tdc->id);
 
+<<<<<<< HEAD
 	tegra_dma_terminate_all(dc);
+=======
+	if (tdc->busy)
+		tegra_dma_terminate_all(dc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	spin_lock_irqsave(&tdc->lock, flags);
 	list_splice_init(&tdc->pending_sg_req, &sg_req_list);

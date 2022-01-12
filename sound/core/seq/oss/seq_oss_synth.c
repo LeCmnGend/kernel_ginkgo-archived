@@ -624,8 +624,12 @@ snd_seq_oss_synth_make_info(struct seq_oss_devinfo *dp, int dev, struct synth_in
 
 	if (info->is_midi) {
 		struct midi_info minf;
+<<<<<<< HEAD
 		if (snd_seq_oss_midi_make_info(dp, info->midi_mapped, &minf))
 			return -ENXIO;
+=======
+		snd_seq_oss_midi_make_info(dp, info->midi_mapped, &minf);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		inf->synth_type = SYNTH_TYPE_MIDI;
 		inf->synth_subtype = 0;
 		inf->nr_voices = 16;

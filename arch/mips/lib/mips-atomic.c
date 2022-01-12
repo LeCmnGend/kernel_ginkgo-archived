@@ -37,7 +37,11 @@
  */
 notrace void arch_local_irq_disable(void)
 {
+<<<<<<< HEAD
 	preempt_disable_notrace();
+=======
+	preempt_disable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	__asm__ __volatile__(
 	"	.set	push						\n"
@@ -53,7 +57,11 @@ notrace void arch_local_irq_disable(void)
 	: /* no inputs */
 	: "memory");
 
+<<<<<<< HEAD
 	preempt_enable_notrace();
+=======
+	preempt_enable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL(arch_local_irq_disable);
 
@@ -61,7 +69,11 @@ notrace unsigned long arch_local_irq_save(void)
 {
 	unsigned long flags;
 
+<<<<<<< HEAD
 	preempt_disable_notrace();
+=======
+	preempt_disable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	__asm__ __volatile__(
 	"	.set	push						\n"
@@ -78,7 +90,11 @@ notrace unsigned long arch_local_irq_save(void)
 	: /* no inputs */
 	: "memory");
 
+<<<<<<< HEAD
 	preempt_enable_notrace();
+=======
+	preempt_enable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return flags;
 }
@@ -88,7 +104,11 @@ notrace void arch_local_irq_restore(unsigned long flags)
 {
 	unsigned long __tmp1;
 
+<<<<<<< HEAD
 	preempt_disable_notrace();
+=======
+	preempt_disable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	__asm__ __volatile__(
 	"	.set	push						\n"
@@ -106,7 +126,11 @@ notrace void arch_local_irq_restore(unsigned long flags)
 	: "0" (flags)
 	: "memory");
 
+<<<<<<< HEAD
 	preempt_enable_notrace();
+=======
+	preempt_enable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL(arch_local_irq_restore);
 

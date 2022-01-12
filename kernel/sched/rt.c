@@ -15,8 +15,11 @@
 
 int sched_rr_timeslice = RR_TIMESLICE;
 int sysctl_sched_rr_timeslice = (MSEC_PER_SEC / HZ) * RR_TIMESLICE;
+<<<<<<< HEAD
 /* More than 4 hours if BW_SHIFT equals 20. */
 static const u64 max_rt_runtime = MAX_BW;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static int do_sched_rt_period_timer(struct rt_bandwidth *rt_b, int overrun);
 
@@ -1030,13 +1033,20 @@ static void update_curr_rt(struct rq *rq)
 {
 	struct task_struct *curr = rq->curr;
 	struct sched_rt_entity *rt_se = &curr->rt;
+<<<<<<< HEAD
 	u64 now = rq_clock_task(rq);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u64 delta_exec;
 
 	if (curr->sched_class != &rt_sched_class)
 		return;
 
+<<<<<<< HEAD
 	delta_exec = now - curr->se.exec_start;
+=======
+	delta_exec = rq_clock_task(rq) - curr->se.exec_start;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (unlikely((s64)delta_exec <= 0))
 		return;
 
@@ -1049,7 +1059,11 @@ static void update_curr_rt(struct rq *rq)
 	curr->se.sum_exec_runtime += delta_exec;
 	account_group_exec_runtime(curr, delta_exec);
 
+<<<<<<< HEAD
 	curr->se.exec_start = now;
+=======
+	curr->se.exec_start = rq_clock_task(rq);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cpuacct_charge(curr, delta_exec);
 
 	sched_rt_avg_update(rq, delta_exec);
@@ -1466,10 +1480,15 @@ static int find_lowest_rq(struct task_struct *task);
 /*
  * Return whether the task on the given cpu is currently non-preemptible
  * while handling a potentially long softint, or if the task is likely
+<<<<<<< HEAD
  * to block preemptions soon because (a) it is a ksoftirq thread that is
  * handling slow softints, (b) it is idle and therefore likely to start
  * processing the irq's immediately, (c) the cpu is currently handling
  * hard irq's and will soon move on to the softirq handler.
+=======
+ * to block preemptions soon because it is a ksoftirq thread that is
+ * handling slow softints.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 bool
 task_may_not_preempt(struct task_struct *task, int cpu)
@@ -1479,16 +1498,25 @@ task_may_not_preempt(struct task_struct *task, int cpu)
 	struct task_struct *cpu_ksoftirqd = per_cpu(ksoftirqd, cpu);
 
 	return ((softirqs & LONG_SOFTIRQ_MASK) &&
+<<<<<<< HEAD
 		(task == cpu_ksoftirqd || is_idle_task(task) ||
 		 (task_thread_info(task)->preempt_count
 			& (HARDIRQ_MASK | SOFTIRQ_MASK))));
+=======
+		(task == cpu_ksoftirqd ||
+		 task_thread_info(task)->preempt_count & SOFTIRQ_MASK));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static int
 select_task_rq_rt(struct task_struct *p, int cpu, int sd_flag, int flags,
 		  int sibling_count_hint)
 {
+<<<<<<< HEAD
 	struct task_struct *curr, *tgt_task;
+=======
+	struct task_struct *curr;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct rq *rq;
 	bool may_not_preempt;
 
@@ -1540,6 +1568,7 @@ select_task_rq_rt(struct task_struct *p, int cpu, int sd_flag, int flags,
 	      curr->prio <= p->prio))) {
 		int target = find_lowest_rq(p);
 
+<<<<<<< HEAD
 
 		/*
 		 * Check once for losing a race with the other core's irq
@@ -1552,6 +1581,8 @@ select_task_rq_rt(struct task_struct *p, int cpu, int sd_flag, int flags,
 				target = find_lowest_rq(p);
 		}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
 		 * If cpu is non-preemptible, prefer remote cpu
 		 * even if it's running a higher-prio task.
@@ -1923,8 +1954,13 @@ static int find_lowest_rq(struct task_struct *task)
 				return this_cpu;
 			}
 
+<<<<<<< HEAD
 			best_cpu = cpumask_any_and_distribute(lowest_mask,
 							      sched_domain_span(sd));
+=======
+			best_cpu = cpumask_first_and(lowest_mask,
+						     sched_domain_span(sd));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (best_cpu < nr_cpu_ids) {
 				rcu_read_unlock();
 				return best_cpu;
@@ -1941,7 +1977,11 @@ static int find_lowest_rq(struct task_struct *task)
 	if (this_cpu != -1)
 		return this_cpu;
 
+<<<<<<< HEAD
 	cpu = cpumask_any_distribute(lowest_mask);
+=======
+	cpu = cpumask_any(lowest_mask);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (cpu < nr_cpu_ids)
 		return cpu;
 	return -1;
@@ -2645,11 +2685,18 @@ const struct sched_class rt_sched_class = {
  */
 static DEFINE_MUTEX(rt_constraints_mutex);
 
+<<<<<<< HEAD
 static inline int tg_has_rt_tasks(struct task_group *tg)
 {
 	struct task_struct *task;
 	struct css_task_iter it;
 	int ret = 0;
+=======
+/* Must be called with tasklist_lock held */
+static inline int tg_has_rt_tasks(struct task_group *tg)
+{
+	struct task_struct *g, *p;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*
 	 * Autogroups do not have RT tasks; see autogroup_create().
@@ -2657,12 +2704,21 @@ static inline int tg_has_rt_tasks(struct task_group *tg)
 	if (task_group_is_autogroup(tg))
 		return 0;
 
+<<<<<<< HEAD
 	css_task_iter_start(&tg->css, 0, &it);
 	while (!ret && (task = css_task_iter_next(&it)))
 		ret |= rt_task(task);
 	css_task_iter_end(&it);
 
 	return ret;
+=======
+	for_each_process_thread(g, p) {
+		if (rt_task(p) && task_group(p) == tg)
+			return 1;
+	}
+
+	return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 struct rt_schedulable_data {
@@ -2693,10 +2749,16 @@ static int tg_rt_schedulable(struct task_group *tg, void *data)
 		return -EINVAL;
 
 	/*
+<<<<<<< HEAD
 	 * Ensure we don't starve existing RT tasks if runtime turns zero.
 	 */
 	if (rt_bandwidth_enabled() && !runtime &&
 	    tg->rt_bandwidth.rt_runtime && tg_has_rt_tasks(tg))
+=======
+	 * Ensure we don't starve existing RT tasks.
+	 */
+	if (rt_bandwidth_enabled() && !runtime && tg_has_rt_tasks(tg))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EBUSY;
 
 	total = to_ratio(period, runtime);
@@ -2761,6 +2823,7 @@ static int tg_set_rt_bandwidth(struct task_group *tg,
 	if (rt_period == 0)
 		return -EINVAL;
 
+<<<<<<< HEAD
 	/*
 	 * Bound quota to defend quota against overflow during bandwidth shift.
 	 */
@@ -2768,6 +2831,10 @@ static int tg_set_rt_bandwidth(struct task_group *tg,
 		return -EINVAL;
 
 	mutex_lock(&rt_constraints_mutex);
+=======
+	mutex_lock(&rt_constraints_mutex);
+	read_lock(&tasklist_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = __rt_schedulable(tg, rt_period, rt_runtime);
 	if (err)
 		goto unlock;
@@ -2785,6 +2852,10 @@ static int tg_set_rt_bandwidth(struct task_group *tg,
 	}
 	raw_spin_unlock_irq(&tg->rt_bandwidth.rt_runtime_lock);
 unlock:
+<<<<<<< HEAD
+=======
+	read_unlock(&tasklist_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_unlock(&rt_constraints_mutex);
 
 	return err;
@@ -2843,7 +2914,13 @@ static int sched_rt_global_constraints(void)
 	int ret = 0;
 
 	mutex_lock(&rt_constraints_mutex);
+<<<<<<< HEAD
 	ret = __rt_schedulable(NULL, 0, 0);
+=======
+	read_lock(&tasklist_lock);
+	ret = __rt_schedulable(NULL, 0, 0);
+	read_unlock(&tasklist_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_unlock(&rt_constraints_mutex);
 
 	return ret;
@@ -2884,9 +2961,13 @@ static int sched_rt_global_validate(void)
 		return -EINVAL;
 
 	if ((sysctl_sched_rt_runtime != RUNTIME_INF) &&
+<<<<<<< HEAD
 		((sysctl_sched_rt_runtime > sysctl_sched_rt_period) ||
 		 ((u64)sysctl_sched_rt_runtime *
 			NSEC_PER_USEC > max_rt_runtime)))
+=======
+		(sysctl_sched_rt_runtime > sysctl_sched_rt_period))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EINVAL;
 
 	return 0;

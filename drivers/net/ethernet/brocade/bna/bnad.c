@@ -3292,7 +3292,11 @@ bnad_change_mtu(struct net_device *netdev, int new_mtu)
 {
 	int err, mtu;
 	struct bnad *bnad = netdev_priv(netdev);
+<<<<<<< HEAD
 	u32 frame, new_frame;
+=======
+	u32 rx_count = 0, frame, new_frame;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	mutex_lock(&bnad->conf_mutex);
 
@@ -3308,9 +3312,18 @@ bnad_change_mtu(struct net_device *netdev, int new_mtu)
 		/* only when transition is over 4K */
 		if ((frame <= 4096 && new_frame > 4096) ||
 		    (frame > 4096 && new_frame <= 4096))
+<<<<<<< HEAD
 			bnad_reinit_rx(bnad);
 	}
 
+=======
+			rx_count = bnad_reinit_rx(bnad);
+	}
+
+	/* rx_count > 0 - new rx created
+	 *	- Linux set err = 0 and return
+	 */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = bnad_mtu_set(bnad, new_frame);
 	if (err)
 		err = -EBUSY;

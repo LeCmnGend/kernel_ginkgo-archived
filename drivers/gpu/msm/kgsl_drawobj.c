@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2016-2019, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2016-2019,2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -43,7 +47,10 @@
 static struct kmem_cache *memobjs_cache;
 static struct kmem_cache *sparseobjs_cache;
 
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void free_fence_names(struct kgsl_drawobj_sync *syncobj)
 {
 	unsigned int i;
@@ -55,7 +62,10 @@ static void free_fence_names(struct kgsl_drawobj_sync *syncobj)
 			kfree(event->info.fences);
 	}
 }
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 void kgsl_drawobj_destroy_object(struct kref *kref)
 {
@@ -68,9 +78,13 @@ void kgsl_drawobj_destroy_object(struct kref *kref)
 	switch (drawobj->type) {
 	case SYNCOBJ_TYPE:
 		syncobj = SYNCOBJ(drawobj);
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
 		free_fence_names(syncobj);
 #endif
+=======
+		free_fence_names(syncobj);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		kfree(syncobj->synclist);
 		kfree(syncobj);
 		break;
@@ -111,14 +125,20 @@ void kgsl_dump_syncpoints(struct kgsl_device *device,
 			break;
 		}
 		case KGSL_CMD_SYNCPOINT_TYPE_FENCE: {
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			int j;
 			struct event_fence_info *info = &event->info;
 
 			for (j = 0; j < info->num_fences; j++)
 				dev_err(device->dev, "[%d]  fence: %s\n",
 					i, info->fences[j].name);
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			break;
 		}
 		}
@@ -152,6 +172,13 @@ static void syncobj_timer(unsigned long data)
 		"kgsl: possible gpu syncpoint deadlock for context %u timestamp %u\n",
 		drawobj->context->id, drawobj->timestamp);
 
+<<<<<<< HEAD
+=======
+	set_bit(ADRENO_CONTEXT_FENCE_LOG, &drawobj->context->priv);
+	kgsl_context_dump(drawobj->context);
+	clear_bit(ADRENO_CONTEXT_FENCE_LOG, &drawobj->context->priv);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dev_err(device->dev, "      pending events:\n");
 
 	for (i = 0; i < syncobj->numsyncs; i++) {
@@ -166,14 +193,20 @@ static void syncobj_timer(unsigned long data)
 				i, event->context->id, event->timestamp);
 			break;
 		case KGSL_CMD_SYNCPOINT_TYPE_FENCE: {
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			int j;
 			struct event_fence_info *info = &event->info;
 
 			for (j = 0; j < info->num_fences; j++)
 				dev_err(device->dev, "       [%u] FENCE %s\n",
 					i, info->fences[j].name);
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			break;
 		}
 		}
@@ -359,13 +392,19 @@ EXPORT_SYMBOL(kgsl_drawobj_destroy);
 static bool drawobj_sync_fence_func(void *priv)
 {
 	struct kgsl_drawobj_sync_event *event = priv;
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int i;
 
 	for (i = 0; i < event->info.num_fences; i++)
 		trace_syncpoint_fence_expire(event->syncobj,
 			event->info.fences[i].name);
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*
 	 * Only call kgsl_drawobj_put() if it's not marked for cancellation
@@ -391,7 +430,11 @@ static int drawobj_add_sync_fence(struct kgsl_device *device,
 	struct kgsl_cmd_syncpoint_fence *sync = priv;
 	struct kgsl_drawobj *drawobj = DRAWOBJ(syncobj);
 	struct kgsl_drawobj_sync_event *event;
+<<<<<<< HEAD
 	unsigned int id;
+=======
+	unsigned int id, i;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	kref_get(&drawobj->refcount);
 
@@ -429,10 +472,15 @@ static int drawobj_add_sync_fence(struct kgsl_device *device,
 		return ret;
 	}
 
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
 	for (i = 0; i < event->info.num_fences; i++)
 		trace_syncpoint_fence(syncobj, event->info.fences[i].name);
 #endif
+=======
+	for (i = 0; i < event->info.num_fences; i++)
+		trace_syncpoint_fence(syncobj, event->info.fences[i].name);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
 }
@@ -525,12 +573,17 @@ int kgsl_drawobj_sync_add_sync(struct kgsl_device *device,
 	struct kgsl_drawobj_sync *syncobj,
 	struct kgsl_cmd_syncpoint *sync)
 {
+<<<<<<< HEAD
 	union {
 		struct kgsl_cmd_syncpoint_timestamp sync_timestamp;
 		struct kgsl_cmd_syncpoint_fence sync_fence;
 	} data;
 	void *priv;
 	int psize;
+=======
+	void *priv;
+	int ret, psize;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct kgsl_drawobj *drawobj = DRAWOBJ(syncobj);
 	int (*func)(struct kgsl_device *device,
 			struct kgsl_drawobj_sync *syncobj,
@@ -540,12 +593,18 @@ int kgsl_drawobj_sync_add_sync(struct kgsl_device *device,
 	case KGSL_CMD_SYNCPOINT_TYPE_TIMESTAMP:
 		psize = sizeof(struct kgsl_cmd_syncpoint_timestamp);
 		func = drawobj_add_sync_timestamp;
+<<<<<<< HEAD
 		priv = &data.sync_timestamp;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 	case KGSL_CMD_SYNCPOINT_TYPE_FENCE:
 		psize = sizeof(struct kgsl_cmd_syncpoint_fence);
 		func = drawobj_add_sync_fence;
+<<<<<<< HEAD
 		priv = &data.sync_fence;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 	default:
 		KGSL_DRV_ERR(device,
@@ -561,10 +620,26 @@ int kgsl_drawobj_sync_add_sync(struct kgsl_device *device,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
 	if (copy_from_user(priv, sync->priv, sync->size))
 		return -EFAULT;
 
 	return func(device, syncobj, priv);
+=======
+	priv = kzalloc(sync->size, GFP_KERNEL);
+	if (priv == NULL)
+		return -ENOMEM;
+
+	if (copy_from_user(priv, sync->priv, sync->size)) {
+		kfree(priv);
+		return -EFAULT;
+	}
+
+	ret = func(device, syncobj, priv);
+	kfree(priv);
+
+	return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void add_profiling_buffer(struct kgsl_device *device,
@@ -574,6 +649,10 @@ static void add_profiling_buffer(struct kgsl_device *device,
 {
 	struct kgsl_mem_entry *entry;
 	struct kgsl_drawobj *drawobj = DRAWOBJ(cmdobj);
+<<<<<<< HEAD
+=======
+	u64 start;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!(drawobj->flags & KGSL_DRAWOBJ_PROFILING))
 		return;
@@ -590,7 +669,18 @@ static void add_profiling_buffer(struct kgsl_device *device,
 			gpuaddr);
 
 	if (entry != NULL) {
+<<<<<<< HEAD
 		if (!kgsl_gpuaddr_in_memdesc(&entry->memdesc, gpuaddr, size)) {
+=======
+		start = id ? (entry->memdesc.gpuaddr + offset) : gpuaddr;
+		/*
+		 * Make sure there is enough room in the object to store the
+		 * entire profiling buffer object
+		 */
+		if (!kgsl_gpuaddr_in_memdesc(&entry->memdesc, gpuaddr, size) ||
+			!kgsl_gpuaddr_in_memdesc(&entry->memdesc, start,
+				sizeof(struct kgsl_drawobj_profiling_buffer))) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			kgsl_mem_entry_put(entry);
 			entry = NULL;
 		}
@@ -603,6 +693,7 @@ static void add_profiling_buffer(struct kgsl_device *device,
 		return;
 	}
 
+<<<<<<< HEAD
 
 	if (!id) {
 		cmdobj->profiling_buffer_gpuaddr = gpuaddr;
@@ -625,6 +716,9 @@ static void add_profiling_buffer(struct kgsl_device *device,
 			entry->memdesc.gpuaddr + offset;
 	}
 
+=======
+	cmdobj->profiling_buffer_gpuaddr = start;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cmdobj->profiling_buf_entry = entry;
 }
 

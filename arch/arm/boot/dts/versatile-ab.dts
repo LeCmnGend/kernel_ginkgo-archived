@@ -155,15 +155,27 @@
 		#size-cells = <1>;
 		ranges;
 
+<<<<<<< HEAD
 		vic: interrupt-controller@10140000 {
+=======
+		vic: intc@10140000 {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			compatible = "arm,versatile-vic";
 			interrupt-controller;
 			#interrupt-cells = <1>;
 			reg = <0x10140000 0x1000>;
+<<<<<<< HEAD
 			valid-mask = <0xffffffff>;
 		};
 
 		sic: interrupt-controller@10003000 {
+=======
+			clear-mask = <0xffffffff>;
+			valid-mask = <0xffffffff>;
+		};
+
+		sic: intc@10003000 {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			compatible = "arm,versatile-sic";
 			interrupt-controller;
 			#interrupt-cells = <1>;

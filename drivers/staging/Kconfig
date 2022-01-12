@@ -118,6 +118,9 @@ source "drivers/staging/vboxvideo/Kconfig"
 
 source "drivers/staging/pi433/Kconfig"
 
+<<<<<<< HEAD
 source "drivers/staging/qcacld-3.0/Kconfig"
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 endif # STAGING

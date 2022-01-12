@@ -46,7 +46,11 @@ static unsigned char get_index(struct spk_synth *synth);
 static int in_escape;
 static int is_flushing;
 
+<<<<<<< HEAD
 static DEFINE_SPINLOCK(flush_lock);
+=======
+static spinlock_t flush_lock;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static DECLARE_WAIT_QUEUE_HEAD(flush);
 
 static struct var_t vars[] = {

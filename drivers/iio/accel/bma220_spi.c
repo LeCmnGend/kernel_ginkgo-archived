@@ -76,11 +76,15 @@ static const int bma220_scale_table[][4] = {
 struct bma220_data {
 	struct spi_device *spi_device;
 	struct mutex lock;
+<<<<<<< HEAD
 	struct {
 		s8 chans[3];
 		/* Ensure timestamp is naturally aligned. */
 		s64 timestamp __aligned(8);
 	} scan;
+=======
+	s8 buffer[16]; /* 3x8-bit channels + 5x8 padding + 8x8 timestamp */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u8 tx_buf[2] ____cacheline_aligned;
 };
 
@@ -111,12 +115,20 @@ static irqreturn_t bma220_trigger_handler(int irq, void *p)
 
 	mutex_lock(&data->lock);
 	data->tx_buf[0] = BMA220_REG_ACCEL_X | BMA220_READ_MASK;
+<<<<<<< HEAD
 	ret = spi_write_then_read(spi, data->tx_buf, 1, &data->scan.chans,
+=======
+	ret = spi_write_then_read(spi, data->tx_buf, 1, data->buffer,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				  ARRAY_SIZE(bma220_channels) - 1);
 	if (ret < 0)
 		goto err;
 
+<<<<<<< HEAD
 	iio_push_to_buffers_with_timestamp(indio_dev, &data->scan,
+=======
+	iio_push_to_buffers_with_timestamp(indio_dev, data->buffer,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					   pf->timestamp);
 err:
 	mutex_unlock(&data->lock);

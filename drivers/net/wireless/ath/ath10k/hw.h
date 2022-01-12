@@ -755,7 +755,11 @@ ath10k_rx_desc_get_l3_pad_bytes(struct ath10k_hw_params *hw,
 
 #define TARGET_10_4_TX_DBG_LOG_SIZE		1024
 #define TARGET_10_4_NUM_WDS_ENTRIES		32
+<<<<<<< HEAD
 #define TARGET_10_4_DMA_BURST_SIZE		1
+=======
+#define TARGET_10_4_DMA_BURST_SIZE		0
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define TARGET_10_4_MAC_AGGR_DELIM		0
 #define TARGET_10_4_RX_SKIP_DEFRAG_TIMEOUT_DUP_DETECTION_CHECK 1
 #define TARGET_10_4_VOW_CONFIG			0

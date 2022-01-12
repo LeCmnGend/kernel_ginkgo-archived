@@ -11,6 +11,7 @@
  *
  */
 
+<<<<<<< HEAD
 #define trace_kgsl_active_count(...) {}
 #define trace_kgsl_bus(...) {}
 #define trace_kgsl_buslevel(...) {}
@@ -66,6 +67,8 @@
 #define trace_syncpoint_timestamp_expire(...) {}
 
 #if 0
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #if !defined(_KGSL_TRACE_H) || defined(TRACE_HEADER_MULTI_READ)
 #define _KGSL_TRACE_H
 
@@ -928,6 +931,81 @@ TRACE_EVENT(kgsl_regwrite,
 	)
 );
 
+<<<<<<< HEAD
+=======
+TRACE_EVENT(kgsl_popp_level,
+
+	TP_PROTO(struct kgsl_device *device, int level1, int level2),
+
+	TP_ARGS(device, level1, level2),
+
+	TP_STRUCT__entry(
+		__string(device_name, device->name)
+		__field(int, level1)
+		__field(int, level2)
+	),
+
+	TP_fast_assign(
+		__assign_str(device_name, device->name);
+		__entry->level1 = level1;
+		__entry->level2 = level2;
+	),
+
+	TP_printk(
+		"d_name=%s old level=%d new level=%d",
+		__get_str(device_name), __entry->level1, __entry->level2)
+);
+
+TRACE_EVENT(kgsl_popp_mod,
+
+	TP_PROTO(struct kgsl_device *device, int x, int y),
+
+	TP_ARGS(device, x, y),
+
+	TP_STRUCT__entry(
+		__string(device_name, device->name)
+		__field(int, x)
+		__field(int, y)
+	),
+
+	TP_fast_assign(
+		__assign_str(device_name, device->name);
+		__entry->x = x;
+		__entry->y = y;
+	),
+
+	TP_printk(
+		"d_name=%s GPU busy mod=%d bus busy mod=%d",
+		__get_str(device_name), __entry->x, __entry->y)
+);
+
+TRACE_EVENT(kgsl_popp_nap,
+
+	TP_PROTO(struct kgsl_device *device, int t, int nap, int percent),
+
+	TP_ARGS(device, t, nap, percent),
+
+	TP_STRUCT__entry(
+		__string(device_name, device->name)
+		__field(int, t)
+		__field(int, nap)
+		__field(int, percent)
+	),
+
+	TP_fast_assign(
+		__assign_str(device_name, device->name);
+		__entry->t = t;
+		__entry->nap = nap;
+		__entry->percent = percent;
+	),
+
+	TP_printk(
+		"d_name=%s nap time=%d number of naps=%d percentage=%d",
+		__get_str(device_name), __entry->t, __entry->nap,
+			__entry->percent)
+);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 TRACE_EVENT(kgsl_register_event,
 		TP_PROTO(unsigned int id, unsigned int timestamp, void *func),
 		TP_ARGS(id, timestamp, func),
@@ -1265,4 +1343,7 @@ DEFINE_EVENT(hfi_msg_template, kgsl_hfi_receive,
 
 /* This part must be outside protection */
 #include <trace/define_trace.h>
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

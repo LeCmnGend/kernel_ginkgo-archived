@@ -2051,8 +2051,13 @@ static void dw_mci_tasklet_func(unsigned long priv)
 					continue;
 				}
 
+<<<<<<< HEAD
 				send_stop_abort(host, data);
 				dw_mci_stop_dma(host);
+=======
+				dw_mci_stop_dma(host);
+				send_stop_abort(host, data);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				state = STATE_SENDING_STOP;
 				break;
 			}
@@ -2076,10 +2081,17 @@ static void dw_mci_tasklet_func(unsigned long priv)
 			 */
 			if (test_and_clear_bit(EVENT_DATA_ERROR,
 					       &host->pending_events)) {
+<<<<<<< HEAD
 				if (!(host->data_status & (SDMMC_INT_DRTO |
 							   SDMMC_INT_EBE)))
 					send_stop_abort(host, data);
 				dw_mci_stop_dma(host);
+=======
+				dw_mci_stop_dma(host);
+				if (!(host->data_status & (SDMMC_INT_DRTO |
+							   SDMMC_INT_EBE)))
+					send_stop_abort(host, data);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				state = STATE_DATA_ERROR;
 				break;
 			}
@@ -2112,10 +2124,17 @@ static void dw_mci_tasklet_func(unsigned long priv)
 			 */
 			if (test_and_clear_bit(EVENT_DATA_ERROR,
 					       &host->pending_events)) {
+<<<<<<< HEAD
 				if (!(host->data_status & (SDMMC_INT_DRTO |
 							   SDMMC_INT_EBE)))
 					send_stop_abort(host, data);
 				dw_mci_stop_dma(host);
+=======
+				dw_mci_stop_dma(host);
+				if (!(host->data_status & (SDMMC_INT_DRTO |
+							   SDMMC_INT_EBE)))
+					send_stop_abort(host, data);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				state = STATE_DATA_ERROR;
 				break;
 			}

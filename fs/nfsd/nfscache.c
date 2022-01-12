@@ -98,7 +98,11 @@ static unsigned int
 nfsd_cache_size_limit(void)
 {
 	unsigned int limit;
+<<<<<<< HEAD
 	unsigned long low_pages = totalram_pages() - totalhigh_pages();
+=======
+	unsigned long low_pages = totalram_pages - totalhigh_pages;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	limit = (16 * int_sqrt(low_pages)) << (PAGE_SHIFT-10);
 	return min_t(unsigned int, limit, 256*1024);

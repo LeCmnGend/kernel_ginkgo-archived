@@ -155,6 +155,15 @@ int cvm_oct_phy_setup_device(struct net_device *dev)
 
 	phy_node = of_parse_phandle(priv->of_node, "phy-handle", 0);
 	if (!phy_node && of_phy_is_fixed_link(priv->of_node)) {
+<<<<<<< HEAD
+=======
+		int rc;
+
+		rc = of_phy_register_fixed_link(priv->of_node);
+		if (rc)
+			return rc;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		phy_node = of_node_get(priv->of_node);
 	}
 	if (!phy_node)

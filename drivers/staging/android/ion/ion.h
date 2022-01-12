@@ -29,7 +29,10 @@
 #include <linux/types.h>
 #include <linux/miscdevice.h>
 #include <linux/bitops.h>
+<<<<<<< HEAD
 #include <linux/msm_dma_iommu_mapping.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include "ion_kernel.h"
 #include "../uapi/ion.h"
 #include "../uapi/msm_ion.h"
@@ -121,6 +124,7 @@ struct ion_vma_list {
  * @sg_table:		the sg table for the buffer if dmap_cnt is not zero
  * @vmas:		list of vma's mapping this buffer
  */
+<<<<<<< HEAD
 struct ion_dma_buf_attachment;
 struct ion_buffer {
 	struct ion_heap *heap;
@@ -137,6 +141,26 @@ struct ion_buffer {
 	size_t size;
 	int kmap_refcount;
 	struct msm_iommu_data iommu_data;
+=======
+struct ion_buffer {
+	union {
+		struct rb_node node;
+		struct list_head list;
+	};
+	struct ion_device *dev;
+	struct ion_heap *heap;
+	unsigned long flags;
+	unsigned long private_flags;
+	size_t size;
+	void *priv_virt;
+	/* Protect ion buffer */
+	struct mutex lock;
+	int kmap_cnt;
+	void *vaddr;
+	struct sg_table *sg_table;
+	struct list_head attachments;
+	struct list_head vmas;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 void ion_buffer_destroy(struct ion_buffer *buffer);
@@ -150,9 +174,19 @@ void ion_buffer_destroy(struct ion_buffer *buffer);
  */
 struct ion_device {
 	struct miscdevice dev;
+<<<<<<< HEAD
 	struct plist_head heaps;
 	struct ion_heap_data *heap_data;
 	u32 heap_count;
+=======
+	struct rb_root buffers;
+	/* buffer_lock used for adding and removing buffers */
+	struct mutex buffer_lock;
+	struct rw_semaphore lock;
+	struct plist_head heaps;
+	struct dentry *debug_root;
+	int heap_cnt;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 /* refer to include/linux/pm.h */
@@ -233,6 +267,10 @@ struct ion_heap_ops {
  */
 struct ion_heap {
 	struct plist_node node;
+<<<<<<< HEAD
+=======
+	struct ion_device *dev;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	enum ion_heap_type type;
 	struct ion_heap_ops *ops;
 	unsigned long flags;
@@ -240,7 +278,19 @@ struct ion_heap {
 	const char *name;
 	struct shrinker shrinker;
 	void *priv;
+<<<<<<< HEAD
 	struct workqueue_struct *wq;
+=======
+	struct list_head free_list;
+	size_t free_list_size;
+	/* Protect the free list */
+	spinlock_t free_lock;
+	wait_queue_head_t waitqueue;
+	struct task_struct *task;
+	atomic_long_t total_allocated;
+
+	int (*debug_show)(struct ion_heap *heap, struct seq_file *, void *);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 /**
@@ -249,10 +299,14 @@ struct ion_heap {
  *
  * indicates whether this ion buffer is cached
  */
+<<<<<<< HEAD
 static inline bool ion_buffer_cached(struct ion_buffer *buffer)
 {
 	return buffer->flags & ION_FLAG_CACHED;
 }
+=======
+bool ion_buffer_cached(struct ion_buffer *buffer);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
  * ion_buffer_fault_user_mappings - fault in user mappings of this buffer
@@ -268,14 +322,22 @@ bool ion_buffer_fault_user_mappings(struct ion_buffer *buffer);
  *
  * returns a valid device or -PTR_ERR
  */
+<<<<<<< HEAD
 struct ion_device *ion_device_create(struct ion_heap_data *heap_data);
+=======
+struct ion_device *ion_device_create(void);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
  * ion_device_add_heap - adds a heap to the ion device
  * @dev:		the device
  * @heap:		the heap to add
  */
+<<<<<<< HEAD
 void ion_add_heap(struct ion_device *idev, struct ion_heap *heap);
+=======
+void ion_device_add_heap(struct ion_device *dev, struct ion_heap *heap);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
  * some helpers for common operations on buffers using the sg_table
@@ -288,6 +350,11 @@ int ion_heap_map_user(struct ion_heap *heap, struct ion_buffer *buffer,
 int ion_heap_buffer_zero(struct ion_buffer *buffer);
 int ion_heap_pages_zero(struct page *page, size_t size, pgprot_t pgprot);
 
+<<<<<<< HEAD
+=======
+int ion_alloc_fd(size_t len, unsigned int heap_id_mask, unsigned int flags);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * ion_heap_init_shrinker
  * @heap:		the heap
@@ -299,6 +366,68 @@ int ion_heap_pages_zero(struct page *page, size_t size, pgprot_t pgprot);
 void ion_heap_init_shrinker(struct ion_heap *heap);
 
 /**
+<<<<<<< HEAD
+=======
+ * ion_heap_init_deferred_free -- initialize deferred free functionality
+ * @heap:		the heap
+ *
+ * If a heap sets the ION_HEAP_FLAG_DEFER_FREE flag this function will
+ * be called to setup deferred frees. Calls to free the buffer will
+ * return immediately and the actual free will occur some time later
+ */
+int ion_heap_init_deferred_free(struct ion_heap *heap);
+
+/**
+ * ion_heap_freelist_add - add a buffer to the deferred free list
+ * @heap:		the heap
+ * @buffer:		the buffer
+ *
+ * Adds an item to the deferred freelist.
+ */
+void ion_heap_freelist_add(struct ion_heap *heap, struct ion_buffer *buffer);
+
+/**
+ * ion_heap_freelist_drain - drain the deferred free list
+ * @heap:		the heap
+ * @size:		amount of memory to drain in bytes
+ *
+ * Drains the indicated amount of memory from the deferred freelist immediately.
+ * Returns the total amount freed.  The total freed may be higher depending
+ * on the size of the items in the list, or lower if there is insufficient
+ * total memory on the freelist.
+ */
+size_t ion_heap_freelist_drain(struct ion_heap *heap, size_t size);
+
+/**
+ * ion_heap_freelist_shrink - drain the deferred free
+ *				list, skipping any heap-specific
+ *				pooling or caching mechanisms
+ *
+ * @heap:		the heap
+ * @size:		amount of memory to drain in bytes
+ *
+ * Drains the indicated amount of memory from the deferred freelist immediately.
+ * Returns the total amount freed.  The total freed may be higher depending
+ * on the size of the items in the list, or lower if there is insufficient
+ * total memory on the freelist.
+ *
+ * Unlike with @ion_heap_freelist_drain, don't put any pages back into
+ * page pools or otherwise cache the pages. Everything must be
+ * genuinely free'd back to the system. If you're free'ing from a
+ * shrinker you probably want to use this. Note that this relies on
+ * the heap.ops.free callback honoring the ION_PRIV_FLAG_SHRINKER_FREE
+ * flag.
+ */
+size_t ion_heap_freelist_shrink(struct ion_heap *heap, size_t size);
+
+/**
+ * ion_heap_freelist_size - returns the size of the freelist in bytes
+ * @heap:		the heap
+ */
+size_t ion_heap_freelist_size(struct ion_heap *heap);
+
+/**
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * functions for creating and destroying the built in ion heaps.
  * architectures can add their own custom architecture specific
  * heaps as appropriate.
@@ -373,7 +502,11 @@ struct ion_page_pool {
 	struct list_head high_items;
 	struct list_head low_items;
 	/* Protect the pool */
+<<<<<<< HEAD
 	spinlock_t lock;
+=======
+	struct mutex mutex;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	gfp_t gfp_mask;
 	unsigned int order;
 	struct plist_node list;
@@ -416,6 +549,7 @@ int ion_page_pool_shrink(struct ion_page_pool *pool, gfp_t gfp_mask,
  * @size:		size in bytes of region to be flushed
  * @dir:		direction of dma transfer
  */
+<<<<<<< HEAD
 static inline void ion_pages_sync_for_device(struct device *dev,
 					     struct page *page, size_t size,
 					     enum dma_data_direction dir)
@@ -427,5 +561,16 @@ static inline void ion_pages_sync_for_device(struct device *dev,
 	sg_dma_address(&sg) = page_to_phys(page);
 	dma_sync_sg_for_device(dev, &sg, 1, dir);
 }
+=======
+void ion_pages_sync_for_device(struct device *dev, struct page *page,
+			       size_t size, enum dma_data_direction dir);
+
+int ion_walk_heaps(int heap_id, enum ion_heap_type type, void *data,
+		   int (*f)(struct ion_heap *heap, void *data));
+
+long ion_ioctl(struct file *filp, unsigned int cmd, unsigned long arg);
+
+int ion_query_heaps(struct ion_heap_query *query);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #endif /* _ION_H */

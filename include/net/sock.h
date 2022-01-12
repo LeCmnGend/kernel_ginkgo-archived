@@ -231,6 +231,7 @@ struct sock_common {
 	/* public: */
 };
 
+<<<<<<< HEAD
 struct sk_security_struct {
 #ifdef CONFIG_NETLABEL
 	enum {				/* NetLabel state */
@@ -247,6 +248,8 @@ struct sk_security_struct {
 	u16 sclass;			/* sock security class */
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
   *	struct sock - network layer representation of sockets
   *	@__sk_common: shared layout with inet_timewait_sock
@@ -485,7 +488,11 @@ struct sock {
 	struct socket		*sk_socket;
 	void			*sk_user_data;
 #ifdef CONFIG_SECURITY
+<<<<<<< HEAD
 	struct sk_security_struct	sk_security[1];
+=======
+	void			*sk_security;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 	struct sock_cgroup_data	sk_cgrp_data;
 	struct mem_cgroup	*sk_memcg;
@@ -833,8 +840,11 @@ static inline int sk_memalloc_socks(void)
 {
 	return static_key_false(&memalloc_socks);
 }
+<<<<<<< HEAD
 
 void __receive_sock(struct file *file);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #else
 
 static inline int sk_memalloc_socks(void)
@@ -842,8 +852,11 @@ static inline int sk_memalloc_socks(void)
 	return 0;
 }
 
+<<<<<<< HEAD
 static inline void __receive_sock(struct file *file)
 { }
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 
 static inline gfp_t sk_gfp_mask(const struct sock *sk, gfp_t gfp_mask)
@@ -1761,8 +1774,12 @@ static inline u32 net_tx_rndhash(void)
 
 static inline void sk_set_txhash(struct sock *sk)
 {
+<<<<<<< HEAD
 	/* This pairs with READ_ONCE() in skb_set_hash_from_sk() */
 	WRITE_ONCE(sk->sk_txhash, net_tx_rndhash());
+=======
+	sk->sk_txhash = net_tx_rndhash();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static inline void sk_rethink_txhash(struct sock *sk)
@@ -2036,12 +2053,18 @@ static inline void sock_poll_wait(struct file *filp,
 
 static inline void skb_set_hash_from_sk(struct sk_buff *skb, struct sock *sk)
 {
+<<<<<<< HEAD
 	/* This pairs with WRITE_ONCE() in sk_set_txhash() */
 	u32 txhash = READ_ONCE(sk->sk_txhash);
 
 	if (txhash) {
 		skb->l4_hash = 1;
 		skb->hash = txhash;
+=======
+	if (sk->sk_txhash) {
+		skb->l4_hash = 1;
+		skb->hash = sk->sk_txhash;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 }
 

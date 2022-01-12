@@ -253,13 +253,19 @@ retry:
 				err = -EAGAIN;
 				goto next;
 			}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			err = f2fs_get_node_info(sbi, dn.nid, &ni);
 			if (err) {
 				f2fs_put_dnode(&dn);
 				return err;
 			}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (cur->old_addr == NEW_ADDR) {
 				f2fs_invalidate_blocks(sbi, dn.data_blkaddr);
 				f2fs_update_data_blkaddr(&dn, NEW_ADDR);
@@ -1091,7 +1097,11 @@ static void __init_discard_policy(struct f2fs_sb_info *sbi,
 		dpolicy->ordered = true;
 		if (utilization(sbi) > DEF_DISCARD_URGENT_UTIL) {
 			dpolicy->granularity = 1;
+<<<<<<< HEAD
 			dpolicy->max_interval = DEF_MAX_DISCARD_URGENT_ISSUE_TIME;
+=======
+			dpolicy->max_interval = DEF_MIN_DISCARD_ISSUE_TIME;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 	} else if (discard_type == DPOLICY_FORCE) {
 		dpolicy->min_interval = DEF_MIN_DISCARD_ISSUE_TIME;
@@ -1713,8 +1723,12 @@ static int issue_discard_thread(void *data)
 		wait_event_interruptible_timeout(*q,
 				kthread_should_stop() || freezing(current) ||
 				dcc->discard_wake,
+<<<<<<< HEAD
 				msecs_to_jiffies((sbi->gc_mode == GC_URGENT) ?
 						 1 : wait_ms));
+=======
+				msecs_to_jiffies(wait_ms));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		if (dcc->discard_wake)
 			dcc->discard_wake = 0;
@@ -2819,6 +2833,7 @@ skip:
 
 		if (fatal_signal_pending(current))
 			break;
+<<<<<<< HEAD
 
 		/*
 		 * If the trim thread is running and we receive the SCREEN_ON
@@ -2828,6 +2843,8 @@ skip:
 		 */
 		if (signal_pending(current) && sigismember(&current->pending.signal, SIGUSR1))
 			break;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	blk_finish_plug(&plug);

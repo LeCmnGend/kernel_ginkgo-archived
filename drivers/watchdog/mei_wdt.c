@@ -390,7 +390,10 @@ static int mei_wdt_register(struct mei_wdt *wdt)
 
 	watchdog_set_drvdata(&wdt->wdd, wdt);
 	watchdog_stop_on_reboot(&wdt->wdd);
+<<<<<<< HEAD
 	watchdog_stop_on_unregister(&wdt->wdd);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	ret = watchdog_register_device(&wdt->wdd);
 	if (ret) {

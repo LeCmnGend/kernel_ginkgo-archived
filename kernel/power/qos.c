@@ -51,12 +51,19 @@
 #include <linux/export.h>
 #include <trace/events/power.h>
 
+<<<<<<< HEAD
 #define CPUMASK_ALL (BIT(NR_CPUS) - 1)
 
 /*
  * locking rule: all changes to constraints or notifiers lists
  * or pm_qos_object list and pm_qos_objects need to happen with pm_qos_lock
  * held.  One lock to rule them all
+=======
+/*
+ * locking rule: all changes to constraints or notifiers lists
+ * or pm_qos_object list and pm_qos_objects need to happen with pm_qos_lock
+ * held, taken with _irqsave.  One lock to rule them all
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 struct pm_qos_object {
 	struct pm_qos_constraints *constraints;
@@ -201,6 +208,10 @@ static int pm_qos_dbg_show_requests(struct seq_file *s, void *unused)
 	struct pm_qos_constraints *c;
 	struct pm_qos_request *req;
 	char *type;
+<<<<<<< HEAD
+=======
+	unsigned long flags;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int tot_reqs = 0;
 	int active_reqs = 0;
 
@@ -215,7 +226,11 @@ static int pm_qos_dbg_show_requests(struct seq_file *s, void *unused)
 	}
 
 	/* Lock to ensure we have a snapshot */
+<<<<<<< HEAD
 	spin_lock(&pm_qos_lock);
+=======
+	spin_lock_irqsave(&pm_qos_lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (plist_head_empty(&c->list)) {
 		seq_puts(s, "Empty!\n");
 		goto out;
@@ -251,7 +266,11 @@ static int pm_qos_dbg_show_requests(struct seq_file *s, void *unused)
 		   type, pm_qos_get_value(c), active_reqs, tot_reqs);
 
 out:
+<<<<<<< HEAD
 	spin_unlock(&pm_qos_lock);
+=======
+	spin_unlock_irqrestore(&pm_qos_lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
 
@@ -268,6 +287,7 @@ static const struct file_operations pm_qos_debug_fops = {
 	.release        = single_release,
 };
 
+<<<<<<< HEAD
 static inline int pm_qos_set_value_for_cpus(struct pm_qos_request *new_req,
 					    struct pm_qos_constraints *c,
 					    unsigned long *cpus)
@@ -279,6 +299,14 @@ static inline int pm_qos_set_value_for_cpus(struct pm_qos_request *new_req,
 	unsigned long new_req_cpus;
 	bool changed = false;
 	int cpu;
+=======
+static inline int pm_qos_set_value_for_cpus(struct pm_qos_constraints *c,
+		struct cpumask *cpus)
+{
+	struct pm_qos_request *req = NULL;
+	int cpu;
+	s32 qos_val[NR_CPUS] = { [0 ... (NR_CPUS - 1)] = c->default_value };
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*
 	 * pm_qos_constraints can be from different classes,
@@ -288,6 +316,7 @@ static inline int pm_qos_set_value_for_cpus(struct pm_qos_request *new_req,
 	if (c != pm_qos_array[PM_QOS_CPU_DMA_LATENCY]->constraints)
 		return -EINVAL;
 
+<<<<<<< HEAD
 	new_req_cpus = atomic_read(&new_req->cpus_affine);
 	for_each_cpu(cpu, to_cpumask(&new_req_cpus)) {
 		if (c->target_per_cpu[cpu] != new_req->node.prio) {
@@ -317,6 +346,32 @@ static inline int pm_qos_set_value_for_cpus(struct pm_qos_request *new_req,
 			c->target_per_cpu[cpu] = qos_val[cpu];
 			*cpus |= BIT(cpu);
 		}
+=======
+	plist_for_each_entry(req, &c->list, node) {
+		for_each_cpu(cpu, &req->cpus_affine) {
+			switch (c->type) {
+			case PM_QOS_MIN:
+				if (qos_val[cpu] > req->node.prio)
+					qos_val[cpu] = req->node.prio;
+				break;
+			case PM_QOS_MAX:
+				if (req->node.prio > qos_val[cpu])
+					qos_val[cpu] = req->node.prio;
+				break;
+			case PM_QOS_SUM:
+					qos_val[cpu] += req->node.prio;
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
+	for_each_possible_cpu(cpu) {
+		if (c->target_per_cpu[cpu] != qos_val[cpu])
+			cpumask_set_cpu(cpu, cpus);
+		c->target_per_cpu[cpu] = qos_val[cpu];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	return 0;
@@ -333,6 +388,7 @@ static inline int pm_qos_set_value_for_cpus(struct pm_qos_request *new_req,
  * This function returns 1 if the aggregated constraint value has changed, 0
  *  otherwise.
  */
+<<<<<<< HEAD
 int __always_inline pm_qos_update_target(struct pm_qos_constraints *c, struct plist_node *node,
 			 enum pm_qos_req_action action, int value)
 {
@@ -342,6 +398,17 @@ int __always_inline pm_qos_update_target(struct pm_qos_constraints *c, struct pl
 	int ret;
 
 	spin_lock(&pm_qos_lock);
+=======
+int pm_qos_update_target(struct pm_qos_constraints *c, struct plist_node *node,
+			 enum pm_qos_req_action action, int value)
+{
+	unsigned long flags;
+	int prev_value, curr_value, new_value;
+	struct cpumask cpus;
+	int ret;
+
+	spin_lock_irqsave(&pm_qos_lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	prev_value = pm_qos_get_value(c);
 	if (value == PM_QOS_DEFAULT_VALUE)
 		new_value = c->default_value;
@@ -369,10 +436,18 @@ int __always_inline pm_qos_update_target(struct pm_qos_constraints *c, struct pl
 	}
 
 	curr_value = pm_qos_get_value(c);
+<<<<<<< HEAD
 	pm_qos_set_value(c, curr_value);
 	ret = pm_qos_set_value_for_cpus(req, c, &cpus);
 
 	spin_unlock(&pm_qos_lock);
+=======
+	cpumask_clear(&cpus);
+	pm_qos_set_value(c, curr_value);
+	ret = pm_qos_set_value_for_cpus(c, &cpus);
+
+	spin_unlock_irqrestore(&pm_qos_lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	trace_pm_qos_update_target(action, prev_value, curr_value);
 
@@ -381,7 +456,11 @@ int __always_inline pm_qos_update_target(struct pm_qos_constraints *c, struct pl
 	 * to update the new qos restriction for the cores
 	 */
 
+<<<<<<< HEAD
 	if (cpus ||
+=======
+	if (!cpumask_empty(&cpus) ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	   (ret && prev_value != curr_value)) {
 		ret = 1;
 		if (c->notifiers)
@@ -425,9 +504,16 @@ bool pm_qos_update_flags(struct pm_qos_flags *pqf,
 			 struct pm_qos_flags_request *req,
 			 enum pm_qos_req_action action, s32 val)
 {
+<<<<<<< HEAD
 	s32 prev_value, curr_value;
 
 	spin_lock(&pm_qos_lock);
+=======
+	unsigned long irqflags;
+	s32 prev_value, curr_value;
+
+	spin_lock_irqsave(&pm_qos_lock, irqflags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	prev_value = list_empty(&pqf->list) ? 0 : pqf->effective_flags;
 
@@ -450,7 +536,11 @@ bool pm_qos_update_flags(struct pm_qos_flags *pqf,
 
 	curr_value = list_empty(&pqf->list) ? 0 : pqf->effective_flags;
 
+<<<<<<< HEAD
 	spin_unlock(&pm_qos_lock);
+=======
+	spin_unlock_irqrestore(&pm_qos_lock, irqflags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	trace_pm_qos_update_flags(action, prev_value, curr_value);
 	return prev_value != curr_value;
@@ -485,11 +575,19 @@ EXPORT_SYMBOL_GPL(pm_qos_request_active);
 
 int pm_qos_request_for_cpumask(int pm_qos_class, struct cpumask *mask)
 {
+<<<<<<< HEAD
+=======
+	unsigned long irqflags;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int cpu;
 	struct pm_qos_constraints *c = NULL;
 	int val;
 
+<<<<<<< HEAD
 	spin_lock(&pm_qos_lock);
+=======
+	spin_lock_irqsave(&pm_qos_lock, irqflags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	c = pm_qos_array[pm_qos_class]->constraints;
 	val = c->default_value;
 
@@ -508,13 +606,21 @@ int pm_qos_request_for_cpumask(int pm_qos_class, struct cpumask *mask)
 			break;
 		}
 	}
+<<<<<<< HEAD
 	spin_unlock(&pm_qos_lock);
+=======
+	spin_unlock_irqrestore(&pm_qos_lock, irqflags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return val;
 }
 EXPORT_SYMBOL(pm_qos_request_for_cpumask);
 
+<<<<<<< HEAD
 static __always_inline void __pm_qos_update_request(struct pm_qos_request *req,
+=======
+static void __pm_qos_update_request(struct pm_qos_request *req,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			   s32 new_value)
 {
 	trace_pm_qos_update_request(req->pm_qos_class, new_value);
@@ -525,9 +631,31 @@ static __always_inline void __pm_qos_update_request(struct pm_qos_request *req,
 			&req->node, PM_QOS_UPDATE_REQ, new_value);
 }
 
+<<<<<<< HEAD
 #ifdef CONFIG_SMP
 static void pm_qos_irq_release(struct kref *ref)
 {
+=======
+/**
+ * pm_qos_work_fn - the timeout handler of pm_qos_update_request_timeout
+ * @work: work struct for the delayed work (timeout)
+ *
+ * This cancels the timeout request by falling back to the default at timeout.
+ */
+static void pm_qos_work_fn(struct work_struct *work)
+{
+	struct pm_qos_request *req = container_of(to_delayed_work(work),
+						  struct pm_qos_request,
+						  work);
+
+	__pm_qos_update_request(req, PM_QOS_DEFAULT_VALUE);
+}
+
+#ifdef CONFIG_SMP
+static void pm_qos_irq_release(struct kref *ref)
+{
+	unsigned long flags;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct irq_affinity_notify *notify = container_of(ref,
 					struct irq_affinity_notify, kref);
 	struct pm_qos_request *req = container_of(notify,
@@ -535,21 +663,53 @@ static void pm_qos_irq_release(struct kref *ref)
 	struct pm_qos_constraints *c =
 				pm_qos_array[req->pm_qos_class]->constraints;
 
+<<<<<<< HEAD
 	atomic_set(&req->cpus_affine, CPUMASK_ALL);
+=======
+	spin_lock_irqsave(&pm_qos_lock, flags);
+	cpumask_setall(&req->cpus_affine);
+	spin_unlock_irqrestore(&pm_qos_lock, flags);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pm_qos_update_target(c, &req->node, PM_QOS_UPDATE_REQ,
 			c->default_value);
 }
 
 static void pm_qos_irq_notify(struct irq_affinity_notify *notify,
+<<<<<<< HEAD
 		const cpumask_t *mask)
 {
+=======
+		const cpumask_t *unused_mask)
+{
+	unsigned long flags;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct pm_qos_request *req = container_of(notify,
 					struct pm_qos_request, irq_notify);
 	struct pm_qos_constraints *c =
 				pm_qos_array[req->pm_qos_class]->constraints;
+<<<<<<< HEAD
 
 	atomic_set(&req->cpus_affine, *cpumask_bits(mask));
 	pm_qos_update_target(c, &req->node, PM_QOS_UPDATE_REQ, req->node.prio);
+=======
+	struct irq_desc *desc = irq_to_desc(req->irq);
+	struct cpumask *new_affinity =
+			irq_data_get_effective_affinity_mask(&desc->irq_data);
+	bool affinity_changed = false;
+
+	spin_lock_irqsave(&pm_qos_lock, flags);
+	if (!cpumask_equal(&req->cpus_affine, new_affinity)) {
+		cpumask_copy(&req->cpus_affine, new_affinity);
+		affinity_changed = true;
+	}
+
+	spin_unlock_irqrestore(&pm_qos_lock, flags);
+
+	if (affinity_changed)
+		pm_qos_update_target(c, &req->node, PM_QOS_UPDATE_REQ,
+				     req->node.prio);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 #endif
 
@@ -579,8 +739,14 @@ void pm_qos_add_request(struct pm_qos_request *req,
 
 	switch (req->type) {
 	case PM_QOS_REQ_AFFINE_CORES:
+<<<<<<< HEAD
 		if (!atomic_cmpxchg_relaxed(&req->cpus_affine, 0, CPUMASK_ALL)) {
 			req->type = PM_QOS_REQ_ALL_CORES;
+=======
+		if (cpumask_empty(&req->cpus_affine)) {
+			req->type = PM_QOS_REQ_ALL_CORES;
+			cpumask_setall(&req->cpus_affine);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			WARN(1, "Affine cores not set for request with affinity flag\n");
 		}
 		break;
@@ -593,17 +759,35 @@ void pm_qos_add_request(struct pm_qos_request *req,
 			if (!desc)
 				return;
 
+<<<<<<< HEAD
 			mask = desc->irq_data.common->affinity;
 
 			/* Get the current affinity */
 			atomic_set(&req->cpus_affine, *cpumask_bits(mask));
+=======
+			/*
+			 * If the IRQ is not started, the effective affinity
+			 * won't be set. So fallback to the default affinity.
+			 */
+			mask = irq_data_get_effective_affinity_mask(
+						&desc->irq_data);
+			if (cpumask_empty(mask))
+				mask = irq_data_get_affinity_mask(
+						&desc->irq_data);
+
+			cpumask_copy(&req->cpus_affine, mask);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			req->irq_notify.irq = req->irq;
 			req->irq_notify.notify = pm_qos_irq_notify;
 			req->irq_notify.release = pm_qos_irq_release;
 
 		} else {
 			req->type = PM_QOS_REQ_ALL_CORES;
+<<<<<<< HEAD
 			atomic_set(&req->cpus_affine, CPUMASK_ALL);
+=======
+			cpumask_setall(&req->cpus_affine);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			WARN(1, "IRQ-%d not set for request with affinity flag\n",
 					req->irq);
 		}
@@ -613,11 +797,19 @@ void pm_qos_add_request(struct pm_qos_request *req,
 		WARN(1, "Unknown request type %d\n", req->type);
 		/* fall through */
 	case PM_QOS_REQ_ALL_CORES:
+<<<<<<< HEAD
 		atomic_set(&req->cpus_affine, CPUMASK_ALL);
+=======
+		cpumask_setall(&req->cpus_affine);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 	}
 
 	req->pm_qos_class = pm_qos_class;
+<<<<<<< HEAD
+=======
+	INIT_DELAYED_WORK(&req->work, pm_qos_work_fn);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	trace_pm_qos_add_request(pm_qos_class, value);
 	pm_qos_update_target(pm_qos_array[pm_qos_class]->constraints,
 			     &req->node, PM_QOS_ADD_REQ, value);
@@ -632,7 +824,11 @@ void pm_qos_add_request(struct pm_qos_request *req,
 		if (ret) {
 			WARN(1, "IRQ affinity notify set failed\n");
 			req->type = PM_QOS_REQ_ALL_CORES;
+<<<<<<< HEAD
 			atomic_set(&req->cpus_affine, CPUMASK_ALL);
+=======
+			cpumask_setall(&req->cpus_affine);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			pm_qos_update_target(
 				pm_qos_array[pm_qos_class]->constraints,
 				&req->node, PM_QOS_UPDATE_REQ, value);
@@ -652,7 +848,11 @@ EXPORT_SYMBOL_GPL(pm_qos_add_request);
  *
  * Attempts are made to make this code callable on hot code paths.
  */
+<<<<<<< HEAD
 void __always_inline pm_qos_update_request(struct pm_qos_request *req,
+=======
+void pm_qos_update_request(struct pm_qos_request *req,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			   s32 new_value)
 {
 	if (!req) /*guard against callers passing in null */
@@ -663,11 +863,47 @@ void __always_inline pm_qos_update_request(struct pm_qos_request *req,
 		return;
 	}
 
+<<<<<<< HEAD
+=======
+	cancel_delayed_work_sync(&req->work);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__pm_qos_update_request(req, new_value);
 }
 EXPORT_SYMBOL_GPL(pm_qos_update_request);
 
 /**
+<<<<<<< HEAD
+=======
+ * pm_qos_update_request_timeout - modifies an existing qos request temporarily.
+ * @req : handle to list element holding a pm_qos request to use
+ * @new_value: defines the temporal qos request
+ * @timeout_us: the effective duration of this qos request in usecs.
+ *
+ * After timeout_us, this qos request is cancelled automatically.
+ */
+void pm_qos_update_request_timeout(struct pm_qos_request *req, s32 new_value,
+				   unsigned long timeout_us)
+{
+	if (!req)
+		return;
+	if (WARN(!pm_qos_request_active(req),
+		 "%s called for unknown object.", __func__))
+		return;
+
+	cancel_delayed_work_sync(&req->work);
+
+	trace_pm_qos_update_request_timeout(req->pm_qos_class,
+					    new_value, timeout_us);
+	if (new_value != req->node.prio)
+		pm_qos_update_target(
+			pm_qos_array[req->pm_qos_class]->constraints,
+			&req->node, PM_QOS_UPDATE_REQ, new_value);
+
+	schedule_delayed_work(&req->work, usecs_to_jiffies(timeout_us));
+}
+
+/**
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * pm_qos_remove_request - modifies an existing qos request
  * @req: handle to request list element
  *
@@ -686,6 +922,11 @@ void pm_qos_remove_request(struct pm_qos_request *req)
 		return;
 	}
 
+<<<<<<< HEAD
+=======
+	cancel_delayed_work_sync(&req->work);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_SMP
 	if (req->type == PM_QOS_REQ_AFFINE_IRQ) {
 		int ret = 0;
@@ -806,6 +1047,10 @@ static ssize_t pm_qos_power_read(struct file *filp, char __user *buf,
 		size_t count, loff_t *f_pos)
 {
 	s32 value;
+<<<<<<< HEAD
+=======
+	unsigned long flags;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct pm_qos_request *req = filp->private_data;
 
 	if (!req)
@@ -813,9 +1058,15 @@ static ssize_t pm_qos_power_read(struct file *filp, char __user *buf,
 	if (!pm_qos_request_active(req))
 		return -EINVAL;
 
+<<<<<<< HEAD
 	spin_lock(&pm_qos_lock);
 	value = pm_qos_get_value(pm_qos_array[req->pm_qos_class]->constraints);
 	spin_unlock(&pm_qos_lock);
+=======
+	spin_lock_irqsave(&pm_qos_lock, flags);
+	value = pm_qos_get_value(pm_qos_array[req->pm_qos_class]->constraints);
+	spin_unlock_irqrestore(&pm_qos_lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return simple_read_from_buffer(buf, count, f_pos, &value, sizeof(s32));
 }
@@ -826,9 +1077,12 @@ static ssize_t pm_qos_power_write(struct file *filp, const char __user *buf,
 	s32 value;
 	struct pm_qos_request *req;
 
+<<<<<<< HEAD
 	/* Don't let userspace impose restrictions on CPU idle levels */
 	return count;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (count == sizeof(s32)) {
 		if (copy_from_user(&value, buf, sizeof(s32)))
 			return -EFAULT;

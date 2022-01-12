@@ -512,6 +512,7 @@ static void inode_switch_wbs(struct inode *inode, int new_wb_id)
 	/* find and pin the new wb */
 	rcu_read_lock();
 	memcg_css = css_from_id(new_wb_id, &memory_cgrp_subsys);
+<<<<<<< HEAD
 	if (memcg_css && !css_tryget(memcg_css))
 		memcg_css = NULL;
 	rcu_read_unlock();
@@ -520,6 +521,11 @@ static void inode_switch_wbs(struct inode *inode, int new_wb_id)
 
 	isw->new_wb = wb_get_create(bdi, memcg_css, GFP_ATOMIC);
 	css_put(memcg_css);
+=======
+	if (memcg_css)
+		isw->new_wb = wb_get_create(bdi, memcg_css, GFP_ATOMIC);
+	rcu_read_unlock();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!isw->new_wb)
 		goto out_free;
 
@@ -1395,6 +1401,7 @@ __writeback_single_inode(struct inode *inode, struct writeback_control *wbc)
 	}
 
 	/*
+<<<<<<< HEAD
 	 * If the inode has dirty timestamps and we need to write them, call
 	 * mark_inode_dirty_sync() to notify the filesystem about it and to
 	 * change I_DIRTY_TIME into I_DIRTY_SYNC.
@@ -1408,12 +1415,27 @@ __writeback_single_inode(struct inode *inode, struct writeback_control *wbc)
 	}
 
 	/*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * Some filesystems may redirty the inode during the writeback
 	 * due to delalloc, clear dirty metadata flags right before
 	 * write_inode()
 	 */
 	spin_lock(&inode->i_lock);
+<<<<<<< HEAD
 	dirty = inode->i_state & I_DIRTY;
+=======
+
+	dirty = inode->i_state & I_DIRTY;
+	if ((inode->i_state & I_DIRTY_TIME) &&
+	    ((dirty & (I_DIRTY_SYNC | I_DIRTY_DATASYNC)) ||
+	     wbc->sync_mode == WB_SYNC_ALL || wbc->for_sync ||
+	     time_after(jiffies, inode->dirtied_time_when +
+			dirtytime_expire_interval * HZ))) {
+		dirty |= I_DIRTY_TIME;
+		trace_writeback_lazytime(inode);
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	inode->i_state &= ~dirty;
 
 	/*
@@ -1434,6 +1456,11 @@ __writeback_single_inode(struct inode *inode, struct writeback_control *wbc)
 
 	spin_unlock(&inode->i_lock);
 
+<<<<<<< HEAD
+=======
+	if (dirty & I_DIRTY_TIME)
+		mark_inode_dirty_sync(inode);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Don't write the inode if only I_DIRTY_PAGES was set */
 	if (dirty & ~I_DIRTY_PAGES) {
 		int err = write_inode(inode, wbc);
@@ -1970,7 +1997,11 @@ void wb_workfn(struct work_struct *work)
 						struct bdi_writeback, dwork);
 	long pages_written;
 
+<<<<<<< HEAD
 	set_worker_desc("flush-%s", bdi_dev_name(wb->bdi));
+=======
+	set_worker_desc("flush-%s", dev_name(wb->bdi->dev));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	current->flags |= PF_SWAPWRITE;
 
 	if (likely(!current_is_workqueue_rescuer() ||
@@ -2087,6 +2118,31 @@ int dirtytime_interval_handler(struct ctl_table *table, int write,
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
+static noinline void block_dump___mark_inode_dirty(struct inode *inode)
+{
+	if (inode->i_ino || strcmp(inode->i_sb->s_id, "bdev")) {
+		struct dentry *dentry;
+		const char *name = "?";
+
+		dentry = d_find_alias(inode);
+		if (dentry) {
+			spin_lock(&dentry->d_lock);
+			name = (const char *) dentry->d_name.name;
+		}
+		printk(KERN_DEBUG
+		       "%s(%d): dirtied inode %lu (%s) on %s\n",
+		       current->comm, task_pid_nr(current), inode->i_ino,
+		       name, inode->i_sb->s_id);
+		if (dentry) {
+			spin_unlock(&dentry->d_lock);
+			dput(dentry);
+		}
+	}
+}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * __mark_inode_dirty -	internal function
  *
@@ -2115,6 +2171,10 @@ int dirtytime_interval_handler(struct ctl_table *table, int write,
  */
 void __mark_inode_dirty(struct inode *inode, int flags)
 {
+<<<<<<< HEAD
+=======
+#define I_DIRTY_INODE (I_DIRTY_SYNC | I_DIRTY_DATASYNC)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct super_block *sb = inode->i_sb;
 	int dirtytime;
 
@@ -2124,7 +2184,11 @@ void __mark_inode_dirty(struct inode *inode, int flags)
 	 * Don't do this for I_DIRTY_PAGES - that doesn't actually
 	 * dirty the inode itself
 	 */
+<<<<<<< HEAD
 	if (flags & (I_DIRTY_INODE | I_DIRTY_TIME)) {
+=======
+	if (flags & (I_DIRTY_SYNC | I_DIRTY_DATASYNC | I_DIRTY_TIME)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		trace_writeback_dirty_inode_start(inode, flags);
 
 		if (sb->s_op->dirty_inode)
@@ -2146,6 +2210,12 @@ void __mark_inode_dirty(struct inode *inode, int flags)
 	    (dirtytime && (inode->i_state & I_DIRTY_INODE)))
 		return;
 
+<<<<<<< HEAD
+=======
+	if (unlikely(block_dump > 1))
+		block_dump___mark_inode_dirty(inode);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock(&inode->i_lock);
 	if (dirtytime && (inode->i_state & I_DIRTY_INODE))
 		goto out_unlock_inode;
@@ -2197,7 +2267,11 @@ void __mark_inode_dirty(struct inode *inode, int flags)
 			if (dirtytime)
 				inode->dirtied_time_when = jiffies;
 
+<<<<<<< HEAD
 			if (inode->i_state & I_DIRTY)
+=======
+			if (inode->i_state & (I_DIRTY_INODE | I_DIRTY_PAGES))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				dirty_list = &wb->b_dirty;
 			else
 				dirty_list = &wb->b_dirty_time;
@@ -2227,6 +2301,11 @@ void __mark_inode_dirty(struct inode *inode, int flags)
 	}
 out_unlock_inode:
 	spin_unlock(&inode->i_lock);
+<<<<<<< HEAD
+=======
+
+#undef I_DIRTY_INODE
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL(__mark_inode_dirty);
 

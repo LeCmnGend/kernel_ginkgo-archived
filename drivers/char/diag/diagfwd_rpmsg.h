@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2017-2018, 2020-2021 The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2017-2018, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -20,7 +24,10 @@ struct diag_rpmsg_info {
 	uint8_t peripheral;
 	uint8_t type;
 	uint8_t inited;
+<<<<<<< HEAD
 	uint8_t probed;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	atomic_t opened;
 	atomic_t diag_state;
 	uint32_t fifo_size;
@@ -52,7 +59,10 @@ int diag_rpmsg_init(void);
 void diag_rpmsg_early_exit(void);
 void diag_rpmsg_invalidate(void *ctxt, struct diagfwd_info *fwd_ctxt);
 int diag_rpmsg_check_state(void *ctxt);
+<<<<<<< HEAD
 void rpmsg_mark_buffers_free(uint8_t peripheral, uint8_t type, int buf_num);
 struct diag_rpmsg_info *diag_get_rpmsg_info_ptr(int type, int peripheral);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #endif

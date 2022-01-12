@@ -1860,7 +1860,11 @@ ia64_mca_cpu_init(void *cpu_data)
 			data = mca_bootmem();
 			first_time = 0;
 		} else
+<<<<<<< HEAD
 			data = (void *)__get_free_pages(GFP_ATOMIC,
+=======
+			data = (void *)__get_free_pages(GFP_KERNEL,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 							get_order(sz));
 		if (!data)
 			panic("Could not allocate MCA memory for cpu %d\n",

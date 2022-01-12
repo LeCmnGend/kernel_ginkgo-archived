@@ -565,6 +565,7 @@ static inline bool cgroup_is_descendant(struct cgroup *cgrp,
 }
 
 /**
+<<<<<<< HEAD
  * cgroup_ancestor - find ancestor of cgroup
  * @cgrp: cgroup to find ancestor of
  * @ancestor_level: level of ancestor to find starting from root
@@ -586,6 +587,8 @@ static inline struct cgroup *cgroup_ancestor(struct cgroup *cgrp,
 }
 
 /**
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * task_under_cgroup_hierarchy - test task's membership of cgroup ancestry
  * @task: the task to be tested
  * @ancestor: possible ancestor of @task's cgroup
@@ -826,6 +829,7 @@ static inline void put_cgroup_ns(struct cgroup_namespace *ns)
 		free_cgroup_ns(ns);
 }
 
+<<<<<<< HEAD
 #ifdef CONFIG_CGROUPS
 
 void cgroup_enter_frozen(void);
@@ -869,4 +873,6 @@ static inline bool cgroup_task_frozen(struct task_struct *task)
 
 #endif /* !CONFIG_CGROUPS */
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* _LINUX_CGROUP_H */

@@ -663,7 +663,11 @@ static struct queue_sysfs_entry queue_poll_delay_entry = {
 };
 
 static struct queue_sysfs_entry queue_wc_entry = {
+<<<<<<< HEAD
 	.attr = {.name = "write_cache", .mode = S_IRUGO },
+=======
+	.attr = {.name = "write_cache", .mode = S_IRUGO | S_IWUSR },
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.show = queue_wc_show,
 	.store = queue_wc_store,
 };

@@ -105,6 +105,7 @@ void __blk_complete_request(struct request *req)
 	BUG_ON(!q->softirq_done_fn);
 
 	local_irq_save(flags);
+<<<<<<< HEAD
 	cpu = get_cpu();
 
 	/*
@@ -116,6 +117,14 @@ void __blk_complete_request(struct request *req)
 	 * request locally instead.
 	 */
 	if (req->cpu != -1 && !idle_cpu(req->cpu)) {
+=======
+	cpu = smp_processor_id();
+
+	/*
+	 * Select completion CPU
+	 */
+	if (req->cpu != -1) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ccpu = req->cpu;
 		if (!test_bit(QUEUE_FLAG_SAME_FORCE, &q->queue_flags))
 			shared = cpus_share_cache(cpu, ccpu);
@@ -147,7 +156,10 @@ do_local:
 	} else if (raise_blk_irq(ccpu, req))
 		goto do_local;
 
+<<<<<<< HEAD
 	put_cpu();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	local_irq_restore(flags);
 }
 

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2012-2020, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2012-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -583,6 +587,11 @@ static int ipa3_send_pdn_config_msg(unsigned long usr_param)
 	buff = pdn_info;
 
 	msg_meta.msg_type = pdn_info->pdn_cfg_type;
+<<<<<<< HEAD
+=======
+	/* null terminate the string */
+	pdn_info->dev_name[IPA_RESOURCE_NAME_MAX - 1] = '\0';
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if ((pdn_info->pdn_cfg_type < IPA_PDN_DEFAULT_MODE_CONFIG) ||
 			(pdn_info->pdn_cfg_type >= IPA_PDN_CONFIG_EVENT_MAX)) {
@@ -6682,6 +6691,7 @@ static ssize_t ipa3_write(struct file *file, const char __user *buf,
 			  size_t count, loff_t *ppos)
 {
 	unsigned long missing;
+<<<<<<< HEAD
 	char *dbg_buff = NULL;
 	int ret = 0;
 
@@ -6700,6 +6710,21 @@ static ssize_t ipa3_write(struct file *file, const char __user *buf,
 		IPAERR("Unable to copy data from user\n");
 		ret = -EFAULT;
 		goto end;
+=======
+
+	char dbg_buff[32] = { 0 };
+
+	int i = 0;
+
+	if (sizeof(dbg_buff) < count + 1)
+		return -EFAULT;
+
+	missing = copy_from_user(dbg_buff, buf, min(sizeof(dbg_buff), count));
+
+	if (missing) {
+		IPAERR("Unable to copy data from user\n");
+		return -EFAULT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	if (count > 0)
@@ -6716,7 +6741,11 @@ static ssize_t ipa3_write(struct file *file, const char __user *buf,
 
 	if (i == count) {
 		IPADBG("Empty ipa_config file\n");
+<<<<<<< HEAD
 		goto end_msg;
+=======
+		return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	/* Check MHI configuration on MDM devices */
@@ -6747,7 +6776,11 @@ static ssize_t ipa3_write(struct file *file, const char __user *buf,
 				ipa3_ctx->vlan_mode_iface[IPA_VLAN_IF_RNDIS]);
 			IPAERR("ecm vlan(%d)\n",
 				ipa3_ctx->vlan_mode_iface[IPA_VLAN_IF_ECM]);
+<<<<<<< HEAD
 			goto end_msg;
+=======
+			return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 
 		/* trim ending newline character if any */
@@ -6764,7 +6797,11 @@ static ssize_t ipa3_write(struct file *file, const char __user *buf,
 		} else if (strcmp(dbg_buff, "1")) {
 			IPAERR("got invalid string %s not loading FW\n",
 				dbg_buff);
+<<<<<<< HEAD
 			goto end;
+=======
+			return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 		pr_info("IPA is loading with %sMHI configuration\n",
 			ipa3_ctx->ipa_config_is_mhi ? "" : "non ");
@@ -6772,12 +6809,20 @@ static ssize_t ipa3_write(struct file *file, const char __user *buf,
 
 	/* Prevent consequent calls from trying to load the FW again. */
 	if (ipa3_is_ready())
+<<<<<<< HEAD
 		goto end_msg;
+=======
+		return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Prevent multiple calls from trying to load the FW again. */
 	if (ipa3_ctx->fw_loaded) {
 		IPAERR("not load FW again\n");
+<<<<<<< HEAD
 		goto end_msg;
+=======
+		return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	/* Schedule WQ to load ipa-fws */
@@ -6786,11 +6831,16 @@ static ssize_t ipa3_write(struct file *file, const char __user *buf,
 	queue_work(ipa3_ctx->transport_power_mgmt_wq,
 		&ipa3_fw_loading_work);
 
+<<<<<<< HEAD
 end_msg:
 	IPADBG("Scheduled a work to load IPA FW\n");
 end:
 	kfree(dbg_buff);
 	return ret < 0 ? ret : count;
+=======
+	IPADBG("Scheduled a work to load IPA FW\n");
+	return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /**

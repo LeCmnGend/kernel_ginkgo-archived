@@ -1470,7 +1470,11 @@ static void namespace_unlock(void)
 	if (likely(hlist_empty(&head)))
 		return;
 
+<<<<<<< HEAD
 	synchronize_rcu_expedited();
+=======
+	synchronize_rcu();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	group_pin_kill(&head);
 }
@@ -1722,6 +1726,7 @@ static inline bool may_mount(void)
 	return ns_capable(current->nsproxy->mnt_ns->user_ns, CAP_SYS_ADMIN);
 }
 
+<<<<<<< HEAD
 #ifdef	CONFIG_MANDATORY_FILE_LOCKING
 static bool may_mandlock(void)
 {
@@ -1738,6 +1743,15 @@ static inline bool may_mandlock(void)
 	return false;
 }
 #endif
+=======
+static inline bool may_mandlock(void)
+{
+#ifndef	CONFIG_MANDATORY_FILE_LOCKING
+	return false;
+#endif
+	return capable(CAP_SYS_ADMIN);
+}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*
  * Now umount can handle mount points as well as block devices.
@@ -1941,6 +1955,7 @@ void drop_collected_mounts(struct vfsmount *mnt)
 	namespace_unlock();
 }
 
+<<<<<<< HEAD
 static bool has_locked_children(struct mount *mnt, struct dentry *dentry)
 {
 	struct mount *child;
@@ -1955,6 +1970,8 @@ static bool has_locked_children(struct mount *mnt, struct dentry *dentry)
 	return false;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * clone_private_mount - create a private clone of a path
  *
@@ -1969,6 +1986,7 @@ struct vfsmount *clone_private_mount(const struct path *path)
 	struct mount *old_mnt = real_mount(path->mnt);
 	struct mount *new_mnt;
 
+<<<<<<< HEAD
 	down_read(&namespace_sem);
 	if (IS_MNT_UNBINDABLE(old_mnt))
 		goto invalid;
@@ -1982,14 +2000,23 @@ struct vfsmount *clone_private_mount(const struct path *path)
 	new_mnt = clone_mnt(old_mnt, path->dentry, CL_PRIVATE);
 	up_read(&namespace_sem);
 
+=======
+	if (IS_MNT_UNBINDABLE(old_mnt))
+		return ERR_PTR(-EINVAL);
+
+	new_mnt = clone_mnt(old_mnt, path->dentry, CL_PRIVATE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (IS_ERR(new_mnt))
 		return ERR_CAST(new_mnt);
 
 	return &new_mnt->mnt;
+<<<<<<< HEAD
 
 invalid:
 	up_read(&namespace_sem);
 	return ERR_PTR(-EINVAL);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL_GPL(clone_private_mount);
 
@@ -2305,6 +2332,22 @@ static int do_change_type(struct path *path, int ms_flags)
 	return err;
 }
 
+<<<<<<< HEAD
+=======
+static bool has_locked_children(struct mount *mnt, struct dentry *dentry)
+{
+	struct mount *child;
+	list_for_each_entry(child, &mnt->mnt_mounts, mnt_child) {
+		if (!is_subdir(child->mnt_mountpoint, dentry))
+			continue;
+
+		if (child->mnt.mnt_flags & MNT_LOCKED)
+			return true;
+	}
+	return false;
+}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * do loopback mount.
  */

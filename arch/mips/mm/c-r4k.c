@@ -1665,7 +1665,11 @@ static int probe_scache(void)
 	return 1;
 }
 
+<<<<<<< HEAD
 static void loongson2_sc_init(void)
+=======
+static void __init loongson2_sc_init(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct cpuinfo_mips *c = &current_cpu_data;
 
@@ -1781,11 +1785,15 @@ static void setup_scache(void)
 				printk("MIPS secondary cache %ldkB, %s, linesize %d bytes.\n",
 				       scache_size >> 10,
 				       way_string[c->scache.ways], c->scache.linesz);
+<<<<<<< HEAD
 
 				if (current_cpu_type() == CPU_BMIPS5000)
 					c->options |= MIPS_CPU_INCLUSIVE_CACHES;
 			}
 
+=======
+			}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #else
 			if (!(c->scache.flags & MIPS_CACHE_NOT_PRESENT))
 				panic("Dunno how to handle MIPS32 / MIPS64 second level cache");

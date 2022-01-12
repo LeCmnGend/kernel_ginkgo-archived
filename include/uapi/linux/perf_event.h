@@ -1033,7 +1033,11 @@ union perf_mem_data_src {
 
 #define PERF_MEM_SNOOPX_FWD	0x01 /* forward */
 /* 1 free */
+<<<<<<< HEAD
 #define PERF_MEM_SNOOPX_SHIFT  38
+=======
+#define PERF_MEM_SNOOPX_SHIFT	37
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* locked instruction */
 #define PERF_MEM_LOCK_NA	0x01 /* not available */

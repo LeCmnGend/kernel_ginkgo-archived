@@ -2,10 +2,13 @@
 #ifndef _ASM_GENERIC_BITOPS_LOCK_H_
 #define _ASM_GENERIC_BITOPS_LOCK_H_
 
+<<<<<<< HEAD
 #include <linux/atomic.h>
 #include <linux/compiler.h>
 #include <asm/barrier.h>
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * test_and_set_bit_lock - Set a bit and return its old value, for lock
  * @nr: Bit to set
@@ -14,6 +17,7 @@
  * This operation is atomic and provides acquire barrier semantics.
  * It can be used to implement bit locks.
  */
+<<<<<<< HEAD
 static inline int test_and_set_bit_lock(unsigned int nr,
 					volatile unsigned long *p)
 {
@@ -28,6 +32,9 @@ static inline int test_and_set_bit_lock(unsigned int nr,
 	return !!(old & mask);
 }
 
+=======
+#define test_and_set_bit_lock(nr, addr)	test_and_set_bit(nr, addr)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
  * clear_bit_unlock - Clear a bit in memory, for unlock
@@ -36,11 +43,19 @@ static inline int test_and_set_bit_lock(unsigned int nr,
  *
  * This operation is atomic and provides release barrier semantics.
  */
+<<<<<<< HEAD
 static inline void clear_bit_unlock(unsigned int nr, volatile unsigned long *p)
 {
 	p += BIT_WORD(nr);
 	atomic_long_fetch_andnot_release(BIT_MASK(nr), (atomic_long_t *)p);
 }
+=======
+#define clear_bit_unlock(nr, addr)	\
+do {					\
+	smp_mb__before_atomic();	\
+	clear_bit(nr, addr);		\
+} while (0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
  * __clear_bit_unlock - Clear a bit in memory, for unlock
@@ -53,6 +68,7 @@ static inline void clear_bit_unlock(unsigned int nr, volatile unsigned long *p)
  *
  * See for example x86's implementation.
  */
+<<<<<<< HEAD
 static inline void __clear_bit_unlock(unsigned int nr,
 				      volatile unsigned long *p)
 {
@@ -88,3 +104,13 @@ static inline bool clear_bit_unlock_is_negative_byte(unsigned int nr,
 #endif
 
 #endif /* _ASM_GENERIC_BITOPS_LOCK_H_ */
+=======
+#define __clear_bit_unlock(nr, addr)	\
+do {					\
+	smp_mb__before_atomic();	\
+	clear_bit(nr, addr);		\
+} while (0)
+
+#endif /* _ASM_GENERIC_BITOPS_LOCK_H_ */
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

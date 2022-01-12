@@ -471,8 +471,12 @@ static void mlxsw_emad_trans_timeout_schedule(struct mlxsw_reg_trans *trans)
 	if (trans->core->fw_flash_in_progress)
 		timeout = msecs_to_jiffies(MLXSW_EMAD_TIMEOUT_DURING_FW_FLASH_MS);
 
+<<<<<<< HEAD
 	queue_delayed_work(trans->core->emad_wq, &trans->timeout_dw,
 			   timeout << trans->retries);
+=======
+	queue_delayed_work(trans->core->emad_wq, &trans->timeout_dw, timeout);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static int mlxsw_emad_transmit(struct mlxsw_core *mlxsw_core,
@@ -521,9 +525,12 @@ static void mlxsw_emad_transmit_retry(struct mlxsw_core *mlxsw_core,
 		err = mlxsw_emad_transmit(trans->core, trans);
 		if (err == 0)
 			return;
+<<<<<<< HEAD
 
 		if (!atomic_dec_and_test(&trans->active))
 			return;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
 		err = -EIO;
 	}
@@ -1365,7 +1372,11 @@ static int mlxsw_core_reg_access_emad(struct mlxsw_core *mlxsw_core,
 	err = mlxsw_emad_reg_access(mlxsw_core, reg, payload, type, trans,
 				    bulk_list, cb, cb_priv, tid);
 	if (err) {
+<<<<<<< HEAD
 		kfree_rcu(trans, rcu);
+=======
+		kfree(trans);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return err;
 	}
 	return 0;
@@ -1578,6 +1589,7 @@ void mlxsw_core_skb_receive(struct mlxsw_core *mlxsw_core, struct sk_buff *skb,
 			break;
 		}
 	}
+<<<<<<< HEAD
 	if (!found) {
 		rcu_read_unlock();
 		goto drop;
@@ -1585,6 +1597,13 @@ void mlxsw_core_skb_receive(struct mlxsw_core *mlxsw_core, struct sk_buff *skb,
 
 	rxl->func(skb, local_port, rxl_item->priv);
 	rcu_read_unlock();
+=======
+	rcu_read_unlock();
+	if (!found)
+		goto drop;
+
+	rxl->func(skb, local_port, rxl_item->priv);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return;
 
 drop:
