@@ -1,19 +1,12 @@
-ARCH=arm64
 BRANCH=android-4.14
 KERNEL_DIR=common
+
+CC="ccache clang"
 
 BUILDTOOLS_PREBUILT_BIN=build/build-tools/path/linux-x86
 
 CROSS_COMPILE=aarch64-linux-gnu-
 CROSS_COMPILE_ARM32=arm-linux-gnueabi-
-
-FILES="
-arch/arm64/boot/dtbo.img
-arch/arm64/boot/Image.lz4-dtb
-arch/arm64/boot/Image.lz4
-vmlinux
-.config
-"
 
 EXTRA_CMDS=''
 STOP_SHIP_TRACEPRINTK=1
