@@ -59,7 +59,7 @@ if [[ $1 == "-r" || $1 == "--regen" ]]; then
 		   exit 0
 else
 		echo -e "\nStarting compilation...\n"
-		make -j$(nproc --all) O=out ARCH=arm64 \
+		make -j5 O=out ARCH=arm64 \
 		CC="/usr/bin/ccache clang" \
 		CXX="/usr/bin/ccache g++" \
 		LD=ld.lld \
