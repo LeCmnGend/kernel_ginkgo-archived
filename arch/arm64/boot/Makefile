@@ -36,7 +36,7 @@ DTB_OBJS += rtic_mp.dtb
 endif
 
 rtic_mp.dtb: vmlinux FORCE
-$(RTIC_MPGEN) --objcopy="${OBJCOPY}" --objdump="${OBJDUMP}" \
+	$(RTIC_MPGEN) --objcopy="${OBJCOPY}" --objdump="${OBJDUMP}" \
 --binpath="" --vmlinux="vmlinux" --config=${KCONFIG_CONFIG} \
 --cc="${CC} ${KBUILD_AFLAGS}" --dts=rtic_mp.dts && \
 $(DTC) -O dtb -o rtic_mp.dtb -b 0 $(DTC_FLAGS) rtic_mp.dts
@@ -48,7 +48,7 @@ $(obj)/Image.bz2: $(obj)/Image FORCE
 $(call if_changed,bzip2)
 
 $(obj)/Image-dtb-hdr: $(obj)/Image FORCE
-echo -n 'UNCOMPRESSED_IMG' > $@ && \
+	echo -n 'UNCOMPRESSED_IMG' > $@ && \
 $(call size_append, $(filter-out FORCE,$^)) >> $@
 
 $(obj)/Image-dtb: $(obj)/Image-dtb-hdr $(obj)/Image $(DTB_OBJS) FORCE
@@ -76,9 +76,9 @@ $(obj)/dtbo.img: $(DTBO_OBJS) FORCE
 $(call if_changed,mkdtimg)
 
 install:
-$(CONFIG_SHELL) $(srctree)/$(src)/install.sh $(KERNELRELEASE) \
+	$(CONFIG_SHELL) $(srctree)/$(src)/install.sh $(KERNELRELEASE) \
 $(obj)/Image System.map "$(INSTALL_PATH)"
 
 zinstall:
-$(CONFIG_SHELL) $(srctree)/$(src)/install.sh $(KERNELRELEASE) \
+	$(CONFIG_SHELL) $(srctree)/$(src)/install.sh $(KERNELRELEASE) \
 $(obj)/Image.gz System.map "$(INSTALL_PATH)"
