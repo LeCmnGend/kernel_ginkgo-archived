@@ -10,7 +10,18 @@ DEFCONFIG="vendor/ginkgo-perf_defconfig"
 SECONDS=0 # builtin bash timer
 ZIPNAME="Ryzen-Unified-ginkgo-$(date '+%Y%m%d-%H%M').zip"
 
+# Setup ccache environment
+export USE_CCACHE=1
+export CCACHE_EXEC=/usr/bin/ccache
+export CCACHE_MAXSIZE=50G
+export CCACHE_DIR=/mnt/c/.ccache
+export CCACHE_TEMPDIR=$CCACHE_DIR/tmp
+export CCACHE_COMPRESSLEVEL=2
+export CCACHE_LIMIT_MULTIPLE=0.97
+export CC="ccache clang"
+export CXX="ccache g++-9"
 export PATH="$TC_DIR/bin:$PATH" 
+
 #export KBUILD_BUILD_USER=adithya
 #export KBUILD_BUILD_HOST=ghostrider_reborn
 #export LD_LIBRARY_PATH="$TC_DIR/lib:$LD_LIBRARY_PATH"
