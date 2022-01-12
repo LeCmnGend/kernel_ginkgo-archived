@@ -16,7 +16,7 @@ export CCACHE_EXEC=/usr/bin/ccache
 export CCACHE_MAXSIZE=50G
 export CCACHE_DIR=/mnt/c/.ccache
 export CCACHE_TEMPDIR=$CCACHE_DIR/tmp
-export CCACHE_COMPRESSLEVEL=2
+export CCACHE_COMPRESSLEVEL=1
 export CCACHE_LIMIT_MULTIPLE=0.97
 export CC="ccache clang"
 
@@ -60,7 +60,6 @@ else
 		echo -e "\nStarting compilation...\n"
 		make -j5 O=out ARCH=arm64 \
 		CC="/usr/bin/ccache clang" \
-		CXX="/usr/bin/ccache g++" \
 		LD=ld.lld \
 		AR=llvm-ar \
 		AS=llvm-as \
