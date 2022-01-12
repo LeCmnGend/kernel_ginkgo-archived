@@ -3949,6 +3949,11 @@ static void niu_xmac_interrupt(struct niu *np)
 	if (val & XRXMAC_STATUS_RXBCAST_CNT_EXP)
 		mp->rx_bcasts += RXMAC_BC_FRM_CNT_COUNT;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (val & XRXMAC_STATUS_RXBCAST_CNT_EXP)
+		mp->rx_bcasts += RXMAC_BC_FRM_CNT_COUNT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (val & XRXMAC_STATUS_RXBCAST_CNT_EXP)
 		mp->rx_bcasts += RXMAC_BC_FRM_CNT_COUNT;
@@ -8170,15 +8175,21 @@ static int niu_pci_vpd_scan_props(struct niu *np, u32 start, u32 end)
 				     namebuf, prop_len);
 			for (i = 0; i < prop_len; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				err =  niu_pci_eeprom_read(np, off + i);
 				if (err < 0)
 					return err;
 				*prop_buf++ = err;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				err = niu_pci_eeprom_read(np, off + i);
 				if (err >= 0)
 					*prop_buf = err;
 				++prop_buf;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			}
 		}
@@ -8191,7 +8202,11 @@ static int niu_pci_vpd_scan_props(struct niu *np, u32 start, u32 end)
 
 /* ESPC_PIO_EN_ENABLE must be set */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int niu_pci_vpd_fetch(struct niu *np, u32 start)
+=======
+static void niu_pci_vpd_fetch(struct niu *np, u32 start)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void niu_pci_vpd_fetch(struct niu *np, u32 start)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -8202,7 +8217,11 @@ static void niu_pci_vpd_fetch(struct niu *np, u32 start)
 	err = niu_pci_eeprom_read16_swp(np, start + 1);
 	if (err < 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return err;
+=======
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -8215,6 +8234,7 @@ static void niu_pci_vpd_fetch(struct niu *np, u32 start)
 
 		err = niu_pci_eeprom_read(np, here);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (err < 0)
 			return err;
 		if (err != 0x90)
@@ -8224,12 +8244,17 @@ static void niu_pci_vpd_fetch(struct niu *np, u32 start)
 		if (err < 0)
 			return err;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (err != 0x90)
 			return;
 
 		err = niu_pci_eeprom_read16_swp(np, here + 1);
 		if (err < 0)
 			return;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		here = start + offset + 3;
@@ -8239,6 +8264,7 @@ static void niu_pci_vpd_fetch(struct niu *np, u32 start)
 
 		err = niu_pci_vpd_scan_props(np, here, end);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (err < 0)
 			return err;
 		/* ret == 1 is not an error */
@@ -8246,6 +8272,11 @@ static void niu_pci_vpd_fetch(struct niu *np, u32 start)
 			return 0;
 	}
 	return 0;
+=======
+		if (err < 0 || err == 1)
+			return;
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (err < 0 || err == 1)
 			return;
@@ -9342,11 +9373,16 @@ static int niu_get_invariants(struct niu *np)
 		netif_printk(np, probe, KERN_DEBUG, np->dev,
 			     "%s() VPD offset [%08x]\n", __func__, offset);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (offset) {
 			err = niu_pci_vpd_fetch(np, offset);
 			if (err < 0)
 				return err;
 		}
+=======
+		if (offset)
+			niu_pci_vpd_fetch(np, offset);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (offset)
 			niu_pci_vpd_fetch(np, offset);

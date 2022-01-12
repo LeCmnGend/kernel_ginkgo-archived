@@ -2,6 +2,7 @@ BRANCH=android-4.14
 KERNEL_DIR=common
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 CC="ccache clang"
 
 BUILDTOOLS_PREBUILT_BIN=build/build-tools/path/linux-x86
@@ -10,11 +11,16 @@ CROSS_COMPILE=aarch64-linux-gnu-
 CROSS_COMPILE_ARM32=arm-linux-gnueabi-
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 CC=clang
 LD=ld.lld
 CLANG_PREBUILT_BIN=prebuilts-master/clang/host/linux-x86/clang-r383902/bin
 BUILDTOOLS_PREBUILT_BIN=build/build-tools/path/linux-x86
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 EXTRA_CMDS=''
 STOP_SHIP_TRACEPRINTK=1

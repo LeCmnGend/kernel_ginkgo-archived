@@ -214,7 +214,11 @@ int rndis_command(struct usbnet *dev, struct rndis_msg_hdr *buf, int buflen)
 				"rndis response error, code %d\n", retval);
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		msleep(40);
+=======
+		msleep(20);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		msleep(20);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -404,7 +408,11 @@ generic_rndis_bind(struct usbnet *dev, struct usb_interface *intf, int flags)
 	retval = rndis_query(dev, intf, u.buf,
 			     RNDIS_OID_GEN_PHYSICAL_MEDIUM,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			     reply_len, (void **)&phym, &reply_len);
+=======
+			     0, (void **) &phym, &reply_len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			     0, (void **) &phym, &reply_len);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -11,8 +11,12 @@
 %}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 %define api.pure full
 
+=======
+%pure-parser
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 %pure-parser
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

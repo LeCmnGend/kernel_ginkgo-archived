@@ -38,9 +38,12 @@ struct prox_state {
 	struct hid_sensor_hub_attribute_info prox_attr;
 	u32 human_presence;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int scale_pre_decml;
 	int scale_post_decml;
 	int scale_precision;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -114,9 +117,14 @@ static int prox_read_raw(struct iio_dev *indio_dev,
 		break;
 	case IIO_CHAN_INFO_SCALE:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		*val = prox_state->scale_pre_decml;
 		*val2 = prox_state->scale_post_decml;
 		ret_type = prox_state->scale_precision;
+=======
+		*val = prox_state->prox_attr.units;
+		ret_type = IIO_VAL_INT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		*val = prox_state->prox_attr.units;
 		ret_type = IIO_VAL_INT;
@@ -262,11 +270,14 @@ static int prox_parse_report(struct platform_device *pdev,
 			&st->common_attributes.sensitivity);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	st->scale_precision = hid_sensor_format_scale(
 				hsdev->usage,
 				&st->prox_attr,
 				&st->scale_pre_decml, &st->scale_post_decml);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;

@@ -47,14 +47,20 @@ asmlinkage void aesbs_xts_decrypt(u8 out[], u8 const in[], u8 const rk[],
 /* borrowed from aes-neon-blk.ko */
 asmlinkage void neon_aes_ecb_encrypt(u8 out[], u8 const in[], u32 const rk[],
 <<<<<<< HEAD
+<<<<<<< HEAD
 				     int rounds, int blocks);
 asmlinkage void neon_aes_cbc_encrypt(u8 out[], u8 const in[], u32 const rk[],
 				     int rounds, int blocks, u8 iv[]);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				     int rounds, int blocks, int first);
 asmlinkage void neon_aes_cbc_encrypt(u8 out[], u8 const in[], u32 const rk[],
 				     int rounds, int blocks, u8 iv[],
 				     int first);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 struct aesbs_ctx {
@@ -164,7 +170,11 @@ static int cbc_encrypt(struct skcipher_request *req)
 	struct aesbs_cbc_ctx *ctx = crypto_skcipher_ctx(tfm);
 	struct skcipher_walk walk;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int err;
+=======
+	int err, first = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int err, first = 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -178,14 +188,20 @@ static int cbc_encrypt(struct skcipher_request *req)
 		/* fall back to the non-bitsliced NEON implementation */
 		neon_aes_cbc_encrypt(walk.dst.virt.addr, walk.src.virt.addr,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				     ctx->enc, ctx->key.rounds, blocks,
 				     walk.iv);
 		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				     ctx->enc, ctx->key.rounds, blocks, walk.iv,
 				     first);
 		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
 		first = 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	kernel_neon_end();
@@ -330,7 +346,11 @@ static int __xts_crypt(struct skcipher_request *req,
 
 	neon_aes_ecb_encrypt(walk.iv, walk.iv, ctx->twkey,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			     ctx->key.rounds, 1);
+=======
+			     ctx->key.rounds, 1, 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			     ctx->key.rounds, 1, 1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

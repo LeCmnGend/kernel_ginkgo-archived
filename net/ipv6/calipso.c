@@ -98,9 +98,12 @@ struct calipso_map_cache_entry {
 static struct calipso_map_cache_bkt *calipso_cache;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void calipso_cache_invalidate(void);
 static void calipso_doi_putdef(struct calipso_doi *doi_def);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Label Mapping Cache Functions
@@ -465,11 +468,14 @@ static int calipso_doi_remove(u32 doi, struct netlbl_audit *audit_info)
 		goto doi_remove_return;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	list_del_rcu(&doi_def->list);
 	spin_unlock(&calipso_doi_list_lock);
 
 	calipso_doi_putdef(doi_def);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!refcount_dec_and_test(&doi_def->refcount)) {
 		spin_unlock(&calipso_doi_list_lock);
 		ret_val = -EBUSY;
@@ -479,6 +485,9 @@ static int calipso_doi_remove(u32 doi, struct netlbl_audit *audit_info)
 	spin_unlock(&calipso_doi_list_lock);
 
 	call_rcu(&doi_def->rcu, calipso_doi_free_rcu);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret_val = 0;
 
@@ -536,13 +545,19 @@ static void calipso_doi_putdef(struct calipso_doi *doi_def)
 	if (!refcount_dec_and_test(&doi_def->refcount))
 		return;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	calipso_cache_invalidate();
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock(&calipso_doi_list_lock);
 	list_del_rcu(&doi_def->list);
 	spin_unlock(&calipso_doi_list_lock);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	call_rcu(&doi_def->rcu, calipso_doi_free_rcu);
 }

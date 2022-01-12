@@ -1559,16 +1559,22 @@ static int mb_find_extent(struct ext4_buddy *e4b, int block,
 		/* Should never happen! (but apparently sometimes does?!?) */
 		WARN_ON(1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ext4_grp_locked_error(e4b->bd_sb, e4b->bd_group, 0, 0,
 			"corruption or bug in mb_find_extent "
 			"block=%d, order=%d needed=%d ex=%u/%d/%d@%u",
 			block, order, needed, ex->fe_group, ex->fe_start,
 			ex->fe_len, ex->fe_logical);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ext4_error(e4b->bd_sb, "corruption or bug in mb_find_extent "
 			   "block=%d, order=%d needed=%d ex=%u/%d/%d@%u",
 			   block, order, needed, ex->fe_group, ex->fe_start,
 			   ex->fe_len, ex->fe_logical);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ex->fe_len = 0;
 		ex->fe_start = 0;
@@ -2544,7 +2550,10 @@ static int ext4_mb_init_backend(struct super_block *sb)
 	EXT4_I(sbi->s_buddy_cache)->i_disksize = 0;
 	for (i = 0; i < ngroups; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cond_resched();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		desc = ext4_get_group_desc(sb, i, NULL);
@@ -2769,7 +2778,10 @@ int ext4_mb_release(struct super_block *sb)
 	if (sbi->s_group_info) {
 		for (i = 0; i < ngroups; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			cond_resched();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			grinfo = ext4_get_group_info(sb, i);
@@ -2953,7 +2965,10 @@ int __init ext4_init_mballoc(void)
 		return -ENOMEM;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ext4_ac_cachep = KMEM_CACHE(ext4_allocation_context,
 				    SLAB_RECLAIM_ACCOUNT);
 	if (ext4_ac_cachep == NULL) {
@@ -2961,12 +2976,19 @@ int __init ext4_init_mballoc(void)
 		return -ENOMEM;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ext4_free_data_cachep = KMEM_CACHE(ext4_free_data,
 					   SLAB_RECLAIM_ACCOUNT);
 	if (ext4_free_data_cachep == NULL) {
 		kmem_cache_destroy(ext4_pspace_cachep);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		kmem_cache_destroy(ext4_ac_cachep);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kmem_cache_destroy(ext4_ac_cachep);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3040,7 +3062,11 @@ ext4_mb_mark_diskspace_used(struct ext4_allocation_context *ac,
 
 	len = EXT4_C2B(sbi, ac->ac_b_ex.fe_len);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!ext4_inode_block_valid(ac->ac_inode, block, len)) {
+=======
+	if (!ext4_data_block_valid(sbi, block, len)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!ext4_data_block_valid(sbi, block, len)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4546,7 +4572,11 @@ ext4_fsblk_t ext4_mb_new_blocks(handle_t *handle,
 {
 	int freed;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct ext4_allocation_context ac;
+=======
+	struct ext4_allocation_context *ac = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct ext4_allocation_context *ac = NULL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4603,9 +4633,12 @@ ext4_fsblk_t ext4_mb_new_blocks(handle_t *handle,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(&ac, 0, sizeof(ac));
 	*errp = ext4_mb_initialize_context(&ac, ar);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ac = kmem_cache_zalloc(ext4_ac_cachep, GFP_NOFS);
 	if (!ac) {
 		ar->len = 0;
@@ -4614,12 +4647,16 @@ ext4_fsblk_t ext4_mb_new_blocks(handle_t *handle,
 	}
 
 	*errp = ext4_mb_initialize_context(ac, ar);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (*errp) {
 		ar->len = 0;
 		goto out;
 	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	ac.ac_op = EXT4_MB_HISTORY_PREALLOC;
 	if (!ext4_mb_use_preallocated(&ac)) {
@@ -4629,6 +4666,8 @@ repeat:
 		/* allocate space in core */
 		*errp = ext4_mb_regular_allocator(&ac);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ac->ac_op = EXT4_MB_HISTORY_PREALLOC;
 	if (!ext4_mb_use_preallocated(ac)) {
 		ac->ac_op = EXT4_MB_HISTORY_ALLOC;
@@ -4636,6 +4675,9 @@ repeat:
 repeat:
 		/* allocate space in core */
 		*errp = ext4_mb_regular_allocator(ac);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (*errp)
 			goto discard_and_exit;
@@ -4643,6 +4685,7 @@ repeat:
 		/* as we've just preallocated more space than
 		 * user requested originally, we store allocated
 		 * space in a special descriptor */
+<<<<<<< HEAD
 <<<<<<< HEAD
 		if (ac.ac_status == AC_STATUS_FOUND &&
 		    ac.ac_o_ex.fe_len < ac.ac_b_ex.fe_len)
@@ -4665,6 +4708,8 @@ repeat:
 	} else {
 		freed  = ext4_mb_discard_preallocations(sb, ac.ac_o_ex.fe_len);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (ac->ac_status == AC_STATUS_FOUND &&
 		    ac->ac_o_ex.fe_len < ac->ac_b_ex.fe_len)
 			*errp = ext4_mb_new_preallocation(ac);
@@ -4685,6 +4730,9 @@ repeat:
 		}
 	} else {
 		freed  = ext4_mb_discard_preallocations(sb, ac->ac_o_ex.fe_len);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (freed)
 			goto repeat;
@@ -4694,6 +4742,7 @@ repeat:
 errout:
 	if (*errp) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ac.ac_b_ex.fe_len = 0;
 		ar->len = 0;
 		ext4_mb_show_ac(&ac);
@@ -4701,6 +4750,8 @@ errout:
 	ext4_mb_release_context(&ac);
 out:
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ac->ac_b_ex.fe_len = 0;
 		ar->len = 0;
 		ext4_mb_show_ac(ac);
@@ -4709,6 +4760,9 @@ out:
 out:
 	if (ac)
 		kmem_cache_free(ext4_ac_cachep, ac);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (inquota && ar->len < inquota)
 		dquot_free_block(ar->inode, EXT4_C2B(sbi, inquota - ar->len));
@@ -4796,7 +4850,10 @@ ext4_mb_free_metadata(handle_t *handle, struct ext4_buddy *e4b,
 				EXT4_C2B(sbi, cluster),
 				"Block already on to-be-freed list");
 <<<<<<< HEAD
+<<<<<<< HEAD
 			kmem_cache_free(ext4_free_data_cachep, new_entry);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return 0;
@@ -4864,7 +4921,11 @@ void ext4_free_blocks(handle_t *handle, struct inode *inode,
 	sbi = EXT4_SB(sb);
 	if (!(flags & EXT4_FREE_BLOCKS_VALIDATED) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    !ext4_inode_block_valid(inode, block, count)) {
+=======
+	    !ext4_data_block_valid(sbi, block, count)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	    !ext4_data_block_valid(sbi, block, count)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

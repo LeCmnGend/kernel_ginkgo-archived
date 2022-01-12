@@ -4489,8 +4489,14 @@ static const struct ata_blacklist_entry ata_device_blacklist [] = {
 	{ "C300-CTFDDAC128MAG",	"0001",		ATA_HORKAGE_NONCQ, },
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Sandisk SD7/8/9s lock up hard on large trims */
 	{ "SanDisk SD[789]*",	NULL,		ATA_HORKAGE_MAX_TRIM_128M, },
+=======
+	/* Some Sandisk SSDs lock up hard with NCQ enabled.  Reported on
+	   SD7SN6S256G and SD8SN8U256G */
+	{ "SanDisk SD[78]SN*G",	NULL,		ATA_HORKAGE_NONCQ, },
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Some Sandisk SSDs lock up hard with NCQ enabled.  Reported on
 	   SD7SN6S256G and SD8SN8U256G */
@@ -4993,10 +4999,14 @@ int ata_std_qc_defer(struct ata_queued_cmd *qc)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 enum ata_completion_errors ata_noop_qc_prep(struct ata_queued_cmd *qc)
 {
 	return AC_ERR_OK;
 }
+=======
+void ata_noop_qc_prep(struct ata_queued_cmd *qc) { }
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void ata_noop_qc_prep(struct ata_queued_cmd *qc) { }
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5453,9 +5463,13 @@ void ata_qc_issue(struct ata_queued_cmd *qc)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	qc->err_mask |= ap->ops->qc_prep(qc);
 	if (unlikely(qc->err_mask))
 		goto err;
+=======
+	ap->ops->qc_prep(qc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ap->ops->qc_prep(qc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

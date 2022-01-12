@@ -1,6 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef DTC_H
 #define DTC_H
+=======
+#ifndef _DTC_H
+#define _DTC_H
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #ifndef _DTC_H
 #define _DTC_H
@@ -37,7 +42,10 @@
 #include <errno.h>
 #include <unistd.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <inttypes.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -76,8 +84,12 @@ typedef uint32_t cell_t;
 
 #define streq(a, b)	(strcmp((a), (b)) == 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define strstarts(s, prefix)	(strncmp((s), (prefix), strlen(prefix)) == 0)
 #define strprefixeq(a, n, b)	(strlen(b) == (n) && (memcmp(a, b, n) == 0))
+=======
+#define strneq(a, b, n)	(strncmp((a), (b), (n)) == 0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define strneq(a, b, n)	(strncmp((a), (b), (n)) == 0)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -181,8 +193,11 @@ struct node {
 	struct label *labels;
 	const struct bus_type *bus;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	bool omit_if_unused, is_referenced;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -220,11 +235,16 @@ struct node *build_node(struct property *proplist, struct node *children);
 struct node *build_node_delete(void);
 struct node *name_node(struct node *node, char *name);
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct node *omit_node_if_unused(struct node *node);
 struct node *reference_node(struct node *node);
 struct node *chain_node(struct node *first, struct node *list);
 struct node *merge_nodes(struct node *old_node, struct node *new_node);
 struct node *add_orphan_node(struct node *old_node, struct node *new_node, char *ref);
+=======
+struct node *chain_node(struct node *first, struct node *list);
+struct node *merge_nodes(struct node *old_node, struct node *new_node);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 struct node *chain_node(struct node *first, struct node *list);
 struct node *merge_nodes(struct node *old_node, struct node *new_node);
@@ -243,7 +263,10 @@ const char *get_unitname(struct node *node);
 struct property *get_property(struct node *node, const char *propname);
 cell_t propval_cell(struct property *prop);
 <<<<<<< HEAD
+<<<<<<< HEAD
 cell_t propval_cell_n(struct property *prop, int n);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct property *get_property_by_label(struct node *tree, const char *label,
@@ -318,7 +341,11 @@ struct dt_info *dt_from_source(const char *f);
 struct dt_info *dt_from_fs(const char *dirname);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif /* DTC_H */
+=======
+#endif /* _DTC_H */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #endif /* _DTC_H */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

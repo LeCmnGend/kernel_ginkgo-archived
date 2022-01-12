@@ -172,6 +172,7 @@ static int sm_disk_new_block(struct dm_space_map *sm, dm_block_t *b)
 	 */
 	r = sm_ll_find_common_free_block(&smd->old_ll, &smd->ll, smd->begin, smd->ll.nr_blocks, b);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (r == -ENOSPC) {
 		/*
 		 * There's no free block between smd->begin and the end of the metadata device.
@@ -180,6 +181,8 @@ static int sm_disk_new_block(struct dm_space_map *sm, dm_block_t *b)
 		r = sm_ll_find_common_free_block(&smd->old_ll, &smd->ll, 0, smd->begin, b);
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (r)
@@ -211,6 +214,10 @@ static int sm_disk_commit(struct dm_space_map *sm)
 
 	memcpy(&smd->old_ll, &smd->ll, sizeof(smd->old_ll));
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	smd->begin = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	smd->begin = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

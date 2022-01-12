@@ -2023,7 +2023,11 @@ static int gpmi_nand_init(struct gpmi_nand_data *this)
 	ret = gpmi_alloc_dma_buffer(this);
 	if (ret)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return ret;
+=======
+		goto err_out;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto err_out;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -245,7 +245,11 @@ int vt_waitactive(int n)
 
 static inline int 
 <<<<<<< HEAD
+<<<<<<< HEAD
 do_fontx_ioctl(struct vc_data *vc, int cmd, struct consolefontdesc __user *user_cfd, int perm, struct console_font_op *op)
+=======
+do_fontx_ioctl(int cmd, struct consolefontdesc __user *user_cfd, int perm, struct console_font_op *op)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 do_fontx_ioctl(int cmd, struct consolefontdesc __user *user_cfd, int perm, struct console_font_op *op)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -267,9 +271,14 @@ do_fontx_ioctl(int cmd, struct consolefontdesc __user *user_cfd, int perm, struc
 		op->charcount = cfdarg.charcount;
 		op->data = cfdarg.chardata;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return con_font_op(vc, op);
 
 	case GIO_FONTX:
+=======
+		return con_font_op(vc_cons[fg_console].d, op);
+	case GIO_FONTX: {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return con_font_op(vc_cons[fg_console].d, op);
 	case GIO_FONTX: {
@@ -281,7 +290,11 @@ do_fontx_ioctl(int cmd, struct consolefontdesc __user *user_cfd, int perm, struc
 		op->charcount = cfdarg.charcount;
 		op->data = cfdarg.chardata;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		i = con_font_op(vc, op);
+=======
+		i = con_font_op(vc_cons[fg_console].d, op);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		i = con_font_op(vc_cons[fg_console].d, op);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -293,6 +306,10 @@ do_fontx_ioctl(int cmd, struct consolefontdesc __user *user_cfd, int perm, struc
 			return -EFAULT;
 		return 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		}
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -911,6 +928,7 @@ int vt_ioctl(struct tty_struct *tty,
 			vcp = vc_cons[i].d;
 			if (vcp) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				int ret;
 				int save_scan_lines = vcp->vc_scan_lines;
 				int save_cell_height = vcp->vc_cell_height;
@@ -928,12 +946,17 @@ int vt_ioctl(struct tty_struct *tty,
 					return ret;
 				}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				if (v.v_vlin)
 					vcp->vc_scan_lines = v.v_vlin;
 				if (v.v_clin)
 					vcp->vc_font.height = v.v_clin;
 				vcp->vc_resize_user = 1;
 				vc_resize(vcp, v.v_cols, v.v_rows);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			}
 			console_unlock();
@@ -951,7 +974,11 @@ int vt_ioctl(struct tty_struct *tty,
 		op.charcount = 256;
 		op.data = up;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = con_font_op(vc, &op);
+=======
+		ret = con_font_op(vc_cons[fg_console].d, &op);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = con_font_op(vc_cons[fg_console].d, &op);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -966,7 +993,11 @@ int vt_ioctl(struct tty_struct *tty,
 		op.charcount = 256;
 		op.data = up;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = con_font_op(vc, &op);
+=======
+		ret = con_font_op(vc_cons[fg_console].d, &op);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = con_font_op(vc_cons[fg_console].d, &op);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -987,7 +1018,11 @@ int vt_ioctl(struct tty_struct *tty,
 	case PIO_FONTX:
 	case GIO_FONTX:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = do_fontx_ioctl(vc, cmd, up, perm, &op);
+=======
+		ret = do_fontx_ioctl(cmd, up, perm, &op);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = do_fontx_ioctl(cmd, up, perm, &op);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1008,17 +1043,23 @@ int vt_ioctl(struct tty_struct *tty,
 		op.op = KD_FONT_OP_SET_DEFAULT;
 		op.data = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = con_font_op(vc, &op);
 		if (ret)
 			break;
 		console_lock();
 		con_set_default_unimap(vc);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = con_font_op(vc_cons[fg_console].d, &op);
 		if (ret)
 			break;
 		console_lock();
 		con_set_default_unimap(vc_cons[fg_console].d);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		console_unlock();
 		break;
@@ -1147,9 +1188,14 @@ struct compat_consolefontdesc {
 
 static inline int
 <<<<<<< HEAD
+<<<<<<< HEAD
 compat_fontx_ioctl(struct vc_data *vc, int cmd,
 		   struct compat_consolefontdesc __user *user_cfd,
 		   int perm, struct console_font_op *op)
+=======
+compat_fontx_ioctl(int cmd, struct compat_consolefontdesc __user *user_cfd,
+			 int perm, struct console_font_op *op)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 compat_fontx_ioctl(int cmd, struct compat_consolefontdesc __user *user_cfd,
 			 int perm, struct console_font_op *op)
@@ -1172,8 +1218,12 @@ compat_fontx_ioctl(int cmd, struct compat_consolefontdesc __user *user_cfd,
 		op->charcount = cfdarg.charcount;
 		op->data = compat_ptr(cfdarg.chardata);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return con_font_op(vc, op);
 
+=======
+		return con_font_op(vc_cons[fg_console].d, op);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return con_font_op(vc_cons[fg_console].d, op);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1185,7 +1235,11 @@ compat_fontx_ioctl(int cmd, struct compat_consolefontdesc __user *user_cfd,
 		op->charcount = cfdarg.charcount;
 		op->data = compat_ptr(cfdarg.chardata);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		i = con_font_op(vc, op);
+=======
+		i = con_font_op(vc_cons[fg_console].d, op);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		i = con_font_op(vc_cons[fg_console].d, op);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1280,7 +1334,11 @@ long vt_compat_ioctl(struct tty_struct *tty,
 	case PIO_FONTX:
 	case GIO_FONTX:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = compat_fontx_ioctl(vc, cmd, up, perm, &op);
+=======
+		ret = compat_fontx_ioctl(cmd, up, perm, &op);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = compat_fontx_ioctl(cmd, up, perm, &op);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

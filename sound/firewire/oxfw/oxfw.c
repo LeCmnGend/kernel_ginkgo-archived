@@ -407,7 +407,12 @@ static const struct ieee1394_device_id oxfw_id_table[] = {
 	 *  Mackie Onyx Satellite:		0x00200f
 	 *  Tapco LINK.firewire 4x6:		0x000460
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 *  d.2 pro/d.4 pro (built-in card):	Unknown
+=======
+	 *  d.2 pro:				Unknown
+	 *  d.4 pro:				Unknown
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 *  d.2 pro:				Unknown
 	 *  d.4 pro:				Unknown

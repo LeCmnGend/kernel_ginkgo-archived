@@ -409,6 +409,7 @@ static int lpddr2_nvm_lock(struct mtd_info *mtd, loff_t start_add,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const struct mtd_info lpddr2_nvm_mtd_info = {
 	.type		= MTD_RAM,
 	.writesize	= 1,
@@ -420,6 +421,8 @@ static const struct mtd_info lpddr2_nvm_mtd_info = {
 	._lock		= lpddr2_nvm_lock,
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -463,7 +466,10 @@ static int lpddr2_nvm_probe(struct platform_device *pdev)
 		.fldrv_priv	= pcm_data,
 	};
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (IS_ERR(map->virt))
@@ -478,6 +484,7 @@ static int lpddr2_nvm_probe(struct platform_device *pdev)
 
 	/* Populate mtd_info data structure */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	*mtd = lpddr2_nvm_mtd_info;
 	mtd->dev.parent		= &pdev->dev;
 	mtd->name		= pdev->dev.init_name;
@@ -486,6 +493,8 @@ static int lpddr2_nvm_probe(struct platform_device *pdev)
 	mtd->erasesize		= ERASE_BLOCKSIZE * pcm_data->bus_width;
 	mtd->writebufsize	= WRITE_BUFFSIZE * pcm_data->bus_width;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	*mtd = (struct mtd_info) {
 		.dev		= { .parent = &pdev->dev },
 		.name		= pdev->dev.init_name,
@@ -502,6 +511,9 @@ static int lpddr2_nvm_probe(struct platform_device *pdev)
 		._unlock	= lpddr2_nvm_unlock,
 		._lock		= lpddr2_nvm_lock,
 	};
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Verify the presence of the device looking for PFOW string */

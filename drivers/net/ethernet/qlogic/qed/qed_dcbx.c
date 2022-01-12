@@ -1260,11 +1260,17 @@ int qed_dcbx_get_config_params(struct qed_hwfn *p_hwfn,
 
 	p_hwfn->p_dcbx_info->set.enabled = dcbx_info->operational.enabled;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	BUILD_BUG_ON(sizeof(dcbx_info->operational.params) !=
 		     sizeof(p_hwfn->p_dcbx_info->set.config.params));
 	memcpy(&p_hwfn->p_dcbx_info->set.config.params,
 	       &dcbx_info->operational.params,
 	       sizeof(p_hwfn->p_dcbx_info->set.config.params));
+=======
+	memcpy(&p_hwfn->p_dcbx_info->set.config.params,
+	       &dcbx_info->operational.params,
+	       sizeof(struct qed_dcbx_admin_params));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memcpy(&p_hwfn->p_dcbx_info->set.config.params,
 	       &dcbx_info->operational.params,

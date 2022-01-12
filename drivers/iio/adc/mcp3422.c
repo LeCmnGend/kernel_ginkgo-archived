@@ -100,6 +100,11 @@ static int mcp3422_update_config(struct mcp3422 *adc, u8 newconfig)
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	mutex_lock(&adc->lock);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mutex_lock(&adc->lock);
 
@@ -111,6 +116,11 @@ static int mcp3422_update_config(struct mcp3422 *adc, u8 newconfig)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	mutex_unlock(&adc->lock);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mutex_unlock(&adc->lock);
 
@@ -148,8 +158,11 @@ static int mcp3422_read_channel(struct mcp3422 *adc,
 	u8 req_channel = channel->channel;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&adc->lock);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (req_channel != MCP3422_CHANNEL(adc->config)) {
@@ -159,6 +172,7 @@ static int mcp3422_read_channel(struct mcp3422 *adc,
 		config &= ~MCP3422_PGA_MASK;
 		config |= MCP3422_PGA_VALUE(adc->pga[req_channel]);
 		ret = mcp3422_update_config(adc, config);
+<<<<<<< HEAD
 <<<<<<< HEAD
 		if (ret < 0) {
 			mutex_unlock(&adc->lock);
@@ -173,12 +187,17 @@ static int mcp3422_read_channel(struct mcp3422 *adc,
 
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (ret < 0)
 			return ret;
 		msleep(mcp3422_read_times[MCP3422_SAMPLE_RATE(adc->config)]);
 	}
 
 	return mcp3422_read(adc, value, &config);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

@@ -75,10 +75,15 @@ static inline void kmap_invalidate_coherent(struct page *page,
 				(page_to_phys(page) & DCACHE_ALIAS_MASK);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			preempt_disable();
 			__invalidate_dcache_page_alias(kvaddr,
 						       page_to_phys(page));
 			preempt_enable();
+=======
+			__invalidate_dcache_page_alias(kvaddr,
+						       page_to_phys(page));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			__invalidate_dcache_page_alias(kvaddr,
 						       page_to_phys(page));
@@ -168,7 +173,10 @@ void flush_dcache_page(struct page *page)
 			return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		preempt_disable();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		virt = TLBTEMP_BASE_1 + (phys & DCACHE_ALIAS_MASK);
@@ -182,7 +190,10 @@ void flush_dcache_page(struct page *page)
 		if (mapping)
 			__invalidate_icache_page_alias(virt, phys);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		preempt_enable();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -219,10 +230,15 @@ void local_flush_cache_page(struct vm_area_struct *vma, unsigned long address,
 	unsigned long virt = TLBTEMP_BASE_1 + (address & DCACHE_ALIAS_MASK);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_disable();
 	__flush_invalidate_dcache_page_alias(virt, phys);
 	__invalidate_icache_page_alias(virt, phys);
 	preempt_enable();
+=======
+	__flush_invalidate_dcache_page_alias(virt, phys);
+	__invalidate_icache_page_alias(virt, phys);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__flush_invalidate_dcache_page_alias(virt, phys);
 	__invalidate_icache_page_alias(virt, phys);
@@ -254,7 +270,10 @@ update_mmu_cache(struct vm_area_struct * vma, unsigned long addr, pte_t *ptep)
 		unsigned long tmp;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		preempt_disable();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		tmp = TLBTEMP_BASE_1 + (phys & DCACHE_ALIAS_MASK);
@@ -263,7 +282,10 @@ update_mmu_cache(struct vm_area_struct * vma, unsigned long addr, pte_t *ptep)
 		__flush_invalidate_dcache_page_alias(tmp, phys);
 		__invalidate_icache_page_alias(tmp, phys);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		preempt_enable();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -300,9 +322,13 @@ void copy_to_user_page(struct vm_area_struct *vma, struct page *page,
 	if (alias) {
 		unsigned long t = TLBTEMP_BASE_1 + (vaddr & DCACHE_ALIAS_MASK);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		preempt_disable();
 		__flush_invalidate_dcache_page_alias(t, phys);
 		preempt_enable();
+=======
+		__flush_invalidate_dcache_page_alias(t, phys);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__flush_invalidate_dcache_page_alias(t, phys);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -321,11 +347,17 @@ void copy_to_user_page(struct vm_area_struct *vma, struct page *page,
 		unsigned long t = TLBTEMP_BASE_1 + (vaddr & DCACHE_ALIAS_MASK);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		preempt_disable();
 		__flush_invalidate_dcache_range((unsigned long) dst, len);
 		if ((vma->vm_flags & VM_EXEC) != 0)
 			__invalidate_icache_page_alias(t, phys);
 		preempt_enable();
+=======
+		__flush_invalidate_dcache_range((unsigned long) dst, len);
+		if ((vma->vm_flags & VM_EXEC) != 0)
+			__invalidate_icache_page_alias(t, phys);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__flush_invalidate_dcache_range((unsigned long) dst, len);
 		if ((vma->vm_flags & VM_EXEC) != 0)
@@ -353,9 +385,13 @@ extern void copy_from_user_page(struct vm_area_struct *vma, struct page *page,
 	if (alias) {
 		unsigned long t = TLBTEMP_BASE_1 + (vaddr & DCACHE_ALIAS_MASK);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		preempt_disable();
 		__flush_invalidate_dcache_page_alias(t, phys);
 		preempt_enable();
+=======
+		__flush_invalidate_dcache_page_alias(t, phys);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__flush_invalidate_dcache_page_alias(t, phys);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

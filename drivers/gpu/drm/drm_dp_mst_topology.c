@@ -2763,9 +2763,12 @@ bool drm_dp_mst_allocate_vcpi(struct drm_dp_mst_topology_mgr *mgr,
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (slots < 0)
 		return false;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	port = drm_dp_get_validated_port_ref(mgr, port);
@@ -2773,6 +2776,12 @@ bool drm_dp_mst_allocate_vcpi(struct drm_dp_mst_topology_mgr *mgr,
 		return false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (slots < 0)
+		return false;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (slots < 0)
 		return false;
@@ -2791,7 +2800,10 @@ bool drm_dp_mst_allocate_vcpi(struct drm_dp_mst_topology_mgr *mgr,
 		DRM_DEBUG_KMS("failed to init vcpi slots=%d max=63 ret=%d\n",
 				DIV_ROUND_UP(pbn, mgr->pbn_div), ret);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		drm_dp_put_port(port);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto out;

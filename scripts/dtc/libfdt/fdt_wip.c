@@ -83,7 +83,11 @@ int fdt_setprop_inplace(void *fdt, int nodeoffset, const char *name,
 
 	propval = fdt_getprop(fdt, nodeoffset, name, &proplen);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!propval)
+=======
+	if (! propval)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (! propval)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -98,7 +102,11 @@ int fdt_setprop_inplace(void *fdt, int nodeoffset, const char *name,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void fdt_nop_region_(void *start, int len)
+=======
+static void _fdt_nop_region(void *start, int len)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void _fdt_nop_region(void *start, int len)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -116,22 +124,32 @@ int fdt_nop_property(void *fdt, int nodeoffset, const char *name)
 
 	prop = fdt_get_property_w(fdt, nodeoffset, name, &len);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!prop)
 		return len;
 
 	fdt_nop_region_(prop, len + sizeof(*prop));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (! prop)
 		return len;
 
 	_fdt_nop_region(prop, len + sizeof(*prop));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int fdt_node_end_offset_(void *fdt, int offset)
+=======
+int _fdt_node_end_offset(void *fdt, int offset)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int _fdt_node_end_offset(void *fdt, int offset)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -149,17 +167,23 @@ int fdt_nop_node(void *fdt, int nodeoffset)
 	int endoffset;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	endoffset = fdt_node_end_offset_(fdt, nodeoffset);
 	if (endoffset < 0)
 		return endoffset;
 
 	fdt_nop_region_(fdt_offset_ptr_w(fdt, nodeoffset, 0),
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	endoffset = _fdt_node_end_offset(fdt, nodeoffset);
 	if (endoffset < 0)
 		return endoffset;
 
 	_fdt_nop_region(fdt_offset_ptr_w(fdt, nodeoffset, 0),
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			endoffset - nodeoffset);
 	return 0;

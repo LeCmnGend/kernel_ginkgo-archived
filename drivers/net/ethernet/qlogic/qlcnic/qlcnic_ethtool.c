@@ -1049,7 +1049,11 @@ int qlcnic_do_lb_test(struct qlcnic_adapter *adapter, u8 mode)
 		skb = netdev_alloc_skb(adapter->netdev, QLCNIC_ILB_PKT_SIZE);
 		if (!skb)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto error;
+=======
+			break;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			break;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1077,7 +1081,10 @@ int qlcnic_do_lb_test(struct qlcnic_adapter *adapter, u8 mode)
 	}
 	if (cnt != i) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 error:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dev_err(&adapter->pdev->dev,

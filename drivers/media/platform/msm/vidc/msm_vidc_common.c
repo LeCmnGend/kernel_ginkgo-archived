@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2012-2020, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2012-2020, 2021 The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2012-2020, 2021 The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -29,6 +33,7 @@
 #include "msm_cvp.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct kmem_cache *kmem_buf_pool;
 
 void __init init_vidc_kmem_buf_pool(void)
@@ -36,6 +41,8 @@ void __init init_vidc_kmem_buf_pool(void)
 	kmem_buf_pool = KMEM_CACHE(msm_vidc_buffer, SLAB_HWCACHE_ALIGN | SLAB_PANIC);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define MSM_VIDC_QBUF_BATCH_TIMEOUT 300
@@ -2488,6 +2495,10 @@ static bool is_eos_buffer(struct msm_vidc_inst *inst, u32 device_addr)
 		if (temp->smem.device_addr == device_addr) {
 			found = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			temp->is_queued = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			temp->is_queued = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4117,6 +4128,12 @@ int msm_vidc_send_pending_eos_buffers(struct msm_vidc_inst *inst)
 	mutex_lock(&inst->eosbufs.lock);
 	list_for_each_entry_safe(binfo, temp, &inst->eosbufs.list, list) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		if (binfo->is_queued)
+			continue;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (binfo->is_queued)
 			continue;
@@ -4138,6 +4155,10 @@ int msm_vidc_send_pending_eos_buffers(struct msm_vidc_inst *inst)
 		rc = call_hfi_op(hdev, session_etb, inst->session,
 				&data);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		binfo->is_queued = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		binfo->is_queued = 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4221,7 +4242,10 @@ int msm_vidc_comm_cmd(void *instance, union msm_v4l2_cmd *cmd)
 		list_add_tail(&binfo->list, &inst->eosbufs.list);
 		mutex_unlock(&inst->eosbufs.lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rc = msm_vidc_send_pending_eos_buffers(inst);
@@ -6705,7 +6729,11 @@ struct msm_vidc_buffer *msm_comm_get_vidc_buffer(struct msm_vidc_inst *inst,
 	if (!found) {
 		/* this is new vb2_buffer */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mbuf = kmem_cache_zalloc(kmem_buf_pool, GFP_KERNEL);
+=======
+		mbuf = kzalloc(sizeof(struct msm_vidc_buffer), GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		mbuf = kzalloc(sizeof(struct msm_vidc_buffer), GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6997,7 +7025,11 @@ static void kref_free_mbuf(struct kref *kref)
 			struct msm_vidc_buffer, kref);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kmem_cache_free(kmem_buf_pool, mbuf);
+=======
+	kfree(mbuf);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(mbuf);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

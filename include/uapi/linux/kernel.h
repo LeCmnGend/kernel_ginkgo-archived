@@ -4,8 +4,11 @@
 
 #include <linux/sysinfo.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/const.h>
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*
  * 'kernel.h' contains some often-used function prototypes etc
@@ -14,6 +17,9 @@
 #define __ALIGN_KERNEL_MASK(x, mask)	(((x) + (mask)) & ~(mask))
 
 #define __KERNEL_DIV_ROUND_UP(n, d) (((n) + (d) - 1) / (d))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #endif /* _UAPI_LINUX_KERNEL_H */

@@ -1200,7 +1200,10 @@ static struct snd_soc_card *sun4i_codec_create_card(struct device *dev)
 
 	card->dev		= dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	card->owner		= THIS_MODULE;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	card->name		= "sun4i-codec";
@@ -1236,7 +1239,10 @@ static struct snd_soc_card *sun6i_codec_create_card(struct device *dev)
 
 	card->dev		= dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	card->owner		= THIS_MODULE;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	card->name		= "A31 Audio Codec";
@@ -1293,7 +1299,10 @@ static struct snd_soc_card *sun8i_a23_codec_create_card(struct device *dev)
 
 	card->dev		= dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	card->owner		= THIS_MODULE;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	card->name		= "A23 Audio Codec";
@@ -1335,7 +1344,10 @@ static struct snd_soc_card *sun8i_h3_codec_create_card(struct device *dev)
 
 	card->dev		= dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	card->owner		= THIS_MODULE;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	card->name		= "H3 Audio Codec";
@@ -1377,7 +1389,10 @@ static struct snd_soc_card *sun8i_v3s_codec_create_card(struct device *dev)
 
 	card->dev		= dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	card->owner		= THIS_MODULE;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	card->name		= "V3s Audio Codec";

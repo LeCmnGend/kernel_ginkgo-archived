@@ -119,8 +119,11 @@ static inline int
 arch_futex_atomic_op_inuser(int op, u32 oparg, int *oval, u32 __user *uaddr)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return -ENOSYS;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int oldval = 0, ret;
 
 	pagefault_disable();
@@ -141,6 +144,9 @@ arch_futex_atomic_op_inuser(int op, u32 oparg, int *oval, u32 __user *uaddr)
 		*oval = oldval;
 
 	return ret;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

@@ -207,8 +207,11 @@ static inline struct crypto_tfm *crypto_skcipher_tfm(
  * crypto_free_skcipher() - zeroize and free cipher handle
  * @tfm: cipher handle to be freed
 <<<<<<< HEAD
+<<<<<<< HEAD
  *
  * If @tfm is a NULL or error pointer, this function does nothing.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */

@@ -747,7 +747,10 @@ static int fnic_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
 		spin_lock_init(&fnic->io_req_lock[i]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = -ENOMEM;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	fnic->io_req_pool = mempool_create_slab_pool(2, fnic_io_req_cache);

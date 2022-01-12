@@ -1525,8 +1525,12 @@ KernelVersion:	4.3
 Contact:	linux-iio@vger.kernel.org
 Description:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		Raw (unscaled no offset etc.) reading of a substance. Units
 		after application of scale and offset are percents.
+=======
+		Raw (unscaled no offset etc.) percentage reading of a substance.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		Raw (unscaled no offset etc.) percentage reading of a substance.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

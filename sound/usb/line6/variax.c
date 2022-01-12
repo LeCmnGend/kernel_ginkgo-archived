@@ -218,6 +218,10 @@ static int variax_init(struct usb_line6 *line6,
 {
 	struct usb_line6_variax *variax = (struct usb_line6_variax *) line6;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int err;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -237,12 +241,18 @@ static int variax_init(struct usb_line6 *line6,
 		return -ENOMEM;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* initialize MIDI subsystem: */
 	err = line6_init_midi(&variax->line6);
 	if (err < 0)
 		return err;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* initiate startup procedure: */
 	variax_startup1(variax);

@@ -760,10 +760,15 @@ static int __load_free_space_cache(struct btrfs_root *root, struct inode *inode,
 		e = kmem_cache_zalloc(btrfs_free_space_cachep,
 				      GFP_NOFS);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!e) {
 			ret = -ENOMEM;
 			goto free_cache;
 		}
+=======
+		if (!e)
+			goto free_cache;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!e)
 			goto free_cache;
@@ -777,7 +782,10 @@ static int __load_free_space_cache(struct btrfs_root *root, struct inode *inode,
 
 		if (!e->bytes) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ret = -1;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			kmem_cache_free(btrfs_free_space_cachep, e);
@@ -800,7 +808,10 @@ static int __load_free_space_cache(struct btrfs_root *root, struct inode *inode,
 			e->bitmap = kzalloc(PAGE_SIZE, GFP_NOFS);
 			if (!e->bitmap) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				ret = -ENOMEM;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				kmem_cache_free(
@@ -1185,6 +1196,10 @@ static int __btrfs_wait_cache_io(struct btrfs_root *root,
 				io_ctl->entries, io_ctl->bitmaps);
 out:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	io_ctl_free(io_ctl);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	io_ctl_free(io_ctl);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1353,7 +1368,10 @@ static int __btrfs_write_out_cache(struct btrfs_root *root, struct inode *inode,
 	 */
 	io_ctl_drop_pages(io_ctl);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	io_ctl_free(io_ctl);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2192,7 +2210,11 @@ static bool try_merge_free_space(struct btrfs_free_space_ctl *ctl,
 			  struct btrfs_free_space *info, bool update_stat)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct btrfs_free_space *left_info = NULL;
+=======
+	struct btrfs_free_space *left_info;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct btrfs_free_space *left_info;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2211,7 +2233,11 @@ static bool try_merge_free_space(struct btrfs_free_space_ctl *ctl,
 		left_info = rb_entry(rb_prev(&right_info->offset_index),
 				     struct btrfs_free_space, offset_index);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	else if (!right_info)
+=======
+	else
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	else
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

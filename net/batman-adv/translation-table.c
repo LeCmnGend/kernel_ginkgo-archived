@@ -903,7 +903,10 @@ batadv_tt_prepare_tvlv_global_data(struct batadv_orig_node *orig_node,
 		tt_vlan->vid = htons(vlan->vid);
 		tt_vlan->crc = htonl(vlan->tt.crc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		tt_vlan->reserved = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -990,7 +993,10 @@ batadv_tt_prepare_tvlv_local_data(struct batadv_priv *bat_priv,
 		tt_vlan->vid = htons(vlan->vid);
 		tt_vlan->crc = htonl(vlan->tt.crc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		tt_vlan->reserved = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

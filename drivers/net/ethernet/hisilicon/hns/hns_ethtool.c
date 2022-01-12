@@ -419,10 +419,13 @@ static void __lb_other_process(struct hns_nic_ring_data *ring_data,
 	new_skb = skb_copy(skb, GFP_ATOMIC);
 	dev_kfree_skb_any(skb);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!new_skb) {
 		netdev_err(ndev, "skb alloc failed\n");
 		return;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	skb = new_skb;

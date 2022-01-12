@@ -381,9 +381,12 @@ int fscrypt_fname_disk_to_usr(const struct inode *inode,
 	BUILD_BUG_ON(BASE64_CHARS(FSCRYPT_NOKEY_NAME_MAX) > NAME_MAX);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	nokey_name.dirhash[0] = hash;
 	nokey_name.dirhash[1] = minor_hash;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (hash) {
 		nokey_name.dirhash[0] = hash;
 		nokey_name.dirhash[1] = minor_hash;
@@ -391,6 +394,9 @@ int fscrypt_fname_disk_to_usr(const struct inode *inode,
 		nokey_name.dirhash[0] = 0;
 		nokey_name.dirhash[1] = 0;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (iname->len <= sizeof(nokey_name.bytes)) {
 		memcpy(nokey_name.bytes, iname->name, iname->len);

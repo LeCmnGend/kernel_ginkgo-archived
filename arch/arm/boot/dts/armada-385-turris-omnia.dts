@@ -270,7 +270,10 @@
 		compatible = "ethernet-phy-id0141.0DD1", "ethernet-phy-ieee802.3-c22";
 		reg = <1>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		marvell,reg-init = <3 18 0 0x4985>;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

@@ -99,16 +99,22 @@ static int wm831x_auxadc_read_irq(struct wm831x *wm831x,
 
 	mutex_lock(&wm831x->auxadc_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = req->val;
 
 out:
 	list_del(&req->list);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	list_del(&req->list);
 	ret = req->val;
 
 out:
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_unlock(&wm831x->auxadc_lock);
 

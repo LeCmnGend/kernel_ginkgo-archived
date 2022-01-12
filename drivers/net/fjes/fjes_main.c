@@ -1278,10 +1278,13 @@ static int fjes_probe(struct platform_device *plat_dev)
 
 	res = platform_get_resource(plat_dev, IORESOURCE_MEM, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!res) {
 		err = -EINVAL;
 		goto err_free_control_wq;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	hw->hw_res.start = res->start;

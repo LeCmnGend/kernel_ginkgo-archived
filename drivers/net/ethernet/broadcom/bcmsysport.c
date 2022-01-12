@@ -2088,10 +2088,15 @@ static int bcm_sysport_probe(struct platform_device *pdev)
 				      sizeof(struct bcm_sysport_tx_ring),
 				      GFP_KERNEL);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!priv->tx_rings) {
 		ret = -ENOMEM;
 		goto err_free_netdev;
 	}
+=======
+	if (!priv->tx_rings)
+		return -ENOMEM;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!priv->tx_rings)
 		return -ENOMEM;
@@ -2159,7 +2164,10 @@ static int bcm_sysport_probe(struct platform_device *pdev)
 	dev->hw_features |= NETIF_F_RXCSUM | NETIF_F_HIGHDMA |
 				NETIF_F_IP_CSUM | NETIF_F_IPV6_CSUM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev->max_mtu = UMAC_MAX_MTU_SIZE;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

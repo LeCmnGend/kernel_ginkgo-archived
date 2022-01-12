@@ -158,7 +158,11 @@ static long ioctl_memcpy(struct fsl_hv_ioctl_memcpy __user *p)
 	unsigned int i;
 	long ret = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int num_pinned = 0; /* return value from get_user_pages_fast() */
+=======
+	int num_pinned; /* return value from get_user_pages() */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int num_pinned; /* return value from get_user_pages() */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -179,7 +183,11 @@ static long ioctl_memcpy(struct fsl_hv_ioctl_memcpy __user *p)
 
 	/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * The array of pages returned by get_user_pages_fast() covers only
+=======
+	 * The array of pages returned by get_user_pages() covers only
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 * The array of pages returned by get_user_pages() covers only
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -233,7 +241,11 @@ static long ioctl_memcpy(struct fsl_hv_ioctl_memcpy __user *p)
 	/*
 	 * 'pages' is an array of struct page pointers that's initialized by
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * get_user_pages_fast().
+=======
+	 * get_user_pages().
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 * get_user_pages().
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -254,7 +266,11 @@ static long ioctl_memcpy(struct fsl_hv_ioctl_memcpy __user *p)
 		pr_debug("fsl-hv: could not allocate S/G list\n");
 		ret = -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto free_pages;
+=======
+		goto exit;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto exit;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -267,6 +283,10 @@ static long ioctl_memcpy(struct fsl_hv_ioctl_memcpy __user *p)
 
 	if (num_pinned != num_pages) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		/* get_user_pages() failed */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		/* get_user_pages() failed */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -312,6 +332,7 @@ static long ioctl_memcpy(struct fsl_hv_ioctl_memcpy __user *p)
 
 exit:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (pages && (num_pinned > 0)) {
 		for (i = 0; i < num_pinned; i++)
 			put_page(pages[i]);
@@ -320,6 +341,8 @@ exit:
 	kfree(sg_list_unaligned);
 free_pages:
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (pages) {
 		for (i = 0; i < num_pages; i++)
 			if (pages[i])
@@ -327,6 +350,9 @@ free_pages:
 	}
 
 	kfree(sg_list_unaligned);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kfree(pages);
 

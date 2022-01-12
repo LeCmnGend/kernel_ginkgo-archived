@@ -156,9 +156,12 @@ struct fuse_file {
 	/** Has flock been performed on this file? */
 	bool flock:1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* the read write file */
 	struct file *rw_lower_file;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -242,10 +245,13 @@ struct fuse_args {
 		struct fuse_arg args[2];
 	} out;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/** fuse shortcircuit file  */
 	struct file *private_lower_rw_file;
 	char *iname;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -291,8 +297,11 @@ struct fuse_io_priv {
  * FR_FINISHED:		request is finished
  * FR_PRIVATE:		request is on private list
 <<<<<<< HEAD
+<<<<<<< HEAD
  *
  * FR_BOOST:		request can be boost
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
@@ -309,10 +318,13 @@ enum fuse_req_flag {
 	FR_FINISHED,
 	FR_PRIVATE,
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 #ifdef CONFIG_FUSE_SHORTCIRCUIT
 	FR_BOOST = 30,
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -410,10 +422,13 @@ struct fuse_req {
 	/** Request is stolen from fuse_file->reserved_req */
 	struct file *stolen_file;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/** fuse shortcircuit file  */
 	struct file *private_lower_rw_file;
 	char *iname;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -577,9 +592,12 @@ struct fuse_conn {
 	unsigned handle_killpriv:1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/** Shortcircuited IO. */
 	unsigned shortcircuit_io:1;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
@@ -1024,7 +1042,10 @@ struct posix_acl;
 struct posix_acl *fuse_get_acl(struct inode *inode, int type);
 int fuse_set_acl(struct inode *inode, struct posix_acl *acl, int type);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern int sct_mode;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

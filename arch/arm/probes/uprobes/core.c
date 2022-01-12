@@ -208,7 +208,11 @@ static struct undef_hook uprobes_arm_break_hook = {
 	.instr_mask	= 0x0fffffff,
 	.instr_val	= (UPROBE_SWBP_ARM_INSN & 0x0fffffff),
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.cpsr_mask	= (PSR_T_BIT | MODE_MASK),
+=======
+	.cpsr_mask	= MODE_MASK,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.cpsr_mask	= MODE_MASK,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -220,7 +224,11 @@ static struct undef_hook uprobes_arm_ss_hook = {
 	.instr_mask	= 0x0fffffff,
 	.instr_val	= (UPROBE_SS_ARM_INSN & 0x0fffffff),
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.cpsr_mask	= (PSR_T_BIT | MODE_MASK),
+=======
+	.cpsr_mask	= MODE_MASK,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.cpsr_mask	= MODE_MASK,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

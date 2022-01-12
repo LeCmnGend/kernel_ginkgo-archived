@@ -181,7 +181,10 @@ static int ti_qspi_setup(struct spi_device *spi)
 	ret = pm_runtime_get_sync(qspi->dev);
 	if (ret < 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pm_runtime_put_noidle(qspi->dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dev_err(qspi->dev, "pm_runtime_get_sync() failed\n");
@@ -647,6 +650,7 @@ static int ti_qspi_runtime_resume(struct device *dev)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void ti_qspi_dma_cleanup(struct ti_qspi *qspi)
 {
 	if (qspi->rx_bb_addr)
@@ -658,6 +662,8 @@ static void ti_qspi_dma_cleanup(struct ti_qspi *qspi)
 		dma_release_channel(qspi->rx_chan);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static const struct of_device_id ti_qspi_match[] = {
@@ -812,8 +818,11 @@ no_dma:
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ti_qspi_dma_cleanup(qspi);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pm_runtime_disable(&pdev->dev);
@@ -835,14 +844,20 @@ static int ti_qspi_remove(struct platform_device *pdev)
 	pm_runtime_disable(&pdev->dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ti_qspi_dma_cleanup(qspi);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (qspi->rx_bb_addr)
 		dma_free_coherent(qspi->dev, QSPI_DMA_BUFFER_SIZE,
 				  qspi->rx_bb_addr,
 				  qspi->rx_bb_dma_addr);
 	if (qspi->rx_chan)
 		dma_release_channel(qspi->rx_chan);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;

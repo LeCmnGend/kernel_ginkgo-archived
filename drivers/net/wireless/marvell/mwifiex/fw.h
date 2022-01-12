@@ -939,7 +939,11 @@ struct mwifiex_aes_param {
 	u8 pn[WPA_PN_SIZE];
 	__le16 key_len;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8 key[WLAN_KEY_LEN_CCMP_256];
+=======
+	u8 key[WLAN_KEY_LEN_CCMP];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u8 key[WLAN_KEY_LEN_CCMP];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -575,6 +575,7 @@ static void pvscsi_complete_request(struct pvscsi_adapter *adapter,
 		case BTSTAT_LINKED_COMMAND_COMPLETED:
 		case BTSTAT_LINKED_COMMAND_COMPLETED_WITH_FLAG:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			/*
 			 * Commands like INQUIRY may transfer less data than
 			 * requested by the initiator via bufflen. Set residual
@@ -582,6 +583,9 @@ static void pvscsi_complete_request(struct pvscsi_adapter *adapter,
 			 * of data returned.
 			 */
 			scsi_set_resid(cmd, scsi_bufflen(cmd) - e->dataLen);
+=======
+			/* If everything went fine, let's move on..  */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			/* If everything went fine, let's move on..  */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

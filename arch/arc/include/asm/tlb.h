@@ -24,7 +24,10 @@ do {						\
  * Note, read http://lkml.org/lkml/2004/1/15/6
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifndef CONFIG_ARC_CACHE_VIPT_ALIASING
 #define tlb_start_vma(tlb, vma)
 #else
@@ -34,6 +37,9 @@ do {									\
 		flush_cache_range(vma, vma->vm_start, vma->vm_end);	\
 } while(0)
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #define tlb_end_vma(tlb, vma)						\

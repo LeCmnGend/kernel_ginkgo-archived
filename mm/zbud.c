@@ -243,7 +243,11 @@ static struct zbud_header *init_zbud_page(struct page *page)
 	INIT_LIST_HEAD(&zhdr->buddy);
 	INIT_LIST_HEAD(&zhdr->lru);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	zhdr->under_reclaim = false;
+=======
+	zhdr->under_reclaim = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	zhdr->under_reclaim = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

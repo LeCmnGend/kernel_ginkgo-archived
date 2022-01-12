@@ -62,6 +62,7 @@ static int follow_pfn_pte(struct vm_area_struct *vma, unsigned long address,
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * FOLL_FORCE or a forced COW break can write even to unwritable pte's,
  * but only after we've gone through a COW cycle and they are dirty.
  */
@@ -79,6 +80,8 @@ static inline bool should_force_cow_break(struct vm_area_struct *vma, unsigned i
 {
 	return is_cow_mapping(vma->vm_flags) && (flags & FOLL_GET);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * FOLL_FORCE can write to even unwritable pte's, but only
  * after we've gone through a COW cycle and they are dirty.
  */
@@ -86,6 +89,9 @@ static inline bool can_follow_write_pte(pte_t pte, unsigned int flags)
 {
 	return pte_write(pte) ||
 		((flags & FOLL_FORCE) && (flags & FOLL_COW) && pte_dirty(pte));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -716,6 +722,7 @@ static long __get_user_pages(struct task_struct *tsk, struct mm_struct *mm,
 				return i ? : -EFAULT;
 			if (is_vm_hugetlb_page(vma)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if (should_force_cow_break(vma, foll_flags))
 					foll_flags |= FOLL_WRITE;
 				i = follow_hugetlb_page(mm, vma, pages, vmas,
@@ -729,12 +736,17 @@ static long __get_user_pages(struct task_struct *tsk, struct mm_struct *mm,
 			foll_flags |= FOLL_WRITE;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				i = follow_hugetlb_page(mm, vma, pages, vmas,
 						&start, &nr_pages, i,
 						gup_flags, nonblocking);
 				continue;
 			}
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 retry:
 		/*
@@ -1260,7 +1272,11 @@ long populate_vma_page_range(struct vm_area_struct *vma,
 	 * other than PROT_NONE.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (vma_is_accessible(vma))
+=======
+	if (vma->vm_flags & (VM_READ | VM_WRITE | VM_EXEC))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (vma->vm_flags & (VM_READ | VM_WRITE | VM_EXEC))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1386,7 +1402,11 @@ struct page *get_dump_page(unsigned long addr)
  * are currently made:
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  *) Either MMU_GATHER_RCU_TABLE_FREE is enabled, and tlb_remove_table() is used to
+=======
+ *  *) Either HAVE_RCU_TABLE_FREE is enabled, and tlb_remove_table() is used to
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  *  *) Either HAVE_RCU_TABLE_FREE is enabled, and tlb_remove_table() is used to
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1843,10 +1863,13 @@ bool gup_fast_permitted(unsigned long start, int nr_pages, int write)
  * Like get_user_pages_fast() except it's IRQ-safe in that it won't fall back to
  * the regular GUP. It will only return non-negative values.
 <<<<<<< HEAD
+<<<<<<< HEAD
  *
  * Careful, careful! COW breaking can go either way, so a non-write
  * access can get ambiguous page results. If you call this function without
  * 'write' set, you'd better be sure that you're ok with that ambiguity.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
@@ -1877,12 +1900,15 @@ int __get_user_pages_fast(unsigned long start, int nr_pages, int write,
 	 * We do not adopt an rcu_read_lock(.) here as we also want to
 	 * block IPIs that come from THPs splitting.
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 *
 	 * NOTE! We allow read-only gup_fast() here, but you'd better be
 	 * careful about possible COW pages. You'll get _a_ COW page, but
 	 * not necessarily the one you intended to get depending on what
 	 * COW event happens after this. COW may break the page copy in a
 	 * random direction.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 */
@@ -1931,6 +1957,7 @@ int get_user_pages_fast(unsigned long start, int nr_pages, int write,
 		return -EFAULT;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * The FAST_GUP case requires FOLL_WRITE even for pure reads,
 	 * because get_user_pages() may need to cause an early COW in
@@ -1941,6 +1968,11 @@ int get_user_pages_fast(unsigned long start, int nr_pages, int write,
 	if (gup_fast_permitted(start, nr_pages, write)) {
 		local_irq_disable();
 		gup_pgd_range(addr, end, 1, pages, &nr);
+=======
+	if (gup_fast_permitted(start, nr_pages, write)) {
+		local_irq_disable();
+		gup_pgd_range(addr, end, write, pages, &nr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (gup_fast_permitted(start, nr_pages, write)) {
 		local_irq_disable();

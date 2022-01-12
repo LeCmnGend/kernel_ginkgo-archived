@@ -14,6 +14,7 @@ typedef int (*btree_keycmp)(const btree_key *, const btree_key *);
 #define NODE_HASH_SIZE  256
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* B-tree mutex nested subclasses */
 enum hfs_btree_mutex_classes {
 	CATALOG_BTREE_MUTEX,
@@ -21,6 +22,8 @@ enum hfs_btree_mutex_classes {
 	ATTR_BTREE_MUTEX,
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* A HFS BTree held in memory */

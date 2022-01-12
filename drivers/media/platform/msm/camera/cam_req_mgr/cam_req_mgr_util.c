@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2017-2019, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2017-2019,2021 The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2017-2019,2021 The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -133,6 +137,7 @@ static int32_t cam_get_free_handle_index(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void cam_dump_tbl_info(void)
 {
 	int i;
@@ -148,6 +153,8 @@ void cam_dump_tbl_info(void)
 
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int32_t cam_create_session_hdl(void *priv)
@@ -167,7 +174,10 @@ int32_t cam_create_session_hdl(void *priv)
 	if (idx < 0) {
 		CAM_ERR(CAM_CRM, "Unable to create session handle");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cam_dump_tbl_info();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		spin_unlock_bh(&hdl_tbl_lock);
@@ -204,7 +214,10 @@ int32_t cam_create_device_hdl(struct cam_create_dev_hdl *hdl_data)
 	if (idx < 0) {
 		CAM_ERR(CAM_CRM, "Unable to create device handle");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cam_dump_tbl_info();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		spin_unlock_bh(&hdl_tbl_lock);

@@ -1,6 +1,9 @@
 /* Copyright (c) 2013-2019, The Linux Foundation. All rights reserved.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -331,7 +334,10 @@ struct device_node *of_batterydata_get_best_profile(
 	bool in_range = false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pr_info(" sunxing get best profile enter\n");
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* read battery id range percentage for best profile */
@@ -352,8 +358,11 @@ struct device_node *of_batterydata_get_best_profile(
 	 */
 	for_each_child_of_node(batterydata_container_node, node) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 	#if 0
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (batt_type != NULL) {
@@ -366,7 +375,10 @@ struct device_node *of_batterydata_get_best_profile(
 			}
 		} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	#endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			rc = of_batterydata_read_batt_id_kohm(node,
@@ -376,7 +388,10 @@ struct device_node *of_batterydata_get_best_profile(
 				continue;
 			for (i = 0; i < batt_ids.num; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				pr_info("sunxing find battery data enter %d\n",i);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				delta = abs(batt_ids.kohm[i] - batt_id_kohm);
@@ -395,6 +410,7 @@ struct device_node *of_batterydata_get_best_profile(
 				}
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		#if 0
 		}
 		#endif
@@ -412,11 +428,16 @@ struct device_node *of_batterydata_get_best_profile(
 		if(best_node)
 		pr_info("use unknown battery data\n");
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 	}
 
 	if (best_node == NULL) {
 		pr_err("No battery data found\n");
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return best_node;
 	}

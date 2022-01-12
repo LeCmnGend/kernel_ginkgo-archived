@@ -69,8 +69,12 @@ static bool check_locality(struct tpm_chip *chip, int l)
 		return false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if ((access & (TPM_ACCESS_ACTIVE_LOCALITY | TPM_ACCESS_VALID
 		       | TPM_ACCESS_REQUEST_USE)) ==
+=======
+	if ((access & (TPM_ACCESS_ACTIVE_LOCALITY | TPM_ACCESS_VALID)) ==
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if ((access & (TPM_ACCESS_ACTIVE_LOCALITY | TPM_ACCESS_VALID)) ==
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

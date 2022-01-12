@@ -307,12 +307,17 @@ static int stdp4028_ge_b850v3_fw_probe(struct i2c_client *stdp4028_i2c,
 {
 	struct device *dev = &stdp4028_i2c->dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret;
 
 	ret = ge_b850v3_lvds_init(dev);
 
 	if (ret)
 		return ret;
+=======
+
+	ge_b850v3_lvds_init(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	ge_b850v3_lvds_init(dev);
@@ -375,12 +380,17 @@ static int stdp2690_ge_b850v3_fw_probe(struct i2c_client *stdp2690_i2c,
 {
 	struct device *dev = &stdp2690_i2c->dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret;
 
 	ret = ge_b850v3_lvds_init(dev);
 
 	if (ret)
 		return ret;
+=======
+
+	ge_b850v3_lvds_init(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	ge_b850v3_lvds_init(dev);

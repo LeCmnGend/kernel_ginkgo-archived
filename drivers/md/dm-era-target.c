@@ -47,7 +47,10 @@ static void writeset_free(struct writeset *ws)
 {
 	vfree(ws->bits);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ws->bits = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -75,6 +78,11 @@ static size_t bitset_size(unsigned nr_bits)
 static int writeset_alloc(struct writeset *ws, dm_block_t nr_blocks)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	ws->md.nr_bits = nr_blocks;
+	ws->md.root = INVALID_WRITESET_ROOT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ws->md.nr_bits = nr_blocks;
 	ws->md.root = INVALID_WRITESET_ROOT;
@@ -92,6 +100,7 @@ static int writeset_alloc(struct writeset *ws, dm_block_t nr_blocks)
  * Wipes the in-core bitset, and creates a new on disk bitset.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int writeset_init(struct dm_disk_bitset *info, struct writeset *ws,
 			 dm_block_t nr_blocks)
 {
@@ -101,12 +110,17 @@ static int writeset_init(struct dm_disk_bitset *info, struct writeset *ws,
 
 	ws->md.nr_bits = nr_blocks;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int writeset_init(struct dm_disk_bitset *info, struct writeset *ws)
 {
 	int r;
 
 	memset(ws->bits, 0, bitset_size(ws->md.nr_bits));
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	r = setup_on_disk_bitset(info, ws->md.nr_bits, &ws->md.root);
 	if (r) {
@@ -152,7 +166,11 @@ static int writeset_test_and_set(struct dm_disk_bitset *info,
 	int r;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!test_bit(block, ws->bits)) {
+=======
+	if (!test_and_set_bit(block, ws->bits)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!test_and_set_bit(block, ws->bits)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -410,7 +428,11 @@ static void ws_dec(void *context, const void *value)
 static int ws_eq(void *context, const void *value1, const void *value2)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return !memcmp(value1, value2, sizeof(struct writeset_disk));
+=======
+	return !memcmp(value1, value2, sizeof(struct writeset_metadata));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return !memcmp(value1, value2, sizeof(struct writeset_metadata));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -590,6 +612,7 @@ static int open_metadata(struct era_metadata *md)
 
 	disk = dm_block_data(sblock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* Verify the data block size hasn't changed */
 	if (le32_to_cpu(disk->data_block_size) != md->block_size) {
@@ -599,6 +622,8 @@ static int open_metadata(struct era_metadata *md)
 		goto bad;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	r = dm_tm_open_with_sm(md->bm, SUPERBLOCK_LOCATION,
@@ -613,15 +638,21 @@ static int open_metadata(struct era_metadata *md)
 	setup_infos(md);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	md->nr_blocks = le32_to_cpu(disk->nr_blocks);
 	md->current_era = le32_to_cpu(disk->current_era);
 
 	ws_unpack(&disk->current_writeset, &md->current_writeset->md);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	md->block_size = le32_to_cpu(disk->data_block_size);
 	md->nr_blocks = le32_to_cpu(disk->nr_blocks);
 	md->current_era = le32_to_cpu(disk->current_era);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	md->writeset_tree_root = le64_to_cpu(disk->writeset_tree_root);
 	md->era_array_root = le64_to_cpu(disk->era_array_root);
@@ -791,12 +822,15 @@ static int metadata_digest_lookup_writeset(struct era_metadata *md,
 	d->value = cpu_to_le32(key);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * We initialise another bitset info to avoid any caching side effects
 	 * with the previous one.
 	 */
 	dm_disk_bitset_init(md->tm, &d->info);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	d->nr_bits = min(d->writeset.nr_bits, md->nr_blocks);
@@ -813,13 +847,19 @@ static int metadata_digest_start(struct era_metadata *md, struct digest *d)
 
 	memset(d, 0, sizeof(*d));
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*
 	 * We initialise another bitset info to avoid any caching side
 	 * effects with the previous one.
 	 */
 	dm_disk_bitset_init(md->tm, &d->info);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	d->step = metadata_digest_lookup_writeset;
 
@@ -859,8 +899,11 @@ static struct era_metadata *metadata_open(struct block_device *bdev,
 static void metadata_close(struct era_metadata *md)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	writeset_free(&md->writesets[0]);
 	writeset_free(&md->writesets[1]);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	destroy_persistent_data_objects(md);
@@ -901,7 +944,10 @@ static int metadata_resize(struct era_metadata *md, void *arg)
 	if (r) {
 		DMERR("%s: writeset_alloc failed for writeset 1", __func__);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		writeset_free(&md->writesets[0]);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return r;
@@ -915,8 +961,11 @@ static int metadata_resize(struct era_metadata *md, void *arg)
 	if (r) {
 		DMERR("%s: dm_array_resize failed", __func__);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		writeset_free(&md->writesets[0]);
 		writeset_free(&md->writesets[1]);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return r;
@@ -941,6 +990,10 @@ static int metadata_era_archive(struct era_metadata *md)
 
 	ws_pack(&md->current_writeset->md, &value);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	md->current_writeset->md.root = INVALID_WRITESET_ROOT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	md->current_writeset->md.root = INVALID_WRITESET_ROOT;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -956,7 +1009,10 @@ static int metadata_era_archive(struct era_metadata *md)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	md->current_writeset->md.root = INVALID_WRITESET_ROOT;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	md->archived_writesets = true;
@@ -976,7 +1032,11 @@ static int metadata_new_era(struct era_metadata *md)
 	struct writeset *new_writeset = next_writeset(md);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	r = writeset_init(&md->bitset_info, new_writeset, md->nr_blocks);
+=======
+	r = writeset_init(&md->bitset_info, new_writeset);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	r = writeset_init(&md->bitset_info, new_writeset);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1033,7 +1093,11 @@ static int metadata_commit(struct era_metadata *md)
 	struct dm_block *sblock;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (md->current_writeset->md.root != INVALID_WRITESET_ROOT) {
+=======
+	if (md->current_writeset->md.root != SUPERBLOCK_LOCATION) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (md->current_writeset->md.root != SUPERBLOCK_LOCATION) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1312,10 +1376,15 @@ static void process_deferred_bios(struct era *era)
 	struct bio_list deferred_bios, marked_bios;
 	struct bio *bio;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct blk_plug plug;
 	bool commit_needed = false;
 	bool failed = false;
 	struct writeset *ws = era->md->current_writeset;
+=======
+	bool commit_needed = false;
+	bool failed = false;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bool commit_needed = false;
 	bool failed = false;
@@ -1330,11 +1399,17 @@ static void process_deferred_bios(struct era *era)
 	spin_unlock(&era->deferred_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (bio_list_empty(&deferred_bios))
 		return;
 
 	while ((bio = bio_list_pop(&deferred_bios))) {
 		r = writeset_test_and_set(&era->md->bitset_info, ws,
+=======
+	while ((bio = bio_list_pop(&deferred_bios))) {
+		r = writeset_test_and_set(&era->md->bitset_info,
+					  era->md->current_writeset,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	while ((bio = bio_list_pop(&deferred_bios))) {
 		r = writeset_test_and_set(&era->md->bitset_info,
@@ -1348,6 +1423,10 @@ static void process_deferred_bios(struct era *era)
 			 */
 			failed = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1367,6 +1446,7 @@ static void process_deferred_bios(struct era *era)
 		while ((bio = bio_list_pop(&marked_bios)))
 			bio_io_error(bio);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	else {
 		blk_start_plug(&plug);
 		while ((bio = bio_list_pop(&marked_bios))) {
@@ -1380,6 +1460,11 @@ static void process_deferred_bios(struct era *era)
 		}
 		blk_finish_plug(&plug);
 	}
+=======
+	else
+		while ((bio = bio_list_pop(&marked_bios)))
+			generic_make_request(bio);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	else
 		while ((bio = bio_list_pop(&marked_bios)))
@@ -1606,7 +1691,10 @@ static int era_ctr(struct dm_target *ti, unsigned argc, char **argv)
 	era->md = md;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	era->nr_blocks = calc_nr_blocks(era);
 
 	r = metadata_resize(era->md, &era->nr_blocks);
@@ -1616,6 +1704,9 @@ static int era_ctr(struct dm_target *ti, unsigned argc, char **argv)
 		return -ENOMEM;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	era->wq = alloc_ordered_workqueue("dm-" DM_MSG_PREFIX, WQ_MEM_RECLAIM);
 	if (!era->wq) {
@@ -1695,6 +1786,7 @@ static int era_preresume(struct dm_target *ti)
 
 	if (era->nr_blocks != new_size) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		r = metadata_resize(era->md, &new_size);
 		if (r) {
 			DMERR("%s: metadata_resize failed", __func__);
@@ -1711,6 +1803,11 @@ static int era_preresume(struct dm_target *ti)
 		if (r)
 			return r;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+		r = in_worker1(era, metadata_resize, &new_size);
+		if (r)
+			return r;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		era->nr_blocks = new_size;
 	}
@@ -1718,7 +1815,11 @@ static int era_preresume(struct dm_target *ti)
 	start_worker(era);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	r = in_worker0(era, metadata_era_rollover);
+=======
+	r = in_worker0(era, metadata_new_era);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	r = in_worker0(era, metadata_new_era);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -840,9 +840,12 @@ config SPI_SLAVE_SYSTEM_CONTROL
 endif # SPI_SLAVE
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 config SPI_DYNAMIC
 	def_bool ACPI || OF_DYNAMIC || SPI_SLAVE
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 endif # SPI

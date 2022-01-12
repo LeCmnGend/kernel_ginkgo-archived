@@ -12,6 +12,7 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define trace_kgsl_active_count(...) {}
 #define trace_kgsl_bus(...) {}
 #define trace_kgsl_buslevel(...) {}
@@ -67,6 +68,8 @@
 #define trace_syncpoint_timestamp_expire(...) {}
 
 #if 0
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #if !defined(_KGSL_TRACE_H) || defined(TRACE_HEADER_MULTI_READ)
@@ -932,7 +935,10 @@ TRACE_EVENT(kgsl_regwrite,
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 TRACE_EVENT(kgsl_popp_level,
 
 	TP_PROTO(struct kgsl_device *device, int level1, int level2),
@@ -1005,6 +1011,9 @@ TRACE_EVENT(kgsl_popp_nap,
 			__entry->percent)
 );
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 TRACE_EVENT(kgsl_register_event,
 		TP_PROTO(unsigned int id, unsigned int timestamp, void *func),
@@ -1344,6 +1353,9 @@ DEFINE_EVENT(hfi_msg_template, kgsl_hfi_receive,
 /* This part must be outside protection */
 #include <trace/define_trace.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -776,7 +776,11 @@ static void nicvf_rcv_queue_config(struct nicvf *nic, struct queue_set *qs,
 	mbx.rq.qs_num = qs->vnic_id;
 	mbx.rq.rq_num = qidx;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mbx.rq.cfg = ((u64)rq->caching << 26) | (rq->cq_qs << 19) |
+=======
+	mbx.rq.cfg = (rq->caching << 26) | (rq->cq_qs << 19) |
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mbx.rq.cfg = (rq->caching << 26) | (rq->cq_qs << 19) |
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

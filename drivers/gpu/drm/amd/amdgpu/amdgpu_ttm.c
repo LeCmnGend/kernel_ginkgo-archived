@@ -728,7 +728,10 @@ static int amdgpu_ttm_tt_pin_userptr(struct ttm_tt *ttm)
 release_sg:
 	kfree(ttm->sg);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ttm->sg = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return r;
@@ -746,7 +749,11 @@ static void amdgpu_ttm_tt_unpin_userptr(struct ttm_tt *ttm)
 
 	/* double check that we don't free the table twice */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!ttm->sg || !ttm->sg->sgl)
+=======
+	if (!ttm->sg->sgl)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!ttm->sg->sgl)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1018,7 +1025,10 @@ static void amdgpu_ttm_tt_unpopulate(struct ttm_tt *ttm)
 	if (gtt && gtt->userptr) {
 		kfree(ttm->sg);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ttm->sg = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ttm->page_flags &= ~TTM_PAGE_FLAG_SG;

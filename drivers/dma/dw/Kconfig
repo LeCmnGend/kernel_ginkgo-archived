@@ -9,7 +9,10 @@ config DW_DMAC_CORE
 config DW_DMAC
 	tristate "Synopsys DesignWare AHB DMA platform driver"
 <<<<<<< HEAD
+<<<<<<< HEAD
 	depends on HAS_IOMEM
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select DW_DMAC_CORE
@@ -21,7 +24,10 @@ config DW_DMAC_PCI
 	tristate "Synopsys DesignWare AHB DMA PCI driver"
 	depends on PCI
 <<<<<<< HEAD
+<<<<<<< HEAD
 	depends on HAS_IOMEM
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select DW_DMAC_CORE

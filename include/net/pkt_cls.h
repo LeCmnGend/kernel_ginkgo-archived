@@ -27,7 +27,11 @@ struct tcf_chain *tcf_chain_get(struct tcf_block *block, u32 chain_index,
 void tcf_chain_put(struct tcf_chain *chain);
 int tcf_block_get(struct tcf_block **p_block,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		  struct tcf_proto __rcu **p_filter_chain, struct Qdisc *q);
+=======
+		  struct tcf_proto __rcu **p_filter_chain);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		  struct tcf_proto __rcu **p_filter_chain);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -39,7 +43,11 @@ int tcf_classify(struct sk_buff *skb, const struct tcf_proto *tp,
 static inline
 int tcf_block_get(struct tcf_block **p_block,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		  struct tcf_proto __rcu **p_filter_chain, struct Qdisc *q)
+=======
+		  struct tcf_proto __rcu **p_filter_chain)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		  struct tcf_proto __rcu **p_filter_chain)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

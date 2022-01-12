@@ -61,7 +61,11 @@ ENTRY(ftrace_caller)
 	aghik	%r2,%r0,-MCOUNT_INSN_SIZE
 	lgrl	%r4,function_trace_op
 <<<<<<< HEAD
+<<<<<<< HEAD
 	lgrl	%r1,ftrace_func
+=======
+	lgrl	%r1,ftrace_trace_function
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	lgrl	%r1,ftrace_trace_function
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -71,7 +75,11 @@ ENTRY(ftrace_caller)
 	larl	%r4,function_trace_op
 	lg	%r4,0(%r4)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	larl	%r1,ftrace_func
+=======
+	larl	%r1,ftrace_trace_function
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	larl	%r1,ftrace_trace_function
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

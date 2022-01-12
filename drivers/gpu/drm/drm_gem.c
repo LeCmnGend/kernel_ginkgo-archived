@@ -731,6 +731,12 @@ err:
  *
  * Open an object using the global name, returning a handle and the size.
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+ *
+ * This handle (of course) holds a reference to the object, so the object
+ * will not go away until the handle is deleted.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  *
  * This handle (of course) holds a reference to the object, so the object
@@ -761,8 +767,14 @@ drm_gem_open_ioctl(struct drm_device *dev, void *data,
 	/* drm_gem_handle_create_tail unlocks dev->object_name_lock. */
 	ret = drm_gem_handle_create_tail(file_priv, obj, &handle);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret)
 		goto err;
+=======
+	drm_gem_object_put_unlocked(obj);
+	if (ret)
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	drm_gem_object_put_unlocked(obj);
 	if (ret)
@@ -773,9 +785,13 @@ drm_gem_open_ioctl(struct drm_device *dev, void *data,
 	args->size = obj->size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 err:
 	drm_gem_object_put_unlocked(obj);
 	return ret;
+=======
+	return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

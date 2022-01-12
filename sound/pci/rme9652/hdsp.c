@@ -5344,8 +5344,12 @@ static int snd_hdsp_free(struct hdsp *hdsp)
 		pci_release_regions(hdsp->pci);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (pci_is_enabled(hdsp->pci))
 		pci_disable_device(hdsp->pci);
+=======
+	pci_disable_device(hdsp->pci);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pci_disable_device(hdsp->pci);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

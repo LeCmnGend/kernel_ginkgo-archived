@@ -72,7 +72,10 @@ static int snirm710_probe(struct platform_device *dev)
 	struct Scsi_Host *host;
 	struct  resource *res;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int rc;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -101,9 +104,13 @@ static int snirm710_probe(struct platform_device *dev)
 	host->this_id = 7;
 	host->base = base;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	host->irq = rc = platform_get_irq(dev, 0);
 	if (rc < 0)
 		goto out_put_host;
+=======
+	host->irq = platform_get_irq(dev, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	host->irq = platform_get_irq(dev, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

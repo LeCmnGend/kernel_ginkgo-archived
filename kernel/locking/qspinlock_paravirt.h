@@ -50,6 +50,11 @@ enum vcpu_state {
 struct pv_node {
 	struct mcs_spinlock	mcs;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct mcs_spinlock	__res[3];
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct mcs_spinlock	__res[3];
 
@@ -60,12 +65,18 @@ struct pv_node {
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Include queued spinlock statistics code
  */
 #include "qspinlock_stat.h"
 
 /*
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * By replacing the regular queued_spin_trylock() with the function below,
  * it will be called once when a lock waiter enter the PV slowpath before
@@ -264,7 +275,11 @@ static void pv_init_node(struct mcs_spinlock *node)
 	struct pv_node *pn = (struct pv_node *)node;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	BUILD_BUG_ON(sizeof(struct pv_node) > sizeof(struct qnode));
+=======
+	BUILD_BUG_ON(sizeof(struct pv_node) > 5*sizeof(struct mcs_spinlock));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	BUILD_BUG_ON(sizeof(struct pv_node) > 5*sizeof(struct mcs_spinlock));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -405,7 +420,11 @@ pv_wait_head_or_lock(struct qspinlock *lock, struct mcs_spinlock *node)
 	 * Tracking # of slowpath locking operations
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	qstat_inc(qstat_lock_slowpath, true);
+=======
+	qstat_inc(qstat_pv_lock_slowpath, true);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	qstat_inc(qstat_pv_lock_slowpath, true);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

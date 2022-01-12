@@ -120,11 +120,15 @@ show_transport_handle(struct device *dev, struct device_attribute *attr,
 {
 	struct iscsi_internal *priv = dev_to_iscsi_internal(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (!capable(CAP_SYS_ADMIN))
 		return -EACCES;
 	return sysfs_emit(buf, "%llu\n",
 		  (unsigned long long)iscsi_handle(priv->iscsi_transport));
+=======
+	return sprintf(buf, "%llu\n", (unsigned long long)iscsi_handle(priv->iscsi_transport));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return sprintf(buf, "%llu\n", (unsigned long long)iscsi_handle(priv->iscsi_transport));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -138,7 +142,11 @@ show_transport_##name(struct device *dev, 				\
 {									\
 	struct iscsi_internal *priv = dev_to_iscsi_internal(dev);	\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return sysfs_emit(buf, format"\n", priv->iscsi_transport->name);\
+=======
+	return sprintf(buf, format"\n", priv->iscsi_transport->name);	\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return sprintf(buf, format"\n", priv->iscsi_transport->name);	\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -183,7 +191,11 @@ show_ep_handle(struct device *dev, struct device_attribute *attr, char *buf)
 {
 	struct iscsi_endpoint *ep = iscsi_dev_to_endpoint(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return sysfs_emit(buf, "%llu\n", (unsigned long long) ep->id);
+=======
+	return sprintf(buf, "%llu\n", (unsigned long long) ep->id);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return sprintf(buf, "%llu\n", (unsigned long long) ep->id);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -440,11 +452,14 @@ static umode_t iscsi_iface_attr_is_visible(struct kobject *kobj,
 	struct iscsi_iface *iface = iscsi_dev_to_iface(dev);
 	struct iscsi_transport *t = iface->transport;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int param = -1;
 
 	if (attr == &dev_attr_iface_enabled.attr)
 		param = ISCSI_NET_PARAM_IFACE_ENABLE;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int param;
 	int param_type;
 
@@ -478,6 +493,9 @@ static umode_t iscsi_iface_attr_is_visible(struct kobject *kobj,
 		param = ISCSI_NET_PARAM_CACHE_ID;
 	else if (attr == &dev_attr_iface_redirect_en.attr)
 		param = ISCSI_NET_PARAM_REDIRECT_EN;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	else if (attr == &dev_attr_iface_def_taskmgmt_tmo.attr)
 		param = ISCSI_IFACE_PARAM_DEF_TASKMGMT_TMO;
@@ -516,6 +534,7 @@ static umode_t iscsi_iface_attr_is_visible(struct kobject *kobj,
 	else if (attr == &dev_attr_iface_initiator_name.attr)
 		param = ISCSI_IFACE_PARAM_INITIATOR_NAME;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (param != -1)
 		return t->attr_is_visible(ISCSI_IFACE_PARAM, param);
@@ -548,6 +567,8 @@ static umode_t iscsi_iface_attr_is_visible(struct kobject *kobj,
 		param = ISCSI_NET_PARAM_CACHE_ID;
 	else if (attr == &dev_attr_iface_redirect_en.attr)
 		param = ISCSI_NET_PARAM_REDIRECT_EN;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	else if (iface->iface_type == ISCSI_IFACE_TYPE_IPV4) {
@@ -641,8 +662,11 @@ static umode_t iscsi_iface_attr_is_visible(struct kobject *kobj,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return t->attr_is_visible(ISCSI_NET_PARAM, param);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	switch (param) {
 	case ISCSI_IFACE_PARAM_DEF_TASKMGMT_TMO:
 	case ISCSI_IFACE_PARAM_HDRDGST_EN:
@@ -669,6 +693,9 @@ static umode_t iscsi_iface_attr_is_visible(struct kobject *kobj,
 	}
 
 	return t->attr_is_visible(param_type, param);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -2365,6 +2392,7 @@ int iscsi_destroy_conn(struct iscsi_cls_conn *conn)
 EXPORT_SYMBOL_GPL(iscsi_destroy_conn);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void iscsi_put_conn(struct iscsi_cls_conn *conn)
 {
 	put_device(&conn->dev);
@@ -2377,6 +2405,8 @@ void iscsi_get_conn(struct iscsi_cls_conn *conn)
 }
 EXPORT_SYMBOL_GPL(iscsi_get_conn);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -2841,9 +2871,12 @@ iscsi_set_param(struct iscsi_transport *transport, struct iscsi_uevent *ev)
 	int err = 0, value = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ev->u.set_param.len > PAGE_SIZE)
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	session = iscsi_session_lookup(ev->u.set_param.sid);
@@ -2994,9 +3027,12 @@ iscsi_set_host_param(struct iscsi_transport *transport,
 		return -ENOSYS;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ev->u.set_host_param.len > PAGE_SIZE)
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	shost = scsi_host_lookup(ev->u.set_host_param.host_no);
@@ -3262,7 +3298,11 @@ static int iscsi_set_flashnode_param(struct iscsi_transport *transport,
 		       __func__, ev->u.set_flashnode.host_no);
 		err = -ENODEV;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto exit_set_fnode;
+=======
+		goto put_host;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto put_host;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3591,7 +3631,10 @@ iscsi_if_recv_msg(struct sk_buff *skb, struct nlmsghdr *nlh, uint32_t *group)
 	int err = 0;
 	u32 portid;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 pdu_len;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct iscsi_uevent *ev = nlmsg_data(nlh);
@@ -3602,9 +3645,12 @@ iscsi_if_recv_msg(struct sk_buff *skb, struct nlmsghdr *nlh, uint32_t *group)
 	struct iscsi_endpoint *ep = NULL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!netlink_capable(skb, CAP_SYS_ADMIN))
 		return -EPERM;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (nlh->nlmsg_type == ISCSI_UEVENT_PATH_UPDATE)
@@ -3715,6 +3761,7 @@ iscsi_if_recv_msg(struct sk_buff *skb, struct nlmsghdr *nlh, uint32_t *group)
 		break;
 	case ISCSI_UEVENT_SEND_PDU:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pdu_len = nlh->nlmsg_len - sizeof(*nlh) - sizeof(*ev);
 
 		if ((ev->u.send_pdu.hdr_size > pdu_len) ||
@@ -3723,6 +3770,8 @@ iscsi_if_recv_msg(struct sk_buff *skb, struct nlmsghdr *nlh, uint32_t *group)
 			break;
 		}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		conn = iscsi_conn_lookup(ev->u.send_pdu.sid, ev->u.send_pdu.cid);
@@ -4132,7 +4181,11 @@ show_priv_session_state(struct device *dev, struct device_attribute *attr,
 {
 	struct iscsi_cls_session *session = iscsi_dev_to_session(dev->parent);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return sysfs_emit(buf, "%s\n", iscsi_session_state_name(session->state));
+=======
+	return sprintf(buf, "%s\n", iscsi_session_state_name(session->state));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return sprintf(buf, "%s\n", iscsi_session_state_name(session->state));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4145,7 +4198,11 @@ show_priv_session_creator(struct device *dev, struct device_attribute *attr,
 {
 	struct iscsi_cls_session *session = iscsi_dev_to_session(dev->parent);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return sysfs_emit(buf, "%d\n", session->creator);
+=======
+	return sprintf(buf, "%d\n", session->creator);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return sprintf(buf, "%d\n", session->creator);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4158,7 +4215,11 @@ show_priv_session_target_id(struct device *dev, struct device_attribute *attr,
 {
 	struct iscsi_cls_session *session = iscsi_dev_to_session(dev->parent);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return sysfs_emit(buf, "%d\n", session->target_id);
+=======
+	return sprintf(buf, "%d\n", session->target_id);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return sprintf(buf, "%d\n", session->target_id);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4175,8 +4236,13 @@ show_priv_session_##field(struct device *dev, 				\
 			iscsi_dev_to_session(dev->parent);		\
 	if (session->field == -1)					\
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return sysfs_emit(buf, "off\n");			\
 	return sysfs_emit(buf, format"\n", session->field);		\
+=======
+		return sprintf(buf, "off\n");				\
+	return sprintf(buf, format"\n", session->field);		\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return sprintf(buf, "off\n");				\
 	return sprintf(buf, format"\n", session->field);		\

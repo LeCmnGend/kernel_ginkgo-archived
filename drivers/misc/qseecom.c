@@ -9484,7 +9484,11 @@ static int qseecom_suspend(struct platform_device *pdev, pm_message_t state)
 static int qseecom_resume(struct platform_device *pdev)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int mode = LOW;
+=======
+	int mode = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int mode = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -9498,11 +9502,17 @@ static int qseecom_resume(struct platform_device *pdev)
 	mutex_lock(&qsee_bw_mutex);
 	mutex_lock(&clk_access_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (qseecom.cumulative_mode >= HIGH)
 		mode = HIGH;
 	else
 		mode = qseecom.cumulative_mode;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (qseecom.cumulative_mode != INACTIVE) {

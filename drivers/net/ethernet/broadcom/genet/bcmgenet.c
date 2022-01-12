@@ -1159,8 +1159,12 @@ static void bcmgenet_power_up(struct bcmgenet_priv *priv,
 	switch (mode) {
 	case GENET_POWER_PASSIVE:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		reg &= ~(EXT_PWR_DOWN_DLL | EXT_PWR_DOWN_BIAS |
 			 EXT_ENERGY_DET_MASK);
+=======
+		reg &= ~(EXT_PWR_DOWN_DLL | EXT_PWR_DOWN_BIAS);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		reg &= ~(EXT_PWR_DOWN_DLL | EXT_PWR_DOWN_BIAS);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2795,7 +2799,10 @@ static void bcmgenet_set_hw_addr(struct bcmgenet_priv *priv,
 static u32 bcmgenet_dma_disable(struct bcmgenet_priv *priv)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int i;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32 reg;
@@ -2804,8 +2811,11 @@ static u32 bcmgenet_dma_disable(struct bcmgenet_priv *priv)
 	/* disable DMA */
 	dma_ctrl = 1 << (DESC_INDEX + DMA_RING_BUF_EN_SHIFT) | DMA_EN;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (i = 0; i < priv->hw_params->tx_queues; i++)
 		dma_ctrl |= (1 << (i + DMA_RING_BUF_EN_SHIFT));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	reg = bcmgenet_tdma_readl(priv, DMA_CTRL);
@@ -2813,9 +2823,12 @@ static u32 bcmgenet_dma_disable(struct bcmgenet_priv *priv)
 	bcmgenet_tdma_writel(priv, reg, DMA_CTRL);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dma_ctrl = 1 << (DESC_INDEX + DMA_RING_BUF_EN_SHIFT) | DMA_EN;
 	for (i = 0; i < priv->hw_params->rx_queues; i++)
 		dma_ctrl |= (1 << (i + DMA_RING_BUF_EN_SHIFT));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	reg = bcmgenet_rdma_readl(priv, DMA_CTRL);
@@ -2928,13 +2941,19 @@ static int bcmgenet_open(struct net_device *dev)
 	bcmgenet_set_hw_addr(priv, dev->dev_addr);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (priv->internal_phy) {
 		reg = bcmgenet_ext_readl(priv, EXT_EXT_PWR_MGMT);
 		reg |= EXT_ENERGY_DET_MASK;
 		bcmgenet_ext_writel(priv, reg, EXT_EXT_PWR_MGMT);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Disable RX/TX DMA and flush TX queues */
 	dma_ctrl = bcmgenet_dma_disable(priv);
@@ -3617,10 +3636,15 @@ static int bcmgenet_probe(struct platform_device *pdev)
 
 	err = register_netdev(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (err) {
 		bcmgenet_mii_exit(dev);
 		goto err;
 	}
+=======
+	if (err)
+		goto err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (err)
 		goto err;
@@ -3699,6 +3723,10 @@ static int bcmgenet_resume(struct device *d)
 	unsigned long dma_ctrl;
 	int ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u32 reg;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 reg;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3738,13 +3766,19 @@ static int bcmgenet_resume(struct device *d)
 	bcmgenet_set_hw_addr(priv, dev->dev_addr);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (priv->internal_phy) {
 		reg = bcmgenet_ext_readl(priv, EXT_EXT_PWR_MGMT);
 		reg |= EXT_ENERGY_DET_MASK;
 		bcmgenet_ext_writel(priv, reg, EXT_EXT_PWR_MGMT);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (priv->wolopts)
 		bcmgenet_power_up(priv, GENET_POWER_WOL_MAGIC);
@@ -3800,6 +3834,9 @@ MODULE_DESCRIPTION("Broadcom GENET Ethernet controller driver");
 MODULE_ALIAS("platform:bcmgenet");
 MODULE_LICENSE("GPL");
 <<<<<<< HEAD
+<<<<<<< HEAD
 MODULE_SOFTDEP("pre: mdio-bcm-unimac");
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

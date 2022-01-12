@@ -4,10 +4,14 @@
 #include <linux/font.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define FONTDATAMAX 2048
 
 static const struct font_data acorndata_8x8 = {
 { 0, 0, FONTDATAMAX, 0 }, {
+=======
+static const unsigned char acorndata_8x8[] = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static const unsigned char acorndata_8x8[] = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -268,7 +272,11 @@ static const unsigned char acorndata_8x8[] = {
 /* FE */  0x00, 0x00, 0x3c, 0x3c, 0x3c, 0x3c, 0x00, 0x00,
 /* FF */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 <<<<<<< HEAD
+<<<<<<< HEAD
 } };
+=======
+};
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 };
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -279,7 +287,11 @@ const struct font_desc font_acorn_8x8 = {
 	.width	= 8,
 	.height	= 8,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.data	= acorndata_8x8.data,
+=======
+	.data	= acorndata_8x8,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.data	= acorndata_8x8,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

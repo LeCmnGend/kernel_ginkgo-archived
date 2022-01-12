@@ -2232,6 +2232,7 @@ UNUSUAL_DEV( 0x1908, 0x3335, 0x0200, 0x0200,
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Reported by Matthias Schwarzott <zzam@gentoo.org>
  * The Amazon Kindle treats SYNCHRONIZE CACHE as an indication that
  * the host may be finished with it, and automatically ejects its
@@ -2244,6 +2245,8 @@ UNUSUAL_DEV( 0x1949, 0x0004, 0x0000, 0x9999,
 		US_FL_SENSE_AFTER_SYNC ),
 
 /*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Reported by Oliver Neukum <oneukum@suse.com>
@@ -2363,7 +2366,11 @@ UNUSUAL_DEV(  0x357d, 0x7788, 0x0114, 0x0114,
 		"USB to ATA/ATAPI Bridge",
 		USB_SC_DEVICE, USB_PR_DEVICE, NULL,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		US_FL_BROKEN_FUA | US_FL_IGNORE_UAS ),
+=======
+		US_FL_BROKEN_FUA ),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		US_FL_BROKEN_FUA ),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -217,7 +217,11 @@ static int korina_send_packet(struct sk_buff *skb, struct net_device *dev)
 			spin_unlock_irqrestore(&lp->lock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			return NETDEV_TX_OK;
+=======
+			return NETDEV_TX_BUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			return NETDEV_TX_BUSY;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1193,7 +1197,11 @@ out:
 
 probe_err_register:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree((struct dma_desc *)KSEG0ADDR(lp->td_ring));
+=======
+	kfree(lp->td_ring);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(lp->td_ring);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1217,7 +1225,10 @@ static int korina_remove(struct platform_device *pdev)
 	iounmap(lp->rx_dma_regs);
 	iounmap(lp->tx_dma_regs);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree((struct dma_desc *)KSEG0ADDR(lp->td_ring));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

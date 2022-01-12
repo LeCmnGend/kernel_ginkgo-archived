@@ -497,10 +497,15 @@ long radeon_drm_ioctl(struct file *filp,
 	dev = file_priv->minor->dev;
 	ret = pm_runtime_get_sync(dev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret < 0) {
 		pm_runtime_put_autosuspend(dev->dev);
 		return ret;
 	}
+=======
+	if (ret < 0)
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret < 0)
 		return ret;

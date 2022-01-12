@@ -839,7 +839,10 @@ static int software_resume(void)
 	/* Check if the device is there */
 	swsusp_resume_device = name_to_dev_t(resume_file);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*
 	 * name_to_dev_t is ineffective to verify parition if resume_file is in
@@ -851,6 +854,9 @@ static int software_resume(void)
 			msleep(10);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!swsusp_resume_device) {
 		/*

@@ -3822,6 +3822,7 @@ static int update_ref_path(struct send_ctx *sctx, struct recorded_ref *ref)
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * When processing the new references for an inode we may orphanize an existing
  * directory inode because its old name conflicts with one of the new references
  * of the current inode. Later, when processing another new reference of our
@@ -3888,6 +3889,8 @@ out:
 }
 
 /*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * This does all the move/link/unlink/rmdir magic.
@@ -4020,12 +4023,15 @@ static int process_recorded_refs(struct send_ctx *sctx, int *pending_move)
 				struct waiting_dir_move *wdm;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if (orphanized_dir) {
 					ret = refresh_ref_path(sctx, cur);
 					if (ret < 0)
 						goto out;
 				}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				ret = orphanize_inode(sctx, ow_inode, ow_gen,
@@ -4085,6 +4091,7 @@ static int process_recorded_refs(struct send_ctx *sctx, int *pending_move)
 					goto out;
 			} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				/*
 				 * If we previously orphanized a directory that
 				 * collided with a new reference that we already
@@ -4096,6 +4103,8 @@ static int process_recorded_refs(struct send_ctx *sctx, int *pending_move)
 					if (ret < 0)
 						goto out;
 				}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				ret = send_unlink(sctx, cur->full_path);
@@ -6722,7 +6731,11 @@ long btrfs_ioctl_send(struct file *mnt_file, void __user *arg_)
 	alloc_size = sizeof(struct clone_root) * (arg->clone_sources_count + 1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sctx->clone_roots = kvzalloc(alloc_size, GFP_KERNEL);
+=======
+	sctx->clone_roots = kzalloc(alloc_size, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sctx->clone_roots = kzalloc(alloc_size, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -2655,7 +2655,11 @@ static int iwl_mvm_mac_sta_state(struct ieee80211_hw *hw,
 	/* this would be a mac80211 bug ... but don't crash */
 	if (WARN_ON_ONCE(!mvmvif->phy_ctxt))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return test_bit(IWL_MVM_STATUS_HW_RESTART_REQUESTED, &mvm->status) ? 0 : -EINVAL;
+=======
+		return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EINVAL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3203,12 +3207,18 @@ static int iwl_mvm_send_aux_roc_cmd(struct iwl_mvm *mvm,
 
 	IWL_DEBUG_TE(mvm,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		     "ROC: Requesting to remain on channel %u for %ums\n",
 		     channel->hw_value, req_dur);
 	IWL_DEBUG_TE(mvm,
 		     "\t(requested = %ums, max_delay = %ums, dtim_interval = %ums)\n",
 		     duration, delay, dtim_interval);
 
+=======
+		     "ROC: Requesting to remain on channel %u for %ums (requested = %ums, max_delay = %ums, dtim_interval = %ums)\n",
+		     channel->hw_value, req_dur, duration, delay,
+		     dtim_interval);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		     "ROC: Requesting to remain on channel %u for %ums (requested = %ums, max_delay = %ums, dtim_interval = %ums)\n",
 		     channel->hw_value, req_dur, duration, delay,
@@ -3281,7 +3291,10 @@ static int iwl_mvm_roc(struct ieee80211_hw *hw,
 	struct cfg80211_chan_def chandef;
 	struct iwl_mvm_phy_ctxt *phy_ctxt;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool band_change_removal;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret, i;
@@ -3350,6 +3363,7 @@ static int iwl_mvm_roc(struct ieee80211_hw *hw,
 
 	/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * Check if the remain-on-channel is on a different band and that
 	 * requires context removal, see iwl_mvm_phy_ctxt_changed(). If
 	 * so, we'll need to release and then re-configure here, since we
@@ -3366,10 +3380,15 @@ static int iwl_mvm_roc(struct ieee80211_hw *hw,
 		 * referenced only by the P2P Device MAC (and we can modify it)
 		 */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * Change the PHY context configuration as it is currently referenced
 	 * only by the P2P Device MAC
 	 */
 	if (mvmvif->phy_ctxt->ref == 1) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = iwl_mvm_phy_ctxt_changed(mvm, mvmvif->phy_ctxt,
 					       &chandef, 1, 1);
@@ -3378,9 +3397,15 @@ static int iwl_mvm_roc(struct ieee80211_hw *hw,
 	} else {
 		/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 * The PHY context is shared with other MACs (or we're trying to
 		 * switch bands), so remove the P2P Device from the binding,
 		 * allocate an new PHY context and create a new binding.
+=======
+		 * The PHY context is shared with other MACs. Need to remove the
+		 * P2P Device from the binding, allocate an new PHY context and
+		 * create a new binding
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		 * The PHY context is shared with other MACs. Need to remove the
 		 * P2P Device from the binding, allocate an new PHY context and

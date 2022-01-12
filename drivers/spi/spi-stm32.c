@@ -255,8 +255,12 @@ static int stm32_spi_prepare_mbr(struct stm32_spi *spi, u32 speed_hz)
 	u32 div, mbrdiv;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Ensure spi->clk_rate is even */
 	div = DIV_ROUND_UP(spi->clk_rate & ~0x1, speed_hz);
+=======
+	div = DIV_ROUND_UP(spi->clk_rate, speed_hz);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	div = DIV_ROUND_UP(spi->clk_rate, speed_hz);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -304,9 +308,15 @@ static u32 stm32_spi_prepare_fthlv(struct stm32_spi *spi)
 	/* align packet size with data registers access */
 	if (spi->cur_bpw > 8)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		fthlv += (fthlv % 2) ? 1 : 0;
 	else
 		fthlv += (fthlv % 4) ? (4 - (fthlv % 4)) : 0;
+=======
+		fthlv -= (fthlv % 2); /* multiple of 2 */
+	else
+		fthlv -= (fthlv % 4); /* multiple of 4 */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		fthlv -= (fthlv % 2); /* multiple of 2 */
 	else
@@ -1003,10 +1013,13 @@ static int stm32_spi_transfer_one(struct spi_master *master,
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Don't do anything on 0 bytes transfers */
 	if (transfer->len == 0)
 		return 0;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spi->tx_buf = transfer->tx_buf;

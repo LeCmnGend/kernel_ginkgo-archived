@@ -164,7 +164,10 @@ int cifs_posix_open(char *full_path, struct inode **pinode,
 		}
 	} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cifs_revalidate_mapping(*pinode);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		cifs_fattr_to_inode(*pinode, &fattr);
@@ -3758,8 +3761,12 @@ readpages_get_pages(struct address_space *mapping, struct list_head *page_list,
 
 		__SetPageLocked(page);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rc = add_to_page_cache_locked(page, mapping, page->index, gfp);
 		if (rc) {
+=======
+		if (add_to_page_cache_locked(page, mapping, page->index, gfp)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (add_to_page_cache_locked(page, mapping, page->index, gfp)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3779,7 +3786,10 @@ static int cifs_readpages(struct file *file, struct address_space *mapping,
 {
 	int rc;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int err = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct list_head tmplist;
@@ -3823,7 +3833,11 @@ static int cifs_readpages(struct file *file, struct address_space *mapping,
 	 * the rdata->pages, then we want them in increasing order.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	while (!list_empty(page_list) && !err) {
+=======
+	while (!list_empty(page_list)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	while (!list_empty(page_list)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3850,10 +3864,16 @@ static int cifs_readpages(struct file *file, struct address_space *mapping,
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		nr_pages = 0;
 		err = readpages_get_pages(mapping, page_list, rsize, &tmplist,
 					 &nr_pages, &offset, &bytes);
 		if (!nr_pages) {
+=======
+		rc = readpages_get_pages(mapping, page_list, rsize, &tmplist,
+					 &nr_pages, &offset, &bytes);
+		if (rc) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		rc = readpages_get_pages(mapping, page_list, rsize, &tmplist,
 					 &nr_pages, &offset, &bytes);
@@ -4160,7 +4180,10 @@ void cifs_oplock_break(struct work_struct *work)
 	struct TCP_Server_Info *server = tcon->ses->server;
 	int rc = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool purge_cache = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -4168,8 +4191,13 @@ void cifs_oplock_break(struct work_struct *work)
 			TASK_UNINTERRUPTIBLE);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	server->ops->downgrade_oplock(server, cinode, cfile->oplock_level,
 				      cfile->oplock_epoch, &purge_cache);
+=======
+	server->ops->downgrade_oplock(server, cinode,
+		test_bit(CIFS_INODE_DOWNGRADE_OPLOCK_TO_L2, &cinode->flags));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	server->ops->downgrade_oplock(server, cinode,
 		test_bit(CIFS_INODE_DOWNGRADE_OPLOCK_TO_L2, &cinode->flags));
@@ -4189,7 +4217,11 @@ void cifs_oplock_break(struct work_struct *work)
 			break_lease(inode, O_WRONLY);
 		rc = filemap_fdatawrite(inode->i_mapping);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!CIFS_CACHE_READ(cinode) || purge_cache) {
+=======
+		if (!CIFS_CACHE_READ(cinode)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!CIFS_CACHE_READ(cinode)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4199,8 +4231,11 @@ void cifs_oplock_break(struct work_struct *work)
 		}
 		cifs_dbg(FYI, "Oplock flush inode %p rc %d\n", inode, rc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (CIFS_CACHE_WRITE(cinode))
 			goto oplock_break_ack;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -4210,7 +4245,10 @@ void cifs_oplock_break(struct work_struct *work)
 		cifs_dbg(VFS, "Push locks rc = %d\n", rc);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 oplock_break_ack:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*

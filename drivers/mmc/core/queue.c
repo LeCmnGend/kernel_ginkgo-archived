@@ -138,10 +138,13 @@ static int mmc_cmdq_thread(void *d)
 	struct mmc_host *host = card->host;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct sched_param scheduler_params = {0};
 	scheduler_params.sched_priority = 1;
 	sched_setscheduler(current, SCHED_FIFO, &scheduler_params);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	current->flags |= PF_MEMALLOC;

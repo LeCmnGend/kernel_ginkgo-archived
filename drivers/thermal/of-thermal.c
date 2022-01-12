@@ -161,6 +161,7 @@ static int virt_sensor_read_temp(void *data, int *val)
 		}
 		switch (sens->logic) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		case VIRT_COUNT_THRESHOLD:
 			if ((sens->coefficients[idx] < 0 &&
 			     sens_temp < -sens->coefficients[idx]) ||
@@ -168,6 +169,8 @@ static int virt_sensor_read_temp(void *data, int *val)
 			     sens_temp >= sens->coefficients[idx]))
 				temp += 1;
 			break;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		case VIRT_WEIGHTED_AVG:
@@ -1024,8 +1027,12 @@ struct thermal_zone_device *devm_thermal_of_virtual_sensor_register(
 	sens->logic = sensor_data->logic;
 	sens->num_sensors = sensor_data->num_sensors;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if ((sens->logic == VIRT_WEIGHTED_AVG) ||
 	    (sens->logic == VIRT_COUNT_THRESHOLD)) {
+=======
+	if (sens->logic == VIRT_WEIGHTED_AVG) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (sens->logic == VIRT_WEIGHTED_AVG) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1037,7 +1044,11 @@ struct thermal_zone_device *devm_thermal_of_virtual_sensor_register(
 		 */
 		if (coeff_ct != sens->num_sensors) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			dev_err(dev, "sens:%s invalid coefficient\n",
+=======
+			dev_err(dev, "sens:%s Invalid coefficient\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			dev_err(dev, "sens:%s Invalid coefficient\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

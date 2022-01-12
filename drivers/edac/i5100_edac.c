@@ -1073,7 +1073,11 @@ static int i5100_init_one(struct pci_dev *pdev, const struct pci_device_id *id)
 	if (!einj) {
 		ret = -ENODEV;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto bail_mc_free;
+=======
+		goto bail_einj;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto bail_einj;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1083,14 +1087,20 @@ static int i5100_init_one(struct pci_dev *pdev, const struct pci_device_id *id)
 	if (rc < 0) {
 		ret = rc;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto bail_einj;
 	}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto bail_disable_einj;
 	}
 
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mci->pdev = &pdev->dev;
 
@@ -1158,6 +1168,12 @@ bail_scrub:
 	priv->scrub_enable = 0;
 	cancel_delayed_work_sync(&(priv->i5100_scrubbing));
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	edac_mc_free(mci);
+
+bail_disable_einj:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	edac_mc_free(mci);
 
@@ -1169,9 +1185,12 @@ bail_einj:
 	pci_dev_put(einj);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 bail_mc_free:
 	edac_mc_free(mci);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 bail_disable_ch1:

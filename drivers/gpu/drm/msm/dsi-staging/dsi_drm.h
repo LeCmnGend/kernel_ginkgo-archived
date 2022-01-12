@@ -1,7 +1,10 @@
 /*
  * Copyright (c) 2016-2019, The Linux Foundation. All rights reserved.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2019 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -35,7 +38,10 @@ struct dsi_bridge {
 	struct dsi_display *display;
 	struct dsi_display_mode dsi_mode;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct mutex lock;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

@@ -183,9 +183,12 @@
 #define A64_MADD(sf, Rd, Ra, Rn, Rm) aarch64_insn_gen_data3(Rd, Ra, Rn, Rm, \
 	A64_VARIANT(sf), AARCH64_INSN_DATA3_MADD)
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Rd = Ra - Rn * Rm */
 #define A64_MSUB(sf, Rd, Ra, Rn, Rm) aarch64_insn_gen_data3(Rd, Ra, Rn, Rm, \
 	A64_VARIANT(sf), AARCH64_INSN_DATA3_MSUB)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Rd = Rn * Rm */

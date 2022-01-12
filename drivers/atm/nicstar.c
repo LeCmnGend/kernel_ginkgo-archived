@@ -299,7 +299,11 @@ static void __exit nicstar_cleanup(void)
 	XPRINTK("nicstar: nicstar_cleanup() called.\n");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	del_timer_sync(&ns_timer);
+=======
+	del_timer(&ns_timer);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	del_timer(&ns_timer);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -531,6 +535,7 @@ static int ns_init_card(int i, struct pci_dev *pcidev)
 	writel(0x00000000, card->membase + VPM);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	card->intcnt = 0;
 	if (request_irq
 	    (pcidev->irq, &ns_irq_handler, IRQF_SHARED, "nicstar", card) != 0) {
@@ -540,6 +545,8 @@ static int ns_init_card(int i, struct pci_dev *pcidev)
 		return error;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Initialize TSQ */
@@ -769,7 +776,10 @@ static int ns_init_card(int i, struct pci_dev *pcidev)
 	card->efbie = 1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	card->intcnt = 0;
 	if (request_irq
 	    (pcidev->irq, &ns_irq_handler, IRQF_SHARED, "nicstar", card) != 0) {
@@ -779,6 +789,9 @@ static int ns_init_card(int i, struct pci_dev *pcidev)
 		return error;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Register device */
 	card->atmdev = atm_dev_register("nicstar", &card->pcidev->dev, &atm_ops,
@@ -858,6 +871,7 @@ static void ns_init_card_error(ns_dev *card, int error)
 	}
 	if (error >= 12) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		dma_free_coherent(&card->pcidev->dev, NS_RSQSIZE + NS_RSQ_ALIGNMENT,
 				card->rsq.org, card->rsq.dma);
 	}
@@ -865,10 +879,15 @@ static void ns_init_card_error(ns_dev *card, int error)
 		dma_free_coherent(&card->pcidev->dev, NS_TSQSIZE + NS_TSQ_ALIGNMENT,
 				card->tsq.org, card->tsq.dma);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		kfree(card->rsq.org);
 	}
 	if (error >= 11) {
 		kfree(card->tsq.org);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	if (error >= 10) {
@@ -1736,8 +1755,11 @@ static int ns_send(struct atm_vcc *vcc, struct sk_buff *skb)
 	if (push_scqe(card, vc, scq, &scqe, skb) != 0) {
 		atomic_inc(&vcc->stats->tx_err);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		dma_unmap_single(&card->pcidev->dev, NS_PRV_DMA(skb), skb->len,
 				 DMA_TO_DEVICE);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dev_kfree_skb_any(skb);

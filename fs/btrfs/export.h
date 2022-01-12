@@ -18,11 +18,14 @@ struct btrfs_fid {
 } __attribute__ ((packed));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct dentry *btrfs_get_dentry(struct super_block *sb, u64 objectid,
 				u64 root_objectid, u32 generation,
 				int check_generation);
 struct dentry *btrfs_get_parent(struct dentry *child);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif

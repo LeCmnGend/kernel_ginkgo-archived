@@ -11,7 +11,10 @@
 #include <linux/io.h>
 #include <linux/clk.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/export.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/init.h>
@@ -32,7 +35,10 @@
 __iomem void *rt_sysc_membase;
 __iomem void *rt_memc_membase;
 <<<<<<< HEAD
+<<<<<<< HEAD
 EXPORT_SYMBOL_GPL(rt_sysc_membase);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

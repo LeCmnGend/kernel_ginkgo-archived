@@ -846,7 +846,11 @@ EXPORT_SYMBOL(capi20_put_message);
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 u16 capi20_get_manufacturer(u32 contr, u8 buf[CAPI_MANUFACTURER_LEN])
+=======
+u16 capi20_get_manufacturer(u32 contr, u8 *buf)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 u16 capi20_get_manufacturer(u32 contr, u8 *buf)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -920,7 +924,11 @@ EXPORT_SYMBOL(capi20_get_version);
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 u16 capi20_get_serial(u32 contr, u8 serial[CAPI_SERIAL_LEN])
+=======
+u16 capi20_get_serial(u32 contr, u8 *serial)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 u16 capi20_get_serial(u32 contr, u8 *serial)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

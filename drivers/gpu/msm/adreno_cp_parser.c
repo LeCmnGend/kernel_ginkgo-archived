@@ -802,6 +802,12 @@ static int adreno_cp_parse_ib2(struct kgsl_device *device,
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/* Save current IB2 statically */
+	if (ib2base == gpuaddr)
+		kgsl_snapshot_push_object(process, gpuaddr, dwords);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Save current IB2 statically */
 	if (ib2base == gpuaddr)

@@ -113,7 +113,10 @@
 #define B53_MC_FLOOD_MASK		0x34
 #define B53_IPMC_FLOOD_MASK		0x36
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define B53_DIS_LEARNING		0x3c
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

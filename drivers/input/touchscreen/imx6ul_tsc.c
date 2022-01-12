@@ -543,6 +543,7 @@ static int __maybe_unused imx6ul_tsc_resume(struct device *dev)
 	mutex_lock(&input_dev->mutex);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!input_dev->users)
 		goto out;
 
@@ -563,6 +564,8 @@ static int __maybe_unused imx6ul_tsc_resume(struct device *dev)
 		goto out;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (input_dev->users) {
 		retval = clk_prepare_enable(tsc->adc_clk);
 		if (retval)
@@ -577,6 +580,9 @@ static int __maybe_unused imx6ul_tsc_resume(struct device *dev)
 		retval = imx6ul_tsc_init(tsc);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out:
 	mutex_unlock(&input_dev->mutex);

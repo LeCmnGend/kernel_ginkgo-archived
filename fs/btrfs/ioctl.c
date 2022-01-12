@@ -528,6 +528,11 @@ static noinline int create_subvol(struct inode *dir,
 
 	btrfs_tree_unlock(leaf);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	free_extent_buffer(leaf);
+	leaf = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	free_extent_buffer(leaf);
 	leaf = NULL;
@@ -540,6 +545,7 @@ static noinline int create_subvol(struct inode *dir,
 	key.type = BTRFS_ROOT_ITEM_KEY;
 	ret = btrfs_insert_root(trans, fs_info->tree_root, &key,
 				root_item);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (ret) {
 		/*
@@ -557,6 +563,10 @@ static noinline int create_subvol(struct inode *dir,
 
 	free_extent_buffer(leaf);
 	leaf = NULL;
+=======
+	if (ret)
+		goto fail;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret)
 		goto fail;
@@ -678,7 +688,10 @@ static int create_snapshot(struct btrfs_root *root, struct inode *dir,
 	struct btrfs_trans_handle *trans;
 	int ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool snapshot_force_cow = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -698,11 +711,14 @@ static int create_snapshot(struct btrfs_root *root, struct inode *dir,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Force new buffered writes to reserve space even when NOCOW is
 	 * possible. This is to avoid later writeback (running dealloc) to
 	 * fallback to COW mode and unexpectedly fail with ENOSPC.
 	 */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	atomic_inc(&root->will_be_snapshotted);
@@ -714,6 +730,7 @@ static int create_snapshot(struct btrfs_root *root, struct inode *dir,
 		goto dec_and_free;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * All previous writes have started writeback in NOCOW mode, so now
 	 * we force future writes to fallback to COW mode during snapshot
@@ -722,6 +739,8 @@ static int create_snapshot(struct btrfs_root *root, struct inode *dir,
 	atomic_inc(&root->snapshot_force_cow);
 	snapshot_force_cow = true;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	btrfs_wait_ordered_extents(root, U64_MAX, 0, (u64)-1);
@@ -790,8 +809,11 @@ fail:
 	btrfs_subvolume_release_metadata(fs_info, &pending_snapshot->block_rsv);
 dec_and_free:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (snapshot_force_cow)
 		atomic_dec(&root->snapshot_force_cow);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (atomic_dec_and_test(&root->will_be_snapshotted))
@@ -2072,6 +2094,7 @@ static noinline int copy_to_sk(struct btrfs_path *path,
 		sh.transid = found_transid;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/*
 		 * Copy search result header. If we fault then loop again so we
 		 * can fault in the pages and -EFAULT there if there's a
@@ -2085,6 +2108,11 @@ static noinline int copy_to_sk(struct btrfs_path *path,
 		if (copy_to_user(ubuf + *sk_offset, &sh, sizeof(sh))) {
 			ret = -EFAULT;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+		/* copy search result header */
+		if (copy_to_user(ubuf + *sk_offset, &sh, sizeof(sh))) {
+			ret = -EFAULT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			goto out;
 		}
 
@@ -2092,6 +2120,7 @@ static noinline int copy_to_sk(struct btrfs_path *path,
 
 		if (item_len) {
 			char __user *up = ubuf + *sk_offset;
+<<<<<<< HEAD
 <<<<<<< HEAD
 			/*
 			 * Copy the item, same behavior as above, but reset the
@@ -2102,10 +2131,15 @@ static noinline int copy_to_sk(struct btrfs_path *path,
 				ret = 0;
 				*sk_offset -= sizeof(sh);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			/* copy the item */
 			if (read_extent_buffer_to_user(leaf, up,
 						       item_off, item_len)) {
 				ret = -EFAULT;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				goto out;
 			}
@@ -2195,11 +2229,14 @@ static noinline int search_ioctl(struct inode *inode,
 
 	while (1) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = fault_in_pages_writeable(ubuf + sk_offset,
 					       *buf_size - sk_offset);
 		if (ret)
 			break;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = btrfs_search_forward(root, &key, path, sk->min_transid);
@@ -3914,8 +3951,11 @@ process_slot:
 			goto out;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		cond_resched();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

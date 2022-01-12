@@ -56,6 +56,11 @@
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define MTP_RX_BUFFER_INIT_SIZE    1048576
+#define MTP_TX_BUFFER_INIT_SIZE    1048576
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define MTP_RX_BUFFER_INIT_SIZE    1048576
 #define MTP_TX_BUFFER_INIT_SIZE    1048576
@@ -97,15 +102,21 @@
 #define MAX_ITERATION		100
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 unsigned int mtp_rx_req_len = MTP_BULK_BUFFER_SIZE;
 module_param(mtp_rx_req_len, uint, 0644);
 
 unsigned int mtp_tx_req_len = MTP_BULK_BUFFER_SIZE;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 unsigned int mtp_rx_req_len = MTP_RX_BUFFER_INIT_SIZE;
 module_param(mtp_rx_req_len, uint, 0644);
 
 unsigned int mtp_tx_req_len = MTP_TX_BUFFER_INIT_SIZE;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 module_param(mtp_tx_req_len, uint, 0644);
 
@@ -552,9 +563,12 @@ static int mtp_create_bulk_endpoints(struct mtp_dev *dev,
 
 retry_tx_alloc:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (mtp_tx_req_len > MTP_BULK_BUFFER_SIZE)
 		mtp_tx_reqs = 4;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* now allocate requests for our endpoints */
@@ -780,8 +794,13 @@ static ssize_t mtp_write(struct file *fp, const char __user *buf,
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (count > MTP_BULK_BUFFER_SIZE)
 			xfer = MTP_BULK_BUFFER_SIZE;
+=======
+		if (count > mtp_tx_req_len)
+			xfer = mtp_tx_req_len;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (count > mtp_tx_req_len)
 			xfer = mtp_tx_req_len;
@@ -880,8 +899,13 @@ static void send_file_work(struct work_struct *data)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (count > MTP_BULK_BUFFER_SIZE)
 			xfer = MTP_BULK_BUFFER_SIZE;
+=======
+		if (count > mtp_tx_req_len)
+			xfer = mtp_tx_req_len;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (count > mtp_tx_req_len)
 			xfer = mtp_tx_req_len;

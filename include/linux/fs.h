@@ -77,7 +77,10 @@ extern int sysctl_protected_hardlinks;
 extern int sysctl_protected_fifos;
 extern int sysctl_protected_regular;
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern char *inode_name(struct inode *ino);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -158,9 +161,12 @@ typedef int (dio_iodone_t)(struct kiocb *iocb, loff_t offset,
 #define FMODE_STREAM		((__force fmode_t)0x200000)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* File hasn't page cache and can't be mmaped, for stackable filesystem */
 #define FMODE_NONMAPPABLE       ((__force fmode_t)0x400000)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* File was opened by fanotify and shouldn't generate fanotify events */
@@ -511,7 +517,11 @@ static inline int mapping_mapped(struct address_space *mapping)
 /*
  * Might pages of this file have been modified in userspace?
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Note that i_mmap_writable counts all VM_SHARED vmas: do_mmap
+=======
+ * Note that i_mmap_writable counts all VM_SHARED vmas: do_mmap_pgoff
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * Note that i_mmap_writable counts all VM_SHARED vmas: do_mmap_pgoff
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1514,6 +1524,7 @@ static inline void i_gid_write(struct inode *inode, gid_t gid)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * current_time - Return FS time
  * @inode: inode.
@@ -1535,6 +1546,9 @@ static inline struct timespec current_time(struct inode *inode)
 
 	return timespec_trunc(now, inode->i_sb->s_time_gran);
 }
+=======
+extern struct timespec current_time(struct inode *inode);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern struct timespec current_time(struct inode *inode);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1687,6 +1701,7 @@ extern struct dentry *vfs_tmpfile(struct vfsmount *mnt,
 				  int open_flag);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_COMPAT
 extern long compat_ptr_ioctl(struct file *file, unsigned int cmd,
 					unsigned long arg);
@@ -1694,6 +1709,8 @@ extern long compat_ptr_ioctl(struct file *file, unsigned int cmd,
 #define compat_ptr_ioctl NULL
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -1807,7 +1824,10 @@ struct file_operations {
 			  loff_t len);
 	void (*show_fdinfo)(struct seq_file *m, struct file *f);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct file* (*get_lower_file)(struct file *f);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifndef CONFIG_MMU
@@ -2113,8 +2133,12 @@ static inline void init_sync_kiocb(struct kiocb *kiocb, struct file *filp)
 #define I_SYNC_QUEUED		(1 << 17)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define I_DIRTY_INODE (I_DIRTY_SYNC | I_DIRTY_DATASYNC)
 #define I_DIRTY (I_DIRTY_INODE | I_DIRTY_PAGES)
+=======
+#define I_DIRTY (I_DIRTY_SYNC | I_DIRTY_DATASYNC | I_DIRTY_PAGES)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define I_DIRTY (I_DIRTY_SYNC | I_DIRTY_DATASYNC | I_DIRTY_PAGES)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

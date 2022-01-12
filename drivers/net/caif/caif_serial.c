@@ -280,6 +280,10 @@ static int caif_xmit(struct sk_buff *skb, struct net_device *dev)
 	struct ser_device *ser;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	BUG_ON(dev == NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	BUG_ON(dev == NULL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -365,7 +369,10 @@ static int ldisc_open(struct tty_struct *tty)
 	result = register_netdevice(dev);
 	if (result) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		tty_kref_put(tty);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rtnl_unlock();

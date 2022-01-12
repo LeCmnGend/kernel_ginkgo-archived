@@ -527,12 +527,15 @@ enum {
 	TRACE_GRAPH_DEPTH_START_BIT,
 	TRACE_GRAPH_DEPTH_END_BIT,
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/*
 	 * When transitioning between context, the preempt_count() may
 	 * not be correct. Allow for a single recursion to cover this case.
 	 */
 	TRACE_TRANSITION_BIT,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -590,6 +593,7 @@ static __always_inline int trace_test_and_set_recursion(int start, int max)
 
 	bit = trace_get_context_bit() + start;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(val & (1 << bit))) {
 		/*
 		 * It could be that preempt_count has not been updated during
@@ -609,13 +613,21 @@ static __always_inline int trace_test_and_set_recursion(int start, int max)
 	if (unlikely(val & (1 << bit)))
 		return -1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	if (unlikely(val & (1 << bit)))
+		return -1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	val |= 1 << bit;
 	current->trace_recursion = val;
 	barrier();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return bit + 1;
+=======
+	return bit;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return bit;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -629,7 +641,10 @@ static __always_inline void trace_clear_recursion(int bit)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bit--;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bit = 1 << bit;
@@ -755,8 +770,12 @@ void update_max_tr_single(struct trace_array *tr,
 
 #ifdef CONFIG_STACKTRACE
 <<<<<<< HEAD
+<<<<<<< HEAD
 void ftrace_trace_userstack(struct trace_array *tr,
 			    struct ring_buffer *buffer, unsigned long flags,
+=======
+void ftrace_trace_userstack(struct ring_buffer *buffer, unsigned long flags,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void ftrace_trace_userstack(struct ring_buffer *buffer, unsigned long flags,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -766,8 +785,12 @@ void __trace_stack(struct trace_array *tr, unsigned long flags, int skip,
 		   int pc);
 #else
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void ftrace_trace_userstack(struct trace_array *tr,
 					  struct ring_buffer *buffer,
+=======
+static inline void ftrace_trace_userstack(struct ring_buffer *buffer,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline void ftrace_trace_userstack(struct ring_buffer *buffer,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

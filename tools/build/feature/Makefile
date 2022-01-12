@@ -6,10 +6,15 @@ FILES=                                          \
          test-dwarf.bin                         \
          test-dwarf_getlocations.bin            \
 <<<<<<< HEAD
+<<<<<<< HEAD
          test-eventfd.bin                       \
          test-fortify-source.bin                \
          test-sync-compare-and-swap.bin         \
          test-get_current_dir_name.bin          \
+=======
+         test-fortify-source.bin                \
+         test-sync-compare-and-swap.bin         \
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
          test-fortify-source.bin                \
          test-sync-compare-and-swap.bin         \
@@ -45,7 +50,10 @@ FILES=                                          \
          test-libunwind-debug-frame-aarch64.bin \
          test-pthread-attr-setaffinity-np.bin   \
 <<<<<<< HEAD
+<<<<<<< HEAD
          test-pthread-barrier.bin		\
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
          test-stackprotector-all.bin            \
@@ -61,7 +69,10 @@ FILES=                                          \
          test-sdt.bin                           \
          test-cxx.bin                           \
 <<<<<<< HEAD
+<<<<<<< HEAD
          test-gettid.bin			\
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
          test-jvmti.bin				\
@@ -71,6 +82,11 @@ FILES=                                          \
 FILES := $(addprefix $(OUTPUT),$(FILES))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+CC ?= $(CROSS_COMPILE)gcc
+CXX ?= $(CROSS_COMPILE)g++
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 CC ?= $(CROSS_COMPILE)gcc
 CXX ?= $(CROSS_COMPILE)g++
@@ -98,9 +114,12 @@ $(OUTPUT)test-pthread-attr-setaffinity-np.bin:
 	$(BUILD) -D_GNU_SOURCE -lpthread
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 $(OUTPUT)test-pthread-barrier.bin:
 	$(BUILD) -lpthread
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 $(OUTPUT)test-stackprotector-all.bin:
@@ -116,12 +135,15 @@ $(OUTPUT)test-libelf.bin:
 	$(BUILD) -lelf
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 $(OUTPUT)test-eventfd.bin:
 	$(BUILD)
 
 $(OUTPUT)test-get_current_dir_name.bin:
 	$(BUILD)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 $(OUTPUT)test-glibc.bin:
@@ -270,9 +292,12 @@ $(OUTPUT)test-cxx.bin:
 	$(BUILDXX) -std=gnu++11
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 $(OUTPUT)test-gettid.bin:
 	$(BUILD)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 $(OUTPUT)test-jvmti.bin:

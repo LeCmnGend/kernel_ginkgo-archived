@@ -333,7 +333,10 @@ static void p54p_tx(struct ieee80211_hw *dev, struct sk_buff *skb)
 	dma_addr_t mapping;
 	u32 idx, i;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__le32 device_addr;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -341,7 +344,10 @@ static void p54p_tx(struct ieee80211_hw *dev, struct sk_buff *skb)
 	idx = le32_to_cpu(ring_control->host_idx[1]);
 	i = idx % ARRAY_SIZE(ring_control->tx_data);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	device_addr = ((struct p54_hdr *)skb->data)->req_id;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -358,7 +364,11 @@ static void p54p_tx(struct ieee80211_hw *dev, struct sk_buff *skb)
 	desc = &ring_control->tx_data[i];
 	desc->host_addr = cpu_to_le32(mapping);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	desc->device_addr = device_addr;
+=======
+	desc->device_addr = ((struct p54_hdr *)skb->data)->req_id;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	desc->device_addr = ((struct p54_hdr *)skb->data)->req_id;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

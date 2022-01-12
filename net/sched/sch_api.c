@@ -398,8 +398,12 @@ struct qdisc_rate_table *qdisc_get_rtab(struct tc_ratespec *r,
 	struct qdisc_rate_table *rtab;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (tab == NULL || r->rate == 0 ||
 	    r->cell_log == 0 || r->cell_log >= 32 ||
+=======
+	if (tab == NULL || r->rate == 0 || r->cell_log == 0 ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (tab == NULL || r->rate == 0 || r->cell_log == 0 ||
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1943,7 +1947,11 @@ static int tc_dump_tclass_qdisc(struct Qdisc *q, struct sk_buff *skb,
 static int tc_dump_tclass_root(struct Qdisc *root, struct sk_buff *skb,
 			       struct tcmsg *tcm, struct netlink_callback *cb,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			       int *t_p, int s_t, bool recur)
+=======
+			       int *t_p, int s_t)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			       int *t_p, int s_t)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1958,7 +1966,11 @@ static int tc_dump_tclass_root(struct Qdisc *root, struct sk_buff *skb,
 		return -1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!qdisc_dev(root) || !recur)
+=======
+	if (!qdisc_dev(root))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!qdisc_dev(root))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1997,7 +2009,11 @@ static int tc_dump_tclass(struct sk_buff *skb, struct netlink_callback *cb)
 	t = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (tc_dump_tclass_root(dev->qdisc, skb, tcm, cb, &t, s_t, true) < 0)
+=======
+	if (tc_dump_tclass_root(dev->qdisc, skb, tcm, cb, &t, s_t) < 0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (tc_dump_tclass_root(dev->qdisc, skb, tcm, cb, &t, s_t) < 0)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2007,7 +2023,11 @@ static int tc_dump_tclass(struct sk_buff *skb, struct netlink_callback *cb)
 	if (dev_queue &&
 	    tc_dump_tclass_root(dev_queue->qdisc_sleeping, skb, tcm, cb,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				&t, s_t, false) < 0)
+=======
+				&t, s_t) < 0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				&t, s_t) < 0)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -164,8 +164,11 @@ EXPORT_SYMBOL(sg_init_one);
 static struct scatterlist *sg_kmalloc(unsigned int nents, gfp_t gfp_mask)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return kmalloc(nents * sizeof(struct scatterlist), gfp_mask);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (nents == SG_MAX_SINGLE_ALLOC) {
 		/*
 		 * Kmemleak doesn't track page allocations as they are not
@@ -181,19 +184,28 @@ static struct scatterlist *sg_kmalloc(unsigned int nents, gfp_t gfp_mask)
 		return ptr;
 	} else
 		return kmalloc(nents * sizeof(struct scatterlist), gfp_mask);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void sg_kfree(struct scatterlist *sg, unsigned int nents)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(sg);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (nents == SG_MAX_SINGLE_ALLOC) {
 		kmemleak_free(sg);
 		free_page((unsigned long) sg);
 	} else
 		kfree(sg);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -486,7 +498,11 @@ struct scatterlist *sgl_alloc_order(unsigned long long length,
 		page = alloc_pages(gfp, order);
 		if (!page) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			sgl_free_order(sgl, order);
+=======
+			sgl_free(sgl);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			sgl_free(sgl);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -69,7 +69,10 @@
 #include <linux/bootmem.h>
 #include <linux/fault-inject.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/refcount.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -217,7 +220,11 @@ struct futex_pi_state {
 
 	struct task_struct *owner;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	refcount_t refcount;
+=======
+	atomic_t refcount;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	atomic_t refcount;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -330,15 +337,21 @@ static int __init fail_futex_debugfs(void)
 		return PTR_ERR(dir);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	debugfs_create_bool("ignore-private", mode, dir,
 			    &fail_futex.ignore_private);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!debugfs_create_bool("ignore-private", mode, dir,
 				 &fail_futex.ignore_private)) {
 		debugfs_remove_recursive(dir);
 		return -ENOMEM;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
@@ -541,6 +554,7 @@ static u64 get_inode_sequence_number(struct inode *inode)
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * futex_setup_timer - set up the sleeping hrtimer.
  * @time:	ptr to the given timeout value
  * @timeout:	the hrtimer_sleeper structure to be set up
@@ -572,6 +586,8 @@ futex_setup_timer(ktime_t *time, struct hrtimer_sleeper *timeout,
 }
 
 /**
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * get_futex_key() - Get parameters which are the keys for a futex
@@ -767,7 +783,11 @@ again:
 		key->both.offset |= FUT_OFF_INODE; /* inode-based key */
 		key->shared.i_seq = get_inode_sequence_number(inode);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		key->shared.pgoff = page_to_pgoff(tail);
+=======
+		key->shared.pgoff = basepage_index(tail);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		key->shared.pgoff = basepage_index(tail);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -873,7 +893,11 @@ static int refill_pi_state_cache(void)
 	/* pi_mutex gets initialized later */
 	pi_state->owner = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	refcount_set(&pi_state->refcount, 1);
+=======
+	atomic_set(&pi_state->refcount, 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	atomic_set(&pi_state->refcount, 1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -920,7 +944,11 @@ static void pi_state_update_owner(struct futex_pi_state *pi_state,
 static void get_pi_state(struct futex_pi_state *pi_state)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	WARN_ON_ONCE(!refcount_inc_not_zero(&pi_state->refcount));
+=======
+	WARN_ON_ONCE(!atomic_inc_not_zero(&pi_state->refcount));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	WARN_ON_ONCE(!atomic_inc_not_zero(&pi_state->refcount));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -936,7 +964,11 @@ static void put_pi_state(struct futex_pi_state *pi_state)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!refcount_dec_and_test(&pi_state->refcount))
+=======
+	if (!atomic_dec_and_test(&pi_state->refcount))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!atomic_dec_and_test(&pi_state->refcount))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -948,6 +980,7 @@ static void put_pi_state(struct futex_pi_state *pi_state)
 	 */
 	if (pi_state->owner) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unsigned long flags;
 
 		raw_spin_lock_irqsave(&pi_state->pi_mutex.wait_lock, flags);
@@ -955,6 +988,8 @@ static void put_pi_state(struct futex_pi_state *pi_state)
 		rt_mutex_proxy_unlock(&pi_state->pi_mutex);
 		raw_spin_unlock_irqrestore(&pi_state->pi_mutex.wait_lock, flags);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		struct task_struct *owner;
 
 		raw_spin_lock_irq(&pi_state->pi_mutex.wait_lock);
@@ -966,6 +1001,9 @@ static void put_pi_state(struct futex_pi_state *pi_state)
 		}
 		rt_mutex_proxy_unlock(&pi_state->pi_mutex, owner);
 		raw_spin_unlock_irq(&pi_state->pi_mutex.wait_lock);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -979,7 +1017,11 @@ static void put_pi_state(struct futex_pi_state *pi_state)
 		 */
 		pi_state->owner = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		refcount_set(&pi_state->refcount, 1);
+=======
+		atomic_set(&pi_state->refcount, 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		atomic_set(&pi_state->refcount, 1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1044,7 +1086,11 @@ static void exit_pi_state_list(struct task_struct *curr)
 		 * progress and retry the loop.
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!refcount_inc_not_zero(&pi_state->refcount)) {
+=======
+		if (!atomic_inc_not_zero(&pi_state->refcount)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!atomic_inc_not_zero(&pi_state->refcount)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1206,7 +1252,11 @@ static int attach_to_pi_state(u32 __user *uaddr, u32 uval,
 	 * free pi_state before we can take a reference ourselves.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	WARN_ON(!refcount_read(&pi_state->refcount));
+=======
+	WARN_ON(!atomic_read(&pi_state->refcount));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	WARN_ON(!atomic_read(&pi_state->refcount));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1631,9 +1681,15 @@ static void __unqueue_futex(struct futex_q *q)
 	struct futex_hash_bucket *hb;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (WARN_ON_SMP(!q->lock_ptr) || WARN_ON(plist_node_empty(&q->list)))
 		return;
 	lockdep_assert_held(q->lock_ptr);
+=======
+	if (WARN_ON_SMP(!q->lock_ptr || !spin_is_locked(q->lock_ptr))
+	    || WARN_ON(plist_node_empty(&q->list)))
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (WARN_ON_SMP(!q->lock_ptr || !spin_is_locked(q->lock_ptr))
 	    || WARN_ON(plist_node_empty(&q->list)))
@@ -1710,10 +1766,15 @@ static int wake_futex_pi(u32 __user *uaddr, u32 uval, struct futex_pi_state *pi_
 	newval = FUTEX_WAITERS | task_pid_vnr(new_owner);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(should_fail_futex(true))) {
 		ret = -EFAULT;
 		goto out_unlock;
 	}
+=======
+	if (unlikely(should_fail_futex(true)))
+		ret = -EFAULT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(should_fail_futex(true)))
 		ret = -EFAULT;
@@ -1833,8 +1894,13 @@ static int futex_atomic_op_inuser(unsigned int encoded_op, u32 __user *uaddr)
 	unsigned int op =	  (encoded_op & 0x70000000) >> 28;
 	unsigned int cmp =	  (encoded_op & 0x0f000000) >> 24;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int oparg = sign_extend32((encoded_op & 0x00fff000) >> 12, 11);
 	int cmparg = sign_extend32(encoded_op & 0x00000fff, 11);
+=======
+	int oparg = sign_extend32((encoded_op & 0x00fff000) >> 12, 12);
+	int cmparg = sign_extend32(encoded_op & 0x00000fff, 12);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int oparg = sign_extend32((encoded_op & 0x00fff000) >> 12, 12);
 	int cmparg = sign_extend32(encoded_op & 0x00000fff, 12);
@@ -2619,6 +2685,7 @@ retry:
 
 		/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 * The trylock just failed, so either there is an owner or
 		 * there is a higher priority waiter than this one.
 		 */
@@ -2636,10 +2703,15 @@ retry:
 			goto handle_err;
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		 * Since we just failed the trylock; there must be an owner.
 		 */
 		newowner = rt_mutex_owner(&pi_state->pi_mutex);
 		BUG_ON(!newowner);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
 		WARN_ON_ONCE(argowner != current);
@@ -2934,7 +3006,11 @@ static int futex_wait(u32 __user *uaddr, unsigned int flags, u32 val,
 		      ktime_t *abs_time, u32 bitset)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct hrtimer_sleeper timeout, *to;
+=======
+	struct hrtimer_sleeper timeout, *to = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct hrtimer_sleeper timeout, *to = NULL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2948,9 +3024,12 @@ static int futex_wait(u32 __user *uaddr, unsigned int flags, u32 val,
 	q.bitset = bitset;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	to = futex_setup_timer(abs_time, &timeout, flags,
 			       current->timer_slack_ns);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (abs_time) {
 		to = &timeout;
 
@@ -2962,6 +3041,9 @@ static int futex_wait(u32 __user *uaddr, unsigned int flags, u32 val,
 					     current->timer_slack_ns);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 retry:
 	/*
@@ -2997,6 +3079,10 @@ retry:
 
 	restart = &current->restart_block;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	restart->fn = futex_wait_restart;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	restart->fn = futex_wait_restart;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3007,7 +3093,11 @@ retry:
 	restart->futex.flags = flags | FLAGS_HAS_TIMEOUT;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = set_restart_fn(restart, futex_wait_restart);
+=======
+	ret = -ERESTART_RESTARTBLOCK;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = -ERESTART_RESTARTBLOCK;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3063,8 +3153,11 @@ static int futex_lock_pi(u32 __user *uaddr, unsigned int flags,
 		return -ENOMEM;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	to = futex_setup_timer(time, &timeout, FLAGS_CLOCKRT, 0);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (time) {
 		to = &timeout;
 		hrtimer_init_on_stack(&to->timer, CLOCK_REALTIME,
@@ -3072,6 +3165,9 @@ static int futex_lock_pi(u32 __user *uaddr, unsigned int flags,
 		hrtimer_init_sleeper(to, current);
 		hrtimer_set_expires(&to->timer, *time);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 retry:
@@ -3480,9 +3576,12 @@ static int futex_wait_requeue_pi(u32 __user *uaddr, unsigned int flags,
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	to = futex_setup_timer(abs_time, &timeout, flags,
 			       current->timer_slack_ns);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (abs_time) {
 		to = &timeout;
 		hrtimer_init_on_stack(&to->timer, (flags & FLAGS_CLOCKRT) ?
@@ -3492,6 +3591,9 @@ static int futex_wait_requeue_pi(u32 __user *uaddr, unsigned int flags,
 		hrtimer_set_expires_range_ns(&to->timer, *abs_time,
 					     current->timer_slack_ns);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*
@@ -3722,10 +3824,13 @@ static int handle_futex_death(u32 __user *uaddr, struct task_struct *curr,
 		return -1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Futex address must be 32bit aligned */
 	if ((((unsigned long)uaddr) % sizeof(*uaddr)) != 0)
 		return -1;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 retry:
@@ -4031,7 +4136,12 @@ long do_futex(u32 __user *uaddr, int op, u32 val, ktime_t *timeout,
 	if (op & FUTEX_CLOCK_REALTIME) {
 		flags |= FLAGS_CLOCKRT;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (cmd != FUTEX_WAIT_BITSET &&	cmd != FUTEX_WAIT_REQUEUE_PI)
+=======
+		if (cmd != FUTEX_WAIT && cmd != FUTEX_WAIT_BITSET && \
+		    cmd != FUTEX_WAIT_REQUEUE_PI)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (cmd != FUTEX_WAIT && cmd != FUTEX_WAIT_BITSET && \
 		    cmd != FUTEX_WAIT_REQUEUE_PI)
@@ -4053,7 +4163,10 @@ long do_futex(u32 __user *uaddr, int op, u32 val, ktime_t *timeout,
 	case FUTEX_WAIT:
 		val3 = FUTEX_BITSET_MATCH_ANY;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* fall through */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case FUTEX_WAIT_BITSET:
@@ -4061,7 +4174,10 @@ long do_futex(u32 __user *uaddr, int op, u32 val, ktime_t *timeout,
 	case FUTEX_WAKE:
 		val3 = FUTEX_BITSET_MATCH_ANY;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* fall through */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case FUTEX_WAKE_BITSET:

@@ -1350,7 +1350,10 @@ int ib_send_cm_req(struct ib_cm_id *cm_id,
 	if (IS_ERR(cm_id_priv->timewait_info)) {
 		ret = PTR_ERR(cm_id_priv->timewait_info);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cm_id_priv->timewait_info = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto out;
@@ -1841,7 +1844,10 @@ static int cm_req_handler(struct cm_work *work)
 	if (IS_ERR(cm_id_priv->timewait_info)) {
 		ret = PTR_ERR(cm_id_priv->timewait_info);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cm_id_priv->timewait_info = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto destroy;

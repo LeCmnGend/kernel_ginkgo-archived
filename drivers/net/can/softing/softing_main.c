@@ -394,6 +394,7 @@ static int softing_netdev_open(struct net_device *ndev)
 	/* check or determine and set bittime */
 	ret = open_candev(ndev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret)
 		return ret;
 
@@ -401,6 +402,10 @@ static int softing_netdev_open(struct net_device *ndev)
 	if (ret < 0)
 		close_candev(ndev);
 
+=======
+	if (!ret)
+		ret = softing_startstop(ndev, 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!ret)
 		ret = softing_startstop(ndev, 1);

@@ -301,7 +301,11 @@ static int lpc18xx_wdt_remove(struct platform_device *pdev)
 
 	dev_warn(&pdev->dev, "I quit now, hardware will probably reboot!\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 	del_timer_sync(&lpc18xx_wdt->timer);
+=======
+	del_timer(&lpc18xx_wdt->timer);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	del_timer(&lpc18xx_wdt->timer);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

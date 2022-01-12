@@ -156,6 +156,7 @@ enum bug_trap_type report_bug(unsigned long bugaddr, struct pt_regs *regs)
 	file = NULL;
 	line = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 #ifdef CONFIG_DEBUG_BUGVERBOSE
 #ifndef CONFIG_GENERIC_BUG_RELATIVE_POINTERS
@@ -178,6 +179,8 @@ enum bug_trap_type report_bug(unsigned long bugaddr, struct pt_regs *regs)
 		 */
 		bug->flags |= BUGFLAG_DONE;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	warning = 0;
 
 	if (bug) {
@@ -202,6 +205,9 @@ enum bug_trap_type report_bug(unsigned long bugaddr, struct pt_regs *regs)
 			 */
 			bug->flags |= BUGFLAG_DONE;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 

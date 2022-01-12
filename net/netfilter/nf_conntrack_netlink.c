@@ -197,7 +197,10 @@ static int ctnetlink_dump_helpinfo(struct sk_buff *skb,
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rcu_read_lock();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	helper = rcu_dereference(help->helper);
@@ -216,11 +219,17 @@ static int ctnetlink_dump_helpinfo(struct sk_buff *skb,
 	nla_nest_end(skb, nest_helper);
 out:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rcu_read_unlock();
 	return 0;
 
 nla_put_failure:
 	rcu_read_unlock();
+=======
+	return 0;
+
+nla_put_failure:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return 0;
 
@@ -1060,8 +1069,11 @@ ctnetlink_parse_tuple(const struct nlattr * const cda[],
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (l3num != NFPROTO_IPV4 && l3num != NFPROTO_IPV6)
 		return -EOPNOTSUPP;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	tuple->src.l3num = l3num;

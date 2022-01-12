@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2009-2020, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2009-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2009-2021, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5105,10 +5109,15 @@ int sde_dbg_debugfs_register(struct device *dev)
 
 	if (dbg->dbgbus_sde.entries) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		dbg->dbgbus_sde.cmn.name = DBGBUS_NAME_SDE;
 		snprintf(debug_name, sizeof(debug_name), "%s_dbgbus",
 				dbg->dbgbus_sde.cmn.name);
 		dbg->dbgbus_sde.cmn.enable_mask = DEFAULT_DBGBUS_SDE;
+=======
+		snprintf(debug_name, sizeof(debug_name), "%s_dbgbus",
+				dbg->dbgbus_sde.cmn.name);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		snprintf(debug_name, sizeof(debug_name), "%s_dbgbus",
 				dbg->dbgbus_sde.cmn.name);
@@ -5119,10 +5128,15 @@ int sde_dbg_debugfs_register(struct device *dev)
 
 	if (dbg->dbgbus_vbif_rt.entries) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		dbg->dbgbus_vbif_rt.cmn.name = DBGBUS_NAME_VBIF_RT;
 		snprintf(debug_name, sizeof(debug_name), "%s_dbgbus",
 				dbg->dbgbus_vbif_rt.cmn.name);
 		dbg->dbgbus_vbif_rt.cmn.enable_mask = DEFAULT_DBGBUS_VBIFRT;
+=======
+		snprintf(debug_name, sizeof(debug_name), "%s_dbgbus",
+				dbg->dbgbus_vbif_rt.cmn.name);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		snprintf(debug_name, sizeof(debug_name), "%s_dbgbus",
 				dbg->dbgbus_vbif_rt.cmn.name);
@@ -5171,6 +5185,11 @@ void sde_dbg_init_dbg_buses(u32 hwversion)
 		dbg->dbgbus_sde.cmn.entries_size = ARRAY_SIZE(dbg_bus_sde_8998);
 		dbg->dbgbus_sde.cmn.flags = DBGBUS_FLAGS_DSPP;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		dbg->dbgbus_sde.cmn.name = DBGBUS_NAME_SDE;
+		dbg->dbgbus_sde.cmn.enable_mask = DEFAULT_DBGBUS_SDE;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dbg->dbgbus_sde.cmn.name = DBGBUS_NAME_SDE;
 		dbg->dbgbus_sde.cmn.enable_mask = DEFAULT_DBGBUS_SDE;
@@ -5180,6 +5199,11 @@ void sde_dbg_init_dbg_buses(u32 hwversion)
 		dbg->dbgbus_vbif_rt.cmn.entries_size =
 				ARRAY_SIZE(vbif_dbg_bus_msm8998);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		dbg->dbgbus_vbif_rt.cmn.name = DBGBUS_NAME_VBIF_RT;
+		dbg->dbgbus_vbif_rt.cmn.enable_mask = DEFAULT_DBGBUS_VBIFRT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dbg->dbgbus_vbif_rt.cmn.name = DBGBUS_NAME_VBIF_RT;
 		dbg->dbgbus_vbif_rt.cmn.enable_mask = DEFAULT_DBGBUS_VBIFRT;
@@ -5192,6 +5216,11 @@ void sde_dbg_init_dbg_buses(u32 hwversion)
 				ARRAY_SIZE(dbg_bus_sde_sdm845);
 		dbg->dbgbus_sde.cmn.flags = DBGBUS_FLAGS_DSPP;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		dbg->dbgbus_sde.cmn.name = DBGBUS_NAME_SDE;
+		dbg->dbgbus_sde.cmn.enable_mask = DEFAULT_DBGBUS_SDE;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dbg->dbgbus_sde.cmn.name = DBGBUS_NAME_SDE;
 		dbg->dbgbus_sde.cmn.enable_mask = DEFAULT_DBGBUS_SDE;
@@ -5202,6 +5231,11 @@ void sde_dbg_init_dbg_buses(u32 hwversion)
 		dbg->dbgbus_vbif_rt.cmn.entries_size =
 				ARRAY_SIZE(vbif_dbg_bus_msm8998);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		dbg->dbgbus_vbif_rt.cmn.name = DBGBUS_NAME_VBIF_RT;
+		dbg->dbgbus_vbif_rt.cmn.enable_mask = DEFAULT_DBGBUS_VBIFRT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dbg->dbgbus_vbif_rt.cmn.name = DBGBUS_NAME_VBIF_RT;
 		dbg->dbgbus_vbif_rt.cmn.enable_mask = DEFAULT_DBGBUS_VBIFRT;
@@ -5217,6 +5251,11 @@ void sde_dbg_init_dbg_buses(u32 hwversion)
 				ARRAY_SIZE(dbg_bus_sde_sm8150);
 		dbg->dbgbus_sde.cmn.flags = DBGBUS_FLAGS_DSPP;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		dbg->dbgbus_sde.cmn.name = DBGBUS_NAME_SDE;
+		dbg->dbgbus_sde.cmn.enable_mask = DEFAULT_DBGBUS_SDE;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dbg->dbgbus_sde.cmn.name = DBGBUS_NAME_SDE;
 		dbg->dbgbus_sde.cmn.enable_mask = DEFAULT_DBGBUS_SDE;
@@ -5228,6 +5267,11 @@ void sde_dbg_init_dbg_buses(u32 hwversion)
 		dbg->dbgbus_dsi.entries = dsi_dbg_bus_sdm845;
 		dbg->dbgbus_dsi.size = ARRAY_SIZE(dsi_dbg_bus_sdm845);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		dbg->dbgbus_vbif_rt.cmn.name = DBGBUS_NAME_VBIF_RT;
+		dbg->dbgbus_vbif_rt.cmn.enable_mask = DEFAULT_DBGBUS_VBIFRT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dbg->dbgbus_vbif_rt.cmn.name = DBGBUS_NAME_VBIF_RT;
 		dbg->dbgbus_vbif_rt.cmn.enable_mask = DEFAULT_DBGBUS_VBIFRT;

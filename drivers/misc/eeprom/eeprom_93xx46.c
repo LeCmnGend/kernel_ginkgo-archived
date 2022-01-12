@@ -39,10 +39,13 @@ static const struct eeprom_93xx46_devtype_data atmel_at93c46d_data = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const struct eeprom_93xx46_devtype_data microchip_93lc46b_data = {
 	.quirks = EEPROM_93XX46_QUIRK_EXTRA_READ_CYCLE,
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct eeprom_93xx46_dev {
@@ -66,11 +69,14 @@ static inline bool has_quirk_instruction_length(struct eeprom_93xx46_dev *edev)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline bool has_quirk_extra_read_cycle(struct eeprom_93xx46_dev *edev)
 {
 	return edev->pdata->quirks & EEPROM_93XX46_QUIRK_EXTRA_READ_CYCLE;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int eeprom_93xx46_read(void *priv, unsigned int off,
@@ -115,11 +121,14 @@ static int eeprom_93xx46_read(void *priv, unsigned int off,
 			cmd_addr, edev->spi->max_speed_hz);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (has_quirk_extra_read_cycle(edev)) {
 			cmd_addr <<= 1;
 			bits += 1;
 		}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		spi_message_init(&m);
@@ -390,7 +399,10 @@ static const struct of_device_id eeprom_93xx46_of_table[] = {
 	{ .compatible = "eeprom-93xx46", },
 	{ .compatible = "atmel,at93c46d", .data = &atmel_at93c46d_data, },
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ .compatible = "microchip,93lc46b", .data = &microchip_93lc46b_data, },
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{}
@@ -551,6 +563,9 @@ MODULE_DESCRIPTION("Driver for 93xx46 EEPROMs");
 MODULE_AUTHOR("Anatolij Gustschin <agust@denx.de>");
 MODULE_ALIAS("spi:93xx46");
 <<<<<<< HEAD
+<<<<<<< HEAD
 MODULE_ALIAS("spi:eeprom-93xx46");
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

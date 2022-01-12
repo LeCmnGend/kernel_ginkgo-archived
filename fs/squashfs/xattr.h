@@ -31,6 +31,7 @@ static inline __le64 *squashfs_read_xattr_id_table(struct super_block *sb,
 		u64 start, u64 *xattr_table_start, int *xattr_ids)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct squashfs_xattr_id_table *id_table;
 
 	id_table = squashfs_read_table(sb, start, sizeof(*id_table));
@@ -41,6 +42,10 @@ static inline __le64 *squashfs_read_xattr_id_table(struct super_block *sb,
 	kfree(id_table);
 
 	ERROR("Xattrs in filesystem, these will be ignored\n");
+=======
+	ERROR("Xattrs in filesystem, these will be ignored\n");
+	*xattr_table_start = start;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ERROR("Xattrs in filesystem, these will be ignored\n");
 	*xattr_table_start = start;

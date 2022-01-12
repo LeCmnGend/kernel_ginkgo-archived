@@ -65,12 +65,15 @@ enum {
 	 */
 	CGRP_CPUSET_CLONE_CHILDREN,
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* Control group has to be frozen. */
 	CGRP_FREEZE,
 
 	/* Cgroup is frozen. */
 	CGRP_FROZEN,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -162,8 +165,13 @@ struct cgroup_subsys_state {
 
 	/* percpu_ref killing and RCU release */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct work_struct destroy_work;
 	struct rcu_work destroy_rwork;
+=======
+	struct rcu_head rcu_head;
+	struct work_struct destroy_work;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct rcu_head rcu_head;
 	struct work_struct destroy_work;
@@ -273,6 +281,7 @@ struct css_set {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct cgroup_freezer_state {
 	/* Should the cgroup and its descendants be frozen. */
 	bool freeze;
@@ -292,6 +301,8 @@ struct cgroup_freezer_state {
 	int nr_frozen_tasks;
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct cgroup {
@@ -419,9 +430,12 @@ struct cgroup {
 	struct cgroup_bpf bpf;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Used to store internal freezer state */
 	struct cgroup_freezer_state freezer;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* ids of the ancestors at each level including self */
@@ -562,7 +576,11 @@ struct cftype {
 /*
  * Control Group subsystem type.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * See Documentation/cgroup-v1/cgroups.txt for details
+=======
+ * See Documentation/cgroups/cgroups.txt for details
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * See Documentation/cgroups/cgroups.txt for details
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

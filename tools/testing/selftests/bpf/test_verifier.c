@@ -463,7 +463,13 @@ static struct bpf_test tests[] = {
 			BPF_EXIT_INSN(),
 		},
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr = "R1 subtraction from stack pointer",
+=======
+		.errstr_unpriv = "R1 subtraction from stack pointer",
+		.result_unpriv = REJECT,
+		.errstr = "R1 invalid mem access",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.errstr_unpriv = "R1 subtraction from stack pointer",
 		.result_unpriv = REJECT,
@@ -1905,8 +1911,14 @@ static struct bpf_test tests[] = {
 			BPF_EXIT_INSN(),
 		},
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.result = REJECT,
 		.errstr = "R1 pointer += pointer",
+=======
+		.result = ACCEPT,
+		.result_unpriv = REJECT,
+		.errstr_unpriv = "R1 pointer += pointer",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.result = ACCEPT,
 		.result_unpriv = REJECT,
@@ -2245,7 +2257,11 @@ static struct bpf_test tests[] = {
 	},
 	{
 <<<<<<< HEAD
+<<<<<<< HEAD
 		"unpriv: adding of fp, reg",
+=======
+		"unpriv: adding of fp",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		"unpriv: adding of fp",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2256,6 +2272,7 @@ static struct bpf_test tests[] = {
 			BPF_STX_MEM(BPF_DW, BPF_REG_1, BPF_REG_0, -8),
 			BPF_EXIT_INSN(),
 		},
+<<<<<<< HEAD
 <<<<<<< HEAD
 		.errstr_unpriv = "R1 stack pointer arithmetic goes out of range",
 		.result_unpriv = REJECT,
@@ -2273,6 +2290,11 @@ static struct bpf_test tests[] = {
 		.errstr_unpriv = "R1 stack pointer arithmetic goes out of range",
 		.result_unpriv = REJECT,
 		.result = ACCEPT,
+=======
+		.result = ACCEPT,
+		.result_unpriv = REJECT,
+		.errstr_unpriv = "R1 stack pointer arithmetic goes out of range",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.result = ACCEPT,
 		.result_unpriv = REJECT,
@@ -2714,8 +2736,12 @@ static struct bpf_test tests[] = {
 				    offsetof(struct __sk_buff, data)),
 			BPF_ALU64_REG(BPF_ADD, BPF_REG_3, BPF_REG_4),
 <<<<<<< HEAD
+<<<<<<< HEAD
 			BPF_LDX_MEM(BPF_W, BPF_REG_2, BPF_REG_1,
 				    offsetof(struct __sk_buff, len)),
+=======
+			BPF_MOV64_REG(BPF_REG_2, BPF_REG_1),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			BPF_MOV64_REG(BPF_REG_2, BPF_REG_1),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3026,7 +3052,11 @@ static struct bpf_test tests[] = {
 			BPF_EXIT_INSN(),
 		},
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr = "R3 pointer arithmetic on PTR_TO_PACKET_END",
+=======
+		.errstr = "invalid access to packet",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.errstr = "invalid access to packet",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4017,7 +4047,13 @@ static struct bpf_test tests[] = {
 		},
 		.fixup_map2 = { 3, 11 },
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr = "R0 pointer += pointer",
+=======
+		.errstr_unpriv = "R0 pointer += pointer",
+		.errstr = "R0 invalid mem access 'inv'",
+		.result_unpriv = REJECT,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.errstr_unpriv = "R0 pointer += pointer",
 		.errstr = "R0 invalid mem access 'inv'",
@@ -4064,7 +4100,11 @@ static struct bpf_test tests[] = {
 		},
 		.fixup_map1 = { 4 },
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr = "R4 pointer arithmetic on PTR_TO_MAP_VALUE_OR_NULL",
+=======
+		.errstr = "R4 invalid mem access",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.errstr = "R4 invalid mem access",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4089,7 +4129,11 @@ static struct bpf_test tests[] = {
 		},
 		.fixup_map1 = { 4 },
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr = "R4 pointer arithmetic on PTR_TO_MAP_VALUE_OR_NULL",
+=======
+		.errstr = "R4 invalid mem access",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.errstr = "R4 invalid mem access",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4114,7 +4158,11 @@ static struct bpf_test tests[] = {
 		},
 		.fixup_map1 = { 4 },
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr = "R4 pointer arithmetic on PTR_TO_MAP_VALUE_OR_NULL",
+=======
+		.errstr = "R4 invalid mem access",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.errstr = "R4 invalid mem access",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5349,13 +5397,19 @@ static struct bpf_test tests[] = {
 		},
 		.fixup_map2 = { 3 },
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr = "R0 bitwise operator &= on pointer",
 		.result = REJECT,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		.errstr_unpriv = "R0 bitwise operator &= on pointer",
 		.errstr = "invalid mem access 'inv'",
 		.result = REJECT,
 		.result_unpriv = REJECT,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	},
 	{
@@ -5373,13 +5427,19 @@ static struct bpf_test tests[] = {
 		},
 		.fixup_map2 = { 3 },
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr = "R0 32-bit pointer arithmetic prohibited",
 		.result = REJECT,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		.errstr_unpriv = "R0 32-bit pointer arithmetic prohibited",
 		.errstr = "invalid mem access 'inv'",
 		.result = REJECT,
 		.result_unpriv = REJECT,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	},
 	{
@@ -5397,13 +5457,19 @@ static struct bpf_test tests[] = {
 		},
 		.fixup_map2 = { 3 },
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr = "R0 pointer arithmetic with /= operator",
 		.result = REJECT,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		.errstr_unpriv = "R0 pointer arithmetic with /= operator",
 		.errstr = "invalid mem access 'inv'",
 		.result = REJECT,
 		.result_unpriv = REJECT,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	},
 	{
@@ -5998,7 +6064,12 @@ static struct bpf_test tests[] = {
 		},
 		.fixup_map_in_map = { 3 },
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr = "R1 pointer arithmetic on CONST_PTR_TO_MAP prohibited",
+=======
+		.errstr = "R1 type=inv expected=map_ptr",
+		.errstr_unpriv = "R1 pointer arithmetic on CONST_PTR_TO_MAP prohibited",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.errstr = "R1 type=inv expected=map_ptr",
 		.errstr_unpriv = "R1 pointer arithmetic on CONST_PTR_TO_MAP prohibited",
@@ -6721,7 +6792,10 @@ static struct bpf_test tests[] = {
 		.fixup_map1 = { 3 },
 		.errstr = "R0 min value is negative, either use unsigned index or do a if (index >=0) check.",
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr_unpriv = "R1 has unknown scalar with mixed signed bounds",
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		.result = REJECT,
@@ -7367,6 +7441,7 @@ static struct bpf_test tests[] = {
 	},
 	{
 <<<<<<< HEAD
+<<<<<<< HEAD
 		"pkt_end - pkt_start is allowed",
 		.insns = {
 			BPF_LDX_MEM(BPF_W, BPF_REG_0, BPF_REG_1,
@@ -7380,6 +7455,8 @@ static struct bpf_test tests[] = {
 		.prog_type = BPF_PROG_TYPE_SCHED_CLS,
 	},
 	{
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		"XDP pkt read, pkt_end mangling, bad access 1",
@@ -7397,7 +7474,11 @@ static struct bpf_test tests[] = {
 			BPF_EXIT_INSN(),
 		},
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr = "R3 pointer arithmetic on PTR_TO_PACKET_END",
+=======
+		.errstr = "R1 offset is outside of the packet",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.errstr = "R1 offset is outside of the packet",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -7420,7 +7501,11 @@ static struct bpf_test tests[] = {
 			BPF_EXIT_INSN(),
 		},
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr = "R3 pointer arithmetic on PTR_TO_PACKET_END",
+=======
+		.errstr = "R1 offset is outside of the packet",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.errstr = "R1 offset is outside of the packet",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -7859,9 +7944,14 @@ static struct bpf_test tests[] = {
 			BPF_EXIT_INSN(),
 		},
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr_unpriv = "R1 has pointer with unsupported alu operation",
 		.errstr = "R0 tried to subtract pointer from scalar",
 		.result = REJECT,
+=======
+		.result = REJECT,
+		.errstr = "R0 tried to subtract pointer from scalar",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.result = REJECT,
 		.errstr = "R0 tried to subtract pointer from scalar",
@@ -7879,8 +7969,11 @@ static struct bpf_test tests[] = {
 			BPF_EXIT_INSN(),
 		},
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr_unpriv = "R1 has pointer with unsupported alu operation",
 		.result_unpriv = REJECT,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		.result = ACCEPT,
@@ -7894,9 +7987,14 @@ static struct bpf_test tests[] = {
 			BPF_EXIT_INSN(),
 		},
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr_unpriv = "R1 has pointer with unsupported alu operation",
 		.errstr = "R0 tried to subtract pointer from scalar",
 		.result = REJECT,
+=======
+		.result = REJECT,
+		.errstr = "R0 tried to subtract pointer from scalar",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.result = REJECT,
 		.errstr = "R0 tried to subtract pointer from scalar",
@@ -7906,7 +8004,10 @@ static struct bpf_test tests[] = {
 		"check deducing bounds from const, 4",
 		.insns = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			BPF_MOV64_REG(BPF_REG_6, BPF_REG_1),
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			BPF_MOV64_IMM(BPF_REG_0, 0),
@@ -7915,11 +8016,17 @@ static struct bpf_test tests[] = {
 			BPF_JMP_IMM(BPF_JSGE, BPF_REG_0, 0, 1),
 			BPF_EXIT_INSN(),
 <<<<<<< HEAD
+<<<<<<< HEAD
 			BPF_ALU64_REG(BPF_SUB, BPF_REG_6, BPF_REG_0),
 			BPF_EXIT_INSN(),
 		},
 		.errstr_unpriv = "R6 has pointer with unsupported alu operation",
 		.result_unpriv = REJECT,
+=======
+			BPF_ALU64_REG(BPF_SUB, BPF_REG_1, BPF_REG_0),
+			BPF_EXIT_INSN(),
+		},
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			BPF_ALU64_REG(BPF_SUB, BPF_REG_1, BPF_REG_0),
 			BPF_EXIT_INSN(),
@@ -7936,9 +8043,14 @@ static struct bpf_test tests[] = {
 			BPF_EXIT_INSN(),
 		},
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr_unpriv = "R1 has pointer with unsupported alu operation",
 		.errstr = "R0 tried to subtract pointer from scalar",
 		.result = REJECT,
+=======
+		.result = REJECT,
+		.errstr = "R0 tried to subtract pointer from scalar",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.result = REJECT,
 		.errstr = "R0 tried to subtract pointer from scalar",
@@ -7954,9 +8066,14 @@ static struct bpf_test tests[] = {
 			BPF_EXIT_INSN(),
 		},
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr_unpriv = "R1 has pointer with unsupported alu operation",
 		.errstr = "R0 tried to subtract pointer from scalar",
 		.result = REJECT,
+=======
+		.result = REJECT,
+		.errstr = "R0 tried to subtract pointer from scalar",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.result = REJECT,
 		.errstr = "R0 tried to subtract pointer from scalar",
@@ -7973,9 +8090,14 @@ static struct bpf_test tests[] = {
 			BPF_EXIT_INSN(),
 		},
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr_unpriv = "R1 has pointer with unsupported alu operation",
 		.errstr = "dereference of modified ctx ptr",
 		.result = REJECT,
+=======
+		.result = REJECT,
+		.errstr = "dereference of modified ctx ptr",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.result = REJECT,
 		.errstr = "dereference of modified ctx ptr",
@@ -7992,9 +8114,14 @@ static struct bpf_test tests[] = {
 			BPF_EXIT_INSN(),
 		},
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr_unpriv = "R1 has pointer with unsupported alu operation",
 		.errstr = "dereference of modified ctx ptr",
 		.result = REJECT,
+=======
+		.result = REJECT,
+		.errstr = "dereference of modified ctx ptr",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.result = REJECT,
 		.errstr = "dereference of modified ctx ptr",
@@ -8009,9 +8136,14 @@ static struct bpf_test tests[] = {
 			BPF_EXIT_INSN(),
 		},
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr_unpriv = "R1 has pointer with unsupported alu operation",
 		.errstr = "R0 tried to subtract pointer from scalar",
 		.result = REJECT,
+=======
+		.result = REJECT,
+		.errstr = "R0 tried to subtract pointer from scalar",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.result = REJECT,
 		.errstr = "R0 tried to subtract pointer from scalar",
@@ -8028,8 +8160,13 @@ static struct bpf_test tests[] = {
 			BPF_EXIT_INSN(),
 		},
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.errstr = "math between ctx pointer and register with unbounded min value is not allowed",
 		.result = REJECT,
+=======
+		.result = REJECT,
+		.errstr = "math between ctx pointer and register with unbounded min value is not allowed",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.result = REJECT,
 		.errstr = "math between ctx pointer and register with unbounded min value is not allowed",

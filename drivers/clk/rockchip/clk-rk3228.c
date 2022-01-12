@@ -145,7 +145,11 @@ PNAME(mux_hdmiphy_p)		= { "hdmiphy_phy", "xin24m" };
 PNAME(mux_aclk_cpu_src_p)	= { "cpll_aclk_cpu", "gpll_aclk_cpu", "hdmiphy_aclk_cpu" };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 PNAME(mux_pll_src_4plls_p)	= { "cpll", "gpll", "hdmiphy", "usb480m" };
+=======
+PNAME(mux_pll_src_4plls_p)	= { "cpll", "gpll", "hdmiphy" "usb480m" };
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 PNAME(mux_pll_src_4plls_p)	= { "cpll", "gpll", "hdmiphy" "usb480m" };
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

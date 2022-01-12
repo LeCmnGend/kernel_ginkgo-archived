@@ -488,6 +488,7 @@ static struct rpc_task *__rpc_find_next_queued_priority(struct rpc_wait_queue *q
 
 	/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * Service the privileged queue.
 	 */
 	q = &queue->tasks[RPC_NR_PRIORITY - 1];
@@ -503,10 +504,15 @@ static struct rpc_task *__rpc_find_next_queued_priority(struct rpc_wait_queue *q
 	if (!list_empty(q) && queue->nr) {
 		queue->nr--;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * Service a batch of tasks from a single owner.
 	 */
 	q = &queue->tasks[queue->priority];
 	if (!list_empty(q) && --queue->nr) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		task = list_first_entry(q, struct rpc_task, u.tk_wait.list);
 		goto out;

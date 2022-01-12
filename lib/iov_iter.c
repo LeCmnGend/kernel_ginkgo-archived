@@ -418,7 +418,11 @@ int iov_iter_fault_in_readable(struct iov_iter *i, size_t bytes)
 	struct iovec v;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (iter_is_iovec(i)) {
+=======
+	if (!(i->type & (ITER_BVEC|ITER_KVEC))) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!(i->type & (ITER_BVEC|ITER_KVEC))) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

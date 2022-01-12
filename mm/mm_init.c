@@ -152,7 +152,11 @@ static void __meminit mm_compute_batch(void)
 
 	/* batch size set to 0.4% of (total memory/#cpus), or max int32 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memsized_batch = min_t(u64, (totalram_pages()/nr)/256, 0x7fffffff);
+=======
+	memsized_batch = min_t(u64, (totalram_pages/nr)/256, 0x7fffffff);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memsized_batch = min_t(u64, (totalram_pages/nr)/256, 0x7fffffff);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

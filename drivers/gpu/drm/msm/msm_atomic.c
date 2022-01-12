@@ -19,7 +19,10 @@
 #include <linux/msm_drm_notify.h>
 #include <linux/notifier.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/pm_qos.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -38,10 +41,14 @@ struct msm_commit {
 	uint32_t plane_mask;
 	bool nonblock;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	union {
 		struct kthread_work commit_work;
 		struct work_struct clean_work;
 	};
+=======
+	struct kthread_work commit_work;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct kthread_work commit_work;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -85,6 +92,7 @@ EXPORT_SYMBOL(msm_drm_unregister_client);
  *     event(unblank or power down).
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool notifier_enabled __read_mostly = true;
 static int msm_drm_notifier_call_chain(unsigned long val, void *v)
 {
@@ -95,10 +103,15 @@ static int msm_drm_notifier_call_chain(unsigned long val, void *v)
 static int msm_drm_notifier_call_chain(unsigned long val, void *v)
 {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+static int msm_drm_notifier_call_chain(unsigned long val, void *v)
+{
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return blocking_notifier_call_chain(&msm_drm_notifier_list, val,
 					    v);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 void msm_drm_notifier_enable(bool val)
 {
@@ -107,6 +120,8 @@ void msm_drm_notifier_enable(bool val)
 }
 EXPORT_SYMBOL(msm_drm_notifier_enable);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* block until specified crtcs are no longer pending update, and
@@ -147,6 +162,10 @@ static void end_atomic(struct msm_drm_private *priv, uint32_t crtc_mask,
 static void commit_destroy(struct msm_commit *c)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	end_atomic(c->dev->dev_private, c->crtc_mask, c->plane_mask);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	end_atomic(c->dev->dev_private, c->crtc_mask, c->plane_mask);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -598,6 +617,7 @@ static void msm_atomic_helper_commit_modeset_enables(struct drm_device *dev,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void complete_commit_cleanup(struct work_struct *work)
 {
 	struct msm_commit *c = container_of(work, typeof(*c), clean_work);
@@ -608,6 +628,8 @@ static void complete_commit_cleanup(struct work_struct *work)
 	commit_destroy(c);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* The (potentially) asynchronous part of the commit.  At this point
@@ -650,7 +672,13 @@ static void complete_commit(struct msm_commit *c)
 	kms->funcs->complete_commit(kms, state);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	end_atomic(priv, c->crtc_mask, c->plane_mask);
+=======
+	drm_atomic_state_put(state);
+
+	commit_destroy(c);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	drm_atomic_state_put(state);
 
@@ -660,6 +688,7 @@ static void complete_commit(struct msm_commit *c)
 
 static void _msm_drm_commit_work_cb(struct kthread_work *work)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	struct msm_commit *c = container_of(work, typeof(*c), commit_work);
 	struct pm_qos_request req = {
@@ -686,6 +715,8 @@ static void _msm_drm_commit_work_cb(struct kthread_work *work)
 		complete_commit_cleanup(&c->clean_work);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct msm_commit *commit =  NULL;
 
 	if (!work) {
@@ -698,6 +729,9 @@ static void _msm_drm_commit_work_cb(struct kthread_work *work)
 	SDE_ATRACE_BEGIN("complete_commit");
 	complete_commit(commit);
 	SDE_ATRACE_END("complete_commit");
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -770,7 +804,10 @@ static void msm_atomic_commit_dispatch(struct drm_device *dev,
 		DRM_ERROR("failed to dispatch commit to any CRTC\n");
 		complete_commit(commit);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		complete_commit_cleanup(&commit->clean_work);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else if (!nonblock) {
@@ -864,10 +901,13 @@ retry:
 	BUG_ON(drm_atomic_helper_swap_state(state, false) < 0);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!atomic_cmpxchg_acquire(&priv->pm_req_set, 1, 0))
 		pm_qos_update_request(&priv->pm_irq_req, 100);
 	mod_delayed_work(system_unbound_wq, &priv->pm_unreq_dwork, HZ / 10);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*

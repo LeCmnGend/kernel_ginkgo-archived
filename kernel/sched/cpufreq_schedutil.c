@@ -18,7 +18,10 @@
 #include <trace/events/power.h>
 #include <linux/sched/sysctl.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/battery_saver.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include "sched.h"
@@ -32,9 +35,13 @@ struct sugov_tunables {
 	unsigned int hispeed_load;
 	unsigned int hispeed_freq;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int rtg_boost_freq;
 	bool pl;
 	bool iowait_boost_enable;
+=======
+	bool pl;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bool pl;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -60,7 +67,10 @@ struct sugov_policy {
 	unsigned int cached_raw_freq;
 	unsigned long hispeed_util;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long rtg_boost_util;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long max;
@@ -74,7 +84,10 @@ struct sugov_policy {
 	bool work_in_progress;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool limits_changed;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool need_freq_update;
@@ -126,6 +139,7 @@ static bool sugov_should_update_freq(struct sugov_policy *sg_policy, u64 time)
 	 * we cannot in fact act on it.
 	 *
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * This is needed on the slow switching platforms too to prevent CPUs
 	 * going offline from leaving stale IRQ work items behind.
 	 */
@@ -136,6 +150,8 @@ static bool sugov_should_update_freq(struct sugov_policy *sg_policy, u64 time)
 		sg_policy->limits_changed = false;
 		sg_policy->need_freq_update = true;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * For the slow switching platforms, the kthread is always scheduled on
 	 * the right set of CPUs and any CPU can find the next frequency and
 	 * schedule the kthread.
@@ -151,6 +167,9 @@ static bool sugov_should_update_freq(struct sugov_policy *sg_policy, u64 time)
 		 * next_freq value and force an update.
 		 */
 		sg_policy->next_freq = UINT_MAX;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return true;
 	}
@@ -186,7 +205,11 @@ static inline bool use_pelt(void)
 {
 #ifdef CONFIG_SCHED_WALT
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return false;
+=======
+	return (!sysctl_sched_use_walt_cpu_util || walt_disabled);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return (!sysctl_sched_use_walt_cpu_util || walt_disabled);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -220,7 +243,11 @@ static void sugov_track_cycles(struct sugov_policy *sg_policy,
 	u64 next_ws = sg_policy->last_ws + sched_ravg_window;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (use_pelt())
+=======
+	if (unlikely(!sysctl_sched_use_walt_cpu_util))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(!sysctl_sched_use_walt_cpu_util))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -243,7 +270,11 @@ static void sugov_calc_avg_cap(struct sugov_policy *sg_policy, u64 curr_ws,
 	unsigned int avg_freq;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (use_pelt())
+=======
+	if (unlikely(!sysctl_sched_use_walt_cpu_util))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(!sysctl_sched_use_walt_cpu_util))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -273,6 +304,10 @@ static void sugov_update_commit(struct sugov_policy *sg_policy, u64 time,
 {
 	struct cpufreq_policy *policy = sg_policy->policy;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	unsigned int cpu;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned int cpu;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -281,11 +316,16 @@ static void sugov_update_commit(struct sugov_policy *sg_policy, u64 time,
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (sugov_up_down_rate_limit(sg_policy, time, next_freq)) {
 		/* Don't cache a raw freq that didn't become next_freq */
 		sg_policy->cached_raw_freq = 0;
 		return;
 	}
+=======
+	if (sugov_up_down_rate_limit(sg_policy, time, next_freq))
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (sugov_up_down_rate_limit(sg_policy, time, next_freq))
 		return;
@@ -302,6 +342,12 @@ static void sugov_update_commit(struct sugov_policy *sg_policy, u64 time,
 
 		policy->cur = next_freq;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		for_each_cpu(cpu, policy->cpus) {
+			trace_cpu_frequency(next_freq, cpu);
+		}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		for_each_cpu(cpu, policy->cpus) {
 			trace_cpu_frequency(next_freq, cpu);
@@ -346,21 +392,28 @@ static unsigned int get_next_freq(struct sugov_policy *sg_policy,
 
 	freq = (freq + (freq >> 2)) * util / max;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (freq == sg_policy->cached_raw_freq && !sg_policy->need_freq_update)
 		return sg_policy->next_freq;
 
 	sg_policy->need_freq_update = false;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	trace_sugov_next_freq(policy->cpu, util, max, freq);
 
 	if (freq == sg_policy->cached_raw_freq && sg_policy->next_freq != UINT_MAX)
 		return sg_policy->next_freq;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	sg_policy->cached_raw_freq = freq;
 	return cpufreq_driver_resolve_freq(policy, freq);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static void sugov_get_util(unsigned long *util, unsigned long *max, int cpu,
 			   u64 time)
@@ -385,6 +438,8 @@ static void sugov_get_util(unsigned long *util, unsigned long *max, int cpu,
 		*util = min(*util + rt, max_cap);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void sugov_get_util(unsigned long *util, unsigned long *max, int cpu)
 {
 	struct rq *rq = cpu_rq(cpu);
@@ -397,6 +452,9 @@ static void sugov_get_util(unsigned long *util, unsigned long *max, int cpu)
 	*max = cfs_max;
 
 	*util = boosted_cpu_util(cpu, &loadcpu->walt_load);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -404,11 +462,14 @@ static void sugov_set_iowait_boost(struct sugov_cpu *sg_cpu, u64 time,
 				   unsigned int flags)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct sugov_policy *sg_policy = sg_cpu->sg_policy;
 
 	if (!sg_policy->tunables->iowait_boost_enable || is_battery_saver_on())
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (flags & SCHED_CPUFREQ_IOWAIT) {
@@ -478,9 +539,12 @@ static inline bool sugov_cpu_is_busy(struct sugov_cpu *sg_cpu) { return false; }
 #define NL_RATIO 75
 #define DEFAULT_HISPEED_LOAD 90
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define DEFAULT_CPU0_RTG_BOOST_FREQ 1000000
 #define DEFAULT_CPU4_RTG_BOOST_FREQ 0
 #define DEFAULT_CPU7_RTG_BOOST_FREQ 0
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void sugov_walt_adjust(struct sugov_cpu *sg_cpu, unsigned long *util,
@@ -489,7 +553,10 @@ static void sugov_walt_adjust(struct sugov_cpu *sg_cpu, unsigned long *util,
 	struct sugov_policy *sg_policy = sg_cpu->sg_policy;
 	bool is_migration = sg_cpu->flags & SCHED_CPUFREQ_INTERCLUSTER_MIG;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool is_rtg_boost = sg_cpu->walt_load.rtgb_active;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long nl = sg_cpu->walt_load.nl;
@@ -498,12 +565,18 @@ static void sugov_walt_adjust(struct sugov_cpu *sg_cpu, unsigned long *util,
 	unsigned long pl = sg_cpu->walt_load.pl;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (use_pelt())
 		return;
 
 	if (is_rtg_boost)
 		*util = max(*util, sg_policy->rtg_boost_util);
 
+=======
+	if (unlikely(!sysctl_sched_use_walt_cpu_util))
+		return;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(!sysctl_sched_use_walt_cpu_util))
 		return;
@@ -519,6 +592,7 @@ static void sugov_walt_adjust(struct sugov_cpu *sg_cpu, unsigned long *util,
 	if (is_hiload && nl >= mult_frac(cpu_util, NL_RATIO, 100))
 		*util = *max;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (sg_policy->tunables->pl && pl > *util) {
 		if (conservative_pl() || is_battery_saver_on())
@@ -538,6 +612,8 @@ static inline unsigned long target_util(struct sugov_policy *sg_policy,
 }
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (sg_policy->tunables->pl) {
 		if (conservative_pl())
 			pl = mult_frac(pl, TARGET_LOAD, 100);
@@ -545,6 +621,9 @@ static inline unsigned long target_util(struct sugov_policy *sg_policy,
 	}
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void sugov_update_single(struct update_util_data *hook, u64 time,
 				unsigned int flags)
@@ -553,7 +632,11 @@ static void sugov_update_single(struct update_util_data *hook, u64 time,
 	struct sugov_policy *sg_policy = sg_cpu->sg_policy;
 	struct cpufreq_policy *policy = sg_policy->policy;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long util, max, hs_util, boost_util;
+=======
+	unsigned long util, max, hs_util;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long util, max, hs_util;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -570,6 +653,7 @@ static void sugov_update_single(struct update_util_data *hook, u64 time,
 	if (!sugov_should_update_freq(sg_policy, time))
 		return;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	/* Limits may have changed, don't skip frequency update */
 	busy = use_pelt() && !sg_policy->need_freq_update &&
@@ -593,6 +677,8 @@ static void sugov_update_single(struct update_util_data *hook, u64 time,
 					    sg_policy->tunables->rtg_boost_freq);
 			sg_policy->rtg_boost_util = boost_util;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	busy = use_pelt() && sugov_cpu_is_busy(sg_cpu);
 
 	raw_spin_lock(&sg_policy->update_lock);
@@ -607,6 +693,9 @@ static void sugov_update_single(struct update_util_data *hook, u64 time,
 					sg_policy->tunables->hispeed_freq);
 			hs_util = mult_frac(hs_util, TARGET_LOAD, 100);
 			sg_policy->hispeed_util = hs_util;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 
@@ -619,8 +708,12 @@ static void sugov_update_single(struct update_util_data *hook, u64 time,
 		trace_sugov_util_update(sg_cpu->cpu, sg_cpu->util,
 				sg_policy->avg_cap, max, sg_cpu->walt_load.nl,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				sg_cpu->walt_load.pl,
 				sg_cpu->walt_load.rtgb_active, flags);
+=======
+				sg_cpu->walt_load.pl, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				sg_cpu->walt_load.pl, flags);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -633,15 +726,21 @@ static void sugov_update_single(struct update_util_data *hook, u64 time,
 		 * recently, as the reduction is likely to be premature then.
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (busy && next_f < sg_policy->next_freq) {
 			next_f = sg_policy->next_freq;
 			/* clear cache when it's bypassed */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (busy && next_f < sg_policy->next_freq &&
 		    sg_policy->next_freq != UINT_MAX) {
 			next_f = sg_policy->next_freq;
 
 			/* Reset cached freq as next_freq has changed */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			sg_policy->cached_raw_freq = 0;
 		}
@@ -655,6 +754,10 @@ static unsigned int sugov_next_freq_shared(struct sugov_cpu *sg_cpu, u64 time)
 	struct sugov_policy *sg_policy = sg_cpu->sg_policy;
 	struct cpufreq_policy *policy = sg_policy->policy;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u64 last_freq_update_time = sg_policy->last_freq_update_time;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u64 last_freq_update_time = sg_policy->last_freq_update_time;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -674,7 +777,11 @@ static unsigned int sugov_next_freq_shared(struct sugov_cpu *sg_cpu, u64 time)
 		 * idle now (and clear iowait_boost for it).
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		delta_ns = time - j_sg_cpu->last_update;
+=======
+		delta_ns = last_freq_update_time - j_sg_cpu->last_update;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		delta_ns = last_freq_update_time - j_sg_cpu->last_update;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -684,11 +791,16 @@ static unsigned int sugov_next_freq_shared(struct sugov_cpu *sg_cpu, u64 time)
 			continue;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (j_sg_cpu->flags & SCHED_CPUFREQ_DL) {
 			/* clear cache when it's bypassed */
 			sg_policy->cached_raw_freq = 0;
 			return policy->cpuinfo.max_freq;
 		}
+=======
+		if (j_sg_cpu->flags & SCHED_CPUFREQ_RT_DL)
+			return policy->cpuinfo.max_freq;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (j_sg_cpu->flags & SCHED_CPUFREQ_RT_DL)
 			return policy->cpuinfo.max_freq;
@@ -721,7 +833,11 @@ static void sugov_update_shared(struct update_util_data *hook, u64 time,
 	struct sugov_cpu *sg_cpu = container_of(hook, struct sugov_cpu, update_util);
 	struct sugov_policy *sg_policy = sg_cpu->sg_policy;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long util, max, hs_util, boost_util;
+=======
+	unsigned long util, max, hs_util;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long util, max, hs_util;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -731,7 +847,11 @@ static void sugov_update_shared(struct update_util_data *hook, u64 time,
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sugov_get_util(&util, &max, sg_cpu->cpu, time);
+=======
+	sugov_get_util(&util, &max, sg_cpu->cpu);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sugov_get_util(&util, &max, sg_cpu->cpu);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -743,6 +863,7 @@ static void sugov_update_shared(struct update_util_data *hook, u64 time,
 	if (sg_policy->max != max) {
 		sg_policy->max = max;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		hs_util = target_util(sg_policy,
 					sg_policy->tunables->hispeed_freq);
 		sg_policy->hispeed_util = hs_util;
@@ -751,10 +872,15 @@ static void sugov_update_shared(struct update_util_data *hook, u64 time,
 				    sg_policy->tunables->rtg_boost_freq);
 		sg_policy->rtg_boost_util = boost_util;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		hs_util = freq_to_util(sg_policy,
 					sg_policy->tunables->hispeed_freq);
 		hs_util = mult_frac(hs_util, TARGET_LOAD, 100);
 		sg_policy->hispeed_util = hs_util;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -771,6 +897,7 @@ static void sugov_update_shared(struct update_util_data *hook, u64 time,
 	trace_sugov_util_update(sg_cpu->cpu, sg_cpu->util, sg_policy->avg_cap,
 				max, sg_cpu->walt_load.nl,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				sg_cpu->walt_load.pl,
 				sg_cpu->walt_load.rtgb_active, flags);
 
@@ -784,6 +911,8 @@ static void sugov_update_shared(struct update_util_data *hook, u64 time,
 			next_f = sugov_next_freq_shared(sg_cpu, time);
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				sg_cpu->walt_load.pl, flags);
 
 	if (sugov_should_update_freq(sg_policy, time) &&
@@ -792,6 +921,9 @@ static void sugov_update_shared(struct update_util_data *hook, u64 time,
 			next_f = sg_policy->policy->cpuinfo.max_freq;
 		else
 			next_f = sugov_next_freq_shared(sg_cpu, time);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		sugov_update_commit(sg_policy, time, next_f);
@@ -957,8 +1089,14 @@ static ssize_t hispeed_freq_store(struct gov_attr_set *attr_set,
 	list_for_each_entry(sg_policy, &attr_set->policy_list, tunables_hook) {
 		raw_spin_lock_irqsave(&sg_policy->update_lock, flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		hs_util = target_util(sg_policy,
 					sg_policy->tunables->hispeed_freq);
+=======
+		hs_util = freq_to_util(sg_policy,
+					sg_policy->tunables->hispeed_freq);
+		hs_util = mult_frac(hs_util, TARGET_LOAD, 100);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		hs_util = freq_to_util(sg_policy,
 					sg_policy->tunables->hispeed_freq);
@@ -971,6 +1109,7 @@ static ssize_t hispeed_freq_store(struct gov_attr_set *attr_set,
 	return count;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static ssize_t rtg_boost_freq_show(struct gov_attr_set *attr_set, char *buf)
 {
@@ -1005,6 +1144,8 @@ static ssize_t rtg_boost_freq_store(struct gov_attr_set *attr_set,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static ssize_t pl_show(struct gov_attr_set *attr_set, char *buf)
 {
 	struct sugov_tunables *tunables = to_sugov_tunables(attr_set);
@@ -1019,6 +1160,7 @@ static ssize_t pl_store(struct gov_attr_set *attr_set, const char *buf,
 
 	if (kstrtobool(buf, &tunables->pl))
 		return -EINVAL;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	return count;
 }
@@ -1044,6 +1186,8 @@ static ssize_t iowait_boost_enable_store(struct gov_attr_set *attr_set,
 	tunables->iowait_boost_enable = enable;
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return count;
 }
@@ -1053,9 +1197,13 @@ static struct governor_attr down_rate_limit_us = __ATTR_RW(down_rate_limit_us);
 static struct governor_attr hispeed_load = __ATTR_RW(hispeed_load);
 static struct governor_attr hispeed_freq = __ATTR_RW(hispeed_freq);
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct governor_attr rtg_boost_freq = __ATTR_RW(rtg_boost_freq);
 static struct governor_attr pl = __ATTR_RW(pl);
 static struct governor_attr iowait_boost_enable = __ATTR_RW(iowait_boost_enable);
+=======
+static struct governor_attr pl = __ATTR_RW(pl);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static struct governor_attr pl = __ATTR_RW(pl);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1066,9 +1214,13 @@ static struct attribute *sugov_attributes[] = {
 	&hispeed_load.attr,
 	&hispeed_freq.attr,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	&rtg_boost_freq.attr,
 	&pl.attr,
 	&iowait_boost_enable.attr,
+=======
+	&pl.attr,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	&pl.attr,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1106,7 +1258,11 @@ static int sugov_kthread_create(struct sugov_policy *sg_policy)
 {
 	struct task_struct *thread;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct sched_param param = { .sched_priority = MAX_USER_RT_PRIO - 1 };
+=======
+	struct sched_param param = { .sched_priority = MAX_USER_RT_PRIO / 2 };
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct sched_param param = { .sched_priority = MAX_USER_RT_PRIO / 2 };
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1193,7 +1349,10 @@ static void sugov_tunables_save(struct cpufreq_policy *policy,
 	cached->pl = tunables->pl;
 	cached->hispeed_load = tunables->hispeed_load;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cached->rtg_boost_freq = tunables->rtg_boost_freq;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cached->hispeed_freq = tunables->hispeed_freq;
@@ -1221,7 +1380,10 @@ static void sugov_tunables_restore(struct cpufreq_policy *policy)
 	tunables->pl = cached->pl;
 	tunables->hispeed_load = cached->hispeed_load;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tunables->rtg_boost_freq = cached->rtg_boost_freq;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	tunables->hispeed_freq = cached->hispeed_freq;
@@ -1235,7 +1397,10 @@ static int sugov_init(struct cpufreq_policy *policy)
 	struct sugov_policy *sg_policy;
 	struct sugov_tunables *tunables;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long util;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret = 0;
@@ -1284,6 +1449,7 @@ static int sugov_init(struct cpufreq_policy *policy)
 	tunables->hispeed_freq = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tunables->iowait_boost_enable = true;
 
 	switch (policy->cpu) {
@@ -1305,6 +1471,10 @@ static int sugov_init(struct cpufreq_policy *policy)
 	util = target_util(sg_policy, sg_policy->tunables->rtg_boost_freq);
 	sg_policy->rtg_boost_util = util;
 
+=======
+	policy->governor_data = sg_policy;
+	sg_policy->tunables = tunables;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	policy->governor_data = sg_policy;
 	sg_policy->tunables = tunables;
@@ -1375,9 +1545,14 @@ static int sugov_start(struct cpufreq_policy *policy)
 		sg_policy->tunables->down_rate_limit_us * NSEC_PER_USEC;
 	sg_policy->last_freq_update_time = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sg_policy->next_freq = 0;
 	sg_policy->work_in_progress = false;
 	sg_policy->limits_changed = false;
+=======
+	sg_policy->next_freq = UINT_MAX;
+	sg_policy->work_in_progress = false;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sg_policy->next_freq = UINT_MAX;
 	sg_policy->work_in_progress = false;
@@ -1392,7 +1567,11 @@ static int sugov_start(struct cpufreq_policy *policy)
 		sg_cpu->cpu = cpu;
 		sg_cpu->sg_policy = sg_policy;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		sg_cpu->flags = SCHED_CPUFREQ_DL;
+=======
+		sg_cpu->flags = SCHED_CPUFREQ_RT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		sg_cpu->flags = SCHED_CPUFREQ_RT;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1432,6 +1611,10 @@ static void sugov_limits(struct cpufreq_policy *policy)
 	unsigned long flags;
 	unsigned int ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int cpu;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int cpu;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1452,6 +1635,11 @@ static void sugov_limits(struct cpufreq_policy *policy)
 		if (ret && policy->cur != ret) {
 			policy->cur = ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			for_each_cpu(cpu, policy->cpus)
+				trace_cpu_frequency(ret, cpu);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			for_each_cpu(cpu, policy->cpus)
 				trace_cpu_frequency(ret, cpu);
@@ -1461,7 +1649,11 @@ static void sugov_limits(struct cpufreq_policy *policy)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sg_policy->limits_changed = true;
+=======
+	sg_policy->need_freq_update = true;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sg_policy->need_freq_update = true;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

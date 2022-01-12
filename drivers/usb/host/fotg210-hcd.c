@@ -5599,7 +5599,11 @@ static int fotg210_hcd_probe(struct platform_device *pdev)
 	struct resource *res;
 	int irq;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int retval;
+=======
+	int retval = -ENODEV;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int retval = -ENODEV;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5623,7 +5627,11 @@ static int fotg210_hcd_probe(struct platform_device *pdev)
 			dev_name(dev));
 	if (!hcd) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		dev_err(dev, "failed to create hcd\n");
+=======
+		dev_err(dev, "failed to create hcd with err %d\n", retval);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dev_err(dev, "failed to create hcd with err %d\n", retval);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

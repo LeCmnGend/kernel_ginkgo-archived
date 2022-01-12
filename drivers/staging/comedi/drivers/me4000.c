@@ -934,7 +934,11 @@ static irqreturn_t me4000_ai_isr(int irq, void *dev_id)
 	int i;
 	int c = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned short lval;
+=======
+	unsigned int lval;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned int lval;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

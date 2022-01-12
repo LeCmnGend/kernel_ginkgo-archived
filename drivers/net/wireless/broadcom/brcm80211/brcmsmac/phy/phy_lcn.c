@@ -5091,10 +5091,15 @@ bool wlc_phy_attach_lcnphy(struct brcms_phy *pi)
 	pi->pi_fptr.detach = wlc_phy_detach_lcnphy;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!wlc_phy_txpwr_srom_read_lcnphy(pi)) {
 		kfree(pi->u.pi_lcnphy);
 		return false;
 	}
+=======
+	if (!wlc_phy_txpwr_srom_read_lcnphy(pi))
+		return false;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!wlc_phy_txpwr_srom_read_lcnphy(pi))
 		return false;

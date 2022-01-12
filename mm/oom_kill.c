@@ -57,8 +57,11 @@ int sysctl_reap_mem_on_sigkill;
 
 DEFINE_MUTEX(oom_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Serializes oom_score_adj and oom_score_adj_min updates */
 DEFINE_MUTEX(oom_adj_mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -210,7 +213,11 @@ unsigned long oom_badness(struct task_struct *p, struct mem_cgroup *memcg,
 	 */
 	points = get_mm_rss(p->mm) + get_mm_counter(p->mm, MM_SWAPENTS) +
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mm_pgtables_bytes(p->mm) / PAGE_SIZE;
+=======
+		atomic_long_read(&p->mm->nr_ptes) + mm_nr_pmds(p->mm);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		atomic_long_read(&p->mm->nr_ptes) + mm_nr_pmds(p->mm);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -252,7 +259,11 @@ static enum oom_constraint constrained_alloc(struct oom_control *oc)
 
 	/* Default to all available memory */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	oc->totalpages = totalram_pages() + total_swap_pages;
+=======
+	oc->totalpages = totalram_pages + total_swap_pages;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	oc->totalpages = totalram_pages + total_swap_pages;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -379,8 +390,13 @@ static void select_bad_process(struct oom_control *oc)
  * memcg, not in the same cpuset, or bound to a disjoint set of mempolicy nodes
  * are not shown.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * State information includes task's pid, uid, tgid, vm size, rss,
  * pgtables_bytes, swapents, oom_score_adj value, and name.
+=======
+ * State information includes task's pid, uid, tgid, vm size, rss, nr_ptes,
+ * swapents, oom_score_adj value, and name.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * State information includes task's pid, uid, tgid, vm size, rss, nr_ptes,
  * swapents, oom_score_adj value, and name.
@@ -392,7 +408,11 @@ void dump_tasks(struct mem_cgroup *memcg, const nodemask_t *nodemask)
 	struct task_struct *task;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pr_info("[ pid ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name\n");
+=======
+	pr_info("[ pid ]   uid  tgid total_vm      rss nr_ptes nr_pmds swapents oom_score_adj name\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pr_info("[ pid ]   uid  tgid total_vm      rss nr_ptes nr_pmds swapents oom_score_adj name\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -412,16 +432,22 @@ void dump_tasks(struct mem_cgroup *memcg, const nodemask_t *nodemask)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_info("[%5d] %5d %5d %8lu %8lu %8ld %8lu         %5hd %s\n",
 			task->pid, from_kuid(&init_user_ns, task_uid(task)),
 			task->tgid, task->mm->total_vm, get_mm_rss(task->mm),
 			mm_pgtables_bytes(task->mm),
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		pr_info("[%5d] %5d %5d %8lu %8lu %7ld %7ld %8lu         %5hd %s\n",
 			task->pid, from_kuid(&init_user_ns, task_uid(task)),
 			task->tgid, task->mm->total_vm, get_mm_rss(task->mm),
 			atomic_long_read(&task->mm->nr_ptes),
 			mm_nr_pmds(task->mm),
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			get_mm_counter(task->mm, MM_SWAPENTS),
 			task->signal->oom_score_adj, task->comm);
@@ -733,7 +759,11 @@ void oom_killer_enable(void)
 {
 	oom_killer_disabled = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pr_debug("OOM killer enabled.\n");
+=======
+	pr_info("OOM killer enabled.\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pr_info("OOM killer enabled.\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -774,7 +804,11 @@ bool oom_killer_disable(signed long timeout)
 		return false;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pr_debug("OOM killer disabled.\n");
+=======
+	pr_info("OOM killer disabled.\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pr_info("OOM killer disabled.\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -944,7 +978,11 @@ static void oom_kill_process(struct oom_control *oc, const char *message)
 	/* Raise event before sending signal: task reaper must see this */
 	count_vm_event(OOM_KILL);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memcg_memory_event_mm(mm, MEMCG_OOM_KILL);
+=======
+	count_memcg_event_mm(mm, OOM_KILL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	count_memcg_event_mm(mm, OOM_KILL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1058,7 +1096,11 @@ bool out_of_memory(struct oom_control *oc)
 	enum oom_constraint constraint = CONSTRAINT_NONE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (oom_killer_disabled || IS_ENABLED(CONFIG_ANDROID_SIMPLE_LMK))
+=======
+	if (oom_killer_disabled)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (oom_killer_disabled)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

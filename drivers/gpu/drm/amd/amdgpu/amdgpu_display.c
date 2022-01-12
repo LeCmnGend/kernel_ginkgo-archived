@@ -270,7 +270,11 @@ int amdgpu_crtc_set_config(struct drm_mode_set *set,
 	ret = pm_runtime_get_sync(dev->dev);
 	if (ret < 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out;
+=======
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -298,7 +302,10 @@ int amdgpu_crtc_set_config(struct drm_mode_set *set,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 out:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* drop the power reference we got coming in here */

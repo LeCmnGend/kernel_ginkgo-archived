@@ -1748,7 +1748,10 @@ static int set_pflag_rx_cqe_compress(struct net_device *netdev,
 	struct mlx5e_priv *priv = netdev_priv(netdev);
 	struct mlx5_core_dev *mdev = priv->mdev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int err;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1761,10 +1764,14 @@ static int set_pflag_rx_cqe_compress(struct net_device *netdev,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = mlx5e_modify_rx_cqe_compression_locked(priv, enable);
 	if (err)
 		return err;
 
+=======
+	mlx5e_modify_rx_cqe_compression_locked(priv, enable);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mlx5e_modify_rx_cqe_compression_locked(priv, enable);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

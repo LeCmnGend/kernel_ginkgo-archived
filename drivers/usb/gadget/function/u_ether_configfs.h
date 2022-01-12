@@ -208,18 +208,24 @@ out:									\
 	{								\
 		struct f_##_f_##_opts *opts = to_f_##_f_##_opts(item);	\
 <<<<<<< HEAD
+<<<<<<< HEAD
 		int ret = -EINVAL;					\
 		u8 val;							\
 									\
 		mutex_lock(&opts->lock);				\
 		if (sscanf(page, "%02hhx", &val) > 0) {			\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		int ret;						\
 		u8 val;							\
 									\
 		mutex_lock(&opts->lock);				\
 		ret = sscanf(page, "%02hhx", &val);			\
 		if (ret > 0) {						\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			opts->_n_ = val;				\
 			ret = len;					\

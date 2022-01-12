@@ -102,6 +102,7 @@ int fb_alloc_cmap_gfp(struct fb_cmap *cmap, int len, int transp, gfp_t flags)
 			return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cmap->red = kzalloc(size, flags);
 		if (!cmap->red)
 			goto fail;
@@ -114,6 +115,8 @@ int fb_alloc_cmap_gfp(struct fb_cmap *cmap, int len, int transp, gfp_t flags)
 		if (transp) {
 			cmap->transp = kzalloc(size, flags);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		cmap->red = kmalloc(size, flags);
 		if (!cmap->red)
 			goto fail;
@@ -125,6 +128,9 @@ int fb_alloc_cmap_gfp(struct fb_cmap *cmap, int len, int transp, gfp_t flags)
 			goto fail;
 		if (transp) {
 			cmap->transp = kmalloc(size, flags);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (!cmap->transp)
 				goto fail;

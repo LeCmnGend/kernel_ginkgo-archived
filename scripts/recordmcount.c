@@ -416,7 +416,11 @@ static int
 is_mcounted_section_name(char const *const txtname)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return strncmp(".text",          txtname, 5) == 0 ||
+=======
+	return strcmp(".text",           txtname) == 0 ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return strcmp(".text",           txtname) == 0 ||
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

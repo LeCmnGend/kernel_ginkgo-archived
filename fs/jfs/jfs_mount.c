@@ -50,7 +50,10 @@
 #include <linux/fs.h>
 #include <linux/buffer_head.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/log2.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -383,6 +386,7 @@ static int chkSuper(struct super_block *sb)
 	sbi->l2bsize = le16_to_cpu(j_sb->s_l2bsize);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* check some fields for possible corruption */
 	if (sbi->l2bsize != ilog2((u32)bsize) ||
 	    j_sb->pad != 0 ||
@@ -392,6 +396,8 @@ static int chkSuper(struct super_block *sb)
 		goto out;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*

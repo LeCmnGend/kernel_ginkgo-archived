@@ -539,6 +539,7 @@ err_pm:
 err_node:
 	of_node_put(private->mutex_node);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (i = 0; i < DDP_COMPONENT_ID_MAX; i++) {
 		of_node_put(private->comp_node[i]);
 		if (private->ddp_comp[i]) {
@@ -546,6 +547,10 @@ err_node:
 			private->ddp_comp[i] = NULL;
 		}
 	}
+=======
+	for (i = 0; i < DDP_COMPONENT_ID_MAX; i++)
+		of_node_put(private->comp_node[i]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (i = 0; i < DDP_COMPONENT_ID_MAX; i++)
 		of_node_put(private->comp_node[i]);

@@ -560,7 +560,10 @@ static int iwl_pcie_gen2_enqueue_hcmd(struct iwl_trans *trans,
 	u16 cmdlen[IWL_MAX_CMD_TBS_PER_TFD];
 	struct iwl_tfh_tfd *tfd = iwl_pcie_get_tfd(trans, txq, txq->write_ptr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long flags2;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -634,15 +637,21 @@ static int iwl_pcie_gen2_enqueue_hcmd(struct iwl_trans *trans,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock_irqsave(&txq->lock, flags2);
 
 	if (iwl_queue_space(txq) < ((cmd->flags & CMD_ASYNC) ? 2 : 1)) {
 		spin_unlock_irqrestore(&txq->lock, flags2);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_bh(&txq->lock);
 
 	if (iwl_queue_space(txq) < ((cmd->flags & CMD_ASYNC) ? 2 : 1)) {
 		spin_unlock_bh(&txq->lock);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		IWL_ERR(trans, "No space in command queue\n");
@@ -785,7 +794,11 @@ static int iwl_pcie_gen2_enqueue_hcmd(struct iwl_trans *trans,
 
 out:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_unlock_irqrestore(&txq->lock, flags2);
+=======
+	spin_unlock_bh(&txq->lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spin_unlock_bh(&txq->lock);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

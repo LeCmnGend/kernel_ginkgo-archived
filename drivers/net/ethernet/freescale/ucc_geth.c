@@ -3895,7 +3895,10 @@ static int ucc_geth_probe(struct platform_device* ofdev)
 	netif_napi_add(dev, &ugeth->napi, ucc_geth_poll, 64);
 	dev->mtu = 1500;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev->max_mtu = 1518;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -3944,6 +3947,10 @@ static int ucc_geth_remove(struct platform_device* ofdev)
 
 	unregister_netdev(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	free_netdev(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	free_netdev(dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3953,7 +3960,10 @@ static int ucc_geth_remove(struct platform_device* ofdev)
 	of_node_put(ugeth->ug_info->tbi_node);
 	of_node_put(ugeth->ug_info->phy_node);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	free_netdev(dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

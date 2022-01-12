@@ -1292,7 +1292,11 @@ sba_ioc_init_pluto(struct parisc_device *sba, struct ioc *ioc, int ioc_num)
 	** IBASE and IMASK registers.
 	*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ioc->ibase = READ_REG(ioc->ioc_hpa + IOC_IBASE) & ~0x1fffffULL;
+=======
+	ioc->ibase = READ_REG(ioc->ioc_hpa + IOC_IBASE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ioc->ibase = READ_REG(ioc->ioc_hpa + IOC_IBASE);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1423,7 +1427,11 @@ sba_ioc_init(struct parisc_device *sba, struct ioc *ioc, int ioc_num)
 	*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	iova_space_size = (u32) (totalram_pages()/global_ioc_cnt);
+=======
+	iova_space_size = (u32) (totalram_pages/global_ioc_cnt);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	iova_space_size = (u32) (totalram_pages/global_ioc_cnt);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1452,7 +1460,11 @@ sba_ioc_init(struct parisc_device *sba, struct ioc *ioc, int ioc_num)
 			__func__,
 			ioc->ioc_hpa,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			(unsigned long) totalram_pages() >> (20 - PAGE_SHIFT),
+=======
+			(unsigned long) totalram_pages >> (20 - PAGE_SHIFT),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			(unsigned long) totalram_pages >> (20 - PAGE_SHIFT),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

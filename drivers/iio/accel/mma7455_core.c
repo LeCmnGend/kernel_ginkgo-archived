@@ -56,6 +56,7 @@
 struct mma7455_data {
 	struct regmap *regmap;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Used to reorganize data.  Will ensure correct alignment of
 	 * the timestamp if present
@@ -64,6 +65,8 @@ struct mma7455_data {
 		__le16 channels[3];
 		s64 ts __aligned(8);
 	} scan;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -97,6 +100,10 @@ static irqreturn_t mma7455_trigger_handler(int irq, void *p)
 	struct iio_dev *indio_dev = pf->indio_dev;
 	struct mma7455_data *mma7455 = iio_priv(indio_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u8 buf[16]; /* 3 x 16-bit channels + padding + ts */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u8 buf[16]; /* 3 x 16-bit channels + padding + ts */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -107,6 +114,7 @@ static irqreturn_t mma7455_trigger_handler(int irq, void *p)
 		goto done;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = regmap_bulk_read(mma7455->regmap, MMA7455_REG_XOUTL,
 			       mma7455->scan.channels,
 			       sizeof(mma7455->scan.channels));
@@ -115,12 +123,17 @@ static irqreturn_t mma7455_trigger_handler(int irq, void *p)
 
 	iio_push_to_buffers_with_timestamp(indio_dev, &mma7455->scan,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = regmap_bulk_read(mma7455->regmap, MMA7455_REG_XOUTL, buf,
 			       sizeof(__le16) * 3);
 	if (ret)
 		goto done;
 
 	iio_push_to_buffers_with_timestamp(indio_dev, buf,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					   iio_get_time_ns(indio_dev));
 

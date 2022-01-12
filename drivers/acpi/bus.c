@@ -1250,7 +1250,10 @@ static int __init acpi_init(void)
 	result = acpi_bus_init();
 	if (result) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kobject_put(acpi_kobj);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		disable_acpi();

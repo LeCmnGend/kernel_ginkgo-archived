@@ -1772,8 +1772,11 @@ static const struct usb_device_id ar5523_id_table[] = {
 	AR5523_DEVICE_UG(0x0846, 0x4250),	/* Netgear / WG111T */
 	AR5523_DEVICE_UG(0x0846, 0x5f00),	/* Netgear / WPN111 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	AR5523_DEVICE_UG(0x083a, 0x4506),	/* SMC / EZ Connect
 						   SMCWUSBT-G2 */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	AR5523_DEVICE_UG(0x157e, 0x3006),	/* Umedia / AR5523_1 */

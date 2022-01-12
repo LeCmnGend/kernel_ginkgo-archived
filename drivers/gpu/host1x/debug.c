@@ -26,8 +26,11 @@
 #include "channel.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static DEFINE_MUTEX(debug_lock);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 unsigned int host1x_debug_trace_cmdbuf;
@@ -55,7 +58,10 @@ static int show_channel(struct host1x_channel *ch, void *data, bool show_fifo)
 
 	mutex_lock(&ch->cdma.lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&debug_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -65,7 +71,10 @@ static int show_channel(struct host1x_channel *ch, void *data, bool show_fifo)
 	host1x_hw_show_channel_cdma(m, ch, o);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_unlock(&debug_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_unlock(&ch->cdma.lock);

@@ -109,7 +109,11 @@ struct shmem_falloc {
 static unsigned long shmem_default_max_blocks(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return totalram_pages() / 2;
+=======
+	return totalram_pages / 2;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return totalram_pages / 2;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -118,9 +122,13 @@ static unsigned long shmem_default_max_blocks(void)
 static unsigned long shmem_default_max_inodes(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long nr_pages = totalram_pages();
 
 	return min(nr_pages - totalhigh_pages(), nr_pages / 2);
+=======
+	return min(totalram_pages - totalhigh_pages, totalram_pages / 2);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return min(totalram_pages - totalhigh_pages, totalram_pages / 2);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2284,6 +2292,7 @@ static int shmem_mfill_atomic_pte(struct mm_struct *dst_mm,
 
 	ret = -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!shmem_inode_acct_block(inode, 1)) {
 		/*
 		 * We may have got a page, returned -ENOENT triggering a retry,
@@ -2296,6 +2305,10 @@ static int shmem_mfill_atomic_pte(struct mm_struct *dst_mm,
 		}
 		goto out;
 	}
+=======
+	if (!shmem_inode_acct_block(inode, 1))
+		goto out;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!shmem_inode_acct_block(inode, 1))
 		goto out;
@@ -3603,7 +3616,11 @@ static int shmem_parse_options(char *options, struct shmem_sb_info *sbinfo,
 			if (*rest == '%') {
 				size <<= PAGE_SHIFT;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				size *= totalram_pages();
+=======
+				size *= totalram_pages;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				size *= totalram_pages;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4380,7 +4397,11 @@ void shmem_set_file(struct vm_area_struct *vma, struct file *file)
 /**
  * shmem_zero_setup - setup a shared anonymous mapping
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @vma: the vma to be mmapped is prepared by do_mmap
+=======
+ * @vma: the vma to be mmapped is prepared by do_mmap_pgoff
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * @vma: the vma to be mmapped is prepared by do_mmap_pgoff
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

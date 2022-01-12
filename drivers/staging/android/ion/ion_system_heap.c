@@ -292,7 +292,11 @@ static int ion_system_heap_allocate(struct ion_heap *heap,
 	int vmid = get_secure_vmid(buffer->flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (size / PAGE_SIZE > totalram_pages() / 2)
+=======
+	if (size / PAGE_SIZE > totalram_pages / 2)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (size / PAGE_SIZE > totalram_pages / 2)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -518,7 +522,10 @@ static struct ion_heap_ops system_heap_ops = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int ion_system_heap_debug_show(struct ion_heap *heap, struct seq_file *s,
 				      void *unused)
 {
@@ -619,6 +626,9 @@ static int ion_system_heap_debug_show(struct ion_heap *heap, struct seq_file *s,
 	return 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void ion_system_heap_destroy_pools(struct ion_page_pool **pools)
 {
@@ -686,6 +696,10 @@ struct ion_heap *ion_system_heap_create(struct ion_platform_heap *data)
 	mutex_init(&heap->split_page_mutex);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	heap->heap.debug_show = ion_system_heap_debug_show;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	heap->heap.debug_show = ion_system_heap_debug_show;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

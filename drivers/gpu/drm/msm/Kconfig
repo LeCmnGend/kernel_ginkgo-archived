@@ -180,6 +180,7 @@ config DRM_MSM_DSI_14NM_PHY
 	  Choose this option if DSI PHY on 8996 is used on the platform.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 config DRM_MSM_KCAL_CTRL
 	bool "Enable kernel-level color calibration control"
 	depends on DRM_MSM
@@ -189,6 +190,8 @@ config DRM_MSM_KCAL_CTRL
 	  This will adjust every atomic operation pcc and hsic call
 	  configuration with the values from kernel.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config DRM_SDE_EVTLOG_DEBUG
@@ -211,9 +214,12 @@ config DRM_SDE_RSC
 	  for display core power collapse events on rsc.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 config FENCE_DEBUG
 	bool "Print fence name to userspace"
 	depends on DRM_MSM
 	default n
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

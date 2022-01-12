@@ -242,7 +242,11 @@ struct mmc_queue_req;
  */
 struct mmc_part {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64		size;	/* partition size (in bytes) */
+=======
+	unsigned int	size;	/* partition size (in bytes) */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned int	size;	/* partition size (in bytes) */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

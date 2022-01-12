@@ -1357,12 +1357,15 @@ EXPORT_SYMBOL(__sb_end_write);
 int __sb_start_write(struct super_block *sb, int level, bool wait)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!wait)
 		return percpu_down_read_trylock(sb->s_writers.rw_sem + level-1);
 
 	percpu_down_read(sb->s_writers.rw_sem + level-1);
 	return 1;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool force_trylock = false;
 	int ret = 1;
 
@@ -1393,6 +1396,9 @@ int __sb_start_write(struct super_block *sb, int level, bool wait)
 
 	WARN_ON(force_trylock && !ret);
 	return ret;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL(__sb_start_write);

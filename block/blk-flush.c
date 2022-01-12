@@ -544,6 +544,7 @@ int blkdev_issue_flush(struct block_device *bdev, gfp_t gfp_mask,
 EXPORT_SYMBOL(blkdev_issue_flush);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * blkdev_issue_flush_nowait - queue a flush
  * @bdev:	blockdev to issue flush for
@@ -585,6 +586,8 @@ void blkdev_issue_flush_nowait(struct block_device *bdev, gfp_t gfp_mask)
 }
 EXPORT_SYMBOL(blkdev_issue_flush_nowait);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct blk_flush_queue *blk_alloc_flush_queue(struct request_queue *q,

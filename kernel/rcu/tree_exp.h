@@ -517,6 +517,7 @@ static void rcu_exp_wait_wake(struct rcu_state *rsp, unsigned long s)
 
 	synchronize_sched_expedited_wait(rsp);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* Switch over to wakeup mode, allowing the next GP to proceed.
 	 * End the previous grace period only after acquiring the mutex
@@ -526,6 +527,8 @@ static void rcu_exp_wait_wake(struct rcu_state *rsp, unsigned long s)
 	rcu_exp_gp_seq_end(rsp);
 	trace_rcu_exp_grace_period(rcu_state.name, s, TPS("end"));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rcu_exp_gp_seq_end(rsp);
 	trace_rcu_exp_grace_period(rsp->name, s, TPS("end"));
 
@@ -534,6 +537,9 @@ static void rcu_exp_wait_wake(struct rcu_state *rsp, unsigned long s)
 	 * next GP, to proceed.
 	 */
 	mutex_lock(&rsp->exp_wake_mutex);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	rcu_for_each_node_breadth_first(rsp, rnp) {
@@ -546,7 +552,11 @@ static void rcu_exp_wait_wake(struct rcu_state *rsp, unsigned long s)
 		}
 		smp_mb(); /* All above changes before wakeup. */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		wake_up_all(&rnp->exp_wq[rcu_seq_ctr(s) & 0x3]);
+=======
+		wake_up_all(&rnp->exp_wq[rcu_seq_ctr(rsp->expedited_sequence) & 0x3]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		wake_up_all(&rnp->exp_wq[rcu_seq_ctr(rsp->expedited_sequence) & 0x3]);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

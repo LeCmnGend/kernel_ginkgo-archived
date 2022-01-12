@@ -112,6 +112,7 @@ static enum ipa_hw_type ipa_api_hw_type;
 static struct ipa_api_controller *ipa_api_ctrl;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define MAX_CPY_BUFF_SZ		4096
 unsigned long
 ipa_safe_copy_from_user(char *dst, const char __user *buf, size_t count)
@@ -138,6 +139,8 @@ end:
 	return missing;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 const char *ipa_clients_strings[IPA_CLIENT_MAX] = {
@@ -2657,7 +2660,11 @@ bool ipa_has_open_aggr_frame(enum ipa_client_type client)
 int ipa_mhi_resume_channels_internal(enum ipa_client_type client,
 		bool LPTransitionRejected, bool brstmode_enabled,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		union gsi_channel_scratch ch_scratch, u8 index,
+=======
+		union __packed gsi_channel_scratch ch_scratch, u8 index,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		union __packed gsi_channel_scratch ch_scratch, u8 index,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3934,10 +3941,16 @@ static int ipa_pci_probe(
 		pr_err("ipa: ipa3_pci_drv_probe failed\n");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_IPA_EMULATION
 	if (running_emulation)
 		ipa_ut_module_init();
 #endif
+=======
+	if (running_emulation)
+		ipa_ut_module_init();
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (running_emulation)
 		ipa_ut_module_init();
@@ -3949,10 +3962,15 @@ static int ipa_pci_probe(
 static void ipa_pci_remove(struct pci_dev *pci_dev)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_IPA_EMULATION
 	if (running_emulation)
 		ipa_ut_module_exit();
 #endif
+=======
+	if (running_emulation)
+		ipa_ut_module_exit();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (running_emulation)
 		ipa_ut_module_exit();

@@ -42,7 +42,10 @@
 #define TI_VENDOR_ID			0x0451
 #define IBM_VENDOR_ID			0x04b3
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define STARTECH_VENDOR_ID		0x14b0
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define TI_3410_PRODUCT_ID		0x3410
@@ -383,7 +386,10 @@ static const struct usb_device_id ti_id_table_3410[] = {
 	{ USB_DEVICE(MXU1_VENDOR_ID, MXU1_1150_PRODUCT_ID) },
 	{ USB_DEVICE(MXU1_VENDOR_ID, MXU1_1151_PRODUCT_ID) },
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ USB_DEVICE(STARTECH_VENDOR_ID, TI_3410_PRODUCT_ID) },
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ }	/* terminator */
@@ -425,7 +431,10 @@ static const struct usb_device_id ti_id_table_combined[] = {
 	{ USB_DEVICE(MXU1_VENDOR_ID, MXU1_1150_PRODUCT_ID) },
 	{ USB_DEVICE(MXU1_VENDOR_ID, MXU1_1151_PRODUCT_ID) },
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ USB_DEVICE(STARTECH_VENDOR_ID, TI_3410_PRODUCT_ID) },
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ }	/* terminator */

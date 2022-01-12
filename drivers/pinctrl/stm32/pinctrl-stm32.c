@@ -957,7 +957,11 @@ static int stm32_gpiolib_register_bank(struct stm32_pinctrl *pctl,
 	struct reset_control *rstc;
 	int npins = STM32_GPIO_PINS_PER_BANK;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int bank_nr, err, i = 0;
+=======
+	int bank_nr, err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int bank_nr, err;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -990,6 +994,7 @@ static int stm32_gpiolib_register_bank(struct stm32_pinctrl *pctl,
 	of_property_read_string(np, "st,bank-name", &bank->gpio_chip.label);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!of_parse_phandle_with_fixed_args(np, "gpio-ranges", 3, i, &args)) {
 		bank_nr = args.args[1] / STM32_GPIO_PINS_PER_BANK;
 		bank->gpio_chip.base = args.args[1];
@@ -998,6 +1003,11 @@ static int stm32_gpiolib_register_bank(struct stm32_pinctrl *pctl,
 		while (!of_parse_phandle_with_fixed_args(np, "gpio-ranges", 3,
 							 ++i, &args))
 			npins += args.args[2];
+=======
+	if (!of_parse_phandle_with_fixed_args(np, "gpio-ranges", 3, 0, &args)) {
+		bank_nr = args.args[1] / STM32_GPIO_PINS_PER_BANK;
+		bank->gpio_chip.base = args.args[1];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!of_parse_phandle_with_fixed_args(np, "gpio-ranges", 3, 0, &args)) {
 		bank_nr = args.args[1] / STM32_GPIO_PINS_PER_BANK;

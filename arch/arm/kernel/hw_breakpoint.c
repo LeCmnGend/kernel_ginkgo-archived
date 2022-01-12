@@ -701,6 +701,7 @@ static void disable_single_step(struct perf_event *bp)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * Arm32 hardware does not always report a watchpoint hit address that matches
  * one of the watchpoints set. It can also report an address "near" the
@@ -748,11 +749,16 @@ static void watchpoint_handler(unsigned long addr, unsigned int fsr,
 	u32 min_dist = -1, dist;
 	u32 val, ctrl_reg;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void watchpoint_handler(unsigned long addr, unsigned int fsr,
 			       struct pt_regs *regs)
 {
 	int i, access;
 	u32 val, ctrl_reg, alignment_mask;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct perf_event *wp, **slots;
 	struct arch_hw_breakpoint *info;
@@ -760,6 +766,7 @@ static void watchpoint_handler(unsigned long addr, unsigned int fsr,
 
 	slots = this_cpu_ptr(wp_on_reg);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	/*
 	 * Find all watchpoints that match the reported address. If no exact
@@ -772,6 +779,8 @@ static void watchpoint_handler(unsigned long addr, unsigned int fsr,
 			continue;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	for (i = 0; i < core_num_wrps; ++i) {
 		rcu_read_lock();
 
@@ -781,6 +790,9 @@ static void watchpoint_handler(unsigned long addr, unsigned int fsr,
 			goto unlock;
 
 		info = counter_arch_bp(wp);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
 		 * The DFAR is an unknown value on debug architectures prior
@@ -791,10 +803,13 @@ static void watchpoint_handler(unsigned long addr, unsigned int fsr,
 		if (debug_arch < ARM_DEBUG_ARCH_V7_1) {
 			BUG_ON(i > 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			info = counter_arch_bp(wp);
 			info->trigger = wp->attr.bp_addr;
 		} else {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			info->trigger = wp->attr.bp_addr;
 		} else {
 			if (info->ctrl.len == ARM_BREAKPOINT_LEN_8)
@@ -813,12 +828,16 @@ static void watchpoint_handler(unsigned long addr, unsigned int fsr,
 			if (!((1 << (addr & alignment_mask)) & ctrl.len))
 				goto unlock;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			/* Check that the access type matches. */
 			if (debug_exception_updates_fsr()) {
 				access = (fsr & ARM_FSR_ACCESS_MASK) ?
 					  HW_BREAKPOINT_W : HW_BREAKPOINT_R;
 				if (!(access & hw_breakpoint_type(wp)))
+<<<<<<< HEAD
 <<<<<<< HEAD
 					continue;
 			}
@@ -838,15 +857,21 @@ static void watchpoint_handler(unsigned long addr, unsigned int fsr,
 			/* We have a winner. */
 			info = counter_arch_bp(wp);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					goto unlock;
 			}
 
 			/* We have a winner. */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			info->trigger = addr;
 		}
 
 		pr_debug("watchpoint fired: address = 0x%x\n", info->trigger);
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 		/*
@@ -883,6 +908,8 @@ step:
 
 	rcu_read_unlock();
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		perf_bp_event(wp, regs);
 
 		/*
@@ -896,6 +923,9 @@ step:
 unlock:
 		rcu_read_unlock();
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -968,7 +998,11 @@ static void breakpoint_handler(unsigned long unknown, struct pt_regs *regs)
 			pr_debug("breakpoint fired: address = 0x%x\n", addr);
 			perf_bp_event(bp, regs);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (is_default_overflow_handler(bp))
+=======
+			if (!bp->overflow_handler)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (!bp->overflow_handler)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

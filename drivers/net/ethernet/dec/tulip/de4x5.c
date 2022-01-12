@@ -4923,17 +4923,23 @@ mii_get_oui(u_char phyaddr, u_long ioaddr)
     } a;
     int i, r2, r3, ret=0;*/
 <<<<<<< HEAD
+<<<<<<< HEAD
     int r2;
 
     /* Read r2 and r3 */
     r2 = mii_rd(MII_ID0, phyaddr, ioaddr);
     mii_rd(MII_ID1, phyaddr, ioaddr);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
     int r2, r3;
 
     /* Read r2 and r3 */
     r2 = mii_rd(MII_ID0, phyaddr, ioaddr);
     r3 = mii_rd(MII_ID1, phyaddr, ioaddr);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
                                                 /* SEEQ and Cypress way * /
     / * Shuffle r2 and r3 * /

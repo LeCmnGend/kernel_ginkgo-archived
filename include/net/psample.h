@@ -19,8 +19,11 @@ struct psample_group *psample_group_get(struct net *net, u32 group_num);
 void psample_group_put(struct psample_group *group);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct sk_buff;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #if IS_ENABLED(CONFIG_PSAMPLE)

@@ -1720,7 +1720,10 @@ static int knav_queue_probe(struct platform_device *pdev)
 	ret = pm_runtime_get_sync(&pdev->dev);
 	if (ret < 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pm_runtime_put_noidle(&pdev->dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dev_err(dev, "Failed to enable QMSS\n");
@@ -1791,10 +1794,16 @@ static int knav_queue_probe(struct platform_device *pdev)
 		goto err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	regions = of_get_child_by_name(node, "descriptor-regions");
 	if (!regions) {
 		dev_err(dev, "descriptor-regions not specified\n");
 		ret = -ENODEV;
+=======
+	regions =  of_get_child_by_name(node, "descriptor-regions");
+	if (!regions) {
+		dev_err(dev, "descriptor-regions not specified\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	regions =  of_get_child_by_name(node, "descriptor-regions");
 	if (!regions) {

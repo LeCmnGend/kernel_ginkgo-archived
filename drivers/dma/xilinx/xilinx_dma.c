@@ -423,8 +423,13 @@ struct xilinx_dma_device {
 	container_of(tx, struct xilinx_dma_tx_descriptor, async_tx)
 #define xilinx_dma_poll_timeout(chan, reg, val, cond, delay_us, timeout_us) \
 <<<<<<< HEAD
+<<<<<<< HEAD
 	readl_poll_timeout_atomic(chan->xdev->regs + chan->ctrl_offset + reg, \
 				  val, cond, delay_us, timeout_us)
+=======
+	readl_poll_timeout(chan->xdev->regs + chan->ctrl_offset + reg, val, \
+			   cond, delay_us, timeout_us)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	readl_poll_timeout(chan->xdev->regs + chan->ctrl_offset + reg, val, \
 			   cond, delay_us, timeout_us)
@@ -2366,7 +2371,11 @@ static int xilinx_dma_chan_probe(struct xilinx_dma_device *xdev,
 
 	if (!has_dre)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		xdev->common.copy_align = (enum dmaengine_alignment)fls(width - 1);
+=======
+		xdev->common.copy_align = fls(width - 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		xdev->common.copy_align = fls(width - 1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2647,11 +2656,15 @@ static int xilinx_dma_probe(struct platform_device *pdev)
 
 	/* Register the DMA engine with the core */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = dma_async_device_register(&xdev->common);
 	if (err) {
 		dev_err(xdev->dev, "failed to register the dma device\n");
 		goto error;
 	}
+=======
+	dma_async_device_register(&xdev->common);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dma_async_device_register(&xdev->common);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

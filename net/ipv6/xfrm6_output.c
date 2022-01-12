@@ -147,7 +147,11 @@ static int __xfrm6_output(struct net *net, struct sock *sk, struct sk_buff *skb)
 	struct dst_entry *dst = skb_dst(skb);
 	struct xfrm_state *x = dst->xfrm;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int mtu;
+=======
+	int mtu;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int mtu;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

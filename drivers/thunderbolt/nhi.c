@@ -316,6 +316,7 @@ static int ring_request_msix(struct tb_ring *ring, bool no_suspend)
 	ring->vector = ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = pci_irq_vector(ring->nhi->pdev, ring->vector);
 	if (ret < 0)
 		goto err_ida_remove;
@@ -334,12 +335,17 @@ err_ida_remove:
 
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ring->irq = pci_irq_vector(ring->nhi->pdev, ring->vector);
 	if (ring->irq < 0)
 		return ring->irq;
 
 	irqflags = no_suspend ? IRQF_NO_SUSPEND : 0;
 	return request_irq(ring->irq, ring_msix, irqflags, "thunderbolt", ring);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

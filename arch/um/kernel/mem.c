@@ -55,7 +55,11 @@ void __init mem_init(void)
 	free_all_bootmem();
 	max_low_pfn = totalram_pages;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	max_pfn = max_low_pfn;
+=======
+	max_pfn = totalram_pages;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	max_pfn = totalram_pages;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

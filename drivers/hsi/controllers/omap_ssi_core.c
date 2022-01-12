@@ -390,7 +390,11 @@ static int ssi_add_controller(struct hsi_controller *ssi,
 	err = ida_simple_get(&platform_omap_ssi_ida, 0, 0, GFP_KERNEL);
 	if (err < 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return err;
+=======
+		goto out_err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto out_err;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

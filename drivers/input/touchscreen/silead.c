@@ -29,7 +29,10 @@
 #include <linux/input/touchscreen.h>
 #include <linux/pm.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/pm_runtime.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/irq.h>
@@ -324,13 +327,19 @@ static int silead_ts_get_id(struct i2c_client *client)
 	error = i2c_smbus_read_i2c_block_data(client, SILEAD_REG_ID,
 					      sizeof(chip_id), (u8 *)&chip_id);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (error < 0)
 		return error;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (error < 0) {
 		dev_err(&client->dev, "Chip ID read error %d\n", error);
 		return error;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	data->chip_id = le32_to_cpu(chip_id);
@@ -344,6 +353,7 @@ static int silead_ts_setup(struct i2c_client *client)
 	int error;
 	u32 status;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	/*
 	 * Some buggy BIOS-es bring up the chip in a stuck state where it
@@ -382,15 +392,22 @@ static int silead_ts_setup(struct i2c_client *client)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	silead_ts_set_power(client, SILEAD_POWER_OFF);
 	silead_ts_set_power(client, SILEAD_POWER_ON);
 
 	error = silead_ts_get_id(client);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (error) {
 		dev_err(&client->dev, "Chip ID read error %d\n", error);
 		return error;
 	}
+=======
+	if (error)
+		return error;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (error)
 		return error;

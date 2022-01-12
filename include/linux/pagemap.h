@@ -409,7 +409,11 @@ static inline struct page *read_mapping_page(struct address_space *mapping,
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Get index of the page within radix-tree (but not for hugetlb pages).
+=======
+ * Get index of the page with in radix-tree
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * Get index of the page with in radix-tree
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -432,6 +436,7 @@ static inline pgoff_t page_to_index(struct page *page)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern pgoff_t hugetlb_basepage_index(struct page *page);
 
 /*
@@ -443,6 +448,8 @@ static inline pgoff_t page_to_pgoff(struct page *page)
 	if (unlikely(PageHuge(page)))
 		return hugetlb_basepage_index(page);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Get the offset in PAGE_SIZE.
  * (TODO: hugepage should have ->index in PAGE_SIZE)
@@ -452,6 +459,9 @@ static inline pgoff_t page_to_pgoff(struct page *page)
 	if (unlikely(PageHeadHuge(page)))
 		return page->index << compound_order(page);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return page_to_index(page);
 }
@@ -484,9 +494,15 @@ static inline pgoff_t linear_page_index(struct vm_area_struct *vma,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern void __sched __lock_page(struct page *page);
 extern int __sched __lock_page_killable(struct page *page);
 extern int __sched __lock_page_or_retry(struct page *page, struct mm_struct *mm,
+=======
+extern void __lock_page(struct page *page);
+extern int __lock_page_killable(struct page *page);
+extern int __lock_page_or_retry(struct page *page, struct mm_struct *mm,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern void __lock_page(struct page *page);
 extern int __lock_page_killable(struct page *page);
@@ -505,7 +521,11 @@ static inline int trylock_page(struct page *page)
  * lock_page may only be called if we have the page's inode pinned.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline __sched void lock_page(struct page *page)
+=======
+static inline void lock_page(struct page *page)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline void lock_page(struct page *page)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -521,7 +541,11 @@ static inline void lock_page(struct page *page)
  * killed while waiting.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline __sched int lock_page_killable(struct page *page)
+=======
+static inline int lock_page_killable(struct page *page)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int lock_page_killable(struct page *page)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -540,7 +564,11 @@ static inline int lock_page_killable(struct page *page)
  * __lock_page_or_retry().
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline __sched int lock_page_or_retry(struct page *page, struct mm_struct *mm,
+=======
+static inline int lock_page_or_retry(struct page *page, struct mm_struct *mm,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int lock_page_or_retry(struct page *page, struct mm_struct *mm,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -555,8 +583,13 @@ static inline int lock_page_or_retry(struct page *page, struct mm_struct *mm,
  * and should not be used directly.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern void __sched wait_on_page_bit(struct page *page, int bit_nr);
 extern int __sched wait_on_page_bit_killable(struct page *page, int bit_nr);
+=======
+extern void wait_on_page_bit(struct page *page, int bit_nr);
+extern int wait_on_page_bit_killable(struct page *page, int bit_nr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern void wait_on_page_bit(struct page *page, int bit_nr);
 extern int wait_on_page_bit_killable(struct page *page, int bit_nr);
@@ -570,7 +603,11 @@ extern int wait_on_page_bit_killable(struct page *page, int bit_nr);
  * go away during the wait..
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline __sched void wait_on_page_locked(struct page *page)
+=======
+static inline void wait_on_page_locked(struct page *page)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline void wait_on_page_locked(struct page *page)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -580,7 +617,11 @@ static inline void wait_on_page_locked(struct page *page)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline __sched int wait_on_page_locked_killable(struct page *page)
+=======
+static inline int wait_on_page_locked_killable(struct page *page)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int wait_on_page_locked_killable(struct page *page)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -594,7 +635,11 @@ static inline int wait_on_page_locked_killable(struct page *page)
  * Wait for a page to complete writeback
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline __sched void wait_on_page_writeback(struct page *page)
+=======
+static inline void wait_on_page_writeback(struct page *page)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline void wait_on_page_writeback(struct page *page)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

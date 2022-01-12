@@ -184,7 +184,10 @@ config FUJITSU_LAPTOP
 	depends on ACPI_VIDEO || ACPI_VIDEO = n
 	select INPUT_SPARSEKMAP
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select NEW_LEDS
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select LEDS_CLASS

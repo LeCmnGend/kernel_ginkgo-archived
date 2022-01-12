@@ -8,8 +8,11 @@
 #include <linux/errno.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "rwsem.h"
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int __percpu_init_rwsem(struct percpu_rw_semaphore *sem,

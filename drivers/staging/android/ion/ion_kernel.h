@@ -23,6 +23,7 @@
  * Use IS_ERR on returned pointer to check for success.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct dma_buf *ion_alloc_dmabuf(size_t len, unsigned int heap_id_mask,
 				 unsigned int flags);
 static inline struct dma_buf *ion_alloc(size_t len, unsigned int heap_id_mask,
@@ -30,6 +31,10 @@ static inline struct dma_buf *ion_alloc(size_t len, unsigned int heap_id_mask,
 {
 	return ion_alloc_dmabuf(len, heap_id_mask, flags);
 }
+=======
+struct dma_buf *ion_alloc(size_t len, unsigned int heap_id_mask,
+			  unsigned int flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 struct dma_buf *ion_alloc(size_t len, unsigned int heap_id_mask,
 			  unsigned int flags);

@@ -305,10 +305,15 @@ static int s3fwrn5_fw_request_firmware(struct s3fwrn5_fw_info *fw_info)
 		return ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (fw->fw->size < S3FWRN5_FW_IMAGE_HEADER_SIZE) {
 		release_firmware(fw->fw);
 		return -EINVAL;
 	}
+=======
+	if (fw->fw->size < S3FWRN5_FW_IMAGE_HEADER_SIZE)
+		return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (fw->fw->size < S3FWRN5_FW_IMAGE_HEADER_SIZE)
 		return -EINVAL;

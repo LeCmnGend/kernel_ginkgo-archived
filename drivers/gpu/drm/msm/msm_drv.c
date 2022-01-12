@@ -1,7 +1,10 @@
 /*
  * Copyright (c) 2016-2021, The Linux Foundation. All rights reserved.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2019 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Copyright (C) 2013 Red Hat
@@ -65,10 +68,13 @@
 #define MSM_VERSION_PATCHLEVEL	0
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 atomic_t resume_pending;
 wait_queue_head_t resume_wait_q;
 static struct kmem_cache *kmem_vblank_work_pool;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static DEFINE_MUTEX(msm_release_lock);
@@ -267,7 +273,11 @@ static void vblank_ctrl_worker(struct kthread_work *work)
 		kms->funcs->disable_vblank(kms, priv->crtcs[cur_work->crtc_id]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kmem_cache_free(kmem_vblank_work_pool, cur_work);
+=======
+	kfree(cur_work);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(cur_work);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -282,7 +292,11 @@ static int vblank_ctrl_queue_work(struct msm_drm_private *priv,
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cur_work = kmem_cache_zalloc(kmem_vblank_work_pool, GFP_ATOMIC);
+=======
+	cur_work = kzalloc(sizeof(*cur_work), GFP_ATOMIC);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cur_work = kzalloc(sizeof(*cur_work), GFP_ATOMIC);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -515,6 +529,7 @@ static int msm_power_enable_wrapper(void *handle, void *client, bool enable)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void msm_drm_pm_unreq(struct work_struct *work)
 {
 	struct msm_drm_private *priv = container_of(to_delayed_work(work),
@@ -525,6 +540,8 @@ static void msm_drm_pm_unreq(struct work_struct *work)
 	atomic_set_release(&priv->pm_req_set, 0);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int msm_drm_init(struct device *dev, struct drm_driver *drv)
@@ -566,9 +583,12 @@ static int msm_drm_init(struct device *dev, struct drm_driver *drv)
 	INIT_LIST_HEAD(&priv->inactive_list);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	priv->pm_req_set = (atomic_t)ATOMIC_INIT(0);
 	INIT_DELAYED_WORK(&priv->pm_unreq_dwork, msm_drm_pm_unreq);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = sde_power_resource_init(pdev, &priv->phandle);
@@ -670,6 +690,7 @@ static int msm_drm_init(struct device *dev, struct drm_driver *drv)
 		kthread_init_worker(&priv->disp_thread[i].worker);
 		priv->disp_thread[i].dev = ddev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* Only pin actual display thread to big cluster */
 		if (i == 0) {
 			priv->disp_thread[i].thread =
@@ -686,10 +707,15 @@ static int msm_drm_init(struct device *dev, struct drm_driver *drv)
 		}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		priv->disp_thread[i].thread =
 			kthread_run(kthread_worker_fn,
 				&priv->disp_thread[i].worker,
 				"crtc_commit:%d", priv->disp_thread[i].crtc_id);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = sched_setscheduler(priv->disp_thread[i].thread,
 							SCHED_FIFO, &param);
@@ -707,6 +733,7 @@ static int msm_drm_init(struct device *dev, struct drm_driver *drv)
 		kthread_init_worker(&priv->event_thread[i].worker);
 		priv->event_thread[i].dev = ddev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* Only pin first event thread to big cluster */
 		if (i == 0) {
 			priv->event_thread[i].thread =
@@ -722,10 +749,15 @@ static int msm_drm_init(struct device *dev, struct drm_driver *drv)
 			pr_info("%i to little cluster", priv->event_thread[i].crtc_id);
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		priv->event_thread[i].thread =
 			kthread_run(kthread_worker_fn,
 				&priv->event_thread[i].worker,
 				"crtc_event:%d", priv->event_thread[i].crtc_id);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/**
 		 * event thread should also run at same priority as disp_thread
@@ -772,7 +804,11 @@ static int msm_drm_init(struct device *dev, struct drm_driver *drv)
 	 */
 	kthread_init_worker(&priv->pp_event_worker);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	priv->pp_event_thread = kthread_run_perf_critical(kthread_worker_fn,
+=======
+	priv->pp_event_thread = kthread_run(kthread_worker_fn,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	priv->pp_event_thread = kthread_run(kthread_worker_fn,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -806,7 +842,10 @@ static int msm_drm_init(struct device *dev, struct drm_driver *drv)
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	irq_set_perf_affinity(platform_get_irq(pdev, 0));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1121,6 +1160,7 @@ static void msm_irq_preinstall(struct drm_device *dev)
 	struct msm_drm_private *priv = dev->dev_private;
 	struct msm_kms *kms = priv->kms;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct sde_kms *sde_kms = to_sde_kms(kms);
 
 	BUG_ON(!kms);
@@ -1129,6 +1169,11 @@ static void msm_irq_preinstall(struct drm_device *dev)
 	priv->pm_irq_req.irq = sde_kms->irq_num;
 	pm_qos_add_request(&priv->pm_irq_req, PM_QOS_CPU_DMA_LATENCY,
 			   PM_QOS_DEFAULT_VALUE);
+=======
+
+	BUG_ON(!kms);
+	kms->funcs->irq_preinstall(kms);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	BUG_ON(!kms);
@@ -1153,8 +1198,11 @@ static void msm_irq_uninstall(struct drm_device *dev)
 	BUG_ON(!kms);
 	kms->funcs->irq_uninstall(kms);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	flush_delayed_work(&priv->pm_unreq_dwork);
 	pm_qos_remove_request(&priv->pm_irq_req);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -1603,7 +1651,11 @@ void msm_mode_object_event_notify(struct drm_mode_object *obj,
 static int msm_release(struct inode *inode, struct file *filp)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct drm_file *file_priv = filp->private_data;
+=======
+	struct drm_file *file_priv;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct drm_file *file_priv;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1619,6 +1671,10 @@ static int msm_release(struct inode *inode, struct file *filp)
 	mutex_lock(&msm_release_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	file_priv = filp->private_data;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	file_priv = filp->private_data;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1862,6 +1918,7 @@ static struct drm_driver msm_driver = {
 
 #ifdef CONFIG_PM_SLEEP
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int msm_pm_prepare(struct device *dev)
 {
 	atomic_inc(&resume_pending);
@@ -1875,6 +1932,8 @@ static void msm_pm_complete(struct device *dev)
 	return;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int msm_pm_suspend(struct device *dev)
@@ -1958,8 +2017,11 @@ static int msm_runtime_resume(struct device *dev)
 
 static const struct dev_pm_ops msm_pm_ops = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.prepare = msm_pm_prepare,
 	.complete = msm_pm_complete,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	SET_SYSTEM_SLEEP_PM_OPS(msm_pm_suspend, msm_pm_resume)
@@ -2260,9 +2322,12 @@ static void msm_pdev_shutdown(struct platform_device *pdev)
 	struct msm_drm_private *priv = NULL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!priv || !priv->kms)
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!ddev) {
@@ -2300,7 +2365,10 @@ static struct platform_driver msm_platform_driver = {
 		.pm     = &msm_pm_ops,
 		.suppress_bind_attrs = true,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.probe_type = PROBE_PREFER_ASYNCHRONOUS,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	},
@@ -2323,7 +2391,10 @@ static int __init msm_drm_register(void)
 
 	DBG("init");
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kmem_vblank_work_pool = KMEM_CACHE(vblank_work, SLAB_HWCACHE_ALIGN | SLAB_PANIC);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	msm_smmu_driver_init();

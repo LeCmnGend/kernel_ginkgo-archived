@@ -3211,6 +3211,11 @@ int sde_rotator_core_init(struct sde_rot_mgr **pmgr,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	sde_rotator_pm_qos_add(mdata);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sde_rotator_pm_qos_add(mdata);
 

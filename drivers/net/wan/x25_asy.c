@@ -184,7 +184,11 @@ static inline void x25_asy_unlock(struct x25_asy *sl)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Send an LAPB frame to the LAPB module to process. */
+=======
+/* Send one completely decapsulated IP datagram to the IP layer. */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Send one completely decapsulated IP datagram to the IP layer. */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -200,7 +204,11 @@ static void x25_asy_bump(struct x25_asy *sl)
 	dev->stats.rx_bytes += count;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	skb = dev_alloc_skb(count);
+=======
+	skb = dev_alloc_skb(count+1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	skb = dev_alloc_skb(count+1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -210,6 +218,10 @@ static void x25_asy_bump(struct x25_asy *sl)
 		return;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	skb_push(skb, 1);	/* LAPB internal control */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	skb_push(skb, 1);	/* LAPB internal control */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -221,6 +233,10 @@ static void x25_asy_bump(struct x25_asy *sl)
 		printk(KERN_DEBUG "x25_asy: data received err - %d\n", err);
 	} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		netif_rx(skb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		netif_rx(skb);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -370,8 +386,13 @@ static netdev_tx_t x25_asy_xmit(struct sk_buff *skb,
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  *	Called when I frame data arrive. We add a pseudo header for upper
  *	layers and pass it to upper layers.
+=======
+ *	Called when I frame data arrives. We did the work above - throw it
+ *	at the net layer.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  *	Called when I frame data arrives. We did the work above - throw it
  *	at the net layer.
@@ -380,6 +401,7 @@ static netdev_tx_t x25_asy_xmit(struct sk_buff *skb,
 
 static int x25_asy_data_indication(struct net_device *dev, struct sk_buff *skb)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (skb_cow(skb, 1)) {
 		kfree_skb(skb);
@@ -390,6 +412,8 @@ static int x25_asy_data_indication(struct net_device *dev, struct sk_buff *skb)
 
 	skb->protocol = x25_type_trans(skb, dev);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return netif_rx(skb);
@@ -688,7 +712,11 @@ static void x25_asy_unesc(struct x25_asy *sl, unsigned char s)
 	case X25_END:
 		if (!test_and_clear_bit(SLF_ERROR, &sl->flags) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 		    sl->rcount >= 2)
+=======
+		    sl->rcount > 2)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		    sl->rcount > 2)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

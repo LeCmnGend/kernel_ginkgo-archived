@@ -304,7 +304,10 @@ static int q40_get_rtc_pll(struct rtc_pll_info *pll)
 	int tmp = Q40_RTC_CTRL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pll->pll_ctrl = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pll->pll_value = tmp & Q40_RTC_PLL_MASK;

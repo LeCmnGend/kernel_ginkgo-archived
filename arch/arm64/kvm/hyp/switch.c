@@ -23,7 +23,10 @@
 #include <kvm/arm_psci.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <asm/extable.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <asm/kvm_asm.h>
@@ -32,9 +35,12 @@
 #include <asm/fpsimd.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern struct exception_table_entry __start___kvm_ex_table;
 extern struct exception_table_entry __stop___kvm_ex_table;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static bool __hyp_text __fpsimd_enabled_nvhe(void)
@@ -227,15 +233,21 @@ static bool __hyp_text __translate_far_to_hpfar(u64 far, u64 *hpfar)
 	 */
 	par = read_sysreg(par_el1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!__kvm_at("s1e1r", far))
 		tmp = read_sysreg(par_el1);
 	else
 		tmp = 1; /* back to the guest */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	asm volatile("at s1e1r, %0" : : "r" (far));
 	isb();
 
 	tmp = read_sysreg(par_el1);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	write_sysreg(par, par_el1);
 
@@ -462,7 +474,11 @@ static void __hyp_text __hyp_call_panic_nvhe(u64 spsr, u64 elr, u64 par,
 	 * reference.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	asm volatile("ldr %0, =%1" : "=r" (str_va) : "S" (__hyp_panic_string));
+=======
+	asm volatile("ldr %0, =__hyp_panic_string" : "=r" (str_va));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	asm volatile("ldr %0, =__hyp_panic_string" : "=r" (str_va));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -508,6 +524,7 @@ void __hyp_text __noreturn hyp_panic(struct kvm_cpu_context *host_ctxt)
 	unreachable();
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 asmlinkage void __hyp_text kvm_unexpected_el2_exception(void)
 {
@@ -535,5 +552,7 @@ asmlinkage void __hyp_text kvm_unexpected_el2_exception(void)
 
 	hyp_panic(host_ctxt);
 }
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -354,9 +354,12 @@ extern const char *ipa_clients_strings[];
 	} while (0)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 unsigned long
 ipa_safe_copy_from_user(char *dst, const char __user *buf, size_t count);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void ipa_inc_client_enable_clks(struct ipa_active_client_logging_info *id);
@@ -390,7 +393,11 @@ bool ipa_mhi_sps_channel_empty(enum ipa_client_type client);
 int ipa_mhi_resume_channels_internal(enum ipa_client_type client,
 		bool LPTransitionRejected, bool brstmode_enabled,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		union gsi_channel_scratch ch_scratch, u8 index,
+=======
+		union __packed gsi_channel_scratch ch_scratch, u8 index,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		union __packed gsi_channel_scratch ch_scratch, u8 index,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

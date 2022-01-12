@@ -1405,8 +1405,11 @@ retry:
 		up_write(&mm->mmap_sem);
 		if (nr_pages != pinned_pages->nr_pages) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (pinned_pages->nr_pages < 0)
 				pinned_pages->nr_pages = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (try_upgrade) {
@@ -1430,6 +1433,10 @@ retry:
 	if (pinned_pages->nr_pages < nr_pages) {
 		err = -EFAULT;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		pinned_pages->nr_pages = nr_pages;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pinned_pages->nr_pages = nr_pages;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1446,6 +1453,10 @@ dec_pinned:
 	/* Something went wrong! Rollback */
 error_unmap:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	pinned_pages->nr_pages = nr_pages;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pinned_pages->nr_pages = nr_pages;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -250,8 +250,14 @@ static int snd_usb_create_stream(struct snd_usb_audio *chip, int ctrlif, int int
 			return -EINVAL;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return usb_driver_claim_interface(&usb_audio_driver, iface,
 						  USB_AUDIO_IFACE_UNUSED);
+=======
+		usb_driver_claim_interface(&usb_audio_driver, iface, (void *)-1L);
+
+		return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		usb_driver_claim_interface(&usb_audio_driver, iface, (void *)-1L);
 
@@ -277,8 +283,12 @@ static int snd_usb_create_stream(struct snd_usb_audio *chip, int ctrlif, int int
 	if (! snd_usb_parse_audio_interface(chip, interface)) {
 		usb_set_interface(dev, interface, 0); /* reset the current interface */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return usb_driver_claim_interface(&usb_audio_driver, iface,
 						  USB_AUDIO_IFACE_UNUSED);
+=======
+		usb_driver_claim_interface(&usb_audio_driver, iface, (void *)-1L);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		usb_driver_claim_interface(&usb_audio_driver, iface, (void *)-1L);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -773,7 +783,11 @@ static void usb_audio_disconnect(struct usb_interface *intf)
 	struct list_head *p;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (chip == USB_AUDIO_IFACE_UNUSED)
+=======
+	if (chip == (void *)-1L)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (chip == (void *)-1L)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -879,7 +893,11 @@ static int usb_audio_suspend(struct usb_interface *intf, pm_message_t message)
 	struct list_head *p;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (chip == USB_AUDIO_IFACE_UNUSED)
+=======
+	if (chip == (void *)-1L)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (chip == (void *)-1L)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -913,7 +931,11 @@ static int __usb_audio_resume(struct usb_interface *intf, bool reset_resume)
 	int err = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (chip == USB_AUDIO_IFACE_UNUSED)
+=======
+	if (chip == (void *)-1L)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (chip == (void *)-1L)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

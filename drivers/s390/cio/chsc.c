@@ -770,6 +770,11 @@ int chsc_chp_vary(struct chp_id chpid, int on)
 	struct channel_path *chp = chpid_to_chp(chpid);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/* Wait until previous actions have settled. */
+	css_wait_for_slow_path();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Wait until previous actions have settled. */
 	css_wait_for_slow_path();

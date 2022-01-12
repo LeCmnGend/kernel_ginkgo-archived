@@ -1220,7 +1220,11 @@ int bcm_qspi_probe(struct platform_device *pdev,
 		return -ENODEV;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	master = devm_spi_alloc_master(dev, sizeof(struct bcm_qspi));
+=======
+	master = spi_alloc_master(dev, sizeof(struct bcm_qspi));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	master = spi_alloc_master(dev, sizeof(struct bcm_qspi));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1258,17 +1262,23 @@ int bcm_qspi_probe(struct platform_device *pdev,
 	if (res) {
 		qspi->base[MSPI]  = devm_ioremap_resource(dev, res);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (IS_ERR(qspi->base[MSPI]))
 			return PTR_ERR(qspi->base[MSPI]);
 	} else {
 		return 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (IS_ERR(qspi->base[MSPI])) {
 			ret = PTR_ERR(qspi->base[MSPI]);
 			goto qspi_resource_err;
 		}
 	} else {
 		goto qspi_resource_err;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -1276,13 +1286,19 @@ int bcm_qspi_probe(struct platform_device *pdev,
 	if (res) {
 		qspi->base[BSPI]  = devm_ioremap_resource(dev, res);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (IS_ERR(qspi->base[BSPI]))
 			return PTR_ERR(qspi->base[BSPI]);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (IS_ERR(qspi->base[BSPI])) {
 			ret = PTR_ERR(qspi->base[BSPI]);
 			goto qspi_resource_err;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		qspi->bspi_mode = true;
 	} else {
@@ -1295,26 +1311,38 @@ int bcm_qspi_probe(struct platform_device *pdev,
 	if (res) {
 		qspi->base[CHIP_SELECT]  = devm_ioremap_resource(dev, res);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (IS_ERR(qspi->base[CHIP_SELECT]))
 			return PTR_ERR(qspi->base[CHIP_SELECT]);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (IS_ERR(qspi->base[CHIP_SELECT])) {
 			ret = PTR_ERR(qspi->base[CHIP_SELECT]);
 			goto qspi_resource_err;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	qspi->dev_ids = kcalloc(num_irqs, sizeof(struct bcm_qspi_dev_id),
 				GFP_KERNEL);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!qspi->dev_ids)
 		return -ENOMEM;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!qspi->dev_ids) {
 		ret = -ENOMEM;
 		goto qspi_resource_err;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	for (val = 0; val < num_irqs; val++) {
@@ -1392,7 +1420,11 @@ int bcm_qspi_probe(struct platform_device *pdev,
 	qspi->xfer_mode.hp = -1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = spi_register_master(master);
+=======
+	ret = devm_spi_register_master(&pdev->dev, master);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = devm_spi_register_master(&pdev->dev, master);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1409,6 +1441,11 @@ qspi_reg_err:
 qspi_probe_err:
 	kfree(qspi->dev_ids);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+qspi_resource_err:
+	spi_master_put(master);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 qspi_resource_err:
 	spi_master_put(master);
@@ -1423,15 +1460,21 @@ int bcm_qspi_remove(struct platform_device *pdev)
 	struct bcm_qspi *qspi = platform_get_drvdata(pdev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spi_unregister_master(qspi->master);
 	bcm_qspi_hw_uninit(qspi);
 	clk_disable_unprepare(qspi->clk);
 	kfree(qspi->dev_ids);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bcm_qspi_hw_uninit(qspi);
 	clk_disable_unprepare(qspi->clk);
 	kfree(qspi->dev_ids);
 	spi_unregister_master(qspi->master);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;

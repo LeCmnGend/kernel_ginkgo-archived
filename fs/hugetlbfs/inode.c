@@ -141,7 +141,11 @@ static int hugetlbfs_file_mmap(struct file *file, struct vm_area_struct *vma)
 	 * any error returns here, do so after setting VM_HUGETLB, so
 	 * is_vm_hugetlb_page tests below unmap_region go the right
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * way when do_mmap unwinds (may be important on powerpc
+=======
+	 * way when do_mmap_pgoff unwinds (may be important on powerpc
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 * way when do_mmap_pgoff unwinds (may be important on powerpc
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -441,7 +445,11 @@ static void remove_inode_hugepages(struct inode *inode, loff_t lstart,
 
 			index = page->index;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			hash = hugetlb_fault_mutex_hash(h, mapping, index);
+=======
+			hash = hugetlb_fault_mutex_hash(h, mapping, index, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			hash = hugetlb_fault_mutex_hash(h, mapping, index, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -627,7 +635,11 @@ static long hugetlbfs_fallocate(struct file *file, int mode, loff_t offset,
 
 		/* mutex taken here, fault path and hole punch */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		hash = hugetlb_fault_mutex_hash(h, mapping, index);
+=======
+		hash = hugetlb_fault_mutex_hash(h, mapping, index, addr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		hash = hugetlb_fault_mutex_hash(h, mapping, index, addr);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -662,9 +674,14 @@ static long hugetlbfs_fallocate(struct file *file, int mode, loff_t offset,
 		mutex_unlock(&hugetlb_fault_mutex_table[hash]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		set_page_huge_active(page);
 		/*
 		 * put_page() due to reference from alloc_huge_page()
+=======
+		/*
+		 * page_put due to reference from alloc_huge_page()
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		/*
 		 * page_put due to reference from alloc_huge_page()

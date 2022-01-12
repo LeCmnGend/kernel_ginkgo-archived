@@ -114,10 +114,15 @@ const char *ipa3_hdr_proc_type_name[] = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define MAX_DBG_BUFF_SZ		4096
 
 static struct dentry *dent;
 static char *dbg_buff;
+=======
+static struct dentry *dent;
+static char dbg_buff[IPA_MAX_MSG_LEN + 1];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static struct dentry *dent;
 static char dbg_buff[IPA_MAX_MSG_LEN + 1];
@@ -128,6 +133,10 @@ static s8 ep_reg_idx;
 static void *ipa_ipc_low_buff;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -176,15 +185,21 @@ static ssize_t ipa3_write_ep_holb(struct file *file,
 	char *sptr, *token;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (MAX_DBG_BUFF_SZ < count + 1)
 		return -EFAULT;
 
 	missing = ipa_safe_copy_from_user(dbg_buff, buf, count);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (sizeof(dbg_buff) < count + 1)
 		return -EFAULT;
 
 	missing = copy_from_user(dbg_buff, buf, min(sizeof(dbg_buff), count));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (missing)
 		return -EFAULT;
@@ -226,15 +241,21 @@ static ssize_t ipa3_write_ep_reg(struct file *file, const char __user *buf,
 	s8 option = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (MAX_DBG_BUFF_SZ < count + 1)
 		return -EFAULT;
 
 	missing = ipa_safe_copy_from_user(dbg_buff, buf, count);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (sizeof(dbg_buff) < count + 1)
 		return -EFAULT;
 
 	missing = copy_from_user(dbg_buff, buf, min(sizeof(dbg_buff), count));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (missing)
 		return -EFAULT;
@@ -371,15 +392,21 @@ static ssize_t ipa3_write_keep_awake(struct file *file, const char __user *buf,
 	s8 option = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (MAX_DBG_BUFF_SZ < count + 1)
 		return -EFAULT;
 
 	missing = ipa_safe_copy_from_user(dbg_buff, buf, count);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (sizeof(dbg_buff) < count + 1)
 		return -EFAULT;
 
 	missing = copy_from_user(dbg_buff, buf, min(sizeof(dbg_buff), count));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (missing)
 		return -EFAULT;
@@ -1632,15 +1659,21 @@ static ssize_t ipa3_write_dbg_cnt(struct file *file, const char __user *buf,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (MAX_DBG_BUFF_SZ < count + 1)
 		return -EFAULT;
 
 	missing = ipa_safe_copy_from_user(dbg_buff, buf, count);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (sizeof(dbg_buff) < count + 1)
 		return -EFAULT;
 
 	missing = copy_from_user(dbg_buff, buf, min(sizeof(dbg_buff), count));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (missing)
 		return -EFAULT;
@@ -2641,15 +2674,21 @@ static ssize_t ipa3_clear_active_clients_log(struct file *file,
 		s8 option = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (MAX_DBG_BUFF_SZ < count + 1)
 		return -EFAULT;
 
 	missing = ipa_safe_copy_from_user(dbg_buff, ubuf, count);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (sizeof(dbg_buff) < count + 1)
 		return -EFAULT;
 
 	missing = copy_from_user(dbg_buff, ubuf, min(sizeof(dbg_buff), count));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (missing)
 		return -EFAULT;
@@ -2670,15 +2709,21 @@ static ssize_t ipa3_enable_ipc_low(struct file *file,
 	s8 option = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (MAX_DBG_BUFF_SZ < count + 1)
 		return -EFAULT;
 
 	missing = ipa_safe_copy_from_user(dbg_buff, ubuf, count);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (sizeof(dbg_buff) < count + 1)
 		return -EFAULT;
 
 	missing = copy_from_user(dbg_buff, ubuf, min(sizeof(dbg_buff), count));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (missing)
 		return -EFAULT;
@@ -3018,10 +3063,13 @@ void ipa3_debugfs_post_init(void)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dbg_buff = kmalloc(MAX_DBG_BUFF_SZ * sizeof(char), GFP_KERNEL);
 	if (!dbg_buff)
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	file = debugfs_create_u32("hw_type", IPA_READ_ONLY_MODE,
@@ -3093,7 +3141,10 @@ void ipa3_debugfs_post_init(void)
 
 fail:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(dbg_buff);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	debugfs_remove_recursive(dent);
@@ -3111,9 +3162,12 @@ void ipa3_debugfs_remove(void)
 	}
 	debugfs_remove_recursive(dent);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(dbg_buff);
 
 	ipa_debugfs_remove_stats();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

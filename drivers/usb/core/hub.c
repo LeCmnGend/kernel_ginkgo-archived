@@ -40,8 +40,11 @@
 #define USB_VENDOR_SMSC				0x0424
 #define USB_PRODUCT_USB5534B			0x5534
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define USB_VENDOR_CYPRESS			0x04b4
 #define USB_PRODUCT_CY7C65632			0x6570
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define HUB_QUIRK_CHECK_PORT_AUTOSUSPEND	0x01
@@ -3534,9 +3537,12 @@ int usb_port_resume(struct usb_device *udev, pm_message_t msg)
 						USB_PORT_FEAT_C_SUSPEND);
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		/* TRSMRCY = 10 msec */
 		msleep(10);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -3936,6 +3942,7 @@ static int usb_set_lpm_timeout(struct usb_device *udev,
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Don't allow device intiated U1/U2 if the system exit latency + one bus
  * interval is greater than the minimum service interval of any active
  * periodic endpoint. See USB 3.2 section 9.4.9
@@ -3977,6 +3984,8 @@ static bool usb_device_may_initiate_lpm(struct usb_device *udev,
 }
 
 /*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Enable the hub-initiated U1/U2 idle timeouts, and enable device-initiated
@@ -4051,6 +4060,7 @@ static void usb_enable_link_state(struct usb_hcd *hcd, struct usb_device *udev,
 	 */
 	if (udev->actconfig &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    usb_device_may_initiate_lpm(udev, state)) {
 		if (usb_set_device_initiated_lpm(udev, state, true)) {
 			/*
@@ -4069,6 +4079,8 @@ static void usb_enable_link_state(struct usb_hcd *hcd, struct usb_device *udev,
 		udev->usb3_lpm_u2_enabled = 1;
 }
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	    usb_set_device_initiated_lpm(udev, state, true) == 0) {
 		if (state == USB3_LPM_U1)
 			udev->usb3_lpm_u1_enabled = 1;
@@ -4083,6 +4095,9 @@ static void usb_enable_link_state(struct usb_hcd *hcd, struct usb_device *udev,
 	}
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Disable the hub-initiated U1/U2 idle timeouts, and disable device-initiated
@@ -5434,11 +5449,14 @@ static const struct usb_device_id hub_id_table[] = {
       .driver_info = HUB_QUIRK_DISABLE_AUTOSUSPEND},
     { .match_flags = USB_DEVICE_ID_MATCH_VENDOR
 <<<<<<< HEAD
+<<<<<<< HEAD
                    | USB_DEVICE_ID_MATCH_PRODUCT,
       .idVendor = USB_VENDOR_CYPRESS,
       .idProduct = USB_PRODUCT_CY7C65632,
       .driver_info = HUB_QUIRK_DISABLE_AUTOSUSPEND},
     { .match_flags = USB_DEVICE_ID_MATCH_VENDOR
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			| USB_DEVICE_ID_MATCH_INT_CLASS,

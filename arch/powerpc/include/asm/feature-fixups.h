@@ -204,6 +204,7 @@ label##3:					       	\
 	.popsection;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define UACCESS_FLUSH_FIXUP_SECTION			\
 959:							\
 	.pushsection __uaccess_flush_fixup,"a";		\
@@ -220,6 +221,8 @@ label##3:					       	\
 	FTR_ENTRY_OFFSET 957b-958b;			\
 	.popsection;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define RFI_FLUSH_FIXUP_SECTION				\
@@ -255,11 +258,16 @@ label##3:					       	\
 
 extern long stf_barrier_fallback;
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern long entry_flush_fallback;
 extern long __start___stf_entry_barrier_fixup, __stop___stf_entry_barrier_fixup;
 extern long __start___stf_exit_barrier_fixup, __stop___stf_exit_barrier_fixup;
 extern long __start___uaccess_flush_fixup, __stop___uaccess_flush_fixup;
 extern long __start___entry_flush_fixup, __stop___entry_flush_fixup;
+=======
+extern long __start___stf_entry_barrier_fixup, __stop___stf_entry_barrier_fixup;
+extern long __start___stf_exit_barrier_fixup, __stop___stf_exit_barrier_fixup;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern long __start___stf_entry_barrier_fixup, __stop___stf_entry_barrier_fixup;
 extern long __start___stf_exit_barrier_fixup, __stop___stf_exit_barrier_fixup;

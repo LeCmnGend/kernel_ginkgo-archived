@@ -220,7 +220,10 @@ void i2c_acpi_register_devices(struct i2c_adapter *adap)
 {
 	acpi_status status;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	acpi_handle handle;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -234,6 +237,7 @@ void i2c_acpi_register_devices(struct i2c_adapter *adap)
 	if (ACPI_FAILURE(status))
 		dev_warn(&adap->dev, "failed to enumerate I2C slaves\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (!adap->dev.parent)
 		return;
@@ -243,6 +247,8 @@ void i2c_acpi_register_devices(struct i2c_adapter *adap)
 		return;
 
 	acpi_walk_dep_device_list(handle);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -701,6 +707,10 @@ int i2c_acpi_install_space_handler(struct i2c_adapter *adapter)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	acpi_walk_dep_device_list(handle);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	acpi_walk_dep_device_list(handle);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

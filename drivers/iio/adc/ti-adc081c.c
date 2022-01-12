@@ -37,12 +37,15 @@ struct adc081c {
 	/* 8, 10 or 12 */
 	int bits;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* Ensure natural alignment of buffer elements */
 	struct {
 		u16 channel;
 		s64 ts __aligned(8);
 	} scan;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -142,6 +145,10 @@ static irqreturn_t adc081c_trigger_handler(int irq, void *p)
 	struct iio_dev *indio_dev = pf->indio_dev;
 	struct adc081c *data = iio_priv(indio_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u16 buf[8]; /* 2 bytes data + 6 bytes padding + 8 bytes timestamp */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u16 buf[8]; /* 2 bytes data + 6 bytes padding + 8 bytes timestamp */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -151,8 +158,13 @@ static irqreturn_t adc081c_trigger_handler(int irq, void *p)
 	if (ret < 0)
 		goto out;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	data->scan.channel = ret;
 	iio_push_to_buffers_with_timestamp(indio_dev, &data->scan,
+=======
+	buf[0] = ret;
+	iio_push_to_buffers_with_timestamp(indio_dev, buf,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	buf[0] = ret;
 	iio_push_to_buffers_with_timestamp(indio_dev, buf,

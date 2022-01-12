@@ -52,7 +52,10 @@
 #include <linux/cpu_rmap.h>
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/version.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <net/devlink.h>
@@ -209,10 +212,14 @@ static void mlx5_set_driver_version(struct mlx5_core_dev *dev)
 
 	remaining_size = max_t(int, 0, driver_ver_sz - strlen(string));
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	snprintf(string + strlen(string), remaining_size, "%u.%u.%u",
 		 (u8)((LINUX_VERSION_CODE >> 16) & 0xff), (u8)((LINUX_VERSION_CODE >> 8) & 0xff),
 		 (u16)(LINUX_VERSION_CODE & 0xffff));
+=======
+	strncat(string, DRIVER_VERSION, remaining_size);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	strncat(string, DRIVER_VERSION, remaining_size);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

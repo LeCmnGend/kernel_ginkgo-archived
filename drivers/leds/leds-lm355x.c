@@ -169,17 +169,23 @@ static int lm355x_chip_init(struct lm355x_chip_data *chip)
 	switch (chip->type) {
 	case CHIP_LM3554:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		reg_val = (u32)pdata->pin_tx2 | (u32)pdata->ntc_pin;
 		ret = regmap_update_bits(chip->regmap, 0xE0, 0x28, reg_val);
 		if (ret < 0)
 			goto out;
 		reg_val = (u32)pdata->pass_mode;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		reg_val = pdata->pin_tx2 | pdata->ntc_pin;
 		ret = regmap_update_bits(chip->regmap, 0xE0, 0x28, reg_val);
 		if (ret < 0)
 			goto out;
 		reg_val = pdata->pass_mode;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = regmap_update_bits(chip->regmap, 0xA0, 0x04, reg_val);
 		if (ret < 0)
@@ -188,8 +194,12 @@ static int lm355x_chip_init(struct lm355x_chip_data *chip)
 
 	case CHIP_LM3556:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		reg_val = (u32)pdata->pin_tx2 | (u32)pdata->ntc_pin |
 		          (u32)pdata->pass_mode;
+=======
+		reg_val = pdata->pin_tx2 | pdata->ntc_pin | pdata->pass_mode;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		reg_val = pdata->pin_tx2 | pdata->ntc_pin | pdata->pass_mode;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -102,7 +102,10 @@ __mmap_switched:
 	cmp	r7, #0
 	strne	r0, [r7]			@ Save control register values
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mov	lr, #0
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	b	start_kernel

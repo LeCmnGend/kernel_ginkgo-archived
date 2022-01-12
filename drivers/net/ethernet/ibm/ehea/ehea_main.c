@@ -2648,13 +2648,19 @@ static int ehea_restart_qps(struct net_device *dev)
 
 	cb0 = (void *)get_zeroed_page(GFP_KERNEL);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!cb0)
 		return -ENOMEM;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!cb0) {
 		ret = -ENOMEM;
 		goto out;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	for (i = 0; i < (port->num_def_qps); i++) {
@@ -2676,7 +2682,10 @@ static int ehea_restart_qps(struct net_device *dev)
 		if (hret != H_SUCCESS) {
 			netdev_err(dev, "query_ehea_qp failed (1)\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ret = -EFAULT;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			goto out;
@@ -2692,7 +2701,10 @@ static int ehea_restart_qps(struct net_device *dev)
 		if (hret != H_SUCCESS) {
 			netdev_err(dev, "modify_ehea_qp failed (1)\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ret = -EFAULT;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			goto out;
@@ -2704,7 +2716,10 @@ static int ehea_restart_qps(struct net_device *dev)
 		if (hret != H_SUCCESS) {
 			netdev_err(dev, "query_ehea_qp failed (2)\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ret = -EFAULT;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			goto out;

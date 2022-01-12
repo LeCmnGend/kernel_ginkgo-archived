@@ -74,7 +74,10 @@ static const struct cpg_core_clk r8a77995_core_clks[] __initconst = {
 
 	/* Core Clock Outputs */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	DEF_FIXED("za2",       R8A77995_CLK_ZA2,   CLK_PLL0D3,     2, 1),
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	DEF_FIXED("z2",        R8A77995_CLK_Z2,    CLK_PLL0D3,     1, 1),

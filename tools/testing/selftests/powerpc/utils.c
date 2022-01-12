@@ -13,7 +13,10 @@
 #include <stdio.h>
 #include <sys/stat.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <sys/sysinfo.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <sys/types.h>
@@ -86,6 +89,7 @@ void *get_auxv_entry(int type)
 int pick_online_cpu(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ncpus, cpu = -1;
 	cpu_set_t *mask;
 	size_t size;
@@ -121,6 +125,8 @@ done:
 	CPU_FREE(mask);
 	return cpu;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cpu_set_t mask;
 	int cpu;
 
@@ -143,5 +149,8 @@ done:
 
 	printf("No cpus in affinity mask?!\n");
 	return -1;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

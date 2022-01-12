@@ -1025,7 +1025,11 @@ int saa7164_encoder_register(struct saa7164_port *port)
 			__func__, result);
 		result = -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto fail_pci;
+=======
+		goto failed;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto failed;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1083,7 +1087,11 @@ int saa7164_encoder_register(struct saa7164_port *port)
 	if (hdl->error) {
 		result = hdl->error;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto fail_hdl;
+=======
+		goto failed;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto failed;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1105,7 +1113,11 @@ int saa7164_encoder_register(struct saa7164_port *port)
 			dev->name);
 		result = -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto fail_hdl;
+=======
+		goto failed;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto failed;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1120,12 +1132,18 @@ int saa7164_encoder_register(struct saa7164_port *port)
 		printk(KERN_INFO "%s: can't register mpeg device\n",
 			dev->name);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto fail_reg;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* TODO: We're going to leak here if we don't dealloc
 		 The buffers above. The unreg function can't deal wit it.
 		*/
 		goto failed;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -1149,6 +1167,7 @@ int saa7164_encoder_register(struct saa7164_port *port)
 	saa7164_api_set_encoder(port);
 	saa7164_api_get_encoder(port);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return 0;
 
 fail_reg:
@@ -1157,6 +1176,11 @@ fail_reg:
 fail_hdl:
 	v4l2_ctrl_handler_free(hdl);
 fail_pci:
+=======
+
+	result = 0;
+failed:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	result = 0;

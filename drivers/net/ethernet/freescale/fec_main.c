@@ -3537,17 +3537,23 @@ failed_irq:
 failed_init:
 	fec_ptp_stop(pdev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 failed_reset:
 	pm_runtime_put_noidle(&pdev->dev);
 	pm_runtime_disable(&pdev->dev);
 	if (fep->reg_phy)
 		regulator_disable(fep->reg_phy);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (fep->reg_phy)
 		regulator_disable(fep->reg_phy);
 failed_reset:
 	pm_runtime_put_noidle(&pdev->dev);
 	pm_runtime_disable(&pdev->dev);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 failed_regulator:
 	clk_disable_unprepare(fep->clk_ahb);
@@ -3590,6 +3596,10 @@ fec_drv_remove(struct platform_device *pdev)
 		of_phy_deregister_fixed_link(np);
 	of_node_put(fep->phy_node);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	free_netdev(ndev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	free_netdev(ndev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3600,7 +3610,10 @@ fec_drv_remove(struct platform_device *pdev)
 	pm_runtime_disable(&pdev->dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	free_netdev(ndev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;

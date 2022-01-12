@@ -1666,7 +1666,11 @@ static int probe_scache(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void loongson2_sc_init(void)
+=======
+static void __init loongson2_sc_init(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void __init loongson2_sc_init(void)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1786,11 +1790,15 @@ static void setup_scache(void)
 				       scache_size >> 10,
 				       way_string[c->scache.ways], c->scache.linesz);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 				if (current_cpu_type() == CPU_BMIPS5000)
 					c->options |= MIPS_CPU_INCLUSIVE_CACHES;
 			}
 
+=======
+			}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			}
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

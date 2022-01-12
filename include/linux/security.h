@@ -37,6 +37,10 @@ struct cred;
 struct rlimit;
 struct siginfo;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+struct sem_array;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 struct sem_array;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -54,7 +58,13 @@ struct iattr;
 struct fown_struct;
 struct file_operations;
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct msg_msg;
+=======
+struct shmid_kernel;
+struct msg_msg;
+struct msg_queue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 struct shmid_kernel;
 struct msg_msg;
@@ -332,7 +342,10 @@ void security_cred_free(struct cred *cred);
 int security_prepare_creds(struct cred *new, const struct cred *old, gfp_t gfp);
 void security_transfer_creds(struct cred *new, const struct cred *old);
 <<<<<<< HEAD
+<<<<<<< HEAD
 void security_cred_getsecid(const struct cred *c, u32 *secid);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int security_kernel_act_as(struct cred *new, u32 secid);
@@ -367,6 +380,7 @@ void security_ipc_getsecid(struct kern_ipc_perm *ipcp, u32 *secid);
 int security_msg_msg_alloc(struct msg_msg *msg);
 void security_msg_msg_free(struct msg_msg *msg);
 <<<<<<< HEAD
+<<<<<<< HEAD
 int security_msg_queue_alloc(struct kern_ipc_perm *msq);
 void security_msg_queue_free(struct kern_ipc_perm *msq);
 int security_msg_queue_associate(struct kern_ipc_perm *msq, int msqflg);
@@ -386,6 +400,8 @@ int security_sem_associate(struct kern_ipc_perm *sma, int semflg);
 int security_sem_semctl(struct kern_ipc_perm *sma, int cmd);
 int security_sem_semop(struct kern_ipc_perm *sma, struct sembuf *sops,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int security_msg_queue_alloc(struct msg_queue *msq);
 void security_msg_queue_free(struct msg_queue *msq);
 int security_msg_queue_associate(struct msg_queue *msq, int msqflg);
@@ -404,6 +420,9 @@ void security_sem_free(struct sem_array *sma);
 int security_sem_associate(struct sem_array *sma, int semflg);
 int security_sem_semctl(struct sem_array *sma, int cmd);
 int security_sem_semop(struct sem_array *sma, struct sembuf *sops,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			unsigned nsops, int alter);
 void security_d_instantiate(struct dentry *dentry, struct inode *inode);
@@ -813,7 +832,11 @@ static inline int security_inode_killpriv(struct dentry *dentry)
 static inline int security_inode_getsecurity(struct inode *inode, const char *name, void **buffer, bool alloc)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return cap_inode_getsecurity(inode, name, buffer, alloc);
+=======
+	return -EOPNOTSUPP;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return -EOPNOTSUPP;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1082,7 +1105,11 @@ static inline void security_msg_msg_free(struct msg_msg *msg)
 { }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int security_msg_queue_alloc(struct kern_ipc_perm *msq)
+=======
+static inline int security_msg_queue_alloc(struct msg_queue *msq)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int security_msg_queue_alloc(struct msg_queue *msq)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1091,15 +1118,21 @@ static inline int security_msg_queue_alloc(struct msg_queue *msq)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void security_msg_queue_free(struct kern_ipc_perm *msq)
 { }
 
 static inline int security_msg_queue_associate(struct kern_ipc_perm *msq,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void security_msg_queue_free(struct msg_queue *msq)
 { }
 
 static inline int security_msg_queue_associate(struct msg_queue *msq,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					       int msqflg)
 {
@@ -1107,7 +1140,11 @@ static inline int security_msg_queue_associate(struct msg_queue *msq,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int security_msg_queue_msgctl(struct kern_ipc_perm *msq, int cmd)
+=======
+static inline int security_msg_queue_msgctl(struct msg_queue *msq, int cmd)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int security_msg_queue_msgctl(struct msg_queue *msq, int cmd)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1116,7 +1153,11 @@ static inline int security_msg_queue_msgctl(struct msg_queue *msq, int cmd)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int security_msg_queue_msgsnd(struct kern_ipc_perm *msq,
+=======
+static inline int security_msg_queue_msgsnd(struct msg_queue *msq,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int security_msg_queue_msgsnd(struct msg_queue *msq,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1126,7 +1167,11 @@ static inline int security_msg_queue_msgsnd(struct msg_queue *msq,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int security_msg_queue_msgrcv(struct kern_ipc_perm *msq,
+=======
+static inline int security_msg_queue_msgrcv(struct msg_queue *msq,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int security_msg_queue_msgrcv(struct msg_queue *msq,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1138,7 +1183,11 @@ static inline int security_msg_queue_msgrcv(struct msg_queue *msq,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int security_shm_alloc(struct kern_ipc_perm *shp)
+=======
+static inline int security_shm_alloc(struct shmid_kernel *shp)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int security_shm_alloc(struct shmid_kernel *shp)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1147,15 +1196,21 @@ static inline int security_shm_alloc(struct shmid_kernel *shp)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void security_shm_free(struct kern_ipc_perm *shp)
 { }
 
 static inline int security_shm_associate(struct kern_ipc_perm *shp,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void security_shm_free(struct shmid_kernel *shp)
 { }
 
 static inline int security_shm_associate(struct shmid_kernel *shp,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					 int shmflg)
 {
@@ -1163,7 +1218,11 @@ static inline int security_shm_associate(struct shmid_kernel *shp,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int security_shm_shmctl(struct kern_ipc_perm *shp, int cmd)
+=======
+static inline int security_shm_shmctl(struct shmid_kernel *shp, int cmd)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int security_shm_shmctl(struct shmid_kernel *shp, int cmd)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1172,7 +1231,11 @@ static inline int security_shm_shmctl(struct shmid_kernel *shp, int cmd)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int security_shm_shmat(struct kern_ipc_perm *shp,
+=======
+static inline int security_shm_shmat(struct shmid_kernel *shp,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int security_shm_shmat(struct shmid_kernel *shp,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1182,7 +1245,11 @@ static inline int security_shm_shmat(struct shmid_kernel *shp,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int security_sem_alloc(struct kern_ipc_perm *sma)
+=======
+static inline int security_sem_alloc(struct sem_array *sma)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int security_sem_alloc(struct sem_array *sma)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1191,22 +1258,32 @@ static inline int security_sem_alloc(struct sem_array *sma)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void security_sem_free(struct kern_ipc_perm *sma)
 { }
 
 static inline int security_sem_associate(struct kern_ipc_perm *sma, int semflg)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void security_sem_free(struct sem_array *sma)
 { }
 
 static inline int security_sem_associate(struct sem_array *sma, int semflg)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	return 0;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int security_sem_semctl(struct kern_ipc_perm *sma, int cmd)
+=======
+static inline int security_sem_semctl(struct sem_array *sma, int cmd)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int security_sem_semctl(struct sem_array *sma, int cmd)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1215,7 +1292,11 @@ static inline int security_sem_semctl(struct sem_array *sma, int cmd)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int security_sem_semop(struct kern_ipc_perm *sma,
+=======
+static inline int security_sem_semop(struct sem_array *sma,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int security_sem_semop(struct sem_array *sma,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

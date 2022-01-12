@@ -979,7 +979,10 @@ bool ping_rcv(struct sk_buff *skb)
 	struct net *net = dev_net(skb->dev);
 	struct icmphdr *icmph = icmp_hdr(skb);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool rc = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -997,6 +1000,7 @@ bool ping_rcv(struct sk_buff *skb)
 
 		pr_debug("rcv on socket %p\n", sk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (skb2 && !ping_queue_rcv_skb(sk, skb2))
 			rc = true;
 		sock_put(sk);
@@ -1007,6 +1011,8 @@ bool ping_rcv(struct sk_buff *skb)
 
 	return rc;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (skb2)
 			ping_queue_rcv_skb(sk, skb2);
 		sock_put(sk);
@@ -1015,6 +1021,9 @@ bool ping_rcv(struct sk_buff *skb)
 	pr_debug("no socket, dropping\n");
 
 	return false;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL_GPL(ping_rcv);

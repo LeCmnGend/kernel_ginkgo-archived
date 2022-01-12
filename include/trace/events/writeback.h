@@ -66,9 +66,14 @@ TRACE_EVENT(writeback_dirty_page,
 
 	TP_fast_assign(
 <<<<<<< HEAD
+<<<<<<< HEAD
 		strscpy_pad(__entry->name,
 			    bdi_dev_name(mapping ? inode_to_bdi(mapping->host) :
 					 NULL), 32);
+=======
+		strncpy(__entry->name,
+			mapping ? dev_name(inode_to_bdi(mapping->host)->dev) : "(unknown)", 32);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		strncpy(__entry->name,
 			mapping ? dev_name(inode_to_bdi(mapping->host)->dev) : "(unknown)", 32);
@@ -102,7 +107,12 @@ DECLARE_EVENT_CLASS(writeback_dirty_inode_template,
 
 		/* may be called for files on pseudo FSes w/ unregistered bdi */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		strscpy_pad(__entry->name, bdi_dev_name(bdi), 32);
+=======
+		strncpy(__entry->name,
+			bdi->dev ? dev_name(bdi->dev) : "(unknown)", 32);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		strncpy(__entry->name,
 			bdi->dev ? dev_name(bdi->dev) : "(unknown)", 32);
@@ -186,8 +196,13 @@ DECLARE_EVENT_CLASS(writeback_write_inode_template,
 
 	TP_fast_assign(
 <<<<<<< HEAD
+<<<<<<< HEAD
 		strscpy_pad(__entry->name,
 			    bdi_dev_name(inode_to_bdi(inode)), 32);
+=======
+		strncpy(__entry->name,
+			dev_name(inode_to_bdi(inode)->dev), 32);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		strncpy(__entry->name,
 			dev_name(inode_to_bdi(inode)->dev), 32);
@@ -235,7 +250,12 @@ DECLARE_EVENT_CLASS(writeback_work_class,
 	),
 	TP_fast_assign(
 <<<<<<< HEAD
+<<<<<<< HEAD
 		strscpy_pad(__entry->name, bdi_dev_name(wb->bdi), 32);
+=======
+		strncpy(__entry->name,
+			wb->bdi->dev ? dev_name(wb->bdi->dev) : "(unknown)", 32);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		strncpy(__entry->name,
 			wb->bdi->dev ? dev_name(wb->bdi->dev) : "(unknown)", 32);
@@ -293,7 +313,11 @@ DECLARE_EVENT_CLASS(writeback_class,
 	),
 	TP_fast_assign(
 <<<<<<< HEAD
+<<<<<<< HEAD
 		strscpy_pad(__entry->name, bdi_dev_name(wb->bdi), 32);
+=======
+		strncpy(__entry->name, dev_name(wb->bdi->dev), 32);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		strncpy(__entry->name, dev_name(wb->bdi->dev), 32);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -320,7 +344,11 @@ TRACE_EVENT(writeback_bdi_register,
 	),
 	TP_fast_assign(
 <<<<<<< HEAD
+<<<<<<< HEAD
 		strscpy_pad(__entry->name, bdi_dev_name(bdi), 32);
+=======
+		strncpy(__entry->name, dev_name(bdi->dev), 32);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		strncpy(__entry->name, dev_name(bdi->dev), 32);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -349,7 +377,11 @@ DECLARE_EVENT_CLASS(wbc_class,
 
 	TP_fast_assign(
 <<<<<<< HEAD
+<<<<<<< HEAD
 		strscpy_pad(__entry->name, bdi_dev_name(bdi), 32);
+=======
+		strncpy(__entry->name, dev_name(bdi->dev), 32);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		strncpy(__entry->name, dev_name(bdi->dev), 32);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -404,7 +436,11 @@ TRACE_EVENT(writeback_queue_io,
 	),
 	TP_fast_assign(
 <<<<<<< HEAD
+<<<<<<< HEAD
 		strscpy_pad(__entry->name, bdi_dev_name(wb->bdi), 32);
+=======
+		strncpy(__entry->name, dev_name(wb->bdi->dev), 32);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		strncpy(__entry->name, dev_name(wb->bdi->dev), 32);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -493,7 +529,11 @@ TRACE_EVENT(bdi_dirty_ratelimit,
 
 	TP_fast_assign(
 <<<<<<< HEAD
+<<<<<<< HEAD
 		strscpy_pad(__entry->bdi, bdi_dev_name(wb->bdi), 32);
+=======
+		strlcpy(__entry->bdi, dev_name(wb->bdi->dev), 32);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		strlcpy(__entry->bdi, dev_name(wb->bdi->dev), 32);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -562,7 +602,11 @@ TRACE_EVENT(balance_dirty_pages,
 	TP_fast_assign(
 		unsigned long freerun = (thresh + bg_thresh) / 2;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		strscpy_pad(__entry->bdi, bdi_dev_name(wb->bdi), 32);
+=======
+		strlcpy(__entry->bdi, dev_name(wb->bdi->dev), 32);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		strlcpy(__entry->bdi, dev_name(wb->bdi->dev), 32);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -626,8 +670,13 @@ TRACE_EVENT(writeback_sb_inodes_requeue,
 
 	TP_fast_assign(
 <<<<<<< HEAD
+<<<<<<< HEAD
 		strscpy_pad(__entry->name,
 			    bdi_dev_name(inode_to_bdi(inode)), 32);
+=======
+		strncpy(__entry->name,
+		        dev_name(inode_to_bdi(inode)->dev), 32);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		strncpy(__entry->name,
 		        dev_name(inode_to_bdi(inode)->dev), 32);
@@ -705,8 +754,13 @@ DECLARE_EVENT_CLASS(writeback_single_inode_template,
 
 	TP_fast_assign(
 <<<<<<< HEAD
+<<<<<<< HEAD
 		strscpy_pad(__entry->name,
 			    bdi_dev_name(inode_to_bdi(inode)), 32);
+=======
+		strncpy(__entry->name,
+			dev_name(inode_to_bdi(inode)->dev), 32);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		strncpy(__entry->name,
 			dev_name(inode_to_bdi(inode)->dev), 32);

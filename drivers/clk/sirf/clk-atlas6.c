@@ -137,7 +137,11 @@ static void __init atlas6_clk_init(struct device_node *np)
 	for (i = pll1; i < maxclk; i++) {
 		atlas6_clks[i] = clk_register(NULL, atlas6_clk_hw_array[i]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		BUG_ON(IS_ERR(atlas6_clks[i]));
+=======
+		BUG_ON(!atlas6_clks[i]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		BUG_ON(!atlas6_clks[i]);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

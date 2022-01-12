@@ -16,7 +16,11 @@
 
 /* cats host-specific stuff */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int irqmap_cats[] = { IRQ_PCI, IRQ_IN0, IRQ_IN1, IRQ_IN3 };
+=======
+static int irqmap_cats[] __initdata = { IRQ_PCI, IRQ_IN0, IRQ_IN1, IRQ_IN3 };
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int irqmap_cats[] __initdata = { IRQ_PCI, IRQ_IN0, IRQ_IN1, IRQ_IN3 };
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -27,7 +31,11 @@ static u8 cats_no_swizzle(struct pci_dev *dev, u8 *pin)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int cats_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+=======
+static int __init cats_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int __init cats_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

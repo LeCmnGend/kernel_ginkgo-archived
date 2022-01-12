@@ -297,8 +297,13 @@ spider_net_free_chain(struct spider_net_card *card,
 	} while (descr != chain->ring);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dma_free_coherent(&card->pdev->dev, chain->num_desc * sizeof(struct spider_net_hw_descr),
 			  chain->hwring, chain->dma_addr);
+=======
+	dma_free_coherent(&card->pdev->dev, chain->num_desc,
+	    chain->hwring, chain->dma_addr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dma_free_coherent(&card->pdev->dev, chain->num_desc,
 	    chain->hwring, chain->dma_addr);

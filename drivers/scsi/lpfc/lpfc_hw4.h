@@ -122,7 +122,10 @@ struct lpfc_sli_intf {
 #define LPFC_ALIGN_16_BYTE	16
 #define LPFC_ALIGN_64_BYTE	64
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define SLI4_PAGE_SIZE		4096
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2793,7 +2796,10 @@ struct lpfc_mbx_request_features {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct lpfc_mbx_supp_pages {
 	uint32_t word1;
 #define qs_SHIFT 				0
@@ -2850,6 +2856,9 @@ struct lpfc_mbx_supp_pages {
 #define LPFC_SLI4_PARAMETERS		2
 };
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct lpfc_mbx_memory_dump_type3 {
 	uint32_t word1;
@@ -3068,7 +3077,10 @@ struct user_eeprom {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct lpfc_mbx_pc_sli4_params {
 	uint32_t word1;
 #define qs_SHIFT				0
@@ -3184,6 +3196,9 @@ struct lpfc_mbx_pc_sli4_params {
 #define sgl_pp_align_WORD			word12
 	uint32_t rsvd_13_63[51];
 };
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define SLI4_PAGE_ALIGN(addr) (((addr)+((SLI4_PAGE_SIZE)-1)) \
 			       &(~((SLI4_PAGE_SIZE)-1)))
@@ -3721,6 +3736,11 @@ struct lpfc_mqe {
 		struct lpfc_mbx_query_fw_config query_fw_cfg;
 		struct lpfc_mbx_set_beacon_config beacon_config;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		struct lpfc_mbx_supp_pages supp_pages;
+		struct lpfc_mbx_pc_sli4_params sli4_params;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		struct lpfc_mbx_supp_pages supp_pages;
 		struct lpfc_mbx_pc_sli4_params sli4_params;

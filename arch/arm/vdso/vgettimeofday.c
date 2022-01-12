@@ -1,8 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "compiler.h"
 #include "datapage.h"
 #include "../../../lib/vdso/vgettimeofday.c"
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Copyright 2015 Mentor Graphics Corporation.
  *
@@ -286,4 +289,7 @@ void __aeabi_unwind_cpp_pr1(void)
 void __aeabi_unwind_cpp_pr2(void)
 {
 }
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

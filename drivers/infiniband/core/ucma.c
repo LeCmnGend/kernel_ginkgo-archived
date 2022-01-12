@@ -1316,9 +1316,12 @@ static ssize_t ucma_set_option(struct ucma_file *file, const char __user *inbuf,
 		return -EFAULT;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(cmd.optlen > KMALLOC_MAX_SIZE))
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ctx = ucma_get_ctx(file, cmd.id);
@@ -1326,6 +1329,12 @@ static ssize_t ucma_set_option(struct ucma_file *file, const char __user *inbuf,
 		return PTR_ERR(ctx);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (unlikely(cmd.optlen > KMALLOC_MAX_SIZE))
+		return -EINVAL;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(cmd.optlen > KMALLOC_MAX_SIZE))
 		return -EINVAL;

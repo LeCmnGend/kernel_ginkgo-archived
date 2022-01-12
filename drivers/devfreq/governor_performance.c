@@ -33,7 +33,11 @@ static int devfreq_performance_handler(struct devfreq *devfreq,
 	int ret = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (event == DEVFREQ_GOV_START || event == DEVFREQ_GOV_RESUME) {
+=======
+	if (event == DEVFREQ_GOV_START) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (event == DEVFREQ_GOV_START) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

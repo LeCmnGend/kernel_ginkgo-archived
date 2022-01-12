@@ -820,7 +820,11 @@ static int natsemi_probe1(struct pci_dev *pdev, const struct pci_device_id *ent)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	i = pcim_enable_device(pdev);
+=======
+	i = pci_enable_device(pdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	i = pci_enable_device(pdev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -857,7 +861,11 @@ static int natsemi_probe1(struct pci_dev *pdev, const struct pci_device_id *ent)
 	if (!ioaddr) {
 		i = -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto err_pci_request_regions;
+=======
+		goto err_ioremap;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto err_ioremap;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -983,6 +991,12 @@ static int natsemi_probe1(struct pci_dev *pdev, const struct pci_device_id *ent)
 	iounmap(ioaddr);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+ err_ioremap:
+	pci_release_regions(pdev);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  err_ioremap:
 	pci_release_regions(pdev);
@@ -3256,6 +3270,10 @@ static void natsemi_remove1(struct pci_dev *pdev)
 	NATSEMI_REMOVE_FILE(pdev, dspcfg_workaround);
 	unregister_netdev (dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	pci_release_regions (pdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pci_release_regions (pdev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

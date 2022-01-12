@@ -88,8 +88,12 @@ void lapb_kick(struct lapb_cb *lapb)
 
 		do {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			skbn = skb_copy(skb, GFP_ATOMIC);
 			if (!skbn) {
+=======
+			if ((skbn = skb_clone(skb, GFP_ATOMIC)) == NULL) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if ((skbn = skb_clone(skb, GFP_ATOMIC)) == NULL) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -35,12 +35,15 @@ int enic_api_devcmd_proxy_by_index(struct net_device *netdev, int vf,
 
 	spin_lock(&enic->enic_api_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	while (enic->enic_api_busy) {
 		spin_unlock(&enic->enic_api_lock);
 		cpu_relax();
 		spin_lock(&enic->enic_api_lock);
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_bh(&enic->devcmd_lock);

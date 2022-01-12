@@ -686,7 +686,11 @@ int imx_media_capture_device_register(struct imx_media_video_dev *vdev)
 	fmt_src.pad = priv->src_sd_pad;
 	fmt_src.which = V4L2_SUBDEV_FORMAT_ACTIVE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = v4l2_subdev_call(sd, pad, get_fmt, NULL, &fmt_src);
+=======
+	v4l2_subdev_call(sd, pad, get_fmt, NULL, &fmt_src);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	v4l2_subdev_call(sd, pad, get_fmt, NULL, &fmt_src);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

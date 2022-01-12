@@ -841,10 +841,15 @@ nouveau_drm_open(struct drm_device *dev, struct drm_file *fpriv)
 	/* need to bring up power immediately if opening device */
 	ret = pm_runtime_get_sync(dev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret < 0 && ret != -EACCES) {
 		pm_runtime_put_autosuspend(dev->dev);
 		return ret;
 	}
+=======
+	if (ret < 0 && ret != -EACCES)
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret < 0 && ret != -EACCES)
 		return ret;
@@ -938,10 +943,15 @@ nouveau_drm_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 
 	ret = pm_runtime_get_sync(dev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret < 0 && ret != -EACCES) {
 		pm_runtime_put_autosuspend(dev->dev);
 		return ret;
 	}
+=======
+	if (ret < 0 && ret != -EACCES)
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret < 0 && ret != -EACCES)
 		return ret;

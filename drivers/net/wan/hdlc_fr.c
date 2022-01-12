@@ -276,6 +276,7 @@ static inline struct net_device **get_dev_p(struct pvc_device *pvc,
 static int fr_hard_header(struct sk_buff **skb_p, u16 dlci)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct sk_buff *skb = *skb_p;
 
 	if (!skb->dev) { /* Control packets */
@@ -322,6 +323,8 @@ static int fr_hard_header(struct sk_buff **skb_p, u16 dlci)
 		if (skb_headroom(skb) < 10) {
 			struct sk_buff *skb2 = skb_realloc_headroom(skb, 10);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u16 head_len;
 	struct sk_buff *skb = *skb_p;
 
@@ -355,12 +358,16 @@ static int fr_hard_header(struct sk_buff **skb_p, u16 dlci)
 		if (skb_headroom(skb) < head_len) {
 			struct sk_buff *skb2 = skb_realloc_headroom(skb,
 								    head_len);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (!skb2)
 				return -ENOBUFS;
 			dev_kfree_skb(skb);
 			skb = *skb_p = skb2;
 		}
+<<<<<<< HEAD
 <<<<<<< HEAD
 		skb_push(skb, 10);
 		skb->data[3] = FR_PAD;
@@ -376,6 +383,8 @@ static int fr_hard_header(struct sk_buff **skb_p, u16 dlci)
 	} else {
 		return -EINVAL;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		skb_push(skb, head_len);
 		skb->data[3] = FR_PAD;
 		skb->data[4] = NLPID_SNAP;
@@ -395,6 +404,9 @@ static int fr_hard_header(struct sk_buff **skb_p, u16 dlci)
 		skb->data[6] = FR_PAD;
 		skb->data[7] = FR_PAD;
 		*(__be16*)(skb->data + 8) = skb->protocol;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -492,8 +504,13 @@ static netdev_tx_t pvc_xmit(struct sk_buff *skb, struct net_device *dev)
 				memset(skb->data + len, 0, pad);
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		}
 		skb->dev = dev;
+=======
+			skb->protocol = cpu_to_be16(ETH_P_802_3);
+		}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			skb->protocol = cpu_to_be16(ETH_P_802_3);
 		}
@@ -505,8 +522,11 @@ static netdev_tx_t pvc_xmit(struct sk_buff *skb, struct net_device *dev)
 				dev->stats.tx_compressed++;
 			skb->dev = pvc->frad;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			skb->protocol = htons(ETH_P_HDLC);
 			skb_reset_network_header(skb);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			dev_queue_xmit(skb);
@@ -569,13 +589,19 @@ static void fr_lmi_send(struct net_device *dev, int fullrep)
 	skb_reserve(skb, 4);
 	if (lmi == LMI_CISCO) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		fr_hard_header(&skb, LMI_CISCO_DLCI);
 	} else {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		skb->protocol = cpu_to_be16(NLPID_CISCO_LMI);
 		fr_hard_header(&skb, LMI_CISCO_DLCI);
 	} else {
 		skb->protocol = cpu_to_be16(NLPID_CCITT_ANSI_LMI);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		fr_hard_header(&skb, LMI_CCITT_ANSI_DLCI);
 	}
@@ -637,7 +663,10 @@ static void fr_lmi_send(struct net_device *dev, int fullrep)
 	skb->priority = TC_PRIO_CONTROL;
 	skb->dev = dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	skb->protocol = htons(ETH_P_HDLC);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	skb_reset_network_header(skb);
@@ -1129,7 +1158,11 @@ static void pvc_setup(struct net_device *dev)
 	dev->type = ARPHRD_DLCI;
 	dev->flags = IFF_POINTOPOINT;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev->hard_header_len = 0;
+=======
+	dev->hard_header_len = 10;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev->hard_header_len = 10;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1185,7 +1218,10 @@ static int fr_add_pvc(struct net_device *frad, unsigned int dlci, int type)
 	dev->min_mtu = 68;
 	dev->max_mtu = HDLC_MAX_MTU;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev->needed_headroom = 10;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dev->priv_flags |= IFF_NO_QUEUE;

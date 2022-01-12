@@ -631,6 +631,10 @@ static int lm80_probe(struct i2c_client *client,
 	struct device *hwmon_dev;
 	struct lm80_data *data;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int rv;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int rv;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -647,9 +651,12 @@ static int lm80_probe(struct i2c_client *client,
 
 	/* A few vars need to be filled upon startup */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	data->fan[f_min][0] = lm80_read_value(client, LM80_REG_FAN_MIN(1));
 	data->fan[f_min][1] = lm80_read_value(client, LM80_REG_FAN_MIN(2));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rv = lm80_read_value(client, LM80_REG_FAN_MIN(1));
 	if (rv < 0)
 		return rv;
@@ -658,6 +665,9 @@ static int lm80_probe(struct i2c_client *client,
 	if (rv < 0)
 		return rv;
 	data->fan[f_min][1] = rv;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	hwmon_dev = devm_hwmon_device_register_with_groups(dev, client->name,

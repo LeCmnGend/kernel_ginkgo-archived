@@ -298,7 +298,11 @@ static int tcindex_alloc_perfect_hash(struct tcindex_data *cp)
 
 	cp->perfect = kcalloc(cp->hash, sizeof(struct tcindex_filter_result),
 <<<<<<< HEAD
+<<<<<<< HEAD
 			      GFP_KERNEL | __GFP_NOWARN);
+=======
+			      GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			      GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -362,6 +366,7 @@ tcindex_set_parms(struct net *net, struct tcf_proto *tp, unsigned long base,
 		cp->mask = nla_get_u16(tb[TCA_TCINDEX_MASK]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (tb[TCA_TCINDEX_SHIFT]) {
 		cp->shift = nla_get_u32(tb[TCA_TCINDEX_SHIFT]);
 		if (cp->shift > 16) {
@@ -369,6 +374,11 @@ tcindex_set_parms(struct net *net, struct tcf_proto *tp, unsigned long base,
 			goto errout;
 		}
 	}
+=======
+	if (tb[TCA_TCINDEX_SHIFT])
+		cp->shift = nla_get_u32(tb[TCA_TCINDEX_SHIFT]);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (tb[TCA_TCINDEX_SHIFT])
 		cp->shift = nla_get_u32(tb[TCA_TCINDEX_SHIFT]);

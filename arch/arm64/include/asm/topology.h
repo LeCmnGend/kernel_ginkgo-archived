@@ -11,7 +11,10 @@ struct cpu_topology {
 	cpumask_t thread_sibling;
 	cpumask_t core_sibling;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cpumask_t core_possible_sibling;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -23,8 +26,11 @@ extern struct cpu_topology cpu_topology[NR_CPUS];
 #define topology_core_cpumask(cpu)	(&cpu_topology[cpu].core_sibling)
 #define topology_sibling_cpumask(cpu)	(&cpu_topology[cpu].thread_sibling)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define topology_possible_sibling_cpumask(cpu)		\
 				(&cpu_topology[cpu].core_possible_sibling)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -32,7 +38,10 @@ void init_cpu_topology(void);
 void store_cpu_topology(unsigned int cpuid);
 const struct cpumask *cpu_coregroup_mask(int cpu);
 <<<<<<< HEAD
+<<<<<<< HEAD
 const struct cpumask *cpu_possible_coregroup_mask(int cpu);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

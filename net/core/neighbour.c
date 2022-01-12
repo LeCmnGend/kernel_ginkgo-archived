@@ -1276,7 +1276,11 @@ int neigh_update(struct neighbour *neigh, const u8 *lladdr, u8 new,
 			 */
 			n2 = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (dst && dst->obsolete != DST_OBSOLETE_DEAD) {
+=======
+			if (dst) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (dst) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2862,7 +2866,10 @@ static void *neigh_stat_seq_next(struct seq_file *seq, void *v, loff_t *pos)
 		return per_cpu_ptr(tbl->stats, cpu);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	(*pos)++;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return NULL;

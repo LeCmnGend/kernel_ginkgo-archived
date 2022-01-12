@@ -1330,7 +1330,11 @@ svc_process_common(struct svc_rqst *rqstp, struct kvec *argv, struct kvec *resv)
  sendit:
 	if (svc_authorise(rqstp))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto close_xprt;
+=======
+		goto close;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto close;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1343,8 +1347,11 @@ svc_process_common(struct svc_rqst *rqstp, struct kvec *argv, struct kvec *resv)
 
  close:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	svc_authorise(rqstp);
 close_xprt:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (rqstp->rq_xprt && test_bit(XPT_TEMP, &rqstp->rq_xprt->xpt_flags))
@@ -1356,7 +1363,11 @@ err_short_len:
 	svc_printk(rqstp, "short len %zd, dropping request\n",
 			argv->iov_len);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	goto close_xprt;
+=======
+	goto close;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	goto close;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

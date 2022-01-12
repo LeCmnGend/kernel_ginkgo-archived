@@ -1494,7 +1494,11 @@ static void rndis_ipa_xmit_error(struct sk_buff *skb)
 		rndis_ipa_ctx->error_msec_sleep_time + rand_dealy_msec);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	retval = queue_delayed_work(system_power_efficient_wq, 
+=======
+	retval = schedule_delayed_work(
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	retval = schedule_delayed_work(
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

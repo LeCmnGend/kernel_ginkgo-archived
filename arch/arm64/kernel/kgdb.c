@@ -265,6 +265,7 @@ NOKPROBE_SYMBOL(kgdb_step_brk_fn);
 
 static struct break_hook kgdb_brkpt_hook = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.fn		= kgdb_brk_fn,
 	.imm		= KGDB_DYN_DBG_BRK_IMM,
 };
@@ -273,6 +274,8 @@ static struct break_hook kgdb_compiled_brkpt_hook = {
 	.fn		= kgdb_compiled_brk_fn,
 	.imm		= KGDB_COMPILED_DBG_BRK_IMM,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.esr_mask	= 0xffffffff,
 	.esr_val	= (u32)ESR_ELx_VAL_BRK64(KGDB_DYN_DBG_BRK_IMM),
 	.fn		= kgdb_brk_fn
@@ -282,6 +285,9 @@ static struct break_hook kgdb_compiled_brkpt_hook = {
 	.esr_mask	= 0xffffffff,
 	.esr_val	= (u32)ESR_ELx_VAL_BRK64(KGDB_COMPILED_DBG_BRK_IMM),
 	.fn		= kgdb_compiled_brk_fn
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
@@ -344,9 +350,15 @@ int kgdb_arch_init(void)
 		return ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	register_kernel_break_hook(&kgdb_brkpt_hook);
 	register_kernel_break_hook(&kgdb_compiled_brkpt_hook);
 	register_kernel_step_hook(&kgdb_step_hook);
+=======
+	register_break_hook(&kgdb_brkpt_hook);
+	register_break_hook(&kgdb_compiled_brkpt_hook);
+	register_step_hook(&kgdb_step_hook);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	register_break_hook(&kgdb_brkpt_hook);
 	register_break_hook(&kgdb_compiled_brkpt_hook);
@@ -363,9 +375,15 @@ int kgdb_arch_init(void)
 void kgdb_arch_exit(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unregister_kernel_break_hook(&kgdb_brkpt_hook);
 	unregister_kernel_break_hook(&kgdb_compiled_brkpt_hook);
 	unregister_kernel_step_hook(&kgdb_step_hook);
+=======
+	unregister_break_hook(&kgdb_brkpt_hook);
+	unregister_break_hook(&kgdb_compiled_brkpt_hook);
+	unregister_step_hook(&kgdb_step_hook);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unregister_break_hook(&kgdb_brkpt_hook);
 	unregister_break_hook(&kgdb_compiled_brkpt_hook);

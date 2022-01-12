@@ -699,7 +699,11 @@ static int __gic_populate_rdist(struct redist_region *region, void __iomem *ptr)
 		gic_data_rdist()->phys_base = region->phys_base + offset;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_debug("CPU%d: found redistributor %lx region %d:%pa\n",
+=======
+		pr_info("CPU%d: found redistributor %lx region %d:%pa\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pr_info("CPU%d: found redistributor %lx region %d:%pa\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -866,6 +870,10 @@ static void gic_send_sgi(u64 cluster_id, u16 tlist, unsigned int irq)
 	       tlist << ICC_SGI1R_TARGET_LIST_SHIFT);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	pr_devel("CPU%d: ICC_SGI1R_EL1 %llx\n", smp_processor_id(), val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pr_devel("CPU%d: ICC_SGI1R_EL1 %llx\n", smp_processor_id(), val);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

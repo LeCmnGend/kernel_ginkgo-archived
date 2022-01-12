@@ -351,6 +351,7 @@ static int tsl2583_als_calibrate(struct iio_dev *indio_dev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Avoid division by zero of lux_value later on */
 	if (lux_val == 0) {
 		dev_err(&chip->client->dev,
@@ -359,6 +360,8 @@ static int tsl2583_als_calibrate(struct iio_dev *indio_dev)
 		return -ENODATA;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	gain_trim_val = (unsigned int)(((chip->als_settings.als_cal_target)

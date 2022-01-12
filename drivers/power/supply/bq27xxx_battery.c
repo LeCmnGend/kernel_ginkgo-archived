@@ -1447,7 +1447,10 @@ static int bq27xxx_battery_read_time(struct bq27xxx_device_info *di, u8 reg)
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Read an average power register.
  * Return < 0 if something fails.
  */
@@ -1469,6 +1472,9 @@ static int bq27xxx_battery_read_pwr_avg(struct bq27xxx_device_info *di)
 }
 
 /*
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Returns true if a battery over temperature condition is detected
  */
@@ -1566,6 +1572,11 @@ void bq27xxx_battery_update(struct bq27xxx_device_info *di)
 		if (di->regs[BQ27XXX_REG_CYCT] != INVALID_REG_ADDR)
 			cache.cycle_count = bq27xxx_battery_read_cyct(di);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		if (di->regs[BQ27XXX_REG_AP] != INVALID_REG_ADDR)
+			cache.power_avg = bq27xxx_battery_read_pwr_avg(di);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (di->regs[BQ27XXX_REG_AP] != INVALID_REG_ADDR)
 			cache.power_avg = bq27xxx_battery_read_pwr_avg(di);
@@ -1632,6 +1643,7 @@ static int bq27xxx_battery_current(struct bq27xxx_device_info *di,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * Get the average power in µW
  * Return < 0 if something fails.
@@ -1658,6 +1670,8 @@ static int bq27xxx_battery_pwr_avg(struct bq27xxx_device_info *di,
 	return 0;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int bq27xxx_battery_status(struct bq27xxx_device_info *di,
@@ -1826,7 +1840,11 @@ static int bq27xxx_battery_get_property(struct power_supply *psy,
 		break;
 	case POWER_SUPPLY_PROP_POWER_AVG:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = bq27xxx_battery_pwr_avg(di, val);
+=======
+		ret = bq27xxx_simple_value(di->cache.power_avg, val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = bq27xxx_simple_value(di->cache.power_avg, val);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

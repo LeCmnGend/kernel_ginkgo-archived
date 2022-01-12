@@ -17,6 +17,7 @@
 #define __ASM_SPINLOCK_H
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <asm/qrwlock.h>
 #include <asm/qspinlock.h>
 
@@ -32,6 +33,8 @@
  */
 #define vcpu_is_preempted(cpu)	false
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <asm/lse.h>
 #include <asm/spinlock_types.h>
 #include <asm/processor.h>
@@ -165,6 +168,9 @@ static inline int arch_spin_is_contended(arch_spinlock_t *lock)
 
 /* See include/linux/spinlock.h */
 #define smp_mb__after_spinlock()	smp_mb()
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #endif /* __ASM_SPINLOCK_H */

@@ -211,7 +211,11 @@ static int uPD98402_start(struct atm_dev *dev)
 {
 	DPRINTK("phy_start\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!(dev->phy_data = kmalloc(sizeof(struct uPD98402_priv),GFP_KERNEL)))
+=======
+	if (!(dev->dev_data = kmalloc(sizeof(struct uPD98402_priv),GFP_KERNEL)))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!(dev->dev_data = kmalloc(sizeof(struct uPD98402_priv),GFP_KERNEL)))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

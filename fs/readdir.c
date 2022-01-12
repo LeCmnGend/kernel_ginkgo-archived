@@ -134,9 +134,12 @@ static int fillonedir(struct dir_context *ctx, const char *name, int namlen,
 	if (buf->result)
 		return -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	buf->result = verify_dirent_name(name, namlen);
 	if (buf->result < 0)
 		return buf->result;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	d_ino = ino;
@@ -399,9 +402,12 @@ static int compat_fillonedir(struct dir_context *ctx, const char *name,
 	if (buf->result)
 		return -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	buf->result = verify_dirent_name(name, namlen);
 	if (buf->result < 0)
 		return buf->result;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	d_ino = ino;

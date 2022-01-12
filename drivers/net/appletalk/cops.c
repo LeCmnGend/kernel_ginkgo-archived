@@ -325,8 +325,11 @@ static int __init cops_probe1(struct net_device *dev, int ioaddr)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev->base_addr = ioaddr;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Reserve any actual interrupt. */
@@ -337,6 +340,11 @@ static int __init cops_probe1(struct net_device *dev, int ioaddr)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	dev->base_addr = ioaddr;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev->base_addr = ioaddr;
 

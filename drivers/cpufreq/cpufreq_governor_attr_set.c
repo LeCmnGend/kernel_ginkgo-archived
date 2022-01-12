@@ -78,8 +78,13 @@ unsigned int gov_attr_set_put(struct gov_attr_set *attr_set, struct list_head *l
 		return count;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_destroy(&attr_set->update_lock);
 	kobject_put(&attr_set->kobj);
+=======
+	kobject_put(&attr_set->kobj);
+	mutex_destroy(&attr_set->update_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kobject_put(&attr_set->kobj);
 	mutex_destroy(&attr_set->update_lock);

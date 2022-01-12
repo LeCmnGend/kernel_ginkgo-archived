@@ -405,7 +405,11 @@ static int sde_hw_pp_connect_external_te(struct sde_hw_pingpong *pp,
 
 static int sde_hw_pp_get_vsync_info(struct sde_hw_pingpong *pp,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		struct sde_hw_pp_vsync_info *info, bool wr_ptr_only)
+=======
+		struct sde_hw_pp_vsync_info *info)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		struct sde_hw_pp_vsync_info *info)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -418,6 +422,7 @@ static int sde_hw_pp_get_vsync_info(struct sde_hw_pingpong *pp,
 	c = &pp->hw;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!wr_ptr_only) {
 		val = SDE_REG_READ(c, PP_VSYNC_INIT_VAL);
 		info->rd_ptr_init_val = val & 0xffff;
@@ -427,12 +432,17 @@ static int sde_hw_pp_get_vsync_info(struct sde_hw_pingpong *pp,
 		info->rd_ptr_line_count = val & 0xffff;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	val = SDE_REG_READ(c, PP_VSYNC_INIT_VAL);
 	info->rd_ptr_init_val = val & 0xffff;
 
 	val = SDE_REG_READ(c, PP_INT_COUNT_VAL);
 	info->rd_ptr_frame_count = (val & 0xffff0000) >> 16;
 	info->rd_ptr_line_count = val & 0xffff;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	val = SDE_REG_READ(c, PP_LINE_COUNT);

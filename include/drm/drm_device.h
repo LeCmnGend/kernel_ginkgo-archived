@@ -68,7 +68,10 @@ struct drm_device {
 	struct list_head filelist;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/**
 	 * @filelist_internal:
 	 *
@@ -90,6 +93,9 @@ struct drm_device {
 	 */
 	struct list_head clientlist;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/** \name Memory management */
 	/*@{ */

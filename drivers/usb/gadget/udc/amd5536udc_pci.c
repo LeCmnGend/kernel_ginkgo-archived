@@ -159,11 +159,14 @@ static int udc_pci_probe(
 	pci_try_set_mwi(pdev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev->phys_addr = resource;
 	dev->irq = pdev->irq;
 	dev->pdev = pdev;
 	dev->dev = &pdev->dev;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* init dma pools */
@@ -174,12 +177,18 @@ static int udc_pci_probe(
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dev->phys_addr = resource;
 	dev->irq = pdev->irq;
 	dev->pdev = pdev;
 	dev->dev = &pdev->dev;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* general probing */
 	if (udc_probe(dev)) {

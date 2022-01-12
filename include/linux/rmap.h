@@ -104,8 +104,12 @@ enum ttu_flags {
 	TTU_RMAP_LOCKED		= 0x80,	/* do not grab rmap lock:
 					 * caller holds it */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	TTU_SPLIT_FREEZE	= 0x100, /* freeze pte under splitting thp */
 	TTU_SYNC		= 0x200, /* avoid racy checks with PVMW_SYNC */
+=======
+	TTU_SPLIT_FREEZE	= 0x100,		/* freeze pte under splitting thp */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	TTU_SPLIT_FREEZE	= 0x100,		/* freeze pte under splitting thp */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -234,8 +238,12 @@ struct page_vma_mapped_walk {
 static inline void page_vma_mapped_walk_done(struct page_vma_mapped_walk *pvmw)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* HugeTLB pte is set to the relevant page table entry without pte_mapped. */
 	if (pvmw->pte && !PageHuge(pvmw->page))
+=======
+	if (pvmw->pte)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (pvmw->pte)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

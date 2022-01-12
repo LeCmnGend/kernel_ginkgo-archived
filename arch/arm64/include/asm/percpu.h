@@ -17,10 +17,14 @@
 #define __ASM_PERCPU_H
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/preempt.h>
 
 #include <asm/alternative.h>
 #include <asm/cmpxchg.h>
+=======
+#include <asm/alternative.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <asm/alternative.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -208,6 +212,7 @@ static inline unsigned long __percpu_xchg(void *ptr, unsigned long val,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* this_cpu_cmpxchg */
 #define _protect_cmpxchg_local(pcp, o, n)			\
 ({								\
@@ -234,6 +239,8 @@ static inline unsigned long __percpu_xchg(void *ptr, unsigned long val,
 	__ret;								\
 })
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define _percpu_read(pcp)						\

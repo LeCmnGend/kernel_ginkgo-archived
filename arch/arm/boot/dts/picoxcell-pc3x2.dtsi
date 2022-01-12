@@ -55,7 +55,10 @@
 			compatible = "cadence,gem";
 			reg = <0x30000 0x10000>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			interrupt-parent = <&vic0>;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			interrupts = <31>;
@@ -65,7 +68,10 @@
 			compatible = "snps,dw-dmac";
 			reg = <0x40000 0x10000>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			interrupt-parent = <&vic0>;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			interrupts = <25>;
@@ -75,7 +81,10 @@
 			compatible = "snps,dw-dmac";
 			reg = <0x50000 0x10000>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			interrupt-parent = <&vic0>;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			interrupts = <26>;
@@ -256,7 +265,10 @@
 			compatible = "picochip,axi2pico-pc3x2";
 			reg = <0xc0000000 0x10000>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			interrupt-parent = <&vic0>;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			interrupts = <13 14 15 16 17 18 19 20 21>;

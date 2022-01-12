@@ -11,7 +11,11 @@
 # Copyright (C) 1995-2001 by Russell King
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 LDFLAGS_vmlinux	:=--no-undefined -X -z norelro
+=======
+LDFLAGS_vmlinux	:=--no-undefined -X
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 LDFLAGS_vmlinux	:=--no-undefined -X
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -23,6 +27,7 @@ ifeq ($(CONFIG_RELOCATABLE), y)
 # for relative relocs, since this leads to better Image compression
 # with the relocation offsets always being zero.
 <<<<<<< HEAD
+<<<<<<< HEAD
 LDFLAGS_vmlinux		+= -Bsymbolic -z notext \
 			$(call ld-option, --no-apply-dynamic-relocs)
 
@@ -33,6 +38,10 @@ endif
 ifeq ($(ld-name),lld)
 LDFLAGS_vmlinux		+= -pie
 endif
+=======
+LDFLAGS_vmlinux		+= -shared -Bsymbolic -z notext -z norelro \
+			$(call ld-option, --no-apply-dynamic-relocs)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 LDFLAGS_vmlinux		+= -shared -Bsymbolic -z notext -z norelro \
 			$(call ld-option, --no-apply-dynamic-relocs)
@@ -76,6 +85,7 @@ $(warning Detected assembler with broken .inst; disassembly will be unreliable)
 endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ifeq ($(CONFIG_COMPAT_VDSO), y)
   CROSS_COMPILE_ARM32 ?= $(CONFIG_CROSS_COMPILE_ARM32:"%"=%)
 
@@ -111,6 +121,8 @@ endif
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 ifeq ($(cc-name),clang)
 # This is a workaround for https://bugs.llvm.org/show_bug.cgi?id=30792.
 # TODO: revert when this is fixed in LLVM.
@@ -119,6 +131,7 @@ else
 KBUILD_CFLAGS	+= -mgeneral-regs-only
 endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 KBUILD_CFLAGS	+= $(lseinstr) $(brokengasinst) $(vdso32)
 KBUILD_CFLAGS	+= -fno-asynchronous-unwind-tables
 KBUILD_CFLAGS	+= $(call cc-option, -mpc-relative-literal-loads)
@@ -126,11 +139,16 @@ KBUILD_CFLAGS	+= -fno-pic
 KBUILD_CFLAGS	+= $(call cc-disable-warning, psabi)
 KBUILD_AFLAGS	+= $(lseinstr) $(brokengasinst) $(vdso32)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 KBUILD_CFLAGS	+= $(lseinstr) $(brokengasinst)
 KBUILD_CFLAGS	+= -fno-asynchronous-unwind-tables
 KBUILD_CFLAGS	+= $(call cc-option, -mpc-relative-literal-loads)
 KBUILD_CFLAGS	+= -fno-pic
 KBUILD_AFLAGS	+= $(lseinstr) $(brokengasinst)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 KBUILD_CFLAGS	+= $(call cc-option,-mabi=lp64)
@@ -141,12 +159,15 @@ KBUILD_CFLAGS	+= -ffixed-x18
 endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ifeq ($(cc-name),clang)
 KBUILD_CFLAGS	+= -DCONFIG_ARCH_SUPPORTS_INT128
 else
 KBUILD_CFLAGS	+= $(call cc-ifversion, -ge, 0500, -DCONFIG_ARCH_SUPPORTS_INT128)
 endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 ifeq ($(CONFIG_CPU_BIG_ENDIAN), y)
@@ -250,8 +271,11 @@ endif
 KBUILD_DTBS	:= dtbs
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 KBUILD_DTBO_IMG := dtbo.img
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
@@ -287,6 +311,7 @@ Image.gz-dtb: vmlinux scripts dtbs Image.gz
 	$(Q)$(MAKE) $(build)=$(boot) $(boot)/$@
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
 $(KBUILD_DTBO_IMG): dtbs
 	$(Q)$(MAKE) $(build)=$(boot) $(boot)/$@
@@ -294,6 +319,8 @@ $(KBUILD_DTBO_IMG): dtbs
 all: $(KBUILD_DTBO_IMG)
 endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 PHONY += vdso_install
@@ -316,8 +343,11 @@ prepare: vdso_prepare
 vdso_prepare: prepare0
 	$(Q)$(MAKE) $(build)=arch/arm64/kernel/vdso include/generated/vdso-offsets.h
 <<<<<<< HEAD
+<<<<<<< HEAD
 	$(if $(CONFIG_VDSO32),$(Q)$(MAKE) $(build)=arch/arm64/kernel/vdso32 \
 					  include/generated/vdso32-offsets.h)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 endif

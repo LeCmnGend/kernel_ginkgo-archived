@@ -408,7 +408,11 @@ static void get_orlov_stats(struct super_block *sb, ext4_group_t g,
  * We always try to spread first-level directories.
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * If there are blockgroups with both free inodes and free clusters counts
+=======
+ * If there are blockgroups with both free inodes and free blocks counts
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * If there are blockgroups with both free inodes and free blocks counts
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -421,7 +425,11 @@ static void get_orlov_stats(struct super_block *sb, ext4_group_t g,
  * it has too many directories already (max_dirs) or
  * it has too few free inodes left (min_inodes) or
 <<<<<<< HEAD
+<<<<<<< HEAD
  * it has too few free clusters left (min_clusters) or
+=======
+ * it has too few free blocks left (min_blocks) or
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * it has too few free blocks left (min_blocks) or
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -441,7 +449,11 @@ static int find_group_orlov(struct super_block *sb, struct inode *parent,
 	int inodes_per_group = EXT4_INODES_PER_GROUP(sb);
 	unsigned int freei, avefreei, grp_free;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ext4_fsblk_t freec, avefreec;
+=======
+	ext4_fsblk_t freeb, avefreec;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ext4_fsblk_t freeb, avefreec;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -464,8 +476,14 @@ static int find_group_orlov(struct super_block *sb, struct inode *parent,
 	freei = percpu_counter_read_positive(&sbi->s_freeinodes_counter);
 	avefreei = freei / ngroups;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	freec = percpu_counter_read_positive(&sbi->s_freeclusters_counter);
 	avefreec = freec;
+=======
+	freeb = EXT4_C2B(sbi,
+		percpu_counter_read_positive(&sbi->s_freeclusters_counter));
+	avefreec = freeb;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	freeb = EXT4_C2B(sbi,
 		percpu_counter_read_positive(&sbi->s_freeclusters_counter));
@@ -1146,7 +1164,13 @@ got:
 		goto out;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	inode->i_generation = prandom_u32();
+=======
+	spin_lock(&sbi->s_next_gen_lock);
+	inode->i_generation = sbi->s_next_generation++;
+	spin_unlock(&sbi->s_next_gen_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spin_lock(&sbi->s_next_gen_lock);
 	inode->i_generation = sbi->s_next_generation++;
@@ -1392,7 +1416,10 @@ int ext4_init_inode_table(struct super_block *sb, ext4_group_t group,
 	ext4_fsblk_t blk;
 	int num, ret = 0, used_blks = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long used_inos = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1426,6 +1453,7 @@ int ext4_init_inode_table(struct super_block *sb, ext4_group_t group,
 	 * inode table.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!(gdp->bg_flags & cpu_to_le16(EXT4_BG_INODE_UNINIT))) {
 		used_inos = EXT4_INODES_PER_GROUP(sb) -
 			    ext4_itable_unused_count(sb, gdp);
@@ -1458,6 +1486,8 @@ int ext4_init_inode_table(struct super_block *sb, ext4_group_t group,
 			goto err_out;
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!(gdp->bg_flags & cpu_to_le16(EXT4_BG_INODE_UNINIT)))
 		used_blks = DIV_ROUND_UP((EXT4_INODES_PER_GROUP(sb) -
 			    ext4_itable_unused_count(sb, gdp)),
@@ -1474,6 +1504,9 @@ int ext4_init_inode_table(struct super_block *sb, ext4_group_t group,
 			   ext4_itable_unused_count(sb, gdp));
 		ret = 1;
 		goto err_out;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 

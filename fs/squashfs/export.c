@@ -55,7 +55,11 @@ static long long squashfs_inode_lookup(struct super_block *sb, int ino_num)
 	int blk = SQUASHFS_LOOKUP_BLOCK(ino_num - 1);
 	int offset = SQUASHFS_LOOKUP_BLOCK_OFFSET(ino_num - 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64 start;
+=======
+	u64 start = le64_to_cpu(msblk->inode_lookup_table[blk]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u64 start = le64_to_cpu(msblk->inode_lookup_table[blk]);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -65,11 +69,14 @@ static long long squashfs_inode_lookup(struct super_block *sb, int ino_num)
 	TRACE("Entered squashfs_inode_lookup, inode_number = %d\n", ino_num);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ino_num == 0 || (ino_num - 1) >= msblk->inodes)
 		return -EINVAL;
 
 	start = le64_to_cpu(msblk->inode_lookup_table[blk]);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = squashfs_read_metadata(sb, &ino, &start, &offset, sizeof(ino));
@@ -137,10 +144,14 @@ __le64 *squashfs_read_inode_lookup_table(struct super_block *sb,
 {
 	unsigned int length = SQUASHFS_LOOKUP_BLOCK_BYTES(inodes);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int indexes = SQUASHFS_LOOKUP_BLOCKS(inodes);
 	int n;
 	__le64 *table;
 	u64 start, end;
+=======
+	__le64 *table;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__le64 *table;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -153,6 +164,7 @@ __le64 *squashfs_read_inode_lookup_table(struct super_block *sb,
 	if (inodes == 0)
 		return ERR_PTR(-EINVAL);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	/*
 	 * The computed size of the lookup table (length bytes) should exactly
@@ -190,6 +202,8 @@ __le64 *squashfs_read_inode_lookup_table(struct super_block *sb,
 	    (lookup_table_start - start) >
 	    (SQUASHFS_METADATA_SIZE + SQUASHFS_BLOCK_OFFSET)) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* length bytes should not extend into the next table - this check
 	 * also traps instances where lookup_table_start is incorrectly larger
 	 * than the next table start
@@ -204,6 +218,9 @@ __le64 *squashfs_read_inode_lookup_table(struct super_block *sb,
 	 * this should be less than lookup_table_start
 	 */
 	if (!IS_ERR(table) && le64_to_cpu(table[0]) >= lookup_table_start) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		kfree(table);
 		return ERR_PTR(-EINVAL);

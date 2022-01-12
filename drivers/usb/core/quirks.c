@@ -190,9 +190,12 @@ static const struct usb_device_id usb_quirk_list[] = {
 			USB_QUIRK_CONFIG_INTF_STRINGS },
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Agfa SNAPSCAN 1212U */
 	{ USB_DEVICE(0x06bd, 0x0001), .driver_info = USB_QUIRK_RESET_RESUME },
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Guillemot Webcam Hercules Dualpix Exchange (2nd ID) */
@@ -202,10 +205,13 @@ static const struct usb_device_id usb_quirk_list[] = {
 	{ USB_DEVICE(0x06f8, 0x3005), .driver_info = USB_QUIRK_RESET_RESUME },
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Guillemot Hercules DJ Console audio card (BZ 208357) */
 	{ USB_DEVICE(0x06f8, 0xb000), .driver_info =
 			USB_QUIRK_ENDPOINT_BLACKLIST },
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Midiman M-Audio Keystation 88es */
@@ -231,6 +237,7 @@ static const struct usb_device_id usb_quirk_list[] = {
 			USB_QUIRK_CONFIG_INTF_STRINGS },
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Kingston DataTraveler 3.0 */
 	{ USB_DEVICE(0x0951, 0x1666), .driver_info = USB_QUIRK_NO_LPM },
 
@@ -240,6 +247,11 @@ static const struct usb_device_id usb_quirk_list[] = {
 	/* ELMO L-12F document camera */
 	{ USB_DEVICE(0x09a1, 0x0028), .driver_info = USB_QUIRK_DELAY_CTRL_MSG },
 
+=======
+	/* X-Rite/Gretag-Macbeth Eye-One Pro display colorimeter */
+	{ USB_DEVICE(0x0971, 0x2000), .driver_info = USB_QUIRK_NO_SET_INTF },
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* X-Rite/Gretag-Macbeth Eye-One Pro display colorimeter */
 	{ USB_DEVICE(0x0971, 0x2000), .driver_info = USB_QUIRK_NO_SET_INTF },
@@ -258,7 +270,10 @@ static const struct usb_device_id usb_quirk_list[] = {
 	/* Realtek hub in Dell WD19 (Type-C) */
 	{ USB_DEVICE(0x0bda, 0x0487), .driver_info = USB_QUIRK_NO_LPM },
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ USB_DEVICE(0x0bda, 0x5487), .driver_info = USB_QUIRK_RESET_RESUME },
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -266,10 +281,13 @@ static const struct usb_device_id usb_quirk_list[] = {
 	{ USB_DEVICE(0x0bda, 0x8153), .driver_info = USB_QUIRK_NO_LPM },
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* SONiX USB DEVICE Touchpad */
 	{ USB_DEVICE(0x0c45, 0x7056), .driver_info =
 			USB_QUIRK_IGNORE_REMOTE_WAKEUP },
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Action Semiconductor flash disk */
@@ -284,9 +302,12 @@ static const struct usb_device_id usb_quirk_list[] = {
 			USB_QUIRK_LINEAR_UFRAME_INTR_BINTERVAL },
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Lenovo ThinkPad USB-C Dock Gen2 Ethernet (RTL8153 GigE) */
 	{ USB_DEVICE(0x17ef, 0xa387), .driver_info = USB_QUIRK_NO_LPM },
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* BUILDWIN Photo Frame */
@@ -342,8 +363,11 @@ static const struct usb_device_id usb_quirk_list[] = {
 	{ USB_DEVICE(0x2386, 0x3119), .driver_info = USB_QUIRK_NO_LPM },
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ USB_DEVICE(0x2386, 0x350e), .driver_info = USB_QUIRK_NO_LPM },
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* DJI CineSSD */
@@ -356,10 +380,13 @@ static const struct usb_device_id usb_quirk_list[] = {
 	{ USB_DEVICE(0x04e8, 0x6860), .driver_info = USB_QUIRK_NO_LPM },
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Fibocom L850-GL LTE Modem */
 	{ USB_DEVICE(0x2cb7, 0x0007), .driver_info =
 			USB_QUIRK_IGNORE_REMOTE_WAKEUP },
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* INTEL VALUE SSD */
@@ -396,6 +423,7 @@ static const struct usb_device_id usb_amd_resume_quirk_list[] = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * Entries for blacklisted endpoints that should be ignored when parsing
  * configuration descriptors.
@@ -430,6 +458,8 @@ bool usb_endpoint_is_blacklisted(struct usb_device *udev,
 	return false;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static bool usb_match_any_interface(struct usb_device *udev,

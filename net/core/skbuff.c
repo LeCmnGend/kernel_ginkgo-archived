@@ -408,11 +408,15 @@ struct sk_buff *__netdev_alloc_skb(struct net_device *dev, unsigned int len,
 		gfp_mask |= GFP_DMA;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* If requested length is either too small or too big,
 	 * we use kmalloc() for skb->head allocation.
 	 */
 	if (len <= SKB_WITH_OVERHEAD(1024) ||
 	    len > SKB_WITH_OVERHEAD(PAGE_SIZE) ||
+=======
+	if ((len > SKB_WITH_OVERHEAD(PAGE_SIZE)) ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if ((len > SKB_WITH_OVERHEAD(PAGE_SIZE)) ||
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -477,7 +481,11 @@ struct sk_buff *__napi_alloc_skb(struct napi_struct *napi, unsigned int len,
 				 gfp_t gfp_mask)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct napi_alloc_cache *nc;
+=======
+	struct napi_alloc_cache *nc = this_cpu_ptr(&napi_alloc_cache);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct napi_alloc_cache *nc = this_cpu_ptr(&napi_alloc_cache);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -487,11 +495,15 @@ struct sk_buff *__napi_alloc_skb(struct napi_struct *napi, unsigned int len,
 	len += NET_SKB_PAD + NET_IP_ALIGN;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* If requested length is either too small or too big,
 	 * we use kmalloc() for skb->head allocation.
 	 */
 	if (len <= SKB_WITH_OVERHEAD(1024) ||
 	    len > SKB_WITH_OVERHEAD(PAGE_SIZE) ||
+=======
+	if ((len > SKB_WITH_OVERHEAD(PAGE_SIZE)) ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if ((len > SKB_WITH_OVERHEAD(PAGE_SIZE)) ||
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -503,7 +515,10 @@ struct sk_buff *__napi_alloc_skb(struct napi_struct *napi, unsigned int len,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	nc = this_cpu_ptr(&napi_alloc_cache);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	len += SKB_DATA_ALIGN(sizeof(struct skb_shared_info));
@@ -1888,12 +1903,15 @@ int pskb_trim_rcsum_slow(struct sk_buff *skb, unsigned int len)
 					   skb_checksum(skb, len, delta, 0),
 					   len);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else if (skb->ip_summed == CHECKSUM_PARTIAL) {
 		int hdlen = (len > skb_headlen(skb)) ? skb_headlen(skb) : len;
 		int offset = skb_checksum_start_offset(skb) + skb->csum_offset;
 
 		if (offset + sizeof(__sum16) > hdlen)
 			return -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -2734,11 +2752,16 @@ skb_zerocopy_headlen(const struct sk_buff *from)
 	if (!from->head_frag ||
 	    skb_headlen(from) < L1_CACHE_BYTES ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    skb_shinfo(from)->nr_frags >= MAX_SKB_FRAGS) {
 		hlen = skb_headlen(from);
 		if (!hlen)
 			hlen = from->len;
 	}
+=======
+	    skb_shinfo(from)->nr_frags >= MAX_SKB_FRAGS)
+		hlen = skb_headlen(from);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	    skb_shinfo(from)->nr_frags >= MAX_SKB_FRAGS)
 		hlen = skb_headlen(from);
@@ -3129,6 +3152,7 @@ EXPORT_SYMBOL(skb_split);
 static int skb_prepare_for_shift(struct sk_buff *skb)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret = 0;
 
 	if (skb_cloned(skb)) {
@@ -3142,6 +3166,9 @@ static int skb_prepare_for_shift(struct sk_buff *skb)
 		skb->truesize = save_truesize;
 	}
 	return ret;
+=======
+	return skb_cloned(skb) && pskb_expand_head(skb, 0, 0, GFP_ATOMIC);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return skb_cloned(skb) && pskb_expand_head(skb, 0, 0, GFP_ATOMIC);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4310,7 +4337,11 @@ struct sk_buff *sock_dequeue_err_skb(struct sock *sk)
 		icmp_next = is_icmp_err_skb(skb_next);
 		if (icmp_next)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			sk->sk_err = SKB_EXT_ERR(skb_next)->ee.ee_errno;
+=======
+			sk->sk_err = SKB_EXT_ERR(skb_next)->ee.ee_origin;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			sk->sk_err = SKB_EXT_ERR(skb_next)->ee.ee_origin;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5130,8 +5161,13 @@ struct sk_buff *skb_vlan_untag(struct sk_buff *skb)
 	if (unlikely(!skb))
 		goto err_free;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* We may access the two bytes after vlan_hdr in vlan_set_encap_proto(). */
 	if (unlikely(!pskb_may_pull(skb, VLAN_HLEN + sizeof(unsigned short))))
+=======
+
+	if (unlikely(!pskb_may_pull(skb, VLAN_HLEN)))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	if (unlikely(!pskb_may_pull(skb, VLAN_HLEN)))
@@ -5529,6 +5565,7 @@ static int pskb_carve_inside_nonlinear(struct sk_buff *skb, const u32 off,
 		skb_clone_fraglist(skb);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* split line is in frag list */
 	if (k == 0 && pskb_carve_frag_list(skb, shinfo, off - pos, gfp_mask)) {
 		/* skb_frag_unref() is not needed here as shinfo->nr_frags = 0. */
@@ -5536,6 +5573,11 @@ static int pskb_carve_inside_nonlinear(struct sk_buff *skb, const u32 off,
 			kfree_skb_list(skb_shinfo(skb)->frag_list);
 		kfree(data);
 		return -ENOMEM;
+=======
+	if (k == 0) {
+		/* split line is in frag list */
+		pskb_carve_frag_list(skb, shinfo, off - pos, gfp_mask);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (k == 0) {
 		/* split line is in frag list */

@@ -107,11 +107,15 @@ struct stk8312_data {
 	struct iio_trigger *dready_trig;
 	bool dready_trigger_on;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Ensure timestamp is naturally aligned */
 	struct {
 		s8 chans[3];
 		s64 timestamp __aligned(8);
 	} scan;
+=======
+	s8 buffer[16]; /* 3x8-bit channels + 5x8 padding + 64-bit timestamp */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	s8 buffer[16]; /* 3x8-bit channels + 5x8 padding + 64-bit timestamp */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -452,7 +456,11 @@ static irqreturn_t stk8312_trigger_handler(int irq, void *p)
 						    STK8312_REG_XOUT,
 						    STK8312_ALL_CHANNEL_SIZE,
 <<<<<<< HEAD
+<<<<<<< HEAD
 						    data->scan.chans);
+=======
+						    data->buffer);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 						    data->buffer);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -470,7 +478,11 @@ static irqreturn_t stk8312_trigger_handler(int irq, void *p)
 				goto err;
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 			data->scan.chans[i++] = ret;
+=======
+			data->buffer[i++] = ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			data->buffer[i++] = ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -479,7 +491,11 @@ static irqreturn_t stk8312_trigger_handler(int irq, void *p)
 	mutex_unlock(&data->lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	iio_push_to_buffers_with_timestamp(indio_dev, &data->scan,
+=======
+	iio_push_to_buffers_with_timestamp(indio_dev, data->buffer,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	iio_push_to_buffers_with_timestamp(indio_dev, data->buffer,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -1498,7 +1498,11 @@ static ssize_t video_proc_write(struct file *file, const char __user *buf,
 	char *buffer;
 	char *cmd;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int lcd_out = -1, crt_out = -1, tv_out = -1;
+=======
+	int lcd_out, crt_out, tv_out;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int lcd_out, crt_out, tv_out;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1534,6 +1538,10 @@ static ssize_t video_proc_write(struct file *file, const char __user *buf,
 	kfree(cmd);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	lcd_out = crt_out = tv_out = -1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	lcd_out = crt_out = tv_out = -1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2870,7 +2878,10 @@ static int toshiba_acpi_setup_keyboard(struct toshiba_acpi_dev *dev)
 	if (!dev->info_supported && !dev->system_event_supported) {
 		pr_warn("No hotkey query interface found\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		error = -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto err_remove_filter;

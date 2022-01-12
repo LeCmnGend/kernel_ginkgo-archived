@@ -847,6 +847,7 @@ static int powernv_cpufreq_reboot_notifier(struct notifier_block *nb,
 {
 	int cpu;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct cpufreq_policy *cpu_policy;
 
 	rebooting = true;
@@ -857,12 +858,17 @@ static int powernv_cpufreq_reboot_notifier(struct notifier_block *nb,
 		powernv_cpufreq_target_index(cpu_policy, get_nominal_index());
 		cpufreq_cpu_put(cpu_policy);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct cpufreq_policy cpu_policy;
 
 	rebooting = true;
 	for_each_online_cpu(cpu) {
 		cpufreq_get_policy(&cpu_policy, cpu);
 		powernv_cpufreq_target_index(&cpu_policy, get_nominal_index());
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -877,7 +883,10 @@ void powernv_cpufreq_work_fn(struct work_struct *work)
 {
 	struct chip *chip = container_of(work, struct chip, throttle);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct cpufreq_policy *policy;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned int cpu;
@@ -895,6 +904,7 @@ void powernv_cpufreq_work_fn(struct work_struct *work)
 	for_each_cpu(cpu, &mask) {
 		int index;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		policy = cpufreq_cpu_get(cpu);
 		if (!policy)
@@ -904,12 +914,17 @@ void powernv_cpufreq_work_fn(struct work_struct *work)
 		cpumask_andnot(&mask, &mask, policy->cpus);
 		cpufreq_cpu_put(policy);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		struct cpufreq_policy policy;
 
 		cpufreq_get_policy(&policy, cpu);
 		index = cpufreq_table_find_index_c(&policy, policy.cur);
 		powernv_cpufreq_target_index(&policy, index);
 		cpumask_andnot(&mask, &mask, policy.cpus);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 out:

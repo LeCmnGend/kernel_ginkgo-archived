@@ -37,7 +37,10 @@
 #define SCM_V2_EBUSY		-12
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static DEFINE_PER_CPU(atomic_t, scm_call_count);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static DEFINE_MUTEX(scm_lock);
@@ -385,7 +388,11 @@ int scm_call_noalloc(u32 svc_id, u32 cmd_id, const void *cmd_buf,
 #ifdef CONFIG_ARM64
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int ___scm_call_armv8_64(u64 x0, u64 x1, u64 x2, u64 x3, u64 x4, u64 x5,
+=======
+static int __scm_call_armv8_64(u64 x0, u64 x1, u64 x2, u64 x3, u64 x4, u64 x5,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int __scm_call_armv8_64(u64 x0, u64 x1, u64 x2, u64 x3, u64 x4, u64 x5,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -438,6 +445,7 @@ static int __scm_call_armv8_64(u64 x0, u64 x1, u64 x2, u64 x3, u64 x4, u64 x5,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int __scm_call_armv8_64(u64 x0, u64 x1, u64 x2, u64 x3, u64 x4, u64 x5,
 				u64 *ret1, u64 *ret2, u64 *ret3)
 {
@@ -452,6 +460,9 @@ static int __scm_call_armv8_64(u64 x0, u64 x1, u64 x2, u64 x3, u64 x4, u64 x5,
 }
 
 static int ___scm_call_armv8_32(u32 w0, u32 w1, u32 w2, u32 w3, u32 w4, u32 w5,
+=======
+static int __scm_call_armv8_32(u32 w0, u32 w1, u32 w2, u32 w3, u32 w4, u32 w5,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int __scm_call_armv8_32(u32 w0, u32 w1, u32 w2, u32 w3, u32 w4, u32 w5,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -505,6 +516,7 @@ static int __scm_call_armv8_32(u32 w0, u32 w1, u32 w2, u32 w3, u32 w4, u32 w5,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int __scm_call_armv8_32(u32 w0, u32 w1, u32 w2, u32 w3, u32 w4, u32 w5,
 				u64 *ret1, u64 *ret2, u64 *ret3)
 {
@@ -518,6 +530,8 @@ static int __scm_call_armv8_32(u32 w0, u32 w1, u32 w2, u32 w3, u32 w4, u32 w5,
 	return ret;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #else
@@ -571,6 +585,7 @@ static int __scm_call_armv8_32(u32 w0, u32 w1, u32 w2, u32 w3, u32 w4, u32 w5,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int __scm_call_armv8_32(u32 w0, u32 w1, u32 w2, u32 w3, u32 w4, u32 w5,
 				u64 *ret1, u64 *ret2, u64 *ret3)
 {
@@ -584,6 +599,8 @@ static int __scm_call_armv8_32(u32 w0, u32 w1, u32 w2, u32 w3, u32 w4, u32 w5,
 	return ret;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int __scm_call_armv8_64(u64 x0, u64 x1, u64 x2, u64 x3, u64 x4, u64 x5,
@@ -1372,10 +1389,13 @@ inline int scm_enable_mem_protection(void)
 #endif
 EXPORT_SYMBOL(scm_enable_mem_protection);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 bool under_scm_call(int cpu)
 {
 	return atomic_read(per_cpu_ptr(&scm_call_count, cpu));
 }
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

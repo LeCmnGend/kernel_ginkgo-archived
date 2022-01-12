@@ -971,10 +971,15 @@ static void delta_run_work(struct work_struct *work)
 	if (!dec->pm) {
 		ret = delta_get_sync(ctx);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ret) {
 			delta_put_autosuspend(ctx);
 			goto err;
 		}
+=======
+		if (ret)
+			goto err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (ret)
 			goto err;

@@ -42,9 +42,15 @@
 #ifdef CONFIG_ARC_DW2_UNWIND
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int
 seed_unwind_frame_info(struct task_struct *tsk, struct pt_regs *regs,
 		       struct unwind_frame_info *frame_info)
+=======
+static void seed_unwind_frame_info(struct task_struct *tsk,
+				   struct pt_regs *regs,
+				   struct unwind_frame_info *frame_info)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void seed_unwind_frame_info(struct task_struct *tsk,
 				   struct pt_regs *regs,
@@ -56,7 +62,11 @@ static void seed_unwind_frame_info(struct task_struct *tsk,
 	 *  - uses current values of SP and friends
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (regs == NULL && (tsk == NULL || tsk == current)) {
+=======
+	if (tsk == NULL && regs == NULL) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (tsk == NULL && regs == NULL) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -79,6 +89,7 @@ static void seed_unwind_frame_info(struct task_struct *tsk,
 	} else if (regs == NULL) {
 		/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 * Asynchronous unwinding of a likely sleeping task
 		 *  - first ensure it is actually sleeping
 		 *  - if so, it will be in __switch_to, kernel mode SP of task
@@ -89,11 +100,16 @@ static void seed_unwind_frame_info(struct task_struct *tsk,
 			return -1;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		 * Asynchronous unwinding of sleeping task
 		 *  - Gets SP etc from task's pt_regs (saved bottom of kernel
 		 *    mode stack of task)
 		 */
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		frame_info->task = tsk;
 
@@ -129,8 +145,11 @@ static void seed_unwind_frame_info(struct task_struct *tsk,
 		frame_info->call_frame = 0;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	return 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -143,6 +162,7 @@ arc_unwind_core(struct task_struct *tsk, struct pt_regs *regs,
 {
 #ifdef CONFIG_ARC_DW2_UNWIND
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret = 0, cnt = 0;
 	unsigned int address;
 	struct unwind_frame_info frame_info;
@@ -150,11 +170,16 @@ arc_unwind_core(struct task_struct *tsk, struct pt_regs *regs,
 	if (seed_unwind_frame_info(tsk, regs, &frame_info))
 		return 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret = 0;
 	unsigned int address;
 	struct unwind_frame_info frame_info;
 
 	seed_unwind_frame_info(tsk, regs, &frame_info);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	while (1) {
@@ -172,11 +197,14 @@ arc_unwind_core(struct task_struct *tsk, struct pt_regs *regs,
 
 		frame_info.regs.r63 = frame_info.regs.r31;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		if (cnt++ > 128) {
 			printk("unwinder looping too long, aborting !\n");
 			return 0;
 		}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

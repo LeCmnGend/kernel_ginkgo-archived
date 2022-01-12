@@ -452,7 +452,10 @@ alternative_endif
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Deprecated! Use SYM_FUNC_{START,START_WEAK,END}_PI instead.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Annotate a function as position independent, i.e., safe to be called before

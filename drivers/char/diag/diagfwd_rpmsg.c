@@ -666,7 +666,11 @@ static void diag_rpmsg_notify_rx_work_fn(struct work_struct *work)
 		rx_item = list_last_entry(&read_work_struct->rx_list_head,
 						struct rx_buff_list, list);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+		list_del(&rx_item->list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		list_del(&rx_item->list);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -686,7 +690,11 @@ static void diag_rpmsg_notify_rx_work_fn(struct work_struct *work)
 		if (!rpmsg_info->buf1 && !rpmsg_info->buf2) {
 			DIAG_LOG(DIAG_DEBUG_PERIPHERALS,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					"retry data send for %s len %d\n",
+=======
+					"dropping data for %s len %d\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					"dropping data for %s len %d\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -724,10 +732,13 @@ static void diag_rpmsg_notify_rx_work_fn(struct work_struct *work)
 				(unsigned char *)(buf), rx_item->rx_buf_size);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mutex_unlock(&driver->diagfwd_channel_mutex[PERI_RPMSG]);
 
 		list_del(&rx_item->list);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (buf == rpmsg_info->buf1)
 			rpmsg_info->buf1 = NULL;
 		else if (buf == rpmsg_info->buf2)
@@ -735,6 +746,9 @@ static void diag_rpmsg_notify_rx_work_fn(struct work_struct *work)
 
 		mutex_unlock(&driver->diagfwd_channel_mutex[PERI_RPMSG]);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		kfree(rx_item->rpmsg_rx_buf);
 		kfree(rx_item);
@@ -745,6 +759,7 @@ static void diag_rpmsg_notify_rx_work_fn(struct work_struct *work)
 	return;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 struct diag_rpmsg_info *diag_get_rpmsg_info_ptr(int type, int peripheral)
 {
@@ -784,6 +799,8 @@ void rpmsg_mark_buffers_free(uint8_t peripheral, uint8_t type, int buf_num)
 	}
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void rpmsg_late_init(struct diag_rpmsg_info *rpmsg_info)
@@ -852,7 +869,10 @@ static void __diag_rpmsg_init(struct diag_rpmsg_info *rpmsg_info)
 	rpmsg_info->hdl = NULL;
 	rpmsg_info->fwd_ctxt = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rpmsg_info->probed = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	atomic_set(&rpmsg_info->opened, 0);
@@ -1009,7 +1029,10 @@ static int diag_rpmsg_probe(struct rpmsg_device *rpdev)
 		atomic_set(&rpmsg_info->opened, 1);
 		mutex_unlock(&driver->rpmsginfo_mutex[PERI_RPMSG]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rpmsg_info->probed = 1;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dev_set_drvdata(&rpdev->dev, rpmsg_info);
@@ -1038,7 +1061,10 @@ static void diag_rpmsg_remove(struct rpmsg_device *rpdev)
 		atomic_set(&rpmsg_info->opened, 0);
 		mutex_unlock(&driver->rpmsginfo_mutex[PERI_RPMSG]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rpmsg_info->probed = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		queue_work(rpmsg_info->wq, &rpmsg_info->close_work);

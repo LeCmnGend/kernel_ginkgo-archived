@@ -81,7 +81,10 @@ obj-$(CONFIG_CODA_FS)		+= coda/
 obj-$(CONFIG_MINIX_FS)		+= minix/
 obj-$(CONFIG_FAT_FS)		+= fat/
 <<<<<<< HEAD
+<<<<<<< HEAD
 obj-$(CONFIG_SDFAT_FS)		+= sdfat/
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 obj-$(CONFIG_BFS_FS)		+= bfs/
@@ -128,11 +131,15 @@ obj-$(CONFIG_BEFS_FS)		+= befs/
 obj-$(CONFIG_HOSTFS)		+= hostfs/
 obj-$(CONFIG_CACHEFILES)	+= cachefiles/
 <<<<<<< HEAD
+<<<<<<< HEAD
 ifeq ($(CONFIG_DEBUG_FS),y)
 obj-y				+= debugfs/
 else
 obj-$(CONFIG_DEBUG_KMEMLEAK)	+= debugfs/
 endif
+=======
+obj-$(CONFIG_DEBUG_FS)		+= debugfs/
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 obj-$(CONFIG_DEBUG_FS)		+= debugfs/
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

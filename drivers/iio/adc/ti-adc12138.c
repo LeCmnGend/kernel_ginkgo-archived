@@ -51,12 +51,15 @@ struct adc12138 {
 	/* The number of cclk periods for the S/H's acquisition time */
 	unsigned int acquisition_time;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Maximum size needed: 16x 2 bytes ADC data + 8 bytes timestamp.
 	 * Less may be need if not all channels are enabled, as long as
 	 * the 8 byte alignment of the timestamp is maintained.
 	 */
 	__be16 data[20] __aligned(8);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -343,6 +346,10 @@ static irqreturn_t adc12138_trigger_handler(int irq, void *p)
 	struct iio_dev *indio_dev = pf->indio_dev;
 	struct adc12138 *adc = iio_priv(indio_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	__be16 data[20] = { }; /* 16x 2 bytes ADC data + 8 bytes timestamp */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__be16 data[20] = { }; /* 16x 2 bytes ADC data + 8 bytes timestamp */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -362,7 +369,11 @@ static irqreturn_t adc12138_trigger_handler(int irq, void *p)
 
 		ret = adc12138_start_and_read_conv(adc, scan_chan,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					i ? &adc->data[i - 1] : &trash);
+=======
+						   i ? &data[i - 1] : &trash);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 						   i ? &data[i - 1] : &trash);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -383,7 +394,11 @@ static irqreturn_t adc12138_trigger_handler(int irq, void *p)
 
 	if (i) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = adc12138_read_conv_data(adc, &adc->data[i - 1]);
+=======
+		ret = adc12138_read_conv_data(adc, &data[i - 1]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = adc12138_read_conv_data(adc, &data[i - 1]);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -395,7 +410,11 @@ static irqreturn_t adc12138_trigger_handler(int irq, void *p)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	iio_push_to_buffers_with_timestamp(indio_dev, adc->data,
+=======
+	iio_push_to_buffers_with_timestamp(indio_dev, data,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	iio_push_to_buffers_with_timestamp(indio_dev, data,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

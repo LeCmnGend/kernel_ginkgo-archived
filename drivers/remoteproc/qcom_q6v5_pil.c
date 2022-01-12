@@ -294,12 +294,15 @@ static int q6v5_load(struct rproc *rproc, const struct firmware *fw)
 	struct q6v5 *qproc = rproc->priv;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* MBA is restricted to a maximum size of 1M */
 	if (fw->size > qproc->mba_size || fw->size > SZ_1M) {
 		dev_err(qproc->dev, "MBA firmware load failed\n");
 		return -EINVAL;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	memcpy(qproc->mba_region, fw->data, fw->size);
@@ -570,8 +573,12 @@ static int q6v5_mpss_load(struct q6v5 *qproc)
 		if (phdr->p_filesz) {
 			snprintf(seg_name, sizeof(seg_name), "modem.b%02d", i);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ret = request_firmware_into_buf(&seg_fw, seg_name, qproc->dev,
 							ptr, phdr->p_filesz);
+=======
+			ret = request_firmware(&seg_fw, seg_name, qproc->dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ret = request_firmware(&seg_fw, seg_name, qproc->dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -581,6 +588,11 @@ static int q6v5_mpss_load(struct q6v5 *qproc)
 			}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			memcpy(ptr, seg_fw->data, seg_fw->size);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			memcpy(ptr, seg_fw->data, seg_fw->size);
 

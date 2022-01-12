@@ -2290,7 +2290,11 @@ static int vub300_probe(struct usb_interface *interface,
 		goto error5;
 	retval =
 <<<<<<< HEAD
+<<<<<<< HEAD
 		usb_control_msg(vub300->udev, usb_sndctrlpipe(vub300->udev, 0),
+=======
+		usb_control_msg(vub300->udev, usb_rcvctrlpipe(vub300->udev, 0),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		usb_control_msg(vub300->udev, usb_rcvctrlpipe(vub300->udev, 0),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

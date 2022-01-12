@@ -250,7 +250,11 @@ static void ud_clear_margins(struct vc_data *vc, struct fb_info *info,
 
 static void ud_cursor(struct vc_data *vc, struct fb_info *info, int mode,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		      int fg, int bg)
+=======
+		      int softback_lines, int fg, int bg)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		      int softback_lines, int fg, int bg)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -272,7 +276,10 @@ static void ud_cursor(struct vc_data *vc, struct fb_info *info, int mode,
 	cursor.set = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (softback_lines) {
 		if (y + softback_lines >= vc->vc_rows) {
 			mode = CM_ERASE;
@@ -282,6 +289,9 @@ static void ud_cursor(struct vc_data *vc, struct fb_info *info, int mode,
 			y += softback_lines;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  	c = scr_readw((u16 *) vc->vc_pos);
 	attribute = get_attribute(info, c);

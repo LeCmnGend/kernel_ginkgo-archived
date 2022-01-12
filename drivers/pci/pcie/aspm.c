@@ -1113,7 +1113,10 @@ static int pcie_aspm_get_policy(char *buffer, const struct kernel_param *kp)
 		else
 			cnt += sprintf(buffer + cnt, "%s ", policy_str[i]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cnt += sprintf(buffer + cnt, "\n");
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return cnt;

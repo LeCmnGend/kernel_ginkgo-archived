@@ -11,6 +11,10 @@ Linux GPU Driver Developer's Guide
    drm-kms-helpers
    drm-uapi
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+   drm-client
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
    drm-client
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

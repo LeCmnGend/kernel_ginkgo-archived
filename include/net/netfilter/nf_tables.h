@@ -137,8 +137,11 @@ static inline void nft_data_copy(u32 *dst, const struct nft_data *src,
 				 unsigned int len)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (len % NFT_REG32_SIZE)
 		dst[len / NFT_REG32_SIZE] = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	memcpy(dst, src, len);

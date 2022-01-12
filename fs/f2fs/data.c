@@ -26,6 +26,10 @@
 #include "trace.h"
 #include <trace/events/f2fs.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <trace/events/android_fs.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <trace/events/android_fs.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -336,7 +340,10 @@ static void f2fs_read_end_io(struct bio *bio)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (first_page != NULL &&
 		__read_io_type(first_page) == F2FS_RD_DATA) {
 		trace_android_fs_dataread_end(first_page->mapping->host,
@@ -344,6 +351,9 @@ static void f2fs_read_end_io(struct bio *bio)
 						bio->bi_iter.bi_size);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__f2fs_read_end_io(bio, false, false);
 }
@@ -556,7 +566,10 @@ submit_io:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void __f2fs_submit_read_bio(struct f2fs_sb_info *sbi,
 				struct bio *bio, enum page_type type)
 {
@@ -583,6 +596,9 @@ static void __f2fs_submit_read_bio(struct f2fs_sb_info *sbi,
 	__submit_bio(sbi, bio, type);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void f2fs_submit_bio(struct f2fs_sb_info *sbi,
 				struct bio *bio, enum page_type type)
@@ -777,12 +793,18 @@ int f2fs_submit_page_bio(struct f2fs_io_info *fio)
 			__read_io_type(page): WB_DATA_TYPE(fio->page));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__submit_bio(fio->sbi, bio, fio->type);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (is_read_io(fio->op))
 		__f2fs_submit_read_bio(fio->sbi, bio, fio->type);
 	else
 		__submit_bio(fio->sbi, bio, fio->type);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
@@ -1144,7 +1166,11 @@ static int f2fs_submit_page_read(struct inode *inode, struct page *page,
 	inc_page_count(sbi, F2FS_RD_DATA);
 	f2fs_update_iostat(sbi, FS_DATA_READ_IO, F2FS_BLKSIZE);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__submit_bio(sbi, bio, DATA);
+=======
+	__f2fs_submit_read_bio(sbi, bio, DATA);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__f2fs_submit_read_bio(sbi, bio, DATA);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2182,7 +2208,11 @@ zero_out:
 		    !f2fs_crypt_mergeable_bio(bio, inode, page->index, NULL))) {
 submit_and_realloc:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__submit_bio(F2FS_I_SB(inode), bio, DATA);
+=======
+		__f2fs_submit_read_bio(F2FS_I_SB(inode), bio, DATA);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__f2fs_submit_read_bio(F2FS_I_SB(inode), bio, DATA);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2216,7 +2246,11 @@ submit_and_realloc:
 confused:
 	if (bio) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__submit_bio(F2FS_I_SB(inode), bio, DATA);
+=======
+		__f2fs_submit_read_bio(F2FS_I_SB(inode), bio, DATA);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__f2fs_submit_read_bio(F2FS_I_SB(inode), bio, DATA);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2488,7 +2522,11 @@ next_page:
 	BUG_ON(pages && !list_empty(pages));
 	if (bio)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__submit_bio(F2FS_I_SB(inode), bio, DATA);
+=======
+		__f2fs_submit_read_bio(F2FS_I_SB(inode), bio, DATA);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__f2fs_submit_read_bio(F2FS_I_SB(inode), bio, DATA);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3418,7 +3456,10 @@ static int f2fs_write_begin(struct file *file, struct address_space *mapping,
 	int err = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (trace_android_fs_datawrite_start_enabled()) {
 		char *path, pathbuf[MAX_TRACE_PATHBUF_LEN];
 
@@ -3429,6 +3470,9 @@ static int f2fs_write_begin(struct file *file, struct address_space *mapping,
 						 current->pid, path,
 						 current->comm);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	trace_f2fs_write_begin(inode, pos, len, flags);
 
@@ -3558,6 +3602,10 @@ static int f2fs_write_end(struct file *file,
 	struct inode *inode = page->mapping->host;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	trace_android_fs_datawrite_end(inode, pos, len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_android_fs_datawrite_end(inode, pos, len);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3688,7 +3736,10 @@ static ssize_t f2fs_direct_IO(struct kiocb *iocb, struct iov_iter *iter)
 	trace_f2fs_direct_IO_enter(inode, offset, count, rw);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (trace_android_fs_dataread_start_enabled() &&
 	    (rw == READ)) {
 		char *path, pathbuf[MAX_TRACE_PATHBUF_LEN];
@@ -3711,6 +3762,9 @@ static ssize_t f2fs_direct_IO(struct kiocb *iocb, struct iov_iter *iter)
 						 current->pid, path,
 						 current->comm);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (rw == WRITE && whint_mode == WHINT_MODE_OFF)
 		iocb->ki_hint = WRITE_LIFE_NOT_SET;
@@ -3760,9 +3814,12 @@ static ssize_t f2fs_direct_IO(struct kiocb *iocb, struct iov_iter *iter)
 			f2fs_update_iostat(sbi, APP_DIRECT_READ_IO, err);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 out:
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out:
 	if (trace_android_fs_dataread_start_enabled() &&
 	    (rw == READ))
@@ -3771,6 +3828,9 @@ out:
 	    (rw == WRITE))
 		trace_android_fs_datawrite_end(inode, offset, count);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	trace_f2fs_direct_IO_exit(inode, offset, count, rw, err);
 

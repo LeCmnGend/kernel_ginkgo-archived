@@ -626,10 +626,13 @@ static const struct usb_device_id products[] = {
 	 .driver_info = (unsigned long)&dm9601_info,
 	},
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{
 	 USB_DEVICE(0x0586, 0x3427),	/* ZyXEL Keenetic Plus DSL xDSL modem */
 	 .driver_info = (unsigned long)&dm9601_info,
 	},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{},			// END

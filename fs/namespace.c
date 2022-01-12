@@ -1471,7 +1471,11 @@ static void namespace_unlock(void)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	synchronize_rcu_expedited();
+=======
+	synchronize_rcu();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	synchronize_rcu();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1727,6 +1731,7 @@ static inline bool may_mount(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef	CONFIG_MANDATORY_FILE_LOCKING
 static bool may_mandlock(void)
 {
@@ -1744,6 +1749,8 @@ static inline bool may_mandlock(void)
 }
 #endif
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline bool may_mandlock(void)
 {
 #ifndef	CONFIG_MANDATORY_FILE_LOCKING
@@ -1751,6 +1758,9 @@ static inline bool may_mandlock(void)
 #endif
 	return capable(CAP_SYS_ADMIN);
 }
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*
@@ -1956,6 +1966,7 @@ void drop_collected_mounts(struct vfsmount *mnt)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool has_locked_children(struct mount *mnt, struct dentry *dentry)
 {
 	struct mount *child;
@@ -1970,6 +1981,8 @@ static bool has_locked_children(struct mount *mnt, struct dentry *dentry)
 	return false;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -1987,6 +2000,7 @@ struct vfsmount *clone_private_mount(const struct path *path)
 	struct mount *new_mnt;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	down_read(&namespace_sem);
 	if (IS_MNT_UNBINDABLE(old_mnt))
 		goto invalid;
@@ -2001,20 +2015,28 @@ struct vfsmount *clone_private_mount(const struct path *path)
 	up_read(&namespace_sem);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (IS_MNT_UNBINDABLE(old_mnt))
 		return ERR_PTR(-EINVAL);
 
 	new_mnt = clone_mnt(old_mnt, path->dentry, CL_PRIVATE);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (IS_ERR(new_mnt))
 		return ERR_CAST(new_mnt);
 
 	return &new_mnt->mnt;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 invalid:
 	up_read(&namespace_sem);
 	return ERR_PTR(-EINVAL);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -2333,7 +2355,10 @@ static int do_change_type(struct path *path, int ms_flags)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static bool has_locked_children(struct mount *mnt, struct dentry *dentry)
 {
 	struct mount *child;
@@ -2347,6 +2372,9 @@ static bool has_locked_children(struct mount *mnt, struct dentry *dentry)
 	return false;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * do loopback mount.

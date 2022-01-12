@@ -3,7 +3,10 @@
  *
  * Copyright (C) 2006 SWAPP
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *	Andrea Paterniani <a.paterniani@swapp-eng.it>
@@ -95,7 +98,11 @@ static LIST_HEAD(device_list);
 static DEFINE_MUTEX(device_list_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static unsigned bufsiz = 4096 * 10;
+=======
+static unsigned bufsiz = 4096;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static unsigned bufsiz = 4096;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -132,9 +139,13 @@ spidev_sync_write(struct spidev_data *spidev, size_t len)
 			.tx_buf		= spidev->tx_buffer,
 			.len		= len,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			.delay_usecs	= 0,
 			.cs_change	= 0,
 			.speed_hz	= 960000,
+=======
+			.speed_hz	= spidev->speed_hz,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			.speed_hz	= spidev->speed_hz,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -178,6 +189,7 @@ spidev_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)
 
 	mutex_lock(&spidev->buf_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (!spidev->rx_buffer) {
 		spidev->rx_buffer = kmalloc(bufsiz, GFP_KERNEL);
@@ -188,6 +200,8 @@ spidev_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)
 		}
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	status = spidev_sync_read(spidev, count);
@@ -201,12 +215,15 @@ spidev_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)
 			status = status - missing;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	kfree(spidev->rx_buffer);
 	spidev->rx_buffer = NULL;
 
 read_unlock:
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_unlock(&spidev->buf_lock);
@@ -225,6 +242,11 @@ spidev_write(struct file *filp, const char __user *buf,
 
 	/* chipselect only toggles at start or end of operation */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (count > bufsiz)
+		return -EMSGSIZE;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (count > bufsiz)
 		return -EMSGSIZE;
@@ -233,6 +255,7 @@ spidev_write(struct file *filp, const char __user *buf,
 	spidev = filp->private_data;
 
 	mutex_lock(&spidev->buf_lock);
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 	if (!spidev->tx_buffer) {
@@ -246,11 +269,14 @@ spidev_write(struct file *filp, const char __user *buf,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	missing = copy_from_user(spidev->tx_buffer, buf, count);
 	if (missing == 0)
 		status = spidev_sync_write(spidev, count);
 	else
 		status = -EFAULT;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 	kfree(spidev->tx_buffer);
@@ -258,6 +284,8 @@ spidev_write(struct file *filp, const char __user *buf,
 
 write_unlock:
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_unlock(&spidev->buf_lock);
@@ -286,6 +314,7 @@ static int spidev_message(struct spidev_data *spidev,
 	 * to initialize a kernel version of the same transfer.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!spidev->rx_buffer) {
 		spidev->rx_buffer = kmalloc(bufsiz, GFP_KERNEL);
 		if (!spidev->rx_buffer) {
@@ -305,6 +334,8 @@ static int spidev_message(struct spidev_data *spidev,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	tx_buf = spidev->tx_buffer;
 	rx_buf = spidev->rx_buffer;
 	total = 0;
@@ -314,11 +345,14 @@ static int spidev_message(struct spidev_data *spidev,
 			n;
 			n--, k_tmp++, u_tmp++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* Ensure that also following allocations from rx_buf/tx_buf will meet
 		 * DMA alignment requirements.
 		 */
 		unsigned int len_aligned = ALIGN(u_tmp->len, ARCH_KMALLOC_MINALIGN);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		k_tmp->len = u_tmp->len;
@@ -337,7 +371,11 @@ static int spidev_message(struct spidev_data *spidev,
 		if (u_tmp->rx_buf) {
 			/* this transfer needs space in RX bounce buffer */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			rx_total += len_aligned;
+=======
+			rx_total += k_tmp->len;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			rx_total += k_tmp->len;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -347,17 +385,23 @@ static int spidev_message(struct spidev_data *spidev,
 			}
 			k_tmp->rx_buf = rx_buf;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			rx_buf += len_aligned;
 		}
 		if (u_tmp->tx_buf) {
 			/* this transfer needs space in TX bounce buffer */
 			tx_total += len_aligned;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			rx_buf += k_tmp->len;
 		}
 		if (u_tmp->tx_buf) {
 			/* this transfer needs space in TX bounce buffer */
 			tx_total += k_tmp->len;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (tx_total > bufsiz) {
 				status = -EMSGSIZE;
@@ -369,7 +413,11 @@ static int spidev_message(struct spidev_data *spidev,
 					u_tmp->len))
 				goto done;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			tx_buf += len_aligned;
+=======
+			tx_buf += k_tmp->len;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			tx_buf += k_tmp->len;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -403,6 +451,7 @@ static int spidev_message(struct spidev_data *spidev,
 
 	/* copy any rx data out of bounce buffer */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (n = n_xfers, k_tmp = k_xfers, u_tmp = u_xfers;
 			n;
 			n--, k_tmp++, u_tmp++) {
@@ -410,17 +459,26 @@ static int spidev_message(struct spidev_data *spidev,
 			if (copy_to_user((u8 __user *)
 					(uintptr_t) u_tmp->rx_buf, k_tmp->rx_buf,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rx_buf = spidev->rx_buffer;
 	for (n = n_xfers, u_tmp = u_xfers; n; n--, u_tmp++) {
 		if (u_tmp->rx_buf) {
 			if (copy_to_user((u8 __user *)
 					(uintptr_t) u_tmp->rx_buf, rx_buf,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					u_tmp->len)) {
 				status = -EFAULT;
 				goto done;
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			rx_buf += u_tmp->len;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			rx_buf += u_tmp->len;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -430,12 +488,15 @@ static int spidev_message(struct spidev_data *spidev,
 
 done:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(spidev->tx_buffer);
 	spidev->tx_buffer = NULL;
 txbuffer_err:
 	kfree(spidev->rx_buffer);
 	spidev->rx_buffer = NULL;
 rxbuffer_err:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kfree(k_xfers);
@@ -698,7 +759,10 @@ static int spidev_open(struct inode *inode, struct file *filp)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!spidev->tx_buffer) {
 		spidev->tx_buffer = kmalloc(bufsiz, GFP_KERNEL);
 		if (!spidev->tx_buffer) {
@@ -717,6 +781,9 @@ static int spidev_open(struct inode *inode, struct file *filp)
 		}
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spidev->users++;
 	filp->private_data = spidev;
@@ -726,6 +793,12 @@ static int spidev_open(struct inode *inode, struct file *filp)
 	return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+err_alloc_rx_buf:
+	kfree(spidev->tx_buffer);
+	spidev->tx_buffer = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 err_alloc_rx_buf:
 	kfree(spidev->tx_buffer);
@@ -754,7 +827,10 @@ static int spidev_release(struct inode *inode, struct file *filp)
 	spidev->users--;
 	if (!spidev->users) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		kfree(spidev->tx_buffer);
 		spidev->tx_buffer = NULL;
@@ -762,6 +838,9 @@ static int spidev_release(struct inode *inode, struct file *filp)
 		kfree(spidev->rx_buffer);
 		spidev->rx_buffer = NULL;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (dofree)
 			kfree(spidev);

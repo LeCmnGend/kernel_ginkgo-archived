@@ -1280,7 +1280,11 @@ ccio_ioc_init(struct ioc *ioc)
 	*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	iova_space_size = (u32) (totalram_pages() / count_parisc_driver(&ccio_driver));
+=======
+	iova_space_size = (u32) (totalram_pages / count_parisc_driver(&ccio_driver));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	iova_space_size = (u32) (totalram_pages / count_parisc_driver(&ccio_driver));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1323,7 +1327,11 @@ ccio_ioc_init(struct ioc *ioc)
 	DBG_INIT("%s() hpa 0x%p mem %luMB IOV %dMB (%d bits)\n",
 			__func__, ioc->ioc_regs,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			(unsigned long) totalram_pages() >> (20 - PAGE_SHIFT),
+=======
+			(unsigned long) totalram_pages >> (20 - PAGE_SHIFT),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			(unsigned long) totalram_pages >> (20 - PAGE_SHIFT),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

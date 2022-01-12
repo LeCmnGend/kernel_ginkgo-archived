@@ -649,6 +649,10 @@ static int wl12xx_identify_chip(struct wl1271 *wl)
 			      WLCORE_QUIRK_DUAL_PROBE_TMPL |
 			      WLCORE_QUIRK_TKIP_HEADER_SPACE |
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			      WLCORE_QUIRK_START_STA_FAILS |
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			      WLCORE_QUIRK_START_STA_FAILS |
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -676,6 +680,10 @@ static int wl12xx_identify_chip(struct wl1271 *wl)
 			      WLCORE_QUIRK_DUAL_PROBE_TMPL |
 			      WLCORE_QUIRK_TKIP_HEADER_SPACE |
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			      WLCORE_QUIRK_START_STA_FAILS |
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			      WLCORE_QUIRK_START_STA_FAILS |
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -708,6 +716,10 @@ static int wl12xx_identify_chip(struct wl1271 *wl)
 			      WLCORE_QUIRK_DUAL_PROBE_TMPL |
 			      WLCORE_QUIRK_TKIP_HEADER_SPACE |
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			      WLCORE_QUIRK_START_STA_FAILS |
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			      WLCORE_QUIRK_START_STA_FAILS |
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1529,6 +1541,7 @@ static int wl12xx_get_fuse_mac(struct wl1271 *wl)
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Device may be in ELP from the bootloader or kexec */
 	ret = wlcore_write32(wl, WL12XX_WELP_ARM_COMMAND, WELP_ARM_COMMAND_VAL);
 	if (ret < 0)
@@ -1536,6 +1549,8 @@ static int wl12xx_get_fuse_mac(struct wl1271 *wl)
 
 	usleep_range(500000, 700000);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = wlcore_set_partition(wl, &wl->ptable[PART_DRPW]);

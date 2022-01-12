@@ -424,6 +424,10 @@ enum {
 	    CPU_FTR_DEBUG_LVL_EXC | CPU_FTR_EMB_HV | CPU_FTR_ALTIVEC_COMP | \
 	    CPU_FTR_CELL_TB_BUG | CPU_FTR_SMT)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define CPU_FTRS_GENERIC_32	(CPU_FTR_COMMON | CPU_FTR_NODSISRALIGN)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define CPU_FTRS_GENERIC_32	(CPU_FTR_COMMON | CPU_FTR_NODSISRALIGN)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -519,6 +523,11 @@ enum {
 	    CPU_FTRS_G2_LE | CPU_FTRS_E300 | CPU_FTRS_E300C2 |
 	    CPU_FTRS_CLASSIC32 |
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#else
+	    CPU_FTRS_GENERIC_32 |
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #else
 	    CPU_FTRS_GENERIC_32 |
@@ -574,6 +583,11 @@ enum {
 	    CPU_FTRS_G2_LE & CPU_FTRS_E300 & CPU_FTRS_E300C2 &
 	    CPU_FTRS_CLASSIC32 &
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#else
+	    CPU_FTRS_GENERIC_32 &
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #else
 	    CPU_FTRS_GENERIC_32 &

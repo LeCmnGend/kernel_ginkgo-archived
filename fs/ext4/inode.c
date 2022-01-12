@@ -47,6 +47,10 @@
 
 #include <trace/events/ext4.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <trace/events/android_fs.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <trace/events/android_fs.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -207,7 +211,10 @@ void ext4_evict_inode(struct inode *inode)
 	int extra_credits = 6;
 	struct ext4_xattr_inode_array *ea_inode_array = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool freeze_protected = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -258,6 +265,7 @@ void ext4_evict_inode(struct inode *inode)
 	/*
 	 * Protect us against freezing - iput() caller didn't have to have any
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * protection against it. When we are in a running transaction though,
 	 * we are already protected against freezing and we cannot grab further
 	 * protection due to lock ordering constraints.
@@ -266,6 +274,11 @@ void ext4_evict_inode(struct inode *inode)
 		sb_start_intwrite(inode->i_sb);
 		freeze_protected = true;
 	}
+=======
+	 * protection against it
+	 */
+	sb_start_intwrite(inode->i_sb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 * protection against it
 	 */
@@ -290,8 +303,12 @@ void ext4_evict_inode(struct inode *inode)
 		 */
 		ext4_orphan_del(NULL, inode);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (freeze_protected)
 			sb_end_intwrite(inode->i_sb);
+=======
+		sb_end_intwrite(inode->i_sb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		sb_end_intwrite(inode->i_sb);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -336,8 +353,12 @@ stop_handle:
 		ext4_journal_stop(handle);
 		ext4_orphan_del(NULL, inode);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (freeze_protected)
 			sb_end_intwrite(inode->i_sb);
+=======
+		sb_end_intwrite(inode->i_sb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		sb_end_intwrite(inode->i_sb);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -370,8 +391,12 @@ stop_handle:
 		ext4_free_inode(handle, inode);
 	ext4_journal_stop(handle);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (freeze_protected)
 		sb_end_intwrite(inode->i_sb);
+=======
+	sb_end_intwrite(inode->i_sb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sb_end_intwrite(inode->i_sb);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -446,7 +471,12 @@ static int __check_block_validity(struct inode *inode, const char *func,
 	     le32_to_cpu(EXT4_SB(inode->i_sb)->s_es->s_journal_inum)))
 		return 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!ext4_inode_block_valid(inode, map->m_pblk, map->m_len)) {
+=======
+	if (!ext4_data_block_valid(EXT4_SB(inode->i_sb), map->m_pblk,
+				   map->m_len)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!ext4_data_block_valid(EXT4_SB(inode->i_sb), map->m_pblk,
 				   map->m_len)) {
@@ -1308,7 +1338,10 @@ static int ext4_write_begin(struct file *file, struct address_space *mapping,
 		return -EIO;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (trace_android_fs_datawrite_start_enabled()) {
 		char *path, pathbuf[MAX_TRACE_PATHBUF_LEN];
 
@@ -1319,6 +1352,9 @@ static int ext4_write_begin(struct file *file, struct address_space *mapping,
 						 current->pid, path,
 						 current->comm);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	trace_ext4_write_begin(inode, pos, len, flags);
 	/*
@@ -1463,6 +1499,10 @@ static int ext4_write_end(struct file *file,
 	bool verity = ext4_verity_in_progress(inode);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	trace_android_fs_datawrite_end(inode, pos, len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_android_fs_datawrite_end(inode, pos, len);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1577,6 +1617,10 @@ static int ext4_journalled_write_end(struct file *file,
 	bool verity = ext4_verity_in_progress(inode);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	trace_android_fs_datawrite_end(inode, pos, len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_android_fs_datawrite_end(inode, pos, len);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2131,6 +2175,12 @@ static int __ext4_journalled_writepage(struct page *page,
 		ret = err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (!ext4_has_inline_data(inode))
+		ext4_walk_page_buffers(NULL, page_bufs, 0, len,
+				       NULL, bput_one);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!ext4_has_inline_data(inode))
 		ext4_walk_page_buffers(NULL, page_bufs, 0, len,
@@ -2141,9 +2191,12 @@ out:
 	unlock_page(page);
 out_no_pagelock:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!inline_data && page_bufs)
 		ext4_walk_page_buffers(NULL, page_bufs, 0, len,
 				       NULL, bput_one);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	brelse(inode_bh);
@@ -3123,7 +3176,10 @@ static int ext4_da_write_begin(struct file *file, struct address_space *mapping,
 	}
 	*fsdata = (void *)0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (trace_android_fs_datawrite_start_enabled()) {
 		char *path, pathbuf[MAX_TRACE_PATHBUF_LEN];
 
@@ -3134,6 +3190,9 @@ static int ext4_da_write_begin(struct file *file, struct address_space *mapping,
 						 current->pid,
 						 path, current->comm);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	trace_ext4_da_write_begin(inode, pos, len, flags);
 
@@ -3254,6 +3313,10 @@ static int ext4_da_write_end(struct file *file,
 				      len, copied, page, fsdata);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	trace_android_fs_datawrite_end(inode, pos, len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_android_fs_datawrite_end(inode, pos, len);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3540,6 +3603,7 @@ static int ext4_iomap_begin(struct inode *inode, loff_t offset, loff_t length,
 		int retries = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/*
 		 * We check here if the blocks are already allocated, then we
 		 * don't need to start a journal txn and we can directly return
@@ -3552,6 +3616,8 @@ static int ext4_iomap_begin(struct inode *inode, loff_t offset, loff_t length,
 				goto out;
 		}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* Trim mapping request to maximum we can map at once for DIO */
@@ -3603,7 +3669,10 @@ retry:
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 out:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	iomap->flags = 0;
@@ -3903,11 +3972,14 @@ static ssize_t ext4_direct_IO_read(struct kiocb *iocb, struct iov_iter *iter)
 	size_t count = iov_iter_count(iter);
 	ssize_t ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	loff_t offset = iocb->ki_pos;
 	loff_t size = i_size_read(inode);
 
 	if (offset >= size)
 		return 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -3942,6 +4014,10 @@ static ssize_t ext4_direct_IO(struct kiocb *iocb, struct iov_iter *iter)
 	loff_t offset = iocb->ki_pos;
 	ssize_t ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int rw = iov_iter_rw(iter);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int rw = iov_iter_rw(iter);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3967,7 +4043,10 @@ static ssize_t ext4_direct_IO(struct kiocb *iocb, struct iov_iter *iter)
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (trace_android_fs_dataread_start_enabled() &&
 	    (rw == READ)) {
 		char *path, pathbuf[MAX_TRACE_PATHBUF_LEN];
@@ -3990,6 +4069,9 @@ static ssize_t ext4_direct_IO(struct kiocb *iocb, struct iov_iter *iter)
 						 current->pid, path,
 						 current->comm);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	trace_ext4_direct_IO_enter(inode, offset, count, iov_iter_rw(iter));
 	if (iov_iter_rw(iter) == READ)
@@ -3999,7 +4081,10 @@ static ssize_t ext4_direct_IO(struct kiocb *iocb, struct iov_iter *iter)
 	trace_ext4_direct_IO_exit(inode, offset, count, iov_iter_rw(iter), ret);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (trace_android_fs_dataread_start_enabled() &&
 	    (rw == READ))
 		trace_android_fs_dataread_end(inode, offset, count);
@@ -4007,6 +4092,9 @@ static ssize_t ext4_direct_IO(struct kiocb *iocb, struct iov_iter *iter)
 	    (rw == WRITE))
 		trace_android_fs_datawrite_end(inode, offset, count);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 }
@@ -4655,7 +4743,10 @@ static int __ext4_get_inode_loc(struct inode *inode,
 	struct super_block	*sb = inode->i_sb;
 	ext4_fsblk_t		block;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct blk_plug		plug;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int			inodes_per_block, inode_offset;
@@ -4747,7 +4838,10 @@ make_io:
 		 * blocks from the inode table.
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		blk_start_plug(&plug);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (EXT4_SB(sb)->s_inode_readahead_blks) {
@@ -4781,7 +4875,10 @@ make_io:
 		bh->b_end_io = end_buffer_read_sync;
 		submit_bh(REQ_OP_READ, REQ_META | REQ_PRIO, bh);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		blk_finish_plug(&plug);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		wait_on_buffer(bh);
@@ -5110,7 +5207,11 @@ struct inode *__ext4_iget(struct super_block *sb, unsigned long ino,
 	ret = 0;
 	if (ei->i_file_acl &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    !ext4_inode_block_valid(inode, ei->i_file_acl, 1)) {
+=======
+	    !ext4_data_block_valid(EXT4_SB(sb), ei->i_file_acl, 1)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	    !ext4_data_block_valid(EXT4_SB(sb), ei->i_file_acl, 1)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5240,7 +5341,11 @@ static int other_inode_match(struct inode * inode, unsigned long ino,
 	if ((inode->i_ino != ino) ||
 	    (inode->i_state & (I_FREEING | I_WILL_FREE | I_NEW |
 <<<<<<< HEAD
+<<<<<<< HEAD
 			       I_DIRTY_INODE)) ||
+=======
+			       I_DIRTY_SYNC | I_DIRTY_DATASYNC)) ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			       I_DIRTY_SYNC | I_DIRTY_DATASYNC)) ||
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5249,7 +5354,11 @@ static int other_inode_match(struct inode * inode, unsigned long ino,
 	spin_lock(&inode->i_lock);
 	if (((inode->i_state & (I_FREEING | I_WILL_FREE | I_NEW |
 <<<<<<< HEAD
+<<<<<<< HEAD
 				I_DIRTY_INODE)) == 0) &&
+=======
+				I_DIRTY_SYNC | I_DIRTY_DATASYNC)) == 0) &&
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				I_DIRTY_SYNC | I_DIRTY_DATASYNC)) == 0) &&
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5315,7 +5424,11 @@ static int ext4_do_update_inode(handle_t *handle,
 	struct buffer_head *bh = iloc->bh;
 	struct super_block *sb = inode->i_sb;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int err = 0, block;
+=======
+	int err = 0, rc, block;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int err = 0, rc, block;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5332,12 +5445,15 @@ static int ext4_do_update_inode(handle_t *handle,
 		memset(raw_inode, 0, EXT4_SB(inode->i_sb)->s_inode_size);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = ext4_inode_blocks_set(handle, raw_inode, ei);
 	if (err) {
 		spin_unlock(&ei->i_raw_lock);
 		goto out_brelse;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	raw_inode->i_mode = cpu_to_le16(inode->i_mode);
@@ -5374,12 +5490,18 @@ static int ext4_do_update_inode(handle_t *handle,
 	EXT4_EINODE_SET_XTIME(i_crtime, ei, raw_inode);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = ext4_inode_blocks_set(handle, raw_inode, ei);
 	if (err) {
 		spin_unlock(&ei->i_raw_lock);
 		goto out_brelse;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	raw_inode->i_dtime = cpu_to_le32(ei->i_dtime);
 	raw_inode->i_flags = cpu_to_le32(ei->i_flags & 0xFFFFFFFF);
@@ -5388,7 +5510,11 @@ static int ext4_do_update_inode(handle_t *handle,
 			cpu_to_le16(ei->i_file_acl >> 32);
 	raw_inode->i_file_acl_lo = cpu_to_le32(ei->i_file_acl);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (READ_ONCE(ei->i_disksize) != ext4_isize(inode->i_sb, raw_inode)) {
+=======
+	if (ei->i_disksize != ext4_isize(inode->i_sb, raw_inode)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ei->i_disksize != ext4_isize(inode->i_sb, raw_inode)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5444,9 +5570,15 @@ static int ext4_do_update_inode(handle_t *handle,
 
 	BUFFER_TRACE(bh, "call ext4_handle_dirty_metadata");
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = ext4_handle_dirty_metadata(handle, NULL, bh);
 	if (err)
 		goto out_brelse;
+=======
+	rc = ext4_handle_dirty_metadata(handle, NULL, bh);
+	if (!err)
+		err = rc;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rc = ext4_handle_dirty_metadata(handle, NULL, bh);
 	if (!err)

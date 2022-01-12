@@ -1,6 +1,10 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (c) 2020, The Linux Foundation. All rights reserved.
+=======
+ * Copyright (c) 2020-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * Copyright (c) 2020-2021, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -20,6 +24,10 @@
 
 #include "trinket-iot-idp.dtsi"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include "trinket-audio-overlay.dtsi"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include "trinket-audio-overlay.dtsi"
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -496,6 +496,7 @@ static const struct net_device_ops dfx_netdev_ops = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void dfx_register_res_alloc_err(const char *print_name, bool mmio,
 				       bool eisa)
 {
@@ -515,6 +516,8 @@ static void dfx_register_res_err(const char *print_name, bool mmio,
 	       print_name, mmio ? "MMIO" : "I/O", len, start);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -591,6 +594,7 @@ static int dfx_register(struct device *bdev)
 
 	dfx_get_bars(bdev, bar_start, bar_len);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (bar_len[0] == 0 ||
 	    (dfx_bus_eisa && dfx_use_mmio && bar_start[0] == 0)) {
 		dfx_register_res_alloc_err(print_name, dfx_use_mmio,
@@ -598,6 +602,8 @@ static int dfx_register(struct device *bdev)
 		err = -ENXIO;
 		goto err_out_disable;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (dfx_bus_eisa && dfx_use_mmio && bar_start[0] == 0) {
 		pr_err("%s: Cannot use MMIO, no address set, aborting\n",
 		       print_name);
@@ -607,6 +613,9 @@ static int dfx_register(struct device *bdev)
 		       "\n", print_name);
 		err = -ENXIO;
 		goto err_out;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -617,8 +626,14 @@ static int dfx_register(struct device *bdev)
 		region = request_region(bar_start[0], bar_len[0], print_name);
 	if (!region) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		dfx_register_res_err(print_name, dfx_use_mmio,
 				     bar_start[0], bar_len[0]);
+=======
+		pr_err("%s: Cannot reserve %s resource 0x%lx @ 0x%lx, "
+		       "aborting\n", dfx_use_mmio ? "MMIO" : "I/O", print_name,
+		       (long)bar_len[0], (long)bar_start[0]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pr_err("%s: Cannot reserve %s resource 0x%lx @ 0x%lx, "
 		       "aborting\n", dfx_use_mmio ? "MMIO" : "I/O", print_name,
@@ -631,8 +646,14 @@ static int dfx_register(struct device *bdev)
 		region = request_region(bar_start[1], bar_len[1], print_name);
 		if (!region) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			dfx_register_res_err(print_name, 0,
 					     bar_start[1], bar_len[1]);
+=======
+			pr_err("%s: Cannot reserve I/O resource "
+			       "0x%lx @ 0x%lx, aborting\n", print_name,
+			       (long)bar_len[1], (long)bar_start[1]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			pr_err("%s: Cannot reserve I/O resource "
 			       "0x%lx @ 0x%lx, aborting\n", print_name,
@@ -646,8 +667,14 @@ static int dfx_register(struct device *bdev)
 		region = request_region(bar_start[2], bar_len[2], print_name);
 		if (!region) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			dfx_register_res_err(print_name, 0,
 					     bar_start[2], bar_len[2]);
+=======
+			pr_err("%s: Cannot reserve I/O resource "
+			       "0x%lx @ 0x%lx, aborting\n", print_name,
+			       (long)bar_len[2], (long)bar_start[2]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			pr_err("%s: Cannot reserve I/O resource "
 			       "0x%lx @ 0x%lx, aborting\n", print_name,

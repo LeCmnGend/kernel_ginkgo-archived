@@ -26,7 +26,10 @@
 #include <linux/genhd.h>
 #include <linux/debugfs.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/sched/mm.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -754,9 +757,13 @@ int btrfs_sysfs_add_device_link(struct btrfs_fs_devices *fs_devices,
 	int error = 0;
 	struct btrfs_device *dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int nofs_flag;
 
 	nofs_flag = memalloc_nofs_save();
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -779,7 +786,10 @@ int btrfs_sysfs_add_device_link(struct btrfs_fs_devices *fs_devices,
 			break;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memalloc_nofs_restore(nofs_flag);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

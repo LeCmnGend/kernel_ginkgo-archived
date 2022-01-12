@@ -762,7 +762,10 @@ static int tegra_slink_setup(struct spi_device *spi)
 	ret = pm_runtime_get_sync(tspi->dev);
 	if (ret < 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pm_runtime_put_noidle(tspi->dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dev_err(tspi->dev, "pm runtime failed, e = %d\n", ret);
@@ -1202,7 +1205,10 @@ static int tegra_slink_resume(struct device *dev)
 	ret = pm_runtime_get_sync(dev);
 	if (ret < 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pm_runtime_put_noidle(dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dev_err(dev, "pm runtime failed, e = %d\n", ret);

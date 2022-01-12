@@ -1179,7 +1179,11 @@ static ssize_t parent_show(struct device *device,
 					   ib_dev.dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return scnprintf(buf, PAGE_SIZE, "%s\n", rxe_parent_name(rxe, 1));
+=======
+	return snprintf(buf, 16, "%s\n", rxe_parent_name(rxe, 1));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return snprintf(buf, 16, "%s\n", rxe_parent_name(rxe, 1));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

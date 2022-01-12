@@ -24,7 +24,10 @@
 #include <asm/pgtable-hwdef.h>
 #include <asm/pgtable-prot.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <asm/tlbflush.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -98,6 +101,11 @@ extern unsigned long empty_zero_page[PAGE_SIZE / sizeof(unsigned long)];
 #define pte_valid_not_user(pte) \
 	((pte_val(pte) & (PTE_VALID | PTE_USER)) == PTE_VALID)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define pte_valid_young(pte) \
+	((pte_val(pte) & (PTE_VALID | PTE_AF)) == (PTE_VALID | PTE_AF))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define pte_valid_young(pte) \
 	((pte_val(pte) & (PTE_VALID | PTE_AF)) == (PTE_VALID | PTE_AF))
@@ -110,12 +118,18 @@ extern unsigned long empty_zero_page[PAGE_SIZE / sizeof(unsigned long)];
  * so that we don't erroneously return false for pages that have been
  * remapped as PROT_NONE but are yet to be flushed from the TLB.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Note that we can't make any assumptions based on the state of the access
  * flag, since ptep_clear_flush_young() elides a DSB when invalidating the
  * TLB.
  */
 #define pte_accessible(mm, pte)	\
 	(mm_tlb_flush_pending(mm) ? pte_present(pte) : pte_valid(pte))
+=======
+ */
+#define pte_accessible(mm, pte)	\
+	(mm_tlb_flush_pending(mm) ? pte_present(pte) : pte_valid_young(pte))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  */
 #define pte_accessible(mm, pte)	\
@@ -147,7 +161,10 @@ static inline pte_t set_pte_bit(pte_t pte, pgprot_t prot)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline pte_t pte_wrprotect(pte_t pte)
 {
 	pte = clear_pte_bit(pte, __pgprot(PTE_WRITE));
@@ -155,6 +172,9 @@ static inline pte_t pte_wrprotect(pte_t pte)
 	return pte;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline pte_t pte_mkwrite(pte_t pte)
 {
@@ -182,6 +202,7 @@ static inline pte_t pte_mkdirty(pte_t pte)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline pte_t pte_wrprotect(pte_t pte)
 {
 	/*
@@ -196,6 +217,8 @@ static inline pte_t pte_wrprotect(pte_t pte)
 	return pte;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline pte_t pte_mkold(pte_t pte)
@@ -265,7 +288,11 @@ pte_ok:
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	WRITE_ONCE(*ptep, pte);
+=======
+	*ptep = pte;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	*ptep = pte;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -284,7 +311,11 @@ struct mm_struct;
 struct vm_area_struct;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern void __sync_icache_dcache(pte_t pteval);
+=======
+extern void __sync_icache_dcache(pte_t pteval, unsigned long addr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern void __sync_icache_dcache(pte_t pteval, unsigned long addr);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -304,6 +335,7 @@ extern void __sync_icache_dcache(pte_t pteval, unsigned long addr);
  *
  *   PTE_DIRTY || (PTE_WRITE && !PTE_RDONLY)
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 static inline void __check_racy_pte_update(struct mm_struct *mm, pte_t *ptep,
@@ -336,15 +368,20 @@ static inline void __check_racy_pte_update(struct mm_struct *mm, pte_t *ptep,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void set_pte_at(struct mm_struct *mm, unsigned long addr,
 			      pte_t *ptep, pte_t pte)
 {
 	if (pte_present(pte) && pte_user_exec(pte) && !pte_special(pte))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__sync_icache_dcache(pte);
 
 	__check_racy_pte_update(mm, ptep, pte);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__sync_icache_dcache(pte, addr);
 
 	/*
@@ -360,6 +397,9 @@ static inline void set_pte_at(struct mm_struct *mm, unsigned long addr,
 			     "%s: racy dirty state clearing: 0x%016llx -> 0x%016llx",
 			     __func__, pte_val(*ptep), pte_val(pte));
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	set_pte(ptep, pte);
@@ -434,7 +474,10 @@ static inline int pmd_protnone(pmd_t pmd)
 #define pmd_dirty(pmd)		pte_dirty(pmd_pte(pmd))
 #define pmd_young(pmd)		pte_young(pmd_pte(pmd))
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define pmd_valid(pmd)		pte_valid(pmd_pte(pmd))
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define pmd_wrprotect(pmd)	pte_pmd(pte_wrprotect(pmd_pte(pmd)))
@@ -462,7 +505,10 @@ static inline int pmd_protnone(pmd_t pmd)
 
 #define set_pmd_at(mm, addr, pmdp, pmd)	set_pte_at(mm, addr, (pte_t *)pmdp, pmd_pte(pmd))
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define set_pud_at(mm, addr, pudp, pud)	set_pte_at(mm, addr, (pte_t *)pudp, pud_pte(pud))
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -505,12 +551,18 @@ static inline bool pud_table(pud_t pud) { return true; }
 static inline void set_pmd(pmd_t *pmdp, pmd_t pmd)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	WRITE_ONCE(*pmdp, pmd);
 
 	if (pmd_valid(pmd)) {
 		dsb(ishst);
 		isb();
 	}
+=======
+	*pmdp = pmd;
+	dsb(ishst);
+	isb();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	*pmdp = pmd;
 	dsb(ishst);
@@ -568,6 +620,7 @@ static inline void pte_unmap(pte_t *pte) { }
 #define pud_bad(pud)		(!(pud_val(pud) & PUD_TABLE_BIT))
 #define pud_present(pud)	pte_present(pud_pte(pud))
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define pud_valid(pud)		pte_valid(pud_pte(pud))
 
 static inline void set_pud(pud_t *pudp, pud_t pud)
@@ -579,12 +632,17 @@ static inline void set_pud(pud_t *pudp, pud_t pud)
 		isb();
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static inline void set_pud(pud_t *pudp, pud_t pud)
 {
 	*pudp = pud;
 	dsb(ishst);
 	isb();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -607,7 +665,11 @@ static inline unsigned long pud_page_vaddr(pud_t pud)
 #define pmd_index(addr)		(((addr) >> PMD_SHIFT) & (PTRS_PER_PMD - 1))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define pmd_offset_phys(dir, addr)	(pud_page_paddr(READ_ONCE(*(dir))) + pmd_index(addr) * sizeof(pmd_t))
+=======
+#define pmd_offset_phys(dir, addr)	(pud_page_paddr(*(dir)) + pmd_index(addr) * sizeof(pmd_t))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define pmd_offset_phys(dir, addr)	(pud_page_paddr(*(dir)) + pmd_index(addr) * sizeof(pmd_t))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -646,9 +708,14 @@ static inline unsigned long pud_page_vaddr(pud_t pud)
 static inline void set_pgd(pgd_t *pgdp, pgd_t pgd)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	WRITE_ONCE(*pgdp, pgd);
 	dsb(ishst);
 	isb();
+=======
+	*pgdp = pgd;
+	dsb(ishst);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	*pgdp = pgd;
 	dsb(ishst);
@@ -674,7 +741,11 @@ static inline unsigned long pgd_page_vaddr(pgd_t pgd)
 #define pud_index(addr)		(((addr) >> PUD_SHIFT) & (PTRS_PER_PUD - 1))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define pud_offset_phys(dir, addr)	(pgd_page_paddr(READ_ONCE(*(dir))) + pud_index(addr) * sizeof(pud_t))
+=======
+#define pud_offset_phys(dir, addr)	(pgd_page_paddr(*(dir)) + pud_index(addr) * sizeof(pud_t))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define pud_offset_phys(dir, addr)	(pgd_page_paddr(*(dir)) + pud_index(addr) * sizeof(pud_t))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -775,6 +846,7 @@ static inline int ptep_test_and_clear_young(struct vm_area_struct *vma,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define __HAVE_ARCH_PTEP_CLEAR_YOUNG_FLUSH
 static inline int ptep_clear_flush_young(struct vm_area_struct *vma,
 					 unsigned long address, pte_t *ptep)
@@ -796,6 +868,8 @@ static inline int ptep_clear_flush_young(struct vm_area_struct *vma,
 	return young;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_TRANSPARENT_HUGEPAGE
@@ -837,13 +911,19 @@ static inline void ptep_set_wrprotect(struct mm_struct *mm, unsigned long addres
 	do {
 		old_pte = pte;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
 		 * If hardware-dirty (PTE_WRITE/DBM bit set and PTE_RDONLY
 		 * clear), set the PTE_DIRTY bit.
 		 */
 		if (pte_hw_dirty(pte))
 			pte = pte_mkdirty(pte);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		pte = pte_wrprotect(pte);
 		pte_val(pte) = cmpxchg_relaxed(&pte_val(*ptep),
@@ -917,6 +997,7 @@ static inline void update_mmu_cache(struct vm_area_struct *vma,
 #define kc_offset_to_vaddr(o)	((o) | VA_START)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * On arm64 without hardware Access Flag, copying from user will fail because
  * the pte is old and cannot be marked young. So we always end up with zeroed
@@ -931,6 +1012,8 @@ static inline bool arch_faults_on_old_pte(void)
 }
 #define arch_faults_on_old_pte arch_faults_on_old_pte
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* !__ASSEMBLY__ */

@@ -252,7 +252,11 @@ static int omap1_spi100k_setup_transfer(struct spi_device *spi,
 		word_len = spi->bits_per_word;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (word_len > 32)
+=======
+	if (spi->bits_per_word > 32)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (spi->bits_per_word > 32)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -440,7 +444,11 @@ err:
 static int omap1_spi100k_remove(struct platform_device *pdev)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct spi_master *master = platform_get_drvdata(pdev);
+=======
+	struct spi_master *master = spi_master_get(platform_get_drvdata(pdev));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct spi_master *master = spi_master_get(platform_get_drvdata(pdev));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -458,7 +466,11 @@ static int omap1_spi100k_remove(struct platform_device *pdev)
 static int omap1_spi100k_runtime_suspend(struct device *dev)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct spi_master *master = dev_get_drvdata(dev);
+=======
+	struct spi_master *master = spi_master_get(dev_get_drvdata(dev));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct spi_master *master = spi_master_get(dev_get_drvdata(dev));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -473,7 +485,11 @@ static int omap1_spi100k_runtime_suspend(struct device *dev)
 static int omap1_spi100k_runtime_resume(struct device *dev)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct spi_master *master = dev_get_drvdata(dev);
+=======
+	struct spi_master *master = spi_master_get(dev_get_drvdata(dev));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct spi_master *master = spi_master_get(dev_get_drvdata(dev));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

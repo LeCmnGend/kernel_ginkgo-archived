@@ -621,10 +621,13 @@ static int ds1374_probe(struct i2c_client *client,
 		return -ENOMEM;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ds1374->rtc = devm_rtc_allocate_device(&client->dev);
 	if (IS_ERR(ds1374->rtc))
 		return PTR_ERR(ds1374->rtc);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ds1374->client = client;
@@ -649,18 +652,24 @@ static int ds1374_probe(struct i2c_client *client,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ds1374->rtc->ops = &ds1374_rtc_ops;
 
 	ret = rtc_register_device(ds1374->rtc);
 	if (ret)
 		return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ds1374->rtc = devm_rtc_device_register(&client->dev, client->name,
 						&ds1374_rtc_ops, THIS_MODULE);
 	if (IS_ERR(ds1374->rtc)) {
 		dev_err(&client->dev, "unable to register the class device\n");
 		return PTR_ERR(ds1374->rtc);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #ifdef CONFIG_RTC_DRV_DS1374_WDT

@@ -928,7 +928,11 @@ static int r871x_wx_set_priv(struct net_device *dev,
 
 	len = dwrq->length;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ext = strndup_user(dwrq->pointer, len);
+=======
+	ext = memdup_user(dwrq->pointer, len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ext = memdup_user(dwrq->pointer, len);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

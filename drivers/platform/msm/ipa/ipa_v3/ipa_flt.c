@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2012-2020, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2012-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2012-2021, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1085,7 +1089,11 @@ static int __ipa_del_flt_rule(u32 rule_hdl)
 	list_del(&entry->link);
 	entry->tbl->rule_cnt--;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (entry->rt_tbl)
+=======
+	if (entry->rt_tbl && !ipa3_check_idr_if_freed(entry->rt_tbl))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (entry->rt_tbl && !ipa3_check_idr_if_freed(entry->rt_tbl))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

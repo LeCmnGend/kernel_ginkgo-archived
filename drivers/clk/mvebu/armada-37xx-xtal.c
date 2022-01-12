@@ -16,8 +16,13 @@
 #include <linux/regmap.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define NB_GPIO1_LATCH	0x8
 #define XTAL_MODE	    BIT(9)
+=======
+#define NB_GPIO1_LATCH	0xC
+#define XTAL_MODE	    BIT(31)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define NB_GPIO1_LATCH	0xC
 #define XTAL_MODE	    BIT(31)

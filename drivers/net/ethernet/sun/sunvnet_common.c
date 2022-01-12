@@ -1353,6 +1353,7 @@ sunvnet_start_xmit_common(struct sk_buff *skb, struct net_device *dev,
 			localmtu -= VLAN_HLEN;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (skb->protocol == htons(ETH_P_IP))
 			icmp_ndo_send(skb, ICMP_DEST_UNREACH, ICMP_FRAG_NEEDED,
 				      htonl(localmtu));
@@ -1360,6 +1361,8 @@ sunvnet_start_xmit_common(struct sk_buff *skb, struct net_device *dev,
 		else if (skb->protocol == htons(ETH_P_IPV6))
 			icmpv6_ndo_send(skb, ICMPV6_PKT_TOOBIG, 0, localmtu);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (skb->protocol == htons(ETH_P_IP)) {
 			struct flowi4 fl4;
 			struct rtable *rt = NULL;
@@ -1381,6 +1384,9 @@ sunvnet_start_xmit_common(struct sk_buff *skb, struct net_device *dev,
 #if IS_ENABLED(CONFIG_IPV6)
 		else if (skb->protocol == htons(ETH_P_IPV6))
 			icmpv6_send(skb, ICMPV6_PKT_TOOBIG, 0, localmtu);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 		goto out_dropped;

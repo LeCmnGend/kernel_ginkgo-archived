@@ -660,7 +660,11 @@ static int mxs_mmc_probe(struct platform_device *pdev)
 	ret = mmc_of_parse(mmc);
 	if (ret)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_free_dma;
+=======
+		goto out_clk_disable;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto out_clk_disable;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

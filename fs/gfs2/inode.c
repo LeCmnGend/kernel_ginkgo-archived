@@ -715,7 +715,11 @@ static int gfs2_create_inode(struct inode *dir, struct dentry *dentry,
 	error = gfs2_trans_begin(sdp, blocks, 0);
 	if (error)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto fail_free_inode;
+=======
+		goto fail_gunlock2;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto fail_gunlock2;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -730,7 +734,11 @@ static int gfs2_create_inode(struct inode *dir, struct dentry *dentry,
 	error = gfs2_glock_get(sdp, ip->i_no_addr, &gfs2_iopen_glops, CREATE, &io_gl);
 	if (error)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto fail_free_inode;
+=======
+		goto fail_gunlock2;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto fail_gunlock2;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -743,6 +751,10 @@ static int gfs2_create_inode(struct inode *dir, struct dentry *dentry,
 
 	glock_set_object(ip->i_iopen_gh.gh_gl, ip);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	gfs2_glock_put(io_gl);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	gfs2_glock_put(io_gl);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -779,8 +791,11 @@ static int gfs2_create_inode(struct inode *dir, struct dentry *dentry,
 	mark_inode_dirty(inode);
 	d_instantiate(dentry, inode);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* After instantiate, errors should result in evict which will destroy
 	 * both inode and iopen glocks properly. */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (file) {
@@ -791,7 +806,10 @@ static int gfs2_create_inode(struct inode *dir, struct dentry *dentry,
 	gfs2_glock_dq_uninit(ghs + 1);
 	clear_bit(GLF_INODE_CREATING, &io_gl->gl_flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	gfs2_glock_put(io_gl);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return error;
@@ -800,14 +818,20 @@ fail_gunlock3:
 	glock_clear_object(io_gl, ip);
 	gfs2_glock_dq_uninit(&ip->i_iopen_gh);
 <<<<<<< HEAD
+<<<<<<< HEAD
 fail_gunlock2:
 	clear_bit(GLF_INODE_CREATING, &io_gl->gl_flags);
 	gfs2_glock_put(io_gl);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	gfs2_glock_put(io_gl);
 fail_gunlock2:
 	if (io_gl)
 		clear_bit(GLF_INODE_CREATING, &io_gl->gl_flags);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 fail_free_inode:
 	if (ip->i_gl) {

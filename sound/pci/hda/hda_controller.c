@@ -625,7 +625,10 @@ static int azx_pcm_open(struct snd_pcm_substream *substream)
 				     178000000);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* by some reason, the playback stream stalls on PulseAudio with
 	 * tsched=1 when a capture stream triggers.  Until we figure out the
 	 * real cause, disable tsched mode by telling the PCM info flag.
@@ -633,6 +636,9 @@ static int azx_pcm_open(struct snd_pcm_substream *substream)
 	if (chip->driver_caps & AZX_DCAPS_AMD_WORKAROUND)
 		runtime->hw.info |= SNDRV_PCM_INFO_BATCH;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (chip->align_buffer_size)
 		/* constrain buffer sizes to be multiple of 128
@@ -1173,6 +1179,7 @@ irqreturn_t azx_interrupt(int irq, void *dev_id)
 			active = true;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		status = azx_readb(chip, RIRBSTS);
 		if (status & RIRB_INT_MASK) {
 			/*
@@ -1189,6 +1196,11 @@ irqreturn_t azx_interrupt(int irq, void *dev_id)
 		status = azx_readb(chip, RIRBSTS);
 		if (status & RIRB_INT_MASK) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+		/* clear rirb int */
+		status = azx_readb(chip, RIRBSTS);
+		if (status & RIRB_INT_MASK) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			active = true;
 			if (status & RIRB_INT_RESPONSE) {
 				if (chip->driver_caps & AZX_DCAPS_CTX_WORKAROUND)
@@ -1196,6 +1208,10 @@ irqreturn_t azx_interrupt(int irq, void *dev_id)
 				snd_hdac_bus_update_rirb(bus);
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			azx_writeb(chip, RIRBSTS, RIRB_INT_MASK);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			azx_writeb(chip, RIRBSTS, RIRB_INT_MASK);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -72,6 +72,12 @@ struct clock_data {
 static struct hrtimer sched_clock_timer;
 static int irqtime = -1;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+static u64 suspend_ns;
+static u64 suspend_cycles;
+static u64 resume_cycles;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static u64 suspend_ns;
 static u64 suspend_cycles;
@@ -287,12 +293,18 @@ int sched_clock_suspend(void)
 
 	update_sched_clock();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	suspend_ns = rd->epoch_ns;
 	suspend_cycles = rd->epoch_cyc;
 	pr_info("suspend ns:%17llu	suspend cycles:%17llu\n",
 				rd->epoch_ns, rd->epoch_cyc);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	hrtimer_cancel(&sched_clock_timer);
 	rd->read_sched_clock = suspended_sched_clock_read;
@@ -306,6 +318,11 @@ void sched_clock_resume(void)
 
 	rd->epoch_cyc = cd.actual_read_sched_clock();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	resume_cycles = rd->epoch_cyc;
+	pr_info("resume cycles:%17llu\n", rd->epoch_cyc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	resume_cycles = rd->epoch_cyc;
 	pr_info("resume cycles:%17llu\n", rd->epoch_cyc);

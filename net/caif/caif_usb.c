@@ -117,11 +117,14 @@ static struct cflayer *cfusbl_create(int phyid, u8 ethaddr[ETH_ALEN],
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void cfusbl_release(struct cflayer *layer)
 {
 	kfree(layer);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct packet_type caif_usb_type __read_mostly = {
@@ -137,7 +140,10 @@ static int cfusbl_device_notify(struct notifier_block *me, unsigned long what,
 	struct usbnet *usbnet;
 	struct usb_device *usbdev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int res;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -183,11 +189,16 @@ static int cfusbl_device_notify(struct notifier_block *me, unsigned long what,
 		pr_warn("USB device uses more than one tx queue\n");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	res = caif_enroll_dev(dev, &common, link_support, CFUSB_MAX_HEADLEN,
 			&layer, &caif_usb_type.func);
 	if (res)
 		goto err;
 
+=======
+	caif_enroll_dev(dev, &common, link_support, CFUSB_MAX_HEADLEN,
+			&layer, &caif_usb_type.func);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	caif_enroll_dev(dev, &common, link_support, CFUSB_MAX_HEADLEN,
 			&layer, &caif_usb_type.func);
@@ -202,9 +213,12 @@ static int cfusbl_device_notify(struct notifier_block *me, unsigned long what,
 
 	return 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 err:
 	cfusbl_release(link_support);
 	return res;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

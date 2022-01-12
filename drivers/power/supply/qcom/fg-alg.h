@@ -1,6 +1,9 @@
 /* Copyright (c) 2018-2019, The Linux Foundation. All rights reserved.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -161,7 +164,10 @@ void cycle_count_update(struct cycle_counter *counter, int batt_soc,
 		int charge_status, bool charge_done, bool input_present);
 int get_cycle_count(struct cycle_counter *counter, int *count);
 <<<<<<< HEAD
+<<<<<<< HEAD
 int set_cycle_count(struct cycle_counter *counter, int count);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int get_cycle_counts(struct cycle_counter *counter, const char **buf);

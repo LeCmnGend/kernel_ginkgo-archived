@@ -634,6 +634,7 @@ static int add_ballooned_pages(int nr_pages)
 		st = reserve_additional_memory();
 		if (st != BP_ECANCELED) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			int rc;
 
 			mutex_unlock(&balloon_mutex);
@@ -642,11 +643,16 @@ static int add_ballooned_pages(int nr_pages)
 			mutex_lock(&balloon_mutex);
 			return rc ? -ENOMEM : 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			mutex_unlock(&balloon_mutex);
 			wait_event(balloon_wq,
 				   !list_empty(&ballooned_pages));
 			mutex_lock(&balloon_mutex);
 			return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 	}
@@ -706,12 +712,15 @@ int alloc_xenballooned_pages(int nr_pages, struct page **pages)
 	mutex_unlock(&balloon_mutex);
 	free_xenballooned_pages(pgno, pages);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * NB: free_xenballooned_pages will only subtract pgno pages, but since
 	 * target_unpopulated is incremented with nr_pages at the start we need
 	 * to remove the remaining ones also, or accounting will be screwed.
 	 */
 	balloon_stats.target_unpopulated -= nr_pages - pgno;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;

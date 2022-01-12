@@ -521,8 +521,13 @@ xfs_attr_shortform_create(xfs_da_args_t *args)
 	}
 	xfs_idata_realloc(dp, sizeof(*hdr), XFS_ATTR_FORK);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	hdr = (struct xfs_attr_sf_hdr *)ifp->if_u1.if_data;
 	memset(hdr, 0, sizeof(*hdr));
+=======
+	hdr = (xfs_attr_sf_hdr_t *)ifp->if_u1.if_data;
+	hdr->count = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	hdr = (xfs_attr_sf_hdr_t *)ifp->if_u1.if_data;
 	hdr->count = 0;
@@ -1341,9 +1346,13 @@ xfs_attr3_leaf_add_work(
 		if (ichdr->freemap[i].base == tmp) {
 			ichdr->freemap[i].base += sizeof(xfs_attr_leaf_entry_t);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ichdr->freemap[i].size -=
 				min_t(uint16_t, ichdr->freemap[i].size,
 						sizeof(xfs_attr_leaf_entry_t));
+=======
+			ichdr->freemap[i].size -= sizeof(xfs_attr_leaf_entry_t);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ichdr->freemap[i].size -= sizeof(xfs_attr_leaf_entry_t);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

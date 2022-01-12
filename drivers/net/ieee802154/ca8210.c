@@ -2925,7 +2925,10 @@ static int ca8210_dev_com_init(struct ca8210_priv *priv)
 	if (!priv->irq_workqueue) {
 		dev_crit(&priv->spi->dev, "alloc of irq_workqueue failed!\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		destroy_workqueue(priv->mlme_workqueue);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -ENOMEM;

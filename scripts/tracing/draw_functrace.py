@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #!/usr/bin/env python
+=======
+#!/usr/bin/python
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #!/usr/bin/python
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -22,7 +26,11 @@ Usage:
 	Wait some times but not too much, the script is a bit slow.
 	Break the pipe (Ctrl + Z)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	$ scripts/tracing/draw_functrace.py < ~/raw_trace_func > draw_functrace
+=======
+	$ scripts/draw_functrace.py < raw_trace_func > draw_functrace
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	$ scripts/draw_functrace.py < raw_trace_func > draw_functrace
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -112,15 +120,21 @@ def parseLine(line):
 	if line.startswith("#"):
 		raise CommentLineException
 <<<<<<< HEAD
+<<<<<<< HEAD
 	m = re.match("[^]]+?\\] +([a-z.]+) +([0-9.]+): (\\w+) <-(\\w+)", line)
 	if m is None:
 		raise BrokenLineException
 	return (m.group(2), m.group(3), m.group(4))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	m = re.match("[^]]+?\\] +([0-9.]+): (\\w+) <-(\\w+)", line)
 	if m is None:
 		raise BrokenLineException
 	return (m.group(1), m.group(2), m.group(3))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 

@@ -214,7 +214,11 @@ static int hp_sdc_mlc_cts(hil_mlc *mlc)
 	priv->tseq[3] = 0;
 	priv->tseq[4] = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return __hp_sdc_enqueue_transaction(&priv->trans);
+=======
+	__hp_sdc_enqueue_transaction(&priv->trans);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__hp_sdc_enqueue_transaction(&priv->trans);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -227,7 +231,11 @@ static int hp_sdc_mlc_cts(hil_mlc *mlc)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int hp_sdc_mlc_out(hil_mlc *mlc)
+=======
+static void hp_sdc_mlc_out(hil_mlc *mlc)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void hp_sdc_mlc_out(hil_mlc *mlc)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -246,7 +254,11 @@ static void hp_sdc_mlc_out(hil_mlc *mlc)
 	if (priv->emtestmode) {
 		up(&mlc->osem);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -312,7 +324,11 @@ static void hp_sdc_mlc_out(hil_mlc *mlc)
 	}
  enqueue:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return hp_sdc_enqueue_transaction(&priv->trans);
+=======
+	hp_sdc_enqueue_transaction(&priv->trans);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	hp_sdc_enqueue_transaction(&priv->trans);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

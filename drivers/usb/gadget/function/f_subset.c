@@ -363,7 +363,11 @@ geth_bind(struct usb_configuration *c, struct usb_function *f)
 
 	status = usb_assign_descriptors(f, fs_eth_function, hs_eth_function,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ss_eth_function, ss_eth_function);
+=======
+			ss_eth_function, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ss_eth_function, NULL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

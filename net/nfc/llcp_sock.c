@@ -121,9 +121,12 @@ static int llcp_sock_bind(struct socket *sock, struct sockaddr *addr, int alen)
 					  GFP_KERNEL);
 	if (!llcp_sock->service_name) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		nfc_llcp_local_put(llcp_sock->local);
 		llcp_sock->local = NULL;
 		llcp_sock->dev = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = -ENOMEM;
@@ -132,11 +135,16 @@ static int llcp_sock_bind(struct socket *sock, struct sockaddr *addr, int alen)
 	llcp_sock->ssap = nfc_llcp_get_sdp_ssap(local, llcp_sock);
 	if (llcp_sock->ssap == LLCP_SAP_MAX) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		nfc_llcp_local_put(llcp_sock->local);
 		llcp_sock->local = NULL;
 		kfree(llcp_sock->service_name);
 		llcp_sock->service_name = NULL;
 		llcp_sock->dev = NULL;
+=======
+		kfree(llcp_sock->service_name);
+		llcp_sock->service_name = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kfree(llcp_sock->service_name);
 		llcp_sock->service_name = NULL;
@@ -699,10 +707,13 @@ static int llcp_sock_connect(struct socket *sock, struct sockaddr *_addr,
 		goto error;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (sk->sk_state == LLCP_CONNECTING) {
 		ret = -EINPROGRESS;
 		goto error;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -737,8 +748,11 @@ static int llcp_sock_connect(struct socket *sock, struct sockaddr *_addr,
 	llcp_sock->ssap = nfc_llcp_get_local_ssap(local);
 	if (llcp_sock->ssap == LLCP_SAP_MAX) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		nfc_llcp_local_put(llcp_sock->local);
 		llcp_sock->local = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = -ENOMEM;
@@ -779,12 +793,17 @@ static int llcp_sock_connect(struct socket *sock, struct sockaddr *_addr,
 sock_unlink:
 	nfc_llcp_put_ssap(local, llcp_sock->ssap);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	nfc_llcp_local_put(llcp_sock->local);
 	llcp_sock->local = NULL;
 
 	nfc_llcp_sock_unlink(&local->connecting_sockets, sk);
 	kfree(llcp_sock->service_name);
 	llcp_sock->service_name = NULL;
+=======
+
+	nfc_llcp_sock_unlink(&local->connecting_sockets, sk);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	nfc_llcp_sock_unlink(&local->connecting_sockets, sk);

@@ -304,6 +304,7 @@ placeholder:
 	if (!slot_name) {
 		err = -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kfree(slot);
 		goto err;
 	}
@@ -318,6 +319,8 @@ placeholder:
 		goto err;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto err;
 	}
 
@@ -328,6 +331,9 @@ placeholder:
 
 	INIT_LIST_HEAD(&slot->list);
 	list_add(&slot->list, &parent->slots);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	down_read(&pci_bus_sem);
@@ -345,6 +351,10 @@ out:
 	return slot;
 err:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kfree(slot);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(slot);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -506,6 +506,7 @@ static void bpf_common_lru_push_free(struct bpf_lru *lru,
 				     struct bpf_lru_node *node)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8 node_type = READ_ONCE(node->type);
 	unsigned long flags;
 
@@ -515,6 +516,8 @@ static void bpf_common_lru_push_free(struct bpf_lru *lru,
 
 	if (node_type == BPF_LRU_LOCAL_LIST_T_PENDING) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long flags;
 
 	if (WARN_ON_ONCE(node->type == BPF_LRU_LIST_T_FREE) ||
@@ -522,6 +525,9 @@ static void bpf_common_lru_push_free(struct bpf_lru *lru,
 		return;
 
 	if (node->type == BPF_LRU_LOCAL_LIST_T_PENDING) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		struct bpf_lru_locallist *loc_l;
 

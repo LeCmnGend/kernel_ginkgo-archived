@@ -215,7 +215,10 @@ static const struct usb_device_id id_table_combined[] = {
 	{ USB_DEVICE(FTDI_VID, FTDI_R2000KU_TRUE_RNG) },
 	{ USB_DEVICE(FTDI_VID, FTDI_VARDAAN_PID) },
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ USB_DEVICE(FTDI_VID, FTDI_AUTO_M3_OP_COM_V2_PID) },
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ USB_DEVICE(MTXORB_VID, MTXORB_FTDI_RANGE_0100_PID) },
@@ -611,7 +614,10 @@ static const struct usb_device_id id_table_combined[] = {
 	{ USB_DEVICE(FTDI_VID, FTDI_NT_ORIONLX_PLUS_PID) },
 	{ USB_DEVICE(FTDI_VID, FTDI_NT_ORION_IO_PID) },
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ USB_DEVICE(FTDI_VID, FTDI_NT_ORIONMX_PID) },
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ USB_DEVICE(FTDI_VID, FTDI_SYNAPSE_SS200_PID) },
@@ -717,7 +723,10 @@ static const struct usb_device_id id_table_combined[] = {
 	{ USB_DEVICE(XSENS_VID, XSENS_CONVERTER_PID) },
 	{ USB_DEVICE(XSENS_VID, XSENS_MTDEVBOARD_PID) },
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ USB_DEVICE(XSENS_VID, XSENS_MTIUSBCONVERTER_PID) },
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ USB_DEVICE(XSENS_VID, XSENS_MTW_PID) },
@@ -1041,6 +1050,7 @@ static const struct usb_device_id id_table_combined[] = {
 	{ USB_DEVICE(FTDI_VID, FTDI_SIENNA_PID) },
 	{ USB_DEVICE(ECHELON_VID, ECHELON_U20_PID) },
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* IDS GmbH devices */
 	{ USB_DEVICE(IDS_VID, IDS_SI31A_PID) },
 	{ USB_DEVICE(IDS_VID, IDS_CM31A_PID) },
@@ -1052,6 +1062,11 @@ static const struct usb_device_id id_table_combined[] = {
 		.driver_info = (kernel_ulong_t)&ftdi_jtag_quirk },
 	{ USB_DEVICE(FTDI_VID, FTDI_FALCONIA_JTAG_UNBUF_PID),
 		.driver_info = (kernel_ulong_t)&ftdi_jtag_quirk },
+=======
+	/* U-Blox devices */
+	{ USB_DEVICE(UBLOX_VID, UBLOX_C099F9P_ZED_PID) },
+	{ USB_DEVICE(UBLOX_VID, UBLOX_C099F9P_ODIN_PID) },
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* U-Blox devices */
 	{ USB_DEVICE(UBLOX_VID, UBLOX_C099F9P_ZED_PID) },
@@ -2069,18 +2084,24 @@ static int ftdi_prepare_write_buffer(struct usb_serial_port *port,
 
 static int ftdi_process_packet(struct usb_serial_port *port,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		struct ftdi_private *priv, unsigned char *buf, int len)
 {
 	unsigned char status;
 	int i;
 	char flag;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		struct ftdi_private *priv, char *packet, int len)
 {
 	int i;
 	char status;
 	char flag;
 	char *ch;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (len < 2) {
@@ -2092,7 +2113,11 @@ static int ftdi_process_packet(struct usb_serial_port *port,
 	   N.B. packet may be processed more than once, but differences
 	   are only processed once.  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	status = buf[0] & FTDI_STATUS_B0_MASK;
+=======
+	status = packet[0] & FTDI_STATUS_B0_MASK;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	status = packet[0] & FTDI_STATUS_B0_MASK;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2122,7 +2147,11 @@ static int ftdi_process_packet(struct usb_serial_port *port,
 
 	/* save if the transmitter is empty or not */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (buf[1] & FTDI_RS_TEMT)
+=======
+	if (packet[1] & FTDI_RS_TEMT)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (packet[1] & FTDI_RS_TEMT)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2131,7 +2160,12 @@ static int ftdi_process_packet(struct usb_serial_port *port,
 		priv->transmit_empty = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (len == 2)
+=======
+	len -= 2;
+	if (!len)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	len -= 2;
 	if (!len)
@@ -2143,6 +2177,7 @@ static int ftdi_process_packet(struct usb_serial_port *port,
 	 * data payload to avoid over-reporting.
 	 */
 	flag = TTY_NORMAL;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (buf[1] & FTDI_RS_ERR_MASK) {
 		/* Break takes precedence over parity, which takes precedence
@@ -2156,6 +2191,8 @@ static int ftdi_process_packet(struct usb_serial_port *port,
 			port->icount.parity++;
 		} else if (buf[1] & FTDI_RS_FE) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (packet[1] & FTDI_RS_ERR_MASK) {
 		/* Break takes precedence over parity, which takes precedence
 		 * over framing errors */
@@ -2167,13 +2204,20 @@ static int ftdi_process_packet(struct usb_serial_port *port,
 			flag = TTY_PARITY;
 			port->icount.parity++;
 		} else if (packet[1] & FTDI_RS_FE) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			flag = TTY_FRAME;
 			port->icount.frame++;
 		}
 		/* Overrun is special, not associated with a char */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (buf[1] & FTDI_RS_OE) {
+=======
+		if (packet[1] & FTDI_RS_OE) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (packet[1] & FTDI_RS_OE) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2182,6 +2226,7 @@ static int ftdi_process_packet(struct usb_serial_port *port,
 		}
 	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	port->icount.rx += len - 2;
 
@@ -2198,6 +2243,8 @@ static int ftdi_process_packet(struct usb_serial_port *port,
 
 	return len - 2;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	port->icount.rx += len;
 	ch = packet + 2;
 
@@ -2211,6 +2258,9 @@ static int ftdi_process_packet(struct usb_serial_port *port,
 	}
 
 	return len;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

@@ -688,7 +688,10 @@ static int cobalt_probe(struct pci_dev *pci_dev,
 	cobalt->pci_dev = pci_dev;
 	cobalt->instance = i;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_init(&cobalt->pci_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

@@ -640,9 +640,12 @@ static struct vmci_queue *qp_host_alloc_queue(u64 size)
 	queue_page_size = num_pages * sizeof(*queue->kernel_if->u.h.page);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (queue_size + queue_page_size > KMALLOC_MAX_SIZE)
 		return NULL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	queue = kzalloc(queue_size + queue_page_size, GFP_KERNEL);
@@ -739,7 +742,11 @@ static void qp_release_pages(struct page **pages,
 	for (i = 0; i < num_pages; i++) {
 		if (dirty)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			set_page_dirty_lock(pages[i]);
+=======
+			set_page_dirty(pages[i]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			set_page_dirty(pages[i]);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -769,9 +776,14 @@ static int qp_host_get_user_memory(u64 produce_uva,
 		pr_debug("get_user_pages_fast(produce) failed (retval=%d)",
 			retval);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (retval > 0)
 			qp_release_pages(produce_q->kernel_if->u.h.header_page,
 					retval, false);
+=======
+		qp_release_pages(produce_q->kernel_if->u.h.header_page,
+				 retval, false);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		qp_release_pages(produce_q->kernel_if->u.h.header_page,
 				 retval, false);
@@ -787,9 +799,14 @@ static int qp_host_get_user_memory(u64 produce_uva,
 		pr_debug("get_user_pages_fast(consume) failed (retval=%d)",
 			retval);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (retval > 0)
 			qp_release_pages(consume_q->kernel_if->u.h.header_page,
 					retval, false);
+=======
+		qp_release_pages(consume_q->kernel_if->u.h.header_page,
+				 retval, false);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		qp_release_pages(consume_q->kernel_if->u.h.header_page,
 				 retval, false);

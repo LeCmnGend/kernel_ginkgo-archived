@@ -121,8 +121,13 @@ int iw_handler_set_thrspy(struct net_device *	dev,
 
 	/* Just do it */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spydata->spy_thr_low = threshold->low;
 	spydata->spy_thr_high = threshold->high;
+=======
+	memcpy(&(spydata->spy_thr_low), &(threshold->low),
+	       2 * sizeof(struct iw_quality));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memcpy(&(spydata->spy_thr_low), &(threshold->low),
 	       2 * sizeof(struct iw_quality));
@@ -153,8 +158,13 @@ int iw_handler_get_thrspy(struct net_device *	dev,
 
 	/* Just do it */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	threshold->low = spydata->spy_thr_low;
 	threshold->high = spydata->spy_thr_high;
+=======
+	memcpy(&(threshold->low), &(spydata->spy_thr_low),
+	       2 * sizeof(struct iw_quality));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memcpy(&(threshold->low), &(spydata->spy_thr_low),
 	       2 * sizeof(struct iw_quality));
@@ -184,15 +194,21 @@ static void iw_send_thrspy_event(struct net_device *	dev,
 	threshold.addr.sa_family = ARPHRD_ETHER;
 	/* Copy stats */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	threshold.qual = *wstats;
 	/* Copy also thresholds */
 	threshold.low = spydata->spy_thr_low;
 	threshold.high = spydata->spy_thr_high;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	memcpy(&(threshold.qual), wstats, sizeof(struct iw_quality));
 	/* Copy also thresholds */
 	memcpy(&(threshold.low), &(spydata->spy_thr_low),
 	       2 * sizeof(struct iw_quality));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Send event to user space */

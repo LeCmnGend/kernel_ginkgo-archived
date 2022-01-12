@@ -1091,9 +1091,15 @@ __armv7_mmu_cache_off:
 		mrc	p15, 0, r0, c1, c0
 #ifdef CONFIG_MMU
 <<<<<<< HEAD
+<<<<<<< HEAD
 		bic	r0, r0, #0x0005
 #else
 		bic	r0, r0, #0x0004
+=======
+		bic	r0, r0, #0x000d
+#else
+		bic	r0, r0, #0x000c
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		bic	r0, r0, #0x000d
 #else

@@ -78,6 +78,10 @@ static int register_dpio_irq_handlers(struct fsl_mc_device *dpio_dev, int cpu)
 	int error;
 	struct fsl_mc_device_irq *irq;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	cpumask_t mask;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cpumask_t mask;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -100,7 +104,13 @@ static int register_dpio_irq_handlers(struct fsl_mc_device *dpio_dev, int cpu)
 
 	/* set the affinity hint */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (irq_set_affinity_hint(irq->msi_desc->irq, cpumask_of(cpu)))
+=======
+	cpumask_clear(&mask);
+	cpumask_set_cpu(cpu, &mask);
+	if (irq_set_affinity_hint(irq->msi_desc->irq, &mask))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cpumask_clear(&mask);
 	cpumask_set_cpu(cpu, &mask);

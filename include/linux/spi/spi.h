@@ -454,9 +454,12 @@ struct spi_controller {
 #define SPI_MASTER_GPIO_SS		BIT(5)	/* GPIO CS must select slave */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* flag indicating this is a non-devres managed controller */
 	bool			devm_allocated;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* flag indicating this is an SPI slave controller */
@@ -649,6 +652,7 @@ static inline struct spi_controller *spi_alloc_slave(struct device *host,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct spi_controller *__devm_spi_alloc_controller(struct device *dev,
 						   unsigned int size,
 						   bool slave);
@@ -668,6 +672,8 @@ static inline struct spi_controller *devm_spi_alloc_slave(struct device *dev,
 	return __devm_spi_alloc_controller(dev, size, true);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern int spi_register_controller(struct spi_controller *ctlr);

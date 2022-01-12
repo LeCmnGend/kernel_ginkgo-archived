@@ -351,6 +351,10 @@ static struct ip6_tnl *ip6gre_tunnel_locate(struct net *net,
 		dev->features |= NETIF_F_LLTX;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	dev_hold(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev_hold(dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1128,6 +1132,11 @@ static void ip6gre_fb_tunnel_init(struct net_device *dev)
 
 	tunnel->hlen		= sizeof(struct ipv6hdr) + 4;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+	dev_hold(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	dev_hold(dev);
@@ -1176,6 +1185,7 @@ static int __net_init ip6gre_init_net(struct net *net)
 {
 	struct ip6gre_net *ign = net_generic(net, ip6gre_net_id);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct net_device *ndev;
 	int err;
 
@@ -1187,6 +1197,8 @@ static int __net_init ip6gre_init_net(struct net *net)
 	}
 	ign->fb_tunnel_dev = ndev;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int err;
 
 	ign->fb_tunnel_dev = alloc_netdev(sizeof(struct ip6_tnl), "ip6gre0",
@@ -1196,6 +1208,9 @@ static int __net_init ip6gre_init_net(struct net *net)
 		err = -ENOMEM;
 		goto err_alloc_dev;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dev_net_set(ign->fb_tunnel_dev, net);
 	/* FB netdevice is special: we have one, and only one per netns.
@@ -1217,7 +1232,11 @@ static int __net_init ip6gre_init_net(struct net *net)
 
 err_reg_dev:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	free_netdev(ndev);
+=======
+	free_netdev(ign->fb_tunnel_dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	free_netdev(ign->fb_tunnel_dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

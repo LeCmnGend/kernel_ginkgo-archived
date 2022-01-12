@@ -285,7 +285,10 @@ config CPA_DEBUG
 	  Do change_page_attr() self-tests every 30 seconds.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config OPTIMIZE_INLINING
 	bool "Allow gcc to uninline functions marked 'inline'"
 	---help---
@@ -300,6 +303,9 @@ config OPTIMIZE_INLINING
 
 	  If unsure, say N.
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config DEBUG_ENTRY
 	bool "Debug low-level entry code"

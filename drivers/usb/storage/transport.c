@@ -668,6 +668,7 @@ void usb_stor_invoke_transport(struct scsi_cmnd *srb, struct us_data *us)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Some devices (Kindle) require another command after SYNC CACHE */
 	if ((us->fflags & US_FL_SENSE_AFTER_SYNC) &&
 			srb->cmnd[0] == SYNCHRONIZE_CACHE) {
@@ -675,6 +676,8 @@ void usb_stor_invoke_transport(struct scsi_cmnd *srb, struct us_data *us)
 		need_auto_sense = 1;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*

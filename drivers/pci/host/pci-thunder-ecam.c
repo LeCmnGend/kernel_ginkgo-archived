@@ -120,7 +120,11 @@ static int thunder_ecam_p2_config_read(struct pci_bus *bus, unsigned int devfn,
 	 * the high-order 32 bits, shift everything down by 32 bits.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	node_bits = upper_32_bits(cfg->res.start) & (1 << 12);
+=======
+	node_bits = (cfg->res.start >> 32) & (1 << 12);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	node_bits = (cfg->res.start >> 32) & (1 << 12);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

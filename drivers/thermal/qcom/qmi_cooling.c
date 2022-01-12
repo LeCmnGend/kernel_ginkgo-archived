@@ -235,7 +235,10 @@ static int qmi_tmd_send_state_request(struct qmi_cooling_device *qmi_cdev,
 		goto qmi_send_exit;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pr_debug("Requested qmi state:%d for %s\n", state, qmi_cdev->cdev_name);

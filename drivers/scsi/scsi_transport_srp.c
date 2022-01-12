@@ -556,6 +556,7 @@ int srp_reconnect_rport(struct srp_rport *rport)
 	if (res)
 		goto out;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (rport->state != SRP_RPORT_FAIL_FAST && rport->state != SRP_RPORT_LOST)
 		/*
 		 * sdev state must be SDEV_TRANSPORT_OFFLINE, transition
@@ -564,6 +565,9 @@ int srp_reconnect_rport(struct srp_rport *rport)
 		 * treats SDEV_TRANSPORT_OFFLINE like SDEV_BLOCK.
 		 */
 		scsi_target_block(&shost->shost_gendev);
+=======
+	scsi_target_block(&shost->shost_gendev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	scsi_target_block(&shost->shost_gendev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

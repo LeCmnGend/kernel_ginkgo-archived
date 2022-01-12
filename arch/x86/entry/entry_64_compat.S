@@ -358,6 +358,7 @@ ENTRY(entry_INT80_compat)
 	pushq	%rcx			/* pt_regs->cx */
 	pushq	$-ENOSYS		/* pt_regs->ax */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pushq   %r8			/* pt_regs->r8 */
 	xorl	%r8d, %r8d		/* nospec   r8 */
 	pushq   %r9			/* pt_regs->r9 */
@@ -366,6 +367,8 @@ ENTRY(entry_INT80_compat)
 	xorl	%r10d, %r10d		/* nospec   r10 */
 	pushq   %r11			/* pt_regs->r11 */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pushq   $0			/* pt_regs->r8  = 0 */
 	xorl	%r8d, %r8d		/* nospec   r8 */
 	pushq   $0			/* pt_regs->r9  = 0 */
@@ -373,6 +376,9 @@ ENTRY(entry_INT80_compat)
 	pushq   $0			/* pt_regs->r10 = 0 */
 	xorl	%r10d, %r10d		/* nospec   r10 */
 	pushq   $0			/* pt_regs->r11 = 0 */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	xorl	%r11d, %r11d		/* nospec   r11 */
 	pushq   %rbx                    /* pt_regs->rbx */

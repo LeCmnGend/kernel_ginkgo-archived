@@ -18,12 +18,15 @@ config FUSE_FS
 	  a filesystem based on FUSE, answer Y or M.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 config FUSE_SHORTCIRCUIT
 	bool "OnePlus FUSE Optimization"
 	depends on FUSE_FS
 	help
 	  An optimization for better /sdcard/ performance on Android by OnePlus.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config CUSE

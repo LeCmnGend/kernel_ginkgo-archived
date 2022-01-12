@@ -25,6 +25,10 @@
 
 #include "security.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <linux/flex_array.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/flex_array.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -88,16 +92,22 @@ struct avtab_node {
 
 struct avtab {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct avtab_node **htable;
 	u32 nel;	/* number of elements */
 	u32 nslot;      /* number of hash slots */
 	u32 mask;       /* mask to compute hash func */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct flex_array *htable;
 	u32 nel;	/* number of elements */
 	u32 nslot;      /* number of hash slots */
 	u32 mask;       /* mask to compute hash func */
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 

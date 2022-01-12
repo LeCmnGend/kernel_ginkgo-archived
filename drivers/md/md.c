@@ -569,6 +569,7 @@ void mddev_init(struct mddev *mddev)
 EXPORT_SYMBOL_GPL(mddev_init);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct mddev *mddev_find_locked(dev_t unit)
 {
 	struct mddev *mddev;
@@ -602,6 +603,10 @@ static struct mddev *mddev_find_or_alloc(dev_t unit)
 static struct mddev *mddev_find(dev_t unit)
 {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+static struct mddev *mddev_find(dev_t unit)
+{
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct mddev *mddev, *new = NULL;
 
 	if (unit && MAJOR(unit) != MD_MAJOR)
@@ -612,6 +617,7 @@ static struct mddev *mddev_find(dev_t unit)
 
 	if (unit) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mddev = mddev_find_locked(unit);
 		if (mddev) {
 			mddev_get(mddev);
@@ -620,6 +626,8 @@ static struct mddev *mddev_find(dev_t unit)
 			return mddev;
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		list_for_each_entry(mddev, &all_mddevs, all_mddevs)
 			if (mddev->unit == unit) {
 				mddev_get(mddev);
@@ -627,6 +635,9 @@ static struct mddev *mddev_find(dev_t unit)
 				kfree(new);
 				return mddev;
 			}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		if (new) {
@@ -654,14 +665,20 @@ static struct mddev *mddev_find(dev_t unit)
 			}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			is_free = !mddev_find_locked(dev);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			is_free = 1;
 			list_for_each_entry(mddev, &all_mddevs, all_mddevs)
 				if (mddev->unit == dev) {
 					is_free = 0;
 					break;
 				}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 		new->unit = dev;
@@ -5323,7 +5340,11 @@ static int md_alloc(dev_t dev, char *name)
 	 */
 	static DEFINE_MUTEX(disks_mutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct mddev *mddev = mddev_find_or_alloc(dev);
+=======
+	struct mddev *mddev = mddev_find(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct mddev *mddev = mddev_find(dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6177,15 +6198,21 @@ static void autorun_devices(int part)
 		md_probe(dev, NULL, NULL);
 		mddev = mddev_find(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!mddev)
 			break;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!mddev || !mddev->gendisk) {
 			if (mddev)
 				mddev_put(mddev);
 			break;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (mddev_lock(mddev))
 			pr_warn("md: %s locked, cannot run\n", mdname(mddev));
@@ -6594,10 +6621,15 @@ static int hot_remove_disk(struct mddev *mddev, dev_t dev)
 
 kick_rdev:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (mddev_is_clustered(mddev)) {
 		if (md_cluster_ops->remove_disk(mddev, rdev))
 			goto busy;
 	}
+=======
+	if (mddev_is_clustered(mddev))
+		md_cluster_ops->remove_disk(mddev, rdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (mddev_is_clustered(mddev))
 		md_cluster_ops->remove_disk(mddev, rdev);
@@ -7251,11 +7283,16 @@ static int md_ioctl(struct block_device *bdev, fmode_t mode,
 			goto out;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (test_and_set_bit(MD_CLOSING, &mddev->flags)) {
 			mutex_unlock(&mddev->open_mutex);
 			err = -EBUSY;
 			goto out;
 		}
+=======
+		WARN_ON_ONCE(test_bit(MD_CLOSING, &mddev->flags));
+		set_bit(MD_CLOSING, &mddev->flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		WARN_ON_ONCE(test_bit(MD_CLOSING, &mddev->flags));
 		set_bit(MD_CLOSING, &mddev->flags);
@@ -7498,7 +7535,12 @@ static int md_open(struct block_device *bdev, fmode_t mode)
 		if (work_pending(&mddev->del_work))
 			flush_workqueue(md_misc_wq);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -EBUSY;
+=======
+		/* Then retry the open from the top */
+		return -ERESTARTSYS;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		/* Then retry the open from the top */
 		return -ERESTARTSYS;
@@ -8902,17 +8944,23 @@ void md_check_recovery(struct mddev *mddev)
 
 		if (mddev_is_clustered(mddev)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			struct md_rdev *rdev, *tmp;
 			/* kick the device if another node issued a
 			 * remove disk.
 			 */
 			rdev_for_each_safe(rdev, tmp, mddev) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			struct md_rdev *rdev;
 			/* kick the device if another node issued a
 			 * remove disk.
 			 */
 			rdev_for_each(rdev, mddev) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				if (test_and_clear_bit(ClusterRemove, &rdev->flags) &&
 						rdev->raid_disk < 0)
@@ -9214,7 +9262,11 @@ static void check_sb_changes(struct mddev *mddev, struct md_rdev *rdev)
 {
 	struct mdp_superblock_1 *sb = page_address(rdev->sb_page);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct md_rdev *rdev2, *tmp;
+=======
+	struct md_rdev *rdev2;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct md_rdev *rdev2;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -9235,7 +9287,11 @@ static void check_sb_changes(struct mddev *mddev, struct md_rdev *rdev)
 
 	/* Check for change of roles in the active devices */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rdev_for_each_safe(rdev2, tmp, mddev) {
+=======
+	rdev_for_each(rdev2, mddev) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rdev_for_each(rdev2, mddev) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

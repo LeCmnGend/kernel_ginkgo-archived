@@ -171,6 +171,7 @@ static inline __attribute_const__ u32 msi_mask(unsigned x)
  * level IRQ which will never be cleared.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 void __pci_msi_desc_mask_irq(struct msi_desc *desc, u32 mask, u32 flag)
 {
 	raw_spinlock_t *lock = &desc->dev->msi_lock;
@@ -186,6 +187,8 @@ void __pci_msi_desc_mask_irq(struct msi_desc *desc, u32 mask, u32 flag)
 			       desc->masked);
 	raw_spin_unlock_irqrestore(lock, flags);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 u32 __pci_msi_desc_mask_irq(struct msi_desc *desc, u32 mask, u32 flag)
 {
 	u32 mask_bits = desc->masked;
@@ -199,13 +202,20 @@ u32 __pci_msi_desc_mask_irq(struct msi_desc *desc, u32 mask, u32 flag)
 			       mask_bits);
 
 	return mask_bits;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void msi_mask_irq(struct msi_desc *desc, u32 mask, u32 flag)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__pci_msi_desc_mask_irq(desc, mask, flag);
+=======
+	desc->masked = __pci_msi_desc_mask_irq(desc, mask, flag);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	desc->masked = __pci_msi_desc_mask_irq(desc, mask, flag);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -324,6 +334,7 @@ void __pci_write_msi_msg(struct msi_desc *entry, struct msi_msg *msg)
 	} else if (entry->msi_attrib.is_msix) {
 		void __iomem *base = pci_msix_desc_addr(entry);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		bool unmasked = !(entry->masked & PCI_MSIX_ENTRY_CTRL_MASKBIT);
 
 		/*
@@ -338,10 +349,13 @@ void __pci_write_msi_msg(struct msi_desc *entry, struct msi_msg *msg)
 			__pci_msix_desc_mask_irq(entry, PCI_MSIX_ENTRY_CTRL_MASKBIT);
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		writel(msg->address_lo, base + PCI_MSIX_ENTRY_LOWER_ADDR);
 		writel(msg->address_hi, base + PCI_MSIX_ENTRY_UPPER_ADDR);
 		writel(msg->data, base + PCI_MSIX_ENTRY_DATA);
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 		if (unmasked)
@@ -349,6 +363,8 @@ void __pci_write_msi_msg(struct msi_desc *entry, struct msi_msg *msg)
 
 		/* Ensure that the writes are visible in the device */
 		readl(base + PCI_MSIX_ENTRY_DATA);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
@@ -372,8 +388,11 @@ void __pci_write_msi_msg(struct msi_desc *entry, struct msi_msg *msg)
 					      msg->data);
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* Ensure that the writes are visible in the device */
 		pci_read_config_word(dev, pos + PCI_MSI_FLAGS, &msgctl);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -670,7 +689,11 @@ static int msi_capability_init(struct pci_dev *dev, int nvec,
 	ret = pci_msi_setup_msi_irqs(dev, nvec, PCI_CAP_ID_MSI);
 	if (ret) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		msi_mask_irq(entry, mask, 0);
+=======
+		msi_mask_irq(entry, mask, ~mask);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		msi_mask_irq(entry, mask, ~mask);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -681,7 +704,11 @@ static int msi_capability_init(struct pci_dev *dev, int nvec,
 	ret = msi_verify_entries(dev);
 	if (ret) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		msi_mask_irq(entry, mask, 0);
+=======
+		msi_mask_irq(entry, mask, ~mask);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		msi_mask_irq(entry, mask, ~mask);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -692,7 +719,11 @@ static int msi_capability_init(struct pci_dev *dev, int nvec,
 	ret = populate_msi_sysfs(dev);
 	if (ret) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		msi_mask_irq(entry, mask, 0);
+=======
+		msi_mask_irq(entry, mask, ~mask);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		msi_mask_irq(entry, mask, ~mask);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -737,7 +768,10 @@ static int msix_setup_entries(struct pci_dev *dev, void __iomem *base,
 	struct cpumask *curmsk, *masks = NULL;
 	struct msi_desc *entry;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	void __iomem *addr;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret, i;
@@ -760,7 +794,10 @@ static int msix_setup_entries(struct pci_dev *dev, void __iomem *base,
 		entry->msi_attrib.is_msix	= 1;
 		entry->msi_attrib.is_64		= 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (entries)
@@ -771,10 +808,13 @@ static int msix_setup_entries(struct pci_dev *dev, void __iomem *base,
 		entry->mask_base		= base;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		addr = pci_msix_desc_addr(entry);
 		if (addr)
 			entry->masked = readl(addr + PCI_MSIX_ENTRY_VECTOR_CTRL);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		list_add_tail(&entry->list, dev_to_msi_list(&dev->dev));
@@ -787,6 +827,7 @@ out:
 	return ret;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static void msix_update_entries(struct pci_dev *dev, struct msix_entry *entries)
 {
@@ -810,6 +851,8 @@ static void msix_mask_all(void __iomem *base, int tsize)
 }
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void msix_program_entries(struct pci_dev *dev,
 				 struct msix_entry *entries)
 {
@@ -825,6 +868,9 @@ static void msix_program_entries(struct pci_dev *dev,
 	}
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * msix_capability_init - configure device's MSI-X capability
@@ -840,6 +886,7 @@ static void msix_program_entries(struct pci_dev *dev,
 static int msix_capability_init(struct pci_dev *dev, struct msix_entry *entries,
 				int nvec, const struct irq_affinity *affd)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	void __iomem *base;
 	int ret, tsize;
@@ -869,6 +916,8 @@ static int msix_capability_init(struct pci_dev *dev, struct msix_entry *entries,
 	if (ret)
 		goto out_disable;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret;
 	u16 control;
 	void __iomem *base;
@@ -885,6 +934,9 @@ static int msix_capability_init(struct pci_dev *dev, struct msix_entry *entries,
 	ret = msix_setup_entries(dev, base, entries, nvec, affd);
 	if (ret)
 		return ret;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	ret = pci_msi_setup_msi_irqs(dev, nvec, PCI_CAP_ID_MSIX);
@@ -897,8 +949,11 @@ static int msix_capability_init(struct pci_dev *dev, struct msix_entry *entries,
 		goto out_free;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	msix_update_entries(dev, entries);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * Some devices require MSI-X to be enabled before we can touch the
 	 * MSI-X registers.  We need to mask all the vectors to prevent
@@ -908,6 +963,9 @@ static int msix_capability_init(struct pci_dev *dev, struct msix_entry *entries,
 				PCI_MSIX_FLAGS_MASKALL | PCI_MSIX_FLAGS_ENABLE);
 
 	msix_program_entries(dev, entries);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	ret = populate_msi_sysfs(dev);
@@ -943,9 +1001,12 @@ out_free:
 	free_msi_irqs(dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 out_disable:
 	pci_msix_clear_and_set_ctrl(dev, PCI_MSIX_FLAGS_ENABLE, 0);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
@@ -1036,7 +1097,12 @@ static void pci_msi_shutdown(struct pci_dev *dev)
 	/* Return the device with MSI unmasked as initial states */
 	mask = msi_mask(desc->msi_attrib.multi_cap);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	msi_mask_irq(desc, mask, 0);
+=======
+	/* Keep cached state to be restored */
+	__pci_msi_desc_mask_irq(desc, mask, ~mask);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Keep cached state to be restored */
 	__pci_msi_desc_mask_irq(desc, mask, ~mask);
@@ -1126,13 +1192,19 @@ static void pci_msix_shutdown(struct pci_dev *dev)
 
 	/* Return the device with MSI-X masked as initial states */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for_each_pci_msi_entry(entry, dev)
 		__pci_msix_desc_mask_irq(entry, 1);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	for_each_pci_msi_entry(entry, dev) {
 		/* Keep cached states to be restored */
 		__pci_msix_desc_mask_irq(entry, 1);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	pci_msix_clear_and_set_ctrl(dev, PCI_MSIX_FLAGS_ENABLE, 0);

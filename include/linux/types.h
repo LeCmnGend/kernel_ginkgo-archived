@@ -5,7 +5,10 @@
 #define __EXPORTED_HEADERS__
 #include <uapi/linux/types.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <generated/autoconf.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

@@ -845,9 +845,12 @@ static int32_t msm_actuator_park_lens(struct msm_actuator_ctrl_t *a_ctrl)
 
 	next_lens_pos = a_ctrl->step_position_table[a_ctrl->curr_step_pos];
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (next_lens_pos > 100){
 		next_lens_pos = 100;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	while (next_lens_pos) {
@@ -874,9 +877,12 @@ static int32_t msm_actuator_park_lens(struct msm_actuator_ctrl_t *a_ctrl)
 				0;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		pr_err("%s next lens_pos %d Line %d\n",
 				__func__,next_lens_pos,__LINE__);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		a_ctrl->func_tbl->actuator_parse_i2c_params(a_ctrl,

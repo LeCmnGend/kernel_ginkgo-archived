@@ -93,7 +93,11 @@ void free_bootmem_late(unsigned long addr, unsigned long size)
 	for (; cursor < end; cursor++) {
 		__free_pages_bootmem(pfn_to_page(cursor), cursor, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		totalram_pages_inc();
+=======
+		totalram_pages++;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		totalram_pages++;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -162,7 +166,11 @@ void reset_node_managed_pages(pg_data_t *pgdat)
 
 	for (z = pgdat->node_zones; z < pgdat->node_zones + MAX_NR_ZONES; z++)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		atomic_long_set(&z->managed_pages, 0);
+=======
+		z->managed_pages = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		z->managed_pages = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -194,7 +202,11 @@ unsigned long __init free_all_bootmem(void)
 
 	pages = free_low_memory_core_early();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	totalram_pages_add(pages);
+=======
+	totalram_pages += pages;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	totalram_pages += pages;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

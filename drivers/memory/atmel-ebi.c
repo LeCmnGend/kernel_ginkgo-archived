@@ -580,10 +580,15 @@ static int atmel_ebi_probe(struct platform_device *pdev)
 
 			ret = atmel_ebi_dev_disable(ebi, child);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (ret) {
 				of_node_put(child);
 				return ret;
 			}
+=======
+			if (ret)
+				return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (ret)
 				return ret;

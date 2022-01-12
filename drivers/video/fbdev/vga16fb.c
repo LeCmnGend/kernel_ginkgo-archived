@@ -244,7 +244,11 @@ static void vga16fb_update_fix(struct fb_info *info)
 
 static void vga16fb_clock_chip(struct vga16fb_par *par,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			       unsigned int *pixclock,
+=======
+			       unsigned int pixclock,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			       unsigned int pixclock,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -264,9 +268,15 @@ static void vga16fb_clock_chip(struct vga16fb_par *par,
 	int err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	*pixclock = (*pixclock * mul) / div;
 	best = vgaclocks;
 	err = *pixclock - best->pixclock;
+=======
+	pixclock = (pixclock * mul) / div;
+	best = vgaclocks;
+	err = pixclock - best->pixclock;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pixclock = (pixclock * mul) / div;
 	best = vgaclocks;
@@ -277,7 +287,11 @@ static void vga16fb_clock_chip(struct vga16fb_par *par,
 		int tmp;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		tmp = *pixclock - ptr->pixclock;
+=======
+		tmp = pixclock - ptr->pixclock;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		tmp = pixclock - ptr->pixclock;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -290,7 +304,11 @@ static void vga16fb_clock_chip(struct vga16fb_par *par,
 	par->misc |= best->misc;
 	par->clkdiv = best->seq_clock_mode;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	*pixclock = (best->pixclock * div) / mul;
+=======
+	pixclock = (best->pixclock * div) / mul;		
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pixclock = (best->pixclock * div) / mul;		
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -516,15 +534,21 @@ static int vga16fb_check_var(struct fb_var_screeninfo *var,
 	if (mode & MODE_8BPP)
 		/* pixel clock == vga clock / 2 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		vga16fb_clock_chip(par, &var->pixclock, info, 1, 2);
 	else
 		/* pixel clock == vga clock */
 		vga16fb_clock_chip(par, &var->pixclock, info, 1, 1);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		vga16fb_clock_chip(par, var->pixclock, info, 1, 2);
 	else
 		/* pixel clock == vga clock */
 		vga16fb_clock_chip(par, var->pixclock, info, 1, 1);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	
 	var->red.offset = var->green.offset = var->blue.offset = 
@@ -1148,7 +1172,11 @@ static void vga_8planes_imageblit(struct fb_info *info, const struct fb_image *i
         char oldsr = setsr(0);
         char oldmask = selectmask();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	const unsigned char *cdat = image->data;
+=======
+        const char *cdat = image->data;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
         const char *cdat = image->data;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

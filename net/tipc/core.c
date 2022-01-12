@@ -90,11 +90,14 @@ static void __net_exit tipc_exit_net(struct net *net)
 {
 	tipc_net_stop(net);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* Make sure the tipc_net_finalize_work stopped
 	 * before releasing the resources.
 	 */
 	flush_scheduled_work();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	tipc_bcast_stop(net);

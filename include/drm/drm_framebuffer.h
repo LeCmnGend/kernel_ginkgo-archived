@@ -122,13 +122,19 @@ struct drm_framebuffer {
 	 */
 	struct drm_mode_object base;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/**
 	 * @comm: Name of the process allocating the fb, used for fb dumping.
 	 */
 	char comm[TASK_COMM_LEN];
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/**
 	 * @format: framebuffer format information

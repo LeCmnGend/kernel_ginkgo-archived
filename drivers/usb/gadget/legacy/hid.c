@@ -176,10 +176,15 @@ static int hid_bind(struct usb_composite_dev *cdev)
 
 		usb_desc = usb_otg_descriptor_alloc(gadget);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!usb_desc) {
 			status = -ENOMEM;
 			goto put;
 		}
+=======
+		if (!usb_desc)
+			goto put;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!usb_desc)
 			goto put;

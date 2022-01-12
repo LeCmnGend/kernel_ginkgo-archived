@@ -2,9 +2,14 @@
  *  Native support for the I/O-Warrior USB devices
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  Copyright (c) 2003-2005, 2020  Code Mercenaries GmbH
  *  written by Christian Lucht <lucht@codemercs.com> and
  *  Christoph Jung <jung@codemercs.com>
+=======
+ *  Copyright (c) 2003-2005  Code Mercenaries GmbH
+ *  written by Christian Lucht <lucht@codemercs.com>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  *  Copyright (c) 2003-2005  Code Mercenaries GmbH
  *  written by Christian Lucht <lucht@codemercs.com>
@@ -828,6 +833,7 @@ static int iowarrior_probe(struct usb_interface *interface,
 	/* we have to check the report_size often, so remember it in the endianness suitable for our machine */
 	dev->report_size = usb_endpoint_maxp(dev->int_in_endpoint);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/*
 	 * Some devices need the report size to be different than the
@@ -851,6 +857,8 @@ static int iowarrior_probe(struct usb_interface *interface,
 		}
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if ((dev->interface->cur_altsetting->desc.bInterfaceNumber == 0) &&
 	    ((dev->product_id == USB_DEVICE_ID_CODEMERCS_IOW56) ||
 	     (dev->product_id == USB_DEVICE_ID_CODEMERCS_IOW56AM) ||
@@ -859,6 +867,9 @@ static int iowarrior_probe(struct usb_interface *interface,
 	     (dev->product_id == USB_DEVICE_ID_CODEMERCS_IOW100)))
 		/* IOWarrior56 has wMaxPacketSize different from report size */
 		dev->report_size = 7;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* create the urb and buffer for reading */

@@ -23,7 +23,10 @@
 #include <sys/time.h>
 #include <sys/syscall.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <sys/sysinfo.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <sys/types.h>
@@ -102,9 +105,14 @@ static void start_thread_on(void *(*fn)(void *), void *arg, unsigned long cpu)
 static void start_process_on(void *(*fn)(void *), void *arg, unsigned long cpu)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int pid, ncpus;
 	cpu_set_t *cpuset;
 	size_t size;
+=======
+	int pid;
+	cpu_set_t cpuset;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int pid;
 	cpu_set_t cpuset;
@@ -119,6 +127,7 @@ static void start_process_on(void *(*fn)(void *), void *arg, unsigned long cpu)
 	if (pid)
 		return;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	ncpus = get_nprocs();
 	size = CPU_ALLOC_SIZE(ncpus);
@@ -138,6 +147,8 @@ static void start_process_on(void *(*fn)(void *), void *arg, unsigned long cpu)
 
 	CPU_FREE(cpuset);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	CPU_ZERO(&cpuset);
 	CPU_SET(cpu, &cpuset);
 
@@ -146,6 +157,9 @@ static void start_process_on(void *(*fn)(void *), void *arg, unsigned long cpu)
 		exit(1);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	fn(arg);
 

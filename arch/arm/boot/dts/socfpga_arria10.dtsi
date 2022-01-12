@@ -780,7 +780,11 @@
 			compatible = "snps,dw-apb-timer";
 			interrupts = <0 118 IRQ_TYPE_LEVEL_HIGH>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			reg = <0xffd00100 0x100>;
+=======
+			reg = <0xffd01000 0x100>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			reg = <0xffd01000 0x100>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -23,7 +23,10 @@
 #include <linux/pci-ecam.h>
 #include <linux/platform_device.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/io-64-nonatomic-lo-hi.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include "../pci.h"
@@ -330,9 +333,15 @@ static int thunder_pem_init(struct device *dev, struct pci_config_window *cfg,
 	 */
 	bar4_start = res_pem->start + 0xf00000;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pem_pci->ea_entry[0] = lower_32_bits(bar4_start) | 2;
 	pem_pci->ea_entry[1] = lower_32_bits(res_pem->end - bar4_start) & ~3u;
 	pem_pci->ea_entry[2] = upper_32_bits(bar4_start);
+=======
+	pem_pci->ea_entry[0] = (u32)bar4_start | 2;
+	pem_pci->ea_entry[1] = (u32)(res_pem->end - bar4_start) & ~3u;
+	pem_pci->ea_entry[2] = (u32)(bar4_start >> 32);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pem_pci->ea_entry[0] = (u32)bar4_start | 2;
 	pem_pci->ea_entry[1] = (u32)(res_pem->end - bar4_start) & ~3u;
@@ -346,9 +355,15 @@ static int thunder_pem_init(struct device *dev, struct pci_config_window *cfg,
 #if defined(CONFIG_ACPI) && defined(CONFIG_PCI_QUIRKS)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define PEM_RES_BASE		0x87e0c0000000ULL
 #define PEM_NODE_MASK		GENMASK_ULL(45, 44)
 #define PEM_INDX_MASK		GENMASK_ULL(26, 24)
+=======
+#define PEM_RES_BASE		0x87e0c0000000UL
+#define PEM_NODE_MASK		GENMASK(45, 44)
+#define PEM_INDX_MASK		GENMASK(26, 24)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define PEM_RES_BASE		0x87e0c0000000UL
 #define PEM_NODE_MASK		GENMASK(45, 44)

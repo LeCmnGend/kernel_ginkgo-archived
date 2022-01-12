@@ -586,10 +586,15 @@ static void batadv_iv_ogm_emit(struct batadv_forw_packet *forw_packet)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (forw_packet->if_outgoing->soft_iface != soft_iface) {
 		pr_warn("%s: soft interface switch for queued OGM\n", __func__);
 		return;
 	}
+=======
+	if (WARN_ON(forw_packet->if_outgoing->soft_iface != soft_iface))
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (WARN_ON(forw_packet->if_outgoing->soft_iface != soft_iface))
 		return;

@@ -26,7 +26,12 @@
 #define KGSL_PWREVENT_GPU_FREQ	1
 #define KGSL_PWREVENT_BUS_FREQ	2
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define KGSL_PWREVENT_MAX	3
+=======
+#define KGSL_PWREVENT_POPP	3
+#define KGSL_PWREVENT_MAX	4
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define KGSL_PWREVENT_POPP	3
 #define KGSL_PWREVENT_MAX	4
@@ -39,7 +44,10 @@
 #define STABLE_TIME	150
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Amount of idle time needed to re-set stability in usec */
 #define POPP_RESET_TIME	1000000
 
@@ -55,6 +63,9 @@ struct kgsl_popp {
 	int ddr_y;
 };
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct kgsl_power_stats {
 	u64 busy_time;
@@ -88,7 +99,11 @@ struct kgsl_pwr_history {
  * @time - Last submitted sample timestamp
  * @on_time - Timestamp when gpu busy begins
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @freq_change_time - Timestamp of last freq change
+=======
+ * @freq_change_time - Timestamp of last freq change or popp update
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * @freq_change_time - Timestamp of last freq change or popp update
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -100,6 +115,11 @@ struct kgsl_pwr_history {
  * a new sample
  * @history - History of power events with timestamps and durations
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+ * @popp_level - Current level of POPP mitigation
+ * @popp_state - Control state for POPP, on/off, recently pushed, etc
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * @popp_level - Current level of POPP mitigation
  * @popp_state - Control state for POPP, on/off, recently pushed, etc
@@ -130,6 +150,11 @@ struct kgsl_pwrscale {
 	ktime_t next_governor_call;
 	struct kgsl_pwr_history history[KGSL_PWREVENT_MAX];
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int popp_level;
+	unsigned long popp_state;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int popp_level;
 	unsigned long popp_state;
@@ -166,6 +191,12 @@ int kgsl_busmon_get_dev_status(struct device *dev,
 int kgsl_busmon_get_cur_freq(struct device *dev, unsigned long *freq);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+bool kgsl_popp_check(struct kgsl_device *device);
+
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 bool kgsl_popp_check(struct kgsl_device *device);
 
@@ -191,6 +222,10 @@ bool kgsl_popp_check(struct kgsl_device *device);
 	.history[KGSL_PWREVENT_GPU_FREQ].size = 3, \
 	.history[KGSL_PWREVENT_BUS_FREQ].size = 5, \
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	.history[KGSL_PWREVENT_POPP].size = 5, \
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.history[KGSL_PWREVENT_POPP].size = 5, \
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

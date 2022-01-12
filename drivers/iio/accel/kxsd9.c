@@ -213,6 +213,7 @@ static irqreturn_t kxsd9_trigger_handler(int irq, void *p)
 	struct iio_dev *indio_dev = pf->indio_dev;
 	struct kxsd9_state *st = iio_priv(indio_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Ensure correct positioning and alignment of timestamp.
 	 * No need to zero initialize as all elements written.
@@ -228,6 +229,8 @@ static irqreturn_t kxsd9_trigger_handler(int irq, void *p)
 			       hw_values.chan,
 			       sizeof(hw_values.chan));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret;
 	/* 4 * 16bit values AND timestamp */
 	__be16 hw_values[8];
@@ -236,6 +239,9 @@ static irqreturn_t kxsd9_trigger_handler(int irq, void *p)
 			       KXSD9_REG_X,
 			       &hw_values,
 			       8);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret) {
 		dev_err(st->dev,
@@ -245,7 +251,11 @@ static irqreturn_t kxsd9_trigger_handler(int irq, void *p)
 
 	iio_push_to_buffers_with_timestamp(indio_dev,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					   &hw_values,
+=======
+					   hw_values,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					   hw_values,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

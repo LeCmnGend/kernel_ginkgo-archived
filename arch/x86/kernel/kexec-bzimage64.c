@@ -212,7 +212,12 @@ setup_boot_parameters(struct kimage *image, struct boot_params *params,
 
 	/* Copying screen_info will do? */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memcpy(&params->screen_info, &screen_info, sizeof(struct screen_info));
+=======
+	memcpy(&params->screen_info, &boot_params.screen_info,
+				sizeof(struct screen_info));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memcpy(&params->screen_info, &boot_params.screen_info,
 				sizeof(struct screen_info));

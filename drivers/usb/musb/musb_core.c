@@ -1865,6 +1865,7 @@ static void musb_pm_runtime_check_session(struct musb *musb)
 	switch (devctl & ~s) {
 	case MUSB_QUIRK_B_DISCONNECT_99:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (musb->quirk_retries && !musb->flush_irq_work) {
 			musb_dbg(musb, "Poll devctl in case of suspend after disconnect\n");
 			schedule_delayed_work(&musb->irq_work,
@@ -1874,10 +1875,15 @@ static void musb_pm_runtime_check_session(struct musb *musb)
 		}
 		/* fall through */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		musb_dbg(musb, "Poll devctl in case of suspend after disconnect\n");
 		schedule_delayed_work(&musb->irq_work,
 				      msecs_to_jiffies(1000));
 		break;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case MUSB_QUIRK_B_INVALID_VBUS_91:
 		if (musb->quirk_retries && !musb->flush_irq_work) {
@@ -2116,7 +2122,10 @@ int musb_queue_resume_work(struct musb *musb,
 	struct musb_pending_work *w;
 	unsigned long flags;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool is_suspended;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int error;
@@ -2124,6 +2133,7 @@ int musb_queue_resume_work(struct musb *musb,
 	if (WARN_ON(!callback))
 		return -EINVAL;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	spin_lock_irqsave(&musb->list_lock, flags);
 	is_suspended = musb->is_runtime_suspended;
@@ -2149,6 +2159,8 @@ out_unlock:
 		error = callback(musb, data);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (pm_runtime_active(musb->controller))
 		return callback(musb, data);
 
@@ -2170,6 +2182,9 @@ out_unlock:
 	}
 	spin_unlock_irqrestore(&musb->list_lock, flags);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return error;
 }

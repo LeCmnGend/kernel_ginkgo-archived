@@ -175,7 +175,10 @@ static inline void lapic_update_tsc_freq(void) { }
 
 #ifdef CONFIG_X86_X2APIC
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Make previous memory operations globally visible before
  * sending the IPI through x2apic wrmsr. We need a serializing instruction or
@@ -186,6 +189,9 @@ static inline void x2apic_wrmsr_fence(void)
 	asm volatile("mfence" : : : "memory");
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void native_apic_msr_write(u32 reg, u32 v)
 {

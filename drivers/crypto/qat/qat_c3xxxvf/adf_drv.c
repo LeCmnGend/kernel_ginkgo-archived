@@ -239,6 +239,11 @@ static int adf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
 		goto out_err_free_reg;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	set_bit(ADF_STATUS_PF_RUNNING, &accel_dev->status);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	set_bit(ADF_STATUS_PF_RUNNING, &accel_dev->status);
 
@@ -248,8 +253,11 @@ static int adf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
 		goto out_err_dev_shutdown;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	set_bit(ADF_STATUS_PF_RUNNING, &accel_dev->status);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = adf_dev_start(accel_dev);

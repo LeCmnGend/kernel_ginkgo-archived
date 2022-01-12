@@ -106,6 +106,7 @@ static void pwm_lpss_prepare(struct pwm_lpss_chip *lpwm, struct pwm_device *pwm,
 	 * base_unit = round(base_unit_range * freq / c)
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	base_unit_range = BIT(lpwm->info->base_unit_bits);
 	freq *= base_unit_range;
 
@@ -113,10 +114,15 @@ static void pwm_lpss_prepare(struct pwm_lpss_chip *lpwm, struct pwm_device *pwm,
 	/* base_unit must not be 0 and we also want to avoid overflowing it */
 	base_unit = clamp_val(base_unit, 1, base_unit_range - 1);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	base_unit_range = BIT(lpwm->info->base_unit_bits) - 1;
 	freq *= base_unit_range;
 
 	base_unit = DIV_ROUND_CLOSEST_ULL(freq, c);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	on_time_div = 255ULL * duty_ns;
@@ -126,7 +132,12 @@ static void pwm_lpss_prepare(struct pwm_lpss_chip *lpwm, struct pwm_device *pwm,
 	orig_ctrl = ctrl = pwm_lpss_read(pwm);
 	ctrl &= ~PWM_ON_TIME_DIV_MASK;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ctrl &= ~((base_unit_range - 1) << PWM_BASE_UNIT_SHIFT);
+=======
+	ctrl &= ~(base_unit_range << PWM_BASE_UNIT_SHIFT);
+	base_unit &= base_unit_range;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ctrl &= ~(base_unit_range << PWM_BASE_UNIT_SHIFT);
 	base_unit &= base_unit_range;

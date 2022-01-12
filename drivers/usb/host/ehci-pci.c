@@ -312,9 +312,12 @@ static int ehci_pci_setup(struct usb_hcd *hcd)
 	    && pdev->device == PCI_DEVICE_ID_STMICRO_USB_HOST)
 		;	/* ConneXT has no sbrn register */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	else if (pdev->vendor == PCI_VENDOR_ID_HUAWEI
 			 && pdev->device == 0xa239)
 		;	/* HUAWEI Kunpeng920 USB EHCI has no sbrn register */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	else

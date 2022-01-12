@@ -116,7 +116,10 @@ static const char *const rapl_domain_names[NR_RAPL_DOMAINS] __initconst = {
  */
 #define RAPL_EVENT_MASK	0xFFULL
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #define DEFINE_RAPL_FORMAT_ATTR(_var, _name, _format)		\
 static ssize_t __rapl_##_var##_show(struct kobject *kobj,	\
@@ -129,6 +132,9 @@ static ssize_t __rapl_##_var##_show(struct kobject *kobj,	\
 static struct kobj_attribute format_attr_##_var =		\
 	__ATTR(_name, 0444, __rapl_##_var##_show, NULL)
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define RAPL_CNTR_WIDTH 32
 
@@ -552,7 +558,11 @@ static struct attribute_group rapl_pmu_events_group = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 PMU_FORMAT_ATTR(event, "config:0-7");
+=======
+DEFINE_RAPL_FORMAT_ATTR(event, event, "config:0-7");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 DEFINE_RAPL_FORMAT_ATTR(event, event, "config:0-7");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

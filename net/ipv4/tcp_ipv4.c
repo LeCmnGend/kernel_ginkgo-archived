@@ -286,7 +286,11 @@ void tcp_v4_mtu_reduced(struct sock *sk)
 	if ((1 << sk->sk_state) & (TCPF_LISTEN | TCPF_CLOSE))
 		return;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mtu = READ_ONCE(tcp_sk(sk)->mtu_info);
+=======
+	mtu = tcp_sk(sk)->mtu_info;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mtu = tcp_sk(sk)->mtu_info;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -458,7 +462,11 @@ void tcp_v4_err(struct sk_buff *icmp_skb, u32 info)
 				goto out;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			WRITE_ONCE(tp->mtu_info, info);
+=======
+			tp->mtu_info = info;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			tp->mtu_info = info;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2319,7 +2327,11 @@ static void get_tcp4_sock(struct sock *sk, struct seq_file *f, int i)
 		jiffies_to_clock_t(icsk->icsk_rto),
 		jiffies_to_clock_t(icsk->icsk_ack.ato),
 <<<<<<< HEAD
+<<<<<<< HEAD
 		(icsk->icsk_ack.quick << 1) | inet_csk_in_pingpong_mode(sk),
+=======
+		(icsk->icsk_ack.quick << 1) | icsk->icsk_ack.pingpong,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		(icsk->icsk_ack.quick << 1) | icsk->icsk_ack.pingpong,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2500,7 +2512,11 @@ static int __net_init tcp_sk_init(struct net *net)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	net->ipv4.sysctl_tcp_ecn = 1;
+=======
+	net->ipv4.sysctl_tcp_ecn = 2;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	net->ipv4.sysctl_tcp_ecn = 2;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2518,7 +2534,11 @@ static int __net_init tcp_sk_init(struct net *net)
 	net->ipv4.sysctl_tcp_syn_retries = TCP_SYN_RETRIES;
 	net->ipv4.sysctl_tcp_synack_retries = TCP_SYNACK_RETRIES;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	net->ipv4.sysctl_tcp_syncookies = 0;
+=======
+	net->ipv4.sysctl_tcp_syncookies = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	net->ipv4.sysctl_tcp_syncookies = 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2538,7 +2558,11 @@ static int __net_init tcp_sk_init(struct net *net)
 	net->ipv4.sysctl_tcp_sack = 1;
 	net->ipv4.sysctl_tcp_window_scaling = 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	net->ipv4.sysctl_tcp_timestamps = 0;
+=======
+	net->ipv4.sysctl_tcp_timestamps = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	net->ipv4.sysctl_tcp_timestamps = 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -113,8 +113,11 @@ static struct dma_chan *usbhsf_dma_chan_get(struct usbhs_fifo *fifo,
 #define usbhsf_dma_unmap(p)	__usbhsf_dma_map_ctrl(p, 0)
 static int __usbhsf_dma_map_ctrl(struct usbhs_pkt *pkt, int map);
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void usbhsf_tx_irq_ctrl(struct usbhs_pipe *pipe, int enable);
 static void usbhsf_rx_irq_ctrl(struct usbhs_pipe *pipe, int enable);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct usbhs_pkt *usbhs_pkt_pop(struct usbhs_pipe *pipe, struct usbhs_pkt *pkt)
@@ -141,6 +144,7 @@ struct usbhs_pkt *usbhs_pkt_pop(struct usbhs_pipe *pipe, struct usbhs_pkt *pkt)
 			usbhsf_fifo_clear(pipe, fifo);
 			usbhsf_dma_unmap(pkt);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		} else {
 			if (usbhs_pipe_is_dir_in(pipe))
 				usbhsf_rx_irq_ctrl(pipe, 0);
@@ -150,6 +154,10 @@ struct usbhs_pkt *usbhs_pkt_pop(struct usbhs_pipe *pipe, struct usbhs_pkt *pkt)
 
 		usbhs_pipe_running(pipe, 0);
 
+=======
+		}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		}
 

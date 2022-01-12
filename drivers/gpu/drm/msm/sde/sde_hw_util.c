@@ -80,11 +80,17 @@ void sde_reg_write(struct sde_hw_blk_reg_map *c,
 		const char *name)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* don't need to mutex protect this */
 	if (c->log_mask & sde_hw_util_log_mask)
 		SDE_DEBUG_DRIVER("[%s:0x%X] <= 0x%X\n",
 				name, c->blk_off + reg_off, val);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	writel_relaxed(val, c->base_off + c->blk_off + reg_off);
 }

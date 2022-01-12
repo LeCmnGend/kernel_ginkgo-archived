@@ -288,8 +288,12 @@ static const struct blk_mq_ops nvme_loop_admin_mq_ops = {
 static void nvme_loop_destroy_admin_queue(struct nvme_loop_ctrl *ctrl)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!test_and_clear_bit(NVME_LOOP_Q_LIVE, &ctrl->queues[0].flags))
 		return;
+=======
+	clear_bit(NVME_LOOP_Q_LIVE, &ctrl->queues[0].flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	clear_bit(NVME_LOOP_Q_LIVE, &ctrl->queues[0].flags);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -328,7 +332,10 @@ static void nvme_loop_destroy_io_queues(struct nvme_loop_ctrl *ctrl)
 		nvmet_sq_destroy(&ctrl->queues[i].nvme_sq);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ctrl->ctrl.queue_count = 1;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -439,7 +446,10 @@ static int nvme_loop_configure_admin_queue(struct nvme_loop_ctrl *ctrl)
 
 out_cleanup_queue:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	clear_bit(NVME_LOOP_Q_LIVE, &ctrl->queues[0].flags);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	blk_cleanup_queue(ctrl->ctrl.admin_q);

@@ -429,6 +429,7 @@ static int affs_write_begin(struct file *file, struct address_space *mapping,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int affs_write_end(struct file *file, struct address_space *mapping,
 			  loff_t pos, unsigned int len, unsigned int copied,
 			  struct page *page, void *fsdata)
@@ -449,6 +450,8 @@ static int affs_write_end(struct file *file, struct address_space *mapping,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static sector_t _affs_bmap(struct address_space *mapping, sector_t block)
 {
 	return generic_block_bmap(mapping,block,affs_get_block);
@@ -459,7 +462,11 @@ const struct address_space_operations affs_aops = {
 	.writepage = affs_writepage,
 	.write_begin = affs_write_begin,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.write_end = affs_write_end,
+=======
+	.write_end = generic_write_end,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.write_end = generic_write_end,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -820,12 +827,15 @@ done:
 		inode->i_size = AFFS_I(inode)->mmu_private = tmp;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Clear Archived bit on file writes, as AmigaOS would do */
 	if (AFFS_I(inode)->i_protect & FIBF_ARCHIVED) {
 		AFFS_I(inode)->i_protect &= ~FIBF_ARCHIVED;
 		mark_inode_dirty(inode);
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 err_first_bh:

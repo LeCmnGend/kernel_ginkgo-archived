@@ -225,7 +225,12 @@ struct eventpoll {
 
 	/* used to optimize loop detection check */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64 gen;
+=======
+	int visited;
+	struct list_head visited_list_link;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int visited;
 	struct list_head visited_list_link;
@@ -279,8 +284,11 @@ static long max_user_watches __read_mostly;
 static DEFINE_MUTEX(epmutex);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static u64 loop_check_gen = 0;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Used to check for epoll file descriptor inclusion loops */
@@ -299,6 +307,12 @@ static struct kmem_cache *epi_cache __read_mostly;
 static struct kmem_cache *pwq_cache __read_mostly;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+/* Visited nodes during ep_loop_check(), so we can unset them when we finish */
+static LIST_HEAD(visited_list);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Visited nodes during ep_loop_check(), so we can unset them when we finish */
 static LIST_HEAD(visited_list);
@@ -1405,7 +1419,11 @@ static int reverse_path_check(void)
 static int ep_create_wakeup_source(struct epitem *epi)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct name_snapshot n;
+=======
+	const char *name;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	const char *name;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1418,9 +1436,14 @@ static int ep_create_wakeup_source(struct epitem *epi)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	take_dentry_name_snapshot(&n, epi->ffd.file->f_path.dentry);
 	ws = wakeup_source_register(NULL, n.name);
 	release_dentry_name_snapshot(&n);
+=======
+	name = epi->ffd.file->f_path.dentry->d_name.name;
+	ws = wakeup_source_register(NULL, name);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	name = epi->ffd.file->f_path.dentry->d_name.name;
 	ws = wakeup_source_register(NULL, name);
@@ -1485,6 +1508,7 @@ static int ep_insert(struct eventpoll *ep, struct epoll_event *event,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Add the current item to the list of active epoll hook for this file */
 	spin_lock(&tfile->f_lock);
 	list_add_tail_rcu(&epi->fllink, &tfile->f_ep_links);
@@ -1501,6 +1525,8 @@ static int ep_insert(struct eventpoll *ep, struct epoll_event *event,
 	if (full_check && reverse_path_check())
 		goto error_remove_epi;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Initialize the poll table using the queue callback */
@@ -1526,7 +1552,10 @@ static int ep_insert(struct eventpoll *ep, struct epoll_event *event,
 		goto error_unregister;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Add the current item to the list of active epoll hook for this file */
 	spin_lock(&tfile->f_lock);
 	list_add_tail_rcu(&epi->fllink, &tfile->f_ep_links);
@@ -1543,6 +1572,9 @@ static int ep_insert(struct eventpoll *ep, struct epoll_event *event,
 	if (full_check && reverse_path_check())
 		goto error_remove_epi;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* We have to drop the new item inside our item list to keep track of it */
 	spin_lock_irqsave(&ep->lock, flags);
@@ -1573,8 +1605,11 @@ static int ep_insert(struct eventpoll *ep, struct epoll_event *event,
 	return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 error_unregister:
 	ep_unregister_pollwait(ep, epi);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 error_remove_epi:
@@ -1585,6 +1620,12 @@ error_remove_epi:
 	rb_erase_cached(&epi->rbn, &ep->rbr);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+error_unregister:
+	ep_unregister_pollwait(ep, epi);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 error_unregister:
 	ep_unregister_pollwait(ep, epi);
@@ -1933,7 +1974,12 @@ static int ep_loop_check_proc(void *priv, void *cookie, int call_nests)
 
 	mutex_lock_nested(&ep->mtx, call_nests + 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ep->gen = loop_check_gen;
+=======
+	ep->visited = 1;
+	list_add(&ep->visited_list_link, &visited_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ep->visited = 1;
 	list_add(&ep->visited_list_link, &visited_list);
@@ -1943,7 +1989,11 @@ static int ep_loop_check_proc(void *priv, void *cookie, int call_nests)
 		if (unlikely(is_file_epoll(epi->ffd.file))) {
 			ep_tovisit = epi->ffd.file->private_data;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (ep_tovisit->gen == loop_check_gen)
+=======
+			if (ep_tovisit->visited)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (ep_tovisit->visited)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1963,11 +2013,17 @@ static int ep_loop_check_proc(void *priv, void *cookie, int call_nests)
 			 * during ep_insert().
 			 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (list_empty(&epi->ffd.file->f_tfile_llink)) {
 				if (get_file_rcu(epi->ffd.file))
 					list_add(&epi->ffd.file->f_tfile_llink,
 						 &tfile_check_list);
 			}
+=======
+			if (list_empty(&epi->ffd.file->f_tfile_llink))
+				list_add(&epi->ffd.file->f_tfile_llink,
+					 &tfile_check_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (list_empty(&epi->ffd.file->f_tfile_llink))
 				list_add(&epi->ffd.file->f_tfile_llink,
@@ -1994,9 +2050,12 @@ static int ep_loop_check_proc(void *priv, void *cookie, int call_nests)
 static int ep_loop_check(struct eventpoll *ep, struct file *file)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return ep_call_nested(&poll_loop_ncalls, EP_MAX_NESTS,
 			      ep_loop_check_proc, file, ep, current);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret;
 	struct eventpoll *ep_cur, *ep_next;
 
@@ -2009,6 +2068,9 @@ static int ep_loop_check(struct eventpoll *ep, struct file *file)
 		list_del(&ep_cur->visited_list_link);
 	}
 	return ret;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -2022,7 +2084,10 @@ static void clear_tfile_check_list(void)
 					f_tfile_llink);
 		list_del_init(&file->f_tfile_llink);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		fput(file);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -2170,7 +2235,10 @@ SYSCALL_DEFINE4(epoll_ctl, int, epfd, int, op, int, fd,
 	if (op == EPOLL_CTL_ADD) {
 		if (!list_empty(&f.file->f_ep_links) ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 				ep->gen == loop_check_gen ||
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 						is_file_epoll(tf.file)) {
@@ -2180,6 +2248,7 @@ SYSCALL_DEFINE4(epoll_ctl, int, epfd, int, op, int, fd,
 			if (is_file_epoll(tf.file)) {
 				error = -ELOOP;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if (ep_loop_check(ep, tf.file) != 0)
 					goto error_tgt_fput;
 			} else {
@@ -2188,6 +2257,8 @@ SYSCALL_DEFINE4(epoll_ctl, int, epfd, int, op, int, fd,
 							&tfile_check_list);
 			}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				if (ep_loop_check(ep, tf.file) != 0) {
 					clear_tfile_check_list();
 					goto error_tgt_fput;
@@ -2195,6 +2266,9 @@ SYSCALL_DEFINE4(epoll_ctl, int, epfd, int, op, int, fd,
 			} else
 				list_add(&tf.file->f_tfile_llink,
 							&tfile_check_list);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			mutex_lock_nested(&ep->mtx, 0);
 			if (is_file_epoll(tf.file)) {
@@ -2220,6 +2294,11 @@ SYSCALL_DEFINE4(epoll_ctl, int, epfd, int, op, int, fd,
 		} else
 			error = -EEXIST;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		if (full_check)
+			clear_tfile_check_list();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (full_check)
 			clear_tfile_check_list();
@@ -2247,11 +2326,16 @@ SYSCALL_DEFINE4(epoll_ctl, int, epfd, int, op, int, fd,
 
 error_tgt_fput:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (full_check) {
 		clear_tfile_check_list();
 		loop_check_gen++;
 		mutex_unlock(&epmutex);
 	}
+=======
+	if (full_check)
+		mutex_unlock(&epmutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (full_check)
 		mutex_unlock(&epmutex);

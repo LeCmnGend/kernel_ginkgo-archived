@@ -383,7 +383,10 @@ static int read_saved_cmdline(struct pevent *pevent)
 		goto out;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	buf[ret] = '\0';
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

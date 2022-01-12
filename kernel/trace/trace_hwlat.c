@@ -273,7 +273,10 @@ static void move_to_next_cpu(void)
 {
 	struct cpumask *current_mask = &save_cpumask;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct trace_array *tr = hwlat_trace;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int next_cpu;
@@ -290,7 +293,11 @@ static void move_to_next_cpu(void)
 
 	get_online_cpus();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cpumask_and(current_mask, cpu_online_mask, tr->tracing_cpumask);
+=======
+	cpumask_and(current_mask, cpu_online_mask, tracing_buffer_mask);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cpumask_and(current_mask, cpu_online_mask, tracing_buffer_mask);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -368,7 +375,11 @@ static int start_kthread(struct trace_array *tr)
 	current_mask = &save_cpumask;
 	get_online_cpus();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cpumask_and(current_mask, cpu_online_mask, tr->tracing_cpumask);
+=======
+	cpumask_and(current_mask, cpu_online_mask, tracing_buffer_mask);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cpumask_and(current_mask, cpu_online_mask, tracing_buffer_mask);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

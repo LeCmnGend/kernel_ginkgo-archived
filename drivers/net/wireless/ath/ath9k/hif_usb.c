@@ -448,6 +448,7 @@ static void hif_usb_stop(void *hif_handle)
 
 	/* The pending URBs have to be canceled. */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock_irqsave(&hif_dev->tx.tx_lock, flags);
 	list_for_each_entry_safe(tx_buf, tx_buf_tmp,
 				 &hif_dev->tx.tx_pending, list) {
@@ -462,10 +463,15 @@ static void hif_usb_stop(void *hif_handle)
 	}
 	spin_unlock_irqrestore(&hif_dev->tx.tx_lock, flags);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	list_for_each_entry_safe(tx_buf, tx_buf_tmp,
 				 &hif_dev->tx.tx_pending, list) {
 		usb_kill_urb(tx_buf->urb);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	usb_kill_anchored_urbs(&hif_dev->mgmt_submitted);
@@ -777,11 +783,16 @@ static void ath9k_hif_usb_dealloc_tx_urbs(struct hif_device_usb *hif_dev)
 	unsigned long flags;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock_irqsave(&hif_dev->tx.tx_lock, flags);
 	list_for_each_entry_safe(tx_buf, tx_buf_tmp,
 				 &hif_dev->tx.tx_buf, list) {
 		usb_get_urb(tx_buf->urb);
 		spin_unlock_irqrestore(&hif_dev->tx.tx_lock, flags);
+=======
+	list_for_each_entry_safe(tx_buf, tx_buf_tmp,
+				 &hif_dev->tx.tx_buf, list) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	list_for_each_entry_safe(tx_buf, tx_buf_tmp,
 				 &hif_dev->tx.tx_buf, list) {
@@ -792,9 +803,13 @@ static void ath9k_hif_usb_dealloc_tx_urbs(struct hif_device_usb *hif_dev)
 		kfree(tx_buf->buf);
 		kfree(tx_buf);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		spin_lock_irqsave(&hif_dev->tx.tx_lock, flags);
 	}
 	spin_unlock_irqrestore(&hif_dev->tx.tx_lock, flags);
+=======
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	}
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -804,11 +819,16 @@ static void ath9k_hif_usb_dealloc_tx_urbs(struct hif_device_usb *hif_dev)
 	spin_unlock_irqrestore(&hif_dev->tx.tx_lock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock_irqsave(&hif_dev->tx.tx_lock, flags);
 	list_for_each_entry_safe(tx_buf, tx_buf_tmp,
 				 &hif_dev->tx.tx_pending, list) {
 		usb_get_urb(tx_buf->urb);
 		spin_unlock_irqrestore(&hif_dev->tx.tx_lock, flags);
+=======
+	list_for_each_entry_safe(tx_buf, tx_buf_tmp,
+				 &hif_dev->tx.tx_pending, list) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	list_for_each_entry_safe(tx_buf, tx_buf_tmp,
 				 &hif_dev->tx.tx_pending, list) {
@@ -819,9 +839,13 @@ static void ath9k_hif_usb_dealloc_tx_urbs(struct hif_device_usb *hif_dev)
 		kfree(tx_buf->buf);
 		kfree(tx_buf);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		spin_lock_irqsave(&hif_dev->tx.tx_lock, flags);
 	}
 	spin_unlock_irqrestore(&hif_dev->tx.tx_lock, flags);
+=======
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	}
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

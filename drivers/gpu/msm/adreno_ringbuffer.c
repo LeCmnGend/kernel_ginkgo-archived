@@ -92,8 +92,11 @@ static void adreno_ringbuffer_wptr(struct adreno_device *adreno_dev,
 	struct adreno_gpudev *gpudev = ADRENO_GPU_DEVICE(adreno_dev);
 	unsigned long flags;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool write = false;
 	unsigned int val;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret = 0;
@@ -120,9 +123,12 @@ static void adreno_ringbuffer_wptr(struct adreno_device *adreno_dev,
 				gpudev->gpu_keepalive(adreno_dev, true);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			write = true;
 			val = rb->_wptr;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			/*
 			 * Ensure the write posted after a possible
 			 * GMU wakeup (write could have dropped during wakeup)
@@ -130,6 +136,9 @@ static void adreno_ringbuffer_wptr(struct adreno_device *adreno_dev,
 			ret = adreno_gmu_fenced_write(adreno_dev,
 				ADRENO_REG_CP_RB_WPTR, rb->_wptr,
 				FENCE_STATUS_WRITEDROPPED0_MASK);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			rb->skip_inline_wptr = false;
 			if (gpudev->gpu_keepalive)
@@ -150,6 +159,7 @@ static void adreno_ringbuffer_wptr(struct adreno_device *adreno_dev,
 	spin_unlock_irqrestore(&rb->preempt_lock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Ensure the write posted after a possible
 	 * GMU wakeup (write could have dropped during wakeup)
@@ -158,6 +168,8 @@ static void adreno_ringbuffer_wptr(struct adreno_device *adreno_dev,
 		ret = adreno_gmu_fenced_write(adreno_dev, ADRENO_REG_CP_RB_WPTR,
 			val, FENCE_STATUS_WRITEDROPPED0_MASK);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret) {
@@ -994,7 +1006,10 @@ int adreno_ringbuffer_submitcmd(struct adreno_device *adreno_dev,
 	unsigned int numibs = 0;
 	unsigned int *link;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int link_onstack[SZ_256] __aligned(8);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned int *cmds;
@@ -1132,6 +1147,7 @@ int adreno_ringbuffer_submitcmd(struct adreno_device *adreno_dev,
 		dwords += 4;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (likely(dwords <= ARRAY_SIZE(link_onstack))) {
 		memset(link_onstack, 0, dwords * sizeof(unsigned int));
 		link = link_onstack;
@@ -1142,10 +1158,15 @@ int adreno_ringbuffer_submitcmd(struct adreno_device *adreno_dev,
 			goto done;
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	link = kcalloc(dwords, sizeof(unsigned int), GFP_KERNEL);
 	if (!link) {
 		ret = -ENOMEM;
 		goto done;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -1275,8 +1296,12 @@ done:
 			drawobj->flags, ret, drawctxt->type);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(link != link_onstack))
 		kfree(link);
+=======
+	kfree(link);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(link);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

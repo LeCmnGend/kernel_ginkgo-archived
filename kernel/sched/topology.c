@@ -418,10 +418,16 @@ DEFINE_PER_CPU(int, sd_llc_id);
 DEFINE_PER_CPU(struct sched_domain_shared *, sd_llc_shared);
 DEFINE_PER_CPU(struct sched_domain *, sd_numa);
 <<<<<<< HEAD
+<<<<<<< HEAD
 DEFINE_PER_CPU(struct sched_domain *, sd_ea);
 DEFINE_PER_CPU(struct sched_domain *, sd_scs);
 DEFINE_PER_CPU(struct sched_domain *, sd_asym_packing);
 DEFINE_PER_CPU(struct sched_domain *, sd_asym_cpucapacity);
+=======
+DEFINE_PER_CPU(struct sched_domain *, sd_asym);
+DEFINE_PER_CPU(struct sched_domain *, sd_ea);
+DEFINE_PER_CPU(struct sched_domain *, sd_scs);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 DEFINE_PER_CPU(struct sched_domain *, sd_asym);
 DEFINE_PER_CPU(struct sched_domain *, sd_ea);
@@ -454,10 +460,14 @@ static void update_top_cache_domain(int cpu)
 
 	sd = highest_flag_domain(cpu, SD_ASYM_PACKING);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rcu_assign_pointer(per_cpu(sd_asym_packing, cpu), sd);
 
 	sd = lowest_flag_domain(cpu, SD_ASYM_CPUCAPACITY);
 	rcu_assign_pointer(per_cpu(sd_asym_cpucapacity, cpu), sd);
+=======
+	rcu_assign_pointer(per_cpu(sd_asym, cpu), sd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rcu_assign_pointer(per_cpu(sd_asym, cpu), sd);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -548,8 +558,13 @@ static int __init isolated_cpu_setup(char *str)
 	alloc_bootmem_cpumask_var(&cpu_isolated_map);
 	ret = cpulist_parse(str, cpu_isolated_map);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret || cpumask_last(cpu_isolated_map) >= nr_cpu_ids) {
 		pr_err("sched: Error, all isolcpus= values must be between 0 and %u - ignoring them.\n", nr_cpu_ids-1);
+=======
+	if (ret) {
+		pr_err("sched: Error, all isolcpus= values must be between 0 and %u\n", nr_cpu_ids);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret) {
 		pr_err("sched: Error, all isolcpus= values must be between 0 and %u\n", nr_cpu_ids);
@@ -916,7 +931,10 @@ static struct sched_group *get_group(int cpu, struct sd_data *sdd)
 	struct sched_domain *child = sd->child;
 	struct sched_group *sg;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool already_visited;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -927,6 +945,7 @@ static struct sched_group *get_group(int cpu, struct sd_data *sdd)
 	sg->sgc = *per_cpu_ptr(sdd->sgc, cpu);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Increase refcounts for claim_allocations: */
 	already_visited = atomic_inc_return(&sg->ref) > 1;
 	/* sgc visits should follow a similar trend as sg */
@@ -935,6 +954,11 @@ static struct sched_group *get_group(int cpu, struct sd_data *sdd)
 	/* If we have already visited that group, it's already initialized. */
 	if (already_visited)
 		return sg;
+=======
+	/* For claim_allocations: */
+	atomic_inc(&sg->ref);
+	atomic_inc(&sg->sgc->ref);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* For claim_allocations: */
 	atomic_inc(&sg->ref);
@@ -1304,7 +1328,11 @@ sd_init(struct sched_domain_topology_level *tl,
 	if (WARN_ONCE(sd_flags & ~TOPOLOGY_SD_FLAGS,
 			"wrong sd_flags in topology description\n"))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		sd_flags &= TOPOLOGY_SD_FLAGS;
+=======
+		sd_flags &= ~TOPOLOGY_SD_FLAGS;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		sd_flags &= ~TOPOLOGY_SD_FLAGS;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1375,10 +1403,13 @@ sd_init(struct sched_domain_topology_level *tl,
 	 */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Don't attempt to spread across CPUs of different capacities. */
 	if ((sd->flags & SD_ASYM_CPUCAPACITY) && sd->child)
 		sd->child->flags &= ~SD_PREFER_SIBLING;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (sd->flags & SD_ASYM_CPUCAPACITY) {
 		struct sched_domain *t = sd;
 
@@ -1391,6 +1422,9 @@ sd_init(struct sched_domain_topology_level *tl,
 		for_each_lower_domain(t)
 			t->flags |= SD_BALANCE_WAKE;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (sd->flags & SD_SHARE_CPUCAPACITY) {

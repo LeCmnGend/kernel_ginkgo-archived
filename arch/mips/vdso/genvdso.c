@@ -127,7 +127,10 @@ static void *map_vdso(const char *path, size_t *_size)
 		fprintf(stderr, "%s: Failed to stat '%s': %s\n", program_name,
 			path, strerror(errno));
 <<<<<<< HEAD
+<<<<<<< HEAD
 		close(fd);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return NULL;
@@ -139,7 +142,10 @@ static void *map_vdso(const char *path, size_t *_size)
 		fprintf(stderr, "%s: Failed to map '%s': %s\n", program_name,
 			path, strerror(errno));
 <<<<<<< HEAD
+<<<<<<< HEAD
 		close(fd);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return NULL;
@@ -152,7 +158,10 @@ static void *map_vdso(const char *path, size_t *_size)
 		fprintf(stderr, "%s: '%s' is not an ELF file\n", program_name,
 			path);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		close(fd);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return NULL;
@@ -167,7 +176,10 @@ static void *map_vdso(const char *path, size_t *_size)
 		fprintf(stderr, "%s: '%s' has invalid ELF class\n",
 			program_name, path);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		close(fd);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return NULL;
@@ -182,7 +194,10 @@ static void *map_vdso(const char *path, size_t *_size)
 		fprintf(stderr, "%s: '%s' has invalid ELF data order\n",
 			program_name, path);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		close(fd);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return NULL;
@@ -193,7 +208,10 @@ static void *map_vdso(const char *path, size_t *_size)
 			"%s: '%s' has invalid ELF machine (expected EM_MIPS)\n",
 			program_name, path);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		close(fd);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return NULL;
@@ -202,7 +220,10 @@ static void *map_vdso(const char *path, size_t *_size)
 			"%s: '%s' has invalid ELF type (expected ET_DYN)\n",
 			program_name, path);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		close(fd);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return NULL;
@@ -210,7 +231,10 @@ static void *map_vdso(const char *path, size_t *_size)
 
 	*_size = stat.st_size;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	close(fd);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return addr;
@@ -317,7 +341,10 @@ int main(int argc, char **argv)
 	if (!get_symbols(dbg_vdso_path, dbg_vdso)) {
 		unlink(out_path);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		fclose(out_file);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return EXIT_FAILURE;
@@ -325,7 +352,10 @@ int main(int argc, char **argv)
 
 	fprintf(out_file, "};\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 	fclose(out_file);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

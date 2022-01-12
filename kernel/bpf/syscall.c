@@ -500,8 +500,11 @@ static int map_lookup_elem(union bpf_attr *attr)
 	struct bpf_map *map;
 	void *key, *value, *ptr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8 key_onstack[SZ_16] __aligned(sizeof(long));
 	u8 value_onstack[SZ_64] __aligned(sizeof(long));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32 value_size;
@@ -522,6 +525,7 @@ static int map_lookup_elem(union bpf_attr *attr)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (map->key_size <= sizeof(key_onstack)) {
 		key = key_onstack;
 		if (copy_from_user(key, ukey, map->key_size)) {
@@ -535,10 +539,15 @@ static int map_lookup_elem(union bpf_attr *attr)
 			goto err_put;
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	key = memdup_user(ukey, map->key_size);
 	if (IS_ERR(key)) {
 		err = PTR_ERR(key);
 		goto err_put;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -553,6 +562,7 @@ static int map_lookup_elem(union bpf_attr *attr)
 
 	err = -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (value_size <= sizeof(value_onstack)) {
 		value = value_onstack;
 	} else {
@@ -560,6 +570,11 @@ static int map_lookup_elem(union bpf_attr *attr)
 		if (!value)
 			goto free_key;
 	}
+=======
+	value = kmalloc(value_size, GFP_USER | __GFP_NOWARN);
+	if (!value)
+		goto free_key;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	value = kmalloc(value_size, GFP_USER | __GFP_NOWARN);
 	if (!value)
@@ -601,11 +616,17 @@ static int map_lookup_elem(union bpf_attr *attr)
 
 free_value:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (value != value_onstack)
 		kfree(value);
 free_key:
 	if (key != key_onstack)
 		kfree(key);
+=======
+	kfree(value);
+free_key:
+	kfree(key);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(value);
 free_key:
@@ -637,8 +658,11 @@ static int map_update_elem(union bpf_attr *attr)
 	struct bpf_map *map;
 	void *key, *value;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8 key_onstack[SZ_16] __aligned(sizeof(long));
 	u8 value_onstack[SZ_64] __aligned(sizeof(long));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32 value_size;
@@ -659,6 +683,7 @@ static int map_update_elem(union bpf_attr *attr)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (map->key_size <= sizeof(key_onstack)) {
 		key = key_onstack;
 		if (copy_from_user(key, ukey, map->key_size)) {
@@ -672,10 +697,15 @@ static int map_update_elem(union bpf_attr *attr)
 			goto err_put;
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	key = memdup_user(ukey, map->key_size);
 	if (IS_ERR(key)) {
 		err = PTR_ERR(key);
 		goto err_put;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -687,6 +717,7 @@ static int map_update_elem(union bpf_attr *attr)
 		value_size = map->value_size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (value_size <= sizeof(value_onstack)) {
 		value = value_onstack;
 	} else {
@@ -696,10 +727,15 @@ static int map_update_elem(union bpf_attr *attr)
 			goto free_key;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = -ENOMEM;
 	value = kmalloc(value_size, GFP_USER | __GFP_NOWARN);
 	if (!value)
 		goto free_key;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	err = -EFAULT;
@@ -742,11 +778,17 @@ static int map_update_elem(union bpf_attr *attr)
 		trace_bpf_map_update_elem(map, ufd, key, value);
 free_value:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (value != value_onstack)
 		kfree(value);
 free_key:
 	if (key != key_onstack)
 		kfree(key);
+=======
+	kfree(value);
+free_key:
+	kfree(key);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(value);
 free_key:
@@ -767,7 +809,10 @@ static int map_delete_elem(union bpf_attr *attr)
 	struct fd f;
 	void *key;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8 key_onstack[SZ_16] __aligned(sizeof(long));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int err;
@@ -786,6 +831,7 @@ static int map_delete_elem(union bpf_attr *attr)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (map->key_size <= sizeof(key_onstack)) {
 		key = key_onstack;
 		if (copy_from_user(key, ukey, map->key_size)) {
@@ -799,10 +845,15 @@ static int map_delete_elem(union bpf_attr *attr)
 			goto err_put;
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	key = memdup_user(ukey, map->key_size);
 	if (IS_ERR(key)) {
 		err = PTR_ERR(key);
 		goto err_put;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -818,8 +869,12 @@ static int map_delete_elem(union bpf_attr *attr)
 	if (!err)
 		trace_bpf_map_delete_elem(map, ufd, key);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (key != key_onstack)
 		kfree(key);
+=======
+	kfree(key);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(key);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -839,8 +894,11 @@ static int map_get_next_key(union bpf_attr *attr)
 	struct bpf_map *map;
 	void *key, *next_key;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8 key_onstack[SZ_16] __aligned(sizeof(long));
 	u8 next_key_onstack[SZ_64] __aligned(sizeof(long));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct fd f;
@@ -861,6 +919,7 @@ static int map_get_next_key(union bpf_attr *attr)
 
 	if (ukey) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (map->key_size <= sizeof(key_onstack)) {
 			key = key_onstack;
 			if (copy_from_user(key, ukey, map->key_size)) {
@@ -874,10 +933,15 @@ static int map_get_next_key(union bpf_attr *attr)
 				goto err_put;
 			}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		key = memdup_user(ukey, map->key_size);
 		if (IS_ERR(key)) {
 			err = PTR_ERR(key);
 			goto err_put;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 	} else {
@@ -886,6 +950,7 @@ static int map_get_next_key(union bpf_attr *attr)
 
 	err = -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (map->key_size <= sizeof(next_key_onstack)) {
 		next_key = next_key_onstack;
 	} else {
@@ -893,6 +958,11 @@ static int map_get_next_key(union bpf_attr *attr)
 		if (!next_key)
 			goto free_key;
 	}
+=======
+	next_key = kmalloc(map->key_size, GFP_USER);
+	if (!next_key)
+		goto free_key;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	next_key = kmalloc(map->key_size, GFP_USER);
 	if (!next_key)
@@ -914,11 +984,17 @@ static int map_get_next_key(union bpf_attr *attr)
 
 free_next_key:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (next_key != next_key_onstack)
 		kfree(next_key);
 free_key:
 	if (key != key_onstack)
 		kfree(key);
+=======
+	kfree(next_key);
+free_key:
+	kfree(key);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(next_key);
 free_key:

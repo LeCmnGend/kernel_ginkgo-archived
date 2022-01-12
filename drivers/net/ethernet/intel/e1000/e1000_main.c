@@ -568,6 +568,7 @@ void e1000_reinit_locked(struct e1000_adapter *adapter)
 	while (test_and_set_bit(__E1000_RESETTING, &adapter->flags))
 		msleep(1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* only run the task if not already down */
 	if (!test_bit(__E1000_DOWN, &adapter->flags)) {
@@ -575,6 +576,10 @@ void e1000_reinit_locked(struct e1000_adapter *adapter)
 		e1000_up(adapter);
 	}
 
+=======
+	e1000_down(adapter);
+	e1000_up(adapter);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	e1000_down(adapter);
 	e1000_up(adapter);
@@ -1469,6 +1474,7 @@ int e1000_close(struct net_device *netdev)
 	int count = E1000_CHECK_RESET_COUNT;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	while (test_and_set_bit(__E1000_RESETTING, &adapter->flags) && count--)
 		usleep_range(10000, 20000);
 
@@ -1479,10 +1485,15 @@ int e1000_close(struct net_device *netdev)
 	clear_bit(__E1000_RESETTING, &adapter->flags);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	while (test_bit(__E1000_RESETTING, &adapter->flags) && count--)
 		usleep_range(10000, 20000);
 
 	WARN_ON(test_bit(__E1000_RESETTING, &adapter->flags));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	e1000_down(adapter);
 	e1000_power_down_phy(adapter);

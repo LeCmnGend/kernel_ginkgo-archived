@@ -59,8 +59,12 @@ static int nfs42_proc_fallocate(struct rpc_message *msg, struct file *filep,
 				loff_t offset, loff_t len)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct inode *inode = file_inode(filep);
 	struct nfs_server *server = NFS_SERVER(inode);
+=======
+	struct nfs_server *server = NFS_SERVER(file_inode(filep));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct nfs_server *server = NFS_SERVER(file_inode(filep));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -73,6 +77,7 @@ static int nfs42_proc_fallocate(struct rpc_message *msg, struct file *filep,
 		return PTR_ERR(lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	exception.inode = inode;
 	exception.state = lock->open_context->state;
 
@@ -80,6 +85,11 @@ static int nfs42_proc_fallocate(struct rpc_message *msg, struct file *filep,
 	if (err)
 		goto out;
 
+=======
+	exception.inode = file_inode(filep);
+	exception.state = lock->open_context->state;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	exception.inode = file_inode(filep);
 	exception.state = lock->open_context->state;
@@ -94,7 +104,11 @@ static int nfs42_proc_fallocate(struct rpc_message *msg, struct file *filep,
 		err = nfs4_handle_exception(server, err, &exception);
 	} while (exception.retry);
 <<<<<<< HEAD
+<<<<<<< HEAD
 out:
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -136,6 +150,12 @@ int nfs42_proc_deallocate(struct file *filep, loff_t offset, loff_t len)
 
 	inode_lock(inode);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	err = nfs_sync_inode(inode);
+	if (err)
+		goto out_unlock;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = nfs_sync_inode(inode);
 	if (err)
@@ -148,7 +168,11 @@ int nfs42_proc_deallocate(struct file *filep, loff_t offset, loff_t len)
 	if (err == -EOPNOTSUPP)
 		NFS_SERVER(inode)->caps &= ~NFS_CAP_DEALLOCATE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+out_unlock:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 out_unlock:
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -330,10 +354,14 @@ static loff_t _nfs42_proc_llseek(struct file *filep,
 		return status;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (whence == SEEK_DATA && res.sr_eof)
 		return -NFS4ERR_NXIO;
 	else
 		return vfs_setpos(filep, res.sr_offset, inode->i_sb->s_maxbytes);
+=======
+	return vfs_setpos(filep, res.sr_offset, inode->i_sb->s_maxbytes);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return vfs_setpos(filep, res.sr_offset, inode->i_sb->s_maxbytes);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

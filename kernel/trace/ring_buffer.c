@@ -417,23 +417,32 @@ struct rb_event_info {
 /*
  * Used for which event context the event is in.
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  TRANSITION = 0
  *  NMI     = 1
  *  IRQ     = 2
  *  SOFTIRQ = 3
  *  NORMAL  = 4
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *  NMI     = 0
  *  IRQ     = 1
  *  SOFTIRQ = 2
  *  NORMAL  = 3
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * See trace_recursive_lock() comment below for more details.
  */
 enum {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	RB_CTX_TRANSITION,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	RB_CTX_NMI,
@@ -1638,7 +1647,11 @@ int ring_buffer_resize(struct ring_buffer *buffer, unsigned long size,
 	struct ring_buffer_per_cpu *cpu_buffer;
 	unsigned long nr_pages;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int cpu, err;
+=======
+	int cpu, err = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int cpu, err = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1648,7 +1661,11 @@ int ring_buffer_resize(struct ring_buffer *buffer, unsigned long size,
 	 */
 	if (!buffer)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return size;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return size;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1657,7 +1674,11 @@ int ring_buffer_resize(struct ring_buffer *buffer, unsigned long size,
 	if (cpu_id != RING_BUFFER_ALL_CPUS &&
 	    !cpumask_test_cpu(cpu_id, buffer->cpumask))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return size;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return size;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1801,7 +1822,11 @@ int ring_buffer_resize(struct ring_buffer *buffer, unsigned long size,
 
 	mutex_unlock(&buffer->mutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return 0;
+=======
+	return size;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return size;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2582,15 +2607,21 @@ rb_wakeups(struct ring_buffer *buffer, struct ring_buffer_per_cpu *cpu_buffer)
  * we use a bitmask trick.
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  bit 1 =  NMI context
  *  bit 2 =  IRQ context
  *  bit 3 =  SoftIRQ context
  *  bit 4 =  normal context.
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *  bit 0 =  NMI context
  *  bit 1 =  IRQ context
  *  bit 2 =  SoftIRQ context
  *  bit 3 =  normal context.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This works because this is the order of contexts that can
@@ -2614,6 +2645,7 @@ rb_wakeups(struct ring_buffer *buffer, struct ring_buffer_per_cpu *cpu_buffer)
  * The least significant bit can be cleared this way, and it
  * just so happens that it is the same bit corresponding to
  * the current context.
+<<<<<<< HEAD
 <<<<<<< HEAD
  *
  * Now the TRANSITION bit breaks the above slightly. The TRANSITION bit
@@ -2641,6 +2673,8 @@ rb_wakeups(struct ring_buffer *buffer, struct ring_buffer_per_cpu *cpu_buffer)
  * Note: The TRANSITION bit only handles a single transition between context.
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 
 static __always_inline int
@@ -2660,6 +2694,7 @@ trace_recursive_lock(struct ring_buffer_per_cpu *cpu_buffer)
 		bit = RB_CTX_NORMAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(val & (1 << bit))) {
 		/*
 		 * It is possible that this was called by transitioning
@@ -2670,6 +2705,10 @@ trace_recursive_lock(struct ring_buffer_per_cpu *cpu_buffer)
 		if (val & (1 << bit))
 			return 1;
 	}
+=======
+	if (unlikely(val & (1 << bit)))
+		return 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(val & (1 << bit)))
 		return 1;
@@ -3096,6 +3135,7 @@ static bool rb_per_cpu_empty(struct ring_buffer_per_cpu *cpu_buffer)
 		return true;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Reader should exhaust content in reader page */
 	if (reader->read != rb_page_commit(reader))
 		return false;
@@ -3121,10 +3161,15 @@ static bool rb_per_cpu_empty(struct ring_buffer_per_cpu *cpu_buffer)
 	 */
 	return rb_page_commit(commit) == 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return reader->read == rb_page_commit(reader) &&
 		(commit == reader ||
 		 (commit == head &&
 		  head->read == rb_page_commit(commit)));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -4331,8 +4376,11 @@ void ring_buffer_reset_cpu(struct ring_buffer *buffer, int cpu)
 	if (!cpumask_test_cpu(cpu, buffer->cpumask))
 		return;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* prevent another thread from changing buffer sizes */
 	mutex_lock(&buffer->mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -4359,8 +4407,11 @@ void ring_buffer_reset_cpu(struct ring_buffer *buffer, int cpu)
 	atomic_dec(&cpu_buffer->record_disabled);
 	atomic_dec(&buffer->resize_disabled);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	mutex_unlock(&buffer->mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

@@ -534,6 +534,7 @@ static void cgroup_get_live(struct cgroup *cgrp)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * __cgroup_task_count - count the number of tasks in a cgroup. The caller
  * is responsible for taking the css_set_lock.
@@ -567,6 +568,8 @@ int cgroup_task_count(const struct cgroup *cgrp)
 	return count;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct cgroup_subsys_state *of_css(struct kernfs_open_file *of)
@@ -669,8 +672,11 @@ EXPORT_SYMBOL_GPL(of_css);
 		else
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct kmem_cache *cgrp_cset_link_pool;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -692,6 +698,7 @@ struct css_set init_css_set = {
 	.mg_preload_node	= LIST_HEAD_INIT(init_css_set.mg_preload_node),
 	.mg_node		= LIST_HEAD_INIT(init_css_set.mg_node),
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/*
 	 * The following field is re-initialized when this cset gets linked
@@ -700,6 +707,8 @@ struct css_set init_css_set = {
 	 * early during boot.
 	 */
 	.dfl_cgrp		= &cgrp_dfl_root.cgrp,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -905,7 +914,11 @@ void put_css_set_locked(struct css_set *cset)
 		if (cgroup_parent(link->cgrp))
 			cgroup_put(link->cgrp);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kmem_cache_free(cgrp_cset_link_pool, link);
+=======
+		kfree(link);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kfree(link);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1059,7 +1072,11 @@ static void free_cgrp_cset_links(struct list_head *links_to_free)
 	list_for_each_entry_safe(link, tmp_link, links_to_free, cset_link) {
 		list_del(&link->cset_link);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kmem_cache_free(cgrp_cset_link_pool, link);
+=======
+		kfree(link);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kfree(link);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1083,7 +1100,11 @@ static int allocate_cgrp_cset_links(int count, struct list_head *tmp_links)
 
 	for (i = 0; i < count; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		link = kmem_cache_zalloc(cgrp_cset_link_pool, GFP_KERNEL);
+=======
+		link = kzalloc(sizeof(*link), GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		link = kzalloc(sizeof(*link), GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1299,7 +1320,11 @@ static void cgroup_destroy_root(struct cgroup_root *root)
 		list_del(&link->cset_link);
 		list_del(&link->cgrp_link);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kmem_cache_free(cgrp_cset_link_pool, link);
+=======
+		kfree(link);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kfree(link);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1440,7 +1465,11 @@ static char *cgroup_file_name(struct cgroup *cgrp, const struct cftype *cft,
 			 cft->name);
 	else
 <<<<<<< HEAD
+<<<<<<< HEAD
 		strscpy(buf, cft->name, CGROUP_FILE_NAME_MAX);
+=======
+		strncpy(buf, cft->name, CGROUP_FILE_NAME_MAX);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		strncpy(buf, cft->name, CGROUP_FILE_NAME_MAX);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1620,6 +1649,7 @@ static void css_clear_dir(struct cgroup_subsys_state *css)
 	css->flags &= ~CSS_VISIBLE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!css->ss) {
 		if (cgroup_on_dfl(cgrp))
 			cfts = cgroup_base_files;
@@ -1631,6 +1661,10 @@ static void css_clear_dir(struct cgroup_subsys_state *css)
 		list_for_each_entry(cfts, &css->ss->cfts, node)
 			cgroup_addrm_files(css, cgrp, cfts, false);
 	}
+=======
+	list_for_each_entry(cfts, &css->ss->cfts, node)
+		cgroup_addrm_files(css, cgrp, cfts, false);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	list_for_each_entry(cfts, &css->ss->cfts, node)
 		cgroup_addrm_files(css, cgrp, cfts, false);
@@ -1659,6 +1693,7 @@ static int css_populate_dir(struct cgroup_subsys_state *css)
 			cfts = cgroup1_base_files;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = cgroup_addrm_files(&cgrp->self, cgrp, cfts, true);
 		if (ret < 0)
 			return ret;
@@ -1670,6 +1705,8 @@ static int css_populate_dir(struct cgroup_subsys_state *css)
 				goto err;
 			}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return cgroup_addrm_files(&cgrp->self, cgrp, cfts, true);
 	}
 
@@ -1678,6 +1715,9 @@ static int css_populate_dir(struct cgroup_subsys_state *css)
 		if (ret < 0) {
 			failed_cfts = cfts;
 			goto err;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 	}
@@ -1938,9 +1978,15 @@ void init_cgroup_root(struct cgroup_root *root, struct cgroup_sb_opts *opts)
 	root->flags = opts->flags;
 	if (opts->release_agent)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		strscpy(root->release_agent_path, opts->release_agent, PATH_MAX);
 	if (opts->name)
 		strscpy(root->name, opts->name, MAX_CGROUP_ROOT_NAMELEN);
+=======
+		strcpy(root->release_agent_path, opts->release_agent);
+	if (opts->name)
+		strcpy(root->name, opts->name);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		strcpy(root->release_agent_path, opts->release_agent);
 	if (opts->name)
@@ -1951,7 +1997,11 @@ void init_cgroup_root(struct cgroup_root *root, struct cgroup_sb_opts *opts)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int cgroup_setup_root(struct cgroup_root *root, u16 ss_mask)
+=======
+int cgroup_setup_root(struct cgroup_root *root, u16 ss_mask, int ref_flags)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int cgroup_setup_root(struct cgroup_root *root, u16 ss_mask, int ref_flags)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1972,7 +2022,11 @@ int cgroup_setup_root(struct cgroup_root *root, u16 ss_mask, int ref_flags)
 
 	ret = percpu_ref_init(&root_cgrp->self.refcnt, css_release,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			      0, GFP_KERNEL);
+=======
+			      ref_flags, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			      ref_flags, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2153,7 +2207,11 @@ static void cgroup_kill_sb(struct super_block *sb)
 
 	/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * If @root doesn't have any children, start killing it.
+=======
+	 * If @root doesn't have any mounts or children, start killing it.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 * If @root doesn't have any mounts or children, start killing it.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2163,17 +2221,23 @@ static void cgroup_kill_sb(struct super_block *sb)
 	 * And don't kill the default root.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (list_empty(&root->cgrp.self.children) && root != &cgrp_dfl_root &&
 	    !percpu_ref_is_dying(&root->cgrp.self.refcnt))
 		percpu_ref_kill(&root->cgrp.self.refcnt);
 	cgroup_put(&root->cgrp);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!list_empty(&root->cgrp.self.children) ||
 	    root == &cgrp_dfl_root)
 		cgroup_put(&root->cgrp);
 	else
 		percpu_ref_kill(&root->cgrp.self.refcnt);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kernfs_kill_sb(sb);
 }
@@ -2404,6 +2468,7 @@ static int cgroup_migrate_execute(struct cgroup_mgctx *mgctx)
 			to_cset->nr_tasks++;
 			css_set_move_task(task, from_cset, to_cset, true);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			from_cset->nr_tasks--;
 			/*
 			 * If the source or destination cgroup is frozen,
@@ -2413,6 +2478,10 @@ static int cgroup_migrate_execute(struct cgroup_mgctx *mgctx)
 						    to_cset->dfl_cgrp);
 			put_css_set_locked(from_cset);
 
+=======
+			put_css_set_locked(from_cset);
+			from_cset->nr_tasks--;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			put_css_set_locked(from_cset);
 			from_cset->nr_tasks--;
@@ -2616,7 +2685,11 @@ int cgroup_migrate_prepare_dst(struct cgroup_mgctx *mgctx)
 		dst_cset = find_css_set(src_cset, src_cset->mg_dst_cgrp);
 		if (!dst_cset)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			return -ENOMEM;
+=======
+			goto err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto err;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2652,6 +2725,12 @@ int cgroup_migrate_prepare_dst(struct cgroup_mgctx *mgctx)
 
 	return 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+err:
+	cgroup_migrate_finish(mgctx);
+	return -ENOMEM;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 err:
 	cgroup_migrate_finish(mgctx);
@@ -3469,11 +3548,16 @@ static ssize_t cgroup_max_depth_write(struct kernfs_open_file *of,
 static int cgroup_events_show(struct seq_file *seq, void *v)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct cgroup *cgrp = seq_css(seq)->cgroup;
 
 	seq_printf(seq, "populated %d\n", cgroup_is_populated(cgrp));
 	seq_printf(seq, "frozen %d\n", test_bit(CGRP_FROZEN, &cgrp->flags));
 
+=======
+	seq_printf(seq, "populated %d\n",
+		   cgroup_is_populated(seq_css(seq)->cgroup));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	seq_printf(seq, "populated %d\n",
 		   cgroup_is_populated(seq_css(seq)->cgroup));
@@ -3567,6 +3651,7 @@ static void cgroup_pressure_release(struct kernfs_open_file *of)
 #endif /* CONFIG_PSI */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int cgroup_freeze_show(struct seq_file *seq, void *v)
 {
 	struct cgroup *cgrp = seq_css(seq)->cgroup;
@@ -3601,6 +3686,8 @@ static ssize_t cgroup_freeze_write(struct kernfs_open_file *of,
 	return nbytes;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int cgroup_file_open(struct kernfs_open_file *of)
@@ -4737,7 +4824,10 @@ static struct cftype cgroup_base_files[] = {
 	{
 		.name = "cgroup.threads",
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.flags = CFTYPE_NS_DELEGATABLE,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		.release = cgroup_procs_release,
@@ -4777,12 +4867,15 @@ static struct cftype cgroup_base_files[] = {
 		.seq_show = cgroup_stat_show,
 	},
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{
 		.name = "cgroup.freeze",
 		.flags = CFTYPE_NOT_ON_ROOT,
 		.seq_show = cgroup_freeze_show,
 		.write = cgroup_freeze_write,
 	},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_PSI
@@ -4837,15 +4930,21 @@ static struct cftype cgroup_base_files[] = {
  * steps to the already complex sequence.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void css_free_rwork_fn(struct work_struct *work)
 {
 	struct cgroup_subsys_state *css = container_of(to_rcu_work(work),
 				struct cgroup_subsys_state, destroy_rwork);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void css_free_work_fn(struct work_struct *work)
 {
 	struct cgroup_subsys_state *css =
 		container_of(work, struct cgroup_subsys_state, destroy_work);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct cgroup_subsys *ss = css->ss;
 	struct cgroup *cgrp = css->cgroup;
@@ -4893,7 +4992,10 @@ static void css_free_work_fn(struct work_struct *work)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void css_free_rcu_fn(struct rcu_head *rcu_head)
 {
 	struct cgroup_subsys_state *css =
@@ -4903,6 +5005,9 @@ static void css_free_rcu_fn(struct rcu_head *rcu_head)
 	queue_work(cgroup_destroy_wq, &css->destroy_work);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void css_release_work_fn(struct work_struct *work)
 {
@@ -4953,8 +5058,12 @@ static void css_release_work_fn(struct work_struct *work)
 	mutex_unlock(&cgroup_mutex);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	INIT_RCU_WORK(&css->destroy_rwork, css_free_rwork_fn);
 	queue_rcu_work(cgroup_destroy_wq, &css->destroy_rwork);
+=======
+	call_rcu(&css->rcu_head, css_free_rcu_fn);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	call_rcu(&css->rcu_head, css_free_rcu_fn);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5092,8 +5201,12 @@ err_list_del:
 	list_del_rcu(&css->sibling);
 err_free_css:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	INIT_RCU_WORK(&css->destroy_rwork, css_free_rwork_fn);
 	queue_rcu_work(cgroup_destroy_wq, &css->destroy_rwork);
+=======
+	call_rcu(&css->rcu_head, css_free_rcu_fn);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	call_rcu(&css->rcu_head, css_free_rcu_fn);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5142,6 +5255,7 @@ static struct cgroup *cgroup_create(struct cgroup *parent)
 		goto out_idr_free;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * New cgroup inherits effective freeze counter, and
 	 * if the parent has to be frozen, the child has too.
@@ -5160,10 +5274,13 @@ static struct cgroup *cgroup_create(struct cgroup *parent)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_irq(&css_set_lock);
 	for (tcgrp = cgrp; tcgrp; tcgrp = cgroup_parent(tcgrp)) {
 		cgrp->ancestor_ids[tcgrp->level] = tcgrp->id;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 		if (tcgrp != cgrp) {
 			tcgrp->nr_descendants++;
@@ -5176,6 +5293,10 @@ static struct cgroup *cgroup_create(struct cgroup *parent)
 			if (cgrp->freezer.e_freeze)
 				tcgrp->freezer.nr_frozen_descendants++;
 		}
+=======
+		if (tcgrp != cgrp)
+			tcgrp->nr_descendants++;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (tcgrp != cgrp)
 			tcgrp->nr_descendants++;
@@ -5461,13 +5582,19 @@ static int cgroup_destroy_locked(struct cgroup *cgrp)
 		kill_css(css);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* clear and remove @cgrp dir, @cgrp has an extra ref on its kn */
 	css_clear_dir(&cgrp->self);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * Remove @cgrp directory along with the base files.  @cgrp has an
 	 * extra ref on its kn.
 	 */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kernfs_remove(cgrp->kn);
 
@@ -5479,12 +5606,15 @@ static int cgroup_destroy_locked(struct cgroup *cgrp)
 		tcgrp->nr_descendants--;
 		tcgrp->nr_dying_descendants++;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/*
 		 * If the dying cgroup is frozen, decrease frozen descendants
 		 * counters of ancestor cgroups.
 		 */
 		if (test_bit(CGRP_FROZEN, &cgrp->flags))
 			tcgrp->freezer.nr_frozen_descendants--;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -5614,6 +5744,11 @@ int __init cgroup_init_early(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+static u16 cgroup_disable_mask __initdata;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static u16 cgroup_disable_mask __initdata;
 
@@ -5630,8 +5765,11 @@ int __init cgroup_init(void)
 	int ssid;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cgrp_cset_link_pool = KMEM_CACHE(cgrp_cset_link, SLAB_HWCACHE_ALIGN | SLAB_PANIC);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	BUILD_BUG_ON(CGROUP_SUBSYS_COUNT > 16);
@@ -5657,7 +5795,11 @@ int __init cgroup_init(void)
 		 css_set_hash(init_css_set.subsys));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	BUG_ON(cgroup_setup_root(&cgrp_dfl_root, 0));
+=======
+	BUG_ON(cgroup_setup_root(&cgrp_dfl_root, 0, 0));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	BUG_ON(cgroup_setup_root(&cgrp_dfl_root, 0, 0));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5685,15 +5827,21 @@ int __init cgroup_init(void)
 		 * both of which aren't available during early_init.
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!cgroup_ssid_enabled(ssid))
 			continue;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (cgroup_disable_mask & (1 << ssid)) {
 			static_branch_disable(cgroup_subsys_enabled_key[ssid]);
 			printk(KERN_INFO "Disabling %s control group subsystem\n",
 			       ss->name);
 			continue;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		if (cgroup1_ssid_disabled(ssid))
@@ -5957,6 +6105,7 @@ void cgroup_post_fork(struct task_struct *child)
 			css_set_move_task(child, NULL, cset, false);
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		/*
 		 * If the cgroup has to be frozen, the new task has too.
@@ -5977,6 +6126,8 @@ void cgroup_post_fork(struct task_struct *child)
 			 */
 		}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		spin_unlock_irq(&css_set_lock);
@@ -6029,12 +6180,15 @@ void cgroup_exit(struct task_struct *tsk)
 		list_add_tail(&tsk->cg_list, &cset->dying_tasks);
 		cset->nr_tasks--;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		if (unlikely(cgroup_task_frozen(tsk)))
 			cgroup_freezer_frozen_exit(tsk);
 		else if (unlikely(cgroup_task_freeze(tsk)))
 			cgroup_update_frozen(task_dfl_cgroup(tsk));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		spin_unlock_irq(&css_set_lock);
@@ -6086,10 +6240,14 @@ static int __init cgroup_disable(char *str)
 			    strcmp(token, ss->legacy_name))
 				continue;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 			static_branch_disable(cgroup_subsys_enabled_key[i]);
 			pr_info("Disabling %s control group subsystem\n",
 				ss->name);
+=======
+			cgroup_disable_mask |= 1 << i;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			cgroup_disable_mask |= 1 << i;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6278,8 +6436,11 @@ void cgroup_sk_clone(struct sock_cgroup_data *skcd)
 	/* Socket clone path */
 	if (skcd->val) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (skcd->no_refcnt)
 			return;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
@@ -6323,6 +6484,7 @@ int cgroup_bpf_detach(struct cgroup *cgrp, struct bpf_prog *prog,
 	return ret;
 }
 #endif /* CONFIG_CGROUP_BPF */
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 #ifdef CONFIG_SYSFS
@@ -6391,5 +6553,7 @@ static int __init cgroup_sysfs_init(void)
 }
 subsys_initcall(cgroup_sysfs_init);
 #endif /* CONFIG_SYSFS */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

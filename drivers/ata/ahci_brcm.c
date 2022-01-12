@@ -281,10 +281,13 @@ static int brcm_ahci_resume(struct device *dev)
 		return ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = ahci_platform_enable_regulators(hpriv);
 	if (ret)
 		goto out_disable_clks;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	brcm_sata_init(priv);
@@ -317,8 +320,11 @@ out_disable_platform_phys:
 out_disable_phys:
 	brcm_sata_phys_disable(priv);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ahci_platform_disable_regulators(hpriv);
 out_disable_clks:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ahci_platform_disable_clks(hpriv);
@@ -385,10 +391,13 @@ static int brcm_ahci_probe(struct platform_device *pdev)
 		goto out_reset;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = ahci_platform_enable_regulators(hpriv);
 	if (ret)
 		goto out_disable_clks;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Must be first so as to configure endianness including that
@@ -401,7 +410,11 @@ static int brcm_ahci_probe(struct platform_device *pdev)
 	if (!priv->port_mask) {
 		ret = -ENODEV;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_disable_regulators;
+=======
+		goto out_disable_clks;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto out_disable_clks;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -437,8 +450,11 @@ out_disable_platform_phys:
 out_disable_phys:
 	brcm_sata_phys_disable(priv);
 <<<<<<< HEAD
+<<<<<<< HEAD
 out_disable_regulators:
 	ahci_platform_disable_regulators(hpriv);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out_disable_clks:

@@ -194,7 +194,11 @@ static irqreturn_t pcl711_interrupt(int irq, void *d)
 	struct comedi_subdevice *s = dev->read_subdev;
 	struct comedi_cmd *cmd = &s->async->cmd;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned short data;
+=======
+	unsigned int data;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned int data;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -10,8 +10,11 @@
 #if IS_ENABLED(CONFIG_IPV6)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if !IS_BUILTIN(CONFIG_IPV6)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static ip6_icmp_send_t __rcu *ip6_icmp_send;
@@ -37,8 +40,12 @@ int inet6_unregister_icmp_sender(ip6_icmp_send_t *fn)
 EXPORT_SYMBOL(inet6_unregister_icmp_sender);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void __icmpv6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info,
 		   const struct inet6_skb_parm *parm)
+=======
+void icmpv6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void icmpv6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -47,6 +54,7 @@ void icmpv6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info)
 
 	rcu_read_lock();
 	send = rcu_dereference(ip6_icmp_send);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (send)
 		send(skb, type, code, info, NULL, parm);
@@ -90,6 +98,8 @@ out:
 EXPORT_SYMBOL(icmpv6_ndo_send);
 #endif
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!send)
 		goto out;
@@ -98,5 +108,8 @@ out:
 	rcu_read_unlock();
 }
 EXPORT_SYMBOL(icmpv6_send);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif

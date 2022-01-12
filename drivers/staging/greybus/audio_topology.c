@@ -462,6 +462,7 @@ static int gbcodec_mixer_dapm_ctl_put(struct snd_kcontrol *kcontrol,
 	connect = !!val;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = gb_pm_runtime_get_sync(bundle);
 	if (ret)
 		return ret;
@@ -471,6 +472,8 @@ static int gbcodec_mixer_dapm_ctl_put(struct snd_kcontrol *kcontrol,
 	if (ret)
 		goto exit;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* update ucontrol */
@@ -487,6 +490,7 @@ static int gbcodec_mixer_dapm_ctl_put(struct snd_kcontrol *kcontrol,
 			cpu_to_le32(ucontrol->value.integer.value[0]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = gb_audio_gb_set_control(module->mgmt_connection,
 					      data->ctl_id,
 					      GB_AUDIO_INVALID_INDEX, &gbvalue);
@@ -499,6 +503,8 @@ exit:
 				    __func__, kcontrol->id.name);
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = gb_pm_runtime_get_sync(bundle);
 		if (ret)
 			return ret;
@@ -518,6 +524,9 @@ exit:
 	}
 
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

@@ -358,7 +358,11 @@ nfs3_proc_create(struct inode *dir, struct dentry *dentry, struct iattr *sattr,
 
 			case NFS3_CREATE_UNCHECKED:
 <<<<<<< HEAD
+<<<<<<< HEAD
 				goto out_release_acls;
+=======
+				goto out;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				goto out;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -707,7 +711,11 @@ nfs3_proc_mknod(struct inode *dir, struct dentry *dentry, struct iattr *sattr,
 	default:
 		status = -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_release_acls;
+=======
+		goto out;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto out;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

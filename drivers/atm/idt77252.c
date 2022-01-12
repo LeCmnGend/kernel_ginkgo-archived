@@ -3609,7 +3609,11 @@ static int idt77252_init_one(struct pci_dev *pcidev,
 	if ((err = dma_set_mask_and_coherent(&pcidev->dev, DMA_BIT_MASK(32)))) {
 		printk("idt77252: can't enable DMA for PCI device at %s\n", pci_name(pcidev));
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto err_out_disable_pdev;
+=======
+		return err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return err;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

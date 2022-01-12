@@ -1251,7 +1251,10 @@ int ocfs2_setattr(struct dentry *dentry, struct iattr *attr)
 			}
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		down_write(&OCFS2_I(inode)->ip_alloc_sem);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		handle = ocfs2_start_trans(osb, OCFS2_INODE_UPDATE_CREDITS +
@@ -1260,7 +1263,11 @@ int ocfs2_setattr(struct dentry *dentry, struct iattr *attr)
 			status = PTR_ERR(handle);
 			mlog_errno(status);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto bail_unlock_alloc;
+=======
+			goto bail_unlock;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto bail_unlock;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1270,7 +1277,10 @@ int ocfs2_setattr(struct dentry *dentry, struct iattr *attr)
 			goto bail_commit;
 	} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		down_write(&OCFS2_I(inode)->ip_alloc_sem);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		handle = ocfs2_start_trans(osb, OCFS2_INODE_UPDATE_CREDITS);
@@ -1278,7 +1288,11 @@ int ocfs2_setattr(struct dentry *dentry, struct iattr *attr)
 			status = PTR_ERR(handle);
 			mlog_errno(status);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto bail_unlock_alloc;
+=======
+			goto bail_unlock;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto bail_unlock;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1295,8 +1309,11 @@ int ocfs2_setattr(struct dentry *dentry, struct iattr *attr)
 bail_commit:
 	ocfs2_commit_trans(osb, handle);
 <<<<<<< HEAD
+<<<<<<< HEAD
 bail_unlock_alloc:
 	up_write(&OCFS2_I(inode)->ip_alloc_sem);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 bail_unlock:
@@ -1553,6 +1570,7 @@ static void ocfs2_truncate_cluster_pages(struct inode *inode, u64 byte_start,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * zero out partial blocks of one cluster.
  *
@@ -1594,6 +1612,8 @@ static int ocfs2_zeroout_partial_cluster(struct inode *inode,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int ocfs2_zero_partial_clusters(struct inode *inode,
 				       u64 start, u64 len)
 {
@@ -1604,7 +1624,10 @@ static int ocfs2_zero_partial_clusters(struct inode *inode,
 	unsigned int csize = osb->s_clustersize;
 	handle_t *handle;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	loff_t isize = i_size_read(inode);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1628,6 +1651,7 @@ static int ocfs2_zero_partial_clusters(struct inode *inode,
 		goto out;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* No page cache for EOF blocks, issue zero out to disk. */
 	if (end > isize) {
 		/*
@@ -1648,6 +1672,8 @@ static int ocfs2_zero_partial_clusters(struct inode *inode,
 			goto out;
 		end = isize;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	handle = ocfs2_start_trans(osb, OCFS2_INODE_UPDATE_CREDITS);
@@ -1958,7 +1984,11 @@ static int __ocfs2_change_file_space(struct file *file, struct inode *inode,
 	int ret;
 	s64 llen;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	loff_t size, orig_isize;
+=======
+	loff_t size;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	loff_t size;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2054,6 +2084,7 @@ static int __ocfs2_change_file_space(struct file *file, struct inode *inode,
 		ret = -EINVAL;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	orig_isize = i_size_read(inode);
 	/* zeroout eof blocks in the cluster. */
@@ -2063,6 +2094,8 @@ static int __ocfs2_change_file_space(struct file *file, struct inode *inode,
 		if (!ret)
 			i_size_write(inode, size);
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	up_write(&OCFS2_I(inode)->ip_alloc_sem);
@@ -2082,6 +2115,12 @@ static int __ocfs2_change_file_space(struct file *file, struct inode *inode,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (change_size && i_size_read(inode) < size)
+		i_size_write(inode, size);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (change_size && i_size_read(inode) < size)
 		i_size_write(inode, size);

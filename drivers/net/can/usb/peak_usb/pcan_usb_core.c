@@ -155,6 +155,7 @@ void peak_usb_get_ts_tv(struct peak_time_ref *time_ref, u32 ts,
 	if (time_ref->tv_host.tv_sec > 0) {
 		u64 delta_us;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		s64 delta_ts = 0;
 
 		/* General case: dev_ts_1 < dev_ts_2 < ts, with:
@@ -205,6 +206,8 @@ void peak_usb_get_ts_tv(struct peak_time_ref *time_ref, u32 ts,
 		/* convert ticks number into microseconds */
 		delta_us = delta_ts * time_ref->adapter->us_per_ts_scale;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		delta_us = ts - time_ref->ts_dev_2;
 		if (ts < time_ref->ts_dev_2)
@@ -213,6 +216,9 @@ void peak_usb_get_ts_tv(struct peak_time_ref *time_ref, u32 ts,
 		delta_us += time_ref->ts_total;
 
 		delta_us *= time_ref->adapter->us_per_ts_scale;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		delta_us >>= time_ref->adapter->us_per_ts_shift;
 
@@ -894,7 +900,11 @@ static int peak_usb_create_dev(const struct peak_usb_adapter *peak_usb_adapter,
 		err = dev->adapter->dev_set_bus(dev, 0);
 		if (err)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto adap_dev_free;
+=======
+			goto lbl_unregister_candev;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto lbl_unregister_candev;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -910,10 +920,13 @@ static int peak_usb_create_dev(const struct peak_usb_adapter *peak_usb_adapter,
 	return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 adap_dev_free:
 	if (dev->adapter->dev_free)
 		dev->adapter->dev_free(dev);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 lbl_unregister_candev:

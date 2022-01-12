@@ -407,6 +407,7 @@ static int i2c_hid_set_power(struct i2c_client *client, int power_state)
 
 set_pwr_exit:
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/*
 	 * The HID over I2C specification states that if a DEVICE needs time
@@ -420,6 +421,8 @@ set_pwr_exit:
 	if (!ret && power_state == I2C_HID_PWR_ON)
 		msleep(60);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
@@ -444,7 +447,10 @@ static int i2c_hid_hwreset(struct i2c_client *client)
 		goto out_unlock;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * The HID over I2C specification states that if a DEVICE needs time
 	 * after the PWR_ON request, it should utilise CLOCK stretching.
@@ -454,6 +460,9 @@ static int i2c_hid_hwreset(struct i2c_client *client)
 	 */
 	usleep_range(1000, 5000);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	i2c_hid_dbg(ihid, "resetting...\n");
 
@@ -1108,8 +1117,13 @@ static int i2c_hid_probe(struct i2c_client *client,
 	hid->product = le16_to_cpu(ihid->hdesc.wProductID);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	snprintf(hid->name, sizeof(hid->name), "%s %04X:%04X",
 		 client->name, (u16)hid->vendor, (u16)hid->product);
+=======
+	snprintf(hid->name, sizeof(hid->name), "%s %04hX:%04hX",
+		 client->name, hid->vendor, hid->product);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	snprintf(hid->name, sizeof(hid->name), "%s %04hX:%04hX",
 		 client->name, hid->vendor, hid->product);

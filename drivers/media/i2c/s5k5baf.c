@@ -239,7 +239,11 @@ struct s5k5baf_gpio {
 enum s5k5baf_gpio_id {
 	STBY,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	RSET,
+=======
+	RST,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	RST,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -978,7 +982,11 @@ static int s5k5baf_power_on(struct s5k5baf *state)
 	s5k5baf_gpio_deassert(state, STBY);
 	usleep_range(50, 100);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	s5k5baf_gpio_deassert(state, RSET);
+=======
+	s5k5baf_gpio_deassert(state, RST);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	s5k5baf_gpio_deassert(state, RST);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1000,7 +1008,11 @@ static int s5k5baf_power_off(struct s5k5baf *state)
 	state->apply_crop = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	s5k5baf_gpio_assert(state, RSET);
+=======
+	s5k5baf_gpio_assert(state, RST);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	s5k5baf_gpio_assert(state, RST);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

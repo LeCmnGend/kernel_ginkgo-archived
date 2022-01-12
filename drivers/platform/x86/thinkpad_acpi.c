@@ -2478,7 +2478,11 @@ static void hotkey_compare_and_issue_event(struct tp_nvram_state *oldn,
 static int hotkey_kthread(void *data)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct tp_nvram_state s[2] = { 0 };
+=======
+	struct tp_nvram_state s[2];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct tp_nvram_state s[2];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3969,6 +3973,10 @@ static bool hotkey_notify_6xxx(const u32 hkey,
 	case TP_HKEY_EV_KEY_NUMLOCK:
 	case TP_HKEY_EV_KEY_FN:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	case TP_HKEY_EV_KEY_FN_ESC:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	case TP_HKEY_EV_KEY_FN_ESC:
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3979,6 +3987,7 @@ static bool hotkey_notify_6xxx(const u32 hkey,
 		return true;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case TP_HKEY_EV_KEY_FN_ESC:
 		/* Get the media key status to foce the status LED to update */
 		acpi_evalf(hkey_handle, NULL, "GMKS", "v");
@@ -3986,6 +3995,8 @@ static bool hotkey_notify_6xxx(const u32 hkey,
 		*ignore_acpi_ev = true;
 		return true;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case TP_HKEY_EV_TABLET_CHANGED:
@@ -6174,7 +6185,10 @@ enum { /* TPACPI_THERMAL_TPEC_* */
 	TP_EC_THERMAL_TMP0 = 0x78,	/* ACPI EC regs TMP 0..7 */
 	TP_EC_THERMAL_TMP8 = 0xC0,	/* ACPI EC regs TMP 8..15 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	TP_EC_FUNCREV      = 0xEF,      /* ACPI EC Functional revision */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	TP_EC_THERMAL_TMP_NA = -128,	/* ACPI EC sensor not available */
@@ -6376,7 +6390,11 @@ static const struct attribute_group thermal_temp_input8_group = {
 static int __init thermal_init(struct ibm_init_struct *iibm)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8 t, ta1, ta2, ver = 0;
+=======
+	u8 t, ta1, ta2;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u8 t, ta1, ta2;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6395,6 +6413,7 @@ static int __init thermal_init(struct ibm_init_struct *iibm)
 		 * non-implemented, thermal sensors return 0x80 when
 		 * not available
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 * The above rule is unfortunately flawed. This has been seen with
 		 * 0xC2 (power supply ID) causing thermal control problems.
 		 * The EC version can be determined by offset 0xEF and at least for
@@ -6403,6 +6422,9 @@ static int __init thermal_init(struct ibm_init_struct *iibm)
 		 */
 		if (!acpi_ec_read(TP_EC_FUNCREV, &ver))
 			pr_warn("Thinkpad ACPI EC unable to access EC version\n");
+=======
+		 */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		 */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6416,6 +6438,7 @@ static int __init thermal_init(struct ibm_init_struct *iibm)
 				break;
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (ver < 3) {
 				if (acpi_ec_read(TP_EC_THERMAL_TMP8 + i, &t)) {
 					ta2 |= t;
@@ -6424,11 +6447,16 @@ static int __init thermal_init(struct ibm_init_struct *iibm)
 					break;
 				}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (acpi_ec_read(TP_EC_THERMAL_TMP8 + i, &t)) {
 				ta2 |= t;
 			} else {
 				ta1 = 0;
 				break;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			}
 		}
@@ -6443,12 +6471,18 @@ static int __init thermal_init(struct ibm_init_struct *iibm)
 			}
 		} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (ver >= 3)
 				thermal_read_mode = TPACPI_THERMAL_TPEC_8;
 			else
 				thermal_read_mode =
 					(ta2 != 0) ?
 					TPACPI_THERMAL_TPEC_16 : TPACPI_THERMAL_TPEC_8;
+=======
+			thermal_read_mode =
+			    (ta2 != 0) ?
+			    TPACPI_THERMAL_TPEC_16 : TPACPI_THERMAL_TPEC_8;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			thermal_read_mode =
 			    (ta2 != 0) ?
@@ -6805,10 +6839,15 @@ static int __init tpacpi_query_bcl_levels(acpi_handle handle)
 		acpi_status status = acpi_evaluate_object(child->handle, "_BCL",
 							  NULL, &buffer);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ACPI_FAILURE(status)) {
 			buffer.length = ACPI_ALLOCATE_BUFFER;
 			continue;
 		}
+=======
+		if (ACPI_FAILURE(status))
+			continue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (ACPI_FAILURE(status))
 			continue;

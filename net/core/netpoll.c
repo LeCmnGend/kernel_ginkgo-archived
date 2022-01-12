@@ -29,7 +29,10 @@
 #include <linux/export.h>
 #include <linux/if_vlan.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <net/dsa.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <net/tcp.h>
@@ -184,7 +187,11 @@ static void poll_napi(struct net_device *dev)
 	int cpu = smp_processor_id();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	list_for_each_entry_rcu(napi, &dev->napi_list, dev_list) {
+=======
+	list_for_each_entry(napi, &dev->napi_list, dev_list) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	list_for_each_entry(napi, &dev->napi_list, dev_list) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -670,8 +677,12 @@ EXPORT_SYMBOL_GPL(__netpoll_setup);
 int netpoll_setup(struct netpoll *np)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct net_device *ndev = NULL, *dev = NULL;
 	struct net *net = current->nsproxy->net_ns;
+=======
+	struct net_device *ndev = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct net_device *ndev = NULL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -680,14 +691,20 @@ int netpoll_setup(struct netpoll *np)
 
 	rtnl_lock();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (np->dev_name[0])
 		ndev = __dev_get_by_name(net, np->dev_name);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (np->dev_name[0]) {
 		struct net *net = current->nsproxy->net_ns;
 		ndev = __dev_get_by_name(net, np->dev_name);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!ndev) {
 		np_err(np, "%s doesn't exist, aborting\n", np->dev_name);
@@ -696,6 +713,7 @@ int netpoll_setup(struct netpoll *np)
 	}
 	dev_hold(ndev);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	/* bring up DSA management network devices up first */
 	for_each_netdev(net, dev) {
@@ -710,6 +728,8 @@ int netpoll_setup(struct netpoll *np)
 		}
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (netdev_master_upper_dev_get(ndev)) {

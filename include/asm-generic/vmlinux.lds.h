@@ -254,8 +254,12 @@
 #define PAGE_ALIGNED_DATA(page_align)					\
 	. = ALIGN(page_align);						\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	*(.data..page_aligned)						\
 	. = ALIGN(page_align);
+=======
+	*(.data..page_aligned)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	*(.data..page_aligned)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -466,10 +470,14 @@
 #define TEXT_TEXT							\
 		ALIGN_FUNCTION();					\
 <<<<<<< HEAD
+<<<<<<< HEAD
 		*(.text.hot .text.hot.*)				\
 		*(TEXT_MAIN .text.fixup)				\
 		*(.text.unlikely .text.unlikely.*)			\
 		*(.text.unknown .text.unknown.*)			\
+=======
+		*(.text.hot TEXT_MAIN .text.fixup .text.unlikely)	\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		*(.text.hot TEXT_MAIN .text.fixup .text.unlikely)	\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -478,7 +486,10 @@
 		*(TEXT_CFI_MAIN) 					\
 		*(.ref.text)						\
 <<<<<<< HEAD
+<<<<<<< HEAD
 		*(.text.asan.* .text.tsan.*)				\
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	MEM_KEEP(init.text)						\
@@ -640,9 +651,13 @@
 	.bss : AT(ADDR(.bss) - LOAD_OFFSET) {				\
 		BSS_FIRST_SECTIONS					\
 <<<<<<< HEAD
+<<<<<<< HEAD
 		. = ALIGN(PAGE_SIZE);					\
 		*(.bss..page_aligned)					\
 		. = ALIGN(PAGE_SIZE);					\
+=======
+		*(.bss..page_aligned)					\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		*(.bss..page_aligned)					\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -690,6 +705,7 @@
 		.debug_types	0 : { *(.debug_types) }			\
 		/* DWARF 5 */						\
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.debug_addr	0 : { *(.debug_addr) }			\
 		.debug_line_str	0 : { *(.debug_line_str) }		\
 		.debug_loclists	0 : { *(.debug_loclists) }		\
@@ -697,6 +713,10 @@
 		.debug_names	0 : { *(.debug_names) }			\
 		.debug_rnglists	0 : { *(.debug_rnglists) }		\
 		.debug_str_offsets	0 : { *(.debug_str_offsets) }
+=======
+		.debug_macro	0 : { *(.debug_macro) }			\
+		.debug_addr	0 : { *(.debug_addr) }
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.debug_macro	0 : { *(.debug_macro) }			\
 		.debug_addr	0 : { *(.debug_addr) }

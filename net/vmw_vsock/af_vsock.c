@@ -636,9 +636,14 @@ struct sock *__vsock_create(struct net *net,
 		vsk->owner = get_cred(psk->owner);
 		vsk->connect_timeout = psk->connect_timeout;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		security_sk_clone(parent, sk);
 	} else {
 		vsk->trusted = ns_capable_noaudit(&init_user_ns, CAP_NET_ADMIN);
+=======
+	} else {
+		vsk->trusted = capable(CAP_NET_ADMIN);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	} else {
 		vsk->trusted = capable(CAP_NET_ADMIN);
@@ -830,6 +835,7 @@ static int vsock_shutdown(struct socket *sock, int mode)
 
 	sk = sock->sk;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	lock_sock(sk);
 	if (sock->state == SS_UNCONNECTED) {
@@ -837,10 +843,15 @@ static int vsock_shutdown(struct socket *sock, int mode)
 		if (sk->sk_type == SOCK_STREAM)
 			goto out;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (sock->state == SS_UNCONNECTED) {
 		err = -ENOTCONN;
 		if (sk->sk_type == SOCK_STREAM)
 			return err;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
 		sock->state = SS_DISCONNECTING;
@@ -851,13 +862,19 @@ static int vsock_shutdown(struct socket *sock, int mode)
 	mode = mode & (RCV_SHUTDOWN | SEND_SHUTDOWN);
 	if (mode) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		sk->sk_shutdown |= mode;
 		sk->sk_state_change(sk);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		lock_sock(sk);
 		sk->sk_shutdown |= mode;
 		sk->sk_state_change(sk);
 		release_sock(sk);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		if (sk->sk_type == SOCK_STREAM) {
@@ -867,8 +884,11 @@ static int vsock_shutdown(struct socket *sock, int mode)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 out:
 	release_sock(sk);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return err;
@@ -1140,6 +1160,10 @@ static void vsock_connect_timeout(struct work_struct *work)
 	struct sock *sk;
 	struct vsock_sock *vsk;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int cancel = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int cancel = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1154,15 +1178,21 @@ static void vsock_connect_timeout(struct work_struct *work)
 		sk->sk_err = ETIMEDOUT;
 		sk->sk_error_report(sk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		vsock_transport_cancel_pkt(vsk);
 	}
 	release_sock(sk);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		cancel = 1;
 	}
 	release_sock(sk);
 	if (cancel)
 		vsock_transport_cancel_pkt(vsk);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	sock_put(sk);
@@ -1267,7 +1297,11 @@ static int vsock_stream_connect(struct socket *sock, struct sockaddr *addr,
 		if (signal_pending(current)) {
 			err = sock_intr_errno(timeout);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			sk->sk_state = sk->sk_state == TCP_ESTABLISHED ? TCP_CLOSING : TCP_CLOSE;
+=======
+			sk->sk_state = TCP_CLOSE;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			sk->sk_state = TCP_CLOSE;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

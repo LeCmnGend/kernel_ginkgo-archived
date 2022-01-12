@@ -285,7 +285,10 @@ struct lis3lv02d {
 	u8                      *reg_cache;
 	bool			regs_stored;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool			init_required;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u8                      odr_mask;  /* ODR bit mask */

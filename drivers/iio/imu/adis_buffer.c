@@ -40,11 +40,16 @@ int adis_update_scan_mode(struct iio_dev *indio_dev,
 
 	adis->buffer = kzalloc(indio_dev->scan_bytes * 2, GFP_KERNEL);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!adis->buffer) {
 		kfree(adis->xfer);
 		adis->xfer = NULL;
 		return -ENOMEM;
 	}
+=======
+	if (!adis->buffer)
+		return -ENOMEM;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!adis->buffer)
 		return -ENOMEM;
@@ -89,6 +94,12 @@ static irqreturn_t adis_trigger_handler(int irq, void *p)
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (!adis->buffer)
+		return -ENOMEM;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!adis->buffer)
 		return -ENOMEM;

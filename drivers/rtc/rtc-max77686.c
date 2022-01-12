@@ -719,8 +719,13 @@ static int max77686_init_rtc_regmap(struct max77686_rtc_info *info)
 add_rtc_irq:
 	ret = regmap_add_irq_chip(info->rtc_regmap, info->rtc_irq,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				  IRQF_ONESHOT | IRQF_SHARED,
 				  0, info->drv_data->rtc_irq_chip,
+=======
+				  IRQF_TRIGGER_FALLING | IRQF_ONESHOT |
+				  IRQF_SHARED, 0, info->drv_data->rtc_irq_chip,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				  IRQF_TRIGGER_FALLING | IRQF_ONESHOT |
 				  IRQF_SHARED, 0, info->drv_data->rtc_irq_chip,

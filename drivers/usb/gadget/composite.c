@@ -3,7 +3,10 @@
  *
  * Copyright (C) 2006-2008 David Brownell
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -1209,7 +1212,11 @@ static void collect_langs(struct usb_gadget_strings **sp, __le16 *buf)
 		s = *sp;
 		language = cpu_to_le16(s->language);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		for (tmp = buf; *tmp && tmp < &buf[USB_MAX_STRING_LEN]; tmp++) {
+=======
+		for (tmp = buf; *tmp && tmp < &buf[126]; tmp++) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		for (tmp = buf; *tmp && tmp < &buf[126]; tmp++) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1288,7 +1295,11 @@ static int get_string(struct usb_composite_dev *cdev,
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		for (len = 0; len <= USB_MAX_STRING_LEN && s->wData[len]; len++)
+=======
+		for (len = 0; len <= 126 && s->wData[len]; len++)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		for (len = 0; len <= 126 && s->wData[len]; len++)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1811,7 +1822,11 @@ composite_setup(struct usb_gadget *gadget, const struct usb_ctrlrequest *ctrl)
 					cdev->desc.bMaxPacketSize0 = 9;
 				} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 					cdev->desc.bcdUSB = cpu_to_le16(0x0200);
+=======
+					cdev->desc.bcdUSB = cpu_to_le16(0x0210);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					cdev->desc.bcdUSB = cpu_to_le16(0x0210);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

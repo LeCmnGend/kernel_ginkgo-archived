@@ -147,7 +147,11 @@ static int ncsi_rsp_handler_ec(struct ncsi_request *nr)
 	ncm = &nc->modes[NCSI_MODE_ENABLE];
 	if (ncm->enable)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return -EBUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EBUSY;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -178,7 +182,11 @@ static int ncsi_rsp_handler_dc(struct ncsi_request *nr)
 	ncm = &nc->modes[NCSI_MODE_ENABLE];
 	if (!ncm->enable)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return -EBUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EBUSY;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -226,7 +234,11 @@ static int ncsi_rsp_handler_ecnt(struct ncsi_request *nr)
 	ncm = &nc->modes[NCSI_MODE_TX_ENABLE];
 	if (ncm->enable)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return -EBUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EBUSY;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -252,7 +264,11 @@ static int ncsi_rsp_handler_dcnt(struct ncsi_request *nr)
 	ncm = &nc->modes[NCSI_MODE_TX_ENABLE];
 	if (!ncm->enable)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return -EBUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EBUSY;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -280,7 +296,11 @@ static int ncsi_rsp_handler_ae(struct ncsi_request *nr)
 	ncm = &nc->modes[NCSI_MODE_AEN];
 	if (ncm->enable)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return -EBUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EBUSY;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -355,9 +375,15 @@ static int ncsi_rsp_handler_svf(struct ncsi_request *nr)
 	struct ncsi_dev_priv *ndp = nr->ndp;
 	struct ncsi_channel *nc;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct ncsi_channel_vlan_filter *ncf;
 	unsigned long flags;
 	void *bitmap;
+=======
+	struct ncsi_channel_filter *ncf;
+	unsigned short vlan;
+	int ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct ncsi_channel_filter *ncf;
 	unsigned short vlan;
@@ -372,6 +398,7 @@ static int ncsi_rsp_handler_svf(struct ncsi_request *nr)
 		return -ENODEV;
 
 	cmd = (struct ncsi_cmd_svf_pkt *)skb_network_header(nr->cmd);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	ncf = &nc->vlan_filter;
 	if (cmd->index > ncf->n_vids)
@@ -391,6 +418,8 @@ static int ncsi_rsp_handler_svf(struct ncsi_request *nr)
 
 	return 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ncf = nc->filters[NCSI_FILTER_VLAN];
 	if (!ncf)
 		return -ENOENT;
@@ -407,6 +436,9 @@ static int ncsi_rsp_handler_svf(struct ncsi_request *nr)
 	}
 
 	return ret;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -429,7 +461,11 @@ static int ncsi_rsp_handler_ev(struct ncsi_request *nr)
 	ncm = &nc->modes[NCSI_MODE_VLAN];
 	if (ncm->enable)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return -EBUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EBUSY;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -460,7 +496,11 @@ static int ncsi_rsp_handler_dv(struct ncsi_request *nr)
 	ncm = &nc->modes[NCSI_MODE_VLAN];
 	if (!ncm->enable)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return -EBUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EBUSY;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -477,12 +517,17 @@ static int ncsi_rsp_handler_sma(struct ncsi_request *nr)
 	struct ncsi_dev_priv *ndp = nr->ndp;
 	struct ncsi_channel *nc;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct ncsi_channel_mac_filter *ncf;
 	unsigned long flags;
 	void *bitmap;
 	bool enabled;
 	int index;
 
+=======
+	struct ncsi_channel_filter *ncf;
+	void *bitmap;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct ncsi_channel_filter *ncf;
 	void *bitmap;
@@ -499,6 +544,7 @@ static int ncsi_rsp_handler_sma(struct ncsi_request *nr)
 	 * isn't supported yet.
 	 */
 	cmd = (struct ncsi_cmd_sma_pkt *)skb_network_header(nr->cmd);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	enabled = cmd->at_e & 0x1;
 	ncf = &nc->mac_filter;
@@ -518,6 +564,8 @@ static int ncsi_rsp_handler_sma(struct ncsi_request *nr)
 	}
 	spin_unlock_irqrestore(&nc->lock, flags);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	switch (cmd->at_e >> 5) {
 	case 0x0:	/* UC address */
 		ncf = nc->filters[NCSI_FILTER_UC];
@@ -546,6 +594,9 @@ static int ncsi_rsp_handler_sma(struct ncsi_request *nr)
 
 		memset(ncf->data + 6 * cmd->index, 0, 6);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
@@ -569,7 +620,11 @@ static int ncsi_rsp_handler_ebf(struct ncsi_request *nr)
 	ncm = &nc->modes[NCSI_MODE_BC];
 	if (ncm->enable)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return -EBUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EBUSY;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -599,7 +654,11 @@ static int ncsi_rsp_handler_dbf(struct ncsi_request *nr)
 	ncm = &nc->modes[NCSI_MODE_BC];
 	if (!ncm->enable)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return -EBUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EBUSY;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -630,7 +689,11 @@ static int ncsi_rsp_handler_egmf(struct ncsi_request *nr)
 	ncm = &nc->modes[NCSI_MODE_MC];
 	if (ncm->enable)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return -EBUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EBUSY;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -660,7 +723,11 @@ static int ncsi_rsp_handler_dgmf(struct ncsi_request *nr)
 	ncm = &nc->modes[NCSI_MODE_MC];
 	if (!ncm->enable)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return -EBUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EBUSY;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -691,7 +758,11 @@ static int ncsi_rsp_handler_snfc(struct ncsi_request *nr)
 	ncm = &nc->modes[NCSI_MODE_FC];
 	if (ncm->enable)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return -EBUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EBUSY;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -738,7 +809,13 @@ static int ncsi_rsp_handler_gc(struct ncsi_request *nr)
 	struct ncsi_dev_priv *ndp = nr->ndp;
 	struct ncsi_channel *nc;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	size_t size;
+=======
+	struct ncsi_channel_filter *ncf;
+	size_t size, entry_size;
+	int cnt, i;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct ncsi_channel_filter *ncf;
 	size_t size, entry_size;
@@ -766,6 +843,7 @@ static int ncsi_rsp_handler_gc(struct ncsi_request *nr)
 				      NCSI_CAP_VLAN_MASK;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	size = (rsp->uc_cnt + rsp->mc_cnt + rsp->mixed_cnt) * ETH_ALEN;
 	nc->mac_filter.addrs = kzalloc(size, GFP_ATOMIC);
 	if (!nc->mac_filter.addrs)
@@ -785,6 +863,8 @@ static int ncsi_rsp_handler_gc(struct ncsi_request *nr)
 	nc->vlan_filter.bitmap = U64_MAX;
 	nc->vlan_filter.n_vids = rsp->vlan_cnt;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Build filters */
 	for (i = 0; i < NCSI_FILTER_MAX; i++) {
 		switch (i) {
@@ -831,6 +911,9 @@ static int ncsi_rsp_handler_gc(struct ncsi_request *nr)
 		}
 		nc->filters[i] = ncf;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
@@ -838,6 +921,7 @@ static int ncsi_rsp_handler_gc(struct ncsi_request *nr)
 
 static int ncsi_rsp_handler_gp(struct ncsi_request *nr)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	struct ncsi_channel_vlan_filter *ncvf;
 	struct ncsi_channel_mac_filter *ncmf;
@@ -850,12 +934,17 @@ static int ncsi_rsp_handler_gp(struct ncsi_request *nr)
 	void *bitmap;
 	int i;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct ncsi_rsp_gp_pkt *rsp;
 	struct ncsi_dev_priv *ndp = nr->ndp;
 	struct ncsi_channel *nc;
 	unsigned short enable, vlan;
 	unsigned char *pdata;
 	int table, i;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Find the channel */
@@ -891,6 +980,7 @@ static int ncsi_rsp_handler_gp(struct ncsi_request *nr)
 	pdata = (unsigned char *)rsp + 48;
 	enable = rsp->mac_enable;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ncmf = &nc->mac_filter;
 	spin_lock_irqsave(&nc->lock, flags);
 	bitmap = &ncmf->bitmap;
@@ -919,6 +1009,8 @@ static int ncsi_rsp_handler_gp(struct ncsi_request *nr)
 	}
 	spin_unlock_irqrestore(&nc->lock, flags);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	for (i = 0; i < rsp->mac_cnt; i++, pdata += 6) {
 		if (i >= (nc->filters[NCSI_FILTER_UC]->total +
 			  nc->filters[NCSI_FILTER_MC]->total))
@@ -949,6 +1041,9 @@ static int ncsi_rsp_handler_gp(struct ncsi_request *nr)
 
 		ncsi_add_filter(nc, NCSI_FILTER_VLAN, &vlan);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
@@ -1155,7 +1250,11 @@ int ncsi_rcv_rsp(struct sk_buff *skb, struct net_device *dev,
 
 	/* Find the NCSI device */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	nd = ncsi_find_dev(orig_dev);
+=======
+	nd = ncsi_find_dev(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	nd = ncsi_find_dev(dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1208,6 +1307,7 @@ int ncsi_rcv_rsp(struct sk_buff *skb, struct net_device *dev,
 		payload = ntohs(hdr->length);
 	ret = ncsi_validate_rsp_pkt(nr, payload);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret) {
 		netdev_warn(ndp->ndev.dev,
 			    "NCSI: 'bad' packet ignored for type 0x%x\n",
@@ -1222,11 +1322,16 @@ int ncsi_rcv_rsp(struct sk_buff *skb, struct net_device *dev,
 			   "NCSI: Handler for packet type 0x%x returned %d\n",
 			   hdr->type, ret);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret)
 		goto out;
 
 	/* Process the packet */
 	ret = nrh->handler(nr);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out:
 	ncsi_free_request(nr);

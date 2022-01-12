@@ -641,7 +641,11 @@ oom_dump_tasks
 Enables a system-wide task dump (excluding kernel threads) to be produced
 when the kernel performs an OOM-killing and includes such information as
 <<<<<<< HEAD
+<<<<<<< HEAD
 pid, uid, tgid, vm size, rss, pgtables_bytes, swapents, oom_score_adj
+=======
+pid, uid, tgid, vm size, rss, nr_ptes, nr_pmds, swapents, oom_score_adj
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 pid, uid, tgid, vm size, rss, nr_ptes, nr_pmds, swapents, oom_score_adj
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -145,7 +145,10 @@ static inline void arch_timer_set_cntkctl(u32 cntkctl)
 {
 	write_sysreg(cntkctl, cntkctl_el1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	isb();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

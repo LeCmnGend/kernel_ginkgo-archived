@@ -418,11 +418,15 @@ static int ds1307_get_time(struct device *dev, struct rtc_time *t)
 	tmp = regs[DS1307_REG_HOUR] & 0x3f;
 	t->tm_hour = bcd2bin(tmp);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* rx8130 is bit position, not BCD */
 	if (ds1307->type == rx_8130)
 		t->tm_wday = fls(regs[DS1307_REG_WDAY] & 0x7f);
 	else
 		t->tm_wday = bcd2bin(regs[DS1307_REG_WDAY] & 0x07) - 1;
+=======
+	t->tm_wday = bcd2bin(regs[DS1307_REG_WDAY] & 0x07) - 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	t->tm_wday = bcd2bin(regs[DS1307_REG_WDAY] & 0x07) - 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -474,11 +478,15 @@ static int ds1307_set_time(struct device *dev, struct rtc_time *t)
 	regs[DS1307_REG_MIN] = bin2bcd(t->tm_min);
 	regs[DS1307_REG_HOUR] = bin2bcd(t->tm_hour);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* rx8130 is bit position, not BCD */
 	if (ds1307->type == rx_8130)
 		regs[DS1307_REG_WDAY] = 1 << t->tm_wday;
 	else
 		regs[DS1307_REG_WDAY] = bin2bcd(t->tm_wday + 1);
+=======
+	regs[DS1307_REG_WDAY] = bin2bcd(t->tm_wday + 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	regs[DS1307_REG_WDAY] = bin2bcd(t->tm_wday + 1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

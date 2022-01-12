@@ -23,7 +23,10 @@ config VGA_CONSOLE
 	  Say Y.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config VGACON_SOFT_SCROLLBACK
        bool "Enable Scrollback Buffer in System RAM"
        depends on VGA_CONSOLE
@@ -70,6 +73,9 @@ config VGACON_SOFT_SCROLLBACK_PERSISTENT_ENABLE_BY_DEFAULT
 	  created tty device.
 	  So if you use a RAM-constrained system, say N here.
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config MDA_CONSOLE
 	depends on !M68K && !PARISC && ISA

@@ -494,7 +494,11 @@ static int axp20x_regulator_parse_dt(struct platform_device *pdev)
 {
 	struct device_node *np, *regulators;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret = 0;
+=======
+	int ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -513,6 +517,7 @@ static int axp20x_regulator_parse_dt(struct platform_device *pdev)
 		if (ret < 0) {
 			dev_err(&pdev->dev, "Error setting dcdc frequency: %d\n", ret);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		}
 		of_node_put(regulators);
 	}
@@ -520,6 +525,8 @@ static int axp20x_regulator_parse_dt(struct platform_device *pdev)
 	of_node_put(np);
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return ret;
 		}
 
@@ -527,6 +534,9 @@ static int axp20x_regulator_parse_dt(struct platform_device *pdev)
 	}
 
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

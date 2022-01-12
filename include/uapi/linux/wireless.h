@@ -75,12 +75,15 @@
 #include <linux/if.h>			/* for IFNAMSIZ and co... */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef __KERNEL__
 #	include <linux/stddef.h>	/* for offsetof */
 #else
 #	include <stddef.h>		/* for offsetof */
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /***************************** VERSION *****************************/
@@ -1100,7 +1103,12 @@ struct iw_event {
  * the end of the event, so they are bigger than IW_EV_POINT_LEN. Second,
  * we omit the pointer, so start at an offset. */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define IW_EV_POINT_OFF offsetof(struct iw_point, length)
+=======
+#define IW_EV_POINT_OFF (((char *) &(((struct iw_point *) NULL)->length)) - \
+			  (char *) NULL)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define IW_EV_POINT_OFF (((char *) &(((struct iw_point *) NULL)->length)) - \
 			  (char *) NULL)

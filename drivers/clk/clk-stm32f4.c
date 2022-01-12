@@ -454,7 +454,11 @@ struct stm32f4_pll {
 struct stm32f4_pll_post_div_data {
 	int idx;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int pll_idx;
+=======
+	u8 pll_num;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u8 pll_num;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -489,6 +493,7 @@ static const struct clk_div_table post_divr_table[] = {
 #define MAX_POST_DIV 3
 static const struct stm32f4_pll_post_div_data  post_div_data[MAX_POST_DIV] = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ CLK_I2SQ_PDIV, PLL_VCO_I2S, "plli2s-q-div", "plli2s-q",
 		CLK_SET_RATE_PARENT, STM32F4_RCC_DCKCFGR, 0, 5, 0, NULL},
 
@@ -497,6 +502,8 @@ static const struct stm32f4_pll_post_div_data  post_div_data[MAX_POST_DIV] = {
 
 	{ NO_IDX, PLL_VCO_SAI, "pllsai-r-div", "pllsai-r", CLK_SET_RATE_PARENT,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ CLK_I2SQ_PDIV, PLL_I2S, "plli2s-q-div", "plli2s-q",
 		CLK_SET_RATE_PARENT, STM32F4_RCC_DCKCFGR, 0, 5, 0, NULL},
 
@@ -504,6 +511,9 @@ static const struct stm32f4_pll_post_div_data  post_div_data[MAX_POST_DIV] = {
 		CLK_SET_RATE_PARENT, STM32F4_RCC_DCKCFGR, 8, 5, 0, NULL },
 
 	{ NO_IDX, PLL_SAI, "pllsai-r-div", "pllsai-r", CLK_SET_RATE_PARENT,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		STM32F4_RCC_DCKCFGR, 16, 2, 0, post_divr_table },
 };
@@ -1504,7 +1514,11 @@ static void __init stm32f4_rcc_init(struct device_node *np)
 				post_div->flag_div,
 				post_div->div_table,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				clks[post_div->pll_idx],
+=======
+				clks[post_div->pll_num],
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				clks[post_div->pll_num],
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

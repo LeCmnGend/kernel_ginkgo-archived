@@ -435,8 +435,11 @@ int dm_get_device(struct dm_target *ti, const char *path, fmode_t mode,
 	int r;
 	dev_t dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int major, minor;
 	char dummy;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct dm_dev_internal *dd;
@@ -444,6 +447,7 @@ int dm_get_device(struct dm_target *ti, const char *path, fmode_t mode,
 
 	BUG_ON(!t);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (sscanf(path, "%u:%u%c", &major, &minor, &dummy) == 2) {
 		/* Extract the major/minor numbers */
@@ -455,6 +459,11 @@ int dm_get_device(struct dm_target *ti, const char *path, fmode_t mode,
 		if (!dev)
 			return -ENODEV;
 	}
+=======
+	dev = dm_get_dev_t(path);
+	if (!dev)
+		return -ENODEV;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev = dm_get_dev_t(path);
 	if (!dev)
@@ -902,15 +911,21 @@ void dm_table_set_type(struct dm_table *t, enum dm_queue_mode type)
 EXPORT_SYMBOL_GPL(dm_table_set_type);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int device_not_dax_capable(struct dm_target *ti, struct dm_dev *dev,
 			       sector_t start, sector_t len, void *data)
 {
 	return !bdev_dax_supported(dev->bdev, PAGE_SIZE);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int device_supports_dax(struct dm_target *ti, struct dm_dev *dev,
 			       sector_t start, sector_t len, void *data)
 {
 	return bdev_dax_supported(dev->bdev, PAGE_SIZE);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -928,7 +943,11 @@ static bool dm_table_supports_dax(struct dm_table *t)
 
 		if (!ti->type->iterate_devices ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 		    ti->type->iterate_devices(ti, device_not_dax_capable, NULL))
+=======
+		    !ti->type->iterate_devices(ti, device_supports_dax, NULL))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		    !ti->type->iterate_devices(ti, device_supports_dax, NULL))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1328,13 +1347,19 @@ void dm_table_event_callback(struct dm_table *t,
 void dm_table_event(struct dm_table *t)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * You can no longer call dm_table_event() from interrupt
 	 * context, use a bottom half instead.
 	 */
 	BUG_ON(in_interrupt());
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_lock(&_event_lock);
 	if (t->event_fn)
@@ -1384,6 +1409,7 @@ struct dm_target *dm_table_find_target(struct dm_table *t, sector_t sector)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * type->iterate_devices() should be called when the sanity check needs to
  * iterate and check all underlying data devices. iterate_devices() will
@@ -1426,6 +1452,8 @@ static bool dm_table_any_dev_attr(struct dm_table *t,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int count_device(struct dm_target *ti, struct dm_dev *dev,
 			sector_t start, sector_t len, void *data)
 {
@@ -1463,8 +1491,13 @@ bool dm_table_has_no_data_devices(struct dm_table *table)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int device_not_zoned_model(struct dm_target *ti, struct dm_dev *dev,
 				  sector_t start, sector_t len, void *data)
+=======
+static int device_is_zoned_model(struct dm_target *ti, struct dm_dev *dev,
+				 sector_t start, sector_t len, void *data)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int device_is_zoned_model(struct dm_target *ti, struct dm_dev *dev,
 				 sector_t start, sector_t len, void *data)
@@ -1474,7 +1507,11 @@ static int device_is_zoned_model(struct dm_target *ti, struct dm_dev *dev,
 	enum blk_zoned_model *zoned_model = data;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return !q || blk_queue_zoned_model(q) != *zoned_model;
+=======
+	return q && blk_queue_zoned_model(q) == *zoned_model;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return q && blk_queue_zoned_model(q) == *zoned_model;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1495,7 +1532,11 @@ static bool dm_table_supports_zoned_model(struct dm_table *t,
 
 		if (!ti->type->iterate_devices ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 		    ti->type->iterate_devices(ti, device_not_zoned_model, &zoned_model))
+=======
+		    !ti->type->iterate_devices(ti, device_is_zoned_model, &zoned_model))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		    !ti->type->iterate_devices(ti, device_is_zoned_model, &zoned_model))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1506,8 +1547,13 @@ static bool dm_table_supports_zoned_model(struct dm_table *t,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int device_not_matches_zone_sectors(struct dm_target *ti, struct dm_dev *dev,
 					   sector_t start, sector_t len, void *data)
+=======
+static int device_matches_zone_sectors(struct dm_target *ti, struct dm_dev *dev,
+				       sector_t start, sector_t len, void *data)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int device_matches_zone_sectors(struct dm_target *ti, struct dm_dev *dev,
 				       sector_t start, sector_t len, void *data)
@@ -1517,8 +1563,11 @@ static int device_matches_zone_sectors(struct dm_target *ti, struct dm_dev *dev,
 	unsigned int *zone_sectors = data;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return !q || blk_queue_zone_sectors(q) != *zone_sectors;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return q && blk_queue_zone_sectors(q) == *zone_sectors;
 }
 
@@ -1537,6 +1586,9 @@ static bool dm_table_matches_zone_sectors(struct dm_table *t,
 	}
 
 	return true;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -1558,7 +1610,11 @@ static int validate_hardware_zoned_model(struct dm_table *table,
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (dm_table_any_dev_attr(table, device_not_matches_zone_sectors, &zone_sectors)) {
+=======
+	if (!dm_table_matches_zone_sectors(table, zone_sectors)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!dm_table_matches_zone_sectors(table, zone_sectors)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1800,6 +1856,7 @@ static int device_dax_write_cache_enabled(struct dm_target *ti,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int device_is_rotational(struct dm_target *ti, struct dm_dev *dev,
 				sector_t start, sector_t len, void *data)
 {
@@ -1807,6 +1864,8 @@ static int device_is_rotational(struct dm_target *ti, struct dm_dev *dev,
 
 	return q && !blk_queue_nonrot(q);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int dm_table_supports_dax_write_cache(struct dm_table *t)
 {
 	struct dm_target *ti;
@@ -1830,6 +1889,9 @@ static int device_is_nonrot(struct dm_target *ti, struct dm_dev *dev,
 	struct request_queue *q = bdev_get_queue(dev->bdev);
 
 	return q && blk_queue_nonrot(q);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -1842,6 +1904,7 @@ static int device_is_not_random(struct dm_target *ti, struct dm_dev *dev,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int queue_no_sg_merge(struct dm_target *ti, struct dm_dev *dev,
 			     sector_t start, sector_t len, void *data)
 {
@@ -1849,6 +1912,8 @@ static int queue_no_sg_merge(struct dm_target *ti, struct dm_dev *dev,
 
 	return q && test_bit(QUEUE_FLAG_NO_SG_MERGE, &q->queue_flags);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int queue_supports_sg_merge(struct dm_target *ti, struct dm_dev *dev,
 				   sector_t start, sector_t len, void *data)
 {
@@ -1872,6 +1937,9 @@ static bool dm_table_all_devices_attribute(struct dm_table *t,
 	}
 
 	return true;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -1972,7 +2040,10 @@ static int device_requires_stable_pages(struct dm_target *ti,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * If any underlying device requires stable pages, a table must require
  * them as well.  Only targets that support iterate_devices are considered:
@@ -1994,6 +2065,9 @@ static bool dm_table_requires_stable_pages(struct dm_table *t)
 	return false;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void dm_table_set_restrictions(struct dm_table *t, struct request_queue *q,
 			       struct queue_limits *limits)
@@ -2023,6 +2097,7 @@ void dm_table_set_restrictions(struct dm_table *t, struct request_queue *q,
 		queue_flag_clear_unlocked(QUEUE_FLAG_DAX, q);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (dm_table_any_dev_attr(t, device_dax_write_cache_enabled, NULL))
 		dax_write_cache(t->md->dax_dev, true);
 
@@ -2032,6 +2107,8 @@ void dm_table_set_restrictions(struct dm_table *t, struct request_queue *q,
 	else
 		queue_flag_set_unlocked(QUEUE_FLAG_NONROT, q);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (dm_table_supports_dax_write_cache(t))
 		dax_write_cache(t->md->dax_dev, true);
 
@@ -2040,6 +2117,9 @@ void dm_table_set_restrictions(struct dm_table *t, struct request_queue *q,
 		queue_flag_set_unlocked(QUEUE_FLAG_NONROT, q);
 	else
 		queue_flag_clear_unlocked(QUEUE_FLAG_NONROT, q);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!dm_table_supports_write_same(t))
@@ -2048,15 +2128,21 @@ void dm_table_set_restrictions(struct dm_table *t, struct request_queue *q,
 		q->limits.max_write_zeroes_sectors = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (dm_table_any_dev_attr(t, queue_no_sg_merge, NULL))
 		queue_flag_set_unlocked(QUEUE_FLAG_NO_SG_MERGE, q);
 	else
 		queue_flag_clear_unlocked(QUEUE_FLAG_NO_SG_MERGE, q);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (dm_table_all_devices_attribute(t, queue_supports_sg_merge))
 		queue_flag_clear_unlocked(QUEUE_FLAG_NO_SG_MERGE, q);
 	else
 		queue_flag_set_unlocked(QUEUE_FLAG_NO_SG_MERGE, q);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	dm_table_verify_integrity(t);
@@ -2067,11 +2153,16 @@ void dm_table_set_restrictions(struct dm_table *t, struct request_queue *q,
 	 * Some devices don't use blk_integrity but still want stable pages
 	 * because they do their own checksumming.
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * If any underlying device requires stable pages, a table must require
 	 * them as well.  Only targets that support iterate_devices are considered:
 	 * don't want error, zero, etc to require stable pages.
 	 */
 	if (dm_table_any_dev_attr(t, device_requires_stable_pages, NULL))
+=======
+	 */
+	if (dm_table_requires_stable_pages(t))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 */
 	if (dm_table_requires_stable_pages(t))
@@ -2087,8 +2178,12 @@ void dm_table_set_restrictions(struct dm_table *t, struct request_queue *q,
 	 * have it set.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (blk_queue_add_random(q) &&
 	    dm_table_any_dev_attr(t, device_is_not_random, NULL))
+=======
+	if (blk_queue_add_random(q) && dm_table_all_devices_attribute(t, device_is_not_random))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (blk_queue_add_random(q) && dm_table_all_devices_attribute(t, device_is_not_random))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

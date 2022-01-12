@@ -99,6 +99,7 @@ static struct platform_device *fsl_usb2_device_register(
 	pdev->dev.coherent_dma_mask = ofdev->dev.coherent_dma_mask;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!pdev->dev.dma_mask) {
 		pdev->dev.dma_mask = &ofdev->dev.coherent_dma_mask;
 	} else {
@@ -107,10 +108,15 @@ static struct platform_device *fsl_usb2_device_register(
 			goto error;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!pdev->dev.dma_mask)
 		pdev->dev.dma_mask = &ofdev->dev.coherent_dma_mask;
 	else
 		dma_set_mask(&pdev->dev, DMA_BIT_MASK(32));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	retval = platform_device_add_data(pdev, pdata, sizeof(*pdata));

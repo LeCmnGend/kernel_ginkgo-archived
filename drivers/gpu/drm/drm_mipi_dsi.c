@@ -1033,17 +1033,23 @@ EXPORT_SYMBOL(mipi_dsi_dcs_set_pixel_format);
 int mipi_dsi_dcs_set_tear_scanline(struct mipi_dsi_device *dsi, u16 scanline)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8 payload[2] = { scanline >> 8, scanline & 0xff };
 	ssize_t err;
 
 	err = mipi_dsi_dcs_write(dsi, MIPI_DCS_SET_TEAR_SCANLINE, payload,
 				 sizeof(payload));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u8 payload[3] = { MIPI_DCS_SET_TEAR_SCANLINE, scanline >> 8,
 			  scanline & 0xff };
 	ssize_t err;
 
 	err = mipi_dsi_generic_write(dsi, payload, sizeof(payload));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err < 0)
 		return err;

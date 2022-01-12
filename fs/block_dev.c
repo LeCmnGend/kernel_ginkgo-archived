@@ -1778,6 +1778,7 @@ static void __blkdev_put(struct block_device *bdev, fmode_t mode, int for_part)
 	struct block_device *victim = NULL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Sync early if it looks like we're the last one.  If someone else
 	 * opens the block device between now and the decrement of bd_openers
@@ -1788,6 +1789,8 @@ static void __blkdev_put(struct block_device *bdev, fmode_t mode, int for_part)
 	if (bdev->bd_openers == 1)
 		sync_blockdev(bdev);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_lock_nested(&bdev->bd_mutex, for_part);
@@ -1910,7 +1913,10 @@ ssize_t blkdev_write_iter(struct kiocb *iocb, struct iov_iter *from)
 	loff_t size = i_size_read(bd_inode);
 	struct blk_plug plug;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	size_t shorted = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ssize_t ret;
@@ -1931,11 +1937,15 @@ ssize_t blkdev_write_iter(struct kiocb *iocb, struct iov_iter *from)
 		return -EOPNOTSUPP;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	size -= iocb->ki_pos;
 	if (iov_iter_count(from) > size) {
 		shorted = iov_iter_count(from) - size;
 		iov_iter_truncate(from, size);
 	}
+=======
+	iov_iter_truncate(from, size - iocb->ki_pos);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	iov_iter_truncate(from, size - iocb->ki_pos);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1945,7 +1955,10 @@ ssize_t blkdev_write_iter(struct kiocb *iocb, struct iov_iter *from)
 	if (ret > 0)
 		ret = generic_write_sync(iocb, ret);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	iov_iter_reexpand(from, iov_iter_count(from) + shorted);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	blk_finish_plug(&plug);
@@ -1960,8 +1973,11 @@ ssize_t blkdev_read_iter(struct kiocb *iocb, struct iov_iter *to)
 	loff_t size = i_size_read(bd_inode);
 	loff_t pos = iocb->ki_pos;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	size_t shorted = 0;
 	ssize_t ret;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1969,6 +1985,7 @@ ssize_t blkdev_read_iter(struct kiocb *iocb, struct iov_iter *to)
 		return 0;
 
 	size -= pos;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (iov_iter_count(to) > size) {
 		shorted = iov_iter_count(to) - size;
@@ -1978,6 +1995,10 @@ ssize_t blkdev_read_iter(struct kiocb *iocb, struct iov_iter *to)
 	ret = generic_file_read_iter(iocb, to);
 	iov_iter_reexpand(to, iov_iter_count(to) + shorted);
 	return ret;
+=======
+	iov_iter_truncate(to, size);
+	return generic_file_read_iter(iocb, to);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	iov_iter_truncate(to, size);
 	return generic_file_read_iter(iocb, to);

@@ -558,9 +558,12 @@ void usb_stor_adjust_quirks(struct usb_device *udev, unsigned long *fflags)
 			f |= US_FL_NO_REPORT_LUNS;
 			break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		case 'k':
 			f |= US_FL_NO_SAME;
 			break;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		case 'l':

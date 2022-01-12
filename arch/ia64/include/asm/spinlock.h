@@ -128,7 +128,10 @@ static __always_inline void arch_spin_lock_flags(arch_spinlock_t *lock,
 	arch_spin_lock(lock);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define arch_spin_lock_flags	arch_spin_lock_flags
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -162,7 +165,10 @@ arch_read_lock_flags(arch_rwlock_t *lock, unsigned long flags)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define arch_read_lock_flags arch_read_lock_flags
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define arch_read_lock(lock) arch_read_lock_flags(lock, 0)
@@ -218,7 +224,10 @@ arch_write_lock_flags(arch_rwlock_t *lock, unsigned long flags)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define arch_write_lock_flags arch_write_lock_flags
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define arch_write_lock(rw) arch_write_lock_flags(rw, 0)
@@ -245,6 +254,11 @@ static inline void arch_write_unlock(arch_rwlock_t *x)
 #else /* !ASM_SUPPORTED */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define arch_write_lock_flags(l, flags) arch_write_lock(l)
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define arch_write_lock_flags(l, flags) arch_write_lock(l)
 
@@ -289,10 +303,16 @@ static inline int arch_read_trylock(arch_rwlock_t *x)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define arch_spin_relax(lock)	cpu_relax()
 #define arch_read_relax(lock)	cpu_relax()
 #define arch_write_relax(lock)	cpu_relax()
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /*  _ASM_IA64_SPINLOCK_H */

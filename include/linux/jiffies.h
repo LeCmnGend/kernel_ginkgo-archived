@@ -287,6 +287,7 @@ extern unsigned long preset_lpj;
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Convert jiffies to milliseconds and back.
  *
  * Avoid unnecessary multiplications/divisions in the
@@ -327,10 +328,15 @@ static inline unsigned int jiffies_to_usecs(const unsigned long j)
 #endif
 }
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Convert various time units to each other:
  */
 extern unsigned int jiffies_to_msecs(const unsigned long j);
 extern unsigned int jiffies_to_usecs(const unsigned long j);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static inline u64 jiffies_to_nsecs(const unsigned long j)
@@ -338,6 +344,7 @@ static inline u64 jiffies_to_nsecs(const unsigned long j)
 	return (u64)jiffies_to_usecs(j) * NSEC_PER_USEC;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static inline u64 jiffies64_to_nsecs(u64 j)
 {
@@ -348,6 +355,11 @@ static inline u64 jiffies64_to_nsecs(u64 j)
 #endif
 }
 
+=======
+extern u64 jiffies64_to_nsecs(u64 j);
+
+extern unsigned long __msecs_to_jiffies(const unsigned int m);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern u64 jiffies64_to_nsecs(u64 j);
 
@@ -390,6 +402,7 @@ static inline unsigned long _msecs_to_jiffies(const unsigned int m)
 }
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 /**
  * msecs_to_jiffies: - convert milliseconds to jiffies
@@ -425,6 +438,8 @@ static inline unsigned long __msecs_to_jiffies(const unsigned int m)
 	return _msecs_to_jiffies(m);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -464,6 +479,10 @@ static __always_inline unsigned long msecs_to_jiffies(const unsigned int m)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+extern unsigned long __usecs_to_jiffies(const unsigned int u);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern unsigned long __usecs_to_jiffies(const unsigned int u);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -481,6 +500,7 @@ static inline unsigned long _usecs_to_jiffies(const unsigned int u)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline unsigned long __usecs_to_jiffies(const unsigned int u)
 {
 	if (u > jiffies_to_usecs(MAX_JIFFY_OFFSET))
@@ -488,6 +508,8 @@ static inline unsigned long __usecs_to_jiffies(const unsigned int u)
 	return _usecs_to_jiffies(u);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -523,6 +545,7 @@ static __always_inline unsigned long usecs_to_jiffies(const unsigned int u)
 	}
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /*
  * The TICK_NSEC - 1 rounds up the value to the next resolution.  Note
@@ -584,6 +607,11 @@ extern unsigned long timespec64_to_jiffies(const struct timespec64 *value);
 extern void jiffies_to_timespec64(const unsigned long jiffies,
 				  struct timespec64 *value);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+extern unsigned long timespec64_to_jiffies(const struct timespec64 *value);
+extern void jiffies_to_timespec64(const unsigned long jiffies,
+				  struct timespec64 *value);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline unsigned long timespec_to_jiffies(const struct timespec *value)
 {
 	struct timespec64 ts = timespec_to_timespec64(*value);
@@ -600,6 +628,7 @@ static inline void jiffies_to_timespec(const unsigned long jiffies,
 	*value = timespec64_to_timespec(ts);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /*
  * We could use a similar algorithm to timespec_to_jiffies (with a
@@ -654,17 +683,23 @@ static inline clock_t jiffies_to_clock_t(unsigned long x)
 }
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern unsigned long timeval_to_jiffies(const struct timeval *value);
 extern void jiffies_to_timeval(const unsigned long jiffies,
 			       struct timeval *value);
 
 extern clock_t jiffies_to_clock_t(unsigned long x);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline clock_t jiffies_delta_to_clock_t(long delta)
 {
 	return jiffies_to_clock_t(max(0L, delta));
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static inline unsigned long clock_t_to_jiffies(unsigned long x)
 {
@@ -767,11 +802,16 @@ static inline unsigned long nsecs_to_jiffies(u64 n)
 	return (unsigned long)nsecs_to_jiffies64(n);
 }
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern unsigned long clock_t_to_jiffies(unsigned long x);
 extern u64 jiffies_64_to_clock_t(u64 x);
 extern u64 nsec_to_clock_t(u64 x);
 extern u64 nsecs_to_jiffies64(u64 n);
 extern unsigned long nsecs_to_jiffies(u64 n);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #define TIMESTAMP_SIZE	30

@@ -40,6 +40,7 @@
 #define FTDI_LUMEL_PD12_PID	0x6002
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * Custom USB adapters made by Falconia Partners LLC
  * for FreeCalypso project, ID codes allocated to Falconia by FTDI.
@@ -47,6 +48,8 @@
 #define FTDI_FALCONIA_JTAG_BUF_PID	0x7150
 #define FTDI_FALCONIA_JTAG_UNBUF_PID	0x7151
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Sienna Serial Interface by Secyourit GmbH */
@@ -163,9 +166,12 @@
 #define FTDI_VARDAAN_PID	0xF070
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Auto-M3 Ltd. - OP-COM USB V2 - OBD interface Adapter */
 #define FTDI_AUTO_M3_OP_COM_V2_PID	0x4f50
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -177,7 +183,10 @@
 #define XSENS_MTW_PID		0x0200	/* Xsens MTw */
 #define XSENS_MTDEVBOARD_PID	0x0300	/* Motion Tracker Development Board */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define XSENS_MTIUSBCONVERTER_PID	0x0301	/* MTi USB converter */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define XSENS_CONVERTER_PID	0xD00D	/* Xsens USB-serial converter */
@@ -594,7 +603,10 @@
 #define FTDI_NT_ORIONLX_PLUS_PID	0x7c91	/* OrionLX+ Substation Automation Platform */
 #define FTDI_NT_ORION_IO_PID		0x7c92	/* Orion I/O */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define FTDI_NT_ORIONMX_PID		0x7c93	/* OrionMX */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1585,6 +1597,7 @@
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * IDS GmbH
  */
 #define IDS_VID				0x2CAF
@@ -1592,6 +1605,8 @@
 #define IDS_CM31A_PID			0x13A3
 
 /*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * U-Blox products (http://www.u-blox.com).

@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2016-2019, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2016-2019, 2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2016-2019, 2021, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -174,6 +178,10 @@ static int hab_receive_create_export_ack(struct physical_channel *pchan,
 		pr_err("pchan %s read size too large %zd %zd\n",
 			pchan->name, sizebytes, sizeof(ack_recvd->ack));
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		kfree(ack_recvd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kfree(ack_recvd);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -183,13 +191,19 @@ static int hab_receive_create_export_ack(struct physical_channel *pchan,
 	if (physical_channel_read(pchan,
 		&ack_recvd->ack,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		sizebytes) != sizebytes)
 		return -EIO;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		sizebytes) != sizebytes) {
 		kfree(ack_recvd);
 		return -EIO;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	hab_spin_lock(&ctx->expq_lock, irqs_disabled);

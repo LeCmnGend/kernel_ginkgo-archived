@@ -1438,10 +1438,13 @@ static void uart_set_ldisc(struct tty_struct *tty)
 	struct uart_state *state = tty->driver_data;
 	struct uart_port *uport;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct tty_port *port = &state->port;
 
 	if (!tty_port_initialized(port))
 		return;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

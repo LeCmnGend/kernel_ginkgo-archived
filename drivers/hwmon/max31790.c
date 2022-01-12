@@ -180,7 +180,11 @@ static int max31790_read_fan(struct device *dev, u32 attr, int channel,
 	switch (attr) {
 	case hwmon_fan_input:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		sr = get_tach_period(data->fan_dynamics[channel % NR_CHANNEL]);
+=======
+		sr = get_tach_period(data->fan_dynamics[channel]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		sr = get_tach_period(data->fan_dynamics[channel]);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

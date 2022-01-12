@@ -1265,10 +1265,13 @@ static int reiserfs_parse_options(struct super_block *s,
 				return 0;
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (qf_names[qtype] !=
 			    REISERFS_SB(s)->s_qf_names[qtype])
 				kfree(qf_names[qtype]);
 			qf_names[qtype] = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (*arg) {	/* Some filename specified? */
@@ -1301,11 +1304,17 @@ static int reiserfs_parse_options(struct super_block *s,
 					*mount_options |= 1 << REISERFS_GRPQUOTA;
 			} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				if (qf_names[qtype] !=
 				    REISERFS_SB(s)->s_qf_names[qtype])
 					kfree(qf_names[qtype]);
 				qf_names[qtype] = NULL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				if (qtype == USRQUOTA)
 					*mount_options &= ~(1 << REISERFS_USRQUOTA);
@@ -2096,6 +2105,7 @@ static int reiserfs_fill_super(struct super_block *s, void *data, int silent)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!S_ISDIR(root_inode->i_mode) || !inode_get_bytes(root_inode) ||
 	    !root_inode->i_size) {
 		SWARN(silent, s, "", "corrupt root inode, run fsck");
@@ -2104,6 +2114,8 @@ static int reiserfs_fill_super(struct super_block *s, void *data, int silent)
 		goto error;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	s->s_root = d_make_root(root_inode);

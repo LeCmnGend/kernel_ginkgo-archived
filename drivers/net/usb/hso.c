@@ -627,7 +627,11 @@ static struct hso_serial *get_serial_by_index(unsigned index)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int obtain_minor(struct hso_serial *serial)
+=======
+static int get_free_serial_index(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int get_free_serial_index(void)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -639,10 +643,15 @@ static int get_free_serial_index(void)
 	for (index = 0; index < HSO_SERIAL_TTY_MINORS; index++) {
 		if (serial_table[index] == NULL) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			serial_table[index] = serial->parent;
 			serial->minor = index;
 			spin_unlock_irqrestore(&serial_table_lock, flags);
 			return 0;
+=======
+			spin_unlock_irqrestore(&serial_table_lock, flags);
+			return index;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			spin_unlock_irqrestore(&serial_table_lock, flags);
 			return index;
@@ -656,7 +665,11 @@ static int get_free_serial_index(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void release_minor(struct hso_serial *serial)
+=======
+static void set_serial_by_index(unsigned index, struct hso_serial *serial)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void set_serial_by_index(unsigned index, struct hso_serial *serial)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -665,12 +678,18 @@ static void set_serial_by_index(unsigned index, struct hso_serial *serial)
 
 	spin_lock_irqsave(&serial_table_lock, flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	serial_table[serial->minor] = NULL;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (serial)
 		serial_table[index] = serial->parent;
 	else
 		serial_table[index] = NULL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_unlock_irqrestore(&serial_table_lock, flags);
 }
@@ -1422,9 +1441,14 @@ static void hso_serial_set_termios(struct tty_struct *tty, struct ktermios *old)
 
 	if (old)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		hso_dbg(0x16, "Termios called with: cflags new[%u] - old[%u]\n",
 			(unsigned int)tty->termios.c_cflag,
 			(unsigned int)old->c_cflag);
+=======
+		hso_dbg(0x16, "Termios called with: cflags new[%d] - old[%d]\n",
+			tty->termios.c_cflag, old->c_cflag);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		hso_dbg(0x16, "Termios called with: cflags new[%d] - old[%d]\n",
 			tty->termios.c_cflag, old->c_cflag);
@@ -1727,7 +1751,11 @@ static int hso_serial_tiocmset(struct tty_struct *tty,
 
 	return usb_control_msg(serial->parent->usb,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			       usb_sndctrlpipe(serial->parent->usb, 0), 0x22,
+=======
+			       usb_rcvctrlpipe(serial->parent->usb, 0), 0x22,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			       usb_rcvctrlpipe(serial->parent->usb, 0), 0x22,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2270,7 +2298,10 @@ static void hso_serial_tty_unregister(struct hso_serial *serial)
 {
 	tty_unregister_device(tty_drv, serial->minor);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	release_minor(serial);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -2298,6 +2329,10 @@ static int hso_serial_common_create(struct hso_serial *serial, int num_urbs,
 {
 	struct device *dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int minor;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int minor;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2305,6 +2340,7 @@ static int hso_serial_common_create(struct hso_serial *serial, int num_urbs,
 
 	tty_port_init(&serial->port);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (obtain_minor(serial))
 		goto exit2;
@@ -2320,6 +2356,8 @@ static int hso_serial_common_create(struct hso_serial *serial, int num_urbs,
 	dev = serial->parent->dev;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	minor = get_free_serial_index();
 	if (minor < 0)
 		goto exit;
@@ -2332,6 +2370,9 @@ static int hso_serial_common_create(struct hso_serial *serial, int num_urbs,
 
 	/* fill in specific data for later use */
 	serial->minor = minor;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	serial->magic = HSO_SERIAL_MAGIC;
 	spin_lock_init(&serial->serial_lock);
@@ -2375,7 +2416,10 @@ static int hso_serial_common_create(struct hso_serial *serial, int num_urbs,
 exit:
 	hso_serial_tty_unregister(serial);
 <<<<<<< HEAD
+<<<<<<< HEAD
 exit2:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	hso_serial_common_free(serial);
@@ -2504,7 +2548,11 @@ static int hso_rfkill_set_block(void *data, bool blocked)
 		rv = 0;
 	else
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rv = usb_control_msg(hso_dev->usb, usb_sndctrlpipe(hso_dev->usb, 0),
+=======
+		rv = usb_control_msg(hso_dev->usb, usb_rcvctrlpipe(hso_dev->usb, 0),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		rv = usb_control_msg(hso_dev->usb, usb_rcvctrlpipe(hso_dev->usb, 0),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2733,6 +2781,12 @@ static struct hso_device *hso_create_bulk_serial_device(
 	serial->write_data = hso_std_serial_write_data;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/* and record this serial */
+	set_serial_by_index(serial->minor, serial);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* and record this serial */
 	set_serial_by_index(serial->minor, serial);
@@ -2795,6 +2849,12 @@ struct hso_device *hso_create_mux_serial_device(struct usb_interface *interface,
 	mutex_unlock(&serial->shared_int->shared_int_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/* and record this serial */
+	set_serial_by_index(serial->minor, serial);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* and record this serial */
 	set_serial_by_index(serial->minor, serial);
@@ -3184,7 +3244,12 @@ static void hso_free_interface(struct usb_interface *interface)
 			cancel_work_sync(&serial_table[i]->async_get_intf);
 			hso_serial_tty_unregister(serial);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			kref_put(&serial->parent->ref, hso_serial_ref_free);
+=======
+			kref_put(&serial_table[i]->ref, hso_serial_ref_free);
+			set_serial_by_index(i, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			kref_put(&serial_table[i]->ref, hso_serial_ref_free);
 			set_serial_by_index(i, NULL);

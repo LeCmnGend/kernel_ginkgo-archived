@@ -631,7 +631,11 @@ static int pil_init_image_trusted(struct pil_desc *pil,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memcpy_toio((void __iomem *)mdata_buf, metadata, size);
+=======
+	memcpy(mdata_buf, metadata, size);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memcpy(mdata_buf, metadata, size);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -761,7 +761,11 @@ static int sisusb_write_mem_bulk(struct sisusb_usb_data *sisusb, u32 addr,
 	u16  swap16;
 	u32  swap32, flag = (length >> 28) & 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8 buf[4];
+=======
+	char buf[4];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	char buf[4];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

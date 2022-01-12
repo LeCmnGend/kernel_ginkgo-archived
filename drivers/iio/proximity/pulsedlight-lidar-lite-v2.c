@@ -52,11 +52,15 @@ struct lidar_data {
 	int i2c_enabled;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Ensure timestamp is naturally aligned */
 	struct {
 		u16 chan;
 		s64 timestamp __aligned(8);
 	} scan;
+=======
+	u16 buffer[8]; /* 2 byte distance + 8 byte timestamp */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u16 buffer[8]; /* 2 byte distance + 8 byte timestamp */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -175,7 +179,10 @@ static int lidar_get_measurement(struct lidar_data *data, u16 *reg)
 	if (ret < 0) {
 		dev_err(&client->dev, "cannot send start measurement command");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pm_runtime_put_noidle(&client->dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return ret;
@@ -248,9 +255,15 @@ static irqreturn_t lidar_trigger_handler(int irq, void *private)
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = lidar_get_measurement(data, &data->scan.chan);
 	if (!ret) {
 		iio_push_to_buffers_with_timestamp(indio_dev, &data->scan,
+=======
+	ret = lidar_get_measurement(data, data->buffer);
+	if (!ret) {
+		iio_push_to_buffers_with_timestamp(indio_dev, data->buffer,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = lidar_get_measurement(data, data->buffer);
 	if (!ret) {

@@ -1743,7 +1743,11 @@ int cs46xx_iec958_pre_open (struct snd_cs46xx *chip)
 
 	if ( ins->spdif_status_out & DSP_SPDIF_STATUS_OUTPUT_ENABLED ) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* remove AsynchFGTxSCB and PCMSerialInput_II */
+=======
+		/* remove AsynchFGTxSCB and and PCMSerialInput_II */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		/* remove AsynchFGTxSCB and and PCMSerialInput_II */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

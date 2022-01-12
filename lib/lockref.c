@@ -10,7 +10,10 @@
  */
 #define CMPXCHG_LOOP(CODE, SUCCESS) do {					\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int retry = 100;							\
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct lockref old;							\
@@ -26,8 +29,11 @@
 			SUCCESS;						\
 		}								\
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!--retry)							\
 			break;							\
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		cpu_relax();							\

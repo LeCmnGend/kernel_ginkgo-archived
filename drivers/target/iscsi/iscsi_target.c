@@ -491,7 +491,12 @@ void iscsit_aborted_task(struct iscsi_conn *conn, struct iscsi_cmd *cmd)
 {
 	spin_lock_bh(&conn->cmd_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!list_empty(&cmd->i_conn_node))
+=======
+	if (!list_empty(&cmd->i_conn_node) &&
+	    !(cmd->se_cmd.transport_state & CMD_T_FABRIC_STOP))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!list_empty(&cmd->i_conn_node) &&
 	    !(cmd->se_cmd.transport_state & CMD_T_FABRIC_STOP))
@@ -1387,6 +1392,7 @@ static u32 iscsit_do_crypto_hash_sg(
 	page_off = cmd->first_data_sg_off;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (data_length && page_off) {
 		struct scatterlist first_sg;
 		u32 len = min_t(u32, data_length, sg->length - page_off);
@@ -1407,12 +1413,20 @@ static u32 iscsit_do_crypto_hash_sg(
 	while (data_length) {
 		u32 cur_len = min_t(u32, data_length, (sg->length - page_off));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	while (data_length) {
+		u32 cur_len = min_t(u32, data_length, (sg->length - page_off));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		ahash_request_set_crypt(hash, sg, NULL, cur_len);
 		crypto_ahash_update(hash);
 
 		data_length -= cur_len;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		page_off = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		page_off = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4100,7 +4114,11 @@ static void iscsit_release_commands_from_conn(struct iscsi_conn *conn)
 	list_splice_init(&conn->conn_cmd_list, &tmp_list);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	list_for_each_entry_safe(cmd, cmd_tmp, &tmp_list, i_conn_node) {
+=======
+	list_for_each_entry(cmd, &tmp_list, i_conn_node) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	list_for_each_entry(cmd, &tmp_list, i_conn_node) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4108,6 +4126,7 @@ static void iscsit_release_commands_from_conn(struct iscsi_conn *conn)
 
 		if (se_cmd->se_tfo != NULL) {
 			spin_lock_irq(&se_cmd->t_state_lock);
+<<<<<<< HEAD
 <<<<<<< HEAD
 			if (se_cmd->transport_state & CMD_T_ABORTED) {
 				/*
@@ -4120,6 +4139,9 @@ static void iscsit_release_commands_from_conn(struct iscsi_conn *conn)
 			} else {
 				se_cmd->transport_state |= CMD_T_FABRIC_STOP;
 			}
+=======
+			se_cmd->transport_state |= CMD_T_FABRIC_STOP;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			se_cmd->transport_state |= CMD_T_FABRIC_STOP;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

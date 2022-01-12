@@ -31,7 +31,11 @@
 
 #define	BRCMF_BSS_INFO_VERSION	109 /* curr ver of brcmf_bss_info_le struct */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define BRCMF_BSS_RSSI_ON_CHANNEL	0x0004
+=======
+#define BRCMF_BSS_RSSI_ON_CHANNEL	0x0002
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define BRCMF_BSS_RSSI_ON_CHANNEL	0x0002
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

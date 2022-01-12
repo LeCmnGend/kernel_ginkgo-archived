@@ -252,10 +252,13 @@ static void reg_r(struct gspca_dev *gspca_dev,
 		return;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (len == 0) {
 		PERR("reg_r: zero-length read\n");
 		return;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (gspca_dev->usb_err < 0)
@@ -267,7 +270,11 @@ static void reg_r(struct gspca_dev *gspca_dev,
 			0,		/* value */
 			index,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			gspca_dev->usb_buf, len,
+=======
+			len ? gspca_dev->usb_buf : NULL, len,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			len ? gspca_dev->usb_buf : NULL, len,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -746,7 +753,11 @@ static int sd_start(struct gspca_dev *gspca_dev)
 			reg_w_riv(gspca_dev, 0xf0, 0, 0);
 			spca504B_WaitCmdStatus(gspca_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			reg_w_riv(gspca_dev, 0xf0, 4, 0);
+=======
+			reg_r(gspca_dev, 0xf0, 4, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			reg_r(gspca_dev, 0xf0, 4, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -181,7 +181,11 @@ static ssize_t rsxx_cram_read(struct file *fp, char __user *ubuf,
 	struct rsxx_cardinfo *card = file_inode(fp)->i_private;
 	char *buf;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int st;
+=======
+	ssize_t st;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ssize_t st;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -192,10 +196,15 @@ static ssize_t rsxx_cram_read(struct file *fp, char __user *ubuf,
 
 	st = rsxx_creg_read(card, CREG_ADD_CRAM + (u32)*ppos, cnt, buf, 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!st) {
 		if (copy_to_user(ubuf, buf, cnt))
 			st = -EFAULT;
 	}
+=======
+	if (!st)
+		st = copy_to_user(ubuf, buf, cnt);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!st)
 		st = copy_to_user(ubuf, buf, cnt);
@@ -902,7 +911,10 @@ static int rsxx_pci_probe(struct pci_dev *dev,
 	if (!card->event_wq) {
 		dev_err(CARD_TO_DEV(card), "Failed card event setup.\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		st = -ENOMEM;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto failed_event_handler;

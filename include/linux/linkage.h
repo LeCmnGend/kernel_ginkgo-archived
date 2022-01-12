@@ -24,22 +24,34 @@
 
 #ifndef cond_syscall
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define cond_syscall(x) \
 	long __attribute__((weak, alias("sys_ni_syscall"))) x(void);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define cond_syscall(x)	asm(				\
 	".weak " VMLINUX_SYMBOL_STR(x) "\n\t"		\
 	".set  " VMLINUX_SYMBOL_STR(x) ","		\
 		 VMLINUX_SYMBOL_STR(sys_ni_syscall))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 
 #ifndef SYSCALL_ALIAS
 #define SYSCALL_ALIAS(alias, name) asm(			\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	".globl " __stringify(alias) "\n\t"		\
 	".set   " __stringify(alias) ","		\
 		  __stringify(name))
+=======
+	".globl " VMLINUX_SYMBOL_STR(alias) "\n\t"	\
+	".set   " VMLINUX_SYMBOL_STR(alias) ","		\
+		  VMLINUX_SYMBOL_STR(name))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	".globl " VMLINUX_SYMBOL_STR(alias) "\n\t"	\
 	".set   " VMLINUX_SYMBOL_STR(alias) ","		\
@@ -87,6 +99,7 @@
 #ifdef __ASSEMBLY__
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* SYM_T_FUNC -- type used by assembler to mark functions */
 #ifndef SYM_T_FUNC
 #define SYM_T_FUNC				STT_FUNC
@@ -113,10 +126,13 @@
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifndef LINKER_SCRIPT
 #define ALIGN __ALIGN
 #define ALIGN_STR __ALIGN_STR
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* === DEPRECATED annotations === */
 
@@ -132,16 +148,22 @@
 #define ENTRY(name) \
 	SYM_FUNC_START(name)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifndef ENTRY
 #define ENTRY(name) \
 	.globl name ASM_NL \
 	ALIGN ASM_NL \
 	name:
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 #endif /* LINKER_SCRIPT */
 
 #ifndef WEAK
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* deprecated, use SYM_FUNC_START_WEAK* */
 #define WEAK(name)	   \
@@ -151,12 +173,17 @@
 #ifndef END
 /* deprecated, use SYM_FUNC_END, SYM_DATA_END, or SYM_END */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define WEAK(name)	   \
 	.weak name ASM_NL   \
 	name:
 #endif
 
 #ifndef END
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define END(name) \
 	.size name, .-name
@@ -167,6 +194,7 @@
  * static analysis tools such as stack depth analyzer.
  */
 #ifndef ENDPROC
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* deprecated, use SYM_FUNC_END */
 #define ENDPROC(name) \
@@ -380,6 +408,8 @@
 
 #endif /* _LINUX_LINKAGE_H */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define ENDPROC(name) \
 	.type name, @function ASM_NL \
 	END(name)
@@ -388,4 +418,7 @@
 #endif
 
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

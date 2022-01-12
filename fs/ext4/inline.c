@@ -19,6 +19,10 @@
 #include "xattr.h"
 #include "truncate.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <trace/events/android_fs.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <trace/events/android_fs.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -516,7 +520,10 @@ int ext4_readpage_inline(struct inode *inode, struct page *page)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (trace_android_fs_dataread_start_enabled()) {
 		char *path, pathbuf[MAX_TRACE_PATHBUF_LEN];
 
@@ -528,6 +535,9 @@ int ext4_readpage_inline(struct inode *inode, struct page *page)
 						path, current->comm);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * Current inline data can only exist in the 1st page,
@@ -541,6 +551,11 @@ int ext4_readpage_inline(struct inode *inode, struct page *page)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	trace_android_fs_dataread_end(inode, page_offset(page), PAGE_SIZE);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_android_fs_dataread_end(inode, page_offset(page), PAGE_SIZE);
 
@@ -1924,7 +1939,10 @@ int ext4_inline_data_truncate(struct inode *inode, int *has_inline)
 	ext4_write_lock_xattr(inode, &no_expand);
 	if (!ext4_has_inline_data(inode)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ext4_write_unlock_xattr(inode, &no_expand);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		*has_inline = 0;

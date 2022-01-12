@@ -1027,8 +1027,13 @@ static int alloc_iommu(struct dmar_drhd_unit *drhd)
 	struct intel_iommu *iommu;
 	u32 ver, sts;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int agaw = -1;
 	int msagaw = -1;
+=======
+	int agaw = 0;
+	int msagaw = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int agaw = 0;
 	int msagaw = 0;
@@ -1058,6 +1063,7 @@ static int alloc_iommu(struct dmar_drhd_unit *drhd)
 
 	err = -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (cap_sagaw(iommu->cap) == 0) {
 		pr_info("%s: No supported address widths. Not attempting DMA translation.\n",
 			iommu->name);
@@ -1081,6 +1087,8 @@ static int alloc_iommu(struct dmar_drhd_unit *drhd)
 			agaw = -1;
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	agaw = iommu_calculate_agaw(iommu);
 	if (agaw < 0) {
 		pr_err("Cannot get a valid agaw for iommu (seq_id = %d)\n",
@@ -1092,6 +1100,9 @@ static int alloc_iommu(struct dmar_drhd_unit *drhd)
 		pr_err("Cannot get a valid max agaw for iommu (seq_id = %d)\n",
 			iommu->seq_id);
 		goto err_unmap;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	iommu->agaw = agaw;
@@ -1120,12 +1131,16 @@ static int alloc_iommu(struct dmar_drhd_unit *drhd)
 	raw_spin_lock_init(&iommu->register_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * This is only for hotplug; at boot time intel_iommu_enabled won't
 	 * be set yet. When intel_iommu_init() runs, it registers the units
 	 * present at boot time, then sets intel_iommu_enabled.
 	 */
 	if (intel_iommu_enabled && !drhd->ignored) {
+=======
+	if (intel_iommu_enabled) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (intel_iommu_enabled) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1140,6 +1155,7 @@ static int alloc_iommu(struct dmar_drhd_unit *drhd)
 		err = iommu_device_register(&iommu->iommu);
 		if (err)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto err_sysfs;
 	}
 
@@ -1151,6 +1167,8 @@ static int alloc_iommu(struct dmar_drhd_unit *drhd)
 err_sysfs:
 	iommu_device_sysfs_remove(&iommu->iommu);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			goto err_unmap;
 	}
 
@@ -1158,6 +1176,9 @@ err_sysfs:
 
 	return 0;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 err_unmap:
 	unmap_iommu(iommu);
@@ -1171,7 +1192,11 @@ error:
 static void free_iommu(struct intel_iommu *iommu)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (intel_iommu_enabled && !iommu->drhd->ignored) {
+=======
+	if (intel_iommu_enabled) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (intel_iommu_enabled) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

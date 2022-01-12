@@ -1886,7 +1886,10 @@ int parse_platform_config(struct hfi1_devdata *dd)
 				   __func__, (ptr -
 				   (u32 *)dd->platform_config.data));
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ret = -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			goto bail;

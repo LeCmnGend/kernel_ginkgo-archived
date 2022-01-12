@@ -539,8 +539,12 @@ static bool rcar_i2c_slave_irq(struct rcar_i2c_priv *priv)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* Clear SSR, too, because of old STOPs to other clients than us */
 		rcar_i2c_write(priv, ICSSR, ~(SAR | SSR) & 0xff);
+=======
+		rcar_i2c_write(priv, ICSSR, ~SAR & 0xff);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		rcar_i2c_write(priv, ICSSR, ~SAR & 0xff);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -550,8 +554,12 @@ static bool rcar_i2c_slave_irq(struct rcar_i2c_priv *priv)
 	if (ssr_filtered & SSR) {
 		i2c_slave_event(priv->slave, I2C_SLAVE_STOP, &value);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rcar_i2c_write(priv, ICSCR, SIE | SDBS); /* clear our NACK */
 		rcar_i2c_write(priv, ICSIER, SAR);
+=======
+		rcar_i2c_write(priv, ICSIER, SAR | SSR);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		rcar_i2c_write(priv, ICSIER, SAR | SSR);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -813,7 +821,11 @@ static int rcar_reg_slave(struct i2c_client *slave)
 	rcar_i2c_write(priv, ICSAR, slave->addr);
 	rcar_i2c_write(priv, ICSSR, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rcar_i2c_write(priv, ICSIER, SAR);
+=======
+	rcar_i2c_write(priv, ICSIER, SAR | SSR);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rcar_i2c_write(priv, ICSIER, SAR | SSR);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -829,6 +841,7 @@ static int rcar_unreg_slave(struct i2c_client *slave)
 	WARN_ON(!priv->slave);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* ensure no irq is running before clearing ptr */
 	disable_irq(priv->irq);
 	rcar_i2c_write(priv, ICSIER, 0);
@@ -838,12 +851,17 @@ static int rcar_unreg_slave(struct i2c_client *slave)
 	rcar_i2c_write(priv, ICSAR, 0); /* Gen2: must be 0 if not using slave */
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* disable irqs and ensure none is running before clearing ptr */
 	rcar_i2c_write(priv, ICSIER, 0);
 	rcar_i2c_write(priv, ICSCR, 0);
 	rcar_i2c_write(priv, ICSAR, 0); /* Gen2: must be 0 if not using slave */
 
 	synchronize_irq(priv->irq);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	priv->slave = NULL;
 

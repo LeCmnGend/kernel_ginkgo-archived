@@ -267,7 +267,11 @@ static int e2i_init(struct usbtouch_usb *usbtouch)
 	struct usb_device *udev = interface_to_usbdev(usbtouch->interface);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = usb_control_msg(udev, usb_sndctrlpipe(udev, 0),
+=======
+	ret = usb_control_msg(udev, usb_rcvctrlpipe(udev, 0),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = usb_control_msg(udev, usb_rcvctrlpipe(udev, 0),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -467,7 +471,11 @@ static int mtouch_init(struct usbtouch_usb *usbtouch)
 	struct usb_device *udev = interface_to_usbdev(usbtouch->interface);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = usb_control_msg(udev, usb_sndctrlpipe(udev, 0),
+=======
+	ret = usb_control_msg(udev, usb_rcvctrlpipe(udev, 0),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = usb_control_msg(udev, usb_rcvctrlpipe(udev, 0),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -483,7 +491,11 @@ static int mtouch_init(struct usbtouch_usb *usbtouch)
 
 	for (i = 0; i < 3; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = usb_control_msg(udev, usb_sndctrlpipe(udev, 0),
+=======
+		ret = usb_control_msg(udev, usb_rcvctrlpipe(udev, 0),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = usb_control_msg(udev, usb_rcvctrlpipe(udev, 0),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -658,7 +670,11 @@ static int dmc_tsc10_init(struct usbtouch_usb *usbtouch)
 
 	/* start sending data */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = usb_control_msg(dev, usb_sndctrlpipe(dev, 0),
+=======
+	ret = usb_control_msg(dev, usb_rcvctrlpipe (dev, 0),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = usb_control_msg(dev, usb_rcvctrlpipe (dev, 0),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

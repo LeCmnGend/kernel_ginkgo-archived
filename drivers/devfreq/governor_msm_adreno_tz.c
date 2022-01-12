@@ -59,8 +59,11 @@ static DEFINE_SPINLOCK(suspend_lock);
 #define TAG "msm_adreno_tz: "
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static unsigned int adrenoboost = 0;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static u64 suspend_time;
@@ -86,6 +89,7 @@ u64 suspend_time_ms(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static ssize_t adrenoboost_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
@@ -109,6 +113,8 @@ static ssize_t adrenoboost_save(struct device *dev,
 	return count;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static ssize_t gpu_load_show(struct device *dev,
@@ -158,9 +164,12 @@ static ssize_t suspend_time_show(struct device *dev,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static DEVICE_ATTR(adrenoboost, 0644,
 		adrenoboost_show, adrenoboost_save);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static DEVICE_ATTR(gpu_load, 0444, gpu_load_show, NULL);
@@ -173,7 +182,10 @@ static const struct device_attribute *adreno_tz_attr_list[] = {
 		&dev_attr_gpu_load,
 		&dev_attr_suspend_time,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		&dev_attr_adrenoboost,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		NULL
@@ -395,6 +407,7 @@ static int tz_get_target_freq(struct devfreq *devfreq, unsigned long *freq)
 	*freq = stats.current_frequency;
 	priv->bin.total_time += stats.total_time;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	// scale busy time up based on adrenoboost parameter, only if MIN_BUSY exceeded...
 	if ((unsigned int)(priv->bin.busy_time + stats.busy_time) >= MIN_BUSY) {
@@ -402,6 +415,9 @@ static int tz_get_target_freq(struct devfreq *devfreq, unsigned long *freq)
 	} else {
 		priv->bin.busy_time += stats.busy_time;
 	}
+=======
+	priv->bin.busy_time += stats.busy_time;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	priv->bin.busy_time += stats.busy_time;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

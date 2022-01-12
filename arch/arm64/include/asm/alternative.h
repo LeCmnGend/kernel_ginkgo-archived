@@ -115,9 +115,15 @@ void apply_alternatives(void *start, size_t length);
 	.pushsection .altinstr_replacement, "ax"
 663:	\insn2
 <<<<<<< HEAD
+<<<<<<< HEAD
 664:	.org	. - (664b-663b) + (662b-661b)
 	.org	. - (662b-661b) + (664b-663b)
 	.popsection
+=======
+664:	.popsection
+	.org	. - (664b-663b) + (662b-661b)
+	.org	. - (662b-661b) + (664b-663b)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 664:	.popsection
 	.org	. - (664b-663b) + (662b-661b)
@@ -193,17 +199,23 @@ void apply_alternatives(void *start, size_t length);
 .macro alternative_endif
 664:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.org	. - (664b-663b) + (662b-661b)
 	.org	. - (662b-661b) + (664b-663b)
 	.if .Lasm_alt_mode==0
 	.popsection
 	.endif
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.if .Lasm_alt_mode==0
 	.popsection
 	.endif
 	.org	. - (664b-663b) + (662b-661b)
 	.org	. - (662b-661b) + (664b-663b)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 .endm
 

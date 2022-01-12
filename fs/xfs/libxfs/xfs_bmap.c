@@ -762,8 +762,11 @@ xfs_bmap_extents_to_btree(
 	if ((error = xfs_alloc_vextent(&args))) {
 		xfs_iroot_realloc(ip, -1, whichfork);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ASSERT(ifp->if_broot == NULL);
 		XFS_IFORK_FMT_SET(ip, whichfork, XFS_DINODE_FMT_EXTENTS);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		xfs_btree_del_cursor(cur, XFS_BTREE_ERROR);
@@ -773,8 +776,11 @@ xfs_bmap_extents_to_btree(
 	if (WARN_ON_ONCE(args.fsbno == NULLFSBLOCK)) {
 		xfs_iroot_realloc(ip, -1, whichfork);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ASSERT(ifp->if_broot == NULL);
 		XFS_IFORK_FMT_SET(ip, whichfork, XFS_DINODE_FMT_EXTENTS);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		xfs_btree_del_cursor(cur, XFS_BTREE_ERROR);

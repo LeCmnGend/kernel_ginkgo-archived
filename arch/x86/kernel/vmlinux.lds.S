@@ -358,7 +358,10 @@ SECTIONS
 		__bss_start = .;
 		*(.bss..page_aligned)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		. = ALIGN(PAGE_SIZE);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		*(BSS_MAIN)

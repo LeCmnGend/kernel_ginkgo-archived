@@ -950,7 +950,10 @@ static void igb_configure_msix(struct igb_adapter *adapter)
 static int igb_request_msix(struct igb_adapter *adapter)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int num_q_vectors = adapter->num_q_vectors;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct net_device *netdev = adapter->netdev;
@@ -962,6 +965,7 @@ static int igb_request_msix(struct igb_adapter *adapter)
 		goto err_out;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (num_q_vectors > MAX_Q_VECTORS) {
 		num_q_vectors = MAX_Q_VECTORS;
 		dev_warn(&adapter->pdev->dev,
@@ -969,6 +973,9 @@ static int igb_request_msix(struct igb_adapter *adapter)
 			 adapter->num_q_vectors, MAX_Q_VECTORS);
 	}
 	for (i = 0; i < num_q_vectors; i++) {
+=======
+	for (i = 0; i < adapter->num_q_vectors; i++) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (i = 0; i < adapter->num_q_vectors; i++) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2799,7 +2806,10 @@ err_ioremap:
 	free_netdev(netdev);
 err_alloc_etherdev:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pci_disable_pcie_error_reporting(pdev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pci_release_mem_regions(pdev);
@@ -3981,8 +3991,11 @@ static void igb_clean_tx_ring(struct igb_ring *tx_ring)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		tx_buffer->next_to_watch = NULL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* move us one more past the eop_desc for start of next pkt */
@@ -5511,6 +5524,7 @@ static void igb_reset_task(struct work_struct *work)
 	adapter = container_of(work, struct igb_adapter, reset_task);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rtnl_lock();
 	/* If we're already down or resetting, just bail */
 	if (test_bit(__IGB_DOWN, &adapter->state) ||
@@ -5523,6 +5537,11 @@ static void igb_reset_task(struct work_struct *work)
 	netdev_err(adapter->netdev, "Reset adapter\n");
 	igb_reinit_locked(adapter);
 	rtnl_unlock();
+=======
+	igb_dump(adapter);
+	netdev_err(adapter->netdev, "Reset adapter\n");
+	igb_reinit_locked(adapter);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	igb_dump(adapter);
 	netdev_err(adapter->netdev, "Reset adapter\n");

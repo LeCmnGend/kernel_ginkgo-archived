@@ -276,6 +276,7 @@ int isa207_get_constraint(u64 event, unsigned long *maskp, unsigned long *valp)
 		mask  |= CNST_PMC_MASK(pmc);
 		value |= CNST_PMC_VAL(pmc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		/*
 		 * PMC5 and PMC6 are used to count cycles and instructions and
@@ -285,6 +286,8 @@ int isa207_get_constraint(u64 event, unsigned long *maskp, unsigned long *valp)
 		 */
 		if (pmc >= 5)
 			goto ebb_bhrb;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -346,7 +349,10 @@ int isa207_get_constraint(u64 event, unsigned long *maskp, unsigned long *valp)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ebb_bhrb:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!pmc && ebb)
@@ -368,8 +374,13 @@ ebb_bhrb:
 	 * hit, but we leave it as a fallback in case.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mask  |= CNST_EBB_MASK;
 	value |= CNST_EBB_VAL(ebb);
+=======
+	mask  |= CNST_EBB_VAL(ebb);
+	value |= CNST_EBB_MASK;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mask  |= CNST_EBB_VAL(ebb);
 	value |= CNST_EBB_MASK;

@@ -70,6 +70,7 @@ static int num_fault_mutexes;
 struct mutex *hugetlb_fault_mutex_table ____cacheline_aligned_in_smp;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline bool PageHugeFreed(struct page *head)
 {
 	return page_private(head + 4) == -1UL;
@@ -85,6 +86,8 @@ static inline void ClearPageHugeFreed(struct page *head)
 	set_page_private(head + 4, 0);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Forward declaration */
@@ -593,6 +596,7 @@ void hugetlb_fix_reserve_counts(struct inode *inode)
 	struct hugepage_subpool *spool = subpool_inode(inode);
 	long rsv_adjust;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool reserved = false;
 
 	rsv_adjust = hugepage_subpool_get_pages(spool, 1);
@@ -608,6 +612,8 @@ void hugetlb_fix_reserve_counts(struct inode *inode)
 	if (!reserved)
 		pr_warn("hugetlb: Huge Page Reserved count may go negative.\n");
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	rsv_adjust = hugepage_subpool_get_pages(spool, 1);
 	if (rsv_adjust) {
@@ -615,6 +621,9 @@ void hugetlb_fix_reserve_counts(struct inode *inode)
 
 		hugetlb_acct_memory(h, 1);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -902,7 +911,10 @@ static void enqueue_huge_page(struct hstate *h, struct page *page)
 	h->free_huge_pages++;
 	h->free_huge_pages_node[nid]++;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	SetPageHugeFreed(page);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -923,7 +935,10 @@ static struct page *dequeue_huge_page_node_exact(struct hstate *h, int nid)
 	list_move(&page->lru, &h->hugepage_activelist);
 	set_page_refcounted(page);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ClearPageHugeFreed(page);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	h->free_huge_pages--;
@@ -1235,7 +1250,10 @@ static void update_and_free_page(struct hstate *h, struct page *page)
 {
 	int i;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct page *subpage = page;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1245,9 +1263,14 @@ static void update_and_free_page(struct hstate *h, struct page *page)
 	h->nr_huge_pages--;
 	h->nr_huge_pages_node[page_to_nid(page)]--;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (i = 0; i < pages_per_huge_page(h);
 	     i++, subpage = mem_map_next(subpage, page, i)) {
 		subpage->flags &= ~(1 << PG_locked | 1 << PG_error |
+=======
+	for (i = 0; i < pages_per_huge_page(h); i++) {
+		page[i].flags &= ~(1 << PG_locked | 1 << PG_error |
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (i = 0; i < pages_per_huge_page(h); i++) {
 		page[i].flags &= ~(1 << PG_locked | 1 << PG_error |
@@ -1287,18 +1310,24 @@ struct hstate *size_to_hstate(unsigned long size)
 bool page_huge_active(struct page *page)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return PageHeadHuge(page) && PagePrivate(&page[1]);
 }
 
 /* never called for tail page */
 void set_page_huge_active(struct page *page)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	VM_BUG_ON_PAGE(!PageHuge(page), page);
 	return PageHead(page) && PagePrivate(&page[1]);
 }
 
 /* never called for tail page */
 static void set_page_huge_active(struct page *page)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	VM_BUG_ON_PAGE(!PageHeadHuge(page), page);
@@ -1378,7 +1407,10 @@ static void prep_new_huge_page(struct hstate *h, struct page *page, int nid)
 	h->nr_huge_pages++;
 	h->nr_huge_pages_node[nid]++;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ClearPageHugeFreed(page);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_unlock(&hugetlb_lock);
@@ -1443,7 +1475,11 @@ int PageHeadHuge(struct page *page_head)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 pgoff_t hugetlb_basepage_index(struct page *page)
+=======
+pgoff_t __basepage_index(struct page *page)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 pgoff_t __basepage_index(struct page *page)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1453,6 +1489,12 @@ pgoff_t __basepage_index(struct page *page)
 	unsigned long compound_idx;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (!PageHuge(page_head))
+		return page_index(page);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!PageHuge(page_head))
 		return page_index(page);
@@ -1552,7 +1594,10 @@ int dissolve_free_huge_page(struct page *page)
 	int rc = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 retry:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock(&hugetlb_lock);
@@ -1564,6 +1609,7 @@ retry:
 			rc = -EBUSY;
 			goto out;
 		}
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 		/*
@@ -1585,6 +1631,8 @@ retry:
 			goto retry;
 		}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
@@ -2704,10 +2752,15 @@ static int hugetlb_sysfs_add_hstate(struct hstate *h, struct kobject *parent,
 
 	retval = sysfs_create_group(hstate_kobjs[hi], hstate_attr_group);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (retval) {
 		kobject_put(hstate_kobjs[hi]);
 		hstate_kobjs[hi] = NULL;
 	}
+=======
+	if (retval)
+		kobject_put(hstate_kobjs[hi]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (retval)
 		kobject_put(hstate_kobjs[hi]);
@@ -3018,6 +3071,7 @@ static unsigned int cpuset_mems_nr(unsigned int *array)
 
 #ifdef CONFIG_SYSCTL
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int proc_hugetlb_doulongvec_minmax(struct ctl_table *table, int write,
 					  void *buffer, size_t *length,
 					  loff_t *ppos, unsigned long *out)
@@ -3036,6 +3090,8 @@ static int proc_hugetlb_doulongvec_minmax(struct ctl_table *table, int write,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int hugetlb_sysctl_handler_common(bool obey_mempolicy,
 			 struct ctl_table *table, int write,
 			 void __user *buffer, size_t *length, loff_t *ppos)
@@ -3048,8 +3104,14 @@ static int hugetlb_sysctl_handler_common(bool obey_mempolicy,
 		return -EOPNOTSUPP;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = proc_hugetlb_doulongvec_minmax(table, write, buffer, length, ppos,
 					     &tmp);
+=======
+	table->data = &tmp;
+	table->maxlen = sizeof(unsigned long);
+	ret = proc_doulongvec_minmax(table, write, buffer, length, ppos);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	table->data = &tmp;
 	table->maxlen = sizeof(unsigned long);
@@ -3099,8 +3161,14 @@ int hugetlb_overcommit_handler(struct ctl_table *table, int write,
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = proc_hugetlb_doulongvec_minmax(table, write, buffer, length, ppos,
 					     &tmp);
+=======
+	table->data = &tmp;
+	table->maxlen = sizeof(unsigned long);
+	ret = proc_doulongvec_minmax(table, write, buffer, length, ppos);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	table->data = &tmp;
 	table->maxlen = sizeof(unsigned long);
@@ -3471,7 +3539,11 @@ void __unmap_hugepage_range(struct mmu_gather *tlb, struct vm_area_struct *vma,
 	 * to huge page.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tlb_change_page_size(tlb, sz);
+=======
+	tlb_remove_check_page_size_change(tlb, sz);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	tlb_remove_check_page_size_change(tlb, sz);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3881,7 +3953,12 @@ retry:
 			 * fault to make calling code simpler.
 			 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			hash = hugetlb_fault_mutex_hash(h, mapping, idx);
+=======
+			hash = hugetlb_fault_mutex_hash(h, mapping, idx,
+							address);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			hash = hugetlb_fault_mutex_hash(h, mapping, idx,
 							address);
@@ -3929,7 +4006,11 @@ retry:
 		 */
 		if (unlikely(PageHWPoison(page))) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ret = VM_FAULT_HWPOISON_LARGE |
+=======
+			ret = VM_FAULT_HWPOISON |
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ret = VM_FAULT_HWPOISON |
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4003,7 +4084,11 @@ backout_unlocked:
 #ifdef CONFIG_SMP
 u32 hugetlb_fault_mutex_hash(struct hstate *h, struct address_space *mapping,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			    pgoff_t idx)
+=======
+			    pgoff_t idx, unsigned long address)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			    pgoff_t idx, unsigned long address)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4015,7 +4100,11 @@ u32 hugetlb_fault_mutex_hash(struct hstate *h, struct address_space *mapping,
 	key[1] = idx;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	hash = jhash2((u32 *)&key, sizeof(key)/(sizeof(u32)), 0);
+=======
+	hash = jhash2((u32 *)&key, sizeof(key)/sizeof(u32), 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	hash = jhash2((u32 *)&key, sizeof(key)/sizeof(u32), 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4029,7 +4118,11 @@ u32 hugetlb_fault_mutex_hash(struct hstate *h, struct address_space *mapping,
  */
 u32 hugetlb_fault_mutex_hash(struct hstate *h, struct address_space *mapping,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			    pgoff_t idx)
+=======
+			    pgoff_t idx, unsigned long address)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			    pgoff_t idx, unsigned long address)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4078,7 +4171,11 @@ int hugetlb_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 	 * the same page in the page cache.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	hash = hugetlb_fault_mutex_hash(h, mapping, idx);
+=======
+	hash = hugetlb_fault_mutex_hash(h, mapping, idx, address);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	hash = hugetlb_fault_mutex_hash(h, mapping, idx, address);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4203,6 +4300,7 @@ int hugetlb_mcopy_atomic_pte(struct mm_struct *dst_mm,
 
 	if (!*pagep) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* If a page already exists, then it's UFFDIO_COPY for
 		 * a non-missing case. Return -EEXIST.
 		 */
@@ -4218,10 +4316,15 @@ int hugetlb_mcopy_atomic_pte(struct mm_struct *dst_mm,
 			goto out;
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = -ENOMEM;
 		page = alloc_huge_page(dst_vma, dst_addr, 0);
 		if (IS_ERR(page))
 			goto out;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		ret = copy_huge_page_from_user(page,
@@ -4758,6 +4861,7 @@ void adjust_range_if_pmd_sharing_possible(struct vm_area_struct *vma,
 				unsigned long *start, unsigned long *end)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long v_start = ALIGN(vma->vm_start, PUD_SIZE),
 		v_end = ALIGN_DOWN(vma->vm_end, PUD_SIZE);
 
@@ -4776,6 +4880,8 @@ void adjust_range_if_pmd_sharing_possible(struct vm_area_struct *vma,
 	if (*end < v_end)
 		*end = ALIGN(*end, PUD_SIZE);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long check_addr = *start;
 
 	if (!(vma->vm_flags & VM_MAYSHARE))
@@ -4795,6 +4901,9 @@ void adjust_range_if_pmd_sharing_possible(struct vm_area_struct *vma,
 				*end = a_end;
 		}
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -5058,9 +5167,15 @@ bool isolate_huge_page(struct page *page, struct list_head *list)
 	bool ret = true;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock(&hugetlb_lock);
 	if (!PageHeadHuge(page) || !page_huge_active(page) ||
 	    !get_page_unless_zero(page)) {
+=======
+	VM_BUG_ON_PAGE(!PageHead(page), page);
+	spin_lock(&hugetlb_lock);
+	if (!page_huge_active(page) || !get_page_unless_zero(page)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	VM_BUG_ON_PAGE(!PageHead(page), page);
 	spin_lock(&hugetlb_lock);

@@ -32,7 +32,11 @@
  *		  OCKS0=1, OCKS1=1 (128fs, 64fs output) and ice1724 -
  *		  VT1724_MT_I2S_MCLK_128X=0 (256fs input) yields correct
 <<<<<<< HEAD
+<<<<<<< HEAD
  *		  sampling rate. That means that the FPGA doubles the
+=======
+ *		  sampling rate. That means the the FPGA doubles the
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  *		  sampling rate. That means the the FPGA doubles the
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

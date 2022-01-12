@@ -115,7 +115,11 @@ ia64_init_addr_space (void)
 	 * for the first time, it will get a SEGFAULT in this case.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vma = vm_area_alloc();
+=======
+	vma = kmem_cache_zalloc(vm_area_cachep, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	vma = kmem_cache_zalloc(vm_area_cachep, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -130,7 +134,11 @@ ia64_init_addr_space (void)
 		if (insert_vm_struct(current->mm, vma)) {
 			up_write(&current->mm->mmap_sem);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			vm_area_free(vma);
+=======
+			kmem_cache_free(vm_area_cachep, vma);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			kmem_cache_free(vm_area_cachep, vma);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -142,7 +150,11 @@ ia64_init_addr_space (void)
 	/* map NaT-page at address zero to speed up speculative dereferencing of NULL: */
 	if (!(current->personality & MMAP_PAGE_ZERO)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		vma = vm_area_alloc();
+=======
+		vma = kmem_cache_zalloc(vm_area_cachep, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		vma = kmem_cache_zalloc(vm_area_cachep, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -157,7 +169,11 @@ ia64_init_addr_space (void)
 			if (insert_vm_struct(current->mm, vma)) {
 				up_write(&current->mm->mmap_sem);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				vm_area_free(vma);
+=======
+				kmem_cache_free(vm_area_cachep, vma);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				kmem_cache_free(vm_area_cachep, vma);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -2425,7 +2425,11 @@ out:
  *
  *	Obtain the modem status bits from the tty driver if the feature
 <<<<<<< HEAD
+<<<<<<< HEAD
  *	is supported. Return -ENOTTY if it is not available.
+=======
+ *	is supported. Return -EINVAL if it is not available.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  *	is supported. Return -EINVAL if it is not available.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2436,7 +2440,11 @@ out:
 static int tty_tiocmget(struct tty_struct *tty, int __user *p)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int retval = -ENOTTY;
+=======
+	int retval = -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int retval = -EINVAL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2458,7 +2466,11 @@ static int tty_tiocmget(struct tty_struct *tty, int __user *p)
  *
  *	Set the modem status bits from the tty driver if the feature
 <<<<<<< HEAD
+<<<<<<< HEAD
  *	is supported. Return -ENOTTY if it is not available.
+=======
+ *	is supported. Return -EINVAL if it is not available.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  *	is supported. Return -EINVAL if it is not available.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2474,7 +2486,11 @@ static int tty_tiocmset(struct tty_struct *tty, unsigned int cmd,
 
 	if (tty->ops->tiocmset == NULL)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -ENOTTY;
+=======
+		return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EINVAL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

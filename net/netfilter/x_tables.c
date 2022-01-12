@@ -330,7 +330,10 @@ static int match_revfn(u8 af, const char *name, u8 revision, int *bestp)
 	int have_rev = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&xt[af].mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	list_for_each_entry(m, &xt[af].match, list) {
@@ -342,7 +345,10 @@ static int match_revfn(u8 af, const char *name, u8 revision, int *bestp)
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_unlock(&xt[af].mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -358,7 +364,10 @@ static int target_revfn(u8 af, const char *name, u8 revision, int *bestp)
 	int have_rev = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&xt[af].mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	list_for_each_entry(t, &xt[af].target, list) {
@@ -370,7 +379,10 @@ static int target_revfn(u8 af, const char *name, u8 revision, int *bestp)
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_unlock(&xt[af].mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -387,6 +399,10 @@ int xt_find_revision(u8 af, const char *name, u8 revision, int target,
 	int have_rev, best = -1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	mutex_lock(&xt[af].mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mutex_lock(&xt[af].mutex);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -395,6 +411,10 @@ int xt_find_revision(u8 af, const char *name, u8 revision, int target,
 	else
 		have_rev = match_revfn(af, name, revision, &best);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	mutex_unlock(&xt[af].mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mutex_unlock(&xt[af].mutex);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -659,7 +679,11 @@ void xt_compat_match_from_user(struct xt_entry_match *m, void **dstptr,
 	const struct xt_match *match = m->u.kernel.match;
 	struct compat_xt_entry_match *cm = (struct compat_xt_entry_match *)m;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int off = xt_compat_match_offset(match);
+=======
+	int pad, off = xt_compat_match_offset(match);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int pad, off = xt_compat_match_offset(match);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -673,6 +697,12 @@ void xt_compat_match_from_user(struct xt_entry_match *m, void **dstptr,
 	else
 		memcpy(m->data, cm->data, msize - sizeof(*cm));
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	pad = XT_ALIGN(match->matchsize) - match->matchsize;
+	if (pad > 0)
+		memset(m->data + match->matchsize, 0, pad);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pad = XT_ALIGN(match->matchsize) - match->matchsize;
 	if (pad > 0)
@@ -1021,7 +1051,11 @@ void xt_compat_target_from_user(struct xt_entry_target *t, void **dstptr,
 	const struct xt_target *target = t->u.kernel.target;
 	struct compat_xt_entry_target *ct = (struct compat_xt_entry_target *)t;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int off = xt_compat_target_offset(target);
+=======
+	int pad, off = xt_compat_target_offset(target);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int pad, off = xt_compat_target_offset(target);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1035,6 +1069,12 @@ void xt_compat_target_from_user(struct xt_entry_target *t, void **dstptr,
 	else
 		memcpy(t->data, ct->data, tsize - sizeof(*ct));
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	pad = XT_ALIGN(target->targetsize) - target->targetsize;
+	if (pad > 0)
+		memset(t->data + target->targetsize, 0, pad);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pad = XT_ALIGN(target->targetsize) - target->targetsize;
 	if (pad > 0)
@@ -1281,9 +1321,12 @@ xt_replace_table(struct xt_table *table,
 	table->private = newinfo;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* make sure all cpus see new ->private value */
 	smp_mb();
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*

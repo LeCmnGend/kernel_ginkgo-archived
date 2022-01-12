@@ -207,7 +207,11 @@ spurious_8259A_irq:
 		 */
 		if (!(spurious_irq_mask & irqmask)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			printk_deferred(KERN_DEBUG
+=======
+			printk(KERN_DEBUG
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_DEBUG
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

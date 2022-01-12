@@ -125,10 +125,15 @@ static ssize_t fifo_write(struct file *file, const char __user *buf,
 
 	mutex_unlock(&write_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret)
 		return ret;
 
 	return copied;
+=======
+
+	return ret ? ret : copied;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	return ret ? ret : copied;
@@ -148,10 +153,15 @@ static ssize_t fifo_read(struct file *file, char __user *buf,
 
 	mutex_unlock(&read_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret)
 		return ret;
 
 	return copied;
+=======
+
+	return ret ? ret : copied;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	return ret ? ret : copied;

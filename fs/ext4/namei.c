@@ -1468,8 +1468,13 @@ int ext4_search_dir(struct buffer_head *bh, char *search_buf, int buf_size,
 			/* found a match - just to be sure, do
 			 * a full check */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (ext4_check_dir_entry(dir, NULL, de, bh, search_buf,
 						 buf_size, lblk, offset))
+=======
+			if (ext4_check_dir_entry(dir, NULL, de, bh, bh->b_data,
+						 bh->b_size, lblk, offset))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (ext4_check_dir_entry(dir, NULL, de, bh, bh->b_data,
 						 bh->b_size, lblk, offset))
@@ -1944,7 +1949,11 @@ static struct ext4_dir_entry_2 *do_split(handle_t *handle, struct inode *dir,
 	map -= count;
 	dx_sort_map(map, count);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Ensure that neither split block is over half full */
+=======
+	/* Split the existing block in the middle, size-wise */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Split the existing block in the middle, size-wise */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1958,6 +1967,7 @@ static struct ext4_dir_entry_2 *do_split(handle_t *handle, struct inode *dir,
 		move++;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * map index at which we will split
 	 *
@@ -1970,6 +1980,10 @@ static struct ext4_dir_entry_2 *do_split(handle_t *handle, struct inode *dir,
 	else
 		split = count/2;
 
+=======
+	/* map index at which we will split */
+	split = count - move;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* map index at which we will split */
 	split = count - move;
@@ -2532,16 +2546,22 @@ again:
 			if (err)
 				goto journal_error;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			err = ext4_handle_dirty_dx_node(handle, dir,
 							frame->bh);
 			if (restart || err)
 				goto journal_error;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (restart) {
 				err = ext4_handle_dirty_dx_node(handle, dir,
 							   frame->bh);
 				goto journal_error;
 			}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		} else {
 			struct dx_root *dxroot;
@@ -2610,7 +2630,11 @@ int ext4_generic_delete_entry(handle_t *handle,
 	while (i < buf_size - csum_size) {
 		if (ext4_check_dir_entry(dir, NULL, de, bh,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					 entry_buf, buf_size, lblk, i))
+=======
+					 bh->b_data, bh->b_size, lblk, i))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					 bh->b_data, bh->b_size, lblk, i))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3695,6 +3719,11 @@ static int ext4_setent(handle_t *handle, struct ext4_renament *ent,
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	brelse(ent->bh);
+	ent->bh = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	brelse(ent->bh);
 	ent->bh = NULL;
@@ -3703,6 +3732,7 @@ static int ext4_setent(handle_t *handle, struct ext4_renament *ent,
 	return 0;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static void ext4_resetent(handle_t *handle, struct ext4_renament *ent,
 			  unsigned ino, unsigned file_type)
@@ -3729,6 +3759,8 @@ static void ext4_resetent(handle_t *handle, struct ext4_renament *ent,
 	brelse(old.bh);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int ext4_find_delete_entry(handle_t *handle, struct inode *dir,
@@ -3894,7 +3926,11 @@ static int ext4_rename(struct inode *old_dir, struct dentry *old_dentry,
 	retval = -ENOENT;
 	if (!old.bh || le32_to_cpu(old.de->inode) != old.inode->i_ino)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto release_bh;
+=======
+		goto end_rename;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto end_rename;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3905,7 +3941,11 @@ static int ext4_rename(struct inode *old_dir, struct dentry *old_dentry,
 		retval = PTR_ERR(new.bh);
 		new.bh = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto release_bh;
+=======
+		goto end_rename;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto end_rename;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3926,7 +3966,12 @@ static int ext4_rename(struct inode *old_dir, struct dentry *old_dentry,
 		if (IS_ERR(handle)) {
 			retval = PTR_ERR(handle);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto release_bh;
+=======
+			handle = NULL;
+			goto end_rename;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			handle = NULL;
 			goto end_rename;
@@ -3937,17 +3982,23 @@ static int ext4_rename(struct inode *old_dir, struct dentry *old_dentry,
 		if (IS_ERR(whiteout)) {
 			retval = PTR_ERR(whiteout);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto release_bh;
 		}
 	}
 
 	old_file_type = old.de->file_type;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			whiteout = NULL;
 			goto end_rename;
 		}
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (IS_DIRSYNC(old.dir) || IS_DIRSYNC(new.dir))
 		ext4_handle_sync(handle);
@@ -3977,6 +4028,10 @@ static int ext4_rename(struct inode *old_dir, struct dentry *old_dentry,
 			ext4_test_inode_flag(new.dir, EXT4_INODE_INLINE_DATA));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	old_file_type = old.de->file_type;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	old_file_type = old.de->file_type;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4052,6 +4107,7 @@ static int ext4_rename(struct inode *old_dir, struct dentry *old_dentry,
 
 end_rename:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (whiteout) {
 		if (retval) {
 			ext4_resetent(handle, &old,
@@ -4070,6 +4126,8 @@ release_bh:
 	brelse(old.bh);
 	brelse(new.bh);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	brelse(old.dir_bh);
 	brelse(old.bh);
 	brelse(new.bh);
@@ -4081,6 +4139,9 @@ release_bh:
 	}
 	if (handle)
 		ext4_journal_stop(handle);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return retval;
 }

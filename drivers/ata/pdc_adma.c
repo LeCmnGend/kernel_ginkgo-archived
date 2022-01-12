@@ -133,7 +133,11 @@ static int adma_ata_init_one(struct pci_dev *pdev,
 static int adma_port_start(struct ata_port *ap);
 static void adma_port_stop(struct ata_port *ap);
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors adma_qc_prep(struct ata_queued_cmd *qc);
+=======
+static void adma_qc_prep(struct ata_queued_cmd *qc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void adma_qc_prep(struct ata_queued_cmd *qc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -316,7 +320,11 @@ static int adma_fill_sg(struct ata_queued_cmd *qc)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors adma_qc_prep(struct ata_queued_cmd *qc)
+=======
+static void adma_qc_prep(struct ata_queued_cmd *qc)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void adma_qc_prep(struct ata_queued_cmd *qc)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -331,7 +339,11 @@ static void adma_qc_prep(struct ata_queued_cmd *qc)
 	adma_enter_reg_mode(qc->ap);
 	if (qc->tf.protocol != ATA_PROT_DMA)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return AC_ERR_OK;
+=======
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -400,7 +412,10 @@ static void adma_qc_prep(struct ata_queued_cmd *qc)
 	}
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return AC_ERR_OK;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

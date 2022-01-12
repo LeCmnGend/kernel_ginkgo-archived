@@ -1,8 +1,12 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Additional userspace pages setup for AArch64 and AArch32.
  *  - AArch64: vDSO pages setup, vDSO data page update.
  *  - AArch32: sigreturn and kuser helpers pages setup.
+=======
+ * VDSO implementation for AArch64 and vector page setup for AArch32.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * VDSO implementation for AArch64 and vector page setup for AArch32.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -44,11 +48,16 @@
 #include <asm/vdso_datapage.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct vdso_mappings {
 	unsigned long num_code_pages;
 	struct vm_special_mapping data_mapping;
 	struct vm_special_mapping code_mapping;
 };
+=======
+extern char vdso_start[], vdso_end[];
+static unsigned long vdso_pages __ro_after_init;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern char vdso_start[], vdso_end[];
 static unsigned long vdso_pages __ro_after_init;
@@ -67,6 +76,7 @@ struct vdso_data *vdso_data = &vdso_data_store.data;
 /*
  * Create and map the vectors page for AArch32 tasks.
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
 #if !defined(CONFIG_VDSO32) || defined(CONFIG_KUSER_HELPERS)
 static struct page *vectors_page[] __ro_after_init;
@@ -130,6 +140,8 @@ static int __init alloc_vectors_page(void)
 	vectors_page[1] = virt_to_page(kuser_vpage);
 #endif
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct page *vectors_page[1] __ro_after_init;
 
 static int __init alloc_vectors_page(void)
@@ -156,6 +168,9 @@ static int __init alloc_vectors_page(void)
 
 	flush_icache_range(vpage, vpage + PAGE_SIZE);
 	vectors_page[0] = virt_to_page(vpage);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
@@ -163,12 +178,15 @@ static int __init alloc_vectors_page(void)
 arch_initcall(alloc_vectors_page);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef CONFIG_VDSO32
 int aarch32_setup_vectors_page(struct linux_binprm *bprm, int uses_interp)
 {
 	struct mm_struct *mm = current->mm;
 	unsigned long addr;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int aarch32_setup_vectors_page(struct linux_binprm *bprm, int uses_interp)
 {
 	struct mm_struct *mm = current->mm;
@@ -178,11 +196,15 @@ int aarch32_setup_vectors_page(struct linux_binprm *bprm, int uses_interp)
 		.pages	= vectors_page,
 
 	};
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	void *ret;
 
 	if (down_write_killable(&mm->mmap_sem))
 		return -EINTR;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	addr = get_unmapped_area(NULL, 0, PAGE_SIZE, 0, 0);
 	if (IS_ERR_VALUE(addr)) {
@@ -208,6 +230,8 @@ int aarch32_setup_vectors_page(struct linux_binprm *bprm, int uses_interp)
 #endif
 out:
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	current->mm->context.vdso = (void *)addr;
 
 	/* Map vectors page at the high address. */
@@ -215,11 +239,15 @@ out:
 				       VM_READ|VM_EXEC|VM_MAYREAD|VM_MAYEXEC,
 				       &spec);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	up_write(&mm->mmap_sem);
 
 	return PTR_ERR_OR_ZERO(ret);
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 #endif /* !CONFIG_VDSO32 */
 #endif /* CONFIG_COMPAT */
@@ -252,6 +280,8 @@ static int __init vdso_mappings_init(const char *name,
 	vdso_pagelist = kmalloc_array(vdso_pages + 1, sizeof(struct page *),
 				      GFP_KERNEL);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* CONFIG_COMPAT */
 
 static int vdso_mremap(const struct vm_special_mapping *sm,
@@ -296,6 +326,9 @@ static int __init vdso_init(void)
 	/* Allocate the vDSO pagelist, plus a page for the data. */
 	vdso_pagelist = kcalloc(vdso_pages + 1, sizeof(struct page *),
 				GFP_KERNEL);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (vdso_pagelist == NULL)
 		return -ENOMEM;
@@ -304,8 +337,14 @@ static int __init vdso_init(void)
 	vdso_pagelist[0] = phys_to_page(__pa_symbol(vdso_data));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Grab the vDSO code pages. */
 	pfn = sym_to_pfn(code_start);
+=======
+
+	/* Grab the vDSO code pages. */
+	pfn = sym_to_pfn(vdso_start);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	/* Grab the vDSO code pages. */
@@ -315,6 +354,7 @@ static int __init vdso_init(void)
 	for (i = 0; i < vdso_pages; i++)
 		vdso_pagelist[i + 1] = pfn_to_page(pfn + i);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	/* Populate the special mapping structures */
 	mappings->data_mapping = (struct vm_special_mapping) {
@@ -432,6 +472,8 @@ int arch_setup_additional_pages(struct linux_binprm *bprm, int uses_interp)
 	up_write(&mm->mmap_sem);
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	vdso_spec[0].pages = &vdso_pagelist[0];
 	vdso_spec[1].pages = &vdso_pagelist[1];
 
@@ -480,6 +522,9 @@ up_fail:
 	mm->context.vdso = NULL;
 	up_write(&mm->mmap_sem);
 	return PTR_ERR(ret);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -505,8 +550,11 @@ void update_vsyscall(struct timekeeper *tk)
 
 	if (!use_syscall) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		struct timespec btm = ktime_to_timespec(tk->offs_boot);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* tkr_mono.cycle_last == tkr_raw.cycle_last */
@@ -515,7 +563,11 @@ void update_vsyscall(struct timekeeper *tk)
 		vdso_data->raw_time_nsec        = tk->tkr_raw.xtime_nsec;
 		vdso_data->xtime_clock_sec	= tk->xtime_sec;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		vdso_data->xtime_clock_snsec	= tk->tkr_mono.xtime_nsec;
+=======
+		vdso_data->xtime_clock_nsec	= tk->tkr_mono.xtime_nsec;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		vdso_data->xtime_clock_nsec	= tk->tkr_mono.xtime_nsec;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -524,8 +576,11 @@ void update_vsyscall(struct timekeeper *tk)
 		/* tkr_mono.shift == tkr_raw.shift */
 		vdso_data->cs_shift		= tk->tkr_mono.shift;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		vdso_data->btm_sec		= btm.tv_sec;
 		vdso_data->btm_nsec		= btm.tv_nsec;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

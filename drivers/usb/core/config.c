@@ -257,7 +257,10 @@ static int usb_parse_endpoint(struct device *ddev, int cfgno,
 		unsigned char *buffer, int size)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct usb_device *udev = to_usb_device(ddev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned char *buffer0 = buffer;
@@ -302,6 +305,7 @@ static int usb_parse_endpoint(struct device *ddev, int cfgno,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Ignore blacklisted endpoints */
 	if (udev->quirks & USB_QUIRK_ENDPOINT_BLACKLIST) {
 		if (usb_endpoint_is_blacklisted(udev, ifp, d)) {
@@ -312,6 +316,8 @@ static int usb_parse_endpoint(struct device *ddev, int cfgno,
 		}
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	endpoint = &ifp->endpoint[ifp->desc.bNumEndpoints];

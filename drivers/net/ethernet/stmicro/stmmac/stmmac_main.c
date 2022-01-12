@@ -1543,6 +1543,7 @@ static void dma_free_tx_skbufs(struct stmmac_priv *priv, u32 queue)
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * stmmac_free_tx_skbufs - free TX skb buffers
  * @priv: private structure
  */
@@ -1556,6 +1557,8 @@ static void stmmac_free_tx_skbufs(struct stmmac_priv *priv)
 }
 
 /**
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * free_dma_rx_desc_resources - free RX dma desc resources
@@ -2920,6 +2923,12 @@ static int stmmac_release(struct net_device *dev)
 	struct stmmac_priv *priv = netdev_priv(dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (priv->eee_enabled)
+		del_timer_sync(&priv->eee_ctrl_timer);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (priv->eee_enabled)
 		del_timer_sync(&priv->eee_ctrl_timer);
@@ -2946,11 +2955,14 @@ static int stmmac_release(struct net_device *dev)
 		free_irq(priv->lpi_irq, dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (priv->eee_enabled) {
 		priv->tx_path_in_lpi_mode = false;
 		del_timer_sync(&priv->eee_ctrl_timer);
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Stop TX/RX DMA and clear the descriptors */
@@ -3948,7 +3960,10 @@ static int stmmac_change_mtu(struct net_device *dev, int new_mtu)
 	struct stmmac_priv *priv = netdev_priv(dev);
 	int txfifosz = priv->plat->tx_fifo_size;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	const int mtu = new_mtu;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -3969,7 +3984,11 @@ static int stmmac_change_mtu(struct net_device *dev, int new_mtu)
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev->mtu = mtu;
+=======
+	dev->mtu = new_mtu;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev->mtu = new_mtu;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4789,11 +4808,14 @@ int stmmac_suspend(struct device *dev)
 	stmmac_disable_all_queues(priv);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (priv->eee_enabled) {
 		priv->tx_path_in_lpi_mode = false;
 		del_timer_sync(&priv->eee_ctrl_timer);
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Stop TX/RX DMA */
@@ -4895,7 +4917,10 @@ int stmmac_resume(struct device *dev)
 	priv->mss = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	stmmac_free_tx_skbufs(priv);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	stmmac_clear_descriptors(priv);

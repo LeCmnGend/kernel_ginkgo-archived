@@ -747,8 +747,11 @@ struct usbhs_pipe *usbhs_pipe_malloc(struct usbhs_priv *priv,
 void usbhs_pipe_free(struct usbhs_pipe *pipe)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	usbhsp_pipe_select(pipe);
 	usbhsp_pipe_cfg_set(pipe, 0xFFFF, 0);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	usbhsp_put_pipe(pipe);

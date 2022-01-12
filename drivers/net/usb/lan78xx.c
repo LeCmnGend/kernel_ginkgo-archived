@@ -364,11 +364,17 @@ struct lan78xx_net {
 	struct delayed_work	wq;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct usb_host_endpoint *ep_blkin;
 	struct usb_host_endpoint *ep_blkout;
 	struct usb_host_endpoint *ep_intr;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int			msg_enable;
 
@@ -1153,7 +1159,11 @@ static int lan78xx_link_reset(struct lan78xx_net *dev)
 	struct phy_device *phydev = dev->net->phydev;
 	struct ethtool_link_ksettings ecmd;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ladv, radv, ret, link;
+=======
+	int ladv, radv, ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int ladv, radv, ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1165,12 +1175,18 @@ static int lan78xx_link_reset(struct lan78xx_net *dev)
 		return -EIO;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&phydev->lock);
 	phy_read_status(phydev);
 	link = phydev->link;
 	mutex_unlock(&phydev->lock);
 
 	if (!link && dev->link_on) {
+=======
+	phy_read_status(phydev);
+
+	if (!phydev->link && dev->link_on) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	phy_read_status(phydev);
 
@@ -1189,7 +1205,11 @@ static int lan78xx_link_reset(struct lan78xx_net *dev)
 
 		del_timer(&dev->stat_monitor);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else if (link && !dev->link_on) {
+=======
+	} else if (phydev->link && !dev->link_on) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	} else if (phydev->link && !dev->link_on) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1480,6 +1500,7 @@ static int lan78xx_set_eee(struct net_device *net, struct ethtool_eee *edata)
 static u32 lan78xx_get_link(struct net_device *net)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 link;
 
 	mutex_lock(&net->phydev->lock);
@@ -1488,6 +1509,11 @@ static u32 lan78xx_get_link(struct net_device *net)
 	mutex_unlock(&net->phydev->lock);
 
 	return link;
+=======
+	phy_read_status(net->phydev);
+
+	return net->phydev->link;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	phy_read_status(net->phydev);
 
@@ -2781,7 +2807,10 @@ lan78xx_start_xmit(struct sk_buff *skb, struct net_device *net)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int
 lan78xx_get_endpoints(struct lan78xx_net *dev, struct usb_interface *intf)
 {
@@ -2841,6 +2870,9 @@ lan78xx_get_endpoints(struct lan78xx_net *dev, struct usb_interface *intf)
 	return 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int lan78xx_bind(struct lan78xx_net *dev, struct usb_interface *intf)
 {
@@ -2849,7 +2881,10 @@ static int lan78xx_bind(struct lan78xx_net *dev, struct usb_interface *intf)
 	int i;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = lan78xx_get_endpoints(dev, intf);
 	if (ret) {
 		netdev_warn(dev->net, "lan78xx_get_endpoints failed: %d\n",
@@ -2857,6 +2892,9 @@ static int lan78xx_bind(struct lan78xx_net *dev, struct usb_interface *intf)
 		return ret;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dev->data[0] = (unsigned long)kzalloc(sizeof(*pdata), GFP_KERNEL);
 
@@ -3603,7 +3641,10 @@ static int lan78xx_probe(struct usb_interface *intf,
 			 const struct usb_device_id *id)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct usb_host_endpoint *ep_blkin, *ep_blkout, *ep_intr;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct lan78xx_net *dev;
@@ -3657,6 +3698,7 @@ static int lan78xx_probe(struct usb_interface *intf,
 	mutex_init(&dev->stats.access_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (intf->cur_altsetting->desc.bNumEndpoints < 3) {
 		ret = -ENODEV;
 		goto out2;
@@ -3687,6 +3729,8 @@ static int lan78xx_probe(struct usb_interface *intf,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = lan78xx_bind(dev, intf);
 	if (ret < 0)
 		goto out2;
@@ -3699,8 +3743,11 @@ static int lan78xx_probe(struct usb_interface *intf,
 	netif_set_gso_max_size(netdev, MAX_SINGLE_PACKET_SIZE - MAX_HEADER);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	period = ep_intr->desc.bInterval;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dev->ep_blkin = (intf->cur_altsetting)->endpoint + 0;
 	dev->ep_blkout = (intf->cur_altsetting)->endpoint + 1;
 	dev->ep_intr = (intf->cur_altsetting)->endpoint + 2;
@@ -3713,6 +3760,9 @@ static int lan78xx_probe(struct usb_interface *intf,
 					USB_ENDPOINT_NUMBER_MASK);
 	period = dev->ep_intr->desc.bInterval;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	maxp = usb_maxpacket(dev->udev, dev->pipe_intr, 0);
 	buf = kmalloc(maxp, GFP_KERNEL);
@@ -3727,7 +3777,10 @@ static int lan78xx_probe(struct usb_interface *intf,
 					 dev->pipe_intr, buf, maxp,
 					 intr_complete, dev, period);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			dev->urb_intr->transfer_flags |= URB_FREE_BUFFER;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}

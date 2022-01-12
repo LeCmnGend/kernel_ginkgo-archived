@@ -135,8 +135,11 @@ static inline int adreno_cp_parser_getreg(struct adreno_device *adreno_dev,
 					enum adreno_cp_addr_regs reg_enum)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return -EEXIST;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (reg_enum == ADRENO_CP_ADDR_MAX)
 		return -EEXIST;
 
@@ -146,6 +149,9 @@ static inline int adreno_cp_parser_getreg(struct adreno_device *adreno_dev,
 		return a4xx_cp_addr_regs[reg_enum];
 	else
 		return -EEXIST;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -165,7 +171,10 @@ static inline int adreno_cp_parser_regindex(struct adreno_device *adreno_dev,
 				enum adreno_cp_addr_regs end)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int i;
 	const unsigned int *regs;
 
@@ -179,6 +188,9 @@ static inline int adreno_cp_parser_regindex(struct adreno_device *adreno_dev,
 	for (i = start; i <= end && i < ADRENO_CP_ADDR_MAX; i++)
 		if (regs[i] == offset)
 			return i;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return -EEXIST;
 }

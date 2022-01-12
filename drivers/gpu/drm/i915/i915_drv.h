@@ -34,8 +34,11 @@
 #include <uapi/drm/drm_fourcc.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <asm/hypervisor.h>
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/io-mapping.h>
@@ -3147,9 +3150,13 @@ static inline bool intel_vtd_active(void)
 		return true;
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* Running as a guest, we assume the host is enforcing VT'd */
 	return !hypervisor_is_type(X86_HYPER_NATIVE);
+=======
+	return false;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return false;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

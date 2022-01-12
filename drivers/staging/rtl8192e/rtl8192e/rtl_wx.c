@@ -420,10 +420,16 @@ static int _rtl92e_wx_set_scan(struct net_device *dev,
 
 		if (req->essid_len) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			int len = min_t(int, req->essid_len, IW_ESSID_MAX_SIZE);
 
 			ieee->current_network.ssid_len = len;
 			memcpy(ieee->current_network.ssid, req->essid, len);
+=======
+			ieee->current_network.ssid_len = req->essid_len;
+			memcpy(ieee->current_network.ssid, req->essid,
+			       req->essid_len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ieee->current_network.ssid_len = req->essid_len;
 			memcpy(ieee->current_network.ssid, req->essid,

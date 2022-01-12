@@ -30,7 +30,10 @@
 #include <linux/dmi.h>
 #include <linux/sched.h>       /* need_resched() */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/sort.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/tick.h>
@@ -545,6 +548,7 @@ static void acpi_processor_power_verify_c3(struct acpi_processor *pr,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int acpi_cst_latency_cmp(const void *a, const void *b)
 {
 	const struct acpi_processor_cx *x = a, *y = b;
@@ -571,14 +575,19 @@ static void acpi_cst_latency_swap(void *a, void *b, int n)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int acpi_processor_power_verify(struct acpi_processor *pr)
 {
 	unsigned int i;
 	unsigned int working = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int last_latency = 0;
 	unsigned int last_type = 0;
 	bool buggy_latency = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -605,10 +614,13 @@ static int acpi_processor_power_verify(struct acpi_processor *pr)
 		if (!cx->valid)
 			continue;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (cx->type >= last_type && cx->latency < last_latency)
 			buggy_latency = true;
 		last_latency = cx->latency;
 		last_type = cx->type;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -618,6 +630,7 @@ static int acpi_processor_power_verify(struct acpi_processor *pr)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (buggy_latency) {
 		pr_notice("FW issue: working around C-state latencies out of order\n");
 		sort(&pr->power.states[1], max_cstate,
@@ -626,6 +639,8 @@ static int acpi_processor_power_verify(struct acpi_processor *pr)
 		     acpi_cst_latency_swap);
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	lapic_timer_propagate_broadcast(pr);

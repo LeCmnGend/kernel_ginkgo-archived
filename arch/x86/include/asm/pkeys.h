@@ -5,11 +5,14 @@
 #define ARCH_DEFAULT_PKEY	0
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * If more than 16 keys are ever supported, a thorough audit
  * will be necessary to ensure that the types that store key
  * numbers and masks have sufficient capacity.
  */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define arch_max_pkey() (boot_cpu_has(X86_FEATURE_OSPKE) ? 16 : 1)

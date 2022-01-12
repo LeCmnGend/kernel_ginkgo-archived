@@ -38,8 +38,11 @@ static ssize_t cm_write(struct file *file, const char __user * user_buf,
 			return -EFAULT;
 		uncopied_bytes = max_size = table.length;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* make sure the buf is not allocated */
 		kfree(buf);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		buf = kzalloc(max_size, GFP_KERNEL);
@@ -56,7 +59,10 @@ static ssize_t cm_write(struct file *file, const char __user * user_buf,
 	    (count > uncopied_bytes)) {
 		kfree(buf);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		buf = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EINVAL;
@@ -81,6 +87,10 @@ static ssize_t cm_write(struct file *file, const char __user * user_buf,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kfree(buf);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(buf);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

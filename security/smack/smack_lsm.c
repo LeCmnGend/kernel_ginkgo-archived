@@ -2052,6 +2052,7 @@ static void smack_cred_transfer(struct cred *new, const struct cred *old)
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * smack_cred_getsecid - get the secid corresponding to a creds structure
  * @c: the object creds
  * @secid: where to put the result
@@ -2069,6 +2070,8 @@ static void smack_cred_getsecid(const struct cred *c, u32 *secid)
 }
 
 /**
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * smack_kernel_act_as - Set the subjective context in a set of credentials
@@ -2969,9 +2972,15 @@ static void smack_msg_msg_free_security(struct msg_msg *msg)
  * Returns a pointer to the smack value
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct smack_known *smack_of_shm(struct kern_ipc_perm *shp)
 {
 	return (struct smack_known *)shp->security;
+=======
+static struct smack_known *smack_of_shm(struct shmid_kernel *shp)
+{
+	return (struct smack_known *)shp->shm_perm.security;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static struct smack_known *smack_of_shm(struct shmid_kernel *shp)
 {
@@ -2986,9 +2995,15 @@ static struct smack_known *smack_of_shm(struct shmid_kernel *shp)
  * Returns 0
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int smack_shm_alloc_security(struct kern_ipc_perm *shp)
 {
 	struct kern_ipc_perm *isp = shp;
+=======
+static int smack_shm_alloc_security(struct shmid_kernel *shp)
+{
+	struct kern_ipc_perm *isp = &shp->shm_perm;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int smack_shm_alloc_security(struct shmid_kernel *shp)
 {
@@ -3007,9 +3022,15 @@ static int smack_shm_alloc_security(struct shmid_kernel *shp)
  * Clears the blob pointer
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void smack_shm_free_security(struct kern_ipc_perm *shp)
 {
 	struct kern_ipc_perm *isp = shp;
+=======
+static void smack_shm_free_security(struct shmid_kernel *shp)
+{
+	struct kern_ipc_perm *isp = &shp->shm_perm;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void smack_shm_free_security(struct shmid_kernel *shp)
 {
@@ -3027,7 +3048,11 @@ static void smack_shm_free_security(struct shmid_kernel *shp)
  * Returns 0 if current has the requested access, error code otherwise
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int smk_curacc_shm(struct kern_ipc_perm *shp, int access)
+=======
+static int smk_curacc_shm(struct shmid_kernel *shp, int access)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int smk_curacc_shm(struct shmid_kernel *shp, int access)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3039,7 +3064,11 @@ static int smk_curacc_shm(struct shmid_kernel *shp, int access)
 #ifdef CONFIG_AUDIT
 	smk_ad_init(&ad, __func__, LSM_AUDIT_DATA_IPC);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ad.a.u.ipc_id = shp->id;
+=======
+	ad.a.u.ipc_id = shp->shm_perm.id;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ad.a.u.ipc_id = shp->shm_perm.id;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3057,7 +3086,11 @@ static int smk_curacc_shm(struct shmid_kernel *shp, int access)
  * Returns 0 if current has the requested access, error code otherwise
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int smack_shm_associate(struct kern_ipc_perm *shp, int shmflg)
+=======
+static int smack_shm_associate(struct shmid_kernel *shp, int shmflg)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int smack_shm_associate(struct shmid_kernel *shp, int shmflg)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3076,7 +3109,11 @@ static int smack_shm_associate(struct shmid_kernel *shp, int shmflg)
  * Returns 0 if current has the requested access, error code otherwise
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int smack_shm_shmctl(struct kern_ipc_perm *shp, int cmd)
+=======
+static int smack_shm_shmctl(struct shmid_kernel *shp, int cmd)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int smack_shm_shmctl(struct shmid_kernel *shp, int cmd)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3115,7 +3152,11 @@ static int smack_shm_shmctl(struct shmid_kernel *shp, int cmd)
  * Returns 0 if current has the requested access, error code otherwise
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int smack_shm_shmat(struct kern_ipc_perm *shp, char __user *shmaddr,
+=======
+static int smack_shm_shmat(struct shmid_kernel *shp, char __user *shmaddr,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int smack_shm_shmat(struct shmid_kernel *shp, char __user *shmaddr,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3134,9 +3175,15 @@ static int smack_shm_shmat(struct shmid_kernel *shp, char __user *shmaddr,
  * Returns a pointer to the smack value
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct smack_known *smack_of_sem(struct kern_ipc_perm *sma)
 {
 	return (struct smack_known *)sma->security;
+=======
+static struct smack_known *smack_of_sem(struct sem_array *sma)
+{
+	return (struct smack_known *)sma->sem_perm.security;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static struct smack_known *smack_of_sem(struct sem_array *sma)
 {
@@ -3151,9 +3198,15 @@ static struct smack_known *smack_of_sem(struct sem_array *sma)
  * Returns 0
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int smack_sem_alloc_security(struct kern_ipc_perm *sma)
 {
 	struct kern_ipc_perm *isp = sma;
+=======
+static int smack_sem_alloc_security(struct sem_array *sma)
+{
+	struct kern_ipc_perm *isp = &sma->sem_perm;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int smack_sem_alloc_security(struct sem_array *sma)
 {
@@ -3172,9 +3225,15 @@ static int smack_sem_alloc_security(struct sem_array *sma)
  * Clears the blob pointer
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void smack_sem_free_security(struct kern_ipc_perm *sma)
 {
 	struct kern_ipc_perm *isp = sma;
+=======
+static void smack_sem_free_security(struct sem_array *sma)
+{
+	struct kern_ipc_perm *isp = &sma->sem_perm;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void smack_sem_free_security(struct sem_array *sma)
 {
@@ -3192,7 +3251,11 @@ static void smack_sem_free_security(struct sem_array *sma)
  * Returns 0 if current has the requested access, error code otherwise
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int smk_curacc_sem(struct kern_ipc_perm *sma, int access)
+=======
+static int smk_curacc_sem(struct sem_array *sma, int access)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int smk_curacc_sem(struct sem_array *sma, int access)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3204,7 +3267,11 @@ static int smk_curacc_sem(struct sem_array *sma, int access)
 #ifdef CONFIG_AUDIT
 	smk_ad_init(&ad, __func__, LSM_AUDIT_DATA_IPC);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ad.a.u.ipc_id = sma->id;
+=======
+	ad.a.u.ipc_id = sma->sem_perm.id;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ad.a.u.ipc_id = sma->sem_perm.id;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3222,7 +3289,11 @@ static int smk_curacc_sem(struct sem_array *sma, int access)
  * Returns 0 if current has the requested access, error code otherwise
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int smack_sem_associate(struct kern_ipc_perm *sma, int semflg)
+=======
+static int smack_sem_associate(struct sem_array *sma, int semflg)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int smack_sem_associate(struct sem_array *sma, int semflg)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3241,7 +3312,11 @@ static int smack_sem_associate(struct sem_array *sma, int semflg)
  * Returns 0 if current has the requested access, error code otherwise
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int smack_sem_semctl(struct kern_ipc_perm *sma, int cmd)
+=======
+static int smack_sem_semctl(struct sem_array *sma, int cmd)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int smack_sem_semctl(struct sem_array *sma, int cmd)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3289,7 +3364,11 @@ static int smack_sem_semctl(struct sem_array *sma, int cmd)
  * Returns 0 if access is allowed, error code otherwise
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int smack_sem_semop(struct kern_ipc_perm *sma, struct sembuf *sops,
+=======
+static int smack_sem_semop(struct sem_array *sma, struct sembuf *sops,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int smack_sem_semop(struct sem_array *sma, struct sembuf *sops,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3305,9 +3384,15 @@ static int smack_sem_semop(struct sem_array *sma, struct sembuf *sops,
  * Returns 0
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int smack_msg_queue_alloc_security(struct kern_ipc_perm *msq)
 {
 	struct kern_ipc_perm *kisp = msq;
+=======
+static int smack_msg_queue_alloc_security(struct msg_queue *msq)
+{
+	struct kern_ipc_perm *kisp = &msq->q_perm;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int smack_msg_queue_alloc_security(struct msg_queue *msq)
 {
@@ -3326,9 +3411,15 @@ static int smack_msg_queue_alloc_security(struct msg_queue *msq)
  * Clears the blob pointer
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void smack_msg_queue_free_security(struct kern_ipc_perm *msq)
 {
 	struct kern_ipc_perm *kisp = msq;
+=======
+static void smack_msg_queue_free_security(struct msg_queue *msq)
+{
+	struct kern_ipc_perm *kisp = &msq->q_perm;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void smack_msg_queue_free_security(struct msg_queue *msq)
 {
@@ -3345,9 +3436,15 @@ static void smack_msg_queue_free_security(struct msg_queue *msq)
  * Returns a pointer to the smack label entry
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct smack_known *smack_of_msq(struct kern_ipc_perm *msq)
 {
 	return (struct smack_known *)msq->security;
+=======
+static struct smack_known *smack_of_msq(struct msg_queue *msq)
+{
+	return (struct smack_known *)msq->q_perm.security;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static struct smack_known *smack_of_msq(struct msg_queue *msq)
 {
@@ -3363,7 +3460,11 @@ static struct smack_known *smack_of_msq(struct msg_queue *msq)
  * return 0 if current has access, error otherwise
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int smk_curacc_msq(struct kern_ipc_perm *msq, int access)
+=======
+static int smk_curacc_msq(struct msg_queue *msq, int access)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int smk_curacc_msq(struct msg_queue *msq, int access)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3375,7 +3476,11 @@ static int smk_curacc_msq(struct msg_queue *msq, int access)
 #ifdef CONFIG_AUDIT
 	smk_ad_init(&ad, __func__, LSM_AUDIT_DATA_IPC);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ad.a.u.ipc_id = msq->id;
+=======
+	ad.a.u.ipc_id = msq->q_perm.id;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ad.a.u.ipc_id = msq->q_perm.id;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3393,7 +3498,11 @@ static int smk_curacc_msq(struct msg_queue *msq, int access)
  * Returns 0 if current has the requested access, error code otherwise
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int smack_msg_queue_associate(struct kern_ipc_perm *msq, int msqflg)
+=======
+static int smack_msg_queue_associate(struct msg_queue *msq, int msqflg)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int smack_msg_queue_associate(struct msg_queue *msq, int msqflg)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3412,7 +3521,11 @@ static int smack_msg_queue_associate(struct msg_queue *msq, int msqflg)
  * Returns 0 if current has the requested access, error code otherwise
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int smack_msg_queue_msgctl(struct kern_ipc_perm *msq, int cmd)
+=======
+static int smack_msg_queue_msgctl(struct msg_queue *msq, int cmd)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int smack_msg_queue_msgctl(struct msg_queue *msq, int cmd)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3450,7 +3563,11 @@ static int smack_msg_queue_msgctl(struct msg_queue *msq, int cmd)
  * Returns 0 if current has the requested access, error code otherwise
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int smack_msg_queue_msgsnd(struct kern_ipc_perm *msq, struct msg_msg *msg,
+=======
+static int smack_msg_queue_msgsnd(struct msg_queue *msq, struct msg_msg *msg,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int smack_msg_queue_msgsnd(struct msg_queue *msq, struct msg_msg *msg,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3473,7 +3590,11 @@ static int smack_msg_queue_msgsnd(struct msg_queue *msq, struct msg_msg *msg,
  * Returns 0 if current has read and write access, error code otherwise
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int smack_msg_queue_msgrcv(struct kern_ipc_perm *msq, struct msg_msg *msg,
+=======
+static int smack_msg_queue_msgrcv(struct msg_queue *msq, struct msg_msg *msg,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int smack_msg_queue_msgrcv(struct msg_queue *msq, struct msg_msg *msg,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4804,7 +4925,10 @@ static struct security_hook_list smack_hooks[] __lsm_ro_after_init = {
 	LSM_HOOK_INIT(cred_prepare, smack_cred_prepare),
 	LSM_HOOK_INIT(cred_transfer, smack_cred_transfer),
 <<<<<<< HEAD
+<<<<<<< HEAD
 	LSM_HOOK_INIT(cred_getsecid, smack_cred_getsecid),
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	LSM_HOOK_INIT(kernel_act_as, smack_kernel_act_as),

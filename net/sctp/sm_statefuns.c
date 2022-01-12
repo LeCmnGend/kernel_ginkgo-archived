@@ -1889,8 +1889,12 @@ static enum sctp_disposition sctp_sf_do_dupcook_b(
 	sctp_add_cmd_sf(commands, SCTP_CMD_NEW_STATE,
 			SCTP_STATE(SCTP_STATE_ESTABLISHED));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (asoc->state < SCTP_STATE_ESTABLISHED)
 		SCTP_INC_STATS(net, SCTP_MIB_CURRESTAB);
+=======
+	SCTP_INC_STATS(net, SCTP_MIB_CURRESTAB);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	SCTP_INC_STATS(net, SCTP_MIB_CURRESTAB);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

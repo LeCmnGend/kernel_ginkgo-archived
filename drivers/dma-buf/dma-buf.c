@@ -458,8 +458,12 @@ static long dma_buf_ioctl(struct file *file,
 		return ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case DMA_BUF_SET_NAME_A:
 	case DMA_BUF_SET_NAME_B:
+=======
+	case DMA_BUF_SET_NAME:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	case DMA_BUF_SET_NAME:
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1246,6 +1250,12 @@ int dma_buf_mmap(struct dma_buf *dmabuf, struct vm_area_struct *vma,
 		 unsigned long pgoff)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct file *oldfile;
+	int ret;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct file *oldfile;
 	int ret;
@@ -1265,12 +1275,15 @@ int dma_buf_mmap(struct dma_buf *dmabuf, struct vm_area_struct *vma,
 
 	/* readjust the vma */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	fput(vma->vm_file);
 	vma->vm_file = get_file(dmabuf->file);
 	vma->vm_pgoff = pgoff;
 
 	return dmabuf->ops->mmap(dmabuf, vma);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	get_file(dmabuf->file);
 	oldfile = vma->vm_file;
 	vma->vm_file = dmabuf->file;
@@ -1287,6 +1300,9 @@ int dma_buf_mmap(struct dma_buf *dmabuf, struct vm_area_struct *vma,
 	}
 	return ret;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL_GPL(dma_buf_mmap);

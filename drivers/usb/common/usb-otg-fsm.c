@@ -207,11 +207,15 @@ static void otg_start_hnp_polling(struct otg_fsm *fsm)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!fsm->hnp_work_inited) {
 		INIT_DELAYED_WORK(&fsm->hnp_polling_work, otg_hnp_polling_work);
 		fsm->hnp_work_inited = true;
 	}
 
+=======
+	INIT_DELAYED_WORK(&fsm->hnp_polling_work, otg_hnp_polling_work);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	INIT_DELAYED_WORK(&fsm->hnp_polling_work, otg_hnp_polling_work);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

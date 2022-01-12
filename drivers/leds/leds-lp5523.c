@@ -321,7 +321,11 @@ static int lp5523_init_program_engine(struct lp55xx_chip *chip)
 	ret = lp55xx_read(chip, LP5523_REG_STATUS, &status);
 	if (ret)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out;
+=======
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

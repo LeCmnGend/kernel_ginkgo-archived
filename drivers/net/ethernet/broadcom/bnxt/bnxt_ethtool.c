@@ -1265,12 +1265,18 @@ static int bnxt_set_pauseparam(struct net_device *dev,
 		return -EOPNOTSUPP;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&bp->link_lock);
 	if (epause->autoneg) {
 		if (!(link_info->autoneg & BNXT_AUTONEG_SPEED)) {
 			rc = -EINVAL;
 			goto pause_exit;
 		}
+=======
+	if (epause->autoneg) {
+		if (!(link_info->autoneg & BNXT_AUTONEG_SPEED))
+			return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (epause->autoneg) {
 		if (!(link_info->autoneg & BNXT_AUTONEG_SPEED))
@@ -1297,17 +1303,23 @@ static int bnxt_set_pauseparam(struct net_device *dev,
 		link_info->req_flow_ctrl |= BNXT_LINK_PAUSE_TX;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (netif_running(dev))
 		rc = bnxt_hwrm_set_pause(bp);
 
 pause_exit:
 	mutex_unlock(&bp->link_lock);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (netif_running(dev)) {
 		mutex_lock(&bp->link_lock);
 		rc = bnxt_hwrm_set_pause(bp);
 		mutex_unlock(&bp->link_lock);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return rc;
 }
@@ -1779,9 +1791,12 @@ static int bnxt_get_nvram_directory(struct net_device *dev, u32 len, u8 *data)
 		return rc;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!dir_entries || !entry_length)
 		return -EIO;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Insert 2 bytes of directory info (count and size of entries) */
@@ -1998,7 +2013,12 @@ static int bnxt_set_eee(struct net_device *dev, struct ethtool_eee *edata)
 	struct ethtool_eee *eee = &bp->eee;
 	struct bnxt_link_info *link_info = &bp->link_info;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 advertising;
+=======
+	u32 advertising =
+		 _bnxt_fw_to_ethtool_adv_spds(link_info->advertising, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 advertising =
 		 _bnxt_fw_to_ethtool_adv_spds(link_info->advertising, 0);
@@ -2012,8 +2032,11 @@ static int bnxt_set_eee(struct net_device *dev, struct ethtool_eee *edata)
 		return -EOPNOTSUPP;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&bp->link_lock);
 	advertising = _bnxt_fw_to_ethtool_adv_spds(link_info->advertising, 0);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!edata->eee_enabled)
@@ -2022,8 +2045,12 @@ static int bnxt_set_eee(struct net_device *dev, struct ethtool_eee *edata)
 	if (!(link_info->autoneg & BNXT_AUTONEG_SPEED)) {
 		netdev_warn(dev, "EEE requires autoneg\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rc = -EINVAL;
 		goto eee_exit;
+=======
+		return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EINVAL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2034,8 +2061,12 @@ static int bnxt_set_eee(struct net_device *dev, struct ethtool_eee *edata)
 			netdev_warn(dev, "Valid LPI timer range is %d and %d microsecs\n",
 				    bp->lpi_tmr_lo, bp->lpi_tmr_hi);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			rc = -EINVAL;
 			goto eee_exit;
+=======
+			return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			return -EINVAL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2049,8 +2080,12 @@ static int bnxt_set_eee(struct net_device *dev, struct ethtool_eee *edata)
 		netdev_warn(dev, "EEE advertised %x must be a subset of autoneg advertised speeds %x\n",
 			    edata->advertised, advertising);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rc = -EINVAL;
 		goto eee_exit;
+=======
+		return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EINVAL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2066,8 +2101,11 @@ eee_ok:
 		rc = bnxt_hwrm_set_link_setting(bp, false, true);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 eee_exit:
 	mutex_unlock(&bp->link_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return rc;
@@ -2209,7 +2247,11 @@ static int bnxt_get_module_eeprom(struct net_device *dev,
 	if (length) {
 		start -= ETH_MODULE_SFF_8436_LEN;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rc = bnxt_read_sfp_module_eeprom_info(bp, I2C_DEV_ADDR_A2, 0,
+=======
+		rc = bnxt_read_sfp_module_eeprom_info(bp, I2C_DEV_ADDR_A2, 1,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		rc = bnxt_read_sfp_module_eeprom_info(bp, I2C_DEV_ADDR_A2, 1,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

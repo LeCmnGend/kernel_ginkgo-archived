@@ -209,9 +209,12 @@ static void nvmet_keep_alive_timer(struct work_struct *work)
 static void nvmet_start_keep_alive_timer(struct nvmet_ctrl *ctrl)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(ctrl->kato == 0))
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pr_debug("ctrl %d start keep-alive timer for %d secs\n",
@@ -224,9 +227,12 @@ static void nvmet_start_keep_alive_timer(struct nvmet_ctrl *ctrl)
 static void nvmet_stop_keep_alive_timer(struct nvmet_ctrl *ctrl)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(ctrl->kato == 0))
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pr_debug("ctrl %d stop keep-alive\n", ctrl->cntlid);
@@ -601,6 +607,7 @@ static void nvmet_start_ctrl(struct nvmet_ctrl *ctrl)
 	lockdep_assert_held(&ctrl->lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Only I/O controllers should verify iosqes,iocqes.
 	 * Strictly speaking, the spec says a discovery controller
@@ -615,6 +622,11 @@ static void nvmet_start_ctrl(struct nvmet_ctrl *ctrl)
 	}
 
 	if (nvmet_cc_mps(ctrl->cc) != 0 ||
+=======
+	if (nvmet_cc_iosqes(ctrl->cc) != NVME_NVM_IOSQES ||
+	    nvmet_cc_iocqes(ctrl->cc) != NVME_NVM_IOCQES ||
+	    nvmet_cc_mps(ctrl->cc) != 0 ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (nvmet_cc_iosqes(ctrl->cc) != NVME_NVM_IOSQES ||
 	    nvmet_cc_iocqes(ctrl->cc) != NVME_NVM_IOCQES ||
@@ -635,8 +647,12 @@ static void nvmet_start_ctrl(struct nvmet_ctrl *ctrl)
 	 * reset the keep alive timer when the controller is enabled.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ctrl->kato)
 		mod_delayed_work(system_wq, &ctrl->ka_work, ctrl->kato * HZ);
+=======
+	mod_delayed_work(system_wq, &ctrl->ka_work, ctrl->kato * HZ);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mod_delayed_work(system_wq, &ctrl->ka_work, ctrl->kato * HZ);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

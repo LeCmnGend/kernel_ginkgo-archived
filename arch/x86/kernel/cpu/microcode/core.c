@@ -436,10 +436,16 @@ static ssize_t microcode_write(struct file *file, const char __user *buf,
 {
 	ssize_t ret = -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long nr_pages = totalram_pages();
 
 	if ((len >> PAGE_SHIFT) > nr_pages) {
 		pr_err("too much data (max %ld pages)\n", nr_pages);
+=======
+
+	if ((len >> PAGE_SHIFT) > totalram_pages) {
+		pr_err("too much data (max %ld pages)\n", totalram_pages);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	if ((len >> PAGE_SHIFT) > totalram_pages) {
@@ -635,11 +641,17 @@ static ssize_t reload_store(struct device *dev,
 		return size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	tmp_ret = microcode_ops->request_microcode_fw(bsp, &microcode_pdev->dev, true);
 	if (tmp_ret != UCODE_NEW)
 		return size;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	get_online_cpus();
 
@@ -648,10 +660,13 @@ static ssize_t reload_store(struct device *dev,
 		goto put;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tmp_ret = microcode_ops->request_microcode_fw(bsp, &microcode_pdev->dev, true);
 	if (tmp_ret != UCODE_NEW)
 		goto put;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_lock(&microcode_mutex);

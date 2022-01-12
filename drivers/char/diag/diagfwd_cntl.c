@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2011-2021, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2011-2020, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2011-2020, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -52,9 +56,13 @@ void diag_cntl_channel_open(struct diagfwd_info *p_info)
 	if (!p_info)
 		return;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&driver->cntl_lock);
 	driver->mask_update |= PERIPHERAL_MASK(p_info->peripheral);
 	mutex_unlock(&driver->cntl_lock);
+=======
+	driver->mask_update |= PERIPHERAL_MASK(p_info->peripheral);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	driver->mask_update |= PERIPHERAL_MASK(p_info->peripheral);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -345,6 +353,7 @@ static void diag_close_transport_work_fn(struct work_struct *work)
 	uint8_t peripheral;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (peripheral = 0; peripheral <= NUM_PERIPHERALS; peripheral++) {
 		mutex_lock(&driver->cntl_lock);
 		if (!(driver->close_transport & PERIPHERAL_MASK(peripheral))) {
@@ -358,6 +367,8 @@ static void diag_close_transport_work_fn(struct work_struct *work)
 		diagfwd_close_transport(transport, peripheral);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_lock(&driver->cntl_lock);
 	for (peripheral = 0; peripheral <= NUM_PERIPHERALS; peripheral++) {
 		if (!(driver->close_transport & PERIPHERAL_MASK(peripheral)))
@@ -368,6 +379,9 @@ static void diag_close_transport_work_fn(struct work_struct *work)
 		diagfwd_close_transport(transport, peripheral);
 	}
 	mutex_unlock(&driver->cntl_lock);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

@@ -418,7 +418,11 @@ static int ad5592r_read_raw(struct iio_dev *iio_dev,
 			*val = div_s64_rem(tmp, 1000000000LL, val2);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			return IIO_VAL_INT_PLUS_MICRO;
+=======
+			ret = IIO_VAL_INT_PLUS_MICRO;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ret = IIO_VAL_INT_PLUS_MICRO;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -453,7 +457,11 @@ static int ad5592r_read_raw(struct iio_dev *iio_dev,
 		break;
 	default:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -EINVAL;
+=======
+		ret = -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = -EINVAL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -745,6 +745,7 @@ config LEDS_NIC78BX
 	  will be called leds-nic78bx.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 config BACKLIGHT_KTD3136
 	tristate "Backlight driver for TI LM3697"
 	depends on BACKLIGHT_CLASS_DEVICE && I2C
@@ -753,6 +754,8 @@ config BACKLIGHT_KTD3136
 	  Up to 3 backlight strings and 11 bit dimming is supported.
 	  PWM brightness control is also supported.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config LEDS_QPNP_VIBRATOR_LDO

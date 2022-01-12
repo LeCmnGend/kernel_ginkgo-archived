@@ -722,6 +722,7 @@ static int snd_pcm_hw_params(struct snd_pcm_substream *substream,
 
 	/* clear the buffer for avoiding possible kernel info leaks */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (runtime->dma_area && !substream->ops->copy_user) {
 		size_t size = runtime->dma_bytes;
 
@@ -729,6 +730,10 @@ static int snd_pcm_hw_params(struct snd_pcm_substream *substream,
 			size = PAGE_ALIGN(size);
 		memset(runtime->dma_area, 0, size);
 	}
+=======
+	if (runtime->dma_area && !substream->ops->copy_user)
+		memset(runtime->dma_area, 0, runtime->dma_bytes);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (runtime->dma_area && !substream->ops->copy_user)
 		memset(runtime->dma_area, 0, runtime->dma_bytes);

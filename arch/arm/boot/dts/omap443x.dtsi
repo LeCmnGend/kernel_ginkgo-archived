@@ -36,7 +36,10 @@
 
 	ocp {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* 4430 has only gpio_86 tshut and no talert interrupt */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		bandgap: bandgap@4a002260 {
@@ -44,7 +47,10 @@
 			       0x4a00232C 0x4>;
 			compatible = "ti,omap4430-bandgap";
 <<<<<<< HEAD
+<<<<<<< HEAD
 			gpios = <&gpio3 22 GPIO_ACTIVE_HIGH>;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

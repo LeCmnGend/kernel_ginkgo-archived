@@ -160,6 +160,7 @@ static int tpk_ioctl(struct tty_struct *tty,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * TTY operations hangup function.
  */
@@ -172,6 +173,8 @@ static void tpk_hangup(struct tty_struct *tty)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static const struct tty_operations ttyprintk_ops = {
 	.open = tpk_open,
 	.close = tpk_close,
@@ -179,7 +182,10 @@ static const struct tty_operations ttyprintk_ops = {
 	.write_room = tpk_write_room,
 	.ioctl = tpk_ioctl,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.hangup = tpk_hangup,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

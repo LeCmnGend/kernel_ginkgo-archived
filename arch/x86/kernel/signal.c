@@ -770,9 +770,12 @@ handle_signal(struct ksignal *ksig, struct pt_regs *regs)
 static inline unsigned long get_nr_restart_syscall(const struct pt_regs *regs)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_IA32_EMULATION
 	if (current_thread_info()->status & TS_COMPAT_RESTART)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * This function is fundamentally broken as currently
 	 * implemented.
@@ -797,6 +800,9 @@ static inline unsigned long get_nr_restart_syscall(const struct pt_regs *regs)
 	 */
 #ifdef CONFIG_IA32_EMULATION
 	if (current_thread_info()->status & (TS_COMPAT|TS_I386_REGS_POKED))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return __NR_ia32_restart_syscall;
 #endif

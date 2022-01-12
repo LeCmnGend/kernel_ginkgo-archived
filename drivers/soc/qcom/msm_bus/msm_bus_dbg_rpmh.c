@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2019-2021, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2019-2020, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2019-2020, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -464,7 +468,11 @@ static int msm_bus_dbg_record_client(const struct msm_bus_scale_pdata *pdata,
 	int index, uint32_t clid, struct dentry *file)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dbg_cldata2 = kzalloc(sizeof(struct msm_bus_cldata), GFP_KERNEL);
+=======
+	dbg_cldata2 = kmalloc(sizeof(struct msm_bus_cldata), GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dbg_cldata2 = kmalloc(sizeof(struct msm_bus_cldata), GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -473,7 +481,10 @@ static int msm_bus_dbg_record_client(const struct msm_bus_scale_pdata *pdata,
 		return -ENOMEM;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(dbg_cldata2, 0, sizeof(struct msm_bus_cldata));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dbg_cldata2->pdata = pdata;

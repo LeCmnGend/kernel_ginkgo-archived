@@ -56,9 +56,12 @@
 #define SDE_ROTATOR_DEGREE_90		90
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void sde_rotator_submit_handler(struct kthread_work *work);
 static void sde_rotator_retire_handler(struct kthread_work *work);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Inline rotator qos request */
 #define SDE_ROTATOR_ADD_REQUEST		1
 #define SDE_ROTATOR_REMOVE_REQUEST		0
@@ -68,6 +71,9 @@ static void sde_rotator_submit_handler(struct kthread_work *work);
 static void sde_rotator_retire_handler(struct kthread_work *work);
 static void sde_rotator_pm_qos_request(struct sde_rotator_device *rot_dev,
 					 bool add_request);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_COMPAT
 static long sde_rotator_compat_ioctl32(struct file *file,
@@ -1050,6 +1056,11 @@ struct sde_rotator_ctx *sde_rotator_ctx_open(
 
 	sde_rot_mgr_lock(rot_dev->mgr);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	sde_rotator_pm_qos_request(rot_dev,
+				 SDE_ROTATOR_ADD_REQUEST);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sde_rotator_pm_qos_request(rot_dev,
 				 SDE_ROTATOR_ADD_REQUEST);
@@ -1179,6 +1190,11 @@ static int sde_rotator_ctx_release(struct sde_rotator_ctx *ctx,
 	SDEDEV_DBG(rot_dev->dev, "release session s:%d\n", session_id);
 	sde_rot_mgr_lock(rot_dev->mgr);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	sde_rotator_pm_qos_request(rot_dev,
+			SDE_ROTATOR_REMOVE_REQUEST);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sde_rotator_pm_qos_request(rot_dev,
 			SDE_ROTATOR_REMOVE_REQUEST);
@@ -1298,7 +1314,10 @@ static bool sde_rotator_is_request_retired(struct sde_rotator_request *request)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void sde_rotator_pm_qos_remove(struct sde_rot_data_type *rot_mdata)
 {
 	struct pm_qos_request *req;
@@ -1397,6 +1416,9 @@ static void sde_rotator_pm_qos_request(struct sde_rotator_device *rot_dev,
 		cpu_dma_latency);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * sde_rotator_inline_open - open inline rotator session
@@ -3698,8 +3720,11 @@ static int sde_rotator_probe(struct platform_device *pdev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	device_enable_async_suspend(&pdev->dev);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	SDEDEV_INFO(&pdev->dev, "SDE v4l2 rotator probe success\n");
@@ -3741,6 +3766,10 @@ static int sde_rotator_remove(struct platform_device *pdev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	sde_rotator_pm_qos_remove(rot_dev->mdata);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sde_rotator_pm_qos_remove(rot_dev->mdata);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

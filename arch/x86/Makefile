@@ -36,7 +36,11 @@ REALMODE_CFLAGS	:= $(M16_CFLAGS) -g -Os -D__KERNEL__ \
 		   -Wall -Wstrict-prototypes -march=i386 -mregparm=3 \
 		   -fno-strict-aliasing -fomit-frame-pointer -fno-pic \
 <<<<<<< HEAD
+<<<<<<< HEAD
 		   -mno-mmx -mno-sse $(call cc-option,-fcf-protection=none)
+=======
+		   -mno-mmx -mno-sse
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		   -mno-mmx -mno-sse
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -46,7 +50,10 @@ REALMODE_CFLAGS += $(call __cc-option, $(CC), $(REALMODE_CFLAGS), -fno-stack-pro
 REALMODE_CFLAGS += $(call __cc-option, $(CC), $(REALMODE_CFLAGS), -Wno-address-of-packed-member)
 REALMODE_CFLAGS += $(call __cc-option, $(CC), $(REALMODE_CFLAGS), $(cc_stack_align4))
 <<<<<<< HEAD
+<<<<<<< HEAD
 REALMODE_CFLAGS += $(CLANG_FLAGS)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 export REALMODE_CFLAGS
@@ -76,9 +83,12 @@ KBUILD_CFLAGS += $(call cc-option,-mno-avx,)
 KBUILD_CFLAGS += -fno-pic
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Intel CET isn't enabled in the kernel
 KBUILD_CFLAGS += $(call cc-option,-fcf-protection=none)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 ifeq ($(CONFIG_X86_32),y)

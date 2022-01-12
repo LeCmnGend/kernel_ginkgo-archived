@@ -4446,7 +4446,10 @@ static int _nfs4_proc_readdir(struct dentry *dentry, struct rpc_cred *cred,
 {
 	struct inode		*dir = d_inode(dentry);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct nfs_server	*server = NFS_SERVER(dir);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct nfs4_readdir_arg args = {
@@ -4455,6 +4458,10 @@ static int _nfs4_proc_readdir(struct dentry *dentry, struct rpc_cred *cred,
 		.pgbase = 0,
 		.count = count,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		.bitmask = NFS_SERVER(d_inode(dentry))->attr_bitmask,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.bitmask = NFS_SERVER(d_inode(dentry))->attr_bitmask,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4473,6 +4480,7 @@ static int _nfs4_proc_readdir(struct dentry *dentry, struct rpc_cred *cred,
 			dentry,
 			(unsigned long long)cookie);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!(server->caps & NFS_CAP_SECURITY_LABEL))
 		args.bitmask = server->attr_bitmask_nl;
 	else
@@ -4482,6 +4490,11 @@ static int _nfs4_proc_readdir(struct dentry *dentry, struct rpc_cred *cred,
 	res.pgbase = args.pgbase;
 	status = nfs4_call_sync(server->client, server, &msg, &args.seq_args,
 			&res.seq_res, 0);
+=======
+	nfs4_setup_readdir(cookie, NFS_I(dir)->cookieverf, dentry, &args);
+	res.pgbase = args.pgbase;
+	status = nfs4_call_sync(NFS_SERVER(dir)->client, NFS_SERVER(dir), &msg, &args.seq_args, &res.seq_res, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	nfs4_setup_readdir(cookie, NFS_I(dir)->cookieverf, dentry, &args);
 	res.pgbase = args.pgbase;
@@ -5269,9 +5282,12 @@ static int __nfs4_proc_set_acl(struct inode *inode, const void *buf, size_t bufl
 	int ret, i;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* You can't remove system.nfs4_acl: */
 	if (buflen == 0)
 		return -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!nfs4_server_supports_acls(server))
@@ -5311,6 +5327,7 @@ static int nfs4_proc_set_acl(struct inode *inode, const void *buf, size_t buflen
 		err = __nfs4_proc_set_acl(inode, buf, buflen);
 		trace_nfs4_set_acl(inode, err);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (err == -NFS4ERR_BADOWNER || err == -NFS4ERR_BADNAME) {
 			/*
 			 * no need to retry since the kernel
@@ -5319,6 +5336,8 @@ static int nfs4_proc_set_acl(struct inode *inode, const void *buf, size_t buflen
 			err = -EINVAL;
 			break;
 		}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		err = nfs4_handle_exception(NFS_SERVER(inode), err,
@@ -5360,7 +5379,13 @@ static int _nfs4_get_security_label(struct inode *inode, void *buf,
 	if (!(fattr.valid & NFS_ATTR_FATTR_V4_SECURITY_LABEL))
 		return -ENOENT;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return label.len;
+=======
+	if (buflen < label.len)
+		return -ERANGE;
+	return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (buflen < label.len)
 		return -ERANGE;
@@ -6432,9 +6457,15 @@ static int _nfs4_do_setlk(struct nfs4_state *state, int cmd, struct file_lock *f
 	} else
 		data->cancelled = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	trace_nfs4_set_lock(fl, state, &data->res.stateid, cmd, ret);
 	rpc_put_task(task);
 	dprintk("%s: done, ret = %d!\n", __func__, ret);
+=======
+	rpc_put_task(task);
+	dprintk("%s: done, ret = %d!\n", __func__, ret);
+	trace_nfs4_set_lock(fl, state, &data->res.stateid, cmd, ret);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rpc_put_task(task);
 	dprintk("%s: done, ret = %d!\n", __func__, ret);
@@ -6736,12 +6767,16 @@ int nfs4_lock_delegation_recall(struct file_lock *fl, struct nfs4_state *state, 
 	if (err != 0)
 		return err;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	do {
 		err = _nfs4_do_setlk(state, F_SETLK, fl, NFS_LOCK_NEW);
 		if (err != -NFS4ERR_DELAY)
 			break;
 		ssleep(1);
 	} while (err == -NFS4ERR_DELAY);
+=======
+	err = _nfs4_do_setlk(state, F_SETLK, fl, NFS_LOCK_NEW);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = _nfs4_do_setlk(state, F_SETLK, fl, NFS_LOCK_NEW);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -7336,11 +7371,17 @@ int nfs4_proc_secinfo(struct inode *dir, const struct qstr *name,
  * DS flags set.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int nfs4_check_cl_exchange_flags(u32 flags, u32 version)
 {
 	if (version >= 2 && (flags & ~EXCHGID4_2_FLAG_MASK_R))
 		goto out_inval;
 	else if (version < 2 && (flags & ~EXCHGID4_FLAG_MASK_R))
+=======
+static int nfs4_check_cl_exchange_flags(u32 flags)
+{
+	if (flags & ~EXCHGID4_FLAG_MASK_R)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int nfs4_check_cl_exchange_flags(u32 flags)
 {
@@ -7741,8 +7782,12 @@ static int _nfs4_proc_exchange_id(struct nfs_client *clp, struct rpc_cred *cred,
 		goto out;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	status = nfs4_check_cl_exchange_flags(resp->flags,
 			clp->cl_mvops->minor_version);
+=======
+	status = nfs4_check_cl_exchange_flags(resp->flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	status = nfs4_check_cl_exchange_flags(resp->flags);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

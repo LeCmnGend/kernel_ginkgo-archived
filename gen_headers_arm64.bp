@@ -392,7 +392,10 @@ gen_headers_out_arm64 = [
     "linux/ncp_mount.h",
     "linux/ncp_no.h",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "linux/ncsi.h",
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
     "linux/ndctl.h",
@@ -527,6 +530,10 @@ gen_headers_out_arm64 = [
     "linux/signal.h",
     "linux/signalfd.h",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    "linux/slatecom_interface.h",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
     "linux/slatecom_interface.h",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

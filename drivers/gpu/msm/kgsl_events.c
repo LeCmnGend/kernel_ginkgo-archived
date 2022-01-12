@@ -46,6 +46,10 @@ static void _kgsl_event_worker(struct work_struct *work)
 {
 	struct kgsl_event *event = container_of(work, struct kgsl_event, work);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int id = KGSL_CONTEXT_ID(event->context);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int id = KGSL_CONTEXT_ID(event->context);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

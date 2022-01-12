@@ -215,7 +215,11 @@ int ip6_fragment(struct net *net, struct sock *sk, struct sk_buff *skb,
 		 int (*output)(struct net *, struct sock *, struct sk_buff *));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline unsigned int ip6_skb_dst_mtu(struct sk_buff *skb)
+=======
+static inline int ip6_skb_dst_mtu(struct sk_buff *skb)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int ip6_skb_dst_mtu(struct sk_buff *skb)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

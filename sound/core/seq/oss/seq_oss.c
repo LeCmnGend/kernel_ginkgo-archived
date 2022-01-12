@@ -182,6 +182,7 @@ odev_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
 	struct seq_oss_devinfo *dp;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	long rc;
 
 	dp = file->private_data;
@@ -196,10 +197,15 @@ odev_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 		mutex_unlock(&register_mutex);
 	return rc;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dp = file->private_data;
 	if (snd_BUG_ON(!dp))
 		return -ENXIO;
 	return snd_seq_oss_ioctl(dp, cmd, arg);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

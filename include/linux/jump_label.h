@@ -120,6 +120,7 @@ struct static_key {
 #ifdef HAVE_JUMP_LABEL
 #include <asm/jump_label.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 #ifndef __ASSEMBLY__
 #ifdef CONFIG_HAVE_ARCH_JUMP_LABEL_RELATIVE
@@ -182,6 +183,8 @@ static inline void jump_entry_set_init(struct jump_entry *entry)
 }
 
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
@@ -459,7 +462,11 @@ extern bool ____wrong_branch_error(void);
 	else									\
 		branch = ____wrong_branch_error();				\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	likely(branch);								\
+=======
+	branch;									\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	branch;									\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -475,7 +482,11 @@ extern bool ____wrong_branch_error(void);
 	else									\
 		branch = ____wrong_branch_error();				\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unlikely(branch);							\
+=======
+	branch;									\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	branch;									\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -1448,8 +1448,11 @@ int mwifiex_shutdown_sw(struct mwifiex_adapter *adapter)
 	mwifiex_deauthenticate(priv, NULL);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mwifiex_init_shutdown_fw(priv, MWIFIEX_FUNC_SHUTDOWN);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mwifiex_uninit_sw(adapter);

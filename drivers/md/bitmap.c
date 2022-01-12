@@ -369,7 +369,11 @@ static int read_page(struct file *file, unsigned long index,
 		 (unsigned long long)index << PAGE_SHIFT);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bh = alloc_page_buffers(page, 1<<inode->i_blkbits, false);
+=======
+	bh = alloc_page_buffers(page, 1<<inode->i_blkbits, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bh = alloc_page_buffers(page, 1<<inode->i_blkbits, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1374,7 +1378,11 @@ __acquires(bitmap->lock)
 	    bitmap->bp[page].map == NULL)
 		csize = ((sector_t)1) << (bitmap->chunkshift +
 <<<<<<< HEAD
+<<<<<<< HEAD
 					  PAGE_COUNTER_SHIFT);
+=======
+					  PAGE_COUNTER_SHIFT - 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					  PAGE_COUNTER_SHIFT - 1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

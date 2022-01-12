@@ -1053,7 +1053,10 @@ static int go7007_usb_probe(struct usb_interface *intf,
 	const struct go7007_usb_board *board;
 	struct usb_device *usbdev = interface_to_usbdev(intf);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct usb_host_endpoint *ep;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned num_i2c_devs;
@@ -1152,8 +1155,12 @@ static int go7007_usb_probe(struct usb_interface *intf,
 		goto allocfail;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ep = usb->usbdev->ep_in[4];
 	if (usb_endpoint_type(&ep->desc) == USB_ENDPOINT_XFER_BULK)
+=======
+	if (go->board_id == GO7007_BOARDID_SENSORAY_2250)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (go->board_id == GO7007_BOARDID_SENSORAY_2250)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

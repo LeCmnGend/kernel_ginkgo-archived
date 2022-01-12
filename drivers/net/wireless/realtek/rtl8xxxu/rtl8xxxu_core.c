@@ -5454,6 +5454,10 @@ static int rtl8xxxu_submit_int_urb(struct ieee80211_hw *hw)
 	if (ret) {
 		usb_unanchor_urb(urb);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		usb_free_urb(urb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		usb_free_urb(urb);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5466,7 +5470,10 @@ static int rtl8xxxu_submit_int_urb(struct ieee80211_hw *hw)
 
 error:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	usb_free_urb(urb);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
@@ -5795,7 +5802,10 @@ static int rtl8xxxu_start(struct ieee80211_hw *hw)
 	struct rtl8xxxu_rx_urb *rx_urb;
 	struct rtl8xxxu_tx_urb *tx_urb;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct sk_buff *skb;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long flags;
@@ -5849,6 +5859,7 @@ static int rtl8xxxu_start(struct ieee80211_hw *hw)
 
 		ret = rtl8xxxu_submit_rx_urb(priv, rx_urb);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ret) {
 			if (ret != -ENOMEM) {
 				skb = (struct sk_buff *)rx_urb->urb.context;
@@ -5856,6 +5867,8 @@ static int rtl8xxxu_start(struct ieee80211_hw *hw)
 			}
 			rtl8xxxu_queue_rx_urb(priv, rx_urb);
 		}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

@@ -26,6 +26,10 @@ extern void get_iowait_load(unsigned long *nr_waiters, unsigned long *load);
 extern void sched_update_nr_prod(int cpu, long delta, bool inc);
 extern unsigned int sched_get_cpu_util(int cpu);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+extern u64 sched_get_cpu_last_busy_time(int cpu);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern u64 sched_get_cpu_last_busy_time(int cpu);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -38,6 +42,7 @@ static inline unsigned int sched_get_cpu_util(int cpu)
 	return 0;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
 
 #ifdef CONFIG_SCHED_WALT
@@ -48,6 +53,9 @@ static inline void sched_update_hyst_times(void)
 {
 }
 static inline u64 sched_lpm_disallowed_time(int cpu)
+=======
+static inline u64 sched_get_cpu_last_busy_time(int cpu)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline u64 sched_get_cpu_last_busy_time(int cpu)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

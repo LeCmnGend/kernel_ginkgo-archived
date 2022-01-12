@@ -22,7 +22,10 @@
 
 struct sync_device *sync_dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct kmem_cache *kmem_payload_pool;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -637,7 +640,11 @@ static int cam_sync_handle_register_user_payload(
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	user_payload_kernel = kmem_cache_zalloc(kmem_payload_pool, GFP_KERNEL);
+=======
+	user_payload_kernel = kzalloc(sizeof(*user_payload_kernel), GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	user_payload_kernel = kzalloc(sizeof(*user_payload_kernel), GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -657,7 +664,11 @@ static int cam_sync_handle_register_user_payload(
 			sync_obj);
 		spin_unlock_bh(&sync_dev->row_spinlocks[sync_obj]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kmem_cache_free(kmem_payload_pool, user_payload_kernel);
+=======
+		kfree(user_payload_kernel);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kfree(user_payload_kernel);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -675,7 +686,11 @@ static int cam_sync_handle_register_user_payload(
 
 		spin_unlock_bh(&sync_dev->row_spinlocks[sync_obj]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kmem_cache_free(kmem_payload_pool, user_payload_kernel);
+=======
+		kfree(user_payload_kernel);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kfree(user_payload_kernel);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -693,7 +708,11 @@ static int cam_sync_handle_register_user_payload(
 
 			spin_unlock_bh(&sync_dev->row_spinlocks[sync_obj]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			kmem_cache_free(kmem_payload_pool, user_payload_kernel);
+=======
+			kfree(user_payload_kernel);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			kfree(user_payload_kernel);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -752,7 +771,11 @@ static int cam_sync_handle_deregister_user_payload(
 				userpayload_info.payload[1]) {
 			list_del_init(&user_payload_kernel->list);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			kmem_cache_free(kmem_payload_pool, user_payload_kernel);
+=======
+			kfree(user_payload_kernel);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			kfree(user_payload_kernel);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1158,8 +1181,11 @@ static int __init cam_sync_init(void)
 	int rc;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kmem_payload_pool = KMEM_CACHE(sync_user_payload, SLAB_HWCACHE_ALIGN | SLAB_PANIC);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rc = platform_device_register(&cam_sync_device);
@@ -1179,8 +1205,11 @@ static void __exit cam_sync_exit(void)
 	platform_device_unregister(&cam_sync_device);
 	kfree(sync_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	kmem_cache_destroy(kmem_payload_pool);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

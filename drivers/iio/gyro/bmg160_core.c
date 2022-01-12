@@ -105,11 +105,15 @@ struct bmg160_data {
 	struct iio_trigger *motion_trig;
 	struct mutex mutex;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Ensure naturally aligned timestamp */
 	struct {
 		s16 chans[3];
 		s64 timestamp __aligned(8);
 	} scan;
+=======
+	s16 buffer[8];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	s16 buffer[8];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -883,7 +887,11 @@ static irqreturn_t bmg160_trigger_handler(int irq, void *p)
 	mutex_lock(&data->mutex);
 	ret = regmap_bulk_read(data->regmap, BMG160_REG_XOUT_L,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			       data->scan.chans, AXIS_MAX * 2);
+=======
+			       data->buffer, AXIS_MAX * 2);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			       data->buffer, AXIS_MAX * 2);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -892,7 +900,11 @@ static irqreturn_t bmg160_trigger_handler(int irq, void *p)
 		goto err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	iio_push_to_buffers_with_timestamp(indio_dev, &data->scan,
+=======
+	iio_push_to_buffers_with_timestamp(indio_dev, data->buffer,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	iio_push_to_buffers_with_timestamp(indio_dev, data->buffer,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

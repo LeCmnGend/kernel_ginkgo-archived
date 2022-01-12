@@ -14,6 +14,10 @@
 #include <linux/kdev_t.h>
 #include <linux/usb/ch9.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -281,6 +285,7 @@ static ssize_t gadget_dev_desc_bcdUSB_store(struct config_item *item,
 static ssize_t gadget_dev_desc_UDC_show(struct config_item *item, char *page)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct gadget_info *gi = to_gadget_info(item);
 	char *udc_name;
 	int ret;
@@ -291,6 +296,11 @@ static ssize_t gadget_dev_desc_UDC_show(struct config_item *item, char *page)
 	mutex_unlock(&gi->lock);
 
 	return ret;
+=======
+	char *udc_name = to_gadget_info(item)->composite.gadget_driver.udc_name;
+
+	return sprintf(page, "%s\n", udc_name ?: "");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	char *udc_name = to_gadget_info(item)->composite.gadget_driver.udc_name;
 
@@ -1845,7 +1855,11 @@ static struct config_group *gadgets_make(
 	gi->composite.suspend = NULL;
 	gi->composite.resume = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	gi->composite.max_speed = USB_SPEED_SUPER_PLUS;
+=======
+	gi->composite.max_speed = USB_SPEED_SUPER;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	gi->composite.max_speed = USB_SPEED_SUPER;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

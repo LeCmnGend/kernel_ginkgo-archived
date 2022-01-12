@@ -848,7 +848,11 @@ static int emac_probe(struct platform_device *pdev)
 	if (IS_ERR(db->clk)) {
 		ret = PTR_ERR(db->clk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_dispose_mapping;
+=======
+		goto out_iounmap;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto out_iounmap;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -858,7 +862,11 @@ static int emac_probe(struct platform_device *pdev)
 	if (ret) {
 		dev_err(&pdev->dev, "Error couldn't enable clock (%d)\n", ret);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_dispose_mapping;
+=======
+		goto out_iounmap;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto out_iounmap;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -919,8 +927,11 @@ out_release_sram:
 out_clk_disable_unprepare:
 	clk_disable_unprepare(db->clk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 out_dispose_mapping:
 	irq_dispose_mapping(ndev->irq);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out_iounmap:
@@ -942,7 +953,10 @@ static int emac_remove(struct platform_device *pdev)
 	sunxi_sram_release(&pdev->dev);
 	clk_disable_unprepare(db->clk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	irq_dispose_mapping(ndev->irq);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	iounmap(db->membase);

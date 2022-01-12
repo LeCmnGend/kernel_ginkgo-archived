@@ -188,7 +188,10 @@ __smpboot_create_thread(struct smp_hotplug_thread *ht, unsigned int cpu)
 		return PTR_ERR(tsk);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kthread_set_per_cpu(tsk, cpu);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*

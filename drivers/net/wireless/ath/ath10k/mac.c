@@ -3592,6 +3592,7 @@ static int ath10k_mac_tx_wmi_mgmt(struct ath10k *ar, struct sk_buff *skb)
 {
 	struct sk_buff_head *q = &ar->wmi_mgmt_tx_queue;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (skb_queue_len_lockless(q) >= ATH10K_MAX_NUM_MGMT_PENDING) {
 		ath10k_warn(ar, "wmi mgmt tx queue is full\n");
@@ -3603,6 +3604,8 @@ static int ath10k_mac_tx_wmi_mgmt(struct ath10k *ar, struct sk_buff *skb)
 
 	return 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret = 0;
 
 	spin_lock_bh(&ar->data_lock);
@@ -3620,6 +3623,9 @@ unlock:
 	spin_unlock_bh(&ar->data_lock);
 
 	return ret;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -5130,7 +5136,10 @@ static int ath10k_add_interface(struct ieee80211_hw *hw,
 	if (arvif->nohwcrypt &&
 	    !test_bit(ATH10K_FLAG_RAW_MODE, &ar->dev_flags)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ath10k_warn(ar, "cryptmode module param needed for sw crypto\n");
@@ -6809,7 +6818,11 @@ ath10k_mac_update_bss_chan_survey(struct ath10k *ar,
 {
 	int ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	enum wmi_bss_survey_req_type type = WMI_BSS_SURVEY_REQ_TYPE_READ;
+=======
+	enum wmi_bss_survey_req_type type = WMI_BSS_SURVEY_REQ_TYPE_READ_CLEAR;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	enum wmi_bss_survey_req_type type = WMI_BSS_SURVEY_REQ_TYPE_READ_CLEAR;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -1,6 +1,10 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (c) 2014-2019, The Linux Foundation. All rights reserved.
+=======
+ * Copyright (c) 2014-2019, 2021 The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * Copyright (c) 2014-2019, 2021 The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -48,6 +52,11 @@
 #define COMPAT_FASTRPC_IOCTL_MUNMAP_64 \
 		_IOWR('R', 15, struct compat_fastrpc_ioctl_munmap_64)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define COMPAT_FASTRPC_IOCTL_GET_DSP_INFO \
+		_IOWR('R', 16, struct compat_fastrpc_ioctl_dsp_capabilities)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define COMPAT_FASTRPC_IOCTL_GET_DSP_INFO \
 		_IOWR('R', 16, struct compat_fastrpc_ioctl_dsp_capabilities)
@@ -155,12 +164,18 @@ struct compat_fastrpc_ioctl_control {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct compat_fastrpc_ioctl_dsp_capabilities {
 	compat_uint_t domain;	/* DSP domain to query capabilities */
 	compat_uint_t dsp_attributes[FASTRPC_MAX_DSP_ATTRIBUTES];
 };
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int compat_get_fastrpc_ioctl_invoke(
 			struct compat_fastrpc_ioctl_invoke_crc __user *inv32,
@@ -401,7 +416,10 @@ static int compat_get_fastrpc_ioctl_init(
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int compat_put_fastrpc_ioctl_get_dsp_info(
 		struct compat_fastrpc_ioctl_dsp_capabilities __user *info32,
 		struct fastrpc_ioctl_dsp_capabilities __user *info)
@@ -451,6 +469,9 @@ static int compat_fastrpc_get_dsp_info(struct file *filp,
 	return err;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 long compat_fastrpc_device_ioctl(struct file *filp, unsigned int cmd,
 				unsigned long arg)
@@ -600,6 +621,10 @@ long compat_fastrpc_device_ioctl(struct file *filp, unsigned int cmd,
 		return filp->f_op->unlocked_ioctl(filp, cmd,
 						(unsigned long)compat_ptr(arg));
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -656,11 +681,17 @@ long compat_fastrpc_device_ioctl(struct file *filp, unsigned int cmd,
 		return err;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case COMPAT_FASTRPC_IOCTL_GET_DSP_INFO:
 	{
 		return compat_fastrpc_get_dsp_info(filp, arg);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	default:
 		return -ENOIOCTLCMD;

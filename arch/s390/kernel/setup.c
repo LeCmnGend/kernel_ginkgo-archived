@@ -141,7 +141,11 @@ static void __init set_preferred_console(void)
 		add_preferred_console("tty3270", 0, NULL);
 	else if (CONSOLE_IS_VT220)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		add_preferred_console("ttysclp", 0, NULL);
+=======
+		add_preferred_console("ttyS", 1, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		add_preferred_console("ttyS", 1, NULL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -545,7 +549,11 @@ static struct notifier_block kdump_mem_nb = {
  * Make sure that the area behind memory_end is protected
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void __init reserve_memory_end(void)
+=======
+static void reserve_memory_end(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void reserve_memory_end(void)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -567,7 +575,11 @@ static void reserve_memory_end(void)
  * Make sure that oldmem, where the dump is stored, is protected
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void __init reserve_oldmem(void)
+=======
+static void reserve_oldmem(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void reserve_oldmem(void)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -583,7 +595,11 @@ static void reserve_oldmem(void)
  * Make sure that oldmem, where the dump is stored, is protected
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void __init remove_oldmem(void)
+=======
+static void remove_oldmem(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void remove_oldmem(void)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

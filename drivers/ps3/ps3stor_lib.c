@@ -202,7 +202,11 @@ int ps3stor_setup(struct ps3_storage_device *dev, irq_handler_t handler)
 	dev->bounce_dma = dma_map_single(&dev->sbd.core, dev->bounce_buf,
 					 dev->bounce_size, DMA_BIDIRECTIONAL);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (dma_mapping_error(&dev->sbd.core, dev->bounce_dma)) {
+=======
+	if (!dev->bounce_dma) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!dev->bounce_dma) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

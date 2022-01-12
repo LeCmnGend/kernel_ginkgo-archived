@@ -540,8 +540,12 @@ static int caif_seqpkt_sendmsg(struct socket *sock, struct msghdr *msg,
 
 	ret = -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(msg->msg_iter.nr_segs == 0) ||
 	    unlikely(msg->msg_iter.iov->iov_base == NULL))
+=======
+	if (unlikely(msg->msg_iter.iov->iov_base == NULL))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(msg->msg_iter.iov->iov_base == NULL))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

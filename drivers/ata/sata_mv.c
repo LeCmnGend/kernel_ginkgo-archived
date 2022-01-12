@@ -606,8 +606,13 @@ static int mv_port_start(struct ata_port *ap);
 static void mv_port_stop(struct ata_port *ap);
 static int mv_qc_defer(struct ata_queued_cmd *qc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors mv_qc_prep(struct ata_queued_cmd *qc);
 static enum ata_completion_errors mv_qc_prep_iie(struct ata_queued_cmd *qc);
+=======
+static void mv_qc_prep(struct ata_queued_cmd *qc);
+static void mv_qc_prep_iie(struct ata_queued_cmd *qc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void mv_qc_prep(struct ata_queued_cmd *qc);
 static void mv_qc_prep_iie(struct ata_queued_cmd *qc);
@@ -2050,7 +2055,11 @@ static void mv_rw_multi_errata_sata24(struct ata_queued_cmd *qc)
  *      Inherited from caller.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors mv_qc_prep(struct ata_queued_cmd *qc)
+=======
+static void mv_qc_prep(struct ata_queued_cmd *qc)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void mv_qc_prep(struct ata_queued_cmd *qc)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2066,7 +2075,11 @@ static void mv_qc_prep(struct ata_queued_cmd *qc)
 	case ATA_PROT_DMA:
 		if (tf->command == ATA_CMD_DSM)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			return AC_ERR_OK;
+=======
+			return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			return;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2076,9 +2089,15 @@ static void mv_qc_prep(struct ata_queued_cmd *qc)
 	case ATA_PROT_PIO:
 		mv_rw_multi_errata_sata24(qc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return AC_ERR_OK;
 	default:
 		return AC_ERR_OK;
+=======
+		return;
+	default:
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return;
 	default:
@@ -2131,17 +2150,23 @@ static void mv_qc_prep(struct ata_queued_cmd *qc)
 		 * of which are defined/used by Linux.  If we get here, this
 		 * driver needs work.
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 */
 		ata_port_err(ap, "%s: unsupported command: %.2x\n", __func__,
 				tf->command);
 		return AC_ERR_INVALID;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		 *
 		 * FIXME: modify libata to give qc_prep a return value and
 		 * return error here.
 		 */
 		BUG_ON(tf->command);
 		break;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	mv_crqb_pack_cmd(cw++, tf->nsect, ATA_REG_NSECT, 0);
@@ -2156,10 +2181,15 @@ static void mv_qc_prep(struct ata_queued_cmd *qc)
 
 	if (!(qc->flags & ATA_QCFLAG_DMAMAP))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return AC_ERR_OK;
 	mv_fill_sg(qc);
 
 	return AC_ERR_OK;
+=======
+		return;
+	mv_fill_sg(qc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return;
 	mv_fill_sg(qc);
@@ -2179,7 +2209,11 @@ static void mv_qc_prep(struct ata_queued_cmd *qc)
  *      Inherited from caller.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors mv_qc_prep_iie(struct ata_queued_cmd *qc)
+=======
+static void mv_qc_prep_iie(struct ata_queued_cmd *qc)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void mv_qc_prep_iie(struct ata_queued_cmd *qc)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2194,9 +2228,15 @@ static void mv_qc_prep_iie(struct ata_queued_cmd *qc)
 	if ((tf->protocol != ATA_PROT_DMA) &&
 	    (tf->protocol != ATA_PROT_NCQ))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return AC_ERR_OK;
 	if (tf->command == ATA_CMD_DSM)
 		return AC_ERR_OK;  /* use bmdma for this */
+=======
+		return;
+	if (tf->command == ATA_CMD_DSM)
+		return;  /* use bmdma for this */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return;
 	if (tf->command == ATA_CMD_DSM)
@@ -2243,10 +2283,15 @@ static void mv_qc_prep_iie(struct ata_queued_cmd *qc)
 
 	if (!(qc->flags & ATA_QCFLAG_DMAMAP))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return AC_ERR_OK;
 	mv_fill_sg(qc);
 
 	return AC_ERR_OK;
+=======
+		return;
+	mv_fill_sg(qc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return;
 	mv_fill_sg(qc);
@@ -4161,10 +4206,13 @@ static int mv_platform_probe(struct platform_device *pdev)
 		irq = platform_get_irq(pdev, 0);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (irq < 0)
 		return irq;
 	if (!irq)
 		return -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

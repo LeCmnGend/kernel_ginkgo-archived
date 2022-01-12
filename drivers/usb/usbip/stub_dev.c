@@ -61,8 +61,11 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 	struct socket *socket;
 	int rv;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct task_struct *tcp_rx = NULL;
 	struct task_struct *tcp_tx = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -81,7 +84,10 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 		dev_info(dev, "stub up\n");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mutex_lock(&sdev->ud.sysfs_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		spin_lock_irq(&sdev->ud.lock);
@@ -92,6 +98,7 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 		}
 
 		socket = sockfd_lookup(sockfd, &err);
+<<<<<<< HEAD
 <<<<<<< HEAD
 		if (!socket) {
 			dev_err(dev, "failed to lookup sock");
@@ -137,6 +144,8 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 		mutex_unlock(&sdev->ud.sysfs_lock);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!socket)
 			goto err;
 
@@ -154,6 +163,9 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 		sdev->ud.status = SDEV_ST_USED;
 		spin_unlock_irq(&sdev->ud.lock);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
 		dev_info(dev, "stub down\n");
@@ -166,7 +178,10 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 
 		usbip_event_add(&sdev->ud, SDEV_EVENT_DOWN);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mutex_unlock(&sdev->ud.sysfs_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -174,12 +189,17 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 	return count;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 sock_err:
 	sockfd_put(socket);
 err:
 	spin_unlock_irq(&sdev->ud.lock);
 unlock_mutex:
 	mutex_unlock(&sdev->ud.sysfs_lock);
+=======
+err:
+	spin_unlock_irq(&sdev->ud.lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 err:
 	spin_unlock_irq(&sdev->ud.lock);
@@ -350,7 +370,10 @@ static struct stub_device *stub_device_alloc(struct usb_device *udev)
 	sdev->ud.status		= SDEV_ST_AVAILABLE;
 	spin_lock_init(&sdev->ud.lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_init(&sdev->ud.sysfs_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	sdev->ud.tcp_socket	= NULL;

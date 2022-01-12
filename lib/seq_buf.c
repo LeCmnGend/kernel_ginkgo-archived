@@ -229,10 +229,15 @@ int seq_buf_putmem_hex(struct seq_buf *s, const void *mem,
 	WARN_ON(s->size == 0);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	BUILD_BUG_ON(MAX_MEMHEX_BYTES * 2 >= HEX_CHARS);
 
 	while (len) {
 		start_len = min(len, MAX_MEMHEX_BYTES);
+=======
+	while (len) {
+		start_len = min(len, HEX_CHARS - 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	while (len) {
 		start_len = min(len, HEX_CHARS - 1);
@@ -250,6 +255,10 @@ int seq_buf_putmem_hex(struct seq_buf *s, const void *mem,
 
 		/* j increments twice per loop */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		len -= j / 2;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		len -= j / 2;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -259,9 +268,12 @@ int seq_buf_putmem_hex(struct seq_buf *s, const void *mem,
 		if (seq_buf_has_overflowed(s))
 			return -1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		len -= start_len;
 		data += start_len;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

@@ -1427,7 +1427,10 @@ void qlcnic_83xx_get_minidump_template(struct qlcnic_adapter *adapter)
 	if (fw_dump->tmpl_hdr == NULL || current_version > prev_version) {
 		vfree(fw_dump->tmpl_hdr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		fw_dump->tmpl_hdr = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1449,8 +1452,11 @@ void qlcnic_83xx_get_minidump_template(struct qlcnic_adapter *adapter)
 
 			hdr = fw_dump->tmpl_hdr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (!hdr)
 				return;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			hdr->drv_cap_mask = 0x1f;

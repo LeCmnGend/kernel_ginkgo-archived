@@ -1144,6 +1144,7 @@ void usb_disable_interface(struct usb_device *dev, struct usb_interface *intf,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * usb_disable_device_endpoints -- Disable all endpoints for a device
  * @dev: the device whose endpoints are being disabled
@@ -1174,6 +1175,8 @@ static void usb_disable_device_endpoints(struct usb_device *dev, int skip_ep0)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * usb_disable_device - Disable all the endpoints for a USB device
  * @dev: the device whose endpoints are being disabled
@@ -1188,6 +1191,10 @@ void usb_disable_device(struct usb_device *dev, int skip_ep0)
 {
 	int i;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct usb_hcd *hcd = bus_to_hcd(dev->bus);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct usb_hcd *hcd = bus_to_hcd(dev->bus);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1237,9 +1244,12 @@ void usb_disable_device(struct usb_device *dev, int skip_ep0)
 	dev_dbg(&dev->dev, "%s nuking %s URBs\n", __func__,
 		skip_ep0 ? "non-ep0" : "all");
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	usb_disable_device_endpoints(dev, skip_ep0);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (hcd->driver->check_bandwidth) {
 		/* First pass: Cancel URBs, leave endpoint pointers intact. */
 		for (i = skip_ep0; i < 16; ++i) {
@@ -1256,6 +1266,9 @@ void usb_disable_device(struct usb_device *dev, int skip_ep0)
 		usb_disable_endpoint(dev, i, true);
 		usb_disable_endpoint(dev, i + USB_DIR_IN, true);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -1500,9 +1513,12 @@ EXPORT_SYMBOL_GPL(usb_set_interface);
  *
  * Return: Zero on success, else a negative error code.
 <<<<<<< HEAD
+<<<<<<< HEAD
  *
  * If this routine fails the device will probably be in an unusable state
  * with endpoints disabled, and interfaces only partially enabled.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
@@ -1521,12 +1537,18 @@ int usb_reset_configuration(struct usb_device *dev)
 	 */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	usb_disable_device_endpoints(dev, 1); /* skip ep0*/
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	for (i = 1; i < 16; ++i) {
 		usb_disable_endpoint(dev, i, true);
 		usb_disable_endpoint(dev, i + USB_DIR_IN, true);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	config = dev->actconfig;
@@ -1541,11 +1563,14 @@ int usb_reset_configuration(struct usb_device *dev)
 		return -ENOMEM;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* xHCI adds all endpoints in usb_hcd_alloc_bandwidth */
 	retval = usb_hcd_alloc_bandwidth(dev, config, NULL, NULL);
 	if (retval < 0) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Make sure we have enough bandwidth for each alternate setting 0 */
 	for (i = 0; i < config->desc.bNumInterfaces; i++) {
 		struct usb_interface *intf = config->interface[i];
@@ -1574,6 +1599,9 @@ reset_old_alts:
 				usb_hcd_alloc_bandwidth(dev, NULL,
 						alt, intf->cur_altsetting);
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		usb_enable_lpm(dev);
 		mutex_unlock(hcd->bandwidth_mutex);
@@ -1584,12 +1612,17 @@ reset_old_alts:
 			config->desc.bConfigurationValue, 0,
 			NULL, 0, USB_CTRL_SET_TIMEOUT);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (retval < 0) {
 		usb_hcd_alloc_bandwidth(dev, NULL, NULL, NULL);
 		usb_enable_lpm(dev);
 		mutex_unlock(hcd->bandwidth_mutex);
 		return retval;
 	}
+=======
+	if (retval < 0)
+		goto reset_old_alts;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (retval < 0)
 		goto reset_old_alts;

@@ -146,9 +146,12 @@ struct iscsi_task {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* invalid scsi_task pointer */
 #define	INVALID_SCSI_TASK	(struct iscsi_task *)-1l
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline int iscsi_task_has_unsol_data(struct iscsi_task *task)

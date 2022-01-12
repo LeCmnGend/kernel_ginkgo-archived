@@ -628,10 +628,15 @@ radeon_crtc_set_config(struct drm_mode_set *set,
 
 	ret = pm_runtime_get_sync(dev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret < 0) {
 		pm_runtime_put_autosuspend(dev->dev);
 		return ret;
 	}
+=======
+	if (ret < 0)
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret < 0)
 		return ret;
@@ -1353,7 +1358,10 @@ radeon_user_framebuffer_create(struct drm_device *dev,
 	if (obj->import_attach) {
 		DRM_DEBUG_KMS("Cannot create framebuffer from imported dma_buf\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		drm_gem_object_put(obj);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return ERR_PTR(-EINVAL);

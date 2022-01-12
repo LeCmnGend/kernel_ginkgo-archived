@@ -1493,7 +1493,11 @@ __nvme_fc_init_request(struct nvme_fc_ctrl *ctrl,
 		dev_err(ctrl->dev,
 			"FCP Op failed - cmdiu dma mapping failed.\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = -EFAULT;
+=======
+		ret = EFAULT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = EFAULT;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1507,7 +1511,11 @@ __nvme_fc_init_request(struct nvme_fc_ctrl *ctrl,
 		dev_err(ctrl->dev,
 			"FCP Op failed - rspiu dma mapping failed.\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = -EFAULT;
+=======
+		ret = EFAULT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = EFAULT;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1575,7 +1583,10 @@ nvme_fc_term_aen_ops(struct nvme_fc_ctrl *ctrl)
 	int i;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cancel_work_sync(&ctrl->ctrl.async_event_work);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	aen_op = ctrl->aen_ops;
@@ -3024,8 +3035,12 @@ nvme_fc_create_ctrl(struct device *dev, struct nvmf_ctrl_options *opts)
 	list_for_each_entry(lport, &nvme_fc_lport_list, port_list) {
 		if (lport->localport.node_name != laddr.nn ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 		    lport->localport.port_name != laddr.pn ||
 		    lport->localport.port_state != FC_OBJSTATE_ONLINE)
+=======
+		    lport->localport.port_name != laddr.pn)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		    lport->localport.port_name != laddr.pn)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3034,8 +3049,12 @@ nvme_fc_create_ctrl(struct device *dev, struct nvmf_ctrl_options *opts)
 		list_for_each_entry(rport, &lport->endp_list, endp_list) {
 			if (rport->remoteport.node_name != raddr.nn ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 			    rport->remoteport.port_name != raddr.pn ||
 			    rport->remoteport.port_state != FC_OBJSTATE_ONLINE)
+=======
+			    rport->remoteport.port_name != raddr.pn)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			    rport->remoteport.port_name != raddr.pn)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

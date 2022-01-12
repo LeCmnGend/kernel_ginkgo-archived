@@ -245,7 +245,10 @@
 			reg = <0x00 0x1700000 0x0 0x100000>;
 			interrupts = <GIC_SPI 75 IRQ_TYPE_LEVEL_HIGH>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			dma-coherent;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -309,7 +312,11 @@
 		dcfg: dcfg@1ee0000 {
 			compatible = "fsl,ls1046a-dcfg", "syscon";
 <<<<<<< HEAD
+<<<<<<< HEAD
 			reg = <0x0 0x1ee0000 0x0 0x1000>;
+=======
+			reg = <0x0 0x1ee0000 0x0 0x10000>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			reg = <0x0 0x1ee0000 0x0 0x10000>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

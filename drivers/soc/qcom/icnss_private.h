@@ -152,7 +152,11 @@ enum icnss_driver_state {
 	ICNSS_FW_TEST_MODE,
 	ICNSS_PM_SUSPEND,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ICNSS_PM_SUSPEND_LATE,
+=======
+	ICNSS_PM_SUSPEND_NOIRQ,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ICNSS_PM_SUSPEND_NOIRQ,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -222,15 +226,21 @@ struct icnss_stats {
 	uint32_t pm_resume;
 	uint32_t pm_resume_err;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	uint32_t pm_suspend_late;
 	uint32_t pm_suspend_late_err;
 	uint32_t pm_resume_early;
 	uint32_t pm_resume_early_err;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	uint32_t pm_suspend_noirq;
 	uint32_t pm_suspend_noirq_err;
 	uint32_t pm_resume_noirq;
 	uint32_t pm_resume_noirq_err;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	uint32_t pm_stay_awake;
 	uint32_t pm_relax;

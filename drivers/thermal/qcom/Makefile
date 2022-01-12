@@ -1,7 +1,11 @@
 obj-$(CONFIG_QCOM_TSENS)	+= qcom_tsens.o
 qcom_tsens-y			+= tsens.o tsens-common.o tsens-8916.o tsens-8974.o tsens-8960.o tsens-8996.o
 <<<<<<< HEAD
+<<<<<<< HEAD
 obj-y += msm_lmh_dcvs.o lmh_dbg.o
+=======
+obj-$(CONFIG_QTI_THERMAL_LIMITS_DCVS) += msm_lmh_dcvs.o lmh_dbg.o
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 obj-$(CONFIG_QTI_THERMAL_LIMITS_DCVS) += msm_lmh_dcvs.o lmh_dbg.o
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -21,11 +21,14 @@ static const struct regmap_config stm32_timers_regmap_cfg = {
 static void stm32_timers_get_arr_size(struct stm32_timers *ddata)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 arr;
 
 	/* Backup ARR to restore it after getting the maximum value */
 	regmap_read(ddata->regmap, TIM_ARR, &arr);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
@@ -35,7 +38,11 @@ static void stm32_timers_get_arr_size(struct stm32_timers *ddata)
 	regmap_write(ddata->regmap, TIM_ARR, ~0L);
 	regmap_read(ddata->regmap, TIM_ARR, &ddata->max_arr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	regmap_write(ddata->regmap, TIM_ARR, arr);
+=======
+	regmap_write(ddata->regmap, TIM_ARR, 0x0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	regmap_write(ddata->regmap, TIM_ARR, 0x0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

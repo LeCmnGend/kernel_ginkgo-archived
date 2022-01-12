@@ -755,7 +755,10 @@ config HID_PLANTRONICS
 	  Say M here if you may ever plug in a Plantronics USB audio device.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config HID_PLAYSTATION
 	tristate "PlayStation HID Driver"
 	depends on HID
@@ -774,6 +777,9 @@ config PLAYSTATION_FF
 	  Say Y here if you would like to enable force feedback support for
 	  PlayStation game controllers.
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config HID_PRIMAX
 	tristate "Primax non-fully HID-compliant devices"

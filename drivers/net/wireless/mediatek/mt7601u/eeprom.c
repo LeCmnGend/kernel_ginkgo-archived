@@ -107,7 +107,11 @@ mt7601u_has_tssi(struct mt7601u_dev *dev, u8 *eeprom)
 	u16 nic_conf1 = get_unaligned_le16(eeprom + MT_EE_NIC_CONF_1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return (u16)~nic_conf1 && (nic_conf1 & MT_EE_NIC_CONF_1_TX_ALC_EN);
+=======
+	return ~nic_conf1 && (nic_conf1 & MT_EE_NIC_CONF_1_TX_ALC_EN);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return ~nic_conf1 && (nic_conf1 & MT_EE_NIC_CONF_1_TX_ALC_EN);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

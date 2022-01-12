@@ -280,6 +280,7 @@ static void sctp_v4_to_sk_daddr(union sctp_addr *addr, struct sock *sk)
 
 /* Initialize a sctp_addr from an address parameter. */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool sctp_v4_from_addr_param(union sctp_addr *addr,
 				    union sctp_addr_param *param,
 				    __be16 port, int iif)
@@ -288,18 +289,26 @@ static bool sctp_v4_from_addr_param(union sctp_addr *addr,
 		return false;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void sctp_v4_from_addr_param(union sctp_addr *addr,
 				    union sctp_addr_param *param,
 				    __be16 port, int iif)
 {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	addr->v4.sin_family = AF_INET;
 	addr->v4.sin_port = port;
 	addr->v4.sin_addr.s_addr = param->v4.addr.s_addr;
 	memset(addr->v4.sin_zero, 0, sizeof(addr->v4.sin_zero));
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	return true;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -434,8 +443,12 @@ static enum sctp_scope sctp_v4_scope(union sctp_addr *addr)
 	} else if (ipv4_is_private_10(addr->v4.sin_addr.s_addr) ||
 		   ipv4_is_private_172(addr->v4.sin_addr.s_addr) ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 		   ipv4_is_private_192(addr->v4.sin_addr.s_addr) ||
 		   ipv4_is_test_198(addr->v4.sin_addr.s_addr)) {
+=======
+		   ipv4_is_private_192(addr->v4.sin_addr.s_addr)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		   ipv4_is_private_192(addr->v4.sin_addr.s_addr)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1399,7 +1412,10 @@ static __init int sctp_init(void)
 	unsigned long goal;
 	unsigned long limit;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long nr_pages = totalram_pages();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int max_share;
@@ -1461,15 +1477,21 @@ static __init int sctp_init(void)
 	 * Though not identical.  Start by getting a goal size
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (nr_pages >= (128 * 1024))
 		goal = nr_pages >> (22 - PAGE_SHIFT);
 	else
 		goal = nr_pages >> (24 - PAGE_SHIFT);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (totalram_pages >= (128 * 1024))
 		goal = totalram_pages >> (22 - PAGE_SHIFT);
 	else
 		goal = totalram_pages >> (24 - PAGE_SHIFT);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Then compute the page order for said goal */

@@ -670,7 +670,11 @@ xfs_trans_dqresv(
 		}
 		if (ninos > 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			total_count = dqp->q_res_icount + ninos;
+=======
+			total_count = be64_to_cpu(dqp->q_core.d_icount) + ninos;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			total_count = be64_to_cpu(dqp->q_core.d_icount) + ninos;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

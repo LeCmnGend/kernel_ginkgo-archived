@@ -37,6 +37,10 @@
 #include <linux/errno.h>
 #include <linux/audit.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <linux/flex_array.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/flex_array.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -350,6 +354,10 @@ static int common_index(void *key, void *datum, void *datap)
 	struct policydb *p;
 	struct common_datum *comdatum;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct flex_array *fa;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct flex_array *fa;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -360,13 +368,19 @@ static int common_index(void *key, void *datum, void *datap)
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	p->sym_val_to_name[SYM_COMMONS][comdatum->value - 1] = key;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	fa = p->sym_val_to_name[SYM_COMMONS];
 	if (flex_array_put_ptr(fa, comdatum->value - 1, key,
 			       GFP_KERNEL | __GFP_ZERO))
 		BUG();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
@@ -376,6 +390,10 @@ static int class_index(void *key, void *datum, void *datap)
 	struct policydb *p;
 	struct class_datum *cladatum;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct flex_array *fa;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct flex_array *fa;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -385,13 +403,19 @@ static int class_index(void *key, void *datum, void *datap)
 	if (!cladatum->value || cladatum->value > p->p_classes.nprim)
 		return -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	p->sym_val_to_name[SYM_CLASSES][cladatum->value - 1] = key;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	fa = p->sym_val_to_name[SYM_CLASSES];
 	if (flex_array_put_ptr(fa, cladatum->value - 1, key,
 			       GFP_KERNEL | __GFP_ZERO))
 		BUG();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	p->class_val_to_struct[cladatum->value - 1] = cladatum;
 	return 0;
@@ -402,6 +426,10 @@ static int role_index(void *key, void *datum, void *datap)
 	struct policydb *p;
 	struct role_datum *role;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct flex_array *fa;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct flex_array *fa;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -414,12 +442,18 @@ static int role_index(void *key, void *datum, void *datap)
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	p->sym_val_to_name[SYM_ROLES][role->value - 1] = key;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	fa = p->sym_val_to_name[SYM_ROLES];
 	if (flex_array_put_ptr(fa, role->value - 1, key,
 			       GFP_KERNEL | __GFP_ZERO))
 		BUG();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	p->role_val_to_struct[role->value - 1] = role;
 	return 0;
@@ -430,6 +464,10 @@ static int type_index(void *key, void *datum, void *datap)
 	struct policydb *p;
 	struct type_datum *typdatum;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct flex_array *fa;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct flex_array *fa;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -443,9 +481,12 @@ static int type_index(void *key, void *datum, void *datap)
 		    || typdatum->bounds > p->p_types.nprim)
 			return -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		p->sym_val_to_name[SYM_TYPES][typdatum->value - 1] = key;
 		p->type_val_to_struct_array[typdatum->value - 1] = typdatum;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		fa = p->sym_val_to_name[SYM_TYPES];
 		if (flex_array_put_ptr(fa, typdatum->value - 1, key,
 				       GFP_KERNEL | __GFP_ZERO))
@@ -455,6 +496,9 @@ static int type_index(void *key, void *datum, void *datap)
 		if (flex_array_put_ptr(fa, typdatum->value - 1, typdatum,
 				       GFP_KERNEL | __GFP_ZERO))
 			BUG();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -466,6 +510,10 @@ static int user_index(void *key, void *datum, void *datap)
 	struct policydb *p;
 	struct user_datum *usrdatum;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct flex_array *fa;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct flex_array *fa;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -478,12 +526,18 @@ static int user_index(void *key, void *datum, void *datap)
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	p->sym_val_to_name[SYM_USERS][usrdatum->value - 1] = key;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	fa = p->sym_val_to_name[SYM_USERS];
 	if (flex_array_put_ptr(fa, usrdatum->value - 1, key,
 			       GFP_KERNEL | __GFP_ZERO))
 		BUG();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	p->user_val_to_struct[usrdatum->value - 1] = usrdatum;
 	return 0;
@@ -494,6 +548,10 @@ static int sens_index(void *key, void *datum, void *datap)
 	struct policydb *p;
 	struct level_datum *levdatum;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct flex_array *fa;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct flex_array *fa;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -506,13 +564,19 @@ static int sens_index(void *key, void *datum, void *datap)
 		    levdatum->level->sens > p->p_levels.nprim)
 			return -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		p->sym_val_to_name[SYM_LEVELS][levdatum->level->sens - 1] = key;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		fa = p->sym_val_to_name[SYM_LEVELS];
 		if (flex_array_put_ptr(fa, levdatum->level->sens - 1, key,
 				       GFP_KERNEL | __GFP_ZERO))
 			BUG();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -524,6 +588,10 @@ static int cat_index(void *key, void *datum, void *datap)
 	struct policydb *p;
 	struct cat_datum *catdatum;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct flex_array *fa;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct flex_array *fa;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -535,13 +603,19 @@ static int cat_index(void *key, void *datum, void *datap)
 		if (!catdatum->value || catdatum->value > p->p_cats.nprim)
 			return -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		p->sym_val_to_name[SYM_CATS][catdatum->value - 1] = key;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		fa = p->sym_val_to_name[SYM_CATS];
 		if (flex_array_put_ptr(fa, catdatum->value - 1, key,
 				       GFP_KERNEL | __GFP_ZERO))
 			BUG();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -567,7 +641,11 @@ static void hash_eval(struct hashtab *h, const char *hash_name)
 
 	hashtab_stat(h, &info);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pr_debug("SELinux: %s:  %d entries and %d/%d buckets used, "
+=======
+	printk(KERN_DEBUG "SELinux: %s:  %d entries and %d/%d buckets used, "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	printk(KERN_DEBUG "SELinux: %s:  %d entries and %d/%d buckets used, "
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -600,6 +678,7 @@ static int policydb_index(struct policydb *p)
 	int i, rc;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (p->mls_enabled)
 		pr_debug("SELinux:  %d users, %d roles, %d types, %d bools, %d sens, %d cats\n",
 			 p->p_users.nprim, p->p_roles.nprim, p->p_types.nprim,
@@ -612,6 +691,8 @@ static int policydb_index(struct policydb *p)
 	pr_debug("SELinux:  %d classes, %d rules\n",
 		 p->p_classes.nprim, p->te_avtab.nel);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	printk(KERN_DEBUG "SELinux:  %d users, %d roles, %d types, %d bools",
 	       p->p_users.nprim, p->p_roles.nprim, p->p_types.nprim, p->p_bools.nprim);
 	if (p->mls_enabled)
@@ -621,6 +702,9 @@ static int policydb_index(struct policydb *p)
 
 	printk(KERN_DEBUG "SELinux:  %d classes, %d rules\n",
 	       p->p_classes.nprim, p->te_avtab.nel);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #ifdef DEBUG_HASHES
@@ -647,6 +731,7 @@ static int policydb_index(struct policydb *p)
 		return -ENOMEM;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	p->type_val_to_struct_array = kvcalloc(p->p_types.nprim,
 					       sizeof(*p->type_val_to_struct_array),
 					       GFP_KERNEL);
@@ -654,6 +739,8 @@ static int policydb_index(struct policydb *p)
 		return -ENOMEM;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Yes, I want the sizeof the pointer, not the structure */
 	p->type_val_to_struct_array = flex_array_alloc(sizeof(struct type_datum *),
 						       p->p_types.nprim,
@@ -666,12 +753,16 @@ static int policydb_index(struct policydb *p)
 	if (rc)
 		goto out;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rc = cond_init_bool_indexes(p);
 	if (rc)
 		goto out;
 
 	for (i = 0; i < SYM_NUM; i++) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 		p->sym_val_to_name[i] = kvcalloc(p->symtab[i].nprim,
 						 sizeof(char *),
@@ -680,6 +771,8 @@ static int policydb_index(struct policydb *p)
 			return -ENOMEM;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		p->sym_val_to_name[i] = flex_array_alloc(sizeof(char *),
 							 p->symtab[i].nprim,
 							 GFP_KERNEL | __GFP_ZERO);
@@ -692,6 +785,9 @@ static int policydb_index(struct policydb *p)
 		if (rc)
 			goto out;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rc = hashtab_map(p->symtab[i].table, index_f[i], p);
 		if (rc)
@@ -907,20 +1003,31 @@ void policydb_destroy(struct policydb *p)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (i = 0; i < SYM_NUM; i++)
 		kvfree(p->sym_val_to_name[i]);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	for (i = 0; i < SYM_NUM; i++) {
 		if (p->sym_val_to_name[i])
 			flex_array_free(p->sym_val_to_name[i]);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	kfree(p->class_val_to_struct);
 	kfree(p->role_val_to_struct);
 	kfree(p->user_val_to_struct);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kvfree(p->type_val_to_struct_array);
+=======
+	if (p->type_val_to_struct_array)
+		flex_array_free(p->type_val_to_struct_array);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (p->type_val_to_struct_array)
 		flex_array_free(p->type_val_to_struct_array);
@@ -978,10 +1085,13 @@ void policydb_destroy(struct policydb *p)
 	hashtab_destroy(p->range_tr);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (i = 0; i < p->p_types.nprim; i++)
 		ebitmap_destroy(&p->type_attr_map_array[i]);
 	kvfree(p->type_attr_map_array);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (p->type_attr_map_array) {
 		for (i = 0; i < p->p_types.nprim; i++) {
 			struct ebitmap *e;
@@ -993,6 +1103,9 @@ void policydb_destroy(struct policydb *p)
 		}
 		flex_array_free(p->type_attr_map_array);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	ebitmap_destroy(&p->filename_trans_ttypes);
@@ -1012,7 +1125,11 @@ int policydb_load_isids(struct policydb *p, struct sidtab *s)
 	rc = sidtab_init(s);
 	if (rc) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux:  out of memory on SID table init\n");
+=======
+		printk(KERN_ERR "SELinux:  out of memory on SID table init\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux:  out of memory on SID table init\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1024,7 +1141,11 @@ int policydb_load_isids(struct policydb *p, struct sidtab *s)
 		rc = -EINVAL;
 		if (!c->context[0].user) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_err("SELinux:  SID %s was never defined.\n",
+=======
+			printk(KERN_ERR "SELinux:  SID %s was never defined.\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_ERR "SELinux:  SID %s was never defined.\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1047,7 +1168,11 @@ int policydb_load_isids(struct policydb *p, struct sidtab *s)
 		rc = sidtab_set_initial(s, c->sid[0], &c->context[0]);
 		if (rc) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_err("SELinux:  unable to load initial SID %s.\n",
+=======
+			printk(KERN_ERR "SELinux:  unable to load initial SID %s.\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_ERR "SELinux:  unable to load initial SID %s.\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1145,7 +1270,11 @@ static int mls_read_range_helper(struct mls_range *r, void *fp)
 	items = le32_to_cpu(buf[0]);
 	if (items > ARRAY_SIZE(buf)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux: mls:  range overflow\n");
+=======
+		printk(KERN_ERR "SELinux: mls:  range overflow\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux: mls:  range overflow\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1155,7 +1284,11 @@ static int mls_read_range_helper(struct mls_range *r, void *fp)
 	rc = next_entry(buf, fp, sizeof(u32) * items);
 	if (rc) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux: mls:  truncated range\n");
+=======
+		printk(KERN_ERR "SELinux: mls:  truncated range\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux: mls:  truncated range\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1171,7 +1304,11 @@ static int mls_read_range_helper(struct mls_range *r, void *fp)
 	rc = ebitmap_read(&r->level[0].cat, fp);
 	if (rc) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux: mls:  error reading low categories\n");
+=======
+		printk(KERN_ERR "SELinux: mls:  error reading low categories\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux: mls:  error reading low categories\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1181,7 +1318,11 @@ static int mls_read_range_helper(struct mls_range *r, void *fp)
 		rc = ebitmap_read(&r->level[1].cat, fp);
 		if (rc) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_err("SELinux: mls:  error reading high categories\n");
+=======
+			printk(KERN_ERR "SELinux: mls:  error reading high categories\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_ERR "SELinux: mls:  error reading high categories\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1191,7 +1332,11 @@ static int mls_read_range_helper(struct mls_range *r, void *fp)
 		rc = ebitmap_cpy(&r->level[1].cat, &r->level[0].cat);
 		if (rc) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_err("SELinux: mls:  out of memory\n");
+=======
+			printk(KERN_ERR "SELinux: mls:  out of memory\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_ERR "SELinux: mls:  out of memory\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1220,7 +1365,11 @@ static int context_read_and_validate(struct context *c,
 	rc = next_entry(buf, fp, sizeof buf);
 	if (rc) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux: context truncated\n");
+=======
+		printk(KERN_ERR "SELinux: context truncated\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux: context truncated\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1233,7 +1382,11 @@ static int context_read_and_validate(struct context *c,
 		rc = mls_read_range_helper(&c->range, fp);
 		if (rc) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_err("SELinux: error reading MLS range of context\n");
+=======
+			printk(KERN_ERR "SELinux: error reading MLS range of context\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_ERR "SELinux: error reading MLS range of context\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1244,7 +1397,11 @@ static int context_read_and_validate(struct context *c,
 	rc = -EINVAL;
 	if (!policydb_context_isvalid(p, c)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux:  invalid security context\n");
+=======
+		printk(KERN_ERR "SELinux:  invalid security context\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux:  invalid security context\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1524,8 +1681,12 @@ static int class_read(struct policydb *p, struct hashtab *h, void *fp)
 		cladatum->comdatum = hashtab_search(p->p_commons.table, cladatum->comkey);
 		if (!cladatum->comdatum) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_err("SELinux:  unknown common %s\n",
 			       cladatum->comkey);
+=======
+			printk(KERN_ERR "SELinux:  unknown common %s\n", cladatum->comkey);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_ERR "SELinux:  unknown common %s\n", cladatum->comkey);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1621,7 +1782,11 @@ static int role_read(struct policydb *p, struct hashtab *h, void *fp)
 		rc = -EINVAL;
 		if (role->value != OBJECT_R_VAL) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_err("SELinux: Role %s has wrong value %d\n",
+=======
+			printk(KERN_ERR "SELinux: Role %s has wrong value %d\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_ERR "SELinux: Role %s has wrong value %d\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1703,7 +1868,11 @@ static int mls_read_level(struct mls_level *lp, void *fp)
 	rc = next_entry(buf, fp, sizeof buf);
 	if (rc) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux: mls: truncated level\n");
+=======
+		printk(KERN_ERR "SELinux: mls: truncated level\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux: mls: truncated level\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1714,7 +1883,11 @@ static int mls_read_level(struct mls_level *lp, void *fp)
 	rc = ebitmap_read(&lp->cat, fp);
 	if (rc) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux: mls:  error reading level categories\n");
+=======
+		printk(KERN_ERR "SELinux: mls:  error reading level categories\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux: mls:  error reading level categories\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1872,7 +2045,11 @@ static int user_bounds_sanity_check(void *key, void *datum, void *datap)
 
 		if (++depth == POLICYDB_BOUNDS_MAXDEPTH) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_err("SELinux: user %s: "
+=======
+			printk(KERN_ERR "SELinux: user %s: "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_ERR "SELinux: user %s: "
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1887,7 +2064,12 @@ static int user_bounds_sanity_check(void *key, void *datum, void *datap)
 				continue;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_err("SELinux: boundary violated policy: "
+=======
+			printk(KERN_ERR
+			       "SELinux: boundary violated policy: "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_ERR
 			       "SELinux: boundary violated policy: "
@@ -1917,7 +2099,11 @@ static int role_bounds_sanity_check(void *key, void *datum, void *datap)
 
 		if (++depth == POLICYDB_BOUNDS_MAXDEPTH) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_err("SELinux: role %s: "
+=======
+			printk(KERN_ERR "SELinux: role %s: "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_ERR "SELinux: role %s: "
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1932,7 +2118,12 @@ static int role_bounds_sanity_check(void *key, void *datum, void *datap)
 				continue;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_err("SELinux: boundary violated policy: "
+=======
+			printk(KERN_ERR
+			       "SELinux: boundary violated policy: "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_ERR
 			       "SELinux: boundary violated policy: "
@@ -1959,7 +2150,11 @@ static int type_bounds_sanity_check(void *key, void *datum, void *datap)
 	while (upper->bounds) {
 		if (++depth == POLICYDB_BOUNDS_MAXDEPTH) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_err("SELinux: type %s: "
+=======
+			printk(KERN_ERR "SELinux: type %s: "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_ERR "SELinux: type %s: "
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1969,18 +2164,24 @@ static int type_bounds_sanity_check(void *key, void *datum, void *datap)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		upper = p->type_val_to_struct_array[upper->bounds - 1];
 		BUG_ON(!upper);
 
 		if (upper->attribute) {
 			pr_err("SELinux: type %s: "
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		upper = flex_array_get_ptr(p->type_val_to_struct_array,
 					   upper->bounds - 1);
 		BUG_ON(!upper);
 
 		if (upper->attribute) {
 			printk(KERN_ERR "SELinux: type %s: "
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			       "bounded by attribute %s",
 			       (char *) key,
@@ -2105,7 +2306,11 @@ static int range_read(struct policydb *p, void *fp)
 		rc = -EINVAL;
 		if (!mls_range_isvalid(p, r)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_warn("SELinux:  rangetrans:  invalid range\n");
+=======
+			printk(KERN_WARNING "SELinux:  rangetrans:  invalid range\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_WARNING "SELinux:  rangetrans:  invalid range\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2244,7 +2449,11 @@ static int genfs_read(struct policydb *p, void *fp)
 			rc = -EINVAL;
 			if (strcmp(newgenfs->fstype, genfs->fstype) == 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				pr_err("SELinux:  dup genfs fstype %s\n",
+=======
+				printk(KERN_ERR "SELinux:  dup genfs fstype %s\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				printk(KERN_ERR "SELinux:  dup genfs fstype %s\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2298,7 +2507,11 @@ static int genfs_read(struct policydb *p, void *fp)
 				    (!c->v.sclass || !newc->v.sclass ||
 				     newc->v.sclass == c->v.sclass)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 					pr_err("SELinux:  dup genfs entry (%s,%s)\n",
+=======
+					printk(KERN_ERR "SELinux:  dup genfs entry (%s,%s)\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					printk(KERN_ERR "SELinux:  dup genfs entry (%s,%s)\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2539,7 +2752,11 @@ int policydb_read(struct policydb *p, void *fp)
 	rc = -EINVAL;
 	if (le32_to_cpu(buf[0]) != POLICYDB_MAGIC) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux:  policydb magic number 0x%x does "
+=======
+		printk(KERN_ERR "SELinux:  policydb magic number 0x%x does "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux:  policydb magic number 0x%x does "
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2552,7 +2769,11 @@ int policydb_read(struct policydb *p, void *fp)
 	len = le32_to_cpu(buf[1]);
 	if (len != strlen(POLICYDB_STRING)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux:  policydb string length %d does not "
+=======
+		printk(KERN_ERR "SELinux:  policydb string length %d does not "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux:  policydb string length %d does not "
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2565,7 +2786,11 @@ int policydb_read(struct policydb *p, void *fp)
 	policydb_str = kmalloc(len + 1, GFP_KERNEL);
 	if (!policydb_str) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux:  unable to allocate memory for policydb "
+=======
+		printk(KERN_ERR "SELinux:  unable to allocate memory for policydb "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux:  unable to allocate memory for policydb "
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2576,7 +2801,11 @@ int policydb_read(struct policydb *p, void *fp)
 	rc = next_entry(policydb_str, fp, len);
 	if (rc) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux:  truncated policydb string identifier\n");
+=======
+		printk(KERN_ERR "SELinux:  truncated policydb string identifier\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux:  truncated policydb string identifier\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2588,7 +2817,11 @@ int policydb_read(struct policydb *p, void *fp)
 	policydb_str[len] = '\0';
 	if (strcmp(policydb_str, POLICYDB_STRING)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux:  policydb string %s does not match "
+=======
+		printk(KERN_ERR "SELinux:  policydb string %s does not match "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux:  policydb string %s does not match "
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2610,7 +2843,11 @@ int policydb_read(struct policydb *p, void *fp)
 	if (p->policyvers < POLICYDB_VERSION_MIN ||
 	    p->policyvers > POLICYDB_VERSION_MAX) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux:  policydb version %d does not match "
+=======
+		printk(KERN_ERR "SELinux:  policydb version %d does not match "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux:  policydb version %d does not match "
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2625,7 +2862,11 @@ int policydb_read(struct policydb *p, void *fp)
 		rc = -EINVAL;
 		if (p->policyvers < POLICYDB_VERSION_MLS) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_err("SELinux: security policydb version %d "
+=======
+			printk(KERN_ERR "SELinux: security policydb version %d "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_ERR "SELinux: security policydb version %d "
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2642,10 +2883,13 @@ int policydb_read(struct policydb *p, void *fp)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if ((le32_to_cpu(buf[1]) & POLICYDB_CONFIG_ANDROID_NETLINK_GETNEIGH)) {
 		p->android_netlink_getneigh = 1;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (p->policyvers >= POLICYDB_VERSION_POLCAP) {
@@ -2664,7 +2908,11 @@ int policydb_read(struct policydb *p, void *fp)
 	info = policydb_lookup_compat(p->policyvers);
 	if (!info) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux:  unable to find policy compat info "
+=======
+		printk(KERN_ERR "SELinux:  unable to find policy compat info "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux:  unable to find policy compat info "
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2676,7 +2924,11 @@ int policydb_read(struct policydb *p, void *fp)
 	if (le32_to_cpu(buf[2]) != info->sym_num ||
 		le32_to_cpu(buf[3]) != info->ocon_num) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux:  policydb table sizes (%d,%d) do "
+=======
+		printk(KERN_ERR "SELinux:  policydb table sizes (%d,%d) do "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux:  policydb table sizes (%d,%d) do "
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2809,6 +3061,7 @@ int policydb_read(struct policydb *p, void *fp)
 		goto bad;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	p->type_attr_map_array = kvcalloc(p->p_types.nprim,
 					  sizeof(*p->type_attr_map_array),
 					  GFP_KERNEL);
@@ -2819,6 +3072,8 @@ int policydb_read(struct policydb *p, void *fp)
 		struct ebitmap *e = &p->type_attr_map_array[i];
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rc = -ENOMEM;
 	p->type_attr_map_array = flex_array_alloc(sizeof(struct ebitmap),
 						  p->p_types.nprim,
@@ -2836,6 +3091,9 @@ int policydb_read(struct policydb *p, void *fp)
 		struct ebitmap *e = flex_array_get(p->type_attr_map_array, i);
 
 		BUG_ON(!e);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ebitmap_init(e);
 		if (p->policyvers >= POLICYDB_VERSION_AVTAB) {
@@ -3726,7 +3984,11 @@ int policydb_write(struct policydb *p, void *fp)
 	 */
 	if (p->policyvers < POLICYDB_VERSION_AVTAB) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux: refusing to write policy version %d."
+=======
+		printk(KERN_ERR "SELinux: refusing to write policy version %d."
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux: refusing to write policy version %d."
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3759,7 +4021,11 @@ int policydb_write(struct policydb *p, void *fp)
 	info = policydb_lookup_compat(p->policyvers);
 	if (!info) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux: compatibility lookup failed for policy "
+=======
+		printk(KERN_ERR "SELinux: compatibility lookup failed for policy "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux: compatibility lookup failed for policy "
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3840,8 +4106,14 @@ int policydb_write(struct policydb *p, void *fp)
 
 	for (i = 0; i < p->p_types.nprim; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		struct ebitmap *e = &p->type_attr_map_array[i];
 
+=======
+		struct ebitmap *e = flex_array_get(p->type_attr_map_array, i);
+
+		BUG_ON(!e);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		struct ebitmap *e = flex_array_get(p->type_attr_map_array, i);
 

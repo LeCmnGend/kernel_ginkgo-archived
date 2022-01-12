@@ -503,7 +503,11 @@ err_corrupt_attr:
 		file_name_attr = (FILE_NAME_ATTR*)((u8*)attr +
 				le16_to_cpu(attr->data.resident.value_offset));
 <<<<<<< HEAD
+<<<<<<< HEAD
 		p2 = (u8 *)file_name_attr + le32_to_cpu(attr->data.resident.value_length);
+=======
+		p2 = (u8*)attr + le32_to_cpu(attr->data.resident.value_length);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		p2 = (u8*)attr + le32_to_cpu(attr->data.resident.value_length);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -666,12 +670,15 @@ static int ntfs_read_locked_inode(struct inode *vi)
 	a = ctx->attr;
 	/* Get the standard information attribute value. */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if ((u8 *)a + le16_to_cpu(a->data.resident.value_offset)
 			+ le32_to_cpu(a->data.resident.value_length) >
 			(u8 *)ctx->mrec + vol->mft_record_size) {
 		ntfs_error(vi->i_sb, "Corrupt standard information attribute in inode.");
 		goto unm_err_out;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	si = (STANDARD_INFORMATION*)((u8*)a +
@@ -1858,12 +1865,15 @@ int ntfs_read_inode_mount(struct inode *vi)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (le32_to_cpu(m->bytes_allocated) != vol->mft_record_size) {
 		ntfs_error(sb, "Incorrect mft record size %u in superblock, should be %u.",
 				le32_to_cpu(m->bytes_allocated), vol->mft_record_size);
 		goto err_out;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Apply the mst fixups. */

@@ -17,7 +17,10 @@
 #include <linux/bug.h>
 #include <linux/cpu.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <asm/sections.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -42,21 +45,28 @@ static int jump_label_cmp(const void *a, const void *b)
 	const struct jump_entry *jeb = b;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (jump_entry_key(jea) < jump_entry_key(jeb))
 		return -1;
 
 	if (jump_entry_key(jea) > jump_entry_key(jeb))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (jea->key < jeb->key)
 		return -1;
 
 	if (jea->key > jeb->key)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return 1;
 
 	return 0;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static void jump_label_swap(void *a, void *b, int size)
 {
@@ -76,10 +86,13 @@ static void jump_label_swap(void *a, void *b, int size)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void
 jump_label_sort_entries(struct jump_entry *start, struct jump_entry *stop)
 {
 	unsigned long size;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	void *swapfn = NULL;
 
@@ -90,10 +103,15 @@ jump_label_sort_entries(struct jump_entry *start, struct jump_entry *stop)
 					/ sizeof(struct jump_entry));
 	sort(start, size, sizeof(struct jump_entry), jump_label_cmp, swapfn);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	size = (((unsigned long)stop - (unsigned long)start)
 					/ sizeof(struct jump_entry));
 	sort(start, size, sizeof(struct jump_entry), jump_label_cmp, NULL);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -126,7 +144,10 @@ void static_key_slow_inc_cpuslocked(struct static_key *key)
 
 	STATIC_KEY_CHECK_USE();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	lockdep_assert_cpus_held();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -175,7 +196,10 @@ void static_key_enable_cpuslocked(struct static_key *key)
 {
 	STATIC_KEY_CHECK_USE();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	lockdep_assert_cpus_held();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -209,7 +233,10 @@ void static_key_disable_cpuslocked(struct static_key *key)
 {
 	STATIC_KEY_CHECK_USE();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	lockdep_assert_cpus_held();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -234,6 +261,7 @@ void static_key_disable(struct static_key *key)
 EXPORT_SYMBOL_GPL(static_key_disable);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool static_key_slow_try_dec(struct static_key *key)
 {
 	int val;
@@ -243,10 +271,15 @@ static bool static_key_slow_try_dec(struct static_key *key)
 		return false;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void __static_key_slow_dec_cpuslocked(struct static_key *key,
 					   unsigned long rate_limit,
 					   struct delayed_work *work)
 {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * The negative count check is valid even when a negative
@@ -255,6 +288,7 @@ static void __static_key_slow_dec_cpuslocked(struct static_key *key,
 	 * returns is unbalanced, because all other static_key_slow_inc()
 	 * instances block while the update is in progress.
 	 */
+<<<<<<< HEAD
 <<<<<<< HEAD
 	WARN(val < 0, "jump label: negative count!\n");
 	return true;
@@ -288,6 +322,8 @@ void jump_label_update_timeout(struct work_struct *work)
 }
 EXPORT_SYMBOL_GPL(jump_label_update_timeout);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!atomic_dec_and_mutex_lock(&key->enabled, &jump_label_mutex)) {
 		WARN(atomic_read(&key->enabled) < 0,
 		     "jump label: negative count!\n");
@@ -318,13 +354,20 @@ static void jump_label_update_timeout(struct work_struct *work)
 		container_of(work, struct static_key_deferred, work.work);
 	__static_key_slow_dec(&key->key, 0, NULL);
 }
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 void static_key_slow_dec(struct static_key *key)
 {
 	STATIC_KEY_CHECK_USE();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__static_key_slow_dec(key);
+=======
+	__static_key_slow_dec(key, 0, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__static_key_slow_dec(key, 0, NULL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -334,6 +377,7 @@ EXPORT_SYMBOL_GPL(static_key_slow_dec);
 void static_key_slow_dec_cpuslocked(struct static_key *key)
 {
 	STATIC_KEY_CHECK_USE();
+<<<<<<< HEAD
 <<<<<<< HEAD
 	__static_key_slow_dec_cpuslocked(key);
 }
@@ -358,6 +402,8 @@ void __static_key_deferred_flush(void *key, struct delayed_work *work)
 }
 EXPORT_SYMBOL_GPL(__static_key_deferred_flush);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__static_key_slow_dec_cpuslocked(key, 0, NULL);
 }
 
@@ -374,6 +420,9 @@ void static_key_deferred_flush(struct static_key_deferred *key)
 	flush_delayed_work(&key->work);
 }
 EXPORT_SYMBOL_GPL(static_key_deferred_flush);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 void jump_label_rate_limit(struct static_key_deferred *key,
@@ -388,8 +437,13 @@ EXPORT_SYMBOL_GPL(jump_label_rate_limit);
 static int addr_conflict(struct jump_entry *entry, void *start, void *end)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (jump_entry_code(entry) <= (unsigned long)end &&
 	    jump_entry_code(entry) + JUMP_LABEL_NOP_SIZE > (unsigned long)start)
+=======
+	if (entry->code <= (unsigned long)end &&
+		entry->code + JUMP_LABEL_NOP_SIZE > (unsigned long)start)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (entry->code <= (unsigned long)end &&
 		entry->code + JUMP_LABEL_NOP_SIZE > (unsigned long)start)
@@ -453,7 +507,10 @@ static inline void static_key_set_linked(struct static_key *key)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline struct static_key *jump_entry_key(struct jump_entry *entry)
 {
 	return (struct static_key *)((unsigned long)entry->key & ~1UL);
@@ -464,6 +521,9 @@ static bool jump_entry_branch(struct jump_entry *entry)
 	return (unsigned long)entry->key & 1UL;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /***
  * A 'struct static_key' uses a union such that it either points directly
@@ -490,7 +550,11 @@ static enum jump_label_type jump_label_type(struct jump_entry *entry)
 	struct static_key *key = jump_entry_key(entry);
 	bool enabled = static_key_enabled(key);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool branch = jump_entry_is_branch(entry);
+=======
+	bool branch = jump_entry_branch(entry);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bool branch = jump_entry_branch(entry);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -501,6 +565,7 @@ static enum jump_label_type jump_label_type(struct jump_entry *entry)
 
 static void __jump_label_update(struct static_key *key,
 				struct jump_entry *entry,
+<<<<<<< HEAD
 <<<<<<< HEAD
 				struct jump_entry *stop,
 				bool init)
@@ -518,6 +583,8 @@ static void __jump_label_update(struct static_key *key,
 					  (void *)jump_entry_code(entry));
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				struct jump_entry *stop)
 {
 	for (; (entry < stop) && (jump_entry_key(entry) == key); entry++) {
@@ -528,6 +595,9 @@ static void __jump_label_update(struct static_key *key,
 		 */
 		if (entry->code && kernel_text_address(entry->code))
 			arch_jump_label_transform(entry, jump_label_type(entry));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 }
@@ -563,9 +633,12 @@ void __init jump_label_init(void)
 			arch_jump_label_transform_static(iter, JUMP_LABEL_NOP);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (init_section_contains((void *)jump_entry_code(iter), 1))
 			jump_entry_set_init(iter);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		iterk = jump_entry_key(iter);
@@ -587,7 +660,11 @@ static enum jump_label_type jump_label_init_type(struct jump_entry *entry)
 	struct static_key *key = jump_entry_key(entry);
 	bool type = static_key_type(key);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool branch = jump_entry_is_branch(entry);
+=======
+	bool branch = jump_entry_branch(entry);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bool branch = jump_entry_branch(entry);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -605,7 +682,11 @@ struct static_key_mod {
 static inline struct static_key_mod *static_key_mod(struct static_key *key)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	WARN_ON_ONCE(!static_key_linked(key));
+=======
+	WARN_ON_ONCE(!(key->type & JUMP_TYPE_LINKED));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	WARN_ON_ONCE(!(key->type & JUMP_TYPE_LINKED));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -668,8 +749,12 @@ static void __jump_label_mod_update(struct static_key *key)
 		else
 			stop = m->jump_entries + m->num_jump_entries;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__jump_label_update(key, mod->entries, stop,
 				    m && m->state == MODULE_STATE_COMING);
+=======
+		__jump_label_update(key, mod->entries, stop);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__jump_label_update(key, mod->entries, stop);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -719,9 +804,12 @@ static int jump_label_add_module(struct module *mod)
 		struct static_key *iterk;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (within_module_init(jump_entry_code(iter), mod))
 			jump_entry_set_init(iter);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		iterk = jump_entry_key(iter);
@@ -730,7 +818,11 @@ static int jump_label_add_module(struct module *mod)
 
 		key = iterk;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (within_module((unsigned long)key, mod)) {
+=======
+		if (within_module(iter->key, mod)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (within_module(iter->key, mod)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -764,7 +856,11 @@ static int jump_label_add_module(struct module *mod)
 		/* Only update if we've changed from our initial state */
 		if (jump_label_type(iter) != jump_label_init_type(iter))
 <<<<<<< HEAD
+<<<<<<< HEAD
 			__jump_label_update(key, iter, iter_stop, true);
+=======
+			__jump_label_update(key, iter, iter_stop);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			__jump_label_update(key, iter, iter_stop);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -788,7 +884,11 @@ static void jump_label_del_module(struct module *mod)
 		key = jump_entry_key(iter);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (within_module((unsigned long)key, mod))
+=======
+		if (within_module(iter->key, mod))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (within_module(iter->key, mod))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -828,7 +928,10 @@ static void jump_label_del_module(struct module *mod)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void jump_label_invalidate_module_init(struct module *mod)
 {
 	struct jump_entry *iter_start = mod->jump_entries;
@@ -841,6 +944,9 @@ static void jump_label_invalidate_module_init(struct module *mod)
 	}
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int
 jump_label_module_notify(struct notifier_block *self, unsigned long val,
@@ -857,7 +963,11 @@ jump_label_module_notify(struct notifier_block *self, unsigned long val,
 		ret = jump_label_add_module(mod);
 		if (ret) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			WARN(1, "Failed to allocate memory: jump_label may not work properly.\n");
+=======
+			WARN(1, "Failed to allocatote memory: jump_label may not work properly.\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			WARN(1, "Failed to allocatote memory: jump_label may not work properly.\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -868,6 +978,12 @@ jump_label_module_notify(struct notifier_block *self, unsigned long val,
 		jump_label_del_module(mod);
 		break;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	case MODULE_STATE_LIVE:
+		jump_label_invalidate_module_init(mod);
+		break;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	case MODULE_STATE_LIVE:
 		jump_label_invalidate_module_init(mod);
@@ -943,8 +1059,12 @@ static void jump_label_update(struct static_key *key)
 	/* if there are no users, entry can be NULL */
 	if (entry)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__jump_label_update(key, entry, stop,
 				    system_state < SYSTEM_RUNNING);
+=======
+		__jump_label_update(key, entry, stop);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__jump_label_update(key, entry, stop);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

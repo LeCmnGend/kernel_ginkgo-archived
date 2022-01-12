@@ -153,7 +153,10 @@ int sanity_check_segment_list(struct kimage *image)
 	unsigned long nr_segments = image->nr_segments;
 	unsigned long total_pages = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long nr_pages = totalram_pages();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -222,7 +225,11 @@ int sanity_check_segment_list(struct kimage *image)
 	 */
 	for (i = 0; i < nr_segments; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (PAGE_COUNT(image->segment[i].memsz) > nr_pages / 2)
+=======
+		if (PAGE_COUNT(image->segment[i].memsz) > totalram_pages / 2)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (PAGE_COUNT(image->segment[i].memsz) > totalram_pages / 2)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -232,7 +239,11 @@ int sanity_check_segment_list(struct kimage *image)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (total_pages > nr_pages / 2)
+=======
+	if (total_pages > totalram_pages / 2)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (total_pages > totalram_pages / 2)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

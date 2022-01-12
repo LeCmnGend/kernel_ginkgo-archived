@@ -208,8 +208,11 @@ struct esd_usb2 {
 	u32 version;
 	int rxinitdone;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	void *rxbuf[MAX_RX_URBS];
 	dma_addr_t rxbuf_dma[MAX_RX_URBS];
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -562,7 +565,10 @@ static int esd_usb2_setup_rx_urbs(struct esd_usb2 *dev)
 		struct urb *urb = NULL;
 		u8 *buf = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		dma_addr_t buf_dma;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -575,7 +581,11 @@ static int esd_usb2_setup_rx_urbs(struct esd_usb2 *dev)
 
 		buf = usb_alloc_coherent(dev->udev, RX_BUFFER_SIZE, GFP_KERNEL,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					 &buf_dma);
+=======
+					 &urb->transfer_dma);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					 &urb->transfer_dma);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -587,8 +597,11 @@ static int esd_usb2_setup_rx_urbs(struct esd_usb2 *dev)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		urb->transfer_dma = buf_dma;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		usb_fill_bulk_urb(urb, dev->udev,
@@ -604,12 +617,17 @@ static int esd_usb2_setup_rx_urbs(struct esd_usb2 *dev)
 			usb_free_coherent(dev->udev, RX_BUFFER_SIZE, buf,
 					  urb->transfer_dma);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto freeurb;
 		}
 
 		dev->rxbuf[i] = buf;
 		dev->rxbuf_dma[i] = buf_dma;
 
+=======
+		}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		}
 
@@ -702,11 +720,14 @@ static void unlink_all_urbs(struct esd_usb2 *dev)
 
 	usb_kill_anchored_urbs(&dev->rx_submitted);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	for (i = 0; i < MAX_RX_URBS; ++i)
 		usb_free_coherent(dev->udev, RX_BUFFER_SIZE,
 				  dev->rxbuf[i], dev->rxbuf_dma[i]);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	for (i = 0; i < dev->net_count; i++) {

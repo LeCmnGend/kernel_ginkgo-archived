@@ -847,8 +847,12 @@ static int qup_i2c_bam_do_xfer(struct qup_i2c_dev *qup, struct i2c_msg *msg,
 		reinit_completion(&qup->xfer);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = qup_i2c_change_state(qup, QUP_RUN_STATE);
 		if (ret) {
+=======
+		if (qup_i2c_change_state(qup, QUP_RUN_STATE)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (qup_i2c_change_state(qup, QUP_RUN_STATE)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

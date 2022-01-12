@@ -714,6 +714,7 @@ static void k_fn(struct vc_data *vc, unsigned char value, char up_flag)
 
 	if ((unsigned)value < ARRAY_SIZE(func_table)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unsigned long flags;
 
 		spin_lock_irqsave(&func_buf_lock, flags);
@@ -721,6 +722,10 @@ static void k_fn(struct vc_data *vc, unsigned char value, char up_flag)
 			puts_queue(vc, func_table[value]);
 		spin_unlock_irqrestore(&func_buf_lock, flags);
 
+=======
+		if (func_table[value])
+			puts_queue(vc, func_table[value]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (func_table[value])
 			puts_queue(vc, func_table[value]);
@@ -1970,12 +1975,15 @@ out:
 #undef v
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* FIXME: This one needs untangling */
 int vt_do_kdgkb_ioctl(int cmd, struct kbsentry __user *user_kdgkb, int perm)
 {
 	struct kbsentry *kbs;
 	u_char *q;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* FIXME: This one needs untangling and locking */
 int vt_do_kdgkb_ioctl(int cmd, struct kbsentry __user *user_kdgkb, int perm)
 {
@@ -1983,6 +1991,9 @@ int vt_do_kdgkb_ioctl(int cmd, struct kbsentry __user *user_kdgkb, int perm)
 	char *p;
 	u_char *q;
 	u_char __user *up;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int sz, fnw_sz;
 	int delta;
@@ -2010,6 +2021,7 @@ int vt_do_kdgkb_ioctl(int cmd, struct kbsentry __user *user_kdgkb, int perm)
 
 	switch (cmd) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case KDGKBSENT: {
 		/* size should have been a struct member */
 		ssize_t len = sizeof(user_kdgkb->kb_string);
@@ -2024,6 +2036,8 @@ int vt_do_kdgkb_ioctl(int cmd, struct kbsentry __user *user_kdgkb, int perm)
 		goto reterr;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case KDGKBSENT:
 		sz = sizeof(kbs->kb_string) - 1; /* sz should have been
 						  a struct member */
@@ -2041,6 +2055,9 @@ int vt_do_kdgkb_ioctl(int cmd, struct kbsentry __user *user_kdgkb, int perm)
 		}
 		kfree(kbs);
 		return ((p && *p) ? -EOVERFLOW : 0);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case KDSKBSENT:
 		if (!perm) {

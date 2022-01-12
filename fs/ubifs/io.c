@@ -238,7 +238,11 @@ int ubifs_check_node(const struct ubifs_info *c, const void *buf, int lnum,
 		     int offs, int quiet, int must_chk_crc)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int err = -EINVAL, type, node_len, dump_node = 1;
+=======
+	int err = -EINVAL, type, node_len;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int err = -EINVAL, type, node_len;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -295,6 +299,7 @@ out_len:
 	if (!quiet)
 		ubifs_err(c, "bad node length %d", node_len);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (type == UBIFS_DATA_NODE && node_len > UBIFS_DATA_NODE_SZ)
 		dump_node = 0;
 out:
@@ -312,10 +317,15 @@ out:
 					buf, safe_len, 0);
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out:
 	if (!quiet) {
 		ubifs_err(c, "bad node at LEB %d:%d", lnum, offs);
 		ubifs_dump_node(c, buf);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dump_stack();
 	}
@@ -343,7 +353,11 @@ void ubifs_pad(const struct ubifs_info *c, void *buf, int pad)
 	uint32_t crc;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ubifs_assert(pad >= 0);
+=======
+	ubifs_assert(pad >= 0 && !(pad & 7));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ubifs_assert(pad >= 0 && !(pad & 7));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -743,10 +757,13 @@ int ubifs_wbuf_write_nolock(struct ubifs_wbuf *wbuf, void *buf, int len)
 		 */
 		memcpy(wbuf->buf + wbuf->used, buf, len);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (aligned_len > len) {
 			ubifs_assert(aligned_len - len < 8);
 			ubifs_pad(c, wbuf->buf + wbuf->used + len, aligned_len - len);
 		}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -842,7 +859,11 @@ int ubifs_wbuf_write_nolock(struct ubifs_wbuf *wbuf, void *buf, int len)
 
 	spin_lock(&wbuf->lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (aligned_len) {
+=======
+	if (aligned_len)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (aligned_len)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -853,11 +874,14 @@ int ubifs_wbuf_write_nolock(struct ubifs_wbuf *wbuf, void *buf, int len)
 		 */
 		memcpy(wbuf->buf, buf + written, len);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (aligned_len > len) {
 			ubifs_assert(aligned_len - len < 8);
 			ubifs_pad(c, wbuf->buf + len, aligned_len - len);
 		}
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

@@ -1365,11 +1365,15 @@ static int mv88e6xxx_port_db_load_purge(struct mv88e6xxx_chip *chip, int port,
 			entry.state = MV88E6XXX_G1_ATU_DATA_STATE_UNUSED;
 	} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (state == MV88E6XXX_G1_ATU_DATA_STATE_UC_STATIC)
 			entry.portvec = BIT(port);
 		else
 			entry.portvec |= BIT(port);
 
+=======
+		entry.portvec |= BIT(port);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		entry.portvec |= BIT(port);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2459,6 +2463,10 @@ static const struct mv88e6xxx_ops mv88e6097_ops = {
 	.port_set_egress_floods = mv88e6352_port_set_egress_floods,
 	.port_set_ether_type = mv88e6351_port_set_ether_type,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	.port_set_jumbo_size = mv88e6165_port_set_jumbo_size,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.port_set_jumbo_size = mv88e6165_port_set_jumbo_size,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

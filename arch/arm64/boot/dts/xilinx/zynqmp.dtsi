@@ -411,7 +411,11 @@
 
 		i2c0: i2c@ff020000 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			compatible = "cdns,i2c-r1p14";
+=======
+			compatible = "cdns,i2c-r1p14", "cdns,i2c-r1p10";
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			compatible = "cdns,i2c-r1p14", "cdns,i2c-r1p10";
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -425,7 +429,11 @@
 
 		i2c1: i2c@ff030000 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			compatible = "cdns,i2c-r1p14";
+=======
+			compatible = "cdns,i2c-r1p14", "cdns,i2c-r1p10";
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			compatible = "cdns,i2c-r1p14", "cdns,i2c-r1p10";
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -21,7 +21,11 @@ static int __init topology_init(void)
 		struct cpu *c = &per_cpu(cpu_devices, i);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		c->hotpluggable = !!i;
+=======
+		c->hotpluggable = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		c->hotpluggable = 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

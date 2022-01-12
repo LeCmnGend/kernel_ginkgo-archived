@@ -1315,11 +1315,14 @@ static void ath_buf_set_rate(struct ath_softc *sc, struct ath_buf *bf,
 			if (rix < 8 && (tx_info->flags & IEEE80211_TX_CTL_STBC))
 				info->rates[i].RateFlags |= ATH9K_RATESERIES_STBC;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (rix >= 8 && fi->dyn_smps) {
 				info->rates[i].RateFlags |=
 					ATH9K_RATESERIES_RTS_CTS;
 				info->flags |= ATH9K_TXDESC_CTSENA;
 			}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2187,7 +2190,10 @@ static void setup_frame_info(struct ieee80211_hw *hw,
 	else
 		fi->keyix = ATH9K_TXKEYIX_INVALID;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	fi->dyn_smps = sta && sta->smps_mode == IEEE80211_SMPS_DYNAMIC;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	fi->keytype = keytype;

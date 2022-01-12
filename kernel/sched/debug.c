@@ -755,6 +755,11 @@ do {									\
 #endif
 #ifdef CONFIG_SCHED_WALT
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	P(cluster->load_scale_factor);
+	P(cluster->capacity);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	P(cluster->load_scale_factor);
 	P(cluster->capacity);
@@ -849,6 +854,11 @@ static void sched_debug_header(struct seq_file *m)
 #ifdef CONFIG_SCHED_WALT
 	P(sched_init_task_load_windows);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	P(min_capacity);
+	P(max_capacity);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	P(min_capacity);
 	P(max_capacity);
@@ -884,6 +894,7 @@ void sysrq_sched_debug_show(void)
 
 	sched_debug_header(NULL);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for_each_online_cpu(cpu) {
 		/*
 		 * Need to reset softlockup watchdogs on all CPUs, because
@@ -894,6 +905,11 @@ void sysrq_sched_debug_show(void)
 		touch_all_softlockup_watchdogs();
 		print_cpu(NULL, cpu);
 	}
+=======
+	for_each_online_cpu(cpu)
+		print_cpu(NULL, cpu);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for_each_online_cpu(cpu)
 		print_cpu(NULL, cpu);

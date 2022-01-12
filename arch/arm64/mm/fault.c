@@ -150,8 +150,12 @@ void show_pte(unsigned long addr)
 {
 	struct mm_struct *mm;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pgd_t *pgdp;
 	pgd_t pgd;
+=======
+	pgd_t *pgd;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pgd_t *pgd;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -173,6 +177,7 @@ void show_pte(unsigned long addr)
 		return;
 	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	pr_alert("%s pgtable: %luk pages, %u-bit VAs, pgdp = %p\n",
 		 mm == &init_mm ? "swapper" : "user", PAGE_SIZE / SZ_1K,
@@ -206,6 +211,8 @@ void show_pte(unsigned long addr)
 		pr_cont(", pte=%016llx", pte_val(pte));
 		pte_unmap(ptep);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pr_alert("%s pgtable: %luk pages, %u-bit VAs, pgd = %p\n",
 		 mm == &init_mm ? "swapper" : "user", PAGE_SIZE / SZ_1K,
 		 VA_BITS, mm->pgd);
@@ -233,6 +240,9 @@ void show_pte(unsigned long addr)
 		pte = pte_offset_map(pmd, addr);
 		pr_cont(", *pte=%016llx", pte_val(*pte));
 		pte_unmap(pte);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} while(0);
 
@@ -255,9 +265,14 @@ int ptep_set_access_flags(struct vm_area_struct *vma,
 {
 	pteval_t old_pteval, pteval;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pte_t pte = READ_ONCE(*ptep);
 
 	if (pte_same(pte, entry))
+=======
+
+	if (pte_same(*ptep, entry))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	if (pte_same(*ptep, entry))
@@ -275,7 +290,11 @@ int ptep_set_access_flags(struct vm_area_struct *vma,
 	 */
 	pte_val(entry) ^= PTE_RDONLY;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pteval = pte_val(pte);
+=======
+	pteval = READ_ONCE(pte_val(*ptep));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pteval = READ_ONCE(pte_val(*ptep));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

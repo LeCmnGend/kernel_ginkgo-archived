@@ -130,7 +130,10 @@ static struct platform_driver a10sr_reset_driver = {
 	.driver = {
 		.name		= "altr_a10sr_reset",
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.of_match_table	= a10sr_reset_of_match,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	},

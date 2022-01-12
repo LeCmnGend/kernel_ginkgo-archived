@@ -407,6 +407,7 @@ fail1:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Disable SRIOV and remove VFs
  * If some VFs are attached to a guest (using Xen, only) nothing is
  * done if force=false, and vports are freed if force=true (for the non
@@ -419,12 +420,17 @@ static int efx_ef10_pci_sriov_disable(struct efx_nic *efx, bool force)
 	unsigned int vfs_assigned = pci_vfs_assigned(dev);
 	int rc = 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int efx_ef10_pci_sriov_disable(struct efx_nic *efx, bool force)
 {
 	struct pci_dev *dev = efx->pci_dev;
 	unsigned int vfs_assigned = 0;
 
 	vfs_assigned = pci_vfs_assigned(dev);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (vfs_assigned && !force) {
@@ -436,6 +442,7 @@ static int efx_ef10_pci_sriov_disable(struct efx_nic *efx, bool force)
 	if (!vfs_assigned)
 		pci_disable_sriov(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	else
 		rc = -EBUSY;
 
@@ -443,10 +450,15 @@ static int efx_ef10_pci_sriov_disable(struct efx_nic *efx, bool force)
 	efx->vf_count = 0;
 	return rc;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	efx_ef10_sriov_free_vf_vswitching(efx);
 	efx->vf_count = 0;
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -467,6 +479,10 @@ void efx_ef10_sriov_fini(struct efx_nic *efx)
 {
 	struct efx_ef10_nic_data *nic_data = efx->nic_data;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	unsigned int i;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned int i;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -480,8 +496,11 @@ void efx_ef10_sriov_fini(struct efx_nic *efx)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Disable SRIOV and remove any VFs in the host */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Remove any VFs in the host */
 	for (i = 0; i < efx->vf_count; ++i) {
 		struct efx_nic *vf_efx = nic_data->vf[i].efx;
@@ -490,6 +509,9 @@ void efx_ef10_sriov_fini(struct efx_nic *efx)
 			vf_efx->pci_dev->driver->remove(vf_efx->pci_dev);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rc = efx_ef10_pci_sriov_disable(efx, true);
 	if (rc)

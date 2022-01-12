@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c)2017-2020, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c)2017-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c)2017-2021, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -393,6 +397,10 @@ static struct a6xx_protected_regs {
 	{ 0x980, 0x4, 0 },
 	{ 0xA630, 0x0, 1 },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	{ 0x1b400, 0x1fff, 1 },
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	{ 0x1b400, 0x1fff, 1 },
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -512,6 +520,11 @@ static void a6xx_pwrup_reglist_init(struct adreno_device *adreno_dev)
 static void a6xx_init(struct adreno_device *adreno_dev)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	a6xx_crashdump_init(adreno_dev);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	a6xx_crashdump_init(adreno_dev);
 
@@ -1861,7 +1874,10 @@ static struct adreno_irq a6xx_irq = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if 0
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static bool adreno_is_qdss_dbg_register(struct kgsl_device *device,
@@ -2435,7 +2451,10 @@ static struct adreno_coresight a6xx_coresight_cx = {
 	.write = adreno_cx_dbgc_regwrite,
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -3366,7 +3385,13 @@ struct adreno_gpudev adreno_a6xx_gpudev = {
 	.reg_offsets = &a6xx_reg_offsets,
 	.start = a6xx_start,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.irq = &a6xx_irq,
+=======
+	.snapshot = a6xx_snapshot,
+	.irq = &a6xx_irq,
+	.irq_trace = trace_kgsl_a5xx_irq_status,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.snapshot = a6xx_snapshot,
 	.irq = &a6xx_irq,
@@ -3405,7 +3430,13 @@ struct adreno_gpudev adreno_a6xx_gpudev = {
 	.perfcounter_init = a6xx_perfcounter_init,
 	.perfcounter_update = a6xx_perfcounter_update,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.clk_set_options = a6xx_clk_set_options,
+=======
+	.coresight = {&a6xx_coresight, &a6xx_coresight_cx},
+	.clk_set_options = a6xx_clk_set_options,
+	.snapshot_preemption = a6xx_snapshot_preemption,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.coresight = {&a6xx_coresight, &a6xx_coresight_cx},
 	.clk_set_options = a6xx_clk_set_options,

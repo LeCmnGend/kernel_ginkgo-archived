@@ -344,7 +344,11 @@
 		compatible = "samsung,s2mps13-pmic";
 		interrupt-parent = <&gpa0>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		interrupts = <7 IRQ_TYPE_LEVEL_LOW>;
+=======
+		interrupts = <7 IRQ_TYPE_NONE>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		interrupts = <7 IRQ_TYPE_NONE>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

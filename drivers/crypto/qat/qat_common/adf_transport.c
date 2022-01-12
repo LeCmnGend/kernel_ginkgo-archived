@@ -198,7 +198,10 @@ static int adf_init_ring(struct adf_etr_ring_data *ring)
 		dma_free_coherent(&GET_DEV(accel_dev), ring_size_bytes,
 				  ring->base_addr, ring->dma_addr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ring->base_addr = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EFAULT;

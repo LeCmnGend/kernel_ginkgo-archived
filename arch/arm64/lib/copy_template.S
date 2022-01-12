@@ -52,7 +52,10 @@ D_l	.req	x13
 D_h	.req	x14
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	prfm    pldl1strm, [src, #(1*L1_CACHE_BYTES)]
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mov	dst, dstin
@@ -186,7 +189,10 @@ D_h	.req	x14
 	stp1	D_l, D_h, dst, #16
 	ldp1	D_l, D_h, src, #16
 <<<<<<< HEAD
+<<<<<<< HEAD
 	prfm    pldl1strm, [src, #(4*L1_CACHE_BYTES)]
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	subs	count, count, #64

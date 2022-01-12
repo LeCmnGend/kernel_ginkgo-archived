@@ -590,6 +590,7 @@ ieee80211_tx_h_select_key(struct ieee80211_tx_data *tx)
 	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)tx->skb->data;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(info->flags & IEEE80211_TX_INTFL_DONT_ENCRYPT)) {
 		tx->key = NULL;
 		return TX_CONTINUE;
@@ -598,10 +599,15 @@ ieee80211_tx_h_select_key(struct ieee80211_tx_data *tx)
 	if (tx->sta &&
 	    (key = rcu_dereference(tx->sta->ptk[tx->sta->ptk_idx])))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (unlikely(info->flags & IEEE80211_TX_INTFL_DONT_ENCRYPT))
 		tx->key = NULL;
 	else if (tx->sta &&
 		 (key = rcu_dereference(tx->sta->ptk[tx->sta->ptk_idx])))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		tx->key = key;
 	else if (ieee80211_is_group_privacy_action(tx->skb) &&
@@ -664,9 +670,12 @@ ieee80211_tx_h_select_key(struct ieee80211_tx_data *tx)
 		    tx->key->flags & KEY_FLAG_UPLOADED_TO_HARDWARE)
 			info->control.hw_key = &tx->key->conf;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else if (!ieee80211_is_mgmt(hdr->frame_control) && tx->sta &&
 		   test_sta_flag(tx->sta, WLAN_STA_USES_ENCRYPTION)) {
 		return TX_DROP;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -1868,6 +1877,7 @@ static bool ieee80211_tx(struct ieee80211_sub_if_data *sdata,
 /* device xmit handlers */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 enum ieee80211_encrypt {
 	ENCRYPT_NO,
 	ENCRYPT_MGMT,
@@ -1887,6 +1897,8 @@ static int ieee80211_skb_resize(struct ieee80211_sub_if_data *sdata,
 		       (encrypt == ENCRYPT_DATA &&
 			sdata->crypto_tx_tailroom_needed_cnt);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int ieee80211_skb_resize(struct ieee80211_sub_if_data *sdata,
 				struct sk_buff *skb,
 				int head_need, bool may_encrypt)
@@ -1900,6 +1912,9 @@ static int ieee80211_skb_resize(struct ieee80211_sub_if_data *sdata,
 	enc_tailroom = may_encrypt &&
 		       (sdata->crypto_tx_tailroom_needed_cnt ||
 			ieee80211_is_mgmt(hdr->frame_control));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (enc_tailroom) {
@@ -1934,6 +1949,7 @@ void ieee80211_xmit(struct ieee80211_sub_if_data *sdata,
 	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *) skb->data;
 	int headroom;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	enum ieee80211_encrypt encrypt;
 
 	if (info->flags & IEEE80211_TX_INTFL_DONT_ENCRYPT)
@@ -1946,19 +1962,28 @@ void ieee80211_xmit(struct ieee80211_sub_if_data *sdata,
 	headroom = local->tx_headroom;
 	if (encrypt != ENCRYPT_NO)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool may_encrypt;
 
 	may_encrypt = !(info->flags & IEEE80211_TX_INTFL_DONT_ENCRYPT);
 
 	headroom = local->tx_headroom;
 	if (may_encrypt)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		headroom += sdata->encrypt_headroom;
 	headroom -= skb_headroom(skb);
 	headroom = max_t(int, 0, headroom);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ieee80211_skb_resize(sdata, skb, headroom, encrypt)) {
+=======
+	if (ieee80211_skb_resize(sdata, skb, headroom, may_encrypt)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ieee80211_skb_resize(sdata, skb, headroom, may_encrypt)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1967,7 +1992,10 @@ void ieee80211_xmit(struct ieee80211_sub_if_data *sdata,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* reload after potential resize */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	hdr = (struct ieee80211_hdr *) skb->data;
@@ -2752,7 +2780,11 @@ static struct sk_buff *ieee80211_build_hdr(struct ieee80211_sub_if_data *sdata,
 		head_need += local->tx_headroom;
 		head_need = max_t(int, 0, head_need);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ieee80211_skb_resize(sdata, skb, head_need, ENCRYPT_DATA)) {
+=======
+		if (ieee80211_skb_resize(sdata, skb, head_need, true)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (ieee80211_skb_resize(sdata, skb, head_need, true)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3416,7 +3448,11 @@ static bool ieee80211_xmit_fast(struct ieee80211_sub_if_data *sdata,
 					  max_t(int, extra_head + hw_headroom -
 						     skb_headroom(skb), 0),
 <<<<<<< HEAD
+<<<<<<< HEAD
 					  ENCRYPT_NO))) {
+=======
+					  false))) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					  false))) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

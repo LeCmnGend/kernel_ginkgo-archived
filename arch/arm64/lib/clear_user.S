@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* SPDX-License-Identifier: GPL-2.0-only */
 /*
  * Copyright (C) 2021 Arm Ltd.
@@ -7,6 +8,8 @@
 #include <linux/linkage.h>
 #include <asm/assembler.h>
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Based on arch/arm/lib/clear_user.S
  *
@@ -27,6 +30,9 @@
 #include <linux/linkage.h>
 
 #include <asm/asm-uaccess.h>
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	.text
@@ -39,6 +45,7 @@
  *
  * Alignment fixed up by hardware.
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 	.p2align 4
@@ -77,6 +84,8 @@ SYM_FUNC_END(__arch_clear_user)
 8:	add	x0, x0, #4	// ...or the second word of the 4-7 byte case
 9:	sub	x0, x2, x0
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 ENTRY(__arch_clear_user)
 	uaccess_enable_not_uao x2, x3, x4
 	mov	x2, x1			// save the size for fixup return
@@ -106,6 +115,9 @@ ENDPROC(__arch_clear_user)
 	.align	2
 9:	mov	x0, x2			// return the original size
 	uaccess_disable_not_uao x2, x3
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret
 	.previous

@@ -654,7 +654,10 @@ static void brcmf_fws_psq_flush(struct brcmf_fws_info *fws, struct pktq *q,
 				int ifidx)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct brcmf_fws_hanger_item *hi;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool (*matchfn)(struct sk_buff *, void *) = NULL;
@@ -669,9 +672,12 @@ static void brcmf_fws_psq_flush(struct brcmf_fws_info *fws, struct pktq *q,
 		while (skb) {
 			hslot = brcmf_skb_htod_tag_get_field(skb, HSLOT);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			hi = &fws->hanger.items[hslot];
 			WARN_ON(skb != hi->pkt);
 			hi->state = BRCMF_FWS_HANGER_ITEM_STATE_FREE;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			brcmf_fws_hanger_poppkt(&fws->hanger, hslot, &skb,

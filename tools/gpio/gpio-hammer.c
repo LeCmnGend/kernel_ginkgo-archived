@@ -139,6 +139,7 @@ int main(int argc, char **argv)
 			break;
 		case 'o':
 <<<<<<< HEAD
+<<<<<<< HEAD
 			/*
 			 * Avoid overflow. Do not immediately error, we want to
 			 * be able to accurately report on the amount of times
@@ -150,6 +151,9 @@ int main(int argc, char **argv)
 =======
 			lines[i] = strtoul(optarg, NULL, 10);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+			lines[i] = strtoul(optarg, NULL, 10);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			i++;
 			break;
 		case '?':
@@ -157,6 +161,7 @@ int main(int argc, char **argv)
 			return -1;
 		}
 	}
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 	if (i >= GPIOHANDLES_MAX) {
@@ -166,6 +171,8 @@ int main(int argc, char **argv)
 		return -1;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	nlines = i;

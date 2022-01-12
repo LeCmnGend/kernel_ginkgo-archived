@@ -108,6 +108,7 @@
 #include <asm/sections.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define v1printk(a...) do {		\
 	if (verbose)			\
 		printk(KERN_INFO a);	\
@@ -123,6 +124,8 @@
 	WARN_ON(1);			\
 } while (0)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define v1printk(a...) do { \
 	if (verbose) \
 		printk(KERN_INFO a); \
@@ -136,6 +139,9 @@
 		printk(KERN_ERR a); \
 		WARN_ON(1); \
 	} while (0)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define MAX_CONFIG_LEN		40
 

@@ -817,7 +817,10 @@ struct ath_hw {
 	struct ar5416Stats stats;
 	struct ath9k_tx_queue_info txq[ATH9K_NUM_TX_QUEUES];
 <<<<<<< HEAD
+<<<<<<< HEAD
 	DECLARE_BITMAP(pending_del_keymap, ATH_KEYMAX);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

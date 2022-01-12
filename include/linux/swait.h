@@ -26,8 +26,13 @@
  *    sleeper state.
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  - the !exclusive mode; because that leads to O(n) wakeups, everything is
  *    exclusive.
+=======
+ *  - the exclusive mode; because this requires preserving the list order
+ *    and this is hard.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  *  - the exclusive mode; because this requires preserving the list order
  *    and this is hard.
@@ -161,10 +166,16 @@ extern void __finish_swait(struct swait_queue_head *q, struct swait_queue *wait)
 extern void finish_swait(struct swait_queue_head *q, struct swait_queue *wait);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* as per ___wait_event() but for swait, therefore "exclusive == 1" */
 #define ___swait_event(wq, condition, state, ret, cmd)			\
 ({									\
 	__label__ __out;						\
+=======
+/* as per ___wait_event() but for swait, therefore "exclusive == 0" */
+#define ___swait_event(wq, condition, state, ret, cmd)			\
+({									\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* as per ___wait_event() but for swait, therefore "exclusive == 0" */
 #define ___swait_event(wq, condition, state, ret, cmd)			\
@@ -183,7 +194,11 @@ extern void finish_swait(struct swait_queue_head *q, struct swait_queue *wait);
 		if (___wait_is_interruptible(state) && __int) {		\
 			__ret = __int;					\
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto __out;					\
+=======
+			break;						\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			break;						\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -193,7 +208,11 @@ extern void finish_swait(struct swait_queue_head *q, struct swait_queue *wait);
 	}								\
 	finish_swait(&wq, &__wait);					\
 <<<<<<< HEAD
+<<<<<<< HEAD
 __out:	__ret;								\
+=======
+	__ret;								\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__ret;								\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

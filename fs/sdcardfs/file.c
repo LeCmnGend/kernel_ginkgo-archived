@@ -24,8 +24,11 @@
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct kmem_cache *kmem_file_info_pool;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static ssize_t sdcardfs_read(struct file *file, char __user *buf,
@@ -242,8 +245,11 @@ static int sdcardfs_open(struct inode *inode, struct file *file)
 	struct sdcardfs_sb_info *sbi = SDCARDFS_SB(dentry->d_sb);
 	const struct cred *saved_cred = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct fuse_package *fp = current->fpack;
 	char *iname;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -266,9 +272,14 @@ static int sdcardfs_open(struct inode *inode, struct file *file)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	file->f_mode |= FMODE_NONMAPPABLE;
 	file->private_data =
 		kmem_cache_zalloc(kmem_file_info_pool, GFP_KERNEL);
+=======
+	file->private_data =
+		kzalloc(sizeof(struct sdcardfs_file_info), GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	file->private_data =
 		kzalloc(sizeof(struct sdcardfs_file_info), GFP_KERNEL);
@@ -292,6 +303,7 @@ static int sdcardfs_open(struct inode *inode, struct file *file)
 	} else {
 		sdcardfs_set_lower_file(file, lower_file);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!err && fp && fp->fuse_open_req && !fp->filp && fp->iname) {
 			iname = inode_name(inode);
 			if (iname && !strcasecmp(iname, fp->iname)) {
@@ -306,10 +318,15 @@ static int sdcardfs_open(struct inode *inode, struct file *file)
 	if (err)
 		kmem_cache_free(kmem_file_info_pool, SDCARDFS_F(file));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	if (err)
 		kfree(SDCARDFS_F(file));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	else
 		sdcardfs_copy_and_fix_attrs(inode, sdcardfs_lower_inode(inode));
@@ -347,7 +364,11 @@ static int sdcardfs_file_release(struct inode *inode, struct file *file)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kmem_cache_free(kmem_file_info_pool, SDCARDFS_F(file));
+=======
+	kfree(SDCARDFS_F(file));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(SDCARDFS_F(file));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -387,11 +408,14 @@ static int sdcardfs_fasync(int fd, struct file *file, int flag)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct file *sdcardfs_get_lower_file(struct file *f)
 {
 	return sdcardfs_lower_file(f);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -491,7 +515,10 @@ const struct file_operations sdcardfs_main_fops = {
 	.fsync		= sdcardfs_fsync,
 	.fasync		= sdcardfs_fasync,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.get_lower_file = sdcardfs_get_lower_file,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.read_iter	= sdcardfs_read_iter,
@@ -512,7 +539,10 @@ const struct file_operations sdcardfs_dir_fops = {
 	.flush		= sdcardfs_flush,
 	.fsync		= sdcardfs_fsync,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.get_lower_file = sdcardfs_get_lower_file,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.fasync		= sdcardfs_fasync,

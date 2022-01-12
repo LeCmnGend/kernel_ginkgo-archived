@@ -79,6 +79,7 @@ static int pingpong_tearcheck_setup(struct drm_encoder *encoder,
 	cfg |= MDP5_PP_SYNC_CONFIG_VSYNC_COUNT(vclks_line);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Tearcheck emits a blanking signal every vclks_line * vtotal * 2 ticks on
 	 * the vsync_clk equating to roughly half the desired panel refresh rate.
@@ -90,6 +91,11 @@ static int pingpong_tearcheck_setup(struct drm_encoder *encoder,
 	mdp5_write(mdp5_kms,
 		REG_MDP5_PP_SYNC_CONFIG_HEIGHT(pp_id), (2 * mode->vtotal));
 
+=======
+	mdp5_write(mdp5_kms, REG_MDP5_PP_SYNC_CONFIG_VSYNC(pp_id), cfg);
+	mdp5_write(mdp5_kms,
+		REG_MDP5_PP_SYNC_CONFIG_HEIGHT(pp_id), 0xfff0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mdp5_write(mdp5_kms, REG_MDP5_PP_SYNC_CONFIG_VSYNC(pp_id), cfg);
 	mdp5_write(mdp5_kms,

@@ -562,10 +562,13 @@ static int ath10k_sdio_mbox_rx_alloc(struct ath10k *ar,
 				    ATH10K_HTC_MBOX_MAX_PAYLOAD_LENGTH);
 			ret = -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 			queue_work(ar->workqueue, &ar->restart_work);
 			ath10k_warn(ar, "exceeds length, start recovery\n");
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			goto err;
@@ -1572,6 +1575,7 @@ static int ath10k_sdio_hif_diag_read(struct ath10k *ar, u32 address, void *buf,
 {
 	int ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	void *mem;
 
 	mem = kzalloc(buf_len, GFP_KERNEL);
@@ -1579,11 +1583,14 @@ static int ath10k_sdio_hif_diag_read(struct ath10k *ar, u32 address, void *buf,
 		return -ENOMEM;
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* set window register to start read cycle */
 	ret = ath10k_sdio_write32(ar, MBOX_WINDOW_READ_ADDR_ADDRESS, address);
 	if (ret) {
 		ath10k_warn(ar, "failed to set mbox window read address: %d", ret);
+<<<<<<< HEAD
 <<<<<<< HEAD
 		goto out;
 	}
@@ -1603,6 +1610,8 @@ out:
 
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return ret;
 	}
 
@@ -1615,6 +1624,9 @@ out:
 	}
 
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

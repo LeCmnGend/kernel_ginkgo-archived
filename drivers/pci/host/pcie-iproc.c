@@ -307,7 +307,11 @@ enum iproc_pcie_reg {
 
 /* iProc PCIe PAXB BCMA registers */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const u16 iproc_pcie_reg_paxb_bcma[IPROC_PCIE_MAX_NUM_REG] = {
+=======
+static const u16 iproc_pcie_reg_paxb_bcma[] = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static const u16 iproc_pcie_reg_paxb_bcma[] = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -322,7 +326,11 @@ static const u16 iproc_pcie_reg_paxb_bcma[] = {
 
 /* iProc PCIe PAXB registers */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const u16 iproc_pcie_reg_paxb[IPROC_PCIE_MAX_NUM_REG] = {
+=======
+static const u16 iproc_pcie_reg_paxb[] = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static const u16 iproc_pcie_reg_paxb[] = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -342,7 +350,11 @@ static const u16 iproc_pcie_reg_paxb[] = {
 
 /* iProc PCIe PAXB v2 registers */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const u16 iproc_pcie_reg_paxb_v2[IPROC_PCIE_MAX_NUM_REG] = {
+=======
+static const u16 iproc_pcie_reg_paxb_v2[] = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static const u16 iproc_pcie_reg_paxb_v2[] = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -374,7 +386,11 @@ static const u16 iproc_pcie_reg_paxb_v2[] = {
 
 /* iProc PCIe PAXC v1 registers */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const u16 iproc_pcie_reg_paxc[IPROC_PCIE_MAX_NUM_REG] = {
+=======
+static const u16 iproc_pcie_reg_paxc[] = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static const u16 iproc_pcie_reg_paxc[] = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -387,7 +403,11 @@ static const u16 iproc_pcie_reg_paxc[] = {
 
 /* iProc PCIe PAXC v2 registers */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const u16 iproc_pcie_reg_paxc_v2[IPROC_PCIE_MAX_NUM_REG] = {
+=======
+static const u16 iproc_pcie_reg_paxc_v2[] = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static const u16 iproc_pcie_reg_paxc_v2[] = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

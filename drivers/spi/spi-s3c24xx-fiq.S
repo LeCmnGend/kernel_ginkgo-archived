@@ -37,6 +37,10 @@
 
 ENTRY(s3c24xx_spi_fiq_rx)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+s3c24xx_spi_fix_rx:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 s3c24xx_spi_fix_rx:
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -54,7 +58,11 @@ fiq_rx_start:
 
 	subs	fiq_rcount, fiq_rcount, #1
 <<<<<<< HEAD
+<<<<<<< HEAD
 	subsne	pc, lr, #4		@@ return, still have work to do
+=======
+	subnes	pc, lr, #4		@@ return, still have work to do
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	subnes	pc, lr, #4		@@ return, still have work to do
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -70,6 +78,10 @@ fiq_rx_end:
 
 ENTRY(s3c24xx_spi_fiq_txrx)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+s3c24xx_spi_fiq_txrx:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 s3c24xx_spi_fiq_txrx:
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -88,7 +100,11 @@ fiq_txrx_start:
 
 	subs	fiq_rcount, fiq_rcount, #1
 <<<<<<< HEAD
+<<<<<<< HEAD
 	subsne	pc, lr, #4		@@ return, still have work to do
+=======
+	subnes	pc, lr, #4		@@ return, still have work to do
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	subnes	pc, lr, #4		@@ return, still have work to do
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -104,6 +120,10 @@ fiq_txrx_end:
 
 ENTRY(s3c24xx_spi_fiq_tx)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+s3c24xx_spi_fix_tx:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 s3c24xx_spi_fix_tx:
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -120,7 +140,11 @@ fiq_tx_start:
 
 	subs	fiq_rcount, fiq_rcount, #1
 <<<<<<< HEAD
+<<<<<<< HEAD
 	subsne	pc, lr, #4		@@ return, still have work to do
+=======
+	subnes	pc, lr, #4		@@ return, still have work to do
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	subnes	pc, lr, #4		@@ return, still have work to do
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

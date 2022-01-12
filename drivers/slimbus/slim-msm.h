@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2011-2019, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2011-2019, 2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2011-2019, 2021, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -332,6 +336,10 @@ struct msm_slim_ctrl {
 	int			current_count;
 	atomic_t		ssr_in_progress;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct completion	qmi_up;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct completion	qmi_up;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

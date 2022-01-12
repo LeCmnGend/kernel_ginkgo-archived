@@ -49,6 +49,7 @@
 #include "kstrtox.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static unsigned long long simple_strntoull(const char *startp, size_t max_chars,
 					   char **endp, unsigned int base)
 {
@@ -76,6 +77,8 @@ static unsigned long long simple_strntoull(const char *startp, size_t max_chars,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * simple_strtoull - convert a string to an unsigned long long
  * @cp: The start of the string
@@ -87,8 +90,11 @@ static unsigned long long simple_strntoull(const char *startp, size_t max_chars,
 unsigned long long simple_strtoull(const char *cp, char **endp, unsigned int base)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return simple_strntoull(cp, INT_MAX, endp, base);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long long result;
 	unsigned int rv;
 
@@ -101,6 +107,9 @@ unsigned long long simple_strtoull(const char *cp, char **endp, unsigned int bas
 		*endp = (char *)cp;
 
 	return result;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL(simple_strtoull);
@@ -137,6 +146,7 @@ long simple_strtol(const char *cp, char **endp, unsigned int base)
 EXPORT_SYMBOL(simple_strtol);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static long long simple_strntoll(const char *cp, size_t max_chars, char **endp,
 				 unsigned int base)
 {
@@ -154,6 +164,8 @@ static long long simple_strntoll(const char *cp, size_t max_chars, char **endp,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * simple_strtoll - convert a string to a signed long long
  * @cp: The start of the string
@@ -165,12 +177,18 @@ static long long simple_strntoll(const char *cp, size_t max_chars, char **endp,
 long long simple_strtoll(const char *cp, char **endp, unsigned int base)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return simple_strntoll(cp, INT_MAX, endp, base);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (*cp == '-')
 		return -simple_strtoull(cp + 1, endp, base);
 
 	return simple_strtoull(cp, endp, base);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL(simple_strtoll);
@@ -392,7 +410,11 @@ char *put_dec(char *buf, unsigned long long n)
  * If speed is not important, use snprintf(). It's easy to read the code.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 int num_to_str(char *buf, int size, unsigned long long num, unsigned int width)
+=======
+int num_to_str(char *buf, int size, unsigned long long num)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int num_to_str(char *buf, int size, unsigned long long num)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -410,6 +432,7 @@ int num_to_str(char *buf, int size, unsigned long long num)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (len > size || width > size)
 		return 0;
 
@@ -426,11 +449,16 @@ int num_to_str(char *buf, int size, unsigned long long num)
 
 	return len + width;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (len > size)
 		return 0;
 	for (idx = 0; idx < len; ++idx)
 		buf[idx] = tmp[len - idx - 1];
 	return len;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -3122,6 +3150,7 @@ int vsscanf(const char *buf, const char *fmt, va_list args)
 
 		if (is_sign)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			val.s = simple_strntoll(str,
 						field_width >= 0 ? field_width : INT_MAX,
 						&next, base);
@@ -3130,6 +3159,8 @@ int vsscanf(const char *buf, const char *fmt, va_list args)
 						 field_width >= 0 ? field_width : INT_MAX,
 						 &next, base);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			val.s = qualifier != 'L' ?
 				simple_strtol(str, &next, base) :
 				simple_strtoll(str, &next, base);
@@ -3149,6 +3180,9 @@ int vsscanf(const char *buf, const char *fmt, va_list args)
 				--next;
 			}
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		switch (qualifier) {

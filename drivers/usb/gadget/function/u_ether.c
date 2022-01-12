@@ -54,10 +54,16 @@
 
 /* Experiments show that both Linux and Windows hosts allow up to 16k
 <<<<<<< HEAD
+<<<<<<< HEAD
  * frame sizes. Set the max MTU size to 15k+52 to prevent allocating 32k
  * blocks and still have efficient handling. */
 #define GETHER_MAX_MTU_SIZE 15412
 #define GETHER_MAX_ETH_FRAME_LEN (GETHER_MAX_MTU_SIZE + ETH_HLEN)
+=======
+ * frame sizes. Set the max size to 15k+52 to prevent allocating 32k
+ * blocks and still have efficient handling. */
+#define GETHER_MAX_ETH_FRAME_LEN 15412
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * frame sizes. Set the max size to 15k+52 to prevent allocating 32k
  * blocks and still have efficient handling. */
@@ -145,7 +151,11 @@ static inline int qlen(struct usb_gadget *gadget, unsigned qmult)
 {
 	if (gadget_is_dualspeed(gadget) && (gadget->speed == USB_SPEED_HIGH ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 					    gadget->speed >= USB_SPEED_SUPER))
+=======
+					    gadget->speed == USB_SPEED_SUPER))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					    gadget->speed == USB_SPEED_SUPER))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1386,7 +1396,11 @@ struct eth_dev *gether_setup_name(struct usb_gadget *g,
 	/* MTU range: 14 - 15412 */
 	net->min_mtu = ETH_HLEN;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	net->max_mtu = GETHER_MAX_MTU_SIZE;
+=======
+	net->max_mtu = GETHER_MAX_ETH_FRAME_LEN;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	net->max_mtu = GETHER_MAX_ETH_FRAME_LEN;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1452,10 +1466,13 @@ struct net_device *gether_setup_name_default(const char *netname)
 	SET_NETDEV_DEVTYPE(net, &gadget_type);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* MTU range: 14 - 15412 */
 	net->min_mtu = ETH_HLEN;
 	net->max_mtu = GETHER_MAX_MTU_SIZE;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return net;

@@ -29,6 +29,7 @@
 static DEFINE_PER_CPU(struct cpu, cpu_devices);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_PPC64
 
 /*
@@ -44,6 +45,8 @@ static DEFINE_PER_CPU(struct cpu, cpu_devices);
  */
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * SMT snooze delay stuff, 64-bit only for now
  */
@@ -53,6 +56,9 @@ static DEFINE_PER_CPU(struct cpu, cpu_devices);
 /* Time in microseconds we delay before sleeping in the idle loop */
 static DEFINE_PER_CPU(long, smt_snooze_delay) = { 100 };
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static ssize_t store_smt_snooze_delay(struct device *dev,
 				      struct device_attribute *attr,
@@ -60,9 +66,12 @@ static ssize_t store_smt_snooze_delay(struct device *dev,
 				      size_t count)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pr_warn_once("%s (%d) stored to unsupported smt_snooze_delay, which has no effect.\n",
 		     current->comm, current->pid);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct cpu *cpu = container_of(dev, struct cpu, dev);
 	ssize_t ret;
 	long snooze;
@@ -72,6 +81,9 @@ static ssize_t store_smt_snooze_delay(struct device *dev,
 		return -EINVAL;
 
 	per_cpu(smt_snooze_delay, cpu->dev.id) = snooze;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return count;
 }
@@ -81,9 +93,15 @@ static ssize_t show_smt_snooze_delay(struct device *dev,
 				     char *buf)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pr_warn_once("%s (%d) read from unsupported smt_snooze_delay\n",
 		     current->comm, current->pid);
 	return sprintf(buf, "100\n");
+=======
+	struct cpu *cpu = container_of(dev, struct cpu, dev);
+
+	return sprintf(buf, "%ld\n", per_cpu(smt_snooze_delay, cpu->dev.id));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct cpu *cpu = container_of(dev, struct cpu, dev);
 
@@ -97,11 +115,14 @@ static DEVICE_ATTR(smt_snooze_delay, 0644, show_smt_snooze_delay,
 static int __init setup_smt_snooze_delay(char *str)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!cpu_has_feature(CPU_FTR_SMT))
 		return 1;
 
 	pr_warn("smt-snooze-delay command line option has no effect\n");
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned int cpu;
 	long snooze;
 
@@ -112,6 +133,9 @@ static int __init setup_smt_snooze_delay(char *str)
 	for_each_possible_cpu(cpu)
 		per_cpu(smt_snooze_delay, cpu) = snooze;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 1;
 }

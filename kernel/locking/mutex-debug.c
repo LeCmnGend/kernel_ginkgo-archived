@@ -37,7 +37,11 @@ void debug_mutex_lock_common(struct mutex *lock, struct mutex_waiter *waiter)
 void debug_mutex_wake_waiter(struct mutex *lock, struct mutex_waiter *waiter)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	lockdep_assert_held(&lock->wait_lock);
+=======
+	SMP_DEBUG_LOCKS_WARN_ON(!spin_is_locked(&lock->wait_lock));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	SMP_DEBUG_LOCKS_WARN_ON(!spin_is_locked(&lock->wait_lock));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -56,7 +60,11 @@ void debug_mutex_add_waiter(struct mutex *lock, struct mutex_waiter *waiter,
 			    struct task_struct *task)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	lockdep_assert_held(&lock->wait_lock);
+=======
+	SMP_DEBUG_LOCKS_WARN_ON(!spin_is_locked(&lock->wait_lock));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	SMP_DEBUG_LOCKS_WARN_ON(!spin_is_locked(&lock->wait_lock));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

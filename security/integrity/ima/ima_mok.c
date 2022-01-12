@@ -44,8 +44,12 @@ __init int ima_mok_init(void)
 				KEY_USR_VIEW | KEY_USR_READ |
 				KEY_USR_WRITE | KEY_USR_SEARCH,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				KEY_ALLOC_NOT_IN_QUOTA |
 				KEY_ALLOC_SET_KEEP,
+=======
+				KEY_ALLOC_NOT_IN_QUOTA,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				KEY_ALLOC_NOT_IN_QUOTA,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -54,6 +58,11 @@ __init int ima_mok_init(void)
 	if (IS_ERR(ima_blacklist_keyring))
 		panic("Can't allocate IMA blacklist keyring.");
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+	set_bit(KEY_FLAG_KEEP, &ima_blacklist_keyring->flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	set_bit(KEY_FLAG_KEEP, &ima_blacklist_keyring->flags);

@@ -16,7 +16,10 @@
 #include "io.h"
 #include "ops.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "of.h"
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -63,6 +66,7 @@ int ns16550_console_init(void *devp, struct serial_console_data *scdp)
 	u32 reg_offset;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (dt_get_virtual_reg(devp, (void **)&reg_base, 1) < 1) {
 		printf("virt reg parse fail...\r\n");
 		return -1;
@@ -72,20 +76,28 @@ int ns16550_console_init(void *devp, struct serial_console_data *scdp)
 	if (n == sizeof(reg_offset))
 		reg_base += be32_to_cpu(reg_offset);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (dt_get_virtual_reg(devp, (void **)&reg_base, 1) < 1)
 		return -1;
 
 	n = getprop(devp, "reg-offset", &reg_offset, sizeof(reg_offset));
 	if (n == sizeof(reg_offset))
 		reg_base += reg_offset;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	n = getprop(devp, "reg-shift", &reg_shift, sizeof(reg_shift));
 	if (n != sizeof(reg_shift))
 		reg_shift = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	else
 		reg_shift = be32_to_cpu(reg_shift);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

@@ -82,7 +82,11 @@
 static inline struct sock *icmpv6_sk(struct net *net)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return *this_cpu_ptr(net->ipv6.icmp_sk);
+=======
+	return net->ipv6.icmp_sk[smp_processor_id()];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return net->ipv6.icmp_sk[smp_processor_id()];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -317,14 +321,20 @@ static int icmpv6_getfrag(void *from, char *to, int offset, int len, int odd, st
 
 #if IS_ENABLED(CONFIG_IPV6_MIP6)
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void mip6_addr_swap(struct sk_buff *skb, const struct inet6_skb_parm *opt)
 {
 	struct ipv6hdr *iph = ipv6_hdr(skb);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void mip6_addr_swap(struct sk_buff *skb)
 {
 	struct ipv6hdr *iph = ipv6_hdr(skb);
 	struct inet6_skb_parm *opt = IP6CB(skb);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct ipv6_destopt_hao *hao;
 	struct in6_addr tmp;
@@ -343,7 +353,11 @@ static void mip6_addr_swap(struct sk_buff *skb)
 }
 #else
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void mip6_addr_swap(struct sk_buff *skb, const struct inet6_skb_parm *opt) {}
+=======
+static inline void mip6_addr_swap(struct sk_buff *skb) {}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline void mip6_addr_swap(struct sk_buff *skb) {}
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -436,9 +450,14 @@ static int icmp6_iif(const struct sk_buff *skb)
  *	Send an ICMP message in response to a packet in error
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 void icmp6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info,
 		const struct in6_addr *force_saddr,
 		const struct inet6_skb_parm *parm)
+=======
+static void icmp6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info,
+		       const struct in6_addr *force_saddr)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void icmp6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info,
 		       const struct in6_addr *force_saddr)
@@ -502,11 +521,16 @@ static void icmp6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info,
 		iif = icmp6_iif(skb);
 	} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/*
 		 * The source device is used for looking up which routing table
 		 * to use for sending an ICMP error.
 		 */
 		iif = l3mdev_master_ifindex(skb->dev);
+=======
+		dst = skb_dst(skb);
+		iif = l3mdev_master_ifindex(dst ? dst->dev : skb->dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dst = skb_dst(skb);
 		iif = l3mdev_master_ifindex(dst ? dst->dev : skb->dev);
@@ -542,7 +566,11 @@ static void icmp6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info,
 		goto out_bh_enable;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mip6_addr_swap(skb, parm);
+=======
+	mip6_addr_swap(skb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mip6_addr_swap(skb);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -629,7 +657,10 @@ out_bh_enable:
 	local_bh_enable();
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 EXPORT_SYMBOL(icmp6_send);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -638,7 +669,11 @@ EXPORT_SYMBOL(icmp6_send);
 void icmpv6_param_prob(struct sk_buff *skb, u8 code, int pos)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	icmp6_send(skb, ICMPV6_PARAMPROB, code, pos, NULL, IP6CB(skb));
+=======
+	icmp6_send(skb, ICMPV6_PARAMPROB, code, pos, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	icmp6_send(skb, ICMPV6_PARAMPROB, code, pos, NULL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -698,15 +733,21 @@ int ip6_err_gen_icmpv6_unreach(struct sk_buff *skb, int nhs, int type,
 	if (type == ICMP_TIME_EXCEEDED)
 		icmp6_send(skb2, ICMPV6_TIME_EXCEED, ICMPV6_EXC_HOPLIMIT,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			   info, &temp_saddr, IP6CB(skb2));
 	else
 		icmp6_send(skb2, ICMPV6_DEST_UNREACH, ICMPV6_ADDR_UNREACH,
 			   info, &temp_saddr, IP6CB(skb2));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			   info, &temp_saddr);
 	else
 		icmp6_send(skb2, ICMPV6_DEST_UNREACH, ICMPV6_ADDR_UNREACH,
 			   info, &temp_saddr);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (rt)
 		ip6_rt_put(rt);
@@ -1008,6 +1049,7 @@ void icmpv6_flow_init(struct sock *sk, struct flowi6 *fl6,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void __net_exit icmpv6_sk_exit(struct net *net)
 {
 	int i;
@@ -1024,6 +1066,8 @@ static int __net_init icmpv6_sk_init(struct net *net)
 
 	net->ipv6.icmp_sk = alloc_percpu(struct sock *);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int __net_init icmpv6_sk_init(struct net *net)
 {
 	struct sock *sk;
@@ -1031,6 +1075,9 @@ static int __net_init icmpv6_sk_init(struct net *net)
 
 	net->ipv6.icmp_sk =
 		kzalloc(nr_cpu_ids * sizeof(struct sock *), GFP_KERNEL);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!net->ipv6.icmp_sk)
 		return -ENOMEM;
@@ -1045,7 +1092,11 @@ static int __net_init icmpv6_sk_init(struct net *net)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		*per_cpu_ptr(net->ipv6.icmp_sk, i) = sk;
+=======
+		net->ipv6.icmp_sk[i] = sk;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		net->ipv6.icmp_sk[i] = sk;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1059,11 +1110,14 @@ static int __net_init icmpv6_sk_init(struct net *net)
 
  fail:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	icmpv6_sk_exit(net);
 	return err;
 }
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	for (j = 0; j < i; j++)
 		inet_ctl_sock_destroy(net->ipv6.icmp_sk[j]);
 	kfree(net->ipv6.icmp_sk);
@@ -1080,6 +1134,9 @@ static void __net_exit icmpv6_sk_exit(struct net *net)
 	kfree(net->ipv6.icmp_sk);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct pernet_operations icmpv6_sk_ops = {
 	.init = icmpv6_sk_init,

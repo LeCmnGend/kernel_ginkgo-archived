@@ -513,7 +513,10 @@ static int hil_dev_connect(struct serio *serio, struct serio_driver *drv)
 			printk(KERN_INFO PREFIX
 				"combo devices are not supported.\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 			error = -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			goto bail1;

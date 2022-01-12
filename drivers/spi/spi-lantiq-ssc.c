@@ -188,7 +188,10 @@ struct lantiq_ssc_spi {
 	unsigned int			rx_fifo_size;
 	unsigned int			base_cs;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int			fdx_tx_level;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -489,7 +492,10 @@ static void tx_fifo_write(struct lantiq_ssc_spi *spi)
 	unsigned int tx_free = tx_fifo_free(spi);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spi->fdx_tx_level = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	while (spi->tx_todo && tx_free) {
@@ -521,7 +527,10 @@ static void tx_fifo_write(struct lantiq_ssc_spi *spi)
 		lantiq_ssc_writel(spi, data, LTQ_SPI_TB);
 		tx_free--;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		spi->fdx_tx_level++;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -536,6 +545,7 @@ static void rx_fifo_read_full_duplex(struct lantiq_ssc_spi *spi)
 	unsigned int rx_fill = rx_fifo_level(spi);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Wait until all expected data to be shifted in.
 	 * Otherwise, rx overrun may occur.
@@ -543,6 +553,8 @@ static void rx_fifo_read_full_duplex(struct lantiq_ssc_spi *spi)
 	while (rx_fill != spi->fdx_tx_level)
 		rx_fill = rx_fifo_level(spi);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	while (rx_fill) {

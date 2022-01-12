@@ -488,7 +488,11 @@ static int dwc2_update_urb_state(struct dwc2_hsotg *hsotg,
 
 	if (urb->actual_length + xfer_length > urb->length) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		dev_dbg(hsotg->dev, "%s(): trimming xfer length\n", __func__);
+=======
+		dev_warn(hsotg->dev, "%s(): trimming xfer length\n", __func__);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dev_warn(hsotg->dev, "%s(): trimming xfer length\n", __func__);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1944,6 +1948,7 @@ error:
 		dwc2_update_urb_state_abn(hsotg, chan, chnum, qtd->urb,
 					  qtd, DWC2_HC_XFER_XACT_ERR);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/*
 		 * We can get here after a completed transaction
 		 * (urb->actual_length >= urb->length) which was not reported
@@ -1956,6 +1961,8 @@ error:
 		 */
 		if (qtd->urb->actual_length >= qtd->urb->length)
 			qtd->error_count = 3;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dwc2_hcd_save_data_toggle(hsotg, chan, chnum, qtd);

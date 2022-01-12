@@ -126,7 +126,10 @@ MODULE_PARM_DESC(unmask_kbd_data, "Unconditional enable (may reveal sensitive da
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool i8042_present;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static bool i8042_bypass_aux_irq_test;
@@ -350,9 +353,12 @@ int i8042_command(unsigned char *param, int command)
 	int retval;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!i8042_present)
 		return -1;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_irqsave(&i8042_lock, flags);
@@ -1465,8 +1471,12 @@ static int __init i8042_setup_aux(void)
 		goto err_free_ports;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	error = aux_enable();
 	if (error)
+=======
+	if (aux_enable())
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (aux_enable())
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1615,7 +1625,11 @@ static int __init i8042_init(void)
 	err = i8042_platform_init();
 	if (err)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return (err == -ENODEV) ? 0 : err;
+=======
+		return err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return err;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1625,9 +1639,12 @@ static int __init i8042_init(void)
 		goto err_platform_exit;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Set this before creating the dev to allow i8042_command to work right away */
 	i8042_present = true;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pdev = platform_create_bundle(&i8042_driver, i8042_probe, NULL, 0, NULL, 0);
@@ -1649,9 +1666,12 @@ static int __init i8042_init(void)
 static void __exit i8042_exit(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!i8042_present)
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	platform_device_unregister(i8042_platform_device);

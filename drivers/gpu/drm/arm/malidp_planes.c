@@ -370,7 +370,11 @@ int malidp_de_planes_init(struct drm_device *drm)
 	struct malidp_plane *plane = NULL;
 	enum drm_plane_type plane_type;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long crtcs = BIT(drm->mode_config.num_crtc);
+=======
+	unsigned long crtcs = 1 << drm->mode_config.num_crtc;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long crtcs = 1 << drm->mode_config.num_crtc;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

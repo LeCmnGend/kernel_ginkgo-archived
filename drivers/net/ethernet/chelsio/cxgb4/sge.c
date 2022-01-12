@@ -1813,7 +1813,10 @@ static inline int uld_send(struct adapter *adap, struct sk_buff *skb,
 	if (unlikely(!txq_info)) {
 		WARN_ON(true);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kfree_skb(skb);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return NET_XMIT_DROP;

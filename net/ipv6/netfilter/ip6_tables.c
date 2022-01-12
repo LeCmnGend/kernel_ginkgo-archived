@@ -1450,8 +1450,11 @@ translate_compat_table(struct net *net,
 		goto out_unlock;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(newinfo->entries, 0, size);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	newinfo->number = compatr->num_entries;

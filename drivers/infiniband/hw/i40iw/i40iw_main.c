@@ -55,11 +55,17 @@
 	__stringify(DRV_VERSION_MINOR) "." __stringify(DRV_VERSION_BUILD)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int push_mode;
 module_param(push_mode, int, 0644);
 MODULE_PARM_DESC(push_mode, "Low latency mode: 0=disabled (default), 1=enabled)");
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int debug;
 module_param(debug, int, 0644);
@@ -684,6 +690,10 @@ static enum i40iw_status_code i40iw_configure_ceq_vector(struct i40iw_device *iw
 {
 	enum i40iw_status_code status;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	cpumask_t mask;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cpumask_t mask;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -697,9 +707,15 @@ static enum i40iw_status_code i40iw_configure_ceq_vector(struct i40iw_device *iw
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cpumask_clear(&msix_vec->mask);
 	cpumask_set_cpu(msix_vec->cpu_affinity, &msix_vec->mask);
 	irq_set_affinity_hint(msix_vec->irq, &msix_vec->mask);
+=======
+	cpumask_clear(&mask);
+	cpumask_set_cpu(msix_vec->cpu_affinity, &mask);
+	irq_set_affinity_hint(msix_vec->irq, &mask);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cpumask_clear(&mask);
 	cpumask_set_cpu(msix_vec->cpu_affinity, &mask);
@@ -1577,6 +1593,10 @@ static enum i40iw_status_code i40iw_setup_init_state(struct i40iw_handler *hdl,
 		goto exit;
 	iwdev->obj_next = iwdev->obj_mem;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	iwdev->push_mode = push_mode;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	iwdev->push_mode = push_mode;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

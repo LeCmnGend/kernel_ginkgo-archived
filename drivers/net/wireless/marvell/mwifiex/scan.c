@@ -1891,7 +1891,11 @@ mwifiex_parse_single_response_buf(struct mwifiex_private *priv, u8 **bss_info,
 					    bssid, timestamp,
 					    cap_info_bitmap, beacon_period,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					    ie_buf, ie_len, rssi, GFP_ATOMIC);
+=======
+					    ie_buf, ie_len, rssi, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					    ie_buf, ie_len, rssi, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

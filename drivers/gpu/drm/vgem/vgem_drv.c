@@ -221,7 +221,10 @@ static int vgem_gem_dumb_create(struct drm_file *file, struct drm_device *dev,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int vgem_gem_dumb_map(struct drm_file *file, struct drm_device *dev,
 			     uint32_t handle, uint64_t *offset)
 {
@@ -248,6 +251,9 @@ unref:
 	return ret;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct drm_ioctl_desc vgem_ioctls[] = {
 	DRM_IOCTL_DEF_DRV(VGEM_FENCE_ATTACH, vgem_fence_attach_ioctl, DRM_AUTH|DRM_RENDER_ALLOW),
@@ -443,6 +449,10 @@ static struct drm_driver vgem_driver = {
 
 	.dumb_create			= vgem_gem_dumb_create,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	.dumb_map_offset		= vgem_gem_dumb_map,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.dumb_map_offset		= vgem_gem_dumb_map,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

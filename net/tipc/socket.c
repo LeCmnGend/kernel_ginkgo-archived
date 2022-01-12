@@ -841,9 +841,12 @@ void tipc_sk_mcast_rcv(struct net *net, struct sk_buff_head *arrvq,
 		if (skb_peek(arrvq) == skb) {
 			skb_queue_splice_tail_init(&tmpq, inputq);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			/* Decrease the skb's refcnt as increasing in the
 			 * function tipc_skb_peek
 			 */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			kfree_skb(__skb_dequeue(arrvq));
@@ -2005,7 +2008,11 @@ static int tipc_wait_for_accept(struct socket *sock, long timeo)
 {
 	struct sock *sk = sock->sk;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	DEFINE_WAIT_FUNC(wait, woken_wake_function);
+=======
+	DEFINE_WAIT(wait);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	DEFINE_WAIT(wait);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2018,6 +2025,7 @@ static int tipc_wait_for_accept(struct socket *sock, long timeo)
 	*/
 	for (;;) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (timeo && skb_queue_empty(&sk->sk_receive_queue)) {
 			add_wait_queue(sk_sleep(sk), &wait);
 			release_sock(sk);
@@ -2025,12 +2033,17 @@ static int tipc_wait_for_accept(struct socket *sock, long timeo)
 			lock_sock(sk);
 			remove_wait_queue(sk_sleep(sk), &wait);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		prepare_to_wait_exclusive(sk_sleep(sk), &wait,
 					  TASK_INTERRUPTIBLE);
 		if (timeo && skb_queue_empty(&sk->sk_receive_queue)) {
 			release_sock(sk);
 			timeo = schedule_timeout(timeo);
 			lock_sock(sk);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 		err = 0;
@@ -2044,6 +2057,10 @@ static int tipc_wait_for_accept(struct socket *sock, long timeo)
 			break;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	finish_wait(sk_sleep(sk), &wait);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	finish_wait(sk_sleep(sk), &wait);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2149,7 +2166,11 @@ static int tipc_shutdown(struct socket *sock, int how)
 
 	__tipc_shutdown(sock, TIPC_CONN_SHUTDOWN);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sk->sk_shutdown = SHUTDOWN_MASK;
+=======
+	sk->sk_shutdown = SEND_SHUTDOWN;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sk->sk_shutdown = SEND_SHUTDOWN;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2159,6 +2180,11 @@ static int tipc_shutdown(struct socket *sock, int how)
 		__skb_queue_purge(&sk->sk_receive_queue);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		/* Wake up anyone sleeping in poll */
+		sk->sk_state_change(sk);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		/* Wake up anyone sleeping in poll */
 		sk->sk_state_change(sk);
@@ -2168,8 +2194,11 @@ static int tipc_shutdown(struct socket *sock, int how)
 		res = -ENOTCONN;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Wake up anyone sleeping in poll. */
 	sk->sk_state_change(sk);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

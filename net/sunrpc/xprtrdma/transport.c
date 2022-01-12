@@ -850,7 +850,10 @@ static struct xprt_class xprt_rdma = {
 	.ident			= XPRT_TRANSPORT_RDMA,
 	.setup			= xprt_setup_rdma,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.netid			= { "rdma", "rdma6", "" },
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

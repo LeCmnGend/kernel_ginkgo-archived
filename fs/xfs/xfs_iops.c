@@ -836,7 +836,11 @@ xfs_setattr_size(
 	ASSERT(S_ISREG(inode->i_mode));
 	ASSERT((iattr->ia_valid & (ATTR_UID|ATTR_GID|ATTR_ATIME|ATTR_ATIME_SET|
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ATTR_MTIME_SET|ATTR_TIMES_SET)) == 0);
+=======
+		ATTR_MTIME_SET|ATTR_KILL_PRIV|ATTR_TIMES_SET)) == 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ATTR_MTIME_SET|ATTR_KILL_PRIV|ATTR_TIMES_SET)) == 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -884,6 +888,7 @@ xfs_setattr_size(
 		error = xfs_zero_eof(ip, newsize, oldsize, &did_zeroing);
 	} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/*
 		 * iomap won't detect a dirty page over an unwritten block (or a
 		 * cow block over a hole) and subsequently skips zeroing the
@@ -894,6 +899,8 @@ xfs_setattr_size(
 						     newsize);
 		if (error)
 			return error;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		error = iomap_truncate_page(inode, newsize, &did_zeroing,

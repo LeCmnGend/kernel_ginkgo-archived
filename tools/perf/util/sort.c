@@ -2668,7 +2668,11 @@ static char *prefix_if_not_in(const char *pre, char *str)
 
 	if (asprintf(&n, "%s,%s", pre, str) < 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		n = NULL;
+=======
+		return NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return NULL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

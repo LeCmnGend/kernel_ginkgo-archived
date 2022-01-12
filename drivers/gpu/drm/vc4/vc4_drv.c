@@ -284,7 +284,10 @@ unbind_all:
 gem_destroy:
 	vc4_gem_destroy(drm);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	drm_mode_config_cleanup(drm);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	vc4_bo_cache_destroy(drm);

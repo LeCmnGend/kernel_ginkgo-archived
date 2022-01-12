@@ -20,11 +20,14 @@
 
 #ifdef CONFIG_QCOM_LAZY_MAPPING
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct msm_iommu_data {
 	struct list_head map_list;
 	struct mutex lock;
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -37,7 +40,10 @@ int msm_dma_map_sg_attrs(struct device *dev, struct scatterlist *sg, int nents,
 		   unsigned long attrs);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * This function takes an extra reference to the dma_buf.
  * What this means is that calling msm_dma_unmap_sg will not result in buffer's
@@ -71,13 +77,20 @@ static inline int msm_dma_map_sg(struct device *dev, struct scatterlist *sg,
 	return msm_dma_map_sg_attrs(dev, sg, nents, dir, dma_buf, attrs);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void msm_dma_unmap_sg_attrs(struct device *dev, struct scatterlist *sgl,
 			    int nents, enum dma_data_direction dir,
 			    struct dma_buf *dma_buf, unsigned long attrs);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void msm_dma_unmap_all_for_dev(struct device *dev);
+=======
+int msm_dma_unmap_all_for_dev(struct device *dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int msm_dma_unmap_all_for_dev(struct device *dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -87,7 +100,11 @@ int msm_dma_unmap_all_for_dev(struct device *dev);
  * clients.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 void msm_dma_buf_freed(struct msm_iommu_data *data);
+=======
+void msm_dma_buf_freed(void *buffer);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void msm_dma_buf_freed(void *buffer);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

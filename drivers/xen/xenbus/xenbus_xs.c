@@ -701,6 +701,7 @@ int xs_watch_msg(struct xs_watch_event *event)
 	spin_lock(&watches_lock);
 	event->handle = find_watch(event->token);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (event->handle != NULL &&
 			(!event->handle->will_handle ||
 			 event->handle->will_handle(event->handle,
@@ -708,6 +709,11 @@ int xs_watch_msg(struct xs_watch_event *event)
 		spin_lock(&watch_events_lock);
 		list_add_tail(&event->list, &watch_events);
 		event->handle->nr_pending++;
+=======
+	if (event->handle != NULL) {
+		spin_lock(&watch_events_lock);
+		list_add_tail(&event->list, &watch_events);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (event->handle != NULL) {
 		spin_lock(&watch_events_lock);
@@ -771,8 +777,11 @@ int register_xenbus_watch(struct xenbus_watch *watch)
 	sprintf(token, "%lX", (long)watch);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	watch->nr_pending = 0;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	down_read(&xs_watch_rwsem);
@@ -825,6 +834,7 @@ void unregister_xenbus_watch(struct xenbus_watch *watch)
 	/* Cancel pending watch events. */
 	spin_lock(&watch_events_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (watch->nr_pending) {
 		list_for_each_entry_safe(event, tmp, &watch_events, list) {
 			if (event->handle != watch)
@@ -834,11 +844,16 @@ void unregister_xenbus_watch(struct xenbus_watch *watch)
 		}
 		watch->nr_pending = 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	list_for_each_entry_safe(event, tmp, &watch_events, list) {
 		if (event->handle != watch)
 			continue;
 		list_del(&event->list);
 		kfree(event);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	spin_unlock(&watch_events_lock);
@@ -887,6 +902,10 @@ void xs_suspend_cancel(void)
 static int xenwatch_thread(void *unused)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct list_head *ent;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct list_head *ent;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -905,6 +924,7 @@ static int xenwatch_thread(void *unused)
 
 		spin_lock(&watch_events_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		event = list_first_entry_or_null(&watch_events,
 				struct xs_watch_event, list);
 		if (event) {
@@ -915,6 +935,8 @@ static int xenwatch_thread(void *unused)
 
 		if (event) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ent = watch_events.next;
 		if (ent != &watch_events)
 			list_del(ent);
@@ -922,6 +944,9 @@ static int xenwatch_thread(void *unused)
 
 		if (ent != &watch_events) {
 			event = list_entry(ent, struct xs_watch_event, list);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			event->handle->callback(event->handle, event->path,
 						event->token);

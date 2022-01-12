@@ -45,9 +45,13 @@ static inline struct ip_tunnel_info *skb_tunnel_info(struct sk_buff *skb)
 
 	dst = skb_dst(skb);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (dst && dst->lwtstate &&
 	    (dst->lwtstate->type == LWTUNNEL_ENCAP_IP ||
 	     dst->lwtstate->type == LWTUNNEL_ENCAP_IP6))
+=======
+	if (dst && dst->lwtstate)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (dst && dst->lwtstate)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

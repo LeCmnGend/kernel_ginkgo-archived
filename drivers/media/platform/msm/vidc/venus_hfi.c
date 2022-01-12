@@ -24,6 +24,10 @@
 #include <linux/iopoll.h>
 #include <linux/of.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <linux/pm_qos.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/pm_qos.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -88,7 +92,11 @@ const struct msm_vidc_gov_data DEFAULT_BUS_VOTE = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const int max_packets = 480; /* 16 sessions x 30 packets */
+=======
+const int max_packets = 1000;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 const int max_packets = 1000;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2232,7 +2240,10 @@ static int venus_hfi_core_init(void *device)
 	__dsp_send_hfi_queue(device);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (dev->res->pm_qos_latency_us) {
 #ifdef CONFIG_SMP
 		dev->qos.type = PM_QOS_REQ_AFFINE_IRQ;
@@ -2241,6 +2252,9 @@ static int venus_hfi_core_init(void *device)
 		pm_qos_add_request(&dev->qos, PM_QOS_CPU_DMA_LATENCY,
 				dev->res->pm_qos_latency_us);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dprintk(VIDC_DBG, "Core inited successfully\n");
 	mutex_unlock(&dev->lock);
@@ -2269,11 +2283,17 @@ static int venus_hfi_core_release(void *dev)
 	mutex_lock(&device->lock);
 	dprintk(VIDC_DBG, "Core releasing\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (device->res->pm_qos_latency_us &&
 		pm_qos_request_active(&device->qos))
 		pm_qos_remove_request(&device->qos);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__resume(device);
 	__set_state(device, VENUS_STATE_DEINIT);
@@ -4815,11 +4835,17 @@ static inline int __suspend(struct venus_hfi_device *device)
 	dprintk(VIDC_PROF, "Entering suspend\n");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (device->res->pm_qos_latency_us &&
 		pm_qos_request_active(&device->qos))
 		pm_qos_remove_request(&device->qos);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rc = __tzbsp_set_video_state(TZBSP_VIDEO_STATE_SUSPEND);
 	if (rc) {
@@ -4881,7 +4907,10 @@ static inline int __resume(struct venus_hfi_device *device)
 	__set_threshold_registers(device);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (device->res->pm_qos_latency_us) {
 #ifdef CONFIG_SMP
 		device->qos.type = PM_QOS_REQ_AFFINE_IRQ;
@@ -4891,6 +4920,9 @@ static inline int __resume(struct venus_hfi_device *device)
 				device->res->pm_qos_latency_us);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__sys_set_debug(device, msm_vidc_fw_debug);
 

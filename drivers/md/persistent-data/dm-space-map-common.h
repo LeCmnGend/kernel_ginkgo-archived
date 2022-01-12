@@ -34,7 +34,11 @@ struct disk_index_entry {
 	__le32 nr_free;
 	__le32 none_free_before;
 <<<<<<< HEAD
+<<<<<<< HEAD
 } __attribute__ ((packed, aligned(8)));
+=======
+} __packed;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 } __packed;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -48,7 +52,11 @@ struct disk_metadata_index {
 
 	struct disk_index_entry index[MAX_METADATA_BITMAPS];
 <<<<<<< HEAD
+<<<<<<< HEAD
 } __attribute__ ((packed, aligned(8)));
+=======
+} __packed;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 } __packed;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -95,7 +103,11 @@ struct disk_sm_root {
 	__le64 bitmap_root;
 	__le64 ref_count_root;
 <<<<<<< HEAD
+<<<<<<< HEAD
 } __attribute__ ((packed, aligned(8)));
+=======
+} __packed;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 } __packed;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -107,7 +119,11 @@ struct disk_bitmap_header {
 	__le32 not_used;
 	__le64 blocknr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 } __attribute__ ((packed, aligned(8)));
+=======
+} __packed;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 } __packed;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

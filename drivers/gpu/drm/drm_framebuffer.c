@@ -93,8 +93,13 @@ int drm_framebuffer_check_src_coords(uint32_t src_x, uint32_t src_y,
  * drm_mode_addfb - add an FB to the graphics configuration
  * @dev: drm device for the ioctl
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @data: data pointer for the ioctl
  * @file_priv: drm file for the ioctl call
+=======
+ * @or: pointer to request structure
+ * @file_priv: drm file
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * @or: pointer to request structure
  * @file_priv: drm file
@@ -104,7 +109,11 @@ int drm_framebuffer_check_src_coords(uint32_t src_x, uint32_t src_y,
  * original addfb ioctl which only supported RGB formats.
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Called by the user via ioctl.
+=======
+ * Called by the user via ioctl, or by an in-kernel client.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * Called by the user via ioctl, or by an in-kernel client.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -113,10 +122,16 @@ int drm_framebuffer_check_src_coords(uint32_t src_x, uint32_t src_y,
  * Zero on success, negative errno on failure.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 int drm_mode_addfb(struct drm_device *dev,
 		   void *data, struct drm_file *file_priv)
 {
 	struct drm_mode_fb_cmd *or = data;
+=======
+int drm_mode_addfb(struct drm_device *dev, struct drm_mode_fb_cmd *or,
+		   struct drm_file *file_priv)
+{
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int drm_mode_addfb(struct drm_device *dev, struct drm_mode_fb_cmd *or,
 		   struct drm_file *file_priv)
@@ -147,13 +162,19 @@ int drm_mode_addfb(struct drm_device *dev, struct drm_mode_fb_cmd *or,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int drm_mode_addfb_ioctl(struct drm_device *dev,
 			 void *data, struct drm_file *file_priv)
 {
 	return drm_mode_addfb(dev, data, file_priv);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int fb_plane_width(int width,
 			  const struct drm_format_info *format, int plane)
@@ -389,6 +410,7 @@ static void drm_mode_rmfb_work_fn(struct work_struct *w)
 /**
  * drm_mode_rmfb - remove an FB from the configuration
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @dev: drm device for the ioctl
  * @data: data pointer for the ioctl
  * @file_priv: drm file for the ioctl call
@@ -397,6 +419,8 @@ static void drm_mode_rmfb_work_fn(struct work_struct *w)
  *
  * Called by the user via ioctl.
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * @dev: drm device
  * @fb_id: id of framebuffer to remove
  * @file_priv: drm file
@@ -404,11 +428,15 @@ static void drm_mode_rmfb_work_fn(struct work_struct *w)
  * Remove the specified FB.
  *
  * Called by the user via ioctl, or by an in-kernel client.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * Returns:
  * Zero on success, negative errno on failure.
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
 int drm_mode_rmfb(struct drm_device *dev,
 		   void *data, struct drm_file *file_priv)
@@ -417,11 +445,16 @@ int drm_mode_rmfb(struct drm_device *dev,
 	struct drm_framebuffer *fbl = NULL;
 	uint32_t *id = data;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int drm_mode_rmfb(struct drm_device *dev, u32 fb_id,
 		  struct drm_file *file_priv)
 {
 	struct drm_framebuffer *fb = NULL;
 	struct drm_framebuffer *fbl = NULL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int found = 0;
 
@@ -429,7 +462,11 @@ int drm_mode_rmfb(struct drm_device *dev, u32 fb_id,
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	fb = drm_framebuffer_lookup(dev, file_priv, *id);
+=======
+	fb = drm_framebuffer_lookup(dev, file_priv, fb_id);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	fb = drm_framebuffer_lookup(dev, file_priv, fb_id);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -479,7 +516,10 @@ fail_unref:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int drm_mode_rmfb_ioctl(struct drm_device *dev,
 			void *data, struct drm_file *file_priv)
 {
@@ -488,6 +528,9 @@ int drm_mode_rmfb_ioctl(struct drm_device *dev,
 	return drm_mode_rmfb(dev, *fb_id, file_priv);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * drm_mode_getfb - get FB info
@@ -731,6 +774,10 @@ int drm_framebuffer_init(struct drm_device *dev, struct drm_framebuffer *fb,
 
 	fb->funcs = funcs;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	strlcpy(fb->comm, current->comm, TASK_COMM_LEN);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	strlcpy(fb->comm, current->comm, TASK_COMM_LEN);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

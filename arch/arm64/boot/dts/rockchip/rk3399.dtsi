@@ -67,9 +67,12 @@
 		i2c7 = &i2c7;
 		i2c8 = &i2c8;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mmc0 = &sdio0;
 		mmc1 = &sdmmc;
 		mmc2 = &sdhci;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		serial0 = &uart0;
@@ -235,7 +238,10 @@
 		      <0x0 0xfd000000 0x0 0x1000000>;
 		reg-names = "axi-base", "apb-base";
 <<<<<<< HEAD
+<<<<<<< HEAD
 		device_type = "pci";
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		#address-cells = <3>;
@@ -257,6 +263,10 @@
 				<0 0 0 3 &pcie0_intc 2>,
 				<0 0 0 4 &pcie0_intc 3>;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		linux,pci-domain = <0>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		linux,pci-domain = <0>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2085,7 +2095,11 @@
 		};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		suspend {
+=======
+		sleep {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		sleep {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

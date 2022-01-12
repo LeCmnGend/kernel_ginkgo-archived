@@ -50,10 +50,13 @@ MODULE_PARM_DESC(max_user_congthresh,
  "unprivileged user can set");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool shortcircuit = true;
 module_param(shortcircuit, bool, 0644);
 MODULE_PARM_DESC(shortcircuit, "Enable or disable fuse shortcircuit. Default: y/Y/1");
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define FUSE_SUPER_MAGIC 0x65735546
@@ -827,7 +830,11 @@ static void sanitize_global_limit(unsigned *limit)
 {
 	if (*limit == 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		*limit = ((totalram_pages() << PAGE_SHIFT) >> 13) /
+=======
+		*limit = ((totalram_pages << PAGE_SHIFT) >> 13) /
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		*limit = ((totalram_pages << PAGE_SHIFT) >> 13) /
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -922,6 +929,7 @@ static void process_init_reply(struct fuse_conn *fc, struct fuse_req *req)
 			if (arg->flags & FUSE_WRITEBACK_CACHE)
 				fc->writeback_cache = 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (arg->flags & FUSE_SHORTCIRCUIT || fc->writeback_cache) {
 				/** an ugly way to determine FuseDaemon by writeback_cache
 				 *  since currently only FuseDaemon enable WBC
@@ -929,6 +937,8 @@ static void process_init_reply(struct fuse_conn *fc, struct fuse_req *req)
 				fc->shortcircuit_io = shortcircuit ? 1 : 0;
 				pr_info("fuse sct flag: %d\n", shortcircuit);
 			}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (arg->flags & FUSE_PARALLEL_DIROPS)
@@ -973,8 +983,12 @@ static void fuse_send_init(struct fuse_conn *fc, struct fuse_req *req)
 		FUSE_DO_READDIRPLUS | FUSE_READDIRPLUS_AUTO | FUSE_ASYNC_DIO |
 		FUSE_WRITEBACK_CACHE | FUSE_NO_OPEN_SUPPORT |
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FUSE_PARALLEL_DIROPS | FUSE_HANDLE_KILLPRIV | FUSE_POSIX_ACL |
 		FUSE_SHORTCIRCUIT;
+=======
+		FUSE_PARALLEL_DIROPS | FUSE_HANDLE_KILLPRIV | FUSE_POSIX_ACL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FUSE_PARALLEL_DIROPS | FUSE_HANDLE_KILLPRIV | FUSE_POSIX_ACL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

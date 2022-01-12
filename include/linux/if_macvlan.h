@@ -59,7 +59,11 @@ static inline void macvlan_count_rx(const struct macvlan_dev *vlan,
 		struct vlan_pcpu_stats *pcpu_stats;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pcpu_stats = get_cpu_ptr(vlan->pcpu_stats);
+=======
+		pcpu_stats = this_cpu_ptr(vlan->pcpu_stats);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pcpu_stats = this_cpu_ptr(vlan->pcpu_stats);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -70,7 +74,10 @@ static inline void macvlan_count_rx(const struct macvlan_dev *vlan,
 			pcpu_stats->rx_multicast++;
 		u64_stats_update_end(&pcpu_stats->syncp);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		put_cpu_ptr(vlan->pcpu_stats);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {

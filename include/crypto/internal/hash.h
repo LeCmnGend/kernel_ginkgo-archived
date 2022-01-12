@@ -83,8 +83,11 @@ int ahash_register_instance(struct crypto_template *tmpl,
 void ahash_free_instance(struct crypto_instance *inst);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 bool crypto_shash_alg_has_setkey(struct shash_alg *alg);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int shash_no_setkey(struct crypto_shash *tfm, const u8 *key,
 		    unsigned int keylen);
 
@@ -92,6 +95,9 @@ static inline bool crypto_shash_alg_has_setkey(struct shash_alg *alg)
 {
 	return alg->setkey != shash_no_setkey;
 }
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 bool crypto_hash_alg_has_setkey(struct hash_alg_common *halg);

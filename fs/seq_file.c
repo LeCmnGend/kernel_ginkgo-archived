@@ -7,7 +7,10 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/cache.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/fs.h>
@@ -24,8 +27,11 @@
 #include <asm/page.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct kmem_cache *seq_file_cache __ro_after_init;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void seq_set_overflow(struct seq_file *m)
@@ -36,10 +42,14 @@ static void seq_set_overflow(struct seq_file *m)
 static void *seq_buf_alloc(unsigned long size)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(size > MAX_RW_COUNT))
 		return NULL;
 
 	return kvmalloc(size, GFP_KERNEL_ACCOUNT);
+=======
+	return kvmalloc(size, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return kvmalloc(size, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -68,7 +78,11 @@ int seq_open(struct file *file, const struct seq_operations *op)
 	WARN_ON(file->private_data);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	p = kmem_cache_zalloc(seq_file_cache, GFP_KERNEL);
+=======
+	p = kzalloc(sizeof(*p), GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	p = kzalloc(sizeof(*p), GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -387,7 +401,11 @@ int seq_release(struct inode *inode, struct file *file)
 	struct seq_file *m = file->private_data;
 	kvfree(m->buf);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kmem_cache_free(seq_file_cache, m);
+=======
+	kfree(m);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(m);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -588,7 +606,11 @@ int single_open(struct file *file, int (*show)(struct seq_file *, void *),
 		void *data)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct seq_operations *op = kmalloc(sizeof(*op), GFP_KERNEL_ACCOUNT);
+=======
+	struct seq_operations *op = kmalloc(sizeof(*op), GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct seq_operations *op = kmalloc(sizeof(*op), GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -654,7 +676,11 @@ void *__seq_open_private(struct file *f, const struct seq_operations *ops,
 	struct seq_file *seq;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	private = kzalloc(psize, GFP_KERNEL_ACCOUNT);
+=======
+	private = kzalloc(psize, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	private = kzalloc(psize, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -706,6 +732,7 @@ void seq_puts(struct seq_file *m, const char *s)
 EXPORT_SYMBOL(seq_puts);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * A helper routine for putting decimal numbers without rich format of printf().
  * only 'unsigned long long' is supported.
@@ -721,6 +748,8 @@ EXPORT_SYMBOL(seq_puts);
 void seq_put_decimal_ull_width(struct seq_file *m, const char *delimiter,
 			 unsigned long long num, unsigned int width)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * A helper routine for putting decimal numbers without rich format of printf().
  * only 'unsigned long long' is supported.
@@ -730,6 +759,9 @@ void seq_put_decimal_ull_width(struct seq_file *m, const char *delimiter,
  */
 void seq_put_decimal_ull(struct seq_file *m, const char *delimiter,
 			 unsigned long long num)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	int len;
@@ -737,6 +769,7 @@ void seq_put_decimal_ull(struct seq_file *m, const char *delimiter,
 	if (m->count + 2 >= m->size) /* we'll write 2 bytes at least */
 		goto overflow;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (delimiter && delimiter[0]) {
 		if (delimiter[1] == 0)
@@ -750,6 +783,8 @@ void seq_put_decimal_ull(struct seq_file *m, const char *delimiter,
 
 	if (m->count + width >= m->size)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	len = strlen(delimiter);
 	if (m->count + len >= m->size)
 		goto overflow;
@@ -758,6 +793,9 @@ void seq_put_decimal_ull(struct seq_file *m, const char *delimiter,
 	m->count += len;
 
 	if (m->count + 1 >= m->size)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto overflow;
 
@@ -767,7 +805,11 @@ void seq_put_decimal_ull(struct seq_file *m, const char *delimiter,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	len = num_to_str(m->buf + m->count, m->size - m->count, num, width);
+=======
+	len = num_to_str(m->buf + m->count, m->size - m->count, num);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	len = num_to_str(m->buf + m->count, m->size - m->count, num);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -780,6 +822,7 @@ void seq_put_decimal_ull(struct seq_file *m, const char *delimiter,
 overflow:
 	seq_set_overflow(m);
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 void seq_put_decimal_ull(struct seq_file *m, const char *delimiter,
@@ -839,6 +882,10 @@ void seq_put_hex_ll(struct seq_file *m, const char *delimiter,
 EXPORT_SYMBOL(seq_put_decimal_ull);
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+EXPORT_SYMBOL(seq_put_decimal_ull);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void seq_put_decimal_ll(struct seq_file *m, const char *delimiter, long long num)
 {
 	int len;
@@ -847,6 +894,7 @@ void seq_put_decimal_ll(struct seq_file *m, const char *delimiter, long long num
 		goto overflow;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (delimiter && delimiter[0]) {
 		if (delimiter[1] == 0)
 			seq_putc(m, delimiter[0]);
@@ -854,12 +902,17 @@ void seq_put_decimal_ll(struct seq_file *m, const char *delimiter, long long num
 			seq_puts(m, delimiter);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	len = strlen(delimiter);
 	if (m->count + len >= m->size)
 		goto overflow;
 
 	memcpy(m->buf + m->count, delimiter, len);
 	m->count += len;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (m->count + 2 >= m->size)
@@ -876,7 +929,11 @@ void seq_put_decimal_ll(struct seq_file *m, const char *delimiter, long long num
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	len = num_to_str(m->buf + m->count, m->size - m->count, num, 0);
+=======
+	len = num_to_str(m->buf + m->count, m->size - m->count, num);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	len = num_to_str(m->buf + m->count, m->size - m->count, num);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -920,6 +977,7 @@ void seq_pad(struct seq_file *m, char c)
 {
 	int size = m->pad_until - m->count;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (size > 0) {
 		if (size + m->count > m->size) {
 			seq_set_overflow(m);
@@ -928,6 +986,10 @@ void seq_pad(struct seq_file *m, char c)
 		memset(m->buf + m->count, ' ', size);
 		m->count += size;
 	}
+=======
+	if (size > 0)
+		seq_printf(m, "%*s", size, "");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (size > 0)
 		seq_printf(m, "%*s", size, "");
@@ -1189,10 +1251,13 @@ seq_hlist_next_percpu(void *v, struct hlist_head __percpu *head,
 }
 EXPORT_SYMBOL(seq_hlist_next_percpu);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 void __init seq_file_init(void)
 {
 	seq_file_cache = KMEM_CACHE(seq_file, SLAB_ACCOUNT|SLAB_PANIC);
 }
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

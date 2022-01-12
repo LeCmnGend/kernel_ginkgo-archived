@@ -699,7 +699,11 @@ static int lm3533_led_probe(struct platform_device *pdev)
 	platform_set_drvdata(pdev, led);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = led_classdev_register(pdev->dev.parent, &led->cdev);
+=======
+	ret = devm_led_classdev_register(pdev->dev.parent, &led->cdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = devm_led_classdev_register(pdev->dev.parent, &led->cdev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -712,6 +716,7 @@ static int lm3533_led_probe(struct platform_device *pdev)
 
 	ret = lm3533_led_setup(led, pdata);
 	if (ret)
+<<<<<<< HEAD
 <<<<<<< HEAD
 		goto err_deregister;
 
@@ -726,6 +731,8 @@ err_deregister:
 
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return ret;
 
 	ret = lm3533_ctrlbank_enable(&led->cb);
@@ -733,6 +740,9 @@ err_deregister:
 		return ret;
 
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -744,7 +754,10 @@ static int lm3533_led_remove(struct platform_device *pdev)
 
 	lm3533_ctrlbank_disable(&led->cb);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	led_classdev_unregister(&led->cdev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

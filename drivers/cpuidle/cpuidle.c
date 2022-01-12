@@ -38,6 +38,7 @@ static int off __read_mostly;
 static int initialized __read_mostly;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_SMP
 static atomic_t idled = ATOMIC_INIT(0);
 
@@ -56,6 +57,8 @@ void cpuidle_clear_idle_cpu(unsigned int cpu)
 }
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int cpuidle_disabled(void)
@@ -167,8 +170,12 @@ static void enter_s2idle_proper(struct cpuidle_driver *drv,
 	stop_critical_timings();
 	drv->states[index].enter_s2idle(dev, drv, index);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (WARN_ON_ONCE(!irqs_disabled()))
 		local_irq_disable();
+=======
+	WARN_ON(!irqs_disabled());
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	WARN_ON(!irqs_disabled());
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -266,6 +273,7 @@ int cpuidle_enter_state(struct cpuidle_device *dev, struct cpuidle_driver *drv,
 		local_irq_enable();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (entered_state >= 0) {
 		/*
 		 * Update cpuidle counters
@@ -278,6 +286,8 @@ int cpuidle_enter_state(struct cpuidle_device *dev, struct cpuidle_driver *drv,
 
 		dev->last_residency = (int)diff;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	diff = ktime_us_delta(time_end, time_start);
 	if (diff > INT_MAX)
 		diff = INT_MAX;
@@ -289,6 +299,9 @@ int cpuidle_enter_state(struct cpuidle_device *dev, struct cpuidle_driver *drv,
 		/* This can be moved to within driver enter routine
 		 * but that results in multiple copies of same code.
 		 */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dev->states_usage[entered_state].time += dev->last_residency;
 		dev->states_usage[entered_state].usage++;
@@ -681,7 +694,10 @@ EXPORT_SYMBOL_GPL(cpuidle_register);
 
 #ifdef CONFIG_SMP
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static void wake_up_idle_cpus(void *v)
 {
@@ -703,6 +719,9 @@ static void wake_up_idle_cpus(void *v)
 	preempt_enable();
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * This function gets called when a part of the kernel has a new latency
@@ -714,6 +733,7 @@ static int cpuidle_latency_notify(struct notifier_block *b,
 		unsigned long l, void *v)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long cpus = atomic_read(&idled) & *cpumask_bits(to_cpumask(v));
 
 	/* Use READ_ONCE to get the isolated mask outside cpu_add_remove_lock */
@@ -721,6 +741,9 @@ static int cpuidle_latency_notify(struct notifier_block *b,
 	if (cpus)
 		arch_send_wakeup_ipi_mask(to_cpumask(&cpus));
 
+=======
+	wake_up_idle_cpus(v);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	wake_up_idle_cpus(v);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

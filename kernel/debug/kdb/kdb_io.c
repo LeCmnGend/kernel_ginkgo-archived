@@ -688,6 +688,7 @@ int vkdb_printf(enum kdb_msgsrc src, const char *fmt, va_list ap)
 			goto kdb_print_out;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (kdb_grepping_flag >= KDB_GREPPING_FLAG_SEARCH) {
 			/*
 			 * This was a interactive search (using '/' at more
@@ -699,12 +700,17 @@ int vkdb_printf(enum kdb_msgsrc src, const char *fmt, va_list ap)
 			kdb_grepping_flag = 0;
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (kdb_grepping_flag >= KDB_GREPPING_FLAG_SEARCH)
 			/*
 			 * This was a interactive search (using '/' at more
 			 * prompt) and it has completed. Clear the flag.
 			 */
 			kdb_grepping_flag = 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
 		 * at this point the string is a full line and

@@ -877,9 +877,14 @@ static int loop_prepare_queue(struct loop_device *lo)
 {
 	kthread_init_worker(&lo->worker);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	lo->worker_task = kthread_run_perf_critical(
 			loop_kthread_worker_fn, &lo->worker,
 			"loop%d", lo->lo_number);
+=======
+	lo->worker_task = kthread_run(loop_kthread_worker_fn,
+			&lo->worker, "loop%d", lo->lo_number);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	lo->worker_task = kthread_run(loop_kthread_worker_fn,
 			&lo->worker, "loop%d", lo->lo_number);

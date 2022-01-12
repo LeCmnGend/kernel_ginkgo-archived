@@ -454,7 +454,11 @@ int rds_notify_queue_get(struct rds_sock *rs, struct msghdr *msghdr)
 {
 	struct rds_notifier *notifier;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct rds_rdma_notify cmsg;
+=======
+	struct rds_rdma_notify cmsg = { 0 }; /* fill holes with zero */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct rds_rdma_notify cmsg = { 0 }; /* fill holes with zero */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -464,7 +468,10 @@ int rds_notify_queue_get(struct rds_sock *rs, struct msghdr *msghdr)
 	int err = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(&cmsg, 0, sizeof(cmsg));	/* fill holes with zero */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -671,7 +678,11 @@ int rds_recvmsg(struct socket *sock, struct msghdr *msg, size_t size,
 		if (rds_cmsg_recv(inc, msg, rs)) {
 			ret = -EFAULT;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			break;
+=======
+			goto out;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto out;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

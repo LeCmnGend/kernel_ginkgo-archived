@@ -24,7 +24,10 @@
 #include "sm8150-sdxprairie-v2.dtsi"
 #include "sm8150-mtp-audio-overlay.dtsi"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "sm8150-sdxprairie-audio-overlay.dtsi"
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

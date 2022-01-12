@@ -45,8 +45,11 @@ static inline int init_new_context(struct task_struct *tsk,
 		mm->context.asce = __pa(mm->pgd) | _ASCE_TABLE_LENGTH |
 				   _ASCE_USER_BITS | _ASCE_TYPE_REGION3;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* pgd_alloc() did not account this pud */
 		mm_inc_nr_puds(mm);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
@@ -65,7 +68,11 @@ static inline int init_new_context(struct task_struct *tsk,
 		mm->context.asce = __pa(mm->pgd) | _ASCE_TABLE_LENGTH |
 				   _ASCE_USER_BITS | _ASCE_TYPE_SEGMENT;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* pgd_alloc() did not account this pmd */
+=======
+		/* pgd_alloc() did not increase mm->nr_pmds */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		/* pgd_alloc() did not increase mm->nr_pmds */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

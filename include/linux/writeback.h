@@ -344,6 +344,11 @@ extern struct wb_domain global_wb_domain;
 
 /* These are exported to sysctl. */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+extern int dirty_background_ratio;
+extern unsigned long dirty_background_bytes;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern int dirty_background_ratio;
 extern unsigned long dirty_background_bytes;
@@ -358,13 +363,19 @@ extern int block_dump;
 extern int laptop_mode;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern int dirty_background_ratio_handler(struct ctl_table *table, int write,
 		void __user *buffer, size_t *lenp,
 		loff_t *ppos);
 extern int dirty_background_bytes_handler(struct ctl_table *table, int write,
 		void __user *buffer, size_t *lenp,
 		loff_t *ppos);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern int dirty_ratio_handler(struct ctl_table *table, int write,
 		void __user *buffer, size_t *lenp,

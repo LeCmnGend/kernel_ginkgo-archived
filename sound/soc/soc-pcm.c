@@ -47,8 +47,11 @@ static const struct snd_pcm_hardware no_host_hardware = {
 				  SNDRV_PCM_INFO_RESUME,
 	.formats		= SNDRV_PCM_FMTBIT_S16_LE |
 <<<<<<< HEAD
+<<<<<<< HEAD
 				  SNDRV_PCM_FMTBIT_S24_LE |
 				  SNDRV_PCM_FMTBIT_S24_3LE |
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				  SNDRV_PCM_FMTBIT_S32_LE,
@@ -2370,7 +2373,10 @@ static int dpcm_fe_dai_do_trigger(struct snd_pcm_substream *substream, int cmd)
 		case SNDRV_PCM_TRIGGER_RESUME:
 		case SNDRV_PCM_TRIGGER_PAUSE_RELEASE:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		case SNDRV_PCM_TRIGGER_DRAIN:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			ret = dpcm_dai_trigger_fe_be(substream, cmd, true);
@@ -2391,7 +2397,10 @@ static int dpcm_fe_dai_do_trigger(struct snd_pcm_substream *substream, int cmd)
 		case SNDRV_PCM_TRIGGER_RESUME:
 		case SNDRV_PCM_TRIGGER_PAUSE_RELEASE:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		case SNDRV_PCM_TRIGGER_DRAIN:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			ret = dpcm_dai_trigger_fe_be(substream, cmd, false);

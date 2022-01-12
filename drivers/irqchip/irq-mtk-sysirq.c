@@ -24,7 +24,11 @@
 
 struct mtk_sysirq_chip_data {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	raw_spinlock_t lock;
+=======
+	spinlock_t lock;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spinlock_t lock;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -50,7 +54,11 @@ static int mtk_sysirq_set_type(struct irq_data *data, unsigned int type)
 	offset = hwirq & 0x1f;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	raw_spin_lock_irqsave(&chip_data->lock, flags);
+=======
+	spin_lock_irqsave(&chip_data->lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spin_lock_irqsave(&chip_data->lock, flags);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -70,7 +78,11 @@ static int mtk_sysirq_set_type(struct irq_data *data, unsigned int type)
 	data = data->parent_data;
 	ret = data->chip->irq_set_type(data, type);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&chip_data->lock, flags);
+=======
+	spin_unlock_irqrestore(&chip_data->lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spin_unlock_irqrestore(&chip_data->lock, flags);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -233,7 +245,11 @@ static int __init mtk_sysirq_of_init(struct device_node *node,
 		goto out_free_which_word;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	raw_spin_lock_init(&chip_data->lock);
+=======
+	spin_lock_init(&chip_data->lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spin_lock_init(&chip_data->lock);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

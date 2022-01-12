@@ -914,7 +914,11 @@ static int __init inet6_init(void)
 	err = proto_register(&pingv6_prot, 1);
 	if (err)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_unregister_raw_proto;
+=======
+		goto out_unregister_ping_proto;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto out_unregister_ping_proto;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -925,7 +929,11 @@ static int __init inet6_init(void)
 	err = rawv6_init();
 	if (err)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_unregister_ping_proto;
+=======
+		goto out_unregister_raw_proto;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto out_unregister_raw_proto;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

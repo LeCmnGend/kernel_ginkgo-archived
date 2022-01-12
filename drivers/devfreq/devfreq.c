@@ -264,6 +264,7 @@ int update_devfreq(struct devfreq *devfreq)
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (devfreq->max_boost) {
 		/* Use the max freq for max boosts */
 		freq = ULONG_MAX;
@@ -274,10 +275,15 @@ int update_devfreq(struct devfreq *devfreq)
 			return err;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Reevaluate the proper frequency */
 	err = devfreq->governor->get_target_freq(devfreq, &freq);
 	if (err)
 		return err;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*
@@ -1143,10 +1149,13 @@ static ssize_t min_freq_store(struct device *dev, struct device_attribute *attr,
 	unsigned long max;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Minfreq is managed by devfreq_boost */
 	if (df->is_boost_device)
 		return count;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = sscanf(buf, "%lu", &value);
@@ -1322,9 +1331,13 @@ static int __init devfreq_init(void)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	devfreq_wq = alloc_workqueue("devfreq_wq",
 			    WQ_HIGHPRI | WQ_UNBOUND | WQ_FREEZABLE |
 			    WQ_MEM_RECLAIM, 0);
+=======
+	devfreq_wq = create_freezable_workqueue("devfreq_wq");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	devfreq_wq = create_freezable_workqueue("devfreq_wq");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

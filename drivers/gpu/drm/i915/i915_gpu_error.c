@@ -232,8 +232,11 @@ static int compress_page(struct compress *c,
 		if (zlib_deflate(zstream, Z_SYNC_FLUSH) != Z_OK)
 			return -EIO;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		cond_resched();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} while (zstream->avail_in);
@@ -293,7 +296,10 @@ static int compress_page(struct compress *c,
 		memcpy(ptr, src, PAGE_SIZE);
 	dst->pages[dst->page_count++] = ptr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cond_resched();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

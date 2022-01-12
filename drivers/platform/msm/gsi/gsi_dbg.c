@@ -13,7 +13,10 @@
 #include <linux/debugfs.h>
 #include <linux/dma-mapping.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/slab.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/random.h>
@@ -33,6 +36,10 @@
 static struct dentry *dent;
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+static char dbg_buff[4096];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static char dbg_buff[4096];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -53,6 +60,7 @@ static ssize_t gsi_dump_evt(struct file *file,
 	uint32_t val;
 	struct gsi_evt_ctx *ctx;
 	uint16_t i;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	int ret = 0;
 
@@ -91,6 +99,8 @@ static ssize_t gsi_dump_evt(struct file *file,
 		goto end;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (sizeof(dbg_buff) < count + 1)
 		return -EINVAL;
@@ -114,6 +124,9 @@ static ssize_t gsi_dump_evt(struct file *file,
 		return -EINVAL;
 	if (kstrtou32(token, 0, &arg2))
 		return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	TDBG("arg1=%u arg2=%u\n", arg1, arg2);
@@ -121,8 +134,12 @@ static ssize_t gsi_dump_evt(struct file *file,
 	if (arg1 >= gsi_ctx->max_ev) {
 		TERR("invalid evt ring id %u\n", arg1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = -EINVAL;
 		goto end;
+=======
+		return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EINVAL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -198,9 +215,13 @@ static ssize_t gsi_dump_evt(struct file *file,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 end:
 	kfree(sptr);
 	return ret < 0 ? ret : count;
+=======
+	return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return count;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -216,6 +237,7 @@ static ssize_t gsi_dump_ch(struct file *file,
 	uint32_t val;
 	struct gsi_chan_ctx *ctx;
 	uint16_t i;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	int ret = 0;
 
@@ -254,6 +276,8 @@ static ssize_t gsi_dump_ch(struct file *file,
 		goto end;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (sizeof(dbg_buff) < count + 1)
 		return -EINVAL;
@@ -277,6 +301,9 @@ static ssize_t gsi_dump_ch(struct file *file,
 		return -EINVAL;
 	if (kstrtou32(token, 0, &arg2))
 		return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	TDBG("arg1=%u arg2=%u\n", arg1, arg2);
@@ -284,8 +311,12 @@ static ssize_t gsi_dump_ch(struct file *file,
 	if (arg1 >= gsi_ctx->max_ch) {
 		TERR("invalid chan id %u\n", arg1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = -EINVAL;
 		goto end;
+=======
+		return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EINVAL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -364,9 +395,14 @@ static ssize_t gsi_dump_ch(struct file *file,
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 end:
 	kfree(sptr);
 	return ret < 0 ? ret : count;
+=======
+
+	return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	return count;
@@ -408,6 +444,7 @@ static ssize_t gsi_dump_stats(struct file *file,
 	int ch_id;
 	int min, max;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	char *sptr;
 
 	if (count < 2)
@@ -422,6 +459,8 @@ static ssize_t gsi_dump_stats(struct file *file,
 
 	if (kstrtos32(sptr, 0, &ch_id))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (sizeof(dbg_buff) < count + 1)
 		goto error;
@@ -432,6 +471,9 @@ static ssize_t gsi_dump_stats(struct file *file,
 	dbg_buff[count] = '\0';
 
 	if (kstrtos32(dbg_buff, 0, &ch_id))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto error;
 
@@ -450,10 +492,15 @@ static ssize_t gsi_dump_stats(struct file *file,
 		gsi_dump_ch_stats(&gsi_ctx->chan[ch_id]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(sptr);
 	return count;
 error:
 	kfree(sptr);
+=======
+	return count;
+error:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return count;
 error:
@@ -490,6 +537,7 @@ static ssize_t gsi_enable_dp_stats(struct file *file,
 	bool enable;
 	int ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	char *sptr;
 
 	if (count < 2)
@@ -511,6 +559,8 @@ static ssize_t gsi_enable_dp_stats(struct file *file,
 
 	if (kstrtos32(sptr + 1, 0, &ch_id))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (sizeof(dbg_buff) < count + 1)
 		goto error;
@@ -526,6 +576,9 @@ static ssize_t gsi_enable_dp_stats(struct file *file,
 	enable = (dbg_buff[0] == '+');
 
 	if (kstrtos32(dbg_buff + 1, 0, &ch_id))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto error;
 
@@ -537,7 +590,11 @@ static ssize_t gsi_enable_dp_stats(struct file *file,
 	if (gsi_ctx->chan[ch_id].enable_dp_stats == enable) {
 		TERR("ch_%d: already enabled/disabled\n", ch_id);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto error;
+=======
+		return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EINVAL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -563,10 +620,15 @@ static ssize_t gsi_enable_dp_stats(struct file *file,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(sptr);
 	return count;
 error:
 	kfree(sptr);
+=======
+	return count;
+error:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return count;
 error:
@@ -584,6 +646,7 @@ static ssize_t gsi_set_max_elem_dp_stats(struct file *file,
 	char *sptr, *token;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (count < 2)
 		return -EINVAL;
 
@@ -597,6 +660,8 @@ static ssize_t gsi_set_max_elem_dp_stats(struct file *file,
 
 	sptr[count] = '\0';
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (sizeof(dbg_buff) < count + 1)
 		goto error;
@@ -608,6 +673,9 @@ static ssize_t gsi_set_max_elem_dp_stats(struct file *file,
 	dbg_buff[count] = '\0';
 
 	sptr = dbg_buff;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	token = strsep(&sptr, " ");
@@ -625,7 +693,11 @@ static ssize_t gsi_set_max_elem_dp_stats(struct file *file,
 	if (!token) {
 		/* get */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (kstrtou32(sptr, 0, &ch_id))
+=======
+		if (kstrtou32(dbg_buff, 0, &ch_id))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (kstrtou32(dbg_buff, 0, &ch_id))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -635,7 +707,11 @@ static ssize_t gsi_set_max_elem_dp_stats(struct file *file,
 		PRT_STAT("ch %d: max_re_expected=%d\n", ch_id,
 			gsi_ctx->chan[ch_id].props.max_re_expected);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto end;
+=======
+		return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return count;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -654,6 +730,7 @@ static ssize_t gsi_set_max_elem_dp_stats(struct file *file,
 
 	gsi_ctx->chan[ch_id].props.max_re_expected = max_elem;
 <<<<<<< HEAD
+<<<<<<< HEAD
 end:
 	kfree(sptr);
 	return count;
@@ -661,10 +738,15 @@ end:
 error:
 	kfree(sptr);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return count;
 
 error:
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	TERR("Usage: (set) echo <ch_id> <max_elem> > max_elem_dp_stats\n");
 	TERR("Usage: (get) echo <ch_id> > max_elem_dp_stats\n");
@@ -738,6 +820,7 @@ static ssize_t gsi_rst_stats(struct file *file,
 	int ch_id;
 	int min, max;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	char *sptr;
 
 	if (count < 2)
@@ -752,6 +835,8 @@ static ssize_t gsi_rst_stats(struct file *file,
 
 	if (kstrtos32(sptr, 0, &ch_id))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (sizeof(dbg_buff) < count + 1)
 		goto error;
@@ -762,6 +847,9 @@ static ssize_t gsi_rst_stats(struct file *file,
 	dbg_buff[count] = '\0';
 
 	if (kstrtos32(dbg_buff, 0, &ch_id))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto error;
 
@@ -780,11 +868,17 @@ static ssize_t gsi_rst_stats(struct file *file,
 		memset(&gsi_ctx->chan[ch_id].stats, 0,
 			sizeof(gsi_ctx->chan[ch_id].stats));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(sptr);
 
 	return count;
 error:
 	kfree(sptr);
+=======
+
+	return count;
+error:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	return count;
@@ -800,6 +894,7 @@ static ssize_t gsi_print_dp_stats(struct file *file,
 	int ch_id;
 	bool enable;
 	int ret;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	char *sptr;
 
@@ -823,6 +918,8 @@ static ssize_t gsi_print_dp_stats(struct file *file,
 	}
 	kfree(sptr);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (sizeof(dbg_buff) < count + 1)
 		goto error;
@@ -839,6 +936,9 @@ static ssize_t gsi_print_dp_stats(struct file *file,
 
 	if (kstrtos32(dbg_buff + 1, 0, &ch_id))
 		goto error;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (ch_id < 0 || ch_id >= gsi_ctx->max_ch ||
@@ -873,7 +973,10 @@ static ssize_t gsi_print_dp_stats(struct file *file,
 	return count;
 error:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(sptr);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	TERR("Usage: echo [+-]ch_id > print_dp_stats\n");
@@ -885,6 +988,7 @@ static ssize_t gsi_enable_ipc_low(struct file *file,
 {
 	unsigned long missing;
 	s8 option = 0;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	char *sptr;
 	int ret = 0;
@@ -909,6 +1013,8 @@ static ssize_t gsi_enable_ipc_low(struct file *file,
 	}
 	kfree(sptr);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (sizeof(dbg_buff) < count + 1)
 		return -EFAULT;
@@ -920,6 +1026,9 @@ static ssize_t gsi_enable_ipc_low(struct file *file,
 	dbg_buff[count] = '\0';
 	if (kstrtos8(dbg_buff, 0, &option))
 		return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	mutex_lock(&gsi_ctx->mlock);
@@ -938,9 +1047,13 @@ static ssize_t gsi_enable_ipc_low(struct file *file,
 	mutex_unlock(&gsi_ctx->mlock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 error:
 	kfree(sptr);
 	return ret < 0 ? ret : count;
+=======
+	return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return count;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

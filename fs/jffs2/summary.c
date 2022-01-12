@@ -784,8 +784,11 @@ static int jffs2_sum_write_data(struct jffs2_sb_info *c, struct jffs2_eraseblock
 						    je16_to_cpu(temp->u.nodetype));
 					jffs2_sum_disable_collecting(c->summary);
 <<<<<<< HEAD
+<<<<<<< HEAD
 					/* The above call removes the list, nothing more to do */
 					goto bail_rwcompat;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				} else {
@@ -800,7 +803,10 @@ static int jffs2_sum_write_data(struct jffs2_sb_info *c, struct jffs2_eraseblock
 		c->summary->sum_num--;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
  bail_rwcompat:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

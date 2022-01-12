@@ -52,7 +52,11 @@ void __patch_exception(int exc, unsigned long addr);
 
 #define OP_RT_RA_MASK	0xffff0000UL
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define LIS_R2		0x3c400000UL
+=======
+#define LIS_R2		0x3c020000UL
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define LIS_R2		0x3c020000UL
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

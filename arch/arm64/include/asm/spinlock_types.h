@@ -21,8 +21,11 @@
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <asm-generic/qspinlock_types.h>
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/types.h>
 
 #define TICKET_SHIFT	16
@@ -39,6 +42,9 @@ typedef struct {
 
 #define __ARCH_SPIN_LOCK_UNLOCKED	{ 0 , 0 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <asm-generic/qrwlock_types.h>
 

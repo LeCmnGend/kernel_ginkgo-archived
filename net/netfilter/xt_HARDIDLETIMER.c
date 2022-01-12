@@ -182,6 +182,11 @@ static int hardidletimer_tg_create(struct hardidletimer_tg_info *info)
 		goto out_free_attr;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/*  notify userspace  */
+	kobject_uevent(hardidletimer_tg_kobj, KOBJ_ADD);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/*  notify userspace  */
 	kobject_uevent(hardidletimer_tg_kobj, KOBJ_ADD);

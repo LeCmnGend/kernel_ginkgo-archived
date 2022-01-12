@@ -3,6 +3,10 @@ ccflags-y := -Iinclude/linux
 msm_kgsl_core-y = \
 	kgsl.o \
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kgsl_trace.o \
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kgsl_trace.o \
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -13,6 +17,10 @@ msm_kgsl_core-y = \
 	kgsl_pwrscale.o \
 	kgsl_mmu.o \
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kgsl_snapshot.o \
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kgsl_snapshot.o \
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -34,8 +42,11 @@ msm_adreno-y += \
 	adreno_drawctxt.o \
 	adreno_dispatch.o \
 <<<<<<< HEAD
+<<<<<<< HEAD
 	adreno_a6xx.o \
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	adreno_snapshot.o \
 	adreno_coresight.o \
 	adreno_trace.o \
@@ -49,6 +60,9 @@ msm_adreno-y += \
 	adreno_a6xx_snapshot.o \
 	adreno_a4xx_preempt.o \
 	adreno_a5xx_preempt.o \
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	adreno_a6xx_preempt.o \
 	adreno_a6xx_gmu.o \

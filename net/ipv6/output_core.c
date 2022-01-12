@@ -15,12 +15,15 @@ static u32 __ipv6_select_ident(struct net *net,
 			       const struct in6_addr *src)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 id;
 
 	do {
 		id = prandom_u32();
 	} while (!id);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	const struct {
 		struct in6_addr dst;
 		struct in6_addr src;
@@ -44,6 +47,9 @@ static u32 __ipv6_select_ident(struct net *net,
 	id = ip_idents_reserve(hash, 1);
 	if (unlikely(!id))
 		id = 1 << 31;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return id;

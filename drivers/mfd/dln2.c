@@ -295,11 +295,15 @@ static void dln2_rx(struct urb *urb)
 
 	if (handle == DLN2_HANDLE_EVENT) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unsigned long flags;
 
 		spin_lock_irqsave(&dln2->event_cb_lock, flags);
 		dln2_run_event_callbacks(dln2, id, echo, data, len);
 		spin_unlock_irqrestore(&dln2->event_cb_lock, flags);
+=======
+		dln2_run_event_callbacks(dln2, id, echo, data, len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dln2_run_event_callbacks(dln2, id, echo, data, len);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

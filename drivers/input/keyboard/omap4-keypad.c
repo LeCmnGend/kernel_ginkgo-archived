@@ -200,15 +200,21 @@ static int omap4_keypad_open(struct input_dev *input)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void omap4_keypad_stop(struct omap4_keypad *keypad_data)
 {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void omap4_keypad_close(struct input_dev *input)
 {
 	struct omap4_keypad *keypad_data = input_get_drvdata(input);
 
 	disable_irq(keypad_data->irq);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Disable interrupts and wake-up events */
 	kbd_write_irqreg(keypad_data, OMAP4_KBD_IRQENABLE,
@@ -219,6 +225,7 @@ static void omap4_keypad_close(struct input_dev *input)
 	kbd_write_irqreg(keypad_data, OMAP4_KBD_IRQSTATUS,
 			 kbd_read_irqreg(keypad_data, OMAP4_KBD_IRQSTATUS));
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 static void omap4_keypad_close(struct input_dev *input)
@@ -228,6 +235,9 @@ static void omap4_keypad_close(struct input_dev *input)
 	keypad_data = input_get_drvdata(input);
 	disable_irq(keypad_data->irq);
 	omap4_keypad_stop(keypad_data);
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -253,6 +263,7 @@ static int omap4_keypad_parse_dt(struct device *dev,
 	return 0;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static int omap4_keypad_check_revision(struct device *dev,
 				       struct omap4_keypad *keypad_data)
@@ -281,6 +292,8 @@ static int omap4_keypad_check_revision(struct device *dev,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int omap4_keypad_probe(struct platform_device *pdev)
 {
 	struct omap4_keypad *keypad_data;
@@ -288,6 +301,10 @@ static int omap4_keypad_probe(struct platform_device *pdev)
 	struct resource *res;
 	unsigned int max_keys;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int rev;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int rev;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -302,13 +319,19 @@ static int omap4_keypad_probe(struct platform_device *pdev)
 
 	irq = platform_get_irq(pdev, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (irq < 0)
 		return irq;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!irq) {
 		dev_err(&pdev->dev, "no keyboard irq assigned\n");
 		return -EINVAL;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	keypad_data = kzalloc(sizeof(struct omap4_keypad), GFP_KERNEL);
@@ -338,7 +361,10 @@ static int omap4_keypad_probe(struct platform_device *pdev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pm_runtime_enable(&pdev->dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -346,6 +372,7 @@ static int omap4_keypad_probe(struct platform_device *pdev)
 	 * Enable clocks for the keypad module so that we can read
 	 * revision register.
 	 */
+<<<<<<< HEAD
 <<<<<<< HEAD
 	error = pm_runtime_get_sync(&pdev->dev);
 	if (error) {
@@ -363,6 +390,8 @@ static int omap4_keypad_probe(struct platform_device *pdev)
 	if (error)
 		goto err_pm_disable;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pm_runtime_enable(&pdev->dev);
 	error = pm_runtime_get_sync(&pdev->dev);
 	if (error) {
@@ -387,6 +416,9 @@ static int omap4_keypad_probe(struct platform_device *pdev)
 		error = -EINVAL;
 		goto err_pm_put_sync;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* input device allocation */
@@ -394,7 +426,11 @@ static int omap4_keypad_probe(struct platform_device *pdev)
 	if (!input_dev) {
 		error = -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto err_pm_disable;
+=======
+		goto err_pm_put_sync;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto err_pm_put_sync;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -443,6 +479,7 @@ static int omap4_keypad_probe(struct platform_device *pdev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	error = input_register_device(keypad_data->input);
 	if (error < 0) {
 		dev_err(&pdev->dev, "failed to register input device\n");
@@ -456,6 +493,8 @@ static int omap4_keypad_probe(struct platform_device *pdev)
 
 err_free_irq:
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	device_init_wakeup(&pdev->dev, true);
 	pm_runtime_put_sync(&pdev->dev);
 
@@ -470,6 +509,9 @@ err_free_irq:
 
 err_pm_disable:
 	pm_runtime_disable(&pdev->dev);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	free_irq(keypad_data->irq, keypad_data);
 err_free_keymap:
@@ -477,8 +519,14 @@ err_free_keymap:
 err_free_input:
 	input_free_device(input_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 err_pm_disable:
 	pm_runtime_disable(&pdev->dev);
+=======
+err_pm_put_sync:
+	pm_runtime_put_sync(&pdev->dev);
+err_unmap:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 err_pm_put_sync:
 	pm_runtime_put_sync(&pdev->dev);

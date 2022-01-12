@@ -180,8 +180,12 @@ struct ath_frame_info {
 	u8 keyix;
 	u8 rtscts_rate;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8 retries : 6;
 	u8 dyn_smps : 1;
+=======
+	u8 retries : 7;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u8 retries : 7;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

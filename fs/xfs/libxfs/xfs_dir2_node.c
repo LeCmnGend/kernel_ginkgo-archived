@@ -213,7 +213,10 @@ __xfs_dir3_free_read(
 		xfs_verifier_error(*bpp);
 		xfs_trans_brelse(tp, *bpp);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		*bpp = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EFSCORRUPTED;

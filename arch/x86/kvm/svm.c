@@ -390,9 +390,12 @@ static void recalc_intercepts(struct vcpu_svm *svm)
 	c->intercept_exceptions = h->intercept_exceptions | g->intercept_exceptions;
 	c->intercept = h->intercept | g->intercept;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	c->intercept |= (1ULL << INTERCEPT_VMLOAD);
 	c->intercept |= (1ULL << INTERCEPT_VMSAVE);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -1215,14 +1218,20 @@ static __init int svm_hardware_setup(void)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vgif = false; /* Disabled for CVE-2021-3653 */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (vgif) {
 		if (!boot_cpu_has(X86_FEATURE_VGIF))
 			vgif = false;
 		else
 			pr_info("Virtual GIF supported\n");
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
@@ -3172,6 +3181,7 @@ static bool nested_svm_vmrun(struct vcpu_svm *svm)
 
 	svm_flush_tlb(&svm->vcpu, true);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	svm->vmcb->control.int_ctl &=
 			V_INTR_MASKING_MASK | V_GIF_ENABLE_MASK | V_GIF_MASK;
@@ -3179,6 +3189,9 @@ static bool nested_svm_vmrun(struct vcpu_svm *svm)
 	svm->vmcb->control.int_ctl |= nested_vmcb->control.int_ctl &
 			(V_TPR_MASK | V_IRQ_INJECTION_BITS_MASK);
 
+=======
+	svm->vmcb->control.int_ctl = nested_vmcb->control.int_ctl | V_INTR_MASKING_MASK;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	svm->vmcb->control.int_ctl = nested_vmcb->control.int_ctl | V_INTR_MASKING_MASK;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3553,7 +3566,11 @@ static int cr_interception(struct vcpu_svm *svm)
 	if (cr >= 16) { /* mov to cr */
 		cr -= 16;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		val = kvm_register_readl(&svm->vcpu, reg);
+=======
+		val = kvm_register_read(&svm->vcpu, reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		val = kvm_register_read(&svm->vcpu, reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3602,7 +3619,11 @@ static int cr_interception(struct vcpu_svm *svm)
 			return 1;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kvm_register_writel(&svm->vcpu, reg, val);
+=======
+		kvm_register_write(&svm->vcpu, reg, val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kvm_register_write(&svm->vcpu, reg, val);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3636,7 +3657,11 @@ static int dr_interception(struct vcpu_svm *svm)
 		if (!kvm_require_dr(&svm->vcpu, dr - 16))
 			return 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		val = kvm_register_readl(&svm->vcpu, reg);
+=======
+		val = kvm_register_read(&svm->vcpu, reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		val = kvm_register_read(&svm->vcpu, reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3646,7 +3671,11 @@ static int dr_interception(struct vcpu_svm *svm)
 			return 1;
 		kvm_get_dr(&svm->vcpu, dr, &val);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kvm_register_writel(&svm->vcpu, reg, val);
+=======
+		kvm_register_write(&svm->vcpu, reg, val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kvm_register_write(&svm->vcpu, reg, val);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4899,7 +4928,10 @@ static int svm_update_pi_irte(struct kvm *kvm, unsigned int host_irq,
 			 * - Retrieve ga_tag of prior interrupt remapping data.
 			 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pi.prev_ga_tag = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			pi.is_guest_mode = false;

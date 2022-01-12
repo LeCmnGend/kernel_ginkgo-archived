@@ -2075,8 +2075,13 @@ int amdgpu_vm_bo_map(struct amdgpu_device *adev,
 
 	/* validate the parameters */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (saddr & ~PAGE_MASK || offset & ~PAGE_MASK ||
 	    size == 0 || size & ~PAGE_MASK)
+=======
+	if (saddr & AMDGPU_GPU_PAGE_MASK || offset & AMDGPU_GPU_PAGE_MASK ||
+	    size == 0 || size & AMDGPU_GPU_PAGE_MASK)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (saddr & AMDGPU_GPU_PAGE_MASK || offset & AMDGPU_GPU_PAGE_MASK ||
 	    size == 0 || size & AMDGPU_GPU_PAGE_MASK)
@@ -2148,8 +2153,13 @@ int amdgpu_vm_bo_replace_map(struct amdgpu_device *adev,
 
 	/* validate the parameters */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (saddr & ~PAGE_MASK || offset & ~PAGE_MASK ||
 	    size == 0 || size & ~PAGE_MASK)
+=======
+	if (saddr & AMDGPU_GPU_PAGE_MASK || offset & AMDGPU_GPU_PAGE_MASK ||
+	    size == 0 || size & AMDGPU_GPU_PAGE_MASK)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (saddr & AMDGPU_GPU_PAGE_MASK || offset & AMDGPU_GPU_PAGE_MASK ||
 	    size == 0 || size & AMDGPU_GPU_PAGE_MASK)
@@ -2296,7 +2306,11 @@ int amdgpu_vm_bo_clear_mappings(struct amdgpu_device *adev,
 			after->last = tmp->last;
 			after->offset = tmp->offset;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			after->offset += (after->start - tmp->start) << PAGE_SHIFT;
+=======
+			after->offset += after->start - tmp->start;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			after->offset += after->start - tmp->start;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

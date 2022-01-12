@@ -708,6 +708,7 @@ static inline void armv8pmu_set_enabled_ints(u32 mask) { }
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void armv8pmu_start(struct arm_pmu *cpu_pmu)
 {
 	unsigned long flags;
@@ -730,6 +731,8 @@ static void armv8pmu_stop(struct arm_pmu *cpu_pmu)
 	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static irqreturn_t armv8pmu_handle_irq(int irq_num, void *dev)
@@ -764,11 +767,14 @@ static irqreturn_t armv8pmu_handle_irq(int irq_num, void *dev)
 	regs = get_irq_regs();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Stop the PMU while processing the counter overflows
 	 * to prevent skews in group events.
 	 */
 	armv8pmu_stop(cpu_pmu);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	for (idx = 0; idx < cpu_pmu->num_events; ++idx) {
@@ -804,7 +810,10 @@ static irqreturn_t armv8pmu_handle_irq(int irq_num, void *dev)
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	armv8pmu_start(cpu_pmu);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -826,7 +835,10 @@ static irqreturn_t armv8pmu_handle_irq(int irq_num, void *dev)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void armv8pmu_start(struct arm_pmu *cpu_pmu)
 {
 	unsigned long flags;
@@ -849,6 +861,9 @@ static void armv8pmu_stop(struct arm_pmu *cpu_pmu)
 	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int armv8pmu_get_event_idx(struct pmu_hw_events *cpuc,
 				  struct perf_event *event)

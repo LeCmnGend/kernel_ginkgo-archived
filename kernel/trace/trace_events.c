@@ -534,7 +534,11 @@ void trace_event_follow_fork(struct trace_array *tr, bool enable)
 		register_trace_prio_sched_process_fork(event_filter_pid_sched_process_fork,
 						       tr, INT_MIN);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		register_trace_prio_sched_process_free(event_filter_pid_sched_process_exit,
+=======
+		register_trace_prio_sched_process_exit(event_filter_pid_sched_process_exit,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		register_trace_prio_sched_process_exit(event_filter_pid_sched_process_exit,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -543,7 +547,11 @@ void trace_event_follow_fork(struct trace_array *tr, bool enable)
 		unregister_trace_sched_process_fork(event_filter_pid_sched_process_fork,
 						    tr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unregister_trace_sched_process_free(event_filter_pid_sched_process_exit,
+=======
+		unregister_trace_sched_process_exit(event_filter_pid_sched_process_exit,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		unregister_trace_sched_process_exit(event_filter_pid_sched_process_exit,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -808,8 +816,11 @@ static int ftrace_set_clr_event(struct trace_array *tr, char *buf, int set)
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!tr)
 		return -ENOENT;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
@@ -1126,8 +1137,12 @@ system_enable_read(struct file *filp, char __user *ubuf, size_t cnt,
 	list_for_each_entry(file, &tr->events, list) {
 		call = file->event_call;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if ((call->flags & TRACE_EVENT_FL_IGNORE_ENABLE) ||
 		    !trace_event_name(call) || !call->class || !call->class->reg)
+=======
+		if (!trace_event_name(call) || !call->class || !call->class->reg)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!trace_event_name(call) || !call->class || !call->class->reg)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -353,10 +353,15 @@ static int qm1d1c0042_init(struct dvb_frontend *fe)
 			break;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (reg_index >= QM1D1C0042_NUM_REG_ROWS) {
 		ret = -EINVAL;
 		goto failed;
 	}
+=======
+	if (reg_index >= QM1D1C0042_NUM_REG_ROWS)
+		goto failed;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (reg_index >= QM1D1C0042_NUM_REG_ROWS)
 		goto failed;

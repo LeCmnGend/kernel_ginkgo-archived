@@ -420,7 +420,10 @@ static int raydium_i2c_write_object(struct i2c_client *client,
 {
 	int error;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	static const u8 cmd[] = { 0xFF, 0x39 };
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -432,7 +435,11 @@ static int raydium_i2c_write_object(struct i2c_client *client,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	error = raydium_i2c_send(client, RM_CMD_BOOT_ACK, cmd, sizeof(cmd));
+=======
+	error = raydium_i2c_send(client, RM_CMD_BOOT_ACK, NULL, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	error = raydium_i2c_send(client, RM_CMD_BOOT_ACK, NULL, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

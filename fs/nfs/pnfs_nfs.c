@@ -556,16 +556,22 @@ out:
 EXPORT_SYMBOL_GPL(nfs4_pnfs_ds_add);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int nfs4_wait_ds_connect(struct nfs4_pnfs_ds *ds)
 {
 	might_sleep();
 	return wait_on_bit(&ds->ds_state, NFS4DS_CONNECTING, TASK_KILLABLE);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void nfs4_wait_ds_connect(struct nfs4_pnfs_ds *ds)
 {
 	might_sleep();
 	wait_on_bit(&ds->ds_state, NFS4DS_CONNECTING,
 			TASK_KILLABLE);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -573,7 +579,13 @@ static void nfs4_clear_ds_conn_bit(struct nfs4_pnfs_ds *ds)
 {
 	smp_mb__before_atomic();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	clear_and_wake_up_bit(NFS4DS_CONNECTING, &ds->ds_state);
+=======
+	clear_bit(NFS4DS_CONNECTING, &ds->ds_state);
+	smp_mb__after_atomic();
+	wake_up_bit(&ds->ds_state, NFS4DS_CONNECTING);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	clear_bit(NFS4DS_CONNECTING, &ds->ds_state);
 	smp_mb__after_atomic();
@@ -740,6 +752,7 @@ int nfs4_pnfs_ds_connect(struct nfs_server *mds_srv, struct nfs4_pnfs_ds *ds,
 	int err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	do {
 		err = nfs4_wait_ds_connect(ds);
 		if (err || ds->ds_clp)
@@ -768,6 +781,8 @@ connect_done:
 	nfs4_clear_ds_conn_bit(ds);
 out:
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 again:
 	err = 0;
 	if (test_and_set_bit(NFS4DS_CONNECTING, &ds->ds_state) == 0) {
@@ -792,6 +807,9 @@ again:
 			goto again;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * At this point the ds->ds_clp should be ready, but it might have

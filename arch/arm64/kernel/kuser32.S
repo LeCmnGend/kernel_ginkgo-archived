@@ -21,20 +21,31 @@
  * AArch32 user helpers.
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * These helpers are provided for compatibility with AArch32 binaries that
  * still need them. They are installed at a fixed address by
  * aarch32_setup_additional_pages().
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Each segment is 32-byte aligned and will be moved to the top of the high
  * vector page.  New segments (if ever needed) must be added in front of
  * existing ones.  This mechanism should be used only for things that are
  * really small and justified, and not be abused freely.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * See Documentation/arm/kernel_user_helpers.txt for formal definitions.
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <asm/unistd.h>
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <asm/unistd.h>
 
@@ -87,7 +98,10 @@ __kuser_helper_version:			// 0xffff0ffc
 	.globl	__kuser_helper_end
 __kuser_helper_end:
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*
  * AArch32 sigreturn code
@@ -127,4 +141,7 @@ __aarch32_sigret_code_start:
 
         .globl __aarch32_sigret_code_end
 __aarch32_sigret_code_end:
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

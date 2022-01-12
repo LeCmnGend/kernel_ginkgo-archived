@@ -273,7 +273,10 @@ static int __fpu__restore_sig(void __user *buf, void __user *buf_fx, int size)
 	u64 xfeatures = 0;
 	int fx_only = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -285,6 +288,7 @@ static int __fpu__restore_sig(void __user *buf, void __user *buf_fx, int size)
 		return 0;
 	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (!access_ok(VERIFY_READ, buf, size)) {
 		ret = -EACCES;
@@ -302,6 +306,8 @@ static int __fpu__restore_sig(void __user *buf, void __user *buf_fx, int size)
 		return 0;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!access_ok(VERIFY_READ, buf, size))
 		return -EACCES;
 
@@ -311,6 +317,9 @@ static int __fpu__restore_sig(void __user *buf, void __user *buf_fx, int size)
 		return fpregs_soft_set(current, NULL,
 				       0, sizeof(struct user_i387_ia32_struct),
 				       NULL, buf) != 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (use_xsave()) {
@@ -372,7 +381,10 @@ static int __fpu__restore_sig(void __user *buf, void __user *buf_fx, int size)
 		local_bh_enable();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* Failure is already handled */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return err;
@@ -383,6 +395,7 @@ static int __fpu__restore_sig(void __user *buf, void __user *buf_fx, int size)
 		 */
 		user_fpu_begin();
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!copy_user_to_fpregs_zeroing(buf_fx, xfeatures, fx_only))
 			return 0;
 		ret = -1;
@@ -392,6 +405,8 @@ out_err:
 	fpu__clear(fpu);
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (copy_user_to_fpregs_zeroing(buf_fx, xfeatures, fx_only)) {
 			fpu__clear(fpu);
 			return -1;
@@ -399,6 +414,9 @@ out_err:
 	}
 
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

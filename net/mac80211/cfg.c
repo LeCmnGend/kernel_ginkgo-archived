@@ -662,8 +662,12 @@ void sta_set_rate_info_tx(struct sta_info *sta,
 
 		sband = ieee80211_get_sband(sta->sdata);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		WARN_ON_ONCE(sband && !sband->bitrates);
 		if (sband && sband->bitrates) {
+=======
+		if (sband) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (sband) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1541,10 +1545,15 @@ static int ieee80211_change_station(struct wiphy *wiphy,
 
 		if (sta->sdata->vif.type == NL80211_IFTYPE_AP_VLAN &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 		    sta->sdata->u.vlan.sta) {
 			ieee80211_clear_fast_rx(sta);
 			RCU_INIT_POINTER(sta->sdata->u.vlan.sta, NULL);
 		}
+=======
+		    sta->sdata->u.vlan.sta)
+			RCU_INIT_POINTER(sta->sdata->u.vlan.sta, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		    sta->sdata->u.vlan.sta)
 			RCU_INIT_POINTER(sta->sdata->u.vlan.sta, NULL);
@@ -2010,7 +2019,10 @@ static int ieee80211_leave_mesh(struct wiphy *wiphy, struct net_device *dev)
 	mutex_lock(&sdata->local->mtx);
 	ieee80211_vif_release_channel(sdata);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(sdata->u.mesh.ie);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_unlock(&sdata->local->mtx);
@@ -2767,7 +2779,11 @@ static int ieee80211_set_bitrate_mask(struct wiphy *wiphy,
 
 		for (j = 0; j < IEEE80211_HT_MCS_MASK_LEN; j++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (sdata->rc_rateidx_mcs_mask[i][j] != 0xff) {
+=======
+			if (~sdata->rc_rateidx_mcs_mask[i][j]) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (~sdata->rc_rateidx_mcs_mask[i][j]) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2778,7 +2794,11 @@ static int ieee80211_set_bitrate_mask(struct wiphy *wiphy,
 
 		for (j = 0; j < NL80211_VHT_NSS_MAX; j++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (sdata->rc_rateidx_vht_mcs_mask[i][j] != 0xffff) {
+=======
+			if (~sdata->rc_rateidx_vht_mcs_mask[i][j]) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (~sdata->rc_rateidx_vht_mcs_mask[i][j]) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

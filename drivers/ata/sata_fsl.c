@@ -514,7 +514,11 @@ static unsigned int sata_fsl_fill_sg(struct ata_queued_cmd *qc, void *cmd_desc,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors sata_fsl_qc_prep(struct ata_queued_cmd *qc)
+=======
+static void sata_fsl_qc_prep(struct ata_queued_cmd *qc)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void sata_fsl_qc_prep(struct ata_queued_cmd *qc)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -564,8 +568,11 @@ static void sata_fsl_qc_prep(struct ata_queued_cmd *qc)
 	VPRINTK("SATA FSL : xx_qc_prep, di = 0x%x, ttl = %d, num_prde = %d\n",
 		desc_info, ttl_dwords, num_prde);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	return AC_ERR_OK;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

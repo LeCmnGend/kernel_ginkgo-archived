@@ -27,8 +27,11 @@ void __attribute__((weak)) arch_report_meminfo(struct seq_file *m)
 static void show_val_kb(struct seq_file *m, const char *s, unsigned long num)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	seq_put_decimal_ull_width(m, s, num << (PAGE_SHIFT - 10), 8);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	char v[32];
 	static const char blanks[7] = {' ', ' ', ' ', ' ',' ', ' ', ' '};
 	int len;
@@ -43,6 +46,9 @@ static void show_val_kb(struct seq_file *m, const char *s, unsigned long num)
 
 		seq_write(m, v, len);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	seq_write(m, " kB\n", 4);
 }

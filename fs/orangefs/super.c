@@ -198,7 +198,11 @@ static int orangefs_statfs(struct dentry *dentry, struct kstatfs *buf)
 	buf->f_files = (sector_t) new_op->downcall.resp.statfs.files_total;
 	buf->f_ffree = (sector_t) new_op->downcall.resp.statfs.files_avail;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	buf->f_frsize = 0;
+=======
+	buf->f_frsize = sb->s_blocksize;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	buf->f_frsize = sb->s_blocksize;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -88,9 +88,13 @@ UTS_TRUNCATE="cut -b -$UTS_LEN"
 # in order to preserve the timestamp and avoid unnecessary
 # recompilations.
 <<<<<<< HEAD
+<<<<<<< HEAD
 # We don't consider the file changed if only the date/time changed,
 # unless KBUILD_BUILD_TIMESTAMP was explicitly set (e.g. for
 # reproducible builds with that value referring to a commit timestamp).
+=======
+# We don't consider the file changed if only the date/time changed.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 # We don't consider the file changed if only the date/time changed.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -99,6 +103,7 @@ UTS_TRUNCATE="cut -b -$UTS_LEN"
 # changed comment in the
 # first line.
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 if [ -z "$KBUILD_BUILD_TIMESTAMP" ]; then
    IGNORE_PATTERN="UTS_VERSION"
@@ -109,6 +114,11 @@ fi
 if [ -r $TARGET ] && \
       grep -v $IGNORE_PATTERN $TARGET > .tmpver.1 && \
       grep -v $IGNORE_PATTERN .tmpcompile > .tmpver.2 && \
+=======
+if [ -r $TARGET ] && \
+      grep -v 'UTS_VERSION' $TARGET > .tmpver.1 && \
+      grep -v 'UTS_VERSION' .tmpcompile > .tmpver.2 && \
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 if [ -r $TARGET ] && \
       grep -v 'UTS_VERSION' $TARGET > .tmpver.1 && \

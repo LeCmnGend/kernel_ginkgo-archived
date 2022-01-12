@@ -103,7 +103,11 @@ static void tcp_rack_detect_loss(struct sock *sk, u32 *reo_timeout)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 bool tcp_rack_mark_lost(struct sock *sk)
+=======
+void tcp_rack_mark_lost(struct sock *sk)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void tcp_rack_mark_lost(struct sock *sk)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -113,7 +117,11 @@ void tcp_rack_mark_lost(struct sock *sk)
 
 	if (!tp->rack.advanced)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return false;
+=======
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -127,7 +135,10 @@ void tcp_rack_mark_lost(struct sock *sk)
 					  timeout, inet_csk(sk)->icsk_rto);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return !!timeout;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

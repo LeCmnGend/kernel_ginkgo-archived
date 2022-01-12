@@ -131,7 +131,12 @@ static irqreturn_t hva_hw_its_irq_thread(int irq, void *arg)
 	if (ctx_id >= HVA_MAX_INSTANCES) {
 		dev_err(dev, "%s     %s: bad context identifier: %d\n",
 <<<<<<< HEAD
+<<<<<<< HEAD
 			HVA_PREFIX, __func__, ctx_id);
+=======
+			ctx->name, __func__, ctx_id);
+		ctx->hw_err = true;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ctx->name, __func__, ctx_id);
 		ctx->hw_err = true;
@@ -277,7 +282,10 @@ static unsigned long int hva_hw_get_ip_version(struct hva_dev *hva)
 	if (pm_runtime_get_sync(dev) < 0) {
 		dev_err(dev, "%s     failed to get pm_runtime\n", HVA_PREFIX);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pm_runtime_put_noidle(dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mutex_unlock(&hva->protect_mutex);
@@ -401,7 +409,11 @@ int hva_hw_probe(struct platform_device *pdev, struct hva_dev *hva)
 	if (ret < 0) {
 		dev_err(dev, "%s     failed to set PM\n", HVA_PREFIX);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto err_pm;
+=======
+		goto err_clk;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto err_clk;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -570,7 +582,10 @@ void hva_hw_dump_regs(struct hva_dev *hva, struct seq_file *s)
 	if (pm_runtime_get_sync(dev) < 0) {
 		seq_puts(s, "Cannot wake up IP\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pm_runtime_put_noidle(dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mutex_unlock(&hva->protect_mutex);

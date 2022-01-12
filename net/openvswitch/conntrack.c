@@ -256,11 +256,17 @@ void ovs_ct_fill_key(const struct sk_buff *skb, struct sw_flow_key *key)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define IN6_ADDR_INITIALIZER(ADDR) \
 	{ (ADDR).s6_addr32[0], (ADDR).s6_addr32[1], \
 	  (ADDR).s6_addr32[2], (ADDR).s6_addr32[3] }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int ovs_ct_put_key(const struct sw_flow_key *swkey,
 		   const struct sw_flow_key *output, struct sk_buff *skb)
@@ -284,6 +290,7 @@ int ovs_ct_put_key(const struct sw_flow_key *swkey,
 	if (swkey->ct_orig_proto) {
 		if (swkey->eth.type == htons(ETH_P_IP)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			struct ovs_key_ct_tuple_ipv4 orig;
 
 			memset(&orig, 0, sizeof(orig));
@@ -294,6 +301,8 @@ int ovs_ct_put_key(const struct sw_flow_key *swkey,
 			orig.ipv4_proto = output->ct_orig_proto;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			struct ovs_key_ct_tuple_ipv4 orig = {
 				output->ipv4.ct_orig.src,
 				output->ipv4.ct_orig.dst,
@@ -301,11 +310,15 @@ int ovs_ct_put_key(const struct sw_flow_key *swkey,
 				output->ct.orig_tp.dst,
 				output->ct_orig_proto,
 			};
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (nla_put(skb, OVS_KEY_ATTR_CT_ORIG_TUPLE_IPV4,
 				    sizeof(orig), &orig))
 				return -EMSGSIZE;
 		} else if (swkey->eth.type == htons(ETH_P_IPV6)) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 			struct ovs_key_ct_tuple_ipv6 orig;
 
@@ -319,6 +332,8 @@ int ovs_ct_put_key(const struct sw_flow_key *swkey,
 			orig.ipv6_proto = output->ct_orig_proto;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			struct ovs_key_ct_tuple_ipv6 orig = {
 				IN6_ADDR_INITIALIZER(output->ipv6.ct_orig.src),
 				IN6_ADDR_INITIALIZER(output->ipv6.ct_orig.dst),
@@ -326,6 +341,9 @@ int ovs_ct_put_key(const struct sw_flow_key *swkey,
 				output->ct.orig_tp.dst,
 				output->ct_orig_proto,
 			};
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (nla_put(skb, OVS_KEY_ATTR_CT_ORIG_TUPLE_IPV6,
 				    sizeof(orig), &orig))
@@ -909,6 +927,7 @@ static int ovs_ct_nat(struct net *net, struct sw_flow_key *key,
 	err = ovs_ct_nat_execute(skb, ct, ctinfo, &info->range, maniptype);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (err == NF_ACCEPT && ct->status & IPS_DST_NAT) {
 		if (ct->status & IPS_SRC_NAT) {
 			if (maniptype == NF_NAT_MANIP_SRC)
@@ -923,6 +942,8 @@ static int ovs_ct_nat(struct net *net, struct sw_flow_key *key,
 						 NF_NAT_MANIP_SRC);
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err == NF_ACCEPT &&
 	    ct->status & IPS_SRC_NAT && ct->status & IPS_DST_NAT) {
 		if (maniptype == NF_NAT_MANIP_SRC)
@@ -932,6 +953,9 @@ static int ovs_ct_nat(struct net *net, struct sw_flow_key *key,
 
 		err = ovs_ct_nat_execute(skb, ct, ctinfo, &info->range,
 					 maniptype);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 

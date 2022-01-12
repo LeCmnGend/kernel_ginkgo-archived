@@ -761,7 +761,11 @@ struct devkmsg_user {
 static ssize_t devkmsg_write(struct kiocb *iocb, struct iov_iter *from)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	char buf[LOG_LINE_MAX + 1], *line;
+=======
+	char *buf, *line;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	char *buf, *line;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -786,10 +790,13 @@ static ssize_t devkmsg_write(struct kiocb *iocb, struct iov_iter *from)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	buf[len] = '\0';
 	if (!copy_from_iter_full(buf, len, from))
 		return -EFAULT;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	buf = kmalloc(len+1, GFP_KERNEL);
 	if (buf == NULL)
 		return -ENOMEM;
@@ -799,6 +806,9 @@ static ssize_t devkmsg_write(struct kiocb *iocb, struct iov_iter *from)
 		kfree(buf);
 		return -EFAULT;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*
@@ -828,6 +838,10 @@ static ssize_t devkmsg_write(struct kiocb *iocb, struct iov_iter *from)
 
 	printk_emit(facility, level, NULL, 0, "%s", line);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kfree(buf);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(buf);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1314,11 +1328,14 @@ static size_t msg_print_text(const struct printk_log *msg, bool syslog, char *bu
 static int syslog_print(char __user *buf, int size)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	char text[LOG_LINE_MAX + PREFIX_MAX];
 	struct printk_log *msg;
 	int len = 0;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	char *text;
 	struct printk_log *msg;
 	int len = 0;
@@ -1327,6 +1344,9 @@ static int syslog_print(char __user *buf, int size)
 	if (!text)
 		return -ENOMEM;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	while (size > 0) {
 		size_t n;
@@ -1376,6 +1396,10 @@ static int syslog_print(char __user *buf, int size)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kfree(text);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(text);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2124,9 +2148,12 @@ static int __init console_setup(char *str)
 	int idx;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (str[0] == 0)
 		return 1;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (_braille_console_setup(&str, &brl_options))

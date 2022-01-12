@@ -194,9 +194,12 @@ static const char *ti_adpll_clk_get_name(struct ti_adpll_data *d,
 			return NULL;
 	} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		name = devm_kasprintf(d->dev, GFP_KERNEL, "%08lx.adpll.%s",
 				      d->pa, postfix);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		const char *base_name = "adpll";
 		char *buf;
 
@@ -206,6 +209,9 @@ static const char *ti_adpll_clk_get_name(struct ti_adpll_data *d,
 			return NULL;
 		sprintf(buf, "%08lx.%s.%s", d->pa, base_name, postfix);
 		name = buf;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 

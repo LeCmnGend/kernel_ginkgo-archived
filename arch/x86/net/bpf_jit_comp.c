@@ -1108,6 +1108,7 @@ common_load:
 
 		if (image) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			/*
 			 * When populating the image, assert that:
 			 *
@@ -1118,6 +1119,9 @@ common_load:
 			 */
 			if (unlikely(proglen + ilen > oldproglen ||
 				     proglen + ilen != addrs[i])) {
+=======
+			if (unlikely(proglen + ilen > oldproglen)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (unlikely(proglen + ilen > oldproglen)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

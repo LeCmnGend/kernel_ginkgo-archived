@@ -8550,7 +8550,11 @@ reinit_after_soft_reset:
 	rc = hpsa_scsi_add_host(h);
 	if (rc)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto clean8; /* lastlogicals, perf, sg, cmd, irq, shost, pci, lu, aer/h */
+=======
+		goto clean7; /* perf, sg, cmd, irq, shost, pci, lu, aer/h */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto clean7; /* perf, sg, cmd, irq, shost, pci, lu, aer/h */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -8569,8 +8573,11 @@ reinit_after_soft_reset:
 	return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 clean8: /* lastlogicals, perf, sg, cmd, irq, shost, pci, lu, aer/h */
 	kfree(h->lastlogicals);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 clean7: /* perf, sg, cmd, irq, shost, pci, lu, aer/h */

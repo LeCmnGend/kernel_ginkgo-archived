@@ -1064,8 +1064,11 @@ static bool intel_pt_fup_event(struct intel_pt_decoder *decoder)
 		decoder->tx_flags = decoder->fup_tx_flags;
 		decoder->state.type = INTEL_PT_TRANSACTION;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (decoder->fup_tx_flags & INTEL_PT_ABORT_TX)
 			decoder->state.type |= INTEL_PT_BRANCH;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		decoder->state.from_ip = decoder->ip;
@@ -1135,10 +1138,14 @@ static int intel_pt_walk_fup(struct intel_pt_decoder *decoder)
 		if (err == -EAGAIN ||
 		    intel_pt_fup_with_nlip(decoder, &intel_pt_insn, ip, err)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			bool no_tip = decoder->pkt_state != INTEL_PT_STATE_FUP;
 
 			decoder->pkt_state = INTEL_PT_STATE_IN_SYNC;
 			if (intel_pt_fup_event(decoder) && no_tip)
+=======
+			if (intel_pt_fup_event(decoder))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (intel_pt_fup_event(decoder))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1608,9 +1615,12 @@ static int intel_pt_walk_psbend(struct intel_pt_decoder *decoder)
 
 		case INTEL_PT_CYC:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			intel_pt_calc_cyc_timestamp(decoder);
 			break;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		case INTEL_PT_VMCS:
@@ -1799,6 +1809,7 @@ next:
 			if (decoder->set_fup_mwait)
 				no_tip = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (no_tip)
 				decoder->pkt_state = INTEL_PT_STATE_FUP_NO_TIP;
 			else
@@ -1807,6 +1818,8 @@ next:
 			if (err != -EAGAIN)
 				return err;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			err = intel_pt_walk_fup(decoder);
 			if (err != -EAGAIN) {
 				if (err)
@@ -1818,6 +1831,9 @@ next:
 					decoder->pkt_state = INTEL_PT_STATE_FUP;
 				return 0;
 			}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (no_tip) {
 				no_tip = false;
@@ -2404,12 +2420,15 @@ const struct intel_pt_state *intel_pt_decode(struct intel_pt_decoder *decoder)
 			break;
 		case INTEL_PT_STATE_FUP:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			err = intel_pt_walk_fup(decoder);
 			if (err == -EAGAIN)
 				err = intel_pt_walk_fup_tip(decoder);
 			break;
 		case INTEL_PT_STATE_FUP_NO_TIP:
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			decoder->pkt_state = INTEL_PT_STATE_IN_SYNC;
 			err = intel_pt_walk_fup(decoder);
 			if (err == -EAGAIN)
@@ -2419,6 +2438,9 @@ const struct intel_pt_state *intel_pt_decode(struct intel_pt_decoder *decoder)
 			break;
 		case INTEL_PT_STATE_FUP_NO_TIP:
 			decoder->pkt_state = INTEL_PT_STATE_IN_SYNC;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			err = intel_pt_walk_fup(decoder);
 			if (err == -EAGAIN)

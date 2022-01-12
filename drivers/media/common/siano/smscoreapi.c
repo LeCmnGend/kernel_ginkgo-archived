@@ -911,7 +911,11 @@ static int smscore_load_firmware_family2(struct smscore_device_t *coredev,
 {
 	struct sms_firmware *firmware = (struct sms_firmware *) buffer;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct sms_msg_data5 *msg;
+=======
+	struct sms_msg_data4 *msg;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct sms_msg_data4 *msg;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -996,6 +1000,7 @@ static int smscore_load_firmware_family2(struct smscore_device_t *coredev,
 
 	if (coredev->mode == DEVICE_MODE_NONE) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_debug("sending MSG_SMS_SWDOWNLOAD_TRIGGER_REQ\n");
 		SMS_INIT_MSG(&msg->x_msg_header,
 				MSG_SMS_SWDOWNLOAD_TRIGGER_REQ,
@@ -1011,6 +1016,8 @@ static int smscore_load_firmware_family2(struct smscore_device_t *coredev,
 		rc = smscore_sendrequest_and_wait(coredev, msg,
 					msg->x_msg_header.msg_length,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		struct sms_msg_data *trigger_msg =
 			(struct sms_msg_data *) msg;
 
@@ -1029,6 +1036,9 @@ static int smscore_load_firmware_family2(struct smscore_device_t *coredev,
 
 		rc = smscore_sendrequest_and_wait(coredev, trigger_msg,
 					trigger_msg->x_msg_header.msg_length,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					&coredev->trigger_done);
 	} else {

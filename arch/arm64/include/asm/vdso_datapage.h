@@ -21,6 +21,7 @@
 #ifndef __ASSEMBLY__
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef _VDSO_WTM_CLOCK_SEC_T
 #define _VDSO_WTM_CLOCK_SEC_T
 typedef __u64 vdso_wtm_clock_nsec_t;
@@ -49,6 +50,8 @@ struct vdso_data {
 	__u32 btm_sec;		/* monotonic to boot time */
 	__u32 btm_nsec;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct vdso_data {
 	__u64 cs_cycle_last;	/* Timebase at clocksource init */
 	__u64 raw_time_sec;	/* Raw time */
@@ -59,6 +62,9 @@ struct vdso_data {
 	__u64 xtime_coarse_nsec;
 	__u64 wtm_clock_sec;	/* Wall to monotonic time */
 	__u64 wtm_clock_nsec;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__u32 tb_seq_count;	/* Timebase sequence counter */
 	/* cs_* members must be adjacent and in this order (ldp accesses) */

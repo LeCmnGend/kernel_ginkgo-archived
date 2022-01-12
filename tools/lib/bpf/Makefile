@@ -184,7 +184,11 @@ define do_install
 		$(INSTALL) -d -m 755 '$(DESTDIR_SQ)$2';	\
 	fi;						\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	$(INSTALL) $(if $3,-m $3,) $1 '$(DESTDIR_SQ)$2'
+=======
+	$(INSTALL) $1 $(if $3,-m $3,) '$(DESTDIR_SQ)$2'
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	$(INSTALL) $1 $(if $3,-m $3,) '$(DESTDIR_SQ)$2'
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

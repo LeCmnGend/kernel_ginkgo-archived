@@ -695,7 +695,10 @@ static ssize_t bm_register_write(struct file *file, const char __user *buffer,
 	struct dentry *root = sb->s_root, *dentry;
 	int err = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct file *f = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -704,6 +707,7 @@ static ssize_t bm_register_write(struct file *file, const char __user *buffer,
 	if (IS_ERR(e))
 		return PTR_ERR(e);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (e->flags & MISC_FMT_OPEN_FILE) {
 		f = open_exec(e->interpreter);
@@ -716,6 +720,8 @@ static ssize_t bm_register_write(struct file *file, const char __user *buffer,
 		e->interp_file = f;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	inode_lock(d_inode(root));
@@ -742,7 +748,10 @@ static ssize_t bm_register_write(struct file *file, const char __user *buffer,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (e->flags & MISC_FMT_OPEN_FILE) {
 		struct file *f;
 
@@ -758,6 +767,9 @@ static ssize_t bm_register_write(struct file *file, const char __user *buffer,
 		e->interp_file = f;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	e->dentry = dget(dentry);
 	inode->i_private = e;
@@ -776,8 +788,11 @@ out:
 
 	if (err) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (f)
 			filp_close(f, NULL);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		kfree(e);

@@ -125,6 +125,12 @@ Optional Properties:
 				Similar to the above. Driver votes against deep low
 				power modes right before GPU wakes up from sleep.
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+- qcom,l2pc-cpu-mask-latency:
+				The CPU mask latency in microseconds to avoid L2PC
+				on masked CPUs.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 - qcom,l2pc-cpu-mask-latency:
 				The CPU mask latency in microseconds to avoid L2PC
@@ -194,7 +200,10 @@ Optional Properties:
 				certain protected registers and also pass to the user as
 				a property.
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 - qcom,macrotiling-channels:
@@ -202,7 +211,10 @@ Optional Properties:
 				This is programmed into certain registers and also pass to
 				the user as a property.
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 - qcom,l2pc-cpu-mask:
 				Disables L2PC on masked CPUs when any of Graphics
 				rendering thread is running on masked CPUs.
@@ -210,6 +222,9 @@ Optional Properties:
 
 - qcom,l2pc-update-queue:
 				Disables L2PC on masked CPUs at queue time when it's true.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 - qcom,snapshot-size:

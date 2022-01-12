@@ -57,6 +57,12 @@ void lpfc_unreg_vpi(struct lpfc_hba *, uint16_t, LPFC_MBOXQ_t *);
 void lpfc_init_link(struct lpfc_hba *, LPFC_MBOXQ_t *, uint32_t, uint32_t);
 void lpfc_request_features(struct lpfc_hba *, struct lpfcMboxq *);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+void lpfc_supported_pages(struct lpfcMboxq *);
+void lpfc_pc_sli4_params(struct lpfcMboxq *);
+int lpfc_pc_sli4_params_get(struct lpfc_hba *, LPFC_MBOXQ_t *);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void lpfc_supported_pages(struct lpfcMboxq *);
 void lpfc_pc_sli4_params(struct lpfcMboxq *);

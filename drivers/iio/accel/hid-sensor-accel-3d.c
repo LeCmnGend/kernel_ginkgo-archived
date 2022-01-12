@@ -43,11 +43,16 @@ struct accel_3d_state {
 	struct hid_sensor_common common_attributes;
 	struct hid_sensor_hub_attribute_info accel[ACCEL_3D_CHANNEL_MAX];
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Ensure timestamp is naturally aligned */
 	struct {
 		u32 accel_val[3];
 		s64 timestamp __aligned(8);
 	} scan;
+=======
+	/* Reserve for 3 channels + padding + timestamp */
+	u32 accel_val[ACCEL_3D_CHANNEL_MAX + 3];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Reserve for 3 channels + padding + timestamp */
 	u32 accel_val[ACCEL_3D_CHANNEL_MAX + 3];
@@ -264,8 +269,13 @@ static int accel_3d_proc_event(struct hid_sensor_hub_device *hsdev,
 
 		hid_sensor_push_data(indio_dev,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				     &accel_state->scan,
 				     sizeof(accel_state->scan),
+=======
+				     accel_state->accel_val,
+				     sizeof(accel_state->accel_val),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				     accel_state->accel_val,
 				     sizeof(accel_state->accel_val),
@@ -295,7 +305,11 @@ static int accel_3d_capture_sample(struct hid_sensor_hub_device *hsdev,
 	case HID_USAGE_SENSOR_ACCEL_Z_AXIS:
 		offset = usage_id - HID_USAGE_SENSOR_ACCEL_X_AXIS;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		accel_state->scan.accel_val[CHANNEL_SCAN_INDEX_X + offset] =
+=======
+		accel_state->accel_val[CHANNEL_SCAN_INDEX_X + offset] =
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		accel_state->accel_val[CHANNEL_SCAN_INDEX_X + offset] =
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

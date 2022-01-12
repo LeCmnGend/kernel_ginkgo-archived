@@ -54,9 +54,12 @@ enum scan_result {
 #include <trace/events/huge_memory.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct task_struct *khugepaged_thread __read_mostly;
 static DEFINE_MUTEX(khugepaged_mutex);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* default scan 8*512 pte (or vmas) every 30 second */
@@ -401,7 +404,11 @@ static void insert_to_mm_slots_hash(struct mm_struct *mm,
 static inline int khugepaged_test_exit(struct mm_struct *mm)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return atomic_read(&mm->mm_users) == 0 || !mmget_still_valid(mm);
+=======
+	return atomic_read(&mm->mm_users) == 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return atomic_read(&mm->mm_users) == 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -418,7 +425,11 @@ int __khugepaged_enter(struct mm_struct *mm)
 
 	/* __khugepaged_exit() must not run from under us */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	VM_BUG_ON_MM(atomic_read(&mm->mm_users) == 0, mm);
+=======
+	VM_BUG_ON_MM(khugepaged_test_exit(mm), mm);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	VM_BUG_ON_MM(khugepaged_test_exit(mm), mm);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -609,6 +620,7 @@ static int __collapse_huge_page_isolate(struct vm_area_struct *vma,
 			referenced++;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (unlikely(!writable)) {
 		result = SCAN_PAGE_RO;
@@ -621,6 +633,8 @@ static int __collapse_huge_page_isolate(struct vm_area_struct *vma,
 		return 1;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (likely(writable)) {
 		if (likely(referenced)) {
 			result = SCAN_SUCCEED;
@@ -632,6 +646,9 @@ static int __collapse_huge_page_isolate(struct vm_area_struct *vma,
 		result = SCAN_PAGE_RO;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out:
 	release_pte_pages(pte, _pte);
@@ -830,6 +847,7 @@ static struct page *khugepaged_alloc_hugepage(bool *wait)
 static bool khugepaged_prealloc_page(struct page **hpage, bool *wait)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * If the hpage allocated earlier was briefly exposed in page cache
 	 * before collapse_file() failed, it is possible that racing lookups
@@ -842,6 +860,8 @@ static bool khugepaged_prealloc_page(struct page **hpage, bool *wait)
 		*hpage = NULL;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!*hpage)
@@ -1052,6 +1072,12 @@ static void collapse_huge_page(struct mm_struct *mm,
 	 */
 	down_write(&mm->mmap_sem);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	result = SCAN_ANY_PROCESS;
+	if (!mmget_still_valid(mm))
+		goto out;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	result = SCAN_ANY_PROCESS;
 	if (!mmget_still_valid(mm))
@@ -1304,7 +1330,10 @@ static void retract_page_tables(struct address_space *mapping, pgoff_t pgoff)
 {
 	struct vm_area_struct *vma;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct mm_struct *mm;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long addr;
@@ -1321,8 +1350,12 @@ static void retract_page_tables(struct address_space *mapping, pgoff_t pgoff)
 		if (vma->vm_end < addr + HPAGE_PMD_SIZE)
 			continue;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mm = vma->vm_mm;
 		pmd = mm_find_pmd(mm, addr);
+=======
+		pmd = mm_find_pmd(vma->vm_mm, addr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pmd = mm_find_pmd(vma->vm_mm, addr);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1335,6 +1368,7 @@ static void retract_page_tables(struct address_space *mapping, pgoff_t pgoff)
 		 * the system too much.
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (down_write_trylock(&mm->mmap_sem)) {
 			if (!khugepaged_test_exit(mm)) {
 				spinlock_t *ptl = pmd_lock(mm, pmd);
@@ -1346,6 +1380,8 @@ static void retract_page_tables(struct address_space *mapping, pgoff_t pgoff)
 			}
 			up_write(&mm->mmap_sem);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (down_write_trylock(&vma->vm_mm->mmap_sem)) {
 			spinlock_t *ptl = pmd_lock(vma->vm_mm, pmd);
 			/* assume page table is clear */
@@ -1354,6 +1390,9 @@ static void retract_page_tables(struct address_space *mapping, pgoff_t pgoff)
 			up_write(&vma->vm_mm->mmap_sem);
 			atomic_long_dec(&vma->vm_mm->nr_ptes);
 			pte_free(vma->vm_mm, pmd_pgtable(_pmd));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 	}
@@ -2010,6 +2049,11 @@ static void set_recommended_min_free_kbytes(void)
 int start_stop_khugepaged(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	static struct task_struct *khugepaged_thread __read_mostly;
+	static DEFINE_MUTEX(khugepaged_mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	static struct task_struct *khugepaged_thread __read_mostly;
 	static DEFINE_MUTEX(khugepaged_mutex);
@@ -2041,6 +2085,7 @@ fail:
 	return err;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 void khugepaged_min_free_kbytes_update(void)
 {
@@ -2049,5 +2094,7 @@ void khugepaged_min_free_kbytes_update(void)
 		set_recommended_min_free_kbytes();
 	mutex_unlock(&khugepaged_mutex);
 }
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

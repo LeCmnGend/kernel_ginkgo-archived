@@ -324,8 +324,11 @@ static int psb_driver_load(struct drm_device *dev, unsigned long flags)
 		goto out_err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = -ENOMEM;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dev_priv->mmu = psb_mmu_driver_init(dev, 1, 0, 0);

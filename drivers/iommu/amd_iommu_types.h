@@ -256,7 +256,11 @@
 #define DTE_IRQ_TABLE_LEN_MASK	(0xfULL << 1)
 #define DTE_IRQ_REMAP_INTCTL    (2ULL << 60)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define DTE_IRQ_TABLE_LEN       (9ULL << 1)
+=======
+#define DTE_IRQ_TABLE_LEN       (8ULL << 1)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define DTE_IRQ_TABLE_LEN       (8ULL << 1)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -409,11 +413,15 @@ extern bool amd_iommu_np_cache;
 extern bool amd_iommu_iotlb_sup;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * AMD IOMMU hardware only support 512 IRTEs despite
  * the architectural limitation of 2048 entries.
  */
 #define MAX_IRQS_PER_TABLE	512
+=======
+#define MAX_IRQS_PER_TABLE	256
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define MAX_IRQS_PER_TABLE	256
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

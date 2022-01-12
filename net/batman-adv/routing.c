@@ -823,10 +823,13 @@ static bool batadv_check_unicast_ttvn(struct batadv_priv *bat_priv,
 	ethhdr = (struct ethhdr *)(skb->data + hdr_len);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* do not reroute multicast frames in a unicast header */
 	if (is_multicast_ether_addr(ethhdr->h_dest))
 		return true;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* check if the destination client was served by this node and it is now

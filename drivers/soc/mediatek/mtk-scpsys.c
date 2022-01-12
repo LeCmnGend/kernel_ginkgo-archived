@@ -482,7 +482,10 @@ static void mtk_register_power_domains(struct platform_device *pdev,
 		struct scp_domain *scpd = &scp->domains[i];
 		struct generic_pm_domain *genpd = &scpd->genpd;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		bool on;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -493,9 +496,15 @@ static void mtk_register_power_domains(struct platform_device *pdev,
 		 * late_init time.
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		on = !WARN_ON(genpd->power_on(genpd) < 0);
 
 		pm_genpd_init(genpd, NULL, !on);
+=======
+		genpd->power_on(genpd);
+
+		pm_genpd_init(genpd, NULL, false);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		genpd->power_on(genpd);
 

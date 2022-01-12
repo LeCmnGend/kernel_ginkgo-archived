@@ -466,7 +466,11 @@ static int cqspi_indirect_read_setup(struct spi_nor *nor,
 	dummy_clk = nor->read_dummy;
 	if (dummy_clk > CQSPI_DUMMY_CLKS_MAX)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -EOPNOTSUPP;
+=======
+		dummy_clk = CQSPI_DUMMY_CLKS_MAX;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dummy_clk = CQSPI_DUMMY_CLKS_MAX;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

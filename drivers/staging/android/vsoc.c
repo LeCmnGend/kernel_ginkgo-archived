@@ -270,8 +270,12 @@ static int do_create_fd_scoped_permission(
 	struct vsoc_device_region *managed_region_p;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (copy_from_user(&np->permission,
 			   &arg->perm, sizeof(np->permission)) ||
+=======
+	if (copy_from_user(&np->permission, &arg->perm, sizeof(*np)) ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (copy_from_user(&np->permission, &arg->perm, sizeof(*np)) ||
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

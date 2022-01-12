@@ -124,7 +124,11 @@ static int xen_pcibk_do_attach(struct xen_pcibk_device *pdev, int gnt_ref,
 	pdev->sh_info = vaddr;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = bind_interdomain_evtchn_to_irqhandler_lateeoi(
+=======
+	err = bind_interdomain_evtchn_to_irqhandler(
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = bind_interdomain_evtchn_to_irqhandler(
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -363,8 +367,12 @@ out:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int xen_pcibk_reconfigure(struct xen_pcibk_device *pdev,
 				 enum xenbus_state state)
+=======
+static int xen_pcibk_reconfigure(struct xen_pcibk_device *pdev)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int xen_pcibk_reconfigure(struct xen_pcibk_device *pdev)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -382,7 +390,13 @@ static int xen_pcibk_reconfigure(struct xen_pcibk_device *pdev)
 
 	mutex_lock(&pdev->dev_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (xenbus_read_driver_state(pdev->xdev->nodename) != state)
+=======
+	/* Make sure we only reconfigure once */
+	if (xenbus_read_driver_state(pdev->xdev->nodename) !=
+	    XenbusStateReconfiguring)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Make sure we only reconfigure once */
 	if (xenbus_read_driver_state(pdev->xdev->nodename) !=
@@ -513,10 +527,13 @@ static int xen_pcibk_reconfigure(struct xen_pcibk_device *pdev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (state != XenbusStateReconfiguring)
 		/* Make sure we only reconfigure once. */
 		goto out;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = xenbus_switch_state(pdev->xdev, XenbusStateReconfigured);
@@ -545,7 +562,11 @@ static void xen_pcibk_frontend_changed(struct xenbus_device *xdev,
 
 	case XenbusStateReconfiguring:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		xen_pcibk_reconfigure(pdev, XenbusStateReconfiguring);
+=======
+		xen_pcibk_reconfigure(pdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		xen_pcibk_reconfigure(pdev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -688,6 +709,7 @@ static void xen_pcibk_be_watch(struct xenbus_watch *watch,
 		break;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case XenbusStateInitialised:
 		/*
 		 * We typically move to Initialised when the first device was
@@ -697,6 +719,8 @@ static void xen_pcibk_be_watch(struct xenbus_watch *watch,
 		xen_pcibk_reconfigure(pdev, XenbusStateInitialised);
 		break;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	default:
@@ -725,7 +749,11 @@ static int xen_pcibk_xenbus_probe(struct xenbus_device *dev,
 	/* watch the backend node for backend configuration information */
 	err = xenbus_watch_path(dev, dev->nodename, &pdev->be_watch,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				NULL, xen_pcibk_be_watch);
+=======
+				xen_pcibk_be_watch);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				xen_pcibk_be_watch);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -981,6 +981,7 @@ error:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int dsi_ctrl_copy_and_pad_cmd(const struct mipi_dsi_packet *packet,
 				     u8 *buf, size_t len)
 {
@@ -997,6 +998,8 @@ static int dsi_ctrl_copy_and_pad_cmd(const struct mipi_dsi_packet *packet,
 	if (packet->size < len)
 		memset(buf + packet->size, 0xFF, len - packet->size);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int dsi_ctrl_copy_and_pad_cmd(struct dsi_ctrl *dsi_ctrl,
 				     const struct mipi_dsi_packet *packet,
 				     u8 **buffer,
@@ -1022,12 +1025,19 @@ static int dsi_ctrl_copy_and_pad_cmd(struct dsi_ctrl *dsi_ctrl,
 		else
 			buf[i] = packet->payload[i - sizeof(packet->header)];
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (packet->payload_length > 0)
 		buf[3] |= BIT(6);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1040,6 +1050,12 @@ static int dsi_ctrl_copy_and_pad_cmd(struct dsi_ctrl *dsi_ctrl,
 		buf[3] |= BIT(5);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	*buffer = buf;
+	*size = len;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	*buffer = buf;
 	*size = len;
@@ -1166,6 +1182,7 @@ int dsi_message_validate_tx_mode(struct dsi_ctrl *dsi_ctrl,
 			return -ENOTSUPP;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else if (*flags & DSI_CTRL_CMD_FETCH_MEMORY) {
 		const size_t transfer_size = dsi_ctrl->cmd_len + cmd_len + 4;
 
@@ -1174,11 +1191,16 @@ int dsi_message_validate_tx_mode(struct dsi_ctrl *dsi_ctrl,
 			       transfer_size,
 			       DSI_EMBEDDED_MODE_DMA_MAX_SIZE_BYTES);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	if (*flags & DSI_CTRL_CMD_FETCH_MEMORY) {
 		if ((dsi_ctrl->cmd_len + cmd_len + 4) > SZ_4K) {
 			pr_err("Cannot transfer,size is greater than 4096\n");
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return -ENOTSUPP;
 		}
@@ -1197,9 +1219,15 @@ static int dsi_message_tx(struct dsi_ctrl *dsi_ctrl,
 	struct dsi_ctrl_cmd_dma_info cmd_mem;
 	u32 hw_flags = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 length;
 	u8 *buffer = NULL;
 	u32 line_no = 0x1;
+=======
+	u32 length = 0;
+	u8 *buffer = NULL;
+	u32 cnt = 0, line_no = 0x1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 length = 0;
 	u8 *buffer = NULL;
@@ -1221,10 +1249,13 @@ static int dsi_message_tx(struct dsi_ctrl *dsi_ctrl,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pr_debug("cmd tx type=%02x cmd=%02x len=%d last=%d\n", msg->type,
 		 msg->tx_len ? *((u8 *)msg->tx_buf) : 0, msg->tx_len,
 		 (msg->flags & MIPI_DSI_MSG_LASTCOMMAND) != 0);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (flags & DSI_CTRL_CMD_NON_EMBEDDED_MODE) {
@@ -1253,6 +1284,7 @@ static int dsi_message_tx(struct dsi_ctrl *dsi_ctrl,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	length = ALIGN(packet.size, 4);
 
 	if ((msg->flags & MIPI_DSI_MSG_LASTCOMMAND))
@@ -1270,6 +1302,8 @@ static int dsi_message_tx(struct dsi_ctrl *dsi_ctrl,
 		}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rc = dsi_ctrl_copy_and_pad_cmd(dsi_ctrl,
 			&packet,
 			&buffer,
@@ -1284,6 +1318,9 @@ static int dsi_message_tx(struct dsi_ctrl *dsi_ctrl,
 		buffer[3] |= BIT(7);//set the last cmd bit in header.
 
 	if (flags & DSI_CTRL_CMD_FETCH_MEMORY) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* Embedded mode config is selected */
 		cmd_mem.offset = dsi_ctrl->cmd_buffer_iova;
@@ -1295,13 +1332,19 @@ static int dsi_message_tx(struct dsi_ctrl *dsi_ctrl,
 			true : false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		cmdbuf = (u8 *)(dsi_ctrl->vaddr);
 
 		msm_gem_sync(dsi_ctrl->tx_cmd_buf);
 		for (cnt = 0; cnt < length; cnt++)
 			cmdbuf[dsi_ctrl->cmd_len + cnt] = buffer[cnt];
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dsi_ctrl->cmd_len += length;
 
@@ -1313,6 +1356,7 @@ static int dsi_message_tx(struct dsi_ctrl *dsi_ctrl,
 		}
 
 	} else if (flags & DSI_CTRL_CMD_FIFO_STORE) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 		buffer = devm_kzalloc(&dsi_ctrl->pdev->dev, length,
 					   GFP_KERNEL);
@@ -1328,6 +1372,8 @@ static int dsi_message_tx(struct dsi_ctrl *dsi_ctrl,
 			goto error;
 		}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		cmd.command =  (u32 *)buffer;

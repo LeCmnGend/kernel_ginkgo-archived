@@ -1412,6 +1412,11 @@ struct ext4_sb_info {
 	unsigned int s_inode_readahead_blks;
 	unsigned int s_inode_goal;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	spinlock_t s_next_gen_lock;
+	u32 s_next_generation;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spinlock_t s_next_gen_lock;
 	u32 s_next_generation;
@@ -2542,8 +2547,12 @@ void ext4_insert_dentry(struct inode *dir, struct inode *inode,
 static inline void ext4_update_dx_flag(struct inode *inode)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!ext4_has_feature_dir_index(inode->i_sb) &&
 	    ext4_test_inode_flag(inode, EXT4_INODE_INDEX)) {
+=======
+	if (!ext4_has_feature_dir_index(inode->i_sb)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!ext4_has_feature_dir_index(inode->i_sb)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3299,9 +3308,15 @@ extern int ext4_setup_system_zone(struct super_block *sb);
 extern int __init ext4_init_system_zone(void);
 extern void ext4_exit_system_zone(void);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern int ext4_inode_block_valid(struct inode *inode,
 				  ext4_fsblk_t start_blk,
 				  unsigned int count);
+=======
+extern int ext4_data_block_valid(struct ext4_sb_info *sbi,
+				 ext4_fsblk_t start_blk,
+				 unsigned int count);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern int ext4_data_block_valid(struct ext4_sb_info *sbi,
 				 ext4_fsblk_t start_blk,

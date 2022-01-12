@@ -2053,9 +2053,15 @@ static int i40iw_addr_resolve_neigh_ipv6(struct i40iw_device *iwdev,
 	if (!dst || dst->error) {
 		if (dst) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			i40iw_pr_err("ip6_route_output returned dst->error = %d\n",
 				     dst->error);
 			dst_release(dst);
+=======
+			dst_release(dst);
+			i40iw_pr_err("ip6_route_output returned dst->error = %d\n",
+				     dst->error);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			dst_release(dst);
 			i40iw_pr_err("ip6_route_output returned dst->error = %d\n",

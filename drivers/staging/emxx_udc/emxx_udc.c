@@ -2160,7 +2160,11 @@ static int _nbu2ss_nuke(struct nbu2ss_udc *udc,
 			int status)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct nbu2ss_req *req, *n;
+=======
+	struct nbu2ss_req *req;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct nbu2ss_req *req;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2176,7 +2180,11 @@ static int _nbu2ss_nuke(struct nbu2ss_udc *udc,
 
 	/* called with irqs blocked */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	list_for_each_entry_safe(req, n, &ep->queue, queue) {
+=======
+	list_for_each_entry(req, &ep->queue, queue) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	list_for_each_entry(req, &ep->queue, queue) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

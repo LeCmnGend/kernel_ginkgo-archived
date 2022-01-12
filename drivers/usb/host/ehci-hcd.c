@@ -36,7 +36,10 @@
 #include <linux/usb.h>
 #include <linux/usb/hcd.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/usb/otg.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/moduleparam.h>
@@ -591,7 +594,10 @@ static int ehci_run (struct usb_hcd *hcd)
 	u32			temp;
 	u32			hcc_params;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int			rc;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -650,6 +656,7 @@ static int ehci_run (struct usb_hcd *hcd)
 	ehci->rh_state = EHCI_RH_RUNNING;
 	ehci_writel(ehci, FLAG_CF, &ehci->regs->configured_flag);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* Wait until HC become operational */
 	ehci_readl(ehci, &ehci->regs->command);	/* unblock posted writes */
@@ -664,6 +671,11 @@ static int ehci_run (struct usb_hcd *hcd)
 		return rc;
 	}
 
+=======
+	ehci_readl(ehci, &ehci->regs->command);	/* unblock posted writes */
+	msleep(5);
+	up_write(&ehci_cf_port_reset_rwsem);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ehci_readl(ehci, &ehci->regs->command);	/* unblock posted writes */
 	msleep(5);

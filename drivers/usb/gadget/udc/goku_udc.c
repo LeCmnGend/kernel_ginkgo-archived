@@ -1773,7 +1773,10 @@ static int goku_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pci_set_drvdata(pdev, dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_init(&dev->lock);
@@ -1810,6 +1813,10 @@ static int goku_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 	dev->regs = (struct goku_udc_regs __iomem *) base;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	pci_set_drvdata(pdev, dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pci_set_drvdata(pdev, dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

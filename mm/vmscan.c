@@ -348,6 +348,7 @@ static unsigned long do_shrink_slab(struct shrink_control *shrinkctl,
 
 	total_scan = nr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (shrinker->seeks) {
 		delta = freeable >> priority;
 		delta *= 4;
@@ -360,6 +361,11 @@ static unsigned long do_shrink_slab(struct shrink_control *shrinkctl,
 		 */
 		delta = freeable / 2;
 	}
+=======
+	delta = freeable >> priority;
+	delta *= 4;
+	do_div(delta, shrinker->seeks);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	delta = freeable >> priority;
 	delta *= 4;
@@ -487,9 +493,12 @@ static unsigned long shrink_slab(gfp_t gfp_mask, int nid,
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!down_read_trylock(&shrinker_rwsem))
 		goto out;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!down_read_trylock(&shrinker_rwsem)) {
 		/*
 		 * If we would return 0, our callers would understand that we
@@ -500,6 +509,9 @@ static unsigned long shrink_slab(gfp_t gfp_mask, int nid,
 		freed = 1;
 		goto out;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	list_for_each_entry(shrinker, &shrinker_list, list) {
@@ -2200,7 +2212,11 @@ static void shrink_active_list(unsigned long nr_to_scan,
  *
  * The inactive_ratio is the target ratio of ACTIVE to INACTIVE pages
 <<<<<<< HEAD
+<<<<<<< HEAD
  * on this LRU, maintained by the pageout code. An inactive_ratio
+=======
+ * on this LRU, maintained by the pageout code. A zone->inactive_ratio
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * on this LRU, maintained by the pageout code. A zone->inactive_ratio
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2728,7 +2744,11 @@ static bool shrink_node(pg_data_t *pgdat, struct scan_control *sc)
 					continue;
 				}
 <<<<<<< HEAD
+<<<<<<< HEAD
 				memcg_memory_event(memcg, MEMCG_LOW);
+=======
+				mem_cgroup_event(memcg, MEMCG_LOW);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				mem_cgroup_event(memcg, MEMCG_LOW);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2747,7 +2767,11 @@ static bool shrink_node(pg_data_t *pgdat, struct scan_control *sc)
 			vmpressure(sc->gfp_mask, memcg, false,
 				   sc->nr_scanned - scanned,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				   sc->nr_reclaimed - reclaimed, sc->order);
+=======
+				   sc->nr_reclaimed - reclaimed);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				   sc->nr_reclaimed - reclaimed);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2784,7 +2808,11 @@ static bool shrink_node(pg_data_t *pgdat, struct scan_control *sc)
 		vmpressure(sc->gfp_mask, sc->target_mem_cgroup, true,
 			   sc->nr_scanned - nr_scanned,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			   sc->nr_reclaimed - nr_reclaimed, sc->order);
+=======
+			   sc->nr_reclaimed - nr_reclaimed);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			   sc->nr_reclaimed - nr_reclaimed);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2984,7 +3012,11 @@ retry:
 	do {
 		vmpressure_prio(sc->gfp_mask, sc->target_mem_cgroup,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				sc->priority, sc->order);
+=======
+				sc->priority);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				sc->priority);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3035,7 +3067,11 @@ retry:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool allow_direct_reclaim(pg_data_t *pgdat, bool using_kswapd)
+=======
+static bool allow_direct_reclaim(pg_data_t *pgdat)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static bool allow_direct_reclaim(pg_data_t *pgdat)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3068,6 +3104,7 @@ static bool allow_direct_reclaim(pg_data_t *pgdat)
 	wmark_ok = free_pages > pfmemalloc_reserve / 2;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* The throttled direct reclaimer is now a kswapd waiter */
 	if (unlikely(!using_kswapd && !wmark_ok))
 		atomic_long_inc(&kswapd_waiters);
@@ -3078,10 +3115,15 @@ static bool allow_direct_reclaim(pg_data_t *pgdat)
 			WRITE_ONCE(pgdat->kswapd_classzone_idx, ZONE_NORMAL);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* kswapd must be awake if processes are being throttled */
 	if (!wmark_ok && waitqueue_active(&pgdat->kswapd_wait)) {
 		pgdat->kswapd_classzone_idx = min(pgdat->kswapd_classzone_idx,
 						(enum zone_type)ZONE_NORMAL);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		wake_up_interruptible(&pgdat->kswapd_wait);
 	}
@@ -3144,7 +3186,11 @@ static bool throttle_direct_reclaim(gfp_t gfp_mask, struct zonelist *zonelist,
 		/* Throttle based on the first usable node */
 		pgdat = zone->zone_pgdat;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (allow_direct_reclaim(pgdat, gfp_mask & __GFP_KSWAPD_RECLAIM))
+=======
+		if (allow_direct_reclaim(pgdat))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (allow_direct_reclaim(pgdat))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3170,7 +3216,11 @@ static bool throttle_direct_reclaim(gfp_t gfp_mask, struct zonelist *zonelist,
 	if (!(gfp_mask & __GFP_FS)) {
 		wait_event_interruptible_timeout(pgdat->pfmemalloc_wait,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			allow_direct_reclaim(pgdat, true), HZ);
+=======
+			allow_direct_reclaim(pgdat), HZ);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			allow_direct_reclaim(pgdat), HZ);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3181,11 +3231,17 @@ static bool throttle_direct_reclaim(gfp_t gfp_mask, struct zonelist *zonelist,
 	/* Throttle until kswapd wakes the process */
 	wait_event_killable(zone->zone_pgdat->pfmemalloc_wait,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		allow_direct_reclaim(pgdat, true));
 
 check_pending:
 	if (unlikely(!(gfp_mask & __GFP_KSWAPD_RECLAIM)))
 		atomic_long_dec(&kswapd_waiters);
+=======
+		allow_direct_reclaim(pgdat));
+
+check_pending:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		allow_direct_reclaim(pgdat));
 
@@ -3473,7 +3529,11 @@ static bool kswapd_shrink_node(pg_data_t *pgdat,
  * kswapd scans the zones in the highmem->normal->dma direction.  It skips
  * zones which have free_pages > high_wmark_pages(zone), but once a zone is
 <<<<<<< HEAD
+<<<<<<< HEAD
  * found to have free_pages <= high_wmark_pages(zone), any page in that zone
+=======
+ * found to have free_pages <= high_wmark_pages(zone), any page is that zone
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * found to have free_pages <= high_wmark_pages(zone), any page is that zone
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3570,6 +3630,7 @@ static int balance_pgdat(pg_data_t *pgdat, int order, int classzone_idx)
 		 */
 		if (waitqueue_active(&pgdat->pfmemalloc_wait) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 				allow_direct_reclaim(pgdat, true))
 			wake_up_all(&pgdat->pfmemalloc_wait);
 
@@ -3577,11 +3638,16 @@ static int balance_pgdat(pg_data_t *pgdat, int order, int classzone_idx)
 		if (try_to_freeze() || kthread_should_stop() ||
 		    !atomic_long_read(&kswapd_waiters))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				allow_direct_reclaim(pgdat))
 			wake_up_all(&pgdat->pfmemalloc_wait);
 
 		/* Check if kswapd should be suspending */
 		if (try_to_freeze() || kthread_should_stop())
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			break;
 
@@ -3620,9 +3686,15 @@ static enum zone_type kswapd_classzone_idx(pg_data_t *pgdat,
 					   enum zone_type prev_classzone_idx)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	enum zone_type curr_idx = READ_ONCE(pgdat->kswapd_classzone_idx);
 
 	return curr_idx == MAX_NR_ZONES ? prev_classzone_idx : curr_idx;
+=======
+	if (pgdat->kswapd_classzone_idx == MAX_NR_ZONES)
+		return prev_classzone_idx;
+	return pgdat->kswapd_classzone_idx;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (pgdat->kswapd_classzone_idx == MAX_NR_ZONES)
 		return prev_classzone_idx;
@@ -3672,11 +3744,16 @@ static void kswapd_try_to_sleep(pg_data_t *pgdat, int alloc_order, int reclaim_o
 		 */
 		if (remaining) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			WRITE_ONCE(pgdat->kswapd_classzone_idx,
 				   kswapd_classzone_idx(pgdat, classzone_idx));
 
 			if (READ_ONCE(pgdat->kswapd_order) < reclaim_order)
 				WRITE_ONCE(pgdat->kswapd_order, reclaim_order);
+=======
+			pgdat->kswapd_classzone_idx = kswapd_classzone_idx(pgdat, classzone_idx);
+			pgdat->kswapd_order = max(pgdat->kswapd_order, reclaim_order);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			pgdat->kswapd_classzone_idx = kswapd_classzone_idx(pgdat, classzone_idx);
 			pgdat->kswapd_order = max(pgdat->kswapd_order, reclaim_order);
@@ -3763,6 +3840,7 @@ static int kswapd(void *p)
 	set_freezable();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	WRITE_ONCE(pgdat->kswapd_order, 0);
 	WRITE_ONCE(pgdat->kswapd_classzone_idx, MAX_NR_ZONES);
 	for ( ; ; ) {
@@ -3770,12 +3848,17 @@ static int kswapd(void *p)
 
 		alloc_order = reclaim_order = READ_ONCE(pgdat->kswapd_order);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pgdat->kswapd_order = 0;
 	pgdat->kswapd_classzone_idx = MAX_NR_ZONES;
 	for ( ; ; ) {
 		bool ret;
 
 		alloc_order = reclaim_order = pgdat->kswapd_order;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		classzone_idx = kswapd_classzone_idx(pgdat, classzone_idx);
 
@@ -3785,15 +3868,21 @@ kswapd_try_sleep:
 
 		/* Read the new order and classzone_idx */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		alloc_order = reclaim_order = READ_ONCE(pgdat->kswapd_order);
 		classzone_idx = kswapd_classzone_idx(pgdat, classzone_idx);
 		WRITE_ONCE(pgdat->kswapd_order, 0);
 		WRITE_ONCE(pgdat->kswapd_classzone_idx, MAX_NR_ZONES);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		alloc_order = reclaim_order = pgdat->kswapd_order;
 		classzone_idx = kswapd_classzone_idx(pgdat, classzone_idx);
 		pgdat->kswapd_order = 0;
 		pgdat->kswapd_classzone_idx = MAX_NR_ZONES;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		ret = try_to_freeze();
@@ -3832,6 +3921,7 @@ kswapd_try_sleep:
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * A zone is low on free memory or too fragmented for high-order memory.  If
  * kswapd should reclaim (direct reclaim is deferred), wake it up for the zone's
  * pgdat.  It will wake up kcompactd after reclaiming memory.  If kswapd reclaim
@@ -3844,16 +3934,22 @@ void wakeup_kswapd(struct zone *zone, gfp_t gfp_flags, int order,
 	pg_data_t *pgdat;
 	enum zone_type curr_idx;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * A zone is low on free memory, so wake its kswapd task to service it.
  */
 void wakeup_kswapd(struct zone *zone, int order, enum zone_type classzone_idx)
 {
 	pg_data_t *pgdat;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!managed_zone(zone))
 		return;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (!cpuset_zone_allowed(zone, gfp_flags))
 		return;
@@ -3888,6 +3984,8 @@ void wakeup_kswapd(struct zone *zone, int order, enum zone_type classzone_idx)
 	trace_mm_vmscan_wakeup_kswapd(pgdat->node_id, classzone_idx, order,
 				      gfp_flags);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!cpuset_zone_allowed(zone, GFP_KERNEL | __GFP_HARDWALL))
 		return;
 	pgdat = zone->zone_pgdat;
@@ -3909,6 +4007,9 @@ void wakeup_kswapd(struct zone *zone, int order, enum zone_type classzone_idx)
 		return;
 
 	trace_mm_vmscan_wakeup_kswapd(pgdat->node_id, classzone_idx, order);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	wake_up_interruptible(&pgdat->kswapd_wait);
 }

@@ -1024,7 +1024,11 @@ set_rcvbuf:
 				ret = -EINVAL;
 			else
 <<<<<<< HEAD
+<<<<<<< HEAD
 				WRITE_ONCE(sk->sk_ll_usec, val);
+=======
+				sk->sk_ll_usec = val;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				sk->sk_ll_usec = val;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1442,10 +1446,15 @@ static void sock_copy(struct sock *nsk, const struct sock *osk)
 {
 #ifdef CONFIG_SECURITY_NETWORK
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct sk_security_struct sksec;
 	memcpy(&sksec, nsk->sk_security, sizeof(sksec));
 #endif
 
+=======
+	void *sptr = nsk->sk_security;
+#endif
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	void *sptr = nsk->sk_security;
 #endif
@@ -1457,7 +1466,11 @@ static void sock_copy(struct sock *nsk, const struct sock *osk)
 
 #ifdef CONFIG_SECURITY_NETWORK
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memcpy(nsk->sk_security, &sksec, sizeof(sksec));
+=======
+	nsk->sk_security = sptr;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	nsk->sk_security = sptr;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2579,6 +2592,7 @@ int sock_no_mmap(struct file *file, struct socket *sock, struct vm_area_struct *
 EXPORT_SYMBOL(sock_no_mmap);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * When a file is received (via SCM_RIGHTS, etc), we must bump the
  * various sock-based usage counts.
@@ -2600,6 +2614,8 @@ void __receive_sock(struct file *file)
 	}
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 ssize_t sock_no_sendpage(struct socket *sock, struct page *page, int offset, size_t size, int flags)

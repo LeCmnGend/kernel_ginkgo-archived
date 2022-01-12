@@ -317,7 +317,10 @@ struct xprt_class {
 	struct module		*owner;
 	char			name[32];
 <<<<<<< HEAD
+<<<<<<< HEAD
 	const char *		netid[];
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

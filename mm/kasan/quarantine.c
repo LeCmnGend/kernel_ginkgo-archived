@@ -238,7 +238,11 @@ void quarantine_reduce(void)
 	 * the installed memory to quarantine minus per-cpu queue limits.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	total_size = (totalram_pages() << PAGE_SHIFT) /
+=======
+	total_size = (READ_ONCE(totalram_pages) << PAGE_SHIFT) /
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	total_size = (READ_ONCE(totalram_pages) << PAGE_SHIFT) /
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -340,7 +340,11 @@ TRACE_EVENT(
 		__field(bool, r)
 		__field(bool, x)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__field(signed char, u)
+=======
+		__field(u8, u)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__field(u8, u)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

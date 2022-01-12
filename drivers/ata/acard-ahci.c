@@ -73,7 +73,11 @@ struct acard_sg {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors acard_ahci_qc_prep(struct ata_queued_cmd *qc);
+=======
+static void acard_ahci_qc_prep(struct ata_queued_cmd *qc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void acard_ahci_qc_prep(struct ata_queued_cmd *qc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -262,7 +266,11 @@ static unsigned int acard_ahci_fill_sg(struct ata_queued_cmd *qc, void *cmd_tbl)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors acard_ahci_qc_prep(struct ata_queued_cmd *qc)
+=======
+static void acard_ahci_qc_prep(struct ata_queued_cmd *qc)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void acard_ahci_qc_prep(struct ata_queued_cmd *qc)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -304,8 +312,11 @@ static void acard_ahci_qc_prep(struct ata_queued_cmd *qc)
 
 	ahci_fill_cmd_slot(pp, qc->tag, opts);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	return AC_ERR_OK;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

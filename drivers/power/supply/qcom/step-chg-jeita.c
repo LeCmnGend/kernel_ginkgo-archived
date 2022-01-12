@@ -1,6 +1,9 @@
 /* Copyright (c) 2017-2019 The Linux Foundation. All rights reserved.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -68,7 +71,10 @@ struct step_chg_info {
 	int			step_index;
 	int			get_config_retry_count;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int last_vol;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -427,6 +433,7 @@ static int get_val(struct range_data *range, int hysteresis, int current_index,
 
 	/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 	* As battery temperature may be below 0, range.xxx is a unsigned int, but battery
 	* temperature is a signed int, so cannot compare them when battery temp is below 0,
 	* we treat it as 0 degree when the parameter threshold(battery temp) is below 0.
@@ -435,6 +442,8 @@ static int get_val(struct range_data *range, int hysteresis, int current_index,
 			threshold = 0;
 
 	/*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * If the threshold is lesser than the minimum allowed range,
@@ -562,7 +571,11 @@ static int handle_step_chg_config(struct step_chg_info *chip)
 	/* skip processing, event too early */
 	if (elapsed_us < STEP_CHG_HYSTERISIS_DELAY_US)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto reschedule;
+=======
+		return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -636,6 +649,7 @@ update_time:
 	chip->step_last_update_time = ktime_get();
 	return 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 reschedule:
 	/* reschedule 1000uS after the remaining time */
@@ -646,6 +660,11 @@ reschedule:
 #define JEITA_WARM_VOL		4100000
 #define JEITA_GOOD_VOL		4400000
 
+=======
+}
+
+#define JEITA_SUSPEND_HYST_UV		50000
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 }
 
@@ -678,7 +697,11 @@ static int handle_jeita(struct step_chg_info *chip)
 	/* skip processing, event too early */
 	if (elapsed_us < STEP_CHG_HYSTERISIS_DELAY_US)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto reschedule;
+=======
+		return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -758,6 +781,7 @@ static int handle_jeita(struct step_chg_info *chip)
 
 set_jeita_fv:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pr_info(" jeita vote fv_uv:%d last_vol:%d",fv_uv,chip->last_vol);
 	vote(chip->fv_votable, JEITA_VOTER, fv_uv ? true : false, fv_uv);
 	if(fv_uv == JEITA_GOOD_VOL &&chip->last_vol == JEITA_WARM_VOL) {
@@ -771,15 +795,22 @@ chip->last_vol = fv_uv;
 	vote(chip->fv_votable, JEITA_VOTER, fv_uv ? true : false, fv_uv);
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	vote(chip->fv_votable, JEITA_VOTER, fv_uv ? true : false, fv_uv);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 update_time:
 	chip->jeita_last_update_time = ktime_get();
 
 	return 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 reschedule:
 	/* reschedule 1000uS after the remaining time */
 	return (STEP_CHG_HYSTERISIS_DELAY_US - elapsed_us + 1000);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -823,9 +854,12 @@ static void status_change_work(struct work_struct *work)
 			struct step_chg_info, status_change_work.work);
 	int rc = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int reschedule_us;
 	int reschedule_jeita_work_us = 0;
 	int reschedule_step_work_us = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	union power_supply_propval prop = {0, };
@@ -838,6 +872,7 @@ static void status_change_work(struct work_struct *work)
 	/* skip elapsed_us debounce for handling battery temperature */
 	rc = handle_jeita(chip);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (rc > 0)
 		reschedule_jeita_work_us = rc;
 	else if (rc < 0)
@@ -847,10 +882,15 @@ static void status_change_work(struct work_struct *work)
 	if (rc > 0)
 		reschedule_step_work_us = rc;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (rc < 0)
 		pr_err("Couldn't handle sw jeita rc = %d\n", rc);
 
 	rc = handle_step_chg_config(chip);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (rc < 0)
 		pr_err("Couldn't handle step rc = %d\n", rc);
@@ -868,6 +908,7 @@ static void status_change_work(struct work_struct *work)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	reschedule_us = min(reschedule_jeita_work_us, reschedule_step_work_us);
 	if (reschedule_us == 0)
 		goto exit_work;
@@ -876,6 +917,8 @@ static void status_change_work(struct work_struct *work)
 				usecs_to_jiffies(reschedule_us));
 	return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 exit_work:
@@ -967,15 +1010,21 @@ int qcom_step_chg_init(struct device *dev,
 	chip->jeita_fcc_config->param.psy_prop = POWER_SUPPLY_PROP_TEMP;
 	chip->jeita_fcc_config->param.prop_name = "BATT_TEMP";
 <<<<<<< HEAD
+<<<<<<< HEAD
 	chip->jeita_fcc_config->param.hysteresis = 0;
 	chip->jeita_fv_config->param.psy_prop = POWER_SUPPLY_PROP_TEMP;
 	chip->jeita_fv_config->param.prop_name = "BATT_TEMP";
 	chip->jeita_fv_config->param.hysteresis = 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	chip->jeita_fcc_config->param.hysteresis = 10;
 	chip->jeita_fv_config->param.psy_prop = POWER_SUPPLY_PROP_TEMP;
 	chip->jeita_fv_config->param.prop_name = "BATT_TEMP";
 	chip->jeita_fv_config->param.hysteresis = 10;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	INIT_DELAYED_WORK(&chip->status_change_work, status_change_work);

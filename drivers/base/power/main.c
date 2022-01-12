@@ -33,6 +33,10 @@
 #include <trace/events/power.h>
 #include <linux/cpufreq.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <linux/cpuidle.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/cpuidle.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -693,6 +697,10 @@ void dpm_noirq_end(void)
 	resume_device_irqs();
 	device_wakeup_disarm_wake_irqs();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	cpuidle_resume();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cpuidle_resume();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -788,6 +796,7 @@ void dpm_resume_early(pm_message_t state)
 	struct device *dev;
 	ktime_t starttime = ktime_get();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 	/*
 	 * Add boeffla wakalog blocker
@@ -795,6 +804,9 @@ void dpm_resume_early(pm_message_t state)
 	#ifdef CONFIG_BOEFFLA_WL_BLOCKER
 		pm_print_active_wakeup_sources();
 	#endif
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1232,6 +1244,10 @@ static int device_suspend_noirq(struct device *dev)
 void dpm_noirq_begin(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	cpuidle_pause();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cpuidle_pause();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1534,6 +1550,7 @@ static int __device_suspend(struct device *dev, pm_message_t state, bool async)
 
 	/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * Wait for possible runtime PM transitions of the device in progress
 	 * to complete and if there's a runtime resume request pending for it,
 	 * resume it before proceeding with invoking the system-wide suspend
@@ -1546,6 +1563,8 @@ static int __device_suspend(struct device *dev, pm_message_t state, bool async)
 	 */
 	pm_runtime_barrier(dev);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * If a device configured to wake up the system from sleep states
 	 * has been suspended at run time and there's a resume request pending
 	 * for it, this is equivalent to the device signaling wakeup, so the
@@ -1553,6 +1572,9 @@ static int __device_suspend(struct device *dev, pm_message_t state, bool async)
 	 */
 	if (pm_runtime_barrier(dev) && device_may_wakeup(dev))
 		pm_wakeup_event(dev, 0);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (pm_wakeup_pending()) {

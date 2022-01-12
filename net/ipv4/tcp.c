@@ -1571,7 +1571,11 @@ static void tcp_cleanup_rbuf(struct sock *sk, int copied)
 		     ((icsk->icsk_ack.pending & ICSK_ACK_PUSHED2) ||
 		      ((icsk->icsk_ack.pending & ICSK_ACK_PUSHED) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 		       !inet_csk_in_pingpong_mode(sk))) &&
+=======
+		       !icsk->icsk_ack.pingpong)) &&
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		       !icsk->icsk_ack.pingpong)) &&
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2758,9 +2762,15 @@ static int do_tcp_setsockopt(struct sock *sk, int level,
 	case TCP_QUICKACK:
 		if (!val) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			inet_csk_enter_pingpong_mode(sk);
 		} else {
 			inet_csk_exit_pingpong_mode(sk);
+=======
+			icsk->icsk_ack.pingpong = 1;
+		} else {
+			icsk->icsk_ack.pingpong = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			icsk->icsk_ack.pingpong = 1;
 		} else {
@@ -2773,7 +2783,11 @@ static int do_tcp_setsockopt(struct sock *sk, int level,
 				tcp_cleanup_rbuf(sk, 1);
 				if (!(val & 1))
 <<<<<<< HEAD
+<<<<<<< HEAD
 					inet_csk_enter_pingpong_mode(sk);
+=======
+					icsk->icsk_ack.pingpong = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					icsk->icsk_ack.pingpong = 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3128,7 +3142,11 @@ static int do_tcp_getsockopt(struct sock *sk, int level,
 	}
 	case TCP_QUICKACK:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		val = !inet_csk_in_pingpong_mode(sk);
+=======
+		val = !icsk->icsk_ack.pingpong;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		val = !icsk->icsk_ack.pingpong;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3588,8 +3606,13 @@ void __init tcp_init(void)
 	/* Set per-socket limits to no more than 1/128 the pressure threshold */
 	limit = nr_free_buffer_pages() << (PAGE_SHIFT - 7);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	max_wshare = min(16UL*1024*1024, limit);
 	max_rshare = min(16UL*1024*1024, limit);
+=======
+	max_wshare = min(4UL*1024*1024, limit);
+	max_rshare = min(6UL*1024*1024, limit);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	max_wshare = min(4UL*1024*1024, limit);
 	max_rshare = min(6UL*1024*1024, limit);
@@ -3601,8 +3624,13 @@ void __init tcp_init(void)
 
 	sysctl_tcp_rmem[0] = SK_MEM_QUANTUM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sysctl_tcp_rmem[1] = 131072;
 	sysctl_tcp_rmem[2] = max(131072, max_rshare);
+=======
+	sysctl_tcp_rmem[1] = 87380;
+	sysctl_tcp_rmem[2] = max(87380, max_rshare);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sysctl_tcp_rmem[1] = 87380;
 	sysctl_tcp_rmem[2] = max(87380, max_rshare);

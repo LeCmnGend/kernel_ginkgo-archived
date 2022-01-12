@@ -123,7 +123,11 @@
 #define SATA_RCAR_DTEND			BIT(0)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define SATA_RCAR_DMA_BOUNDARY		0x1FFFFFFFUL
+=======
+#define SATA_RCAR_DMA_BOUNDARY		0x1FFFFFFEUL
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define SATA_RCAR_DMA_BOUNDARY		0x1FFFFFFEUL
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -556,6 +560,7 @@ static void sata_rcar_bmdma_fill_sg(struct ata_queued_cmd *qc)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors sata_rcar_qc_prep(struct ata_queued_cmd *qc)
 {
 	if (!(qc->flags & ATA_QCFLAG_DMAMAP))
@@ -565,12 +570,17 @@ static enum ata_completion_errors sata_rcar_qc_prep(struct ata_queued_cmd *qc)
 
 	return AC_ERR_OK;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void sata_rcar_qc_prep(struct ata_queued_cmd *qc)
 {
 	if (!(qc->flags & ATA_QCFLAG_DMAMAP))
 		return;
 
 	sata_rcar_bmdma_fill_sg(qc);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

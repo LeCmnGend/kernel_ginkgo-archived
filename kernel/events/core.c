@@ -99,7 +99,11 @@ static void remote_function(void *data)
  * task_cpu() goes offline concurrently.
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * returns @func return value or -ESRCH or -ENXIO when the process isn't running
+=======
+ * returns @func return value or -ESRCH when the process isn't running
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * returns @func return value or -ESRCH when the process isn't running
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -119,8 +123,12 @@ task_function_call(struct task_struct *p, remote_function_f func, void *info)
 		ret = smp_call_function_single(task_cpu(p), remote_function,
 					       &data, 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!ret)
 			ret = data.ret;
+=======
+		ret = !ret ? data.ret : -EAGAIN;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = !ret ? data.ret : -EAGAIN;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -451,7 +459,11 @@ int sysctl_perf_event_mlock __read_mostly = 512 + (PAGE_SIZE / 1024); /* 'free' 
 #define DEFAULT_MAX_SAMPLE_RATE		100000
 #define DEFAULT_SAMPLE_PERIOD_NS	(NSEC_PER_SEC / DEFAULT_MAX_SAMPLE_RATE)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define DEFAULT_CPU_TIME_MAX_PERCENT	5
+=======
+#define DEFAULT_CPU_TIME_MAX_PERCENT	25
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define DEFAULT_CPU_TIME_MAX_PERCENT	25
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4052,9 +4064,13 @@ find_get_context(struct pmu *pmu, struct task_struct *task,
 		ctx = &cpuctx->ctx;
 		get_ctx(ctx);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		raw_spin_lock_irqsave(&ctx->lock, flags);
 		++ctx->pin_count;
 		raw_spin_unlock_irqrestore(&ctx->lock, flags);
+=======
+		++ctx->pin_count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		++ctx->pin_count;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5429,6 +5445,10 @@ static void perf_mmap_close(struct vm_area_struct *vma)
 {
 	struct perf_event *event = vma->vm_file->private_data;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5437,7 +5457,10 @@ static void perf_mmap_close(struct vm_area_struct *vma)
 	int mmap_locked = rb->mmap_locked;
 	unsigned long size = perf_data_size(rb);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool detach_rest = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -5471,8 +5494,12 @@ static void perf_mmap_close(struct vm_area_struct *vma)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (atomic_dec_and_test(&rb->mmap_count))
 		detach_rest = true;
+=======
+	atomic_dec(&rb->mmap_count);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	atomic_dec(&rb->mmap_count);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5485,7 +5512,11 @@ static void perf_mmap_close(struct vm_area_struct *vma)
 
 	/* If there's still other mmap()s of this buffer, we're done. */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!detach_rest)
+=======
+	if (atomic_read(&rb->mmap_count))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (atomic_read(&rb->mmap_count))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -8833,7 +8864,10 @@ perf_event_parse_addr_filter(struct perf_event *event, char *fstr,
 				int fpos = filter->range ? 2 : 1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 				kfree(filename);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				filename = match_strdup(&args[fpos]);
@@ -8875,7 +8909,11 @@ perf_event_parse_addr_filter(struct perf_event *event, char *fstr,
 				ret = -EOPNOTSUPP;
 				if (!event->ctx->task)
 <<<<<<< HEAD
+<<<<<<< HEAD
 					goto fail;
+=======
+					goto fail_free_name;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					goto fail_free_name;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -8885,7 +8923,11 @@ perf_event_parse_addr_filter(struct perf_event *event, char *fstr,
 						&filter->path);
 				if (ret)
 <<<<<<< HEAD
+<<<<<<< HEAD
 					goto fail;
+=======
+					goto fail_free_name;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					goto fail_free_name;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -8912,7 +8954,10 @@ perf_event_parse_addr_filter(struct perf_event *event, char *fstr,
 		goto fail;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(filename);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kfree(orig);
@@ -8920,8 +8965,14 @@ perf_event_parse_addr_filter(struct perf_event *event, char *fstr,
 	return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 fail:
 	kfree(filename);
+=======
+fail_free_name:
+	kfree(filename);
+fail:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 fail_free_name:
 	kfree(filename);

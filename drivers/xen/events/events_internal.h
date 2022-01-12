@@ -33,6 +33,7 @@ enum xen_irq_type {
 struct irq_info {
 	struct list_head list;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct list_head eoi_list;
 	short refcnt;
 	short spurious_cnt;
@@ -50,11 +51,16 @@ struct irq_info {
 	u64 eoi_time;		/* Time in jiffies when to EOI. */
 	raw_spinlock_t lock;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int refcnt;
 	enum xen_irq_type type;	/* type */
 	unsigned irq;
 	unsigned int evtchn;	/* event channel */
 	unsigned short cpu;	/* cpu bound */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	union {
@@ -75,8 +81,11 @@ struct irq_info {
 #define PIRQ_MSI_GROUP	(1 << 2)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct evtchn_loop_ctrl;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct evtchn_ops {
@@ -85,7 +94,10 @@ struct evtchn_ops {
 
 	int (*setup)(struct irq_info *info);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	void (*remove)(evtchn_port_t port, unsigned int cpu);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	void (*bind_to_cpu)(struct irq_info *info, unsigned cpu);
@@ -93,6 +105,7 @@ struct evtchn_ops {
 	void (*clear_pending)(unsigned port);
 	void (*set_pending)(unsigned port);
 	bool (*is_pending)(unsigned port);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	void (*mask)(unsigned port);
 	void (*unmask)(unsigned port);
@@ -103,12 +116,17 @@ struct evtchn_ops {
 	int (*percpu_init)(unsigned int cpu);
 	int (*percpu_deinit)(unsigned int cpu);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool (*test_and_set_mask)(unsigned port);
 	void (*mask)(unsigned port);
 	void (*unmask)(unsigned port);
 
 	void (*handle_events)(unsigned cpu);
 	void (*resume)(void);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
@@ -117,7 +135,10 @@ extern const struct evtchn_ops *evtchn_ops;
 extern int **evtchn_to_irq;
 int get_evtchn_to_irq(unsigned int evtchn);
 <<<<<<< HEAD
+<<<<<<< HEAD
 void handle_irq_for_port(evtchn_port_t port, struct evtchn_loop_ctrl *ctrl);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -142,6 +163,7 @@ static inline int xen_evtchn_port_setup(struct irq_info *info)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void xen_evtchn_port_remove(evtchn_port_t evtchn,
 					  unsigned int cpu)
 {
@@ -149,6 +171,8 @@ static inline void xen_evtchn_port_remove(evtchn_port_t evtchn,
 		evtchn_ops->remove(evtchn, cpu);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void xen_evtchn_port_bind_to_cpu(struct irq_info *info,
@@ -173,12 +197,18 @@ static inline bool test_evtchn(unsigned port)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline bool test_and_set_mask(unsigned port)
 {
 	return evtchn_ops->test_and_set_mask(port);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void mask_evtchn(unsigned port)
 {
@@ -191,10 +221,16 @@ static inline void unmask_evtchn(unsigned port)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void xen_evtchn_handle_events(unsigned cpu,
 					    struct evtchn_loop_ctrl *ctrl)
 {
 	return evtchn_ops->handle_events(cpu, ctrl);
+=======
+static inline void xen_evtchn_handle_events(unsigned cpu)
+{
+	return evtchn_ops->handle_events(cpu);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline void xen_evtchn_handle_events(unsigned cpu)
 {

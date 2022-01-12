@@ -300,7 +300,11 @@ inst_rollback:
 		__team_option_inst_del_option(team, dst_opts[i]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	i = option_count;
+=======
+	i = option_count - 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	i = option_count - 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1007,8 +1011,12 @@ static void __team_compute_features(struct team *team)
 					IFF_XMIT_DST_RELEASE_PERM;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rcu_read_lock();
 	list_for_each_entry_rcu(port, &team->port_list, list) {
+=======
+	list_for_each_entry(port, &team->port_list, list) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	list_for_each_entry(port, &team->port_list, list) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1026,7 +1034,10 @@ static void __team_compute_features(struct team *team)
 			max_hard_header_len = port->dev->hard_header_len;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rcu_read_unlock();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1044,7 +1055,13 @@ static void __team_compute_features(struct team *team)
 static void team_compute_features(struct team *team)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__team_compute_features(team);
+=======
+	mutex_lock(&team->lock);
+	__team_compute_features(team);
+	mutex_unlock(&team->lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mutex_lock(&team->lock);
 	__team_compute_features(team);
@@ -2096,7 +2113,10 @@ static void team_setup_by_port(struct net_device *dev,
 	dev->type = port_dev->type;
 	dev->hard_header_len = port_dev->hard_header_len;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev->needed_headroom = port_dev->needed_headroom;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dev->addr_len = port_dev->addr_len;

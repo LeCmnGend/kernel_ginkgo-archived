@@ -1,7 +1,10 @@
 /*
  * Copyright (c) 2014 Samsung Electronics Co., Ltd
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2019 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -306,6 +309,7 @@ void drm_bridge_post_disable(struct drm_bridge *bridge)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (bridge->is_dsi_drm_bridge)
 		mutex_lock(&bridge->lock);
 
@@ -315,6 +319,11 @@ void drm_bridge_post_disable(struct drm_bridge *bridge)
 	if (bridge->is_dsi_drm_bridge)
 		mutex_unlock(&bridge->lock);
 
+=======
+	if (bridge->funcs->post_disable)
+		bridge->funcs->post_disable(bridge);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (bridge->funcs->post_disable)
 		bridge->funcs->post_disable(bridge);
@@ -369,6 +378,7 @@ void drm_bridge_pre_enable(struct drm_bridge *bridge)
 	drm_bridge_pre_enable(bridge->next);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (bridge->is_dsi_drm_bridge)
 		mutex_lock(&bridge->lock);
 
@@ -377,6 +387,10 @@ void drm_bridge_pre_enable(struct drm_bridge *bridge)
 
 	if (bridge->is_dsi_drm_bridge)
 		mutex_unlock(&bridge->lock);
+=======
+	if (bridge->funcs->pre_enable)
+		bridge->funcs->pre_enable(bridge);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (bridge->funcs->pre_enable)
 		bridge->funcs->pre_enable(bridge);

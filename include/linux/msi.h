@@ -145,7 +145,11 @@ void __pci_write_msi_msg(struct msi_desc *entry, struct msi_msg *msg);
 
 u32 __pci_msix_desc_mask_irq(struct msi_desc *desc, u32 flag);
 <<<<<<< HEAD
+<<<<<<< HEAD
 void __pci_msi_desc_mask_irq(struct msi_desc *desc, u32 mask, u32 flag);
+=======
+u32 __pci_msi_desc_mask_irq(struct msi_desc *desc, u32 mask, u32 flag);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 u32 __pci_msi_desc_mask_irq(struct msi_desc *desc, u32 mask, u32 flag);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

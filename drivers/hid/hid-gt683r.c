@@ -65,7 +65,10 @@ static const struct hid_device_id gt683r_led_id[] = {
 	{ }
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 MODULE_DEVICE_TABLE(hid, gt683r_led_id);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

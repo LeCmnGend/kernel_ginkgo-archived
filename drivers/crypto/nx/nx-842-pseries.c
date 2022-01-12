@@ -554,8 +554,12 @@ static int nx842_OF_set_defaults(struct nx842_devdata *devdata)
  * is 'okay'.  Otherwise the device driver will be disabled.
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @devdata: struct nx842_devdata to use for dev_info
  * @prop: struct property point containing the maxsyncop for the update
+=======
+ * @prop - struct property point containing the maxsyncop for the update
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * @prop - struct property point containing the maxsyncop for the update
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -565,8 +569,12 @@ static int nx842_OF_set_defaults(struct nx842_devdata *devdata)
  *  -ENODEV - Device is not available
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int nx842_OF_upd_status(struct nx842_devdata *devdata,
 			       struct property *prop)
+=======
+static int nx842_OF_upd_status(struct property *prop)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int nx842_OF_upd_status(struct property *prop)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -784,7 +792,11 @@ static int nx842_OF_upd(struct property *new_prop)
 
 	/* Perform property updates */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = nx842_OF_upd_status(new_devdata, status);
+=======
+	ret = nx842_OF_upd_status(status);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = nx842_OF_upd_status(status);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1101,7 +1113,10 @@ static struct vio_device_id nx842_vio_driver_ids[] = {
 	{"", ""},
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 MODULE_DEVICE_TABLE(vio, nx842_vio_driver_ids);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

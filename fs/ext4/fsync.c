@@ -153,11 +153,15 @@ int ext4_sync_file(struct file *file, loff_t start, loff_t end, int datasync)
 	if (needs_barrier) {
 	issue_flush:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		err = 0;
 		if (!blk_queue_nonrot(bdev_get_queue(inode->i_sb->s_bdev)))
 			err = blkdev_issue_flush(inode->i_sb->s_bdev, GFP_KERNEL, NULL);
 		else
 			blkdev_issue_flush_nowait(inode->i_sb->s_bdev, GFP_KERNEL);
+=======
+		err = blkdev_issue_flush(inode->i_sb->s_bdev, GFP_KERNEL, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		err = blkdev_issue_flush(inode->i_sb->s_bdev, GFP_KERNEL, NULL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

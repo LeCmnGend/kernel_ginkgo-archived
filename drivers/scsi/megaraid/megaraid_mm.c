@@ -251,7 +251,11 @@ mraid_mm_get_adapter(mimd_t __user *umimd, int *rval)
 	uint32_t	adapno;
 	int		iterator;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool		is_found;
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -271,6 +275,7 @@ mraid_mm_get_adapter(mimd_t __user *umimd, int *rval)
 	adapter = NULL;
 	iterator = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	is_found = false;
 
 	list_for_each_entry(adapter, &adapters_list_g, list) {
@@ -282,12 +287,17 @@ mraid_mm_get_adapter(mimd_t __user *umimd, int *rval)
 
 	if (!is_found) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	list_for_each_entry(adapter, &adapters_list_g, list) {
 		if (iterator++ == adapno) break;
 	}
 
 	if (!adapter) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		*rval = -ENODEV;
 		return NULL;
@@ -757,7 +767,10 @@ ioctl_done(uioc_t *kioc)
 	int		iterator;
 	mraid_mmadp_t*	adapter;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool		is_found;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -783,7 +796,10 @@ ioctl_done(uioc_t *kioc)
 		adapter		= NULL;
 		adapno		= kioc->adapno;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		is_found	= false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -792,10 +808,14 @@ ioctl_done(uioc_t *kioc)
 
 		list_for_each_entry(adapter, &adapters_list_g, list) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (iterator++ == adapno) {
 				is_found = true;
 				break;
 			}
+=======
+			if (iterator++ == adapno) break;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (iterator++ == adapno) break;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -804,9 +824,15 @@ ioctl_done(uioc_t *kioc)
 		kioc->timedout = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (is_found)
 			mraid_mm_dealloc_kioc( adapter, kioc );
 
+=======
+		if (adapter) {
+			mraid_mm_dealloc_kioc( adapter, kioc );
+		}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (adapter) {
 			mraid_mm_dealloc_kioc( adapter, kioc );

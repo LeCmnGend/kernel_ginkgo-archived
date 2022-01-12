@@ -723,6 +723,7 @@ static int can_rcv(struct sk_buff *skb, struct net_device *dev,
 	struct canfd_frame *cfd = (struct canfd_frame *)skb->data;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(dev->type != ARPHRD_CAN || skb->len != CAN_MTU)) {
 		pr_warn_once("PF_CAN: dropped non conform CAN skbuff: dev type %d, len %d\n",
 			     dev->type, skb->len);
@@ -735,22 +736,30 @@ static int can_rcv(struct sk_buff *skb, struct net_device *dev,
 			     dev->type, skb->len, cfd->len);
 		goto free_skb;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (unlikely(dev->type != ARPHRD_CAN || skb->len != CAN_MTU ||
 		     cfd->len > CAN_MAX_DLEN)) {
 		pr_warn_once("PF_CAN: dropped non conform CAN skbuf: dev type %d, len %d, datalen %d\n",
 			     dev->type, skb->len, cfd->len);
 		kfree_skb(skb);
 		return NET_RX_DROP;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	can_receive(skb, dev);
 	return NET_RX_SUCCESS;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 free_skb:
 	kfree_skb(skb);
 	return NET_RX_DROP;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -760,6 +769,7 @@ static int canfd_rcv(struct sk_buff *skb, struct net_device *dev,
 {
 	struct canfd_frame *cfd = (struct canfd_frame *)skb->data;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (unlikely(dev->type != ARPHRD_CAN || skb->len != CANFD_MTU)) {
 		pr_warn_once("PF_CAN: dropped non conform CAN FD skbuff: dev type %d, len %d\n",
@@ -773,22 +783,30 @@ static int canfd_rcv(struct sk_buff *skb, struct net_device *dev,
 			     dev->type, skb->len, cfd->len);
 		goto free_skb;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (unlikely(dev->type != ARPHRD_CAN || skb->len != CANFD_MTU ||
 		     cfd->len > CANFD_MAX_DLEN)) {
 		pr_warn_once("PF_CAN: dropped non conform CAN FD skbuf: dev type %d, len %d, datalen %d\n",
 			     dev->type, skb->len, cfd->len);
 		kfree_skb(skb);
 		return NET_RX_DROP;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	can_receive(skb, dev);
 	return NET_RX_SUCCESS;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 free_skb:
 	kfree_skb(skb);
 	return NET_RX_DROP;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

@@ -687,6 +687,10 @@ static bool should_defer_flush(struct mm_struct *mm, enum ttu_flags flags)
 unsigned long page_address_in_vma(struct page *page, struct vm_area_struct *vma)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	unsigned long address;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long address;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -700,6 +704,7 @@ unsigned long page_address_in_vma(struct page *page, struct vm_area_struct *vma)
 		    vma->anon_vma->root != page__anon_vma->root)
 			return -EFAULT;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else if (!vma->vm_file) {
 		return -EFAULT;
 	} else if (vma->vm_file->f_mapping != compound_head(page)->mapping) {
@@ -708,6 +713,8 @@ unsigned long page_address_in_vma(struct page *page, struct vm_area_struct *vma)
 
 	return vma_address(page, vma);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else if (page->mapping) {
 		if (!vma->vm_file || vma->vm_file->f_mapping != page->mapping)
 			return -EFAULT;
@@ -717,6 +724,9 @@ unsigned long page_address_in_vma(struct page *page, struct vm_area_struct *vma)
 	if (unlikely(address < vma->vm_start || address >= vma->vm_end))
 		return -EFAULT;
 	return address;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -910,7 +920,11 @@ static bool page_mkclean_one(struct page *page, struct vm_area_struct *vma,
 	 * the page can not be free from this function.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	end = vma_address_end(page, vma);
+=======
+	end = min(vma->vm_end, start + (PAGE_SIZE << compound_order(page)));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	end = min(vma->vm_end, start + (PAGE_SIZE << compound_order(page)));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1361,6 +1375,7 @@ static bool try_to_unmap_one(struct page *page, struct vm_area_struct *vma,
 	enum ttu_flags flags = (enum ttu_flags)arg;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * When racing against e.g. zap_pte_range() on another cpu,
 	 * in between its ptep_get_and_clear_full() and page_remove_rmap(),
@@ -1370,6 +1385,8 @@ static bool try_to_unmap_one(struct page *page, struct vm_area_struct *vma,
 	if (flags & TTU_SYNC)
 		pvmw.flags = PVMW_SYNC;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* munlock has nothing to gain from examining un-locked vmas */
@@ -1394,8 +1411,12 @@ static bool try_to_unmap_one(struct page *page, struct vm_area_struct *vma,
 	 * try_to_unmap() must hold a reference on the page.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	end = PageKsm(page) ?
 			address + PAGE_SIZE : vma_address_end(page, vma);
+=======
+	end = min(vma->vm_end, start + (PAGE_SIZE << compound_order(page)));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	end = min(vma->vm_end, start + (PAGE_SIZE << compound_order(page)));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1658,9 +1679,15 @@ static bool invalid_migration_vma(struct vm_area_struct *vma, void *arg)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int page_not_mapped(struct page *page)
 {
 	return !page_mapped(page);
+=======
+static int page_mapcount_is_zero(struct page *page)
+{
+	return !total_mapcount(page);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int page_mapcount_is_zero(struct page *page)
 {
@@ -1688,7 +1715,11 @@ bool try_to_unmap(struct page *page, enum ttu_flags flags,
 		.rmap_one = try_to_unmap_one,
 		.arg = (void *)flags,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.done = page_not_mapped,
+=======
+		.done = page_mapcount_is_zero,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.done = page_mapcount_is_zero,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1714,6 +1745,7 @@ bool try_to_unmap(struct page *page, enum ttu_flags flags,
 		rmap_walk(page, &rwc);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * When racing against e.g. zap_pte_range() on another cpu,
 	 * in between its ptep_get_and_clear_full() and page_remove_rmap(),
@@ -1724,6 +1756,8 @@ bool try_to_unmap(struct page *page, enum ttu_flags flags,
 }
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return !page_mapcount(page) ? true : false;
 }
 
@@ -1732,6 +1766,9 @@ static int page_not_mapped(struct page *page)
 	return !page_mapped(page);
 };
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * try_to_munlock - try to munlock a page
@@ -1837,7 +1874,10 @@ static void rmap_walk_anon(struct page *page, struct rmap_walk_control *rwc,
 		unsigned long address = vma_address(page, vma);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		VM_BUG_ON_VMA(address == -EFAULT, vma);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		cond_resched();
@@ -1903,7 +1943,10 @@ static void rmap_walk_file(struct page *page, struct rmap_walk_control *rwc,
 		unsigned long address = vma_address(page, vma);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		VM_BUG_ON_VMA(address == -EFAULT, vma);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		cond_resched();

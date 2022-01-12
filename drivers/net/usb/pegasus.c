@@ -751,6 +751,7 @@ static inline void disable_net_traffic(pegasus_t *pegasus)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int get_interrupt_interval(pegasus_t *pegasus)
 {
 	u16 data;
@@ -762,12 +763,17 @@ static inline int get_interrupt_interval(pegasus_t *pegasus)
 		return ret;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void get_interrupt_interval(pegasus_t *pegasus)
 {
 	u16 data;
 	u8 interval;
 
 	read_eprom_word(pegasus, 4, &data);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	interval = data >> 8;
 	if (pegasus->usb->speed != USB_SPEED_HIGH) {
@@ -784,8 +790,11 @@ static inline void get_interrupt_interval(pegasus_t *pegasus)
 	}
 	pegasus->intr_interval = interval;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	return 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -1207,9 +1216,13 @@ static int pegasus_probe(struct usb_interface *intf,
 
 	pegasus->features = usb_dev_id[dev_index].private;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	res = get_interrupt_interval(pegasus);
 	if (res)
 		goto out2;
+=======
+	get_interrupt_interval(pegasus);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	get_interrupt_interval(pegasus);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

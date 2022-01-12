@@ -1,7 +1,10 @@
 /*
  * Copyright (c) 2017-2020, The Linux Foundation. All rights reserved.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -34,7 +37,11 @@
 
 #define SPI_NUM_CHIPSELECT	(4)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define SPI_XFER_TIMEOUT_MS	(1000)
+=======
+#define SPI_XFER_TIMEOUT_MS	(250)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define SPI_XFER_TIMEOUT_MS	(250)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -264,6 +271,7 @@ static int spi_slv_abort(struct spi_master *spi)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int geni_spi_get_master_irq(struct spi_device *spi_slv)
 {
 	struct spi_geni_master *mas = spi_master_get_devdata(spi_slv->master);
@@ -271,6 +279,8 @@ int geni_spi_get_master_irq(struct spi_device *spi_slv)
 	return mas->irq;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int get_spi_clk_cfg(u32 speed_hz, struct spi_geni_master *mas,
@@ -2054,7 +2064,11 @@ static const struct dev_pm_ops spi_geni_pm_ops = {
 	SET_RUNTIME_PM_OPS(spi_geni_runtime_suspend,
 					spi_geni_runtime_resume, NULL)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	SET_LATE_SYSTEM_SLEEP_PM_OPS(spi_geni_suspend, spi_geni_resume)
+=======
+	SET_SYSTEM_SLEEP_PM_OPS(spi_geni_suspend, spi_geni_resume)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	SET_SYSTEM_SLEEP_PM_OPS(spi_geni_suspend, spi_geni_resume)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

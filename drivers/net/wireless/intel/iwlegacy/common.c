@@ -4303,8 +4303,13 @@ il_apm_init(struct il_priv *il)
 	 */
 	if (il->cfg->set_l0s) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = pcie_capability_read_word(il->pci_dev, PCI_EXP_LNKCTL, &lctl);
 		if (!ret && (lctl & PCI_EXP_LNKCTL_ASPM_L1)) {
+=======
+		pcie_capability_read_word(il->pci_dev, PCI_EXP_LNKCTL, &lctl);
+		if (lctl & PCI_EXP_LNKCTL_ASPM_L1) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pcie_capability_read_word(il->pci_dev, PCI_EXP_LNKCTL, &lctl);
 		if (lctl & PCI_EXP_LNKCTL_ASPM_L1) {

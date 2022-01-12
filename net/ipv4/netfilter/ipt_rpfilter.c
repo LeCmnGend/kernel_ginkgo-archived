@@ -95,7 +95,11 @@ static bool rpfilter_mt(const struct sk_buff *skb, struct xt_action_param *par)
 	flow.flowi4_oif = 0;
 	flow.flowi4_mark = info->flags & XT_RPFILTER_VALID_MARK ? skb->mark : 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	flow.flowi4_tos = iph->tos & IPTOS_RT_MASK;
+=======
+	flow.flowi4_tos = RT_TOS(iph->tos);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	flow.flowi4_tos = RT_TOS(iph->tos);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

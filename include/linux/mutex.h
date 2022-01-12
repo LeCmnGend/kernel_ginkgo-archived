@@ -15,6 +15,10 @@
 #include <linux/list.h>
 #include <linux/spinlock_types.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <linux/linkage.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/linkage.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -142,11 +146,14 @@ extern void __mutex_init(struct mutex *lock, const char *name,
  * @lock: the mutex to be queried
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Returns true if the mutex is locked, false if unlocked.
  */
 static inline bool mutex_is_locked(struct mutex *lock)
 {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Returns 1 if the mutex is locked, 0 if unlocked.
  */
 static inline int mutex_is_locked(struct mutex *lock)
@@ -154,6 +161,9 @@ static inline int mutex_is_locked(struct mutex *lock)
 	/*
 	 * XXX think about spin_is_locked
 	 */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return __mutex_owner(lock) != NULL;
 }
@@ -194,7 +204,11 @@ extern void mutex_lock_io(struct mutex *lock);
 # define mutex_lock_killable_nested(lock, subclass) mutex_lock_killable(lock)
 # define mutex_lock_nest_lock(lock, nest_lock) mutex_lock(lock)
 <<<<<<< HEAD
+<<<<<<< HEAD
 # define mutex_lock_io_nested(lock, subclass) mutex_lock_io(lock)
+=======
+# define mutex_lock_io_nested(lock, subclass) mutex_lock(lock)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 # define mutex_lock_io_nested(lock, subclass) mutex_lock(lock)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

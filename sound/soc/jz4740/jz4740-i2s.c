@@ -319,8 +319,11 @@ static int jz4740_i2s_set_sysclk(struct snd_soc_dai *dai, int clk_id,
 	case JZ4740_I2S_CLKSRC_EXT:
 		parent = clk_get(NULL, "ext");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (IS_ERR(parent))
 			return PTR_ERR(parent);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		clk_set_parent(i2s->clk_i2s, parent);
@@ -328,8 +331,11 @@ static int jz4740_i2s_set_sysclk(struct snd_soc_dai *dai, int clk_id,
 	case JZ4740_I2S_CLKSRC_PLL:
 		parent = clk_get(NULL, "pll half");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (IS_ERR(parent))
 			return PTR_ERR(parent);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		clk_set_parent(i2s->clk_i2s, parent);

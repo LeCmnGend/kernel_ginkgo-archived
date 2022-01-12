@@ -463,8 +463,12 @@ static struct scsi_target *scsi_alloc_target(struct device *parent,
 
 		if(error) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (error != -ENXIO)
 				dev_err(dev, "target allocation failed, error %d\n", error);
+=======
+			dev_printk(KERN_ERR, dev, "target allocation failed, error %d\n", error);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			dev_printk(KERN_ERR, dev, "target allocation failed, error %d\n", error);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1725,7 +1729,11 @@ static void scsi_sysfs_add_devices(struct Scsi_Host *shost)
 static struct async_scan_data *scsi_prep_async_scan(struct Scsi_Host *shost)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct async_scan_data *data = NULL;
+=======
+	struct async_scan_data *data;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct async_scan_data *data;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1735,10 +1743,16 @@ static struct async_scan_data *scsi_prep_async_scan(struct Scsi_Host *shost)
 		return NULL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&shost->scan_mutex);
 	if (shost->async_scan) {
 		shost_printk(KERN_DEBUG, shost, "%s called twice\n", __func__);
 		goto err;
+=======
+	if (shost->async_scan) {
+		shost_printk(KERN_DEBUG, shost, "%s called twice\n", __func__);
+		return NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (shost->async_scan) {
 		shost_printk(KERN_DEBUG, shost, "%s called twice\n", __func__);
@@ -1755,6 +1769,10 @@ static struct async_scan_data *scsi_prep_async_scan(struct Scsi_Host *shost)
 	init_completion(&data->prev_finished);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	mutex_lock(&shost->scan_mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mutex_lock(&shost->scan_mutex);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1773,7 +1791,10 @@ static struct async_scan_data *scsi_prep_async_scan(struct Scsi_Host *shost)
 
  err:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_unlock(&shost->scan_mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kfree(data);

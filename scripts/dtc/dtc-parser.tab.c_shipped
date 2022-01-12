@@ -449,7 +449,11 @@ union yyalloc
 #define YYNNTS  30
 /* YYNRULES -- Number of rules.  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define YYNRULES  85
+=======
+#define YYNRULES  84
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define YYNRULES  84
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -504,6 +508,7 @@ static const yytype_uint16 yyrline[] =
 {
        0,   109,   109,   117,   121,   128,   129,   139,   142,   149,
 <<<<<<< HEAD
+<<<<<<< HEAD
      153,   161,   165,   170,   181,   200,   213,   220,   228,   231,
      238,   242,   246,   250,   258,   262,   266,   270,   274,   290,
      300,   308,   311,   315,   322,   338,   343,   362,   376,   383,
@@ -513,6 +518,8 @@ static const yytype_uint16 yyrline[] =
      453,   462,   471,   475,   476,   477,   478,   483,   486,   490,
      498,   501,   505,   513,   517,   521
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
      153,   161,   165,   170,   181,   191,   206,   214,   217,   224,
      228,   232,   236,   244,   248,   252,   256,   260,   276,   286,
      294,   297,   301,   308,   324,   329,   348,   362,   369,   370,
@@ -521,6 +528,9 @@ static const yytype_uint16 yyrline[] =
      421,   422,   426,   427,   428,   432,   433,   434,   438,   439,
      448,   457,   461,   462,   463,   464,   469,   472,   476,   484,
      487,   491,   499,   503,   507
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 #endif
@@ -598,6 +608,7 @@ static const yytype_uint8 yydefact[] =
 {
        0,     0,     0,     5,     7,     3,     1,     6,     0,     0,
 <<<<<<< HEAD
+<<<<<<< HEAD
       16,     7,     0,    39,    40,     0,     0,    10,     0,     2,
        8,     4,     0,     0,     0,    73,     0,    42,    43,    45,
       47,    49,    51,    53,    55,    58,    65,    68,    72,     0,
@@ -613,6 +624,8 @@ static const yytype_uint8 yydefact[] =
        0,     0,     0,     0,    38,    37,    25,    36,    34,     0,
       78,    79,    26,     0,    29,     0,     0,     0,    28
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
        0,     7,     0,    38,    39,     0,     0,    10,     0,     2,
        8,     4,     0,     0,     0,    72,     0,    41,    42,    44,
       46,    48,    50,    52,    54,    57,    64,    67,    71,     0,
@@ -627,6 +640,9 @@ static const yytype_uint8 yydefact[] =
       29,    19,    31,     0,    23,    32,    26,     0,    76,    34,
        0,     0,     0,     0,    37,    36,    24,    35,    33,     0,
       77,    78,    25,     0,    28,     0,     0,     0,    27
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
@@ -711,6 +727,7 @@ static const yytype_uint8 yyr1[] =
 {
        0,    48,    49,    50,    50,    51,    51,    52,    52,    53,
 <<<<<<< HEAD
+<<<<<<< HEAD
       53,    54,    54,    54,    54,    54,    54,    55,    56,    56,
       57,    57,    57,    57,    58,    58,    58,    58,    58,    58,
       58,    59,    59,    59,    60,    60,    60,    60,    60,    61,
@@ -720,6 +737,8 @@ static const yytype_uint8 yyr1[] =
       73,    73,    73,    74,    74,    74,    74,    75,    75,    75,
       76,    76,    76,    77,    77,    77
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
       53,    54,    54,    54,    54,    54,    55,    56,    56,    57,
       57,    57,    57,    58,    58,    58,    58,    58,    58,    58,
       59,    59,    59,    60,    60,    60,    60,    60,    61,    61,
@@ -728,6 +747,9 @@ static const yytype_uint8 yyr1[] =
       70,    70,    71,    71,    71,    72,    72,    72,    73,    73,
       73,    73,    74,    74,    74,    74,    75,    75,    75,    76,
       76,    76,    77,    77,    77
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
@@ -735,6 +757,7 @@ static const yytype_uint8 yyr1[] =
 static const yytype_uint8 yyr2[] =
 {
        0,     2,     3,     2,     4,     1,     2,     0,     2,     4,
+<<<<<<< HEAD
 <<<<<<< HEAD
        2,     2,     3,     4,     3,     4,     0,     5,     0,     2,
        4,     2,     3,     2,     2,     3,     4,     2,     9,     5,
@@ -745,6 +768,8 @@ static const yytype_uint8 yyr2[] =
        3,     3,     1,     1,     2,     2,     2,     0,     2,     2,
        0,     2,     2,     2,     3,     2
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
        2,     2,     3,     4,     3,     4,     5,     0,     2,     4,
        2,     3,     2,     2,     3,     4,     2,     9,     5,     2,
        0,     2,     2,     3,     1,     2,     2,     2,     1,     1,
@@ -753,6 +778,9 @@ static const yytype_uint8 yyr2[] =
        3,     3,     3,     3,     1,     3,     3,     1,     3,     3,
        3,     1,     1,     2,     2,     2,     0,     2,     2,     0,
        2,     2,     2,     3,     2
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
@@ -1627,6 +1655,7 @@ yyreduce:
 			struct node *target = get_node_by_ref((yyvsp[-2].node), (yyvsp[-1].labelref));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (target) {
 				merge_nodes(target, (yyvsp[0].node));
 			} else {
@@ -1648,6 +1677,8 @@ yyreduce:
   case 15:
 #line 201 "dtc-parser.y" /* yacc.c:1646  */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (target)
 				merge_nodes(target, (yyvsp[0].node));
 			else
@@ -1659,6 +1690,9 @@ yyreduce:
 
   case 15:
 #line 192 "dtc-parser.y" /* yacc.c:1646  */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
     {
 			struct node *target = get_node_by_ref((yyvsp[-3].node), (yyvsp[-1].labelref));
@@ -1671,6 +1705,7 @@ yyreduce:
 
 			(yyval.node) = (yyvsp[-3].node);
 		}
+<<<<<<< HEAD
 <<<<<<< HEAD
 #line 1607 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
@@ -1735,6 +1770,8 @@ yyreduce:
   case 23:
 #line 251 "dtc-parser.y" /* yacc.c:1646  */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #line 1598 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
 
@@ -1788,11 +1825,15 @@ yyreduce:
 
   case 22:
 #line 237 "dtc-parser.y" /* yacc.c:1646  */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
     {
 			add_label(&(yyvsp[0].prop)->labels, (yyvsp[-1].labelref));
 			(yyval.prop) = (yyvsp[0].prop);
 		}
+<<<<<<< HEAD
 <<<<<<< HEAD
 #line 1673 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
@@ -1832,6 +1873,8 @@ yyreduce:
   case 28:
 #line 275 "dtc-parser.y" /* yacc.c:1646  */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #line 1655 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
 
@@ -1869,6 +1912,9 @@ yyreduce:
 
   case 27:
 #line 261 "dtc-parser.y" /* yacc.c:1646  */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
     {
 			FILE *f = srcfile_relative_open((yyvsp[-5].data).val, NULL);
@@ -1886,17 +1932,23 @@ yyreduce:
 			fclose(f);
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 #line 1725 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 29:
 #line 291 "dtc-parser.y" /* yacc.c:1646  */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #line 1707 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 28:
 #line 277 "dtc-parser.y" /* yacc.c:1646  */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
     {
 			FILE *f = srcfile_relative_open((yyvsp[-1].data).val, NULL);
@@ -1907,6 +1959,7 @@ yyreduce:
 			(yyval.data) = data_merge((yyvsp[-4].data), d);
 			fclose(f);
 		}
+<<<<<<< HEAD
 <<<<<<< HEAD
 #line 1739 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
@@ -1946,6 +1999,8 @@ yyreduce:
   case 34:
 #line 323 "dtc-parser.y" /* yacc.c:1646  */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #line 1721 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
 
@@ -1983,6 +2038,9 @@ yyreduce:
 
   case 33:
 #line 309 "dtc-parser.y" /* yacc.c:1646  */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
     {
 			unsigned long long bits;
@@ -2000,22 +2058,29 @@ yyreduce:
 			(yyval.array).bits = bits;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 #line 1791 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
 #line 339 "dtc-parser.y" /* yacc.c:1646  */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #line 1773 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 34:
 #line 325 "dtc-parser.y" /* yacc.c:1646  */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
     {
 			(yyval.array).data = empty_data;
 			(yyval.array).bits = 32;
 		}
+<<<<<<< HEAD
 <<<<<<< HEAD
 #line 1800 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
@@ -2023,11 +2088,16 @@ yyreduce:
   case 36:
 #line 344 "dtc-parser.y" /* yacc.c:1646  */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #line 1782 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
 #line 330 "dtc-parser.y" /* yacc.c:1646  */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
     {
 			if ((yyvsp[-1].array).bits < 64) {
@@ -2048,17 +2118,23 @@ yyreduce:
 			(yyval.array).data = data_append_integer((yyvsp[-1].array).data, (yyvsp[0].integer), (yyvsp[-1].array).bits);
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 #line 1823 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 37:
 #line 363 "dtc-parser.y" /* yacc.c:1646  */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #line 1805 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 36:
 #line 349 "dtc-parser.y" /* yacc.c:1646  */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
     {
 			uint64_t val = ~0ULL >> (64 - (yyvsp[-1].array).bits);
@@ -2073,6 +2149,7 @@ yyreduce:
 
 			(yyval.array).data = data_append_integer((yyvsp[-1].array).data, val, (yyvsp[-1].array).bits);
 		}
+<<<<<<< HEAD
 <<<<<<< HEAD
 #line 1841 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
@@ -2198,6 +2275,8 @@ yyreduce:
   case 70:
 #line 454 "dtc-parser.y" /* yacc.c:1646  */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #line 1823 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
 
@@ -2321,6 +2400,9 @@ yyreduce:
 
   case 69:
 #line 440 "dtc-parser.y" /* yacc.c:1646  */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
     {
 			if ((yyvsp[0].integer) != 0) {
@@ -2331,17 +2413,23 @@ yyreduce:
 			}
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 #line 1972 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 71:
 #line 463 "dtc-parser.y" /* yacc.c:1646  */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #line 1954 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 70:
 #line 449 "dtc-parser.y" /* yacc.c:1646  */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
     {
 			if ((yyvsp[0].integer) != 0) {
@@ -2351,6 +2439,7 @@ yyreduce:
 				(yyval.integer) = 0;
 			}
 		}
+<<<<<<< HEAD
 <<<<<<< HEAD
 #line 1985 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
@@ -2416,6 +2505,8 @@ yyreduce:
   case 82:
 #line 506 "dtc-parser.y" /* yacc.c:1646  */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #line 1967 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
 
@@ -2479,11 +2570,15 @@ yyreduce:
 
   case 81:
 #line 492 "dtc-parser.y" /* yacc.c:1646  */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
     {
 			ERROR(&(yylsp[0]), "Properties must precede subnodes");
 			YYERROR;
 		}
+<<<<<<< HEAD
 <<<<<<< HEAD
 #line 2052 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
@@ -2507,6 +2602,8 @@ yyreduce:
   case 85:
 #line 522 "dtc-parser.y" /* yacc.c:1646  */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #line 2034 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
 
@@ -2528,11 +2625,15 @@ yyreduce:
 
   case 84:
 #line 508 "dtc-parser.y" /* yacc.c:1646  */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
     {
 			add_label(&(yyvsp[0].node)->labels, (yyvsp[-1].labelref));
 			(yyval.node) = (yyvsp[0].node);
 		}
+<<<<<<< HEAD
 <<<<<<< HEAD
 #line 2077 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
@@ -2540,11 +2641,16 @@ yyreduce:
 
 #line 2081 "dtc-parser.tab.c" /* yacc.c:1646  */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #line 2059 "dtc-parser.tab.c" /* yacc.c:1646  */
     break;
 
 
 #line 2063 "dtc-parser.tab.c" /* yacc.c:1646  */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
       default: break;
     }
@@ -2781,7 +2887,11 @@ yyreturn:
   return yyresult;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #line 528 "dtc-parser.y" /* yacc.c:1906  */
+=======
+#line 514 "dtc-parser.y" /* yacc.c:1906  */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #line 514 "dtc-parser.y" /* yacc.c:1906  */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

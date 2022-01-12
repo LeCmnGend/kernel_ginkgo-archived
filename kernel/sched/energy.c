@@ -291,6 +291,11 @@ static int sched_energy_probe(struct platform_device *pdev)
 	kfree(max_frequencies);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	walt_map_freq_to_load();
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	walt_map_freq_to_load();
 

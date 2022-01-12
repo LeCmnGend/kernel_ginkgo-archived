@@ -84,7 +84,12 @@ static void default_key_dtr(struct dm_target *ti)
 
 static int default_key_ctr_optional(struct dm_target *ti,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				    unsigned int argc, char **argv)
+=======
+				    unsigned int argc, char **argv,
+				    bool is_legacy)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				    unsigned int argc, char **argv,
 				    bool is_legacy)
@@ -129,7 +134,11 @@ static int default_key_ctr_optional(struct dm_target *ti,
 		} else if (!strcmp(opt_string, "wrappedkey_v0")) {
 			dkc->is_hw_wrapped = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		} else if (!strcmp(opt_string, "set_dun")) {
+=======
+		} else if (!strcmp(opt_string, "set_dun") && is_legacy) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		} else if (!strcmp(opt_string, "set_dun") && is_legacy) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -178,7 +187,11 @@ static void default_key_adjust_sector_size_and_iv(char **argv,
 			(*dkc)->sector_size = SECTOR_SIZE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (dev->bdev->bd_part)
+=======
+		if (dev->bdev->bd_part && !(*dkc)->set_dun)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (dev->bdev->bd_part && !(*dkc)->set_dun)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -205,6 +218,10 @@ static int default_key_ctr(struct dm_target *ti, unsigned int argc, char **argv)
 	char dummy;
 	int err;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int __argc;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int __argc;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -212,6 +229,7 @@ static int default_key_ctr(struct dm_target *ti, unsigned int argc, char **argv)
 	bool is_legacy = false;
 
 	if (argc >= 4 && !strcmp(argv[0], "AES-256-XTS")) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 		argc = 0;
 		_argv[argc++] = "aes-xts-plain64";
@@ -226,6 +244,8 @@ static int default_key_ctr(struct dm_target *ti, unsigned int argc, char **argv)
 		_argv[argc] = NULL;
 		argv = _argv;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__argc = 0;
 		_argv[__argc++] = "aes-xts-plain64";
 		_argv[__argc++] = argv[1];
@@ -246,6 +266,9 @@ static int default_key_ctr(struct dm_target *ti, unsigned int argc, char **argv)
 		_argv[__argc] = NULL;
 		argv = _argv;
 		argc = __argc;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		is_legacy = true;
 	}
@@ -319,7 +342,12 @@ static int default_key_ctr(struct dm_target *ti, unsigned int argc, char **argv)
 	dkc->sector_size = SECTOR_SIZE;
 	if (argc > 5) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		err = default_key_ctr_optional(ti, argc - 5, &argv[5]);
+=======
+		err = default_key_ctr_optional(ti, argc - 5, &argv[5],
+					       is_legacy);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		err = default_key_ctr_optional(ti, argc - 5, &argv[5],
 					       is_legacy);
@@ -373,7 +401,10 @@ out:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void default_key_map_dun(struct bio *bio, u64 *dun)
 {
 	dun[0] += 1;
@@ -381,6 +412,9 @@ static void default_key_map_dun(struct bio *bio, u64 *dun)
 	       sizeof(bio->bi_crypt_context->bc_dun));
 	bio->bi_crypt_context->is_ext4 = false;
 }
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int default_key_map(struct dm_target *ti, struct bio *bio)
 {
@@ -407,7 +441,12 @@ static int default_key_map(struct dm_target *ti, struct bio *bio)
 	 * DISCARD request), there's nothing more to do.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (bio_should_skip_dm_default_key(bio) || !bio_has_data(bio))
+=======
+	if ((bio_should_skip_dm_default_key(bio) && !dkc->set_dun) ||
+	    !bio_has_data(bio))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if ((bio_should_skip_dm_default_key(bio) && !dkc->set_dun) ||
 	    !bio_has_data(bio))
@@ -419,7 +458,11 @@ static int default_key_map(struct dm_target *ti, struct bio *bio)
 	 * It must not already have one.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (WARN_ON_ONCE(bio_has_crypt_ctx(bio)))
+=======
+	if (WARN_ON_ONCE(bio_has_crypt_ctx(bio) && !dkc->set_dun))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (WARN_ON_ONCE(bio_has_crypt_ctx(bio) && !dkc->set_dun))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -439,13 +482,19 @@ static int default_key_map(struct dm_target *ti, struct bio *bio)
 		return DM_MAPIO_KILL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bio_crypt_set_ctx(bio, &dkc->key, dun, GFP_NOIO);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!bio_has_crypt_ctx(bio))
 		bio_crypt_set_ctx(bio, &dkc->key, dun, GFP_NOIO);
 
 	if (dkc->set_dun)
 		default_key_map_dun(bio, dun);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return DM_MAPIO_REMAPPED;
@@ -475,6 +524,11 @@ static void default_key_status(struct dm_target *ti, status_type_t type,
 		if (dkc->is_hw_wrapped)
 			num_feature_args += 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		if (dkc->set_dun)
+			num_feature_args += 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (dkc->set_dun)
 			num_feature_args += 1;
@@ -490,6 +544,11 @@ static void default_key_status(struct dm_target *ti, status_type_t type,
 			if (dkc->is_hw_wrapped)
 				DMEMIT(" wrappedkey_v0");
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			if (dkc->set_dun)
+				DMEMIT(" set_dun");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (dkc->set_dun)
 				DMEMIT(" set_dun");

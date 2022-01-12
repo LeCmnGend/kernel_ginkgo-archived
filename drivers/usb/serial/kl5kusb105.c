@@ -282,6 +282,7 @@ static int  klsi_105_open(struct tty_struct *tty, struct usb_serial_port *port)
 	spin_unlock_irqrestore(&priv->lock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(cfg);
 
 	/* READ_ON and urb submission */
@@ -289,12 +290,17 @@ static int  klsi_105_open(struct tty_struct *tty, struct usb_serial_port *port)
 	if (rc)
 		return rc;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* READ_ON and urb submission */
 	rc = usb_serial_generic_open(tty, port);
 	if (rc) {
 		retval = rc;
 		goto err_free_cfg;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	rc = usb_control_msg(port->serial->dev,
@@ -339,6 +345,11 @@ err_disable_read:
 err_generic_close:
 	usb_serial_generic_close(port);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+err_free_cfg:
+	kfree(cfg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 err_free_cfg:
 	kfree(cfg);

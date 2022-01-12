@@ -66,7 +66,11 @@ static void scm_disable_sdi(void);
  * So the SDI cannot be re-enabled when it already by-passed.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int download_mode = 0;
+=======
+static int download_mode = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int download_mode = 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -167,7 +171,11 @@ static bool get_dload_mode(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __maybe_unused void enable_emergency_dload_mode(void)
+=======
+static void enable_emergency_dload_mode(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void enable_emergency_dload_mode(void)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -322,7 +330,11 @@ static void msm_restart_prepare(const char *cmd)
 
 	/* Hard reset the PMIC unless memory contents must be maintained. */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (in_panic || force_warm_reboot || need_warm_reset)
+=======
+	if (force_warm_reboot || need_warm_reset)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (force_warm_reboot || need_warm_reset)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -365,7 +377,11 @@ static void msm_restart_prepare(const char *cmd)
 					     restart_reason);
 		} else if (!strncmp(cmd, "edl", 3)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_info("Rebooting to EDL is unavailable\n");
+=======
+			enable_emergency_dload_mode();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			enable_emergency_dload_mode();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

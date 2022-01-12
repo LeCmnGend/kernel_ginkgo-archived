@@ -186,8 +186,12 @@
 	 PCIE_CONF_FUNC(PCI_FUNC(devfn)) | PCIE_CONF_REG(where))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define PIO_RETRY_CNT			500
 #define PIO_RETRY_DELAY			2 /* 2 us*/
+=======
+#define PIO_TIMEOUT_MS			1
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define PIO_TIMEOUT_MS			1
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -419,15 +423,21 @@ static int advk_pcie_wait_pio(struct advk_pcie *pcie)
 {
 	struct device *dev = &pcie->pdev->dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int i;
 
 	for (i = 0; i < PIO_RETRY_CNT; i++) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long timeout;
 
 	timeout = jiffies + msecs_to_jiffies(PIO_TIMEOUT_MS);
 
 	while (time_before(jiffies, timeout)) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		u32 start, isr;
 
@@ -435,6 +445,7 @@ static int advk_pcie_wait_pio(struct advk_pcie *pcie)
 		isr = advk_readl(pcie, PIO_ISR);
 		if (!start && isr)
 			return 0;
+<<<<<<< HEAD
 <<<<<<< HEAD
 		udelay(PIO_RETRY_DELAY);
 	}
@@ -473,12 +484,17 @@ static bool advk_pcie_pio_is_running(struct advk_pcie *pcie)
 }
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	dev_err(dev, "config read/write timed out\n");
 	return -ETIMEDOUT;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int advk_pcie_rd_conf(struct pci_bus *bus, u32 devfn,
 			     int where, int size, u32 *val)
@@ -493,10 +509,16 @@ static int advk_pcie_rd_conf(struct pci_bus *bus, u32 devfn,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (advk_pcie_pio_is_running(pcie)) {
 		*val = 0xffffffff;
 		return PCIBIOS_SET_FAILED;
 	}
+=======
+	/* Start PIO */
+	advk_writel(pcie, 0, PIO_START);
+	advk_writel(pcie, 1, PIO_ISR);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Start PIO */
 	advk_writel(pcie, 0, PIO_START);
@@ -521,8 +543,12 @@ static int advk_pcie_rd_conf(struct pci_bus *bus, u32 devfn,
 	advk_writel(pcie, 0xf, PIO_WR_DATA_STRB);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Clear PIO DONE ISR and start the transfer */
 	advk_writel(pcie, 1, PIO_ISR);
+=======
+	/* Start the transfer */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Start the transfer */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -560,8 +586,14 @@ static int advk_pcie_wr_conf(struct pci_bus *bus, u32 devfn,
 		return PCIBIOS_SET_FAILED;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (advk_pcie_pio_is_running(pcie))
 		return PCIBIOS_SET_FAILED;
+=======
+	/* Start PIO */
+	advk_writel(pcie, 0, PIO_START);
+	advk_writel(pcie, 1, PIO_ISR);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Start PIO */
 	advk_writel(pcie, 0, PIO_START);
@@ -594,8 +626,12 @@ static int advk_pcie_wr_conf(struct pci_bus *bus, u32 devfn,
 	advk_writel(pcie, data_strobe, PIO_WR_DATA_STRB);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Clear PIO DONE ISR and start the transfer */
 	advk_writel(pcie, 1, PIO_ISR);
+=======
+	/* Start the transfer */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Start the transfer */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

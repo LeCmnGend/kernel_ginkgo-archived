@@ -752,7 +752,10 @@ static void xhci_hub_report_usb3_link_state(struct xhci_hcd *xhci,
 	u32 pls = status_reg & PORT_PLS_MASK;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* resume state is a xHCI internal state.
 	 * Do not report it to usb core, instead, pretend to be U3,
 	 * thus usb core knows it's not ready for transfer
@@ -762,6 +765,9 @@ static void xhci_hub_report_usb3_link_state(struct xhci_hcd *xhci,
 		return;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* When the CAS bit is set then warm reset
 	 * should be performed on port
@@ -786,6 +792,7 @@ static void xhci_hub_report_usb3_link_state(struct xhci_hcd *xhci,
 	} else {
 		/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 * Resume state is an xHCI internal state.  Do not report it to
 		 * usb core, instead, pretend to be U3, thus usb core knows
 		 * it's not ready for transfer.
@@ -796,6 +803,8 @@ static void xhci_hub_report_usb3_link_state(struct xhci_hcd *xhci,
 		}
 
 		/*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		 * If CAS bit isn't set but the Port is already at
@@ -1622,8 +1631,11 @@ int xhci_hub_status_data(struct usb_hcd *hcd, char *buf)
 	 * a non-zero value even if there are no status changes.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock_irqsave(&xhci->lock, flags);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	status = bus_state->resuming_ports;
@@ -1631,6 +1643,10 @@ int xhci_hub_status_data(struct usb_hcd *hcd, char *buf)
 	mask = PORT_CSC | PORT_PEC | PORT_OCC | PORT_PLC | PORT_WRC | PORT_CEC;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	spin_lock_irqsave(&xhci->lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spin_lock_irqsave(&xhci->lock, flags);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1770,10 +1786,13 @@ int xhci_bus_suspend(struct usb_hcd *hcd)
 	bus_state->next_statechange = jiffies + msecs_to_jiffies(10);
 	spin_unlock_irqrestore(&xhci->lock, flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (bus_state->bus_suspended)
 		usleep_range(5000, 10000);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;

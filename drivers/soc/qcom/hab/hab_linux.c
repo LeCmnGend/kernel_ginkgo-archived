@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2019-2020, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2019-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2019-2021, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -99,7 +103,11 @@ static long hab_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
 	unsigned char data[256] = { 0 };
 	long ret = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	char names[30];
+=======
+	char names[30] = { 0 };
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	char names[30] = { 0 };
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

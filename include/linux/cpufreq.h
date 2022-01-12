@@ -430,7 +430,11 @@ static inline void cpufreq_resume(void) {}
 #define CPUFREQ_ADJUST			(0)
 #define CPUFREQ_NOTIFY			(1)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define CPUFREQ_INCOMPATIBLE		(6)
+=======
+#define CPUFREQ_INCOMPATIBLE	(6)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define CPUFREQ_INCOMPATIBLE	(6)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -481,7 +485,11 @@ static inline unsigned long cpufreq_scale(unsigned long old, u_int div,
 	return result;
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 }
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -504,6 +512,7 @@ static inline unsigned long cpufreq_scale(unsigned long old, u_int div,
  * ondemand governor will work on any processor with transition latency <= 10ms,
  * using appropriate sampling rate.
 <<<<<<< HEAD
+<<<<<<< HEAD
  *
  * For CPUs with transition latency > 10ms (mostly drivers with CPUFREQ_ETERNAL)
  * this governor will not work. All times here are in us (micro seconds).
@@ -520,6 +529,10 @@ static inline unsigned long cpufreq_scale(unsigned long old, u_int div,
 #define CPUFREQ_GOV_LIMITS	(3)
 #define CPUFREQ_GOV_POLICY_INIT	(4)
 #define CPUFREQ_GOV_POLICY_EXIT	(5)
+=======
+ */
+#define LATENCY_MULTIPLIER		(1000)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  */
 #define LATENCY_MULTIPLIER		(1000)
@@ -605,6 +618,7 @@ struct governor_attr {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* CPUFREQ DEFAULT GOVERNOR */
 /*
  * Performance governor is fallback governor if any other gov failed to auto
@@ -641,6 +655,8 @@ extern struct cpufreq_governor cpufreq_gov_pegasusq;
 
 #endif
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline bool cpufreq_can_do_remote_dvfs(struct cpufreq_policy *policy)
 {
 	/*
@@ -651,6 +667,9 @@ static inline bool cpufreq_can_do_remote_dvfs(struct cpufreq_policy *policy)
 	return policy->dvfs_possible_from_any_cpu ||
 		cpumask_test_cpu(smp_processor_id(), policy->cpus);
 }
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*********************************************************************
@@ -996,8 +1015,12 @@ extern void arch_set_freq_scale(struct cpumask *cpus, unsigned long cur_freq,
 extern void arch_set_max_freq_scale(struct cpumask *cpus,
 				    unsigned long policy_max_freq);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern void arch_set_max_thermal_scale(struct cpumask *cpus,
 					unsigned long max_thermal_freq);
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

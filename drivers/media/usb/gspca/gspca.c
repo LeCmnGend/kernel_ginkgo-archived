@@ -2141,9 +2141,12 @@ out:
 #endif
 	v4l2_ctrl_handler_free(gspca_dev->vdev.ctrl_handler);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	v4l2_device_unregister(&gspca_dev->v4l2_dev);
 	if (sd_desc->probe_error)
 		sd_desc->probe_error(gspca_dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kfree(gspca_dev->usb_buf);

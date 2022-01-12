@@ -23,13 +23,19 @@ int i2c_slave_register(struct i2c_client *client, i2c_slave_cb_t slave_cb)
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (WARN(IS_ERR_OR_NULL(client) || !slave_cb, "insufficient data\n"))
 		return -EINVAL;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!client || !slave_cb) {
 		WARN(1, "insufficient data\n");
 		return -EINVAL;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!(client->flags & I2C_CLIENT_SLAVE))
@@ -70,9 +76,12 @@ int i2c_slave_unregister(struct i2c_client *client)
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (IS_ERR_OR_NULL(client))
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!client->adapter->algo->unreg_slave) {

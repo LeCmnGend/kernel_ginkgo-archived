@@ -1279,10 +1279,15 @@ int hci_inquiry(void __user *arg)
 		 */
 		if (wait_on_bit(&hdev->flags, HCI_INQUIRY,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				TASK_INTERRUPTIBLE)) {
 			err = -EINTR;
 			goto done;
 		}
+=======
+				TASK_INTERRUPTIBLE))
+			return -EINTR;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				TASK_INTERRUPTIBLE))
 			return -EINTR;
@@ -1464,6 +1469,7 @@ static int hci_dev_do_open(struct hci_dev *hdev)
 		/* Init failed, cleanup */
 		flush_work(&hdev->tx_work);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		/* Since hci_rx_work() is possible to awake new cmd_work
 		 * it should be flushed first to avoid unexpected call of
@@ -1471,6 +1477,10 @@ static int hci_dev_do_open(struct hci_dev *hdev)
 		 */
 		flush_work(&hdev->rx_work);
 		flush_work(&hdev->cmd_work);
+=======
+		flush_work(&hdev->cmd_work);
+		flush_work(&hdev->rx_work);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		flush_work(&hdev->cmd_work);
 		flush_work(&hdev->rx_work);
@@ -3192,6 +3202,11 @@ EXPORT_SYMBOL(hci_register_dev);
 void hci_unregister_dev(struct hci_dev *hdev)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int id;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int id;
 
@@ -3201,6 +3216,11 @@ void hci_unregister_dev(struct hci_dev *hdev)
 	hci_dev_set_flag(hdev, HCI_UNREGISTER);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	id = hdev->id;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	id = hdev->id;
 
@@ -3234,6 +3254,7 @@ void hci_unregister_dev(struct hci_dev *hdev)
 
 	device_del(&hdev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Actual cleanup is deferred until hci_cleanup_dev(). */
 	hci_dev_put(hdev);
 }
@@ -3242,6 +3263,9 @@ EXPORT_SYMBOL(hci_unregister_dev);
 /* Cleanup HCI device */
 void hci_cleanup_dev(struct hci_dev *hdev)
 {
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3267,14 +3291,20 @@ void hci_cleanup_dev(struct hci_dev *hdev)
 	hci_dev_unlock(hdev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ida_simple_remove(&hci_index_ida, hdev->id);
 }
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	hci_dev_put(hdev);
 
 	ida_simple_remove(&hci_index_ida, id);
 }
 EXPORT_SYMBOL(hci_unregister_dev);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* Suspend HCI device */

@@ -92,8 +92,12 @@ config PTP_1588_CLOCK_PCH
 	tristate "Intel PCH EG20T as PTP clock"
 	depends on X86_32 || COMPILE_TEST
 <<<<<<< HEAD
+<<<<<<< HEAD
 	depends on HAS_IOMEM && PCI
 	depends on NET
+=======
+	depends on HAS_IOMEM && NET
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	depends on HAS_IOMEM && NET
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

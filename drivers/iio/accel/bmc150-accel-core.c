@@ -198,6 +198,7 @@ struct bmc150_accel_data {
 	u8 fifo_mode, watermark;
 	s16 buffer[8];
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Ensure there is sufficient space and correct alignment for
 	 * the timestamp if enabled
@@ -206,6 +207,8 @@ struct bmc150_accel_data {
 		__le16 channels[3];
 		s64 ts __aligned(8);
 	} scan;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u8 bw_bits;
@@ -945,6 +948,10 @@ static int __bmc150_accel_fifo_flush(struct iio_dev *indio_dev,
 	 */
 	for (i = 0; i < count; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		u16 sample[8];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		u16 sample[8];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -954,11 +961,17 @@ static int __bmc150_accel_fifo_flush(struct iio_dev *indio_dev,
 		for_each_set_bit(bit, indio_dev->active_scan_mask,
 				 indio_dev->masklength)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			memcpy(&data->scan.channels[j++], &buffer[i * 3 + bit],
 			       sizeof(data->scan.channels[0]));
 
 		iio_push_to_buffers_with_timestamp(indio_dev, &data->scan,
 						   tstamp);
+=======
+			memcpy(&sample[j++], &buffer[i * 3 + bit], 2);
+
+		iio_push_to_buffers_with_timestamp(indio_dev, sample, tstamp);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			memcpy(&sample[j++], &buffer[i * 3 + bit], 2);
 

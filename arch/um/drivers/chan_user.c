@@ -257,8 +257,12 @@ static int winch_tramp(int fd, struct tty_port *port, int *fd_out,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = os_set_fd_block(*fd_out, 0);
 	if (err) {
+=======
+	if (os_set_fd_block(*fd_out, 0)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (os_set_fd_block(*fd_out, 0)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -380,7 +380,11 @@ static int spi_st_probe(struct platform_device *pdev)
 	if (ret) {
 		dev_err(&pdev->dev, "Failed to register master\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto rpm_disable;
+=======
+		goto clk_disable;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto clk_disable;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -389,9 +393,14 @@ static int spi_st_probe(struct platform_device *pdev)
 	return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 rpm_disable:
 	pm_runtime_disable(&pdev->dev);
 clk_disable:
+=======
+clk_disable:
+	pm_runtime_disable(&pdev->dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 clk_disable:
 	pm_runtime_disable(&pdev->dev);

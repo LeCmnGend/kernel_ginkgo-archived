@@ -154,9 +154,13 @@ static int nft_nat_init(const struct nft_ctx *ctx, const struct nft_expr *expr,
 		break;
 	default:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (tb[NFTA_NAT_REG_ADDR_MIN])
 			return -EAFNOSUPPORT;
 		break;
+=======
+		return -EAFNOSUPPORT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EAFNOSUPPORT;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -50,6 +50,7 @@ static inline int timeval_compare(const struct timeval *lhs, const struct timeva
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * mktime64 - Converts date to seconds.
  * Converts Gregorian date to seconds since 1970-01-01 00:00:00.
@@ -94,6 +95,11 @@ extern time64_t mktime64(const unsigned int year, const unsigned int mon,
 			const unsigned int day, const unsigned int hour,
 			const unsigned int min, const unsigned int sec);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+extern time64_t mktime64(const unsigned int year, const unsigned int mon,
+			const unsigned int day, const unsigned int hour,
+			const unsigned int min, const unsigned int sec);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
  * Deprecated. Use mktime64().
@@ -106,6 +112,7 @@ static inline unsigned long mktime(const unsigned int year,
 	return mktime64(year, mon, day, hour, min, sec);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /**
  * set_normalized_timespec - set timespec sec and nsec parts and normalize
@@ -144,11 +151,15 @@ static inline void set_normalized_timespec(struct timespec *ts, time_t sec, s64 
 =======
 extern void set_normalized_timespec(struct timespec *ts, time_t sec, s64 nsec);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+extern void set_normalized_timespec(struct timespec *ts, time_t sec, s64 nsec);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*
  * timespec_add_safe assumes both values are positive and checks
  * for overflow. It will return TIME_T_MAX if the reutrn would be
  * smaller then either of the arguments.
+<<<<<<< HEAD
 <<<<<<< HEAD
  *
  * Add two timespec values and do a safety check for overflow.
@@ -167,6 +178,11 @@ static inline struct timespec timespec_add_safe(const struct timespec lhs,
 
 	return res;
 }
+=======
+ */
+extern struct timespec timespec_add_safe(const struct timespec lhs,
+					 const struct timespec rhs);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  */
 extern struct timespec timespec_add_safe(const struct timespec lhs,
@@ -233,6 +249,7 @@ static inline bool timeval_valid(const struct timeval *tv)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * timespec_trunc - Truncate timespec to a granularity
  * @t: Timespec
@@ -255,6 +272,9 @@ static inline struct timespec timespec_trunc(struct timespec t, unsigned gran)
 	}
 	return t;
 }
+=======
+extern struct timespec timespec_trunc(struct timespec t, unsigned gran);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern struct timespec timespec_trunc(struct timespec t, unsigned gran);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -374,6 +394,7 @@ static inline s64 timeval_to_ns(const struct timeval *tv)
 /**
  * ns_to_timespec - Convert nanoseconds to timespec
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @nsec:       the nanoseconds value to be converted
  *
  * Returns the timespec representation of the nsec parameter.
@@ -413,6 +434,8 @@ static inline struct timeval ns_to_timeval(const s64 nsec)
 	return tv;
 }
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * @nsec:	the nanoseconds value to be converted
  *
  * Returns the timespec representation of the nsec parameter.
@@ -426,6 +449,9 @@ extern struct timespec ns_to_timespec(const s64 nsec);
  * Returns the timeval representation of the nsec parameter.
  */
 extern struct timeval ns_to_timeval(const s64 nsec);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**

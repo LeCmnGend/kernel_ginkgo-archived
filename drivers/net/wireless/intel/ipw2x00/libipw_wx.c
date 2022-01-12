@@ -650,10 +650,15 @@ int libipw_wx_set_encodeext(struct libipw_device *ieee,
 
 	if (ext->alg != IW_ENCODE_ALG_NONE) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		int key_len = clamp_val(ext->key_len, 0, SCM_KEY_LEN);
 
 		memcpy(sec.keys[idx], ext->key, key_len);
 		sec.key_sizes[idx] = key_len;
+=======
+		memcpy(sec.keys[idx], ext->key, ext->key_len);
+		sec.key_sizes[idx] = ext->key_len;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		memcpy(sec.keys[idx], ext->key, ext->key_len);
 		sec.key_sizes[idx] = ext->key_len;

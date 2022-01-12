@@ -184,7 +184,11 @@ static ssize_t raw_attr_read(struct file *filep, struct kobject *kobj,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void create_elog_obj(uint64_t id, size_t size, uint64_t type)
+=======
+static struct elog_obj *create_elog_obj(uint64_t id, size_t size, uint64_t type)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static struct elog_obj *create_elog_obj(uint64_t id, size_t size, uint64_t type)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -195,7 +199,11 @@ static struct elog_obj *create_elog_obj(uint64_t id, size_t size, uint64_t type)
 	elog = kzalloc(sizeof(*elog), GFP_KERNEL);
 	if (!elog)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return;
+=======
+		return NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return NULL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -232,6 +240,7 @@ static struct elog_obj *create_elog_obj(uint64_t id, size_t size, uint64_t type)
 	if (rc) {
 		kobject_put(&elog->kobj);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return;
 	}
 
@@ -264,6 +273,8 @@ static struct elog_obj *create_elog_obj(uint64_t id, size_t size, uint64_t type)
 
 	return;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return NULL;
 	}
 
@@ -276,6 +287,9 @@ static struct elog_obj *create_elog_obj(uint64_t id, size_t size, uint64_t type)
 	kobject_uevent(&elog->kobj, KOBJ_ADD);
 
 	return elog;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

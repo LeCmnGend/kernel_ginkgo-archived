@@ -838,10 +838,15 @@ static int add_new_gdb(handle_t *handle, struct inode *inode,
 	BUFFER_TRACE(dind, "get_write_access");
 	err = ext4_journal_get_write_access(handle, dind);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(err)) {
 		ext4_std_error(sb, err);
 		goto errout;
 	}
+=======
+	if (unlikely(err))
+		ext4_std_error(sb, err);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(err))
 		ext4_std_error(sb, err);

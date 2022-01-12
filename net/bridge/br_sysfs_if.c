@@ -51,8 +51,14 @@ static int store_flag(struct net_bridge_port *p, unsigned long v,
 		      unsigned long mask)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long flags = p->flags;
 	int err;
+=======
+	unsigned long flags;
+
+	flags = p->flags;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long flags;
 
@@ -66,10 +72,13 @@ static int store_flag(struct net_bridge_port *p, unsigned long v,
 
 	if (flags != p->flags) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		err = br_switchdev_set_port_flag(p, flags, mask);
 		if (err)
 			return err;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		p->flags = flags;

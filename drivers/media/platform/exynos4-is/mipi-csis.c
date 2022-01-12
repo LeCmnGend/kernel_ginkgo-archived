@@ -514,10 +514,15 @@ static int s5pcsis_s_stream(struct v4l2_subdev *sd, int enable)
 		s5pcsis_clear_counters(state);
 		ret = pm_runtime_get_sync(&state->pdev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ret && ret != 1) {
 			pm_runtime_put_noidle(&state->pdev->dev);
 			return ret;
 		}
+=======
+		if (ret && ret != 1)
+			return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (ret && ret != 1)
 			return ret;

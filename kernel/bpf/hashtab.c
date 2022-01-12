@@ -647,6 +647,7 @@ static void htab_elem_free_rcu(struct rcu_head *head)
 	struct bpf_htab *htab = l->htab;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	htab_elem_free(htab, l);
 }
 
@@ -665,6 +666,8 @@ static void free_htab_elem(struct bpf_htab *htab, struct htab_elem *l)
 {
 	htab_put_fd_value(htab, l);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* must increment bpf_prog_active to avoid kprobe+bpf triggering while
 	 * we're calling kfree, otherwise deadlock is possible if kprobes
 	 * are placed somewhere inside of slub
@@ -685,6 +688,9 @@ static void free_htab_elem(struct bpf_htab *htab, struct htab_elem *l)
 
 		map->ops->map_fd_put_ptr(ptr);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (htab_is_prealloc(htab)) {
@@ -747,7 +753,10 @@ static struct htab_elem *alloc_htab_elem(struct bpf_htab *htab, void *key,
 			pl_new = this_cpu_ptr(htab->extra_elems);
 			l_new = *pl_new;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			htab_put_fd_value(htab, old_elem);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			*pl_new = old_elem;

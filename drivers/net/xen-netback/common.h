@@ -141,6 +141,7 @@ struct xenvif_queue { /* Per-queue data for xenvif */
 	struct xenvif *vif; /* Parent VIF */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * TX/RX common EOI handling.
 	 * When feature-split-event-channels = 0, interrupt handler sets
@@ -155,6 +156,8 @@ struct xenvif_queue { /* Per-queue data for xenvif */
 #define NETBK_TX_EOI		0x02
 #define NETBK_COMMON_EOI	0x04
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Use NAPI for guest TX */
@@ -374,7 +377,10 @@ int xenvif_dealloc_kthread(void *data);
 irqreturn_t xenvif_ctrl_irq_fn(int irq, void *data);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 bool xenvif_have_rx_work(struct xenvif_queue *queue, bool test_kthread);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void xenvif_rx_action(struct xenvif_queue *queue);

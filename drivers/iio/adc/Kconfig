@@ -678,7 +678,10 @@ config STM32_ADC_CORE
 	depends on OF
 	depends on REGULATOR
 <<<<<<< HEAD
+<<<<<<< HEAD
 	depends on HAS_IOMEM
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select IIO_BUFFER

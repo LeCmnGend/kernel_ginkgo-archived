@@ -21,6 +21,10 @@
 #include <linux/ipc_logging.h>
 #include <linux/uidgid.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <linux/pm_wakeup.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/pm_wakeup.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -165,6 +169,10 @@ static struct work_struct qrtr_backup_work;
  * @read_data: scheduled work for recv work
  * @say_hello: scheduled work for initiating hello
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+ * @ws: wakeupsource avoid system suspend
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * @ws: wakeupsource avoid system suspend
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -192,6 +200,11 @@ struct qrtr_node {
 	struct kthread_work say_hello;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct wakeup_source *ws;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct wakeup_source *ws;
 
@@ -386,6 +399,10 @@ static void __qrtr_node_release(struct kref *kref)
 	mutex_unlock(&node->qrtr_tx_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	wakeup_source_unregister(node->ws);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	wakeup_source_unregister(node->ws);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -662,11 +679,14 @@ static void qrtr_node_assign(struct qrtr_node *node, unsigned int nid)
 	up_write(&qrtr_node_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!node->ilc) {
 		snprintf(name, sizeof(name), "qrtr_%d", nid);
 		node->ilc = ipc_log_context_create(QRTR_LOG_PAGE_CNT, name, 0);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	snprintf(name, sizeof(name), "qrtr_%d", nid);
 	if (!node->ilc) {
 		node->ilc = ipc_log_context_create(QRTR_LOG_PAGE_CNT, name, 0);
@@ -677,6 +697,9 @@ static void qrtr_node_assign(struct qrtr_node *node, unsigned int nid)
 	 */
 	if (!node->ws && nid == 0)
 		node->ws = wakeup_source_register(NULL, name);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -861,6 +884,11 @@ int qrtr_endpoint_post(struct qrtr_endpoint *ep, const void *data, size_t len)
 		goto err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	__pm_wakeup_event(node->ws, 0);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__pm_wakeup_event(node->ws, 0);
 

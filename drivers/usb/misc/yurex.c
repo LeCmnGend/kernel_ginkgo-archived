@@ -497,7 +497,11 @@ static ssize_t yurex_write(struct file *file, const char __user *user_buffer,
 	dev_dbg(&dev->interface->dev, "%s - submit %c\n", __func__,
 		dev->cntl_buffer[0]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	retval = usb_submit_urb(dev->cntl_urb, GFP_ATOMIC);
+=======
+	retval = usb_submit_urb(dev->cntl_urb, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	retval = usb_submit_urb(dev->cntl_urb, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -506,9 +510,12 @@ static ssize_t yurex_write(struct file *file, const char __user *user_buffer,
 	finish_wait(&dev->waitq, &wait);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* make sure URB is idle after timeout or (spurious) CMD_ACK */
 	usb_kill_urb(dev->cntl_urb);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_unlock(&dev->io_mutex);

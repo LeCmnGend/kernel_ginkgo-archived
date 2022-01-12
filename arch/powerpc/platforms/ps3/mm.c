@@ -19,7 +19,10 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/dma-mapping.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/kernel.h>
@@ -1137,7 +1140,10 @@ int ps3_dma_region_init(struct ps3_system_bus_device *dev,
 {
 	unsigned long lpar_addr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int result;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1152,6 +1158,7 @@ int ps3_dma_region_init(struct ps3_system_bus_device *dev,
 	r->len = len ? len : _ALIGN_UP(map.total, 1 << r->page_size);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev->core.dma_mask = &r->dma_mask;
 
 	result = dma_set_mask_and_coherent(&dev->core, DMA_BIT_MASK(32));
@@ -1162,6 +1169,8 @@ int ps3_dma_region_init(struct ps3_system_bus_device *dev,
 		return result;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	switch (dev->dev_type) {

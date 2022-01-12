@@ -2416,6 +2416,11 @@ static int resize_stripes(struct r5conf *conf, int newsize)
 		err = -ENOMEM;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	mutex_unlock(&conf->cache_size_mutex);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mutex_unlock(&conf->cache_size_mutex);
 
@@ -2443,8 +2448,11 @@ static int resize_stripes(struct r5conf *conf, int newsize)
 	if (!err)
 		conf->pool_size = newsize;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_unlock(&conf->cache_size_mutex);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return err;
@@ -3602,7 +3610,10 @@ static int need_this_block(struct stripe_head *sh, struct stripe_head_state *s,
 	 */
 	if (sh->raid_conf->level != 6 &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    sh->raid_conf->rmw_level != PARITY_DISABLE_RMW &&
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	    sh->sector < sh->raid_conf->mddev->recovery_cp)
@@ -4842,7 +4853,11 @@ static void handle_stripe(struct stripe_head *sh)
 	 */
 	if (s.to_read || s.non_overwrite
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    || (s.to_write && s.failed)
+=======
+	    || (conf->level == 6 && s.to_write && s.failed)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	    || (conf->level == 6 && s.to_write && s.failed)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

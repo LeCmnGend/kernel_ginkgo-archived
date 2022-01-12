@@ -1238,7 +1238,10 @@ static netdev_tx_t ezusb_xmit(struct sk_buff *skb, struct net_device *dev)
 		goto drop;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ctx = ezusb_alloc_ctx(upriv, EZUSB_RID_TX, 0);
 	if (!ctx)
 		goto busy;
@@ -1246,6 +1249,9 @@ static netdev_tx_t ezusb_xmit(struct sk_buff *skb, struct net_device *dev)
 	memset(ctx->buf, 0, BULK_BUF_SIZE);
 	buf = ctx->buf->data;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	tx_control = 0;
 
@@ -1255,6 +1261,7 @@ static netdev_tx_t ezusb_xmit(struct sk_buff *skb, struct net_device *dev)
 		goto drop;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ctx = ezusb_alloc_ctx(upriv, EZUSB_RID_TX, 0);
 	if (!ctx)
 		goto drop;
@@ -1262,6 +1269,8 @@ static netdev_tx_t ezusb_xmit(struct sk_buff *skb, struct net_device *dev)
 	memset(ctx->buf, 0, BULK_BUF_SIZE);
 	buf = ctx->buf->data;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{

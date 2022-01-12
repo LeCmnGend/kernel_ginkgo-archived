@@ -445,7 +445,11 @@ void kprobe_thumb32_test_cases(void)
 		"2:	nop		\n\t")
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	TEST_RX("tbh	[pc, r",7, (9f-(1f+4))>>1,", lsl #1]",
+=======
+	TEST_RX("tbh	[pc, r",7, (9f-(1f+4))>>1,"]",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	TEST_RX("tbh	[pc, r",7, (9f-(1f+4))>>1,"]",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -456,7 +460,11 @@ void kprobe_thumb32_test_cases(void)
 		"2:	nop		\n\t")
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	TEST_RX("tbh	[pc, r",12, ((9f-(1f+4))>>1)+1,", lsl #1]",
+=======
+	TEST_RX("tbh	[pc, r",12, ((9f-(1f+4))>>1)+1,"]",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	TEST_RX("tbh	[pc, r",12, ((9f-(1f+4))>>1)+1,"]",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -467,7 +475,11 @@ void kprobe_thumb32_test_cases(void)
 		"2:	nop		\n\t")
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	TEST_RRX("tbh	[r",1,9f, ", r",14,1,", lsl #1]",
+=======
+	TEST_RRX("tbh	[r",1,9f, ", r",14,1,"]",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	TEST_RRX("tbh	[r",1,9f, ", r",14,1,"]",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -484,15 +496,21 @@ void kprobe_thumb32_test_cases(void)
 	TEST_UNSUPPORTED("strexb	r0, r1, [r2]")
 	TEST_UNSUPPORTED("strexh	r0, r1, [r2]")
 <<<<<<< HEAD
+<<<<<<< HEAD
 	TEST_UNSUPPORTED("strexd	r0, r1, r2, [r2]")
 	TEST_UNSUPPORTED("ldrexb	r0, [r1]")
 	TEST_UNSUPPORTED("ldrexh	r0, [r1]")
 	TEST_UNSUPPORTED("ldrexd	r0, r1, [r1]")
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	TEST_UNSUPPORTED("strexd	r0, r1, [r2]")
 	TEST_UNSUPPORTED("ldrexb	r0, [r1]")
 	TEST_UNSUPPORTED("ldrexh	r0, [r1]")
 	TEST_UNSUPPORTED("ldrexd	r0, [r1]")
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	TEST_GROUP("Data-processing (shifted register) and (modified immediate)")

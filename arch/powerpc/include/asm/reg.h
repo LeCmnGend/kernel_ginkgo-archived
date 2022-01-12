@@ -754,7 +754,11 @@
 #define THRM1_TIV	(1 << 30)
 #define THRM1_THRES(x)	((x&0x7f)<<23)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define THRM3_SITV(x)	((x & 0x1fff) << 1)
+=======
+#define THRM3_SITV(x)	((x&0x3fff)<<1)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define THRM3_SITV(x)	((x&0x3fff)<<1)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

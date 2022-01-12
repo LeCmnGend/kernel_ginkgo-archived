@@ -998,7 +998,11 @@ static void wake_up_page(struct page *page, int bit)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline __sched int wait_on_page_bit_common(wait_queue_head_t *q,
+=======
+static inline int wait_on_page_bit_common(wait_queue_head_t *q,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int wait_on_page_bit_common(wait_queue_head_t *q,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1074,7 +1078,11 @@ static inline int wait_on_page_bit_common(wait_queue_head_t *q,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void __sched wait_on_page_bit(struct page *page, int bit_nr)
+=======
+void wait_on_page_bit(struct page *page, int bit_nr)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void wait_on_page_bit(struct page *page, int bit_nr)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1085,7 +1093,11 @@ void wait_on_page_bit(struct page *page, int bit_nr)
 EXPORT_SYMBOL(wait_on_page_bit);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int __sched wait_on_page_bit_killable(struct page *page, int bit_nr)
+=======
+int wait_on_page_bit_killable(struct page *page, int bit_nr)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int wait_on_page_bit_killable(struct page *page, int bit_nr)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1220,7 +1232,11 @@ EXPORT_SYMBOL_GPL(page_endio);
  * @__page: the page to lock
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 void __sched __lock_page(struct page *__page)
+=======
+void __lock_page(struct page *__page)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void __lock_page(struct page *__page)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1232,7 +1248,11 @@ void __lock_page(struct page *__page)
 EXPORT_SYMBOL(__lock_page);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int __sched __lock_page_killable(struct page *__page)
+=======
+int __lock_page_killable(struct page *__page)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int __lock_page_killable(struct page *__page)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1255,7 +1275,11 @@ EXPORT_SYMBOL_GPL(__lock_page_killable);
  * with the page locked and the mmap_sem unperturbed.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 int __sched __lock_page_or_retry(struct page *page, struct mm_struct *mm,
+=======
+int __lock_page_or_retry(struct page *page, struct mm_struct *mm,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int __lock_page_or_retry(struct page *page, struct mm_struct *mm,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2897,6 +2921,7 @@ filler:
 		goto out;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/*
 	 * A previous I/O error may have been due to temporary
@@ -2905,6 +2930,8 @@ filler:
 	 * set again if read page fails.
 	 */
 	ClearPageError(page);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	goto filler;

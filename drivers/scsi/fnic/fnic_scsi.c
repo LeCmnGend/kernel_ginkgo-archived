@@ -1035,8 +1035,12 @@ static void fnic_fcpio_icmnd_cmpl_handler(struct fnic *fnic,
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	io_duration_time = jiffies_to_msecs(jiffies) -
 						jiffies_to_msecs(start_time);
+=======
+	io_duration_time = jiffies_to_msecs(jiffies) - jiffies_to_msecs(io_req->start_time);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	io_duration_time = jiffies_to_msecs(jiffies) - jiffies_to_msecs(io_req->start_time);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

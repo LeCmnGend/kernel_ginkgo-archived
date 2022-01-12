@@ -957,10 +957,13 @@ static int udf_symlink(struct inode *dir, struct dentry *dentry,
 				0);
 		epos.bh = udf_tgetblk(sb, block);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (unlikely(!epos.bh)) {
 			err = -ENOMEM;
 			goto out_no_entry;
 		}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		lock_buffer(epos.bh);

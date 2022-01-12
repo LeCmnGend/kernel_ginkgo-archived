@@ -11,7 +11,10 @@
  */
 #include "msm_sensor.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/gpio.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include "msm_sd.h"
@@ -154,6 +157,7 @@ int msm_sensor_power_down(struct msm_sensor_ctrl_t *s_ctrl)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int msm_sensor_get_sensor_id_gc02m1(struct msm_sensor_ctrl_t *s_ctrl)
 {
 	int rc = 0;
@@ -273,6 +277,8 @@ static int msm_sensor_get_sensor_id_gc02m1(struct msm_sensor_ctrl_t *s_ctrl)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int msm_sensor_power_up(struct msm_sensor_ctrl_t *s_ctrl)
 {
 	int rc;
@@ -282,7 +288,10 @@ int msm_sensor_power_up(struct msm_sensor_ctrl_t *s_ctrl)
 	const char *sensor_name;
 	uint32_t retry = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	uint32_t gval;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -315,7 +324,11 @@ int msm_sensor_power_up(struct msm_sensor_ctrl_t *s_ctrl)
 		(s_ctrl->is_secure)?"SECURE":"NON-SECURE");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (retry = 0; retry < 2; retry++) {
+=======
+	for (retry = 0; retry < 3; retry++) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (retry = 0; retry < 3; retry++) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -340,6 +353,7 @@ int msm_sensor_power_up(struct msm_sensor_ctrl_t *s_ctrl)
 			sensor_i2c_client);
 		if (rc < 0)
 			return rc;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 		gval = gpio_get_value(132); //get gpio value!!!
@@ -387,6 +401,8 @@ int msm_sensor_power_up(struct msm_sensor_ctrl_t *s_ctrl)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rc = msm_sensor_check_id(s_ctrl);
 		if (rc < 0) {
 			msm_camera_power_down(power_info,
@@ -401,6 +417,7 @@ int msm_sensor_power_up(struct msm_sensor_ctrl_t *s_ctrl)
 	return rc;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 int msm_sensor_match_vendor_id(struct msm_sensor_ctrl_t *s_ctrl)
 {
@@ -477,6 +494,8 @@ int msm_sensor_match_vendor_id(struct msm_sensor_ctrl_t *s_ctrl)
 	return rc;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static uint16_t msm_sensor_id_by_mask(struct msm_sensor_ctrl_t *s_ctrl,

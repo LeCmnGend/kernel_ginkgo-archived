@@ -26,6 +26,7 @@
 #include <asm/kvm_mmu.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .macro save_caller_saved_regs_vect
 	stp	x0, x1,   [sp, #-16]!
 	stp	x2, x3,   [sp, #-16]!
@@ -50,6 +51,8 @@
 	ldp	x0, x1,   [sp], #16
 .endm
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.text
@@ -211,6 +214,7 @@ el1_error:
 	b	__guest_exit
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 el2_sync:
 	save_caller_saved_regs_vect
 	stp     x29, x30, [sp, #-16]!
@@ -230,6 +234,8 @@ el2_error:
 	restore_caller_saved_regs_vect
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 el2_error:
 	/*
 	 * Only two possibilities:
@@ -250,6 +256,9 @@ el2_error:
 	ccmp	x0, x1, #4, ne
 	b.ne	__hyp_panic
 	mov	x0, #(1 << ARM_EXIT_WITH_SERROR_BIT)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	eret
 
@@ -280,6 +289,10 @@ ENDPROC(\label)
 	invalid_vector	el2t_fiq_invalid
 	invalid_vector	el2t_error_invalid
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	invalid_vector	el2h_sync_invalid
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	invalid_vector	el2h_sync_invalid
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -300,7 +313,11 @@ ENTRY(__kvm_hyp_vector)
 	ventry	el2t_error_invalid		// Error EL2t
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ventry	el2_sync			// Synchronous EL2h
+=======
+	ventry	el2h_sync_invalid		// Synchronous EL2h
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ventry	el2h_sync_invalid		// Synchronous EL2h
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

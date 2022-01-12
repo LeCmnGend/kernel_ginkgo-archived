@@ -31,6 +31,7 @@
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * New pipe buffers will be restricted to this size while the user is exceeding
  * their pipe buffer quota. The general pipe use case needs at least two
  * buffers: one for data yet to be read, and one for new data. If this is less
@@ -46,6 +47,8 @@
 #define PIPE_MIN_DEF_BUFFERS 2
 
 /*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * The max size that a non-root user is allowed to grow the pipe. Can
@@ -673,8 +676,13 @@ struct pipe_inode_info *alloc_pipe_info(void)
 
 	if (too_many_pipe_buffers_soft(user_bufs) && is_unprivileged_user()) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		user_bufs = account_pipe_buffers(user, pipe_bufs, PIPE_MIN_DEF_BUFFERS);
 		pipe_bufs = PIPE_MIN_DEF_BUFFERS;
+=======
+		user_bufs = account_pipe_buffers(user, pipe_bufs, 1);
+		pipe_bufs = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		user_bufs = account_pipe_buffers(user, pipe_bufs, 1);
 		pipe_bufs = 1;

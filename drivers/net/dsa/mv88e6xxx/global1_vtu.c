@@ -125,15 +125,21 @@ static int mv88e6xxx_g1_vtu_vid_write(struct mv88e6xxx_chip *chip,
  * Offset 0x09: VTU/STU Data Register 3
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int mv88e6185_g1_vtu_stu_data_read(struct mv88e6xxx_chip *chip,
 					  u16 *regs)
 {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static int mv88e6185_g1_vtu_data_read(struct mv88e6xxx_chip *chip,
 				      struct mv88e6xxx_vtu_entry *entry)
 {
 	u16 regs[3];
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int i;
 
@@ -147,6 +153,7 @@ static int mv88e6185_g1_vtu_data_read(struct mv88e6xxx_chip *chip,
 			return err;
 	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	return 0;
 }
@@ -188,12 +195,17 @@ static int mv88e6185_g1_stu_data_read(struct mv88e6xxx_chip *chip,
 		unsigned int state_offset = (i % 4) * 4 + 2;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Extract MemberTag and PortState data */
 	for (i = 0; i < mv88e6xxx_num_ports(chip); ++i) {
 		unsigned int member_offset = (i % 4) * 4;
 		unsigned int state_offset = member_offset + 2;
 
 		entry->member[i] = (regs[i / 4] >> member_offset) & 0x3;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		entry->state[i] = (regs[i / 4] >> state_offset) & 0x3;
 	}
@@ -368,10 +380,13 @@ int mv88e6185_g1_vtu_getnext(struct mv88e6xxx_chip *chip,
 			return err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		err = mv88e6185_g1_stu_data_read(chip, entry);
 		if (err)
 			return err;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* VTU DBNum[3:0] are located in VTU Operation 3:0
@@ -400,6 +415,7 @@ int mv88e6352_g1_vtu_getnext(struct mv88e6xxx_chip *chip,
 
 	if (entry->valid) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		err = mv88e6185_g1_vtu_data_read(chip, entry);
 		if (err)
 			return err;
@@ -415,6 +431,8 @@ int mv88e6352_g1_vtu_getnext(struct mv88e6xxx_chip *chip,
 
 		err = mv88e6185_g1_stu_data_read(chip, entry);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* Fetch (and mask) VLAN PortState data from the STU */
 		err = mv88e6xxx_g1_vtu_stu_get(chip, entry);
 		if (err)
@@ -425,6 +443,9 @@ int mv88e6352_g1_vtu_getnext(struct mv88e6xxx_chip *chip,
 			return err;
 
 		err = mv88e6xxx_g1_vtu_fid_read(chip, entry);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (err)
 			return err;

@@ -456,9 +456,15 @@ void read_extent_buffer(const struct extent_buffer *eb, void *dst,
 			unsigned long start,
 			unsigned long len);
 <<<<<<< HEAD
+<<<<<<< HEAD
 int read_extent_buffer_to_user_nofault(const struct extent_buffer *eb,
 				       void __user *dst, unsigned long start,
 				       unsigned long len);
+=======
+int read_extent_buffer_to_user(const struct extent_buffer *eb,
+			       void __user *dst, unsigned long start,
+			       unsigned long len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int read_extent_buffer_to_user(const struct extent_buffer *eb,
 			       void __user *dst, unsigned long start,

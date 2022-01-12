@@ -211,7 +211,10 @@ struct i40iw_msix_vector {
 	u32 cpu_affinity;
 	u32 ceq_id;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cpumask_t mask;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

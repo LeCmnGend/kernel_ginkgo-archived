@@ -23,6 +23,10 @@
  *   pv_latency_kick	- average latency (ns) of vCPU kick operation
  *   pv_latency_wake	- average latency (ns) from vCPU kick to wakeup
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+ *   pv_lock_slowpath	- # of locking operations via the slowpath
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  *   pv_lock_slowpath	- # of locking operations via the slowpath
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -33,6 +37,7 @@
  *   pv_wait_head	- # of vCPU wait's at the queue head
  *   pv_wait_node	- # of vCPU wait's at a non-head queue node
 <<<<<<< HEAD
+<<<<<<< HEAD
  *   lock_pending	- # of locking operations via pending code
  *   lock_slowpath	- # of locking operations via MCS lock queue
  *   lock_use_node2	- # of locking operations that use 2nd per-CPU node
@@ -42,6 +47,8 @@
  *
  * Subtracting lock_use_node[234] from lock_slowpath will give you
  * lock_use_node1.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -62,6 +69,10 @@ enum qlock_stats {
 	qstat_pv_latency_kick,
 	qstat_pv_latency_wake,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	qstat_pv_lock_slowpath,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	qstat_pv_lock_slowpath,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -72,12 +83,15 @@ enum qlock_stats {
 	qstat_pv_wait_head,
 	qstat_pv_wait_node,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	qstat_lock_pending,
 	qstat_lock_slowpath,
 	qstat_lock_use_node2,
 	qstat_lock_use_node3,
 	qstat_lock_use_node4,
 	qstat_lock_no_node,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	qstat_num,	/* Total number of statistical counters */
@@ -101,6 +115,10 @@ static const char * const qstat_names[qstat_num + 1] = {
 	[qstat_pv_latency_kick]	   = "pv_latency_kick",
 	[qstat_pv_latency_wake]    = "pv_latency_wake",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	[qstat_pv_lock_slowpath]   = "pv_lock_slowpath",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	[qstat_pv_lock_slowpath]   = "pv_lock_slowpath",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -110,12 +128,15 @@ static const char * const qstat_names[qstat_num + 1] = {
 	[qstat_pv_wait_head]       = "pv_wait_head",
 	[qstat_pv_wait_node]       = "pv_wait_node",
 <<<<<<< HEAD
+<<<<<<< HEAD
 	[qstat_lock_pending]       = "lock_pending",
 	[qstat_lock_slowpath]      = "lock_slowpath",
 	[qstat_lock_use_node2]	   = "lock_use_node2",
 	[qstat_lock_use_node3]	   = "lock_use_node3",
 	[qstat_lock_use_node4]	   = "lock_use_node4",
 	[qstat_lock_no_node]	   = "lock_no_node",
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	[qstat_reset_cnts]         = "reset_counters",

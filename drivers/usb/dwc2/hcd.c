@@ -1491,6 +1491,7 @@ static void dwc2_hc_start_transfer(struct dwc2_hsotg *hsotg,
 				num_packets = max_hc_pkt_count;
 				chan->xfer_len = num_packets * chan->max_packet;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			} else if (chan->ep_is_in) {
 				/*
 				 * Always program an integral # of max packets
@@ -1501,6 +1502,8 @@ static void dwc2_hc_start_transfer(struct dwc2_hsotg *hsotg,
 				chan->xfer_len = num_packets * chan->max_packet;
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			}
 		} else {
 			/* Need 1 packet for transfer length of 0 */
@@ -1508,7 +1511,10 @@ static void dwc2_hc_start_transfer(struct dwc2_hsotg *hsotg,
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (chan->ep_is_in)
 			/*
 			 * Always program an integral # of max packets for IN
@@ -1516,6 +1522,9 @@ static void dwc2_hc_start_transfer(struct dwc2_hsotg *hsotg,
 			 */
 			chan->xfer_len = num_packets * chan->max_packet;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (chan->ep_type == USB_ENDPOINT_XFER_INT ||
 		    chan->ep_type == USB_ENDPOINT_XFER_ISOC)

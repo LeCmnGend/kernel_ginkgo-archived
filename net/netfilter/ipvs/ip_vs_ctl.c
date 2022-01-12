@@ -1263,7 +1263,11 @@ ip_vs_add_service(struct netns_ipvs *ipvs, struct ip_vs_service_user_kern *u,
 	svc->port = u->port;
 	svc->fwmark = u->fwmark;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	svc->flags = u->flags & ~IP_VS_SVC_F_HASHED;
+=======
+	svc->flags = u->flags;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	svc->flags = u->flags;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2430,10 +2434,13 @@ do_ip_vs_set_ctl(struct sock *sk, int cmd, void __user *user, unsigned int len)
 		ret = ip_vs_set_timeout(ipvs, (struct ip_vs_timeout_user *)arg);
 		goto out_unlock;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else if (!len) {
 		/* No more commands with len == 0 below */
 		ret = -EINVAL;
 		goto out_unlock;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -2513,6 +2520,12 @@ do_ip_vs_set_ctl(struct sock *sk, int cmd, void __user *user, unsigned int len)
 	case IP_VS_SO_SET_DELDEST:
 		ret = ip_vs_del_dest(svc, &udest);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		break;
+	default:
+		ret = -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		break;
 	default:

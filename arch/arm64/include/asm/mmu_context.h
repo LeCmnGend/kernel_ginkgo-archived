@@ -138,7 +138,11 @@ static inline void cpu_install_idmap(void)
  * avoiding the possibility of conflicting TLB entries being allocated.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void __nocfi cpu_replace_ttbr1(pgd_t *pgdp)
+=======
+static inline void __nocfi cpu_replace_ttbr1(pgd_t *pgd)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline void __nocfi cpu_replace_ttbr1(pgd_t *pgd)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -148,7 +152,11 @@ static inline void __nocfi cpu_replace_ttbr1(pgd_t *pgd)
 	ttbr_replace_func *replace_phys;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	phys_addr_t pgd_phys = virt_to_phys(pgdp);
+=======
+	phys_addr_t pgd_phys = virt_to_phys(pgd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	phys_addr_t pgd_phys = virt_to_phys(pgd);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -302,7 +302,11 @@ SystemCall:
  * for all unimplemented and illegal instructions.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	EXCEPTION(0x1000, SoftEmu, emulation_assist_interrupt, EXC_XFER_STD)
+=======
+	EXCEPTION(0x1000, SoftEmu, program_check_exception, EXC_XFER_STD)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	EXCEPTION(0x1000, SoftEmu, program_check_exception, EXC_XFER_STD)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -403,15 +407,21 @@ _ENTRY(ITLBMiss_cmp)
 	rlwimi	r10, r11, 1, MI_SPS16K
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rlwinm	r11, r10, 32-11, _PAGE_PRESENT
 	and	r11, r11, r10
 	rlwimi	r10, r11, 0, _PAGE_PRESENT
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_SWAP
 	rlwinm	r11, r10, 32-5, _PAGE_PRESENT
 	and	r11, r11, r10
 	rlwimi	r10, r11, 0, _PAGE_PRESENT
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	li	r11, RPN_PATTERN
 	/* The Linux PTE won't go exactly into the MMU TLB.
@@ -539,15 +549,21 @@ _ENTRY(DTLBMiss_jmp)
 	 * r10 = (r10 & ~PRESENT) | r11;
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rlwinm	r11, r10, 32-11, _PAGE_PRESENT
 	and	r11, r11, r10
 	rlwimi	r10, r11, 0, _PAGE_PRESENT
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_SWAP
 	rlwinm	r11, r10, 32-5, _PAGE_PRESENT
 	and	r11, r11, r10
 	rlwimi	r10, r11, 0, _PAGE_PRESENT
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* The Linux PTE won't go exactly into the MMU TLB.
 	 * Software indicator bits 22 and 28 must be clear.

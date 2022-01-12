@@ -72,9 +72,12 @@ int crypto_ecdh_decode_key(const char *buf, unsigned int len,
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(len < secret.len))
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ptr = ecdh_unpack_data(&params->curve_id, ptr, sizeof(params->curve_id));

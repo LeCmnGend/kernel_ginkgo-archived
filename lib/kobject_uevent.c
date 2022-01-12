@@ -272,6 +272,7 @@ static int kobj_usermode_filter(struct kobject *kobj)
 static int init_uevent_argv(struct kobj_uevent_env *env, const char *subsystem)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int buffer_size = sizeof(env->buf) - env->buflen;
 	int len;
 
@@ -280,12 +281,17 @@ static int init_uevent_argv(struct kobj_uevent_env *env, const char *subsystem)
 		pr_warn("init_uevent_argv: buffer size of %d too small, needed %d\n",
 			buffer_size, len);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int len;
 
 	len = strlcpy(&env->buf[env->buflen], subsystem,
 		      sizeof(env->buf) - env->buflen);
 	if (len >= (sizeof(env->buf) - env->buflen)) {
 		WARN(1, KERN_ERR "init_uevent_argv: buffer size too small\n");
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -ENOMEM;
 	}
@@ -338,7 +344,11 @@ int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
 		       char *envp_ext[])
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct kobj_uevent_env env;
+=======
+	struct kobj_uevent_env *env;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct kobj_uevent_env *env;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -408,12 +418,18 @@ int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* environment buffer */
 	env = kzalloc(sizeof(struct kobj_uevent_env), GFP_KERNEL);
 	if (!env)
 		return -ENOMEM;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* complete object path */
 	devpath = kobject_get_path(kobj, GFP_KERNEL);
@@ -422,6 +438,7 @@ int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
 		goto exit;
 	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	memset(&env, 0, sizeof(env));
 
@@ -434,6 +451,8 @@ int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
 		goto exit;
 	retval = add_uevent_var(&env, "SUBSYSTEM=%s", subsystem);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* default keys */
 	retval = add_uevent_var(env, "ACTION=%s", action_string);
 	if (retval)
@@ -442,6 +461,9 @@ int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
 	if (retval)
 		goto exit;
 	retval = add_uevent_var(env, "SUBSYSTEM=%s", subsystem);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (retval)
 		goto exit;
@@ -450,7 +472,11 @@ int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
 	if (envp_ext) {
 		for (i = 0; envp_ext[i]; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			retval = add_uevent_var(&env, "%s", envp_ext[i]);
+=======
+			retval = add_uevent_var(env, "%s", envp_ext[i]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			retval = add_uevent_var(env, "%s", envp_ext[i]);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -462,7 +488,11 @@ int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
 	/* let the kset specific function add its stuff */
 	if (uevent_ops && uevent_ops->uevent) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		retval = uevent_ops->uevent(kset, kobj, &env);
+=======
+		retval = uevent_ops->uevent(kset, kobj, env);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		retval = uevent_ops->uevent(kset, kobj, env);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -488,7 +518,11 @@ int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
 
 	case KOBJ_UNBIND:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		zap_modalias_env(&env);
+=======
+		zap_modalias_env(env);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		zap_modalias_env(env);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -501,7 +535,11 @@ int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
 	mutex_lock(&uevent_sock_mutex);
 	/* we will send an event, so request a new sequence number */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	retval = add_uevent_var(&env, "SEQNUM=%llu", (unsigned long long)++uevent_seqnum);
+=======
+	retval = add_uevent_var(env, "SEQNUM=%llu", (unsigned long long)++uevent_seqnum);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	retval = add_uevent_var(env, "SEQNUM=%llu", (unsigned long long)++uevent_seqnum);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -523,7 +561,11 @@ int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
 		/* allocate message with the maximum possible size */
 		len = strlen(action_string) + strlen(devpath) + 2;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		skb = alloc_skb(len + env.buflen, GFP_KERNEL);
+=======
+		skb = alloc_skb(len + env->buflen, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		skb = alloc_skb(len + env->buflen, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -536,15 +578,21 @@ int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
 
 			/* copy keys to our continuous event payload buffer */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			for (i = 0; i < env.envp_idx; i++) {
 				len = strlen(env.envp[i]) + 1;
 				scratch = skb_put(skb, len);
 				strcpy(scratch, env.envp[i]);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			for (i = 0; i < env->envp_idx; i++) {
 				len = strlen(env->envp[i]) + 1;
 				scratch = skb_put(skb, len);
 				strcpy(scratch, env->envp[i]);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			}
 
@@ -568,6 +616,7 @@ int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
 		struct subprocess_info *info;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		retval = add_uevent_var(&env, "HOME=/");
 		if (retval)
 			goto exit;
@@ -577,6 +626,8 @@ int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
 			goto exit;
 		retval = init_uevent_argv(&env, subsystem);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		retval = add_uevent_var(env, "HOME=/");
 		if (retval)
 			goto exit;
@@ -585,11 +636,15 @@ int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
 		if (retval)
 			goto exit;
 		retval = init_uevent_argv(env, subsystem);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (retval)
 			goto exit;
 
 		retval = -ENOMEM;
+<<<<<<< HEAD
 <<<<<<< HEAD
 		info = call_usermodehelper_setup(env.argv[0], env.argv,
 						 env.envp, GFP_KERNEL,
@@ -597,6 +652,8 @@ int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
 		if (info)
 			retval = call_usermodehelper_exec(info, UMH_NO_WAIT);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		info = call_usermodehelper_setup(env->argv[0], env->argv,
 						 env->envp, GFP_KERNEL,
 						 NULL, cleanup_uevent_env, env);
@@ -604,6 +661,9 @@ int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
 			retval = call_usermodehelper_exec(info, UMH_NO_WAIT);
 			env = NULL;	/* freed by cleanup_uevent_env */
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 #endif
@@ -611,6 +671,10 @@ int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
 exit:
 	kfree(devpath);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kfree(env);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(env);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

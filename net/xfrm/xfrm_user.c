@@ -580,6 +580,7 @@ static struct xfrm_state *xfrm_state_construct(struct net *net,
 	copy_from_user_state(x, p);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (attrs[XFRMA_ENCAP]) {
 		x->encap = kmemdup(nla_data(attrs[XFRMA_ENCAP]),
 				   sizeof(*x->encap), GFP_KERNEL);
@@ -594,6 +595,8 @@ static struct xfrm_state *xfrm_state_construct(struct net *net,
 			goto error;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (attrs[XFRMA_SA_EXTRA_FLAGS])
@@ -617,10 +620,13 @@ static struct xfrm_state *xfrm_state_construct(struct net *net,
 		goto error;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (attrs[XFRMA_TFCPAD])
 		x->tfcpad = nla_get_u32(attrs[XFRMA_TFCPAD]);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (attrs[XFRMA_ENCAP]) {
 		x->encap = kmemdup(nla_data(attrs[XFRMA_ENCAP]),
 				   sizeof(*x->encap), GFP_KERNEL);
@@ -638,6 +644,9 @@ static struct xfrm_state *xfrm_state_construct(struct net *net,
 			goto error;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	xfrm_mark_get(attrs, &x->mark);
 
@@ -994,7 +1003,10 @@ static int dump_one_state(struct xfrm_state *x, int count, void *ptr)
 	struct sk_buff *in_skb = sp->in_skb;
 	struct sk_buff *skb = sp->out_skb;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct xfrm_translator *xtr;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct xfrm_usersa_info *p;
@@ -1015,6 +1027,7 @@ static int dump_one_state(struct xfrm_state *x, int count, void *ptr)
 	}
 	nlmsg_end(skb, nlh);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	xtr = xfrm_get_translator();
 	if (xtr) {
@@ -1027,6 +1040,8 @@ static int dump_one_state(struct xfrm_state *x, int count, void *ptr)
 		}
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
@@ -1044,6 +1059,10 @@ static int xfrm_dump_sa_done(struct netlink_callback *cb)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+static const struct nla_policy xfrma_policy[XFRMA_MAX+1];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static const struct nla_policy xfrma_policy[XFRMA_MAX+1];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1124,7 +1143,10 @@ static inline int xfrm_nlmsg_multicast(struct net *net, struct sk_buff *skb,
 {
 	struct sock *nlsk = rcu_dereference(net->xfrm.nlsk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct xfrm_translator *xtr;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1133,6 +1155,7 @@ static inline int xfrm_nlmsg_multicast(struct net *net, struct sk_buff *skb,
 		return -EPIPE;
 	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	xtr = xfrm_get_translator();
 	if (xtr) {
@@ -1145,6 +1168,8 @@ static inline int xfrm_nlmsg_multicast(struct net *net, struct sk_buff *skb,
 		}
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return nlmsg_multicast(nlsk, skb, pid, group, GFP_ATOMIC);
@@ -1365,7 +1390,10 @@ static int xfrm_alloc_userspi(struct sk_buff *skb, struct nlmsghdr *nlh,
 	struct xfrm_state *x;
 	struct xfrm_userspi_info *p;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct xfrm_translator *xtr;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct sk_buff *resp_skb;
@@ -1419,6 +1447,7 @@ static int xfrm_alloc_userspi(struct sk_buff *skb, struct nlmsghdr *nlh,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	xtr = xfrm_get_translator();
 	if (xtr) {
 		err = xtr->alloc_compat(skb, nlmsg_hdr(skb));
@@ -1430,6 +1459,8 @@ static int xfrm_alloc_userspi(struct sk_buff *skb, struct nlmsghdr *nlh,
 		}
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = nlmsg_unicast(net->xfrm.nlsk, resp_skb, NETLINK_CB(skb).portid);
@@ -1839,7 +1870,10 @@ static int dump_one_policy(struct xfrm_policy *xp, int dir, int count, void *ptr
 	struct sk_buff *in_skb = sp->in_skb;
 	struct sk_buff *skb = sp->out_skb;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct xfrm_translator *xtr;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct nlmsghdr *nlh;
@@ -1867,6 +1901,7 @@ static int dump_one_policy(struct xfrm_policy *xp, int dir, int count, void *ptr
 	}
 	nlmsg_end(skb, nlh);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	xtr = xfrm_get_translator();
 	if (xtr) {
@@ -1879,6 +1914,8 @@ static int dump_one_policy(struct xfrm_policy *xp, int dir, int count, void *ptr
 		}
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
@@ -2621,7 +2658,11 @@ static int xfrm_send_migrate(const struct xfrm_selector *sel, u8 dir, u8 type,
 #define XMSGSIZE(type) sizeof(struct type)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const int xfrm_msg_min[XFRM_NR_MSGTYPES] = {
+=======
+static const int xfrm_msg_min[XFRM_NR_MSGTYPES] = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static const int xfrm_msg_min[XFRM_NR_MSGTYPES] = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2648,16 +2689,22 @@ static const int xfrm_msg_min[XFRM_NR_MSGTYPES] = {
 	[XFRM_MSG_GETSPDINFO  - XFRM_MSG_BASE] = sizeof(u32),
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 EXPORT_SYMBOL_GPL(xfrm_msg_min);
 
 #undef XMSGSIZE
 
 const struct nla_policy xfrma_policy[XFRMA_MAX+1] = {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #undef XMSGSIZE
 
 static const struct nla_policy xfrma_policy[XFRMA_MAX+1] = {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	[XFRMA_SA]		= { .len = sizeof(struct xfrm_usersa_info)},
 	[XFRMA_POLICY]		= { .len = sizeof(struct xfrm_userpolicy_info)},
@@ -2691,7 +2738,10 @@ static const struct nla_policy xfrma_policy[XFRMA_MAX+1] = {
 	[XFRMA_IF_ID]		= { .type = NLA_U32 },
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 EXPORT_SYMBOL_GPL(xfrma_policy);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2744,7 +2794,10 @@ static int xfrm_user_rcv_msg(struct sk_buff *skb, struct nlmsghdr *nlh,
 	struct nlattr *attrs[XFRMA_MAX+1];
 	const struct xfrm_link *link;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct nlmsghdr *nlh64 = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int type, err;
@@ -2760,6 +2813,7 @@ static int xfrm_user_rcv_msg(struct sk_buff *skb, struct nlmsghdr *nlh,
 	if (!netlink_net_capable(skb, CAP_NET_ADMIN))
 		return -EPERM;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	/* Use the 64-bit / untranslated format on Android, even for compat */
 	if (!IS_ENABLED(CONFIG_ANDROID) || IS_ENABLED(CONFIG_XFRM_USER_COMPAT)) {
@@ -2796,6 +2850,8 @@ static int xfrm_user_rcv_msg(struct sk_buff *skb, struct nlmsghdr *nlh,
 		err = netlink_dump_start(net->xfrm.nlsk, skb, nlh, &c);
 		goto err;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if ((type == (XFRM_MSG_GETSA - XFRM_MSG_BASE) ||
 	     type == (XFRM_MSG_GETPOLICY - XFRM_MSG_BASE)) &&
 	    (nlh->nlmsg_flags & NLM_F_DUMP)) {
@@ -2810,6 +2866,9 @@ static int xfrm_user_rcv_msg(struct sk_buff *skb, struct nlmsghdr *nlh,
 			};
 			return netlink_dump_start(net->xfrm.nlsk, skb, nlh, &c);
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -2817,6 +2876,7 @@ static int xfrm_user_rcv_msg(struct sk_buff *skb, struct nlmsghdr *nlh,
 			  link->nla_max ? : XFRMA_MAX,
 			  link->nla_pol ? : xfrma_policy, extack);
 	if (err < 0)
+<<<<<<< HEAD
 <<<<<<< HEAD
 		goto err;
 
@@ -2831,12 +2891,17 @@ err:
 	kvfree(nlh64);
 	return err;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return err;
 
 	if (link->doit == NULL)
 		return -EINVAL;
 
 	return link->doit(skb, nlh, attrs);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

@@ -89,7 +89,10 @@
 #include <linux/cache.h>
 #include <linux/rodata_test.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/jump_label.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -501,6 +504,7 @@ static void __init report_meminit(void)
 	const char *stack;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (IS_ENABLED(CONFIG_INIT_STACK_ALL_PATTERN))
 		stack = "all(pattern)";
 	else if (IS_ENABLED(CONFIG_INIT_STACK_ALL_ZERO))
@@ -512,6 +516,8 @@ static void __init report_meminit(void)
 	else if (IS_ENABLED(CONFIG_GCC_PLUGIN_STRUCTLEAK_USER))
 		stack = "__user(zero)";
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (IS_ENABLED(CONFIG_INIT_STACK_ALL))
 		stack = "all";
 	else if (IS_ENABLED(CONFIG_GCC_PLUGIN_STRUCTLEAK_BYREF_ALL))
@@ -520,6 +526,9 @@ static void __init report_meminit(void)
 		stack = "byref";
 	else if (IS_ENABLED(CONFIG_GCC_PLUGIN_STRUCTLEAK_USER))
 		stack = "__user";
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	else
 		stack = "off";
@@ -554,8 +563,11 @@ static void __init mm_init(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int fpsensor;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 asmlinkage __visible void __init start_kernel(void)
@@ -601,8 +613,11 @@ asmlinkage __visible void __init start_kernel(void)
 	/* parameters may set static keys */
 	jump_label_init();
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	fpsensor = strstr(command_line, "androidboot.fpsensor=fpc") ? 1 : 2;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	parse_early_param();
@@ -742,7 +757,10 @@ asmlinkage __visible void __init start_kernel(void)
 	pagecache_init();
 	signals_init();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	seq_file_init();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	proc_root_init();
@@ -955,11 +973,16 @@ static void __init do_initcalls(void)
 	int level;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (level = 0; level < ARRAY_SIZE(initcall_levels) - 1; level++) {
 		do_initcall_level(level);
 		/* finish all async calls before going into next level */
 		async_synchronize_full();
 	}
+=======
+	for (level = 0; level < ARRAY_SIZE(initcall_levels) - 1; level++)
+		do_initcall_level(level);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (level = 0; level < ARRAY_SIZE(initcall_levels) - 1; level++)
 		do_initcall_level(level);
@@ -1133,7 +1156,11 @@ static noinline void __init kernel_init_freeable(void)
 	set_mems_allowed(node_states[N_MEMORY]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cad_pid = get_pid(task_pid(current));
+=======
+	cad_pid = task_pid(current);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cad_pid = task_pid(current);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

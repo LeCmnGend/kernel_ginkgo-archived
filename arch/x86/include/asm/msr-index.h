@@ -378,7 +378,10 @@
 #define MSR_AMD64_IBSCTL		0xc001103a
 #define MSR_AMD64_IBSBRTARGET		0xc001103b
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define MSR_AMD64_ICIBSEXTDCTL		0xc001103c
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define MSR_AMD64_IBSOPDATA4		0xc001103d

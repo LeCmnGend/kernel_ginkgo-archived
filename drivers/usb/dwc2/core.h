@@ -167,7 +167,10 @@ struct dwc2_hsotg_req;
  * @dir_in: Set to true if this endpoint is of the IN direction, which
  *          means that it is sending data to the Host.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @map_dir: Set to the value of dir_in when the DMA buffer is mapped.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * @index: The index for the endpoint registers.
@@ -219,7 +222,10 @@ struct dwc2_hsotg_ep {
 
 	unsigned char           dir_in;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned char           map_dir;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned char           index;

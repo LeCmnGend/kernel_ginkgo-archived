@@ -393,16 +393,22 @@ static enum i40iw_status_code add_pble_pool(struct i40iw_sc_dev *dev,
 		    pble_rsrc->next_fpm_addr, chunk->size, chunk->size);
 	pble_rsrc->unallocated_pble -= (chunk->size >> 3);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sd_reg_val = (sd_entry_type == I40IW_SD_TYPE_PAGED) ?
 			sd_entry->u.pd_table.pd_page_addr.pa : sd_entry->u.bp.addr.pa;
 	if (dev->is_pf && !sd_entry->valid) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	list_add(&chunk->list, &pble_rsrc->pinfo.clist);
 	sd_reg_val = (sd_entry_type == I40IW_SD_TYPE_PAGED) ?
 			sd_entry->u.pd_table.pd_page_addr.pa : sd_entry->u.bp.addr.pa;
 	if (sd_entry->valid)
 		return 0;
 	if (dev->is_pf) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret_code = i40iw_hmc_sd_one(dev, hmc_info->hmc_fn_id,
 					    sd_reg_val, idx->sd_idx,
@@ -415,7 +421,10 @@ static enum i40iw_status_code add_pble_pool(struct i40iw_sc_dev *dev,
 
 	sd_entry->valid = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	list_add(&chunk->list, &pble_rsrc->pinfo.clist);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;

@@ -394,10 +394,15 @@ static int inet_req_diag_fill(struct sock *sk, struct sk_buff *skb,
 
 	if (net_admin && nla_put_u32(skb, INET_DIAG_MARK,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				     inet_rsk(reqsk)->ir_mark)) {
 		nlmsg_cancel(skb, nlh);
 		return -EMSGSIZE;
 	}
+=======
+				     inet_rsk(reqsk)->ir_mark))
+		return -EMSGSIZE;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				     inet_rsk(reqsk)->ir_mark))
 		return -EMSGSIZE;

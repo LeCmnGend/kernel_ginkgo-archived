@@ -319,7 +319,11 @@ static int brcmf_rx_hdrpull(struct brcmf_pub *drvr, struct sk_buff *skb,
 
 	if (ret || !(*ifp) || !(*ifp)->ndev) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ret != -ENODATA && *ifp && (*ifp)->ndev)
+=======
+		if (ret != -ENODATA && *ifp)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (ret != -ENODATA && *ifp)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

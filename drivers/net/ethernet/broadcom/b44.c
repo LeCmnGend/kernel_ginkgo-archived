@@ -2392,8 +2392,12 @@ static int b44_init_one(struct ssb_device *sdev,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = dma_set_mask_and_coherent(sdev->dma_dev, DMA_BIT_MASK(30));
 	if (err) {
+=======
+	if (dma_set_mask_and_coherent(sdev->dma_dev, DMA_BIT_MASK(30))) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (dma_set_mask_and_coherent(sdev->dma_dev, DMA_BIT_MASK(30))) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

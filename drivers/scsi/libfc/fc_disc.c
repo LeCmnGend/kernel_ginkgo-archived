@@ -606,12 +606,17 @@ static void fc_disc_gpn_id_resp(struct fc_seq *sp, struct fc_frame *fp,
 	if (PTR_ERR(fp) == -FC_EX_CLOSED)
 		goto out;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (IS_ERR(fp)) {
 		mutex_lock(&disc->disc_mutex);
 		fc_disc_restart(disc);
 		mutex_unlock(&disc->disc_mutex);
 		goto out;
 	}
+=======
+	if (IS_ERR(fp))
+		goto redisc;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (IS_ERR(fp))
 		goto redisc;
@@ -643,7 +648,11 @@ static void fc_disc_gpn_id_resp(struct fc_seq *sp, struct fc_frame *fp,
 				fc_rport_login(new_rdata);
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto free_fp;
+=======
+			goto out;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto out;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -664,15 +673,21 @@ redisc:
 		mutex_unlock(&disc->disc_mutex);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 free_fp:
 	fc_frame_free(fp);
 out:
 	kref_put(&rdata->kref, fc_rport_destroy);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out:
 	kref_put(&rdata->kref, fc_rport_destroy);
 	if (!IS_ERR(fp))
 		fc_frame_free(fp);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

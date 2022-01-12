@@ -117,10 +117,16 @@ static void print_extent_item(struct extent_buffer *eb, int slot, int type)
 			 * must be aligned to nodesize.
 			 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (!IS_ALIGNED(offset, eb->fs_info->sectorsize))
 				pr_info(
 			"\t\t\t(parent %llu not aligned to sectorsize %u)\n",
 					offset, eb->fs_info->sectorsize);
+=======
+			if (!IS_ALIGNED(offset, eb->fs_info->nodesize))
+				pr_info("\t\t\t(parent %llu is NOT ALIGNED to nodesize %llu)\n",
+					offset, (unsigned long long)eb->fs_info->nodesize);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (!IS_ALIGNED(offset, eb->fs_info->nodesize))
 				pr_info("\t\t\t(parent %llu is NOT ALIGNED to nodesize %llu)\n",
@@ -141,9 +147,14 @@ static void print_extent_item(struct extent_buffer *eb, int slot, int type)
 			 */
 			if (!IS_ALIGNED(offset, eb->fs_info->nodesize))
 <<<<<<< HEAD
+<<<<<<< HEAD
 				pr_info(
 			"\t\t\t(parent %llu not aligned to sectorsize %u)\n",
 				     offset, eb->fs_info->sectorsize);
+=======
+				pr_info("\t\t\t(parent %llu is NOT ALIGNED to nodesize %llu)\n",
+				     offset, (unsigned long long)eb->fs_info->nodesize);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				pr_info("\t\t\t(parent %llu is NOT ALIGNED to nodesize %llu)\n",
 				     offset, (unsigned long long)eb->fs_info->nodesize);

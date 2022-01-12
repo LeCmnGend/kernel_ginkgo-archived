@@ -148,6 +148,7 @@ static irqreturn_t mpl3115_trigger_handler(int irq, void *p)
 	struct iio_dev *indio_dev = pf->indio_dev;
 	struct mpl3115_data *data = iio_priv(indio_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * 32-bit channel + 16-bit channel + padding + ts
 	 * Note that it is possible for only one of the first 2
@@ -156,6 +157,9 @@ static irqreturn_t mpl3115_trigger_handler(int irq, void *p)
 	 * use a simple structure definition to express this data layout.
 	 */
 	u8 buffer[16] __aligned(8);
+=======
+	u8 buffer[16]; /* 32-bit channel + 16-bit channel + padding + ts */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u8 buffer[16]; /* 32-bit channel + 16-bit channel + padding + ts */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

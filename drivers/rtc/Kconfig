@@ -626,7 +626,10 @@ config RTC_DRV_S5M
 	depends on MFD_SEC_CORE || COMPILE_TEST
 	select REGMAP_IRQ
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select REGMAP_I2C
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	help

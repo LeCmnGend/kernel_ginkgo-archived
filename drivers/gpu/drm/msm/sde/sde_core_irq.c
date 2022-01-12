@@ -663,7 +663,10 @@ irqreturn_t sde_core_irq(struct sde_kms *sde_kms)
 {
 	/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * Read interrupt status from all sources. Interrupt status are
 	 * stored within hw_intr.
 	 * Function will also clear the interrupt status after reading.
@@ -673,6 +676,9 @@ irqreturn_t sde_core_irq(struct sde_kms *sde_kms)
 	sde_kms->hw_intr->ops.get_interrupt_statuses(sde_kms->hw_intr);
 
 	/*
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * Dispatch to HW driver to handle interrupt lookup that is being
 	 * fired. When matching interrupt is located, HW driver will call to

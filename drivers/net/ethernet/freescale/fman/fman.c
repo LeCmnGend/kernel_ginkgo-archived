@@ -1397,7 +1397,12 @@ static void enable_time_stamp(struct fman *fman)
 	struct fman_fpm_regs __iomem *fpm_rg = fman->fpm_regs;
 	u16 fm_clk_freq = fman->state->fm_clk_freq;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 tmp, intgr, ts_freq, frac;
+=======
+	u32 tmp, intgr, ts_freq;
+	u64 frac;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 tmp, intgr, ts_freq;
 	u64 frac;

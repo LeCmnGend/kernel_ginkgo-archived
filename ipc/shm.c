@@ -182,7 +182,11 @@ static void shm_rcu_free(struct rcu_head *head)
 	struct shmid_kernel *shp = container_of(ptr, struct shmid_kernel,
 							shm_perm);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	security_shm_free(&shp->shm_perm);
+=======
+	security_shm_free(shp);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	security_shm_free(shp);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -579,7 +583,11 @@ static int newseg(struct ipc_namespace *ns, struct ipc_params *params)
 
 	shp->shm_perm.security = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	error = security_shm_alloc(&shp->shm_perm);
+=======
+	error = security_shm_alloc(shp);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	error = security_shm_alloc(shp);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -663,12 +671,18 @@ no_file:
 static inline int shm_security(struct kern_ipc_perm *ipcp, int shmflg)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return security_shm_associate(ipcp, shmflg);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct shmid_kernel *shp;
 
 	shp = container_of(ipcp, struct shmid_kernel, shm_perm);
 	return security_shm_associate(shp, shmflg);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -867,7 +881,11 @@ static int shmctl_down(struct ipc_namespace *ns, int shmid, int cmd,
 	shp = container_of(ipcp, struct shmid_kernel, shm_perm);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = security_shm_shmctl(&shp->shm_perm, cmd);
+=======
+	err = security_shm_shmctl(shp, cmd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = security_shm_shmctl(shp, cmd);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -969,7 +987,11 @@ static int shmctl_stat(struct ipc_namespace *ns, int shmid,
 		goto out_unlock;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = security_shm_shmctl(&shp->shm_perm, cmd);
+=======
+	err = security_shm_shmctl(shp, cmd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = security_shm_shmctl(shp, cmd);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1008,7 +1030,11 @@ static int shmctl_do_lock(struct ipc_namespace *ns, int shmid, int cmd)
 
 	audit_ipc_obj(&(shp->shm_perm));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = security_shm_shmctl(&shp->shm_perm, cmd);
+=======
+	err = security_shm_shmctl(shp, cmd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = security_shm_shmctl(shp, cmd);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1385,7 +1411,11 @@ long do_shmat(int shmid, char __user *shmaddr, int shmflg,
 		goto out_unlock;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = security_shm_shmat(&shp->shm_perm, shmaddr, shmflg);
+=======
+	err = security_shm_shmat(shp, shmaddr, shmflg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = security_shm_shmat(shp, shmaddr, shmflg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1461,7 +1491,11 @@ long do_shmat(int shmid, char __user *shmaddr, int shmflg,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	addr = do_mmap(file, addr, size, prot, flags, 0, &populate, NULL);
+=======
+	addr = do_mmap_pgoff(file, addr, size, prot, flags, 0, &populate, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	addr = do_mmap_pgoff(file, addr, size, prot, flags, 0, &populate, NULL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -36,7 +36,10 @@
 #include <linux/ctype.h>
 #include <linux/cdev.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/kref.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -73,7 +76,11 @@ struct printer_dev {
 	s8			interface;
 	struct usb_ep		*in_ep, *out_ep;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct kref             kref;
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -231,6 +238,7 @@ static inline struct usb_endpoint_descriptor *ep_desc(struct usb_gadget *gadget,
 /*-------------------------------------------------------------------------*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void printer_dev_free(struct kref *kref)
 {
 	struct printer_dev *dev = container_of(kref, struct printer_dev, kref);
@@ -238,6 +246,8 @@ static void printer_dev_free(struct kref *kref)
 	kfree(dev);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct usb_request *
@@ -371,7 +381,10 @@ printer_open(struct inode *inode, struct file *fd)
 	spin_unlock_irqrestore(&dev->lock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kref_get(&dev->kref);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	DBG(dev, "printer_open returned %x\n", ret);
@@ -392,7 +405,10 @@ printer_close(struct inode *inode, struct file *fd)
 	spin_unlock_irqrestore(&dev->lock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kref_put(&dev->kref, printer_dev_free);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	DBG(dev, "printer_close\n");
@@ -1084,8 +1100,12 @@ autoconf_fail:
 
 	ret = usb_assign_descriptors(f, fs_printer_function,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			hs_printer_function, ss_printer_function,
 			ss_printer_function);
+=======
+			hs_printer_function, ss_printer_function, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			hs_printer_function, ss_printer_function, NULL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1152,7 +1172,10 @@ fail_tx_reqs:
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	usb_free_all_descriptors(f);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
@@ -1390,8 +1413,12 @@ static void gprinter_free(struct usb_function *f)
 
 	opts = container_of(f->fi, struct f_printer_opts, func_inst);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	kref_put(&dev->kref, printer_dev_free);
+=======
+	kfree(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1464,7 +1491,10 @@ static struct usb_function *gprinter_alloc(struct usb_function_instance *fi)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kref_init(&dev->kref);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	++opts->refcnt;

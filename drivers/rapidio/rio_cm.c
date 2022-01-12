@@ -2137,6 +2137,7 @@ static int riocm_add_mport(struct device *dev,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cm->rx_wq = create_workqueue(DRV_NAME "/rxq");
 	if (!cm->rx_wq) {
 		rio_release_inb_mbox(mport, cmbox);
@@ -2145,6 +2146,8 @@ static int riocm_add_mport(struct device *dev,
 		return -ENOMEM;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
@@ -2158,7 +2161,10 @@ static int riocm_add_mport(struct device *dev,
 	mutex_init(&cm->rx_lock);
 	riocm_rx_fill(cm, RIOCM_RX_RING_SIZE);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cm->rx_wq = create_workqueue(DRV_NAME "/rxq");
 	if (!cm->rx_wq) {
 		riocm_error("failed to allocate IBMBOX_%d on %s",
@@ -2168,6 +2174,9 @@ static int riocm_add_mport(struct device *dev,
 		return -ENOMEM;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	INIT_WORK(&cm->rx_work, rio_ibmsg_handler);
 

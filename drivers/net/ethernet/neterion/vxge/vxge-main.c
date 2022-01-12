@@ -3538,6 +3538,12 @@ static void vxge_device_unregister(struct __vxge_hw_device *hldev)
 	kfree(vdev->vpaths);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/* we are safe to free it now */
+	free_netdev(dev);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* we are safe to free it now */
 	free_netdev(dev);
@@ -3548,9 +3554,12 @@ static void vxge_device_unregister(struct __vxge_hw_device *hldev)
 	vxge_debug_entryexit(vdev->level_trace,	"%s: %s:%d  Exiting...", buf,
 			     __func__, __LINE__);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* we are safe to free it now */
 	free_netdev(dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

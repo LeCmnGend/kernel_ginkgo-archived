@@ -689,9 +689,15 @@ static int __init watchdog_init(int sioaddr)
 	 */
 	watchdog.sioaddr = sioaddr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	watchdog.ident.options = WDIOF_MAGICCLOSE
 				| WDIOF_KEEPALIVEPING
 				| WDIOF_CARDRESET;
+=======
+	watchdog.ident.options = WDIOC_SETTIMEOUT
+				| WDIOF_MAGICCLOSE
+				| WDIOF_KEEPALIVEPING;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	watchdog.ident.options = WDIOC_SETTIMEOUT
 				| WDIOF_MAGICCLOSE
@@ -711,6 +717,7 @@ static int __init watchdog_init(int sioaddr)
 	watchdog.caused_reboot = wdt_conf & BIT(F71808FG_FLAG_WDTMOUT_STS);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * We don't want WDTMOUT_STS to stick around till regular reboot.
 	 * Write 1 to the bit to clear it to zero.
@@ -718,6 +725,8 @@ static int __init watchdog_init(int sioaddr)
 	superio_outb(sioaddr, F71808FG_REG_WDT_CONF,
 		     wdt_conf | BIT(F71808FG_FLAG_WDTMOUT_STS));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	superio_exit(sioaddr);

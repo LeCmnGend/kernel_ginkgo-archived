@@ -5,6 +5,7 @@
 #define __ALIGN_STR	".align 2"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * Annotate a function as position independent, i.e., safe to be called before
  * the kernel virtual mapping is activated.
@@ -29,6 +30,8 @@
 		SYM_FUNC_END_ALIAS(x);		\
 		SYM_FUNC_END_ALIAS(__pi_##x)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif

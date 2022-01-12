@@ -14,8 +14,11 @@
 #include <linux/pid_namespace.h>
 #include <linux/cgroupstats.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/binfmts.h>
 #include <linux/devfreq_boost.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -33,9 +36,12 @@
 static u16 cgroup_no_v1_mask;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* disable named v1 mounts */
 static bool cgroup_no_v1_named;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -348,7 +354,10 @@ static struct cgroup_pidlist *cgroup_pidlist_find_create(struct cgroup *cgrp,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * cgroup_task_count - count the number of tasks in a cgroup.
  * @cgrp: the cgroup in question
@@ -365,6 +374,9 @@ int cgroup_task_count(const struct cgroup *cgrp)
 	return count;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Load a cgroup's pidarray with either procs' tgids or tasks' pids
@@ -566,6 +578,7 @@ static ssize_t __cgroup1_procs_write(struct kernfs_open_file *of,
 	ret = cgroup_attach_task(cgrp, task, threadgroup);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* This covers boosting for app launches and app transitions */
 	if (!ret && !threadgroup &&
 	    !strcmp(of->kn->parent->name, "top-app") &&
@@ -573,6 +586,8 @@ static ssize_t __cgroup1_procs_write(struct kernfs_open_file *of,
 		devfreq_boost_kick_max(DEVFREQ_CPU_DDR_BW, 1000);
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out_finish:
@@ -887,10 +902,13 @@ static int cgroup1_rename(struct kernfs_node *kn, struct kernfs_node *new_parent
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* do not accept '\n' to prevent making /proc/<pid>/cgroup unparsable */
 	if (strchr(new_name_str, '\n'))
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (kernfs_type(kn) != KERNFS_DIR)
@@ -1009,10 +1027,13 @@ static int parse_cgroupfs_options(char *data, struct cgroup_sb_opts *opts)
 		if (!strncmp(token, "name=", 5)) {
 			const char *name = token + 5;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 			/* blocked by boot param? */
 			if (cgroup_no_v1_named)
 				return -ENOENT;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			/* Can't specify an empty name */
@@ -1162,6 +1183,10 @@ struct dentry *cgroup1_mount(struct file_system_type *fs_type, int flags,
 			     struct cgroup_namespace *ns)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct super_block *pinned_sb = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct super_block *pinned_sb = NULL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1171,6 +1196,10 @@ struct dentry *cgroup1_mount(struct file_system_type *fs_type, int flags,
 	struct dentry *dentry;
 	int i, ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	bool new_root = false;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bool new_root = false;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1236,7 +1265,10 @@ struct dentry *cgroup1_mount(struct file_system_type *fs_type, int flags,
 			pr_warn("new mount options do not match the existing superblock, will be ignored\n");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
 		 * We want to reuse @root whose lifetime is governed by its
 		 * ->cgrp.  Let's check whether @root is alive and keep it
@@ -1260,6 +1292,9 @@ struct dentry *cgroup1_mount(struct file_system_type *fs_type, int flags,
 			goto out_free;
 		}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = 0;
 		goto out_unlock;
@@ -1287,21 +1322,28 @@ struct dentry *cgroup1_mount(struct file_system_type *fs_type, int flags,
 		goto out_unlock;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	init_cgroup_root(root, &opts);
 
 	ret = cgroup_setup_root(root, opts.subsys_mask);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	new_root = true;
 
 	init_cgroup_root(root, &opts);
 
 	ret = cgroup_setup_root(root, opts.subsys_mask, PERCPU_REF_INIT_DEAD);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret)
 		cgroup_free_root(root);
 
 out_unlock:
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (!ret && !percpu_ref_tryget_live(&root->cgrp.self.refcnt)) {
 		mutex_unlock(&cgroup_mutex);
@@ -1309,6 +1351,8 @@ out_unlock:
 		ret = restart_syscall();
 		goto out_free;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_unlock(&cgroup_mutex);
@@ -1323,6 +1367,7 @@ out_free:
 				 CGROUP_SUPER_MAGIC, ns);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!IS_ERR(dentry) && percpu_ref_is_dying(&root->cgrp.self.refcnt)) {
 		struct super_block *sb = dentry->d_sb;
 		dput(dentry);
@@ -1331,6 +1376,8 @@ out_free:
 		dentry = ERR_PTR(restart_syscall());
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * There's a race window after we release cgroup_mutex and before
 	 * allocating a superblock. Make sure a concurrent process won't
@@ -1350,6 +1397,9 @@ out_free:
 	if (pinned_sb)
 		deactivate_super(pinned_sb);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return dentry;
 }
@@ -1380,12 +1430,16 @@ static int __init cgroup_no_v1(char *str)
 		if (!strcmp(token, "all")) {
 			cgroup_no_v1_mask = U16_MAX;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			continue;
 		}
 
 		if (!strcmp(token, "named")) {
 			cgroup_no_v1_named = true;
 			continue;
+=======
+			break;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			break;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -582,6 +582,7 @@ static void sci_stop_tx(struct uart_port *port)
 
 	serial_port_out(port, SCSCR, ctrl);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 #ifdef CONFIG_SERIAL_SH_SCI_DMA
 	if (to_sci_port(port)->chan_tx &&
@@ -590,6 +591,8 @@ static void sci_stop_tx(struct uart_port *port)
 		to_sci_port(port)->cookie_tx = -EINVAL;
 	}
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -1006,15 +1009,21 @@ static int scif_set_rtrg(struct uart_port *port, int rx_trig)
 	unsigned int bits;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (rx_trig >= port->fifosize)
 		rx_trig = port->fifosize - 1;
 	if (rx_trig < 1)
 		rx_trig = 1;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (rx_trig < 1)
 		rx_trig = 1;
 	if (rx_trig >= port->fifosize)
 		rx_trig = port->fifosize;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* HSCIF can be set to an arbitrary level. */

@@ -127,8 +127,11 @@ static int rxe_init_device_param(struct rxe_dev *rxe)
 	rxe->attr.max_pkeys			= RXE_MAX_PKEYS;
 	rxe->attr.local_ca_ack_delay		= RXE_LOCAL_CA_ACK_DELAY;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	addrconf_addr_eui48((unsigned char *)&rxe->attr.sys_image_guid,
 			rxe->ndev->dev_addr);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -176,6 +179,12 @@ static int rxe_init_ports(struct rxe_dev *rxe)
 	rxe_init_port_param(port);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (!port->attr.pkey_tbl_len || !port->attr.gid_tbl_len)
+		return -EINVAL;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!port->attr.pkey_tbl_len || !port->attr.gid_tbl_len)
 		return -EINVAL;

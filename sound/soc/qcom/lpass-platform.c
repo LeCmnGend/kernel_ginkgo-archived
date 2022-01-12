@@ -68,7 +68,11 @@ static int lpass_platform_pcmops_open(struct snd_pcm_substream *substream)
 	struct lpass_pcm_data *data;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	data = kzalloc(sizeof(*data), GFP_KERNEL);
+=======
+	data = devm_kzalloc(soc_runtime->dev, sizeof(*data), GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	data = devm_kzalloc(soc_runtime->dev, sizeof(*data), GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -85,10 +89,15 @@ static int lpass_platform_pcmops_open(struct snd_pcm_substream *substream)
 		dma_ch = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (dma_ch < 0) {
 		kfree(data);
 		return dma_ch;
 	}
+=======
+	if (dma_ch < 0)
+		return dma_ch;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (dma_ch < 0)
 		return dma_ch;
@@ -114,7 +123,10 @@ static int lpass_platform_pcmops_open(struct snd_pcm_substream *substream)
 			SNDRV_PCM_HW_PARAM_PERIODS);
 	if (ret < 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kfree(data);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dev_err(soc_runtime->dev, "setting constraints failed: %d\n",
@@ -143,7 +155,10 @@ static int lpass_platform_pcmops_close(struct snd_pcm_substream *substream)
 		v->free_dma_channel(drvdata, data->dma_ch);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(data);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;

@@ -337,7 +337,10 @@ COMPAT_SYSCALL_DEFINE1(adjtimex, struct compat_timex __user *, utp)
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Convert jiffies to milliseconds and back.
  *
  * Avoid unnecessary multiplications/divisions in the
@@ -875,6 +878,9 @@ struct timespec timespec_add_safe(const struct timespec lhs,
 }
 
 /*
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Add two timespec64 values and do a safety check for overflow.
  * It's assumed that both values are valid (>= 0).

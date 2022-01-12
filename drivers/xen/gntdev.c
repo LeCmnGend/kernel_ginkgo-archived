@@ -296,6 +296,7 @@ static int map_grant_pages(struct grant_map *map)
 		 * These ptes are completely different from the user ptes dealt
 		 * with find_grant_ptes.
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 * Note that GNTMAP_device_map isn't needed here: The
 		 * dev_bus_addr output field gets consumed only from ->map_ops,
 		 * and by not requesting it when mapping we also avoid needing
@@ -308,11 +309,15 @@ static int map_grant_pages(struct grant_map *map)
 =======
 		 */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+		 */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		for (i = 0; i < map->count; i++) {
 			unsigned long address = (unsigned long)
 				pfn_to_kaddr(page_to_pfn(map->pages[i]));
 			BUG_ON(PageHighMem(map->pages[i]));
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 			gnttab_set_map_op(&map->kmap_ops[i], address, flags,
 				map->grants[i].ref,
@@ -320,12 +325,17 @@ static int map_grant_pages(struct grant_map *map)
 			gnttab_set_unmap_op(&map->kunmap_ops[i], address,
 				flags, -1);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			gnttab_set_map_op(&map->kmap_ops[i], address,
 				map->flags | GNTMAP_host_map,
 				map->grants[i].ref,
 				map->grants[i].domid);
 			gnttab_set_unmap_op(&map->kunmap_ops[i], address,
 				map->flags | GNTMAP_host_map, -1);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 	}
@@ -333,6 +343,7 @@ static int map_grant_pages(struct grant_map *map)
 	pr_debug("map %d+%d\n", map->index, map->count);
 	err = gnttab_map_refs(map->map_ops, use_ptemod ? map->kmap_ops : NULL,
 			map->pages, map->count);
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 	for (i = 0; i < map->count; i++) {
@@ -351,6 +362,8 @@ static int map_grant_pages(struct grant_map *map)
 				err = -EINVAL;
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		return err;
 
@@ -363,6 +376,9 @@ static int map_grant_pages(struct grant_map *map)
 		map->unmap_ops[i].handle = map->map_ops[i].handle;
 		if (use_ptemod)
 			map->kunmap_ops[i].handle = map->kmap_ops[i].handle;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	return err;

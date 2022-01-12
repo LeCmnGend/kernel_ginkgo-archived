@@ -807,6 +807,12 @@ int read_platform_resources_from_drv_data(
 			"qcom,debug-timeout");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	res->pm_qos_latency_us = find_key_value(platform_data,
+			"qcom,pm-qos-latency-us");
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	res->pm_qos_latency_us = find_key_value(platform_data,
 			"qcom,pm-qos-latency-us");

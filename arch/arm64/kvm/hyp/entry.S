@@ -18,7 +18,10 @@
 #include <linux/linkage.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <asm/alternative.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <asm/asm-offsets.h>
@@ -74,6 +77,7 @@ ENTRY(__guest_enter)
 	save_callee_saved_regs x1
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	// Now the host state is stored if we have a pending RAS SError it must
 	// affect the host. If any asynchronous exception is pending we defer
 	// the guest entry.
@@ -83,6 +87,8 @@ ENTRY(__guest_enter)
 	ret
 
 1:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	add	x29, x0, #VCPU_CONTEXT
@@ -155,6 +161,10 @@ ENTRY(__guest_exit)
 	// SError is guaranteed to occur at the earliest when we unmask
 	// it, and at the latest just after the ISB.
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	.global	abort_guest_exit_start
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.global	abort_guest_exit_start
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -162,6 +172,7 @@ abort_guest_exit_start:
 
 	isb
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 abort_guest_exit_end:
 	msr	daifset, #4	// Mask aborts
@@ -176,6 +187,8 @@ abort_guest_exit_end:
 	// restore the EL1 exception context so that we can report some
 	// information. Merge the exception code with the SError pending bit.
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.global	abort_guest_exit_end
 abort_guest_exit_end:
 
@@ -183,6 +196,9 @@ abort_guest_exit_end:
 	// context so that we can report some information.
 	// Merge the exception code with the SError pending bit.
 	tbz	x0, #ARM_EXIT_WITH_SERROR_BIT, 1f
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	msr	elr_el2, x2
 	msr	esr_el2, x3

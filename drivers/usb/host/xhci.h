@@ -992,7 +992,10 @@ struct xhci_interval_bw_table {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define EP_CTX_PER_DEV		31
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1010,7 +1013,11 @@ struct xhci_virt_device {
 	/* Used for addressing devices and configuration changes */
 	struct xhci_container_ctx       *in_ctx;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct xhci_virt_ep		eps[EP_CTX_PER_DEV];
+=======
+	struct xhci_virt_ep		eps[31];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct xhci_virt_ep		eps[31];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

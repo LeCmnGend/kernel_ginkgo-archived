@@ -234,9 +234,12 @@ static int a2mp_discover_rsp(struct amp_mgr *mgr, struct sk_buff *skb,
 
 			found = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 			memset(&req, 0, sizeof(req));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			req.id = cl->id;
@@ -319,8 +322,11 @@ static int a2mp_getinfo_req(struct amp_mgr *mgr, struct sk_buff *skb,
 		struct a2mp_info_rsp rsp;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		memset(&rsp, 0, sizeof(rsp));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rsp.id = req->id;
@@ -367,8 +373,11 @@ static int a2mp_getinfo_rsp(struct amp_mgr *mgr, struct sk_buff *skb,
 		return -ENOMEM;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(&req, 0, sizeof(req));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	req.id = rsp->id;
@@ -398,8 +407,11 @@ static int a2mp_getampassoc_req(struct amp_mgr *mgr, struct sk_buff *skb,
 	if (!hdev || hdev->amp_type == AMP_TYPE_BREDR || tmp) {
 		struct a2mp_amp_assoc_rsp rsp;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		memset(&rsp, 0, sizeof(rsp));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rsp.id = req->id;
@@ -493,6 +505,10 @@ static int a2mp_createphyslink_req(struct amp_mgr *mgr, struct sk_buff *skb,
 {
 	struct a2mp_physlink_req *req = (void *) skb->data;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -507,8 +523,11 @@ static int a2mp_createphyslink_req(struct amp_mgr *mgr, struct sk_buff *skb,
 	BT_DBG("local_id %d, remote_id %d", req->local_id, req->remote_id);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(&rsp, 0, sizeof(rsp));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rsp.local_id = req->remote_id;
@@ -539,7 +558,10 @@ static int a2mp_createphyslink_req(struct amp_mgr *mgr, struct sk_buff *skb,
 		if (!assoc) {
 			amp_ctrl_put(ctrl);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			hci_dev_put(hdev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return -ENOMEM;
@@ -594,8 +616,11 @@ static int a2mp_discphyslink_req(struct amp_mgr *mgr, struct sk_buff *skb,
 	BT_DBG("local_id %d remote_id %d", req->local_id, req->remote_id);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(&rsp, 0, sizeof(rsp));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rsp.local_id = req->remote_id;
@@ -721,8 +746,11 @@ static int a2mp_chan_recv_cb(struct l2cap_chan *chan, struct sk_buff *skb)
 		struct a2mp_cmd_rej rej;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		memset(&rej, 0, sizeof(rej));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rej.reason = cpu_to_le16(0);
@@ -949,8 +977,11 @@ void a2mp_send_getinfo_rsp(struct hci_dev *hdev)
 	BT_DBG("%s mgr %p", hdev->name, mgr);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(&rsp, 0, sizeof(rsp));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rsp.id = hdev->id;
@@ -1051,8 +1082,11 @@ void a2mp_send_create_phy_link_rsp(struct hci_dev *hdev, u8 status)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(&rsp, 0, sizeof(rsp));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	hs_hcon = hci_conn_hash_lookup_state(hdev, AMP_LINK, BT_CONNECT);
@@ -1088,8 +1122,11 @@ void a2mp_discover_amp(struct l2cap_chan *chan)
 	mgr->bredr_chan = chan;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(&req, 0, sizeof(req));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	req.mtu = cpu_to_le16(L2CAP_A2MP_DEFAULT_MTU);

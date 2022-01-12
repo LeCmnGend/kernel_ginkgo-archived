@@ -163,7 +163,11 @@ static struct ieee80211_supported_band wcn_band_5ghz = {
 		.mcs = {
 			.rx_mask = { 0xff, 0, 0, 0, 0, 0, 0, 0, 0, 0, },
 <<<<<<< HEAD
+<<<<<<< HEAD
 			.rx_highest = cpu_to_le16(150),
+=======
+			.rx_highest = cpu_to_le16(72),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			.rx_highest = cpu_to_le16(72),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

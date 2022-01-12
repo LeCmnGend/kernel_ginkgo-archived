@@ -190,7 +190,11 @@ static inline bool i40e_vc_isvalid_vsi_id(struct i40e_vf *vf, u16 vsi_id)
  **/
 static inline bool i40e_vc_isvalid_queue_id(struct i40e_vf *vf, u16 vsi_id,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					    u16 qid)
+=======
+					    u8 qid)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					    u8 qid)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -209,7 +213,11 @@ static inline bool i40e_vc_isvalid_queue_id(struct i40e_vf *vf, u16 vsi_id,
  * check for the valid vector id
  **/
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline bool i40e_vc_isvalid_vector_id(struct i40e_vf *vf, u32 vector_id)
+=======
+static inline bool i40e_vc_isvalid_vector_id(struct i40e_vf *vf, u8 vector_id)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline bool i40e_vc_isvalid_vector_id(struct i40e_vf *vf, u8 vector_id)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -427,6 +435,7 @@ static int i40e_config_iwarp_qvlist(struct i40e_vf *vf,
 	u32 next_q_idx, next_q_type;
 	u32 msix_vf, size;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret = 0;
 
 	msix_vf = pf->hw.func_caps.num_msix_vectors_vf;
@@ -441,10 +450,13 @@ static int i40e_config_iwarp_qvlist(struct i40e_vf *vf,
 	}
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	size = sizeof(struct virtchnl_iwarp_qvlist_info) +
 	       (sizeof(struct virtchnl_iwarp_qv_info) *
 						(qvlist_info->num_vectors - 1));
+<<<<<<< HEAD
 <<<<<<< HEAD
 	kfree(vf->qvlist_info);
 	vf->qvlist_info = kzalloc(size, GFP_KERNEL);
@@ -452,6 +464,9 @@ static int i40e_config_iwarp_qvlist(struct i40e_vf *vf,
 		ret = -ENOMEM;
 		goto err_out;
 	}
+=======
+	vf->qvlist_info = kzalloc(size, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	vf->qvlist_info = kzalloc(size, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -466,10 +481,15 @@ static int i40e_config_iwarp_qvlist(struct i40e_vf *vf,
 
 		/* Validate vector id belongs to this vf */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!i40e_vc_isvalid_vector_id(vf, v_idx)) {
 			ret = -EINVAL;
 			goto err_free;
 		}
+=======
+		if (!i40e_vc_isvalid_vector_id(vf, v_idx))
+			goto err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!i40e_vc_isvalid_vector_id(vf, v_idx))
 			goto err;
@@ -516,16 +536,22 @@ static int i40e_config_iwarp_qvlist(struct i40e_vf *vf,
 
 	return 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 err_free:
 	kfree(vf->qvlist_info);
 	vf->qvlist_info = NULL;
 err_out:
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 err:
 	kfree(vf->qvlist_info);
 	vf->qvlist_info = NULL;
 	return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

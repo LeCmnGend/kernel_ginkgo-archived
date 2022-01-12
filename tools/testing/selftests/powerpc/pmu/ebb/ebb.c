@@ -397,6 +397,11 @@ int ebb_child(union pipe read_pipe, union pipe write_pipe)
 	ebb_freeze_pmcs();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	count_pmc(1, sample_period);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	count_pmc(1, sample_period);
 

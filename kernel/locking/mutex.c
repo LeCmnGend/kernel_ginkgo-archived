@@ -29,6 +29,10 @@
 #include <linux/debug_locks.h>
 #include <linux/osq_lock.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <linux/delay.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/delay.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -144,9 +148,14 @@ static __always_inline bool __mutex_trylock_fast(struct mutex *lock)
 {
 	unsigned long curr = (unsigned long)current;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long zero = 0UL;
 
 	if (atomic_long_try_cmpxchg_acquire(&lock->owner, &zero, curr))
+=======
+
+	if (!atomic_long_cmpxchg_acquire(&lock->owner, 0UL, curr))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	if (!atomic_long_cmpxchg_acquire(&lock->owner, 0UL, curr))
@@ -184,6 +193,7 @@ static inline bool __mutex_waiter_is_first(struct mutex *lock, struct mutex_wait
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Add @waiter to a given location in the lock wait_list and set the
  * FLAG_WAITERS flag if it's the first waiter.
  */
@@ -199,6 +209,8 @@ __mutex_add_waiter(struct mutex *lock, struct mutex_waiter *waiter,
 }
 
 /*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Give up ownership to a specific task, when @task = NULL, this is equivalent
@@ -272,6 +284,7 @@ EXPORT_SYMBOL(mutex_lock);
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * Wait-Die:
  *   The newer transactions are killed when:
@@ -288,6 +301,8 @@ EXPORT_SYMBOL(mutex_lock);
  * Associate the ww_mutex @ww with the context @ww_ctx under which we acquired
  * it.
  */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static __always_inline void
@@ -328,6 +343,7 @@ ww_mutex_lock_acquired(struct ww_mutex *ww, struct ww_acquire_ctx *ww_ctx)
 	DEBUG_LOCKS_WARN_ON(ww_ctx->ww_class != ww->ww_class);
 #endif
 	ww_ctx->acquired++;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	ww->ctx = ww_ctx;
 }
@@ -427,6 +443,8 @@ static bool __ww_mutex_wound(struct mutex *lock,
  * This relies on never mixing wait-die/wound-wait on the same wait-list;
  * which is currently ensured by that being a ww_class property.
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static inline bool __sched
@@ -442,13 +460,20 @@ __ww_ctx_stamp_after(struct ww_acquire_ctx *a, struct ww_acquire_ctx *b)
  *
  * Due to the invariants on the wait list, this can only affect the first
  * waiter with a context.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * The current task must not be on the wait list.
  */
 static void __sched
 <<<<<<< HEAD
+<<<<<<< HEAD
 __ww_mutex_check_waiters(struct mutex *lock, struct ww_acquire_ctx *ww_ctx)
+=======
+__ww_mutex_wakeup_for_backoff(struct mutex *lock, struct ww_acquire_ctx *ww_ctx)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 __ww_mutex_wakeup_for_backoff(struct mutex *lock, struct ww_acquire_ctx *ww_ctx)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -462,10 +487,13 @@ __ww_mutex_wakeup_for_backoff(struct mutex *lock, struct ww_acquire_ctx *ww_ctx)
 			continue;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (__ww_mutex_die(lock, cur, ww_ctx) ||
 		    __ww_mutex_wound(lock, cur->ww_ctx, ww_ctx))
 			break;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (cur->ww_ctx->acquired > 0 &&
 		    __ww_ctx_stamp_after(cur->ww_ctx, ww_ctx)) {
 			debug_mutex_wake_waiter(lock, cur);
@@ -473,14 +501,22 @@ __ww_mutex_wakeup_for_backoff(struct mutex *lock, struct ww_acquire_ctx *ww_ctx)
 		}
 
 		break;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 }
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * After acquiring lock with fastpath, where we do not hold wait_lock, set ctx
  * and wake up any waiters so they can recheck.
+=======
+ * After acquiring lock with fastpath or when we lost out in contested
+ * slowpath, set ctx and wake up any waiters so they can recheck.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * After acquiring lock with fastpath or when we lost out in contested
  * slowpath, set ctx and wake up any waiters so they can recheck.
@@ -492,20 +528,27 @@ ww_mutex_set_context_fastpath(struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
 	ww_mutex_lock_acquired(lock, ctx);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * The lock->ctx update should be visible on all cores before
 	 * the WAITERS check is done, otherwise contended waiters might be
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	lock->ctx = ctx;
 
 	/*
 	 * The lock->ctx update should be visible on all cores before
 	 * the atomic read is done, otherwise contended waiters might be
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * missed. The contended waiters will either see ww_ctx == NULL
 	 * and keep spinning, or it will acquire wait_lock, add itself
 	 * to waiter list and sleep.
 	 */
+<<<<<<< HEAD
 <<<<<<< HEAD
 	smp_mb(); /* See comments above and below. */
 
@@ -518,16 +561,22 @@ ww_mutex_set_context_fastpath(struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
 	 * __ww_mutex_add_waiter() and makes sure we either observe ww->ctx
 	 * and/or !empty list.
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	smp_mb(); /* ^^^ */
 
 	/*
 	 * Check if lock is contended, if not there is nobody to wake up
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 */
 	if (likely(!(atomic_long_read(&lock->base.owner) & MUTEX_FLAG_WAITERS)))
 		return;
 
 	/*
+<<<<<<< HEAD
 <<<<<<< HEAD
 	 * Uh oh, we raced in fastpath, check if any of the waiters need to
 	 * die or wound us.
@@ -538,6 +587,8 @@ ww_mutex_set_context_fastpath(struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
 }
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * Uh oh, we raced in fastpath, wake up everyone in this case,
 	 * so they can see the new lock->ctx.
 	 */
@@ -561,6 +612,9 @@ ww_mutex_set_context_slowpath(struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
 	lock->ctx = ctx;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_MUTEX_SPIN_ON_OWNER
 
@@ -619,6 +673,7 @@ bool mutex_spin_on_owner(struct mutex *lock, struct task_struct *owner,
 	bool ret = true;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (;;) {
 		unsigned int cpu;
 		bool same_owner;
@@ -640,6 +695,8 @@ bool mutex_spin_on_owner(struct mutex *lock, struct task_struct *owner,
 		if (!ret || !same_owner)
 			break;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rcu_read_lock();
 	while (__mutex_owner(lock) == owner) {
 		/*
@@ -649,13 +706,21 @@ bool mutex_spin_on_owner(struct mutex *lock, struct task_struct *owner,
 		 * the rcu_read_lock() ensures the memory stays valid.
 		 */
 		barrier();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		/*
 		 * Use vcpu_is_preempted to detect lock holder preemption issue.
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (need_resched() || vcpu_is_preempted(cpu)) {
+=======
+		if (!owner->on_cpu || need_resched() ||
+				vcpu_is_preempted(task_cpu(owner))) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!owner->on_cpu || need_resched() ||
 				vcpu_is_preempted(task_cpu(owner))) {
@@ -672,6 +737,10 @@ bool mutex_spin_on_owner(struct mutex *lock, struct task_struct *owner,
 		cpu_relax();
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	rcu_read_unlock();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rcu_read_unlock();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -777,7 +846,10 @@ mutex_optimistic_spin(struct mutex *lock, struct ww_acquire_ctx *ww_ctx,
 		 */
 		cpu_relax();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		/*
 		 * On arm systems, we must slow down the waiter's repeated
@@ -789,6 +861,9 @@ mutex_optimistic_spin(struct mutex *lock, struct ww_acquire_ctx *ww_ctx,
 		 * take care to rate limit the waiters.
 		 */
 		udelay(1);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -882,6 +957,7 @@ void __sched ww_mutex_unlock(struct ww_mutex *lock)
 EXPORT_SYMBOL(ww_mutex_unlock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 static __always_inline int __sched
 __ww_mutex_kill(struct mutex *lock, struct ww_acquire_ctx *ww_ctx)
@@ -920,11 +996,17 @@ static inline int __sched
 __ww_mutex_lock_check_stamp(struct mutex *lock, struct mutex_waiter *waiter,
 			    struct ww_acquire_ctx *ctx)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+static inline int __sched
+__ww_mutex_lock_check_stamp(struct mutex *lock, struct mutex_waiter *waiter,
+			    struct ww_acquire_ctx *ctx)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct ww_mutex *ww = container_of(lock, struct ww_mutex, base);
 	struct ww_acquire_ctx *hold_ctx = READ_ONCE(ww->ctx);
 	struct mutex_waiter *cur;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (ctx->acquired == 0)
 		return 0;
@@ -966,6 +1048,8 @@ __ww_mutex_lock_check_stamp(struct mutex *lock, struct mutex_waiter *waiter,
  * Wound-Wait ensure we wound the owning context when it is younger.
  */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (hold_ctx && __ww_ctx_stamp_after(ctx, hold_ctx))
 		goto deadlock;
 
@@ -989,6 +1073,9 @@ deadlock:
 	return -EDEADLK;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline int __sched
 __ww_mutex_add_waiter(struct mutex_waiter *waiter,
@@ -997,6 +1084,7 @@ __ww_mutex_add_waiter(struct mutex_waiter *waiter,
 {
 	struct mutex_waiter *cur;
 	struct list_head *pos;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	bool is_wait_die;
 
@@ -1014,6 +1102,8 @@ __ww_mutex_add_waiter(struct mutex_waiter *waiter,
 	 * never die here, but they are sorted in stamp order and
 	 * may wound the lock holder.
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!ww_ctx) {
 		list_add_tail(&waiter->list, &lock->wait_list);
@@ -1024,6 +1114,9 @@ __ww_mutex_add_waiter(struct mutex_waiter *waiter,
 	 * Add the waiter before the first waiter with a higher stamp.
 	 * Waiters without a context are skipped to avoid starving
 	 * them.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 */
 	pos = &lock->wait_list;
@@ -1032,6 +1125,7 @@ __ww_mutex_add_waiter(struct mutex_waiter *waiter,
 			continue;
 
 		if (__ww_ctx_stamp_after(ww_ctx, cur->ww_ctx)) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 			/*
 			 * Wait-Die: if we find an older context waiting, there
@@ -1044,6 +1138,8 @@ __ww_mutex_add_waiter(struct mutex_waiter *waiter,
 				if (ret)
 					return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			/* Back off immediately if necessary. */
 			if (ww_ctx->acquired > 0) {
 #ifdef CONFIG_DEBUG_MUTEXES
@@ -1054,6 +1150,9 @@ __ww_mutex_add_waiter(struct mutex_waiter *waiter,
 				ww_ctx->contending_lock = ww;
 #endif
 				return -EDEADLK;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			}
 
@@ -1062,6 +1161,7 @@ __ww_mutex_add_waiter(struct mutex_waiter *waiter,
 
 		pos = &cur->list;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 		/* Wait-Die: ensure younger waiters die. */
 		__ww_mutex_die(lock, cur, ww_ctx);
@@ -1086,6 +1186,8 @@ __ww_mutex_add_waiter(struct mutex_waiter *waiter,
 	}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
 		 * Wake up the waiter so that it gets a chance to back
 		 * off.
@@ -1097,6 +1199,9 @@ __ww_mutex_add_waiter(struct mutex_waiter *waiter,
 	}
 
 	list_add_tail(&waiter->list, pos);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
@@ -1117,16 +1222,20 @@ __mutex_lock_common(struct mutex *lock, long state, unsigned int subclass,
 	might_sleep();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_DEBUG_MUTEXES
 	DEBUG_LOCKS_WARN_ON(lock->magic != lock);
 #endif
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ww = container_of(lock, struct ww_mutex, base);
 	if (use_ww_ctx && ww_ctx) {
 		if (unlikely(ww_ctx == READ_ONCE(ww->ctx)))
 			return -EALREADY;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 		/*
@@ -1136,6 +1245,8 @@ __mutex_lock_common(struct mutex *lock, long state, unsigned int subclass,
 		 */
 		if (ww_ctx->acquired == 0)
 			ww_ctx->wounded = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -1160,7 +1271,11 @@ __mutex_lock_common(struct mutex *lock, long state, unsigned int subclass,
 	if (__mutex_trylock(lock)) {
 		if (use_ww_ctx && ww_ctx)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			__ww_mutex_check_waiters(lock, ww_ctx);
+=======
+			__ww_mutex_wakeup_for_backoff(lock, ww_ctx);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			__ww_mutex_wakeup_for_backoff(lock, ww_ctx);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1170,6 +1285,10 @@ __mutex_lock_common(struct mutex *lock, long state, unsigned int subclass,
 
 	debug_mutex_lock_common(lock, &waiter);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	debug_mutex_add_waiter(lock, &waiter, current);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	debug_mutex_add_waiter(lock, &waiter, current);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1179,8 +1298,12 @@ __mutex_lock_common(struct mutex *lock, long state, unsigned int subclass,
 	if (!use_ww_ctx) {
 		/* add waiting tasks to the end of the waitqueue (FIFO): */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__mutex_add_waiter(lock, &waiter, &lock->wait_list);
 
+=======
+		list_add_tail(&waiter.list, &lock->wait_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		list_add_tail(&waiter.list, &lock->wait_list);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1190,6 +1313,7 @@ __mutex_lock_common(struct mutex *lock, long state, unsigned int subclass,
 #endif
 	} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/*
 		 * Add in stamp order, waking up waiters that must kill
 		 * themselves.
@@ -1198,10 +1322,15 @@ __mutex_lock_common(struct mutex *lock, long state, unsigned int subclass,
 		if (ret)
 			goto err_early_kill;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* Add in stamp order, waking up waiters that must back off. */
 		ret = __ww_mutex_add_waiter(&waiter, lock, ww_ctx);
 		if (ret)
 			goto err_early_backoff;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		waiter.ww_ctx = ww_ctx;
@@ -1210,6 +1339,12 @@ __mutex_lock_common(struct mutex *lock, long state, unsigned int subclass,
 	waiter.task = current;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (__mutex_waiter_is_first(lock, &waiter))
+		__mutex_set_flag(lock, MUTEX_FLAG_WAITERS);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (__mutex_waiter_is_first(lock, &waiter))
 		__mutex_set_flag(lock, MUTEX_FLAG_WAITERS);
@@ -1228,25 +1363,36 @@ __mutex_lock_common(struct mutex *lock, long state, unsigned int subclass,
 
 		/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 * Check for signals and kill conditions while holding
 		 * wait_lock. This ensures the lock cancellation is ordered
 		 * against mutex_unlock() and wake-ups do not go missing.
 		 */
 		if (signal_pending_state(state, current)) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		 * Check for signals and wound conditions while holding
 		 * wait_lock. This ensures the lock cancellation is ordered
 		 * against mutex_unlock() and wake-ups do not go missing.
 		 */
 		if (unlikely(signal_pending_state(state, current))) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			ret = -EINTR;
 			goto err;
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (use_ww_ctx && ww_ctx) {
 			ret = __ww_mutex_check_kill(lock, &waiter, ww_ctx);
+=======
+		if (use_ww_ctx && ww_ctx && ww_ctx->acquired > 0) {
+			ret = __ww_mutex_lock_check_stamp(lock, &waiter, ww_ctx);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (use_ww_ctx && ww_ctx && ww_ctx->acquired > 0) {
 			ret = __ww_mutex_lock_check_stamp(lock, &waiter, ww_ctx);
@@ -1285,6 +1431,7 @@ acquired:
 	__set_current_state(TASK_RUNNING);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (use_ww_ctx && ww_ctx) {
 		/*
 		 * Wound-Wait; we stole the lock (!first_waiter), check the
@@ -1295,6 +1442,8 @@ acquired:
 			__ww_mutex_check_waiters(lock, ww_ctx);
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_remove_waiter(lock, &waiter, current);
@@ -1309,7 +1458,11 @@ skip_wait:
 
 	if (use_ww_ctx && ww_ctx)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ww_mutex_lock_acquired(ww, ww_ctx);
+=======
+		ww_mutex_set_context_slowpath(ww, ww_ctx);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ww_mutex_set_context_slowpath(ww, ww_ctx);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1322,7 +1475,11 @@ err:
 	__set_current_state(TASK_RUNNING);
 	mutex_remove_waiter(lock, &waiter, current);
 <<<<<<< HEAD
+<<<<<<< HEAD
 err_early_kill:
+=======
+err_early_backoff:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 err_early_backoff:
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1624,6 +1781,7 @@ __ww_mutex_lock_interruptible_slowpath(struct ww_mutex *lock,
 int __sched mutex_trylock(struct mutex *lock)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool locked;
 
 #ifdef CONFIG_DEBUG_MUTEXES
@@ -1631,6 +1789,10 @@ int __sched mutex_trylock(struct mutex *lock)
 #endif
 
 	locked = __mutex_trylock(lock);
+=======
+	bool locked = __mutex_trylock(lock);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bool locked = __mutex_trylock(lock);
 

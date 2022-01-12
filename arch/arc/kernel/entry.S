@@ -157,7 +157,10 @@ tracesys:
 	; save EFA in case tracer wants the PC of traced task
 	; using ERET won't work since next-PC has already committed
 <<<<<<< HEAD
+<<<<<<< HEAD
 	lr  r12, [efa]
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	GET_CURR_TASK_FIELD_PTR   TASK_THREAD, r11
@@ -173,7 +176,11 @@ tracesys:
 	; Do the Sys Call as we normally would.
 	; Validate the Sys Call number
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cmp     r8,  NR_syscalls - 1
+=======
+	cmp     r8,  NR_syscalls
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cmp     r8,  NR_syscalls
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -207,6 +214,7 @@ tracesys_exit:
 ; ---------------------------------------------
 trap_with_param:
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	; stop_pc info by gdb needs this info
 	lr  r0, [efa]
@@ -216,6 +224,11 @@ trap_with_param:
 	;   and get out of CPU exception mode
 	FAKE_RET_FROM_EXCPN
 
+=======
+	mov r0, r12	; EFA in case ptracer/gdb wants stop_pc
+	mov r1, sp
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mov r0, r12	; EFA in case ptracer/gdb wants stop_pc
 	mov r1, sp
@@ -248,11 +261,17 @@ ENTRY(EV_Trap)
 	EXCEPTION_PROLOGUE
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	lr  r12, [efa]
 
 	FAKE_RET_FROM_EXCPN
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	;============ TRAP 1   :breakpoints
 	; Check ECR for trap with arg (PROLOGUE ensures r9 has ECR)
@@ -262,9 +281,12 @@ ENTRY(EV_Trap)
 	;============ TRAP  (no param): syscall top level
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	; First return from Exception to pure K mode (Exception/IRQs renabled)
 	FAKE_RET_FROM_EXCPN
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	; If syscall tracing ongoing, invoke pre-post-hooks
@@ -276,7 +298,11 @@ ENTRY(EV_Trap)
 
 	; syscall num shd not exceed the total system calls avail
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cmp     r8,  NR_syscalls - 1
+=======
+	cmp     r8,  NR_syscalls
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cmp     r8,  NR_syscalls
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

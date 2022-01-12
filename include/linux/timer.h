@@ -209,6 +209,7 @@ static inline void timer_setup(struct timer_list *timer,
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void timer_setup_on_stack(struct timer_list *timer,
 			       void (*callback)(struct timer_list *),
 			       unsigned int flags)
@@ -217,6 +218,8 @@ static inline void timer_setup_on_stack(struct timer_list *timer,
 			       (TIMER_DATA_TYPE)timer, flags);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define from_timer(var, callback_timer, timer_fieldname) \

@@ -1,6 +1,10 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (c) 2014-2019, The Linux Foundation. All rights reserved.
+=======
+ * Copyright (c) 2014-2018, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * Copyright (c) 2014-2018, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -429,39 +433,6 @@ static irqreturn_t bcl_handle_ibat(int irq, void *data)
 	struct bcl_peripheral_data *perph_data =
 		(struct bcl_peripheral_data *)data;
 <<<<<<< HEAD
-	bool irq_enabled = false;
-
-	mutex_lock(&perph_data->state_trans_lock);
-	irq_enabled = perph_data->irq_enabled;
-	mutex_unlock(&perph_data->state_trans_lock);
-
-	if (irq_enabled)
-		of_thermal_handle_trip(perph_data->tz_dev);
-
-=======
-
-	mutex_lock(&perph_data->state_trans_lock);
-	if (!perph_data->irq_enabled) {
-		WARN_ON(1);
-		disable_irq_nosync(irq);
-		perph_data->irq_enabled = false;
-		goto exit_intr;
-	}
-	mutex_unlock(&perph_data->state_trans_lock);
-	of_thermal_handle_trip(perph_data->tz_dev);
-
-	return IRQ_HANDLED;
-
-exit_intr:
-	mutex_unlock(&perph_data->state_trans_lock);
->>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
-	return IRQ_HANDLED;
-}
-
-static irqreturn_t bcl_handle_vbat(int irq, void *data)
-{
-	struct bcl_peripheral_data *perph_data =
-		(struct bcl_peripheral_data *)data;
 <<<<<<< HEAD
 	bool irq_enabled = false;
 
@@ -473,6 +444,8 @@ static irqreturn_t bcl_handle_vbat(int irq, void *data)
 		of_thermal_handle_trip(perph_data->tz_dev);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	mutex_lock(&perph_data->state_trans_lock);
 	if (!perph_data->irq_enabled) {
@@ -488,6 +461,49 @@ static irqreturn_t bcl_handle_vbat(int irq, void *data)
 
 exit_intr:
 	mutex_unlock(&perph_data->state_trans_lock);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+	return IRQ_HANDLED;
+}
+
+static irqreturn_t bcl_handle_vbat(int irq, void *data)
+{
+	struct bcl_peripheral_data *perph_data =
+		(struct bcl_peripheral_data *)data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bool irq_enabled = false;
+
+	mutex_lock(&perph_data->state_trans_lock);
+	irq_enabled = perph_data->irq_enabled;
+	mutex_unlock(&perph_data->state_trans_lock);
+
+	if (irq_enabled)
+		of_thermal_handle_trip(perph_data->tz_dev);
+
+=======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+
+	mutex_lock(&perph_data->state_trans_lock);
+	if (!perph_data->irq_enabled) {
+		WARN_ON(1);
+		disable_irq_nosync(irq);
+		perph_data->irq_enabled = false;
+		goto exit_intr;
+	}
+	mutex_unlock(&perph_data->state_trans_lock);
+	of_thermal_handle_trip(perph_data->tz_dev);
+
+	return IRQ_HANDLED;
+
+exit_intr:
+	mutex_unlock(&perph_data->state_trans_lock);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return IRQ_HANDLED;
 }

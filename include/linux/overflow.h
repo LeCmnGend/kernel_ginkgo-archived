@@ -4,7 +4,10 @@
 
 #include <linux/compiler.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/limits.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -207,6 +210,7 @@
 #endif /* COMPILER_HAS_GENERIC_BUILTIN_OVERFLOW */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /** check_shl_overflow() - Calculate a left-shifted value and check overflow
  *
  * @a: Value to be shifted
@@ -238,6 +242,8 @@
 		(*_d >> _to_shift) != _a);				\
 })
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -314,7 +320,10 @@ static inline __must_check size_t __ab_c_size(size_t n, size_t size, size_t c)
 		    sizeof(*(p)))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /** check_shl_overflow() - Calculate a left-shifted value and check overflow
  *
  * @a: Value to be shifted
@@ -346,5 +355,8 @@ static inline __must_check size_t __ab_c_size(size_t n, size_t size, size_t c)
 		(*_d >> _to_shift) != _a);				\
 })
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* __LINUX_OVERFLOW_H */

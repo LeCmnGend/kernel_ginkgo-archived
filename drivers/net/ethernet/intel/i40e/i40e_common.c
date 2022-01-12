@@ -1916,6 +1916,7 @@ i40e_status i40e_aq_set_phy_debug(struct i40e_hw *hw, u8 cmd_flags,
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * i40e_is_aq_api_ver_ge
  * @aq: pointer to AdminQ info containing HW API version to compare
  * @maj: API major value
@@ -1931,6 +1932,8 @@ static bool i40e_is_aq_api_ver_ge(struct i40e_adminq_info *aq, u16 maj,
 }
 
 /**
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * i40e_aq_add_vsi
@@ -2058,13 +2061,19 @@ i40e_status i40e_aq_set_vsi_unicast_promiscuous(struct i40e_hw *hw,
 	if (set) {
 		flags |= I40E_AQC_SET_VSI_PROMISC_UNICAST;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (rx_only_promisc && i40e_is_aq_api_ver_ge(&hw->aq, 1, 5))
 			flags |= I40E_AQC_SET_VSI_PROMISC_RX_ONLY;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (rx_only_promisc &&
 		    (((hw->aq.api_maj_ver == 1) && (hw->aq.api_min_ver >= 5)) ||
 		     (hw->aq.api_maj_ver > 1)))
 			flags |= I40E_AQC_SET_VSI_PROMISC_TX;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -2072,9 +2081,15 @@ i40e_status i40e_aq_set_vsi_unicast_promiscuous(struct i40e_hw *hw,
 
 	cmd->valid_flags = cpu_to_le16(I40E_AQC_SET_VSI_PROMISC_UNICAST);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (i40e_is_aq_api_ver_ge(&hw->aq, 1, 5))
 		cmd->valid_flags |=
 			cpu_to_le16(I40E_AQC_SET_VSI_PROMISC_RX_ONLY);
+=======
+	if (((hw->aq.api_maj_ver >= 1) && (hw->aq.api_min_ver >= 5)) ||
+	    (hw->aq.api_maj_ver > 1))
+		cmd->valid_flags |= cpu_to_le16(I40E_AQC_SET_VSI_PROMISC_TX);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (((hw->aq.api_maj_ver >= 1) && (hw->aq.api_min_ver >= 5)) ||
 	    (hw->aq.api_maj_ver > 1))
@@ -2177,6 +2192,7 @@ enum i40e_status_code i40e_aq_set_vsi_uc_promisc_on_vlan(struct i40e_hw *hw,
 					  i40e_aqc_opc_set_vsi_promiscuous_modes);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (enable) {
 		flags |= I40E_AQC_SET_VSI_PROMISC_UNICAST;
 		if (i40e_is_aq_api_ver_ge(&hw->aq, 1, 5))
@@ -2189,11 +2205,16 @@ enum i40e_status_code i40e_aq_set_vsi_uc_promisc_on_vlan(struct i40e_hw *hw,
 		cmd->valid_flags |=
 			cpu_to_le16(I40E_AQC_SET_VSI_PROMISC_RX_ONLY);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (enable)
 		flags |= I40E_AQC_SET_VSI_PROMISC_UNICAST;
 
 	cmd->promiscuous_flags = cpu_to_le16(flags);
 	cmd->valid_flags = cpu_to_le16(I40E_AQC_SET_VSI_PROMISC_UNICAST);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cmd->seid = cpu_to_le16(seid);
 	cmd->vlan_tag = cpu_to_le16(vid | I40E_AQC_SET_VSI_VLAN_VALID);

@@ -26,7 +26,10 @@
 #include <linux/interrupt.h>
 #include <linux/devfreq.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/devfreq_boost.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/slab.h>
@@ -216,7 +219,11 @@ int devfreq_add_devbw(struct device *dev)
 
 	p = &d->dp;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	p->polling_ms = 200;
+=======
+	p->polling_ms = 50;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	p->polling_ms = 50;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -246,9 +253,12 @@ int devfreq_add_devbw(struct device *dev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!strcmp(dev_name(dev), "soc:qcom,cpu-cpu-ddr-bw"))
 		devfreq_register_boost_device(DEVFREQ_CPU_DDR_BW, d->df);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;

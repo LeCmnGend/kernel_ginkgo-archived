@@ -35,7 +35,11 @@ struct node_header {
 	__le32 value_size;
 	__le32 padding;
 <<<<<<< HEAD
+<<<<<<< HEAD
 } __attribute__((packed, aligned(8)));
+=======
+} __packed;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 } __packed;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -44,7 +48,11 @@ struct btree_node {
 	struct node_header header;
 	__le64 keys[0];
 <<<<<<< HEAD
+<<<<<<< HEAD
 } __attribute__((packed, aligned(8)));
+=======
+} __packed;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 } __packed;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -2098,6 +2098,11 @@ static int bpf_skb_proto_4_to_6(struct sk_buff *skb)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		/* Due to IPv6 header, MSS needs to be downgraded. */
+		skb_shinfo(skb)->gso_size -= len_diff;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		/* Due to IPv6 header, MSS needs to be downgraded. */
 		skb_shinfo(skb)->gso_size -= len_diff;
@@ -2137,6 +2142,11 @@ static int bpf_skb_proto_6_to_4(struct sk_buff *skb)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		/* Due to IPv4 header, MSS can be upgraded. */
+		skb_shinfo(skb)->gso_size += len_diff;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		/* Due to IPv4 header, MSS can be upgraded. */
 		skb_shinfo(skb)->gso_size += len_diff;
@@ -2286,14 +2296,20 @@ static int bpf_skb_net_shrink(struct sk_buff *skb, u32 len_diff)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define BPF_SKB_MAX_LEN SKB_MAX_ALLOC
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static u32 __bpf_skb_max_len(const struct sk_buff *skb)
 {
 	if (skb_at_tc_ingress(skb) || !skb->dev)
 		return SKB_MAX_ALLOC;
 	return skb->dev->mtu + skb->dev->hard_header_len;
 }
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static int bpf_skb_adjust_net(struct sk_buff *skb, s32 len_diff)
@@ -2302,7 +2318,11 @@ static int bpf_skb_adjust_net(struct sk_buff *skb, s32 len_diff)
 	u32 len_cur, len_diff_abs = abs(len_diff);
 	u32 len_min = bpf_skb_net_base_len(skb);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 len_max = BPF_SKB_MAX_LEN;
+=======
+	u32 len_max = __bpf_skb_max_len(skb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 len_max = __bpf_skb_max_len(skb);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2385,7 +2405,11 @@ BPF_CALL_3(bpf_skb_change_tail, struct sk_buff *, skb, u32, new_len,
 	   u64, flags)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 max_len = BPF_SKB_MAX_LEN;
+=======
+	u32 max_len = __bpf_skb_max_len(skb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 max_len = __bpf_skb_max_len(skb);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2440,7 +2464,11 @@ BPF_CALL_3(bpf_skb_change_head, struct sk_buff *, skb, u32, head_room,
 	   u64, flags)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 max_len = BPF_SKB_MAX_LEN;
+=======
+	u32 max_len = __bpf_skb_max_len(skb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 max_len = __bpf_skb_max_len(skb);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2466,7 +2494,10 @@ BPF_CALL_3(bpf_skb_change_head, struct sk_buff *, skb, u32, head_room,
 		memset(skb->data, 0, head_room);
 		skb_reset_mac_header(skb);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		skb_reset_mac_len(skb);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -3218,8 +3249,11 @@ bpf_base_func_proto(enum bpf_func_id func_id)
 	case BPF_FUNC_ktime_get_ns:
 		return &bpf_ktime_get_ns_proto;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case BPF_FUNC_ktime_get_boot_ns:
 		return &bpf_ktime_get_boot_ns_proto;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case BPF_FUNC_trace_printk:

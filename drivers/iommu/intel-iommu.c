@@ -3339,12 +3339,15 @@ static int __init init_dmars(void)
 		if (!ecap_pass_through(iommu->ecap))
 			hw_pass_through = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		if (!intel_iommu_strict && cap_caching_mode(iommu->cap)) {
 			pr_info("Disable batched IOTLB flush due to virtualization");
 			intel_iommu_strict = 1;
 		}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_INTEL_IOMMU_SVM

@@ -266,7 +266,11 @@ static void sem_rcu_free(struct rcu_head *head)
 	struct sem_array *sma = container_of(p, struct sem_array, sem_perm);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	security_sem_free(&sma->sem_perm);
+=======
+	security_sem_free(sma);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	security_sem_free(sma);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -500,7 +504,11 @@ static int newary(struct ipc_namespace *ns, struct ipc_params *params)
 
 	sma->sem_perm.security = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	retval = security_sem_alloc(&sma->sem_perm);
+=======
+	retval = security_sem_alloc(sma);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	retval = security_sem_alloc(sma);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -543,12 +551,18 @@ static int newary(struct ipc_namespace *ns, struct ipc_params *params)
 static inline int sem_security(struct kern_ipc_perm *ipcp, int semflg)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return security_sem_associate(ipcp, semflg);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct sem_array *sma;
 
 	sma = container_of(ipcp, struct sem_array, sem_perm);
 	return security_sem_associate(sma, semflg);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -1221,7 +1235,11 @@ static int semctl_stat(struct ipc_namespace *ns, int semid,
 		goto out_unlock;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = security_sem_semctl(&sma->sem_perm, cmd);
+=======
+	err = security_sem_semctl(sma, cmd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = security_sem_semctl(sma, cmd);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1306,7 +1324,11 @@ static int semctl_setval(struct ipc_namespace *ns, int semid, int semnum,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = security_sem_semctl(&sma->sem_perm, SETVAL);
+=======
+	err = security_sem_semctl(sma, SETVAL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = security_sem_semctl(sma, SETVAL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1364,7 +1386,11 @@ static int semctl_main(struct ipc_namespace *ns, int semid, int semnum,
 		goto out_rcu_wakeup;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = security_sem_semctl(&sma->sem_perm, cmd);
+=======
+	err = security_sem_semctl(sma, cmd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = security_sem_semctl(sma, cmd);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1559,7 +1585,11 @@ static int semctl_down(struct ipc_namespace *ns, int semid,
 	sma = container_of(ipcp, struct sem_array, sem_perm);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = security_sem_semctl(&sma->sem_perm, cmd);
+=======
+	err = security_sem_semctl(sma, cmd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = security_sem_semctl(sma, cmd);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1980,7 +2010,11 @@ static long do_semtimedop(int semid, struct sembuf __user *tsops,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	error = security_sem_semop(&sma->sem_perm, sops, nsops, alter);
+=======
+	error = security_sem_semop(sma, sops, nsops, alter);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	error = security_sem_semop(sma, sops, nsops, alter);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

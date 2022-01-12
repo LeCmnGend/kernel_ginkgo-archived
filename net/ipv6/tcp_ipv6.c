@@ -320,13 +320,17 @@ static void tcp_v6_mtu_reduced(struct sock *sk)
 {
 	struct dst_entry *dst;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 mtu;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if ((1 << sk->sk_state) & (TCPF_LISTEN | TCPF_CLOSE))
 		return;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	mtu = READ_ONCE(tcp_sk(sk)->mtu_info);
 
@@ -337,6 +341,9 @@ static void tcp_v6_mtu_reduced(struct sock *sk)
 		return;
 
 	dst = inet6_csk_update_pmtu(sk, mtu);
+=======
+	dst = inet6_csk_update_pmtu(sk, tcp_sk(sk)->mtu_info);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dst = inet6_csk_update_pmtu(sk, tcp_sk(sk)->mtu_info);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -419,8 +426,11 @@ static void tcp_v6_err(struct sk_buff *skb, struct inet6_skb_parm *opt,
 
 	if (type == ICMPV6_PKT_TOOBIG) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		u32 mtu = ntohl(info);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* We are not interested in TCP_LISTEN and open_requests
@@ -434,11 +444,15 @@ static void tcp_v6_err(struct sk_buff *skb, struct inet6_skb_parm *opt,
 			goto out;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (mtu < IPV6_MIN_MTU)
 			goto out;
 
 		WRITE_ONCE(tp->mtu_info, mtu);
 
+=======
+		tp->mtu_info = ntohl(info);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		tp->mtu_info = ntohl(info);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -516,8 +530,12 @@ static int tcp_v6_send_synack(const struct sock *sk, struct dst_entry *dst,
 		if (!opt)
 			opt = rcu_dereference(np->opt);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		err = ip6_xmit(sk, skb, fl6, skb->mark ? : sk->sk_mark, opt,
 			       np->tclass);
+=======
+		err = ip6_xmit(sk, skb, fl6, sk->sk_mark, opt, np->tclass);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		err = ip6_xmit(sk, skb, fl6, sk->sk_mark, opt, np->tclass);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1048,11 +1066,14 @@ static int tcp_v6_conn_request(struct sock *sk, struct sk_buff *skb)
 		goto drop;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ipv6_addr_v4mapped(&ipv6_hdr(skb)->saddr)) {
 		__IP6_INC_STATS(sock_net(sk), NULL, IPSTATS_MIB_INHDRERRORS);
 		return 0;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return tcp_conn_request(&tcp6_request_sock_ops,
@@ -1870,7 +1891,11 @@ static void get_tcp6_sock(struct seq_file *seq, struct sock *sp, int i)
 		   jiffies_to_clock_t(icsk->icsk_rto),
 		   jiffies_to_clock_t(icsk->icsk_ack.ato),
 <<<<<<< HEAD
+<<<<<<< HEAD
 		   (icsk->icsk_ack.quick << 1) | inet_csk_in_pingpong_mode(sp),
+=======
+		   (icsk->icsk_ack.quick << 1) | icsk->icsk_ack.pingpong,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		   (icsk->icsk_ack.quick << 1) | icsk->icsk_ack.pingpong,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

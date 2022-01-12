@@ -23,7 +23,10 @@
 #include "kgsl_trace.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * "SLEEP" is generic counting both NAP & SLUMBER
  * PERIODS generally won't exceed 9 for the relavent 150msec
@@ -42,6 +45,9 @@ static struct kgsl_popp popp_param[POPP_MAX] = {
 	{0, 0},
 };
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * struct kgsl_midframe_info - midframe power stats sampling info
@@ -75,6 +81,11 @@ static struct devfreq_dev_status last_status = { .private_data = &last_xstats };
 void kgsl_pwrscale_sleep(struct kgsl_device *device)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct kgsl_pwrscale *psc = &device->pwrscale;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct kgsl_pwrscale *psc = &device->pwrscale;
 
@@ -84,6 +95,12 @@ void kgsl_pwrscale_sleep(struct kgsl_device *device)
 	device->pwrscale.on_time = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	psc->popp_level = 0;
+	clear_bit(POPP_PUSH, &device->pwrscale.popp_state);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	psc->popp_level = 0;
 	clear_bit(POPP_PUSH, &device->pwrscale.popp_state);
@@ -163,7 +180,10 @@ void kgsl_pwrscale_update_stats(struct kgsl_device *device)
 
 		device->ftbl->power_stats(device, &stats);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (psc->popp_level) {
 			u64 x = stats.busy_time;
 			u64 y = stats.ram_time;
@@ -176,6 +196,9 @@ void kgsl_pwrscale_update_stats(struct kgsl_device *device)
 			stats.busy_time += x;
 			stats.ram_time += y;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		device->pwrscale.accum_stats.busy_time += stats.busy_time;
 		device->pwrscale.accum_stats.ram_time += stats.ram_time;
@@ -311,7 +334,11 @@ void kgsl_pwrscale_enable(struct kgsl_device *device)
 		 */
 		kgsl_pwrctrl_pwrlevel_change(device,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					device->pwrctrl.num_pwrlevels - 1);
+=======
+					device->pwrctrl.default_pwrlevel);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					device->pwrctrl.default_pwrlevel);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -336,7 +363,10 @@ static int _thermal_adjust(struct kgsl_pwrctrl *pwr, int level)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Use various metrics including level stability, NAP intervals, and
  * overall GPU freq / DDR freq combination to decide if POPP should
@@ -525,6 +555,9 @@ static int popp_trans2(struct kgsl_device *device, int level)
 	return level;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef DEVFREQ_FLAG_WAKEUP_MAXFREQ
 static inline bool _check_maxfreq(u32 flags)
@@ -593,7 +626,11 @@ int kgsl_devfreq_target(struct device *dev, unsigned long *freq, u32 flags)
 					level = _thermal_adjust(pwr, i);
 				else
 <<<<<<< HEAD
+<<<<<<< HEAD
 					level = i;
+=======
+					level = popp_trans2(device, i);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					level = popp_trans2(device, i);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -602,6 +639,11 @@ int kgsl_devfreq_target(struct device *dev, unsigned long *freq, u32 flags)
 		if (level != pwr->active_pwrlevel)
 			kgsl_pwrctrl_pwrlevel_change(device, level);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	} else if (popp_stable(device)) {
+		popp_trans1(device);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	} else if (popp_stable(device)) {
 		popp_trans1(device);
@@ -937,7 +979,11 @@ int kgsl_pwrscale_init(struct device *dev, const char *governor)
 
 	profile->initial_freq =
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pwr->pwrlevels[pwr->num_pwrlevels - 1].gpu_freq;
+=======
+		pwr->pwrlevels[pwr->default_pwrlevel].gpu_freq;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pwr->pwrlevels[pwr->default_pwrlevel].gpu_freq;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

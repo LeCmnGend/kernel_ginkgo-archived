@@ -1762,8 +1762,12 @@ static int snd_rme9652_free(struct snd_rme9652 *rme9652)
 		pci_release_regions(rme9652->pci);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (pci_is_enabled(rme9652->pci))
 		pci_disable_device(rme9652->pci);
+=======
+	pci_disable_device(rme9652->pci);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pci_disable_device(rme9652->pci);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

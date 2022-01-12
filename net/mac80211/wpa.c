@@ -163,8 +163,13 @@ ieee80211_rx_h_michael_mic_verify(struct ieee80211_rx_data *rx)
 update_iv:
 	/* update IV in key information to be able to detect replays */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rx->key->u.tkip.rx[rx->security_idx].iv32 = rx->tkip.iv32;
 	rx->key->u.tkip.rx[rx->security_idx].iv16 = rx->tkip.iv16;
+=======
+	rx->key->u.tkip.rx[rx->security_idx].iv32 = rx->tkip_iv32;
+	rx->key->u.tkip.rx[rx->security_idx].iv16 = rx->tkip_iv16;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rx->key->u.tkip.rx[rx->security_idx].iv32 = rx->tkip_iv32;
 	rx->key->u.tkip.rx[rx->security_idx].iv16 = rx->tkip_iv16;
@@ -295,8 +300,13 @@ ieee80211_crypto_tkip_decrypt(struct ieee80211_rx_data *rx)
 					  skb->len - hdrlen, rx->sta->sta.addr,
 					  hdr->addr1, hwaccel, rx->security_idx,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					  &rx->tkip.iv32,
 					  &rx->tkip.iv16);
+=======
+					  &rx->tkip_iv32,
+					  &rx->tkip_iv16);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					  &rx->tkip_iv32,
 					  &rx->tkip_iv16);
@@ -559,8 +569,11 @@ ieee80211_crypto_ccmp_decrypt(struct ieee80211_rx_data *rx,
 
 		memcpy(key->u.ccmp.rx_pn[queue], pn, IEEE80211_CCMP_PN_LEN);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (unlikely(ieee80211_is_frag(hdr)))
 			memcpy(rx->ccm_gcm.pn, pn, IEEE80211_CCMP_PN_LEN);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -793,8 +806,11 @@ ieee80211_crypto_gcmp_decrypt(struct ieee80211_rx_data *rx)
 
 		memcpy(key->u.gcmp.rx_pn[queue], pn, IEEE80211_GCMP_PN_LEN);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (unlikely(ieee80211_is_frag(hdr)))
 			memcpy(rx->ccm_gcm.pn, pn, IEEE80211_CCMP_PN_LEN);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

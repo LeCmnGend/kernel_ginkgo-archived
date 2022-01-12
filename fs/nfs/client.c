@@ -407,7 +407,11 @@ struct nfs_client *nfs_get_client(const struct nfs_client_initdata *cl_init)
 	if (cl_init->hostname == NULL) {
 		WARN_ON(1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return ERR_PTR(-EINVAL);
+=======
+		return NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return NULL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

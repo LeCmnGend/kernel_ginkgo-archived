@@ -871,8 +871,12 @@ out_free:
 	kfree(gl->gl_lksb.sb_lvbptr);
 	kmem_cache_free(cachep, gl);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (atomic_dec_and_test(&sdp->sd_glock_disposal))
 		wake_up(&sdp->sd_glock_wait);
+=======
+	atomic_dec(&sdp->sd_glock_disposal);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	atomic_dec(&sdp->sd_glock_disposal);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1461,7 +1465,10 @@ __acquires(&lru_lock)
 		gl = list_entry(list->next, struct gfs2_glock, gl_lru);
 		list_del_init(&gl->gl_lru);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		clear_bit(GLF_LRU, &gl->gl_flags);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!spin_trylock(&gl->gl_lockref.lock)) {
@@ -1510,6 +1517,10 @@ static long gfs2_scan_glock_lru(int nr)
 			list_move(&gl->gl_lru, &dispose);
 			atomic_dec(&lru_count);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			clear_bit(GLF_LRU, &gl->gl_flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			clear_bit(GLF_LRU, &gl->gl_flags);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

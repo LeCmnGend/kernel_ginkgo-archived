@@ -25,7 +25,10 @@ struct ext4_system_zone {
 	ext4_fsblk_t	start_blk;
 	unsigned int	count;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32		ino;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -49,8 +52,12 @@ static inline int can_merge(struct ext4_system_zone *entry1,
 		     struct ext4_system_zone *entry2)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if ((entry1->start_blk + entry1->count) == entry2->start_blk &&
 	    entry1->ino == entry2->ino)
+=======
+	if ((entry1->start_blk + entry1->count) == entry2->start_blk)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if ((entry1->start_blk + entry1->count) == entry2->start_blk)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -66,9 +73,15 @@ static inline int can_merge(struct ext4_system_zone *entry1,
 static int add_system_zone(struct ext4_sb_info *sbi,
 			   ext4_fsblk_t start_blk,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			   unsigned int count, u32 ino)
 {
 	struct ext4_system_zone *new_entry, *entry;
+=======
+			   unsigned int count)
+{
+	struct ext4_system_zone *new_entry = NULL, *entry;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			   unsigned int count)
 {
@@ -84,6 +97,7 @@ static int add_system_zone(struct ext4_sb_info *sbi,
 			n = &(*n)->rb_left;
 		else if (start_blk >= (entry->start_blk + entry->count))
 			n = &(*n)->rb_right;
+<<<<<<< HEAD
 <<<<<<< HEAD
 		else	/* Unexpected overlap of system zones. */
 			return -EFSCORRUPTED;
@@ -101,6 +115,8 @@ static int add_system_zone(struct ext4_sb_info *sbi,
 	rb_link_node(new_node, parent, n);
 	rb_insert_color(new_node, &sbi->system_blks);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		else {
 			if (start_blk + count > (entry->start_blk +
 						 entry->count))
@@ -125,6 +141,9 @@ static int add_system_zone(struct ext4_sb_info *sbi,
 		rb_link_node(new_node, parent, n);
 		rb_insert_color(new_node, &sbi->system_blks);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Can we merge to the left? */
@@ -198,6 +217,7 @@ static int ext4_protect_reserved_inode(struct super_block *sb, u32 ino)
 			i++;
 		} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			err = add_system_zone(sbi, map.m_pblk, n, ino);
 			if (err < 0) {
 				if (err == -EFSCORRUPTED) {
@@ -209,6 +229,8 @@ static int ext4_protect_reserved_inode(struct super_block *sb, u32 ino)
 				break;
 			}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (!ext4_data_block_valid(sbi, map.m_pblk, n)) {
 				ext4_error(sb, "blocks %llu-%llu from inode %u "
 					   "overlap system zone", map.m_pblk,
@@ -219,6 +241,9 @@ static int ext4_protect_reserved_inode(struct super_block *sb, u32 ino)
 			err = add_system_zone(sbi, map.m_pblk, n);
 			if (err < 0)
 				break;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			i += n;
 		}
@@ -246,6 +271,7 @@ int ext4_setup_system_zone(struct super_block *sb)
 
 	for (i=0; i < ngroups; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cond_resched();
 		if (ext4_bg_has_super(sb, i) &&
 		    ((i < 5) || ((i % flex_size) == 0)))
@@ -261,6 +287,8 @@ int ext4_setup_system_zone(struct super_block *sb)
 		ret = add_system_zone(sbi, ext4_inode_table(sb, gdp),
 				sbi->s_itb_per_group, 0);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (ext4_bg_has_super(sb, i) &&
 		    ((i < 5) || ((i % flex_size) == 0)))
 			add_system_zone(sbi, ext4_group_first_block_no(sb, i),
@@ -274,6 +302,9 @@ int ext4_setup_system_zone(struct super_block *sb)
 			return ret;
 		ret = add_system_zone(sbi, ext4_inode_table(sb, gdp),
 				sbi->s_itb_per_group);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (ret)
 			return ret;
@@ -308,16 +339,22 @@ void ext4_release_system_zone(struct super_block *sb)
  * overlaps with filesystem metadata blocks.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 int ext4_inode_block_valid(struct inode *inode, ext4_fsblk_t start_blk,
 			   unsigned int count)
 {
 	struct ext4_system_zone *entry;
 	struct ext4_sb_info *sbi = EXT4_SB(inode->i_sb);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int ext4_data_block_valid(struct ext4_sb_info *sbi, ext4_fsblk_t start_blk,
 			  unsigned int count)
 {
 	struct ext4_system_zone *entry;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct rb_node *n = sbi->system_blks.rb_node;
 
@@ -335,8 +372,11 @@ int ext4_data_block_valid(struct ext4_sb_info *sbi, ext4_fsblk_t start_blk,
 			n = n->rb_right;
 		else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (entry->ino == inode->i_ino)
 				return 1;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			sbi->s_es->s_last_error_block = cpu_to_le64(start_blk);
@@ -362,7 +402,12 @@ int ext4_check_blockref(const char *function, unsigned int line,
 		blk = le32_to_cpu(*bref++);
 		if (blk &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 		    unlikely(!ext4_inode_block_valid(inode, blk, 1))) {
+=======
+		    unlikely(!ext4_data_block_valid(EXT4_SB(inode->i_sb),
+						    blk, 1))) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		    unlikely(!ext4_data_block_valid(EXT4_SB(inode->i_sb),
 						    blk, 1))) {

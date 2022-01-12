@@ -537,6 +537,7 @@ static int __create_persistent_data_objects(struct dm_cache_metadata *cmd,
 	if (IS_ERR(cmd->bm)) {
 		DMERR("could not create block manager");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		r = PTR_ERR(cmd->bm);
 		cmd->bm = NULL;
 		return r;
@@ -548,12 +549,17 @@ static int __create_persistent_data_objects(struct dm_cache_metadata *cmd,
 		cmd->bm = NULL;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return PTR_ERR(cmd->bm);
 	}
 
 	r = __open_or_format_metadata(cmd, may_format_device);
 	if (r)
 		dm_block_manager_destroy(cmd->bm);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return r;

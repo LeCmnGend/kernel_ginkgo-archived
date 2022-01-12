@@ -253,11 +253,14 @@ static int bcm_sf2_port_setup(struct dsa_switch *ds, int port,
 	core_writel(priv, reg, CORE_MEM_PSM_VDD_CTRL);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Disable learning */
 	reg = core_readl(priv, CORE_DIS_LEARN);
 	reg |= BIT(port);
 	core_writel(priv, reg, CORE_DIS_LEARN);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Enable Broadcom tags for that port if requested */
@@ -549,10 +552,15 @@ static int bcm_sf2_mdio_register(struct dsa_switch *ds)
 	dn = of_find_compatible_node(NULL, NULL, "brcm,unimac-mdio");
 	priv->master_mii_bus = of_mdio_find_bus(dn);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!priv->master_mii_bus) {
 		of_node_put(dn);
 		return -EPROBE_DEFER;
 	}
+=======
+	if (!priv->master_mii_bus)
+		return -EPROBE_DEFER;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!priv->master_mii_bus)
 		return -EPROBE_DEFER;
@@ -563,10 +571,15 @@ static int bcm_sf2_mdio_register(struct dsa_switch *ds)
 
 	priv->slave_mii_bus = devm_mdiobus_alloc(ds->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!priv->slave_mii_bus) {
 		of_node_put(dn);
 		return -ENOMEM;
 	}
+=======
+	if (!priv->slave_mii_bus)
+		return -ENOMEM;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!priv->slave_mii_bus)
 		return -ENOMEM;
@@ -627,10 +640,15 @@ static u32 bcm_sf2_sw_get_phy_flags(struct dsa_switch *ds, int port)
 	 * the REG_PHY_REVISION register layout is.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (priv->int_phy_mask & BIT(port))
 		return priv->hw_params.gphy_rev;
 	else
 		return 0;
+=======
+
+	return priv->hw_params.gphy_rev;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	return priv->hw_params.gphy_rev;

@@ -219,9 +219,12 @@ struct dsi_panel {
 	int power_mode;
 	enum dsi_panel_physical_type panel_type;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	int hbm_mode;
 	int cabc_mode;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -345,10 +348,13 @@ int dsi_panel_parse_esd_reg_read_configs(struct dsi_panel *panel);
 void dsi_panel_ext_bridge_put(struct dsi_panel *panel);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int dsi_panel_apply_hbm_mode(struct dsi_panel *panel);
 
 int dsi_panel_apply_cabc_mode(struct dsi_panel *panel);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* _DSI_PANEL_H_ */

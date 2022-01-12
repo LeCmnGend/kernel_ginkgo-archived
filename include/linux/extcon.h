@@ -411,6 +411,7 @@ static inline  void devm_extcon_unregister_notifier(struct device *dev,
 				struct notifier_block *nb) { }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int extcon_register_notifier_all(struct extcon_dev *edev,
 					       struct notifier_block *nb)
 {
@@ -434,6 +435,8 @@ static inline void devm_extcon_unregister_notifier_all(struct device *dev,
 						       struct extcon_dev *edev,
 						       struct notifier_block *nb) { }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline struct extcon_dev *extcon_get_extcon_dev(const char *extcon_name)

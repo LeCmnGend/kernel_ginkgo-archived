@@ -1284,7 +1284,11 @@ static int hidp_session_thread(void *arg)
 	/* cleanup runtime environment */
 	remove_wait_queue(sk_sleep(session->intr_sock->sk), &intr_wait);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	remove_wait_queue(sk_sleep(session->ctrl_sock->sk), &ctrl_wait);
+=======
+	remove_wait_queue(sk_sleep(session->intr_sock->sk), &ctrl_wait);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	remove_wait_queue(sk_sleep(session->intr_sock->sk), &ctrl_wait);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

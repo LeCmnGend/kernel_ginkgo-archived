@@ -6,6 +6,10 @@
 #include <asm/orc_types.h>
 #include <asm/orc_lookup.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <asm/sections.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <asm/sections.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -124,7 +128,11 @@ static struct orc_entry *orc_find(unsigned long ip)
 
 	/* vmlinux .init slow lookup: */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (init_kernel_text(ip))
+=======
+	if (ip >= (unsigned long)_sinittext && ip < (unsigned long)_einittext)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ip >= (unsigned long)_sinittext && ip < (unsigned long)_einittext)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -263,6 +271,11 @@ EXPORT_SYMBOL_GPL(unwind_get_return_address);
 unsigned long *unwind_get_return_address_ptr(struct unwind_state *state)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct task_struct *task = state->task;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct task_struct *task = state->task;
 
@@ -274,12 +287,18 @@ unsigned long *unwind_get_return_address_ptr(struct unwind_state *state)
 		return &state->regs->ip;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (task != current && state->sp == task->thread.sp) {
 		struct inactive_task_frame *frame = (void *)task->thread.sp;
 		return &frame->ret_addr;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (state->sp)
 		return (unsigned long *)state->sp - 1;
@@ -360,11 +379,16 @@ bool unwind_next_frame(struct unwind_state *state)
 	 * Find the orc_entry associated with the text address.
 	 *
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * For a call frame (as opposed to a signal frame), state->ip points to
 	 * the instruction after the call.  That instruction's stack layout
 	 * could be different from the call instruction's layout, for example
 	 * if the call was to a noreturn function.  So get the ORC data for the
 	 * call instruction itself.
+=======
+	 * Decrement call return addresses by one so they work for sibling
+	 * calls and calls to noreturn functions.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 * Decrement call return addresses by one so they work for sibling
 	 * calls and calls to noreturn functions.
@@ -569,10 +593,16 @@ void __unwind_start(struct unwind_state *state, struct task_struct *task,
 		struct inactive_task_frame *frame = (void *)task->thread.sp;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		state->sp = task->thread.sp + sizeof(*frame);
 		state->bp = READ_ONCE_NOCHECK(frame->bp);
 		state->ip = READ_ONCE_NOCHECK(frame->ret_addr);
 		state->signal = (void *)state->ip == ret_from_fork;
+=======
+		state->sp = task->thread.sp;
+		state->bp = READ_ONCE_NOCHECK(frame->bp);
+		state->ip = READ_ONCE_NOCHECK(frame->ret_addr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		state->sp = task->thread.sp;
 		state->bp = READ_ONCE_NOCHECK(frame->bp);

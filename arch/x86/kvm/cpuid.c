@@ -650,6 +650,7 @@ static inline int __do_cpuid_ent(struct kvm_cpuid_entry2 *entry, u32 function,
 		unsigned phys_as = entry->eax & 0xff;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/*
 		 * Use bare metal's MAXPHADDR if the CPU doesn't report guest
 		 * MAXPHYADDR separately, or if TDP (NPT) is disabled, as the
@@ -658,6 +659,10 @@ static inline int __do_cpuid_ent(struct kvm_cpuid_entry2 *entry, u32 function,
 		if (!g_phys_as || !tdp_enabled)
 			g_phys_as = phys_as;
 
+=======
+		if (!g_phys_as)
+			g_phys_as = phys_as;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!g_phys_as)
 			g_phys_as = phys_as;

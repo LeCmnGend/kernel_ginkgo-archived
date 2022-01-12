@@ -17,12 +17,16 @@
 #define __ASM_CHECKSUM_H
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/in6.h>
 
 #define _HAVE_ARCH_IPV6_CSUM
 __sum16 csum_ipv6_magic(const struct in6_addr *saddr,
 			const struct in6_addr *daddr,
 			__u32 len, __u8 proto, __wsum sum);
+=======
+#include <linux/types.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/types.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -40,16 +44,22 @@ static inline __sum16 ip_fast_csum(const void *iph, unsigned int ihl)
 	__uint128_t tmp;
 	u64 sum;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int n = ihl; /* we want it signed */
 
 	tmp = *(const __uint128_t *)iph;
 	iph += 16;
 	n -= 4;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	tmp = *(const __uint128_t *)iph;
 	iph += 16;
 	ihl -= 4;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	tmp += ((tmp >> 64) | (tmp << 64));
 	sum = tmp >> 64;
@@ -57,7 +67,11 @@ static inline __sum16 ip_fast_csum(const void *iph, unsigned int ihl)
 		sum += *(const u32 *)iph;
 		iph += 4;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} while (--n > 0);
+=======
+	} while (--ihl);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	} while (--ihl);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -68,9 +82,12 @@ static inline __sum16 ip_fast_csum(const void *iph, unsigned int ihl)
 #define ip_fast_csum ip_fast_csum
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern unsigned int do_csum(const unsigned char *buff, int len);
 #define do_csum do_csum
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <asm-generic/checksum.h>

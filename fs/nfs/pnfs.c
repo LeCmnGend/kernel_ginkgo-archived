@@ -1137,11 +1137,14 @@ _pnfs_return_layout(struct inode *ino)
 	struct pnfs_layout_hdr *lo = NULL;
 	struct nfs_inode *nfsi = NFS_I(ino);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct pnfs_layout_range range = {
 		.iomode		= IOMODE_ANY,
 		.offset		= 0,
 		.length		= NFS4_MAX_UINT64,
 	};
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	LIST_HEAD(tmp_list);
@@ -1171,11 +1174,14 @@ _pnfs_return_layout(struct inode *ino)
 	valid_layout = pnfs_layout_is_valid(lo);
 	pnfs_clear_layoutcommit(ino, &tmp_list);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pnfs_mark_matching_lsegs_return(lo, &tmp_list, &range, 0);
 
 	if (NFS_SERVER(ino)->pnfs_curr_ld->return_range)
 		NFS_SERVER(ino)->pnfs_curr_ld->return_range(lo, &range);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pnfs_mark_matching_lsegs_invalid(lo, &tmp_list, NULL, 0);
 
 	if (NFS_SERVER(ino)->pnfs_curr_ld->return_range) {
@@ -1186,6 +1192,9 @@ _pnfs_return_layout(struct inode *ino)
 		};
 		NFS_SERVER(ino)->pnfs_curr_ld->return_range(lo, &range);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Don't send a LAYOUTRETURN if list was initially empty */
@@ -1344,7 +1353,10 @@ void pnfs_roc_release(struct nfs4_layoutreturn_args *args,
 {
 	struct pnfs_layout_hdr *lo = args->layout;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct inode *inode = args->inode;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	const nfs4_stateid *arg_stateid = NULL;
@@ -1354,11 +1366,14 @@ void pnfs_roc_release(struct nfs4_layoutreturn_args *args,
 	switch (ret) {
 	case -NFS4ERR_NOMATCHING_LAYOUT:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		spin_lock(&inode->i_lock);
 		if (pnfs_layout_is_valid(lo) &&
 		    nfs4_stateid_match_other(&args->stateid, &lo->plh_stateid))
 			pnfs_set_plh_return_info(lo, args->range.iomode, 0);
 		spin_unlock(&inode->i_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
@@ -1995,6 +2010,7 @@ pnfs_layout_process(struct nfs4_layoutget *lgp)
 		 * inode invalid, and retry the layoutget
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		struct pnfs_layout_range range = {
 			.iomode = IOMODE_ANY,
 			.length = NFS4_MAX_UINT64,
@@ -2002,6 +2018,9 @@ pnfs_layout_process(struct nfs4_layoutget *lgp)
 		pnfs_set_plh_return_info(lo, IOMODE_ANY, 0);
 		pnfs_mark_matching_lsegs_return(lo, &lo->plh_return_segs,
 						&range, 0);
+=======
+		pnfs_mark_layout_stateid_invalid(lo, &free_me);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pnfs_mark_layout_stateid_invalid(lo, &free_me);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

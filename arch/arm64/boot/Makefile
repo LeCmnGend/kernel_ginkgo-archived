@@ -6,7 +6,11 @@
 #
 # This file is subject to the terms and conditions of the GNU General Public
 <<<<<<< HEAD
+<<<<<<< HEAD
 # License. See the file "COPYING" in the main directory of this archive
+=======
+# License.  See the file "COPYING" in the main directory of this archive
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 # License.  See the file "COPYING" in the main directory of this archive
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -23,7 +27,11 @@ include $(srctree)/arch/arm64/boot/dts/Makefile
 OBJCOPYFLAGS_Image :=-O binary -R .note -R .note.gnu.build-id -R .comment -S
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 targets := Image Image.bz2 Image.gz Image.lz4 Image.lzma Image.lzo dtbo.img
+=======
+targets := Image Image.bz2 Image.gz Image.lz4 Image.lzma Image.lzo
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 targets := Image Image.bz2 Image.gz Image.lz4 Image.lzma Image.lzo
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -37,8 +45,11 @@ endif
 DTB_OBJS := $(shell find $(obj)/dts/ -name \*.dtb)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 DTBO_OBJS := $(shell find $(obj)/dts/ -name \*.dtbo)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 # Add RTIC DTB to the DTB list if RTIC MPGen is enabled
@@ -55,6 +66,7 @@ rtic_mp.dtb: vmlinux FORCE
 
 $(obj)/Image: vmlinux FORCE
 	$(call if_changed,objcopy)
+<<<<<<< HEAD
 <<<<<<< HEAD
 	
 $(obj)/Image.bz2: $(obj)/Image FORCE
@@ -86,6 +98,8 @@ $(obj)/dtbo.img: $(DTBO_OBJS) FORCE
 	$(call if_changed,mkdtimg)
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 $(obj)/Image.bz2: $(obj)/Image FORCE
 	$(call if_changed,bzip2)
@@ -112,6 +126,9 @@ $(obj)/Image.lzo: $(obj)/Image FORCE
 $(obj)/Image.gz-dtb: $(obj)/Image.gz $(DTB_OBJS) FORCE
 	$(call if_changed,cat)
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 install:
 	$(CONFIG_SHELL) $(srctree)/$(src)/install.sh $(KERNELRELEASE) \

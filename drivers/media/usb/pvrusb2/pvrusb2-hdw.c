@@ -2671,8 +2671,14 @@ void pvr2_hdw_destroy(struct pvr2_hdw *hdw)
 		hdw->vid_stream = NULL;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	v4l2_device_unregister(&hdw->v4l2_dev);
 	pvr2_hdw_disconnect(hdw);
+=======
+	pvr2_i2c_core_done(hdw);
+	v4l2_device_unregister(&hdw->v4l2_dev);
+	pvr2_hdw_remove_usb_stuff(hdw);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pvr2_i2c_core_done(hdw);
 	v4l2_device_unregister(&hdw->v4l2_dev);
@@ -2705,7 +2711,10 @@ void pvr2_hdw_disconnect(struct pvr2_hdw *hdw)
 	pvr2_trace(PVR2_TRACE_INIT,"pvr2_hdw_disconnect(hdw=%p)",hdw);
 	LOCK_TAKE(hdw->big_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pvr2_i2c_core_done(hdw);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	LOCK_TAKE(hdw->ctl_lock);

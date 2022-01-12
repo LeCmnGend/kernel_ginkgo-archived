@@ -84,6 +84,7 @@ static int clear_bits_ll(unsigned long *addr, unsigned long mask_to_clear)
  * return 0.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int bitmap_set_ll(unsigned long *map, unsigned long start, unsigned long nr)
 {
 	unsigned long *p = map + BIT_WORD(start);
@@ -93,6 +94,8 @@ static int bitmap_set_ll(unsigned long *map, unsigned long start, unsigned long 
 
 	while (nr >= bits_to_set) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int bitmap_set_ll(unsigned long *map, int start, int nr)
 {
 	unsigned long *p = map + BIT_WORD(start);
@@ -101,6 +104,9 @@ static int bitmap_set_ll(unsigned long *map, int start, int nr)
 	unsigned long mask_to_set = BITMAP_FIRST_WORD_MASK(start);
 
 	while (nr - bits_to_set >= 0) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (set_bits_ll(p, mask_to_set))
 			return nr;
@@ -130,6 +136,7 @@ static int bitmap_set_ll(unsigned long *map, int start, int nr)
  * otherwise return 0.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static unsigned long
 bitmap_clear_ll(unsigned long *map, unsigned long start, unsigned long nr)
 {
@@ -140,6 +147,8 @@ bitmap_clear_ll(unsigned long *map, unsigned long start, unsigned long nr)
 
 	while (nr >= bits_to_clear) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int bitmap_clear_ll(unsigned long *map, int start, int nr)
 {
 	unsigned long *p = map + BIT_WORD(start);
@@ -148,6 +157,9 @@ static int bitmap_clear_ll(unsigned long *map, int start, int nr)
 	unsigned long mask_to_clear = BITMAP_FIRST_WORD_MASK(start);
 
 	while (nr - bits_to_clear >= 0) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (clear_bits_ll(p, mask_to_clear))
 			return nr;
@@ -208,8 +220,13 @@ int gen_pool_add_virt(struct gen_pool *pool, unsigned long virt, phys_addr_t phy
 {
 	struct gen_pool_chunk *chunk;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long nbits = size >> pool->min_alloc_order;
 	unsigned long nbytes = sizeof(struct gen_pool_chunk) +
+=======
+	int nbits = size >> pool->min_alloc_order;
+	int nbytes = sizeof(struct gen_pool_chunk) +
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int nbits = size >> pool->min_alloc_order;
 	int nbytes = sizeof(struct gen_pool_chunk) +
@@ -271,7 +288,11 @@ void gen_pool_destroy(struct gen_pool *pool)
 	struct gen_pool_chunk *chunk;
 	int order = pool->min_alloc_order;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long bit, end_bit;
+=======
+	int bit, end_bit;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int bit, end_bit;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -326,7 +347,11 @@ unsigned long gen_pool_alloc_algo(struct gen_pool *pool, size_t size,
 	unsigned long addr = 0;
 	int order = pool->min_alloc_order;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long nbits, start_bit, end_bit, remain;
+=======
+	int nbits, start_bit, end_bit, remain;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int nbits, start_bit, end_bit, remain;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -413,7 +438,11 @@ void gen_pool_free(struct gen_pool *pool, unsigned long addr, size_t size)
 	struct gen_pool_chunk *chunk;
 	int order = pool->min_alloc_order;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long start_bit, nbits, remain;
+=======
+	int start_bit, nbits, remain;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int start_bit, nbits, remain;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -679,7 +708,11 @@ unsigned long gen_pool_best_fit(unsigned long *map, unsigned long size,
 
 	while (index < size) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unsigned long next_bit = find_next_bit(map, size, index + nr);
+=======
+		int next_bit = find_next_bit(map, size, index + nr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		int next_bit = find_next_bit(map, size, index + nr);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

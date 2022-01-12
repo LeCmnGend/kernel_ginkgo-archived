@@ -586,10 +586,15 @@ static void pch_spi_set_tx(struct pch_spi_data *data, int *bpw)
 	if (data->pkt_tx_buff != NULL) {
 		data->pkt_rx_buff = kzalloc(size, GFP_KERNEL);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!data->pkt_rx_buff) {
 			kfree(data->pkt_tx_buff);
 			data->pkt_tx_buff = NULL;
 		}
+=======
+		if (!data->pkt_rx_buff)
+			kfree(data->pkt_tx_buff);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!data->pkt_rx_buff)
 			kfree(data->pkt_tx_buff);

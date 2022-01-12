@@ -942,8 +942,12 @@ int rate_control_set_rates(struct ieee80211_hw *hw,
 		kfree_rcu(old, rcu_head);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (sta->uploaded)
 		drv_sta_rate_tbl_update(hw_to_local(hw), sta->sdata, pubsta);
+=======
+	drv_sta_rate_tbl_update(hw_to_local(hw), sta->sdata, pubsta);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	drv_sta_rate_tbl_update(hw_to_local(hw), sta->sdata, pubsta);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -943,11 +943,16 @@ static int emmaprp_probe(struct platform_device *pdev)
 
 	irq = platform_get_irq(pdev, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (irq < 0) {
 		ret = irq;
 		goto rel_vdev;
 	}
 
+=======
+	if (irq < 0)
+		return irq;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (irq < 0)
 		return irq;

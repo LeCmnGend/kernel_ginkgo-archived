@@ -144,6 +144,7 @@ out:
 EXPORT_SYMBOL_GPL(xprt_unregister_transport);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void
 xprt_class_release(const struct xprt_class *t)
 {
@@ -193,11 +194,17 @@ xprt_class_find_by_netid(const char *netid)
  * xprt_load_transport - load a transport implementation
  * @transport_name: transport to load
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+/**
+ * xprt_load_transport - load a transport implementation
+ * @transport_name: transport to load
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * Returns:
  * 0:		transport successfully loaded
  * -ENOENT:	transport module not available
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
 int xprt_load_transport(const char *netid)
 {
@@ -209,6 +216,8 @@ int xprt_load_transport(const char *netid)
 	xprt_class_release(t);
 	return 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int xprt_load_transport(const char *transport_name)
 {
 	struct xprt_class *t;
@@ -226,6 +235,9 @@ int xprt_load_transport(const char *transport_name)
 	result = request_module("xprt%s", transport_name);
 out:
 	return result;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL_GPL(xprt_load_transport);

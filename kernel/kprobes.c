@@ -1990,10 +1990,13 @@ int register_kretprobe(struct kretprobe *rp)
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* If only rp->kp.addr is specified, check reregistering kprobes */
 	if (rp->kp.addr && check_kprobe_rereg(&rp->kp))
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (kretprobe_blacklist_size) {
@@ -2125,9 +2128,12 @@ static void kill_kprobe(struct kprobe *p)
 	struct kprobe *kp;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (WARN_ON_ONCE(kprobe_gone(p)))
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	p->flags |= KPROBE_FLAG_GONE;
@@ -2148,6 +2154,7 @@ static void kill_kprobe(struct kprobe *p)
 	 */
 	arch_remove_kprobe(p);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/*
 	 * The module is going away. We should disarm the kprobe which
@@ -2156,6 +2163,8 @@ static void kill_kprobe(struct kprobe *p)
 	 */
 	if (kprobe_ftrace(p) && !kprobe_disabled(p) && !kprobes_all_disarmed)
 		disarm_kprobe_ftrace(p);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -2277,10 +2286,14 @@ static int kprobes_module_callback(struct notifier_block *nb,
 	for (i = 0; i < KPROBE_TABLE_SIZE; i++) {
 		head = &kprobe_table[i];
 <<<<<<< HEAD
+<<<<<<< HEAD
 		hlist_for_each_entry_rcu(p, head, hlist) {
 			if (kprobe_gone(p))
 				continue;
 
+=======
+		hlist_for_each_entry_rcu(p, head, hlist)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		hlist_for_each_entry_rcu(p, head, hlist)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2301,7 +2314,10 @@ static int kprobes_module_callback(struct notifier_block *nb,
 				kill_kprobe(p);
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

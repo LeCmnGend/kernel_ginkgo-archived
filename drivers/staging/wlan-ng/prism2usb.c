@@ -62,8 +62,13 @@ static int prism2sta_probe_usb(struct usb_interface *interface,
 {
 	struct usb_device *dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct usb_endpoint_descriptor *bulk_in, *bulk_out;
 	struct usb_host_interface *iface_desc = interface->cur_altsetting;
+=======
+	const struct usb_endpoint_descriptor *epd;
+	const struct usb_host_interface *iface_desc = interface->cur_altsetting;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	const struct usb_endpoint_descriptor *epd;
 	const struct usb_host_interface *iface_desc = interface->cur_altsetting;
@@ -73,9 +78,12 @@ static int prism2sta_probe_usb(struct usb_interface *interface,
 	int result = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	result = usb_find_common_endpoints(iface_desc, &bulk_in, &bulk_out, NULL, NULL);
 	if (result)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (iface_desc->desc.bNumEndpoints != 2) {
 		result = -ENODEV;
 		goto failed;
@@ -87,6 +95,9 @@ static int prism2sta_probe_usb(struct usb_interface *interface,
 		goto failed;
 	epd = &iface_desc->endpoint[2].desc;
 	if (!usb_endpoint_is_bulk_out(epd))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto failed;
 
@@ -107,8 +118,11 @@ static int prism2sta_probe_usb(struct usb_interface *interface,
 
 	/* Initialize the hw data */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	hw->endp_in = usb_rcvbulkpipe(dev, bulk_in->bEndpointAddress);
 	hw->endp_out = usb_sndbulkpipe(dev, bulk_out->bEndpointAddress);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	hfa384x_create(hw, dev);

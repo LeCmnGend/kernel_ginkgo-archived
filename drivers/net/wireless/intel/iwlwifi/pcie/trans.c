@@ -1928,6 +1928,7 @@ static int iwl_trans_pcie_read_mem(struct iwl_trans *trans, u32 addr,
 {
 	unsigned long flags;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int offs = 0;
 	u32 *vals = buf;
 
@@ -1961,6 +1962,8 @@ static int iwl_trans_pcie_read_mem(struct iwl_trans *trans, u32 addr,
 
 	return 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int offs, ret = 0;
 	u32 *vals = buf;
 
@@ -1973,6 +1976,9 @@ static int iwl_trans_pcie_read_mem(struct iwl_trans *trans, u32 addr,
 		ret = -EBUSY;
 	}
 	return ret;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

@@ -24,6 +24,10 @@
 #include "a6xx_reg.h"
 #include "adreno_a6xx.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include "adreno_snapshot.h"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include "adreno_snapshot.h"
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -878,7 +882,11 @@ static int a6xx_gmu_gfx_rail_on(struct kgsl_device *device)
 	struct kgsl_pwrctrl *pwr = &device->pwrctrl;
 	struct gmu_device *gmu = KGSL_GMU_DEVICE(device);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int perf_idx = pwr->num_pwrlevels - 1;
+=======
+	unsigned int perf_idx = pwr->num_pwrlevels - pwr->default_pwrlevel - 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned int perf_idx = pwr->num_pwrlevels - pwr->default_pwrlevel - 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1311,8 +1319,13 @@ static int a6xx_gmu_notify_slumber(struct kgsl_device *device)
 	struct kgsl_pwrctrl *pwr = &device->pwrctrl;
 	struct gmu_device *gmu = KGSL_GMU_DEVICE(device);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int bus_level = pwr->pwrlevels[pwr->num_pwrlevels - 1].bus_freq;
 	int perf_idx = gmu->num_gpupwrlevels - 1;
+=======
+	int bus_level = pwr->pwrlevels[pwr->default_pwrlevel].bus_freq;
+	int perf_idx = gmu->num_gpupwrlevels - pwr->default_pwrlevel - 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int bus_level = pwr->pwrlevels[pwr->default_pwrlevel].bus_freq;
 	int perf_idx = gmu->num_gpupwrlevels - pwr->default_pwrlevel - 1;
@@ -1551,7 +1564,10 @@ static unsigned int a6xx_gmu_ifpc_show(struct adreno_device *adreno_dev)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static size_t a6xx_snapshot_gmu_tcm(struct kgsl_device *device,
 		u8 *buf, size_t remain, void *priv)
 {
@@ -1680,6 +1696,9 @@ static void a6xx_gmu_snapshot(struct adreno_device *adreno_dev,
 	}
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int a6xx_gmu_wait_for_active_transition(
 	struct adreno_device *adreno_dev)
@@ -1770,6 +1789,10 @@ struct gmu_dev_ops adreno_a6xx_gmudev = {
 	.ifpc_store = a6xx_gmu_ifpc_store,
 	.ifpc_show = a6xx_gmu_ifpc_show,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	.snapshot = a6xx_gmu_snapshot,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.snapshot = a6xx_gmu_snapshot,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

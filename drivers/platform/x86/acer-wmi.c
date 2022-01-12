@@ -44,7 +44,10 @@
 #include <acpi/video.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ACPI_MODULE_NAME(KBUILD_MODNAME);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 MODULE_AUTHOR("Carlos Corbacho");
@@ -98,7 +101,11 @@ MODULE_ALIAS("wmi:676AA15E-6A47-4D9F-A2CC-1E6D18D14026");
 enum acer_wmi_event_ids {
 	WMID_HOTKEY_EVENT = 0x1,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	WMID_ACCEL_OR_KBD_DOCK_EVENT = 0x5,
+=======
+	WMID_ACCEL_EVENT = 0x5,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	WMID_ACCEL_EVENT = 0x5,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -133,7 +140,10 @@ static const struct key_entry acer_wmi_keymap[] __initconst = {
 	{KE_IGNORE, 0x81, {KEY_SLEEP} },
 	{KE_KEY, 0x82, {KEY_TOUCHPAD_TOGGLE} },	/* Touch Pad Toggle */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{KE_IGNORE, 0x84, {KEY_KBDILLUMTOGGLE} }, /* Automatic Keyboard background light toggle */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{KE_KEY, KEY_TOUCHPAD_ON, {KEY_TOUCHPAD_ON} },
@@ -152,9 +162,13 @@ struct event_return_value {
 	u8 key_num;
 	u16 device_state;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u16 reserved1;
 	u8 kbd_dock_state;
 	u8 reserved2;
+=======
+	u32 reserved;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 reserved;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -236,6 +250,7 @@ struct hotkey_function_type_aa {
  * Interface capability flags
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define ACER_CAP_MAILLED		BIT(0)
 #define ACER_CAP_WIRELESS		BIT(1)
 #define ACER_CAP_BLUETOOTH		BIT(2)
@@ -244,6 +259,8 @@ struct hotkey_function_type_aa {
 #define ACER_CAP_SET_FUNCTION_MODE	BIT(5)
 #define ACER_CAP_KBD_DOCK		BIT(6)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define ACER_CAP_MAILLED		(1<<0)
 #define ACER_CAP_WIRELESS		(1<<1)
 #define ACER_CAP_BLUETOOTH		(1<<2)
@@ -252,6 +269,9 @@ struct hotkey_function_type_aa {
 #define ACER_CAP_ACCEL			(1<<5)
 #define ACER_CAP_RFBTN			(1<<6)
 #define ACER_CAP_ANY			(0xFFFFFFFF)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*
@@ -276,7 +296,10 @@ static int brightness = -1;
 static int threeg = -1;
 static int force_series;
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int force_caps = -1;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static bool ec_raw_mode;
@@ -289,7 +312,10 @@ module_param(brightness, int, 0444);
 module_param(threeg, int, 0444);
 module_param(force_series, int, 0444);
 <<<<<<< HEAD
+<<<<<<< HEAD
 module_param(force_caps, int, 0444);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 module_param(ec_raw_mode, bool, 0444);
@@ -298,7 +324,10 @@ MODULE_PARM_DESC(brightness, "Set initial LCD backlight brightness");
 MODULE_PARM_DESC(threeg, "Set initial state of 3G hardware");
 MODULE_PARM_DESC(force_series, "Force a different laptop series");
 <<<<<<< HEAD
+<<<<<<< HEAD
 MODULE_PARM_DESC(force_caps, "Force the capability bitmask to this value");
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 MODULE_PARM_DESC(ec_raw_mode, "Enable EC raw mode");
@@ -372,6 +401,7 @@ static int __init dmi_matched(const struct dmi_system_id *dmi)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int __init set_force_caps(const struct dmi_system_id *dmi)
 {
 	if (force_caps == -1) {
@@ -381,6 +411,8 @@ static int __init set_force_caps(const struct dmi_system_id *dmi)
 	return 1;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct quirk_entry quirk_unknown = {
@@ -562,6 +594,7 @@ static const struct dmi_system_id acer_quirks[] __initconst = {
 		.driver_data = &quirk_acer_travelmate_2490,
 	},
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{
 		.callback = set_force_caps,
 		.ident = "Acer Aspire Switch 10E SW3-016",
@@ -589,6 +622,8 @@ static const struct dmi_system_id acer_quirks[] __initconst = {
 		},
 		.driver_data = (void *)ACER_CAP_KBD_DOCK,
 	},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{}
@@ -1350,13 +1385,19 @@ static void __init type_aa_dmi_decode(const struct dmi_header *header, void *d)
 	if (type_aa->commun_func_bitmap & ACER_WMID3_GDS_BLUETOOTH)
 		interface->capability |= ACER_CAP_BLUETOOTH;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (type_aa->commun_func_bitmap & ACER_WMID3_GDS_RFBTN)
 		commun_func_bitmap &= ~ACER_WMID3_GDS_RFBTN;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (type_aa->commun_func_bitmap & ACER_WMID3_GDS_RFBTN) {
 		interface->capability |= ACER_CAP_RFBTN;
 		commun_func_bitmap &= ~ACER_WMID3_GDS_RFBTN;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	commun_fn_key_number = type_aa->commun_fn_key_number;
@@ -1619,7 +1660,11 @@ static int acer_gsensor_event(void)
 	union acpi_object out_obj[5];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!acer_wmi_accel_dev)
+=======
+	if (!has_cap(ACER_CAP_ACCEL))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!has_cap(ACER_CAP_ACCEL))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1646,6 +1691,7 @@ static int acer_gsensor_event(void)
 }
 
 /*
+<<<<<<< HEAD
 <<<<<<< HEAD
  * Switch series keyboard dock status
  */
@@ -1712,6 +1758,8 @@ static void acer_kbd_dock_event(const struct event_return_value *event)
 }
 
 /*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Rfkill devices
@@ -1941,9 +1989,14 @@ static void acer_wmi_notify(u32 value, void *context)
 		}
 		break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case WMID_ACCEL_OR_KBD_DOCK_EVENT:
 		acer_gsensor_event();
 		acer_kbd_dock_event(&return_value);
+=======
+	case WMID_ACCEL_EVENT:
+		acer_gsensor_event();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	case WMID_ACCEL_EVENT:
 		acer_gsensor_event();
@@ -2106,6 +2159,11 @@ static int __init acer_wmi_accel_setup(void)
 		return err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	interface->capability |= ACER_CAP_ACCEL;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	interface->capability |= ACER_CAP_ACCEL;
 
@@ -2136,12 +2194,18 @@ err_free_dev:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void acer_wmi_accel_destroy(void)
 {
 	input_unregister_device(acer_wmi_accel_dev);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int __init acer_wmi_input_setup(void)
 {
@@ -2161,9 +2225,12 @@ static int __init acer_wmi_input_setup(void)
 		goto err_free_dev;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (has_cap(ACER_CAP_KBD_DOCK))
 		input_set_capability(acer_wmi_input_dev, EV_SW, SW_TABLET_MODE);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	status = wmi_install_notify_handler(ACERWMID_EVENT_GUID,
@@ -2174,9 +2241,12 @@ static int __init acer_wmi_input_setup(void)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (has_cap(ACER_CAP_KBD_DOCK))
 		acer_kbd_dock_get_initial_state();
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = input_register_device(acer_wmi_input_dev);
@@ -2310,7 +2380,11 @@ static int acer_resume(struct device *dev)
 		set_u32(data->brightness, ACER_CAP_BRIGHTNESS);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (acer_wmi_accel_dev)
+=======
+	if (has_cap(ACER_CAP_ACCEL))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (has_cap(ACER_CAP_ACCEL))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2429,7 +2503,11 @@ static int __init acer_wmi_init(void)
 		/* WMID always provides brightness methods */
 		interface->capability |= ACER_CAP_BRIGHTNESS;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else if (!wmi_has_guid(WMID_GUID2) && interface && !has_type_aa && force_caps == -1) {
+=======
+	} else if (!wmi_has_guid(WMID_GUID2) && interface && !has_type_aa) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	} else if (!wmi_has_guid(WMID_GUID2) && interface && !has_type_aa) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2463,6 +2541,7 @@ static int __init acer_wmi_init(void)
 		interface->capability &= ~ACER_CAP_BRIGHTNESS;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (wmi_has_guid(WMID_GUID3))
 		interface->capability |= ACER_CAP_SET_FUNCTION_MODE;
 
@@ -2471,6 +2550,9 @@ static int __init acer_wmi_init(void)
 
 	if (wmi_has_guid(WMID_GUID3) &&
 	    (interface->capability & ACER_CAP_SET_FUNCTION_MODE)) {
+=======
+	if (wmi_has_guid(WMID_GUID3)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (wmi_has_guid(WMID_GUID3)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2537,8 +2619,13 @@ error_platform_register:
 	if (wmi_has_guid(ACERWMID_EVENT_GUID))
 		acer_wmi_input_destroy();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (acer_wmi_accel_dev)
 		input_unregister_device(acer_wmi_accel_dev);
+=======
+	if (has_cap(ACER_CAP_ACCEL))
+		acer_wmi_accel_destroy();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (has_cap(ACER_CAP_ACCEL))
 		acer_wmi_accel_destroy();
@@ -2553,8 +2640,13 @@ static void __exit acer_wmi_exit(void)
 		acer_wmi_input_destroy();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (acer_wmi_accel_dev)
 		input_unregister_device(acer_wmi_accel_dev);
+=======
+	if (has_cap(ACER_CAP_ACCEL))
+		acer_wmi_accel_destroy();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (has_cap(ACER_CAP_ACCEL))
 		acer_wmi_accel_destroy();

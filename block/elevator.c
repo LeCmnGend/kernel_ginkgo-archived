@@ -582,6 +582,7 @@ void elv_bio_merged(struct request_queue *q, struct request *rq,
 static void blk_pm_requeue_request(struct request *rq)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (rq->q->dev && !(rq->rq_flags & RQF_PM) &&
 	    (rq->rq_flags & (RQF_PM_ADDED | RQF_FLUSH_SEQ))) {
 		rq->rq_flags &= ~RQF_PM_ADDED;
@@ -591,10 +592,15 @@ static void blk_pm_requeue_request(struct request *rq)
 	if (rq->q->dev && !(rq->rq_flags & RQF_PM))
 		rq->q->nr_pending--;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	if (rq->q->dev && !(rq->rq_flags & RQF_PM))
+		rq->q->nr_pending--;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void blk_pm_add_request(struct request_queue *q, struct request *rq)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (q->dev && !(rq->rq_flags & RQF_PM)) {
 		rq->rq_flags |= RQF_PM_ADDED;
@@ -603,6 +609,11 @@ static void blk_pm_add_request(struct request_queue *q, struct request *rq)
 		     q->rpm_status == RPM_SUSPENDING))
 			pm_request_resume(q->dev);
 	}
+=======
+	if (q->dev && !(rq->rq_flags & RQF_PM) && q->nr_pending++ == 0 &&
+	    (q->rpm_status == RPM_SUSPENDED || q->rpm_status == RPM_SUSPENDING))
+		pm_request_resume(q->dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (q->dev && !(rq->rq_flags & RQF_PM) && q->nr_pending++ == 0 &&
 	    (q->rpm_status == RPM_SUSPENDED || q->rpm_status == RPM_SUSPENDING))

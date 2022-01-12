@@ -77,11 +77,15 @@ struct bma220_data {
 	struct spi_device *spi_device;
 	struct mutex lock;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct {
 		s8 chans[3];
 		/* Ensure timestamp is naturally aligned. */
 		s64 timestamp __aligned(8);
 	} scan;
+=======
+	s8 buffer[16]; /* 3x8-bit channels + 5x8 padding + 8x8 timestamp */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	s8 buffer[16]; /* 3x8-bit channels + 5x8 padding + 8x8 timestamp */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -116,7 +120,11 @@ static irqreturn_t bma220_trigger_handler(int irq, void *p)
 	mutex_lock(&data->lock);
 	data->tx_buf[0] = BMA220_REG_ACCEL_X | BMA220_READ_MASK;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = spi_write_then_read(spi, data->tx_buf, 1, &data->scan.chans,
+=======
+	ret = spi_write_then_read(spi, data->tx_buf, 1, data->buffer,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = spi_write_then_read(spi, data->tx_buf, 1, data->buffer,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -125,7 +133,11 @@ static irqreturn_t bma220_trigger_handler(int irq, void *p)
 		goto err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	iio_push_to_buffers_with_timestamp(indio_dev, &data->scan,
+=======
+	iio_push_to_buffers_with_timestamp(indio_dev, data->buffer,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	iio_push_to_buffers_with_timestamp(indio_dev, data->buffer,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

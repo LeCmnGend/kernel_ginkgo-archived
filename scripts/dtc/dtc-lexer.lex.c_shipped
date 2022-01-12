@@ -1397,7 +1397,11 @@ static int yy_get_next_buffer (void)
     	char *dest = YY_CURRENT_BUFFER_LVALUE->yy_ch_buf;
 	char *source = (yytext_ptr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int number_to_move, i;
+=======
+	yy_size_t number_to_move, i;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	yy_size_t number_to_move, i;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1430,7 +1434,11 @@ static int yy_get_next_buffer (void)
 
 	/* First move last chars to start of buffer. */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	number_to_move = (int) ((yy_c_buf_p) - (yytext_ptr) - 1);
+=======
+	number_to_move = (yy_size_t) ((yy_c_buf_p) - (yytext_ptr)) - 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	number_to_move = (yy_size_t) ((yy_c_buf_p) - (yytext_ptr)) - 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1516,7 +1524,11 @@ static int yy_get_next_buffer (void)
 		ret_val = EOB_ACT_CONTINUE_SCAN;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (((yy_n_chars) + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
+=======
+	if ((int) ((yy_n_chars) + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if ((int) ((yy_n_chars) + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1999,15 +2011,21 @@ YY_BUFFER_STATE yy_scan_bytes  (yyconst char * yybytes, int  _yybytes_len )
 	char *buf;
 	yy_size_t n;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int i;
     
 	/* Get memory for full buffer, including space for trailing EOB's. */
 	n = (yy_size_t) (_yybytes_len + 2);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	yy_size_t i;
     
 	/* Get memory for full buffer, including space for trailing EOB's. */
 	n = (yy_size_t) _yybytes_len + 2;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	buf = (char *) yyalloc(n  );
 	if ( ! buf )

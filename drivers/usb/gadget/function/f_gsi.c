@@ -876,6 +876,7 @@ static int ipa_suspend_work_handler(struct gsi_data_port *d_port)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Ensure that the DBL is blocked before suspend.
 	 */
@@ -883,6 +884,8 @@ static int ipa_suspend_work_handler(struct gsi_data_port *d_port)
 	usb_gsi_ep_op(gsi->d_port.in_ep, (void *)&block_db,
 					GSI_EP_OP_SET_CLR_BLOCK_DBL);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	log_event_dbg("%s: Calling xdci_suspend", __func__);
@@ -3077,13 +3080,19 @@ static int gsi_bind(struct usb_configuration *c, struct usb_function *f)
 		 * Linux rndis host driver supports MISC_ACTIVE_SYNC and
 		 * WIRELESS_CONTROLLER_REMOTE_NDIS as of now.
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		 * Default to rndis over ethernet which loads NDIS6 drivers
 		 * for windows7/windows10 to avoid data stall issues
 		 */
 		if (gsi->rndis_id == RNDIS_ID_UNKNOWN)
 			gsi->rndis_id = MISC_RNDIS_OVER_ETHERNET;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		switch (gsi->rndis_id) {

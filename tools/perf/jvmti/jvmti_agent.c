@@ -46,7 +46,10 @@ static char jit_path[PATH_MAX];
 static void *marker_addr;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef HAVE_GETTID
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline pid_t gettid(void)
@@ -54,7 +57,10 @@ static inline pid_t gettid(void)
 	return (pid_t)syscall(__NR_gettid);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

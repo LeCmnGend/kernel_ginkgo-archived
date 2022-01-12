@@ -990,7 +990,10 @@ static int prb_queue_frozen(struct tpacket_kbdq_core *pkc)
 
 static void prb_clear_blk_fill_status(struct packet_ring_buffer *rb)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__releases(&pkc->blk_fill_in_prog_lock)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
@@ -1041,7 +1044,10 @@ static void prb_fill_curr_block(char *curr,
 				struct tpacket_block_desc *pbd,
 				unsigned int len)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__acquires(&pkc->blk_fill_in_prog_lock)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
@@ -2208,8 +2214,12 @@ static int tpacket_rcv(struct sk_buff *skb, struct net_device *dev,
 	unsigned int snaplen, res;
 	unsigned long status = TP_STATUS_USER;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned short macoff, hdrlen;
 	unsigned int netoff;
+=======
+	unsigned short macoff, netoff, hdrlen;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned short macoff, netoff, hdrlen;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2276,12 +2286,15 @@ static int tpacket_rcv(struct sk_buff *skb, struct net_device *dev,
 		macoff = netoff - maclen;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (netoff > USHRT_MAX) {
 		spin_lock(&sk->sk_receive_queue.lock);
 		po->stats.stats1.tp_drops++;
 		spin_unlock(&sk->sk_receive_queue.lock);
 		goto drop_n_restore;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (po->tp_version <= TPACKET_V2) {
@@ -2334,11 +2347,16 @@ static int tpacket_rcv(struct sk_buff *skb, struct net_device *dev,
 	    virtio_net_hdr_from_skb(skb, h.raw + macoff -
 				    sizeof(struct virtio_net_hdr),
 <<<<<<< HEAD
+<<<<<<< HEAD
 				    vio_le(), true, 0)) {
 		if (po->tp_version == TPACKET_V3)
 			prb_clear_blk_fill_status(&po->rx_ring);
 		goto drop_n_account;
 	}
+=======
+				    vio_le(), true, 0))
+		goto drop_n_account;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				    vio_le(), true, 0))
 		goto drop_n_account;
@@ -2449,7 +2467,11 @@ static int tpacket_rcv(struct sk_buff *skb, struct net_device *dev,
 		spin_unlock(&sk->sk_receive_queue.lock);
 		sk->sk_data_ready(sk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else if (po->tp_version == TPACKET_V3) {
+=======
+	} else {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	} else {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2717,7 +2739,11 @@ static int tpacket_snd(struct packet_sock *po, struct msghdr *msg)
 	if (likely(saddr == NULL)) {
 		dev	= packet_cached_dev_get(po);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		proto	= READ_ONCE(po->num);
+=======
+		proto	= po->num;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		proto	= po->num;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2934,7 +2960,11 @@ static int packet_snd(struct socket *sock, struct msghdr *msg, size_t len)
 	if (likely(saddr == NULL)) {
 		dev	= packet_cached_dev_get(po);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		proto	= READ_ONCE(po->num);
+=======
+		proto	= po->num;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		proto	= po->num;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3208,7 +3238,11 @@ static int packet_do_bind(struct sock *sk, const char *name, int ifindex,
 			 * register_prot_hook()
 			 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			WRITE_ONCE(po->num, 0);
+=======
+			po->num = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			po->num = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3222,7 +3256,11 @@ static int packet_do_bind(struct sock *sk, const char *name, int ifindex,
 
 		BUG_ON(po->running);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		WRITE_ONCE(po->num, proto);
+=======
+		po->num = proto;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		po->num = proto;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3232,17 +3270,23 @@ static int packet_do_bind(struct sock *sk, const char *name, int ifindex,
 			dev_put(dev);
 			po->prot_hook.dev = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			WRITE_ONCE(po->ifindex, -1);
 			packet_cached_dev_reset(po);
 		} else {
 			po->prot_hook.dev = dev;
 			WRITE_ONCE(po->ifindex, dev ? dev->ifindex : 0);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			po->ifindex = -1;
 			packet_cached_dev_reset(po);
 		} else {
 			po->prot_hook.dev = dev;
 			po->ifindex = dev ? dev->ifindex : 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			packet_cached_dev_assign(po, dev);
 		}
@@ -3559,7 +3603,11 @@ static int packet_getname_spkt(struct socket *sock, struct sockaddr *uaddr,
 	memset(uaddr->sa_data, 0, sizeof(uaddr->sa_data));
 	rcu_read_lock();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev = dev_get_by_index_rcu(sock_net(sk), READ_ONCE(pkt_sk(sk)->ifindex));
+=======
+	dev = dev_get_by_index_rcu(sock_net(sk), pkt_sk(sk)->ifindex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev = dev_get_by_index_rcu(sock_net(sk), pkt_sk(sk)->ifindex);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3579,13 +3627,17 @@ static int packet_getname(struct socket *sock, struct sockaddr *uaddr,
 	struct packet_sock *po = pkt_sk(sk);
 	DECLARE_SOCKADDR(struct sockaddr_ll *, sll, uaddr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ifindex;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (peer)
 		return -EOPNOTSUPP;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	ifindex = READ_ONCE(po->ifindex);
 	sll->sll_family = AF_PACKET;
@@ -3595,12 +3647,17 @@ static int packet_getname(struct socket *sock, struct sockaddr *uaddr,
 	rcu_read_lock();
 	dev = dev_get_by_index_rcu(sock_net(sk), ifindex);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	sll->sll_family = AF_PACKET;
 	sll->sll_ifindex = po->ifindex;
 	sll->sll_protocol = po->num;
 	sll->sll_pkttype = 0;
 	rcu_read_lock();
 	dev = dev_get_by_index_rcu(sock_net(sk), po->ifindex);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (dev) {
 		sll->sll_hatype = dev->type;
@@ -4182,7 +4239,11 @@ static int packet_notifier(struct notifier_block *this,
 				if (msg == NETDEV_UNREGISTER) {
 					packet_cached_dev_reset(po);
 <<<<<<< HEAD
+<<<<<<< HEAD
 					WRITE_ONCE(po->ifindex, -1);
+=======
+					po->ifindex = -1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					po->ifindex = -1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4498,7 +4559,11 @@ static int packet_set_ring(struct sock *sk, union tpacket_req_u *req_u,
 	num = po->num;
 	if (was_running) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		WRITE_ONCE(po->num, 0);
+=======
+		po->num = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		po->num = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4537,7 +4602,11 @@ static int packet_set_ring(struct sock *sk, union tpacket_req_u *req_u,
 	spin_lock(&po->bind_lock);
 	if (was_running) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		WRITE_ONCE(po->num, num);
+=======
+		po->num = num;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		po->num = num;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4712,8 +4781,13 @@ static int packet_seq_show(struct seq_file *seq, void *v)
 			   refcount_read(&s->sk_refcnt),
 			   s->sk_type,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			   ntohs(READ_ONCE(po->num)),
 			   READ_ONCE(po->ifindex),
+=======
+			   ntohs(po->num),
+			   po->ifindex,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			   ntohs(po->num),
 			   po->ifindex,

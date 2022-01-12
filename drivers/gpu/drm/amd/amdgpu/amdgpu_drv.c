@@ -802,7 +802,11 @@ long amdgpu_drm_ioctl(struct file *filp,
 	ret = pm_runtime_get_sync(dev->dev);
 	if (ret < 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out;
+=======
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -811,7 +815,10 @@ long amdgpu_drm_ioctl(struct file *filp,
 
 	pm_runtime_mark_last_busy(dev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 out:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pm_runtime_put_autosuspend(dev->dev);

@@ -23,7 +23,10 @@
 #include <linux/usb/usbnet.h>
 #include <linux/usb/cdc-wdm.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/u64_stats_sync.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -79,7 +82,10 @@ struct qmimux_priv {
 	struct net_device *real_dev;
 	u8 mux_id;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct pcpu_sw_netstats __percpu *stats64;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -109,7 +115,10 @@ static netdev_tx_t qmimux_start_xmit(struct sk_buff *skb, struct net_device *dev
 	unsigned int len = skb->len;
 	struct qmimux_hdr *hdr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	netdev_tx_t ret;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -118,6 +127,7 @@ static netdev_tx_t qmimux_start_xmit(struct sk_buff *skb, struct net_device *dev
 	hdr->mux_id = priv->mux_id;
 	hdr->pkt_len = cpu_to_be16(len);
 	skb->dev = priv->real_dev;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	ret = dev_queue_xmit(skb);
 
@@ -172,6 +182,8 @@ static const struct net_device_ops qmimux_netdev_ops = {
 	.ndo_start_xmit  = qmimux_start_xmit,
 	.ndo_get_stats64 = qmimux_get_stats64,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return dev_queue_xmit(skb);
 }
 
@@ -179,6 +191,9 @@ static const struct net_device_ops qmimux_netdev_ops = {
 	.ndo_open       = qmimux_open,
 	.ndo_stop       = qmimux_stop,
 	.ndo_start_xmit = qmimux_start_xmit,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
@@ -265,6 +280,7 @@ static int qmimux_rx_fixup(struct usbnet *dev, struct sk_buff *skb)
 
 		skb_put_data(skbn, skb->data + offset + qmimux_hdr_sz, pkt_len);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (netif_rx(skbn) != NET_RX_SUCCESS) {
 			net->stats.rx_errors++;
 			return 0;
@@ -278,6 +294,10 @@ static int qmimux_rx_fixup(struct usbnet *dev, struct sk_buff *skb)
 			stats64->rx_bytes += pkt_len;
 			u64_stats_update_end(&stats64->syncp);
 		}
+=======
+		if (netif_rx(skbn) != NET_RX_SUCCESS)
+			return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (netif_rx(skbn) != NET_RX_SUCCESS)
 			return 0;
@@ -306,12 +326,15 @@ static int qmimux_register_device(struct net_device *real_dev, u8 mux_id)
 	priv->real_dev = real_dev;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	priv->stats64 = netdev_alloc_pcpu_stats(struct pcpu_sw_netstats);
 	if (!priv->stats64) {
 		err = -ENOBUFS;
 		goto out_free_newdev;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = register_netdevice(new_dev);
@@ -345,7 +368,10 @@ static void qmimux_unregister_device(struct net_device *dev,
 	struct net_device *real_dev = priv->real_dev;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	free_percpu(priv->stats64);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	netdev_upper_dev_unlink(real_dev, dev);
@@ -475,7 +501,10 @@ static ssize_t add_mux_store(struct device *d,  struct device_attribute *attr, c
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* we don't want to modify a running netdev */
 	if (netif_running(dev->net)) {
 		netdev_err(dev->net, "Cannot change a running device\n");
@@ -483,6 +512,9 @@ static ssize_t add_mux_store(struct device *d,  struct device_attribute *attr, c
 		goto err;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = qmimux_register_device(dev->net, mux_id);
 	if (!ret) {
@@ -514,7 +546,10 @@ static ssize_t del_mux_store(struct device *d,  struct device_attribute *attr, c
 		return restart_syscall();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* we don't want to modify a running netdev */
 	if (netif_running(dev->net)) {
 		netdev_err(dev->net, "Cannot change a running device\n");
@@ -522,6 +557,9 @@ static ssize_t del_mux_store(struct device *d,  struct device_attribute *attr, c
 		goto err;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	del_dev = qmimux_find_dev(dev, mux_id);
 	if (!del_dev) {
@@ -1098,7 +1136,10 @@ static const struct usb_device_id products[] = {
 	{QMI_MATCH_FF_FF_FF(0x2c7c, 0x0306)},	/* Quectel EP06/EG06/EM06 */
 	{QMI_MATCH_FF_FF_FF(0x2c7c, 0x0512)},	/* Quectel EG12/EM12 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{QMI_MATCH_FF_FF_FF(0x2c7c, 0x0620)},	/* Quectel EM160R-GL */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{QMI_MATCH_FF_FF_FF(0x2c7c, 0x0800)},	/* Quectel RM500Q-GL */
@@ -1136,7 +1177,11 @@ static const struct usb_device_id products[] = {
 	{QMI_FIXED_INTF(0x05c6, 0x9021, 1)},
 	{QMI_FIXED_INTF(0x05c6, 0x9022, 2)},
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{QMI_QUIRK_SET_DTR(0x05c6, 0x9025, 4)},	/* Alcatel-sbell ASB TL131 TDD LTE (China Mobile) */
+=======
+	{QMI_FIXED_INTF(0x05c6, 0x9025, 4)},	/* Alcatel-sbell ASB TL131 TDD LTE  (China Mobile) */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	{QMI_FIXED_INTF(0x05c6, 0x9025, 4)},	/* Alcatel-sbell ASB TL131 TDD LTE  (China Mobile) */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1318,7 +1363,10 @@ static const struct usb_device_id products[] = {
 	{QMI_FIXED_INTF(0x19d2, 0x1256, 4)},
 	{QMI_FIXED_INTF(0x19d2, 0x1270, 5)},	/* ZTE MF667 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{QMI_FIXED_INTF(0x19d2, 0x1275, 3)},	/* ZTE P685M */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{QMI_FIXED_INTF(0x19d2, 0x1401, 2)},
@@ -1331,7 +1379,10 @@ static const struct usb_device_id products[] = {
 	{QMI_FIXED_INTF(0x2001, 0x7e19, 4)},	/* D-Link DWM-221 B1 */
 	{QMI_FIXED_INTF(0x2001, 0x7e35, 4)},	/* D-Link DWM-222 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{QMI_FIXED_INTF(0x2001, 0x7e3d, 4)},	/* D-Link DWM-222 A2 */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{QMI_FIXED_INTF(0x2020, 0x2031, 4)},	/* Olicard 600 */
@@ -1370,7 +1421,10 @@ static const struct usb_device_id products[] = {
 	{QMI_QUIRK_SET_DTR(0x1bc7, 0x1031, 3)}, /* Telit LE910C1-EUX */
 	{QMI_QUIRK_SET_DTR(0x1bc7, 0x1040, 2)},	/* Telit LE922A */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{QMI_QUIRK_SET_DTR(0x1bc7, 0x1050, 2)},	/* Telit FN980 */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{QMI_FIXED_INTF(0x1bc7, 0x1100, 3)},	/* Telit ME910 */
@@ -1378,7 +1432,10 @@ static const struct usb_device_id products[] = {
 	{QMI_FIXED_INTF(0x1bc7, 0x1200, 5)},	/* Telit LE920 */
 	{QMI_QUIRK_SET_DTR(0x1bc7, 0x1201, 2)},	/* Telit LE920, LE920A4 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{QMI_QUIRK_SET_DTR(0x1bc7, 0x1230, 2)},	/* Telit LE910Cx */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{QMI_QUIRK_SET_DTR(0x1bc7, 0x1260, 2)},	/* Telit LE910Cx */
@@ -1396,7 +1453,10 @@ static const struct usb_device_id products[] = {
 	{QMI_FIXED_INTF(0x0b3c, 0xc00b, 4)},	/* Olivetti Olicard 500 */
 	{QMI_FIXED_INTF(0x1e2d, 0x0060, 4)},	/* Cinterion PLxx */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{QMI_QUIRK_SET_DTR(0x1e2d, 0x006f, 8)}, /* Cinterion PLS83/PLS63 */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{QMI_FIXED_INTF(0x1e2d, 0x0053, 4)},	/* Cinterion PHxx,PXxx */
@@ -1406,7 +1466,10 @@ static const struct usb_device_id products[] = {
 	{QMI_FIXED_INTF(0x1e2d, 0x0083, 4)},	/* Cinterion PHxx,PXxx (1 RmNet + USB Audio)*/
 	{QMI_QUIRK_SET_DTR(0x1e2d, 0x00b0, 4)},	/* Cinterion CLS8 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{QMI_FIXED_INTF(0x1e2d, 0x00b7, 0)},	/* Cinterion MV31 RmNet */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{QMI_FIXED_INTF(0x413c, 0x81a2, 8)},	/* Dell Wireless 5806 Gobi(TM) 4G LTE Mobile Broadband Card */
@@ -1434,7 +1497,10 @@ static const struct usb_device_id products[] = {
 	{QMI_FIXED_INTF(0x0489, 0xe0b4, 0)},	/* Foxconn T77W968 LTE */
 	{QMI_FIXED_INTF(0x0489, 0xe0b5, 0)},	/* Foxconn T77W968 LTE with eSIM support*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{QMI_FIXED_INTF(0x2692, 0x9025, 4)},    /* Cellient MPL200 (rebranded Qualcomm 05c6:9025) */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

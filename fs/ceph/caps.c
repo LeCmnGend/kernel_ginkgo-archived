@@ -930,6 +930,7 @@ void __ceph_remove_cap(struct ceph_cap *cap, bool queue_release)
 	struct ceph_mds_session *session = cap->session;
 	struct ceph_inode_info *ci = cap->ci;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct ceph_mds_client *mdsc;
 	int removed = 0;
 
@@ -944,12 +945,17 @@ void __ceph_remove_cap(struct ceph_cap *cap, bool queue_release)
 	mdsc = ceph_inode_to_client(&ci->vfs_inode)->mdsc;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct ceph_mds_client *mdsc =
 		ceph_sb_to_client(ci->vfs_inode.i_sb)->mdsc;
 	int removed = 0;
 
 	dout("__ceph_remove_cap %p from %p\n", cap, &ci->vfs_inode);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* remove from inode's cap rbtree, and clear auth cap */
 	rb_erase(&cap->ci_node, &ci->i_caps);
@@ -1672,7 +1678,10 @@ static int try_nonblocking_invalidate(struct inode *inode)
 
 	spin_unlock(&ci->i_ceph_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ceph_fscache_invalidate(inode);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	invalidate_mapping_pages(&inode->i_data, 0, -1);
@@ -1927,7 +1936,10 @@ ack:
 				dout("inverting session/ino locks on %p\n",
 				     session);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				session = ceph_get_mds_session(session);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				spin_unlock(&ci->i_ceph_lock);
@@ -1935,6 +1947,7 @@ ack:
 					up_read(&mdsc->snap_rwsem);
 					took_snap_rwsem = 0;
 				}
+<<<<<<< HEAD
 <<<<<<< HEAD
 				if (session) {
 					mutex_lock(&session->s_mutex);
@@ -1948,6 +1961,9 @@ ack:
 					 */
 					WARN_ON_ONCE(true);
 				}
+=======
+				mutex_lock(&session->s_mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				mutex_lock(&session->s_mutex);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

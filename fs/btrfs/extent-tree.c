@@ -1171,18 +1171,24 @@ int btrfs_get_extent_inline_ref_type(const struct extent_buffer *eb,
 				ASSERT(eb->fs_info);
 				/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 				 * Every shared one has parent tree block,
 				 * which must be aligned to sector size.
 				 */
 				if (offset &&
 				    IS_ALIGNED(offset, eb->fs_info->sectorsize))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				 * Every shared one has parent tree
 				 * block, which must be aligned to
 				 * nodesize.
 				 */
 				if (offset &&
 				    IS_ALIGNED(offset, eb->fs_info->nodesize))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					return type;
 			}
@@ -1193,18 +1199,24 @@ int btrfs_get_extent_inline_ref_type(const struct extent_buffer *eb,
 				ASSERT(eb->fs_info);
 				/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 				 * Every shared one has parent tree block,
 				 * which must be aligned to sector size.
 				 */
 				if (offset &&
 				    IS_ALIGNED(offset, eb->fs_info->sectorsize))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				 * Every shared one has parent tree
 				 * block, which must be aligned to
 				 * nodesize.
 				 */
 				if (offset &&
 				    IS_ALIGNED(offset, eb->fs_info->nodesize))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					return type;
 			}
@@ -1216,9 +1228,14 @@ int btrfs_get_extent_inline_ref_type(const struct extent_buffer *eb,
 
 	btrfs_print_leaf((struct extent_buffer *)eb);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	btrfs_err(eb->fs_info,
 		  "eb %llu iref 0x%lx invalid extent inline ref type %d",
 		  eb->start, (unsigned long)iref, type);
+=======
+	btrfs_err(eb->fs_info, "eb %llu invalid extent inline ref type %d",
+		  eb->start, type);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	btrfs_err(eb->fs_info, "eb %llu invalid extent inline ref type %d",
 		  eb->start, type);
@@ -9388,6 +9405,11 @@ out:
 	if (!for_reloc && root_dropped == false)
 		btrfs_add_dead_root(root);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (err && err != -EAGAIN)
+		btrfs_handle_fs_error(fs_info, err, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (err && err != -EAGAIN)
 		btrfs_handle_fs_error(fs_info, err, NULL);

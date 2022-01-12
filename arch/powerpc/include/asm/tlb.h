@@ -29,8 +29,13 @@
 #define tlb_end_vma(tlb, vma)	do { } while (0)
 #define __tlb_remove_tlb_entry	__tlb_remove_tlb_entry
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 #define tlb_flush tlb_flush
+=======
+#define tlb_remove_check_page_size_change tlb_remove_check_page_size_change
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define tlb_remove_check_page_size_change tlb_remove_check_page_size_change
 
@@ -53,7 +58,10 @@ static inline void __tlb_remove_tlb_entry(struct mmu_gather *tlb, pte_t *ptep,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void tlb_remove_check_page_size_change(struct mmu_gather *tlb,
 						     unsigned int page_size)
 {
@@ -69,6 +77,9 @@ static inline void tlb_remove_check_page_size_change(struct mmu_gather *tlb,
 	}
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_SMP
 static inline int mm_is_core_local(struct mm_struct *mm)

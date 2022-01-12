@@ -12,6 +12,10 @@
 #include "f2fs.h"
 #include "node.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <trace/events/android_fs.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <trace/events/android_fs.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -89,9 +93,12 @@ int f2fs_read_inline_data(struct inode *inode, struct page *page)
 	struct page *ipage;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ipage = f2fs_get_node_page(F2FS_I_SB(inode), inode->i_ino);
 	if (IS_ERR(ipage)) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (trace_android_fs_dataread_start_enabled()) {
 		char *path, pathbuf[MAX_TRACE_PATHBUF_LEN];
 
@@ -107,6 +114,9 @@ int f2fs_read_inline_data(struct inode *inode, struct page *page)
 	if (IS_ERR(ipage)) {
 		trace_android_fs_dataread_end(inode, page_offset(page),
 					      PAGE_SIZE);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		unlock_page(page);
 		return PTR_ERR(ipage);
@@ -115,6 +125,11 @@ int f2fs_read_inline_data(struct inode *inode, struct page *page)
 	if (!f2fs_has_inline_data(inode)) {
 		f2fs_put_page(ipage, 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		trace_android_fs_dataread_end(inode, page_offset(page),
+					      PAGE_SIZE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		trace_android_fs_dataread_end(inode, page_offset(page),
 					      PAGE_SIZE);
@@ -131,6 +146,11 @@ int f2fs_read_inline_data(struct inode *inode, struct page *page)
 		SetPageUptodate(page);
 	f2fs_put_page(ipage, 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	trace_android_fs_dataread_end(inode, page_offset(page),
+				      PAGE_SIZE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_android_fs_dataread_end(inode, page_offset(page),
 				      PAGE_SIZE);
@@ -161,7 +181,10 @@ int f2fs_convert_inline_page(struct dnode_of_data *dn, struct page *page)
 	if (err)
 		return err;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = f2fs_get_node_info(fio.sbi, dn->nid, &ni);
@@ -248,8 +271,12 @@ out:
 	f2fs_put_page(page, 1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!err)
 		f2fs_balance_fs(sbi, dn.node_changed);
+=======
+	f2fs_balance_fs(sbi, dn.node_changed);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	f2fs_balance_fs(sbi, dn.node_changed);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

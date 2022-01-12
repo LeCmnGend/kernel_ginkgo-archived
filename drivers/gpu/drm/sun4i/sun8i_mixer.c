@@ -236,7 +236,11 @@ static struct regmap_config sun8i_mixer_regmap_config = {
 	.val_bits	= 32,
 	.reg_stride	= 4,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.max_register	= 0xffffc, /* guessed */
+=======
+	.max_register	= 0xbfffc, /* guessed */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.max_register	= 0xbfffc, /* guessed */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

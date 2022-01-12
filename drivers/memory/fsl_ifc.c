@@ -110,6 +110,10 @@ static int fsl_ifc_ctrl_remove(struct platform_device *dev)
 
 	dev_set_drvdata(&dev->dev, NULL);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kfree(ctrl);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(ctrl);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -225,8 +229,12 @@ static int fsl_ifc_ctrl_probe(struct platform_device *dev)
 	dev_info(&dev->dev, "Freescale Integrated Flash Controller\n");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	fsl_ifc_ctrl_dev = devm_kzalloc(&dev->dev, sizeof(*fsl_ifc_ctrl_dev),
 					GFP_KERNEL);
+=======
+	fsl_ifc_ctrl_dev = kzalloc(sizeof(*fsl_ifc_ctrl_dev), GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	fsl_ifc_ctrl_dev = kzalloc(sizeof(*fsl_ifc_ctrl_dev), GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -240,7 +248,12 @@ static int fsl_ifc_ctrl_probe(struct platform_device *dev)
 	if (!fsl_ifc_ctrl_dev->gregs) {
 		dev_err(&dev->dev, "failed to get memory region\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -ENODEV;
+=======
+		ret = -ENODEV;
+		goto err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = -ENODEV;
 		goto err;
@@ -321,7 +334,10 @@ err_irq:
 	irq_dispose_mapping(fsl_ifc_ctrl_dev->irq);
 err:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	iounmap(fsl_ifc_ctrl_dev->gregs);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;

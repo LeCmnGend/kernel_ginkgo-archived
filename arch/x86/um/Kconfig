@@ -38,13 +38,19 @@ config ARCH_DEFCONFIG
 	default "arch/um/configs/x86_64_defconfig" if X86_64
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config RWSEM_XCHGADD_ALGORITHM
 	def_bool 64BIT
 
 config RWSEM_GENERIC_SPINLOCK
 	def_bool !RWSEM_XCHGADD_ALGORITHM
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config 3_LEVEL_PGTABLES
 	bool "Three-level pagetables" if !64BIT

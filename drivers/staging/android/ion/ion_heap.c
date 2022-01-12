@@ -161,6 +161,7 @@ int ion_heap_pages_zero(struct page *page, size_t size, pgprot_t pgprot)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static unsigned long ion_heap_shrink_count(struct shrinker *shrinker,
 					   struct shrink_control *sc)
 {
@@ -171,6 +172,8 @@ static unsigned long ion_heap_shrink_count(struct shrinker *shrinker,
 
 	return 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void ion_heap_freelist_add(struct ion_heap *heap, struct ion_buffer *buffer)
 {
 	spin_lock(&heap->free_lock);
@@ -290,12 +293,16 @@ static unsigned long ion_heap_shrink_count(struct shrinker *shrinker,
 	if (heap->ops->shrink)
 		total += heap->ops->shrink(heap, sc->gfp_mask, 0);
 	return total;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static unsigned long ion_heap_shrink_scan(struct shrinker *shrinker,
 					  struct shrink_control *sc)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	struct ion_heap *heap = container_of(shrinker, typeof(*heap), shrinker);
 
@@ -304,6 +311,8 @@ static unsigned long ion_heap_shrink_scan(struct shrinker *shrinker,
 
 	return 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct ion_heap *heap = container_of(shrinker, struct ion_heap,
 					     shrinker);
 	int freed = 0;
@@ -327,6 +336,9 @@ static unsigned long ion_heap_shrink_scan(struct shrinker *shrinker,
 	if (heap->ops->shrink)
 		freed += heap->ops->shrink(heap, sc->gfp_mask, to_scan);
 	return freed;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

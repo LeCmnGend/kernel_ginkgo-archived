@@ -47,6 +47,10 @@
 
 #include "ext4.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <trace/events/android_fs.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <trace/events/android_fs.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -151,7 +155,10 @@ static bool bio_post_read_required(struct bio *bio)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void
 ext4_trace_read_completion(struct bio *bio)
 {
@@ -163,6 +170,9 @@ ext4_trace_read_completion(struct bio *bio)
 					      bio->bi_iter.bi_size);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * I/O completion handler for multipage BIOs.
@@ -179,6 +189,12 @@ ext4_trace_read_completion(struct bio *bio)
 static void mpage_end_io(struct bio *bio)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (trace_android_fs_dataread_start_enabled())
+		ext4_trace_read_completion(bio);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (trace_android_fs_dataread_start_enabled())
 		ext4_trace_read_completion(bio);
@@ -234,7 +250,10 @@ static inline loff_t ext4_readpage_limit(struct inode *inode)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void
 ext4_submit_bio_read(struct bio *bio)
 {
@@ -259,6 +278,9 @@ ext4_submit_bio_read(struct bio *bio)
 	submit_bio(bio);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int ext4_mpage_readpages(struct address_space *mapping,
 			 struct list_head *pages, struct page *page,
@@ -408,7 +430,11 @@ int ext4_mpage_readpages(struct address_space *mapping,
 			    !fscrypt_mergeable_bio(bio, inode, next_block))) {
 		submit_and_realloc:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			submit_bio(bio);
+=======
+			ext4_submit_bio_read(bio);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ext4_submit_bio_read(bio);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -444,7 +470,11 @@ int ext4_mpage_readpages(struct address_space *mapping,
 		     (relative_block == map.m_len)) ||
 		    (first_hole != blocks_per_page)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			submit_bio(bio);
+=======
+			ext4_submit_bio_read(bio);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ext4_submit_bio_read(bio);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -455,7 +485,11 @@ int ext4_mpage_readpages(struct address_space *mapping,
 	confused:
 		if (bio) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			submit_bio(bio);
+=======
+			ext4_submit_bio_read(bio);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ext4_submit_bio_read(bio);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -472,7 +506,11 @@ int ext4_mpage_readpages(struct address_space *mapping,
 	BUG_ON(pages && !list_empty(pages));
 	if (bio)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		submit_bio(bio);
+=======
+		ext4_submit_bio_read(bio);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ext4_submit_bio_read(bio);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

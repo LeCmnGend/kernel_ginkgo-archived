@@ -1,6 +1,9 @@
 /* Copyright (c) 2018-2019 The Linux Foundation. All rights reserved.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -236,7 +239,10 @@ enum {
 #define QC_5V_BIT				BIT(0)
 #define QC_2P0_STATUS_MASK			GENMASK(2, 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define USBIN_9V_AICL_MASK                      GENMASK(2, 0)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -287,8 +293,12 @@ enum {
 	HVDCP_PULSE_COUNT_MAX_QC2_9V = 0x40,
 	HVDCP_PULSE_COUNT_MAX_QC2_12V = 0x80,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	HVDCP_PULSE_COUNT_MAX_QC2_INVALID = 0xC0,
 	USBIN_9V_AICL_THRESHOLD_CFG = 0x06
+=======
+	HVDCP_PULSE_COUNT_MAX_QC2_INVALID = 0xC0
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	HVDCP_PULSE_COUNT_MAX_QC2_INVALID = 0xC0
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -330,7 +340,10 @@ enum {
 
 #define USBIN_5V_AICL_THRESHOLD_REG		(USBIN_BASE + 0x81)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define USBIN_9V_AICL_THRESHOLD_REG		(USBIN_BASE + 0x82)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define USBIN_CONT_AICL_THRESHOLD_REG		(USBIN_BASE + 0x84)
@@ -359,11 +372,14 @@ enum {
 #define TYPE_C_SNK_STATUS_REG			(TYPEC_BASE + 0x06)
 #define DETECTED_SRC_TYPE_MASK			GENMASK(6, 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define SNK_RP_STD_DAM_BIT 		BIT(6)
 #define SNK_RP_1P5_DAM_BIT 		BIT(5)
 #define SNK_RP_3P0_DAM_BIT 		BIT(4)
 #define SCHG_USB_TYPE_C_CFG		(USBIN_BASE + 0x58)
 #define BC1P2_START_ON_CC			BIT(7)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define SNK_DAM_500MA_BIT			BIT(6)
@@ -374,9 +390,12 @@ enum {
 #define SNK_RP_3P0_BIT				BIT(1)
 #define SNK_RP_SHORT_BIT			BIT(0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define TYPE_C_SNK_DEBUG_ACC_STATUS_REG		(TYPEC_BASE + 0x07)
 #define SNK_DEBUG_ACC_RPSTD_PRSTD_BIT		BIT(0)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -432,12 +451,15 @@ enum {
 #define TYPEC_CCOUT_SRC_BIT			BIT(0)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define TYPE_C_DEBUG_ACC_SNK_CFG		(TYPEC_BASE + 0x4A)
 #define TYPEC_DEBUG_ENABLE_ACC_SNK              BIT(0)
 #define TYPEC_DEBUG_ENABLE_CHG_ON_SNK           BIT(1)
 #define TYPEC_DEBUG_ACC_SNK_SEL_ICL		BIT(2)
 #define TYPEC_DEBUG_ACC_SNK_DIS_AICL		BIT(3)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define DEBUG_ACCESS_SRC_CFG_REG		(TYPEC_BASE + 0x4C)

@@ -792,7 +792,11 @@ static void gfs2_dirty_inode(struct inode *inode, int flags)
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!(flags & I_DIRTY_INODE))
+=======
+	if (!(flags & (I_DIRTY_DATASYNC|I_DIRTY_SYNC)))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!(flags & (I_DIRTY_DATASYNC|I_DIRTY_SYNC)))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -929,7 +933,10 @@ restart:
 	/*  Take apart glock structures and buffer lists  */
 	gfs2_gl_hash_clear(sdp);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	truncate_inode_pages_final(&sdp->sd_aspace);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	gfs2_delete_debugfs_file(sdp);
@@ -997,6 +1004,7 @@ static int gfs2_freeze(struct super_block *sb)
 {
 	struct gfs2_sbd *sdp = sb->s_fs_info;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int error;
 
 	mutex_lock(&sdp->sd_freeze_mutex);
@@ -1005,11 +1013,16 @@ static int gfs2_freeze(struct super_block *sb)
 		goto out;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int error = 0;
 
 	mutex_lock(&sdp->sd_freeze_mutex);
 	if (atomic_read(&sdp->sd_freeze_state) != SFS_UNFROZEN)
 		goto out;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (test_bit(SDF_SHUTDOWN, &sdp->sd_flags)) {
@@ -1053,15 +1066,21 @@ static int gfs2_unfreeze(struct super_block *sb)
 
 	mutex_lock(&sdp->sd_freeze_mutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (atomic_read(&sdp->sd_freeze_state) != SFS_FROZEN ||
 	    !gfs2_holder_initialized(&sdp->sd_freeze_gh)) {
 		mutex_unlock(&sdp->sd_freeze_mutex);
 		return -EINVAL;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
         if (atomic_read(&sdp->sd_freeze_state) != SFS_FROZEN ||
 	    !gfs2_holder_initialized(&sdp->sd_freeze_gh)) {
 		mutex_unlock(&sdp->sd_freeze_mutex);
                 return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 

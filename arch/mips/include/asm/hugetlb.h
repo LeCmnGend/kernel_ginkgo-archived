@@ -68,6 +68,7 @@ static inline void huge_ptep_clear_flush(struct vm_area_struct *vma,
 					 unsigned long addr, pte_t *ptep)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * clear the huge pte entry firstly, so that the other smp threads will
 	 * not get old pte entry after finishing flush_tlb_page and before
@@ -75,6 +76,9 @@ static inline void huge_ptep_clear_flush(struct vm_area_struct *vma,
 	 */
 	huge_ptep_get_and_clear(vma->vm_mm, addr, ptep);
 	flush_tlb_page(vma, addr);
+=======
+	flush_tlb_page(vma, addr & huge_page_mask(hstate_vma(vma)));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	flush_tlb_page(vma, addr & huge_page_mask(hstate_vma(vma)));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

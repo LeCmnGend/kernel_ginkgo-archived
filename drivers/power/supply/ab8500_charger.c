@@ -410,6 +410,7 @@ static void ab8500_power_supply_changed(struct ab8500_charger *di,
 					struct power_supply *psy)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * This happens if we get notifications or interrupts and
 	 * the platform has been configured not to support one or
@@ -418,6 +419,8 @@ static void ab8500_power_supply_changed(struct ab8500_charger *di,
 	if (!psy)
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (di->autopower_cfg) {
@@ -447,6 +450,7 @@ static void ab8500_charger_set_usb_connected(struct ab8500_charger *di,
 			di->flags.vbus_drop_end = false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/*
 		 * Sometimes the platform is configured not to support
 		 * USB charging and no psy has been created, but we still
@@ -456,6 +460,9 @@ static void ab8500_charger_set_usb_connected(struct ab8500_charger *di,
 			sysfs_notify(&di->usb_chg.psy->dev.kobj, NULL,
 				     "present");
 		}
+=======
+		sysfs_notify(&di->usb_chg.psy->dev.kobj, NULL, "present");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		sysfs_notify(&di->usb_chg.psy->dev.kobj, NULL, "present");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3760,7 +3767,10 @@ static const struct of_device_id ab8500_charger_match[] = {
 	{ },
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 MODULE_DEVICE_TABLE(of, ab8500_charger_match);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

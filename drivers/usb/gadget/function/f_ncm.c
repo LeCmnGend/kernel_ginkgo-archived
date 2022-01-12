@@ -93,10 +93,15 @@ static inline struct f_ncm *func_to_ncm(struct usb_function *f)
 static inline unsigned ncm_bitrate(struct usb_gadget *g)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (gadget_is_superspeed(g) && g->speed >= USB_SPEED_SUPER_PLUS)
 		return 4250000000U;
 	else if (gadget_is_superspeed(g) && g->speed == USB_SPEED_SUPER)
 		return 3750000000U;
+=======
+	if (gadget_is_superspeed(g) && g->speed == USB_SPEED_SUPER)
+		return 13 * 1024 * 8 * 1000 * 8;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (gadget_is_superspeed(g) && g->speed == USB_SPEED_SUPER)
 		return 13 * 1024 * 8 * 1000 * 8;
@@ -595,7 +600,11 @@ static void ncm_do_notify(struct f_ncm *ncm)
 		data[1] = data[0];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		DBG(cdev, "notify speed %u\n", ncm_bitrate(cdev->gadget));
+=======
+		DBG(cdev, "notify speed %d\n", ncm_bitrate(cdev->gadget));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		DBG(cdev, "notify speed %d\n", ncm_bitrate(cdev->gadget));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1214,11 +1223,17 @@ static int ncm_unwrap_ntb(struct gether *port,
 	unsigned	dg_len, dg_len2;
 	unsigned	ndp_len;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned	block_len;
 	struct sk_buff	*skb2;
 	int		ret = -EINVAL;
 	unsigned	ntb_max = le32_to_cpu(ntb_parameters.dwNtbOutMaxSize);
 	unsigned	frame_max = le16_to_cpu(ecm_desc.wMaxSegmentSize);
+=======
+	struct sk_buff	*skb2;
+	int		ret = -EINVAL;
+	unsigned	max_size = le32_to_cpu(ntb_parameters.dwNtbOutMaxSize);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct sk_buff	*skb2;
 	int		ret = -EINVAL;
@@ -1246,9 +1261,14 @@ static int ncm_unwrap_ntb(struct gether *port,
 	tmp++; /* skip wSequence */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	block_len = get_ncm(&tmp, opts->block_length);
 	/* (d)wBlockLength */
 	if (block_len > ntb_max) {
+=======
+	/* (d)wBlockLength */
+	if (get_ncm(&tmp, opts->block_length) > max_size) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* (d)wBlockLength */
 	if (get_ncm(&tmp, opts->block_length) > max_size) {
@@ -1261,6 +1281,7 @@ static int ncm_unwrap_ntb(struct gether *port,
 
 	/* Run through all the NDP's in the NTB */
 	do {
+<<<<<<< HEAD
 <<<<<<< HEAD
 		/*
 		 * NCM 3.2
@@ -1275,16 +1296,25 @@ static int ncm_unwrap_ntb(struct gether *port,
 		if (((ndp_index % 4) != 0) &&
 				(ndp_index < opts->nth_size)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+		/* NCM 3.2 */
+		if (((ndp_index % 4) != 0) &&
+				(ndp_index < opts->nth_size)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			INFO(port->func.config->cdev, "Bad index: %#X\n",
 			     ndp_index);
 			goto err;
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/*
 		 * walk through NDP
 		 * dwSignature
 		 */
+=======
+		/* walk through NDP */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		/* walk through NDP */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1299,7 +1329,10 @@ static int ncm_unwrap_ntb(struct gether *port,
 		/*
 		 * NCM 3.3.1
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 * wLength
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		 * entry is 2 items
@@ -1309,8 +1342,13 @@ static int ncm_unwrap_ntb(struct gether *port,
 		 */
 		if ((ndp_len < opts->ndp_size
 <<<<<<< HEAD
+<<<<<<< HEAD
 				+ 2 * 2 * (opts->dgram_item_len * 2)) ||
 				(ndp_len % opts->ndplen_align != 0)) {
+=======
+				+ 2 * 2 * (opts->dgram_item_len * 2))
+				|| (ndp_len % opts->ndplen_align != 0)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				+ 2 * 2 * (opts->dgram_item_len * 2))
 				|| (ndp_len % opts->ndplen_align != 0)) {
@@ -1332,6 +1370,7 @@ static int ncm_unwrap_ntb(struct gether *port,
 		do {
 			index = index2;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			/* wDatagramIndex[0] */
 			if ((index < opts->nth_size) ||
 					(index > block_len - opts->dpe_size)) {
@@ -1347,6 +1386,10 @@ static int ncm_unwrap_ntb(struct gether *port,
 			 */
 			if ((dg_len < 14 + crc_len) ||
 					(dg_len > frame_max)) {
+=======
+			dg_len = dg_len2;
+			if (dg_len < 14 + crc_len) { /* ethernet hdr + crc */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			dg_len = dg_len2;
 			if (dg_len < 14 + crc_len) { /* ethernet hdr + crc */
@@ -1375,6 +1418,7 @@ static int ncm_unwrap_ntb(struct gether *port,
 			dg_len2 = get_ncm(&tmp, opts->dgram_item_len);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			/* wDatagramIndex[1] */
 			if (index2 > block_len - opts->dpe_size) {
 				INFO(port->func.config->cdev,
@@ -1382,6 +1426,8 @@ static int ncm_unwrap_ntb(struct gether *port,
 				goto err;
 			}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			/*
@@ -1401,6 +1447,10 @@ static int ncm_unwrap_ntb(struct gether *port,
 
 			dgram_counter++;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

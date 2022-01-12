@@ -118,6 +118,7 @@ int ipv6_skb_to_auditdata(struct sk_buff *skb,
 		struct common_audit_data *ad, u8 *proto);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_AUDIT
 void common_lsm_audit(struct common_audit_data *a,
 	void (*pre_audit)(struct audit_buffer *, void *),
@@ -129,6 +130,11 @@ static inline void common_lsm_audit(struct common_audit_data *a,
 {
 }
 #endif
+=======
+void common_lsm_audit(struct common_audit_data *a,
+	void (*pre_audit)(struct audit_buffer *, void *),
+	void (*post_audit)(struct audit_buffer *, void *));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void common_lsm_audit(struct common_audit_data *a,
 	void (*pre_audit)(struct audit_buffer *, void *),

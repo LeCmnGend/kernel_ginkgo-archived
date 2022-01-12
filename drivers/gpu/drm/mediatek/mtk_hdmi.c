@@ -1477,7 +1477,11 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
 			"Failed to get system configuration registers: %d\n",
 			ret);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto put_device;
+=======
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1486,6 +1490,7 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
 
 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
 	hdmi->regs = devm_ioremap_resource(dev, mem);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (IS_ERR(hdmi->regs)) {
 		ret = PTR_ERR(hdmi->regs);
@@ -1498,12 +1503,17 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
 		goto put_device;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (IS_ERR(hdmi->regs))
 		return PTR_ERR(hdmi->regs);
 
 	remote = of_graph_get_remote_node(np, 1, 0);
 	if (!remote)
 		return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!of_device_is_compatible(remote, "hdmi-connector")) {
@@ -1512,8 +1522,12 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
 			dev_err(dev, "Waiting for external bridge\n");
 			of_node_put(remote);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ret = -EPROBE_DEFER;
 			goto put_device;
+=======
+			return -EPROBE_DEFER;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			return -EPROBE_DEFER;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1526,8 +1540,12 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
 			remote);
 		of_node_put(remote);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = -EINVAL;
 		goto put_device;
+=======
+		return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EINVAL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1539,6 +1557,7 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
 	if (!hdmi->ddc_adpt) {
 		dev_err(dev, "Failed to get ddc i2c adapter by node\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = -EINVAL;
 		goto put_device;
 	}
@@ -1548,10 +1567,15 @@ put_device:
 	put_device(hdmi->cec_dev);
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EINVAL;
 	}
 
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

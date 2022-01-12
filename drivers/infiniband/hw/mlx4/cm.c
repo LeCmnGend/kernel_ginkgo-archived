@@ -308,9 +308,12 @@ static void schedule_delayed(struct ib_device *ibdev, struct id_map_entry *id)
 		id->scheduled_delete = 1;
 		schedule_delayed_work(&id->timeout, CM_CLEANUP_CACHE_TIMEOUT);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else if (id->scheduled_delete) {
 		/* Adjust timeout if already scheduled */
 		mod_delayed_work(system_wq, &id->timeout, CM_CLEANUP_CACHE_TIMEOUT);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

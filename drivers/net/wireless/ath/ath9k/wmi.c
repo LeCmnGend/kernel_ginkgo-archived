@@ -339,7 +339,10 @@ int ath9k_wmi_cmd(struct wmi *wmi, enum wmi_cmd_id cmd_id,
 			wmi_cmd_to_name(cmd_id));
 		mutex_unlock(&wmi->op_mutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kfree_skb(skb);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -ETIMEDOUT;

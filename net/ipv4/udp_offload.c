@@ -406,7 +406,11 @@ struct sk_buff **udp_gro_receive(struct sk_buff **head, struct sk_buff *skb,
 
 	if (NAPI_GRO_CB(skb)->encap_mark ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    (uh->check && skb->ip_summed != CHECKSUM_PARTIAL &&
+=======
+	    (skb->ip_summed != CHECKSUM_PARTIAL &&
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	    (skb->ip_summed != CHECKSUM_PARTIAL &&
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

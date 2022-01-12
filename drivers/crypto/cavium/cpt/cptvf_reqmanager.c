@@ -137,7 +137,11 @@ static inline int setup_sgio_list(struct cpt_vf *cptvf,
 	/* Setup gather (input) components */
 	g_sz_bytes = ((req->incnt + 3) / 4) * sizeof(struct sglist_component);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	info->gather_components = kzalloc(g_sz_bytes, req->may_sleep ? GFP_KERNEL : GFP_ATOMIC);
+=======
+	info->gather_components = kzalloc(g_sz_bytes, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	info->gather_components = kzalloc(g_sz_bytes, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -158,7 +162,11 @@ static inline int setup_sgio_list(struct cpt_vf *cptvf,
 	/* Setup scatter (output) components */
 	s_sz_bytes = ((req->outcnt + 3) / 4) * sizeof(struct sglist_component);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	info->scatter_components = kzalloc(s_sz_bytes, req->may_sleep ? GFP_KERNEL : GFP_ATOMIC);
+=======
+	info->scatter_components = kzalloc(s_sz_bytes, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	info->scatter_components = kzalloc(s_sz_bytes, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -179,7 +187,11 @@ static inline int setup_sgio_list(struct cpt_vf *cptvf,
 	/* Create and initialize DPTR */
 	info->dlen = g_sz_bytes + s_sz_bytes + SG_LIST_HDR_SIZE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	info->in_buffer = kzalloc(info->dlen, req->may_sleep ? GFP_KERNEL : GFP_ATOMIC);
+=======
+	info->in_buffer = kzalloc(info->dlen, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	info->in_buffer = kzalloc(info->dlen, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -211,7 +223,11 @@ static inline int setup_sgio_list(struct cpt_vf *cptvf,
 
 	/* Create and initialize RPTR */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	info->out_buffer = kzalloc(COMPLETION_CODE_SIZE, req->may_sleep ? GFP_KERNEL : GFP_ATOMIC);
+=======
+	info->out_buffer = kzalloc(COMPLETION_CODE_SIZE, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	info->out_buffer = kzalloc(COMPLETION_CODE_SIZE, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -451,7 +467,11 @@ int process_request(struct cpt_vf *cptvf, struct cpt_request_info *req)
 	union cpt_inst_s cptinst;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	info = kzalloc(sizeof(*info), req->may_sleep ? GFP_KERNEL : GFP_ATOMIC);
+=======
+	info = kzalloc(sizeof(*info), GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	info = kzalloc(sizeof(*info), GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -477,7 +497,11 @@ int process_request(struct cpt_vf *cptvf, struct cpt_request_info *req)
 	 * structure and its physical address
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	info->completion_addr = kzalloc(sizeof(union cpt_res_s), req->may_sleep ? GFP_KERNEL : GFP_ATOMIC);
+=======
+	info->completion_addr = kzalloc(sizeof(union cpt_res_s), GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	info->completion_addr = kzalloc(sizeof(union cpt_res_s), GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

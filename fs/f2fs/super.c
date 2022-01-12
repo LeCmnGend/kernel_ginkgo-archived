@@ -813,8 +813,11 @@ static int parse_options(struct super_block *sb, char *options, bool is_remount)
 			break;
 		case Opt_fsync:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			f2fs_info(sbi, "changing fsync mode not supported");
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			name = match_strdup(&args[0]);
 			if (!name)
 				return -ENOMEM;
@@ -830,6 +833,9 @@ static int parse_options(struct super_block *sb, char *options, bool is_remount)
 				return -EINVAL;
 			}
 			kvfree(name);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			break;
 		case Opt_test_dummy_encryption:
@@ -1016,7 +1022,10 @@ static struct inode *f2fs_alloc_inode(struct super_block *sb)
 	INIT_LIST_HEAD(&fi->inmem_ilist);
 	INIT_LIST_HEAD(&fi->inmem_pages);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	INIT_LIST_HEAD(&fi->xattr_dirty_list);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_init(&fi->inmem_lock);
@@ -1216,9 +1225,12 @@ static void f2fs_put_super(struct super_block *sb)
 	bool dropped;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* unregister procfs/sysfs entries in advance to avoid race case */
 	f2fs_unregister_sysfs(sbi);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	f2fs_quota_off_umount(sb);
@@ -1287,6 +1299,11 @@ static void f2fs_put_super(struct super_block *sb)
 	kvfree(sbi->ckpt);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	f2fs_unregister_sysfs(sbi);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	f2fs_unregister_sysfs(sbi);
 
@@ -1670,7 +1687,11 @@ static void default_options(struct f2fs_sb_info *sbi)
 	F2FS_OPTION(sbi).whint_mode = WHINT_MODE_OFF;
 	F2FS_OPTION(sbi).alloc_mode = ALLOC_MODE_DEFAULT;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	F2FS_OPTION(sbi).fsync_mode = FSYNC_MODE_NOBARRIER;
+=======
+	F2FS_OPTION(sbi).fsync_mode = FSYNC_MODE_POSIX;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	F2FS_OPTION(sbi).fsync_mode = FSYNC_MODE_POSIX;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1773,9 +1794,12 @@ restore_flag:
 static void f2fs_enable_checkpoint(struct f2fs_sb_info *sbi)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* we should flush all the data to keep data consistency */
 	sync_inodes_sb(sbi->sb);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	down_write(&sbi->gc_lock);
@@ -2216,6 +2240,7 @@ int f2fs_quota_sync(struct super_block *sb, int type)
 	 *                            block_operation
 	 *                            down_read(quota_sem)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 *
 	 * However, we cannot use the cp_rwsem to prevent this
 	 * deadlock, as the cp_rwsem is taken for read inside the
@@ -2226,6 +2251,10 @@ int f2fs_quota_sync(struct super_block *sb, int type)
 	 * place where such recursion occurs.
 	 */
 	down_read(&sbi->cp_quota_rwsem);
+=======
+	 */
+	f2fs_lock_op(sbi);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 */
 	f2fs_lock_op(sbi);
@@ -2271,7 +2300,11 @@ out:
 		set_sbi_flag(F2FS_SB(sb), SBI_QUOTA_NEED_REPAIR);
 	up_read(&sbi->quota_sem);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	up_read(&sbi->cp_quota_rwsem);
+=======
+	f2fs_unlock_op(sbi);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	f2fs_unlock_op(sbi);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3621,7 +3654,10 @@ try_onemore:
 	init_rwsem(&sbi->cp_rwsem);
 	init_rwsem(&sbi->quota_sem);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	init_rwsem(&sbi->cp_quota_rwsem);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	init_waitqueue_head(&sbi->cp_wait);
@@ -3702,9 +3738,12 @@ try_onemore:
 	mutex_init(&sbi->flush_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	INIT_LIST_HEAD(&sbi->xattr_set_dir_ilist);
 	spin_lock_init(&sbi->xattr_set_dir_ilist_lock);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	f2fs_init_extent_cache_info(sbi);
@@ -4114,7 +4153,10 @@ MODULE_AUTHOR("Samsung Electronics's Praesto Team");
 MODULE_DESCRIPTION("Flash Friendly File System");
 MODULE_LICENSE("GPL");
 <<<<<<< HEAD
+<<<<<<< HEAD
 MODULE_SOFTDEP("pre: crc32");
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

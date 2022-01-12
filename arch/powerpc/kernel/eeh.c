@@ -366,12 +366,15 @@ static inline unsigned long eeh_token_to_phys(unsigned long token)
 
 	/* On radix we can do hugepage mappings for io, so handle that */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!hugepage_shift)
 		hugepage_shift = PAGE_SHIFT;
 
 	pa <<= PAGE_SHIFT;
 	pa |= token & ((1ul << hugepage_shift) - 1);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (hugepage_shift) {
 		pa <<= hugepage_shift;
 		pa |= token & ((1ul << hugepage_shift) - 1);
@@ -380,6 +383,9 @@ static inline unsigned long eeh_token_to_phys(unsigned long token)
 		pa |= token & (PAGE_SIZE - 1);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return pa;
 }
@@ -515,7 +521,11 @@ int eeh_dev_check_failure(struct eeh_dev *edev)
 	if (pe->state & EEH_PE_ISOLATED) {
 		pe->check_count++;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (pe->check_count == EEH_MAX_FAILS) {
+=======
+		if (pe->check_count % EEH_MAX_FAILS == 0) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (pe->check_count % EEH_MAX_FAILS == 0) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

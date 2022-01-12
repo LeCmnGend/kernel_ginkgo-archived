@@ -1,5 +1,6 @@
 /* SPDX-License-Identifier: GPL-2.0 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 #ifndef __INTERNAL_RWSEM_H
 #define __INTERNAL_RWSEM_H
@@ -10,6 +11,8 @@ extern void __up_read(struct rw_semaphore *sem);
 
 #endif /* __INTERNAL_RWSEM_H */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * The owner field of the rw_semaphore structure will be set to
  * RWSEM_READER_OWNED when a reader grabs the lock. A writer will clear
@@ -158,4 +161,7 @@ static inline bool rwsem_list_add_per_prio(struct rwsem_waiter *waiter_in,
 	return false;
 }
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

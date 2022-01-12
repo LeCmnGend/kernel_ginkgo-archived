@@ -97,6 +97,7 @@ static irqreturn_t nspire_keypad_irq(int irq, void *dev_id)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int nspire_keypad_open(struct input_dev *input)
 {
 	struct nspire_keypad *keypad = input_get_drvdata(input);
@@ -106,6 +107,11 @@ static int nspire_keypad_open(struct input_dev *input)
 	error = clk_prepare_enable(keypad->clk);
 	if (error)
 		return error;
+=======
+static int nspire_keypad_chip_init(struct nspire_keypad *keypad)
+{
+	unsigned long val = 0, cycles_per_us, delay_cycles, row_delay_cycles;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int nspire_keypad_chip_init(struct nspire_keypad *keypad)
 {
@@ -137,6 +143,7 @@ static int nspire_keypad_chip_init(struct nspire_keypad *keypad)
 	writel(keypad->int_mask, keypad->reg_base + KEYPAD_INTMSK);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return 0;
 }
 
@@ -149,6 +156,8 @@ static void nspire_keypad_close(struct input_dev *input)
 	/* Acknowledge existing interrupts */
 	writel(~0, keypad->reg_base + KEYPAD_INT);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Disable GPIO interrupts to prevent hanging on touchpad */
 	/* Possibly used to detect touchpad events */
 	writel(0, keypad->reg_base + KEYPAD_UNKNOWN_INT);
@@ -179,6 +188,9 @@ static int nspire_keypad_open(struct input_dev *input)
 static void nspire_keypad_close(struct input_dev *input)
 {
 	struct nspire_keypad *keypad = input_get_drvdata(input);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	clk_disable_unprepare(keypad->clk);
@@ -242,6 +254,7 @@ static int nspire_keypad_probe(struct platform_device *pdev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	error = clk_prepare_enable(keypad->clk);
 	if (error) {
 		dev_err(&pdev->dev, "failed to enable clock\n");
@@ -261,6 +274,8 @@ static int nspire_keypad_probe(struct platform_device *pdev)
 
 	clk_disable_unprepare(keypad->clk);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	input_set_drvdata(input, keypad);

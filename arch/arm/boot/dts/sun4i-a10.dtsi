@@ -144,7 +144,11 @@
 				cpu_alert0: cpu_alert0 {
 					/* milliCelsius */
 <<<<<<< HEAD
+<<<<<<< HEAD
 					temperature = <85000>;
+=======
+					temperature = <850000>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					temperature = <850000>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

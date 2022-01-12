@@ -309,6 +309,7 @@ static int isp_video_release(struct file *file)
 	struct media_entity *entity = &ivc->ve.vdev.entity;
 	struct media_device *mdev = entity->graph_obj.mdev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool is_singular_file;
 
 	mutex_lock(&isp->video_lock);
@@ -317,10 +318,15 @@ static int isp_video_release(struct file *file)
 
 	if (is_singular_file && ivc->streaming) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	mutex_lock(&isp->video_lock);
 
 	if (v4l2_fh_is_singular_file(file) && ivc->streaming) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		media_pipeline_stop(entity);
 		ivc->streaming = 0;
@@ -329,7 +335,11 @@ static int isp_video_release(struct file *file)
 	_vb2_fop_release(file, NULL);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (is_singular_file) {
+=======
+	if (v4l2_fh_is_singular_file(file)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (v4l2_fh_is_singular_file(file)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

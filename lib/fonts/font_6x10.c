@@ -2,10 +2,15 @@
 #include <linux/font.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define FONTDATAMAX 2560
 
 static const struct font_data fontdata_6x10 = {
 	{ 0, 0, FONTDATAMAX, 0 }, {
+=======
+static const unsigned char fontdata_6x10[] = {
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static const unsigned char fontdata_6x10[] = {
 
@@ -3082,7 +3087,12 @@ static const unsigned char fontdata_6x10[] = {
 	0x00, /* 00000000 */
 	0x00, /* 00000000 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 } };
+=======
+
+};
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 };
@@ -3094,7 +3104,11 @@ const struct font_desc font_6x10 = {
 	.width	= 6,
 	.height	= 10,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.data	= fontdata_6x10.data,
+=======
+	.data	= fontdata_6x10,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.data	= fontdata_6x10,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -853,7 +853,12 @@ static int cpia2_usb_probe(struct usb_interface *intf,
 	if (ret < 0) {
 		ERR("%s: usb_set_interface error (ret = %d)\n", __func__, ret);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto alt_err;
+=======
+		kfree(cam);
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kfree(cam);
 		return ret;
@@ -864,7 +869,12 @@ static int cpia2_usb_probe(struct usb_interface *intf,
 	if((ret = cpia2_init_camera(cam)) < 0) {
 		ERR("%s: failed to initialize cpia2 camera (ret = %d)\n", __func__, ret);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto alt_err;
+=======
+		kfree(cam);
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kfree(cam);
 		return ret;
@@ -889,6 +899,7 @@ static int cpia2_usb_probe(struct usb_interface *intf,
 	if (ret < 0) {
 		ERR("%s: Failed to register cpia2 camera (ret = %d)\n", __func__, ret);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto alt_err;
 	}
 
@@ -898,11 +909,16 @@ alt_err:
 	cpia2_deinit_camera_struct(cam, intf);
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		kfree(cam);
 		return ret;
 	}
 
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

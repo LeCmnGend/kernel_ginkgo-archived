@@ -36,6 +36,10 @@
 #include <linux/module.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <drm/drm_client.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <drm/drm_client.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -108,7 +112,10 @@ DEFINE_MUTEX(drm_global_mutex);
 static int drm_open_helper(struct file *filp, struct drm_minor *minor);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * drm_file_alloc - allocate file context
  * @minor: minor to allocate on
@@ -278,6 +285,9 @@ void drm_file_free(struct drm_file *file)
 	kfree(file);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int drm_setup(struct drm_device * dev)
 {
@@ -380,7 +390,10 @@ static int drm_open_helper(struct file *filp, struct drm_minor *minor)
 	struct drm_device *dev = minor->dev;
 	struct drm_file *priv;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -394,9 +407,15 @@ static int drm_open_helper(struct file *filp, struct drm_minor *minor)
 	DRM_DEBUG("pid = %d, minor = %d\n", task_pid_nr(current), minor->index);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	priv = kzalloc(sizeof(*priv), GFP_KERNEL);
 	if (!priv)
 		return -ENOMEM;
+=======
+	priv = drm_file_alloc(minor);
+	if (IS_ERR(priv))
+		return PTR_ERR(priv);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	priv = drm_file_alloc(minor);
 	if (IS_ERR(priv))
@@ -406,6 +425,7 @@ static int drm_open_helper(struct file *filp, struct drm_minor *minor)
 	filp->private_data = priv;
 	filp->f_mode |= FMODE_UNSIGNED_OFFSET;
 	priv->filp = filp;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	priv->pid = get_pid(task_pid(current));
 	priv->minor = minor;
@@ -447,6 +467,8 @@ static int drm_open_helper(struct file *filp, struct drm_minor *minor)
 	}
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	mutex_lock(&dev->filelist_mutex);
 	list_add(&priv->lhead, &dev->filelist);
@@ -473,6 +495,7 @@ static int drm_open_helper(struct file *filp, struct drm_minor *minor)
 #endif
 
 	return 0;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 out_close:
@@ -515,6 +538,8 @@ static void drm_events_release(struct drm_file *file_priv)
 	spin_unlock_irqrestore(&dev->event_lock, flags);
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void drm_legacy_dev_reinit(struct drm_device *dev)
@@ -552,6 +577,11 @@ void drm_lastclose(struct drm_device * dev)
 	if (drm_core_check_feature(dev, DRIVER_LEGACY))
 		drm_legacy_dev_reinit(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+	drm_client_dev_restore(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	drm_client_dev_restore(dev);
@@ -586,6 +616,7 @@ int drm_release(struct inode *inode, struct file *filp)
 	list_del(&file_priv->lhead);
 	mutex_unlock(&dev->filelist_mutex);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (drm_core_check_feature(dev, DRIVER_LEGACY) &&
 	    dev->driver->preclose)
@@ -638,6 +669,9 @@ int drm_release(struct inode *inode, struct file *filp)
 	/* ========================================================
 	 * End inline drm_release
 	 */
+=======
+	drm_file_free(file_priv);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	drm_file_free(file_priv);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

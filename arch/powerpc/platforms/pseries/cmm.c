@@ -209,7 +209,11 @@ static long cmm_alloc_pages(long nr)
 		pa->page[pa->index++] = addr;
 		loaned_pages++;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		totalram_pages_dec();
+=======
+		totalram_pages--;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		totalram_pages--;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -252,7 +256,11 @@ static long cmm_free_pages(long nr)
 		loaned_pages--;
 		nr--;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		totalram_pages_inc();
+=======
+		totalram_pages++;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		totalram_pages++;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -300,7 +308,11 @@ static void cmm_get_mpp(void)
 	struct hvcall_mpp_data mpp_data;
 	signed long active_pages_target, page_loan_request, target;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	signed long total_pages = totalram_pages() + loaned_pages;
+=======
+	signed long total_pages = totalram_pages + loaned_pages;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	signed long total_pages = totalram_pages + loaned_pages;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -335,7 +347,11 @@ static void cmm_get_mpp(void)
 	cmm_dbg("delta = %ld, loaned = %lu, target = %lu, oom = %lu, totalram = %lu\n",
 		page_loan_request, loaned_pages, loaned_pages_target,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		oom_freed_pages, totalram_pages());
+=======
+		oom_freed_pages, totalram_pages);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		oom_freed_pages, totalram_pages);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -603,7 +619,11 @@ static int cmm_mem_going_offline(void *arg)
 			freed++;
 			loaned_pages--;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			totalram_pages_inc();
+=======
+			totalram_pages++;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			totalram_pages++;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

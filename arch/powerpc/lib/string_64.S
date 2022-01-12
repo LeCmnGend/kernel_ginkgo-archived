@@ -30,7 +30,11 @@ PPC64_CACHES:
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * __arch_clear_user: - Zero a block of memory in user space, with less checking.
+=======
+ * __clear_user: - Zero a block of memory in user space, with less checking.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * __clear_user: - Zero a block of memory in user space, with less checking.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -75,7 +79,11 @@ err3;	stb	r0,0(r3)
 	blr
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 _GLOBAL_TOC(__arch_clear_user)
+=======
+_GLOBAL_TOC(__clear_user)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 _GLOBAL_TOC(__clear_user)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -202,7 +210,11 @@ err1;	dcbz	0,r3
 	blt	.Lshort_clear
 	b	.Lmedium_clear
 <<<<<<< HEAD
+<<<<<<< HEAD
 EXPORT_SYMBOL(__arch_clear_user)
+=======
+EXPORT_SYMBOL(__clear_user)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 EXPORT_SYMBOL(__clear_user)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

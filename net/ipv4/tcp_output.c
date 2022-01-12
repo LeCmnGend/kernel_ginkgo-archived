@@ -61,7 +61,11 @@ int sysctl_tcp_tso_win_divisor __read_mostly = 3;
 
 /* By default, RFC2861 behavior.  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 int sysctl_tcp_slow_start_after_idle __read_mostly;
+=======
+int sysctl_tcp_slow_start_after_idle __read_mostly = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int sysctl_tcp_slow_start_after_idle __read_mostly = 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -170,6 +174,7 @@ static void tcp_event_data_sent(struct tcp_sock *tp,
 		tcp_ca_event(sk, CA_EVENT_TX_START);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* If this is the first data packet sent in response to the
 	 * previous received data,
 	 * and it is a reply for ato after last received packet,
@@ -181,6 +186,8 @@ static void tcp_event_data_sent(struct tcp_sock *tp,
 
 	tp->lsndtime = now;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	tp->lsndtime = now;
 
 	/* If it is a reply for ato after last received
@@ -188,6 +195,9 @@ static void tcp_event_data_sent(struct tcp_sock *tp,
 	 */
 	if ((u32)(now - icsk->icsk_ack.lrcvtime) < icsk->icsk_ack.ato)
 		icsk->icsk_ack.pingpong = 1;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -204,7 +214,10 @@ static inline void tcp_event_ack_sent(struct sock *sk, unsigned int pkts,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 u32 tcp_default_init_rwnd(struct net *net, u32 mss)
 {
@@ -220,6 +233,9 @@ u32 tcp_default_init_rwnd(struct net *net, u32 mss)
 	return init_rwnd;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Determine a window scaling and initial window to offer.
  * Based on the assumption that the given amount of space
@@ -256,10 +272,14 @@ void tcp_select_initial_window(struct net *net, int __space, __u32 mss,
 		(*rcv_wnd) = min(space, MAX_TCP_WINDOW);
 	else
 <<<<<<< HEAD
+<<<<<<< HEAD
 		(*rcv_wnd) = min_t(u32, space, U16_MAX);
 
 	if (init_rcv_wnd)
 		*rcv_wnd = min(*rcv_wnd, init_rcv_wnd * mss);
+=======
+		(*rcv_wnd) = space;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		(*rcv_wnd) = space;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -277,13 +297,19 @@ void tcp_select_initial_window(struct net *net, int __space, __u32 mss,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (mss > (1 << *rcv_wscale)) {
 		if (!init_rcv_wnd) /* Use default unless specified otherwise */
 			init_rcv_wnd = tcp_default_init_rwnd(net, mss);
 		*rcv_wnd = min(*rcv_wnd, init_rcv_wnd * mss);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Set the clamp no higher than max representable value */
 	(*window_clamp) = min_t(__u32, U16_MAX << (*rcv_wscale), *window_clamp);
@@ -980,7 +1006,10 @@ enum hrtimer_restart tcp_pace_kick(struct hrtimer *timer)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* BBR congestion control needs pacing.
  * Same remark for SO_MAX_PACING_RATE.
  * sch_fq packet scheduler is efficiently handling pacing,
@@ -992,6 +1021,9 @@ static bool tcp_needs_internal_pacing(const struct sock *sk)
 	return smp_load_acquire(&sk->sk_pacing_status) == SK_PACING_NEEDED;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void tcp_internal_pacing(struct sock *sk, const struct sk_buff *skb)
 {
@@ -1005,6 +1037,12 @@ static void tcp_internal_pacing(struct sock *sk, const struct sk_buff *skb)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/* Should account for header sizes as sch_fq does,
+	 * but lets make things simple.
+	 */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Should account for header sizes as sch_fq does,
 	 * but lets make things simple.
@@ -1047,6 +1085,11 @@ static int __tcp_transmit_skb(struct sock *sk, struct sk_buff *skb,
 
 	if (clone_it) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		TCP_SKB_CB(skb)->tx.in_flight = TCP_SKB_CB(skb)->end_seq
+			- tp->snd_una;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		TCP_SKB_CB(skb)->tx.in_flight = TCP_SKB_CB(skb)->end_seq
 			- tp->snd_una;
@@ -1510,7 +1553,10 @@ int tcp_mtu_to_mss(struct sock *sk, int pmtu)
 	       (tcp_sk(sk)->tcp_header_len - sizeof(struct tcphdr));
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 EXPORT_SYMBOL(tcp_mtu_to_mss);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1664,8 +1710,12 @@ static void tcp_cwnd_validate(struct sock *sk, bool is_cwnd_limited)
 	 */
 	if (!before(tp->snd_una, tp->max_packets_seq) ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    tp->packets_out > tp->max_packets_out ||
 	    is_cwnd_limited) {
+=======
+	    tp->packets_out > tp->max_packets_out) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	    tp->packets_out > tp->max_packets_out) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1743,8 +1793,13 @@ static bool tcp_nagle_check(bool partial, const struct tcp_sock *tp,
  * to send one TSO packet per ms
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static u32 tcp_tso_autosize(const struct sock *sk, unsigned int mss_now,
 			    int min_tso_segs)
+=======
+u32 tcp_tso_autosize(const struct sock *sk, unsigned int mss_now,
+		     int min_tso_segs)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 u32 tcp_tso_autosize(const struct sock *sk, unsigned int mss_now,
 		     int min_tso_segs)
@@ -1765,6 +1820,10 @@ u32 tcp_tso_autosize(const struct sock *sk, unsigned int mss_now,
 	return segs;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+EXPORT_SYMBOL(tcp_tso_autosize);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 EXPORT_SYMBOL(tcp_tso_autosize);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1776,6 +1835,7 @@ static u32 tcp_tso_segs(struct sock *sk, unsigned int mss_now)
 {
 	const struct tcp_congestion_ops *ca_ops = inet_csk(sk)->icsk_ca_ops;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 min_tso, tso_segs;
 
 	min_tso = ca_ops->min_tso_segs ?
@@ -1784,11 +1844,16 @@ static u32 tcp_tso_segs(struct sock *sk, unsigned int mss_now)
 
 	tso_segs = tcp_tso_autosize(sk, mss_now, min_tso);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32 tso_segs = ca_ops->tso_segs_goal ? ca_ops->tso_segs_goal(sk) : 0;
 
 	if (!tso_segs)
 		tso_segs = tcp_tso_autosize(sk, mss_now,
 					    sysctl_tcp_min_tso_segs);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return min_t(u32, tso_segs, sk->sk_gso_max_segs);
 }
@@ -2478,10 +2543,13 @@ repair:
 		tcp_chrono_stop(sk, TCP_CHRONO_RWND_LIMITED);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	is_cwnd_limited |= (tcp_packets_in_flight(tp) >= tp->snd_cwnd);
 	if (likely(sent_pkts || is_cwnd_limited))
 		tcp_cwnd_validate(sk, is_cwnd_limited);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (likely(sent_pkts)) {
@@ -2492,6 +2560,11 @@ repair:
 		if (push_one != 2)
 			tcp_schedule_loss_probe(sk, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		is_cwnd_limited |= (tcp_packets_in_flight(tp) >= tp->snd_cwnd);
+		tcp_cwnd_validate(sk, is_cwnd_limited);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		is_cwnd_limited |= (tcp_packets_in_flight(tp) >= tp->snd_cwnd);
 		tcp_cwnd_validate(sk, is_cwnd_limited);
@@ -2504,6 +2577,10 @@ repair:
 bool tcp_schedule_loss_probe(struct sock *sk, bool advancing_rto)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct inet_connection_sock *icsk = inet_csk(sk);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct inet_connection_sock *icsk = inet_csk(sk);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2518,6 +2595,7 @@ bool tcp_schedule_loss_probe(struct sock *sk, bool advancing_rto)
 
 	/* Schedule a loss probe in 2*RTT for SACK capable connections
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * not in loss recovery, that are either limited by cwnd or application.
 	 */
 	if ((sysctl_tcp_early_retrans != 3 && sysctl_tcp_early_retrans != 4) ||
@@ -2525,6 +2603,8 @@ bool tcp_schedule_loss_probe(struct sock *sk, bool advancing_rto)
 	    (inet_csk(sk)->icsk_ca_state != TCP_CA_Open &&
 	     inet_csk(sk)->icsk_ca_state != TCP_CA_CWR))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * in Open state, that are either limited by cwnd or application.
 	 */
 	if ((sysctl_tcp_early_retrans != 3 && sysctl_tcp_early_retrans != 4) ||
@@ -2534,6 +2614,9 @@ bool tcp_schedule_loss_probe(struct sock *sk, bool advancing_rto)
 
 	if ((tp->snd_cwnd > tcp_packets_in_flight(tp)) &&
 	     tcp_send_head(sk))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return false;
 
@@ -2589,11 +2672,14 @@ void tcp_send_loss_probe(struct sock *sk)
 	int mss = tcp_current_mss(sk);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* At most one outstanding TLP */
 	if (tp->tlp_high_seq)
 		goto rearm_timer;
 
 	tp->tlp_retrans = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	skb = tcp_send_head(sk);
@@ -2619,11 +2705,17 @@ void tcp_send_loss_probe(struct sock *sk)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* At most one outstanding TLP retransmission. */
 	if (tp->tlp_high_seq)
 		goto rearm_timer;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (skb_still_in_host_queue(sk, skb))
 		goto rearm_timer;
@@ -2646,6 +2738,7 @@ void tcp_send_loss_probe(struct sock *sk)
 		goto rearm_timer;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tp->tlp_retrans = 1;
 
 probe_sent:
@@ -2653,10 +2746,15 @@ probe_sent:
 	tp->tlp_high_seq = tp->snd_nxt;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Record snd_nxt for loss detection. */
 	tp->tlp_high_seq = tp->snd_nxt;
 
 probe_sent:
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	NET_INC_STATS(sock_net(sk), LINUX_MIB_TCPLOSSPROBES);
 	/* Reset s.t. tcp_rearm_rto will restart timer from now */
@@ -3671,7 +3769,11 @@ void tcp_send_delayed_ack(struct sock *sk)
 		int max_ato = HZ / 2;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (inet_csk_in_pingpong_mode(sk) ||
+=======
+		if (icsk->icsk_ack.pingpong ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (icsk->icsk_ack.pingpong ||
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

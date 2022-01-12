@@ -171,7 +171,11 @@ int cgroup_path_ns_locked(struct cgroup *cgrp, char *buf, size_t buflen,
 void cgroup_free_root(struct cgroup_root *root);
 void init_cgroup_root(struct cgroup_root *root, struct cgroup_sb_opts *opts);
 <<<<<<< HEAD
+<<<<<<< HEAD
 int cgroup_setup_root(struct cgroup_root *root, u16 ss_mask);
+=======
+int cgroup_setup_root(struct cgroup_root *root, u16 ss_mask, int ref_flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int cgroup_setup_root(struct cgroup_root *root, u16 ss_mask, int ref_flags);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -203,7 +207,10 @@ int cgroup_show_path(struct seq_file *sf, struct kernfs_node *kf_node,
 		     struct kernfs_root *kf_root);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int __cgroup_task_count(const struct cgroup *cgrp);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int cgroup_task_count(const struct cgroup *cgrp);

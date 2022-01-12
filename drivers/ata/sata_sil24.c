@@ -337,7 +337,11 @@ static int sil24_scr_read(struct ata_link *link, unsigned sc_reg, u32 *val);
 static int sil24_scr_write(struct ata_link *link, unsigned sc_reg, u32 val);
 static int sil24_qc_defer(struct ata_queued_cmd *qc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors sil24_qc_prep(struct ata_queued_cmd *qc);
+=======
+static void sil24_qc_prep(struct ata_queued_cmd *qc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void sil24_qc_prep(struct ata_queued_cmd *qc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -845,7 +849,11 @@ static int sil24_qc_defer(struct ata_queued_cmd *qc)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors sil24_qc_prep(struct ata_queued_cmd *qc)
+=======
+static void sil24_qc_prep(struct ata_queued_cmd *qc)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void sil24_qc_prep(struct ata_queued_cmd *qc)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -893,8 +901,11 @@ static void sil24_qc_prep(struct ata_queued_cmd *qc)
 	if (qc->flags & ATA_QCFLAG_DMAMAP)
 		sil24_fill_sg(qc, sge);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	return AC_ERR_OK;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

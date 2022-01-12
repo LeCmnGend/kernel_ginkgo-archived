@@ -175,9 +175,12 @@ static bool rt286_readable_register(struct device *dev, unsigned int reg)
 	case RT286_SET_AMP_GAIN_ADC_IN1:
 	case RT286_SET_AMP_GAIN_ADC_IN2:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case RT286_SET_GPIO_MASK:
 	case RT286_SET_GPIO_DIRECTION:
 	case RT286_SET_GPIO_DATA:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case RT286_SET_POWER(RT286_DAC_OUT1):
@@ -1126,18 +1129,24 @@ static const struct dmi_system_id force_combo_jack_table[] = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const struct dmi_system_id dmi_dell[] = {
 	{
 		.ident = "Dell",
 		.matches = {
 			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static const struct dmi_system_id dmi_dell_dino[] = {
 	{
 		.ident = "Dell Dino",
 		.matches = {
 			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
 			DMI_MATCH(DMI_PRODUCT_NAME, "XPS 13 9343")
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 	},
@@ -1150,7 +1159,11 @@ static int rt286_i2c_probe(struct i2c_client *i2c,
 	struct rt286_platform_data *pdata = dev_get_platdata(&i2c->dev);
 	struct rt286_priv *rt286;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int i, ret, vendor_id;
+=======
+	int i, ret, val;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int i, ret, val;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1170,7 +1183,11 @@ static int rt286_i2c_probe(struct i2c_client *i2c,
 
 	ret = regmap_read(rt286->regmap,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		RT286_GET_PARAM(AC_NODE_ROOT, AC_PAR_VENDOR_ID), &vendor_id);
+=======
+		RT286_GET_PARAM(AC_NODE_ROOT, AC_PAR_VENDOR_ID), &val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		RT286_GET_PARAM(AC_NODE_ROOT, AC_PAR_VENDOR_ID), &val);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1179,10 +1196,16 @@ static int rt286_i2c_probe(struct i2c_client *i2c,
 		return ret;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (vendor_id != RT286_VENDOR_ID && vendor_id != RT288_VENDOR_ID) {
 		dev_err(&i2c->dev,
 			"Device with ID register %#x is not rt286\n",
 			vendor_id);
+=======
+	if (val != RT286_VENDOR_ID && val != RT288_VENDOR_ID) {
+		dev_err(&i2c->dev,
+			"Device with ID register %#x is not rt286\n", val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (val != RT286_VENDOR_ID && val != RT288_VENDOR_ID) {
 		dev_err(&i2c->dev,
@@ -1212,8 +1235,13 @@ static int rt286_i2c_probe(struct i2c_client *i2c,
 		rt286->pdata = *pdata;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if ((vendor_id == RT288_VENDOR_ID && dmi_check_system(dmi_dell)) ||
 		dmi_check_system(force_combo_jack_table))
+=======
+	if (dmi_check_system(force_combo_jack_table) ||
+		dmi_check_system(dmi_dell_dino))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (dmi_check_system(force_combo_jack_table) ||
 		dmi_check_system(dmi_dell_dino))
@@ -1257,7 +1285,11 @@ static int rt286_i2c_probe(struct i2c_client *i2c,
 	regmap_update_bits(rt286->regmap, RT286_DEPOP_CTRL4, 0x00ff, 0x003f);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (vendor_id == RT288_VENDOR_ID && dmi_check_system(dmi_dell)) {
+=======
+	if (dmi_check_system(dmi_dell_dino)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (dmi_check_system(dmi_dell_dino)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

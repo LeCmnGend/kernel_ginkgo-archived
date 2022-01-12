@@ -4620,8 +4620,12 @@ unsigned int ieee80211_get_mesh_hdrlen(struct ieee80211s_hdr *meshhdr);
  */
 int ieee80211_data_to_8023_exthdr(struct sk_buff *skb, struct ethhdr *ehdr,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				  const u8 *addr, enum nl80211_iftype iftype,
 				  bool is_amsdu);
+=======
+				  const u8 *addr, enum nl80211_iftype iftype);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				  const u8 *addr, enum nl80211_iftype iftype);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4637,7 +4641,11 @@ static inline int ieee80211_data_to_8023(struct sk_buff *skb, const u8 *addr,
 					 enum nl80211_iftype iftype)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return ieee80211_data_to_8023_exthdr(skb, NULL, addr, iftype, false);
+=======
+	return ieee80211_data_to_8023_exthdr(skb, NULL, addr, iftype);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return ieee80211_data_to_8023_exthdr(skb, NULL, addr, iftype);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

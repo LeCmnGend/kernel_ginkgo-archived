@@ -184,17 +184,23 @@ static const char emac_version_string[] = "TI DaVinci EMAC Linux v6.1";
 #define EMAC_MACSTATUS_TXERRCODE_MASK	(0xF00000)
 #define EMAC_MACSTATUS_TXERRCODE_SHIFT	(20)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define EMAC_MACSTATUS_TXERRCH_MASK	(0x70000)
 #define EMAC_MACSTATUS_TXERRCH_SHIFT	(16)
 #define EMAC_MACSTATUS_RXERRCODE_MASK	(0xF000)
 #define EMAC_MACSTATUS_RXERRCODE_SHIFT	(12)
 #define EMAC_MACSTATUS_RXERRCH_MASK	(0x700)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define EMAC_MACSTATUS_TXERRCH_MASK	(0x7)
 #define EMAC_MACSTATUS_TXERRCH_SHIFT	(16)
 #define EMAC_MACSTATUS_RXERRCODE_MASK	(0xF000)
 #define EMAC_MACSTATUS_RXERRCODE_SHIFT	(12)
 #define EMAC_MACSTATUS_RXERRCH_MASK	(0x7)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define EMAC_MACSTATUS_RXERRCH_SHIFT	(8)
 
@@ -1249,7 +1255,11 @@ static int emac_poll(struct napi_struct *napi, int budget)
 	struct device *emac_dev = &ndev->dev;
 	u32 status = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 num_rx_pkts = 0;
+=======
+	u32 num_tx_pkts = 0, num_rx_pkts = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 num_tx_pkts = 0, num_rx_pkts = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1264,7 +1274,12 @@ static int emac_poll(struct napi_struct *napi, int budget)
 
 	if (status & mask) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cpdma_chan_process(priv->txchan, EMAC_DEF_TX_MAX_SERVICE);
+=======
+		num_tx_pkts = cpdma_chan_process(priv->txchan,
+					      EMAC_DEF_TX_MAX_SERVICE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		num_tx_pkts = cpdma_chan_process(priv->txchan,
 					      EMAC_DEF_TX_MAX_SERVICE);

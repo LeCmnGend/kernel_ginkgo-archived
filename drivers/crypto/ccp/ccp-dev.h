@@ -472,7 +472,10 @@ struct ccp_sg_workarea {
 
 	struct scatterlist *dma_sg;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct scatterlist *dma_sg_head;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct device *dma_dev;

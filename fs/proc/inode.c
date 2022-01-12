@@ -6,7 +6,10 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/cache.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/time.h>
@@ -57,8 +60,12 @@ static void proc_evict_inode(struct inode *inode)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct kmem_cache *proc_inode_cachep __ro_after_init;
 static struct kmem_cache *pde_opener_cache __ro_after_init;
+=======
+static struct kmem_cache * proc_inode_cachep;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static struct kmem_cache * proc_inode_cachep;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -101,7 +108,11 @@ static void init_once(void *foo)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void __init proc_init_kmemcache(void)
+=======
+void __init proc_init_inodecache(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void __init proc_init_inodecache(void)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -113,9 +124,12 @@ void __init proc_init_inodecache(void)
 						SLAB_PANIC),
 					     init_once);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pde_opener_cache =
 		kmem_cache_create("pde_opener", sizeof(struct pde_opener), 0,
 				  SLAB_ACCOUNT|SLAB_PANIC, NULL);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -157,7 +171,11 @@ static void unuse_pde(struct proc_dir_entry *pde)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* pde is locked on entry, unlocked on exit */
+=======
+/* pde is locked */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* pde is locked */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -180,10 +198,16 @@ static void close_pdeo(struct proc_dir_entry *pde, struct pde_opener *pdeo)
 		spin_unlock(&pde->pde_unload_lock);
 		wait_for_completion(&c);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else {
 		struct file *file;
 		struct completion *c;
 
+=======
+		spin_lock(&pde->pde_unload_lock);
+	} else {
+		struct file *file;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		spin_lock(&pde->pde_unload_lock);
 	} else {
@@ -197,11 +221,17 @@ static void close_pdeo(struct proc_dir_entry *pde, struct pde_opener *pdeo)
 		/* After ->release. */
 		list_del(&pdeo->lh);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		c = pdeo->c;
 		spin_unlock(&pde->pde_unload_lock);
 		if (unlikely(c))
 			complete(c);
 		kmem_cache_free(pde_opener_cache, pdeo);
+=======
+		if (pdeo->c)
+			complete(pdeo->c);
+		kfree(pdeo);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (pdeo->c)
 			complete(pdeo->c);
@@ -226,7 +256,10 @@ void proc_entry_rundown(struct proc_dir_entry *de)
 		pdeo = list_first_entry(&de->pde_openers, struct pde_opener, lh);
 		close_pdeo(de, pdeo);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		spin_lock(&de->pde_unload_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -380,6 +413,7 @@ static int proc_reg_open(struct inode *inode, struct file *file)
 	 * Save every "struct file" with custom ->release hook.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!use_pde(pde))
 		return -ENOENT;
 
@@ -411,6 +445,8 @@ static int proc_reg_open(struct inode *inode, struct file *file)
 
 out_unuse:
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pdeo = kmalloc(sizeof(struct pde_opener), GFP_KERNEL);
 	if (!pdeo)
 		return -ENOMEM;
@@ -436,6 +472,9 @@ out_unuse:
 	} else
 		kfree(pdeo);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unuse_pde(pde);
 	return rv;
@@ -450,7 +489,11 @@ static int proc_reg_release(struct inode *inode, struct file *file)
 		if (pdeo->file == file) {
 			close_pdeo(pde, pdeo);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			return 0;
+=======
+			break;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			break;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -572,9 +615,12 @@ int proc_fill_super(struct super_block *s)
 	s->s_stack_depth = FILESYSTEM_MAX_STACK_DEPTH;
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* procfs dentries and inodes don't require IO to create */
 	s->s_shrink.seeks = 0;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pde_get(&proc_root);

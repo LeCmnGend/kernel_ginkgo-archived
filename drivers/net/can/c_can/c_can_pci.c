@@ -240,7 +240,10 @@ static void c_can_pci_remove(struct pci_dev *pdev)
 	struct net_device *dev = pci_get_drvdata(pdev);
 	struct c_can_priv *priv = netdev_priv(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	void __iomem *addr = priv->base;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -249,7 +252,11 @@ static void c_can_pci_remove(struct pci_dev *pdev)
 	free_c_can_dev(dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pci_iounmap(pdev, addr);
+=======
+	pci_iounmap(pdev, priv->base);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pci_iounmap(pdev, priv->base);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

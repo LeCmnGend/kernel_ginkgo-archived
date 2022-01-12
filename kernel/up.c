@@ -24,7 +24,11 @@ int smp_call_function_single(int cpu, void (*func) (void *info), void *info,
 EXPORT_SYMBOL(smp_call_function_single);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int smp_call_function_single_async(int cpu, struct __call_single_data *csd)
+=======
+int smp_call_function_single_async(int cpu, call_single_data_t *csd)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int smp_call_function_single_async(int cpu, call_single_data_t *csd)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

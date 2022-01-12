@@ -2967,7 +2967,13 @@ __transport_wait_for_tasks(struct se_cmd *cmd, bool fabric_stop,
 	__acquires(&cmd->t_state_lock)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	lockdep_assert_held(&cmd->t_state_lock);
+=======
+
+	assert_spin_locked(&cmd->t_state_lock);
+	WARN_ON_ONCE(!irqs_disabled());
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	assert_spin_locked(&cmd->t_state_lock);

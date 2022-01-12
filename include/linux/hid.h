@@ -264,8 +264,11 @@ struct hid_item {
 #define HID_CP_MEDIASELECTION	0x000c0087
 #define HID_CP_SELECTDISC	0x000c00ba
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define HID_CP_VOLUMEUP		0x000c00e9
 #define HID_CP_VOLUMEDOWN	0x000c00ea
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define HID_CP_PLAYBACKSPEED	0x000c00f1
@@ -926,6 +929,7 @@ static inline void hid_device_io_stop(struct hid_device *hid) {
  * @type: input event type (EV_KEY, EV_REL, ...)
  * @c: code which corresponds to this usage and type
 <<<<<<< HEAD
+<<<<<<< HEAD
  *
  * The value pointed to by @bit will be set to NULL if either @type is
  * an unhandled event type, or if @c is out of range for @type. This
@@ -970,6 +974,8 @@ static inline void hid_map_usage(struct hid_input *hidinput,
 	*max = limit;
 	*bit = bmap;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 static inline void hid_map_usage(struct hid_input *hidinput,
 		struct hid_usage *usage, unsigned long **bit, int *max,
@@ -998,6 +1004,9 @@ static inline void hid_map_usage(struct hid_input *hidinput,
 		*max = LED_MAX;
 		break;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -1013,8 +1022,12 @@ static inline void hid_map_usage_clear(struct hid_input *hidinput,
 {
 	hid_map_usage(hidinput, usage, bit, max, type, c);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (*bit)
 		clear_bit(usage->code, *bit);
+=======
+	clear_bit(c, *bit);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	clear_bit(c, *bit);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1154,7 +1167,12 @@ static inline void hid_hw_wait(struct hid_device *hdev)
 static inline u32 hid_report_len(struct hid_report *report)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return DIV_ROUND_UP(report->size, 8) + (report->id > 0);
+=======
+	/* equivalent to DIV_ROUND_UP(report->size, 8) + !!(report->id > 0) */
+	return ((report->size - 1) >> 3) + 1 + (report->id > 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* equivalent to DIV_ROUND_UP(report->size, 8) + !!(report->id > 0) */
 	return ((report->size - 1) >> 3) + 1 + (report->id > 0);

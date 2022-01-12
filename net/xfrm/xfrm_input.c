@@ -421,7 +421,11 @@ resume:
 		encap_type = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (x->repl->recheck(x, skb, seq)) {
+=======
+		if (async && x->repl->recheck(x, skb, seq)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (async && x->repl->recheck(x, skb, seq)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -68,9 +68,13 @@ enum arch_timer_spi_nr {
 #define ARCH_TIMER_USR_PT_ACCESS_EN	(1 << 9) /* physical timer registers */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define ARCH_TIMER_EVT_STREAM_PERIOD_US	100
 #define ARCH_TIMER_EVT_STREAM_FREQ				\
 	(USEC_PER_SEC / ARCH_TIMER_EVT_STREAM_PERIOD_US)
+=======
+#define ARCH_TIMER_EVT_STREAM_FREQ	10000	/* 100us */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define ARCH_TIMER_EVT_STREAM_FREQ	10000	/* 100us */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -101,7 +105,10 @@ extern u64 (*arch_timer_read_counter)(void);
 extern struct arch_timer_kvm_info *arch_timer_get_kvm_info(void);
 extern void arch_timer_mem_get_cval(u32 *lo, u32 *hi);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern bool arch_timer_evtstrm_available(void);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #else
@@ -121,12 +128,15 @@ static void arch_timer_mem_get_cval(u32 *lo, u32 *hi)
 	*lo = *hi = ~0U;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 static inline bool arch_timer_evtstrm_available(void)
 {
 	return false;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif

@@ -180,6 +180,7 @@ static int l2cap_sock_connect(struct socket *sock, struct sockaddr *addr,
 	struct sockaddr_l2 la;
 	int len, err = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool zapped;
 
 	BT_DBG("sk %p", sk);
@@ -191,6 +192,11 @@ static int l2cap_sock_connect(struct socket *sock, struct sockaddr *addr,
 	if (zapped)
 		return -EINVAL;
 
+=======
+
+	BT_DBG("sk %p", sk);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	BT_DBG("sk %p", sk);
@@ -1055,7 +1061,11 @@ done:
 
 /* Kill socket (only if zapped and orphan)
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Must be called on unlocked socket, with l2cap channel lock.
+=======
+ * Must be called on unlocked socket.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * Must be called on unlocked socket.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1210,7 +1220,10 @@ static int l2cap_sock_release(struct socket *sock)
 	struct sock *sk = sock->sk;
 	int err;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct l2cap_chan *chan;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1223,6 +1236,7 @@ static int l2cap_sock_release(struct socket *sock)
 
 	err = l2cap_sock_shutdown(sock, 2);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	chan = l2cap_pi(sk)->chan;
 
 	l2cap_chan_hold(chan);
@@ -1234,6 +1248,11 @@ static int l2cap_sock_release(struct socket *sock)
 	l2cap_chan_unlock(chan);
 	l2cap_chan_put(chan);
 
+=======
+
+	sock_orphan(sk);
+	l2cap_sock_kill(sk);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	sock_orphan(sk);
@@ -1257,6 +1276,7 @@ static void l2cap_sock_cleanup_listen(struct sock *parent)
 		       state_to_string(chan->state));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		l2cap_chan_hold(chan);
 		l2cap_chan_lock(chan);
 
@@ -1267,12 +1287,17 @@ static void l2cap_sock_cleanup_listen(struct sock *parent)
 		l2cap_chan_unlock(chan);
 		l2cap_chan_put(chan);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		l2cap_chan_lock(chan);
 		__clear_chan_timer(chan);
 		l2cap_chan_close(chan, ECONNRESET);
 		l2cap_chan_unlock(chan);
 
 		l2cap_sock_kill(sk);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 }
@@ -1379,6 +1404,11 @@ static void l2cap_sock_teardown_cb(struct l2cap_chan *chan, int err)
 	parent = bt_sk(sk)->parent;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	sock_set_flag(sk, SOCK_ZAPPED);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sock_set_flag(sk, SOCK_ZAPPED);
 
@@ -1410,11 +1440,16 @@ static void l2cap_sock_teardown_cb(struct l2cap_chan *chan, int err)
 		break;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	release_sock(sk);
 
 	/* Only zap after cleanup to avoid use after free race */
 	sock_set_flag(sk, SOCK_ZAPPED);
 
+=======
+
+	release_sock(sk);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	release_sock(sk);
@@ -1525,6 +1560,7 @@ static void l2cap_sock_suspend_cb(struct l2cap_chan *chan)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int l2cap_sock_filter(struct l2cap_chan *chan, struct sk_buff *skb)
 {
 	struct sock *sk = chan->data;
@@ -1538,6 +1574,8 @@ static int l2cap_sock_filter(struct l2cap_chan *chan, struct sk_buff *skb)
 	return 0;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static const struct l2cap_ops l2cap_chan_ops = {
@@ -1555,7 +1593,10 @@ static const struct l2cap_ops l2cap_chan_ops = {
 	.get_sndtimeo		= l2cap_sock_get_sndtimeo_cb,
 	.alloc_skb		= l2cap_sock_alloc_skb_cb,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.filter			= l2cap_sock_filter,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

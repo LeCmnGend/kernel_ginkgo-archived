@@ -101,7 +101,11 @@ static void io_watchdog_func(unsigned long _ohci);
 
 /* Some boards misreport power switching/overcurrent */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool distrust_firmware;
+=======
+static bool distrust_firmware = true;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static bool distrust_firmware = true;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -670,6 +674,7 @@ retry:
 	/* handle root hub init quirks ... */
 	val = roothub_a (ohci);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Configure for per-port over-current protection by default */
 	val &= ~RH_A_NOCP;
 	val |= RH_A_OCPM;
@@ -689,6 +694,8 @@ retry:
 	ohci_writel(ohci, val, &ohci->regs->roothub.a);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	val &= ~(RH_A_PSM | RH_A_OCPM);
 	if (ohci->flags & OHCI_QUIRK_SUPERIO) {
 		/* NSC 87560 and maybe others */
@@ -703,6 +710,9 @@ retry:
 		val |= RH_A_NPS;
 		ohci_writel (ohci, val, &ohci->regs->roothub.a);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ohci_writel (ohci, RH_HS_LPSC, &ohci->regs->roothub.status);
 	ohci_writel (ohci, (val & RH_A_NPS) ? 0 : RH_B_PPCM,

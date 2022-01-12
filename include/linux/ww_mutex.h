@@ -7,10 +7,15 @@
  *  Copyright (C) 2004, 2005, 2006 Red Hat, Inc., Ingo Molnar <mingo@redhat.com>
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Wait/Die implementation:
  *  Copyright (C) 2013 Canonical Ltd.
  * Choice of algorithm:
  *  Copyright (C) 2018 WMWare Inc.
+=======
+ * Wound/wait implementation:
+ *  Copyright (C) 2013 Canonical Ltd.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * Wound/wait implementation:
  *  Copyright (C) 2013 Canonical Ltd.
@@ -31,7 +36,10 @@ struct ww_class {
 	const char *acquire_name;
 	const char *mutex_name;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int is_wait_die;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -40,11 +48,17 @@ struct ww_acquire_ctx {
 	struct task_struct *task;
 	unsigned long stamp;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int acquired;
 	unsigned short wounded;
 	unsigned short is_wait_die;
 #ifdef CONFIG_DEBUG_MUTEXES
 	unsigned int done_acquire;
+=======
+	unsigned acquired;
+#ifdef CONFIG_DEBUG_MUTEXES
+	unsigned done_acquire;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned acquired;
 #ifdef CONFIG_DEBUG_MUTEXES
@@ -58,8 +72,13 @@ struct ww_acquire_ctx {
 #endif
 #ifdef CONFIG_DEBUG_WW_MUTEX_SLOWPATH
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int deadlock_inject_interval;
 	unsigned int deadlock_inject_countdown;
+=======
+	unsigned deadlock_inject_interval;
+	unsigned deadlock_inject_countdown;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned deadlock_inject_interval;
 	unsigned deadlock_inject_countdown;
@@ -83,16 +102,22 @@ struct ww_mutex {
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define __WW_CLASS_INITIALIZER(ww_class, _is_wait_die)	    \
 		{ .stamp = ATOMIC_LONG_INIT(0) \
 		, .acquire_name = #ww_class "_acquire" \
 		, .mutex_name = #ww_class "_mutex" \
 		, .is_wait_die = _is_wait_die }
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define __WW_CLASS_INITIALIZER(ww_class) \
 		{ .stamp = ATOMIC_LONG_INIT(0) \
 		, .acquire_name = #ww_class "_acquire" \
 		, .mutex_name = #ww_class "_mutex" }
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #define __WW_MUTEX_INITIALIZER(lockname, class) \
@@ -100,11 +125,16 @@ struct ww_mutex {
 		__WW_CLASS_MUTEX_INITIALIZER(lockname, class) }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define DEFINE_WD_CLASS(classname) \
 	struct ww_class classname = __WW_CLASS_INITIALIZER(classname, 1)
 
 #define DEFINE_WW_CLASS(classname) \
 	struct ww_class classname = __WW_CLASS_INITIALIZER(classname, 0)
+=======
+#define DEFINE_WW_CLASS(classname) \
+	struct ww_class classname = __WW_CLASS_INITIALIZER(classname)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define DEFINE_WW_CLASS(classname) \
 	struct ww_class classname = __WW_CLASS_INITIALIZER(classname)
@@ -143,7 +173,11 @@ static inline void ww_mutex_init(struct ww_mutex *lock,
  * Context-based w/w mutex acquiring can be done in any order whatsoever within
  * a given lock class. Deadlocks will be detected and handled with the
 <<<<<<< HEAD
+<<<<<<< HEAD
  * wait/die logic.
+=======
+ * wait/wound logic.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * wait/wound logic.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -168,8 +202,11 @@ static inline void ww_acquire_init(struct ww_acquire_ctx *ctx,
 	ctx->stamp = atomic_long_inc_return_relaxed(&ww_class->stamp);
 	ctx->acquired = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ctx->wounded = false;
 	ctx->is_wait_die = ww_class->is_wait_die;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_DEBUG_MUTEXES
@@ -245,6 +282,7 @@ static inline void ww_acquire_fini(struct ww_acquire_ctx *ctx)
  *
  * Deadlocks within a given w/w class of locks are detected and handled with the
 <<<<<<< HEAD
+<<<<<<< HEAD
  * wait/die algorithm. If the lock isn't immediately available this function
  * will either sleep until it is (wait case). Or it selects the current context
  * for backing off by returning -EDEADLK (die case). Trying to acquire the
@@ -253,6 +291,8 @@ static inline void ww_acquire_fini(struct ww_acquire_ctx *ctx)
  *
  * In the die case the caller must release all currently held w/w mutexes for
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * wait/wound algorithm. If the lock isn't immediately avaiable this function
  * will either sleep until it is (wait case). Or it selects the current context
  * for backing off by returning -EDEADLK (wound case). Trying to acquire the
@@ -260,6 +300,9 @@ static inline void ww_acquire_fini(struct ww_acquire_ctx *ctx)
  * returning -EALREADY. Returns 0 if the mutex was successfully acquired.
  *
  * In the wound case the caller must release all currently held w/w mutexes for
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * the given context and then wait for this contending lock to be available by
  * calling ww_mutex_lock_slow. Alternatively callers can opt to not acquire this
@@ -286,9 +329,15 @@ extern int /* __must_check */ ww_mutex_lock(struct ww_mutex *lock, struct ww_acq
  *
  * Deadlocks within a given w/w class of locks are detected and handled with the
 <<<<<<< HEAD
+<<<<<<< HEAD
  * wait/die algorithm. If the lock isn't immediately available this function
  * will either sleep until it is (wait case). Or it selects the current context
  * for backing off by returning -EDEADLK (die case). Trying to acquire the
+=======
+ * wait/wound algorithm. If the lock isn't immediately avaiable this function
+ * will either sleep until it is (wait case). Or it selects the current context
+ * for backing off by returning -EDEADLK (wound case). Trying to acquire the
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * wait/wound algorithm. If the lock isn't immediately avaiable this function
  * will either sleep until it is (wait case). Or it selects the current context
@@ -299,7 +348,11 @@ extern int /* __must_check */ ww_mutex_lock(struct ww_mutex *lock, struct ww_acq
  * signal arrives while waiting for the lock then this function returns -EINTR.
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * In the die case the caller must release all currently held w/w mutexes for
+=======
+ * In the wound case the caller must release all currently held w/w mutexes for
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * In the wound case the caller must release all currently held w/w mutexes for
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -326,7 +379,11 @@ extern int __must_check ww_mutex_lock_interruptible(struct ww_mutex *lock,
  * @ctx: w/w acquire context
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Acquires a w/w mutex with the given context after a die case. This function
+=======
+ * Acquires a w/w mutex with the given context after a wound case. This function
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * Acquires a w/w mutex with the given context after a wound case. This function
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -364,7 +421,11 @@ ww_mutex_lock_slow(struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
  * @ctx: w/w acquire context
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Acquires a w/w mutex with the given context after a die case. This function
+=======
+ * Acquires a w/w mutex with the given context after a wound case. This function
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * Acquires a w/w mutex with the given context after a wound case. This function
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

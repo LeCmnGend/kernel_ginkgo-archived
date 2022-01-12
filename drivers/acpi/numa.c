@@ -47,7 +47,11 @@ int acpi_numa __initdata;
 int pxm_to_node(int pxm)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (pxm < 0 || pxm >= MAX_PXM_DOMAINS || numa_off)
+=======
+	if (pxm < 0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (pxm < 0)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -106,7 +106,11 @@ void dump_mm(const struct mm_struct *mm)
 #endif
 		"mmap_base %lu mmap_legacy_base %lu highest_vm_end %lu\n"
 <<<<<<< HEAD
+<<<<<<< HEAD
 		"pgd %px mm_users %d mm_count %d pgtables_bytes %lu map_count %d\n"
+=======
+		"pgd %px mm_users %d mm_count %d nr_ptes %lu nr_pmds %lu map_count %d\n"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		"pgd %px mm_users %d mm_count %d nr_ptes %lu nr_pmds %lu map_count %d\n"
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -140,7 +144,12 @@ void dump_mm(const struct mm_struct *mm)
 		mm->pgd, atomic_read(&mm->mm_users),
 		atomic_read(&mm->mm_count),
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mm_pgtables_bytes(mm),
+=======
+		atomic_long_read((atomic_long_t *)&mm->nr_ptes),
+		mm_nr_pmds((struct mm_struct *)mm),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		atomic_long_read((atomic_long_t *)&mm->nr_ptes),
 		mm_nr_pmds((struct mm_struct *)mm),

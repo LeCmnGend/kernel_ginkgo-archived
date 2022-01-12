@@ -126,7 +126,11 @@ static int cachefiles_read_reissue(struct cachefiles_object *object,
 		ret = bmapping->a_ops->readpage(NULL, backpage);
 		if (ret < 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto discard;
+=======
+			goto unlock_discard;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto unlock_discard;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -147,7 +151,10 @@ static int cachefiles_read_reissue(struct cachefiles_object *object,
 unlock_discard:
 	unlock_page(backpage);
 <<<<<<< HEAD
+<<<<<<< HEAD
 discard:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_irq(&object->work_lock);

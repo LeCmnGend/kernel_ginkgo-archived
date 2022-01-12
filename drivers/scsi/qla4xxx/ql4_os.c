@@ -1224,7 +1224,11 @@ static int qla4xxx_get_host_stats(struct Scsi_Host *shost, char *buf, int len)
 exit_host_stats:
 	if (ql_iscsi_stats)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		dma_free_coherent(&ha->pdev->dev, stats_size,
+=======
+		dma_free_coherent(&ha->pdev->dev, host_stats_size,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dma_free_coherent(&ha->pdev->dev, host_stats_size,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

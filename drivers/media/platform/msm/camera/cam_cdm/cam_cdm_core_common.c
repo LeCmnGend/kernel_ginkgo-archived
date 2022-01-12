@@ -244,6 +244,10 @@ int cam_cdm_stream_ops_internal(void *hw_priv,
 
 	core = (struct cam_cdm *)cdm_hw->core_info;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	mutex_lock(&cdm_hw->hw_mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mutex_lock(&cdm_hw->hw_mutex);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -252,6 +256,10 @@ int cam_cdm_stream_ops_internal(void *hw_priv,
 	if (!client) {
 		CAM_ERR(CAM_CDM, "Invalid client %pK hdl=%x", client, *handle);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		mutex_unlock(&cdm_hw->hw_mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		mutex_unlock(&cdm_hw->hw_mutex);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -261,8 +269,13 @@ int cam_cdm_stream_ops_internal(void *hw_priv,
 	if (*handle != client->handle) {
 		CAM_ERR(CAM_CDM, "client id given handle=%x invalid", *handle);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cam_cdm_put_client_refcount(client);
 		return -EINVAL;
+=======
+		rc = -EINVAL;
+		goto end;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		rc = -EINVAL;
 		goto end;
@@ -273,8 +286,12 @@ int cam_cdm_stream_ops_internal(void *hw_priv,
 			CAM_ERR(CAM_CDM,
 				"Invalid CDM client is already streamed ON");
 <<<<<<< HEAD
+<<<<<<< HEAD
 			cam_cdm_put_client_refcount(client);
 			return rc;
+=======
+			goto end;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto end;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -284,6 +301,7 @@ int cam_cdm_stream_ops_internal(void *hw_priv,
 			CAM_ERR(CAM_CDM,
 				"Invalid CDM client is already streamed Off");
 <<<<<<< HEAD
+<<<<<<< HEAD
 			cam_cdm_put_client_refcount(client);
 			return rc;
 		}
@@ -291,10 +309,15 @@ int cam_cdm_stream_ops_internal(void *hw_priv,
 
 	mutex_lock(&cdm_hw->hw_mutex);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			goto end;
 		}
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (operation == true) {
 		if (!cdm_hw->open_count) {

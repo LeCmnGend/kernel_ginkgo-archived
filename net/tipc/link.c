@@ -883,7 +883,13 @@ int tipc_link_xmit(struct tipc_link *l, struct sk_buff_head *list,
 		   struct sk_buff_head *xmitq)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int maxwin = l->window;
+=======
+	struct tipc_msg *hdr = buf_msg(skb_peek(list));
+	unsigned int maxwin = l->window;
+	int imp = msg_importance(hdr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct tipc_msg *hdr = buf_msg(skb_peek(list));
 	unsigned int maxwin = l->window;
@@ -898,6 +904,7 @@ int tipc_link_xmit(struct tipc_link *l, struct sk_buff_head *list,
 	struct sk_buff *skb, *_skb, **tskb;
 	int pkt_cnt = skb_queue_len(list);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct tipc_msg *hdr;
 	int rc = 0;
 	int imp;
@@ -910,13 +917,20 @@ int tipc_link_xmit(struct tipc_link *l, struct sk_buff_head *list,
 	int rc = 0;
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	int rc = 0;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (unlikely(msg_size(hdr) > mtu)) {
 		skb_queue_purge(list);
 		return -EMSGSIZE;
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	imp = msg_importance(hdr);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Allow oversubscription of one data msg per source at congestion */

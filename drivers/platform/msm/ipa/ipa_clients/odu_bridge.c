@@ -160,7 +160,11 @@ static struct odu_bridge_ctx *odu_bridge_ctx;
 #ifdef CONFIG_DEBUG_FS
 #define ODU_MAX_MSG_LEN 512
 <<<<<<< HEAD
+<<<<<<< HEAD
 static char *dbg_buff;
+=======
+static char dbg_buff[ODU_MAX_MSG_LEN];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static char dbg_buff[ODU_MAX_MSG_LEN];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -715,15 +719,21 @@ static ssize_t odu_debugfs_hw_bridge_mode_write(struct file *file,
 	enum odu_bridge_mode mode;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ODU_MAX_MSG_LEN < count + 1)
 		return -EFAULT;
 
 	missing = ipa_safe_copy_from_user(dbg_buff, ubuf, count);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (sizeof(dbg_buff) < count + 1)
 		return -EFAULT;
 
 	missing = copy_from_user(dbg_buff, ubuf, min(sizeof(dbg_buff), count));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (missing)
 		return -EFAULT;
@@ -795,10 +805,13 @@ static void odu_debugfs_init(void)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dbg_buff = kmalloc(ODU_MAX_MSG_LEN * sizeof(char), GFP_KERNEL);
 	if (!dbg_buff)
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dfile_stats =
@@ -821,7 +834,10 @@ static void odu_debugfs_init(void)
 	return;
 fail:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(dbg_buff);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	debugfs_remove_recursive(dent);
@@ -831,7 +847,10 @@ static void odu_debugfs_destroy(void)
 {
 	debugfs_remove_recursive(dent);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(dbg_buff);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

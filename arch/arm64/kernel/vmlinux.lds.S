@@ -25,6 +25,7 @@ ENTRY(_text)
 jiffies = jiffies_64;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 #define HYPERVISOR_EXTABLE					\
 	. = ALIGN(SZ_8);					\
@@ -32,6 +33,8 @@ jiffies = jiffies_64;
 	*(__kvm_ex_table)					\
 	VMLINUX_SYMBOL(__stop___kvm_ex_table) = .;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define HYPERVISOR_TEXT					\
@@ -50,7 +53,10 @@ jiffies = jiffies_64;
 	VMLINUX_SYMBOL(__hyp_text_start) = .;		\
 	*(.hyp.text)					\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	HYPERVISOR_EXTABLE				\
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	VMLINUX_SYMBOL(__hyp_text_end) = .;
@@ -83,13 +89,19 @@ jiffies = jiffies_64;
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define RTIC_BSS					\
 	. = ALIGN(PAGE_SIZE);				\
 	VMLINUX_SYMBOL(__bss_rtic_start) = .;	\
 	KEEP(*(.bss.rtic))			\
 	. = ALIGN(PAGE_SIZE);				\
 	VMLINUX_SYMBOL(__bss_rtic_end) = .;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * The size of the PE/COFF section that covers the kernel image, which
@@ -271,11 +283,17 @@ SECTIONS
 
 	HEAD_SYMBOLS
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	.bss : {			/* bss segment		*/
          RTIC_BSS
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

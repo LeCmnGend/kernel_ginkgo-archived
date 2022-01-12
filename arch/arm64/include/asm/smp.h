@@ -96,8 +96,11 @@ extern void arch_send_call_function_single_ipi(int cpu);
 extern void arch_send_call_function_ipi_mask(const struct cpumask *mask);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern void arch_send_wakeup_ipi_mask(const struct cpumask *mask);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_ARM64_ACPI_PARKING_PROTOCOL
 extern void arch_send_wakeup_ipi_mask(const struct cpumask *mask);
 #else
@@ -106,6 +109,9 @@ static inline void arch_send_wakeup_ipi_mask(const struct cpumask *mask)
 	BUILD_BUG();
 }
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 extern int __cpu_disable(void);

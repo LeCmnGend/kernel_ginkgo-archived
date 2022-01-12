@@ -537,16 +537,22 @@ static unsigned long swapin_nr_pages(unsigned long offset)
 
 	hits = atomic_xchg(&swapin_readahead_hits, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pages = __swapin_nr_pages(READ_ONCE(prev_offset), offset, hits,
 				  max_pages,
 				  atomic_read(&last_readahead_pages));
 	if (!hits)
 		WRITE_ONCE(prev_offset, offset);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pages = __swapin_nr_pages(prev_offset, offset, hits, max_pages,
 				  atomic_read(&last_readahead_pages));
 	if (!hits)
 		prev_offset = offset;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	atomic_set(&last_readahead_pages, pages);
 
@@ -593,10 +599,13 @@ struct page *swap_cluster_readahead(swp_entry_t entry, gfp_t gfp_mask,
 		goto skip;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* If exiting, don't do swap readahead. */
 	if (current->flags & PF_EXITING)
 		goto skip;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	do_poll = false;

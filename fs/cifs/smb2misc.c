@@ -497,7 +497,11 @@ smb2_tcon_has_lease(struct cifs_tcon *tcon, struct smb2_lease_break *rsp,
 		cifs_dbg(FYI, "found in the open list\n");
 		cifs_dbg(FYI, "lease key match, lease break 0x%x\n",
 <<<<<<< HEAD
+<<<<<<< HEAD
 			 lease_state);
+=======
+			 le32_to_cpu(rsp->NewLeaseState));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			 le32_to_cpu(rsp->NewLeaseState));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -510,9 +514,12 @@ smb2_tcon_has_lease(struct cifs_tcon *tcon, struct smb2_lease_break *rsp,
 		set_bit(CIFS_INODE_PENDING_OPLOCK_BREAK, &cinode->flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cfile->oplock_epoch = le16_to_cpu(rsp->Epoch);
 		cfile->oplock_level = lease_state;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
 		 * Set or clear flags depending on the lease state being READ.
 		 * HANDLE caching flag should be added when the client starts
@@ -524,6 +531,9 @@ smb2_tcon_has_lease(struct cifs_tcon *tcon, struct smb2_lease_break *rsp,
 		else
 			clear_bit(CIFS_INODE_DOWNGRADE_OPLOCK_TO_L2,
 				  &cinode->flags);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		cifs_queue_oplock_break(cfile);
@@ -548,7 +558,11 @@ smb2_tcon_has_lease(struct cifs_tcon *tcon, struct smb2_lease_break *rsp,
 		cifs_dbg(FYI, "found in the pending open list\n");
 		cifs_dbg(FYI, "lease key match, lease break 0x%x\n",
 <<<<<<< HEAD
+<<<<<<< HEAD
 			 lease_state);
+=======
+			 le32_to_cpu(rsp->NewLeaseState));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			 le32_to_cpu(rsp->NewLeaseState));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -664,10 +678,13 @@ smb2_is_valid_oplock_break(char *buffer, struct TCP_Server_Info *server)
 					&cinode->flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 				cfile->oplock_epoch = 0;
 				cfile->oplock_level = rsp->OplockLevel;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				/*
 				 * Set flag if the server downgrades the oplock
 				 * to L2 else clear.
@@ -680,6 +697,9 @@ smb2_is_valid_oplock_break(char *buffer, struct TCP_Server_Info *server)
 					clear_bit(
 					   CIFS_INODE_DOWNGRADE_OPLOCK_TO_L2,
 					   &cinode->flags);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				spin_unlock(&cfile->file_info_lock);
 
@@ -694,8 +714,13 @@ smb2_is_valid_oplock_break(char *buffer, struct TCP_Server_Info *server)
 	}
 	spin_unlock(&cifs_tcp_ses_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cifs_dbg(FYI, "No file id matched, oplock break ignored\n");
 	return true;
+=======
+	cifs_dbg(FYI, "Can not process oplock break for non-existent connection\n");
+	return false;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cifs_dbg(FYI, "Can not process oplock break for non-existent connection\n");
 	return false;

@@ -709,6 +709,7 @@ lpfc_rcv_logo(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
 	} else if ((!(ndlp->nlp_type & NLP_FABRIC) &&
 		((ndlp->nlp_type & NLP_FCP_TARGET) ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 		(ndlp->nlp_type & NLP_NVME_TARGET) ||
 		(vport->fc_flag & FC_PT2PT))) ||
 		(ndlp->nlp_state == NLP_STE_ADISC_ISSUE)) {
@@ -717,6 +718,11 @@ lpfc_rcv_logo(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
 		 * are in pt2pt mode. NLP_STE_ADISC_ISSUE is a special
 		 * case for LOGO as a response to ADISC behavior.
 		 */
+=======
+		!(ndlp->nlp_type & NLP_FCP_INITIATOR))) ||
+		(ndlp->nlp_state == NLP_STE_ADISC_ISSUE)) {
+		/* Only try to re-login if this is NOT a Fabric Node */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		!(ndlp->nlp_type & NLP_FCP_INITIATOR))) ||
 		(ndlp->nlp_state == NLP_STE_ADISC_ISSUE)) {
@@ -1714,6 +1720,11 @@ lpfc_cmpl_reglogin_reglogin_issue(struct lpfc_vport *vport,
 
 		lpfc_issue_els_logo(vport, ndlp, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		ndlp->nlp_prev_state = NLP_STE_REG_LOGIN_ISSUE;
+		lpfc_nlp_set_state(vport, ndlp, NLP_STE_NPR_NODE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ndlp->nlp_prev_state = NLP_STE_REG_LOGIN_ISSUE;
 		lpfc_nlp_set_state(vport, ndlp, NLP_STE_NPR_NODE);

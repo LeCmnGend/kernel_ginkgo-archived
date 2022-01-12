@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2008-2021, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2008-2020, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2008-2020, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2216,6 +2220,7 @@ int diag_copy_to_user_msg_mask(char __user *buf, size_t count,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if ((count - (sizeof(int))) >=
 			mask_info->update_buf_client_len) {
 		err = copy_to_user(buf, mask_info->update_buf_client,
@@ -2223,6 +2228,10 @@ int diag_copy_to_user_msg_mask(char __user *buf, size_t count,
 	} else {
 		err = -EINVAL;
 	}
+=======
+	err = copy_to_user(buf, mask_info->update_buf_client,
+				mask_info->update_buf_client_len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = copy_to_user(buf, mask_info->update_buf_client,
 				mask_info->update_buf_client_len);
@@ -2253,6 +2262,7 @@ int diag_copy_to_user_log_mask(char __user *buf, size_t count,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if ((count - (sizeof(int))) >=
 			mask_info->update_buf_client_len) {
 		err = copy_to_user(buf, mask_info->update_buf_client,
@@ -2260,6 +2270,10 @@ int diag_copy_to_user_log_mask(char __user *buf, size_t count,
 	} else {
 		err = -EINVAL;
 	}
+=======
+	err = copy_to_user(buf, mask_info->update_buf_client,
+				mask_info->update_buf_client_len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = copy_to_user(buf, mask_info->update_buf_client,
 				mask_info->update_buf_client_len);

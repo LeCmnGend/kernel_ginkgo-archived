@@ -1,6 +1,10 @@
 # SPDX-License-Identifier: GPL-2.0
 <<<<<<< HEAD
+<<<<<<< HEAD
 obj-$(CONFIG_ION) +=	ion.o ion_heap.o \
+=======
+obj-$(CONFIG_ION) +=	ion.o ion-ioctl.o ion_heap.o \
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 obj-$(CONFIG_ION) +=	ion.o ion-ioctl.o ion_heap.o \
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -10,6 +14,9 @@ obj-$(CONFIG_ION) +=	ion.o ion-ioctl.o ion_heap.o \
 			ion_secure_util.o ion_cma_secure_heap.o msm/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 CFLAGS_ion_system_heap.o += -Wframe-larger-than=8192
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

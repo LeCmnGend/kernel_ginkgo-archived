@@ -768,6 +768,7 @@ EXPORT_SYMBOL_GPL(usb_block_urb);
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * usb_kill_anchored_urbs - kill all URBs associated with an anchor
  * @anchor: anchor the requests are bound to
  *
@@ -775,11 +776,16 @@ EXPORT_SYMBOL_GPL(usb_block_urb);
  * with guarantee that no completer callbacks will take place from the
  * anchor after this function returns.
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * usb_kill_anchored_urbs - cancel transfer requests en masse
  * @anchor: anchor the requests are bound to
  *
  * this allows all outstanding URBs to be killed starting
  * from the back of the queue
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This routine should not be called by a driver after its disconnect
@@ -788,6 +794,7 @@ EXPORT_SYMBOL_GPL(usb_block_urb);
 void usb_kill_anchored_urbs(struct usb_anchor *anchor)
 {
 	struct urb *victim;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	int surely_empty;
 
@@ -810,6 +817,8 @@ void usb_kill_anchored_urbs(struct usb_anchor *anchor)
 		cpu_relax();
 	} while (!surely_empty);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	spin_lock_irq(&anchor->lock);
 	while (!list_empty(&anchor->urb_list)) {
@@ -824,6 +833,9 @@ void usb_kill_anchored_urbs(struct usb_anchor *anchor)
 		spin_lock_irq(&anchor->lock);
 	}
 	spin_unlock_irq(&anchor->lock);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL_GPL(usb_kill_anchored_urbs);
@@ -843,6 +855,7 @@ EXPORT_SYMBOL_GPL(usb_kill_anchored_urbs);
 void usb_poison_anchored_urbs(struct usb_anchor *anchor)
 {
 	struct urb *victim;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	int surely_empty;
 
@@ -866,6 +879,8 @@ void usb_poison_anchored_urbs(struct usb_anchor *anchor)
 		cpu_relax();
 	} while (!surely_empty);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	spin_lock_irq(&anchor->lock);
 	anchor->poisoned = 1;
@@ -881,6 +896,9 @@ void usb_poison_anchored_urbs(struct usb_anchor *anchor)
 		spin_lock_irq(&anchor->lock);
 	}
 	spin_unlock_irq(&anchor->lock);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL_GPL(usb_poison_anchored_urbs);
@@ -1022,6 +1040,7 @@ void usb_scuttle_anchored_urbs(struct usb_anchor *anchor)
 	struct urb *victim;
 	unsigned long flags;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int surely_empty;
 
 	do {
@@ -1037,6 +1056,8 @@ void usb_scuttle_anchored_urbs(struct usb_anchor *anchor)
 		cpu_relax();
 	} while (!surely_empty);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	spin_lock_irqsave(&anchor->lock, flags);
 	while (!list_empty(&anchor->urb_list)) {
@@ -1045,6 +1066,9 @@ void usb_scuttle_anchored_urbs(struct usb_anchor *anchor)
 		__usb_unanchor_urb(victim, anchor);
 	}
 	spin_unlock_irqrestore(&anchor->lock, flags);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

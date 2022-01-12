@@ -129,11 +129,16 @@ int drv_sta_state(struct ieee80211_local *local,
 		   new_state == IEEE80211_STA_ASSOC) {
 		ret = drv_sta_add(local, sdata, &sta->sta);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ret == 0) {
 			sta->uploaded = true;
 			if (rcu_access_pointer(sta->sta.rates))
 				drv_sta_rate_tbl_update(local, sdata, &sta->sta);
 		}
+=======
+		if (ret == 0)
+			sta->uploaded = true;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (ret == 0)
 			sta->uploaded = true;

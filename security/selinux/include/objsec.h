@@ -117,7 +117,10 @@ struct netport_security_struct {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct sk_security_struct {
 #ifdef CONFIG_NETLABEL
 	enum {				/* NetLabel state */
@@ -134,6 +137,9 @@ struct sk_security_struct {
 	u16 sclass;			/* sock security class */
 };
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct tun_security_struct {
 	u32 sid;			/* SID for the tun device sockets */

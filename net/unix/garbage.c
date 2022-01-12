@@ -87,6 +87,7 @@
 #include <net/tcp_states.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "scm.h"
 
 /* Internal data structures and random procedures: */
@@ -95,6 +96,8 @@ static LIST_HEAD(gc_candidates);
 static DECLARE_WAIT_QUEUE_HEAD(unix_gc_wait);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Internal data structures and random procedures: */
 
 static LIST_HEAD(gc_inflight_list);
@@ -166,6 +169,9 @@ void unix_notinflight(struct user_struct *user, struct file *fp)
 	spin_unlock(&unix_gc_lock);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void scan_inflight(struct sock *x, void (*func)(struct unix_sock *),
 			  struct sk_buff_head *hitlist)

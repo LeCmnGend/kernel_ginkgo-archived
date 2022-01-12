@@ -314,6 +314,10 @@ void workingset_update_node(struct radix_tree_node *node, void *private);
 
 /* linux/mm/page_alloc.c */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+extern unsigned long totalram_pages;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern unsigned long totalram_pages;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -26,7 +26,11 @@
 
 /* Module Parameters */
 <<<<<<< HEAD
+<<<<<<< HEAD
 unsigned int rmnet_data_log_level;
+=======
+unsigned int rmnet_data_log_level = RMNET_LOG_LVL_ERR | RMNET_LOG_LVL_HI;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 unsigned int rmnet_data_log_level = RMNET_LOG_LVL_ERR | RMNET_LOG_LVL_HI;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

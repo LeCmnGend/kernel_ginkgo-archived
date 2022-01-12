@@ -70,7 +70,10 @@ enum cpuhp_state {
 	CPUHP_MD_RAID5_PREPARE,
 	CPUHP_RCUTREE_PREP,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	CPUHP_CPUDEV_PM_PREPARE,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	CPUHP_HYP_CORE_CTL_ISOLATION_DEAD,

@@ -4444,16 +4444,22 @@ static void hp_callback(struct hda_codec *codec, struct hda_jack_callback *cb)
 	 * state machine run.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tbl = snd_hda_jack_tbl_get(codec, cb->nid);
 	if (tbl)
 		tbl->block_report = 1;
 	schedule_delayed_work(&spec->unsol_hp_work, msecs_to_jiffies(500));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cancel_delayed_work(&spec->unsol_hp_work);
 	schedule_delayed_work(&spec->unsol_hp_work, msecs_to_jiffies(500));
 	tbl = snd_hda_jack_tbl_get(codec, cb->nid);
 	if (tbl)
 		tbl->block_report = 1;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -4633,6 +4639,7 @@ static void ca0132_free(struct hda_codec *codec)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_PM
 static int ca0132_suspend(struct hda_codec *codec)
 {
@@ -4645,6 +4652,8 @@ static int ca0132_suspend(struct hda_codec *codec)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static const struct hda_codec_ops ca0132_patch_ops = {
 	.build_controls = ca0132_build_controls,
 	.build_pcms = ca0132_build_pcms,
@@ -4652,9 +4661,12 @@ static const struct hda_codec_ops ca0132_patch_ops = {
 	.free = ca0132_free,
 	.unsol_event = snd_hda_jack_unsol_event,
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_PM
 	.suspend = ca0132_suspend,
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

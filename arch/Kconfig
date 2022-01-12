@@ -334,6 +334,7 @@ config HAVE_ARCH_JUMP_LABEL
 	bool
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 config HAVE_ARCH_JUMP_LABEL_RELATIVE
 	bool
 
@@ -362,12 +363,17 @@ config ARCH_WANT_IRQS_OFF_ACTIVATE_MM
 	  shootdowns should enable this.
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config HAVE_RCU_TABLE_FREE
 	bool
 
 config HAVE_RCU_TABLE_INVALIDATE
 	bool
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config ARCH_HAVE_NMI_SAFE_CMPXCHG
 	bool
@@ -642,6 +648,7 @@ config LD_DEAD_CODE_DATA_ELIMINATION
 	  is used to distinguish them from label names / C identifiers.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 choice
 	prompt "Kernel linker"
 	default LD_BFD if !LTO_CLANG
@@ -673,6 +680,8 @@ config LD_LLD
 
 endchoice
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config LTO
@@ -802,6 +811,7 @@ config SHADOW_CALL_STACK_VMAP
 	  memory consumption as a full page is allocated for each shadow stack.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 config LLVM_POLLY
 	bool "Enable LLVM's polyhedral loop optimizer (Polly)"
 	help
@@ -810,6 +820,8 @@ config LLVM_POLLY
 	  maximum cache locality. This requires an LLVM toolchain explicitly
 	  compiled with Polly support.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config HAVE_ARCH_WITHIN_STACK_FRAMES
@@ -857,6 +869,7 @@ config HAVE_IRQ_TIME_ACCOUNTING
 	  support irq time accounting and then call enable_sched_clock_irqtime().
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 config HAVE_MOVE_PUD
 	bool
 	help
@@ -869,6 +882,8 @@ config HAVE_MOVE_PMD
 	help
 	  Archs that select this are able to move page tables at the PMD level.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config HAVE_ARCH_TRANSPARENT_HUGEPAGE
@@ -1161,6 +1176,7 @@ config STRICT_MODULE_RWX
 	  protection against certain security exploits (e.g. writing to text)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 config ARCH_HAS_REFCOUNT_FULL
 	bool
 	select ARCH_HAS_REFCOUNT
@@ -1171,6 +1187,8 @@ config ARCH_HAS_REFCOUNT_FULL
 	  sense to even offer CONFIG_REFCOUNT_FULL as a user selectable
 	  option.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config ARCH_HAS_REFCOUNT
@@ -1187,7 +1205,11 @@ config ARCH_HAS_REFCOUNT
 
 config REFCOUNT_FULL
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool "Perform full reference count validation at the expense of speed" if !ARCH_HAS_REFCOUNT_FULL
+=======
+	bool "Perform full reference count validation at the expense of speed"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bool "Perform full reference count validation at the expense of speed"
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -12,6 +12,12 @@ struct mm_struct;
 struct task_struct;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+long do_futex(u32 __user *uaddr, int op, u32 val, ktime_t *timeout,
+	      u32 __user *uaddr2, u32 val2, u32 val3);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 long do_futex(u32 __user *uaddr, int op, u32 val, ktime_t *timeout,
 	      u32 __user *uaddr2, u32 val2, u32 val3);
@@ -78,8 +84,11 @@ static inline void futex_init_task(struct task_struct *tsk)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 long do_futex(u32 __user *uaddr, int op, u32 val, ktime_t *timeout,
 	      u32 __user *uaddr2, u32 val2, u32 val3);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void futex_exit_recursive(struct task_struct *tsk);

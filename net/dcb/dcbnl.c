@@ -1728,8 +1728,11 @@ static int dcb_doit(struct sk_buff *skb, struct nlmsghdr *nlh,
 	if (!fn->cb)
 		return -EOPNOTSUPP;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (fn->type == RTM_SETDCB && !netlink_capable(skb, CAP_NET_ADMIN))
 		return -EPERM;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

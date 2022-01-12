@@ -304,11 +304,14 @@ static int ath_reset_internal(struct ath_softc *sc, struct ath9k_channel *hchan)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!hchan) {
 		fastcc = false;
 		hchan = ath9k_cmn_get_channel(sc->hw, ah, &sc->cur_chan->chandef);
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!ath_prepare_reset(sc))
@@ -826,6 +829,7 @@ exit:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool ath9k_txq_list_has_key(struct list_head *txq_list, u32 keyix)
 {
 	struct ath_buf *bf;
@@ -895,6 +899,8 @@ static void ath9k_pending_key_del(struct ath_softc *sc, u8 keyix)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void ath9k_stop(struct ieee80211_hw *hw)
 {
 	struct ath_softc *sc = hw->priv;
@@ -902,7 +908,10 @@ static void ath9k_stop(struct ieee80211_hw *hw)
 	struct ath_common *common = ath9k_hw_common(ah);
 	bool prev_idle;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int i;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -973,6 +982,7 @@ static void ath9k_stop(struct ieee80211_hw *hw)
 	spin_unlock_bh(&sc->sc_pcu_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (i = 0; i < ATH_KEYMAX; i++)
 		ath9k_pending_key_del(sc, i);
 
@@ -981,6 +991,8 @@ static void ath9k_stop(struct ieee80211_hw *hw)
 	 */
 	ath9k_cmn_init_crypto(sc->sc_ah);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ath9k_ps_restore(sc);
@@ -1629,6 +1641,10 @@ static void ath9k_del_ps_key(struct ath_softc *sc,
 	struct ath_common *common = ath9k_hw_common(sc->sc_ah);
 	struct ath_node *an = (struct ath_node *) sta->drv_priv;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct ieee80211_key_conf ps_key = { .hw_key_idx = an->ps_key };
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct ieee80211_key_conf ps_key = { .hw_key_idx = an->ps_key };
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1637,7 +1653,11 @@ static void ath9k_del_ps_key(struct ath_softc *sc,
 	    return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ath_key_delete(common, an->ps_key);
+=======
+	ath_key_delete(common, &ps_key);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ath_key_delete(common, &ps_key);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1803,12 +1823,15 @@ static int ath9k_set_key(struct ieee80211_hw *hw,
 		an = (struct ath_node *)sta->drv_priv;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Delete pending key cache entries if no more frames are pointing to
 	 * them in TXQs.
 	 */
 	for (i = 0; i < ATH_KEYMAX; i++)
 		ath9k_pending_key_del(sc, i);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	switch (cmd) {
@@ -1841,6 +1864,7 @@ static int ath9k_set_key(struct ieee80211_hw *hw,
 		break;
 	case DISABLE_KEY:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ath9k_txq_has_key(sc, key->hw_key_idx)) {
 			/* Delay key cache entry deletion until there are no
 			 * remaining TXQ frames pointing to this entry.
@@ -1850,6 +1874,9 @@ static int ath9k_set_key(struct ieee80211_hw *hw,
 		} else {
 			ath_key_delete(common, key->hw_key_idx);
 		}
+=======
+		ath_key_delete(common, key);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ath_key_delete(common, key);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

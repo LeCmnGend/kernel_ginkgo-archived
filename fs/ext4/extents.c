@@ -390,7 +390,11 @@ static int ext4_valid_extent(struct inode *inode, struct ext4_extent *ext)
 	if (lblock + len <= lblock)
 		return 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return ext4_inode_block_valid(inode, block, len);
+=======
+	return ext4_data_block_valid(EXT4_SB(inode->i_sb), block, len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return ext4_data_block_valid(EXT4_SB(inode->i_sb), block, len);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -402,7 +406,11 @@ static int ext4_valid_extent_idx(struct inode *inode,
 	ext4_fsblk_t block = ext4_idx_pblock(ext_idx);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return ext4_inode_block_valid(inode, block, 1);
+=======
+	return ext4_data_block_valid(EXT4_SB(inode->i_sb), block, 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return ext4_data_block_valid(EXT4_SB(inode->i_sb), block, 1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -563,11 +571,14 @@ __read_extent_tree_block(const char *function, unsigned int line,
 	if (buffer_verified(bh) && !(flags & EXT4_EX_FORCE_CACHE))
 		return bh;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = __ext4_ext_check(function, line, inode,
 			       ext_block_hdr(bh), depth, pblk);
 	if (err)
 		goto errout;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!ext4_has_feature_journal(inode->i_sb) ||
 	    (inode->i_ino !=
 	     le32_to_cpu(EXT4_SB(inode->i_sb)->s_es->s_journal_inum))) {
@@ -576,6 +587,9 @@ __read_extent_tree_block(const char *function, unsigned int line,
 		if (err)
 			goto errout;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	set_buffer_verified(bh);
 	/*
@@ -890,7 +904,10 @@ int ext4_ext_tree_init(handle_t *handle, struct inode *inode)
 	eh->eh_magic = EXT4_EXT_MAGIC;
 	eh->eh_max = cpu_to_le16(ext4_ext_space_root(inode, 0));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	eh->eh_generation = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ext4_mark_inode_dirty(handle, inode);
@@ -1150,7 +1167,10 @@ static int ext4_ext_split(handle_t *handle, struct inode *inode,
 	neh->eh_magic = EXT4_EXT_MAGIC;
 	neh->eh_depth = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	neh->eh_generation = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1231,7 +1251,10 @@ static int ext4_ext_split(handle_t *handle, struct inode *inode,
 		neh->eh_max = cpu_to_le16(ext4_ext_space_block_idx(inode, 0));
 		neh->eh_depth = cpu_to_le16(depth - i);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		neh->eh_generation = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		fidx = EXT_FIRST_INDEX(neh);
@@ -3307,10 +3330,14 @@ static int ext4_split_extent_at(handle_t *handle,
 
 	err = ext4_ext_insert_extent(handle, inode, ppath, &newex, flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (err != -ENOSPC && err != -EDQUOT)
 		goto out;
 
 	if (EXT4_EXT_MAY_ZEROOUT & split_flag) {
+=======
+	if (err == -ENOSPC && (EXT4_EXT_MAY_ZEROOUT & split_flag)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (err == -ENOSPC && (EXT4_EXT_MAY_ZEROOUT & split_flag)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3340,6 +3367,7 @@ static int ext4_split_extent_at(handle_t *handle,
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!err) {
 			/* update the extent length and mark as initialized */
 			ex->ee_len = cpu_to_le16(ee_len);
@@ -3357,6 +3385,8 @@ static int ext4_split_extent_at(handle_t *handle,
 		}
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (err)
 			goto fix_extent_len;
 		/* update the extent length and mark as initialized */
@@ -3376,6 +3406,9 @@ static int ext4_split_extent_at(handle_t *handle,
 out:
 	ext4_ext_show_leaf(inode, path);
 	return err;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 fix_extent_len:
@@ -3383,9 +3416,12 @@ fix_extent_len:
 	ext4_ext_dirty(handle, inode, path + path->p_depth);
 	return err;
 <<<<<<< HEAD
+<<<<<<< HEAD
 out:
 	ext4_ext_show_leaf(inode, path);
 	return err;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

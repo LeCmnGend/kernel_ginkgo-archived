@@ -840,7 +840,10 @@ static int pic32_spi_probe(struct platform_device *pdev)
 
 err_bailout:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pic32_spi_dma_unprep(pic32s);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	clk_disable_unprepare(pic32s->clk);

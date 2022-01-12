@@ -76,6 +76,7 @@
 #include <linux/bpf.h>
 #include <linux/bpf_trace.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/ieee802154.h>
 #include <linux/if_ltalk.h>
 #include <uapi/linux/if_fddi.h>
@@ -84,6 +85,8 @@
 #include <net/ax25.h>
 #include <net/rose.h>
 #include <net/6lowpan.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1617,7 +1620,10 @@ static ssize_t tun_chr_write_iter(struct kiocb *iocb, struct iov_iter *from)
 	struct tun_file *tfile = file->private_data;
 	ssize_t result;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int noblock = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1625,10 +1631,15 @@ static ssize_t tun_chr_write_iter(struct kiocb *iocb, struct iov_iter *from)
 		return -EBADFD;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if ((file->f_flags & O_NONBLOCK) || (iocb->ki_flags & IOCB_NOWAIT))
 		noblock = 1;
 
 	result = tun_get_user(tun, tfile, NULL, from, noblock, false);
+=======
+	result = tun_get_user(tun, tfile, NULL, from,
+			      file->f_flags & O_NONBLOCK, false);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	result = tun_get_user(tun, tfile, NULL, from,
 			      file->f_flags & O_NONBLOCK, false);
@@ -1816,6 +1827,7 @@ static ssize_t tun_chr_read_iter(struct kiocb *iocb, struct iov_iter *to)
 	struct tun_struct *tun = __tun_get(tfile);
 	ssize_t len = iov_iter_count(to), ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int noblock = 0;
 
 	if (!tun)
@@ -1826,10 +1838,15 @@ static ssize_t tun_chr_read_iter(struct kiocb *iocb, struct iov_iter *to)
 
 	ret = tun_do_read(tun, tfile, to, noblock, NULL);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!tun)
 		return -EBADFD;
 	ret = tun_do_read(tun, tfile, to, file->f_flags & O_NONBLOCK, NULL);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = min_t(ssize_t, ret, len);
 	if (ret > 0)
@@ -2323,6 +2340,7 @@ unlock:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Return correct value for tun->dev->addr_len based on tun->dev->type. */
 static unsigned char tun_get_addr_len(unsigned short type)
 {
@@ -2362,6 +2380,8 @@ static unsigned char tun_get_addr_len(unsigned short type)
 	}
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static long __tun_chr_ioctl(struct file *file, unsigned int cmd,
@@ -2507,7 +2527,10 @@ static long __tun_chr_ioctl(struct file *file, unsigned int cmd,
 		} else {
 			tun->dev->type = (int) arg;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			tun->dev->addr_len = tun_get_addr_len(tun->dev->type);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			tun_debug(KERN_INFO, tun, "linktype set to %d\n",

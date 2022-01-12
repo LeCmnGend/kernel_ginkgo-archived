@@ -1,6 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef FDT_H
 #define FDT_H
+=======
+#ifndef _FDT_H
+#define _FDT_H
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #ifndef _FDT_H
 #define _FDT_H
@@ -114,7 +119,11 @@ struct fdt_property {
 #define FDT_V17_SIZE	(FDT_V16_SIZE + sizeof(fdt32_t))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif /* FDT_H */
+=======
+#endif /* _FDT_H */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #endif /* _FDT_H */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

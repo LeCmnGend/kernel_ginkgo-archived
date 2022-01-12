@@ -9,6 +9,10 @@
 #include <linux/notifier.h>
 #include <linux/device.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <linux/workqueue.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/workqueue.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -58,7 +62,11 @@ enum pm_qos_req_type {
 struct pm_qos_request {
 	enum pm_qos_req_type type;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	atomic_t cpus_affine;
+=======
+	struct cpumask cpus_affine;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct cpumask cpus_affine;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -70,6 +78,10 @@ struct pm_qos_request {
 	struct plist_node node;
 	int pm_qos_class;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct delayed_work work; /* for pm_qos_update_request_timeout */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct delayed_work work; /* for pm_qos_update_request_timeout */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -153,6 +165,11 @@ void pm_qos_add_request(struct pm_qos_request *req, int pm_qos_class,
 void pm_qos_update_request(struct pm_qos_request *req,
 			   s32 new_value);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+void pm_qos_update_request_timeout(struct pm_qos_request *req,
+				   s32 new_value, unsigned long timeout_us);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void pm_qos_update_request_timeout(struct pm_qos_request *req,
 				   s32 new_value, unsigned long timeout_us);

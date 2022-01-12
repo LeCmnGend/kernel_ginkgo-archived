@@ -1553,8 +1553,12 @@ static int iucv_sock_shutdown(struct socket *sock, int how)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if ((how == SEND_SHUTDOWN || how == SHUTDOWN_MASK) &&
 	    sk->sk_state == IUCV_CONNECTED) {
+=======
+	if (how == SEND_SHUTDOWN || how == SHUTDOWN_MASK) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (how == SEND_SHUTDOWN || how == SHUTDOWN_MASK) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1768,7 +1772,11 @@ static int iucv_callback_connreq(struct iucv_path *path,
 
 	/* Create the new socket */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	nsk = iucv_sock_alloc(NULL, sk->sk_protocol, GFP_ATOMIC, 0);
+=======
+	nsk = iucv_sock_alloc(NULL, sk->sk_type, GFP_ATOMIC, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	nsk = iucv_sock_alloc(NULL, sk->sk_type, GFP_ATOMIC, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1982,7 +1990,11 @@ static int afiucv_hs_callback_syn(struct sock *sk, struct sk_buff *skb)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	nsk = iucv_sock_alloc(NULL, sk->sk_protocol, GFP_ATOMIC, 0);
+=======
+	nsk = iucv_sock_alloc(NULL, sk->sk_type, GFP_ATOMIC, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	nsk = iucv_sock_alloc(NULL, sk->sk_type, GFP_ATOMIC, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

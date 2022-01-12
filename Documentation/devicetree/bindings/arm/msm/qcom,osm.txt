@@ -36,6 +36,7 @@ Properties:
 		    frequency and voltage mappings are loaded for.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 - qcom,cpufreq-table-XX
 	Usage: optional
 	Value type: <u32>
@@ -43,6 +44,8 @@ Properties:
 		    All frequencies present in hardware will be exposed if this list
 		    is not present.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 Example:
@@ -58,6 +61,7 @@ Example:
 		l3-devs = <&phandle0 &phandle1 &phandle2>;
 
 		#clock-cells = <1>;
+<<<<<<< HEAD
 <<<<<<< HEAD
 		qcom,cpufreq-table-0 =
 			< 300000>,
@@ -109,6 +113,8 @@ Example:
 			<1900800>,
 			<1977600>,
 			<2054400>;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	};

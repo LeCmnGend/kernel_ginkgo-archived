@@ -220,7 +220,10 @@ static u8 mgmt_status_table[] = {
 	MGMT_STATUS_NOT_SUPPORTED,	/* Pairing Not Supported */
 	MGMT_STATUS_FAILED,		/* Transaction Collision */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	MGMT_STATUS_FAILED,		/* Reserved for future use */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	MGMT_STATUS_INVALID_PARAMS,	/* Unacceptable Parameter */
@@ -229,9 +232,13 @@ static u8 mgmt_status_table[] = {
 	MGMT_STATUS_REJECTED,		/* Insufficient Security */
 	MGMT_STATUS_INVALID_PARAMS,	/* Parameter Out Of Range */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	MGMT_STATUS_FAILED,		/* Reserved for future use */
 	MGMT_STATUS_BUSY,		/* Role Switch Pending */
 	MGMT_STATUS_FAILED,		/* Reserved for future use */
+=======
+	MGMT_STATUS_BUSY,		/* Role Switch Pending */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	MGMT_STATUS_BUSY,		/* Role Switch Pending */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -646,8 +653,12 @@ static u32 get_supported_settings(struct hci_dev *hdev)
 		if (lmp_ssp_capable(hdev)) {
 			settings |= MGMT_SETTING_SSP;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (IS_ENABLED(CONFIG_BT_HS))
 				settings |= MGMT_SETTING_HS;
+=======
+			settings |= MGMT_SETTING_HS;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			settings |= MGMT_SETTING_HS;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1661,10 +1672,13 @@ static int set_hs(struct sock *sk, struct hci_dev *hdev, void *data, u16 len)
 	BT_DBG("request for %s", hdev->name);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!IS_ENABLED(CONFIG_BT_HS))
 		return mgmt_cmd_status(sk, hdev->id, MGMT_OP_SET_HS,
 				       MGMT_STATUS_NOT_SUPPORTED);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	status = mgmt_bredr_support(hdev);
@@ -6105,9 +6119,12 @@ static bool tlv_data_is_valid(struct hci_dev *hdev, u32 adv_flags, u8 *data,
 		cur_len = data[i];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!cur_len)
 			continue;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (data[i + 1] == EIR_FLAGS &&

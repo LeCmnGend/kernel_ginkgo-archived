@@ -151,7 +151,11 @@ struct gsi_chan_ctx {
 	bool allocated;
 	atomic_t poll_mode;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	union gsi_channel_scratch scratch;
+=======
+	union __packed gsi_channel_scratch scratch;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	union __packed gsi_channel_scratch scratch;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -174,7 +178,11 @@ struct gsi_evt_ctx {
 	struct gsi_chan_ctx *chan;
 	atomic_t chan_ref_cnt;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	union gsi_evt_scratch scratch;
+=======
+	union __packed gsi_evt_scratch scratch;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	union __packed gsi_evt_scratch scratch;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

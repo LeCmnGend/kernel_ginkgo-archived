@@ -5808,6 +5808,11 @@ lpfc_sli4_driver_resource_setup(struct lpfc_hba *phba)
 	MAILBOX_t *mb;
 	int rc, i, max_buf_size;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	uint8_t pn_page[LPFC_MAX_SUPPORTED_PAGES] = {0};
+	struct lpfc_mqe *mqe;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	uint8_t pn_page[LPFC_MAX_SUPPORTED_PAGES] = {0};
 	struct lpfc_mqe *mqe;
@@ -6100,7 +6105,10 @@ lpfc_sli4_driver_resource_setup(struct lpfc_hba *phba)
 	lpfc_nvme_mod_param_dep(phba);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Get the Supported Pages if PORT_CAPABILITIES is supported by port. */
 	lpfc_supported_pages(mboxq);
 	rc = lpfc_sli_issue_mbox(phba, mboxq, MBX_POLL);
@@ -6127,6 +6135,9 @@ lpfc_sli4_driver_resource_setup(struct lpfc_hba *phba)
 		}
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * Get sli4 parameters that override parameters from Port capabilities.
@@ -10244,7 +10255,10 @@ lpfc_sli4_hba_unset(struct lpfc_hba *phba)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  /**
  * lpfc_pc_sli4_params_get - Get the SLI4_PARAMS port capabilities.
  * @phba: Pointer to HBA context object.
@@ -10317,6 +10331,9 @@ lpfc_pc_sli4_params_get(struct lpfc_hba *phba, LPFC_MBOXQ_t *mboxq)
 	return rc;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * lpfc_get_sli4_parameters - Get the SLI4 Config PARAMETERS.
@@ -10376,8 +10393,12 @@ lpfc_get_sli4_parameters(struct lpfc_hba *phba, LPFC_MBOXQ_t *mboxq)
 		phba->sli3_options &= ~LPFC_SLI4_PHWQ_ENABLED;
 	sli4_params->sge_supp_len = mbx_sli4_parameters->sge_supp_len;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sli4_params->loopbk_scope = bf_get(cfg_loopbk_scope,
 					   mbx_sli4_parameters);
+=======
+	sli4_params->loopbk_scope = bf_get(loopbk_scope, mbx_sli4_parameters);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sli4_params->loopbk_scope = bf_get(loopbk_scope, mbx_sli4_parameters);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

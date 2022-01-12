@@ -75,11 +75,17 @@ static int ceph_set_page_dirty(struct page *page)
 	struct ceph_inode_info *ci;
 	struct ceph_snap_context *snapc;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret;
 
 	if (unlikely(!mapping))
 		return !TestSetPageDirty(page);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (PageDirty(page)) {
@@ -127,13 +133,19 @@ static int ceph_set_page_dirty(struct page *page)
 	SetPagePrivate(page);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return __set_page_dirty_nobuffers(page);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = __set_page_dirty_nobuffers(page);
 	WARN_ON(!PageLocked(page));
 	WARN_ON(!page->mapping);
 
 	return ret;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -1435,7 +1447,11 @@ static int ceph_filemap_fault(struct vm_fault *vmf)
 	struct ceph_file_info *fi = vma->vm_file->private_data;
 	struct page *pinned_page = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	loff_t off = (loff_t)vmf->pgoff << PAGE_SHIFT;
+=======
+	loff_t off = vmf->pgoff << PAGE_SHIFT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	loff_t off = vmf->pgoff << PAGE_SHIFT;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

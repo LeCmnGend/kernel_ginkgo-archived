@@ -11,8 +11,11 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/delay.h>
 #include <linux/time64.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/ulpi/regs.h>
@@ -25,6 +28,7 @@
 		DWC3_GUSB2PHYACC_ADDR(ULPI_ACCESS_EXTENDED) | \
 		DWC3_GUSB2PHYACC_EXTEND_ADDR(a) : DWC3_GUSB2PHYACC_ADDR(a))
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #define DWC3_ULPI_BASE_DELAY	DIV_ROUND_UP(NSEC_PER_SEC, 60000000L)
 
@@ -45,6 +49,8 @@ static int dwc3_ulpi_busyloop(struct dwc3 *dwc, u8 addr, bool read)
 		reg = dwc3_readl(dwc->regs, DWC3_GUSB2PHYACC(0));
 		if (reg & DWC3_GUSB2PHYACC_DONE)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int dwc3_ulpi_busyloop(struct dwc3 *dwc)
 {
 	unsigned count = 1000;
@@ -53,6 +59,9 @@ static int dwc3_ulpi_busyloop(struct dwc3 *dwc)
 	while (count--) {
 		reg = dwc3_readl(dwc->regs, DWC3_GUSB2PHYACC(0));
 		if (!(reg & DWC3_GUSB2PHYACC_BUSY))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return 0;
 		cpu_relax();
@@ -77,7 +86,11 @@ static int dwc3_ulpi_read(struct device *dev, u8 addr)
 	dwc3_writel(dwc->regs, DWC3_GUSB2PHYACC(0), reg);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = dwc3_ulpi_busyloop(dwc, addr, true);
+=======
+	ret = dwc3_ulpi_busyloop(dwc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = dwc3_ulpi_busyloop(dwc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -105,7 +118,11 @@ static int dwc3_ulpi_write(struct device *dev, u8 addr, u8 val)
 	dwc3_writel(dwc->regs, DWC3_GUSB2PHYACC(0), reg);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return dwc3_ulpi_busyloop(dwc, addr, false);
+=======
+	return dwc3_ulpi_busyloop(dwc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return dwc3_ulpi_busyloop(dwc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

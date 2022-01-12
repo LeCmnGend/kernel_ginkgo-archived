@@ -370,6 +370,7 @@ static struct sctp_af *sctp_sockaddr_af(struct sctp_sock *opt,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void sctp_auto_asconf_init(struct sctp_sock *sp)
 {
 	struct net *net = sock_net(&sp->inet.sk);
@@ -382,6 +383,8 @@ static void sctp_auto_asconf_init(struct sctp_sock *sp)
 	}
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Bind a local address either to an endpoint or to an association.  */
@@ -447,10 +450,15 @@ static int sctp_do_bind(struct sock *sk, union sctp_addr *addr, int len)
 
 	/* Refresh ephemeral port.  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!bp->port) {
 		bp->port = inet_sk(sk)->inet_num;
 		sctp_auto_asconf_init(sp);
 	}
+=======
+	if (!bp->port)
+		bp->port = inet_sk(sk)->inet_num;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!bp->port)
 		bp->port = inet_sk(sk)->inet_num;
@@ -4472,7 +4480,10 @@ static int sctp_init_sock(struct sock *sk)
 	sock_prot_inuse_add(net, sk->sk_prot, 1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Nothing can fail after this block, otherwise
 	 * sctp_destroy_sock() will be called without addr_wq_lock held
 	 */
@@ -4486,6 +4497,9 @@ static int sctp_init_sock(struct sock *sk)
 		sp->do_auto_asconf = 0;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	local_bh_enable();
 
@@ -7112,6 +7126,11 @@ static long sctp_get_port_local(struct sock *sk, union sctp_addr *addr)
 	pr_debug("%s: begins, snum:%d\n", __func__, snum);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	local_bh_disable();
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	local_bh_disable();
 
@@ -7135,7 +7154,11 @@ static long sctp_get_port_local(struct sock *sk, union sctp_addr *addr)
 			index = sctp_phashfn(sock_net(sk), rover);
 			head = &sctp_port_hashtable[index];
 <<<<<<< HEAD
+<<<<<<< HEAD
 			spin_lock_bh(&head->lock);
+=======
+			spin_lock(&head->lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			spin_lock(&head->lock);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -7146,8 +7169,12 @@ static long sctp_get_port_local(struct sock *sk, union sctp_addr *addr)
 			break;
 		next:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			spin_unlock_bh(&head->lock);
 			cond_resched();
+=======
+			spin_unlock(&head->lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			spin_unlock(&head->lock);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -7157,7 +7184,11 @@ static long sctp_get_port_local(struct sock *sk, union sctp_addr *addr)
 		ret = 1;
 		if (remaining <= 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			return ret;
+=======
+			goto fail;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto fail;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -7176,7 +7207,11 @@ static long sctp_get_port_local(struct sock *sk, union sctp_addr *addr)
 		 */
 		head = &sctp_port_hashtable[sctp_phashfn(sock_net(sk), snum)];
 <<<<<<< HEAD
+<<<<<<< HEAD
 		spin_lock_bh(&head->lock);
+=======
+		spin_lock(&head->lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		spin_lock(&head->lock);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -7264,12 +7299,18 @@ success:
 
 fail_unlock:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_unlock_bh(&head->lock);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_unlock(&head->lock);
 
 fail:
 	local_bh_enable();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 }
@@ -8273,8 +8314,11 @@ static void sctp_sock_migrate(struct sock *oldsk, struct sock *newsk,
 				&oldsp->ep->base.bind_addr, GFP_KERNEL);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sctp_auto_asconf_init(newsp);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Move any messages in the old socket's receive queue that are for the

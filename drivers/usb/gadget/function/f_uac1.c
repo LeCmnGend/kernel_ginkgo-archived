@@ -27,9 +27,12 @@ static int generic_set_cmd(struct usb_audio_control *con, u8 cmd, int value);
 static int generic_get_cmd(struct usb_audio_control *con, u8 cmd);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* UAC1 spec: 3.7.2.3 Audio Channel Cluster Format */
 #define UAC1_CHANNEL_MASK 0x0FFF
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct f_uac1 {
@@ -49,11 +52,14 @@ static inline struct f_uac1 *func_to_uac1(struct usb_function *f)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline struct f_uac1_opts *g_audio_to_uac1_opts(struct g_audio *audio)
 {
 	return container_of(audio->func.fi, struct f_uac1_opts, func_inst);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -770,7 +776,10 @@ static void f_audio_disable(struct usb_function *f)
 	uac1->as_in_alt = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u_audio_stop_playback(&uac1->g_audio);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u_audio_stop_capture(&uac1->g_audio);
@@ -779,6 +788,7 @@ static void f_audio_disable(struct usb_function *f)
 
 /*-------------------------------------------------------------------------*/
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static int f_audio_validate_opts(struct g_audio *audio, struct device *dev)
 {
@@ -812,13 +822,18 @@ static int f_audio_validate_opts(struct g_audio *audio, struct device *dev)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* audio function driver setup/binding */
 static int f_audio_bind(struct usb_configuration *c, struct usb_function *f)
 {
 	struct usb_composite_dev	*cdev = c->cdev;
 	struct usb_gadget		*gadget = cdev->gadget;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct device			*dev = &gadget->dev;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct f_uac1			*uac1 = func_to_uac1(f);
@@ -831,10 +846,13 @@ static int f_audio_bind(struct usb_configuration *c, struct usb_function *f)
 	int				status;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	status = f_audio_validate_opts(audio, dev);
 	if (status)
 		return status;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	audio_opts = container_of(f->fi, struct f_uac1_opts, func_inst);

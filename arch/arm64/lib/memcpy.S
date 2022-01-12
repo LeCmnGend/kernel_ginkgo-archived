@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* SPDX-License-Identifier: GPL-2.0-only */
 /*
  * Copyright (c) 2012-2021, Arm Limited.
@@ -6,6 +7,8 @@
  * Adapted from the original at:
  * https://github.com/ARM-software/optimized-routines/blob/afd6244a1f8d9229/string/aarch64/memcpy.S
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Copyright (C) 2013 ARM Ltd.
  * Copyright (C) 2013 Linaro.
@@ -28,11 +31,15 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 
 #include <linux/linkage.h>
 #include <asm/assembler.h>
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 /* Assumptions:
@@ -273,6 +280,8 @@ SYM_FUNC_END_ALIAS(__memcpy)
 SYM_FUNC_END_ALIAS_PI(memmove)
 SYM_FUNC_END_ALIAS(__memmove)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <asm/cache.h>
 
 /*
@@ -324,4 +333,7 @@ ENTRY(memcpy)
 	ret
 ENDPIPROC(memcpy)
 ENDPROC(__memcpy)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

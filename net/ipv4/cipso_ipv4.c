@@ -487,7 +487,10 @@ void cipso_v4_doi_free(struct cipso_v4_doi *doi_def)
 		kfree(doi_def->map.std->cat.cipso);
 		kfree(doi_def->map.std->cat.local);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kfree(doi_def->map.std);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
@@ -538,11 +541,14 @@ int cipso_v4_doi_remove(u32 doi, struct netlbl_audit *audit_info)
 		goto doi_remove_return;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	list_del_rcu(&doi_def->list);
 	spin_unlock(&cipso_v4_doi_list_lock);
 
 	cipso_v4_doi_putdef(doi_def);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!refcount_dec_and_test(&doi_def->refcount)) {
 		spin_unlock(&cipso_v4_doi_list_lock);
 		ret_val = -EBUSY;
@@ -553,6 +559,9 @@ int cipso_v4_doi_remove(u32 doi, struct netlbl_audit *audit_info)
 
 	cipso_v4_cache_invalidate();
 	call_rcu(&doi_def->rcu, cipso_v4_doi_free_rcu);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret_val = 0;
 
@@ -611,6 +620,12 @@ void cipso_v4_doi_putdef(struct cipso_v4_doi *doi_def)
 	if (!refcount_dec_and_test(&doi_def->refcount))
 		return;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	spin_lock(&cipso_v4_doi_list_lock);
+	list_del_rcu(&doi_def->list);
+	spin_unlock(&cipso_v4_doi_list_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spin_lock(&cipso_v4_doi_list_lock);
 	list_del_rcu(&doi_def->list);

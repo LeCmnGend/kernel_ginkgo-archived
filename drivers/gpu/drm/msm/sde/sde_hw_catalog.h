@@ -653,7 +653,10 @@ enum sde_clk_ctrl_type {
  * @reg_off:           register offset
  * @bit_off:           bit offset
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @val:               current bit value
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
@@ -661,7 +664,10 @@ struct sde_clk_ctrl_reg {
 	u32 reg_off;
 	u32 bit_off;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int val;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -1066,7 +1072,10 @@ struct sde_perf_cdp_cfg {
  * @cpu_mask:          pm_qos cpu mask value
  * @cpu_dma_latency:   pm_qos cpu dma latency value
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @cpu_irq_latency:   pm_qos cpu irq latency value
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * @axi_bus_width:     axi bus width value in bytes
@@ -1098,7 +1107,10 @@ struct sde_perf_cfg {
 	u32 cpu_mask;
 	u32 cpu_dma_latency;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 cpu_irq_latency;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32 axi_bus_width;

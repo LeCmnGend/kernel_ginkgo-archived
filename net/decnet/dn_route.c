@@ -1882,7 +1882,11 @@ void __init dn_route_init(void)
 	add_timer(&dn_route_timer);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	goal = totalram_pages() >> (26 - PAGE_SHIFT);
+=======
+	goal = totalram_pages >> (26 - PAGE_SHIFT);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	goal = totalram_pages >> (26 - PAGE_SHIFT);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

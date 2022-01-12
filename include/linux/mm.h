@@ -48,6 +48,7 @@ static inline void set_max_mapnr(unsigned long limit) { }
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern atomic_long_t _totalram_pages;
 static inline unsigned long totalram_pages(void)
 {
@@ -74,6 +75,9 @@ static inline void totalram_pages_set(long val)
 	atomic_long_set(&_totalram_pages, val);
 }
 
+=======
+extern unsigned long totalram_pages;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern unsigned long totalram_pages;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -186,9 +190,13 @@ extern int overcommit_kbytes_handler(struct ctl_table *, int, void __user *,
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct vm_area_struct *vm_area_alloc(void);
 struct vm_area_struct *vm_area_dup(struct vm_area_struct *);
 void vm_area_free(struct vm_area_struct *);
+=======
+extern struct kmem_cache *vm_area_cachep;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern struct kmem_cache *vm_area_cachep;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -428,7 +436,11 @@ struct vm_operations_struct {
 	void (*close)(struct vm_area_struct * area);
 	int (*split)(struct vm_area_struct * area, unsigned long addr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int (*mremap)(struct vm_area_struct *area, unsigned long flags);
+=======
+	int (*mremap)(struct vm_area_struct * area);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int (*mremap)(struct vm_area_struct * area);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -488,11 +500,14 @@ struct vm_operations_struct {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline bool vma_is_accessible(struct vm_area_struct *vma)
 {
 	return vma->vm_flags & (VM_READ | VM_WRITE | VM_EXEC);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct mmu_gather;
@@ -619,11 +634,14 @@ static inline void *kvmalloc_array(size_t n, size_t size, gfp_t flags)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void *kvcalloc(size_t n, size_t size, gfp_t flags)
 {
 	return kvmalloc_array(n, size, flags | __GFP_ZERO);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern void kvfree(const void *addr);
@@ -1841,9 +1859,12 @@ static inline int __p4d_alloc(struct mm_struct *mm, pgd_t *pgd,
 	return 0;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void mm_inc_nr_puds(struct mm_struct *mm) {}
 static inline void mm_dec_nr_puds(struct mm_struct *mm) {}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #else
@@ -1851,7 +1872,11 @@ int __p4d_alloc(struct mm_struct *mm, pgd_t *pgd, unsigned long address);
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined(__PAGETABLE_PUD_FOLDED) || !defined(CONFIG_MMU)
+=======
+#ifdef __PAGETABLE_PUD_FOLDED
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #ifdef __PAGETABLE_PUD_FOLDED
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1862,6 +1887,7 @@ static inline int __pud_alloc(struct mm_struct *mm, p4d_t *p4d,
 }
 #else
 int __pud_alloc(struct mm_struct *mm, p4d_t *p4d, unsigned long address);
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 static inline void mm_inc_nr_puds(struct mm_struct *mm)
@@ -1875,6 +1901,8 @@ static inline void mm_dec_nr_puds(struct mm_struct *mm)
 }
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 
 #if defined(__PAGETABLE_PMD_FOLDED) || !defined(CONFIG_MMU)
@@ -1884,6 +1912,7 @@ static inline int __pmd_alloc(struct mm_struct *mm, pud_t *pud,
 	return 0;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static inline void mm_inc_nr_pmds(struct mm_struct *mm) {}
 static inline void mm_dec_nr_pmds(struct mm_struct *mm) {}
@@ -1933,6 +1962,8 @@ static inline unsigned long mm_pgtables_bytes(const struct mm_struct *mm)
 static inline void mm_inc_nr_ptes(struct mm_struct *mm) {}
 static inline void mm_dec_nr_ptes(struct mm_struct *mm) {}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void mm_nr_pmds_init(struct mm_struct *mm) {}
 
 static inline unsigned long mm_nr_pmds(struct mm_struct *mm)
@@ -1965,6 +1996,9 @@ static inline void mm_dec_nr_pmds(struct mm_struct *mm)
 {
 	atomic_long_dec(&mm->nr_pmds);
 }
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 
@@ -2469,6 +2503,7 @@ extern unsigned long mmap_region(struct file *file, unsigned long addr,
 extern unsigned long do_mmap(struct file *file, unsigned long addr,
 	unsigned long len, unsigned long prot, unsigned long flags,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long pgoff, unsigned long *populate, struct list_head *uf);
 extern int __do_munmap(struct mm_struct *, unsigned long, size_t,
 		       struct list_head *uf, bool downgrade);
@@ -2476,6 +2511,8 @@ extern int do_munmap(struct mm_struct *, unsigned long, size_t,
 		     struct list_head *uf);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	vm_flags_t vm_flags, unsigned long pgoff, unsigned long *populate,
 	struct list_head *uf);
 extern int do_munmap(struct mm_struct *, unsigned long, size_t,
@@ -2490,6 +2527,9 @@ do_mmap_pgoff(struct file *file, unsigned long addr,
 	return do_mmap(file, addr, len, prot, flags, 0, pgoff, populate, uf);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_MMU
 extern int __mm_populate(unsigned long addr, unsigned long len,
@@ -2522,8 +2562,11 @@ struct vm_unmapped_area_info {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern unsigned long vm_unmapped_area(struct vm_unmapped_area_info *info);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern unsigned long unmapped_area(struct vm_unmapped_area_info *info);
 extern unsigned long unmapped_area_topdown(struct vm_unmapped_area_info *info);
 
@@ -2544,6 +2587,9 @@ vm_unmapped_area(struct vm_unmapped_area_info *info)
 	else
 		return unmapped_area(info);
 }
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* truncate.c */
@@ -2733,6 +2779,7 @@ static inline int vm_fault_to_errno(int vm_fault, int foll_flags)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef io_remap_pfn_range
 static inline int io_remap_pfn_range(struct vm_area_struct *vma,
 				     unsigned long addr, unsigned long pfn,
@@ -2742,6 +2789,8 @@ static inline int io_remap_pfn_range(struct vm_area_struct *vma,
 }
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 typedef int (*pte_fn_t)(pte_t *pte, pgtable_t token, unsigned long addr,
@@ -3006,8 +3055,11 @@ struct reclaim_param {
 extern struct reclaim_param reclaim_task_anon(struct task_struct *task,
 		int nr_to_reclaim);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern int reclaim_pte_range(pmd_t *pmd, unsigned long addr,
 				unsigned long end, struct mm_walk *walk);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif

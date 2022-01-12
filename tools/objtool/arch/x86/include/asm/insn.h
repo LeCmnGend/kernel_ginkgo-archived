@@ -209,6 +209,7 @@ static inline int insn_offset_immediate(struct insn *insn)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * for_each_insn_prefix() -- Iterate prefixes in the instruction
  * @insn: Pointer to struct insn.
@@ -224,6 +225,8 @@ static inline int insn_offset_immediate(struct insn *insn)
 #define for_each_insn_prefix(insn, idx, prefix)        \
 	for (idx = 0; idx < ARRAY_SIZE(insn->prefixes.bytes) && (prefix = insn->prefixes.bytes[idx]) != 0; idx++)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define POP_SS_OPCODE 0x1f

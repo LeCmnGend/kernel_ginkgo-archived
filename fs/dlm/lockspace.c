@@ -634,9 +634,12 @@ static int new_lockspace(const char *name, const char *cluster,
 		   test_bit(LSFL_RECOVER_LOCK, &ls->ls_flags));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* let kobject handle freeing of ls if there's an error */
 	do_unreg = 1;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ls->ls_kobj.kset = dlm_kset;
@@ -647,6 +650,12 @@ static int new_lockspace(const char *name, const char *cluster,
 	kobject_uevent(&ls->ls_kobj, KOBJ_ADD);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/* let kobject handle freeing of ls if there's an error */
+	do_unreg = 1;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* let kobject handle freeing of ls if there's an error */
 	do_unreg = 1;

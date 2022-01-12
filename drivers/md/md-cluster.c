@@ -660,6 +660,7 @@ out:
  * node can communicate while the operation is underway.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int lock_token(struct md_cluster_info *cinfo)
 {
 	int error;
@@ -686,6 +687,11 @@ static int lock_token(struct md_cluster_info *cinfo, bool mddev_locked)
 {
 	int error, set_bit = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+static int lock_token(struct md_cluster_info *cinfo, bool mddev_locked)
+{
+	int error, set_bit = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct mddev *mddev = cinfo->mddev;
 
 	/*
@@ -696,6 +702,7 @@ static int lock_token(struct md_cluster_info *cinfo, bool mddev_locked)
 	 */
 	if (mddev_locked && !test_bit(MD_CLUSTER_HOLDING_MUTEX_FOR_RECVD,
 				      &cinfo->state)) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 		rv = test_and_set_bit_lock(MD_CLUSTER_HOLDING_MUTEX_FOR_RECVD,
 					      &cinfo->state);
@@ -711,6 +718,8 @@ static int lock_token(struct md_cluster_info *cinfo, bool mddev_locked)
 		clear_bit_unlock(MD_CLUSTER_HOLDING_MUTEX_FOR_RECVD, &cinfo->state);
 	return rv;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		error = test_and_set_bit_lock(MD_CLUSTER_HOLDING_MUTEX_FOR_RECVD,
 					      &cinfo->state);
 		WARN_ON_ONCE(error);
@@ -739,6 +748,9 @@ static int lock_comm(struct md_cluster_info *cinfo, bool mddev_locked)
 		   !test_and_set_bit(MD_CLUSTER_SEND_LOCK, &cinfo->state));
 
 	return lock_token(cinfo, mddev_locked);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -820,11 +832,17 @@ static int sendmsg(struct md_cluster_info *cinfo, struct cluster_msg *cmsg,
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = lock_comm(cinfo, mddev_locked);
 	if (!ret) {
 		ret = __sendmsg(cinfo, cmsg);
 		unlock_comm(cinfo);
 	}
+=======
+	lock_comm(cinfo, mddev_locked);
+	ret = __sendmsg(cinfo, cmsg);
+	unlock_comm(cinfo);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	lock_comm(cinfo, mddev_locked);
 	ret = __sendmsg(cinfo, cmsg);
@@ -1102,7 +1120,11 @@ static int metadata_update_start(struct mddev *mddev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = lock_token(cinfo);
+=======
+	ret = lock_token(cinfo, 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = lock_token(cinfo, 1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1224,10 +1246,14 @@ static void update_size(struct mddev *mddev, sector_t old_dev_sectors)
 
 	md_update_sb(mddev, 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (lock_comm(cinfo, 1)) {
 		pr_err("%s: lock_comm failed\n", __func__);
 		return;
 	}
+=======
+	lock_comm(cinfo, 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	lock_comm(cinfo, 1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1370,8 +1396,12 @@ static int add_new_disk(struct mddev *mddev, struct md_rdev *rdev)
 	memcpy(cmsg.uuid, uuid, 16);
 	cmsg.raid_slot = cpu_to_le32(rdev->desc_nr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (lock_comm(cinfo, 1))
 		return -EAGAIN;
+=======
+	lock_comm(cinfo, 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	lock_comm(cinfo, 1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1488,7 +1518,10 @@ static void unlock_all_bitmaps(struct mddev *mddev)
 		}
 		kfree(cinfo->other_bitmap_lockres);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cinfo->other_bitmap_lockres = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

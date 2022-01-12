@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2015-2021, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2015-2020, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2015-2020, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1333,7 +1337,10 @@ out:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int icnss_call_driver_remove(struct icnss_priv *priv)
 {
 	icnss_pr_dbg("Calling driver remove state: 0x%lx\n", priv->state);
@@ -1360,6 +1367,9 @@ static int icnss_call_driver_remove(struct icnss_priv *priv)
 	return 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int icnss_fw_crashed(struct icnss_priv *priv,
 			    struct icnss_event_pd_service_down_data *event_data)
@@ -1622,11 +1632,15 @@ static int icnss_modem_notifier_nb(struct notifier_block *nb,
 		if (!test_bit(ICNSS_PD_RESTART, &priv->state) &&
 		    !test_bit(ICNSS_SHUTDOWN_DONE, &priv->state)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			clear_bit(ICNSS_FW_READY, &priv->state);
 			icnss_driver_event_post(
 				ICNSS_DRIVER_EVENT_UNREGISTER_DRIVER,
 				ICNSS_EVENT_SYNC_UNINTERRUPTIBLE,
 				NULL);
+=======
+			icnss_call_driver_remove(priv);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			icnss_call_driver_remove(priv);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2163,8 +2177,13 @@ int icnss_unregister_driver(struct icnss_driver_ops *ops)
 	icnss_pr_dbg("Unregistering driver, state: 0x%lx\n", penv->state);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!penv->ops || (!test_bit(ICNSS_DRIVER_PROBED, &penv->state))) {
 		icnss_pr_err("Driver not registered/probed\n");
+=======
+	if (!penv->ops) {
+		icnss_pr_err("Driver not registered\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!penv->ops) {
 		icnss_pr_err("Driver not registered\n");
@@ -3143,8 +3162,13 @@ static int icnss_stats_show_state(struct seq_file *s, struct icnss_priv *priv)
 			seq_puts(s, "PM SUSPEND");
 			continue;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		case ICNSS_PM_SUSPEND_LATE:
 			seq_puts(s, "PM SUSPEND LATE");
+=======
+		case ICNSS_PM_SUSPEND_NOIRQ:
+			seq_puts(s, "PM SUSPEND NOIRQ");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		case ICNSS_PM_SUSPEND_NOIRQ:
 			seq_puts(s, "PM SUSPEND NOIRQ");
@@ -3327,15 +3351,21 @@ static int icnss_stats_show(struct seq_file *s, void *data)
 	ICNSS_STATS_DUMP(s, priv, pm_resume);
 	ICNSS_STATS_DUMP(s, priv, pm_resume_err);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ICNSS_STATS_DUMP(s, priv, pm_suspend_late);
 	ICNSS_STATS_DUMP(s, priv, pm_suspend_late_err);
 	ICNSS_STATS_DUMP(s, priv, pm_resume_early);
 	ICNSS_STATS_DUMP(s, priv, pm_resume_early_err);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ICNSS_STATS_DUMP(s, priv, pm_suspend_noirq);
 	ICNSS_STATS_DUMP(s, priv, pm_suspend_noirq_err);
 	ICNSS_STATS_DUMP(s, priv, pm_resume_noirq);
 	ICNSS_STATS_DUMP(s, priv, pm_resume_noirq_err);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ICNSS_STATS_DUMP(s, priv, pm_stay_awake);
 	ICNSS_STATS_DUMP(s, priv, pm_relax);
@@ -4040,7 +4070,11 @@ out:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int icnss_pm_suspend_late(struct device *dev)
+=======
+static int icnss_pm_suspend_noirq(struct device *dev)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int icnss_pm_suspend_noirq(struct device *dev)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4050,7 +4084,11 @@ static int icnss_pm_suspend_noirq(struct device *dev)
 
 	if (priv->magic != ICNSS_MAGIC) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		icnss_pr_err("Invalid drvdata for pm suspend_late: dev %pK, data %pK, magic 0x%x\n",
+=======
+		icnss_pr_err("Invalid drvdata for pm suspend_noirq: dev %pK, data %pK, magic 0x%x\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		icnss_pr_err("Invalid drvdata for pm suspend_noirq: dev %pK, data %pK, magic 0x%x\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4058,6 +4096,7 @@ static int icnss_pm_suspend_noirq(struct device *dev)
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	icnss_pr_vdbg("PM suspend_late, state: 0x%lx\n", priv->state);
 
@@ -4074,6 +4113,8 @@ out:
 	} else {
 		priv->stats.pm_suspend_late_err++;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	icnss_pr_vdbg("PM suspend_noirq, state: 0x%lx\n", priv->state);
 
 	if (!priv->ops || !priv->ops->suspend_noirq ||
@@ -4088,13 +4129,20 @@ out:
 		set_bit(ICNSS_PM_SUSPEND_NOIRQ, &priv->state);
 	} else {
 		priv->stats.pm_suspend_noirq_err++;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	return ret;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int icnss_pm_resume_early(struct device *dev)
+=======
+static int icnss_pm_resume_noirq(struct device *dev)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int icnss_pm_resume_noirq(struct device *dev)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4104,7 +4152,11 @@ static int icnss_pm_resume_noirq(struct device *dev)
 
 	if (priv->magic != ICNSS_MAGIC) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		icnss_pr_err("Invalid drvdata for pm resume_early: dev %pK, data %pK, magic 0x%x\n",
+=======
+		icnss_pr_err("Invalid drvdata for pm resume_noirq: dev %pK, data %pK, magic 0x%x\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		icnss_pr_err("Invalid drvdata for pm resume_noirq: dev %pK, data %pK, magic 0x%x\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4112,6 +4164,7 @@ static int icnss_pm_resume_noirq(struct device *dev)
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	icnss_pr_vdbg("PM resume_early, state: 0x%lx\n", priv->state);
 
@@ -4128,6 +4181,8 @@ out:
 	} else {
 		priv->stats.pm_resume_early_err++;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	icnss_pr_vdbg("PM resume_noirq, state: 0x%lx\n", priv->state);
 
 	if (!priv->ops || !priv->ops->resume_noirq ||
@@ -4142,6 +4197,9 @@ out:
 		clear_bit(ICNSS_PM_SUSPEND_NOIRQ, &priv->state);
 	} else {
 		priv->stats.pm_resume_noirq_err++;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	return ret;
@@ -4152,8 +4210,13 @@ static const struct dev_pm_ops icnss_pm_ops = {
 	SET_SYSTEM_SLEEP_PM_OPS(icnss_pm_suspend,
 				icnss_pm_resume)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	SET_LATE_SYSTEM_SLEEP_PM_OPS(icnss_pm_suspend_late,
 				      icnss_pm_resume_early)
+=======
+	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(icnss_pm_suspend_noirq,
+				      icnss_pm_resume_noirq)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(icnss_pm_suspend_noirq,
 				      icnss_pm_resume_noirq)
@@ -4176,7 +4239,10 @@ static struct platform_driver icnss_driver = {
 		.owner = THIS_MODULE,
 		.of_match_table = icnss_dt_match,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.probe_type = PROBE_PREFER_ASYNCHRONOUS,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	},

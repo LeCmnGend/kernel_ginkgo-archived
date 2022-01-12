@@ -77,7 +77,11 @@
 /*
  * Object location (<PFN>, <obj_idx>) is encoded as
 <<<<<<< HEAD
+<<<<<<< HEAD
  * a single (unsigned long) handle value.
+=======
+ * as single (unsigned long) handle value.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * as single (unsigned long) handle value.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -298,13 +302,19 @@ struct zspage {
 
 struct mapping_area {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	char *vm_buf; /* copy buffer for objects that span pages */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_PGTABLE_MAPPING
 	struct vm_struct *vm; /* vm area for mapping object that span pages */
 #else
 	char *vm_buf; /* copy buffer for objects that span pages */
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	char *vm_addr; /* address of kmap_atomic()'ed pages */
 	enum zs_mapmode vm_mm; /* mapping mode */
@@ -775,11 +785,14 @@ static void insert_zspage(struct size_class *class,
 	 * Put pages with higher ->inuse first.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (head && get_zspage_inuse(zspage) < get_zspage_inuse(head))
 		list_add(&zspage->list, &head->list);
 	else
 		list_add(&zspage->list, &class->fullness_list[fullness]);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (head) {
 		if (get_zspage_inuse(zspage) < get_zspage_inuse(head)) {
 			list_add(&zspage->list, &head->list);
@@ -787,6 +800,9 @@ static void insert_zspage(struct size_class *class,
 		}
 	}
 	list_add(&zspage->list, &class->fullness_list[fullness]);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -1177,7 +1193,10 @@ static struct zspage *find_get_zspage(struct size_class *class)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_PGTABLE_MAPPING
 static inline int __zs_cpu_up(struct mapping_area *area)
 {
@@ -1218,6 +1237,9 @@ static inline void __zs_unmap_object(struct mapping_area *area,
 
 #else /* CONFIG_PGTABLE_MAPPING */
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline int __zs_cpu_up(struct mapping_area *area)
 {
@@ -1300,6 +1322,11 @@ out:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#endif /* CONFIG_PGTABLE_MAPPING */
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #endif /* CONFIG_PGTABLE_MAPPING */
 
@@ -2323,8 +2350,12 @@ static unsigned long zs_can_compact(struct size_class *class)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static unsigned long __zs_compact(struct zs_pool *pool,
 				  struct size_class *class)
+=======
+static void __zs_compact(struct zs_pool *pool, struct size_class *class)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void __zs_compact(struct zs_pool *pool, struct size_class *class)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2333,7 +2364,10 @@ static void __zs_compact(struct zs_pool *pool, struct size_class *class)
 	struct zspage *src_zspage;
 	struct zspage *dst_zspage = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long pages_freed = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2366,7 +2400,11 @@ static void __zs_compact(struct zs_pool *pool, struct size_class *class)
 		if (putback_zspage(class, src_zspage) == ZS_EMPTY) {
 			free_zspage(pool, class, src_zspage);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pages_freed += class->pages_per_zspage;
+=======
+			pool->stats.pages_compacted += class->pages_per_zspage;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			pool->stats.pages_compacted += class->pages_per_zspage;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2381,8 +2419,11 @@ static void __zs_compact(struct zs_pool *pool, struct size_class *class)
 
 	spin_unlock(&class->lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	return pages_freed;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -2392,7 +2433,10 @@ unsigned long zs_compact(struct zs_pool *pool)
 	int i;
 	struct size_class *class;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long pages_freed = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2403,16 +2447,22 @@ unsigned long zs_compact(struct zs_pool *pool)
 		if (class->index != i)
 			continue;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pages_freed += __zs_compact(pool, class);
 	}
 	atomic_long_add(pages_freed, &pool->stats.pages_compacted);
 
 	return pages_freed;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__zs_compact(pool, class);
 	}
 
 	return pool->stats.pages_compacted;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL_GPL(zs_compact);
@@ -2431,6 +2481,10 @@ static unsigned long zs_shrinker_scan(struct shrinker *shrinker,
 			shrinker);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	pages_freed = pool->stats.pages_compacted;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pages_freed = pool->stats.pages_compacted;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2440,7 +2494,11 @@ static unsigned long zs_shrinker_scan(struct shrinker *shrinker,
 	 * (by user) compaction.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pages_freed = zs_compact(pool);
+=======
+	pages_freed = zs_compact(pool) - pages_freed;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pages_freed = zs_compact(pool) - pages_freed;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

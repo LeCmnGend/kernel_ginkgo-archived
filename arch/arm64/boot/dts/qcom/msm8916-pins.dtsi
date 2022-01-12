@@ -543,7 +543,11 @@
 				       "gpio67", "gpio68";
 				drive-strength = <8>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				bias-disable;
+=======
+				bias-pull-none;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				bias-pull-none;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -560,7 +564,11 @@
 				       "gpio67", "gpio68";
 				drive-strength = <2>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				bias-pull-down;
+=======
+				bias-disable;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				bias-disable;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -580,7 +588,11 @@
 				       "gpio116";
 				drive-strength = <8>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				bias-disable;
+=======
+				bias-pull-none;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				bias-pull-none;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -612,7 +624,11 @@
 				pins = "gpio110";
 				drive-strength = <8>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				bias-disable;
+=======
+				bias-pull-none;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				bias-pull-none;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -642,7 +658,11 @@
 				pins = "gpio116";
 				drive-strength = <8>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				bias-disable;
+=======
+				bias-pull-none;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				bias-pull-none;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -674,7 +694,11 @@
 					"gpio119";
 				drive-strength = <8>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				bias-disable;
+=======
+				bias-pull-none;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				bias-pull-none;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

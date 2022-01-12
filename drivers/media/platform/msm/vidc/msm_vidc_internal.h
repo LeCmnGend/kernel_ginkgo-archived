@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2012-2020, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2012-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2012-2021, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -182,6 +186,10 @@ struct eos_buf {
 	struct list_head list;
 	struct msm_smem smem;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u32 is_queued;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 is_queued;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -509,6 +517,10 @@ struct msm_vidc_inst {
 	bool decode_batching;
 	u32 max_filled_length;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	bool operating_rate_set;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bool operating_rate_set;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

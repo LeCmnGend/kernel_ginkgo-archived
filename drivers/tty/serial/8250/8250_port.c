@@ -315,11 +315,15 @@ static const struct serial8250_config uart_config[] = {
 static int default_serial_dl_read(struct uart_8250_port *up)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Assign these in pieces to truncate any bits above 7.  */
 	unsigned char dll = serial_in(up, UART_DLL);
 	unsigned char dlm = serial_in(up, UART_DLM);
 
 	return dll | dlm << 8;
+=======
+	return serial_in(up, UART_DLL) | serial_in(up, UART_DLM) << 8;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return serial_in(up, UART_DLL) | serial_in(up, UART_DLM) << 8;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1311,11 +1315,17 @@ static void autoconfig(struct uart_8250_port *up)
 
 	serial_out(up, UART_FCR, UART_FCR_ENABLE_FIFO);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* Assign this as it is to truncate any bits above 7.  */
 	scratch = serial_in(up, UART_IIR);
 
 	switch (scratch >> 6) {
+=======
+	scratch = serial_in(up, UART_IIR) >> 6;
+
+	switch (scratch) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	scratch = serial_in(up, UART_IIR) >> 6;
 
@@ -1544,6 +1554,10 @@ static inline void __stop_tx(struct uart_8250_port *p)
 
 		em485->active_timer = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		hrtimer_cancel(&em485->start_tx_timer);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		hrtimer_cancel(&em485->start_tx_timer);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1611,6 +1625,11 @@ static inline void start_tx_rs485(struct uart_port *port)
 
 	em485->active_timer = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (hrtimer_is_queued(&em485->stop_tx_timer))
+		hrtimer_cancel(&em485->stop_tx_timer);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (hrtimer_is_queued(&em485->stop_tx_timer))
 		hrtimer_cancel(&em485->stop_tx_timer);
@@ -1888,7 +1907,10 @@ int serial8250_handle_irq(struct uart_port *port, unsigned int iir)
 	unsigned long flags;
 	struct uart_8250_port *up = up_to_u8250p(port);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool skip_rx = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1899,6 +1921,7 @@ int serial8250_handle_irq(struct uart_port *port, unsigned int iir)
 
 	status = serial_port_in(port, UART_LSR);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	/*
 	 * If port is stopped and there are no error conditions in the
@@ -1914,6 +1937,9 @@ int serial8250_handle_irq(struct uart_port *port, unsigned int iir)
 		skip_rx = true;
 
 	if (status & (UART_LSR_DR | UART_LSR_BI) && !skip_rx) {
+=======
+	if (status & (UART_LSR_DR | UART_LSR_BI)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (status & (UART_LSR_DR | UART_LSR_BI)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2308,10 +2334,13 @@ int serial8250_do_startup(struct uart_port *port)
 	if (port->irq && !(up->port.flags & UPF_NO_THRE_TEST)) {
 		unsigned char iir1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		if (port->irqflags & IRQF_SHARED)
 			disable_irq_nosync(port->irq);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
@@ -2324,6 +2353,11 @@ int serial8250_do_startup(struct uart_port *port)
 		 */
 		spin_lock_irqsave(&port->lock, flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		if (up->port.irqflags & IRQF_SHARED)
+			disable_irq_nosync(port->irq);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (up->port.irqflags & IRQF_SHARED)
 			disable_irq_nosync(port->irq);
@@ -2340,10 +2374,16 @@ int serial8250_do_startup(struct uart_port *port)
 		serial_port_out(port, UART_IER, 0);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		spin_unlock_irqrestore(&port->lock, flags);
 
 		if (port->irqflags & IRQF_SHARED)
 			enable_irq(port->irq);
+=======
+		if (port->irqflags & IRQF_SHARED)
+			enable_irq(port->irq);
+		spin_unlock_irqrestore(&port->lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (port->irqflags & IRQF_SHARED)
 			enable_irq(port->irq);

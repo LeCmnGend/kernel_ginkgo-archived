@@ -112,6 +112,7 @@ do {									\
 #include <asm-generic/barrier.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * Make previous memory operations globally visible before
  * a WRMSR.
@@ -130,6 +131,8 @@ static inline void weak_wrmsr_fence(void)
 	asm volatile("mfence; lfence" : : : "memory");
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* _ASM_X86_BARRIER_H */

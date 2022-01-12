@@ -928,7 +928,11 @@ static int ep93xx_pata_probe(struct platform_device *pdev)
 	irq = platform_get_irq(pdev, 0);
 	if (irq < 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		err = irq;
+=======
+		err = -ENXIO;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		err = -ENXIO;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

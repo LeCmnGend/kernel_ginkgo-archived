@@ -5,11 +5,16 @@
 #if defined(CONFIG_AS_LSE) && defined(CONFIG_ARM64_LSE_ATOMICS)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/compiler_types.h>
 #include <linux/export.h>
 #include <linux/stringify.h>
 #include <asm/alternative.h>
 #include <asm/cpucaps.h>
+=======
+#include <linux/stringify.h>
+#include <asm/alternative.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/stringify.h>
 #include <asm/alternative.h>

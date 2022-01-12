@@ -32,12 +32,15 @@ struct adc0832 {
 	struct mutex lock;
 	u8 mux_bits;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Max size needed: 16x 1 byte ADC data + 8 bytes timestamp
 	 * May be shorter if not all channels are enabled subject
 	 * to the timestamp remaining 8 byte aligned.
 	 */
 	u8 data[24] __aligned(8);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -213,6 +216,10 @@ static irqreturn_t adc0832_trigger_handler(int irq, void *p)
 	struct iio_dev *indio_dev = pf->indio_dev;
 	struct adc0832 *adc = iio_priv(indio_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u8 data[24] = { }; /* 16x 1 byte ADC data + 8 bytes timestamp */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u8 data[24] = { }; /* 16x 1 byte ADC data + 8 bytes timestamp */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -234,15 +241,21 @@ static irqreturn_t adc0832_trigger_handler(int irq, void *p)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		adc->data[i] = ret;
 		i++;
 	}
 	iio_push_to_buffers_with_timestamp(indio_dev, adc->data,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		data[i] = ret;
 		i++;
 	}
 	iio_push_to_buffers_with_timestamp(indio_dev, data,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					   iio_get_time_ns(indio_dev));
 out:

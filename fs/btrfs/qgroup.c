@@ -425,7 +425,10 @@ next2:
 	}
 out:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	btrfs_free_path(path);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	fs_info->qgroup_flags |= flags;
@@ -435,6 +438,10 @@ out:
 		 ret >= 0)
 		ret = qgroup_rescan_init(fs_info, rescan_progress, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	btrfs_free_path(path);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	btrfs_free_path(path);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2622,12 +2629,15 @@ out:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool rescan_should_stop(struct btrfs_fs_info *fs_info)
 {
 	return btrfs_fs_closing(fs_info) ||
 		test_bit(BTRFS_FS_STATE_REMOUNTING, &fs_info->fs_state);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void btrfs_qgroup_rescan_worker(struct btrfs_work *work)
@@ -2639,7 +2649,10 @@ static void btrfs_qgroup_rescan_worker(struct btrfs_work *work)
 	int err = -ENOMEM;
 	int ret = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool stopped = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2649,7 +2662,11 @@ static void btrfs_qgroup_rescan_worker(struct btrfs_work *work)
 
 	err = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	while (!err && !(stopped = rescan_should_stop(fs_info))) {
+=======
+	while (!err && !btrfs_fs_closing(fs_info)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	while (!err && !btrfs_fs_closing(fs_info)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2696,7 +2713,11 @@ out:
 
 	mutex_lock(&fs_info->qgroup_rescan_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!stopped)
+=======
+	if (!btrfs_fs_closing(fs_info))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!btrfs_fs_closing(fs_info))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2719,7 +2740,11 @@ out:
 	btrfs_end_transaction(trans);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (stopped) {
+=======
+	if (btrfs_fs_closing(fs_info)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (btrfs_fs_closing(fs_info)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

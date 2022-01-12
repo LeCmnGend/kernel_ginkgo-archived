@@ -102,7 +102,11 @@ int i2400m_op_rfkill_sw_toggle(struct wimax_dev *wimax_dev,
 		goto error_alloc;
 	cmd->hdr.type = cpu_to_le16(I2400M_MT_CMD_RF_CONTROL);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cmd->hdr.length = cpu_to_le16(sizeof(cmd->sw_rf));
+=======
+	cmd->hdr.length = sizeof(cmd->sw_rf);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cmd->hdr.length = sizeof(cmd->sw_rf);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

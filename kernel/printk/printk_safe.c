@@ -57,8 +57,11 @@ static DEFINE_PER_CPU(struct printk_safe_seq_buf, safe_print_seq);
 static DEFINE_PER_CPU(int, printk_context);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static DEFINE_RAW_SPINLOCK(safe_read_lock);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_PRINTK_NMI
@@ -200,6 +203,11 @@ static void report_message_lost(struct printk_safe_seq_buf *s)
 static void __printk_safe_flush(struct irq_work *work)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	static raw_spinlock_t read_lock =
+		__RAW_SPIN_LOCK_INITIALIZER(read_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	static raw_spinlock_t read_lock =
 		__RAW_SPIN_LOCK_INITIALIZER(read_lock);
@@ -218,7 +226,11 @@ static void __printk_safe_flush(struct irq_work *work)
 	 * a backtrace.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	raw_spin_lock_irqsave(&safe_read_lock, flags);
+=======
+	raw_spin_lock_irqsave(&read_lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	raw_spin_lock_irqsave(&read_lock, flags);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -259,7 +271,11 @@ more:
 out:
 	report_message_lost(s);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&safe_read_lock, flags);
+=======
+	raw_spin_unlock_irqrestore(&read_lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	raw_spin_unlock_irqrestore(&read_lock, flags);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -309,6 +325,7 @@ void printk_safe_flush_on_panic(void)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (raw_spin_is_locked(&safe_read_lock)) {
 		if (num_online_cpus() > 1)
 			return;
@@ -317,6 +334,8 @@ void printk_safe_flush_on_panic(void)
 		raw_spin_lock_init(&safe_read_lock);
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	printk_safe_flush();

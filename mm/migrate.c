@@ -100,7 +100,11 @@ int isolate_movable_page(struct page *page, isolate_mode_t mode)
 	 * Check PageMovable before holding a PG_lock because page's owner
 	 * assumes anybody doesn't touch PG_lock of newly allocated page
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * so unconditionally grabbing the lock ruins page's owner side.
+=======
+	 * so unconditionally grapping the lock ruins page's owner side.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 * so unconditionally grapping the lock ruins page's owner side.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

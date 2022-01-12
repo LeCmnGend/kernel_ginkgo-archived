@@ -1159,7 +1159,11 @@ iscsit_conn_set_transport(struct iscsi_conn *conn, struct iscsit_transport *t)
 
 void iscsi_target_login_sess_out(struct iscsi_conn *conn,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				 bool zero_tsih, bool new_sess)
+=======
+		struct iscsi_np *np, bool zero_tsih, bool new_sess)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		struct iscsi_np *np, bool zero_tsih, bool new_sess)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1185,6 +1189,10 @@ void iscsi_target_login_sess_out(struct iscsi_conn *conn,
 
 old_sess_out:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	iscsi_stop_login_thread_timer(np);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	iscsi_stop_login_thread_timer(np);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1448,9 +1456,14 @@ new_sess_out:
 	new_sess = true;
 old_sess_out:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	iscsi_stop_login_thread_timer(np);
 	tpg_np = conn->tpg_np;
 	iscsi_target_login_sess_out(conn, zero_tsih, new_sess);
+=======
+	tpg_np = conn->tpg_np;
+	iscsi_target_login_sess_out(conn, np, zero_tsih, new_sess);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	tpg_np = conn->tpg_np;
 	iscsi_target_login_sess_out(conn, np, zero_tsih, new_sess);

@@ -913,7 +913,10 @@ reset:
 	reset_control_assert(padctl->rst);
 remove:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	platform_set_drvdata(pdev, NULL);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	soc->ops->remove(padctl);

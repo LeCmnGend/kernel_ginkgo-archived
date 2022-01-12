@@ -1960,7 +1960,11 @@ static int __init dm_bufio_init(void)
 	memset(&dm_bufio_cache_names, 0, sizeof dm_bufio_cache_names);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mem = (__u64)mult_frac(totalram_pages() - totalhigh_pages(),
+=======
+	mem = (__u64)mult_frac(totalram_pages - totalhigh_pages,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mem = (__u64)mult_frac(totalram_pages - totalhigh_pages,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

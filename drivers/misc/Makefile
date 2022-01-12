@@ -66,7 +66,10 @@ obj-$(CONFIG_UID_SYS_STATS)	+= uid_sys_stats.o
 obj-$(CONFIG_MEMORY_STATE_TIME)	+= memory_state_time.o
 obj-$(CONFIG_QPNP_MISC) 	+= qpnp-misc.o
 <<<<<<< HEAD
+<<<<<<< HEAD
 obj-$(CONFIG_BATTERY_SAVER)	+= battery_saver.o
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -96,6 +99,9 @@ obj-$(CONFIG_OKL4_USER_VIPC)    += okl4-vipc.o
 obj-$(CONFIG_OKL4_GUEST)        += okl4-panic.o
 obj-$(CONFIG_OKL4_LINK_SHBUF)    += okl4-link-shbuf.o
 <<<<<<< HEAD
+<<<<<<< HEAD
 obj-$(CONFIG_FORCE_FAST_CHARGE) += fastchg.o
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

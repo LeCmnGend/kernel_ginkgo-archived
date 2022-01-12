@@ -208,7 +208,10 @@ enum {
 	PERF_CPU_MASK,
 	PERF_CPU_DMA_LATENCY,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	PERF_CPU_IRQ_LATENCY,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	PERF_QOS_LUT_MACROTILE_QSEED,
@@ -531,8 +534,11 @@ static struct sde_prop_type sde_perf_prop[] = {
 	{PERF_CPU_DMA_LATENCY, "qcom,sde-qos-cpu-dma-latency", false,
 			PROP_TYPE_U32},
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{PERF_CPU_IRQ_LATENCY, "qcom,sde-qos-cpu-irq-latency", false,
 			PROP_TYPE_U32},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{PERF_QOS_LUT_MACROTILE_QSEED, "qcom,sde-qos-lut-macrotile-qseed",
@@ -1539,7 +1545,10 @@ static int sde_sspp_parse_dt(struct device_node *np,
 				PROP_BITVALUE_ACCESS(prop_value,
 						SSPP_CLK_CTRL, i, 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			sde_cfg->mdp[j].clk_ctrls[sspp->clk_ctrl].val = -1;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
@@ -1991,7 +2000,10 @@ static int sde_wb_parse_dt(struct device_node *np, struct sde_mdss_cfg *sde_cfg)
 				PROP_BITVALUE_ACCESS(prop_value,
 						WB_CLK_CTRL, i, 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			sde_cfg->mdp[j].clk_ctrls[wb->clk_ctrl].val = -1;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
@@ -2181,7 +2193,10 @@ static void _sde_inline_rot_parse_dt(struct device_node *np,
 				PROP_BITVALUE_ACCESS(prop_value,
 						INLINE_ROT_CLK_CTRL, i, 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			sde_cfg->mdp[j].clk_ctrls[index].val = -1;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
@@ -3337,7 +3352,10 @@ static int sde_parse_reg_dma_dt(struct device_node *np,
 			PROP_BITVALUE_ACCESS(prop_value,
 					REG_DMA_CLK_CTRL, 0, 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		sde_cfg->mdp[i].clk_ctrls[sde_cfg->dma_cfg.clk_ctrl].val = -1;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -3662,10 +3680,13 @@ static int sde_perf_parse_dt(struct device_node *np, struct sde_mdss_cfg *cfg)
 			PROP_VALUE_ACCESS(prop_value, PERF_CPU_DMA_LATENCY, 0) :
 			DEFAULT_CPU_DMA_LATENCY;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cfg->perf.cpu_irq_latency =
 			prop_exists[PERF_CPU_IRQ_LATENCY] ?
 			PROP_VALUE_ACCESS(prop_value, PERF_CPU_IRQ_LATENCY, 0) :
 			PM_QOS_DEFAULT_VALUE;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

@@ -126,6 +126,10 @@ static const struct slave_attribute *slave_attrs[] = {
 
 #define to_slave_attr(_at) container_of(_at, struct slave_attribute, attr)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define to_slave(obj)	container_of(obj, struct slave, kobj)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define to_slave(obj)	container_of(obj, struct slave, kobj)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -140,11 +144,14 @@ static ssize_t slave_show(struct kobject *kobj,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const struct sysfs_ops slave_sysfs_ops = {
 	.show = slave_show,
 };
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static const struct sysfs_ops slave_sysfs_ops = {
 	.show = slave_show,
 };
@@ -155,6 +162,9 @@ static struct kobj_type slave_ktype = {
 #endif
 };
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int bond_sysfs_slave_add(struct slave *slave)
 {
@@ -162,7 +172,10 @@ int bond_sysfs_slave_add(struct slave *slave)
 	int err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = kobject_init_and_add(&slave->kobj, &slave_ktype,
 				   &(slave->dev->dev.kobj), "bonding_slave");
 	if (err) {
@@ -170,6 +183,9 @@ int bond_sysfs_slave_add(struct slave *slave)
 		return err;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	for (a = slave_attrs; *a; ++a) {
 		err = sysfs_create_file(&slave->kobj, &((*a)->attr));
@@ -189,6 +205,11 @@ void bond_sysfs_slave_del(struct slave *slave)
 	for (a = slave_attrs; *a; ++a)
 		sysfs_remove_file(&slave->kobj, &((*a)->attr));
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+	kobject_put(&slave->kobj);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	kobject_put(&slave->kobj);

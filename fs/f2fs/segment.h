@@ -89,17 +89,23 @@
 	((sbi)->segs_per_sec * (sbi)->blocks_per_seg)
 #define GET_SEC_FROM_SEG(sbi, segno)				\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	(((segno) == -1) ? -1: (segno) / (sbi)->segs_per_sec)
 #define GET_SEG_FROM_SEC(sbi, secno)				\
 	((secno) * (sbi)->segs_per_sec)
 #define GET_ZONE_FROM_SEC(sbi, secno)				\
 	(((secno) == -1) ? -1: (secno) / (sbi)->secs_per_zone)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	((segno) / (sbi)->segs_per_sec)
 #define GET_SEG_FROM_SEC(sbi, secno)				\
 	((secno) * (sbi)->segs_per_sec)
 #define GET_ZONE_FROM_SEC(sbi, secno)				\
 	((secno) / (sbi)->secs_per_zone)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define GET_ZONE_FROM_SEG(sbi, segno)				\
 	GET_ZONE_FROM_SEC(sbi, GET_SEC_FROM_SEG(sbi, segno))
@@ -622,7 +628,11 @@ static inline int utilization(struct f2fs_sb_info *sbi)
  */
 #define DEF_MIN_IPU_UTIL	70
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define DEF_MIN_FSYNC_BLOCKS	20
+=======
+#define DEF_MIN_FSYNC_BLOCKS	8
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define DEF_MIN_FSYNC_BLOCKS	8
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

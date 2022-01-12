@@ -1029,7 +1029,11 @@ static ssize_t tx_timeout_show(struct netdev_queue *queue, char *buf)
 	spin_unlock_irq(&queue->_xmit_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return sprintf(buf, fmt_ulong, trans_timeout);
+=======
+	return sprintf(buf, "%lu", trans_timeout);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return sprintf(buf, "%lu", trans_timeout);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1212,8 +1216,13 @@ static ssize_t xps_cpus_show(struct netdev_queue *queue,
 			     char *buf)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int cpu, len, ret, num_tc = 1, tc = 0;
 	struct net_device *dev = queue->dev;
+=======
+	struct net_device *dev = queue->dev;
+	int cpu, len, num_tc = 1, tc = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct net_device *dev = queue->dev;
 	int cpu, len, num_tc = 1, tc = 0;
@@ -1224,6 +1233,7 @@ static ssize_t xps_cpus_show(struct netdev_queue *queue,
 
 	index = get_netdev_queue_index(queue);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (!rtnl_trylock())
 		return restart_syscall();
@@ -1242,6 +1252,8 @@ static ssize_t xps_cpus_show(struct netdev_queue *queue,
 		goto err_rtnl_unlock;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (dev->num_tc) {
 		num_tc = dev->num_tc;
 		tc = netdev_txq_to_tc(dev, index);
@@ -1251,6 +1263,9 @@ static ssize_t xps_cpus_show(struct netdev_queue *queue,
 
 	if (!zalloc_cpumask_var(&mask, GFP_KERNEL))
 		return -ENOMEM;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	rcu_read_lock();
@@ -1275,6 +1290,7 @@ static ssize_t xps_cpus_show(struct netdev_queue *queue,
 	rcu_read_unlock();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rtnl_unlock();
 
 	len = snprintf(buf, PAGE_SIZE, "%*pb\n", cpumask_pr_args(mask));
@@ -1284,6 +1300,11 @@ static ssize_t xps_cpus_show(struct netdev_queue *queue,
 err_rtnl_unlock:
 	rtnl_unlock();
 	return ret;
+=======
+	len = snprintf(buf, PAGE_SIZE, "%*pb\n", cpumask_pr_args(mask));
+	free_cpumask_var(mask);
+	return len < PAGE_SIZE ? len : -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	len = snprintf(buf, PAGE_SIZE, "%*pb\n", cpumask_pr_args(mask));
 	free_cpumask_var(mask);
@@ -1314,6 +1335,7 @@ static ssize_t xps_cpus_store(struct netdev_queue *queue,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!rtnl_trylock()) {
 		free_cpumask_var(mask);
 		return restart_syscall();
@@ -1321,6 +1343,9 @@ static ssize_t xps_cpus_store(struct netdev_queue *queue,
 
 	err = netif_set_xps_queue(dev, mask, index);
 	rtnl_unlock();
+=======
+	err = netif_set_xps_queue(dev, mask, index);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = netif_set_xps_queue(dev, mask, index);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

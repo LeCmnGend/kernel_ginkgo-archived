@@ -162,12 +162,18 @@ static void omap_8250_mdr1_errataset(struct uart_8250_port *up,
 {
 	u8 timeout = 255;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u8 old_mdr1;
 
 	old_mdr1 = serial_in(up, UART_OMAP_MDR1);
 	if (old_mdr1 == priv->mdr1)
 		return;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	serial_out(up, UART_OMAP_MDR1, priv->mdr1);
@@ -777,10 +783,14 @@ static void __dma_rx_do_complete(struct uart_8250_port *p)
 
 	count = dma->rx_size - state.residue;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (count < dma->rx_size)
 		dmaengine_terminate_async(dma->rxchan);
 	if (!count)
 		goto unlock;
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -844,6 +854,10 @@ static void omap_8250_rx_dma_flush(struct uart_8250_port *p)
 
 	__dma_rx_do_complete(p);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	dmaengine_terminate_all(dma->rxchan);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dmaengine_terminate_all(dma->rxchan);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1230,7 +1244,10 @@ static int omap8250_probe(struct platform_device *pdev)
 
 	device_init_wakeup(&pdev->dev, true);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pm_runtime_enable(&pdev->dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pm_runtime_use_autosuspend(&pdev->dev);
@@ -1238,6 +1255,10 @@ static int omap8250_probe(struct platform_device *pdev)
 
 	pm_runtime_irq_safe(&pdev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	pm_runtime_enable(&pdev->dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pm_runtime_enable(&pdev->dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

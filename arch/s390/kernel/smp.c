@@ -762,7 +762,11 @@ static int __smp_rescan_cpus(struct sclp_core_info *info, bool early)
 {
 	struct sclp_core_entry *core;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	static cpumask_t avail;
+=======
+	cpumask_t avail;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cpumask_t avail;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -869,6 +873,7 @@ static void smp_start_secondary(void *cpuvoid)
 int __cpu_up(unsigned int cpu, struct task_struct *tidle)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct pcpu *pcpu = pcpu_devices + cpu;
 	int rc;
 
@@ -876,6 +881,8 @@ int __cpu_up(unsigned int cpu, struct task_struct *tidle)
 		return -EIO;
 	if (pcpu_sigp_retry(pcpu, SIGP_INITIAL_CPU_RESET, 0) !=
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct pcpu *pcpu;
 	int base, i, rc;
 
@@ -894,6 +901,9 @@ int __cpu_up(unsigned int cpu, struct task_struct *tidle)
 	 */
 	if (i > smp_cpu_mtid &&
 	    pcpu_sigp_retry(pcpu_devices + base, SIGP_INITIAL_CPU_RESET, 0) !=
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	    SIGP_CC_ORDER_CODE_ACCEPTED)
 		return -EIO;

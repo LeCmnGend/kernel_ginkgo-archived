@@ -463,7 +463,11 @@ static void set_max_cpu_num(void)
 	/* get the highest possible cpu number for a sparse allocation */
 	ret = snprintf(path, PATH_MAX, "%s/devices/system/cpu/possible", mnt);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret >= PATH_MAX) {
+=======
+	if (ret == PATH_MAX) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret == PATH_MAX) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -478,7 +482,11 @@ static void set_max_cpu_num(void)
 	/* get the highest present cpu number for a sparse allocation */
 	ret = snprintf(path, PATH_MAX, "%s/devices/system/cpu/present", mnt);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret >= PATH_MAX) {
+=======
+	if (ret == PATH_MAX) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret == PATH_MAX) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -510,7 +518,11 @@ static void set_max_node_num(void)
 	/* get the highest possible cpu number for a sparse allocation */
 	ret = snprintf(path, PATH_MAX, "%s/devices/system/node/possible", mnt);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret >= PATH_MAX) {
+=======
+	if (ret == PATH_MAX) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret == PATH_MAX) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -599,7 +611,11 @@ int cpu__setup_cpunode_map(void)
 
 	n = snprintf(path, PATH_MAX, "%s/devices/system/node", mnt);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (n >= PATH_MAX) {
+=======
+	if (n == PATH_MAX) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (n == PATH_MAX) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -618,7 +634,11 @@ int cpu__setup_cpunode_map(void)
 
 		n = snprintf(buf, PATH_MAX, "%s/%s", path, dent1->d_name);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (n >= PATH_MAX) {
+=======
+		if (n == PATH_MAX) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (n == PATH_MAX) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

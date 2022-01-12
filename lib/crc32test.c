@@ -684,6 +684,10 @@ static int __init crc32c_test(void)
 	/* reduce OS noise */
 	local_irq_save(flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	local_irq_disable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	local_irq_disable();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -698,6 +702,10 @@ static int __init crc32c_test(void)
 
 	local_irq_restore(flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	local_irq_enable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	local_irq_enable();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -775,6 +783,10 @@ static int __init crc32_test(void)
 	/* reduce OS noise */
 	local_irq_save(flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	local_irq_disable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	local_irq_disable();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -793,6 +805,10 @@ static int __init crc32_test(void)
 
 	local_irq_restore(flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	local_irq_enable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	local_irq_enable();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

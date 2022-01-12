@@ -45,7 +45,11 @@
 #define DBG(fmt...) udbg_printf(fmt)
 #else
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define DBG(fmt...) do { } while (0)
+=======
+#define DBG(fmt...)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define DBG(fmt...)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

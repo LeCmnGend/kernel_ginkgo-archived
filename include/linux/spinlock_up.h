@@ -33,7 +33,10 @@ static inline void arch_spin_lock(arch_spinlock_t *lock)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void
 arch_spin_lock_flags(arch_spinlock_t *lock, unsigned long flags)
 {
@@ -42,6 +45,9 @@ arch_spin_lock_flags(arch_spinlock_t *lock, unsigned long flags)
 	barrier();
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline int arch_spin_trylock(arch_spinlock_t *lock)
 {

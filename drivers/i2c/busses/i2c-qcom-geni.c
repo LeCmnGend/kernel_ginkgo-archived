@@ -1,6 +1,10 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (c) 2017-2021, The Linux Foundation. All rights reserved.
+=======
+ * Copyright (c) 2017-2020, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * Copyright (c) 2017-2020, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -152,8 +156,11 @@ struct geni_i2c_dev {
 	u32 dbg_num;
 	struct dbg_buf_ctxt *dbg_buf_ptr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool bus_recovery_enable;
 	bool disable_dma_mode;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -242,6 +249,7 @@ static inline void qcom_geni_i2c_calc_timeout(struct geni_i2c_dev *gi2c)
 static void geni_i2c_err(struct geni_i2c_dev *gi2c, int err)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (gi2c->cur)
 		GENI_SE_DBG(gi2c->ipcl, false, gi2c->dev,
@@ -249,6 +257,8 @@ static void geni_i2c_err(struct geni_i2c_dev *gi2c, int err)
 			gi2c->cur->len, gi2c->cur->addr, gi2c->cur->flags,
 			gi2c->xfer_timeout);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err == I2C_NACK || err == GENI_ABORT_DONE) {
@@ -264,6 +274,7 @@ err_ret:
 	gi2c->err = gi2c_log[err].err;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static bool geni_i2c_is_bus_recovery_required(struct geni_i2c_dev *gi2c)
 {
@@ -318,6 +329,8 @@ static void geni_i2c_bus_recovery(struct geni_i2c_dev *gi2c)
 		GENI_SE_ERR(gi2c->ipcl, true, gi2c->dev, "Bus recovery done\n");
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static irqreturn_t geni_i2c_irq(int irq, void *dev)
@@ -844,6 +857,7 @@ static int geni_i2c_xfer(struct i2c_adapter *adap,
 		qcom_geni_i2c_calc_timeout(gi2c);
 		mode = msgs[i].len > 32 ? SE_DMA : FIFO_MODE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		/* Complete the transfer in FIFO mode if DMA mode
 		 * is not supported for some Automotive platform.
@@ -853,6 +867,8 @@ static int geni_i2c_xfer(struct i2c_adapter *adap,
 					"Disable DMA mode\n");
 			mode = FIFO_MODE;
 		}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = geni_se_select_mode(gi2c->base, mode);
@@ -973,12 +989,15 @@ static int geni_i2c_xfer(struct i2c_adapter *adap,
 			GENI_SE_ERR(gi2c->ipcl, true, gi2c->dev,
 				"i2c error :%d\n", gi2c->err);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (gi2c->bus_recovery_enable &&
 				geni_i2c_is_bus_recovery_required(gi2c)) {
 				GENI_SE_ERR(gi2c->ipcl, true, gi2c->dev,
 					"SDA Line stuck\n", gi2c->err);
 				geni_i2c_bus_recovery(gi2c);
 			}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			break;
@@ -1131,9 +1150,12 @@ static int geni_i2c_probe(struct platform_device *pdev)
 						gi2c->i2c_rsc.clk_freq_out);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	gi2c->disable_dma_mode = of_property_read_bool(pdev->dev.of_node,
 					"qcom,disable-dma");
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	gi2c->irq = platform_get_irq(pdev, 0);
@@ -1154,8 +1176,11 @@ static int geni_i2c_probe(struct platform_device *pdev)
 	gi2c->adap.algo = &geni_i2c_algo;
 	init_completion(&gi2c->xfer);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	gi2c->bus_recovery_enable = of_property_read_bool(pdev->dev.of_node,
 			"qcom,bus-recovery");
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	platform_set_drvdata(pdev, gi2c);
@@ -1401,7 +1426,10 @@ static struct platform_driver geni_i2c_driver = {
 		.pm = &geni_i2c_pm_ops,
 		.of_match_table = geni_i2c_dt_match,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.probe_type = PROBE_PREFER_ASYNCHRONOUS,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	},

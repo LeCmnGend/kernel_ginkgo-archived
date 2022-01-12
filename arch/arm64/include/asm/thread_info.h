@@ -44,6 +44,7 @@ struct thread_info {
 	u64			ttbr0;		/* saved TTBR0_EL1 */
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_SHADOW_CALL_STACK
 	void			*shadow_call_stack;
 #endif
@@ -60,10 +61,15 @@ struct thread_info {
 		} preempt;
 	};
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int			preempt_count;	/* 0 => preemptable, <0 => bug */
 #ifdef CONFIG_SHADOW_CALL_STACK
 	void			*shadow_call_stack;
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 

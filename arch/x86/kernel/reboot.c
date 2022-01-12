@@ -478,6 +478,7 @@ static const struct dmi_system_id reboot_dmi_table[] __initconst = {
 	},
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{	/* PCIe Wifi card isn't detected after reboot otherwise */
 		.callback = set_pci_reboot,
 		.ident = "Zotac ZBOX CI327 nano",
@@ -487,6 +488,8 @@ static const struct dmi_system_id reboot_dmi_table[] __initconst = {
 		},
 	},
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Sony */
@@ -551,6 +554,7 @@ static void emergency_vmx_disable_all(void)
 
 	/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * Disable VMX on all CPUs before rebooting, otherwise we risk hanging
 	 * the machine, because the CPU blocks INIT when it's in VMX root.
 	 *
@@ -566,6 +570,8 @@ static void emergency_vmx_disable_all(void)
 
 		/* Halt and exit VMX root operation on the other CPUs. */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * We need to disable VMX on all CPUs before rebooting, otherwise
 	 * we risk hanging up the machine, because the CPU ignore INIT
 	 * signals when VMX is enabled.
@@ -589,6 +595,9 @@ static void emergency_vmx_disable_all(void)
 		cpu_vmxoff();
 
 		/* Halt and disable VMX on the other CPUs */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		nmi_shootdown_cpus(vmxoff_nmi);
 

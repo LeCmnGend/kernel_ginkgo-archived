@@ -551,7 +551,11 @@ static int x25_create(struct net *net, struct socket *sock, int protocol,
 		goto out;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rc = -ENOMEM;
+=======
+	rc = -ENOBUFS;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rc = -ENOBUFS;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -684,8 +688,12 @@ static int x25_bind(struct socket *sock, struct sockaddr *uaddr, int addr_len)
 
 	if (addr_len != sizeof(struct sockaddr_x25) ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    addr->sx25_family != AF_X25 ||
 	    strnlen(addr->sx25_addr.x25_addr, X25_ADDR_LEN) == X25_ADDR_LEN) {
+=======
+	    addr->sx25_family != AF_X25) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	    addr->sx25_family != AF_X25) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -783,8 +791,12 @@ static int x25_connect(struct socket *sock, struct sockaddr *uaddr,
 	rc = -EINVAL;
 	if (addr_len != sizeof(struct sockaddr_x25) ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    addr->sx25_family != AF_X25 ||
 	    strnlen(addr->sx25_addr.x25_addr, X25_ADDR_LEN) == X25_ADDR_LEN)
+=======
+	    addr->sx25_family != AF_X25)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	    addr->sx25_family != AF_X25)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -838,7 +850,11 @@ static int x25_connect(struct socket *sock, struct sockaddr *uaddr,
 	rc = 0;
 out_put_neigh:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (rc && x25->neighbour) {
+=======
+	if (rc) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (rc) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1067,7 +1083,10 @@ int x25_rx_call_request(struct sk_buff *skb, struct x25_neigh *nb,
 	makex25->dest_addr     = dest_addr;
 	makex25->source_addr   = source_addr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	x25_neigh_hold(nb);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	makex25->neighbour     = nb;

@@ -22,8 +22,12 @@ enum {
 	PORT_BSW2,
 	PORT_CE4100,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	PORT_LPT0,
 	PORT_LPT1,
+=======
+	PORT_LPT,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	PORT_LPT,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -61,10 +65,15 @@ static struct dw_dma_slave bsw2_tx_param = { .dst_id = 8 };
 static struct dw_dma_slave bsw2_rx_param = { .src_id = 9 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct dw_dma_slave lpt1_tx_param = { .dst_id = 0 };
 static struct dw_dma_slave lpt1_rx_param = { .src_id = 1 };
 static struct dw_dma_slave lpt0_tx_param = { .dst_id = 2 };
 static struct dw_dma_slave lpt0_rx_param = { .src_id = 3 };
+=======
+static struct dw_dma_slave lpt_tx_param = { .dst_id = 0 };
+static struct dw_dma_slave lpt_rx_param = { .src_id = 1 };
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static struct dw_dma_slave lpt_tx_param = { .dst_id = 0 };
 static struct dw_dma_slave lpt_rx_param = { .src_id = 1 };
@@ -195,6 +204,7 @@ static struct pxa_spi_info spi_info_configs[] = {
 		.max_clk_rate = 50000000,
 	},
 <<<<<<< HEAD
+<<<<<<< HEAD
 	[PORT_LPT0] = {
 		.type = LPSS_LPT_SSP,
 		.port_id = 0,
@@ -209,12 +219,17 @@ static struct pxa_spi_info spi_info_configs[] = {
 		.tx_param = &lpt1_tx_param,
 		.rx_param = &lpt1_rx_param,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	[PORT_LPT] = {
 		.type = LPSS_LPT_SSP,
 		.port_id = 0,
 		.setup = lpss_spi_setup,
 		.tx_param = &lpt_tx_param,
 		.rx_param = &lpt_rx_param,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	},
 };
@@ -310,9 +325,14 @@ static const struct pci_device_id pxa2xx_spi_pci_devices[] = {
 	{ PCI_VDEVICE(INTEL, 0x22ac), PORT_BSW2 },
 	{ PCI_VDEVICE(INTEL, 0x2e6a), PORT_CE4100 },
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ PCI_VDEVICE(INTEL, 0x9ce5), PORT_LPT0 },
 	{ PCI_VDEVICE(INTEL, 0x9ce6), PORT_LPT1 },
 	{ }
+=======
+	{ PCI_VDEVICE(INTEL, 0x9ce6), PORT_LPT },
+	{ },
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	{ PCI_VDEVICE(INTEL, 0x9ce6), PORT_LPT },
 	{ },

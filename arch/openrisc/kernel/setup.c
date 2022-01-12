@@ -261,8 +261,11 @@ void calibrate_delay(void)
 		loops_per_jiffy / (500000 / HZ),
 		(loops_per_jiffy / (5000 / HZ)) % 100, loops_per_jiffy);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	of_node_put(cpu);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

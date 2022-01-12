@@ -342,7 +342,11 @@ static ssize_t vfio_ccw_mdev_ioctl(struct mdev_device *mdev,
 			return ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return copy_to_user((void __user *)arg, &info, minsz) ? -EFAULT : 0;
+=======
+		return copy_to_user((void __user *)arg, &info, minsz);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return copy_to_user((void __user *)arg, &info, minsz);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -367,7 +371,11 @@ static ssize_t vfio_ccw_mdev_ioctl(struct mdev_device *mdev,
 			return ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return copy_to_user((void __user *)arg, &info, minsz) ? -EFAULT : 0;
+=======
+		return copy_to_user((void __user *)arg, &info, minsz);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return copy_to_user((void __user *)arg, &info, minsz);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -392,7 +400,11 @@ static ssize_t vfio_ccw_mdev_ioctl(struct mdev_device *mdev,
 			return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return copy_to_user((void __user *)arg, &info, minsz) ? -EFAULT : 0;
+=======
+		return copy_to_user((void __user *)arg, &info, minsz);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return copy_to_user((void __user *)arg, &info, minsz);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

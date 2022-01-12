@@ -689,6 +689,12 @@ static int acpi_data_prop_read_single(const struct acpi_device_data *data,
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (!val)
+		return -EINVAL;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!val)
 		return -EINVAL;
@@ -704,10 +710,14 @@ static int acpi_data_prop_read_single(const struct acpi_device_data *data,
 			if (obj->integer.value > U8_MAX)
 				return -EOVERFLOW;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 			if (val)
 				*(u8 *)val = obj->integer.value;
 
+=======
+			*(u8 *)val = obj->integer.value;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			*(u8 *)val = obj->integer.value;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -716,6 +726,7 @@ static int acpi_data_prop_read_single(const struct acpi_device_data *data,
 			if (obj->integer.value > U16_MAX)
 				return -EOVERFLOW;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 			if (val)
 				*(u16 *)val = obj->integer.value;
@@ -723,10 +734,14 @@ static int acpi_data_prop_read_single(const struct acpi_device_data *data,
 =======
 			*(u16 *)val = obj->integer.value;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+			*(u16 *)val = obj->integer.value;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			break;
 		case DEV_PROP_U32:
 			if (obj->integer.value > U32_MAX)
 				return -EOVERFLOW;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 			if (val)
@@ -743,12 +758,17 @@ static int acpi_data_prop_read_single(const struct acpi_device_data *data,
 		if (!val)
 			return 1;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			*(u32 *)val = obj->integer.value;
 			break;
 		default:
 			*(u64 *)val = obj->integer.value;
 			break;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else if (proptype == DEV_PROP_STRING) {
 		ret = acpi_data_get_property(data, propname, ACPI_TYPE_STRING, &obj);
@@ -756,8 +776,12 @@ static int acpi_data_prop_read_single(const struct acpi_device_data *data,
 			return ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (val)
 			*(char **)val = obj->string.pointer;
+=======
+		*(char **)val = obj->string.pointer;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		*(char **)val = obj->string.pointer;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -775,7 +799,11 @@ int acpi_dev_prop_read_single(struct acpi_device *adev, const char *propname,
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!adev || !val)
+=======
+	if (!adev)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!adev)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -873,6 +901,7 @@ static int acpi_data_prop_read(const struct acpi_device_data *data,
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (nval == 1 || !val) {
 		ret = acpi_data_prop_read_single(data, propname, proptype, val);
 		/*
@@ -888,10 +917,15 @@ static int acpi_data_prop_read(const struct acpi_device_data *data,
 		 * continue.
 		 */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (val && nval == 1) {
 		ret = acpi_data_prop_read_single(data, propname, proptype, val);
 		if (ret >= 0)
 			return ret;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 

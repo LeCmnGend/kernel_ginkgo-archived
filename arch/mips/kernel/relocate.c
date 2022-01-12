@@ -188,6 +188,7 @@ static inline __init unsigned long rotate_xor(unsigned long hash,
 					      const void *area, size_t size)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	const typeof(hash) *ptr = PTR_ALIGN(area, sizeof(hash));
 	size_t diff, i;
 
@@ -196,6 +197,10 @@ static inline __init unsigned long rotate_xor(unsigned long hash,
 		return hash;
 
 	size = ALIGN_DOWN(size - diff, sizeof(hash));
+=======
+	size_t i;
+	unsigned long *ptr = (unsigned long *)area;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	size_t i;
 	unsigned long *ptr = (unsigned long *)area;

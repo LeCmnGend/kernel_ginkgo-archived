@@ -480,10 +480,15 @@ static int fimc_md_register_sensor_entities(struct fimc_md *fmd)
 
 	ret = pm_runtime_get_sync(fmd->pmf);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret < 0) {
 		pm_runtime_put(fmd->pmf);
 		return ret;
 	}
+=======
+	if (ret < 0)
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret < 0)
 		return ret;
@@ -1264,7 +1269,10 @@ static int fimc_md_get_pinctrl(struct fimc_md *fmd)
 		return PTR_ERR(pctl->state_default);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* PINCTRL_STATE_IDLE is optional */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pctl->state_idle = pinctrl_lookup_state(pctl->pinctrl,

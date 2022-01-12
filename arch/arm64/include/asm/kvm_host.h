@@ -159,7 +159,10 @@ enum vcpu_sysreg {
 #define c2_TTBR1_high	(c2_TTBR1 + 1)	/* TTBR1 top 32 bits */
 #define c2_TTBCR	(TCR_EL1 * 2)	/* Translation Table Base Control R. */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define c2_TTBCR2	(c2_TTBCR + 1)	/* Translation Table Base Control R. 2 */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define c3_DACR		(DACR32_EL2 * 2)/* Domain Access Control Register */
@@ -190,7 +193,10 @@ enum vcpu_sysreg {
 #define cp14_DBGWVR0	(DBGWVR0_EL1 * 2)
 #define cp14_DBGDCCINT	(MDCCINT_EL1 * 2)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define cp14_DBGVCR	(DBGVCR32_EL2 * 2)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

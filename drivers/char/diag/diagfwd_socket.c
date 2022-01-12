@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2015-2019, 2021 The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2015-2019, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2015-2019, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -255,6 +259,7 @@ struct diag_socket_info socket_dci_cmd[NUM_PERIPHERALS] = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct diag_socket_info *diag_get_socket_info_ptr(int type, int peripheral)
 {
 	if (type == TYPE_CMD)
@@ -271,6 +276,8 @@ struct diag_socket_info *diag_get_socket_info_ptr(int type, int peripheral)
 		return NULL;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct restart_notifier_block {
@@ -642,9 +649,13 @@ static void socket_read_work_fn(struct work_struct *work)
 	mutex_unlock(&info->socket_info_mutex);
 	if (unlikely(err == -ENETRESET)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		info->reset_flag = 1;
 		socket_close_channel(info);
 		info->reset_flag = 0;
+=======
+		socket_close_channel(info);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		socket_close_channel(info);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -868,9 +879,13 @@ static int diag_socket_read(void *ctxt, unsigned char *buf, int buf_len)
 			diagfwd_channel_read_done(info->fwd_ctxt, buf, 0);
 			mutex_unlock(channel_mutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			info->reset_flag = 1;
 			socket_close_channel(info);
 			info->reset_flag = 0;
+=======
+			socket_close_channel(info);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			socket_close_channel(info);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1023,7 +1038,10 @@ static void __diag_socket_init(struct diag_socket_info *info)
 	info->fwd_ctxt = NULL;
 	info->data_ready = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	info->reset_flag = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	atomic_set(&info->flow_cnt, 0);

@@ -168,6 +168,7 @@ static const struct i2c_device_id rt5033_battery_id[] = {
 MODULE_DEVICE_TABLE(i2c, rt5033_battery_id);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const struct of_device_id rt5033_battery_of_match[] = {
 	{ .compatible = "richtek,rt5033-battery", },
 	{ }
@@ -178,6 +179,11 @@ static struct i2c_driver rt5033_battery_driver = {
 	.driver = {
 		.name = "rt5033-battery",
 		.of_match_table = rt5033_battery_of_match,
+=======
+static struct i2c_driver rt5033_battery_driver = {
+	.driver = {
+		.name = "rt5033-battery",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static struct i2c_driver rt5033_battery_driver = {
 	.driver = {

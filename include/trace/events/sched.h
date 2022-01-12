@@ -274,16 +274,22 @@ TRACE_EVENT(sched_load_balance,
 		unsigned long group_mask, int busiest_nr_running,
 		unsigned long imbalance, unsigned int env_flags, int ld_moved,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unsigned int balance_interval, int active_balance, int prefer_spread),
 
 	TP_ARGS(cpu, idle, balance, group_mask, busiest_nr_running,
 		imbalance, env_flags, ld_moved, balance_interval, active_balance,
 		prefer_spread),
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		unsigned int balance_interval, int active_balance),
 
 	TP_ARGS(cpu, idle, balance, group_mask, busiest_nr_running,
 		imbalance, env_flags, ld_moved, balance_interval, active_balance),
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	TP_STRUCT__entry(
@@ -298,7 +304,10 @@ TRACE_EVENT(sched_load_balance,
 		__field(        unsigned int,           balance_interval)
 		__field(        int,                    active_balance)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__field(        int,                    prefer_spread)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	),
@@ -315,10 +324,16 @@ TRACE_EVENT(sched_load_balance,
 		__entry->balance_interval       = balance_interval;
 		__entry->active_balance		= active_balance;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__entry->prefer_spread		= prefer_spread;
 	),
 
 	TP_printk("cpu=%d state=%s balance=%d group=%#lx busy_nr=%d imbalance=%ld flags=%#x ld_moved=%d bal_int=%d active_balance=%d prefer_spread=%d",
+=======
+	),
+
+	TP_printk("cpu=%d state=%s balance=%d group=%#lx busy_nr=%d imbalance=%ld flags=%#x ld_moved=%d bal_int=%d active_balance=%d",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	),
 
@@ -331,8 +346,12 @@ TRACE_EVENT(sched_load_balance,
 		__entry->group_mask, __entry->busiest_nr_running,
 		__entry->imbalance, __entry->env_flags, __entry->ld_moved,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__entry->balance_interval, __entry->active_balance,
 		__entry->prefer_spread)
+=======
+		__entry->balance_interval, __entry->active_balance)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__entry->balance_interval, __entry->active_balance)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -887,12 +906,18 @@ struct cfs_rq *__trace_sched_group_cfs_rq(struct sched_entity *se)
 
 #ifdef CONFIG_SCHED_WALT
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern unsigned int sched_ravg_window;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern unsigned int sysctl_sched_use_walt_cpu_util;
 extern unsigned int sysctl_sched_use_walt_task_util;
 extern unsigned int sched_ravg_window;
 extern unsigned int walt_disabled;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #define walt_util(util_var, demand_sum) {\
@@ -934,6 +959,10 @@ TRACE_EVENT(sched_load_cfs_rq,
 			walt_util(__entry->util_walt,
 				  cfs_rq->rq->prev_runnable_sum);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			if (!walt_disabled && sysctl_sched_use_walt_cpu_util)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (!walt_disabled && sysctl_sched_use_walt_cpu_util)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -990,6 +1019,11 @@ TRACE_EVENT(sched_load_se,
 		__field(	unsigned long,	load			      )
 		__field(	unsigned long,	util			      )
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		__field(	unsigned long,	util_pelt		      )
+		__field(	u32,		util_walt		      )
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__field(	unsigned long,	util_pelt		      )
 		__field(	u32,		util_walt		      )
@@ -1010,7 +1044,10 @@ TRACE_EVENT(sched_load_se,
 		__entry->load = se->avg.load_avg;
 		__entry->util = se->avg.util_avg;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__entry->util_pelt  = __entry->util;
 		__entry->util_walt  = 0;
 #ifdef CONFIG_SCHED_WALT
@@ -1021,13 +1058,21 @@ TRACE_EVENT(sched_load_se,
 				__entry->util = __entry->util_walt;
 		}
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	),
 
 	TP_printk("cpu=%d path=%s comm=%s pid=%d load=%lu util=%lu util_pelt=%lu util_walt=%u",
 		  __entry->cpu, __get_str(path), __entry->comm,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		  __entry->pid, __entry->load, __entry->util)
+=======
+		  __entry->pid, __entry->load, __entry->util,
+		  __entry->util_pelt, __entry->util_walt)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		  __entry->pid, __entry->load, __entry->util,
 		  __entry->util_pelt, __entry->util_walt)
@@ -1181,6 +1226,7 @@ TRACE_EVENT(core_ctl_update_nr_need,
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 TRACE_EVENT(core_ctl_notif_data,
 
 	TP_PROTO(u32 nr_big, u32 ta_load, u32 *ta_util, u32 *cur_cap),
@@ -1208,6 +1254,8 @@ TRACE_EVENT(core_ctl_notif_data,
 		  __entry->cur_cap[1], __entry->cur_cap[2])
 );
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -1526,6 +1574,7 @@ TRACE_EVENT(sched_task_util,
 
 	TP_PROTO(struct task_struct *p, int next_cpu, int backup_cpu,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		int target_cpu, bool sync, int need_idle, int fastpath,
 		bool placement_boost, u64 start_t,
 		bool stune_boosted, bool is_rtg, bool rtg_skip_min,
@@ -1535,12 +1584,17 @@ TRACE_EVENT(sched_task_util,
 		placement_boost, start_t, stune_boosted, is_rtg, rtg_skip_min,
 		start_cpu),
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		int target_cpu, bool sync, bool need_idle, int fastpath,
 		bool placement_boost, int rtg_cpu, u64 start_t,
 		bool stune_boosted),
 
 	TP_ARGS(p, next_cpu, backup_cpu, target_cpu, sync, need_idle, fastpath,
 		placement_boost, rtg_cpu, start_t, stune_boosted),
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	TP_STRUCT__entry(
@@ -1553,7 +1607,11 @@ TRACE_EVENT(sched_task_util,
 		__field(int, target_cpu			)
 		__field(bool, sync			)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__field(int, need_idle			)
+=======
+		__field(bool, need_idle			)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__field(bool, need_idle			)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1563,10 +1621,13 @@ TRACE_EVENT(sched_task_util,
 		__field(u64, latency			)
 		__field(bool, stune_boosted		)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__field(bool, is_rtg			)
 		__field(bool, rtg_skip_min		)
 		__field(int, start_cpu			)
 		__field(u32, unfilter			)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	),
@@ -1583,6 +1644,7 @@ TRACE_EVENT(sched_task_util,
 		__entry->need_idle		= need_idle;
 		__entry->fastpath		= fastpath;
 		__entry->placement_boost	= placement_boost;
+<<<<<<< HEAD
 <<<<<<< HEAD
 		__entry->latency		= (sched_clock() - start_t);
 		__entry->stune_boosted		= stune_boosted;
@@ -1601,6 +1663,8 @@ TRACE_EVENT(sched_task_util,
 		__entry->is_rtg, __entry->rtg_skip_min, __entry->start_cpu,
 		__entry->unfilter)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__entry->rtg_cpu		= rtg_cpu;
 		__entry->latency		= (sched_clock() - start_t);
 		__entry->stune_boosted		= stune_boosted;
@@ -1612,6 +1676,9 @@ TRACE_EVENT(sched_task_util,
 		__entry->sync, __entry->need_idle, __entry->fastpath,
 		__entry->placement_boost, __entry->rtg_cpu, __entry->latency,
 		__entry->stune_boosted)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 )
 
@@ -1621,9 +1688,15 @@ TRACE_EVENT(sched_task_util,
 TRACE_EVENT(sched_get_nr_running_avg,
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	TP_PROTO(int cpu, int nr, int nr_misfit, int nr_max, int nr_scaled),
 
 	TP_ARGS(cpu, nr, nr_misfit, nr_max, nr_scaled),
+=======
+	TP_PROTO(int cpu, int nr, int nr_misfit, int nr_max),
+
+	TP_ARGS(cpu, nr, nr_misfit, nr_max),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	TP_PROTO(int cpu, int nr, int nr_misfit, int nr_max),
 
@@ -1636,7 +1709,10 @@ TRACE_EVENT(sched_get_nr_running_avg,
 		__field( int, nr_misfit)
 		__field( int, nr_max)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__field( int, nr_scaled)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	),
@@ -1647,6 +1723,7 @@ TRACE_EVENT(sched_get_nr_running_avg,
 		__entry->nr_misfit = nr_misfit;
 		__entry->nr_max = nr_max;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__entry->nr_scaled = nr_scaled;
 	),
 
@@ -1654,10 +1731,15 @@ TRACE_EVENT(sched_get_nr_running_avg,
 		__entry->cpu, __entry->nr, __entry->nr_misfit, __entry->nr_max,
 		__entry->nr_scaled)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	),
 
 	TP_printk("cpu=%d nr=%d nr_misfit=%d nr_max=%d",
 		__entry->cpu, __entry->nr, __entry->nr_misfit, __entry->nr_max)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 );
 

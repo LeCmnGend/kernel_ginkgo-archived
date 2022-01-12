@@ -615,6 +615,7 @@ static void gdm_lte_netif_rx(struct net_device *dev, char *buf,
 						  */
 			} __packed;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			int offset = sizeof(struct iphdr) +
 				     sizeof(struct udphdr) +
 				     offsetof(struct dhcp_packet, chaddr);
@@ -622,10 +623,15 @@ static void gdm_lte_netif_rx(struct net_device *dev, char *buf,
 				return;
 			ether_addr_copy(nic->dest_mac_addr, buf + offset);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			void *addr = buf + sizeof(struct iphdr) +
 				sizeof(struct udphdr) +
 				offsetof(struct dhcp_packet, chaddr);
 			ether_addr_copy(nic->dest_mac_addr, addr);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 	}
@@ -690,7 +696,10 @@ static void gdm_lte_multi_sdu_pkt(struct phy_dev *phy_dev, char *buf, int len)
 	struct gdm_endian *endian = phy_dev->get_endian(phy_dev->priv_dev);
 	u8 *data = (u8 *)multi_sdu->data;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int copied;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u16 i = 0;
@@ -705,12 +714,15 @@ static void gdm_lte_multi_sdu_pkt(struct phy_dev *phy_dev, char *buf, int len)
 
 	for (i = 0; i < num_packet; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		copied = data - multi_sdu->data;
 		if (len < copied + sizeof(*sdu)) {
 			pr_err("rx prevent buffer overflow");
 			return;
 		}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		sdu = (struct sdu *)data;
@@ -724,8 +736,12 @@ static void gdm_lte_multi_sdu_pkt(struct phy_dev *phy_dev, char *buf, int len)
 			return;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (hci_len < 12 ||
 		    len < copied + sizeof(*sdu) + (hci_len - 12)) {
+=======
+		if (hci_len < 12) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (hci_len < 12) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

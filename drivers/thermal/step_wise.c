@@ -55,12 +55,15 @@ static unsigned long get_target_state(struct thermal_instance *instance,
 
 	/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * If the throttle condition is not reached and there is no
 	 * previous mitigaiton request, then there is nothing to compute.
 	 */
 	if (!throttle && instance->target == THERMAL_NO_TARGET)
 		return THERMAL_NO_TARGET;
 	/*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * We keep this instance the way it is by default.
@@ -99,9 +102,13 @@ static unsigned long get_target_state(struct thermal_instance *instance,
 		break;
 	case THERMAL_TREND_DROPPING:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case THERMAL_TREND_STABLE:
 		if (cur_state <= instance->lower ||
 			instance->target <= instance->lower) {
+=======
+		if (cur_state <= instance->lower) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (cur_state <= instance->lower) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

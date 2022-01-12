@@ -1873,8 +1873,12 @@ static void ixgbe_dma_sync_frag(struct ixgbe_ring *rx_ring,
 {
 	if (ring_uses_build_skb(rx_ring)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unsigned long mask = (unsigned long)ixgbe_rx_pg_size(rx_ring) - 1;
 		unsigned long offset = (unsigned long)(skb->data) & mask;
+=======
+		unsigned long offset = (unsigned long)(skb->data) & ~PAGE_MASK;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		unsigned long offset = (unsigned long)(skb->data) & ~PAGE_MASK;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -9272,10 +9276,15 @@ static int ixgbe_configure_clsu32(struct ixgbe_adapter *adapter,
 	err = ixgbe_fdir_write_perfect_filter_82599(hw, &input->filter,
 						    input->sw_idx, queue);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (err)
 		goto err_out_w_lock;
 
 	ixgbe_update_ethtool_fdir_entry(adapter, input, input->sw_idx);
+=======
+	if (!err)
+		ixgbe_update_ethtool_fdir_entry(adapter, input, input->sw_idx);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!err)
 		ixgbe_update_ethtool_fdir_entry(adapter, input, input->sw_idx);
@@ -10583,7 +10592,10 @@ err_ioremap:
 	free_netdev(netdev);
 err_alloc_etherdev:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pci_disable_pcie_error_reporting(pdev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pci_release_mem_regions(pdev);

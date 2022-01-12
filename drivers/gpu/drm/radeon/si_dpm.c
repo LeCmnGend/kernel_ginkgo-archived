@@ -3001,9 +3001,12 @@ static void si_apply_state_adjust_rules(struct radeon_device *rdev,
 			max_sclk = 75000;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		if (rdev->pm.dpm.high_pixelclock_count > 1)
 			disable_sclk_switching = true;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

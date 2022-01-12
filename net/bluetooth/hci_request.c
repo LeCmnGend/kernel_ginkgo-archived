@@ -278,6 +278,7 @@ int hci_req_sync(struct hci_dev *hdev, int (*req)(struct hci_request *req,
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Serialize all requests */
 	hci_req_sync_lock(hdev);
 	/* check the state after obtaing the lock to protect the HCI_UP
@@ -289,12 +290,17 @@ int hci_req_sync(struct hci_dev *hdev, int (*req)(struct hci_request *req,
 	else
 		ret = -ENETDOWN;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!test_bit(HCI_UP, &hdev->flags))
 		return -ENETDOWN;
 
 	/* Serialize all requests */
 	hci_req_sync_lock(hdev);
 	ret = __hci_req_sync(hdev, req, opt, timeout, hci_status);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	hci_req_sync_unlock(hdev);
 

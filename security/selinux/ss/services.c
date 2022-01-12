@@ -51,6 +51,10 @@
 #include <linux/mutex.h>
 #include <linux/selinux.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <linux/flex_array.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/flex_array.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -442,7 +446,10 @@ mls_ops:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_AUDIT
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -536,7 +543,10 @@ out:
 	return;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -558,7 +568,12 @@ static void type_attribute_bounds_av(struct policydb *policydb,
 	u32 masked = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	source = policydb->type_val_to_struct_array[scontext->type - 1];
+=======
+	source = flex_array_get_ptr(policydb->type_val_to_struct_array,
+				    scontext->type - 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	source = flex_array_get_ptr(policydb->type_val_to_struct_array,
 				    scontext->type - 1);
@@ -569,7 +584,12 @@ static void type_attribute_bounds_av(struct policydb *policydb,
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	target = policydb->type_val_to_struct_array[tcontext->type - 1];
+=======
+	target = flex_array_get_ptr(policydb->type_val_to_struct_array,
+				    tcontext->type - 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	target = flex_array_get_ptr(policydb->type_val_to_struct_array,
 				    tcontext->type - 1);
@@ -602,11 +622,17 @@ static void type_attribute_bounds_av(struct policydb *policydb,
 	avd->allowed &= ~masked;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_AUDIT
 	/* audit masked permissions */
 	security_dump_masked_av(policydb, scontext, tcontext,
 				tclass, masked, "bounds");
 #endif
+=======
+	/* audit masked permissions */
+	security_dump_masked_av(policydb, scontext, tcontext,
+				tclass, masked, "bounds");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* audit masked permissions */
 	security_dump_masked_av(policydb, scontext, tcontext,
@@ -682,15 +708,21 @@ static void context_struct_compute_av(struct policydb *policydb,
 	avkey.target_class = tclass;
 	avkey.specified = AVTAB_AV | AVTAB_XPERMS;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sattr = &policydb->type_attr_map_array[scontext->type - 1];
 	BUG_ON(!sattr);
 	tattr = &policydb->type_attr_map_array[tcontext->type - 1];
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	sattr = flex_array_get(policydb->type_attr_map_array,
 			       scontext->type - 1);
 	BUG_ON(!sattr);
 	tattr = flex_array_get(policydb->type_attr_map_array,
 			       tcontext->type - 1);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	BUG_ON(!tattr);
 	ebitmap_for_each_positive_bit(sattr, snode, i) {
@@ -759,7 +791,11 @@ static void context_struct_compute_av(struct policydb *policydb,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int security_validtrans_handle_fail(struct selinux_state *state,
+=======
+static int security_validtrans_handle_fail(struct selinux_state *state,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int security_validtrans_handle_fail(struct selinux_state *state,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -769,7 +805,10 @@ static int security_validtrans_handle_fail(struct selinux_state *state,
 					   u16 tclass)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_AUDIT
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct policydb *p = &state->ss->policydb;
@@ -791,7 +830,10 @@ out:
 	kfree(n);
 	kfree(t);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -947,7 +989,12 @@ int security_bounded_transition(struct selinux_state *state,
 	index = new_context->type;
 	while (true) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		type = policydb->type_val_to_struct_array[index - 1];
+=======
+		type = flex_array_get_ptr(policydb->type_val_to_struct_array,
+					  index - 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		type = flex_array_get_ptr(policydb->type_val_to_struct_array,
 					  index - 1);
@@ -968,7 +1015,10 @@ int security_bounded_transition(struct selinux_state *state,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_AUDIT
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (rc) {
@@ -991,7 +1041,10 @@ int security_bounded_transition(struct selinux_state *state,
 		kfree(old_name);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out:
@@ -1123,15 +1176,21 @@ void security_compute_xperms_decision(struct selinux_state *state,
 	avkey.target_class = tclass;
 	avkey.specified = AVTAB_XPERMS;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sattr = &policydb->type_attr_map_array[scontext->type - 1];
 	BUG_ON(!sattr);
 	tattr = &policydb->type_attr_map_array[tcontext->type - 1];
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	sattr = flex_array_get(policydb->type_attr_map_array,
 				scontext->type - 1);
 	BUG_ON(!sattr);
 	tattr = flex_array_get(policydb->type_attr_map_array,
 				tcontext->type - 1);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	BUG_ON(!tattr);
 	ebitmap_for_each_positive_bit(sattr, snode, i) {
@@ -1674,7 +1733,11 @@ int security_context_to_sid_force(struct selinux_state *state,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int compute_sid_handle_invalid_context(
+=======
+static int compute_sid_handle_invalid_context(
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int compute_sid_handle_invalid_context(
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1685,8 +1748,11 @@ static int compute_sid_handle_invalid_context(
 	struct context *newcontext)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 #ifdef CONFIG_AUDIT
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct policydb *policydb = &state->ss->policydb;
@@ -1710,7 +1776,10 @@ out:
 	kfree(t);
 	kfree(n);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!enforcing_enabled(state))
@@ -2008,11 +2077,17 @@ static inline int convert_context_handle_invalid_context(
 	struct context *context)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_AUDIT
 	struct policydb *policydb = &state->ss->policydb;
 	char *s;
 	u32 len;
 #endif
+=======
+	struct policydb *policydb = &state->ss->policydb;
+	char *s;
+	u32 len;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct policydb *policydb = &state->ss->policydb;
 	char *s;
@@ -2023,7 +2098,10 @@ static inline int convert_context_handle_invalid_context(
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_AUDIT
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!context_struct_to_string(policydb, context, &s, &len)) {
@@ -2032,7 +2110,10 @@ static inline int convert_context_handle_invalid_context(
 		kfree(s);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
@@ -2061,10 +2142,15 @@ static int convert_context(struct context *oldc, struct context *newc, void *p)
 	struct user_datum *usrdatum;
 	char *s;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int rc;
 #ifdef CONFIG_AUDIT
 	u32 len;
 #endif
+=======
+	u32 len;
+	int rc;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 len;
 	int rc;
@@ -2175,7 +2261,10 @@ static int convert_context(struct context *oldc, struct context *newc, void *p)
 	return 0;
 bad:
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_AUDIT
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Map old representation to string and save it. */
@@ -2189,9 +2278,13 @@ bad:
 	pr_info("SELinux:  Context %s became invalid (unmapped).\n",
 		newc->str);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #else
 	return 0;
 #endif
+=======
+	return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2219,7 +2312,10 @@ static void security_load_policycaps(struct selinux_state *state)
 
 	state->android_netlink_route = p->android_netlink_route;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	state->android_netlink_getneigh = p->android_netlink_getneigh;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	selinux_nlmsg_init();
@@ -2952,6 +3048,7 @@ int security_get_bools(struct selinux_state *state,
 	int i, rc;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!state->initialized) {
 		*len = 0;
 		*names = NULL;
@@ -2959,6 +3056,8 @@ int security_get_bools(struct selinux_state *state,
 		return 0;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	read_lock(&state->ss->policy_rwlock);
@@ -3129,11 +3228,17 @@ int security_sid_mls_copy(struct selinux_state *state,
 	struct context *context2;
 	struct context newcon;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int rc;
 #ifdef CONFIG_AUDIT
 	char *s;
 	u32 len;
 #endif
+=======
+	char *s;
+	u32 len;
+	int rc;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	char *s;
 	u32 len;
@@ -3178,7 +3283,10 @@ int security_sid_mls_copy(struct selinux_state *state,
 		rc = convert_context_handle_invalid_context(state, &newcon);
 		if (rc) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_AUDIT
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (!context_struct_to_string(policydb, &newcon, &s,
@@ -3190,7 +3298,10 @@ int security_sid_mls_copy(struct selinux_state *state,
 				kfree(s);
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			goto out_unlock;
@@ -3311,12 +3422,15 @@ int security_get_classes(struct selinux_state *state,
 	int rc;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!state->initialized) {
 		*nclasses = 0;
 		*classes = NULL;
 		return 0;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	read_lock(&state->ss->policy_rwlock);
@@ -3683,7 +3797,10 @@ out:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_AUDIT
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int (*aurule_callback)(void) = audit_update_lsm_rules;
@@ -3709,7 +3826,10 @@ static int __init aurule_init(void)
 }
 __initcall(aurule_init);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

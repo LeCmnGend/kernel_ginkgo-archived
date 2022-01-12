@@ -1,6 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef LIBFDT_ENV_H
 #define LIBFDT_ENV_H
+=======
+#ifndef _LIBFDT_ENV_H
+#define _LIBFDT_ENV_H
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #ifndef _LIBFDT_ENV_H
 #define _LIBFDT_ENV_H
@@ -115,6 +120,7 @@ static inline fdt64_t cpu_to_fdt64(uint64_t x)
 #undef EXTRACT_BYTE
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef __APPLE__
 #include <AvailabilityMacros.h>
 
@@ -143,6 +149,9 @@ static inline size_t fdt_strnlen(const char *string, size_t max_count)
 #endif /* __APPLE__ */
 
 #endif /* LIBFDT_ENV_H */
+=======
+#endif /* _LIBFDT_ENV_H */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #endif /* _LIBFDT_ENV_H */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

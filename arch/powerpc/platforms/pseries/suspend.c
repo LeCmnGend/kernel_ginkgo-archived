@@ -27,6 +27,10 @@
 #include <asm/rtas.h>
 #include <asm/topology.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include "../../kernel/cacheinfo.h"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include "../../kernel/cacheinfo.h"
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -95,7 +99,13 @@ static void pseries_suspend_enable_irqs(void)
 	 * changes during resume.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	post_mobility_fixup();
+=======
+	cacheinfo_cpu_offline(smp_processor_id());
+	post_mobility_fixup();
+	cacheinfo_cpu_online(smp_processor_id());
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cacheinfo_cpu_offline(smp_processor_id());
 	post_mobility_fixup();
@@ -232,6 +242,10 @@ static struct bus_type suspend_subsys = {
 static const struct platform_suspend_ops pseries_suspend_ops = {
 	.valid		= suspend_valid_only_mem,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	.begin		= pseries_suspend_begin,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.begin		= pseries_suspend_begin,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

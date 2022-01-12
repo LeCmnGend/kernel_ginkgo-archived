@@ -266,7 +266,11 @@ static struct feature_property {
 
 #if defined(CONFIG_44x) && defined(CONFIG_PPC_FPU)
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __init void identical_pvr_fixup(unsigned long node)
+=======
+static inline void identical_pvr_fixup(unsigned long node)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline void identical_pvr_fixup(unsigned long node)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

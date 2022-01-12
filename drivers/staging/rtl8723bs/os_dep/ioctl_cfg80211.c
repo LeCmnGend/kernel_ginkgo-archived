@@ -2433,7 +2433,11 @@ void rtw_cfg80211_indicate_sta_assoc(struct adapter *padapter, u8 *pmgmt_frame, 
 
 	{
 <<<<<<< HEAD
+<<<<<<< HEAD
 		struct station_info sinfo = {};
+=======
+		struct station_info sinfo;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		struct station_info sinfo;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

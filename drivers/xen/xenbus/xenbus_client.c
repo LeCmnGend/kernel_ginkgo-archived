@@ -115,8 +115,11 @@ EXPORT_SYMBOL_GPL(xenbus_strstate);
 int xenbus_watch_path(struct xenbus_device *dev, const char *path,
 		      struct xenbus_watch *watch,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		      bool (*will_handle)(struct xenbus_watch *,
 					  const char *, const char *),
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		      void (*callback)(struct xenbus_watch *,
@@ -126,7 +129,10 @@ int xenbus_watch_path(struct xenbus_device *dev, const char *path,
 
 	watch->node = path;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	watch->will_handle = will_handle;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	watch->callback = callback;
@@ -136,7 +142,10 @@ int xenbus_watch_path(struct xenbus_device *dev, const char *path,
 	if (err) {
 		watch->node = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		watch->will_handle = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		watch->callback = NULL;
@@ -166,8 +175,11 @@ EXPORT_SYMBOL_GPL(xenbus_watch_path);
 int xenbus_watch_pathfmt(struct xenbus_device *dev,
 			 struct xenbus_watch *watch,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			 bool (*will_handle)(struct xenbus_watch *,
 					const char *, const char *),
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			 void (*callback)(struct xenbus_watch *,
@@ -187,7 +199,11 @@ int xenbus_watch_pathfmt(struct xenbus_device *dev,
 		return -ENOMEM;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = xenbus_watch_path(dev, path, watch, will_handle, callback);
+=======
+	err = xenbus_watch_path(dev, path, watch, callback);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = xenbus_watch_path(dev, path, watch, callback);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -388,6 +404,7 @@ int xenbus_grant_ring(struct xenbus_device *dev, void *vaddr,
 
 	for (i = 0; i < nr_pages; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unsigned long gfn;
 
 		if (is_vmalloc_addr(vaddr))
@@ -396,6 +413,10 @@ int xenbus_grant_ring(struct xenbus_device *dev, void *vaddr,
 			gfn = virt_to_gfn(vaddr);
 
 		err = gnttab_grant_foreign_access(dev->otherend_id, gfn, 0);
+=======
+		err = gnttab_grant_foreign_access(dev->otherend_id,
+						  virt_to_gfn(vaddr), 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		err = gnttab_grant_foreign_access(dev->otherend_id,
 						  virt_to_gfn(vaddr), 0);

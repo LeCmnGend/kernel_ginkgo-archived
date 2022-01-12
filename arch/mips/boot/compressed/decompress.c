@@ -12,8 +12,11 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define DISABLE_BRANCH_PROFILING
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/types.h>
@@ -23,7 +26,10 @@
 
 #include <asm/addrspace.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <asm/unaligned.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -134,7 +140,11 @@ void decompress_kernel(unsigned long boot_heap_start)
 
 		/* last four bytes is always image size in little endian */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		image_size = get_unaligned_le32((void *)&__image_end - 4);
+=======
+		image_size = le32_to_cpup((void *)&__image_end - 4);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		image_size = le32_to_cpup((void *)&__image_end - 4);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

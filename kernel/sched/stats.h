@@ -32,11 +32,16 @@ rq_sched_info_dequeued(struct rq *rq, unsigned long long delta)
 }
 #define schedstat_enabled()		static_branch_unlikely(&sched_schedstats)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define __schedstat_inc(var)		do { var++; } while (0)
 #define schedstat_inc(var)		do { if (schedstat_enabled()) { var++; } } while (0)
 #define __schedstat_add(var, amt)	do { var += (amt); } while (0)
 #define schedstat_add(var, amt)		do { if (schedstat_enabled()) { var += (amt); } } while (0)
 #define __schedstat_set(var, val)		do { var = (val); } while (0)
+=======
+#define schedstat_inc(var)		do { if (schedstat_enabled()) { var++; } } while (0)
+#define schedstat_add(var, amt)		do { if (schedstat_enabled()) { var += (amt); } } while (0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define schedstat_inc(var)		do { if (schedstat_enabled()) { var++; } } while (0)
 #define schedstat_add(var, amt)		do { if (schedstat_enabled()) { var += (amt); } } while (0)
@@ -57,11 +62,16 @@ rq_sched_info_depart(struct rq *rq, unsigned long long delta)
 {}
 #define schedstat_enabled()		0
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define __schedstat_inc(var)		do { } while (0)
 #define schedstat_inc(var)		do { } while (0)
 #define __schedstat_add(var, amt)	do { } while (0)
 #define schedstat_add(var, amt)		do { } while (0)
 #define __schedstat_set(var, val)	do { } while (0)
+=======
+#define schedstat_inc(var)		do { } while (0)
+#define schedstat_add(var, amt)		do { } while (0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define schedstat_inc(var)		do { } while (0)
 #define schedstat_add(var, amt)		do { } while (0)

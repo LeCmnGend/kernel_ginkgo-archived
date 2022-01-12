@@ -268,10 +268,13 @@ struct mlx4_en_page_cache {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 enum {
 	MLX4_EN_TX_RING_STATE_RECOVERING,
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct mlx4_en_priv;
@@ -321,7 +324,10 @@ struct mlx4_en_tx_ring {
 	 */
 	unsigned long		queue_stopped;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long		state;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct mlx4_hwq_resources sp_wqres;
@@ -537,10 +543,13 @@ struct mlx4_en_stats_bitmap {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 enum {
 	MLX4_EN_STATE_FLAG_RESTARTING,
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct mlx4_en_priv {
@@ -609,7 +618,11 @@ struct mlx4_en_priv {
 	struct mlx4_qp drop_qp;
 	struct work_struct rx_mode_task;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct work_struct restart_task;
+=======
+	struct work_struct watchdog_task;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct work_struct watchdog_task;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -660,7 +673,10 @@ struct mlx4_en_priv {
 	u8 rss_key[MLX4_EN_RSS_KEY_SIZE];
 	u8 rss_hash_fn;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long state;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -806,7 +822,10 @@ void mlx4_en_ptp_overflow_check(struct mlx4_en_dev *mdev);
 	((dev->features & feature) ^ (new_features & feature))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int mlx4_en_moderation_update(struct mlx4_en_priv *priv);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int mlx4_en_reset_config(struct net_device *dev,

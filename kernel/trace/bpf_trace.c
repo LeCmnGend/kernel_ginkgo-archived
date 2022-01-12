@@ -482,8 +482,11 @@ static const struct bpf_func_proto *tracing_func_proto(enum bpf_func_id func_id)
 	case BPF_FUNC_ktime_get_ns:
 		return &bpf_ktime_get_ns_proto;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case BPF_FUNC_ktime_get_boot_ns:
 		return &bpf_ktime_get_boot_ns_proto;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case BPF_FUNC_tail_call:

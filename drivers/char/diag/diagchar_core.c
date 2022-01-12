@@ -150,8 +150,11 @@ static struct timer_list drain_timer;
 static int timer_in_progress;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct timer_list wake_timer;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -218,11 +221,14 @@ static void drain_timer_func(unsigned long data)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void wake_timer_func(unsigned long data)
 {
 	pm_relax(driver->diag_dev);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void diag_drain_apps_data(struct diag_apps_data_t *data)
@@ -4153,8 +4159,11 @@ void diag_ws_on_notify(void)
 	 */
 	pm_stay_awake(driver->diag_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	mod_timer(&wake_timer, jiffies + msecs_to_jiffies(5000));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -4466,7 +4475,10 @@ static int __init diagchar_init(void)
 	driver->dci_state = DIAG_DCI_NO_ERROR;
 	setup_timer(&drain_timer, drain_timer_func, 1234);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	setup_timer(&wake_timer, wake_timer_func, 0);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	driver->supports_sockets = 1;

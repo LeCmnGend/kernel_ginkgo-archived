@@ -5382,8 +5382,12 @@ static bool brcmf_is_linkup(struct brcmf_cfg80211_vif *vif,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool brcmf_is_linkdown(struct brcmf_cfg80211_vif *vif,
 			    const struct brcmf_event_msg *e)
+=======
+static bool brcmf_is_linkdown(const struct brcmf_event_msg *e)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static bool brcmf_is_linkdown(const struct brcmf_event_msg *e)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5396,8 +5400,11 @@ static bool brcmf_is_linkdown(const struct brcmf_event_msg *e)
 	    ((event == BRCMF_E_LINK) && (!(flags & BRCMF_EVENT_MSG_LINK)))) {
 		brcmf_dbg(CONN, "Processing link down\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		clear_bit(BRCMF_VIF_STATUS_EAP_SUCCESS, &vif->sme_state);
 		clear_bit(BRCMF_VIF_STATUS_ASSOC_SUCCESS, &vif->sme_state);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return true;
@@ -5685,7 +5692,11 @@ brcmf_notify_connect_status(struct brcmf_if *ifp,
 			brcmf_bss_connect_done(cfg, ndev, e, true);
 		brcmf_net_setcarrier(ifp, true);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else if (brcmf_is_linkdown(ifp->vif, e)) {
+=======
+	} else if (brcmf_is_linkdown(e)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	} else if (brcmf_is_linkdown(e)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

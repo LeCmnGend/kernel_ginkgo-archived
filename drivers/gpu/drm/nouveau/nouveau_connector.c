@@ -581,10 +581,15 @@ nouveau_connector_detect(struct drm_connector *connector, bool force)
 	} else {
 		ret = pm_runtime_get_sync(dev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ret < 0 && ret != -EACCES) {
 			pm_runtime_put_autosuspend(dev->dev);
 			return conn_status;
 		}
+=======
+		if (ret < 0 && ret != -EACCES)
+			return conn_status;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (ret < 0 && ret != -EACCES)
 			return conn_status;

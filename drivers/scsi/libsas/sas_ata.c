@@ -220,9 +220,12 @@ static unsigned int sas_ata_qc_issue(struct ata_queued_cmd *qc)
 		task->total_xfer_len = qc->nbytes;
 		task->num_scatter = qc->n_elem;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		task->data_dir = qc->dma_dir;
 	} else if (qc->tf.protocol == ATA_PROT_NODATA) {
 		task->data_dir = DMA_NONE;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
@@ -232,8 +235,14 @@ static unsigned int sas_ata_qc_issue(struct ata_queued_cmd *qc)
 		task->total_xfer_len = xfer;
 		task->num_scatter = si;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		task->data_dir = qc->dma_dir;
 	}
+=======
+	}
+
+	task->data_dir = qc->dma_dir;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	}
 

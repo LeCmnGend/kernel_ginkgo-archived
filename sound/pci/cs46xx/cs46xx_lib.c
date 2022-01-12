@@ -781,7 +781,11 @@ static void snd_cs46xx_set_capture_sample_rate(struct snd_cs46xx *chip, unsigned
 
 	/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 *  We can not capture at a rate greater than the Input Rate (48000).
+=======
+	 *  We can not capture at at rate greater than the Input Rate (48000).
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 *  We can not capture at at rate greater than the Input Rate (48000).
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

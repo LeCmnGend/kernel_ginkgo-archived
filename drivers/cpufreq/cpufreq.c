@@ -33,7 +33,10 @@
 #include <linux/sched/topology.h>
 #include <linux/sched/sysctl.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/battery_saver.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -241,7 +244,11 @@ struct cpufreq_policy *cpufreq_cpu_get(unsigned int cpu)
 	unsigned long flags;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (cpu >= nr_cpu_ids)
+=======
+	if (WARN_ON(cpu >= nr_cpu_ids))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (WARN_ON(cpu >= nr_cpu_ids))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -735,10 +742,13 @@ static ssize_t store_##file_name					\
 	struct cpufreq_policy new_policy;				\
 									\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (&policy->object == &policy->min &&				\
 			is_battery_saver_on())				\
 		return count;						\
 									\
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	memcpy(&new_policy, policy, sizeof(*policy));			\
@@ -2268,7 +2278,11 @@ static int cpufreq_set_policy(struct cpufreq_policy *policy,
 	*/
 	if (new_policy->min > new_policy->max)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		new_policy->min = new_policy->max;
+=======
+		return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EINVAL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

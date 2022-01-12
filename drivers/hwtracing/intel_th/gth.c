@@ -486,7 +486,11 @@ static void intel_th_gth_disable(struct intel_th_device *thdev,
 
 	for_each_set_bit(master, gth->output[output->port].master,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			 TH_CONFIGURABLE_MASTERS + 1) {
+=======
+			 TH_CONFIGURABLE_MASTERS) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			 TH_CONFIGURABLE_MASTERS) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -526,6 +530,7 @@ static void gth_tscu_resync(struct gth_device *gth)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void intel_th_gth_prepare(struct intel_th_device *thdev,
 				 struct intel_th_output *output)
 {
@@ -541,6 +546,8 @@ static void intel_th_gth_prepare(struct intel_th_device *thdev,
 		cpu_relax();
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -647,7 +654,11 @@ static void intel_th_gth_unassign(struct intel_th_device *thdev,
 	othdev->output.active = false;
 	gth->output[port].output = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (master = 0; master < TH_CONFIGURABLE_MASTERS + 1; master++)
+=======
+	for (master = 0; master <= TH_CONFIGURABLE_MASTERS; master++)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (master = 0; master <= TH_CONFIGURABLE_MASTERS; master++)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -769,7 +780,10 @@ static struct intel_th_driver intel_th_gth_driver = {
 	.unassign	= intel_th_gth_unassign,
 	.set_output	= intel_th_gth_set_output,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.prepare	= intel_th_gth_prepare,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.enable		= intel_th_gth_enable,

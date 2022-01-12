@@ -653,6 +653,7 @@ static int vidioc_s_audio(struct file *file, void *fh, const struct v4l2_audio *
 
 	DEB_D("VIDIOC_S_AUDIO %d\n", a->index);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (a->index >= 32 ||
 	    !(mxb_inputs[mxb->cur_input].audioset & (1 << a->index)))
 		return -EINVAL;
@@ -665,6 +666,8 @@ static int vidioc_s_audio(struct file *file, void *fh, const struct v4l2_audio *
 	}
 	return 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (mxb_inputs[mxb->cur_input].audioset & (1 << a->index)) {
 		if (mxb->cur_audinput != a->index) {
 			mxb->cur_audinput = a->index;
@@ -675,6 +678,9 @@ static int vidioc_s_audio(struct file *file, void *fh, const struct v4l2_audio *
 		return 0;
 	}
 	return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

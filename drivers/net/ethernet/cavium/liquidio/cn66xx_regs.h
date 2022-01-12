@@ -413,7 +413,11 @@
 	   | CN6XXX_INTR_M1UPB0_ERR             \
 	   | CN6XXX_INTR_M1UPWI_ERR             \
 <<<<<<< HEAD
+<<<<<<< HEAD
 	   | CN6XXX_INTR_M1UNB0_ERR             \
+=======
+	   | CN6XXX_INTR_M1UPB0_ERR             \
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	   | CN6XXX_INTR_M1UPB0_ERR             \
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

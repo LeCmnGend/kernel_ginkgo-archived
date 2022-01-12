@@ -32,7 +32,10 @@
 #include <linux/idr.h>
 #include <linux/init.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/interrupt.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/irqflags.h>
@@ -267,7 +270,11 @@ static void i2c_init_recovery(struct i2c_adapter *adap)
 {
 	struct i2c_bus_recovery_info *bri = adap->bus_recovery_info;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	char *err_str, *err_level = KERN_ERR;
+=======
+	char *err_str;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	char *err_str;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -277,8 +284,12 @@ static void i2c_init_recovery(struct i2c_adapter *adap)
 
 	if (!bri->recover_bus) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		err_str = "no suitable method provided";
 		err_level = KERN_DEBUG;
+=======
+		err_str = "no recover_bus() found";
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		err_str = "no recover_bus() found";
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -310,7 +321,11 @@ static void i2c_init_recovery(struct i2c_adapter *adap)
 	return;
  err:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev_printk(err_level, &adap->dev, "Not using recovery: %s\n", err_str);
+=======
+	dev_err(&adap->dev, "Not using recovery: %s\n", err_str);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev_err(&adap->dev, "Not using recovery: %s\n", err_str);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -469,8 +484,11 @@ static void i2c_device_shutdown(struct device *dev)
 	if (driver->shutdown)
 		driver->shutdown(client);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	else if (client->irq > 0)
 		disable_irq(client->irq);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -1303,8 +1321,13 @@ static int i2c_register_adapter(struct i2c_adapter *adap)
 	/* create pre-declared device nodes */
 	of_i2c_register_devices(adap);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	i2c_acpi_install_space_handler(adap);
 	i2c_acpi_register_devices(adap);
+=======
+	i2c_acpi_register_devices(adap);
+	i2c_acpi_install_space_handler(adap);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	i2c_acpi_register_devices(adap);
 	i2c_acpi_install_space_handler(adap);

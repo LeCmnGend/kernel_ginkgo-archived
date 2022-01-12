@@ -85,11 +85,14 @@ static inline bool security_ftr_enabled(unsigned long feature)
 #define SEC_FTR_FLUSH_LINK_STACK	0x0000000000001000ull
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // The L1-D cache should be flushed when entering the kernel
 #define SEC_FTR_L1D_FLUSH_ENTRY		0x0000000000004000ull
 
 // The L1-D cache should be flushed after user accesses from the kernel
 #define SEC_FTR_L1D_FLUSH_UACCESS	0x0000000000008000ull
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -99,8 +102,11 @@ static inline bool security_ftr_enabled(unsigned long feature)
 	 SEC_FTR_L1D_FLUSH_PR | \
 	 SEC_FTR_BNDS_CHK_SPEC_BAR | \
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 SEC_FTR_L1D_FLUSH_ENTRY | \
 	 SEC_FTR_L1D_FLUSH_UACCESS | \
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 SEC_FTR_FAVOUR_SECURITY)

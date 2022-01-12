@@ -579,6 +579,10 @@ static inline void dma_free_attrs(struct device *dev, size_t size,
 
 	BUG_ON(!ops);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	WARN_ON(irqs_disabled());
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	WARN_ON(irqs_disabled());
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

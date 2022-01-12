@@ -163,6 +163,10 @@ static int platform_pci_probe(struct pci_dev *pdev,
 	if (ret)
 		goto grant_out;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	xenbus_probe(NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	xenbus_probe(NULL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

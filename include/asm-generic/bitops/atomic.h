@@ -3,6 +3,7 @@
 #define _ASM_GENERIC_BITOPS_ATOMIC_H_
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/atomic.h>
 #include <linux/compiler.h>
 #include <asm/barrier.h>
@@ -65,6 +66,8 @@ static inline int test_and_change_bit(unsigned int nr, volatile unsigned long *p
 	old = atomic_long_fetch_xor(mask, (atomic_long_t *)p);
 	return !!(old & mask);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <asm/types.h>
 #include <linux/irqflags.h>
 
@@ -248,6 +251,9 @@ static inline int test_and_change_bit(int nr, volatile unsigned long *addr)
 	_atomic_spin_unlock_irqrestore(p, flags);
 
 	return (old & mask) != 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

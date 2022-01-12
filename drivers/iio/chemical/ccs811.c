@@ -74,11 +74,14 @@ struct ccs811_data {
 	struct mutex lock; /* Protect readings */
 	struct ccs811_reading buffer;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Ensures correct alignment of timestamp if present */
 	struct {
 		s16 channels[2];
 		s64 ts __aligned(8);
 	} scan;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -284,17 +287,23 @@ static irqreturn_t ccs811_trigger_handler(int irq, void *p)
 	struct ccs811_data *data = iio_priv(indio_dev);
 	struct i2c_client *client = data->client;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret;
 
 	ret = i2c_smbus_read_i2c_block_data(client, CCS811_ALG_RESULT_DATA,
 					    sizeof(data->scan.channels),
 					    (u8 *)data->scan.channels);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	s16 buf[8]; /* s16 eCO2 + s16 TVOC + padding + 8 byte timestamp */
 	int ret;
 
 	ret = i2c_smbus_read_i2c_block_data(client, CCS811_ALG_RESULT_DATA, 4,
 					    (u8 *)&buf);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret != 4) {
 		dev_err(&client->dev, "cannot read sensor data\n");
@@ -302,7 +311,11 @@ static irqreturn_t ccs811_trigger_handler(int irq, void *p)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	iio_push_to_buffers_with_timestamp(indio_dev, &data->scan,
+=======
+	iio_push_to_buffers_with_timestamp(indio_dev, buf,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	iio_push_to_buffers_with_timestamp(indio_dev, buf,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

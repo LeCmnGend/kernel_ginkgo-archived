@@ -481,7 +481,11 @@ static int fimc_lite_open(struct file *file)
 	ret = pm_runtime_get_sync(&fimc->pdev->dev);
 	if (ret < 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto err_pm;
+=======
+		goto unlock;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto unlock;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

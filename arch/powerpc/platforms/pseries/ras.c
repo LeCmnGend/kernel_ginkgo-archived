@@ -116,6 +116,10 @@ static void handle_system_shutdown(char event_modifier)
 		pr_emerg("Loss of system power detected. System is running on"
 			 " UPS/battery. Check RTAS error log for details\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		orderly_poweroff(true);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		orderly_poweroff(true);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

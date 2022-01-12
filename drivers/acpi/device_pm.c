@@ -696,7 +696,11 @@ static DEFINE_MUTEX(acpi_wakeup_lock);
 
 static int __acpi_device_wakeup_enable(struct acpi_device *adev,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				       u32 target_state)
+=======
+				       u32 target_state, int max_count)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				       u32 target_state, int max_count)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -708,10 +712,16 @@ static int __acpi_device_wakeup_enable(struct acpi_device *adev,
 	mutex_lock(&acpi_wakeup_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (wakeup->enable_count >= INT_MAX) {
 		acpi_handle_info(adev->handle, "Wakeup enable count out of bounds!\n");
 		goto out;
 	}
+=======
+	if (wakeup->enable_count >= max_count)
+		goto out;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (wakeup->enable_count >= max_count)
 		goto out;
@@ -754,7 +764,11 @@ out:
 static int acpi_device_wakeup_enable(struct acpi_device *adev, u32 target_state)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return __acpi_device_wakeup_enable(adev, target_state);
+=======
+	return __acpi_device_wakeup_enable(adev, target_state, 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return __acpi_device_wakeup_enable(adev, target_state, 1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -788,12 +802,17 @@ out:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * acpi_pm_set_device_wakeup - Enable/disable remote wakeup for given device.
  * @dev: Device to enable/disable to generate wakeup events.
  * @enable: Whether to enable or disable the wakeup functionality.
  */
 int acpi_pm_set_device_wakeup(struct device *dev, bool enable)
+=======
+static int __acpi_pm_set_device_wakeup(struct device *dev, bool enable,
+				       int max_count)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int __acpi_pm_set_device_wakeup(struct device *dev, bool enable,
 				       int max_count)
@@ -818,7 +837,12 @@ static int __acpi_pm_set_device_wakeup(struct device *dev, bool enable,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	error = __acpi_device_wakeup_enable(adev, acpi_target_system_state());
+=======
+	error = __acpi_device_wakeup_enable(adev, acpi_target_system_state(),
+					    max_count);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	error = __acpi_device_wakeup_enable(adev, acpi_target_system_state(),
 					    max_count);
@@ -829,10 +853,13 @@ static int __acpi_pm_set_device_wakeup(struct device *dev, bool enable,
 	return error;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 EXPORT_SYMBOL_GPL(acpi_pm_set_device_wakeup);
 
 /**
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
  * acpi_pm_set_device_wakeup - Enable/disable remote wakeup for given device.
@@ -857,6 +884,9 @@ int acpi_pm_set_bridge_wakeup(struct device *dev, bool enable)
 EXPORT_SYMBOL_GPL(acpi_pm_set_bridge_wakeup);
 
 /**
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * acpi_dev_pm_low_power - Put ACPI device into a low-power state.
  * @dev: Device to put into a low-power state.

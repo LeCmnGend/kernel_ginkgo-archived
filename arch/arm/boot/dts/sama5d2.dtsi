@@ -1244,7 +1244,10 @@
 				#address-cells = <1>;
 				#size-cells = <1>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				no-memory-wc;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				ranges = <0 0xf8044000 0x1420>;
@@ -1298,7 +1301,11 @@
 			can0: can@f8054000 {
 				compatible = "bosch,m_can";
 <<<<<<< HEAD
+<<<<<<< HEAD
 				reg = <0xf8054000 0x4000>, <0x210000 0x1c00>;
+=======
+				reg = <0xf8054000 0x4000>, <0x210000 0x4000>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				reg = <0xf8054000 0x4000>, <0x210000 0x4000>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1493,7 +1500,11 @@
 			can1: can@fc050000 {
 				compatible = "bosch,m_can";
 <<<<<<< HEAD
+<<<<<<< HEAD
 				reg = <0xfc050000 0x4000>, <0x210000 0x3800>;
+=======
+				reg = <0xfc050000 0x4000>, <0x210000 0x4000>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				reg = <0xfc050000 0x4000>, <0x210000 0x4000>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1507,7 +1518,11 @@
 				assigned-clock-parents = <&utmi>;
 				assigned-clock-rates = <40000000>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				bosch,mram-cfg = <0x1c00 0 0 64 0 0 32 32>;
+=======
+				bosch,mram-cfg = <0x1100 0 0 64 0 0 32 32>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				bosch,mram-cfg = <0x1100 0 0 64 0 0 32 32>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

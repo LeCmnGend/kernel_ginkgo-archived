@@ -34,7 +34,10 @@
 #include <linux/perf_event.h>
 #include <linux/of_device.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <soc/qcom/scm.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -53,7 +56,10 @@ struct event_data {
 	struct perf_event *pevent;
 	unsigned long prev_count;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool any_cpu_readable;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -109,6 +115,7 @@ static inline unsigned long read_event(struct event_data *event)
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (event->any_cpu_readable) {
 		if (perf_event_read_local(event->pevent, &total))
 			return 0;
@@ -140,6 +147,9 @@ static inline unsigned long read_event(struct event_data *event)
 		}
 	}
 
+=======
+	total = perf_event_read_value(event->pevent, &enabled, &running);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	total = perf_event_read_value(event->pevent, &enabled, &running);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -228,7 +238,10 @@ static struct perf_event_attr *alloc_attr(void)
 static int set_events(struct cpu_grp_info *cpu_grp, int cpu)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	static struct cpumask all_cpu_mask = CPU_MASK_ALL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct perf_event *pevent;
@@ -255,8 +268,11 @@ static int set_events(struct cpu_grp_info *cpu_grp, int cpu)
 		cpustats->events[i].pevent = pevent;
 		perf_event_enable(pevent);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cpustats->events[i].any_cpu_readable =
 			cpumask_equal(&pevent->readable_on_cpus, &all_cpu_mask);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

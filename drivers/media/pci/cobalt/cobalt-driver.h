@@ -263,8 +263,11 @@ struct cobalt {
 	struct pci_dev *pci_dev;
 	struct v4l2_device v4l2_dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* serialize PCI access in cobalt_s_bit_sysctrl() */
 	struct mutex pci_lock;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -337,6 +340,7 @@ static inline void cobalt_s_bit_sysctrl(struct cobalt *cobalt,
 					int bit, int val)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 ctrl;
 
 	mutex_lock(&cobalt->pci_lock);
@@ -345,10 +349,15 @@ static inline void cobalt_s_bit_sysctrl(struct cobalt *cobalt,
 			(ctrl & ~(1UL << bit)) | (val << bit));
 	mutex_unlock(&cobalt->pci_lock);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32 ctrl = cobalt_read_bar1(cobalt, COBALT_SYS_CTRL_BASE);
 
 	cobalt_write_bar1(cobalt, COBALT_SYS_CTRL_BASE,
 			(ctrl & ~(1UL << bit)) | (val << bit));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

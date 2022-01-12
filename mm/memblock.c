@@ -176,7 +176,10 @@ __memblock_find_range_top_down(phys_addr_t start, phys_addr_t end,
  * Find @size free area aligned to @align in the specified range and node.
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * When allocation direction is bottom-up, the @start should be greater
  * than the end of the kernel image. Otherwise, it will be trimmed. The
  * reason is that we want the bottom-up allocation just near the kernel
@@ -185,6 +188,9 @@ __memblock_find_range_top_down(phys_addr_t start, phys_addr_t end,
  *
  * If bottom-up allocation failed, will try to allocate memory top-down.
  *
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * RETURNS:
  * Found address on success, 0 on failure.
@@ -194,6 +200,11 @@ phys_addr_t __init_memblock memblock_find_in_range_node(phys_addr_t size,
 					phys_addr_t end, int nid, ulong flags)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	phys_addr_t kernel_end, ret;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	phys_addr_t kernel_end, ret;
 
@@ -207,6 +218,7 @@ phys_addr_t __init_memblock memblock_find_in_range_node(phys_addr_t size,
 	start = max_t(phys_addr_t, start, PAGE_SIZE);
 	end = max(start, end);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (memblock_bottom_up())
 		return __memblock_find_range_bottom_up(start, end, size, align,
@@ -215,6 +227,8 @@ phys_addr_t __init_memblock memblock_find_in_range_node(phys_addr_t size,
 		return __memblock_find_range_top_down(start, end, size, align,
 						      nid, flags);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kernel_end = __pa_symbol(_end);
 
 	/*
@@ -248,6 +262,9 @@ phys_addr_t __init_memblock memblock_find_in_range_node(phys_addr_t size,
 
 	return __memblock_find_range_top_down(start, end, size, align, nid,
 					      flags);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -1449,7 +1466,11 @@ void __init __memblock_free_late(phys_addr_t base, phys_addr_t size)
 	for (; cursor < end; cursor++) {
 		__free_pages_bootmem(pfn_to_page(cursor), cursor, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		totalram_pages_inc();
+=======
+		totalram_pages++;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		totalram_pages++;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -85,7 +85,10 @@ static void event_handler(struct work_struct *work)
 		usbip_dbg_eh("pending event %lx\n", ud->event);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mutex_lock(&ud->sysfs_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
@@ -109,7 +112,10 @@ static void event_handler(struct work_struct *work)
 			unset_event(ud, USBIP_EH_UNUSABLE);
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mutex_unlock(&ud->sysfs_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

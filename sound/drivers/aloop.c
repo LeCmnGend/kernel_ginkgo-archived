@@ -1063,6 +1063,7 @@ static int loopback_mixer_new(struct loopback *loopback, int notify)
 				kctl->id.device = dev;
 				kctl->id.subdevice = substr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 				/* Add the control before copying the id so that
 				 * the numid field of the id is set in the copy.
@@ -1071,6 +1072,8 @@ static int loopback_mixer_new(struct loopback *loopback, int notify)
 				if (err < 0)
 					return err;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				switch (idx) {
@@ -1090,6 +1093,12 @@ static int loopback_mixer_new(struct loopback *loopback, int notify)
 					break;
 				}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+				err = snd_ctl_add(card, kctl);
+				if (err < 0)
+					return err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				err = snd_ctl_add(card, kctl);
 				if (err < 0)

@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2011, 2013, 2015 The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2011, 2013, 2015, 2019 The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2011, 2013, 2015, 2019 The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -24,6 +28,10 @@
 #define CREATE_TRACE_POINTS
 #include "kgsl_trace.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include "kgsl_trace_power.h"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include "kgsl_trace_power.h"
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -33,6 +41,11 @@ EXPORT_TRACEPOINT_SYMBOL(kgsl_issueibcmds);
 EXPORT_TRACEPOINT_SYMBOL(kgsl_user_pwrlevel_constraint);
 EXPORT_TRACEPOINT_SYMBOL(kgsl_constraint);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+EXPORT_TRACEPOINT_SYMBOL(gpu_frequency);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 EXPORT_TRACEPOINT_SYMBOL(gpu_frequency);

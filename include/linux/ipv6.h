@@ -4,7 +4,10 @@
 
 #include <uapi/linux/ipv6.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <uapi/linux/icmpv6.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -88,6 +91,10 @@ struct ipv6_params {
 };
 extern struct ipv6_params ipv6_defaults;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <linux/icmpv6.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/icmpv6.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

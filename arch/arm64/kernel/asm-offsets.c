@@ -28,7 +28,10 @@
 #include <asm/thread_info.h>
 #include <asm/memory.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <asm/signal32.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <asm/smp_plat.h>
@@ -87,6 +90,7 @@ int main(void)
   DEFINE(S_FRAME_SIZE,		sizeof(struct pt_regs));
   BLANK();
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_COMPAT
   DEFINE(COMPAT_SIGFRAME_REGS_OFFSET,
 				offsetof(struct compat_sigframe, uc) +
@@ -99,6 +103,8 @@ int main(void)
 				offsetof(struct compat_sigcontext, arm_r0));
   BLANK();
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
   DEFINE(MM_CONTEXT_ID,		offsetof(struct mm_struct, context.id.counter));
@@ -115,7 +121,10 @@ int main(void)
   DEFINE(DMA_FROM_DEVICE,	DMA_FROM_DEVICE);
   BLANK();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
   DEFINE(CLOCK_REALTIME,	CLOCK_REALTIME);
   DEFINE(CLOCK_MONOTONIC,	CLOCK_MONOTONIC);
   DEFINE(CLOCK_MONOTONIC_RAW,	CLOCK_MONOTONIC_RAW);
@@ -150,6 +159,9 @@ int main(void)
   DEFINE(TZ_MINWEST,		offsetof(struct timezone, tz_minuteswest));
   DEFINE(TZ_DSTTIME,		offsetof(struct timezone, tz_dsttime));
   BLANK();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
   DEFINE(CPU_BOOT_STACK,	offsetof(struct secondary_data, stack));
   DEFINE(CPU_BOOT_TASK,		offsetof(struct secondary_data, task));

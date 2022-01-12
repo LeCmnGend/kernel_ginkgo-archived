@@ -812,7 +812,11 @@ ecm_bind(struct usb_configuration *c, struct usb_function *f)
 
 	status = usb_assign_descriptors(f, ecm_fs_function, ecm_hs_function,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ecm_ss_function, ecm_ss_function);
+=======
+			ecm_ss_function, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ecm_ss_function, NULL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

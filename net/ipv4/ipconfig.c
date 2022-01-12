@@ -882,7 +882,11 @@ static void __init ic_bootp_send_if(struct ic_device *d, unsigned long jiffies_d
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  Copy BOOTP-supplied string
+=======
+ *  Copy BOOTP-supplied string if not already set.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  *  Copy BOOTP-supplied string if not already set.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -935,6 +939,7 @@ static void __init ic_do_bootp_ext(u8 *ext)
 		break;
 	case 12:	/* Host name */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!ic_host_name_set) {
 			ic_bootp_string(utsname()->nodename, ext+1, *ext,
 					__NEW_UTS_LEN);
@@ -945,12 +950,17 @@ static void __init ic_do_bootp_ext(u8 *ext)
 		if (!ic_domain[0])
 			ic_bootp_string(ic_domain, ext+1, *ext, sizeof(ic_domain));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ic_bootp_string(utsname()->nodename, ext+1, *ext,
 				__NEW_UTS_LEN);
 		ic_host_name_set = 1;
 		break;
 	case 15:	/* Domain name (DNS) */
 		ic_bootp_string(ic_domain, ext+1, *ext, sizeof(ic_domain));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 	case 17:	/* Root path */

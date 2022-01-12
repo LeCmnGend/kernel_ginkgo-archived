@@ -646,10 +646,16 @@ release_io(struct inf_hw *hw)
 {
 	if (hw->cfg.mode) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (hw->cfg.mode == AM_MEMIO) {
 			release_mem_region(hw->cfg.start, hw->cfg.size);
 			if (hw->cfg.p)
 				iounmap(hw->cfg.p);
+=======
+		if (hw->cfg.p) {
+			release_mem_region(hw->cfg.start, hw->cfg.size);
+			iounmap(hw->cfg.p);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (hw->cfg.p) {
 			release_mem_region(hw->cfg.start, hw->cfg.size);
@@ -661,10 +667,16 @@ release_io(struct inf_hw *hw)
 	}
 	if (hw->addr.mode) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (hw->addr.mode == AM_MEMIO) {
 			release_mem_region(hw->addr.start, hw->addr.size);
 			if (hw->addr.p)
 				iounmap(hw->addr.p);
+=======
+		if (hw->addr.p) {
+			release_mem_region(hw->addr.start, hw->addr.size);
+			iounmap(hw->addr.p);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (hw->addr.p) {
 			release_mem_region(hw->addr.start, hw->addr.size);
@@ -700,12 +712,18 @@ setup_io(struct inf_hw *hw)
 			return err;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		hw->cfg.mode = hw->ci->cfg_mode;
 		if (hw->ci->cfg_mode == AM_MEMIO) {
 			hw->cfg.p = ioremap(hw->cfg.start, hw->cfg.size);
 			if (!hw->cfg.p)
 				return -ENOMEM;
 		}
+=======
+		if (hw->ci->cfg_mode == AM_MEMIO)
+			hw->cfg.p = ioremap(hw->cfg.start, hw->cfg.size);
+		hw->cfg.mode = hw->ci->cfg_mode;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (hw->ci->cfg_mode == AM_MEMIO)
 			hw->cfg.p = ioremap(hw->cfg.start, hw->cfg.size);
@@ -736,12 +754,18 @@ setup_io(struct inf_hw *hw)
 			return err;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		hw->addr.mode = hw->ci->addr_mode;
 		if (hw->ci->addr_mode == AM_MEMIO) {
 			hw->addr.p = ioremap(hw->addr.start, hw->addr.size);
 			if (!hw->addr.p)
 				return -ENOMEM;
 		}
+=======
+		if (hw->ci->addr_mode == AM_MEMIO)
+			hw->addr.p = ioremap(hw->addr.start, hw->addr.size);
+		hw->addr.mode = hw->ci->addr_mode;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (hw->ci->addr_mode == AM_MEMIO)
 			hw->addr.p = ioremap(hw->addr.start, hw->addr.size);

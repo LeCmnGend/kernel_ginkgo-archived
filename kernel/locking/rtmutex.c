@@ -1269,7 +1269,12 @@ rt_mutex_slowlock(struct rt_mutex *lock, int state,
 	if (unlikely(ret)) {
 		__set_current_state(TASK_RUNNING);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		remove_waiter(lock, &waiter);
+=======
+		if (rt_mutex_has_waiters(lock))
+			remove_waiter(lock, &waiter);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (rt_mutex_has_waiters(lock))
 			remove_waiter(lock, &waiter);
@@ -1491,9 +1496,15 @@ void __sched rt_mutex_lock_nested(struct rt_mutex *lock, unsigned int subclass)
 }
 EXPORT_SYMBOL_GPL(rt_mutex_lock_nested);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 #else /* !CONFIG_DEBUG_LOCK_ALLOC */
 
+=======
+#endif
+
+#ifndef CONFIG_DEBUG_LOCK_ALLOC
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #endif
 
@@ -1648,6 +1659,7 @@ void __sched rt_mutex_futex_unlock(struct rt_mutex *lock)
 {
 	DEFINE_WAKE_Q(wake_q);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long flags;
 	bool postunlock;
 
@@ -1655,11 +1667,16 @@ void __sched rt_mutex_futex_unlock(struct rt_mutex *lock)
 	postunlock = __rt_mutex_futex_unlock(lock, &wake_q);
 	raw_spin_unlock_irqrestore(&lock->wait_lock, flags);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool postunlock;
 
 	raw_spin_lock_irq(&lock->wait_lock);
 	postunlock = __rt_mutex_futex_unlock(lock, &wake_q);
 	raw_spin_unlock_irq(&lock->wait_lock);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (postunlock)
@@ -1739,7 +1756,12 @@ void rt_mutex_init_proxy_locked(struct rt_mutex *lock,
  * and it is not longer visible to other tasks.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 void rt_mutex_proxy_unlock(struct rt_mutex *lock)
+=======
+void rt_mutex_proxy_unlock(struct rt_mutex *lock,
+			   struct task_struct *proxy_owner)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void rt_mutex_proxy_unlock(struct rt_mutex *lock,
 			   struct task_struct *proxy_owner)

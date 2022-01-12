@@ -1064,10 +1064,13 @@ void acpi_ec_unblock_transactions(void)
    -------------------------------------------------------------------------- */
 static struct acpi_ec_query_handler *
 <<<<<<< HEAD
+<<<<<<< HEAD
 acpi_ec_get_query_handler_by_value(struct acpi_ec *ec, u8 value)
 {
 	struct acpi_ec_query_handler *handler;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 acpi_ec_get_query_handler(struct acpi_ec_query_handler *handler)
 {
 	if (handler)
@@ -1080,11 +1083,15 @@ acpi_ec_get_query_handler_by_value(struct acpi_ec *ec, u8 value)
 {
 	struct acpi_ec_query_handler *handler;
 	bool found = false;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	mutex_lock(&ec->mutex);
 	list_for_each_entry(handler, &ec->list, node) {
 		if (value == handler->query_bit) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 			kref_get(&handler->kref);
 			mutex_unlock(&ec->mutex);
@@ -1094,12 +1101,17 @@ acpi_ec_get_query_handler_by_value(struct acpi_ec *ec, u8 value)
 	mutex_unlock(&ec->mutex);
 	return NULL;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			found = true;
 			break;
 		}
 	}
 	mutex_unlock(&ec->mutex);
 	return found ? acpi_ec_get_query_handler(handler) : NULL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -1911,6 +1923,7 @@ static const struct dmi_system_id ec_dmi_table[] __initconst = {
 	DMI_MATCH(DMI_PRODUCT_NAME, "GL702VMK"),}, NULL},
 	{
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ec_honor_ecdt_gpe, "ASUSTeK COMPUTER INC. X505BA", {
 	DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
 	DMI_MATCH(DMI_PRODUCT_NAME, "X505BA"),}, NULL},
@@ -1927,6 +1940,8 @@ static const struct dmi_system_id ec_dmi_table[] __initconst = {
 	DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
 	DMI_MATCH(DMI_PRODUCT_NAME, "X542BP"),}, NULL},
 	{
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ec_honor_ecdt_gpe, "ASUS X550VXK", {

@@ -91,7 +91,10 @@ static int netlbl_mgmt_add_common(struct genl_info *info,
 				  struct netlbl_audit *audit_info)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	void *pmap = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret_val = -EINVAL;
@@ -194,7 +197,10 @@ static int netlbl_mgmt_add_common(struct genl_info *info,
 			goto add_free_addrmap;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pmap = map;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		map->list.addr = addr->s_addr & mask->s_addr;
@@ -206,13 +212,19 @@ static int netlbl_mgmt_add_common(struct genl_info *info,
 
 		ret_val = netlbl_af4list_add(&map->list, &addrmap->list4);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ret_val != 0)
 			goto add_free_map;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (ret_val != 0) {
 			kfree(map);
 			goto add_free_addrmap;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		entry->family = AF_INET;
@@ -251,7 +263,10 @@ static int netlbl_mgmt_add_common(struct genl_info *info,
 			goto add_free_addrmap;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pmap = map;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		map->list.addr = *addr;
@@ -267,13 +282,19 @@ static int netlbl_mgmt_add_common(struct genl_info *info,
 
 		ret_val = netlbl_af6list_add(&map->list, &addrmap->list6);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ret_val != 0)
 			goto add_free_map;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (ret_val != 0) {
 			kfree(map);
 			goto add_free_addrmap;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		entry->family = AF_INET6;
@@ -285,6 +306,7 @@ static int netlbl_mgmt_add_common(struct genl_info *info,
 	ret_val = netlbl_domhsh_add(entry, audit_info);
 	if (ret_val != 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto add_free_map;
 
 	return 0;
@@ -292,10 +314,15 @@ static int netlbl_mgmt_add_common(struct genl_info *info,
 add_free_map:
 	kfree(pmap);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto add_free_addrmap;
 
 	return 0;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 add_free_addrmap:
 	kfree(addrmap);

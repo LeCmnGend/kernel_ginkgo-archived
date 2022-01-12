@@ -533,8 +533,11 @@ static noinline int hiddev_ioctl_usage(struct hiddev *hiddev, unsigned int cmd, 
 		switch (cmd) {
 		case HIDIOCGUSAGE:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (uref->usage_index >= field->report_count)
 				goto inval;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			uref->value = field->value[uref->usage_index];
@@ -544,8 +547,11 @@ static noinline int hiddev_ioctl_usage(struct hiddev *hiddev, unsigned int cmd, 
 
 		case HIDIOCSUSAGE:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (uref->usage_index >= field->report_count)
 				goto inval;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			field->value[uref->usage_index] = uref->value;

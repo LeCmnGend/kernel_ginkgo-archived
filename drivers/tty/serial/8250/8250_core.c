@@ -1066,10 +1066,15 @@ int serial8250_register_8250_port(struct uart_8250_port *up)
 			ret = uart_add_one_port(&serial8250_reg,
 						&uart->port);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (ret)
 				goto err;
 
 			ret = uart->port.line;
+=======
+			if (ret == 0)
+				ret = uart->port.line;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (ret == 0)
 				ret = uart->port.line;
@@ -1099,11 +1104,14 @@ int serial8250_register_8250_port(struct uart_8250_port *up)
 
 	return ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 err:
 	uart->port.dev = NULL;
 	mutex_unlock(&serial_mutex);
 	return ret;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

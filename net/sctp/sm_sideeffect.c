@@ -419,7 +419,11 @@ void sctp_generate_proto_unreach_event(unsigned long data)
 		if (!mod_timer(&transport->proto_unreach_timer,
 				jiffies + (HZ/20)))
 <<<<<<< HEAD
+<<<<<<< HEAD
 			sctp_transport_hold(transport);
+=======
+			sctp_association_hold(asoc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			sctp_association_hold(asoc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -439,7 +443,11 @@ void sctp_generate_proto_unreach_event(unsigned long data)
 out_unlock:
 	bh_unlock_sock(sk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sctp_transport_put(transport);
+=======
+	sctp_association_put(asoc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sctp_association_put(asoc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1600,7 +1608,11 @@ static int sctp_cmd_interpreter(enum sctp_event event_type,
 
 		case SCTP_CMD_INIT_FAILED:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			sctp_cmd_init_failed(commands, asoc, cmd->obj.u16);
+=======
+			sctp_cmd_init_failed(commands, asoc, cmd->obj.u32);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			sctp_cmd_init_failed(commands, asoc, cmd->obj.u32);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1609,7 +1621,11 @@ static int sctp_cmd_interpreter(enum sctp_event event_type,
 		case SCTP_CMD_ASSOC_FAILED:
 			sctp_cmd_assoc_failed(commands, asoc, event_type,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					      subtype, chunk, cmd->obj.u16);
+=======
+					      subtype, chunk, cmd->obj.u32);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					      subtype, chunk, cmd->obj.u32);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

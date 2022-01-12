@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #!/usr/bin/env python
+=======
+#!/usr/bin/python
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #!/usr/bin/python
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -15,17 +19,23 @@ and generates performance plots.
 
 Prerequisites:
 <<<<<<< HEAD
+<<<<<<< HEAD
     Python version 2.7.x or higher
     gnuplot 5.0 or higher
     gnuplot-py 1.8 or higher
     (Most of the distributions have these required packages. They may be called
      gnuplot-py, phython-gnuplot or phython3-gnuplot, gnuplot-nox, ... )
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
     Python version 2.7.x
     gnuplot 5.0 or higher
     gnuplot-py 1.8
     (Most of the distributions have these required packages. They may be called
      gnuplot-py, phython-gnuplot. )
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
     HWP (Hardware P-States are disabled)
@@ -191,7 +201,11 @@ def plot_pstate_cpu_with_sample():
         g_plot('set ylabel "P-State"')
         g_plot('set title "{} : cpu pstate vs. sample : {:%F %H:%M}"'.format(testname, datetime.now()))
 <<<<<<< HEAD
+<<<<<<< HEAD
         title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).decode('utf-8').replace('\n', ' ')
+=======
+        title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).replace('\n', ' ')
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
         title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).replace('\n', ' ')
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -212,7 +226,11 @@ def plot_pstate_cpu():
 #    plot_str = 'plot for [i=0:*] file=sprintf("cpu%03d.csv",i) title_s=sprintf("cpu%03d",i) file using 16:7 pt 7 ps 1 title title_s'
 #
 <<<<<<< HEAD
+<<<<<<< HEAD
     title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).decode('utf-8').replace('\n', ' ')
+=======
+    title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).replace('\n', ' ')
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
     title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).replace('\n', ' ')
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -230,7 +248,11 @@ def plot_load_cpu():
     g_plot('set title "{} : cpu loads : {:%F %H:%M}"'.format(testname, datetime.now()))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).decode('utf-8').replace('\n', ' ')
+=======
+    title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).replace('\n', ' ')
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
     title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).replace('\n', ' ')
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -248,7 +270,11 @@ def plot_frequency_cpu():
     g_plot('set title "{} : cpu frequencies : {:%F %H:%M}"'.format(testname, datetime.now()))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).decode('utf-8').replace('\n', ' ')
+=======
+    title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).replace('\n', ' ')
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
     title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).replace('\n', ' ')
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -267,7 +293,11 @@ def plot_duration_cpu():
     g_plot('set title "{} : cpu durations : {:%F %H:%M}"'.format(testname, datetime.now()))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).decode('utf-8').replace('\n', ' ')
+=======
+    title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).replace('\n', ' ')
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
     title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).replace('\n', ' ')
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -285,7 +315,11 @@ def plot_scaled_cpu():
     g_plot('set title "{} : cpu scaled busy : {:%F %H:%M}"'.format(testname, datetime.now()))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).decode('utf-8').replace('\n', ' ')
+=======
+    title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).replace('\n', ' ')
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
     title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).replace('\n', ' ')
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -303,7 +337,11 @@ def plot_boost_cpu():
     g_plot('set title "{} : cpu io boost : {:%F %H:%M}"'.format(testname, datetime.now()))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).decode('utf-8').replace('\n', ' ')
+=======
+    title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).replace('\n', ' ')
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
     title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).replace('\n', ' ')
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -321,7 +359,11 @@ def plot_ghz_cpu():
     g_plot('set title "{} : cpu TSC Frequencies (Sanity check calculation) : {:%F %H:%M}"'.format(testname, datetime.now()))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).decode('utf-8').replace('\n', ' ')
+=======
+    title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).replace('\n', ' ')
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
     title_list = subprocess.check_output('ls cpu???.csv | sed -e \'s/.csv//\'',shell=True).replace('\n', ' ')
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

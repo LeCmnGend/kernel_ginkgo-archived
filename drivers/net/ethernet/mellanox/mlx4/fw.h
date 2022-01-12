@@ -182,8 +182,13 @@ struct mlx4_init_hca_param {
 	u64 mtt_base;
 	u64 global_caps;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8 log_mc_entry_sz;
 	u8 log_mc_hash_sz;
+=======
+	u16 log_mc_entry_sz;
+	u16 log_mc_hash_sz;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u16 log_mc_entry_sz;
 	u16 log_mc_hash_sz;

@@ -146,10 +146,15 @@ struct fc_rport_priv *fc_rport_create(struct fc_lport *lport, u32 port_id)
 
 	rdata = fc_rport_lookup(lport, port_id);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (rdata) {
 		kref_put(&rdata->kref, fc_rport_destroy);
 		return rdata;
 	}
+=======
+	if (rdata)
+		return rdata;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (rdata)
 		return rdata;
@@ -501,16 +506,22 @@ static void fc_rport_enter_delete(struct fc_rport_priv *rdata,
 	fc_rport_state_enter(rdata, RPORT_ST_DELETE);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (rdata->event == RPORT_EV_NONE) {
 		kref_get(&rdata->kref);
 		if (!queue_work(rport_event_queue, &rdata->event_work))
 			kref_put(&rdata->kref, fc_rport_destroy);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kref_get(&rdata->kref);
 	if (rdata->event == RPORT_EV_NONE &&
 	    !queue_work(rport_event_queue, &rdata->event_work))
 		kref_put(&rdata->kref, fc_rport_destroy);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	rdata->event = event;
@@ -1187,7 +1198,10 @@ static void fc_rport_prli_resp(struct fc_seq *sp, struct fc_frame *fp,
 		FC_RPORT_DBG(rdata, "PRLI spp_flags = 0x%x spp_type 0x%x\n",
 			     pp->spp.spp_flags, pp->spp.spp_type);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rdata->spp_type = pp->spp.spp_type;
@@ -1211,6 +1225,7 @@ static void fc_rport_prli_resp(struct fc_seq *sp, struct fc_frame *fp,
 		 * Call prli provider if we should act as a target
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (rdata->spp_type < FC_FC4_PROV_SIZE) {
 			prov = fc_passive_prov[rdata->spp_type];
 			if (prov) {
@@ -1219,11 +1234,16 @@ static void fc_rport_prli_resp(struct fc_seq *sp, struct fc_frame *fp,
 					   &pp->spp, &temp_spp);
 			}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		prov = fc_passive_prov[rdata->spp_type];
 		if (prov) {
 			memset(&temp_spp, 0, sizeof(temp_spp));
 			prov->prli(rdata, pp->prli.prli_spp_len,
 				   &pp->spp, &temp_spp);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 		/*

@@ -27,8 +27,13 @@ static bool is_rtc_hctosys(struct rtc_device *rtc)
 	char name[NAME_SIZE];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	size = snprintf(name, NAME_SIZE, "rtc%d", rtc->id);
 	if (size >= NAME_SIZE)
+=======
+	size = scnprintf(name, NAME_SIZE, "rtc%d", rtc->id);
+	if (size > NAME_SIZE)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	size = scnprintf(name, NAME_SIZE, "rtc%d", rtc->id);
 	if (size > NAME_SIZE)

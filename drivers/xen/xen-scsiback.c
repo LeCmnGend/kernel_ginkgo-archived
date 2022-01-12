@@ -92,6 +92,10 @@ struct vscsibk_info {
 
 	struct vscsiif_back_ring ring;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int ring_error;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int ring_error;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -427,6 +431,10 @@ static int scsiback_gnttab_data_map_batch(struct gnttab_map_grant_ref *map,
 
 	err = gnttab_map_refs(map, NULL, pg, cnt);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	BUG_ON(err);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	BUG_ON(err);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -435,8 +443,12 @@ static int scsiback_gnttab_data_map_batch(struct gnttab_map_grant_ref *map,
 			pr_err("invalid buffer -- could not remap it\n");
 			map[i].handle = SCSIBACK_INVALID_HANDLE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (!err)
 				err = -ENOMEM;
+=======
+			err = -ENOMEM;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			err = -ENOMEM;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -733,8 +745,12 @@ static struct vscsibk_pend *prepare_pending_reqs(struct vscsibk_info *info,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int scsiback_do_cmd_fn(struct vscsibk_info *info,
 			      unsigned int *eoi_flags)
+=======
+static int scsiback_do_cmd_fn(struct vscsibk_info *info)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int scsiback_do_cmd_fn(struct vscsibk_info *info)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -755,6 +771,7 @@ static int scsiback_do_cmd_fn(struct vscsibk_info *info)
 		pr_warn("Dom%d provided bogus ring requests (%#x - %#x = %u). Halting ring processing\n",
 			   info->domid, rp, rc, rp - rc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -EINVAL;
 	}
 
@@ -762,11 +779,16 @@ static int scsiback_do_cmd_fn(struct vscsibk_info *info)
 		*eoi_flags &= ~XEN_EOI_FLAG_SPURIOUS;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		info->ring_error = 1;
 		return 0;
 	}
 
 	while ((rc != rp)) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (RING_REQUEST_CONS_OVERFLOW(ring, rc))
 			break;
@@ -827,6 +849,7 @@ static irqreturn_t scsiback_irq_fn(int irq, void *dev_id)
 {
 	struct vscsibk_info *info = dev_id;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int rc;
 	unsigned int eoi_flags = XEN_EOI_FLAG_SPURIOUS;
 
@@ -837,12 +860,17 @@ static irqreturn_t scsiback_irq_fn(int irq, void *dev_id)
 	if (!rc)
 		xen_irq_lateeoi(irq, eoi_flags);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (info->ring_error)
 		return IRQ_HANDLED;
 
 	while (scsiback_do_cmd_fn(info))
 		cond_resched();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return IRQ_HANDLED;
@@ -866,7 +894,11 @@ static int scsiback_init_sring(struct vscsibk_info *info, grant_ref_t ring_ref,
 	BACK_RING_INIT(&info->ring, sring, PAGE_SIZE);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = bind_interdomain_evtchn_to_irq_lateeoi(info->domid, evtchn);
+=======
+	err = bind_interdomain_evtchn_to_irq(info->domid, evtchn);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = bind_interdomain_evtchn_to_irq(info->domid, evtchn);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1293,6 +1325,10 @@ static int scsiback_probe(struct xenbus_device *dev,
 	info->domid = dev->otherend_id;
 	spin_lock_init(&info->ring_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	info->ring_error = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	info->ring_error = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

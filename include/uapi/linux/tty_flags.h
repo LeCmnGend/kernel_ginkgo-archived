@@ -40,7 +40,11 @@
  *	    TTY_PORT_ flags in the iflags field (and not userspace-visible)
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef __KERNEL__
+=======
+#ifndef _KERNEL_
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #ifndef _KERNEL_
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -86,7 +90,11 @@
 #define ASYNC_SPD_MASK		(ASYNC_SPD_HI|ASYNC_SPD_VHI|ASYNC_SPD_SHI)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef __KERNEL__
+=======
+#ifndef _KERNEL_
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #ifndef _KERNEL_
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

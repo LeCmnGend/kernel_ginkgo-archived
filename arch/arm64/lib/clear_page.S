@@ -26,7 +26,11 @@
  *	x0 - dest
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 SYM_FUNC_START_PI(clear_page)
+=======
+ENTRY(clear_page)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 ENTRY(clear_page)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -41,7 +45,11 @@ ENTRY(clear_page)
 	b.ne	1b
 	ret
 <<<<<<< HEAD
+<<<<<<< HEAD
 SYM_FUNC_END_PI(clear_page)
+=======
+ENDPROC(clear_page)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 ENDPROC(clear_page)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

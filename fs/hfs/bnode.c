@@ -16,6 +16,7 @@
 #include "btree.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void hfs_bnode_read(struct hfs_bnode *node, void *buf, int off, int len)
 {
 	struct page *page;
@@ -42,6 +43,8 @@ void hfs_bnode_read(struct hfs_bnode *node, void *buf, int off, int len)
 		off = 0; /* page offset only applies to the first page */
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void hfs_bnode_read(struct hfs_bnode *node, void *buf,
 		int off, int len)
 {
@@ -52,6 +55,9 @@ void hfs_bnode_read(struct hfs_bnode *node, void *buf,
 
 	memcpy(buf, kmap(page) + off, len);
 	kunmap(page);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

@@ -44,6 +44,7 @@ void add_wait_queue_exclusive(struct wait_queue_head *wq_head, struct wait_queue
 EXPORT_SYMBOL(add_wait_queue_exclusive);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void add_wait_queue_exclusive_lifo(struct wait_queue_head *wq_head, struct wait_queue_entry *wq_entry)
 {
 	unsigned long flags;
@@ -55,6 +56,8 @@ void add_wait_queue_exclusive_lifo(struct wait_queue_head *wq_head, struct wait_
 }
 EXPORT_SYMBOL(add_wait_queue_exclusive_lifo);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void remove_wait_queue(struct wait_queue_head *wq_head, struct wait_queue_entry *wq_entry)
@@ -268,6 +271,7 @@ prepare_to_wait_exclusive(struct wait_queue_head *wq_head, struct wait_queue_ent
 EXPORT_SYMBOL(prepare_to_wait_exclusive);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void prepare_to_wait_exclusive_lifo(struct wait_queue_head *wq_head, struct wait_queue_entry *wq_entry, int state)
 {
 	unsigned long flags;
@@ -281,6 +285,8 @@ void prepare_to_wait_exclusive_lifo(struct wait_queue_head *wq_head, struct wait
 }
 EXPORT_SYMBOL(prepare_to_wait_exclusive_lifo);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void init_wait_entry(struct wait_queue_entry *wq_entry, int flags)
@@ -403,7 +409,11 @@ void finish_wait(struct wait_queue_head *wq_head, struct wait_queue_entry *wq_en
 EXPORT_SYMBOL(finish_wait);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int __sched autoremove_wake_function(struct wait_queue_entry *wq_entry, unsigned mode, int sync, void *key)
+=======
+int autoremove_wake_function(struct wait_queue_entry *wq_entry, unsigned mode, int sync, void *key)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int autoremove_wake_function(struct wait_queue_entry *wq_entry, unsigned mode, int sync, void *key)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -442,7 +452,11 @@ static inline bool is_kthread_should_stop(void)
  * remove_wait_queue(&wq_head, &wait);		wq_entry->flags |= WQ_FLAG_WOKEN;
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 long __sched wait_woken(struct wait_queue_entry *wq_entry, unsigned mode, long timeout)
+=======
+long wait_woken(struct wait_queue_entry *wq_entry, unsigned mode, long timeout)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 long wait_woken(struct wait_queue_entry *wq_entry, unsigned mode, long timeout)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -471,7 +485,11 @@ long wait_woken(struct wait_queue_entry *wq_entry, unsigned mode, long timeout)
 EXPORT_SYMBOL(wait_woken);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int __sched woken_wake_function(struct wait_queue_entry *wq_entry, unsigned mode, int sync, void *key)
+=======
+int woken_wake_function(struct wait_queue_entry *wq_entry, unsigned mode, int sync, void *key)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int woken_wake_function(struct wait_queue_entry *wq_entry, unsigned mode, int sync, void *key)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

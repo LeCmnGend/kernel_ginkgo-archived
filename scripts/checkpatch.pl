@@ -2567,8 +2567,13 @@ sub process {
 # Check if the commit log has what seems like a diff which can confuse patch
 		if ($in_commit_log && !$commit_log_has_diff &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 		    (($line =~ m@^\s+diff\b.*a/([\w/]+)@ &&
 		      $line =~ m@^\s+diff\b.*a/[\w/]+\s+b/$1\b@) ||
+=======
+		    (($line =~ m@^\s+diff\b.*a/[\w/]+@ &&
+		      $line =~ m@^\s+diff\b.*a/([\w/]+)\s+b/$1\b@) ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		    (($line =~ m@^\s+diff\b.*a/[\w/]+@ &&
 		      $line =~ m@^\s+diff\b.*a/([\w/]+)\s+b/$1\b@) ||
@@ -4048,7 +4053,11 @@ sub process {
 				fix_delete_line($fixlinenr, $rawline);
 				my $fixed_line = $rawline;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				$fixed_line =~ /(^..*$Type\s*$Ident\(.*\)\s*)\{(.*)$/;
+=======
+				$fixed_line =~ /(^..*$Type\s*$Ident\(.*\)\s*){(.*)$/;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				$fixed_line =~ /(^..*$Type\s*$Ident\(.*\)\s*){(.*)$/;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -84,7 +84,11 @@ static inline int cvm_oct_check_rcv_error(cvmx_wqe_t *work)
 		port = work->word1.cn38xx.ipprt;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if ((work->word2.snoip.err_code == 10) && (work->word1.len <= 64))
+=======
+	if ((work->word2.snoip.err_code == 10) && (work->word1.len <= 64)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if ((work->word2.snoip.err_code == 10) && (work->word1.len <= 64)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -95,10 +99,15 @@ static inline int cvm_oct_check_rcv_error(cvmx_wqe_t *work)
 		 * counted as frame errors.
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
 
 	if (work->word2.snoip.err_code == 5 ||
 	    work->word2.snoip.err_code == 7) {
+=======
+	} else if (work->word2.snoip.err_code == 5 ||
+		   work->word2.snoip.err_code == 7) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	} else if (work->word2.snoip.err_code == 5 ||
 		   work->word2.snoip.err_code == 7) {
@@ -134,10 +143,14 @@ static inline int cvm_oct_check_rcv_error(cvmx_wqe_t *work)
 				work->packet_ptr.s.addr += i + 1;
 				work->word1.len -= i + 5;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				return 0;
 			}
 
 			if ((*ptr & 0xf) == 0xd) {
+=======
+			} else if ((*ptr & 0xf) == 0xd) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			} else if ((*ptr & 0xf) == 0xd) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -150,6 +163,7 @@ static inline int cvm_oct_check_rcv_error(cvmx_wqe_t *work)
 					    ((*(ptr + 1) & 0xf) << 4);
 					ptr++;
 				}
+<<<<<<< HEAD
 <<<<<<< HEAD
 				return 0;
 			}
@@ -166,6 +180,8 @@ static inline int cvm_oct_check_rcv_error(cvmx_wqe_t *work)
 	cvm_oct_free_work(work);
 	return 1;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			} else {
 				printk_ratelimited("Port %d unknown preamble, packet dropped\n",
 						   port);
@@ -181,6 +197,9 @@ static inline int cvm_oct_check_rcv_error(cvmx_wqe_t *work)
 	}
 
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

@@ -3556,7 +3556,11 @@ static int pktgen_thread_worker(void *arg)
 	int cpu = t->cpu;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	WARN_ON(smp_processor_id() != cpu);
+=======
+	BUG_ON(smp_processor_id() != cpu);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	BUG_ON(smp_processor_id() != cpu);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

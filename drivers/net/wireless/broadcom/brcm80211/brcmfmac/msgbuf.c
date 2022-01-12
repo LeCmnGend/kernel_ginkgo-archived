@@ -1539,8 +1539,11 @@ fail:
 					  msgbuf->ioctbuf,
 					  msgbuf->ioctbuf_handle);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (msgbuf->txflow_wq)
 			destroy_workqueue(msgbuf->txflow_wq);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		kfree(msgbuf);

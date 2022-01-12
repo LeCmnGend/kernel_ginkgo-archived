@@ -14,9 +14,12 @@
 	.align		4
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 aes_encrypt_block4x:
 	encrypt_block4x	v0, v1, v2, v3, w3, x2, x8, w7
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * There are several ways to instantiate this code:
  * - no interleave, all inline
@@ -57,11 +60,15 @@ ENDPROC(aes_decrypt_block2x)
 
 aes_encrypt_block4x:
 	encrypt_block4x	v0, v1, v2, v3, w3, x2, x6, w7
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret
 ENDPROC(aes_encrypt_block4x)
 
 aes_decrypt_block4x:
+<<<<<<< HEAD
 <<<<<<< HEAD
 	decrypt_block4x	v0, v1, v2, v3, w3, x2, x8, w7
 	ret
@@ -78,6 +85,8 @@ AES_ENTRY(aes_ecb_encrypt)
 	stp		x29, x30, [sp, #-16]!
 	mov		x29, sp
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	decrypt_block4x	v0, v1, v2, v3, w3, x2, x6, w7
 	ret
 ENDPROC(aes_decrypt_block4x)
@@ -134,11 +143,15 @@ ENDPROC(aes_decrypt_block4x)
 AES_ENTRY(aes_ecb_encrypt)
 	FRAME_PUSH
 	cbz		w5, .LecbencloopNx
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	enc_prepare	w3, x2, x5
 
 .LecbencloopNx:
+<<<<<<< HEAD
 <<<<<<< HEAD
 	subs		w4, w4, #4
 	bmi		.Lecbenc1x
@@ -150,6 +163,8 @@ AES_ENTRY(aes_ecb_encrypt)
 	adds		w4, w4, #4
 	beq		.Lecbencout
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #if INTERLEAVE >= 2
 	subs		w4, w4, #INTERLEAVE
 	bmi		.Lecbenc1x
@@ -167,6 +182,9 @@ AES_ENTRY(aes_ecb_encrypt)
 	adds		w4, w4, #INTERLEAVE
 	beq		.Lecbencout
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 .Lecbencloop:
 	ld1		{v0.16b}, [x1], #16		/* get next pt block */
@@ -176,7 +194,11 @@ AES_ENTRY(aes_ecb_encrypt)
 	bne		.Lecbencloop
 .Lecbencout:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ldp		x29, x30, [sp], #16
+=======
+	FRAME_POP
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	FRAME_POP
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -186,8 +208,13 @@ AES_ENDPROC(aes_ecb_encrypt)
 
 AES_ENTRY(aes_ecb_decrypt)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	stp		x29, x30, [sp, #-16]!
 	mov		x29, sp
+=======
+	FRAME_PUSH
+	cbz		w5, .LecbdecloopNx
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	FRAME_PUSH
 	cbz		w5, .LecbdecloopNx
@@ -196,6 +223,7 @@ AES_ENTRY(aes_ecb_decrypt)
 	dec_prepare	w3, x2, x5
 
 .LecbdecloopNx:
+<<<<<<< HEAD
 <<<<<<< HEAD
 	subs		w4, w4, #4
 	bmi		.Lecbdec1x
@@ -207,6 +235,8 @@ AES_ENTRY(aes_ecb_decrypt)
 	adds		w4, w4, #4
 	beq		.Lecbdecout
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #if INTERLEAVE >= 2
 	subs		w4, w4, #INTERLEAVE
 	bmi		.Lecbdec1x
@@ -224,6 +254,9 @@ AES_ENTRY(aes_ecb_decrypt)
 	adds		w4, w4, #INTERLEAVE
 	beq		.Lecbdecout
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 .Lecbdecloop:
 	ld1		{v0.16b}, [x1], #16		/* get next ct block */
@@ -233,7 +266,11 @@ AES_ENTRY(aes_ecb_decrypt)
 	bne		.Lecbdecloop
 .Lecbdecout:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ldp		x29, x30, [sp], #16
+=======
+	FRAME_POP
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	FRAME_POP
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -243,6 +280,7 @@ AES_ENDPROC(aes_ecb_decrypt)
 
 	/*
 	 * aes_cbc_encrypt(u8 out[], u8 const in[], u8 const rk[], int rounds,
+<<<<<<< HEAD
 <<<<<<< HEAD
 	 *		   int blocks, u8 iv[])
 	 * aes_cbc_decrypt(u8 out[], u8 const in[], u8 const rk[], int rounds,
@@ -281,6 +319,8 @@ AES_ENTRY(aes_cbc_encrypt)
 .Lcbcencout:
 	st1		{v4.16b}, [x5]			/* return iv */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 *		   int blocks, u8 iv[], int first)
 	 * aes_cbc_decrypt(u8 out[], u8 const in[], u8 const rk[], int rounds,
 	 *		   int blocks, u8 iv[], int first)
@@ -300,6 +340,9 @@ AES_ENTRY(aes_cbc_encrypt)
 	subs		w4, w4, #1
 	bne		.Lcbcencloop
 	st1		{v0.16b}, [x5]			/* return iv */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret
 AES_ENDPROC(aes_cbc_encrypt)
@@ -307,8 +350,13 @@ AES_ENDPROC(aes_cbc_encrypt)
 
 AES_ENTRY(aes_cbc_decrypt)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	stp		x29, x30, [sp, #-16]!
 	mov		x29, sp
+=======
+	FRAME_PUSH
+	cbz		w6, .LcbcdecloopNx
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	FRAME_PUSH
 	cbz		w6, .LcbcdecloopNx
@@ -319,9 +367,12 @@ AES_ENTRY(aes_cbc_decrypt)
 
 .LcbcdecloopNx:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	subs		w4, w4, #4
 	bmi		.Lcbcdec1x
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #if INTERLEAVE >= 2
 	subs		w4, w4, #INTERLEAVE
 	bmi		.Lcbcdec1x
@@ -335,13 +386,20 @@ AES_ENTRY(aes_cbc_decrypt)
 	mov		v7.16b, v3.16b
 	st1		{v0.16b-v1.16b}, [x0], #32
 #else
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ld1		{v0.16b-v3.16b}, [x1], #64	/* get 4 ct blocks */
 	mov		v4.16b, v0.16b
 	mov		v5.16b, v1.16b
 	mov		v6.16b, v2.16b
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bl		aes_decrypt_block4x
+=======
+	do_decrypt_block4x
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	do_decrypt_block4x
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -353,17 +411,23 @@ AES_ENTRY(aes_cbc_decrypt)
 	eor		v3.16b, v3.16b, v6.16b
 	st1		{v0.16b-v3.16b}, [x0], #64
 <<<<<<< HEAD
+<<<<<<< HEAD
 	b		.LcbcdecloopNx
 .Lcbcdec1x:
 	adds		w4, w4, #4
 	beq		.Lcbcdecout
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 	b		.LcbcdecloopNx
 .Lcbcdec1x:
 	adds		w4, w4, #INTERLEAVE
 	beq		.Lcbcdecout
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 .Lcbcdecloop:
 	ld1		{v1.16b}, [x1], #16		/* get next ct block */
@@ -376,8 +440,13 @@ AES_ENTRY(aes_cbc_decrypt)
 	bne		.Lcbcdecloop
 .Lcbcdecout:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	st1		{v7.16b}, [x5]			/* return iv */
 	ldp		x29, x30, [sp], #16
+=======
+	FRAME_POP
+	st1		{v7.16b}, [x5]			/* return iv */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	FRAME_POP
 	st1		{v7.16b}, [x5]			/* return iv */
@@ -388,6 +457,7 @@ AES_ENDPROC(aes_cbc_decrypt)
 
 	/*
 	 * aes_ctr_encrypt(u8 out[], u8 const in[], u8 const rk[], int rounds,
+<<<<<<< HEAD
 <<<<<<< HEAD
 	 *		   int blocks, u8 ctr[])
 	 */
@@ -422,6 +492,8 @@ AES_ENTRY(aes_ctr_encrypt)
 	ld1		{v5.16b-v7.16b}, [x1], #48	/* get 3 input blocks */
 	bl		aes_encrypt_block4x
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 *		   int blocks, u8 ctr[], int first)
 	 */
 
@@ -468,6 +540,9 @@ AES_ENTRY(aes_ctr_encrypt)
 	mov		v3.s[3], v8.s[2]
 	ld1		{v5.16b-v7.16b}, [x1], #48	/* get 3 input blocks */
 	do_encrypt_block4x
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	eor		v0.16b, v5.16b, v0.16b
 	ld1		{v5.16b}, [x1], #16		/* get 1 input block  */
@@ -476,8 +551,14 @@ AES_ENTRY(aes_ctr_encrypt)
 	eor		v3.16b, v5.16b, v3.16b
 	st1		{v0.16b-v3.16b}, [x0], #64
 <<<<<<< HEAD
+<<<<<<< HEAD
 	add		x6, x6, #4
 	rev		x7, x6
+=======
+	add		x8, x8, #INTERLEAVE
+#endif
+	rev		x7, x8
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	add		x8, x8, #INTERLEAVE
 #endif
@@ -488,6 +569,7 @@ AES_ENTRY(aes_ctr_encrypt)
 	b		.LctrloopNx
 .Lctr1x:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	adds		w4, w4, #4
 	beq		.Lctrout
 .Lctrloop:
@@ -497,6 +579,8 @@ AES_ENTRY(aes_ctr_encrypt)
 	adds		x6, x6, #1		/* increment BE ctr */
 	rev		x7, x6
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	adds		w4, w4, #INTERLEAVE
 	beq		.Lctrout
 #endif
@@ -506,6 +590,9 @@ AES_ENTRY(aes_ctr_encrypt)
 
 	adds		x8, x8, #1		/* increment BE ctr */
 	rev		x7, x8
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ins		v4.d[1], x7
 	bcs		.Lctrcarry		/* overflow? */
@@ -521,7 +608,11 @@ AES_ENTRY(aes_ctr_encrypt)
 .Lctrout:
 	st1		{v4.16b}, [x5]		/* return next CTR value */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ldp		x29, x30, [sp], #16
+=======
+	FRAME_POP
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	FRAME_POP
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -530,7 +621,11 @@ AES_ENTRY(aes_ctr_encrypt)
 .Lctrtailblock:
 	st1		{v0.16b}, [x0]
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ldp		x29, x30, [sp], #16
+=======
+	FRAME_POP
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	FRAME_POP
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -568,6 +663,7 @@ CPU_BE(	.quad		0x87, 1		)
 
 AES_ENTRY(aes_xts_encrypt)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	stp		x29, x30, [sp, #-16]!
 	mov		x29, sp
 
@@ -583,6 +679,8 @@ AES_ENTRY(aes_xts_encrypt)
 .Lxtsencnotfirst:
 	enc_prepare	w3, x2, x8
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	FRAME_PUSH
 	cbz		w7, .LxtsencloopNx
 
@@ -593,15 +691,21 @@ AES_ENTRY(aes_xts_encrypt)
 	ldr		q7, .Lxts_mul_x
 	b		.LxtsencNx
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 .LxtsencloopNx:
 	ldr		q7, .Lxts_mul_x
 	next_tweak	v4, v4, v7, v8
 .LxtsencNx:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	subs		w4, w4, #4
 	bmi		.Lxtsenc1x
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #if INTERLEAVE >= 2
 	subs		w4, w4, #INTERLEAVE
 	bmi		.Lxtsenc1x
@@ -621,6 +725,9 @@ AES_ENTRY(aes_xts_encrypt)
 	mov		v4.16b, v5.16b
 	b		.Lxtsencout
 #else
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ld1		{v0.16b-v3.16b}, [x1], #64	/* get 4 pt blocks */
 	next_tweak	v5, v4, v7, v8
@@ -631,7 +738,11 @@ AES_ENTRY(aes_xts_encrypt)
 	next_tweak	v7, v6, v7, v8
 	eor		v3.16b, v3.16b, v7.16b
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bl		aes_encrypt_block4x
+=======
+	do_encrypt_block4x
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	do_encrypt_block4x
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -644,6 +755,7 @@ AES_ENTRY(aes_xts_encrypt)
 	cbz		w4, .Lxtsencout
 	b		.LxtsencloopNx
 <<<<<<< HEAD
+<<<<<<< HEAD
 .Lxtsenc1x:
 	adds		w4, w4, #4
 	beq		.Lxtsencout
@@ -652,6 +764,8 @@ AES_ENTRY(aes_xts_encrypt)
 	eor		v0.16b, v1.16b, v4.16b
 	encrypt_block	v0, w3, x2, x8, w7
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 .Lxtsenc1x:
 	adds		w4, w4, #INTERLEAVE
@@ -661,6 +775,9 @@ AES_ENTRY(aes_xts_encrypt)
 	ld1		{v1.16b}, [x1], #16
 	eor		v0.16b, v1.16b, v4.16b
 	encrypt_block	v0, w3, x2, x6, w7
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	eor		v0.16b, v0.16b, v4.16b
 	st1		{v0.16b}, [x0], #16
@@ -670,8 +787,12 @@ AES_ENTRY(aes_xts_encrypt)
 	b		.Lxtsencloop
 .Lxtsencout:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	st1		{v4.16b}, [x6]
 	ldp		x29, x30, [sp], #16
+=======
+	FRAME_POP
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	FRAME_POP
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -680,6 +801,7 @@ AES_ENDPROC(aes_xts_encrypt)
 
 
 AES_ENTRY(aes_xts_decrypt)
+<<<<<<< HEAD
 <<<<<<< HEAD
 	stp		x29, x30, [sp, #-16]!
 	mov		x29, sp
@@ -696,6 +818,8 @@ AES_ENTRY(aes_xts_decrypt)
 .Lxtsdecnotfirst:
 	dec_prepare	w3, x2, x8
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	FRAME_PUSH
 	cbz		w7, .LxtsdecloopNx
 
@@ -706,15 +830,21 @@ AES_ENTRY(aes_xts_decrypt)
 	ldr		q7, .Lxts_mul_x
 	b		.LxtsdecNx
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 .LxtsdecloopNx:
 	ldr		q7, .Lxts_mul_x
 	next_tweak	v4, v4, v7, v8
 .LxtsdecNx:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	subs		w4, w4, #4
 	bmi		.Lxtsdec1x
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #if INTERLEAVE >= 2
 	subs		w4, w4, #INTERLEAVE
 	bmi		.Lxtsdec1x
@@ -734,6 +864,9 @@ AES_ENTRY(aes_xts_decrypt)
 	mov		v4.16b, v5.16b
 	b		.Lxtsdecout
 #else
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ld1		{v0.16b-v3.16b}, [x1], #64	/* get 4 ct blocks */
 	next_tweak	v5, v4, v7, v8
@@ -744,7 +877,11 @@ AES_ENTRY(aes_xts_decrypt)
 	next_tweak	v7, v6, v7, v8
 	eor		v3.16b, v3.16b, v7.16b
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bl		aes_decrypt_block4x
+=======
+	do_decrypt_block4x
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	do_decrypt_block4x
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -757,6 +894,7 @@ AES_ENTRY(aes_xts_decrypt)
 	cbz		w4, .Lxtsdecout
 	b		.LxtsdecloopNx
 <<<<<<< HEAD
+<<<<<<< HEAD
 .Lxtsdec1x:
 	adds		w4, w4, #4
 	beq		.Lxtsdecout
@@ -765,6 +903,8 @@ AES_ENTRY(aes_xts_decrypt)
 	eor		v0.16b, v1.16b, v4.16b
 	decrypt_block	v0, w3, x2, x8, w7
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 .Lxtsdec1x:
 	adds		w4, w4, #INTERLEAVE
@@ -774,6 +914,9 @@ AES_ENTRY(aes_xts_decrypt)
 	ld1		{v1.16b}, [x1], #16
 	eor		v0.16b, v1.16b, v4.16b
 	decrypt_block	v0, w3, x2, x6, w7
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	eor		v0.16b, v0.16b, v4.16b
 	st1		{v0.16b}, [x0], #16
@@ -783,8 +926,12 @@ AES_ENTRY(aes_xts_decrypt)
 	b		.Lxtsdecloop
 .Lxtsdecout:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	st1		{v4.16b}, [x6]
 	ldp		x29, x30, [sp], #16
+=======
+	FRAME_POP
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	FRAME_POP
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -798,6 +945,7 @@ AES_ENDPROC(aes_xts_decrypt)
 AES_ENTRY(aes_mac_update)
 	ld1		{v0.16b}, [x4]			/* get dg */
 	enc_prepare	w2, x1, x7
+<<<<<<< HEAD
 <<<<<<< HEAD
 	cbz		w5, .Lmacloop4x
 
@@ -825,6 +973,10 @@ AES_ENTRY(aes_mac_update)
 	cbnz		w5, .Lmacenc
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	cbnz		w5, .Lmacenc
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 .Lmacloop:
 	cbz		w3, .Lmacout
 	ld1		{v1.16b}, [x0], #16		/* get next pt block */
@@ -835,6 +987,10 @@ AES_ENTRY(aes_mac_update)
 	cbz		w5, .Lmacout
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+.Lmacenc:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 .Lmacenc:
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

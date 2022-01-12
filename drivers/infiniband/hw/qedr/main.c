@@ -549,7 +549,11 @@ static int qedr_set_device_attr(struct qedr_dev *dev)
 
 	/* Part 2 - check capabilities */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	page_size = ~qed_attr->page_size_caps + 1;
+=======
+	page_size = ~dev->attr.page_size_caps + 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	page_size = ~dev->attr.page_size_caps + 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

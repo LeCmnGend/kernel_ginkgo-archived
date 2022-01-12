@@ -282,7 +282,11 @@ static int atm_tc_change(struct Qdisc *sch, u32 classid, u32 parent,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	error = tcf_block_get(&flow->block, &flow->filter_list, sch);
+=======
+	error = tcf_block_get(&flow->block, &flow->filter_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	error = tcf_block_get(&flow->block, &flow->filter_list);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -555,7 +559,11 @@ static int atm_tc_init(struct Qdisc *sch, struct nlattr *opt)
 	p->link.ref = 1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = tcf_block_get(&p->link.block, &p->link.filter_list, sch);
+=======
+	err = tcf_block_get(&p->link.block, &p->link.filter_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = tcf_block_get(&p->link.block, &p->link.filter_list);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

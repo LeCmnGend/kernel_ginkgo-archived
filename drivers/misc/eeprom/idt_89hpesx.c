@@ -1166,7 +1166,10 @@ static void idt_get_fw_data(struct idt_89hpesx_dev *pdev)
 		pdev->eero = false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	fwnode_handle_put(fwnode);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dev_info(dev, "EEPROM of %d bytes found by 0x%x",

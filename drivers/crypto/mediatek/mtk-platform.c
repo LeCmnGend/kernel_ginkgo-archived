@@ -446,7 +446,11 @@ static int mtk_desc_ring_alloc(struct mtk_cryp *cryp)
 {
 	struct mtk_ring **ring = cryp->ring;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int i;
+=======
+	int i, err = ENOMEM;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int i, err = ENOMEM;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -477,7 +481,11 @@ static int mtk_desc_ring_alloc(struct mtk_cryp *cryp)
 
 err_cleanup:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	do {
+=======
+	for (; i--; ) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (; i--; ) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -487,8 +495,13 @@ err_cleanup:
 				  ring[i]->cmd_base, ring[i]->cmd_dma);
 		kfree(ring[i]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} while (i--);
 	return -ENOMEM;
+=======
+	}
+	return err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	}
 	return err;

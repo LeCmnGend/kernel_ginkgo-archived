@@ -190,7 +190,10 @@ struct sde_hw_intr_ops {
 
 	/**
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * get_interrupt_statuses - Gets and store value from all interrupt
 	 *                          status registers that are currently fired.
 	 * @intr:	HW interrupt handle
@@ -199,6 +202,9 @@ struct sde_hw_intr_ops {
 			struct sde_hw_intr *intr);
 
 	/**
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * clear_interrupt_status - Clears HW interrupt status based on given
 	 *                          lookup IRQ index.
@@ -296,6 +302,10 @@ struct sde_hw_intr_ops {
  * @ops:              function pointer mapping for IRQ handling
  * @cache_irq_mask:   array of IRQ enable masks reg storage created during init
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+ * @save_irq_status:  array of IRQ status reg storage created during init
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * @save_irq_status:  array of IRQ status reg storage created during init
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -310,6 +320,10 @@ struct sde_hw_intr {
 	struct sde_hw_intr_ops ops;
 	u32 *cache_irq_mask;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u32 *save_irq_status;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 *save_irq_status;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

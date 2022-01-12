@@ -212,6 +212,7 @@ struct cpu_topology cpu_topology[NR_CPUS];
 EXPORT_SYMBOL_GPL(cpu_topology);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const struct cpumask *cpu_possible_coregroup_mask(int cpu)
 {
 	return &cpu_topology[cpu].core_possible_sibling;
@@ -219,11 +220,14 @@ const struct cpumask *cpu_possible_coregroup_mask(int cpu)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 const struct cpumask *cpu_coregroup_mask(int cpu)
 {
 	return &cpu_topology[cpu].core_sibling;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static void update_possible_siblings_masks(unsigned int cpuid)
 {
@@ -243,6 +247,8 @@ static void update_possible_siblings_masks(unsigned int cpuid)
 	}
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void update_siblings_masks(unsigned int cpuid)
@@ -392,7 +398,11 @@ void __init init_cpu_topology(void)
 		set_sched_topology(arm64_topology);
 		for_each_possible_cpu(cpu)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			update_possible_siblings_masks(cpu);
+=======
+			update_siblings_masks(cpu);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			update_siblings_masks(cpu);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

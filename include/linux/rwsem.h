@@ -21,6 +21,7 @@
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * For an uncontended rwsem, count and owner are the only fields a task
  * needs to touch when acquiring the rwsem. So they are put next to each
@@ -47,6 +48,8 @@ struct rw_semaphore {
 	raw_spinlock_t wait_lock;
 	struct list_head wait_list;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct rw_semaphore;
 
 #ifdef CONFIG_RWSEM_GENERIC_SPINLOCK
@@ -66,6 +69,9 @@ struct rw_semaphore {
 	 */
 	struct task_struct *owner;
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_DEBUG_LOCK_ALLOC
 	struct lockdep_map	dep_map;
@@ -78,11 +84,14 @@ struct rw_semaphore {
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Setting all bits of the owner field except bit 0 will indicate
  * that the rwsem is writer-owned with an unknown owner.
  */
 #define RWSEM_OWNER_UNKNOWN	(-2L)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Setting bit 0 of the owner field with other non-zero bits will indicate
  * that the rwsem is writer-owned with an unknown owner.
  */
@@ -97,6 +106,9 @@ extern struct rw_semaphore *rwsem_downgrade_wake(struct rw_semaphore *sem);
 
 /* Include the arch specific part */
 #include <asm/rwsem.h>
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* In all implementations count != 0 means locked */
@@ -106,8 +118,13 @@ static inline int rwsem_is_locked(struct rw_semaphore *sem)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define RWSEM_UNLOCKED_VALUE		0L
 #define __RWSEM_INIT_COUNT(name)	.count = ATOMIC_LONG_INIT(RWSEM_UNLOCKED_VALUE)
+=======
+#define __RWSEM_INIT_COUNT(name)	.count = ATOMIC_LONG_INIT(RWSEM_UNLOCKED_VALUE)
+#endif
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define __RWSEM_INIT_COUNT(name)	.count = ATOMIC_LONG_INIT(RWSEM_UNLOCKED_VALUE)
 #endif
@@ -123,7 +140,11 @@ static inline int rwsem_is_locked(struct rw_semaphore *sem)
 
 #ifdef CONFIG_RWSEM_SPIN_ON_OWNER
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define __RWSEM_OPT_INIT(lockname) , .osq = OSQ_LOCK_UNLOCKED, .owner = ATOMIC_LONG_INIT(0)
+=======
+#define __RWSEM_OPT_INIT(lockname) , .osq = OSQ_LOCK_UNLOCKED, .owner = NULL
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define __RWSEM_OPT_INIT(lockname) , .osq = OSQ_LOCK_UNLOCKED, .owner = NULL
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -174,7 +195,10 @@ static inline int rwsem_is_contended(struct rw_semaphore *sem)
  */
 extern void down_read(struct rw_semaphore *sem);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern int __must_check down_read_killable(struct rw_semaphore *sem);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

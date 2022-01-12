@@ -1269,7 +1269,11 @@ static int rtsx_pci_probe(struct pci_dev *pcidev,
 			ARRAY_SIZE(rtsx_pcr_cells), NULL, 0, NULL);
 	if (ret < 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto free_slots;
+=======
+		goto disable_irq;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto disable_irq;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1279,8 +1283,11 @@ static int rtsx_pci_probe(struct pci_dev *pcidev,
 	return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 free_slots:
 	kfree(pcr->slots);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 disable_irq:

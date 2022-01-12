@@ -2096,7 +2096,10 @@ err_ioremap:
 	free_netdev(netdev);
 err_alloc_netdev:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pci_disable_pcie_error_reporting(pdev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pci_release_mem_regions(pdev);

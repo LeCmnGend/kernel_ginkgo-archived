@@ -8,7 +8,10 @@
 #include <asm/page.h>
 #include <asm/extable.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <asm/kup.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -87,6 +90,7 @@
 
 #define __get_user(x, ptr) \
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__get_user_nocheck((x), (ptr), sizeof(*(ptr)), true)
 #define __put_user(x, ptr) \
 	__put_user_nocheck((__typeof__(*(ptr)))(x), (ptr), sizeof(*(ptr)), true)
@@ -95,6 +99,11 @@
 	__get_user_nocheck((x), (ptr), sizeof(*(ptr)), false)
 #define __put_user_allowed(x, ptr) \
 	__put_user_nocheck((__typeof__(*(ptr)))(x), (ptr), sizeof(*(ptr)), false)
+=======
+	__get_user_nocheck((x), (ptr), sizeof(*(ptr)))
+#define __put_user(x, ptr) \
+	__put_user_nocheck((__typeof__(*(ptr)))(x), (ptr), sizeof(*(ptr)))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__get_user_nocheck((x), (ptr), sizeof(*(ptr)))
 #define __put_user(x, ptr) \
@@ -145,7 +154,11 @@ extern long __put_user_bad(void);
 #endif /* __powerpc64__ */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define __put_user_size_allowed(x, ptr, size, retval)		\
+=======
+#define __put_user_size(x, ptr, size, retval)			\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define __put_user_size(x, ptr, size, retval)			\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -160,6 +173,7 @@ do {								\
 	}							\
 } while (0)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #define __put_user_size(x, ptr, size, retval)			\
 do {								\
@@ -184,6 +198,8 @@ do {								\
 		__put_user_size_allowed(__pu_val, __pu_addr, __pu_size, __pu_err); \
 								\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define __put_user_nocheck(x, ptr, size)			\
 ({								\
 	long __pu_err;						\
@@ -192,6 +208,9 @@ do {								\
 		might_fault();					\
 	__chk_user_ptr(ptr);					\
 	__put_user_size((x), __pu_addr, (size), __pu_err);	\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__pu_err;						\
 })
@@ -200,6 +219,7 @@ do {								\
 ({									\
 	long __pu_err = -EFAULT;					\
 	__typeof__(*(ptr)) __user *__pu_addr = (ptr);			\
+<<<<<<< HEAD
 <<<<<<< HEAD
 	__typeof__(*(ptr)) __pu_val = (x);				\
 	__typeof__(size) __pu_size = (size);				\
@@ -213,6 +233,11 @@ do {								\
 	if (access_ok(VERIFY_WRITE, __pu_addr, size))			\
 		__put_user_size((x), __pu_addr, (size), __pu_err);	\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	might_fault();							\
+	if (access_ok(VERIFY_WRITE, __pu_addr, size))			\
+		__put_user_size((x), __pu_addr, (size), __pu_err);	\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__pu_err;							\
 })
 
@@ -221,12 +246,17 @@ do {								\
 	long __pu_err;						\
 	__typeof__(*(ptr)) __user *__pu_addr = (ptr);		\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__typeof__(*(ptr)) __pu_val = (x);			\
 	__typeof__(size) __pu_size = (size);			\
 								\
 	__chk_user_ptr(__pu_addr);				\
 	__put_user_size(__pu_val, __pu_addr, __pu_size, __pu_err); \
 								\
+=======
+	__chk_user_ptr(ptr);					\
+	__put_user_size((x), __pu_addr, (size), __pu_err);	\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__chk_user_ptr(ptr);					\
 	__put_user_size((x), __pu_addr, (size), __pu_err);	\
@@ -272,7 +302,11 @@ extern long __get_user_bad(void);
 #endif /* __powerpc64__ */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define __get_user_size_allowed(x, ptr, size, retval)		\
+=======
+#define __get_user_size(x, ptr, size, retval)			\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define __get_user_size(x, ptr, size, retval)			\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -291,6 +325,7 @@ do {								\
 } while (0)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define __get_user_size(x, ptr, size, retval)			\
 do {								\
 	allow_read_from_user(ptr, size);			\
@@ -298,6 +333,8 @@ do {								\
 	prevent_read_from_user(ptr, size);			\
 } while (0)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -308,7 +345,11 @@ do {								\
 	__typeof__(__builtin_choose_expr(sizeof(x) > sizeof(0UL), 0ULL, 0UL))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define __get_user_nocheck(x, ptr, size, do_allow)			\
+=======
+#define __get_user_nocheck(x, ptr, size)			\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define __get_user_nocheck(x, ptr, size)			\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -316,6 +357,7 @@ do {								\
 	long __gu_err;						\
 	__long_type(*(ptr)) __gu_val;				\
 	__typeof__(*(ptr)) __user *__gu_addr = (ptr);	\
+<<<<<<< HEAD
 <<<<<<< HEAD
 	__typeof__(size) __gu_size = (size);			\
 								\
@@ -330,12 +372,17 @@ do {								\
 	(x) = (__typeof__(*(ptr)))__gu_val;			\
 								\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__chk_user_ptr(ptr);					\
 	if (!is_kernel_addr((unsigned long)__gu_addr))		\
 		might_fault();					\
 	barrier_nospec();					\
 	__get_user_size(__gu_val, __gu_addr, (size), __gu_err);	\
 	(x) = (__typeof__(*(ptr)))__gu_val;			\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__gu_err;						\
 })
@@ -345,6 +392,7 @@ do {								\
 	long __gu_err = -EFAULT;					\
 	__long_type(*(ptr)) __gu_val = 0;				\
 	__typeof__(*(ptr)) __user *__gu_addr = (ptr);		\
+<<<<<<< HEAD
 <<<<<<< HEAD
 	__typeof__(size) __gu_size = (size);				\
 									\
@@ -356,12 +404,17 @@ do {								\
 	(x) = (__force __typeof__(*(ptr)))__gu_val;				\
 									\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	might_fault();							\
 	if (access_ok(VERIFY_READ, __gu_addr, (size))) {		\
 		barrier_nospec();					\
 		__get_user_size(__gu_val, __gu_addr, (size), __gu_err);	\
 	}								\
 	(x) = (__force __typeof__(*(ptr)))__gu_val;				\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__gu_err;							\
 })
@@ -372,6 +425,7 @@ do {								\
 	__long_type(*(ptr)) __gu_val;				\
 	__typeof__(*(ptr)) __user *__gu_addr = (ptr);	\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__typeof__(size) __gu_size = (size);			\
 								\
 	__chk_user_ptr(__gu_addr);				\
@@ -380,10 +434,15 @@ do {								\
 	(x) = (__force __typeof__(*(ptr)))__gu_val;			\
 								\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__chk_user_ptr(ptr);					\
 	barrier_nospec();					\
 	__get_user_size(__gu_val, __gu_addr, (size), __gu_err);	\
 	(x) = (__force __typeof__(*(ptr)))__gu_val;			\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__gu_err;						\
 })
@@ -399,6 +458,7 @@ static inline unsigned long
 raw_copy_in_user(void __user *to, const void __user *from, unsigned long n)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long ret;
 
 	barrier_nospec();
@@ -410,6 +470,10 @@ raw_copy_in_user(void __user *to, const void __user *from, unsigned long n)
 	barrier_nospec();
 	return __copy_tofrom_user(to, from, n);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	barrier_nospec();
+	return __copy_tofrom_user(to, from, n);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 #endif /* __powerpc64__ */
 
@@ -417,9 +481,14 @@ static inline unsigned long raw_copy_from_user(void *to,
 		const void __user *from, unsigned long n)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long ret;
 	if (__builtin_constant_p(n) && (n <= 8)) {
 		ret = 1;
+=======
+	if (__builtin_constant_p(n) && (n <= 8)) {
+		unsigned long ret = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (__builtin_constant_p(n) && (n <= 8)) {
 		unsigned long ret = 1;
@@ -449,6 +518,7 @@ static inline unsigned long raw_copy_from_user(void *to,
 
 	barrier_nospec();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	allow_read_from_user(from, n);
 	ret = __copy_tofrom_user((__force void __user *)to, from, n);
 	prevent_read_from_user(from, n);
@@ -458,11 +528,16 @@ static inline unsigned long raw_copy_from_user(void *to,
 static inline unsigned long
 raw_copy_to_user_allowed(void __user *to, const void *from, unsigned long n)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return __copy_tofrom_user((__force void __user *)to, from, n);
 }
 
 static inline unsigned long raw_copy_to_user(void __user *to,
 		const void *from, unsigned long n)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	if (__builtin_constant_p(n) && (n <= 8)) {
@@ -470,6 +545,7 @@ static inline unsigned long raw_copy_to_user(void __user *to,
 
 		switch (n) {
 		case 1:
+<<<<<<< HEAD
 <<<<<<< HEAD
 			__put_user_size_allowed(*(u8 *)from, (u8 __user *)to, 1, ret);
 			break;
@@ -482,6 +558,8 @@ static inline unsigned long raw_copy_to_user(void __user *to,
 		case 8:
 			__put_user_size_allowed(*(u64 *)from, (u64 __user *)to, 8, ret);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			__put_user_size(*(u8 *)from, (u8 __user *)to, 1, ret);
 			break;
 		case 2:
@@ -492,6 +570,9 @@ static inline unsigned long raw_copy_to_user(void __user *to,
 			break;
 		case 8:
 			__put_user_size(*(u64 *)from, (u64 __user *)to, 8, ret);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			break;
 		}
@@ -502,6 +583,7 @@ static inline unsigned long raw_copy_to_user(void __user *to,
 	return __copy_tofrom_user(to, (__force const void __user *)from, n);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static inline unsigned long
 raw_copy_to_user(void __user *to, const void *from, unsigned long n)
@@ -532,6 +614,8 @@ static inline unsigned long __clear_user(void __user *addr, unsigned long size)
 {
 	return clear_user(addr, size);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern unsigned long __clear_user(void __user *addr, unsigned long size);
 
 static inline unsigned long clear_user(void __user *addr, unsigned long size)
@@ -540,12 +624,16 @@ static inline unsigned long clear_user(void __user *addr, unsigned long size)
 	if (likely(access_ok(VERIFY_WRITE, addr, size)))
 		return __clear_user(addr, size);
 	return size;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 extern long strncpy_from_user(char *dst, const char __user *src, long count);
 extern __must_check long strnlen_user(const char __user *str, long n);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 #define user_access_begin(type, ptr, len) access_ok(type, ptr, len)
@@ -557,6 +645,8 @@ extern __must_check long strnlen_user(const char __user *str, long n);
 #define unsafe_copy_to_user(d, s, l, e) \
 	unsafe_op_wrap(raw_copy_to_user_allowed(d, s, l), e)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif	/* _ARCH_POWERPC_UACCESS_H */

@@ -156,7 +156,10 @@ static void process_unsol_events(struct work_struct *work)
 	unsigned int rp, caddr, res;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock_irq(&bus->reg_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	while (bus->unsol_rp != bus->unsol_wp) {
@@ -171,6 +174,7 @@ static void process_unsol_events(struct work_struct *work)
 		if (!codec || !codec->dev.driver)
 			continue;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		spin_unlock_irq(&bus->reg_lock);
 		drv = drv_to_hdac_driver(codec->dev.driver);
 		if (drv->unsol_event)
@@ -178,6 +182,12 @@ static void process_unsol_events(struct work_struct *work)
 		spin_lock_irq(&bus->reg_lock);
 	}
 	spin_unlock_irq(&bus->reg_lock);
+=======
+		drv = drv_to_hdac_driver(codec->dev.driver);
+		if (drv->unsol_event)
+			drv->unsol_event(codec, res);
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		drv = drv_to_hdac_driver(codec->dev.driver);
 		if (drv->unsol_event)

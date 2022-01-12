@@ -314,8 +314,14 @@ static void tlan_remove_one(struct pci_dev *pdev)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cancel_work_sync(&priv->tlan_tqueue);
 	free_netdev(dev);
+=======
+	free_netdev(dev);
+
+	cancel_work_sync(&priv->tlan_tqueue);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	free_netdev(dev);
 
@@ -678,6 +684,10 @@ static void  __init tlan_eisa_probe(void)
 {
 	long	ioaddr;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int	rc = -ENODEV;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int	rc = -ENODEV;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -746,7 +756,12 @@ static void  __init tlan_eisa_probe(void)
 
 		/* Setup the newly found eisa adapter */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		tlan_probe1(NULL, ioaddr, irq, 12, NULL);
+=======
+		rc = tlan_probe1(NULL, ioaddr, irq,
+				 12, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		rc = tlan_probe1(NULL, ioaddr, irq,
 				 12, NULL);

@@ -4,7 +4,10 @@
 
 #include <linux/sched.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/sched/rt.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/iocontext.h>
@@ -68,7 +71,11 @@ static inline int task_nice_ioclass(struct task_struct *task)
 	if (task->policy == SCHED_IDLE)
 		return IOPRIO_CLASS_IDLE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	else if (task_is_realtime(task))
+=======
+	else if (task->policy == SCHED_FIFO || task->policy == SCHED_RR)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	else if (task->policy == SCHED_FIFO || task->policy == SCHED_RR)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

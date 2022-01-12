@@ -74,7 +74,10 @@
 #include <net/checksum.h>
 #include <net/inetpeer.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <net/inet_ecn.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <net/lwtunnel.h>
@@ -316,7 +319,11 @@ static int ip_finish_output(struct net *net, struct sock *sk, struct sk_buff *sk
 		return ip_finish_output_gso(net, sk, skb, mtu);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (skb->len > mtu || IPCB(skb)->frag_max_size)
+=======
+	if (skb->len > mtu || (IPCB(skb)->flags & IPSKB_FRAG_PMTU))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (skb->len > mtu || (IPCB(skb)->flags & IPSKB_FRAG_PMTU))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1580,7 +1587,11 @@ void ip_send_unicast_reply(struct sock *sk, struct sk_buff *skb,
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	inet_sk(sk)->tos = arg->tos & ~INET_ECN_MASK;
+=======
+	inet_sk(sk)->tos = arg->tos;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	inet_sk(sk)->tos = arg->tos;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -82,7 +82,11 @@
 #define CS42L42_HP_PDN_MASK		(1 << CS42L42_HP_PDN_SHIFT)
 #define CS42L42_ADC_PDN_SHIFT		2
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define CS42L42_ADC_PDN_MASK		(1 << CS42L42_ADC_PDN_SHIFT)
+=======
+#define CS42L42_ADC_PDN_MASK		(1 << CS42L42_HP_PDN_SHIFT)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define CS42L42_ADC_PDN_MASK		(1 << CS42L42_HP_PDN_SHIFT)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -748,7 +752,10 @@
 
 #define CS42L42_NUM_SUPPLIES	5
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define CS42L42_BOOT_TIME_US	3000
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

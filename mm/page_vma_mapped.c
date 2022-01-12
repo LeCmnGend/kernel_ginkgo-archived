@@ -111,6 +111,7 @@ static bool check_pte(struct page_vma_mapped_walk *pvmw)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void step_forward(struct page_vma_mapped_walk *pvmw, unsigned long size)
 {
 	pvmw->address = (pvmw->address + size) & ~(size - 1);
@@ -118,6 +119,8 @@ static void step_forward(struct page_vma_mapped_walk *pvmw, unsigned long size)
 		pvmw->address = ULONG_MAX;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -149,7 +152,10 @@ bool page_vma_mapped_walk(struct page_vma_mapped_walk *pvmw)
 	struct mm_struct *mm = pvmw->vma->vm_mm;
 	struct page *page = pvmw->page;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long end;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pgd_t *pgd;
@@ -162,16 +168,22 @@ bool page_vma_mapped_walk(struct page_vma_mapped_walk *pvmw)
 		return not_found(pvmw);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(PageHuge(page))) {
 		/* The only possible mapping was handled on last iteration */
 		if (pvmw->pte)
 			return not_found(pvmw);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (pvmw->pte)
 		goto next_pte;
 
 	if (unlikely(PageHuge(pvmw->page))) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* when pud is not present, pte will be NULL */
 		pvmw->pte = huge_pte_offset(mm, pvmw->address,
@@ -185,6 +197,7 @@ bool page_vma_mapped_walk(struct page_vma_mapped_walk *pvmw)
 			return not_found(pvmw);
 		return true;
 	}
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 	/*
@@ -277,6 +290,8 @@ next_pte:
 			/* Did we cross page table boundary? */
 			if ((pvmw->address & (PMD_SIZE - PAGE_SIZE)) == 0) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 restart:
 	pgd = pgd_offset(mm, pvmw->address);
 	if (!pgd_present(*pgd))
@@ -342,11 +357,15 @@ next_pte:
 			/* Did we cross page table boundary? */
 			if (pvmw->address % PMD_SIZE == 0) {
 				pte_unmap(pvmw->pte);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				if (pvmw->ptl) {
 					spin_unlock(pvmw->ptl);
 					pvmw->ptl = NULL;
 				}
+<<<<<<< HEAD
 <<<<<<< HEAD
 				pte_unmap(pvmw->pte);
 				pvmw->pte = NULL;
@@ -361,6 +380,11 @@ next_pte:
 			} else {
 				pvmw->pte++;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+				goto restart;
+			} else {
+				pvmw->pte++;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			}
 		} while (pte_none(*pvmw->pte));
 
@@ -369,10 +393,14 @@ next_pte:
 			spin_lock(pvmw->ptl);
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto this_pte;
 	} while (pvmw->address < end);
 
 	return false;
+=======
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	}
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -395,11 +423,14 @@ int page_mapped_in_vma(struct page *page, struct vm_area_struct *vma)
 		.flags = PVMW_SYNC,
 	};
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	pvmw.address = vma_address(page, vma);
 	if (pvmw.address == -EFAULT)
 		return 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long start, end;
 
 	start = __vma_address(page, vma);
@@ -408,6 +439,9 @@ int page_mapped_in_vma(struct page *page, struct vm_area_struct *vma)
 	if (unlikely(end < vma->vm_start || start >= vma->vm_end))
 		return 0;
 	pvmw.address = max(start, vma->vm_start);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!page_vma_mapped_walk(&pvmw))
 		return 0;

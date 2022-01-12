@@ -117,7 +117,12 @@ struct kioctx {
 	long			nr_pages;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct rcu_work		free_rwork;	/* see free_ioctx() */
+=======
+	struct rcu_head		free_rcu;
+	struct work_struct	free_work;	/* see free_ioctx() */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct rcu_head		free_rcu;
 	struct work_struct	free_work;	/* see free_ioctx() */
@@ -323,7 +328,11 @@ static void aio_free_ring(struct kioctx *ctx)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int aio_ring_mremap(struct vm_area_struct *vma, unsigned long flags)
+=======
+static int aio_ring_mremap(struct vm_area_struct *vma)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int aio_ring_mremap(struct vm_area_struct *vma)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -334,9 +343,12 @@ static int aio_ring_mremap(struct vm_area_struct *vma)
 	int i, res = -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (flags & MREMAP_DONTUNMAP)
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock(&mm->ioctx_lock);
@@ -534,9 +546,15 @@ static int aio_setup_ring(struct kioctx *ctx, unsigned int nr_events)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ctx->mmap_base = do_mmap(ctx->aio_ring_file, 0, ctx->mmap_size,
 				 PROT_READ | PROT_WRITE,
 				 MAP_SHARED, 0, &unused, NULL);
+=======
+	ctx->mmap_base = do_mmap_pgoff(ctx->aio_ring_file, 0, ctx->mmap_size,
+				       PROT_READ | PROT_WRITE,
+				       MAP_SHARED, 0, &unused, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ctx->mmap_base = do_mmap_pgoff(ctx->aio_ring_file, 0, ctx->mmap_size,
 				       PROT_READ | PROT_WRITE,
@@ -613,6 +631,7 @@ static int kiocb_cancel(struct aio_kiocb *kiocb)
  * free_ioctx() should be RCU delayed to synchronize against the RCU
  * protected lookup_ioctx() and also needs process context to call
 <<<<<<< HEAD
+<<<<<<< HEAD
  * aio_free_ring().  Use rcu_work.
  */
 static void free_ioctx(struct work_struct *work)
@@ -620,6 +639,8 @@ static void free_ioctx(struct work_struct *work)
 	struct kioctx *ctx = container_of(to_rcu_work(work), struct kioctx,
 					  free_rwork);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * aio_free_ring(), so the double bouncing through kioctx->free_rcu and
  * ->free_work.
  */
@@ -627,6 +648,9 @@ static void free_ioctx(struct work_struct *work)
 {
 	struct kioctx *ctx = container_of(work, struct kioctx, free_work);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pr_debug("freeing %p\n", ctx);
 
@@ -638,7 +662,10 @@ static void free_ioctx(struct work_struct *work)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void free_ioctx_rcufn(struct rcu_head *head)
 {
 	struct kioctx *ctx = container_of(head, struct kioctx, free_rcu);
@@ -647,6 +674,9 @@ static void free_ioctx_rcufn(struct rcu_head *head)
 	schedule_work(&ctx->free_work);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void free_ioctx_reqs(struct percpu_ref *ref)
 {
@@ -658,8 +688,12 @@ static void free_ioctx_reqs(struct percpu_ref *ref)
 
 	/* Synchronize against RCU protected table->table[] dereferences */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	INIT_RCU_WORK(&ctx->free_rwork, free_ioctx);
 	queue_rcu_work(system_wq, &ctx->free_rwork);
+=======
+	call_rcu(&ctx->free_rcu, free_ioctx_rcufn);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	call_rcu(&ctx->free_rcu, free_ioctx_rcufn);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1697,6 +1731,10 @@ static long do_io_submit(aio_context_t ctx_id, long nr,
 	long ret = 0;
 	int i = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct blk_plug plug;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct blk_plug plug;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1717,6 +1755,11 @@ static long do_io_submit(aio_context_t ctx_id, long nr,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	blk_start_plug(&plug);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	blk_start_plug(&plug);
 
@@ -1744,6 +1787,10 @@ static long do_io_submit(aio_context_t ctx_id, long nr,
 			break;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	blk_finish_plug(&plug);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	blk_finish_plug(&plug);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

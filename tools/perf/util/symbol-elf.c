@@ -1421,7 +1421,10 @@ struct kcore_copy_info {
 	u64 last_symbol;
 	u64 first_module;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64 first_module_symbol;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u64 last_module_symbol;
@@ -1439,8 +1442,11 @@ static int kcore_copy__process_kallsyms(void *arg, const char *name, char type,
 
 	if (strchr(name, '[')) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!kci->first_module_symbol || start < kci->first_module_symbol)
 			kci->first_module_symbol = start;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (start > kci->last_module_symbol)
@@ -1568,10 +1574,13 @@ static int kcore_copy__calc_maps(struct kcore_copy_info *kci, const char *dir,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (kci->first_module_symbol &&
 	    (!kci->first_module || kci->first_module_symbol < kci->first_module))
 		kci->first_module = kci->first_module_symbol;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kci->first_module = round_down(kci->first_module, page_size);

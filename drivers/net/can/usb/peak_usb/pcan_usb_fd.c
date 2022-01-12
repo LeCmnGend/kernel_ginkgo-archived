@@ -477,8 +477,13 @@ static int pcan_usb_fd_decode_canmsg(struct pcan_usb_fd_if *usb_if,
 {
 	struct pucan_rx_msg *rm = (struct pucan_rx_msg *)rx_msg;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct peak_usb_device *dev;
 	struct net_device *netdev;
+=======
+	struct peak_usb_device *dev = usb_if->dev[pucan_msg_get_channel(rm)];
+	struct net_device *netdev = dev->netdev;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct peak_usb_device *dev = usb_if->dev[pucan_msg_get_channel(rm)];
 	struct net_device *netdev = dev->netdev;
@@ -488,12 +493,15 @@ static int pcan_usb_fd_decode_canmsg(struct pcan_usb_fd_if *usb_if,
 	const u16 rx_msg_flags = le16_to_cpu(rm->flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (pucan_msg_get_channel(rm) >= ARRAY_SIZE(usb_if->dev))
 		return -ENOMEM;
 
 	dev = usb_if->dev[pucan_msg_get_channel(rm)];
 	netdev = dev->netdev;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (rx_msg_flags & PUCAN_MSG_EXT_DATA_LEN) {
@@ -543,6 +551,7 @@ static int pcan_usb_fd_decode_status(struct pcan_usb_fd_if *usb_if,
 {
 	struct pucan_status_msg *sm = (struct pucan_status_msg *)rx_msg;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct pcan_usb_fd_device *pdev;
 	enum can_state new_state = CAN_STATE_ERROR_ACTIVE;
 	enum can_state rx_state, tx_state;
@@ -559,6 +568,8 @@ static int pcan_usb_fd_decode_status(struct pcan_usb_fd_if *usb_if,
 	netdev = dev->netdev;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct peak_usb_device *dev = usb_if->dev[pucan_stmsg_get_channel(sm)];
 	struct pcan_usb_fd_device *pdev =
 			container_of(dev, struct pcan_usb_fd_device, dev);
@@ -568,6 +579,9 @@ static int pcan_usb_fd_decode_status(struct pcan_usb_fd_if *usb_if,
 	struct can_frame *cf;
 	struct sk_buff *skb;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* nothing should be sent while in BUS_OFF state */
 	if (dev->can.state == CAN_STATE_BUS_OFF)
@@ -622,6 +636,7 @@ static int pcan_usb_fd_decode_error(struct pcan_usb_fd_if *usb_if,
 {
 	struct pucan_error_msg *er = (struct pucan_error_msg *)rx_msg;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct pcan_usb_fd_device *pdev;
 	struct peak_usb_device *dev;
 
@@ -630,6 +645,11 @@ static int pcan_usb_fd_decode_error(struct pcan_usb_fd_if *usb_if,
 
 	dev = usb_if->dev[pucan_ermsg_get_channel(er)];
 	pdev = container_of(dev, struct pcan_usb_fd_device, dev);
+=======
+	struct peak_usb_device *dev = usb_if->dev[pucan_ermsg_get_channel(er)];
+	struct pcan_usb_fd_device *pdev =
+			container_of(dev, struct pcan_usb_fd_device, dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct peak_usb_device *dev = usb_if->dev[pucan_ermsg_get_channel(er)];
 	struct pcan_usb_fd_device *pdev =
@@ -649,6 +669,7 @@ static int pcan_usb_fd_decode_overrun(struct pcan_usb_fd_if *usb_if,
 {
 	struct pcan_ufd_ovr_msg *ov = (struct pcan_ufd_ovr_msg *)rx_msg;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct peak_usb_device *dev;
 	struct net_device *netdev;
 	struct can_frame *cf;
@@ -661,11 +682,16 @@ static int pcan_usb_fd_decode_overrun(struct pcan_usb_fd_if *usb_if,
 	netdev = dev->netdev;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct peak_usb_device *dev = usb_if->dev[pufd_omsg_get_channel(ov)];
 	struct net_device *netdev = dev->netdev;
 	struct can_frame *cf;
 	struct sk_buff *skb;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* allocate an skb to store the error frame */
 	skb = alloc_can_err_skb(netdev, &cf);
@@ -785,9 +811,12 @@ static int pcan_usb_fd_encode_msg(struct peak_usb_device *dev,
 	u8 can_dlc;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (cfd->len > CANFD_MAX_DLEN)
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	tx_msg_size = ALIGN(sizeof(struct pucan_tx_msg) + cfd->len, 4);

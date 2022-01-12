@@ -1824,7 +1824,11 @@ static int amdgpu_sriov_reinit_early(struct amdgpu_device *adev)
 	};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (i = 0; i < adev->num_ip_blocks; i++) {
+=======
+	for (i = 0; i < ARRAY_SIZE(ip_order); i++) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (i = 0; i < ARRAY_SIZE(ip_order); i++) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

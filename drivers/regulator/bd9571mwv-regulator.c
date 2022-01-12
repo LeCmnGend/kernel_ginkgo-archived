@@ -120,7 +120,11 @@ static struct regulator_ops vid_ops = {
 static struct regulator_desc regulators[] = {
 	BD9571MWV_REG("VD09", "vd09", VD09, avs_ops, 0, 0x7f,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		      0x6f, 600000, 10000, 0x3c),
+=======
+		      0x80, 600000, 10000, 0x3c),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		      0x80, 600000, 10000, 0x3c),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -133,7 +137,11 @@ static struct regulator_desc regulators[] = {
 	BD9571MWV_REG("DVFS", "dvfs", DVFS, reg_ops,
 		      BD9571MWV_DVFS_MONIVDAC, 0x7f,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		      0x6f, 600000, 10000, 0x3c),
+=======
+		      0x80, 600000, 10000, 0x3c),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		      0x80, 600000, 10000, 0x3c),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

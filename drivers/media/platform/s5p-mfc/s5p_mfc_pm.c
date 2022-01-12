@@ -84,10 +84,15 @@ int s5p_mfc_power_on(void)
 
 	ret = pm_runtime_get_sync(pm->device);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret < 0) {
 		pm_runtime_put_noidle(pm->device);
 		return ret;
 	}
+=======
+	if (ret < 0)
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret < 0)
 		return ret;

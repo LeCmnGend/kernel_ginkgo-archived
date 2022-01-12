@@ -50,8 +50,11 @@ struct icnss_driver_ops {
 	int (*suspend_noirq)(struct device *dev);
 	int (*resume_noirq)(struct device *dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int (*suspend_late)(struct device *dev);
 	int (*resume_early)(struct device *dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int (*uevent)(struct device *dev, struct icnss_uevent_data *uevent);

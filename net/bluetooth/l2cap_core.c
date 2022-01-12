@@ -415,9 +415,12 @@ static void l2cap_chan_timeout(struct work_struct *work)
 
 	mutex_lock(&conn->chan_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* __set_chan_timer() calls l2cap_chan_hold(chan) while scheduling
 	 * this work. No need to call l2cap_chan_hold(chan) here again.
 	 */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	l2cap_chan_lock(chan);
@@ -433,6 +436,7 @@ static void l2cap_chan_timeout(struct work_struct *work)
 	l2cap_chan_close(chan, reason);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	chan->ops->close(chan);
 
 	l2cap_chan_unlock(chan);
@@ -440,12 +444,17 @@ static void l2cap_chan_timeout(struct work_struct *work)
 
 	mutex_unlock(&conn->chan_lock);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	l2cap_chan_unlock(chan);
 
 	chan->ops->close(chan);
 	mutex_unlock(&conn->chan_lock);
 
 	l2cap_chan_put(chan);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -458,8 +467,11 @@ struct l2cap_chan *l2cap_chan_create(void)
 		return NULL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	skb_queue_head_init(&chan->tx_q);
 	skb_queue_head_init(&chan->srej_q);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_init(&chan->lock);
@@ -528,9 +540,13 @@ void l2cap_chan_set_defaults(struct l2cap_chan *chan)
 	chan->retrans_timeout = L2CAP_DEFAULT_RETRANS_TO;
 	chan->monitor_timeout = L2CAP_DEFAULT_MONITOR_TO;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	chan->conf_state = 0;
 	set_bit(CONF_NOT_COMPLETE, &chan->conf_state);
+=======
+	chan->conf_state = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	chan->conf_state = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1752,9 +1768,15 @@ static void l2cap_conn_del(struct hci_conn *hcon, int err)
 		l2cap_chan_del(chan, err);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		chan->ops->close(chan);
 
 		l2cap_chan_unlock(chan);
+=======
+		l2cap_chan_unlock(chan);
+
+		chan->ops->close(chan);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		l2cap_chan_unlock(chan);
 
@@ -4147,8 +4169,12 @@ static inline int l2cap_config_req(struct l2cap_conn *conn,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (chan->state != BT_CONFIG && chan->state != BT_CONNECT2 &&
 	    chan->state != BT_CONNECTED) {
+=======
+	if (chan->state != BT_CONFIG && chan->state != BT_CONNECT2) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (chan->state != BT_CONFIG && chan->state != BT_CONNECT2) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4375,7 +4401,10 @@ static inline int l2cap_disconnect_req(struct l2cap_conn *conn,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	l2cap_chan_hold(chan);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	l2cap_chan_lock(chan);
@@ -4387,18 +4416,24 @@ static inline int l2cap_disconnect_req(struct l2cap_conn *conn,
 	chan->ops->set_shutdown(chan);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	l2cap_chan_del(chan, ECONNRESET);
 
 	chan->ops->close(chan);
 
 	l2cap_chan_unlock(chan);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	l2cap_chan_hold(chan);
 	l2cap_chan_del(chan, ECONNRESET);
 
 	l2cap_chan_unlock(chan);
 
 	chan->ops->close(chan);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	l2cap_chan_put(chan);
 
@@ -4432,7 +4467,10 @@ static inline int l2cap_disconnect_rsp(struct l2cap_conn *conn,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	l2cap_chan_hold(chan);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	l2cap_chan_lock(chan);
@@ -4440,7 +4478,10 @@ static inline int l2cap_disconnect_rsp(struct l2cap_conn *conn,
 	if (chan->state != BT_DISCONN) {
 		l2cap_chan_unlock(chan);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		l2cap_chan_put(chan);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mutex_unlock(&conn->chan_lock);
@@ -4448,18 +4489,24 @@ static inline int l2cap_disconnect_rsp(struct l2cap_conn *conn,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	l2cap_chan_del(chan, 0);
 
 	chan->ops->close(chan);
 
 	l2cap_chan_unlock(chan);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	l2cap_chan_hold(chan);
 	l2cap_chan_del(chan, 0);
 
 	l2cap_chan_unlock(chan);
 
 	chan->ops->close(chan);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	l2cap_chan_put(chan);
 
@@ -6744,10 +6791,16 @@ static int l2cap_data_rcv(struct l2cap_chan *chan, struct sk_buff *skb)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (chan->ops->filter) {
 		if (chan->ops->filter(chan, skb))
 			goto drop;
 	}
+=======
+	if ((chan->mode == L2CAP_MODE_ERTM ||
+	     chan->mode == L2CAP_MODE_STREAMING) && sk_filter(chan->data, skb))
+		goto drop;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if ((chan->mode == L2CAP_MODE_ERTM ||
 	     chan->mode == L2CAP_MODE_STREAMING) && sk_filter(chan->data, skb))

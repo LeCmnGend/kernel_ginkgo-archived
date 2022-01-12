@@ -224,6 +224,11 @@ static void hsi_add_client_from_dt(struct hsi_port *port,
 		goto err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	dev_set_name(&cl->device, "%s", name);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev_set_name(&cl->device, "%s", name);
 
@@ -310,7 +315,10 @@ static void hsi_add_client_from_dt(struct hsi_port *port,
 	cl->device.of_node = client;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev_set_name(&cl->device, "%s", name);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (device_register(&cl->device) < 0) {

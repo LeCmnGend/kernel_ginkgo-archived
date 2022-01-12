@@ -243,10 +243,15 @@ u8 r8712_sitesurvey_cmd(struct _adapter *padapter,
 	memset(psurveyPara->ss_ssid, 0, IW_ESSID_MAX_SIZE + 1);
 	if ((pssid != NULL) && (pssid->SsidLength)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		int len = min_t(int, pssid->SsidLength, IW_ESSID_MAX_SIZE);
 
 		memcpy(psurveyPara->ss_ssid, pssid->Ssid, len);
 		psurveyPara->ss_ssidlen = cpu_to_le32(len);
+=======
+		memcpy(psurveyPara->ss_ssid, pssid->Ssid, pssid->SsidLength);
+		psurveyPara->ss_ssidlen = cpu_to_le32(pssid->SsidLength);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		memcpy(psurveyPara->ss_ssid, pssid->Ssid, pssid->SsidLength);
 		psurveyPara->ss_ssidlen = cpu_to_le32(pssid->SsidLength);

@@ -46,7 +46,10 @@ struct f_hidg {
 	unsigned char			bInterfaceProtocol;
 	unsigned char			protocol;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned char			idle;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned short			report_desc_length;
@@ -97,7 +100,11 @@ static struct hid_descriptor hidg_desc = {
 	.bLength			= sizeof hidg_desc,
 	.bDescriptorType		= HID_DT_HID,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.bcdHID				= cpu_to_le16(0x0101),
+=======
+	.bcdHID				= 0x0101,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.bcdHID				= 0x0101,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -357,11 +364,14 @@ static ssize_t f_hidg_write(struct file *file, const char __user *buffer,
 	spin_lock_irqsave(&hidg->write_spinlock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!hidg->req) {
 		spin_unlock_irqrestore(&hidg->write_spinlock, flags);
 		return -ESHUTDOWN;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define WRITE_COND (!hidg->write_pending)
@@ -385,6 +395,7 @@ try_again:
 
 	spin_unlock_irqrestore(&hidg->write_spinlock, flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (!req) {
 		ERROR(hidg->func.config->cdev, "hidg->req is NULL\n");
@@ -393,6 +404,10 @@ try_again:
 	}
 
 	status = copy_from_user(req->buf, buffer, count);
+=======
+	status = copy_from_user(req->buf, buffer, count);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	status = copy_from_user(req->buf, buffer, count);
 
@@ -425,6 +440,7 @@ try_again:
 	spin_unlock_irqrestore(&hidg->write_spinlock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!hidg->in_ep->enabled) {
 		ERROR(hidg->func.config->cdev, "in_ep is disabled\n");
 		status = -ESHUTDOWN;
@@ -437,6 +453,8 @@ try_again:
 	else
 		status = count;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	status = usb_ep_queue(hidg->in_ep, req, GFP_ATOMIC);
 	if (status < 0) {
 		ERROR(hidg->func.config->cdev,
@@ -445,6 +463,9 @@ try_again:
 	} else {
 		status = count;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return status;
@@ -575,6 +596,7 @@ static int hidg_setup(struct usb_function *f,
 		break;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case ((USB_DIR_IN | USB_TYPE_CLASS | USB_RECIP_INTERFACE) << 8
 		  | HID_REQ_GET_IDLE):
 		VDBG(cdev, "get_idle\n");
@@ -583,6 +605,8 @@ static int hidg_setup(struct usb_function *f,
 		goto respond;
 		break;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case ((USB_DIR_OUT | USB_TYPE_CLASS | USB_RECIP_INTERFACE) << 8
@@ -609,6 +633,7 @@ static int hidg_setup(struct usb_function *f,
 		break;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case ((USB_DIR_OUT | USB_TYPE_CLASS | USB_RECIP_INTERFACE) << 8
 		  | HID_REQ_SET_IDLE):
 		VDBG(cdev, "set_idle\n");
@@ -617,6 +642,8 @@ static int hidg_setup(struct usb_function *f,
 		goto respond;
 		break;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case ((USB_DIR_IN | USB_TYPE_STANDARD | USB_RECIP_INTERFACE) << 8
@@ -847,7 +874,10 @@ static int hidg_bind(struct usb_configuration *c, struct usb_function *f)
 	hidg_interface_desc.bInterfaceProtocol = hidg->bInterfaceProtocol;
 	hidg->protocol = HID_REPORT_PROTOCOL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	hidg->idle = 1;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	hidg_ss_in_ep_desc.wMaxPacketSize = cpu_to_le16(hidg->report_length);
@@ -880,8 +910,12 @@ static int hidg_bind(struct usb_configuration *c, struct usb_function *f)
 
 	status = usb_assign_descriptors(f, hidg_fs_descriptors,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			hidg_hs_descriptors, hidg_ss_descriptors,
 			hidg_ss_descriptors);
+=======
+			hidg_hs_descriptors, hidg_ss_descriptors, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			hidg_hs_descriptors, hidg_ss_descriptors, NULL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

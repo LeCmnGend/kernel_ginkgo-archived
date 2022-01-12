@@ -336,7 +336,10 @@ static void ieee80211_key_replace(struct ieee80211_sub_if_data *sdata,
 		if (pairwise) {
 			rcu_assign_pointer(sta->ptk[idx], new);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			set_sta_flag(sta, WLAN_STA_USES_ENCRYPTION);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			sta->ptk_idx = idx;
@@ -653,7 +656,10 @@ int ieee80211_key_link(struct ieee80211_key *key,
 {
 	struct ieee80211_local *local = sdata->local;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	static atomic_t key_color = ATOMIC_INIT(0);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct ieee80211_key *old_key;
@@ -668,12 +674,15 @@ int ieee80211_key_link(struct ieee80211_key *key,
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Assign a unique ID to every key so we can easily prevent mixed
 	 * key and fragment cache attacks.
 	 */
 	key->color = atomic_inc_return(&key_color);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_lock(&sdata->local->key_mtx);

@@ -664,9 +664,15 @@ static int _sde_encoder_phys_cmd_poll_write_pointer_started(
 
 	if (phys_enc->has_intf_te)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = hw_intf->ops.get_vsync_info(hw_intf, &info, false);
 	else
 		ret = hw_pp->ops.get_vsync_info(hw_pp, &info, false);
+=======
+		ret = hw_intf->ops.get_vsync_info(hw_intf, &info);
+	else
+		ret = hw_pp->ops.get_vsync_info(hw_pp, &info);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = hw_intf->ops.get_vsync_info(hw_intf, &info);
 	else
@@ -721,7 +727,11 @@ static bool _sde_encoder_phys_cmd_is_ongoing_pptx(
 			return false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		hw_intf->ops.get_vsync_info(hw_intf, &info, true);
+=======
+		hw_intf->ops.get_vsync_info(hw_intf, &info);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		hw_intf->ops.get_vsync_info(hw_intf, &info);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -731,7 +741,11 @@ static bool _sde_encoder_phys_cmd_is_ongoing_pptx(
 			return false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		hw_pp->ops.get_vsync_info(hw_pp, &info, true);
+=======
+		hw_pp->ops.get_vsync_info(hw_pp, &info);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		hw_pp->ops.get_vsync_info(hw_pp, &info);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1188,7 +1202,10 @@ static bool sde_encoder_phys_cmd_is_autorefresh_enabled(
 		struct sde_encoder_phys *phys_enc)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct sde_encoder_phys_cmd *cmd_enc;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct sde_hw_pingpong *hw_pp;
@@ -1196,6 +1213,7 @@ static bool sde_encoder_phys_cmd_is_autorefresh_enabled(
 	struct sde_hw_autorefresh cfg;
 	int ret;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (!phys_enc)
 		return 0;
@@ -1205,6 +1223,9 @@ static bool sde_encoder_phys_cmd_is_autorefresh_enabled(
 		return 0;
 
 	if (!phys_enc->hw_pp || !phys_enc->hw_intf)
+=======
+	if (!phys_enc || !phys_enc->hw_pp || !phys_enc->hw_intf)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!phys_enc || !phys_enc->hw_pp || !phys_enc->hw_intf)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1301,7 +1322,11 @@ static int sde_encoder_phys_cmd_get_write_line_count(
 			return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (hw_intf->ops.get_vsync_info(hw_intf, &info, true))
+=======
+		if (hw_intf->ops.get_vsync_info(hw_intf, &info))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (hw_intf->ops.get_vsync_info(hw_intf, &info))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1312,7 +1337,11 @@ static int sde_encoder_phys_cmd_get_write_line_count(
 			return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (hw_pp->ops.get_vsync_info(hw_pp, &info, true))
+=======
+		if (hw_pp->ops.get_vsync_info(hw_pp, &info))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (hw_pp->ops.get_vsync_info(hw_pp, &info))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

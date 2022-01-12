@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2010-2019, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2010-2020, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2010-2020, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -27,7 +31,10 @@
 #include <linux/of_device.h>
 #include <linux/thermal.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/battery_saver.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -37,6 +44,10 @@
 #include "kgsl_trace.h"
 #include "kgsl_gmu_core.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include "kgsl_trace_power.h"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include "kgsl_trace_power.h"
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -182,7 +193,12 @@ static void _ab_buslevel_update(struct kgsl_pwrctrl *pwr,
  */
 static unsigned int _adjust_pwrlevel(struct kgsl_pwrctrl *pwr, int level,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					struct kgsl_pwr_constraint *pwrc)
+=======
+					struct kgsl_pwr_constraint *pwrc,
+					int popp)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					struct kgsl_pwr_constraint *pwrc,
 					int popp)
@@ -215,6 +231,12 @@ static unsigned int _adjust_pwrlevel(struct kgsl_pwrctrl *pwr, int level,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (popp && (max_pwrlevel < pwr->active_pwrlevel))
+		max_pwrlevel = pwr->active_pwrlevel;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (popp && (max_pwrlevel < pwr->active_pwrlevel))
 		max_pwrlevel = pwr->active_pwrlevel;
@@ -321,6 +343,10 @@ void kgsl_pwrctrl_buslevel_update(struct kgsl_device *device,
 		pwr->bus_ab_mbytes = 0;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	trace_kgsl_buslevel(device, pwr->active_pwrlevel, buslevel);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_kgsl_buslevel(device, pwr->active_pwrlevel, buslevel);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -407,6 +433,10 @@ unsigned int kgsl_pwrctrl_adjust_pwrlevel(struct kgsl_device *device,
 {
 	struct kgsl_pwrctrl *pwr = &device->pwrctrl;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	unsigned int old_level = pwr->active_pwrlevel;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned int old_level = pwr->active_pwrlevel;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -415,6 +445,12 @@ unsigned int kgsl_pwrctrl_adjust_pwrlevel(struct kgsl_device *device,
 	if ((pwr->constraint.type != KGSL_CONSTRAINT_NONE) &&
 		(time_after(jiffies, pwr->constraint.expires))) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		/* Trace the constraint being un-set by the driver */
+		trace_kgsl_constraint(device, pwr->constraint.type,
+						old_level, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		/* Trace the constraint being un-set by the driver */
 		trace_kgsl_constraint(device, pwr->constraint.type,
@@ -430,7 +466,12 @@ unsigned int kgsl_pwrctrl_adjust_pwrlevel(struct kgsl_device *device,
 	 * constraints, etc
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return _adjust_pwrlevel(pwr, new_level, &pwr->constraint);
+=======
+	return _adjust_pwrlevel(pwr, new_level, &pwr->constraint,
+					device->pwrscale.popp_level);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return _adjust_pwrlevel(pwr, new_level, &pwr->constraint,
 					device->pwrscale.popp_level);
@@ -520,7 +561,10 @@ void kgsl_pwrctrl_pwrlevel_change(struct kgsl_device *device,
 	_isense_clk_set_rate(pwr, pwr->active_pwrlevel);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	trace_kgsl_pwrlevel(device,
 			pwr->active_pwrlevel, pwrlevel->gpu_freq,
 			pwr->previous_pwrlevel,
@@ -528,6 +572,9 @@ void kgsl_pwrctrl_pwrlevel_change(struct kgsl_device *device,
 
 	trace_gpu_frequency(pwrlevel->gpu_freq/1000, 0);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * Some targets do not support the bandwidth requirement of
@@ -601,7 +648,11 @@ void kgsl_pwrctrl_set_constraint(struct kgsl_device *device,
 		return;
 	constraint = _adjust_pwrlevel(&device->pwrctrl,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				device->pwrctrl.active_pwrlevel, pwrc);
+=======
+				device->pwrctrl.active_pwrlevel, pwrc, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				device->pwrctrl.active_pwrlevel, pwrc, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -621,6 +672,11 @@ void kgsl_pwrctrl_set_constraint(struct kgsl_device *device,
 		pwrc_old->expires = jiffies + device->pwrctrl.interval_timeout;
 		kgsl_pwrctrl_pwrlevel_change(device, constraint);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		/* Trace the constraint being set by the driver */
+		trace_kgsl_constraint(device, pwrc_old->type, constraint, 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		/* Trace the constraint being set by the driver */
 		trace_kgsl_constraint(device, pwrc_old->type, constraint, 1);
@@ -634,7 +690,10 @@ void kgsl_pwrctrl_set_constraint(struct kgsl_device *device,
 EXPORT_SYMBOL(kgsl_pwrctrl_set_constraint);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * kgsl_pwrctrl_update_l2pc() - Update existing qos request
  * @device: Pointer to the kgsl_device struct
@@ -664,6 +723,9 @@ void kgsl_pwrctrl_update_l2pc(struct kgsl_device *device,
 }
 EXPORT_SYMBOL(kgsl_pwrctrl_update_l2pc);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static ssize_t kgsl_pwrctrl_thermal_pwrlevel_store(struct device *dev,
 					 struct device_attribute *attr,
@@ -773,9 +835,12 @@ static void kgsl_pwrctrl_min_pwrlevel_set(struct kgsl_device *device,
 		level = pwr->max_pwrlevel;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (is_battery_saver_on())
 		level = pwr->num_pwrlevels - 2;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pwr->min_pwrlevel = level;
@@ -1304,7 +1369,10 @@ static ssize_t kgsl_pwrctrl_bus_split_store(struct device *dev,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static ssize_t kgsl_pwrctrl_default_pwrlevel_show(struct device *dev,
 					struct device_attribute *attr,
 					char *buf)
@@ -1388,6 +1456,9 @@ static ssize_t kgsl_popp_show(struct device *dev,
 		test_bit(POPP_ON, &device->pwrscale.popp_state));
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static ssize_t kgsl_pwrctrl_gpu_model_show(struct device *dev,
 					struct device_attribute *attr,
@@ -1662,11 +1733,17 @@ static DEVICE_ATTR(bus_split, 0644,
 	kgsl_pwrctrl_bus_split_show,
 	kgsl_pwrctrl_bus_split_store);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static DEVICE_ATTR(default_pwrlevel, 0644,
 	kgsl_pwrctrl_default_pwrlevel_show,
 	kgsl_pwrctrl_default_pwrlevel_store);
 static DEVICE_ATTR(popp, 0644, kgsl_popp_show, kgsl_popp_store);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static DEVICE_ATTR(force_no_nap, 0644,
 	kgsl_pwrctrl_force_no_nap_show,
@@ -1704,6 +1781,11 @@ static const struct device_attribute *pwrctrl_attr_list[] = {
 	&dev_attr_force_no_nap,
 	&dev_attr_bus_split,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	&dev_attr_default_pwrlevel,
+	&dev_attr_popp,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	&dev_attr_default_pwrlevel,
 	&dev_attr_popp,
@@ -1780,6 +1862,11 @@ void kgsl_pwrctrl_busy_time(struct kgsl_device *device, u64 time, u64 busy)
 	stats->total = 0;
 	stats->busy = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+	trace_kgsl_gpubusy(device, stats->busy_old, stats->total_old);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	trace_kgsl_gpubusy(device, stats->busy_old, stats->total_old);
@@ -1802,6 +1889,11 @@ static void kgsl_pwrctrl_clk(struct kgsl_device *device, int state,
 		if (test_and_clear_bit(KGSL_PWRFLAGS_CLK_ON,
 			&pwr->power_flags)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			trace_kgsl_clk(device, state,
+					kgsl_pwrctrl_active_freq(pwr));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			trace_kgsl_clk(device, state,
 					kgsl_pwrctrl_active_freq(pwr));
@@ -1843,6 +1935,11 @@ static void kgsl_pwrctrl_clk(struct kgsl_device *device, int state,
 		if (!test_and_set_bit(KGSL_PWRFLAGS_CLK_ON,
 			&pwr->power_flags)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			trace_kgsl_clk(device, state,
+					kgsl_pwrctrl_active_freq(pwr));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			trace_kgsl_clk(device, state,
 					kgsl_pwrctrl_active_freq(pwr));
@@ -1916,6 +2013,10 @@ static void kgsl_pwrctrl_axi(struct kgsl_device *device, int state)
 		if (test_and_clear_bit(KGSL_PWRFLAGS_AXI_ON,
 			&pwr->power_flags)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			trace_kgsl_bus(device, state);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			trace_kgsl_bus(device, state);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1927,6 +2028,10 @@ static void kgsl_pwrctrl_axi(struct kgsl_device *device, int state)
 		if (!test_and_set_bit(KGSL_PWRFLAGS_AXI_ON,
 			&pwr->power_flags)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			trace_kgsl_bus(device, state);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			trace_kgsl_bus(device, state);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1995,6 +2100,10 @@ static int kgsl_pwrctrl_pwrrail(struct kgsl_device *device, int state)
 		if (test_and_clear_bit(KGSL_PWRFLAGS_POWER_ON,
 			&pwr->power_flags)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			trace_kgsl_rail(device, state);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			trace_kgsl_rail(device, state);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2009,6 +2118,11 @@ static int kgsl_pwrctrl_pwrrail(struct kgsl_device *device, int state)
 				clear_bit(KGSL_PWRFLAGS_POWER_ON,
 					&pwr->power_flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			else
+				trace_kgsl_rail(device, state);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			else
 				trace_kgsl_rail(device, state);
@@ -2027,6 +2141,10 @@ static void kgsl_pwrctrl_irq(struct kgsl_device *device, int state)
 		if (!test_and_set_bit(KGSL_PWRFLAGS_IRQ_ON,
 			&pwr->power_flags)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			trace_kgsl_irq(device, state);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			trace_kgsl_irq(device, state);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2036,6 +2154,10 @@ static void kgsl_pwrctrl_irq(struct kgsl_device *device, int state)
 		if (test_and_clear_bit(KGSL_PWRFLAGS_IRQ_ON,
 			&pwr->power_flags)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			trace_kgsl_irq(device, state);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			trace_kgsl_irq(device, state);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2438,7 +2560,10 @@ int kgsl_pwrctrl_init(struct kgsl_device *device)
 	pwr->power_flags = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kgsl_property_read_u32(device, "qcom,l2pc-cpu-mask",
 			&pwr->l2pc_cpus_mask);
 
@@ -2446,6 +2571,9 @@ int kgsl_pwrctrl_init(struct kgsl_device *device)
 				device->pdev->dev.of_node,
 				"qcom,l2pc-update-queue");
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pm_runtime_enable(&pdev->dev);
 
@@ -2777,13 +2905,19 @@ static int kgsl_pwrctrl_enable(struct kgsl_device *device)
 		level = pwr->max_pwrlevel;
 		pwr->wakeup_maxpwrlevel = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else {
 		level = pwr->num_pwrlevels - 1;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else if (kgsl_popp_check(device)) {
 		level = pwr->active_pwrlevel;
 	} else {
 		level = pwr->default_pwrlevel;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -2886,6 +3020,10 @@ static int _wake(struct kgsl_device *device)
 	struct kgsl_pwrctrl *pwr = &device->pwrctrl;
 	int status = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	unsigned int state = device->state;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned int state = device->state;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2916,6 +3054,12 @@ static int _wake(struct kgsl_device *device)
 		kgsl_pwrctrl_clk(device, KGSL_PWRFLAGS_ON, KGSL_STATE_ACTIVE);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		if (state == KGSL_STATE_SLUMBER || state == KGSL_STATE_SUSPEND)
+			trace_gpu_frequency(
+			pwr->pwrlevels[pwr->active_pwrlevel].gpu_freq/1000, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (state == KGSL_STATE_SLUMBER || state == KGSL_STATE_SUSPEND)
 			trace_gpu_frequency(
@@ -3130,10 +3274,13 @@ _slumber(struct kgsl_device *device)
 		kgsl_pwrctrl_disable(device);
 		kgsl_pwrscale_sleep(device);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kgsl_pwrctrl_set_state(device, KGSL_STATE_SLUMBER);
 		pm_qos_update_request(&device->pwrctrl.pm_qos_req_dma,
 						PM_QOS_DEFAULT_VALUE);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		trace_gpu_frequency(0, 0);
 		kgsl_pwrctrl_set_state(device, KGSL_STATE_SLUMBER);
 		pm_qos_update_request(&device->pwrctrl.pm_qos_req_dma,
@@ -3142,6 +3289,9 @@ _slumber(struct kgsl_device *device)
 			pm_qos_update_request(
 					&device->pwrctrl.l2pc_cpus_qos,
 					PM_QOS_DEFAULT_VALUE);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 	case KGSL_STATE_SUSPEND:
@@ -3152,6 +3302,10 @@ _slumber(struct kgsl_device *device)
 	case KGSL_STATE_AWARE:
 		kgsl_pwrctrl_disable(device);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		trace_gpu_frequency(0, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		trace_gpu_frequency(0, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3269,6 +3423,10 @@ static void kgsl_pwrctrl_set_state(struct kgsl_device *device,
 				unsigned int state)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	trace_kgsl_pwr_set_state(device, state);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_kgsl_pwr_set_state(device, state);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3287,6 +3445,11 @@ static void kgsl_pwrctrl_request_state(struct kgsl_device *device,
 				unsigned int state)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (state != KGSL_STATE_NONE && state != device->requested_state)
+		trace_kgsl_pwr_request_state(device, state);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (state != KGSL_STATE_NONE && state != device->requested_state)
 		trace_kgsl_pwr_request_state(device, state);
@@ -3351,6 +3514,11 @@ int kgsl_active_count_get(struct kgsl_device *device)
 	if (ret == 0)
 		atomic_inc(&device->active_cnt);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	trace_kgsl_active_count(device,
+		(unsigned long) __builtin_return_address(0));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_kgsl_active_count(device,
 		(unsigned long) __builtin_return_address(0));
@@ -3395,6 +3563,12 @@ void kgsl_active_count_put(struct kgsl_device *device)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	trace_kgsl_active_count(device,
+		(unsigned long) __builtin_return_address(0));
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_kgsl_active_count(device,
 		(unsigned long) __builtin_return_address(0));
@@ -3608,7 +3782,11 @@ void kgsl_pwrctrl_set_default_gpu_pwrlevel(struct kgsl_device *device)
 {
 	struct kgsl_pwrctrl *pwr = &device->pwrctrl;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int new_level = pwr->num_pwrlevels - 1;
+=======
+	unsigned int new_level = pwr->default_pwrlevel;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned int new_level = pwr->default_pwrlevel;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -179,6 +179,7 @@ static void sde_hw_lm_clear_dim_layer(struct sde_hw_mixer *ctx)
 	u32 reset = BIT(16), val;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!ctx->dim.enabled)
 		return;
 
@@ -189,6 +190,10 @@ static void sde_hw_lm_clear_dim_layer(struct sde_hw_mixer *ctx)
 			continue;
 
 		ctx->dim.stage[i] = false;
+=======
+	reset = ~reset;
+	for (i = SDE_STAGE_0; i <= sblk->maxblendstages; i++) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	reset = ~reset;
 	for (i = SDE_STAGE_0; i <= sblk->maxblendstages; i++) {
@@ -224,8 +229,11 @@ static void sde_hw_lm_setup_dim_layer(struct sde_hw_mixer *ctx,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ctx->dim.enabled = true;
 	ctx->dim.stage[dim_layer->stage] = true;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	alpha = dim_layer->color_fill.color_3 & 0xFF;

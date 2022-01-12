@@ -1149,11 +1149,16 @@ static int dsi_runtime_get(struct platform_device *dsidev)
 
 	r = pm_runtime_get_sync(&dsi->pdev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (WARN_ON(r < 0)) {
 		pm_runtime_put_sync(&dsi->pdev->dev);
 		return r;
 	}
 	return 0;
+=======
+	WARN_ON(r < 0);
+	return r < 0 ? r : 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	WARN_ON(r < 0);
 	return r < 0 ? r : 0;

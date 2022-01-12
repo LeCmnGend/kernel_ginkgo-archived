@@ -474,11 +474,14 @@ is_valid_oplock_break(char *buffer, struct TCP_Server_Info *srv)
 					&pCifsInode->flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 				netfile->oplock_epoch = 0;
 				netfile->oplock_level = pSMB->OplockLevel;
 				netfile->oplock_break_cancelled = false;
 				cifs_queue_oplock_break(netfile);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				/*
 				 * Set flag if the server downgrades the oplock
 				 * to L2 else clear.
@@ -494,6 +497,9 @@ is_valid_oplock_break(char *buffer, struct TCP_Server_Info *srv)
 
 				cifs_queue_oplock_break(netfile);
 				netfile->oplock_break_cancelled = false;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 				spin_unlock(&tcon->open_file_lock);

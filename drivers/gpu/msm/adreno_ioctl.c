@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2002,2007-2018,2020-2021, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2002,2007-2018,2020 The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2002,2007-2018,2020 The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -200,14 +204,20 @@ long adreno_ioctl_helper(struct kgsl_device_private *dev_priv,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (i == len)
 		return -ENOIOCTLCMD;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (i == len) {
 		KGSL_DRV_INFO(dev_priv->device,
 			"invalid ioctl code 0x%08X\n", cmd);
 		return -ENOIOCTLCMD;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (WARN_ON(_IOC_SIZE(cmds[i].cmd) > sizeof(data))) {

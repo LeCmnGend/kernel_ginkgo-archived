@@ -1101,11 +1101,14 @@ static void ieee80211_chswitch_post_beacon(struct ieee80211_sub_if_data *sdata)
 	sdata->vif.csa_active = false;
 	ifmgd->csa_waiting_bcn = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * If the CSA IE is still present on the beacon after the switch,
 	 * we need to consider it as a new CSA (possibly to self).
 	 */
 	ifmgd->beacon_crc_valid = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

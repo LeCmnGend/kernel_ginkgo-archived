@@ -1130,9 +1130,12 @@ EXPORT_SYMBOL_GPL(hid_open_report);
 static s32 snto32(__u32 value, unsigned n)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!value || !n)
 		return 0;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	switch (n) {
@@ -1434,6 +1437,7 @@ static void hid_output_field(const struct hid_device *hid,
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Compute the size of a report.
  */
 static size_t hid_compute_report_size(struct hid_report *report)
@@ -1445,6 +1449,8 @@ static size_t hid_compute_report_size(struct hid_report *report)
 }
 
 /*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Create a report. 'data' has to be allocated using
@@ -1459,7 +1465,11 @@ void hid_output_report(struct hid_report *report, __u8 *data)
 		*data++ = report->id;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(data, 0, hid_compute_report_size(report));
+=======
+	memset(data, 0, ((report->size - 1) >> 3) + 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memset(data, 0, ((report->size - 1) >> 3) + 1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1590,7 +1600,11 @@ int hid_report_raw_event(struct hid_device *hid, int type, u8 *data, u32 size,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rsize = hid_compute_report_size(report);
+=======
+	rsize = ((report->size - 1) >> 3) + 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rsize = ((report->size - 1) >> 3) + 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1839,9 +1853,12 @@ int hid_connect(struct hid_device *hdev, unsigned int connect_mask)
 		bus = "I2C";
 		break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case BUS_VIRTUAL:
 		bus = "VIRTUAL";
 		break;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	default:
@@ -2355,13 +2372,19 @@ static const struct hid_device_id hid_have_special_driver[] = {
 	{ HID_USB_DEVICE(USB_VENDOR_ID_PLANTRONICS, HID_ANY_ID) },
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #if IS_ENABLED(CONFIG_HID_PLAYSTATION)
 	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_SONY,
 	USB_DEVICE_ID_SONY_PS5_CONTROLLER) },
 	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY,
 	USB_DEVICE_ID_SONY_PS5_CONTROLLER) },
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #if IS_ENABLED(CONFIG_HID_PRIMAX)
 	{ HID_USB_DEVICE(USB_VENDOR_ID_PRIMAX, USB_DEVICE_ID_PRIMAX_KEYBOARD) },
@@ -2659,15 +2682,21 @@ static int hid_device_remove(struct device *dev)
 	struct hid_device *hdev = to_hid_device(dev);
 	struct hid_driver *hdrv;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	down(&hdev->driver_input_lock);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret = 0;
 
 	if (down_interruptible(&hdev->driver_input_lock)) {
 		ret = -EINTR;
 		goto end;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	hdev->io_started = false;
 
@@ -2684,8 +2713,13 @@ static int hid_device_remove(struct device *dev)
 	if (!hdev->io_started)
 		up(&hdev->driver_input_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	return 0;
+=======
+end:
+	return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 end:
 	return ret;

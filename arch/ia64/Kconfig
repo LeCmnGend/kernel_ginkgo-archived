@@ -96,11 +96,17 @@ config GENERIC_LOCKBREAK
 	def_bool n
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config RWSEM_XCHGADD_ALGORITHM
 	bool
 	default y
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config HUGETLB_PAGE_SIZE_VARIABLE
 	bool

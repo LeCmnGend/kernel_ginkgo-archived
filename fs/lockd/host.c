@@ -432,14 +432,20 @@ nlm_bind_host(struct nlm_host *host)
 	 */
 	if ((clnt = host->h_rpcclnt) != NULL) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		nlm_rebind_host(host);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (time_after_eq(jiffies, host->h_nextrebind)) {
 			rpc_force_rebind(clnt);
 			host->h_nextrebind = jiffies + NLM_HOST_REBIND;
 			dprintk("lockd: next rebind in %lu jiffies\n",
 					host->h_nextrebind - jiffies);
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
 		unsigned long increment = nlmsvc_timeout;
@@ -489,6 +495,7 @@ nlm_bind_host(struct nlm_host *host)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * nlm_rebind_host - If needed, force a portmap lookup of the peer's lockd port
  * @host: NLM host handle for peer
@@ -500,14 +507,22 @@ nlm_bind_host(struct nlm_host *host)
 /*
  * Force a portmap lookup of the remote lockd port
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+/*
+ * Force a portmap lookup of the remote lockd port
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 void
 nlm_rebind_host(struct nlm_host *host)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (host->h_proto != IPPROTO_UDP)
 		return;
 
+=======
+	dprintk("lockd: rebind host %s\n", host->h_name);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dprintk("lockd: rebind host %s\n", host->h_name);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

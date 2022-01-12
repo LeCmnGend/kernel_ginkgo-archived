@@ -51,7 +51,11 @@ struct bma180_part_info {
 	u8 int_reset_reg, int_reset_mask;
 	u8 sleep_reg, sleep_mask;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8 bw_reg, bw_mask, bw_offset;
+=======
+	u8 bw_reg, bw_mask;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u8 bw_reg, bw_mask;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -111,7 +115,10 @@ struct bma180_part_info {
 #define BMA250_RANGE_MASK	GENMASK(3, 0) /* Range of accel values */
 #define BMA250_BW_MASK		GENMASK(4, 0) /* Accel bandwidth */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define BMA250_BW_OFFSET	8
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define BMA250_SUSPEND_MASK	BIT(7) /* chip will sleep */
@@ -130,11 +137,15 @@ struct bma180_data {
 	int bw;
 	bool pmode;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Ensure timestamp is naturally aligned */
 	struct {
 		s16 chan[4];
 		s64 timestamp __aligned(8);
 	} scan;
+=======
+	u8 buff[16]; /* 3x 16-bit + 8-bit + padding + timestamp */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u8 buff[16]; /* 3x 16-bit + 8-bit + padding + timestamp */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -256,8 +267,12 @@ static int bma180_set_bw(struct bma180_data *data, int val)
 		if (data->part_info->bw_table[i] == val) {
 			ret = bma180_set_bits(data, data->part_info->bw_reg,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				data->part_info->bw_mask,
 				i + data->part_info->bw_offset);
+=======
+				data->part_info->bw_mask, i);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				data->part_info->bw_mask, i);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -644,6 +659,7 @@ static const struct iio_chan_spec bma250_channels[] = {
 static const struct bma180_part_info bma180_part_info[] = {
 	[BMA180] = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.channels = bma180_channels,
 		.num_channels = ARRAY_SIZE(bma180_channels),
 		.scale_table = bma180_scale_table,
@@ -692,6 +708,8 @@ static const struct bma180_part_info bma180_part_info[] = {
 		.chip_config = bma250_chip_config,
 		.chip_disable = bma250_chip_disable,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		bma180_channels, ARRAY_SIZE(bma180_channels),
 		bma180_scale_table, ARRAY_SIZE(bma180_scale_table),
 		bma180_bw_table, ARRAY_SIZE(bma180_bw_table),
@@ -718,6 +736,9 @@ static const struct bma180_part_info bma180_part_info[] = {
 		BMA250_RESET_REG,
 		bma250_chip_config,
 		bma250_chip_disable,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	},
 };
@@ -740,7 +761,11 @@ static irqreturn_t bma180_trigger_handler(int irq, void *p)
 			goto err;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		data->scan.chan[i++] = ret;
+=======
+		((s16 *)data->buff)[i++] = ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		((s16 *)data->buff)[i++] = ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -749,7 +774,11 @@ static irqreturn_t bma180_trigger_handler(int irq, void *p)
 	mutex_unlock(&data->mutex);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	iio_push_to_buffers_with_timestamp(indio_dev, &data->scan, time_ns);
+=======
+	iio_push_to_buffers_with_timestamp(indio_dev, data->buff, time_ns);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	iio_push_to_buffers_with_timestamp(indio_dev, data->buff, time_ns);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

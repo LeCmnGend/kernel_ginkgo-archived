@@ -1062,7 +1062,10 @@ static int zr364xx_start_readpipe(struct zr364xx_camera *cam)
 	retval = usb_submit_urb(pipe_info->stream_urb, GFP_KERNEL);
 	if (retval) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		usb_free_urb(pipe_info->stream_urb);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		printk(KERN_ERR KBUILD_MODNAME ": start read pipe failed\n");

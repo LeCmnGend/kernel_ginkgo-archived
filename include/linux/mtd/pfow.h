@@ -129,7 +129,11 @@ static inline void print_drs_error(unsigned dsr)
 	if (!(dsr & DSR_AVAILABLE))
 		printk(KERN_NOTICE"DSR.15: (0) Device not Available\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if ((prog_status & 0x03) == 0x03)
+=======
+	if (prog_status & 0x03)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (prog_status & 0x03)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

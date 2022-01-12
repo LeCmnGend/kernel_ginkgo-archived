@@ -12,8 +12,11 @@ obj-$(CONFIG_BLOCK) := bio.o elevator.o blk-core.o blk-tag.o blk-sysfs.o \
 			badblocks.o partitions/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 CFLAGS_blk-mq.o := $(call cc-disable-warning, align-mismatch)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 obj-$(CONFIG_BOUNCE)		+= bounce.o
@@ -43,7 +46,11 @@ obj-$(CONFIG_BLK_SED_OPAL)	+= sed-opal.o
 obj-$(CONFIG_BLK_INLINE_ENCRYPTION)	+= keyslot-manager.o bio-crypt-ctx.o \
 					   blk-crypto.o
 <<<<<<< HEAD
+<<<<<<< HEAD
 obj-$(CONFIG_BLK_INLINE_ENCRYPTION_FALLBACK)	+= blk-crypto-fallback.o
+=======
+obj-$(CONFIG_BLK_INLINE_ENCRYPTION_FALLBACK)	+= blk-crypto-fallback.o
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 obj-$(CONFIG_BLK_INLINE_ENCRYPTION_FALLBACK)	+= blk-crypto-fallback.o
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

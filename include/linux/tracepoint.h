@@ -319,7 +319,11 @@ extern void syscall_unregfunc(void);
 		___tp_str;						\
 	})
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define __tracepoint_string	__attribute__((section("__tracepoint_str"), used))
+=======
+#define __tracepoint_string	__attribute__((section("__tracepoint_str")))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define __tracepoint_string	__attribute__((section("__tracepoint_str")))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -244,6 +244,7 @@ static inline void raw_write_seqcount_end(seqcount_t *s)
  * collapse the two back-to-back wmb()s.
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Note that, writes surrounding the barrier should be declared atomic (e.g.
  * via WRITE_ONCE): a) to ensure the writes become visible to other threads
  * atomically, avoiding compiler optimizations; b) to document which writes are
@@ -251,6 +252,8 @@ static inline void raw_write_seqcount_end(seqcount_t *s)
  * neither writes before and after the barrier are enclosed in a seq-writer
  * critical section that would ensure readers are aware of ongoing writes.
  *
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *      seqcount_t seq;
@@ -273,17 +276,23 @@ static inline void raw_write_seqcount_end(seqcount_t *s)
  *      void write(void)
  *      {
 <<<<<<< HEAD
+<<<<<<< HEAD
  *              WRITE_ONCE(Y, true);
  *
  *              raw_write_seqcount_barrier(seq);
  *
  *              WRITE_ONCE(X, false);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *              Y = true;
  *
  *              raw_write_seqcount_barrier(seq);
  *
  *              X = false;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *      }
  */

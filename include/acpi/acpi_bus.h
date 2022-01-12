@@ -246,7 +246,10 @@ struct acpi_pnp_type {
 struct acpi_device_pnp {
 	acpi_bus_id bus_id;		/* Object name */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int instance_no;		/* Instance number of this object */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct acpi_pnp_type type;	/* ID type */
@@ -624,6 +627,10 @@ bool acpi_pm_device_can_wakeup(struct device *dev);
 int acpi_pm_device_sleep_state(struct device *, int *, int);
 int acpi_pm_set_device_wakeup(struct device *dev, bool enable);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+int acpi_pm_set_bridge_wakeup(struct device *dev, bool enable);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int acpi_pm_set_bridge_wakeup(struct device *dev, bool enable);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -658,11 +665,17 @@ static inline int acpi_pm_set_device_wakeup(struct device *dev, bool enable)
 	return -ENODEV;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline int acpi_pm_set_bridge_wakeup(struct device *dev, bool enable)
 {
 	return -ENODEV;
 }
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 

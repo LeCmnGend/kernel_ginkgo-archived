@@ -2429,11 +2429,14 @@ SiS_SetCRT1FIFO_630(struct SiS_Private *SiS_Pr, unsigned short ModeNo,
    i = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (SiS_Pr->ChipType == SIS_730)
 		queuedata = &FQBQData730[0];
 	else
 		queuedata = &FQBQData[0];
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
    if(ModeNo > 0x13) {
@@ -2454,13 +2457,19 @@ SiS_SetCRT1FIFO_630(struct SiS_Private *SiS_Pr, unsigned short ModeNo,
       colorth = colortharray[(SiS_Pr->SiS_ModeType - ModeEGA)];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
       if(SiS_Pr->ChipType == SIS_730) {
 	 queuedata = &FQBQData730[0];
       } else {
 	 queuedata = &FQBQData[0];
       }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
       do {
 	 templ = SiS_CalcDelay2(SiS_Pr, queuedata[i]) * VCLK * colorth;

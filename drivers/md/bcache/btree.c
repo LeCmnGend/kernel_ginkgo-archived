@@ -795,7 +795,11 @@ int bch_btree_cache_alloc(struct cache_set *c)
 
 	c->verify_ondisk = (void *)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__get_free_pages(GFP_KERNEL|__GFP_COMP, ilog2(bucket_pages(c)));
+=======
+		__get_free_pages(GFP_KERNEL, ilog2(bucket_pages(c)));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__get_free_pages(GFP_KERNEL, ilog2(bucket_pages(c)));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -845,6 +849,7 @@ out:
 static int mca_cannibalize_lock(struct cache_set *c, struct btree_op *op)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock(&c->btree_cannibalize_lock);
 	if (likely(c->btree_cache_alloc_lock == NULL)) {
 		c->btree_cache_alloc_lock = current;
@@ -857,6 +862,8 @@ static int mca_cannibalize_lock(struct cache_set *c, struct btree_op *op)
 	}
 	spin_unlock(&c->btree_cannibalize_lock);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct task_struct *old;
 
 	old = cmpxchg(&c->btree_cache_alloc_lock, NULL, current);
@@ -866,6 +873,9 @@ static int mca_cannibalize_lock(struct cache_set *c, struct btree_op *op)
 					TASK_UNINTERRUPTIBLE);
 		return -EINTR;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
@@ -902,7 +912,10 @@ static struct btree *mca_cannibalize(struct cache_set *c, struct btree_op *op,
 static void bch_cannibalize_unlock(struct cache_set *c)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock(&c->btree_cannibalize_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (c->btree_cache_alloc_lock == current) {
@@ -910,7 +923,10 @@ static void bch_cannibalize_unlock(struct cache_set *c)
 		wake_up(&c->btree_cache_wait);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_unlock(&c->btree_cannibalize_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

@@ -55,6 +55,7 @@ int kprobe_exceptions_notify(struct notifier_block *self,
 
 /* optinsn template addresses */
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern __visible kprobe_opcode_t optprobe_template_entry[];
 extern __visible kprobe_opcode_t optprobe_template_val[];
 extern __visible kprobe_opcode_t optprobe_template_call[];
@@ -70,6 +71,8 @@ extern __visible kprobe_opcode_t optprobe_template_restore_end[];
 	((unsigned long)optprobe_template_end -	\
 	 (unsigned long)optprobe_template_entry)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern __visible kprobe_opcode_t optprobe_template_entry;
 extern __visible kprobe_opcode_t optprobe_template_val;
 extern __visible kprobe_opcode_t optprobe_template_call;
@@ -84,6 +87,9 @@ extern __visible kprobe_opcode_t optprobe_template_restore_end;
 #define MAX_OPTINSN_SIZE				\
 	((unsigned long)&optprobe_template_end -	\
 	 (unsigned long)&optprobe_template_entry)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define RELATIVEJUMP_SIZE	4
 

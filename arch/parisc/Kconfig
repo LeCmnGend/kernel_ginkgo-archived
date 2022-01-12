@@ -75,13 +75,19 @@ config GENERIC_LOCKBREAK
 	depends on SMP && PREEMPT
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config RWSEM_GENERIC_SPINLOCK
 	def_bool y
 
 config RWSEM_XCHGADD_ALGORITHM
 	bool
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config ARCH_HAS_ILOG2_U32
 	bool

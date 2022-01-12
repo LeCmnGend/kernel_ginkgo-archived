@@ -1,5 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* SPDX-License-Identifier: GPL-2.0-only */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -8,6 +11,10 @@
  *
  * This code is based on glibc cortex strings work originally authored by Linaro
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+ * and re-licensed under GPLv2 for the Linux kernel. The original code can
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * and re-licensed under GPLv2 for the Linux kernel. The original code can
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -16,7 +23,10 @@
  * http://bazaar.launchpad.net/~linaro-toolchain-dev/cortex-strings/trunk/
  * files/head:/src/aarch64/
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -29,6 +39,9 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 
@@ -65,8 +78,14 @@ tmp3w		.req	w9
 tmp3		.req	x9
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 SYM_FUNC_START_ALIAS(__memset)
 SYM_FUNC_START_WEAK_PI(memset)
+=======
+	.weak memset
+ENTRY(__memset)
+ENTRY(memset)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.weak memset
 ENTRY(__memset)
@@ -231,8 +250,13 @@ ENTRY(memset)
 	b.ne	.Ltail_maybe_long
 	ret
 <<<<<<< HEAD
+<<<<<<< HEAD
 SYM_FUNC_END_PI(memset)
 SYM_FUNC_END_ALIAS(__memset)
+=======
+ENDPIPROC(memset)
+ENDPROC(__memset)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 ENDPIPROC(memset)
 ENDPROC(__memset)

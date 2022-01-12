@@ -399,6 +399,7 @@ static inline void p_setd(struct perm_bits *p, int off, u32 virt, u32 write)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Caller should hold memory_lock semaphore */
 bool __vfio_pci_memory_enabled(struct vfio_pci_device *vdev)
 {
@@ -413,6 +414,8 @@ bool __vfio_pci_memory_enabled(struct vfio_pci_device *vdev)
 	return pdev->is_virtfn || (cmd & PCI_COMMAND_MEMORY);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -576,10 +579,13 @@ static int vfio_basic_config_write(struct vfio_pci_device *vdev, int pos,
 		new_cmd = le32_to_cpu(val);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		phys_io = !!(phys_cmd & PCI_COMMAND_IO);
 		virt_io = !!(le16_to_cpu(*virt_cmd) & PCI_COMMAND_IO);
 		new_io = !!(new_cmd & PCI_COMMAND_IO);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		phys_mem = !!(phys_cmd & PCI_COMMAND_MEMORY);
@@ -587,10 +593,16 @@ static int vfio_basic_config_write(struct vfio_pci_device *vdev, int pos,
 		new_mem = !!(new_cmd & PCI_COMMAND_MEMORY);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!new_mem)
 			vfio_pci_zap_and_down_write_memory_lock(vdev);
 		else
 			down_write(&vdev->memory_lock);
+=======
+		phys_io = !!(phys_cmd & PCI_COMMAND_IO);
+		virt_io = !!(le16_to_cpu(*virt_cmd) & PCI_COMMAND_IO);
+		new_io = !!(new_cmd & PCI_COMMAND_IO);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		phys_io = !!(phys_cmd & PCI_COMMAND_IO);
 		virt_io = !!(le16_to_cpu(*virt_cmd) & PCI_COMMAND_IO);
@@ -613,11 +625,16 @@ static int vfio_basic_config_write(struct vfio_pci_device *vdev, int pos,
 
 	count = vfio_default_config_write(vdev, pos, count, perm, offset, val);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (count < 0) {
 		if (offset == PCI_COMMAND)
 			up_write(&vdev->memory_lock);
 		return count;
 	}
+=======
+	if (count < 0)
+		return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (count < 0)
 		return count;
@@ -633,8 +650,11 @@ static int vfio_basic_config_write(struct vfio_pci_device *vdev, int pos,
 		*virt_cmd &= cpu_to_le16(~mask);
 		*virt_cmd |= cpu_to_le16(new_cmd & mask);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		up_write(&vdev->memory_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -875,11 +895,16 @@ static int vfio_exp_config_write(struct vfio_pci_device *vdev, int pos,
 						 &cap);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!ret && (cap & PCI_EXP_DEVCAP_FLR)) {
 			vfio_pci_zap_and_down_write_memory_lock(vdev);
 			pci_try_reset_function(vdev->pdev);
 			up_write(&vdev->memory_lock);
 		}
+=======
+		if (!ret && (cap & PCI_EXP_DEVCAP_FLR))
+			pci_try_reset_function(vdev->pdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!ret && (cap & PCI_EXP_DEVCAP_FLR))
 			pci_try_reset_function(vdev->pdev);
@@ -962,11 +987,16 @@ static int vfio_af_config_write(struct vfio_pci_device *vdev, int pos,
 						&cap);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!ret && (cap & PCI_AF_CAP_FLR) && (cap & PCI_AF_CAP_TP)) {
 			vfio_pci_zap_and_down_write_memory_lock(vdev);
 			pci_try_reset_function(vdev->pdev);
 			up_write(&vdev->memory_lock);
 		}
+=======
+		if (!ret && (cap & PCI_AF_CAP_FLR) && (cap & PCI_AF_CAP_TP))
+			pci_try_reset_function(vdev->pdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!ret && (cap & PCI_AF_CAP_FLR) && (cap & PCI_AF_CAP_TP))
 			pci_try_reset_function(vdev->pdev);
@@ -1610,7 +1640,11 @@ static int vfio_ecap_init(struct vfio_pci_device *vdev)
 				len = vfio_ext_cap_len(vdev, ecap, epos);
 				if (len < 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 					return len;
+=======
+					return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					return ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1773,6 +1807,7 @@ int vfio_config_init(struct vfio_pci_device *vdev)
 
 		vconfig[PCI_INTERRUPT_PIN] = 0; /* Gratuitous for good VFs */
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		/*
 		 * VFs do no implement the memory enable bit of the COMMAND
@@ -1782,6 +1817,8 @@ int vfio_config_init(struct vfio_pci_device *vdev)
 		 */
 		*(__le16 *)&vconfig[PCI_COMMAND] |=
 					cpu_to_le16(PCI_COMMAND_MEMORY);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

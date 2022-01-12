@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2014-2019, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2014-2018, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2014-2018, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -23,7 +27,10 @@
 #include <linux/of.h>
 #include <linux/pm_wakeup.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/delay.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -48,7 +55,10 @@ static int sleepstate_pm_notifier(struct notifier_block *nb,
 	case PM_SUSPEND_PREPARE:
 		qcom_smem_state_update_bits(state, AWAKE_BIT, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		usleep_range(10000, 10500); /* Tuned based on SMP2P latencies */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;

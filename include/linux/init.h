@@ -303,6 +303,11 @@ void __init parse_early_options(char *cmdline);
 #define __nosavedata __section(.data..nosave)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define __rticdata  __attribute__((section(".bss.rtic")))
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define __rticdata  __attribute__((section(".bss.rtic")))
 

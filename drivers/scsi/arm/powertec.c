@@ -383,7 +383,11 @@ static int powertecscsi_probe(struct expansion_card *ec,
 	if (info->info.scsi.dma != NO_DMA)
 		free_dma(info->info.scsi.dma);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	free_irq(ec->irq, info);
+=======
+	free_irq(ec->irq, host);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	free_irq(ec->irq, host);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

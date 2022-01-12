@@ -236,7 +236,11 @@ EXPORT_SYMBOL(memdup_user_nul);
 
 void __vma_link_list(struct mm_struct *mm, struct vm_area_struct *vma,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		struct vm_area_struct *prev)
+=======
+		struct vm_area_struct *prev, struct rb_node *rb_parent)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		struct vm_area_struct *prev, struct rb_node *rb_parent)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -249,15 +253,21 @@ void __vma_link_list(struct mm_struct *mm, struct vm_area_struct *vma,
 		prev->vm_next = vma;
 	} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		next = mm->mmap;
 		mm->mmap = vma;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mm->mmap = vma;
 		if (rb_parent)
 			next = rb_entry(rb_parent,
 					struct vm_area_struct, vm_rb);
 		else
 			next = NULL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	vma->vm_next = next;
@@ -265,6 +275,7 @@ void __vma_link_list(struct mm_struct *mm, struct vm_area_struct *vma,
 		next->vm_prev = vma;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 void __vma_unlink_list(struct mm_struct *mm, struct vm_area_struct *vma)
 {
@@ -280,6 +291,8 @@ void __vma_unlink_list(struct mm_struct *mm, struct vm_area_struct *vma)
 		next->vm_prev = prev;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Check if the vma is being used as a stack by this task */
@@ -357,8 +370,13 @@ unsigned long vm_mmap_pgoff(struct file *file, unsigned long addr,
 		if (down_write_killable(&mm->mmap_sem))
 			return -EINTR;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = do_mmap(file, addr, len, prot, flag, pgoff, &populate,
 			      &uf);
+=======
+		ret = do_mmap_pgoff(file, addr, len, prot, flag, pgoff,
+				    &populate, &uf);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = do_mmap_pgoff(file, addr, len, prot, flag, pgoff,
 				    &populate, &uf);
@@ -565,7 +583,11 @@ int __page_mapcount(struct page *page)
 EXPORT_SYMBOL_GPL(__page_mapcount);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int sysctl_overcommit_memory __read_mostly = OVERCOMMIT_ALWAYS;
+=======
+int sysctl_overcommit_memory __read_mostly = OVERCOMMIT_GUESS;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int sysctl_overcommit_memory __read_mostly = OVERCOMMIT_GUESS;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -574,7 +596,11 @@ unsigned long sysctl_overcommit_kbytes __read_mostly;
 int sysctl_max_map_count __read_mostly = DEFAULT_MAX_MAP_COUNT;
 unsigned long sysctl_user_reserve_kbytes __read_mostly = 1UL << 17; /* 128MB */
 <<<<<<< HEAD
+<<<<<<< HEAD
 unsigned long sysctl_admin_reserve_kbytes __read_mostly; /* 0MB */
+=======
+unsigned long sysctl_admin_reserve_kbytes __read_mostly = 1UL << 13; /* 8MB */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 unsigned long sysctl_admin_reserve_kbytes __read_mostly = 1UL << 13; /* 8MB */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -614,7 +640,11 @@ unsigned long vm_commit_limit(void)
 		allowed = sysctl_overcommit_kbytes >> (PAGE_SHIFT - 10);
 	else
 <<<<<<< HEAD
+<<<<<<< HEAD
 		allowed = ((totalram_pages() - hugetlb_total_pages())
+=======
+		allowed = ((totalram_pages - hugetlb_total_pages())
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		allowed = ((totalram_pages - hugetlb_total_pages())
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

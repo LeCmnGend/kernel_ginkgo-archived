@@ -241,7 +241,11 @@ asmlinkage notrace void secondary_start_kernel(void)
 	 * before we continue.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pr_debug("CPU%u: Booted secondary processor [%08x]\n",
+=======
+	pr_info("CPU%u: Booted secondary processor [%08x]\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pr_info("CPU%u: Booted secondary processor [%08x]\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -331,7 +335,11 @@ void __cpu_die(unsigned int cpu)
 		return;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pr_debug("CPU%u: shutdown\n", cpu);
+=======
+	pr_info("CPU%u: shutdown\n", cpu);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pr_info("CPU%u: shutdown\n", cpu);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -807,6 +815,10 @@ void arch_send_call_function_single_ipi(int cpu)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#ifdef CONFIG_ARM64_ACPI_PARKING_PROTOCOL
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #ifdef CONFIG_ARM64_ACPI_PARKING_PROTOCOL
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -815,6 +827,10 @@ void arch_send_wakeup_ipi_mask(const struct cpumask *mask)
 	smp_cross_call_common(mask, IPI_WAKEUP);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #endif
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -936,9 +952,12 @@ void handle_IPI(int ipinr, struct pt_regs *regs)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case IPI_WAKEUP:
 		break;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_ARM64_ACPI_PARKING_PROTOCOL
 	case IPI_WAKEUP:
 		WARN_ONCE(!acpi_parking_protocol_valid(cpu),
@@ -946,6 +965,9 @@ void handle_IPI(int ipinr, struct pt_regs *regs)
 			  cpu);
 		break;
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	default:

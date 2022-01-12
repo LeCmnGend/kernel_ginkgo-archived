@@ -225,12 +225,15 @@ static const struct dmi_system_id __initconst i8042_dmi_noloop_table[] = {
 		},
 	},
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{
 		.matches = {
 			DMI_MATCH(DMI_SYS_VENDOR, "ByteSpeed LLC"),
 			DMI_MATCH(DMI_PRODUCT_NAME, "ByteSpeed Laptop C15B"),
 		},
 	},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ }
@@ -562,6 +565,7 @@ static const struct dmi_system_id __initconst i8042_dmi_nomux_table[] = {
 		},
 	},
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{
 		/* Entroware Proteus */
 		.matches = {
@@ -570,6 +574,8 @@ static const struct dmi_system_id __initconst i8042_dmi_nomux_table[] = {
 			DMI_MATCH(DMI_PRODUCT_VERSION, "EL07R4"),
 		},
 	},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ }
@@ -599,11 +605,14 @@ static const struct dmi_system_id i8042_dmi_noselftest_table[] = {
 			DMI_MATCH(DMI_CHASSIS_TYPE, "10"), /* Notebook */
 		},
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}, {
 		.matches = {
 			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
 			DMI_MATCH(DMI_CHASSIS_TYPE, "31"), /* Convertible Notebook */
 		},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	},
@@ -632,6 +641,7 @@ static const struct dmi_system_id __initconst i8042_dmi_reset_table[] = {
 		},
 	},
 	{
+<<<<<<< HEAD
 <<<<<<< HEAD
 		.matches = {
 			DMI_MATCH(DMI_SYS_VENDOR, "Acer"),
@@ -675,6 +685,8 @@ static const struct dmi_system_id __initconst i8042_dmi_reset_table[] = {
 		},
 	},
 	{
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* Advent 4211 */
@@ -754,6 +766,7 @@ static const struct dmi_system_id __initconst i8042_dmi_reset_table[] = {
 		},
 	},
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{
 		/* Entroware Proteus */
 		.matches = {
@@ -762,6 +775,8 @@ static const struct dmi_system_id __initconst i8042_dmi_reset_table[] = {
 			DMI_MATCH(DMI_PRODUCT_VERSION, "EL07R4"),
 		},
 	},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ }
@@ -794,6 +809,7 @@ static const struct dmi_system_id __initconst i8042_dmi_nopnp_table[] = {
 		},
 	},
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{
 		/* Acer Aspire 5 A515 */
 		.matches = {
@@ -801,6 +817,8 @@ static const struct dmi_system_id __initconst i8042_dmi_nopnp_table[] = {
 			DMI_MATCH(DMI_BOARD_VENDOR, "PK"),
 		},
 	},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ }

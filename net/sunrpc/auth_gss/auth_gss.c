@@ -54,7 +54,10 @@
 #include <linux/hashtable.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "auth_gss_internal.h"
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include "../netns.h"
@@ -152,7 +155,10 @@ gss_cred_set_ctx(struct rpc_cred *cred, struct gss_cl_ctx *ctx)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static const void *
 simple_get_bytes(const void *p, const void *end, void *res, size_t len)
 {
@@ -182,6 +188,9 @@ simple_get_netobj(const void *p, const void *end, struct xdr_netobj *dest)
 	return q;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct gss_cl_ctx *
 gss_cred_get_ctx(struct rpc_cred *cred)

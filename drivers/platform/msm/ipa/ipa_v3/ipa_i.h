@@ -85,7 +85,11 @@
 #define IPA_MAX_NUM_REQ_CACHE 10
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define NAPI_WEIGHT 64
+=======
+#define NAPI_WEIGHT 60
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define NAPI_WEIGHT 60
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -935,7 +939,11 @@ struct ipa3_ep_context {
 	unsigned long gsi_evt_ring_hdl;
 	struct ipa_gsi_ep_mem_info gsi_mem_info;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	union gsi_channel_scratch chan_scratch;
+=======
+	union __packed gsi_channel_scratch chan_scratch;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	union __packed gsi_channel_scratch chan_scratch;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -994,9 +1002,15 @@ struct ipa_request_gsi_channel_params {
 	bool keep_ipa_awake;
 	struct gsi_evt_ring_props evt_ring_params;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	union gsi_evt_scratch evt_scratch;
 	struct gsi_chan_props chan_params;
 	union gsi_channel_scratch chan_scratch;
+=======
+	union __packed gsi_evt_scratch evt_scratch;
+	struct gsi_chan_props chan_params;
+	union __packed gsi_channel_scratch chan_scratch;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	union __packed gsi_evt_scratch evt_scratch;
 	struct gsi_chan_props chan_params;
@@ -2785,7 +2799,11 @@ bool ipa3_has_open_aggr_frame(enum ipa_client_type client);
 int ipa3_mhi_resume_channels_internal(enum ipa_client_type client,
 		bool LPTransitionRejected, bool brstmode_enabled,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		union gsi_channel_scratch ch_scratch, u8 index,
+=======
+		union __packed gsi_channel_scratch ch_scratch, u8 index,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		union __packed gsi_channel_scratch ch_scratch, u8 index,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3054,7 +3072,10 @@ int ipa_init_flt_rt_stats(void);
 
 int ipa_debugfs_init_stats(struct dentry *parent);
 <<<<<<< HEAD
+<<<<<<< HEAD
 void ipa_debugfs_remove_stats(void);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

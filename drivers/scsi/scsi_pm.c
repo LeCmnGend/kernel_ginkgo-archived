@@ -77,11 +77,14 @@ static int scsi_dev_type_resume(struct device *dev,
 	int err = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (cb == do_scsi_runtime_resume || pm_runtime_active(dev)) {
 		err = cb(dev, pm);
 		scsi_device_resume(to_scsi_device(dev));
 		dev_dbg(dev, "scsi resume: %d\n", err);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = cb(dev, pm);
 	scsi_device_resume(to_scsi_device(dev));
 	dev_dbg(dev, "scsi resume: %d\n", err);
@@ -102,6 +105,9 @@ static int scsi_dev_type_resume(struct device *dev,
 			if (sdev->request_queue->dev)
 				blk_post_runtime_resume(sdev->request_queue, 0);
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -173,14 +179,20 @@ static int scsi_bus_resume_common(struct device *dev,
 		if (strncmp(scsi_scan_type, "async", 5) != 0)
 			async_synchronize_full_domain(&scsi_sd_pm_domain);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
 		pm_runtime_disable(dev);
 		pm_runtime_set_active(dev);
 		pm_runtime_enable(dev);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }

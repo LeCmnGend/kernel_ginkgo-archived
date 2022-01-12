@@ -83,7 +83,11 @@
 			compatible = "arm,cortex-a9-global-timer";
 			reg = <0xb0020200 0x100>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			interrupts = <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_EDGE_RISING)>;
+=======
+			interrupts = <GIC_PPI 0 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_EDGE_RISING)>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			interrupts = <GIC_PPI 0 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_EDGE_RISING)>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -94,7 +98,11 @@
 			compatible = "arm,cortex-a9-twd-timer";
 			reg = <0xb0020600 0x20>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_EDGE_RISING)>;
+=======
+			interrupts = <GIC_PPI 2 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_EDGE_RISING)>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			interrupts = <GIC_PPI 2 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_EDGE_RISING)>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -105,7 +113,11 @@
 			compatible = "arm,cortex-a9-twd-wdt";
 			reg = <0xb0020620 0xe0>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			interrupts = <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_EDGE_RISING)>;
+=======
+			interrupts = <GIC_PPI 3 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_EDGE_RISING)>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			interrupts = <GIC_PPI 3 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_EDGE_RISING)>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

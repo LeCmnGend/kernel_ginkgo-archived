@@ -160,7 +160,10 @@ int po1030_probe(struct sd *sd)
 {
 	u8 dev_id_h = 0, i;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int err;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct gspca_dev *gspca_dev = (struct gspca_dev *)sd;
@@ -182,6 +185,7 @@ int po1030_probe(struct sd *sd)
 		u8 data = preinit_po1030[i][2];
 		if (preinit_po1030[i][0] == SENSOR)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			err = m5602_write_sensor(sd, preinit_po1030[i][1],
 						 &data, 1);
 		else
@@ -190,10 +194,15 @@ int po1030_probe(struct sd *sd)
 		if (err < 0)
 			return err;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			m5602_write_sensor(sd,
 				preinit_po1030[i][1], &data, 1);
 		else
 			m5602_write_bridge(sd, preinit_po1030[i][1], data);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 

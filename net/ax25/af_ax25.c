@@ -1192,10 +1192,14 @@ static int __must_check ax25_connect(struct socket *sock,
 	    fsa->fsa_ax25.sax25_ndigis != 0) {
 		/* Valid number of digipeaters ? */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (fsa->fsa_ax25.sax25_ndigis < 1 ||
 		    fsa->fsa_ax25.sax25_ndigis > AX25_MAX_DIGIS ||
 		    addr_len < sizeof(struct sockaddr_ax25) +
 		    sizeof(ax25_address) * fsa->fsa_ax25.sax25_ndigis) {
+=======
+		if (fsa->fsa_ax25.sax25_ndigis < 1 || fsa->fsa_ax25.sax25_ndigis > AX25_MAX_DIGIS) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (fsa->fsa_ax25.sax25_ndigis < 1 || fsa->fsa_ax25.sax25_ndigis > AX25_MAX_DIGIS) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1519,10 +1523,14 @@ static int ax25_sendmsg(struct socket *sock, struct msghdr *msg, size_t len)
 
 			/* Valid number of digipeaters ? */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (usax->sax25_ndigis < 1 ||
 			    usax->sax25_ndigis > AX25_MAX_DIGIS ||
 			    addr_len < sizeof(struct sockaddr_ax25) +
 			    sizeof(ax25_address) * usax->sax25_ndigis) {
+=======
+			if (usax->sax25_ndigis < 1 || usax->sax25_ndigis > AX25_MAX_DIGIS) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (usax->sax25_ndigis < 1 || usax->sax25_ndigis > AX25_MAX_DIGIS) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

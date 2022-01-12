@@ -1758,7 +1758,10 @@ static void ceph_invalidate_work(struct work_struct *work)
 	spin_unlock(&ci->i_ceph_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ceph_fscache_invalidate(inode);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (invalidate_inode_pages2(inode->i_mapping) < 0) {

@@ -1783,6 +1783,7 @@ static void xgbe_phy_set_redrv_mode(struct xgbe_prv_data *pdata)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void xgbe_phy_rx_reset(struct xgbe_prv_data *pdata)
 {
 	int reg;
@@ -1806,6 +1807,8 @@ static void xgbe_phy_rx_reset(struct xgbe_prv_data *pdata)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void xgbe_phy_perform_ratechange(struct xgbe_prv_data *pdata,
 					unsigned int cmd, unsigned int sub_cmd)
 {
@@ -1814,11 +1817,17 @@ static void xgbe_phy_perform_ratechange(struct xgbe_prv_data *pdata,
 
 	/* Log if a previous command did not complete */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (XP_IOREAD_BITS(pdata, XP_DRIVER_INT_RO, STATUS)) {
 		netif_dbg(pdata, link, pdata->netdev,
 			  "firmware mailbox not ready for command\n");
 		xgbe_phy_rx_reset(pdata);
 	}
+=======
+	if (XP_IOREAD_BITS(pdata, XP_DRIVER_INT_RO, STATUS))
+		netif_dbg(pdata, link, pdata->netdev,
+			  "firmware mailbox not ready for command\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (XP_IOREAD_BITS(pdata, XP_DRIVER_INT_RO, STATUS))
 		netif_dbg(pdata, link, pdata->netdev,
@@ -1846,9 +1855,12 @@ static void xgbe_phy_perform_ratechange(struct xgbe_prv_data *pdata,
 	netif_dbg(pdata, link, pdata->netdev,
 		  "firmware mailbox command did not complete\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* Reset on error */
 	xgbe_phy_rx_reset(pdata);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -2448,6 +2460,7 @@ static int xgbe_phy_link_status(struct xgbe_prv_data *pdata, int *an_restart)
 		return 1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (pdata->phy.autoneg == AUTONEG_ENABLE &&
 	    phy_data->port_mode == XGBE_PORT_MODE_BACKPLANE) {
 		if (!test_bit(XGBE_LINK_INIT, &pdata->dev_state)) {
@@ -2456,6 +2469,8 @@ static int xgbe_phy_link_status(struct xgbe_prv_data *pdata, int *an_restart)
 		}
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* No link, attempt a receiver reset cycle */

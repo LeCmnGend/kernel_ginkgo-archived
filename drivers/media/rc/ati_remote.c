@@ -846,10 +846,13 @@ static int ati_remote_probe(struct usb_interface *interface,
 		return -ENODEV;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!usb_endpoint_is_int_out(endpoint_out)) {
 		err("%s: Unexpected endpoint_out\n", __func__);
 		return -ENODEV;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

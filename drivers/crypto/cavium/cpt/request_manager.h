@@ -66,8 +66,11 @@ struct cpt_request_info {
 	struct cptvf_request req; /* Request Information (Core specific) */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool may_sleep;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct buf_ptr in[MAX_BUF_CNT];

@@ -2102,6 +2102,11 @@ static int enic_dev_wait(struct vnic_dev *vdev,
 	int err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	BUG_ON(in_interrupt());
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	BUG_ON(in_interrupt());
 
@@ -2283,6 +2288,7 @@ static int enic_set_rss_nic_cfg(struct enic *enic)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void enic_set_api_busy(struct enic *enic, bool busy)
 {
 	spin_lock(&enic->enic_api_lock);
@@ -2290,6 +2296,8 @@ static void enic_set_api_busy(struct enic *enic, bool busy)
 	spin_unlock(&enic->enic_api_lock);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void enic_reset(struct work_struct *work)
@@ -2302,9 +2310,13 @@ static void enic_reset(struct work_struct *work)
 	rtnl_lock();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Stop any activity from infiniband */
 	enic_set_api_busy(enic, true);
 
+=======
+	spin_lock(&enic->enic_api_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spin_lock(&enic->enic_api_lock);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2316,10 +2328,14 @@ static void enic_reset(struct work_struct *work)
 	enic_dev_set_ig_vlan_rewrite_mode(enic);
 	enic_open(enic->netdev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* Allow infiniband to fiddle with the device again */
 	enic_set_api_busy(enic, false);
 
+=======
+	spin_unlock(&enic->enic_api_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spin_unlock(&enic->enic_api_lock);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2335,9 +2351,13 @@ static void enic_tx_hang_reset(struct work_struct *work)
 	rtnl_lock();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Stop any activity from infiniband */
 	enic_set_api_busy(enic, true);
 
+=======
+	spin_lock(&enic->enic_api_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spin_lock(&enic->enic_api_lock);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2350,10 +2370,14 @@ static void enic_tx_hang_reset(struct work_struct *work)
 	enic_dev_set_ig_vlan_rewrite_mode(enic);
 	enic_open(enic->netdev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* Allow infiniband to fiddle with the device again */
 	enic_set_api_busy(enic, false);
 
+=======
+	spin_unlock(&enic->enic_api_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spin_unlock(&enic->enic_api_lock);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

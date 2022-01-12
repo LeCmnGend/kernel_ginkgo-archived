@@ -24,6 +24,10 @@
 #include <linux/module.h>
 #include <linux/spinlock.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <linux/workqueue.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/workqueue.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -206,6 +210,10 @@ struct digi_port {
 	wait_queue_head_t dp_flush_wait;
 	wait_queue_head_t dp_close_wait;	/* wait queue for close */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct work_struct dp_wakeup_work;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct work_struct dp_wakeup_work;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -216,6 +224,10 @@ struct digi_port {
 /* Local Function Declarations */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+static void digi_wakeup_write_lock(struct work_struct *work);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void digi_wakeup_write_lock(struct work_struct *work);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -370,7 +382,10 @@ __releases(lock)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*
  *  Digi Wakeup Write
@@ -391,6 +406,9 @@ static void digi_wakeup_write_lock(struct work_struct *work)
 	spin_unlock_irqrestore(&priv->dp_port_lock, flags);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  *  Digi Write OOB Command
@@ -1003,7 +1021,10 @@ static void digi_write_bulk_callback(struct urb *urb)
 	int ret = 0;
 	int status = urb->status;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool wakeup;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1033,7 +1054,10 @@ static void digi_write_bulk_callback(struct urb *urb)
 
 	/* try to send any buffered data on this port */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	wakeup = true;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock(&priv->dp_port_lock);
@@ -1052,12 +1076,15 @@ static void digi_write_bulk_callback(struct urb *urb)
 			priv->dp_write_urb_in_use = 1;
 			priv->dp_out_buf_len = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			wakeup = false;
 		}
 	}
 	spin_unlock(&priv->dp_port_lock);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 	}
 	/* wake up processes sleeping on writes immediately */
@@ -1067,15 +1094,21 @@ static void digi_write_bulk_callback(struct urb *urb)
 	schedule_work(&priv->dp_wakeup_work);
 
 	spin_unlock(&priv->dp_port_lock);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret && ret != -EPERM)
 		dev_err_console(port,
 			"%s: usb_submit_urb failed, ret=%d, port=%d\n",
 			__func__, ret, priv->dp_port_num);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (wakeup)
 		tty_port_tty_wakeup(&port->port);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -1278,6 +1311,10 @@ static int digi_port_init(struct usb_serial_port *port, unsigned port_num)
 	init_waitqueue_head(&priv->dp_flush_wait);
 	init_waitqueue_head(&priv->dp_close_wait);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	INIT_WORK(&priv->dp_wakeup_work, digi_wakeup_write_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	INIT_WORK(&priv->dp_wakeup_work, digi_wakeup_write_lock);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1548,8 +1585,11 @@ static int digi_read_oob_callback(struct urb *urb)
 
 		if (tty && opcode == DIGI_CMD_READ_INPUT_SIGNALS) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			bool wakeup = false;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			spin_lock(&priv->dp_port_lock);
@@ -1557,8 +1597,14 @@ static int digi_read_oob_callback(struct urb *urb)
 			if (val & DIGI_READ_INPUT_SIGNALS_CTS) {
 				priv->dp_modem_signals |= TIOCM_CTS;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if (rts)
 					wakeup = true;
+=======
+				/* port must be open to use tty struct */
+				if (rts)
+					tty_port_tty_wakeup(&port->port);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				/* port must be open to use tty struct */
 				if (rts)
@@ -1583,9 +1629,12 @@ static int digi_read_oob_callback(struct urb *urb)
 
 			spin_unlock(&priv->dp_port_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 			if (wakeup)
 				tty_port_tty_wakeup(&port->port);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		} else if (opcode == DIGI_CMD_TRANSMIT_IDLE) {

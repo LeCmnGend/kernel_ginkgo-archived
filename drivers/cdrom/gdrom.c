@@ -776,6 +776,7 @@ static int probe_gdrom(struct platform_device *devptr)
 {
 	int err;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/*
 	 * Ensure our "one" device is initialized properly in case of previous
@@ -783,6 +784,8 @@ static int probe_gdrom(struct platform_device *devptr)
 	 */
 	memset(&gd, 0, sizeof(gd));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Start the device */
@@ -868,8 +871,11 @@ static int remove_gdrom(struct platform_device *devptr)
 		unregister_blkdev(gdrom_major, GDROM_DEV_NAME);
 	unregister_cdrom(gd.cd_info);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(gd.cd_info);
 	kfree(gd.toc);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -888,7 +894,11 @@ static int __init init_gdrom(void)
 {
 	int rc;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+	gd.toc = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	gd.toc = NULL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -908,6 +918,11 @@ static void __exit exit_gdrom(void)
 	platform_device_unregister(pd);
 	platform_driver_unregister(&gdrom_driver);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kfree(gd.toc);
+	kfree(gd.cd_info);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(gd.toc);
 	kfree(gd.cd_info);

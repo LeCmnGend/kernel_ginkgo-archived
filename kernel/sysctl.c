@@ -64,7 +64,10 @@
 #include <linux/sched/sysctl.h>
 #include <linux/sched/coredump.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/sched/stat.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/kexec.h>
@@ -133,10 +136,13 @@ static int __maybe_unused three = 3;
 static int __maybe_unused four = 4;
 static unsigned long zero_ul;
 <<<<<<< HEAD
+<<<<<<< HEAD
 static unsigned long long_max = LONG_MAX;
 static int one_hundred = 100;
 static int one_thousand = 1000;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static unsigned long one_ul = 1;
 static unsigned long long_max = LONG_MAX;
 static int one_hundred = 100;
@@ -144,6 +150,9 @@ static int one_thousand = 1000;
 #ifdef CONFIG_SCHED_WALT
 static int two_million = 2000000;
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_PRINTK
 static int ten_thousand = 10000;
@@ -153,6 +162,7 @@ static int six_hundred_forty_kb = 640 * 1024;
 #endif
 static int two_hundred_fifty_five = 255;
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int __maybe_unused two_hundred_million = 200000000;
 
 #ifdef CONFIG_SCHED_WALT
@@ -160,6 +170,9 @@ const int sched_user_hint_max = 1000;
 static unsigned int ns_per_sec = NSEC_PER_SEC;
 static unsigned int one_hundred_thousand = 100000;
 #endif
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -247,10 +260,13 @@ static int proc_dostring_coredump(struct ctl_table *table, int write,
 		void __user *buffer, size_t *lenp, loff_t *ppos);
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_SCHED_WALT
 static int proc_douintvec_minmax_schedhyst(struct ctl_table *table, int write,
 		void __user *buffer, size_t *lenp, loff_t *ppos);
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -367,6 +383,7 @@ static struct ctl_table kern_table[] = {
 #ifdef CONFIG_SCHED_WALT
 	{
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.procname	= "sched_user_hint",
 		.data           = &sysctl_sched_user_hint,
 		.maxlen		= sizeof(unsigned int),
@@ -387,6 +404,8 @@ static struct ctl_table kern_table[] = {
 	{
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		.procname       = "sched_cpu_high_irqload",
 		.data           = &sysctl_sched_cpu_high_irqload,
 		.maxlen         = sizeof(unsigned int),
@@ -399,7 +418,11 @@ static struct ctl_table kern_table[] = {
 		.maxlen		= sizeof(unsigned int),
 		.mode		= 0644,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.proc_handler	= walt_proc_group_thresholds_handler,
+=======
+		.proc_handler	= walt_proc_update_handler,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.proc_handler	= walt_proc_update_handler,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -411,7 +434,11 @@ static struct ctl_table kern_table[] = {
 		.maxlen		= sizeof(unsigned int),
 		.mode		= 0644,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.proc_handler	= walt_proc_group_thresholds_handler,
+=======
+		.proc_handler	= walt_proc_update_handler,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.proc_handler	= walt_proc_update_handler,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -473,6 +500,7 @@ static struct ctl_table kern_table[] = {
 		.extra2		= &one_thousand,
 	},
 	{
+<<<<<<< HEAD
 <<<<<<< HEAD
 		.procname       = "sched_asym_cap_sibling_freq_match_pct",
 		.data           = &sysctl_sched_asym_cap_sibling_freq_match_pct,
@@ -560,6 +588,8 @@ static struct ctl_table kern_table[] = {
 		.extra2		= &one,
 	},
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		.procname	= "sched_little_cluster_coloc_fmin_khz",
 		.data		= &sysctl_sched_little_cluster_coloc_fmin_khz,
 		.maxlen		= sizeof(unsigned int),
@@ -569,6 +599,9 @@ static struct ctl_table kern_table[] = {
 		.extra2		= &two_million,
 	},
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{
 		.procname	= "sched_upmigrate",
@@ -584,6 +617,7 @@ static struct ctl_table kern_table[] = {
 		.mode		= 0644,
 		.proc_handler	= sched_updown_migrate_handler,
 	},
+<<<<<<< HEAD
 <<<<<<< HEAD
 	{
 		.procname	= "sched_prefer_spread",
@@ -604,6 +638,8 @@ static struct ctl_table kern_table[] = {
 		.extra1		= &zero,
 		.extra2		= &one,
 	},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_SCHED_DEBUG
@@ -1637,7 +1673,10 @@ static struct ctl_table vm_table[] = {
 	},
 	{
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		.procname	= "dirty_background_ratio",
 		.data		= &dirty_background_ratio,
 		.maxlen		= sizeof(dirty_background_ratio),
@@ -1655,6 +1694,9 @@ static struct ctl_table vm_table[] = {
 		.extra1		= &one_ul,
 	},
 	{
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		.procname	= "dirty_ratio",
 		.data		= &vm_dirty_ratio,
@@ -3077,6 +3119,7 @@ static int proc_dostring_coredump(struct ctl_table *table, int write,
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_SCHED_WALT
 static int proc_douintvec_minmax_schedhyst(struct ctl_table *table, int write,
 		void __user *buffer, size_t *lenp, loff_t *ppos)
@@ -3090,6 +3133,8 @@ static int proc_douintvec_minmax_schedhyst(struct ctl_table *table, int write,
 }
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int __do_proc_doulongvec_minmax(void *data, struct ctl_table *table, int write,
@@ -3573,6 +3618,7 @@ int proc_douintvec_capacity(struct ctl_table *table, int write,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int do_proc_douintvec_rwin(bool *negp, unsigned long *lvalp,
 				  int *valp, int write, void *data)
 {
@@ -3596,6 +3642,8 @@ int proc_douintvec_ravg_window(struct ctl_table *table, int write,
 				do_proc_douintvec_rwin, NULL);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #else /* CONFIG_PROC_SYSCTL */
@@ -3668,12 +3716,15 @@ int proc_douintvec_capacity(struct ctl_table *table, int write,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int proc_douintvec_ravg_window(struct ctl_table *table, int write,
 			       void __user *buffer, size_t *lenp, loff_t *ppos)
 {
 	return -ENOSYS;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* CONFIG_PROC_SYSCTL */

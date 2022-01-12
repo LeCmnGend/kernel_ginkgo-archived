@@ -614,6 +614,10 @@ int alloc_random_pkey(void)
 	int random_index;
 	memset(alloced_pkeys, 0, sizeof(alloced_pkeys));
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	srand((unsigned int)time(NULL));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	srand((unsigned int)time(NULL));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1483,8 +1487,11 @@ int main(void)
 	int nr_iterations = 22;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	srand((unsigned int)time(NULL));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	setup_handlers();

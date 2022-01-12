@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2013-2019, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2013-2020, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2013-2020, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1026,6 +1030,11 @@ void msm_isp_increment_frame_id(struct vfe_device *vfe_dev,
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	vfe_dev->isp_page->kernel_sofid =
+		vfe_dev->axi_data.src_info[frame_src].frame_id;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	vfe_dev->isp_page->kernel_sofid =
 		vfe_dev->axi_data.src_info[frame_src].frame_id;
@@ -2147,10 +2156,13 @@ static int msm_isp_cfg_ping_pong_address(
 
 	if (!buf) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		trace_printk(
 			"%s: vfe %d stream_id %x buffer not available frame %d\n",
 			__func__, vfe_dev->pdev->id,
 			stream_info->stream_id,vfe_dev->axi_data.src_info[VFE_PIX_0].frame_id);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		msm_isp_cfg_stream_scratch(stream_info, pingpong_status);
@@ -2586,7 +2598,12 @@ static void msm_isp_input_enable(struct vfe_device *vfe_dev,
 			continue;
 		/* activate the input since it is deactivated */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		axi_data->src_info[i].frame_id = 0;
+=======
+		if (!ext_read)
+			axi_data->src_info[i].frame_id = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!ext_read)
 			axi_data->src_info[i].frame_id = 0;
@@ -3784,7 +3801,11 @@ static int msm_isp_request_frame(struct vfe_device *vfe_dev,
 			MAX_BUFFERS_IN_HW)
 		) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		trace_printk("%s:%d invalid time to request frame %d try drop_reconfig\n",
+=======
+		pr_debug("%s:%d invalid time to request frame %d try drop_reconfig\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pr_debug("%s:%d invalid time to request frame %d try drop_reconfig\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3799,7 +3820,11 @@ static int msm_isp_request_frame(struct vfe_device *vfe_dev,
 				MAX_BUFFERS_IN_HW)) {
 		vfe_dev->isp_page->drop_reconfig = 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		trace_printk("%s: vfe_%d request_frame %d cur frame id %d pix %d try drop_reconfig\n",
+=======
+		pr_debug("%s: vfe_%d request_frame %d cur frame id %d pix %d try drop_reconfig\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pr_debug("%s: vfe_%d request_frame %d cur frame id %d pix %d try drop_reconfig\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3810,8 +3835,12 @@ static int msm_isp_request_frame(struct vfe_device *vfe_dev,
 	} else if ((vfe_dev->axi_data.src_info[frame_src].active && (frame_id !=
 		vfe_dev->axi_data.src_info[frame_src].frame_id +
 <<<<<<< HEAD
+<<<<<<< HEAD
 		vfe_dev->axi_data.src_info[frame_src].sof_counter_step)) ||
 		((!vfe_dev->axi_data.src_info[frame_src].active))) {
+=======
+		vfe_dev->axi_data.src_info[frame_src].sof_counter_step))) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		vfe_dev->axi_data.src_info[frame_src].sof_counter_step))) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3823,7 +3852,11 @@ static int msm_isp_request_frame(struct vfe_device *vfe_dev,
 	}
 	if (stream_info->undelivered_request_cnt >= MAX_BUFFERS_IN_HW) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		trace_printk("%s:%d invalid undelivered_request_cnt %d frame id %d\n",
+=======
+		pr_debug("%s:%d invalid undelivered_request_cnt %d frame id %d\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pr_debug("%s:%d invalid undelivered_request_cnt %d frame id %d\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4592,8 +4625,11 @@ void msm_isp_process_axi_irq_stream(struct vfe_device *vfe_dev,
 				VFE_BUF_QUEUE_DEFAULT] & 0xFF]++;
 			vfe_dev->error_info.framedrop_flag = 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			trace_printk("vfe %d stream %x frame %d drop frame\n",
 			vfe_dev->pdev->id, stream_info->stream_id, frame_id);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (vfe_dev->is_split) {

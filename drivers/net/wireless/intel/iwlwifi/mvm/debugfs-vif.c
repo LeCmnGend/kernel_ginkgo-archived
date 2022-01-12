@@ -519,10 +519,14 @@ static ssize_t iwl_dbgfs_os_device_timediff_read(struct file *file,
 	int pos = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&mvm->mutex);
 	iwl_mvm_get_sync_time(mvm, &curr_gp2, &curr_os);
 	mutex_unlock(&mvm->mutex);
 
+=======
+	iwl_mvm_get_sync_time(mvm, &curr_gp2, &curr_os);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	iwl_mvm_get_sync_time(mvm, &curr_gp2, &curr_os);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

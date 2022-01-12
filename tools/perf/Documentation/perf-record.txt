@@ -34,10 +34,13 @@ OPTIONS
 	  hexadecimal event descriptor.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         - a symbolic or raw PMU event followed by an optional colon
 	  and a list of event modifiers, e.g., cpu-cycles:p.  See the
 	  linkperf:perf-list[1] man page for details on event modifiers.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	- a symbolically formed PMU event like 'pmu/param1=0x3,param2/' where

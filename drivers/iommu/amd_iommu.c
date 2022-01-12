@@ -1348,10 +1348,13 @@ static void increase_address_space(struct protection_domain *domain,
 	u64 *pte;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pte = (void *)get_zeroed_page(gfp);
 	if (!pte)
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_irqsave(&domain->lock, flags);
@@ -1361,11 +1364,17 @@ static void increase_address_space(struct protection_domain *domain,
 		goto out;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pte = (void *)get_zeroed_page(gfp);
 	if (!pte)
 		goto out;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	*pte             = PM_LEVEL_PDE(domain->mode,
 					iommu_virt_to_phys(domain->pt_root));
@@ -1373,11 +1382,17 @@ static void increase_address_space(struct protection_domain *domain,
 	domain->mode    += 1;
 	domain->updated  = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pte              = NULL;
 
 out:
 	spin_unlock_irqrestore(&domain->lock, flags);
 	free_page((unsigned long)pte);
+=======
+
+out:
+	spin_unlock_irqrestore(&domain->lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 out:

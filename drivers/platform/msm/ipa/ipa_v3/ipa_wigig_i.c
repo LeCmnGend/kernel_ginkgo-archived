@@ -395,7 +395,11 @@ static int ipa3_wigig_config_gsi(bool Rx,
 	struct gsi_evt_ring_props evt_props;
 	struct gsi_chan_props channel_props;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	union gsi_channel_scratch gsi_scratch;
+=======
+	union __packed gsi_channel_scratch gsi_scratch;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	union __packed gsi_channel_scratch gsi_scratch;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -446,7 +450,11 @@ static int ipa3_wigig_config_gsi(bool Rx,
 	/* event scratch not configured by SW for TX channels */
 	if (Rx) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		union gsi_evt_scratch evt_scratch;
+=======
+		union __packed gsi_evt_scratch evt_scratch;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		union __packed gsi_evt_scratch evt_scratch;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -118,12 +118,15 @@ struct acc_dev {
 	struct delayed_work start_work;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* work for handling ACCESSORY GET PROTOCOL */
 	struct work_struct getprotocol_work;
 
 	/* work for handling ACCESSORY SEND STRING */
 	struct work_struct sendstring_work;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* worker for registering and unregistering hid devices */
@@ -863,8 +866,11 @@ int acc_ctrlrequest(struct usb_composite_dev *cdev,
 		if (b_request == ACCESSORY_START) {
 			dev->start_requested = 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			dev_info(&cdev->gadget->dev, "%s: got ACCESSORY_START(53) request\n",
 				__func__);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			schedule_delayed_work(
@@ -873,9 +879,12 @@ int acc_ctrlrequest(struct usb_composite_dev *cdev,
 			cdev->req->complete = acc_complete_setup_noop;
 		} else if (b_request == ACCESSORY_SEND_STRING) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			dev_info(&cdev->gadget->dev, "%s: got ACCESSORY_SEND_STRING(52) request\n",
 				__func__);
 			schedule_work(&dev->sendstring_work);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			dev->string_index = w_index;
@@ -925,9 +934,12 @@ int acc_ctrlrequest(struct usb_composite_dev *cdev,
 	} else if (b_requestType == (USB_DIR_IN | USB_TYPE_VENDOR)) {
 		if (b_request == ACCESSORY_GET_PROTOCOL) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			dev_info(&cdev->gadget->dev, "%s: got ACCESSORY_GET_PROTOCOL(51) request\n",
 				__func__);
 			schedule_work(&dev->getprotocol_work);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			*((u16 *)cdev->req->buf) = PROTOCOL_VERSION;
@@ -1080,6 +1092,7 @@ acc_function_unbind(struct usb_configuration *c, struct usb_function *f)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void acc_getprotocol_work(struct work_struct *data)
 {
 	char *envp[2] = { "ACCESSORY=GETPROTOCOL", NULL };
@@ -1094,6 +1107,8 @@ static void acc_sendstring_work(struct work_struct *data)
 	kobject_uevent_env(&acc_device.this_device->kobj, KOBJ_CHANGE, envp);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void acc_start_work(struct work_struct *data)
@@ -1263,8 +1278,11 @@ static int acc_setup(void)
 	INIT_DELAYED_WORK(&dev->start_work, acc_start_work);
 	INIT_WORK(&dev->hid_work, acc_hid_work);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	INIT_WORK(&dev->getprotocol_work, acc_getprotocol_work);
 	INIT_WORK(&dev->sendstring_work, acc_sendstring_work);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

@@ -257,6 +257,10 @@ void dasd_alias_disconnect_device_from_lcu(struct dasd_device *device)
 	device->discipline->get_uid(device, &uid);
 	spin_lock_irqsave(&lcu->lock, flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	list_del_init(&device->alias_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	list_del_init(&device->alias_list);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -287,7 +291,10 @@ void dasd_alias_disconnect_device_from_lcu(struct dasd_device *device)
 	spin_lock_irqsave(&aliastree.lock, flags);
 	spin_lock(&lcu->lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	list_del_init(&device->alias_list);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (list_empty(&lcu->grouplist) &&
@@ -470,6 +477,7 @@ static int read_unit_address_configuration(struct dasd_device *device,
 
 	rc = dasd_sleep_on(cqr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!rc)
 		goto out;
 
@@ -481,12 +489,18 @@ static int read_unit_address_configuration(struct dasd_device *device,
 =======
 	if (rc && !suborder_not_supported(cqr)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	if (rc && !suborder_not_supported(cqr)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		spin_lock_irqsave(&lcu->lock, flags);
 		lcu->flags |= NEED_UAC_UPDATE;
 		spin_unlock_irqrestore(&lcu->lock, flags);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 out:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dasd_kfree_request(cqr, cqr->memdev);
@@ -526,6 +540,7 @@ static int _lcu_update(struct dasd_device *refdev, struct alias_lcu *lcu)
 
 	spin_lock_irqsave(&lcu->lock, flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * there is another update needed skip the remaining handling
 	 * the data might already be outdated
@@ -534,6 +549,8 @@ static int _lcu_update(struct dasd_device *refdev, struct alias_lcu *lcu)
 	 */
 	if (lcu->flags & NEED_UAC_UPDATE)
 		goto out;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	lcu->pav = NO_PAV;
@@ -555,7 +572,10 @@ static int _lcu_update(struct dasd_device *refdev, struct alias_lcu *lcu)
 		_add_device_to_lcu(lcu, device, refdev);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 out:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_unlock_irqrestore(&lcu->lock, flags);
@@ -663,7 +683,10 @@ int dasd_alias_add_device(struct dasd_device *device)
 	if (lcu->flags & UPDATE_PENDING) {
 		list_move(&device->alias_list, &lcu->active_devices);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		private->pavgroup = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		_schedule_lcu_update(lcu, device);

@@ -658,6 +658,11 @@ static int set_serial_info(struct gb_tty *gb_tty,
 		    (closing_wait != gb_tty->port.closing_wait))
 			retval = -EPERM;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		else
+			retval = -EOPNOTSUPP;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		else
 			retval = -EOPNOTSUPP;

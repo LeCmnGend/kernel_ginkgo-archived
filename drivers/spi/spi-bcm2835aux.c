@@ -408,7 +408,11 @@ static int bcm2835aux_spi_probe(struct platform_device *pdev)
 	int err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	master = devm_spi_alloc_master(&pdev->dev, sizeof(*bs));
+=======
+	master = spi_alloc_master(&pdev->dev, sizeof(*bs));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	master = spi_alloc_master(&pdev->dev, sizeof(*bs));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -444,13 +448,19 @@ static int bcm2835aux_spi_probe(struct platform_device *pdev)
 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
 	bs->regs = devm_ioremap_resource(&pdev->dev, res);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (IS_ERR(bs->regs))
 		return PTR_ERR(bs->regs);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (IS_ERR(bs->regs)) {
 		err = PTR_ERR(bs->regs);
 		goto out_master_put;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	bs->clk = devm_clk_get(&pdev->dev, NULL);
@@ -458,7 +468,11 @@ static int bcm2835aux_spi_probe(struct platform_device *pdev)
 		err = PTR_ERR(bs->clk);
 		dev_err(&pdev->dev, "could not get clk: %d\n", err);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return err;
+=======
+		goto out_master_put;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto out_master_put;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -468,7 +482,12 @@ static int bcm2835aux_spi_probe(struct platform_device *pdev)
 	if (bs->irq <= 0) {
 		dev_err(&pdev->dev, "could not get IRQ: %d\n", bs->irq);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return bs->irq ? bs->irq : -ENODEV;
+=======
+		err = bs->irq ? bs->irq : -ENODEV;
+		goto out_master_put;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		err = bs->irq ? bs->irq : -ENODEV;
 		goto out_master_put;
@@ -480,7 +499,11 @@ static int bcm2835aux_spi_probe(struct platform_device *pdev)
 	if (err) {
 		dev_err(&pdev->dev, "could not prepare clock: %d\n", err);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return err;
+=======
+		goto out_master_put;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto out_master_put;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -517,6 +540,11 @@ static int bcm2835aux_spi_probe(struct platform_device *pdev)
 out_clk_disable:
 	clk_disable_unprepare(bs->clk);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+out_master_put:
+	spi_master_put(master);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 out_master_put:
 	spi_master_put(master);

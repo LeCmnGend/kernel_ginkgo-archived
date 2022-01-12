@@ -929,7 +929,11 @@ static void notify_rule_change(int event, struct fib_rule *rule,
 	struct net *net;
 	struct sk_buff *skb;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int err = -ENOMEM;
+=======
+	int err = -ENOBUFS;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int err = -ENOBUFS;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

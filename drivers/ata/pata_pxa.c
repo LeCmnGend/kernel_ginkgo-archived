@@ -60,7 +60,11 @@ static void pxa_ata_dma_irq(void *d)
  * Prepare taskfile for submission.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors pxa_qc_prep(struct ata_queued_cmd *qc)
+=======
+static void pxa_qc_prep(struct ata_queued_cmd *qc)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void pxa_qc_prep(struct ata_queued_cmd *qc)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -71,7 +75,11 @@ static void pxa_qc_prep(struct ata_queued_cmd *qc)
 
 	if (!(qc->flags & ATA_QCFLAG_DMAMAP))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return AC_ERR_OK;
+=======
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -82,7 +90,11 @@ static void pxa_qc_prep(struct ata_queued_cmd *qc)
 	if (!tx) {
 		ata_dev_err(qc->dev, "prep_slave_sg() failed\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return AC_ERR_OK;
+=======
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -91,8 +103,11 @@ static void pxa_qc_prep(struct ata_queued_cmd *qc)
 	tx->callback_param = pd;
 	pd->dma_cookie = dmaengine_submit(tx);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	return AC_ERR_OK;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

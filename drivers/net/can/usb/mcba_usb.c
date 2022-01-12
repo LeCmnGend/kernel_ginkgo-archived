@@ -94,8 +94,11 @@ struct mcba_priv {
 	bool can_speed_check;
 	atomic_t free_ctx_cnt;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	void *rxbuf[MCBA_MAX_RX_URBS];
 	dma_addr_t rxbuf_dma[MCBA_MAX_RX_URBS];
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -343,6 +346,11 @@ static netdev_tx_t mcba_usb_start_xmit(struct sk_buff *skb,
 		return NETDEV_TX_BUSY;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	can_put_echo_skb(skb, priv->netdev, ctx->ndx);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	can_put_echo_skb(skb, priv->netdev, ctx->ndx);
 
@@ -377,8 +385,11 @@ static netdev_tx_t mcba_usb_start_xmit(struct sk_buff *skb,
 		usb_msg.dlc |= MCBA_DLC_RTR_MASK;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	can_put_echo_skb(skb, priv->netdev, ctx->ndx);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = mcba_usb_xmit(priv, (struct mcba_usb_msg *)&usb_msg, ctx);
@@ -658,7 +669,10 @@ static int mcba_usb_start(struct mcba_priv *priv)
 		struct urb *urb = NULL;
 		u8 *buf;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		dma_addr_t buf_dma;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -671,7 +685,11 @@ static int mcba_usb_start(struct mcba_priv *priv)
 
 		buf = usb_alloc_coherent(priv->udev, MCBA_USB_RX_BUFF_SIZE,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					 GFP_KERNEL, &buf_dma);
+=======
+					 GFP_KERNEL, &urb->transfer_dma);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					 GFP_KERNEL, &urb->transfer_dma);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -683,8 +701,11 @@ static int mcba_usb_start(struct mcba_priv *priv)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		urb->transfer_dma = buf_dma;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		usb_fill_bulk_urb(urb, priv->udev,
@@ -699,7 +720,11 @@ static int mcba_usb_start(struct mcba_priv *priv)
 			usb_unanchor_urb(urb);
 			usb_free_coherent(priv->udev, MCBA_USB_RX_BUFF_SIZE,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					  buf, buf_dma);
+=======
+					  buf, urb->transfer_dma);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					  buf, urb->transfer_dma);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -708,9 +733,12 @@ static int mcba_usb_start(struct mcba_priv *priv)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		priv->rxbuf[i] = buf;
 		priv->rxbuf_dma[i] = buf_dma;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* Drop reference, USB core will take care of freeing it */
@@ -756,6 +784,7 @@ static int mcba_usb_open(struct net_device *netdev)
 static void mcba_urb_unlink(struct mcba_priv *priv)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int i;
 
 	usb_kill_anchored_urbs(&priv->rx_submitted);
@@ -764,6 +793,9 @@ static void mcba_urb_unlink(struct mcba_priv *priv)
 		usb_free_coherent(priv->udev, MCBA_USB_RX_BUFF_SIZE,
 				  priv->rxbuf[i], priv->rxbuf_dma[i]);
 
+=======
+	usb_kill_anchored_urbs(&priv->rx_submitted);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	usb_kill_anchored_urbs(&priv->rx_submitted);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

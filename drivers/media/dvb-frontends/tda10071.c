@@ -484,16 +484,22 @@ static int tda10071_read_status(struct dvb_frontend *fe, enum fe_status *status)
 
 		if (dev->delivery_system == SYS_DVBS) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			u32 bit_error = buf[0] << 24 | buf[1] << 16 |
 					buf[2] << 8 | buf[3] << 0;
 
 			dev->dvbv3_ber = bit_error;
 			dev->post_bit_error += bit_error;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			dev->dvbv3_ber = buf[0] << 24 | buf[1] << 16 |
 					 buf[2] << 8 | buf[3] << 0;
 			dev->post_bit_error += buf[0] << 24 | buf[1] << 16 |
 					       buf[2] << 8 | buf[3] << 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			c->post_bit_error.stat[0].scale = FE_SCALE_COUNTER;
 			c->post_bit_error.stat[0].uvalue = dev->post_bit_error;

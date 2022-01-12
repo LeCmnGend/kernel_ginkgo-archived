@@ -1670,7 +1670,11 @@ s64 dbDiscardAG(struct inode *ip, int agno, s64 minlen)
 			/* search for next smaller log2 block */
 			l2nb = BLKSTOL2(nblocks) - 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			nblocks = 1LL << l2nb;
+=======
+			nblocks = 1 << l2nb;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			nblocks = 1 << l2nb;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

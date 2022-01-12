@@ -3733,10 +3733,15 @@ static struct usb_hcd *oxu_create(struct platform_device *pdev,
 
 	ret = usb_add_hcd(hcd, irq, IRQF_SHARED);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret < 0) {
 		usb_put_hcd(hcd);
 		return ERR_PTR(ret);
 	}
+=======
+	if (ret < 0)
+		return ERR_PTR(ret);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret < 0)
 		return ERR_PTR(ret);

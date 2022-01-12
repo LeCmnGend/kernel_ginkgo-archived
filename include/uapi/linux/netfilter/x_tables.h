@@ -2,7 +2,11 @@
 #ifndef _UAPI_X_TABLES_H
 #define _UAPI_X_TABLES_H
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/const.h>
+=======
+#include <linux/kernel.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/kernel.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

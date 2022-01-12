@@ -473,6 +473,11 @@ static int a5xx_hw_init(struct msm_gpu *gpu)
 		gpu_rmw(gpu, REG_A5XX_PC_DBG_ECO_CNTL, 0, (1 << 8));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	gpu_write(gpu, REG_A5XX_PC_DBG_ECO_CNTL, 0xc0200100);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	gpu_write(gpu, REG_A5XX_PC_DBG_ECO_CNTL, 0xc0200100);
 

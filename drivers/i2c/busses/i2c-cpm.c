@@ -75,9 +75,12 @@ struct i2c_ram {
 	ushort  rpbase;		/* Relocation pointer */
 	char    res2[2];	/* Reserved */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* The following elements are only for CPM2 */
 	char    res3[4];	/* Reserved */
 	uint    sdmatmp;	/* Internal */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

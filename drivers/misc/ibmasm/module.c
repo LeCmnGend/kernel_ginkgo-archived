@@ -124,7 +124,11 @@ static int ibmasm_init_one(struct pci_dev *pdev, const struct pci_device_id *id)
 	if (result) {
 		dev_err(sp->dev, "Failed to initialize remote queue\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto error_init_remote;
+=======
+		goto error_send_message;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto error_send_message;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -148,9 +152,14 @@ static int ibmasm_init_one(struct pci_dev *pdev, const struct pci_device_id *id)
 
 error_send_message:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ibmasm_free_remote_input_dev(sp);
 error_init_remote:
 	disable_sp_interrupts(sp->base_address);
+=======
+	disable_sp_interrupts(sp->base_address);
+	ibmasm_free_remote_input_dev(sp);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	disable_sp_interrupts(sp->base_address);
 	ibmasm_free_remote_input_dev(sp);

@@ -920,7 +920,10 @@ struct device {
 #endif
 #ifdef CONFIG_GENERIC_MSI_IRQ
 <<<<<<< HEAD
+<<<<<<< HEAD
 	raw_spinlock_t		msi_lock;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct list_head	msi_list;
@@ -973,9 +976,12 @@ struct device {
 	bool			offline:1;
 	bool			of_node_reused:1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	struct list_head	iommu_map_list;
 	struct mutex		iommu_map_lock;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

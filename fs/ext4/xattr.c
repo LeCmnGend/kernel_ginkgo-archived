@@ -1480,9 +1480,12 @@ ext4_xattr_inode_cache_find(struct inode *inode, const void *value,
 		return NULL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	WARN_ON_ONCE(ext4_handle_valid(journal_current_handle()) &&
 		     !(current->flags & PF_MEMALLOC_NOFS));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ea_data = ext4_kvmalloc(value_len, GFP_NOFS);
@@ -2352,7 +2355,10 @@ ext4_xattr_set_handle(handle_t *handle, struct inode *inode, int name_index,
 			goto cleanup;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		WARN_ON_ONCE(!(current->flags & PF_MEMALLOC_NOFS));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -2429,7 +2435,11 @@ retry_inode:
 				 */
 				if (ext4_has_feature_ea_inode(inode->i_sb) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 				    i.value_len && !i.in_inode) {
+=======
+				    !i.in_inode) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				    !i.in_inode) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -384,6 +384,7 @@ static bool vhost_vsock_more_replies(struct vhost_vsock *vsock)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct virtio_transport vhost_transport = {
 	.transport = {
 		.get_local_cid            = vhost_transport_get_local_cid,
@@ -430,6 +431,8 @@ static struct virtio_transport vhost_transport = {
 	.send_pkt = vhost_transport_send_pkt,
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void vhost_vsock_handle_tx_kick(struct vhost_work *work)
@@ -489,7 +492,11 @@ static void vhost_vsock_handle_tx_kick(struct vhost_work *work)
 		    le64_to_cpu(pkt->hdr.dst_cid) ==
 		    vhost_transport_get_local_cid())
 <<<<<<< HEAD
+<<<<<<< HEAD
 			virtio_transport_recv_pkt(&vhost_transport, pkt);
+=======
+			virtio_transport_recv_pkt(pkt);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			virtio_transport_recv_pkt(pkt);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -834,7 +841,10 @@ static struct miscdevice vhost_vsock_misc = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct virtio_transport vhost_transport = {
 	.transport = {
 		.get_local_cid            = vhost_transport_get_local_cid,
@@ -881,6 +891,9 @@ static struct virtio_transport vhost_transport = {
 	.send_pkt = vhost_transport_send_pkt,
 };
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int __init vhost_vsock_init(void)
 {

@@ -439,9 +439,15 @@ static int pinctrl_falcon_probe(struct platform_device *pdev)
 	/* load and remap the pad resources of the different banks */
 	for_each_compatible_node(np, NULL, "lantiq,pad-falcon") {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		const __be32 *bank = of_get_property(np, "lantiq,bank", NULL);
 		struct resource res;
 		struct platform_device *ppdev;
+=======
+		struct platform_device *ppdev = of_find_device_by_node(np);
+		const __be32 *bank = of_get_property(np, "lantiq,bank", NULL);
+		struct resource res;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		struct platform_device *ppdev = of_find_device_by_node(np);
 		const __be32 *bank = of_get_property(np, "lantiq,bank", NULL);
@@ -454,6 +460,7 @@ static int pinctrl_falcon_probe(struct platform_device *pdev)
 			continue;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!bank || *bank >= PORTS)
 			continue;
 		if (of_address_to_resource(np, 0, &res))
@@ -462,20 +469,28 @@ static int pinctrl_falcon_probe(struct platform_device *pdev)
 		ppdev = of_find_device_by_node(np);
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!ppdev) {
 			dev_err(&pdev->dev, "failed to find pad pdev\n");
 			continue;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		falcon_info.clk[*bank] = clk_get(&ppdev->dev, NULL);
 		put_device(&ppdev->dev);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!bank || *bank >= PORTS)
 			continue;
 		if (of_address_to_resource(np, 0, &res))
 			continue;
 		falcon_info.clk[*bank] = clk_get(&ppdev->dev, NULL);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (IS_ERR(falcon_info.clk[*bank])) {
 			dev_err(&ppdev->dev, "failed to get clock\n");

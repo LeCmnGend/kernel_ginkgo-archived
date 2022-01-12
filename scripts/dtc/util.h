@@ -1,6 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef UTIL_H
 #define UTIL_H
+=======
+#ifndef _UTIL_H
+#define _UTIL_H
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #ifndef _UTIL_H
 #define _UTIL_H
@@ -41,9 +46,12 @@
 #define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define stringify(s)	stringify_(s)
 #define stringify_(s)	#s
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void NORETURN PRINTF(1, 2) die(const char *str, ...)
@@ -272,7 +280,11 @@ void NORETURN util_usage(const char *errmsg, const char *synopsis,
 	case '?': usage("unknown option");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif /* UTIL_H */
+=======
+#endif /* _UTIL_H */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #endif /* _UTIL_H */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

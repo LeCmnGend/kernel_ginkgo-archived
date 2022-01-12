@@ -19,7 +19,11 @@
  * which interrupt is routed where.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int netwinder_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+=======
+static int __init netwinder_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int __init netwinder_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

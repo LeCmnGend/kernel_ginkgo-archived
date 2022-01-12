@@ -36,6 +36,10 @@ config ARM_GIC_V3
 	select IRQ_DOMAIN_HIERARCHY
 	select PARTITION_PERCPU
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	select QCOM_SHOW_RESUME_IRQ
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	select QCOM_SHOW_RESUME_IRQ
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

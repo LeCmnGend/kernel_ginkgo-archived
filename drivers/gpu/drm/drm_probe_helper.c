@@ -34,6 +34,10 @@
 
 #include <drm/drmP.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <drm/drm_client.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <drm/drm_client.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -262,8 +266,12 @@ void drm_kms_helper_poll_enable(struct drm_device *dev)
 
 	if (poll)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		queue_delayed_work(system_power_efficient_wq, 
 							&dev->mode_config.output_poll_work, delay);
+=======
+		schedule_delayed_work(&dev->mode_config.output_poll_work, delay);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		schedule_delayed_work(&dev->mode_config.output_poll_work, delay);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -475,8 +483,13 @@ retry:
 		dev->mode_config.delayed_event = true;
 		if (dev->mode_config.poll_enabled)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			queue_delayed_work(system_power_efficient_wq, 
 								&dev->mode_config.output_poll_work, 0);
+=======
+			schedule_delayed_work(&dev->mode_config.output_poll_work,
+					      0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			schedule_delayed_work(&dev->mode_config.output_poll_work,
 					      0);
@@ -596,6 +609,11 @@ void drm_kms_helper_hotplug_event(struct drm_device *dev)
 	if (dev->mode_config.funcs->output_poll_changed)
 		dev->mode_config.funcs->output_poll_changed(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+	drm_client_dev_hotplug(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	drm_client_dev_hotplug(dev);
@@ -691,8 +709,12 @@ out:
 
 	if (repoll)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		queue_delayed_work(system_power_efficient_wq, delayed_work, 
 							DRM_OUTPUT_POLL_PERIOD);
+=======
+		schedule_delayed_work(delayed_work, DRM_OUTPUT_POLL_PERIOD);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		schedule_delayed_work(delayed_work, DRM_OUTPUT_POLL_PERIOD);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

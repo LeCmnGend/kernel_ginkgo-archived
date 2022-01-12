@@ -355,7 +355,10 @@ static int choke_change(struct Qdisc *sch, struct nlattr *opt)
 	unsigned int mask;
 	u32 max_P;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8 *stab;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -374,8 +377,13 @@ static int choke_change(struct Qdisc *sch, struct nlattr *opt)
 
 	ctl = nla_data(tb[TCA_CHOKE_PARMS]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	stab = nla_data(tb[TCA_CHOKE_STAB]);
 	if (!red_check_params(ctl->qth_min, ctl->qth_max, ctl->Wlog, ctl->Scell_log, stab))
+=======
+
+	if (!red_check_params(ctl->qth_min, ctl->qth_max, ctl->Wlog))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	if (!red_check_params(ctl->qth_min, ctl->qth_max, ctl->Wlog))
@@ -430,7 +438,11 @@ static int choke_change(struct Qdisc *sch, struct nlattr *opt)
 	red_set_parms(&q->parms, ctl->qth_min, ctl->qth_max, ctl->Wlog,
 		      ctl->Plog, ctl->Scell_log,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		      stab,
+=======
+		      nla_data(tb[TCA_CHOKE_STAB]),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		      nla_data(tb[TCA_CHOKE_STAB]),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

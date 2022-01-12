@@ -2025,6 +2025,7 @@ static struct bpf_insn_aux_data *cur_aux(struct bpf_verifier_env *env)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 enum {
 	REASON_BOUNDS	= -1,
 	REASON_TYPE	= -2,
@@ -2063,6 +2064,8 @@ static int retrieve_ptr_limit(const struct bpf_reg_state *ptr_reg,
 	*alu_limit = ptr_limit;
 	return 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int retrieve_ptr_limit(const struct bpf_reg_state *ptr_reg,
 			      u32 *ptr_limit, u8 opcode, bool off_is_neg)
 {
@@ -2089,6 +2092,9 @@ static int retrieve_ptr_limit(const struct bpf_reg_state *ptr_reg,
 	default:
 		return -EINVAL;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -2108,7 +2114,11 @@ static int update_alu_sanitation_state(struct bpf_insn_aux_data *aux,
 	    (aux->alu_state != alu_state ||
 	     aux->alu_limit != alu_limit))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return REASON_PATHS;
+=======
+		return -EACCES;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EACCES;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2130,6 +2140,7 @@ static int sanitize_val_alu(struct bpf_verifier_env *env,
 	return update_alu_sanitation_state(aux, BPF_ALU_NON_POINTER, 0);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static bool sanitize_needed(u8 opcode)
 {
@@ -2154,6 +2165,8 @@ static int sanitize_ptr_alu(struct bpf_verifier_env *env,
 	bool off_is_imm = tnum_is_const(off_reg->var_off);
 	bool off_is_neg = off_reg->smin_value < 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int sanitize_ptr_alu(struct bpf_verifier_env *env,
 			    struct bpf_insn *insn,
 			    const struct bpf_reg_state *ptr_reg,
@@ -2162,6 +2175,9 @@ static int sanitize_ptr_alu(struct bpf_verifier_env *env,
 {
 	struct bpf_verifier_state *vstate = env->cur_state;
 	struct bpf_insn_aux_data *aux = cur_aux(env);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool ptr_is_dst_reg = ptr_reg == dst_reg;
 	u8 opcode = BPF_OP(insn->code);
@@ -2169,7 +2185,10 @@ static int sanitize_ptr_alu(struct bpf_verifier_env *env,
 	struct bpf_reg_state tmp;
 	bool ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int err;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2183,6 +2202,7 @@ static int sanitize_ptr_alu(struct bpf_verifier_env *env,
 	if (vstate->speculative)
 		goto do_sim;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (!commit_window) {
 		if (!tnum_is_const(off_reg->var_off) &&
@@ -2226,6 +2246,8 @@ do_sim:
 		return 0;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	alu_state  = off_is_neg ? BPF_ALU_NEG_VALUE : 0;
 	alu_state |= ptr_is_dst_reg ?
 		     BPF_ALU_SANITIZE_SRC : BPF_ALU_SANITIZE_DST;
@@ -2235,6 +2257,9 @@ do_sim:
 	if (update_alu_sanitation_state(aux, alu_state, alu_limit))
 		return -EACCES;
 do_sim:
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Simulate and find potential out-of-bounds access under
 	 * speculative execution from truncation as a result of
@@ -2252,6 +2277,7 @@ do_sim:
 	ret = push_stack(env, env->insn_idx + 1, env->insn_idx, true);
 	if (!ptr_is_dst_reg && ret)
 		*dst_reg = tmp;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	return !ret ? REASON_STACK : 0;
 }
@@ -2331,6 +2357,9 @@ static int sanitize_check_bounds(struct bpf_verifier_env *env,
 =======
 	return !ret ? -EFAULT : 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	return !ret ? -EFAULT : 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /* Handles arithmetic on a pointer and a scalar: computes new min/max and var_off.
@@ -2350,9 +2379,14 @@ static int adjust_ptr_min_max_vals(struct bpf_verifier_env *env,
 	u64 umin_val = off_reg->umin_value, umax_val = off_reg->umax_value,
 	    umin_ptr = ptr_reg->umin_value, umax_ptr = ptr_reg->umax_value;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct bpf_sanitize_info info = {};
 	u8 opcode = BPF_OP(insn->code);
 	u32 dst = insn->dst_reg;
+=======
+	u32 dst = insn->dst_reg, src = insn->src_reg;
+	u8 opcode = BPF_OP(insn->code);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 dst = insn->dst_reg, src = insn->src_reg;
 	u8 opcode = BPF_OP(insn->code);
@@ -2373,8 +2407,14 @@ static int adjust_ptr_min_max_vals(struct bpf_verifier_env *env,
 	if (BPF_CLASS(insn->code) != BPF_ALU64) {
 		/* 32-bit ALU ops on pointers produce (meaningless) scalars */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		verbose("R%d 32-bit pointer arithmetic prohibited\n",
 			dst);
+=======
+		if (!env->allow_ptr_leaks)
+			verbose("R%d 32-bit pointer arithmetic prohibited\n",
+				dst);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!env->allow_ptr_leaks)
 			verbose("R%d 32-bit pointer arithmetic prohibited\n",
@@ -2384,6 +2424,7 @@ static int adjust_ptr_min_max_vals(struct bpf_verifier_env *env,
 	}
 
 	if (ptr_reg->type == PTR_TO_MAP_VALUE_OR_NULL) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 		verbose("R%d pointer arithmetic on PTR_TO_MAP_VALUE_OR_NULL prohibited, null-check it first\n",
 			dst);
@@ -2398,6 +2439,8 @@ static int adjust_ptr_min_max_vals(struct bpf_verifier_env *env,
 		verbose("R%d pointer arithmetic on PTR_TO_PACKET_END prohibited\n",
 			dst);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!env->allow_ptr_leaks)
 			verbose("R%d pointer arithmetic on PTR_TO_MAP_VALUE_OR_NULL prohibited, null-check it first\n",
 				dst);
@@ -2413,6 +2456,9 @@ static int adjust_ptr_min_max_vals(struct bpf_verifier_env *env,
 		if (!env->allow_ptr_leaks)
 			verbose("R%d pointer arithmetic on PTR_TO_PACKET_END prohibited\n",
 				dst);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EACCES;
 	}
@@ -2428,6 +2474,7 @@ static int adjust_ptr_min_max_vals(struct bpf_verifier_env *env,
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (sanitize_needed(opcode)) {
 		ret = sanitize_ptr_alu(env, insn, ptr_reg, off_reg, dst_reg,
 				       &info, false);
@@ -2438,6 +2485,8 @@ static int adjust_ptr_min_max_vals(struct bpf_verifier_env *env,
 	switch (opcode) {
 	case BPF_ADD:
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	switch (opcode) {
 	case BPF_ADD:
 		ret = sanitize_ptr_alu(env, insn, ptr_reg, dst_reg, smin_val < 0);
@@ -2445,6 +2494,9 @@ static int adjust_ptr_min_max_vals(struct bpf_verifier_env *env,
 			verbose("R%d tried to add from different maps or paths\n", dst);
 			return ret;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* We can take a fixed offset as long as it doesn't overflow
 		 * the s32 'off' field
@@ -2497,11 +2549,14 @@ static int adjust_ptr_min_max_vals(struct bpf_verifier_env *env,
 		break;
 	case BPF_SUB:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (dst_reg == off_reg) {
 			/* scalar -= pointer.  Creates an unknown scalar */
 			verbose("R%d tried to subtract pointer from scalar\n",
 				dst);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = sanitize_ptr_alu(env, insn, ptr_reg, dst_reg, smin_val < 0);
 		if (ret < 0) {
 			verbose("R%d tried to sub from different maps or paths\n", dst);
@@ -2512,6 +2567,9 @@ static int adjust_ptr_min_max_vals(struct bpf_verifier_env *env,
 			if (!env->allow_ptr_leaks)
 				verbose("R%d tried to subtract pointer from scalar\n",
 					dst);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return -EACCES;
 		}
@@ -2521,8 +2579,14 @@ static int adjust_ptr_min_max_vals(struct bpf_verifier_env *env,
 		 */
 		if (ptr_reg->type == PTR_TO_STACK) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			verbose("R%d subtraction from stack pointer prohibited\n",
 				dst);
+=======
+			if (!env->allow_ptr_leaks)
+				verbose("R%d subtraction from stack pointer prohibited\n",
+					dst);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (!env->allow_ptr_leaks)
 				verbose("R%d subtraction from stack pointer prohibited\n",
@@ -2578,6 +2642,7 @@ static int adjust_ptr_min_max_vals(struct bpf_verifier_env *env,
 	case BPF_OR:
 	case BPF_XOR:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* bitwise ops on pointers are troublesome. */
 		verbose("R%d bitwise operator %s on pointer prohibited\n",
 			dst, bpf_alu_string[opcode >> 4]);
@@ -2587,6 +2652,8 @@ static int adjust_ptr_min_max_vals(struct bpf_verifier_env *env,
 		verbose("R%d pointer arithmetic with %s operator prohibited\n",
 			dst, bpf_alu_string[opcode >> 4]);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* bitwise ops on pointers are troublesome, prohibit for now.
 		 * (However, in principle we could allow some cases, e.g.
 		 * ptr &= ~3 which would reduce min_value by 3.)
@@ -2607,6 +2674,9 @@ static int adjust_ptr_min_max_vals(struct bpf_verifier_env *env,
 		if (!env->allow_ptr_leaks)
 			verbose("R%d pointer arithmetic with %s operator prohibited\n",
 				dst, bpf_alu_string[opcode >> 4]);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EACCES;
 	}
@@ -2619,6 +2689,7 @@ static int adjust_ptr_min_max_vals(struct bpf_verifier_env *env,
 	__reg_bound_offset(dst_reg);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (sanitize_check_bounds(env, insn, dst_reg) < 0)
 		return -EACCES;
 	if (sanitize_needed(opcode)) {
@@ -2627,6 +2698,8 @@ static int adjust_ptr_min_max_vals(struct bpf_verifier_env *env,
 		if (ret < 0)
 			return sanitize_err(env, insn, ret, off_reg, dst_reg);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* For unprivileged we require that resulting offset must be in bounds
 	 * in order to be able to sanitize access later on.
 	 */
@@ -2643,6 +2716,9 @@ static int adjust_ptr_min_max_vals(struct bpf_verifier_env *env,
 				"prohibited for !root\n", dst);
 			return -EACCES;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -2665,6 +2741,10 @@ static int adjust_scalar_min_max_vals(struct bpf_verifier_env *env,
 	u64 umin_val, umax_val;
 	u64 insn_bitness = (BPF_CLASS(insn->code) == BPF_ALU64) ? 64 : 32;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u32 dst = insn->dst_reg;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 dst = insn->dst_reg;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2702,6 +2782,7 @@ static int adjust_scalar_min_max_vals(struct bpf_verifier_env *env,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (sanitize_needed(opcode)) {
 		ret = sanitize_val_alu(env, insn);
 		if (ret < 0)
@@ -2711,6 +2792,8 @@ static int adjust_scalar_min_max_vals(struct bpf_verifier_env *env,
 	switch (opcode) {
 	case BPF_ADD:
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	switch (opcode) {
 	case BPF_ADD:
 		ret = sanitize_val_alu(env, insn);
@@ -2718,6 +2801,9 @@ static int adjust_scalar_min_max_vals(struct bpf_verifier_env *env,
 			verbose("R%d tried to add from different pointers or scalars\n", dst);
 			return ret;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (signed_add_overflows(dst_reg->smin_value, smin_val) ||
 		    signed_add_overflows(dst_reg->smax_value, smax_val)) {
@@ -2739,12 +2825,18 @@ static int adjust_scalar_min_max_vals(struct bpf_verifier_env *env,
 		break;
 	case BPF_SUB:
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = sanitize_val_alu(env, insn);
 		if (ret < 0) {
 			verbose("R%d tried to sub from different pointers or scalars\n", dst);
 			return ret;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (signed_sub_overflows(dst_reg->smin_value, smax_val) ||
 		    signed_sub_overflows(dst_reg->smax_value, smin_val)) {
@@ -2939,6 +3031,10 @@ static int adjust_reg_min_max_vals(struct bpf_verifier_env *env,
 	struct bpf_reg_state *ptr_reg = NULL, off_reg = {0};
 	u8 opcode = BPF_OP(insn->code);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int rc;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int rc;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2953,6 +3049,7 @@ static int adjust_reg_min_max_vals(struct bpf_verifier_env *env,
 			if (dst_reg->type != SCALAR_VALUE) {
 				/* Combining two pointers by any ALU op yields
 <<<<<<< HEAD
+<<<<<<< HEAD
 				 * an arbitrary scalar. Disallow all math except
 				 * pointer subtraction
 				 */
@@ -2965,6 +3062,8 @@ static int adjust_reg_min_max_vals(struct bpf_verifier_env *env,
 					bpf_alu_string[opcode >> 4]);
 				return -EACCES;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				 * an arbitrary scalar.
 				 */
 				if (!env->allow_ptr_leaks) {
@@ -2975,12 +3074,16 @@ static int adjust_reg_min_max_vals(struct bpf_verifier_env *env,
 				}
 				mark_reg_unknown(regs, insn->dst_reg);
 				return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			} else {
 				/* scalar += pointer
 				 * This is legal, but we have to reverse our
 				 * src/dest handling in computing the range
 				 */
+<<<<<<< HEAD
 <<<<<<< HEAD
 				return adjust_ptr_min_max_vals(env, insn,
 							       src_reg, dst_reg);
@@ -2990,6 +3093,8 @@ static int adjust_reg_min_max_vals(struct bpf_verifier_env *env,
 			return adjust_ptr_min_max_vals(env, insn,
 						       dst_reg, src_reg);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				rc = adjust_ptr_min_max_vals(env, insn,
 							     src_reg, dst_reg);
 				if (rc == -EACCES && env->allow_ptr_leaks) {
@@ -3012,6 +3117,9 @@ static int adjust_reg_min_max_vals(struct bpf_verifier_env *env,
 						env, insn, dst_reg, *src_reg);
 			}
 			return rc;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 	} else {
@@ -3022,10 +3130,13 @@ static int adjust_reg_min_max_vals(struct bpf_verifier_env *env,
 		__mark_reg_known(&off_reg, insn->imm);
 		src_reg = &off_reg;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ptr_reg) /* pointer += K */
 			return adjust_ptr_min_max_vals(env, insn,
 						       ptr_reg, src_reg);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (ptr_reg) { /* pointer += K */
 			rc = adjust_ptr_min_max_vals(env, insn,
 						     ptr_reg, src_reg);
@@ -3037,6 +3148,9 @@ static int adjust_reg_min_max_vals(struct bpf_verifier_env *env,
 			}
 			return rc;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -5104,7 +5218,11 @@ static int fixup_bpf_calls(struct bpf_verifier_env *env)
 			struct bpf_insn insn_buf[16];
 			struct bpf_insn *patch = &insn_buf[0];
 <<<<<<< HEAD
+<<<<<<< HEAD
 			bool issrc, isneg, isimm;
+=======
+			bool issrc, isneg;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			bool issrc, isneg;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5118,6 +5236,7 @@ static int fixup_bpf_calls(struct bpf_verifier_env *env)
 			isneg = aux->alu_state & BPF_ALU_NEG_VALUE;
 			issrc = (aux->alu_state & BPF_ALU_SANITIZE) ==
 				BPF_ALU_SANITIZE_SRC;
+<<<<<<< HEAD
 <<<<<<< HEAD
 			isimm = aux->alu_state & BPF_ALU_IMMEDIATE;
 
@@ -5138,6 +5257,8 @@ static int fixup_bpf_calls(struct bpf_verifier_env *env)
 				*patch++ = BPF_MOV64_REG(insn->dst_reg, insn->src_reg);
 			insn->src_reg = BPF_REG_AX;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 			off_reg = issrc ? insn->src_reg : insn->dst_reg;
 			if (isneg)
@@ -5155,13 +5276,20 @@ static int fixup_bpf_calls(struct bpf_verifier_env *env)
 				*patch++ = BPF_ALU64_REG(BPF_AND, off_reg,
 							 BPF_REG_AX);
 			}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (isneg)
 				insn->code = insn->code == code_add ?
 					     code_sub : code_add;
 			*patch++ = *insn;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (issrc && isneg && !isimm)
+=======
+			if (issrc && isneg)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (issrc && isneg)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

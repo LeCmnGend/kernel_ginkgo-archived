@@ -719,7 +719,10 @@ static int __noreturn rcu_tasks_kthread(void *arg)
 	struct rcu_head *next;
 	LIST_HEAD(rcu_tasks_holdouts);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int fract;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -804,6 +807,7 @@ static int __noreturn rcu_tasks_kthread(void *arg)
 		 */
 		lastreport = jiffies;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		/* Start off with HZ/10 wait and slowly back off to 1 HZ wait*/
 		fract = 10;
@@ -812,11 +816,15 @@ static int __noreturn rcu_tasks_kthread(void *arg)
 =======
 		while (!list_empty(&rcu_tasks_holdouts)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+		while (!list_empty(&rcu_tasks_holdouts)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			bool firstreport;
 			bool needreport;
 			int rtst;
 			struct task_struct *t1;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 			if (list_empty(&rcu_tasks_holdouts))
 				break;
@@ -827,6 +835,9 @@ static int __noreturn rcu_tasks_kthread(void *arg)
 			if (fract > 1)
 				fract--;
 
+=======
+			schedule_timeout_interruptible(HZ);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			schedule_timeout_interruptible(HZ);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -895,8 +906,12 @@ static void rcu_spawn_tasks_kthread(void)
 		return;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	t = kthread_run_perf_critical(rcu_tasks_kthread,
 				NULL, "rcu_tasks_kthread");
+=======
+	t = kthread_run(rcu_tasks_kthread, NULL, "rcu_tasks_kthread");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	t = kthread_run(rcu_tasks_kthread, NULL, "rcu_tasks_kthread");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

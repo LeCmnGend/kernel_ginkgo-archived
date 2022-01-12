@@ -229,7 +229,10 @@ void __acpi_unmap_table(void __iomem *map, unsigned long size);
 int early_acpi_boot_init(void);
 int acpi_boot_init (void);
 <<<<<<< HEAD
+<<<<<<< HEAD
 void acpi_boot_table_prepare (void);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void acpi_boot_table_init (void);
@@ -237,9 +240,12 @@ int acpi_mps_check (void);
 int acpi_numa_init (void);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int acpi_locate_initial_tables (void);
 void acpi_reserve_initial_tables (void);
 void acpi_table_init_complete (void);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int acpi_table_init (void);
@@ -725,12 +731,18 @@ static inline int acpi_boot_init(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void acpi_boot_table_prepare(void)
 {
 }
 
 static inline void acpi_boot_table_init(void)
 {
+=======
+static inline void acpi_boot_table_init(void)
+{
+	return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline void acpi_boot_table_init(void)
 {
@@ -807,6 +819,7 @@ static inline int acpi_device_modalias(struct device *dev,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline struct platform_device *
 acpi_create_platform_device(struct acpi_device *adev,
 			    struct property_entry *properties)
@@ -814,6 +827,8 @@ acpi_create_platform_device(struct acpi_device *adev,
 	return NULL;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline bool acpi_dma_supported(struct acpi_device *adev)

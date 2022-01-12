@@ -32,6 +32,7 @@
 #include <linux/font.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define NEWPORT_LEN	0x10000
 
 #define FONT_DATA ((unsigned char *)font_vga_8x16.data)
@@ -41,6 +42,8 @@ static unsigned char *font_data[MAX_NR_CONSOLES];
 static struct newport_regs *npregs;
 static unsigned long newport_addr;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define FONT_DATA ((unsigned char *)font_vga_8x16.data)
 
 /* borrowed from fbcon.c */
@@ -52,6 +55,9 @@ static unsigned long newport_addr;
 static unsigned char *font_data[MAX_NR_CONSOLES];
 
 static struct newport_regs *npregs;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static int logo_active;
@@ -531,7 +537,10 @@ static int newport_set_font(int unit, struct console_font *op)
 	FNTCHARCNT(new_data) = op->charcount;
 	REFCOUNT(new_data) = 0;	/* usage counter */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	FNTSUM(new_data) = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -717,6 +726,10 @@ static int newport_probe(struct gio_device *dev,
 			 const struct gio_device_id *id)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	unsigned long newport_addr;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long newport_addr;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -730,7 +743,11 @@ static int newport_probe(struct gio_device *dev,
 
 	newport_addr = dev->resource.start + 0xF0000;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!request_mem_region(newport_addr, NEWPORT_LEN, "Newport"))
+=======
+	if (!request_mem_region(newport_addr, 0x10000, "Newport"))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!request_mem_region(newport_addr, 0x10000, "Newport"))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -742,11 +759,14 @@ static int newport_probe(struct gio_device *dev,
 	err = do_take_over_console(&newport_con, 0, MAX_NR_CONSOLES - 1, 1);
 	console_unlock();
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (err) {
 		iounmap((void *)npregs);
 		release_mem_region(newport_addr, NEWPORT_LEN);
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return err;
@@ -757,7 +777,10 @@ static void newport_remove(struct gio_device *dev)
 	give_up_console(&newport_con);
 	iounmap((void *)npregs);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	release_mem_region(newport_addr, NEWPORT_LEN);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

@@ -138,11 +138,14 @@ struct dm_snapshot {
 	 */
 	struct bio_list bios_queued_during_merge;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/*
 	 * Flush data after merge.
 	 */
 	struct bio flush_bio;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -797,7 +800,11 @@ static uint32_t __minimum_chunk_size(struct origin *o)
 {
 	struct dm_snapshot *snap;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned chunk_size = rounddown_pow_of_two(UINT_MAX);
+=======
+	unsigned chunk_size = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned chunk_size = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1073,6 +1080,7 @@ shut:
 static void error_bios(struct bio *bio);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int flush_data(struct dm_snapshot *s)
 {
 	struct bio *flush_bio = &s->flush_bio;
@@ -1084,6 +1092,8 @@ static int flush_data(struct dm_snapshot *s)
 	return submit_bio_wait(flush_bio);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void merge_callback(int read_err, unsigned long write_err, void *context)
@@ -1100,11 +1110,14 @@ static void merge_callback(int read_err, unsigned long write_err, void *context)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (flush_data(s) < 0) {
 		DMERR("Flush after merge failed: shutting down merge");
 		goto shut;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (s->store->type->commit_merge(s->store,
@@ -1232,7 +1245,10 @@ static int snapshot_ctr(struct dm_target *ti, unsigned int argc, char **argv)
 	s->num_merging_chunks = 0;
 	bio_list_init(&s->bios_queued_during_merge);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bio_init(&s->flush_bio, NULL, 0);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1303,7 +1319,10 @@ static int snapshot_ctr(struct dm_target *ti, unsigned int argc, char **argv)
 	if (!s->store->chunk_size) {
 		ti->error = "Chunk size not set";
 <<<<<<< HEAD
+<<<<<<< HEAD
 		r = -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto bad_read_metadata;
@@ -1434,8 +1453,11 @@ static void snapshot_dtr(struct dm_target *ti)
 	mutex_destroy(&s->lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bio_uninit(&s->flush_bio);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dm_put_device(ti, s->cow);

@@ -45,9 +45,13 @@ struct sde_fence_context {
 	u64 context;
 	struct list_head fence_list_head;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
 	char name[SDE_FENCE_NAME_SIZE];
 #endif
+=======
+	char name[SDE_FENCE_NAME_SIZE];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	char name[SDE_FENCE_NAME_SIZE];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

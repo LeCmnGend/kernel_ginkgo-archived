@@ -60,7 +60,11 @@ static void __init setup_zero_pages(void)
 
 	/* Limit number of empty zero pages for small memory sizes */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	while (order > 2 && (totalram_pages() >> 10) < (1UL << order))
+=======
+	while (order > 2 && (totalram_pages >> 10) < (1UL << order))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	while (order > 2 && (totalram_pages >> 10) < (1UL << order))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

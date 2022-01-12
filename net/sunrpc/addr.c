@@ -185,7 +185,11 @@ static int rpc_parse_scope_id(struct net *net, const char *buf,
 			dev_put(dev);
 		} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (kstrtou32(p, 10, &scope_id) != 0) {
+=======
+			if (kstrtou32(p, 10, &scope_id) == 0) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (kstrtou32(p, 10, &scope_id) == 0) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

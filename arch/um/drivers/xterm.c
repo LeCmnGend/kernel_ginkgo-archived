@@ -19,7 +19,10 @@ struct xterm_chan {
 	int pid;
 	int helper_pid;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int chan_fd;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	char *title;
@@ -38,7 +41,10 @@ static void *xterm_init(char *str, int device, const struct chan_opts *opts)
 	*data = ((struct xterm_chan) { .pid 		= -1,
 				       .helper_pid 	= -1,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				       .chan_fd		= -1,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				       .device 		= device,
@@ -158,7 +164,10 @@ static int xterm_open(int input, int output, int primary, void *d,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	data->chan_fd = fd;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	new = xterm_fd(fd, &data->helper_pid);
@@ -219,8 +228,11 @@ static void xterm_close(int fd, void *d)
 	data->helper_pid = -1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (data->chan_fd != -1)
 		os_close_file(data->chan_fd);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	os_close_file(fd);

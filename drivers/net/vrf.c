@@ -335,7 +335,12 @@ static netdev_tx_t vrf_xmit(struct sk_buff *skb, struct net_device *dev)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void vrf_finish_direct(struct sk_buff *skb)
+=======
+static int vrf_finish_direct(struct net *net, struct sock *sk,
+			     struct sk_buff *skb)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int vrf_finish_direct(struct net *net, struct sock *sk,
 			     struct sk_buff *skb)
@@ -359,8 +364,12 @@ static int vrf_finish_direct(struct net *net, struct sock *sk,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* reset skb device */
 	nf_reset(skb);
+=======
+	return 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -443,6 +452,7 @@ static struct sk_buff *vrf_ip6_out_redirect(struct net_device *vrf_dev,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int vrf_output6_direct_finish(struct net *net, struct sock *sk,
 				     struct sk_buff *skb)
 {
@@ -479,6 +489,8 @@ static int vrf_ip6_out_direct_finish(struct net *net, struct sock *sk,
 
 	return err;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int vrf_output6_direct(struct net *net, struct sock *sk,
 			      struct sk_buff *skb)
 {
@@ -488,6 +500,9 @@ static int vrf_output6_direct(struct net *net, struct sock *sk,
 			    net, sk, skb, NULL, skb->dev,
 			    vrf_finish_direct,
 			    !(IPCB(skb)->flags & IPSKB_REROUTED));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -502,7 +517,11 @@ static struct sk_buff *vrf_ip6_out_direct(struct net_device *vrf_dev,
 
 	err = nf_hook(NFPROTO_IPV6, NF_INET_LOCAL_OUT, net, sk,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		      skb, NULL, vrf_dev, vrf_ip6_out_direct_finish);
+=======
+		      skb, NULL, vrf_dev, vrf_output6_direct);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		      skb, NULL, vrf_dev, vrf_output6_direct);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -511,11 +530,14 @@ static struct sk_buff *vrf_ip6_out_direct(struct net_device *vrf_dev,
 		err = vrf_output6_direct(net, sk, skb);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (likely(err == 1))
 		return skb;
 
 	return NULL;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* reset skb device */
 	if (likely(err == 1))
 		nf_reset(skb);
@@ -523,6 +545,9 @@ static struct sk_buff *vrf_ip6_out_direct(struct net_device *vrf_dev,
 		skb = NULL;
 
 	return skb;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -708,6 +733,7 @@ static struct sk_buff *vrf_ip_out_redirect(struct net_device *vrf_dev,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int vrf_output_direct_finish(struct net *net, struct sock *sk,
 				    struct sk_buff *skb)
 {
@@ -744,6 +770,8 @@ static int vrf_ip_out_direct_finish(struct net *net, struct sock *sk,
 
 	return err;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int vrf_output_direct(struct net *net, struct sock *sk,
 			     struct sk_buff *skb)
 {
@@ -753,6 +781,9 @@ static int vrf_output_direct(struct net *net, struct sock *sk,
 			    net, sk, skb, NULL, skb->dev,
 			    vrf_finish_direct,
 			    !(IPCB(skb)->flags & IPSKB_REROUTED));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -767,7 +798,11 @@ static struct sk_buff *vrf_ip_out_direct(struct net_device *vrf_dev,
 
 	err = nf_hook(NFPROTO_IPV4, NF_INET_LOCAL_OUT, net, sk,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		      skb, NULL, vrf_dev, vrf_ip_out_direct_finish);
+=======
+		      skb, NULL, vrf_dev, vrf_output_direct);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		      skb, NULL, vrf_dev, vrf_output_direct);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -776,11 +811,14 @@ static struct sk_buff *vrf_ip_out_direct(struct net_device *vrf_dev,
 		err = vrf_output_direct(net, sk, skb);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (likely(err == 1))
 		return skb;
 
 	return NULL;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* reset skb device */
 	if (likely(err == 1))
 		nf_reset(skb);
@@ -788,6 +826,9 @@ static struct sk_buff *vrf_ip_out_direct(struct net_device *vrf_dev,
 		skb = NULL;
 
 	return skb;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

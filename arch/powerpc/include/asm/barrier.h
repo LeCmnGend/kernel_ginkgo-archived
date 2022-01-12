@@ -43,8 +43,11 @@
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* clang defines this macro for a builtin, which will not work with runtime patching */
 #undef __lwsync
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define __lwsync()	__asm__ __volatile__ (stringify_in_c(LWSYNC) : : :"memory")

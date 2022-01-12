@@ -258,9 +258,12 @@ xfs_rtallocate_extent_block(
 	     i <= end;
 	     i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* Make sure we don't scan off the end of the rt volume. */
 		maxlen = min(mp->m_sb.sb_rextents, i + maxlen) - i;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
@@ -455,6 +458,7 @@ xfs_rtallocate_extent_near(
 	if (bno >= mp->m_sb.sb_rextents)
 		bno = mp->m_sb.sb_rextents - 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* Make sure we don't run off the end of the rt volume. */
 	maxlen = min(mp->m_sb.sb_rextents, bno + maxlen) - bno;
@@ -463,6 +467,8 @@ xfs_rtallocate_extent_near(
 		return 0;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
@@ -1021,6 +1027,7 @@ xfs_growfs_rt(
 		xfs_trans_ijoin(tp, mp->m_rbmip, XFS_ILOCK_EXCL);
 		/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 * Update the bitmap inode's size ondisk and incore.  We need
 		 * to update the incore size so that inode inactivation won't
 		 * punch what it thinks are "posteof" blocks.
@@ -1029,10 +1036,15 @@ xfs_growfs_rt(
 			nsbp->sb_rbmblocks * nsbp->sb_blocksize;
 		i_size_write(VFS_I(mp->m_rbmip), mp->m_rbmip->i_d.di_size);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		 * Update the bitmap inode's size.
 		 */
 		mp->m_rbmip->i_d.di_size =
 			nsbp->sb_rbmblocks * nsbp->sb_blocksize;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		xfs_trans_log_inode(tp, mp->m_rbmip, XFS_ILOG_CORE);
 		/*
@@ -1042,12 +1054,18 @@ xfs_growfs_rt(
 		xfs_trans_ijoin(tp, mp->m_rsumip, XFS_ILOCK_EXCL);
 		/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 * Update the summary inode's size.  We need to update the
 		 * incore size so that inode inactivation won't punch what it
 		 * thinks are "posteof" blocks.
 		 */
 		mp->m_rsumip->i_d.di_size = nmp->m_rsumsize;
 		i_size_write(VFS_I(mp->m_rsumip), mp->m_rsumip->i_d.di_size);
+=======
+		 * Update the summary inode's size.
+		 */
+		mp->m_rsumip->i_d.di_size = nmp->m_rsumsize;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		 * Update the summary inode's size.
 		 */

@@ -52,7 +52,10 @@
 #include <linux/delay.h>
 #include <linux/nmi.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/kvm_para.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1412,6 +1415,10 @@ static void __queue_work(int cpu, struct workqueue_struct *wq,
 	WARN_ON_ONCE(!irqs_disabled());
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	debug_work_activate(work);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	debug_work_activate(work);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1421,9 +1428,12 @@ static void __queue_work(int cpu, struct workqueue_struct *wq,
 	    WARN_ON_ONCE(!is_chained_work(wq)))
 		return;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (req_cpu == WORK_CPU_UNBOUND)
 		cpu = wq_select_unbound_cpu(0);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 retry:
@@ -1504,7 +1514,10 @@ retry:
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	debug_work_activate(work);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	insert_work(pwq, work, worklist, work_flags);
@@ -1583,7 +1596,11 @@ static void __queue_delayed_work(int cpu, struct workqueue_struct *wq,
 		add_timer_on(timer, cpu);
 	else
 <<<<<<< HEAD
+<<<<<<< HEAD
 		add_timer_on(timer, 0);
+=======
+		add_timer(timer);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		add_timer(timer);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1659,6 +1676,7 @@ bool mod_delayed_work_on(int cpu, struct workqueue_struct *wq,
 EXPORT_SYMBOL_GPL(mod_delayed_work_on);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void rcu_work_rcufn(struct rcu_head *rcu)
 {
 	struct rcu_work *rwork = container_of(rcu, struct rcu_work, rcu);
@@ -1693,6 +1711,8 @@ bool queue_rcu_work(struct workqueue_struct *wq, struct rcu_work *rwork)
 }
 EXPORT_SYMBOL(queue_rcu_work);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -3115,6 +3135,7 @@ bool flush_delayed_work(struct delayed_work *dwork)
 EXPORT_SYMBOL(flush_delayed_work);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * flush_rcu_work - wait for a rwork to finish executing the last queueing
  * @rwork: the rcu work to flush
@@ -3135,6 +3156,8 @@ bool flush_rcu_work(struct rcu_work *rwork)
 }
 EXPORT_SYMBOL(flush_rcu_work);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static bool __cancel_work(struct work_struct *work, bool is_dwork)
@@ -3289,7 +3312,10 @@ struct workqueue_attrs *alloc_workqueue_attrs(gfp_t gfp_mask)
 {
 	struct workqueue_attrs *attrs;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	const unsigned long allowed_cpus = 0xf;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -3300,7 +3326,11 @@ struct workqueue_attrs *alloc_workqueue_attrs(gfp_t gfp_mask)
 		goto fail;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cpumask_copy(attrs->cpumask, to_cpumask(&allowed_cpus));
+=======
+	cpumask_copy(attrs->cpumask, cpu_possible_mask);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cpumask_copy(attrs->cpumask, cpu_possible_mask);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3563,6 +3593,7 @@ static void pwq_unbound_release_workfn(struct work_struct *work)
 	struct workqueue_struct *wq = pwq->wq;
 	struct worker_pool *pool = pwq->pool;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool is_last = false;
 
 	/*
@@ -3579,6 +3610,8 @@ static void pwq_unbound_release_workfn(struct work_struct *work)
 		mutex_unlock(&wq->mutex);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool is_last;
 
 	if (WARN_ON_ONCE(!(wq->flags & WQ_UNBOUND)))
@@ -3588,6 +3621,9 @@ static void pwq_unbound_release_workfn(struct work_struct *work)
 	list_del_rcu(&pwq->pwqs_node);
 	is_last = list_empty(&wq->pwqs);
 	mutex_unlock(&wq->mutex);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	mutex_lock(&wq_pool_mutex);
@@ -3635,6 +3671,7 @@ static void pwq_adjust_max_active(struct pool_workqueue *pwq)
 	 */
 	if (!freezable || !workqueue_freezing) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		bool kick = false;
 
 		pwq->max_active = wq->saved_max_active;
@@ -3654,6 +3691,8 @@ static void pwq_adjust_max_active(struct pool_workqueue *pwq)
 		if (kick)
 			wake_up_worker(pwq->pool);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		pwq->max_active = wq->saved_max_active;
 
 		while (!list_empty(&pwq->delayed_works) &&
@@ -3665,6 +3704,9 @@ static void pwq_adjust_max_active(struct pool_workqueue *pwq)
 		 * max_active is bumped.  It's a slow path.  Do it always.
 		 */
 		wake_up_worker(pwq->pool);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
 		pwq->max_active = 0;
@@ -4436,7 +4478,11 @@ bool workqueue_congested(int cpu, struct workqueue_struct *wq)
 
 	if (cpu == WORK_CPU_UNBOUND)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cpu = 0;
+=======
+		cpu = smp_processor_id();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		cpu = smp_processor_id();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5631,7 +5677,10 @@ static void wq_watchdog_timer_fn(unsigned long data)
 	unsigned long thresh = READ_ONCE(wq_watchdog_thresh) * HZ;
 	bool lockup_detected = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long now = jiffies;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct worker_pool *pool;
@@ -5649,12 +5698,15 @@ static void wq_watchdog_timer_fn(unsigned long data)
 			continue;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/*
 		 * If a virtual machine is stopped by the host it can look to
 		 * the watchdog like a stall.
 		 */
 		kvm_check_and_clear_guest_paused();
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* get the latest of pool and touched timestamps */
@@ -5676,7 +5728,11 @@ static void wq_watchdog_timer_fn(unsigned long data)
 
 		/* did we stall? */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (time_after(now, ts + thresh)) {
+=======
+		if (time_after(jiffies, ts + thresh)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (time_after(jiffies, ts + thresh)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5685,7 +5741,11 @@ static void wq_watchdog_timer_fn(unsigned long data)
 			pr_cont_pool_info(pool);
 			pr_cont(" stuck for %us!\n",
 <<<<<<< HEAD
+<<<<<<< HEAD
 				jiffies_to_msecs(now - pool_ts) / 1000);
+=======
+				jiffies_to_msecs(jiffies - pool_ts) / 1000);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				jiffies_to_msecs(jiffies - pool_ts) / 1000);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5819,7 +5879,11 @@ int __init workqueue_init_early(void)
 
 	BUG_ON(!alloc_cpumask_var(&wq_unbound_cpumask, GFP_KERNEL));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cpumask_copy(wq_unbound_cpumask, cpu_lp_mask);
+=======
+	cpumask_copy(wq_unbound_cpumask, cpu_possible_mask);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cpumask_copy(wq_unbound_cpumask, cpu_possible_mask);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

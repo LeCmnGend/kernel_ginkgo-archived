@@ -120,7 +120,10 @@ struct kgsl_context;
  * @ptlock: Lock for accessing the pagetable list
  * @process_mutex: Mutex for accessing the process list
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @proclist_lock: Lock for accessing the process list
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * @devlock: Mutex protecting the device list
@@ -142,7 +145,10 @@ struct kgsl_driver {
 	spinlock_t ptlock;
 	struct mutex process_mutex;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spinlock_t proclist_lock;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct mutex devlock;

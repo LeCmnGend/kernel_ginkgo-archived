@@ -53,6 +53,11 @@ void adreno_drawctxt_dump(struct kgsl_device *device,
 	unsigned int queue, start, retire;
 	struct adreno_context *drawctxt = ADRENO_CONTEXT(context);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int index, pos;
+	char buf[120];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int index, pos;
 	char buf[120];
@@ -118,7 +123,10 @@ void adreno_drawctxt_dump(struct kgsl_device *device,
 
 stats:
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	memset(buf, 0, sizeof(buf));
 
 	pos = 0;
@@ -138,6 +146,9 @@ stats:
 	dev_err(device->dev, "  context[%u]: submit times: %s\n",
 		context->id, buf);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_unlock_bh(&drawctxt->lock);
 }

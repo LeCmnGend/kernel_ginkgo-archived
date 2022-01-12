@@ -120,7 +120,11 @@ static const struct regmap_config mcp23x08_regmap = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const struct reg_default mcp23x17_defaults[] = {
+=======
+static const struct reg_default mcp23x16_defaults[] = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static const struct reg_default mcp23x16_defaults[] = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -135,7 +139,11 @@ static const struct reg_default mcp23x16_defaults[] = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const struct regmap_range mcp23x17_volatile_range = {
+=======
+static const struct regmap_range mcp23x16_volatile_range = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static const struct regmap_range mcp23x16_volatile_range = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -143,6 +151,7 @@ static const struct regmap_range mcp23x16_volatile_range = {
 	.range_max = MCP_GPIO << 1,
 };
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static const struct regmap_access_table mcp23x17_volatile_table = {
 	.yes_ranges = &mcp23x17_volatile_range,
@@ -157,6 +166,8 @@ static const struct regmap_range mcp23x17_precious_range = {
 static const struct regmap_access_table mcp23x17_precious_table = {
 	.yes_ranges = &mcp23x17_precious_range,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static const struct regmap_access_table mcp23x16_volatile_table = {
 	.yes_ranges = &mcp23x16_volatile_range,
 	.n_yes_ranges = 1,
@@ -169,6 +180,9 @@ static const struct regmap_range mcp23x16_precious_range = {
 
 static const struct regmap_access_table mcp23x16_precious_table = {
 	.yes_ranges = &mcp23x16_precious_range,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.n_yes_ranges = 1,
 };
@@ -180,15 +194,21 @@ static const struct regmap_config mcp23x17_regmap = {
 	.reg_stride = 2,
 	.max_register = MCP_OLAT << 1,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.volatile_table = &mcp23x17_volatile_table,
 	.precious_table = &mcp23x17_precious_table,
 	.reg_defaults = mcp23x17_defaults,
 	.num_reg_defaults = ARRAY_SIZE(mcp23x17_defaults),
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.volatile_table = &mcp23x16_volatile_table,
 	.precious_table = &mcp23x16_precious_table,
 	.reg_defaults = mcp23x16_defaults,
 	.num_reg_defaults = ARRAY_SIZE(mcp23x16_defaults),
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.cache_type = REGCACHE_FLAT,
 	.val_format_endian = REGMAP_ENDIAN_LITTLE,

@@ -89,8 +89,11 @@ static int cinergyt2_frontend_attach(struct dvb_usb_adapter *adap)
 	ret = dvb_usb_generic_rw(d, st->data, 1, st->data, 3, 0);
 	if (ret < 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (adap->fe_adap[0].fe)
 			adap->fe_adap[0].fe->ops.release(adap->fe_adap[0].fe);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		deb_rc("cinergyt2_power_ctrl() Failed to retrieve sleep state info\n");

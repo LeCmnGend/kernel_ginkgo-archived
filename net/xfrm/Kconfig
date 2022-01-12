@@ -28,6 +28,7 @@ config XFRM_USER
 	  If unsure, say Y.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 config XFRM_USER_COMPAT
 	tristate "Compatible ABI support"
 	depends on XFRM_USER && COMPAT_FOR_U64_ALIGNMENT && \
@@ -39,6 +40,8 @@ config XFRM_USER_COMPAT
 
 	  If unsure, say N.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config XFRM_INTERFACE

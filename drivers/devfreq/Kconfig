@@ -264,6 +264,7 @@ config DEVFREQ_GOV_CDSPL3
 	  for IO-coherent traffic generated from CDSP
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 config DEVFREQ_BOOST
 	bool "Devfreq Boost"
 	help
@@ -297,6 +298,8 @@ config DEVFREQ_CPU_DDR_BW_BOOST_FREQ
 
 endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 source "drivers/devfreq/event/Kconfig"

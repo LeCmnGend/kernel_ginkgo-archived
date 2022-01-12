@@ -1,7 +1,10 @@
 /*
  * Copyright (c) 2016-2020, The Linux Foundation. All rights reserved.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2019 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -21,8 +24,11 @@
 #include <drm/drm_atomic_helper.h>
 #include <drm/drm_atomic.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <drm/drm_bridge.h>
 #include <linux/pm_wakeup.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -48,6 +54,7 @@ static struct dsi_display_mode_priv_info default_priv_info = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define WAIT_RESUME_TIMEOUT 200
 
 struct dsi_bridge *gbridge;
@@ -55,6 +62,8 @@ static struct delayed_work prim_panel_work;
 static atomic_t prim_panel_is_on;
 static struct wakeup_source prim_panel_wakelock;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void convert_to_dsi_mode(const struct drm_display_mode *drm_mode,
@@ -205,12 +214,15 @@ static void dsi_bridge_pre_enable(struct drm_bridge *bridge)
 	atomic_set(&c_bridge->display->panel->esd_recovery_pending, 0);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (c_bridge->display->is_prim_display && atomic_read(&prim_panel_is_on)) {
 		cancel_delayed_work_sync(&prim_panel_work);
 		__pm_relax(&prim_panel_wakelock);
 		return;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* By this point mode should have been validated through mode_fixup */
@@ -252,6 +264,7 @@ static void dsi_bridge_pre_enable(struct drm_bridge *bridge)
 	if (rc)
 		pr_err("Continuous splash pipeline cleanup failed, rc=%d\n",
 									rc);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (c_bridge->display->is_prim_display)
 		atomic_set(&prim_panel_is_on, true);
@@ -299,6 +312,9 @@ int dsi_bridge_interface_enable(int timeout)
 	return ret;
 }
 EXPORT_SYMBOL(dsi_bridge_interface_enable);
+=======
+}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 }
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -394,6 +410,7 @@ static void dsi_bridge_post_disable(struct drm_bridge *bridge)
 	}
 	SDE_ATRACE_END("dsi_bridge_post_disable");
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (c_bridge->display->is_prim_display)
 		atomic_set(&prim_panel_is_on, false);
@@ -426,6 +443,8 @@ static void prim_panel_off_delayed_work(struct work_struct *work)
 		return;
 	}
 	mutex_unlock(&gbridge->base.lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -1164,6 +1183,7 @@ struct dsi_bridge *dsi_drm_bridge_init(struct dsi_display *display,
 
 	encoder->bridge = &bridge->base;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	encoder->bridge->is_dsi_drm_bridge = true;
 	mutex_init(&encoder->bridge->lock);
 
@@ -1176,6 +1196,8 @@ struct dsi_bridge *dsi_drm_bridge_init(struct dsi_display *display,
 		INIT_DELAYED_WORK(&prim_panel_work, prim_panel_off_delayed_work);
  	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return bridge;
@@ -1191,12 +1213,15 @@ void dsi_drm_bridge_cleanup(struct dsi_bridge *bridge)
 		bridge->base.encoder->bridge = NULL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (bridge == gbridge) {
 		atomic_set(&prim_panel_is_on, false);
 		cancel_delayed_work_sync(&prim_panel_work);
 		wakeup_source_trash(&prim_panel_wakelock);
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kfree(bridge);

@@ -86,7 +86,11 @@ static bool __check_shared_memory(size_t alloc_size)
 	if (a < shared_memory_amount)
 		return false;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (a >> PAGE_SHIFT > totalram_pages() / DM_STATS_MEMORY_FACTOR)
+=======
+	if (a >> PAGE_SHIFT > totalram_pages / DM_STATS_MEMORY_FACTOR)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (a >> PAGE_SHIFT > totalram_pages / DM_STATS_MEMORY_FACTOR)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

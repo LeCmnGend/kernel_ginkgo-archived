@@ -152,6 +152,7 @@ static int __ath10k_htt_rx_ring_fill_n(struct ath10k_htt *htt, int num)
 
 	idx = __le32_to_cpu(*htt->rx_ring.alloc_idx.vaddr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (idx < 0 || idx >= htt->rx_ring.size) {
 		ath10k_err(htt->ar, "rx ring index is not valid, firmware malfunctioning?\n");
@@ -160,6 +161,8 @@ static int __ath10k_htt_rx_ring_fill_n(struct ath10k_htt *htt, int num)
 		goto fail;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	while (num > 0) {
@@ -724,7 +727,10 @@ static void ath10k_htt_rx_h_rates(struct ath10k *ar,
 	u8 group_id;
 	u32 info1, info2, info3;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 stbc, nsts_su;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -772,7 +778,10 @@ static void ath10k_htt_rx_h_rates(struct ath10k *ar,
 		bw = info2 & 3;
 		sgi = info3 & 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		stbc = (info2 >> 3) & 1;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		group_id = (info2 >> 4) & 0x3F;
@@ -780,11 +789,15 @@ static void ath10k_htt_rx_h_rates(struct ath10k *ar,
 		if (GROUP_ID_IS_SU_MIMO(group_id)) {
 			mcs = (info3 >> 4) & 0x0F;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			nsts_su = ((info2 >> 10) & 0x07);
 			if (stbc)
 				nss = (nsts_su >> 2) + 1;
 			else
 				nss = (nsts_su + 1);
+=======
+			nss = ((info2 >> 10) & 0x07) + 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			nss = ((info2 >> 10) & 0x07) + 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1726,6 +1739,7 @@ static void ath10k_htt_rx_h_unchain(struct ath10k *ar,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool ath10k_htt_rx_validate_amsdu(struct ath10k *ar,
 					 struct sk_buff_head *amsdu)
 {
@@ -1780,16 +1794,24 @@ static bool ath10k_htt_rx_validate_amsdu(struct ath10k *ar,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static bool ath10k_htt_rx_amsdu_allowed(struct ath10k *ar,
 					struct sk_buff_head *amsdu,
 					struct ieee80211_rx_status *rx_status)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* FIXME: It might be a good idea to do some fuzzy-testing to drop
 	 * invalid/dangerous frames.
 	 */
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!rx_status->freq) {
 		ath10k_dbg(ar, ATH10K_DBG_HTT, "no channel configured; ignoring frame(s)!\n");
@@ -1802,11 +1824,14 @@ static bool ath10k_htt_rx_amsdu_allowed(struct ath10k *ar,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!ath10k_htt_rx_validate_amsdu(ar, amsdu)) {
 		ath10k_dbg(ar, ATH10K_DBG_HTT, "invalid amsdu received\n");
 		return false;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return true;

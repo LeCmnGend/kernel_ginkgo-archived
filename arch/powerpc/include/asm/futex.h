@@ -36,7 +36,10 @@ static inline int arch_futex_atomic_op_inuser(int op, int oparg, int *oval,
 	int oldval = 0, ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	allow_write_to_user(uaddr, sizeof(*uaddr));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pagefault_disable();
@@ -66,7 +69,10 @@ static inline int arch_futex_atomic_op_inuser(int op, int oparg, int *oval,
 	*oval = oldval;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	prevent_write_to_user(uaddr, sizeof(*uaddr));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
@@ -83,7 +89,10 @@ futex_atomic_cmpxchg_inatomic(u32 *uval, u32 __user *uaddr,
 		return -EFAULT;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	allow_write_to_user(uaddr, sizeof(*uaddr));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
         __asm__ __volatile__ (
@@ -107,7 +116,10 @@ futex_atomic_cmpxchg_inatomic(u32 *uval, u32 __user *uaddr,
 
 	*uval = prev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	prevent_write_to_user(uaddr, sizeof(*uaddr));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
         return ret;

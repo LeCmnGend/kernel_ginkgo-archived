@@ -72,7 +72,12 @@ config CROSS_COMPILE
 config COMPILE_TEST
 	bool "Compile also drivers which will not load"
 <<<<<<< HEAD
+<<<<<<< HEAD
 	depends on HAS_IOMEM
+=======
+	depends on !UML
+	default n
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	depends on !UML
 	default n
@@ -573,8 +578,12 @@ config IKHEADERS
 config LOG_BUF_SHIFT
 	int "Kernel log buffer size (16 => 64KB, 17 => 128KB)"
 <<<<<<< HEAD
+<<<<<<< HEAD
 	range 12 25 if !H8300
 	range 12 19 if H8300
+=======
+	range 12 25
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	range 12 25
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1219,6 +1228,7 @@ config CC_OPTIMIZE_FOR_SIZE
 endchoice
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 config LTO_GCC
 	bool "Enable Link Time Optimization for GCC"
 
@@ -1248,6 +1258,8 @@ config LD_DEAD_CODE_DATA_ELIMINATION
 	  present. This option is not well tested yet, so use at your
 	  own risk.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config SYSCTL
@@ -1286,6 +1298,11 @@ config BPF
 menuconfig EXPERT
 	bool "Configure standard kernel features (expert users)"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	# Unhide debug options, to make the on-by-default options visible
+	select DEBUG_KERNEL
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	# Unhide debug options, to make the on-by-default options visible
 	select DEBUG_KERNEL

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 // SPDX-License-Identifier: GPL-2.0
 /*
  * Copyright (c) 2015-2018, The Linux Foundation. All rights reserved.
@@ -32,6 +33,8 @@ static struct msm_iommu_map *msm_iommu_map_lookup(struct msm_iommu_data *data,
 		if (map->dev == dev)
 			return map;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Copyright (c) 2015-2018, The Linux Foundation. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -136,12 +139,16 @@ static struct msm_iommu_meta *msm_iommu_meta_lookup(void *buffer)
 			p = &(*p)->rb_right;
 		else
 			return entry;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	return NULL;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static void msm_iommu_map_free(struct msm_iommu_map *map)
 {
@@ -218,6 +225,8 @@ int msm_dma_map_sg_attrs(struct device *dev, struct scatterlist *sgl, int nents,
 
 	return nents;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void msm_iommu_add(struct msm_iommu_meta *meta,
 			  struct msm_iommu_map *iommu)
 {
@@ -478,11 +487,15 @@ static void msm_iommu_map_release(struct kref *kref)
 			map->attrs);
 	sg_free_table(&table);
 	kfree(map);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 void msm_dma_unmap_sg_attrs(struct device *dev, struct scatterlist *sgl,
 			    int nents, enum dma_data_direction dir,
+<<<<<<< HEAD
 <<<<<<< HEAD
 			    struct dma_buf *dmabuf, unsigned long attrs)
 {
@@ -534,6 +547,8 @@ void msm_dma_buf_freed(struct msm_iommu_data *data)
 		mutex_unlock(&data->lock);
 	} while (retry--);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			    struct dma_buf *dma_buf, unsigned long attrs)
 {
 	struct msm_iommu_map *iommu_map;
@@ -641,5 +656,8 @@ void msm_dma_buf_freed(void *buffer)
 	mutex_unlock(&meta->lock);
 
 	msm_iommu_meta_put(meta);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

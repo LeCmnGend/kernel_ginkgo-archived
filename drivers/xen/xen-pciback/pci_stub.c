@@ -734,9 +734,12 @@ static pci_ers_result_t common_process(struct pcistub_device *psdev,
 	notify_remote_via_irq(pdev->evtchn_irq);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Enable IRQ to signal "request done". */
 	xen_pcibk_lateeoi(pdev, 0);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = wait_event_timeout(xen_pcibk_aer_wait_queue,
@@ -744,10 +747,13 @@ static pci_ers_result_t common_process(struct pcistub_device *psdev,
 				 &sh_info->flags)), 300*HZ);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Enable IRQ for pcifront request if not already active. */
 	if (!test_bit(_PDEVF_op_active, &pdev->flags))
 		xen_pcibk_lateeoi(pdev, 0);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!ret) {
@@ -764,7 +770,10 @@ static pci_ers_result_t common_process(struct pcistub_device *psdev,
 	clear_bit(_PCIB_op_pending, (unsigned long *)&pdev->flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (test_bit(_XEN_PCIF_active,
 		(unsigned long *)&sh_info->flags)) {
 		dev_dbg(&psdev->dev->dev,
@@ -772,6 +781,9 @@ static pci_ers_result_t common_process(struct pcistub_device *psdev,
 		xen_pcibk_test_and_schedule_op(psdev->pdev);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	res = (pci_ers_result_t)aer_op->err;
 	return res;

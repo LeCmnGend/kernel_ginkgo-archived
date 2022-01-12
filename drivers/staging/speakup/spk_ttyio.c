@@ -47,6 +47,7 @@ static int spk_ttyio_ldisc_open(struct tty_struct *tty)
 	struct spk_ldisc_data *ldisc_data;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (tty != speakup_tty)
 		/* Somebody tried to use this line discipline outside speakup */
 		return -ENODEV;
@@ -62,6 +63,8 @@ static int spk_ttyio_ldisc_open(struct tty_struct *tty)
 	ldisc_data->buf_free = true;
 	tty->disc_data = ldisc_data;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (tty->ops->write == NULL)
 		return -EOPNOTSUPP;
 	speakup_tty = tty;
@@ -75,6 +78,9 @@ static int spk_ttyio_ldisc_open(struct tty_struct *tty)
 	sema_init(&ldisc_data->sem, 0);
 	ldisc_data->buf_free = true;
 	speakup_tty->disc_data = ldisc_data;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
@@ -193,6 +199,7 @@ static int spk_ttyio_initialise_ldisc(struct spk_synth *synth)
 	tty_unlock(tty);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&speakup_tty_mutex);
 	speakup_tty = tty;
 	ret = tty_set_ldisc(tty, N_SPEAKUP);
@@ -212,6 +219,11 @@ static int spk_ttyio_initialise_ldisc(struct spk_synth *synth)
 	tty_unlock(tty);
 
 	tty_kclose(tty);
+=======
+	ret = tty_set_ldisc(tty, N_SPEAKUP);
+	if (ret)
+		pr_err("speakup: Failed to set N_SPEAKUP on tty\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = tty_set_ldisc(tty, N_SPEAKUP);
 	if (ret)

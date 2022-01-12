@@ -276,7 +276,11 @@ struct rxrpc_call *rxrpc_new_client_call(struct rxrpc_sock *rx,
 	ret = rxrpc_connect_call(call, cp, srx, gfp);
 	if (ret < 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto error_attached_to_socket;
+=======
+		goto error;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto error;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -299,6 +303,7 @@ struct rxrpc_call *rxrpc_new_client_call(struct rxrpc_sock *rx,
 error_dup_user_ID:
 	write_unlock(&rx->call_lock);
 	release_sock(&rx->sk);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	__rxrpc_set_call_completion(call, RXRPC_CALL_LOCAL_ERROR,
 				    RX_CALL_DEAD, -EEXIST);
@@ -324,6 +329,8 @@ error_attached_to_socket:
 	_leave(" = c=%08x [err]", call->debug_id);
 	return call;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = -EEXIST;
 
 error:
@@ -336,6 +343,9 @@ error:
 	rxrpc_put_call(call, rxrpc_call_put);
 	_leave(" = %d", ret);
 	return ERR_PTR(ret);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

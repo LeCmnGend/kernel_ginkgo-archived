@@ -1,7 +1,11 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (c) 2017-2020, The Linux Foundation. All rights reserved.
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+ * Copyright (c) 2017-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * Copyright (c) 2017-2021, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -688,7 +692,10 @@ static int msm_hsphy_dpdm_regulator_disable(struct regulator_dev *rdev)
 	if (phy->dpdm_enable) {
 		if (!phy->cable_connected) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			/*
 			 * Phy reset is needed in case multiple instances
 			 * of HSPHY exists with shared power supplies. This
@@ -697,6 +704,9 @@ static int msm_hsphy_dpdm_regulator_disable(struct regulator_dev *rdev)
 			 *
 			 */
 			msm_hsphy_reset(phy);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			ret = msm_hsphy_enable_power(phy, false);
 			if (ret < 0) {

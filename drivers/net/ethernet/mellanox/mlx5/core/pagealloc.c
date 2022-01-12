@@ -332,6 +332,7 @@ out_free:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static u32 fwp_fill_manage_pages_out(struct fw_page *fwp, u32 *out, u32 index,
 				     u32 npages)
 {
@@ -350,6 +351,8 @@ static u32 fwp_fill_manage_pages_out(struct fw_page *fwp, u32 *out, u32 index,
 	return pages_set;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int reclaim_pages_cmd(struct mlx5_core_dev *dev,
@@ -376,7 +379,12 @@ static int reclaim_pages_cmd(struct mlx5_core_dev *dev,
 			continue;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		i += fwp_fill_manage_pages_out(fwp, out, i, npages - i);
+=======
+		MLX5_ARRAY_SET64(manage_pages_out, out, pas, i, fwp->addr);
+		i++;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		MLX5_ARRAY_SET64(manage_pages_out, out, pas, i, fwp->addr);
 		i++;

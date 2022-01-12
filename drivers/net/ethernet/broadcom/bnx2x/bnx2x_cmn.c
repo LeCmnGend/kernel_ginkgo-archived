@@ -2668,8 +2668,12 @@ int bnx2x_nic_load(struct bnx2x *bp, int load_mode)
 
 	/* Allocated memory for FW statistics  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rc = bnx2x_alloc_fw_stats_mem(bp);
 	if (rc)
+=======
+	if (bnx2x_alloc_fw_stats_mem(bp))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (bnx2x_alloc_fw_stats_mem(bp))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

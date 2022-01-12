@@ -31,9 +31,15 @@ int nfs_mountpoint_expiry_timeout = 500 * HZ;
  * nfs_path - reconstruct the path given an arbitrary dentry
  * @base - used to return pointer to the end of devname part of path
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @dentry_in - pointer to dentry
  * @buffer - result buffer
  * @buflen_in - length of buffer
+=======
+ * @dentry - pointer to dentry
+ * @buffer - result buffer
+ * @buflen - length of buffer
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * @dentry - pointer to dentry
  * @buffer - result buffer
@@ -54,8 +60,13 @@ int nfs_mountpoint_expiry_timeout = 500 * HZ;
  *		       (if unset, the original name is returned verbatim)
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 char *nfs_path(char **p, struct dentry *dentry_in, char *buffer,
 	       ssize_t buflen_in, unsigned flags)
+=======
+char *nfs_path(char **p, struct dentry *dentry, char *buffer, ssize_t buflen,
+	       unsigned flags)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 char *nfs_path(char **p, struct dentry *dentry, char *buffer, ssize_t buflen,
 	       unsigned flags)
@@ -66,12 +77,17 @@ char *nfs_path(char **p, struct dentry *dentry, char *buffer, ssize_t buflen,
 	unsigned seq;
 	const char *base;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct dentry *dentry;
 	ssize_t buflen;
 
 rename_retry:
 	buflen = buflen_in;
 	dentry = dentry_in;
+=======
+
+rename_retry:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 rename_retry:

@@ -287,7 +287,11 @@ static int hga_card_detect(void)
 	hga_vram = ioremap(0xb0000, hga_vram_len);
 	if (!hga_vram)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -ENOMEM;
+=======
+		goto error;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto error;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -351,7 +355,11 @@ static int hga_card_detect(void)
 			break;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return 0;
+=======
+	return 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -361,12 +369,16 @@ error:
 	if (release_io_port)
 		release_region(0x3bf, 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	iounmap(hga_vram);
 
 	pr_err("hgafb: HGA card not detected.\n");
 
 	return -EINVAL;
+=======
+	return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -568,12 +580,15 @@ static int hgafb_probe(struct platform_device *pdev)
 {
 	struct fb_info *info;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret;
 
 	ret = hga_card_detect();
 	if (ret)
 		return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (! hga_card_detect()) {
 		printk(KERN_INFO "hgafb: HGA card not detected.\n");
@@ -581,6 +596,9 @@ static int hgafb_probe(struct platform_device *pdev)
 			iounmap(hga_vram);
 		return -EINVAL;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	printk(KERN_INFO "hgafb: %s with %ldK of memory detected.\n",

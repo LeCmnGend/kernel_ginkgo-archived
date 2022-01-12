@@ -266,10 +266,16 @@ void drm_master_release(struct drm_file *file_priv)
 {
 	struct drm_device *dev = file_priv->minor->dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct drm_master *master;
 
 	mutex_lock(&dev->master_mutex);
 	master = file_priv->master;
+=======
+	struct drm_master *master = file_priv->master;
+
+	mutex_lock(&dev->master_mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct drm_master *master = file_priv->master;
 
@@ -376,7 +382,10 @@ void drm_master_put(struct drm_master **master)
 }
 EXPORT_SYMBOL(drm_master_put);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* Used by drm_client and drm_fb_helper */
 bool drm_master_internal_acquire(struct drm_device *dev)
@@ -397,4 +406,7 @@ void drm_master_internal_release(struct drm_device *dev)
 	mutex_unlock(&dev->master_mutex);
 }
 EXPORT_SYMBOL(drm_master_internal_release);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

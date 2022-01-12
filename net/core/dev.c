@@ -4667,7 +4667,11 @@ static void flush_backlog(struct work_struct *work)
 		if (skb->dev->reg_state == NETREG_UNREGISTERING) {
 			__skb_unlink(skb, &sd->input_pkt_queue);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			dev_kfree_skb_irq(skb);
+=======
+			kfree_skb(skb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			kfree_skb(skb);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4810,8 +4814,12 @@ static void skb_gro_reset_offset(struct sk_buff *skb)
 	if (skb_mac_header(skb) == skb_tail_pointer(skb) &&
 	    pinfo->nr_frags &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    !PageHighMem(skb_frag_page(frag0)) &&
 	    (!NET_IP_ALIGN || !(skb_frag_off(frag0) & 3))) {
+=======
+	    !PageHighMem(skb_frag_page(frag0))) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	    !PageHighMem(skb_frag_page(frag0))) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5337,6 +5345,7 @@ EXPORT_SYMBOL(napi_schedule_prep);
  * @n: entry to schedule
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Variant of __napi_schedule() assuming hard irqs are masked.
  *
  * On PREEMPT_RT enabled kernels this maps to __napi_schedule()
@@ -5350,11 +5359,16 @@ void __napi_schedule_irqoff(struct napi_struct *n)
 	else
 		__napi_schedule(n);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Variant of __napi_schedule() assuming hard irqs are masked
  */
 void __napi_schedule_irqoff(struct napi_struct *n)
 {
 	____napi_schedule(this_cpu_ptr(&softnet_data), n);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL(__napi_schedule_irqoff);
@@ -5610,6 +5624,10 @@ void netif_napi_add(struct net_device *dev, struct napi_struct *napi,
 			    weight, dev->name);
 	napi->weight = weight;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	list_add(&napi->dev_list, &dev->napi_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	list_add(&napi->dev_list, &dev->napi_list);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5619,8 +5637,11 @@ void netif_napi_add(struct net_device *dev, struct napi_struct *napi,
 #endif
 	set_bit(NAPI_STATE_SCHED, &napi->state);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	set_bit(NAPI_STATE_NPSVC, &napi->state);
 	list_add_rcu(&napi->dev_list, &dev->napi_list);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	napi_hash_add(napi);
@@ -8776,7 +8797,11 @@ static void __net_exit default_device_exit(struct net *net)
 
 		/* Leave virtual devices for the generic cleanup */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (dev->rtnl_link_ops && !dev->rtnl_link_ops->netns_refund)
+=======
+		if (dev->rtnl_link_ops)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (dev->rtnl_link_ops)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

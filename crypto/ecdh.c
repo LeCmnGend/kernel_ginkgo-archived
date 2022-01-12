@@ -44,8 +44,12 @@ static int ecdh_set_secret(struct crypto_kpp *tfm, const void *buf,
 	unsigned int ndigits;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (crypto_ecdh_decode_key(buf, len, &params) < 0 ||
 	    params.key_size > sizeof(ctx->private_key))
+=======
+	if (crypto_ecdh_decode_key(buf, len, &params) < 0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (crypto_ecdh_decode_key(buf, len, &params) < 0)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -63,6 +67,7 @@ static int ecdh_set_secret(struct crypto_kpp *tfm, const void *buf,
 				       ctx->private_key);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memcpy(ctx->private_key, params.key, params.key_size);
 
 	if (ecc_is_key_valid(ctx->curve_id, ctx->ndigits,
@@ -71,12 +76,17 @@ static int ecdh_set_secret(struct crypto_kpp *tfm, const void *buf,
 		return -EINVAL;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ecc_is_key_valid(ctx->curve_id, ctx->ndigits,
 			     (const u64 *)params.key, params.key_size) < 0)
 		return -EINVAL;
 
 	memcpy(ctx->private_key, params.key, params.key_size);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }

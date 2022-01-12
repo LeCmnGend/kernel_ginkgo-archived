@@ -100,7 +100,11 @@ static struct inode *ufs_nfs_get_inode(struct super_block *sb, u64 ino, u32 gene
 	struct inode *inode;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ino < UFS_ROOTINO || ino > (u64)uspi->s_ncg * uspi->s_ipg)
+=======
+	if (ino < UFS_ROOTINO || ino > uspi->s_ncg * uspi->s_ipg)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ino < UFS_ROOTINO || ino > uspi->s_ncg * uspi->s_ipg)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

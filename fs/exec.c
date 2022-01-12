@@ -78,6 +78,7 @@ static LIST_HEAD(formats);
 static DEFINE_RWLOCK(binfmt_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define HWCOMPOSER_BIN_PREFIX "/vendor/bin/hw/android.hardware.graphics.composer"
 
 #define ZYGOTE32_BIN "/system/bin/app_process32"
@@ -90,6 +91,8 @@ bool task_is_zygote(struct task_struct *p)
 	return p->signal == zygote32_sig || p->signal == zygote64_sig;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void __register_binfmt(struct linux_binfmt * fmt, int insert)
@@ -306,7 +309,11 @@ static int __bprm_mm_init(struct linux_binprm *bprm)
 	struct mm_struct *mm = bprm->mm;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bprm->vma = vma = vm_area_alloc();
+=======
+	bprm->vma = vma = kmem_cache_zalloc(vm_area_cachep, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bprm->vma = vma = kmem_cache_zalloc(vm_area_cachep, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -346,7 +353,11 @@ err:
 err_free:
 	bprm->vma = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vm_area_free(vma);
+=======
+	kmem_cache_free(vm_area_cachep, vma);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kmem_cache_free(vm_area_cachep, vma);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1048,6 +1059,7 @@ static int exec_mmap(struct mm_struct *mm)
 	}
 	task_lock(tsk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	local_irq_disable();
 	active_mm = tsk->active_mm;
@@ -1066,10 +1078,15 @@ static int exec_mmap(struct mm_struct *mm)
 	if (IS_ENABLED(CONFIG_ARCH_WANT_IRQS_OFF_ACTIVATE_MM))
 		local_irq_enable();
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	active_mm = tsk->active_mm;
 	tsk->mm = mm;
 	tsk->active_mm = mm;
 	activate_mm(active_mm, mm);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	tsk->mm->vmacache_seqnum = 0;
 	vmacache_flush(tsk);
@@ -1847,6 +1864,7 @@ static int do_execveat_common(int fd, struct filename *filename,
 		goto out;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (is_global_init(current->parent)) {
 		if (unlikely(!strncmp(filename->name,
 					   HWCOMPOSER_BIN_PREFIX,
@@ -1860,6 +1878,8 @@ static int do_execveat_common(int fd, struct filename *filename,
 		}
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* execve succeeded */

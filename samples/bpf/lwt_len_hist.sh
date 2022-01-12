@@ -9,8 +9,11 @@ TRACE_ROOT=/sys/kernel/debug/tracing
 
 function cleanup {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	# To reset saved histogram, remove pinned map
 	rm /sys/fs/bpf/tc/globals/lwt_len_hist_map
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ip route del 192.168.253.2/32 dev $VETH0 2> /dev/null

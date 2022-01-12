@@ -549,7 +549,11 @@ static acpi_status acpi_dev_process_resource(struct acpi_resource *ares,
 		if (ret < 0) {
 			c->error = ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			return AE_ABORT_METHOD;
+=======
+			return AE_CTRL_TERMINATE;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			return AE_CTRL_TERMINATE;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -25,7 +25,10 @@
 #include <linux/module.h>
 #include <linux/input.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/battery_saver.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/kthread.h>
@@ -63,13 +66,17 @@ static int set_cpu_min_freq(const char *buf, const struct kernel_param *kp)
 	unsigned int val, cpu;
 	const char *cp = buf;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	const char *disable = "0:0 4:0";
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct cpu_status *i_cpu_stats;
 	struct cpufreq_policy policy;
 	cpumask_var_t limit_mask;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (is_battery_saver_on())
 		cp = disable;
@@ -84,11 +91,20 @@ static int set_cpu_min_freq(const char *buf, const struct kernel_param *kp)
 		ntokens++;
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	while ((cp = strpbrk(cp + 1, " :")))
+		ntokens++;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* CPU:value pair */
 	if (!(ntokens % 2))
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	cp = buf;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cp = buf;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -94,7 +94,12 @@ static inline bool replace_android_lib(const char *filename, char *newfilename)
 		char *ndk, *app;
 		const char *arch;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		int ndk_length, app_length;
+=======
+		size_t ndk_length;
+		size_t app_length;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		size_t ndk_length;
 		size_t app_length;
@@ -127,8 +132,13 @@ static inline bool replace_android_lib(const char *filename, char *newfilename)
 			return false;
 		snprintf(newfilename, new_length,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			"%.*s/platforms/%.*s/arch-%s/usr/lib/%s",
 			ndk_length, ndk, app_length, app, arch, libname);
+=======
+			"%s/platforms/%s/arch-%s/usr/lib/%s",
+			ndk, app, arch, libname);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			"%s/platforms/%s/arch-%s/usr/lib/%s",
 			ndk, app, arch, libname);

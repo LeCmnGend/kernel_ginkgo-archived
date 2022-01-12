@@ -441,8 +441,12 @@ extern unsigned long long simple_strtoull(const char *,char **,unsigned int);
 extern long long simple_strtoll(const char *,char **,unsigned int);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern int num_to_str(char *buf, int size,
 		      unsigned long long num, unsigned int width);
+=======
+extern int num_to_str(char *buf, int size, unsigned long long num);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern int num_to_str(char *buf, int size, unsigned long long num);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -479,7 +483,10 @@ extern char *next_arg(char *args, char **param, char **val);
 
 extern int core_kernel_text(unsigned long addr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern int init_kernel_text(unsigned long addr);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern int core_kernel_data(unsigned long addr);
@@ -490,6 +497,7 @@ extern int func_ptr_is_kernel_text(void *ptr);
 unsigned long int_sqrt(unsigned long);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if BITS_PER_LONG < 64
 u32 int_sqrt64(u64 x);
 #else
@@ -499,6 +507,8 @@ static inline u32 int_sqrt64(u64 x)
 }
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern void bust_spinlocks(int yes);
@@ -686,9 +696,12 @@ do {									\
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_DISABLE_TRACE_PRINTK
 #define trace_printk pr_debug
 #else
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define trace_printk(fmt, ...)				\
@@ -714,7 +727,10 @@ do {									\
 		__trace_printk(_THIS_IP_, fmt, ##args);			\
 } while (0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -814,6 +830,7 @@ static inline void ftrace_dump(enum ftrace_dump_mode oops_dump_mode) { }
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * min()/max()/clamp() macros must accomplish three things:
  *
  * - avoid multiple evaluations of the arguments (so side-effects like
@@ -854,6 +871,8 @@ static inline void ftrace_dump(enum ftrace_dump_mode oops_dump_mode) { }
 		__cmp(x, y, op), \
 		__cmp_once(x, y, __UNIQUE_ID(__x), __UNIQUE_ID(__y), op))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * min()/max()/clamp() macros that also do
  * strict type-checking.. See the
  * "unnecessary" pointer comparison.
@@ -863,6 +882,9 @@ static inline void ftrace_dump(enum ftrace_dump_mode oops_dump_mode) { }
 	t2 min2 = (y);					\
 	(void) (&min1 == &min2);			\
 	min1 < min2 ? min1 : min2; })
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
@@ -871,8 +893,11 @@ static inline void ftrace_dump(enum ftrace_dump_mode oops_dump_mode) { }
  * @y: second value
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define min(x, y)	__careful_cmp(x, y, <)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define min(x, y)					\
 	__min(typeof(x), typeof(y),			\
 	      __UNIQUE_ID(min1_), __UNIQUE_ID(min2_),	\
@@ -883,6 +908,9 @@ static inline void ftrace_dump(enum ftrace_dump_mode oops_dump_mode) { }
 	t2 max2 = (y);					\
 	(void) (&max1 == &max2);			\
 	max1 > max2 ? max1 : max2; })
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
@@ -891,12 +919,18 @@ static inline void ftrace_dump(enum ftrace_dump_mode oops_dump_mode) { }
  * @y: second value
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define max(x, y)	__careful_cmp(x, y, >)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define max(x, y)					\
 	__max(typeof(x), typeof(y),			\
 	      __UNIQUE_ID(max1_), __UNIQUE_ID(max2_),	\
 	      x, y)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
@@ -950,12 +984,18 @@ static inline void ftrace_dump(enum ftrace_dump_mode oops_dump_mode) { }
  * @y: second value
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define min_t(type, x, y)	__careful_cmp((type)(x), (type)(y), <)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define min_t(type, x, y)				\
 	__min(type, type,				\
 	      __UNIQUE_ID(min1_), __UNIQUE_ID(min2_),	\
 	      x, y)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
@@ -965,12 +1005,18 @@ static inline void ftrace_dump(enum ftrace_dump_mode oops_dump_mode) { }
  * @y: second value
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define max_t(type, x, y)	__careful_cmp((type)(x), (type)(y), >)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define max_t(type, x, y)				\
 	__max(type, type,				\
 	      __UNIQUE_ID(min1_), __UNIQUE_ID(min2_),	\
 	      x, y)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**

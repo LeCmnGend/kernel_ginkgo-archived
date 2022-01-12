@@ -48,7 +48,11 @@
 #define EN_ETHTOOL_WORD_MASK  cpu_to_be32(0xffffffff)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int mlx4_en_moderation_update(struct mlx4_en_priv *priv)
+=======
+static int mlx4_en_moderation_update(struct mlx4_en_priv *priv)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int mlx4_en_moderation_update(struct mlx4_en_priv *priv)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1988,6 +1992,11 @@ static int mlx4_en_set_tunable(struct net_device *dev,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define MLX4_EEPROM_PAGE_LEN 256
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define MLX4_EEPROM_PAGE_LEN 256
 
@@ -2027,7 +2036,11 @@ static int mlx4_en_get_module_info(struct net_device *dev,
 	case MLX4_MODULE_ID_SFP:
 		modinfo->type = ETH_MODULE_SFF_8472;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		modinfo->eeprom_len = ETH_MODULE_SFF_8472_LEN;
+=======
+		modinfo->eeprom_len = MLX4_EEPROM_PAGE_LEN;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		modinfo->eeprom_len = MLX4_EEPROM_PAGE_LEN;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

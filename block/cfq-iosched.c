@@ -24,7 +24,11 @@
  */
 /* max queue in one round of service */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const int cfq_quantum = 16;
+=======
+static const int cfq_quantum = 8;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static const int cfq_quantum = 8;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -33,7 +37,11 @@ static const u64 cfq_fifo_expire[2] = { NSEC_PER_SEC / 4, NSEC_PER_SEC / 8 };
 static const int cfq_back_max = 16 * 1024;
 /* penalty of a backwards seek */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const int cfq_back_penalty = 1;
+=======
+static const int cfq_back_penalty = 2;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static const int cfq_back_penalty = 2;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -219,9 +227,15 @@ struct cfqg_stats {
 	struct blkg_stat		empty_time;
 	/* fields after this shouldn't be cleared on stat reset */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64				start_group_wait_time;
 	u64				start_idle_time;
 	u64				start_empty_time;
+=======
+	uint64_t			start_group_wait_time;
+	uint64_t			start_idle_time;
+	uint64_t			start_empty_time;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	uint64_t			start_group_wait_time;
 	uint64_t			start_idle_time;
@@ -508,7 +522,11 @@ CFQG_FLAG_FNS(empty)
 static void cfqg_stats_update_group_wait_time(struct cfqg_stats *stats)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64 now;
+=======
+	unsigned long long now;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long long now;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -517,8 +535,13 @@ static void cfqg_stats_update_group_wait_time(struct cfqg_stats *stats)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	now = ktime_get_ns();
 	if (now > stats->start_group_wait_time)
+=======
+	now = sched_clock();
+	if (time_after64(now, stats->start_group_wait_time))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	now = sched_clock();
 	if (time_after64(now, stats->start_group_wait_time))
@@ -539,7 +562,11 @@ static void cfqg_stats_set_start_group_wait_time(struct cfq_group *cfqg,
 	if (cfqg == curr_cfqg)
 		return;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	stats->start_group_wait_time = ktime_get_ns();
+=======
+	stats->start_group_wait_time = sched_clock();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	stats->start_group_wait_time = sched_clock();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -550,7 +577,11 @@ static void cfqg_stats_set_start_group_wait_time(struct cfq_group *cfqg,
 static void cfqg_stats_end_empty_time(struct cfqg_stats *stats)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64 now;
+=======
+	unsigned long long now;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long long now;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -559,8 +590,13 @@ static void cfqg_stats_end_empty_time(struct cfqg_stats *stats)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	now = ktime_get_ns();
 	if (now > stats->start_empty_time)
+=======
+	now = sched_clock();
+	if (time_after64(now, stats->start_empty_time))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	now = sched_clock();
 	if (time_after64(now, stats->start_empty_time))
@@ -591,7 +627,11 @@ static void cfqg_stats_set_start_empty_time(struct cfq_group *cfqg)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	stats->start_empty_time = ktime_get_ns();
+=======
+	stats->start_empty_time = sched_clock();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	stats->start_empty_time = sched_clock();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -604,9 +644,15 @@ static void cfqg_stats_update_idle_time(struct cfq_group *cfqg)
 
 	if (cfqg_stats_idling(stats)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		u64 now = ktime_get_ns();
 
 		if (now > stats->start_idle_time)
+=======
+		unsigned long long now = sched_clock();
+
+		if (time_after64(now, stats->start_idle_time))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		unsigned long long now = sched_clock();
 
@@ -625,7 +671,11 @@ static void cfqg_stats_set_start_idle_time(struct cfq_group *cfqg)
 	BUG_ON(cfqg_stats_idling(stats));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	stats->start_idle_time = ktime_get_ns();
+=======
+	stats->start_idle_time = sched_clock();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	stats->start_idle_time = sched_clock();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -710,8 +760,11 @@ static inline void cfqg_put(struct cfq_group *cfqg)
 
 #define cfq_log_cfqq(cfqd, cfqq, fmt, args...)	do {			\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (likely(!blk_trace_note_message_enabled((bfqd)->queue)))	\
 		break;							\
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	blk_add_cgroup_trace_msg((cfqd)->queue,				\
@@ -724,8 +777,11 @@ static inline void cfqg_put(struct cfq_group *cfqg)
 
 #define cfq_log_cfqg(cfqd, cfqg, fmt, args...)	do {			\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (likely(!blk_trace_note_message_enabled((bfqd)->queue)))	\
 		break;							\
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	blk_add_cgroup_trace_msg((cfqd)->queue,				\
@@ -764,6 +820,7 @@ static inline void cfqg_stats_update_io_merged(struct cfq_group *cfqg,
 
 static inline void cfqg_stats_update_completion(struct cfq_group *cfqg,
 <<<<<<< HEAD
+<<<<<<< HEAD
 						u64 start_time_ns,
 						u64 io_start_time_ns,
 			                        unsigned int op)
@@ -777,6 +834,8 @@ static inline void cfqg_stats_update_completion(struct cfq_group *cfqg,
 		blkg_rwstat_add(&stats->wait_time, op,
 				io_start_time_ns - start_time_ns);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			uint64_t start_time, uint64_t io_start_time,
 			unsigned int op)
 {
@@ -788,6 +847,9 @@ static inline void cfqg_stats_update_completion(struct cfq_group *cfqg,
 	if (time_after64(io_start_time, start_time))
 		blkg_rwstat_add(&stats->wait_time, op,
 				io_start_time - start_time);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -875,9 +937,14 @@ static inline void cfqg_stats_update_io_merged(struct cfq_group *cfqg,
 			unsigned int op) { }
 static inline void cfqg_stats_update_completion(struct cfq_group *cfqg,
 <<<<<<< HEAD
+<<<<<<< HEAD
 						u64 start_time_ns,
 						u64 io_start_time_ns,
 			                        unsigned int op) { }
+=======
+			uint64_t start_time, uint64_t io_start_time,
+			unsigned int op) { }
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			uint64_t start_time, uint64_t io_start_time,
 			unsigned int op) { }
@@ -1738,6 +1805,7 @@ static void cfq_pd_offline(struct blkg_policy_data *pd)
 
 	for (i = 0; i < IOPRIO_BE_NR; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (cfqg->async_cfqq[0][i]) {
 			cfq_put_queue(cfqg->async_cfqq[0][i]);
 			cfqg->async_cfqq[0][i] = NULL;
@@ -1753,6 +1821,8 @@ static void cfq_pd_offline(struct blkg_policy_data *pd)
 		cfqg->async_idle_cfqq = NULL;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (cfqg->async_cfqq[0][i])
 			cfq_put_queue(cfqg->async_cfqq[0][i]);
 		if (cfqg->async_cfqq[1][i])
@@ -1761,6 +1831,9 @@ static void cfq_pd_offline(struct blkg_policy_data *pd)
 
 	if (cfqg->async_idle_cfqq)
 		cfq_put_queue(cfqg->async_idle_cfqq);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*

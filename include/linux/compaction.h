@@ -131,14 +131,20 @@ static inline bool compaction_failed(enum compact_result result)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Compaction needs reclaim to be performed first, so it can continue. */
 static inline bool compaction_needs_reclaim(enum compact_result result)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Compaction  has backed off for some reason. It might be throttling or
  * lock contention. Retrying is still worthwhile.
  */
 static inline bool compaction_withdrawn(enum compact_result result)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	/*
@@ -148,6 +154,7 @@ static inline bool compaction_withdrawn(enum compact_result result)
 	if (result == COMPACT_SKIPPED)
 		return true;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	return false;
 }
@@ -159,6 +166,8 @@ static inline bool compaction_withdrawn(enum compact_result result)
  */
 static inline bool compaction_withdrawn(enum compact_result result)
 {
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
@@ -227,11 +236,14 @@ static inline bool compaction_failed(enum compact_result result)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline bool compaction_needs_reclaim(enum compact_result result)
 {
 	return false;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline bool compaction_withdrawn(enum compact_result result)

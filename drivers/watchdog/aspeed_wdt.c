@@ -148,7 +148,11 @@ static int aspeed_wdt_set_timeout(struct watchdog_device *wdd,
 	wdd->timeout = timeout;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	actual = min(timeout, wdd->max_hw_heartbeat_ms / 1000);
+=======
+	actual = min(timeout, wdd->max_hw_heartbeat_ms * 1000);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	actual = min(timeout, wdd->max_hw_heartbeat_ms * 1000);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

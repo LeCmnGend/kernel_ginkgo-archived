@@ -224,11 +224,16 @@ int sensor_hub_set_feature(struct hid_sensor_hub_device *hsdev, u32 report_id,
 	if (buffer_size) {
 		for (i = 0; i < buffer_size; ++i) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ret = hid_set_field(report->field[field_index], i,
 					    (__force __s32)cpu_to_le32(*buf32));
 			if (ret)
 				goto done_proc;
 
+=======
+			hid_set_field(report->field[field_index], i,
+				      (__force __s32)cpu_to_le32(*buf32));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			hid_set_field(report->field[field_index], i,
 				      (__force __s32)cpu_to_le32(*buf32));
@@ -240,10 +245,15 @@ int sensor_hub_set_feature(struct hid_sensor_hub_device *hsdev, u32 report_id,
 		value = 0;
 		memcpy(&value, (u8 *)buf32, remaining_bytes);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = hid_set_field(report->field[field_index], i,
 				    (__force __s32)cpu_to_le32(value));
 		if (ret)
 			goto done_proc;
+=======
+		hid_set_field(report->field[field_index], i,
+			      (__force __s32)cpu_to_le32(value));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		hid_set_field(report->field[field_index], i,
 			      (__force __s32)cpu_to_le32(value));
@@ -512,8 +522,12 @@ static int sensor_hub_raw_event(struct hid_device *hdev,
 
 	ptr = raw_data;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (report->id)
 		ptr++; /* Skip report id */
+=======
+	ptr++; /* Skip report id */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ptr++; /* Skip report id */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

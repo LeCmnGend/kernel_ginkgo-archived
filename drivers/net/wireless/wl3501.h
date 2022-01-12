@@ -380,6 +380,7 @@ struct wl3501_get_confirm {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct wl3501_req {
 	u16			    beacon_period;
 	u16			    dtim_period;
@@ -395,6 +396,8 @@ struct wl3501_req {
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct wl3501_join_req {
 	u16			    next_blk;
 	u8			    sig_id;
@@ -406,8 +409,11 @@ struct wl3501_join_req {
 	u8			    timestamp[8];
 	u8			    local_time[8];
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct wl3501_req	    req;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u16			    beacon_period;
 	u16			    dtim_period;
 	u16			    cap_info;
@@ -418,6 +424,9 @@ struct wl3501_join_req {
 	struct iw_mgmt_cf_pset	    cf_pset;
 	struct iw_mgmt_ibss_pset    ibss_pset;
 	struct iw_mgmt_data_rset    bss_basic_rset;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
@@ -464,8 +473,11 @@ struct wl3501_scan_confirm {
 	char			    timestamp[8];
 	char			    localtime[8];
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct wl3501_req	    req;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u16			    beacon_period;
 	u16			    dtim_period;
 	u16			    cap_info;
@@ -476,6 +488,9 @@ struct wl3501_scan_confirm {
 	struct iw_mgmt_cf_pset	    cf_pset;
 	struct iw_mgmt_ibss_pset    ibss_pset;
 	struct iw_mgmt_data_rset    bss_basic_rset;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u8			    rssi;
 };
@@ -496,10 +511,15 @@ struct wl3501_md_req {
 	u8	pri;
 	u8	service_class;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct {
 		u8	daddr[ETH_ALEN];
 		u8	saddr[ETH_ALEN];
 	} addr;
+=======
+	u8	daddr[ETH_ALEN];
+	u8	saddr[ETH_ALEN];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u8	daddr[ETH_ALEN];
 	u8	saddr[ETH_ALEN];
@@ -516,10 +536,15 @@ struct wl3501_md_ind {
 	u8	pri;
 	u8	service_class;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct {
 		u8	daddr[ETH_ALEN];
 		u8	saddr[ETH_ALEN];
 	} addr;
+=======
+	u8	daddr[ETH_ALEN];
+	u8	saddr[ETH_ALEN];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u8	daddr[ETH_ALEN];
 	u8	saddr[ETH_ALEN];

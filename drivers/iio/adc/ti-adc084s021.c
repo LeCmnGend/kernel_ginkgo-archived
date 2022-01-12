@@ -29,11 +29,14 @@ struct adc084s021 {
 	struct regulator *reg;
 	struct mutex lock;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Buffer used to align data */
 	struct {
 		__be16 channels[4];
 		s64 ts __aligned(8);
 	} scan;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
@@ -152,6 +155,7 @@ static irqreturn_t adc084s021_buffer_trigger_handler(int irq, void *pollfunc)
 	struct iio_dev *indio_dev = pf->indio_dev;
 	struct adc084s021 *adc = iio_priv(indio_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	mutex_lock(&adc->lock);
 
@@ -160,6 +164,8 @@ static irqreturn_t adc084s021_buffer_trigger_handler(int irq, void *pollfunc)
 
 	iio_push_to_buffers_with_timestamp(indio_dev, &adc->scan,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__be16 data[8] = {0}; /* 4 * 16-bit words of data + 8 bytes timestamp */
 
 	mutex_lock(&adc->lock);
@@ -168,6 +174,9 @@ static irqreturn_t adc084s021_buffer_trigger_handler(int irq, void *pollfunc)
 		dev_err(&adc->spi->dev, "Failed to read data\n");
 
 	iio_push_to_buffers_with_timestamp(indio_dev, data,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					   iio_get_time_ns(indio_dev));
 	mutex_unlock(&adc->lock);

@@ -314,6 +314,7 @@ static void mtdoops_do_dump(struct kmsg_dumper *dumper,
 			     record_size - MTDOOPS_HEADER_SIZE, NULL);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (reason != KMSG_DUMP_OOPS) {
 		/* Panics must be written immediately */
 		mtdoops_write(cxt, 1);
@@ -322,12 +323,17 @@ static void mtdoops_do_dump(struct kmsg_dumper *dumper,
 		schedule_work(&cxt->work_write);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Panics must be written immediately */
 	if (reason != KMSG_DUMP_OOPS)
 		mtdoops_write(cxt, 1);
 
 	/* For other cases, schedule work to write it "nicely" */
 	schedule_work(&cxt->work_write);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

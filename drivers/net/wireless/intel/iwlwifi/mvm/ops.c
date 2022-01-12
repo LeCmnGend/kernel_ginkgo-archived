@@ -1170,7 +1170,10 @@ static void iwl_mvm_reprobe_wk(struct work_struct *wk)
 	if (device_reprobe(reprobe->dev))
 		dev_err(reprobe->dev, "reprobe failed!\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 	put_device(reprobe->dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kfree(reprobe);
@@ -1224,7 +1227,11 @@ void iwl_mvm_nic_restart(struct iwl_mvm *mvm, bool fw_error)
 			return;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		reprobe->dev = get_device(mvm->trans->dev);
+=======
+		reprobe->dev = mvm->trans->dev;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		reprobe->dev = mvm->trans->dev;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

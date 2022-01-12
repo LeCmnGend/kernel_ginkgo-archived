@@ -269,16 +269,22 @@ static volatile u32 good_2byte_insns[256 / 32] = {
 static bool is_prefix_bad(struct insn *insn)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	insn_byte_t p;
 	int i;
 
 	for_each_insn_prefix(insn, i, p) {
 		switch (p) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int i;
 
 	for (i = 0; i < insn->prefixes.nbytes; i++) {
 		switch (insn->prefixes.bytes[i]) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		case 0x26:	/* INAT_PFX_ES   */
 		case 0x2E:	/* INAT_PFX_CS   */
@@ -720,7 +726,10 @@ static int branch_setup_xol_ops(struct arch_uprobe *auprobe, struct insn *insn)
 {
 	u8 opc1 = OPCODE1(insn);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	insn_byte_t p;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int i;
@@ -754,8 +763,13 @@ static int branch_setup_xol_ops(struct arch_uprobe *auprobe, struct insn *insn)
 	 * No one uses these insns, reject any branch insns with such prefix.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for_each_insn_prefix(insn, i, p) {
 		if (p == 0x66)
+=======
+	for (i = 0; i < insn->prefixes.nbytes; i++) {
+		if (insn->prefixes.bytes[i] == 0x66)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (i = 0; i < insn->prefixes.nbytes; i++) {
 		if (insn->prefixes.bytes[i] == 0x66)

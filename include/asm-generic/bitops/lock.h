@@ -3,10 +3,13 @@
 #define _ASM_GENERIC_BITOPS_LOCK_H_
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/atomic.h>
 #include <linux/compiler.h>
 #include <asm/barrier.h>
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -17,6 +20,7 @@
  * This operation is atomic and provides acquire barrier semantics.
  * It can be used to implement bit locks.
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
 static inline int test_and_set_bit_lock(unsigned int nr,
 					volatile unsigned long *p)
@@ -35,6 +39,9 @@ static inline int test_and_set_bit_lock(unsigned int nr,
 =======
 #define test_and_set_bit_lock(nr, addr)	test_and_set_bit(nr, addr)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+#define test_and_set_bit_lock(nr, addr)	test_and_set_bit(nr, addr)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
  * clear_bit_unlock - Clear a bit in memory, for unlock
@@ -44,17 +51,23 @@ static inline int test_and_set_bit_lock(unsigned int nr,
  * This operation is atomic and provides release barrier semantics.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void clear_bit_unlock(unsigned int nr, volatile unsigned long *p)
 {
 	p += BIT_WORD(nr);
 	atomic_long_fetch_andnot_release(BIT_MASK(nr), (atomic_long_t *)p);
 }
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define clear_bit_unlock(nr, addr)	\
 do {					\
 	smp_mb__before_atomic();	\
 	clear_bit(nr, addr);		\
 } while (0)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
@@ -68,6 +81,7 @@ do {					\
  *
  * See for example x86's implementation.
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
 static inline void __clear_bit_unlock(unsigned int nr,
 				      volatile unsigned long *p)
@@ -105,6 +119,8 @@ static inline bool clear_bit_unlock_is_negative_byte(unsigned int nr,
 
 #endif /* _ASM_GENERIC_BITOPS_LOCK_H_ */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define __clear_bit_unlock(nr, addr)	\
 do {					\
 	smp_mb__before_atomic();	\
@@ -113,4 +129,7 @@ do {					\
 
 #endif /* _ASM_GENERIC_BITOPS_LOCK_H_ */
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

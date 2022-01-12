@@ -2392,7 +2392,11 @@ static void wacom_wac_finger_slot(struct wacom_wac *wacom_wac,
 		if (!wacom_wac->shared->touch_down)
 			return;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		prox = false;
+=======
+		prox = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		prox = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2457,12 +2461,16 @@ static void wacom_wac_finger_event(struct hid_device *hdev,
 		break;
 	case HID_DG_CONTACTMAX:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!features->touch_max) {
 			features->touch_max = value;
 		} else {
 			hid_warn(hdev, "%s: ignoring attempt to overwrite non-zero touch_max "
 				 "%d -> %d\n", __func__, features->touch_max, value);
 		}
+=======
+		features->touch_max = value;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		features->touch_max = value;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3355,6 +3363,11 @@ int wacom_setup_pen_input_capabilities(struct input_dev *input_dev,
 	struct wacom_features *features = &wacom_wac->features;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	input_dev->evbit[0] |= BIT_MASK(EV_KEY) | BIT_MASK(EV_ABS);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	input_dev->evbit[0] |= BIT_MASK(EV_KEY) | BIT_MASK(EV_ABS);
 
@@ -3372,7 +3385,10 @@ int wacom_setup_pen_input_capabilities(struct input_dev *input_dev,
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	input_dev->evbit[0] |= BIT_MASK(EV_KEY) | BIT_MASK(EV_ABS);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__set_bit(BTN_TOUCH, input_dev->keybit);
@@ -3524,6 +3540,11 @@ int wacom_setup_touch_input_capabilities(struct input_dev *input_dev,
 	struct wacom_features *features = &wacom_wac->features;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	input_dev->evbit[0] |= BIT_MASK(EV_KEY) | BIT_MASK(EV_ABS);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	input_dev->evbit[0] |= BIT_MASK(EV_KEY) | BIT_MASK(EV_ABS);
 
@@ -3541,7 +3562,10 @@ int wacom_setup_touch_input_capabilities(struct input_dev *input_dev,
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	input_dev->evbit[0] |= BIT_MASK(EV_KEY) | BIT_MASK(EV_ABS);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__set_bit(BTN_TOUCH, input_dev->keybit);

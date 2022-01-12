@@ -48,13 +48,19 @@ static inline void selinux_xfrm_notify_policyload(void)
 	struct net *net;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for_each_net(net)
 		rt_genid_bump_all(net);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rtnl_lock();
 	for_each_net(net)
 		rt_genid_bump_all(net);
 	rtnl_unlock();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 #else

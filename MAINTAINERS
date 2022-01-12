@@ -6202,13 +6202,19 @@ F:	include/linux/hid*
 F:	include/uapi/linux/hid*
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 HID PLAYSTATION DRIVER
 M:	Roderick Colenbrander <roderick.colenbrander@sony.com>
 L:	linux-input@vger.kernel.org
 S:	Supported
 F:	drivers/hid/hid-playstation.c
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 HID SENSOR HUB DRIVERS
 M:	Jiri Kosina <jikos@kernel.org>
@@ -8121,6 +8127,10 @@ F:	include/linux/mutex*.h
 F:	arch/*/include/asm/mutex*.h
 F:	include/linux/rwsem*.h
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+F:	arch/*/include/asm/rwsem.h
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 F:	arch/*/include/asm/rwsem.h
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -9081,6 +9091,7 @@ F:	arch/arm/boot/dts/mmp*
 F:	arch/arm/mach-mmp/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 MMU GATHER AND TLB INVALIDATION
 M:	Will Deacon <will.deacon@arm.com>
 M:	"Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>
@@ -9094,6 +9105,8 @@ F:	arch/*/include/asm/tlb.h
 F:	include/asm-generic/tlb.h
 F:	mm/mmu_gather.c
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 MN88472 MEDIA DRIVER

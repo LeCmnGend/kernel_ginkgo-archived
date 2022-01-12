@@ -301,9 +301,15 @@ static const struct intel_community lbg_communities[] = {
 	LBG_COMMUNITY(0, 0, 71),
 	LBG_COMMUNITY(1, 72, 132),
 <<<<<<< HEAD
+<<<<<<< HEAD
 	LBG_COMMUNITY(3, 133, 143),
 	LBG_COMMUNITY(4, 144, 178),
 	LBG_COMMUNITY(5, 179, 246),
+=======
+	LBG_COMMUNITY(3, 133, 144),
+	LBG_COMMUNITY(4, 145, 180),
+	LBG_COMMUNITY(5, 181, 246),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	LBG_COMMUNITY(3, 133, 144),
 	LBG_COMMUNITY(4, 145, 180),

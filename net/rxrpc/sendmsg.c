@@ -223,7 +223,11 @@ static int rxrpc_send_data(struct rxrpc_sock *rx,
 	sk_clear_bit(SOCKWQ_ASYNC_NOSPACE, sk);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (sk->sk_shutdown & SEND_SHUTDOWN)
+=======
+	if (sk->sk_err || (sk->sk_shutdown & SEND_SHUTDOWN))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (sk->sk_err || (sk->sk_shutdown & SEND_SHUTDOWN))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -584,9 +588,12 @@ int rxrpc_do_sendmsg(struct rxrpc_sock *rx, struct msghdr *msg, size_t len)
 			return PTR_ERR(call);
 		/* ... and we have the call lock. */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = 0;
 		if (READ_ONCE(call->state) == RXRPC_CALL_COMPLETE)
 			goto out_put_unlock;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {

@@ -210,6 +210,11 @@ static int ipip6_tunnel_create(struct net_device *dev)
 	ipip6_tunnel_clone_6rd(dev, sitn);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	dev_hold(dev);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev_hold(dev);
 
@@ -1077,6 +1082,10 @@ static void ipip6_tunnel_bind_dev(struct net_device *dev)
 		int t_hlen = tunnel->hlen + sizeof(struct iphdr);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		dev->hard_header_len = tdev->hard_header_len + sizeof(struct iphdr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dev->hard_header_len = tdev->hard_header_len + sizeof(struct iphdr);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1370,6 +1379,10 @@ static void ipip6_tunnel_setup(struct net_device *dev)
 
 	dev->type		= ARPHRD_SIT;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	dev->hard_header_len	= LL_MAX_HEADER + t_hlen;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev->hard_header_len	= LL_MAX_HEADER + t_hlen;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1405,7 +1418,11 @@ static int ipip6_tunnel_init(struct net_device *dev)
 		return err;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev_hold(dev);
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1425,6 +1442,10 @@ static void __net_init ipip6_fb_tunnel_init(struct net_device *dev)
 	iph->ttl		= 64;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	dev_hold(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev_hold(dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1601,11 +1622,16 @@ static int ipip6_newlink(struct net *src_net, struct net_device *dev,
 
 #ifdef CONFIG_IPV6_SIT_6RD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ipip6_netlink_6rd_parms(data, &ip6rd)) {
 		err = ipip6_tunnel_update_6rd(nt, &ip6rd);
 		if (err < 0)
 			unregister_netdevice_queue(dev, NULL);
 	}
+=======
+	if (ipip6_netlink_6rd_parms(data, &ip6rd))
+		err = ipip6_tunnel_update_6rd(nt, &ip6rd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ipip6_netlink_6rd_parms(data, &ip6rd))
 		err = ipip6_tunnel_update_6rd(nt, &ip6rd);
@@ -1828,9 +1854,15 @@ static void __net_exit sit_destroy_tunnels(struct net *net,
 			unregister_netdevice_queue(dev, head);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (prio = 0; prio < 4; prio++) {
 		int h;
 		for (h = 0; h < (prio ? IP6_SIT_HASH_SIZE : 1); h++) {
+=======
+	for (prio = 1; prio < 4; prio++) {
+		int h;
+		for (h = 0; h < IP6_SIT_HASH_SIZE; h++) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (prio = 1; prio < 4; prio++) {
 		int h;

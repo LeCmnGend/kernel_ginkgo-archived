@@ -712,7 +712,11 @@ int dwc2_init_params(struct dwc2_hsotg *hsotg)
 {
 	const struct of_device_id *match;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	void (*set_params)(struct dwc2_hsotg *data);
+=======
+	void (*set_params)(void *data);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	void (*set_params)(void *data);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

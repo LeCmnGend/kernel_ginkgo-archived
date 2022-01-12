@@ -430,7 +430,11 @@ static int rx8010_ioctl(struct device *dev, unsigned int cmd, unsigned long arg)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const struct rtc_class_ops rx8010_rtc_ops_default = {
+=======
+static struct rtc_class_ops rx8010_rtc_ops = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static struct rtc_class_ops rx8010_rtc_ops = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -439,6 +443,7 @@ static struct rtc_class_ops rx8010_rtc_ops = {
 	.ioctl = rx8010_ioctl,
 };
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static const struct rtc_class_ops rx8010_rtc_ops_alarm = {
 	.read_time = rx8010_get_time,
@@ -451,12 +456,17 @@ static const struct rtc_class_ops rx8010_rtc_ops_alarm = {
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int rx8010_probe(struct i2c_client *client,
 			const struct i2c_device_id *id)
 {
 	struct i2c_adapter *adapter = to_i2c_adapter(client->dev.parent);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	const struct rtc_class_ops *rtc_ops;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct rx8010_data *rx8010;
@@ -490,6 +500,7 @@ static int rx8010_probe(struct i2c_client *client,
 		if (err) {
 			dev_err(&client->dev, "unable to request IRQ\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 			return err;
 		}
 
@@ -501,6 +512,8 @@ static int rx8010_probe(struct i2c_client *client,
 	rx8010->rtc = devm_rtc_device_register(&client->dev, client->name,
 					       rtc_ops, THIS_MODULE);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			client->irq = 0;
 		} else {
 			rx8010_rtc_ops.read_alarm = rx8010_read_alarm;
@@ -511,6 +524,9 @@ static int rx8010_probe(struct i2c_client *client,
 
 	rx8010->rtc = devm_rtc_device_register(&client->dev, client->name,
 		&rx8010_rtc_ops, THIS_MODULE);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (IS_ERR(rx8010->rtc)) {

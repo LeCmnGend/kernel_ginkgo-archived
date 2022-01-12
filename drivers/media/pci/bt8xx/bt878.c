@@ -495,9 +495,12 @@ static int bt878_probe(struct pci_dev *dev, const struct pci_device_id *pci_id)
 	bt878_num++;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!bt->tasklet.func)
 		tasklet_disable(&bt->tasklet);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;

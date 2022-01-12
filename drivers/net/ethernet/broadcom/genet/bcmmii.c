@@ -415,10 +415,13 @@ static int bcmgenet_mii_register(struct bcmgenet_priv *priv)
 
 	pres = platform_get_resource(pdev, IORESOURCE_MEM, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!pres) {
 		dev_err(&pdev->dev, "Invalid resource\n");
 		return -EINVAL;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	memset(&res, 0, sizeof(res));

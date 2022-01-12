@@ -185,7 +185,11 @@ int netup_spi_init(struct netup_unidvb_dev *ndev)
 	struct netup_spi *nspi;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	master = devm_spi_alloc_master(&ndev->pci_dev->dev,
+=======
+	master = spi_alloc_master(&ndev->pci_dev->dev,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	master = spi_alloc_master(&ndev->pci_dev->dev,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -222,7 +226,10 @@ int netup_spi_init(struct netup_unidvb_dev *ndev)
 		ndev->pci_func);
 	if (!spi_new_device(master, &netup_spi_board)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		spi_unregister_master(master);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ndev->spi = NULL;
@@ -244,7 +251,10 @@ void netup_spi_release(struct netup_unidvb_dev *ndev)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spi_unregister_master(spi->master);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_irqsave(&spi->lock, flags);
@@ -254,6 +264,10 @@ void netup_spi_release(struct netup_unidvb_dev *ndev)
 	writew(reg & ~NETUP_SPI_CTRL_IMASK, &spi->regs->control_stat);
 	spin_unlock_irqrestore(&spi->lock, flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	spi_unregister_master(spi->master);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spi_unregister_master(spi->master);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

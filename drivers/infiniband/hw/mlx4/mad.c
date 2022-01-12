@@ -1306,6 +1306,7 @@ static void mlx4_ib_tunnel_comp_handler(struct ib_cq *cq, void *arg)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void mlx4_ib_wire_comp_handler(struct ib_cq *cq, void *arg)
 {
 	unsigned long flags;
@@ -1318,6 +1319,8 @@ static void mlx4_ib_wire_comp_handler(struct ib_cq *cq, void *arg)
 	spin_unlock_irqrestore(&dev->sriov.going_down_lock, flags);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int mlx4_ib_post_pv_qp_buf(struct mlx4_ib_demux_pv_ctx *ctx,
@@ -2028,8 +2031,12 @@ static int create_pv_resources(struct ib_device *ibdev, int slave, int port,
 
 	cq_attr.cqe = cq_size;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ctx->cq = ib_create_cq(ctx->ib_dev,
 			       create_tun ? mlx4_ib_tunnel_comp_handler : mlx4_ib_wire_comp_handler,
+=======
+	ctx->cq = ib_create_cq(ctx->ib_dev, mlx4_ib_tunnel_comp_handler,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ctx->cq = ib_create_cq(ctx->ib_dev, mlx4_ib_tunnel_comp_handler,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2070,7 +2077,10 @@ static int create_pv_resources(struct ib_device *ibdev, int slave, int port,
 
 	ctx->wq = to_mdev(ibdev)->sriov.demux[port - 1].wq;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ctx->wi_wq = to_mdev(ibdev)->sriov.demux[port - 1].wi_wq;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2217,7 +2227,11 @@ static int mlx4_ib_alloc_demux_ctx(struct mlx4_ib_dev *dev,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	snprintf(name, sizeof(name), "mlx4_ibt%d", port);
+=======
+	snprintf(name, sizeof name, "mlx4_ibt%d", port);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	snprintf(name, sizeof name, "mlx4_ibt%d", port);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2229,6 +2243,7 @@ static int mlx4_ib_alloc_demux_ctx(struct mlx4_ib_dev *dev,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	snprintf(name, sizeof(name), "mlx4_ibwi%d", port);
 	ctx->wi_wq = alloc_ordered_workqueue(name, WQ_MEM_RECLAIM);
 	if (!ctx->wi_wq) {
@@ -2238,6 +2253,9 @@ static int mlx4_ib_alloc_demux_ctx(struct mlx4_ib_dev *dev,
 	}
 
 	snprintf(name, sizeof(name), "mlx4_ibud%d", port);
+=======
+	snprintf(name, sizeof name, "mlx4_ibud%d", port);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	snprintf(name, sizeof name, "mlx4_ibud%d", port);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2252,10 +2270,13 @@ static int mlx4_ib_alloc_demux_ctx(struct mlx4_ib_dev *dev,
 
 err_udwq:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	destroy_workqueue(ctx->wi_wq);
 	ctx->wi_wq = NULL;
 
 err_wiwq:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	destroy_workqueue(ctx->wq);
@@ -2306,7 +2327,10 @@ static void mlx4_ib_free_demux_ctx(struct mlx4_ib_demux_ctx *ctx)
 		}
 		flush_workqueue(ctx->wq);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		flush_workqueue(ctx->wi_wq);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		for (i = 0; i < dev->dev->caps.sqp_demux; i++) {
@@ -2316,7 +2340,10 @@ static void mlx4_ib_free_demux_ctx(struct mlx4_ib_demux_ctx *ctx)
 		kfree(ctx->tun);
 		destroy_workqueue(ctx->ud_wq);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		destroy_workqueue(ctx->wi_wq);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		destroy_workqueue(ctx->wq);

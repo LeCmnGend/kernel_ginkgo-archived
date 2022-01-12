@@ -716,12 +716,15 @@ static void batadv_v_ogm_process(const struct sk_buff *skb, int ogm_offset,
 		   ogm_packet->version, ntohs(ogm_packet->tvlv_len));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (batadv_is_my_mac(bat_priv, ogm_packet->orig)) {
 		batadv_dbg(BATADV_DBG_BATMAN, bat_priv,
 			   "Drop packet: originator packet from ourself\n");
 		return;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* If the throughput metric is 0, immediately drop the packet. No need
@@ -852,12 +855,18 @@ int batadv_v_ogm_packet_recv(struct sk_buff *skb,
 		goto free_skb;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ogm_packet = (struct batadv_ogm2_packet *)skb->data;
 
 	if (batadv_is_my_mac(bat_priv, ogm_packet->orig))
 		goto free_skb;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	batadv_inc_counter(bat_priv, BATADV_CNT_MGMT_RX);
 	batadv_add_counter(bat_priv, BATADV_CNT_MGMT_RX_BYTES,

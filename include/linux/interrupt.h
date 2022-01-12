@@ -64,8 +64,11 @@
  *                wakeup devices users need to implement wakeup detection in
  *                their interrupt handlers.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * IRQF_PERF_CRITICAL - Interrupt is critical to the overall performance of the
  * 		  system and should be processed on a fast CPU.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
@@ -82,7 +85,10 @@
 #define IRQF_EARLY_RESUME	0x00020000
 #define IRQF_COND_SUSPEND	0x00040000
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define IRQF_PERF_CRITICAL	0x00080000
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -228,7 +234,10 @@ extern void enable_percpu_irq(unsigned int irq, unsigned int type);
 extern bool irq_percpu_is_enabled(unsigned int irq);
 extern void irq_wake_thread(unsigned int irq, void *dev_id);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern void irq_set_perf_affinity(unsigned int irq);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -236,8 +245,11 @@ extern void irq_set_perf_affinity(unsigned int irq);
 extern void suspend_device_irqs(void);
 extern void resume_device_irqs(void);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern void unaffine_perf_irqs(void);
 extern void reaffine_perf_irqs(void);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

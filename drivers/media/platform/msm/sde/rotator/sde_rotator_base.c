@@ -803,7 +803,10 @@ static int sde_mdp_parse_dt_misc(struct platform_device *pdev,
 	sde_mdp_parse_inline_rot_lut_setting(pdev, mdata);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rc = of_property_read_u32(pdev->dev.of_node,
 		"qcom,mdss-rot-qos-cpu-mask", &data);
 	mdata->rot_pm_qos_cpu_mask = (!rc ? data : 0);
@@ -812,6 +815,9 @@ static int sde_mdp_parse_dt_misc(struct platform_device *pdev,
 		 "qcom,mdss-rot-qos-cpu-dma-latency", &data);
 	mdata->rot_pm_qos_cpu_dma_latency = (!rc ? data : 0);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mdata->mdp_base = mdata->sde_io.base + SDE_MDP_OFFSET;
 

@@ -15,7 +15,11 @@ add_probe_vfs_getname() {
 		line=$(perf probe -L getname_flags 2>&1 | egrep 'result.*=.*filename;' | sed -r 's/[[:space:]]+([[:digit:]]+)[[:space:]]+result->uptr.*/\1/')
 		perf probe -q       "vfs_getname=getname_flags:${line} pathname=result->name:string" || \
 <<<<<<< HEAD
+<<<<<<< HEAD
 		perf probe $verbose "vfs_getname=getname_flags:${line} pathname=filename:ustring"
+=======
+		perf probe $verbose "vfs_getname=getname_flags:${line} pathname=filename:string"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		perf probe $verbose "vfs_getname=getname_flags:${line} pathname=filename:string"
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

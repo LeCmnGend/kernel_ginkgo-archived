@@ -13,7 +13,10 @@ config ARM64
 	select ARCH_HAS_ACPI_TABLE_UPGRADE if ACPI
 	select ARCH_HAS_ELF_RANDOMIZE
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select ARCH_HAS_FAST_MULTIPLIER
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select ARCH_HAS_FORTIFY_SOURCE
@@ -21,7 +24,10 @@ config ARM64
 	select ARCH_HAS_GIGANTIC_PAGE if (MEMORY_ISOLATION && COMPACTION) || CMA
 	select ARCH_HAS_KCOV
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select ARCH_HAS_REFCOUNT_FULL
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select ARCH_HAS_SET_MEMORY
@@ -53,9 +59,13 @@ config ARM64
 	select ARCH_SUPPORTS_THINLTO
 	select ARCH_SUPPORTS_SHADOW_CALL_STACK
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select ARCH_USE_QUEUED_SPINLOCKS
 	select ARCH_SUPPORTS_ATOMIC_RMW
 	select ARCH_SUPPORTS_INT128
+=======
+	select ARCH_SUPPORTS_ATOMIC_RMW
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	select ARCH_SUPPORTS_ATOMIC_RMW
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -64,7 +74,10 @@ config ARM64
 	select ARCH_WANT_FRAME_POINTERS
 	select ARCH_HAS_UBSAN_SANITIZE_ALL
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select ARCH_HAS_SET_MEMORY
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select ARM_AMBA
@@ -80,9 +93,15 @@ config ARM64
 	select COMMON_CLK if !ARCH_QCOM
 	select CPU_PM if (SUSPEND || CPU_IDLE)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select CRC32
 	select DCACHE_WORD_ACCESS
 	select EDAC_SUPPORT
+=======
+	select DCACHE_WORD_ACCESS
+	select EDAC_SUPPORT
+	select FRAME_POINTER
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	select DCACHE_WORD_ACCESS
 	select EDAC_SUPPORT
@@ -96,7 +115,10 @@ config ARM64
 	select GENERIC_CPU_VULNERABILITIES
 	select GENERIC_EARLY_IOREMAP
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select GENERIC_FIND_FIRST_BIT
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select GENERIC_IDLE_POLL_SETUP
@@ -112,8 +134,11 @@ config ARM64
 	select HANDLE_DOMAIN_IRQ
 	select HARDIRQS_SW_RESEND
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select HAVE_MOVE_PMD
 	select HAVE_MOVE_PUD
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select HAVE_ACPI_APEI if (ACPI && EFI)
@@ -123,7 +148,10 @@ config ARM64
 	select HAVE_ARCH_HUGE_VMAP
 	select HAVE_ARCH_JUMP_LABEL
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select HAVE_ARCH_JUMP_LABEL_RELATIVE
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select HAVE_ARCH_KASAN if !(ARM64_16K_PAGES && ARM64_VA_BITS_48)
@@ -133,7 +161,10 @@ config ARM64
 	select HAVE_ARCH_MMAP_RND_COMPAT_BITS if COMPAT
 	select HAVE_ARCH_SECCOMP_FILTER
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select HAVE_ARCH_THREAD_STRUCT_WHITELIST
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select HAVE_ARCH_TRACEHOOK
@@ -160,7 +191,10 @@ config ARM64
 	select HAVE_HW_BREAKPOINT if PERF_EVENTS
 	select HAVE_IRQ_TIME_ACCOUNTING
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select HAVE_LD_DEAD_CODE_DATA_ELIMINATION
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select HAVE_MEMBLOCK
@@ -172,7 +206,11 @@ config ARM64
 	select HAVE_PERF_USER_STACK_DUMP
 	select HAVE_REGS_AND_STACK_ACCESS_API
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select MMU_GATHER_RCU_TABLE_FREE
+=======
+	select HAVE_RCU_TABLE_FREE
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	select HAVE_RCU_TABLE_FREE
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -194,6 +232,7 @@ config ARM64
 	select SYSCTL_EXCEPTION_TRACE
 	select THREAD_INFO_IN_TASK
 	select ARCH_SUPPORTS_SPECULATIVE_PAGE_FAULT
+<<<<<<< HEAD
 <<<<<<< HEAD
 	select ARCH_INLINE_SPIN_TRYLOCK
 	select ARCH_INLINE_SPIN_TRYLOCK_BH
@@ -223,6 +262,8 @@ config ARM64
 	select ARCH_INLINE_WRITE_UNLOCK_BH
 	select ARCH_INLINE_WRITE_UNLOCK_IRQ
 	select ARCH_INLINE_WRITE_UNLOCK_IRQRESTORE
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	help
@@ -293,6 +334,12 @@ config TRACE_IRQFLAGS_SUPPORT
 	def_bool y
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+config RWSEM_XCHGADD_ALGORITHM
+	def_bool y
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 config RWSEM_XCHGADD_ALGORITHM
 	def_bool y
@@ -313,12 +360,15 @@ config GENERIC_CSUM
         def_bool y
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 config THERMAL_SWITCH
     default n
         bool "Support themral config switch"
 	    help
 	        Support themral config switch.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config GENERIC_CALIBRATE_DELAY
@@ -833,6 +883,7 @@ config NR_CPUS
 	default "64"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 config LITTLE_CPU_MASK
 	int "Bitmask of available LITTLE CPUs"
 	help
@@ -847,6 +898,8 @@ config BIG_CPU_MASK
 	  heterogeneous system. Use 0 if you are unsure, which just results in
 	  this storing the bitmask of all available CPUs.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config HOTPLUG_CPU
@@ -947,9 +1000,12 @@ config ARCH_HAS_CACHE_LINE_SIZE
 	def_bool y
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 config ARCH_ENABLE_SPLIT_PMD_PTLOCK
 	def_bool y if PGTABLE_LEVELS > 2
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 source "mm/Kconfig"
@@ -1543,6 +1599,7 @@ config COMPAT
 	  If you want to execute 32-bit userspace applications, say Y.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 config KUSER_HELPERS
 	bool "Enable the kuser helpers page in 32-bit processes"
 	depends on COMPAT
@@ -1575,10 +1632,13 @@ config KUSER_HELPERS
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config SYSVIPC_COMPAT
 	def_bool y
 	depends on COMPAT && SYSVIPC
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 config COMPAT_VDSO
 	bool "32-bit vDSO"
@@ -1605,6 +1665,8 @@ config CROSS_COMPILE_ARM32
 	  Same as setting CROSS_COMPILE_ARM32 in the environment, but saved for
 	  future builds. The environment variable overrides this config option.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 endmenu
@@ -1657,6 +1719,7 @@ endif
 
 source "lib/Kconfig"
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 menu "Xiaomi configuration options"
 
@@ -1684,5 +1747,7 @@ config MACH_XIAOMI_C3J
 endmenu
 
 endmenu
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

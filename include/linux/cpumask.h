@@ -56,8 +56,11 @@ extern unsigned int nr_cpu_ids;
  *     cpu_active_mask  - has bit 'cpu' set iff cpu available to migration
  *     cpu_isolated_mask- has bit 'cpu' set iff cpu isolated
 <<<<<<< HEAD
+<<<<<<< HEAD
  *     cpu_lp_mask      - has bit 'cpu' set iff cpu is part of little cluster
  *     cpu_perf_mask    - has bit 'cpu' set iff cpu is part of big cluster
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -98,8 +101,11 @@ extern struct cpumask __cpu_present_mask;
 extern struct cpumask __cpu_active_mask;
 extern struct cpumask __cpu_isolated_mask;
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern struct cpumask __cpu_lp_mask;
 extern struct cpumask __cpu_perf_mask;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define cpu_possible_mask ((const struct cpumask *)&__cpu_possible_mask)
@@ -108,8 +114,11 @@ extern struct cpumask __cpu_perf_mask;
 #define cpu_active_mask   ((const struct cpumask *)&__cpu_active_mask)
 #define cpu_isolated_mask ((const struct cpumask *)&__cpu_isolated_mask)
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern const struct cpumask *const cpu_lp_mask;
 extern const struct cpumask *const cpu_perf_mask;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -162,11 +171,14 @@ static inline unsigned int cpumask_first(const struct cpumask *srcp)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline unsigned int cpumask_last(const struct cpumask *srcp)
 {
 	return 0;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Valid inputs for n are -1 and 0. */
@@ -200,6 +212,7 @@ static inline unsigned int cpumask_local_spread(unsigned int i, int node)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int cpumask_any_and_distribute(const struct cpumask *src1p,
 					     const struct cpumask *src2p) {
 	return cpumask_next_and(-1, src1p, src2p);
@@ -210,6 +223,8 @@ static inline int cpumask_any_distribute(const struct cpumask *srcp)
 	return cpumask_first(srcp);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define for_each_cpu(cpu, mask)			\
@@ -233,6 +248,7 @@ static inline unsigned int cpumask_first(const struct cpumask *srcp)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * cpumask_last - get the last CPU in a cpumask
  * @srcp:	- the cpumask pointer
@@ -244,6 +260,8 @@ static inline unsigned int cpumask_last(const struct cpumask *srcp)
 	return find_last_bit(cpumask_bits(srcp), nr_cpumask_bits);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 unsigned int cpumask_next(int n, const struct cpumask *srcp);
@@ -267,9 +285,12 @@ int cpumask_next_and(int n, const struct cpumask *, const struct cpumask *);
 int cpumask_any_but(const struct cpumask *mask, unsigned int cpu);
 unsigned int cpumask_local_spread(unsigned int i, int node);
 <<<<<<< HEAD
+<<<<<<< HEAD
 int cpumask_any_and_distribute(const struct cpumask *src1p,
 			       const struct cpumask *src2p);
 int cpumask_any_distribute(const struct cpumask *srcp);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

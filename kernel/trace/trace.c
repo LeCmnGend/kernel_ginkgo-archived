@@ -1739,6 +1739,12 @@ struct saved_cmdlines_buffer {
 static struct saved_cmdlines_buffer *savedcmd;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+/* temporary disable recording */
+static atomic_t trace_record_taskinfo_disabled __read_mostly;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* temporary disable recording */
 static atomic_t trace_record_taskinfo_disabled __read_mostly;
@@ -1933,7 +1939,11 @@ static void tracing_stop_tr(struct trace_array *tr)
 static int trace_save_cmdline(struct task_struct *tsk)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned tpid, idx;
+=======
+	unsigned pid, idx;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned pid, idx;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1943,7 +1953,12 @@ static int trace_save_cmdline(struct task_struct *tsk)
 		return 1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tpid = tsk->pid & (PID_MAX_DEFAULT - 1);
+=======
+	if (unlikely(tsk->pid > PID_MAX_DEFAULT))
+		return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(tsk->pid > PID_MAX_DEFAULT))
 		return 0;
@@ -1959,6 +1974,7 @@ static int trace_save_cmdline(struct task_struct *tsk)
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	idx = savedcmd->map_pid_to_cmdline[tpid];
 	if (idx == NO_CMDLINE_MAP) {
 		idx = (savedcmd->cmdline_idx + 1) % savedcmd->cmdline_num;
@@ -1969,6 +1985,8 @@ static int trace_save_cmdline(struct task_struct *tsk)
 
 	savedcmd->map_cmdline_to_pid[idx] = tsk->pid;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	idx = savedcmd->map_pid_to_cmdline[tsk->pid];
 	if (idx == NO_CMDLINE_MAP) {
 		idx = (savedcmd->cmdline_idx + 1) % savedcmd->cmdline_num;
@@ -1989,6 +2007,9 @@ static int trace_save_cmdline(struct task_struct *tsk)
 		savedcmd->cmdline_idx = idx;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	set_cmdline(idx, tsk->comm);
 
@@ -2001,7 +2022,10 @@ static void __trace_find_cmdline(int pid, char comm[])
 {
 	unsigned map;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int tpid;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2016,6 +2040,7 @@ static void __trace_find_cmdline(int pid, char comm[])
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tpid = pid & (PID_MAX_DEFAULT - 1);
 	map = savedcmd->map_pid_to_cmdline[tpid];
 	if (map != NO_CMDLINE_MAP) {
@@ -2027,6 +2052,8 @@ static void __trace_find_cmdline(int pid, char comm[])
 	}
 	strcpy(comm, "<...>");
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (pid > PID_MAX_DEFAULT) {
 		strcpy(comm, "<...>");
 		return;
@@ -2037,6 +2064,9 @@ static void __trace_find_cmdline(int pid, char comm[])
 		strlcpy(comm, get_saved_cmdlines(map), TASK_COMM_LEN);
 	else
 		strcpy(comm, "<...>");
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -2077,6 +2107,11 @@ static bool tracing_record_taskinfo_skip(int flags)
 	if (unlikely(!(flags & (TRACE_RECORD_CMDLINE | TRACE_RECORD_TGID))))
 		return true;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (atomic_read(&trace_record_taskinfo_disabled) || !tracing_is_on())
+		return true;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (atomic_read(&trace_record_taskinfo_disabled) || !tracing_is_on())
 		return true;
@@ -2330,7 +2365,11 @@ trace_event_buffer_lock_reserve(struct ring_buffer **current_rb,
 		/* Try to use the per cpu buffer first */
 		val = this_cpu_inc_return(trace_buffered_event_cnt);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if ((len < (PAGE_SIZE - sizeof(*entry) - sizeof(entry->array[0]))) && val == 1) {
+=======
+		if (val == 1) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (val == 1) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2454,7 +2493,11 @@ void trace_buffer_unlock_commit_regs(struct trace_array *tr,
 	 */
 	ftrace_trace_stack(tr, buffer, flags, regs ? 0 : 4, pc, regs);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ftrace_trace_userstack(tr, buffer, flags, pc);
+=======
+	ftrace_trace_userstack(buffer, flags, pc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ftrace_trace_userstack(buffer, flags, pc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2685,8 +2728,12 @@ static void __ftrace_trace_stack(struct ring_buffer *buffer,
 
 	event = __trace_buffer_lock_reserve(buffer, TRACE_STACK,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				    (sizeof(*entry) - sizeof(entry->caller)) + size,
 				    flags, pc);
+=======
+					    sizeof(*entry) + size, flags, pc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					    sizeof(*entry) + size, flags, pc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2793,8 +2840,12 @@ static DEFINE_PER_CPU(int, user_stack_count);
 
 void
 <<<<<<< HEAD
+<<<<<<< HEAD
 ftrace_trace_userstack(struct trace_array *tr,
 		       struct ring_buffer *buffer, unsigned long flags, int pc)
+=======
+ftrace_trace_userstack(struct ring_buffer *buffer, unsigned long flags, int pc)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 ftrace_trace_userstack(struct ring_buffer *buffer, unsigned long flags, int pc)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2805,7 +2856,11 @@ ftrace_trace_userstack(struct ring_buffer *buffer, unsigned long flags, int pc)
 	struct stack_trace trace;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!(tr->trace_flags & TRACE_ITER_USERSTACKTRACE))
+=======
+	if (!(global_trace.trace_flags & TRACE_ITER_USERSTACKTRACE))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!(global_trace.trace_flags & TRACE_ITER_USERSTACKTRACE))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2885,7 +2940,11 @@ static char *get_trace_buf(void)
 	/* Interrupts must see nesting incremented before we use the buffer */
 	barrier();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return &buffer->buffer[buffer->nesting - 1][0];
+=======
+	return &buffer->buffer[buffer->nesting][0];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return &buffer->buffer[buffer->nesting][0];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3111,9 +3170,12 @@ int trace_array_printk(struct trace_array *tr,
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!tr)
 		return -ENOENT;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	va_start(ap, fmt);
@@ -3347,6 +3409,12 @@ static void *s_start(struct seq_file *m, loff_t *pos)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (!iter->snapshot)
+		atomic_inc(&trace_record_taskinfo_disabled);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!iter->snapshot)
 		atomic_inc(&trace_record_taskinfo_disabled);
@@ -3395,6 +3463,12 @@ static void s_stop(struct seq_file *m, void *p)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (!iter->snapshot)
+		atomic_dec(&trace_record_taskinfo_disabled);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!iter->snapshot)
 		atomic_dec(&trace_record_taskinfo_disabled);
@@ -4855,6 +4929,7 @@ static const struct file_operations tracing_readme_fops = {
 static void *saved_tgids_next(struct seq_file *m, void *v, loff_t *pos)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int pid = ++(*pos);
 
 	if (pid > PID_MAX_DEFAULT)
@@ -4862,6 +4937,8 @@ static void *saved_tgids_next(struct seq_file *m, void *v, loff_t *pos)
 
 	return &tgid_map[pid];
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int *ptr = v;
 
 	if (*pos || m->count)
@@ -4875,17 +4952,23 @@ static void *saved_tgids_next(struct seq_file *m, void *v, loff_t *pos)
 	}
 
 	return NULL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void *saved_tgids_start(struct seq_file *m, loff_t *pos)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!tgid_map || *pos > PID_MAX_DEFAULT)
 		return NULL;
 
 	return &tgid_map[*pos];
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	void *v;
 	loff_t l = 0;
 
@@ -4900,6 +4983,9 @@ static void *saved_tgids_start(struct seq_file *m, loff_t *pos)
 	}
 
 	return v;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -4910,6 +4996,7 @@ static void saved_tgids_stop(struct seq_file *m, void *v)
 static int saved_tgids_show(struct seq_file *m, void *v)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int *entry = (int *)v;
 	int pid = entry - tgid_map;
 	int tgid = *entry;
@@ -4918,6 +5005,11 @@ static int saved_tgids_show(struct seq_file *m, void *v)
 		return SEQ_SKIP;
 
 	seq_printf(m, "%d %d\n", pid, tgid);
+=======
+	int pid = (int *)v - tgid_map;
+
+	seq_printf(m, "%d %d\n", pid, trace_find_tgid(pid));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int pid = (int *)v - tgid_map;
 
@@ -8463,7 +8555,11 @@ __init static int tracer_alloc_buffers(void)
 
 	/* Only allocate trace_printk buffers if a trace_printk exists */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (&__stop___trace_bprintk_fmt != &__start___trace_bprintk_fmt)
+=======
+	if (__stop___trace_bprintk_fmt != __start___trace_bprintk_fmt)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (__stop___trace_bprintk_fmt != __start___trace_bprintk_fmt)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -143,7 +143,11 @@ good_area:
 			}
 		} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (!vma_is_accessible(vma))
+=======
+			if (!(vma->vm_flags & (VM_READ | VM_WRITE | VM_EXEC)))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (!(vma->vm_flags & (VM_READ | VM_WRITE | VM_EXEC)))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

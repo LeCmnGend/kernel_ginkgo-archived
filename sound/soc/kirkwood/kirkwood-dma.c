@@ -137,7 +137,11 @@ static int kirkwood_dma_open(struct snd_pcm_substream *substream)
 				  "kirkwood-i2s", priv);
 		if (err)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			return err;
+=======
+			return -EBUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			return -EBUSY;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* SPDX-License-Identifier: GPL-2.0-only */
 /*
  * Copyright (c) 2013-2021, Arm Limited.
@@ -6,6 +7,8 @@
  * Adapted from the original at:
  * https://github.com/ARM-software/optimized-routines/blob/98e4d6a5c13c8e54/string/aarch64/strlen.S
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Copyright (C) 2013 ARM Ltd.
  * Copyright (C) 2013 Linaro.
@@ -28,12 +31,16 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 
 #include <linux/linkage.h>
 #include <asm/assembler.h>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* Assumptions:
  *
@@ -64,6 +71,8 @@
 	   (X - 1) & 0x80 is zero for non-NUL ASCII characters, but gives
 	   false hits for characters 129..255.	*/
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * calculate the length of a string
  *
@@ -90,12 +99,16 @@ tmp3		.req	x9
 tmp4		.req	x10
 zeroones	.req	x11
 pos		.req	x12
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #define REP8_01 0x0101010101010101
 #define REP8_7f 0x7f7f7f7f7f7f7f7f
 #define REP8_80 0x8080808080808080
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #define MIN_PAGE_SIZE 4096
 
@@ -256,6 +269,8 @@ L(page_cross):
 
 SYM_FUNC_END_PI(strlen)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 WEAK(strlen)
 	mov	zeroones, #REP8_01
 	bic	src, srcin, #15
@@ -324,4 +339,7 @@ CPU_LE( lsr	tmp2, tmp2, tmp1 )	/* Shift (tmp1 & 63).  */
 	csel	data2, data2, data2a, le
 	b	.Lrealigned
 ENDPIPROC(strlen)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

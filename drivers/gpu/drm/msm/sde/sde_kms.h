@@ -48,14 +48,20 @@
  */
 #define SDE_DEBUG(fmt, ...)                                                \
 <<<<<<< HEAD
+<<<<<<< HEAD
 	no_printk(fmt, ##__VA_ARGS__)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	do {                                                               \
 		if (unlikely(drm_debug & DRM_UT_KMS))                      \
 			DRM_DEBUG(fmt, ##__VA_ARGS__); \
 		else                                                       \
 			pr_debug(fmt, ##__VA_ARGS__);                      \
 	} while (0)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
@@ -64,14 +70,20 @@
  */
 #define SDE_INFO(fmt, ...)                                                \
 <<<<<<< HEAD
+<<<<<<< HEAD
 	no_printk(fmt, ##__VA_ARGS__)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	do {                                                               \
 		if (unlikely(drm_debug & DRM_UT_KMS))                      \
 			DRM_INFO(fmt, ##__VA_ARGS__); \
 		else                                                       \
 			pr_info(fmt, ##__VA_ARGS__);                      \
 	} while (0)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
@@ -80,14 +92,20 @@
  */
 #define SDE_DEBUG_DRIVER(fmt, ...)                                         \
 <<<<<<< HEAD
+<<<<<<< HEAD
 	no_printk(fmt, ##__VA_ARGS__)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	do {                                                               \
 		if (unlikely(drm_debug & DRM_UT_DRIVER))                   \
 			DRM_ERROR(fmt, ##__VA_ARGS__); \
 		else                                                       \
 			pr_debug(fmt, ##__VA_ARGS__);                      \
 	} while (0)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #define SDE_ERROR(fmt, ...) pr_err("[sde error]" fmt, ##__VA_ARGS__)
@@ -288,8 +306,11 @@ struct sde_kms {
 	bool first_kickoff;
 	bool qdss_enabled;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	struct pm_qos_request pm_qos_irq_req;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -699,6 +720,7 @@ void sde_kms_release_splash_resource(struct sde_kms *sde_kms,
 		struct drm_crtc *crtc);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * sde_kms_update_pm_qos_irq_request - Update Qos vote for CPU receiving
  *					display IRQ
@@ -708,6 +730,8 @@ void sde_kms_release_splash_resource(struct sde_kms *sde_kms,
  */
 void sde_kms_update_pm_qos_irq_request(struct sde_kms *sde_kms,
 	 bool enable, bool skip_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* __sde_kms_H__ */

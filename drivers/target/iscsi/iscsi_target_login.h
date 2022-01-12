@@ -23,7 +23,12 @@ extern void iscsit_free_conn(struct iscsi_np *, struct iscsi_conn *);
 extern int iscsit_start_kthreads(struct iscsi_conn *);
 extern void iscsi_post_login_handler(struct iscsi_np *, struct iscsi_conn *, u8);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern void iscsi_target_login_sess_out(struct iscsi_conn *, bool, bool);
+=======
+extern void iscsi_target_login_sess_out(struct iscsi_conn *, struct iscsi_np *,
+				bool, bool);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern void iscsi_target_login_sess_out(struct iscsi_conn *, struct iscsi_np *,
 				bool, bool);

@@ -119,6 +119,7 @@ done:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Obsolete, replaced by MNTPROC_MNT. */
 static __be32
 nfsd_proc_root(struct svc_rqst *rqstp)
@@ -126,6 +127,8 @@ nfsd_proc_root(struct svc_rqst *rqstp)
 	return nfs_ok;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -212,6 +215,7 @@ nfsd_proc_read(struct svc_rqst *rqstp)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Reserved */
 static __be32
 nfsd_proc_writecache(struct svc_rqst *rqstp)
@@ -219,6 +223,8 @@ nfsd_proc_writecache(struct svc_rqst *rqstp)
 	return nfs_ok;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -626,7 +632,10 @@ static const struct svc_procedure nfsd_procedures2[18] = {
 	},
 	[NFSPROC_ROOT] = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.pc_func = nfsd_proc_root,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		.pc_decode = nfssvc_decode_void,
@@ -667,7 +676,10 @@ static const struct svc_procedure nfsd_procedures2[18] = {
 	},
 	[NFSPROC_WRITECACHE] = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.pc_func = nfsd_proc_writecache,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		.pc_decode = nfssvc_decode_void,

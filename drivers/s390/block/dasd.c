@@ -2892,12 +2892,15 @@ static int _dasd_requeue_request(struct dasd_ccw_req *cqr)
 	if (!block)
 		return -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * If the request is an ERP request there is nothing to requeue.
 	 * This will be done with the remaining original request.
 	 */
 	if (cqr->refers)
 		return 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_irq(&cqr->dq->lock);
@@ -3002,8 +3005,12 @@ static blk_status_t do_dasd_request(struct blk_mq_hw_ctx *hctx,
 	basedev = block->base;
 	spin_lock_irq(&dq->lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (basedev->state < DASD_STATE_READY ||
 	    test_bit(DASD_FLAG_OFFLINE, &basedev->flags)) {
+=======
+	if (basedev->state < DASD_STATE_READY) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (basedev->state < DASD_STATE_READY) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3498,6 +3505,11 @@ void dasd_generic_remove(struct ccw_device *cdev)
 	struct dasd_block *block;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	cdev->handler = NULL;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cdev->handler = NULL;
 
@@ -3521,7 +3533,10 @@ void dasd_generic_remove(struct ccw_device *cdev)
 	 */
 	dasd_set_target_state(device, DASD_STATE_NEW);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cdev->handler = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* dasd_delete_device destroys the device reference. */

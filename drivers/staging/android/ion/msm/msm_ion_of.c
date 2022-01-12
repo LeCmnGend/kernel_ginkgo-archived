@@ -86,8 +86,11 @@ static struct ion_heap_desc ion_heap_meta[] = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct ion_heap_data heap_query_data[ARRAY_SIZE(ion_heap_meta)] __cacheline_aligned;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define MAKE_HEAP_TYPE_MAPPING(h) { .name = #h, \
@@ -298,6 +301,7 @@ static int msm_ion_probe(struct platform_device *pdev)
 	num_heaps = pdata->nr;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * This means that either there are multiple heaps that share the same
 	 * ID, or there are heaps missing from ion_heap_meta. Both cases will
@@ -305,6 +309,8 @@ static int msm_ion_probe(struct platform_device *pdev)
 	 */
 	BUG_ON(num_heaps > ARRAY_SIZE(ion_heap_meta));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	heaps = kcalloc(pdata->nr, sizeof(struct ion_heap *), GFP_KERNEL);
@@ -315,7 +321,11 @@ static int msm_ion_probe(struct platform_device *pdev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	new_dev = ion_device_create(heap_query_data);
+=======
+	new_dev = ion_device_create();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	new_dev = ion_device_create();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -349,7 +359,11 @@ static int msm_ion_probe(struct platform_device *pdev)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ion_add_heap(new_dev, heaps[i]);
+=======
+		ion_device_add_heap(new_dev, heaps[i]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ion_device_add_heap(new_dev, heaps[i]);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -439,7 +453,10 @@ static struct platform_driver msm_ion_driver = {
 		.of_match_table = msm_ion_match_table,
 		.pm = &msm_ion_pm_ops,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.probe_type = PROBE_PREFER_ASYNCHRONOUS,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	},

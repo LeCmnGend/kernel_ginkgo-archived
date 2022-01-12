@@ -64,6 +64,12 @@ config GENERIC_CSUM
 	def_bool y
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+config RWSEM_GENERIC_SPINLOCK
+	def_bool y
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 config RWSEM_GENERIC_SPINLOCK
 	def_bool y

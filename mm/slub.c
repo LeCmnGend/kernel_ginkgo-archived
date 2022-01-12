@@ -16,7 +16,10 @@
 #include <linux/bit_spinlock.h>
 #include <linux/interrupt.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/swab.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/bitops.h>
@@ -671,6 +674,7 @@ static void slab_fix(struct kmem_cache *s, char *fmt, ...)
 
 static bool freelist_corrupted(struct kmem_cache *s, struct page *page,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			       void **freelist, void *nextfree)
 {
 	if ((s->flags & SLAB_CONSISTENCY_CHECKS) &&
@@ -678,12 +682,17 @@ static bool freelist_corrupted(struct kmem_cache *s, struct page *page,
 		object_err(s, page, *freelist, "Freechain corrupt");
 		*freelist = NULL;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			       void *freelist, void *nextfree)
 {
 	if ((s->flags & SLAB_CONSISTENCY_CHECKS) &&
 	    !check_valid_pointer(s, page, nextfree)) {
 		object_err(s, page, freelist, "Freechain corrupt");
 		freelist = NULL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		slab_fix(s, "Isolate corrupted freechain");
 		return true;
@@ -1403,7 +1412,11 @@ static inline void dec_slabs_node(struct kmem_cache *s, int node,
 
 static bool freelist_corrupted(struct kmem_cache *s, struct page *page,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			       void **freelist, void *nextfree)
+=======
+			       void *freelist, void *nextfree)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			       void *freelist, void *nextfree)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2149,7 +2162,11 @@ static void deactivate_slab(struct kmem_cache *s, struct page *page,
 		 * starting at 'freelist'.
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (freelist_corrupted(s, page, &freelist, nextfree))
+=======
+		if (freelist_corrupted(s, page, freelist, nextfree))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (freelist_corrupted(s, page, freelist, nextfree))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2210,7 +2227,11 @@ redo:
 			lock = 1;
 			/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 			 * Taking the spinlock removes the possibility
+=======
+			 * Taking the spinlock removes the possiblity
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			 * Taking the spinlock removes the possiblity
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3005,6 +3026,7 @@ static void __slab_free(struct kmem_cache *s, struct page *page,
 	if (likely(!n)) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (likely(was_frozen)) {
 			/*
 			 * The list lock was not taken therefore no list
@@ -3021,6 +3043,8 @@ static void __slab_free(struct kmem_cache *s, struct page *page,
 		}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
 		 * If we just froze the page then put it onto the
 		 * per cpu partial list.
@@ -3035,6 +3059,9 @@ static void __slab_free(struct kmem_cache *s, struct page *page,
 		 */
 		if (was_frozen)
 			stat(s, FREE_FROZEN);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return;
 	}
@@ -3361,7 +3388,11 @@ EXPORT_SYMBOL(kmem_cache_alloc_bulk);
  */
 static int slub_min_order;
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int slub_max_order;
+=======
+static int slub_max_order = PAGE_ALLOC_COSTLY_ORDER;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int slub_max_order = PAGE_ALLOC_COSTLY_ORDER;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4490,7 +4521,10 @@ void *__kmalloc_track_caller(size_t size, gfp_t gfpflags, unsigned long caller)
 	return ret;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 EXPORT_SYMBOL(__kmalloc_track_caller);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -4524,7 +4558,10 @@ void *__kmalloc_node_track_caller(size_t size, gfp_t gfpflags,
 	return ret;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 EXPORT_SYMBOL(__kmalloc_node_track_caller);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
@@ -5921,13 +5958,19 @@ static int sysfs_slab_add(struct kmem_cache *s)
 	s->kobj.kset = kset;
 	err = kobject_init_and_add(&s->kobj, &slab_ktype, NULL, "%s", name);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (err)
 		goto out;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err) {
 		kobject_put(&s->kobj);
 		goto out;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	err = sysfs_create_group(&s->kobj, &slab_attr_group);

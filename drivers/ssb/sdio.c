@@ -412,6 +412,10 @@ static void ssb_sdio_block_write(struct ssb_device *dev, const void *buffer,
 	if (unlikely(ssb_sdio_switch_core(bus, dev))) {
 		error = -EIO;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		memset((void *)buffer, 0xff, count);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		memset((void *)buffer, 0xff, count);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

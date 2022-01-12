@@ -2125,7 +2125,10 @@ void inode_nohighmem(struct inode *inode)
 EXPORT_SYMBOL(inode_nohighmem);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * current_time - Return FS time
  * @inode: inode.
@@ -2149,6 +2152,9 @@ struct timespec current_time(struct inode *inode)
 }
 EXPORT_SYMBOL(current_time);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Generic function to check FS_IOC_SETFLAGS values and reject any invalid

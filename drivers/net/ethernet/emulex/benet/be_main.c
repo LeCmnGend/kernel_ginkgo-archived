@@ -5927,7 +5927,10 @@ unmap_bars:
 	be_unmap_pci_bars(adapter);
 free_netdev:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pci_disable_pcie_error_reporting(pdev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	free_netdev(netdev);

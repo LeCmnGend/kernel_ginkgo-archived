@@ -666,6 +666,7 @@ reiserfs_xattr_get(struct inode *inode, const char *name, void *buffer,
 		return -EOPNOTSUPP;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * priv_root needn't be initialized during mount so allow initial
 	 * lookups to succeed.
@@ -673,6 +674,8 @@ reiserfs_xattr_get(struct inode *inode, const char *name, void *buffer,
 	if (!REISERFS_SB(inode->i_sb)->priv_root)
 		return 0;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dentry = xattr_lookup(inode, name, XATTR_REPLACE);

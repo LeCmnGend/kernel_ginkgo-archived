@@ -475,7 +475,10 @@ void *__kmalloc_track_caller(size_t size, gfp_t gfp, unsigned long caller)
 	return __do_kmalloc_node(size, gfp, NUMA_NO_NODE, caller);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 EXPORT_SYMBOL(__kmalloc_track_caller);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -486,7 +489,10 @@ void *__kmalloc_node_track_caller(size_t size, gfp_t gfp,
 	return __do_kmalloc_node(size, gfp, node, caller);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 EXPORT_SYMBOL(__kmalloc_node_track_caller);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif

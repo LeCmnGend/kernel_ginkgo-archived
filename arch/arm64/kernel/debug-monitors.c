@@ -63,7 +63,11 @@ NOKPROBE_SYMBOL(mdscr_read);
  * This is useful if you want to connect an external JTAG debugger.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool debug_enabled;
+=======
+static bool debug_enabled = true;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static bool debug_enabled = true;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -170,6 +174,7 @@ NOKPROBE_SYMBOL(clear_user_regs_spsr_ss);
 #define clear_regs_spsr_ss(r)	clear_user_regs_spsr_ss(&(r)->user_regs)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static DEFINE_SPINLOCK(debug_hook_lock);
 static LIST_HEAD(user_step_hook);
 static LIST_HEAD(kernel_step_hook);
@@ -211,6 +216,8 @@ void unregister_kernel_step_hook(struct step_hook *hook)
 }
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* EL1 Single Step Handler hooks */
 static LIST_HEAD(step_hook);
 static DEFINE_SPINLOCK(step_hook_lock);
@@ -230,6 +237,9 @@ void unregister_step_hook(struct step_hook *hook)
 	synchronize_rcu();
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Call registered single step handlers
@@ -241,6 +251,7 @@ static int call_step_hook(struct pt_regs *regs, unsigned int esr)
 {
 	struct step_hook *hook;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct list_head *list;
 	int retval = DBG_HOOK_ERROR;
 
@@ -250,11 +261,16 @@ static int call_step_hook(struct pt_regs *regs, unsigned int esr)
 
 	list_for_each_entry_rcu(hook, list, node)	{
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int retval = DBG_HOOK_ERROR;
 
 	rcu_read_lock();
 
 	list_for_each_entry_rcu(hook, &step_hook, node)	{
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		retval = hook->fn(regs, esr);
 		if (retval == DBG_HOOK_HANDLED)
@@ -334,6 +350,7 @@ NOKPROBE_SYMBOL(single_step_handler);
  * Use reader/writer locks instead of plain spinlock.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static LIST_HEAD(user_break_hook);
 static LIST_HEAD(kernel_break_hook);
 
@@ -356,6 +373,8 @@ void unregister_kernel_break_hook(struct break_hook *hook)
 {
 	unregister_debug_hook(&hook->node);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static LIST_HEAD(break_hook);
 static DEFINE_SPINLOCK(break_hook_lock);
 
@@ -372,12 +391,16 @@ void unregister_break_hook(struct break_hook *hook)
 	list_del_rcu(&hook->node);
 	spin_unlock(&break_hook_lock);
 	synchronize_rcu();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static int call_break_hook(struct pt_regs *regs, unsigned int esr)
 {
 	struct break_hook *hook;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	struct list_head *list;
 	int (*fn)(struct pt_regs *regs, unsigned int esr) = NULL;
@@ -392,12 +415,17 @@ static int call_break_hook(struct pt_regs *regs, unsigned int esr)
 			fn = hook->fn;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int (*fn)(struct pt_regs *regs, unsigned int esr) = NULL;
 
 	rcu_read_lock();
 	list_for_each_entry_rcu(hook, &break_hook, node)
 		if ((esr & hook->esr_mask) == hook->esr_val)
 			fn = hook->fn;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rcu_read_unlock();
 

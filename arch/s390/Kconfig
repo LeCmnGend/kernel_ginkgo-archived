@@ -15,13 +15,19 @@ config STACKTRACE_SUPPORT
 	def_bool y
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config RWSEM_GENERIC_SPINLOCK
 	bool
 
 config RWSEM_XCHGADD_ALGORITHM
 	def_bool y
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config ARCH_HAS_ILOG2_U32
 	def_bool n
@@ -896,7 +902,11 @@ config APPLDATA_BASE
 	def_bool n
 	prompt "Linux - VM Monitor Stream, base infrastructure"
 <<<<<<< HEAD
+<<<<<<< HEAD
 	depends on PROC_SYSCTL
+=======
+	depends on PROC_FS
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	depends on PROC_FS
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

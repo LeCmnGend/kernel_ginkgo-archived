@@ -16,6 +16,10 @@
 #define SCHED_CPUFREQ_PL	(1U << 5)
 #define SCHED_CPUFREQ_EARLY_DET (1U << 6)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define SCHED_CPUFREQ_FORCE_UPDATE (1U << 7)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define SCHED_CPUFREQ_FORCE_UPDATE (1U << 7)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -25,8 +29,11 @@
 
 #ifdef CONFIG_CPU_FREQ
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct cpufreq_policy;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct update_util_data {
@@ -38,7 +45,10 @@ void cpufreq_add_update_util_hook(int cpu, struct update_util_data *data,
 				    unsigned int flags));
 void cpufreq_remove_update_util_hook(int cpu);
 <<<<<<< HEAD
+<<<<<<< HEAD
 bool cpufreq_can_do_remote_dvfs(struct cpufreq_policy *policy);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* CONFIG_CPU_FREQ */

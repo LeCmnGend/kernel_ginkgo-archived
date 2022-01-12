@@ -1,6 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef LIBFDT_INTERNAL_H
 #define LIBFDT_INTERNAL_H
+=======
+#ifndef _LIBFDT_INTERNAL_H
+#define _LIBFDT_INTERNAL_H
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #ifndef _LIBFDT_INTERNAL_H
 #define _LIBFDT_INTERNAL_H
@@ -63,6 +68,7 @@
 #define FDT_CHECK_HEADER(fdt) \
 	{ \
 <<<<<<< HEAD
+<<<<<<< HEAD
 		int err_; \
 		if ((err_ = fdt_check_header(fdt)) != 0) \
 			return err_; \
@@ -75,6 +81,8 @@ int fdt_node_end_offset_(void *fdt, int nodeoffset);
 
 static inline const void *fdt_offset_ptr_(const void *fdt, int offset)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		int __err; \
 		if ((__err = fdt_check_header(fdt)) != 0) \
 			return __err; \
@@ -86,11 +94,15 @@ const char *_fdt_find_string(const char *strtab, int tabsize, const char *s);
 int _fdt_node_end_offset(void *fdt, int nodeoffset);
 
 static inline const void *_fdt_offset_ptr(const void *fdt, int offset)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	return (const char *)fdt + fdt_off_dt_struct(fdt) + offset;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static inline void *fdt_offset_ptr_w_(void *fdt, int offset)
 {
@@ -99,12 +111,17 @@ static inline void *fdt_offset_ptr_w_(void *fdt, int offset)
 
 static inline const struct fdt_reserve_entry *fdt_mem_rsv_(const void *fdt, int n)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void *_fdt_offset_ptr_w(void *fdt, int offset)
 {
 	return (void *)(uintptr_t)_fdt_offset_ptr(fdt, offset);
 }
 
 static inline const struct fdt_reserve_entry *_fdt_mem_rsv(const void *fdt, int n)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	const struct fdt_reserve_entry *rsv_table =
@@ -114,9 +131,15 @@ static inline const struct fdt_reserve_entry *_fdt_mem_rsv(const void *fdt, int 
 	return rsv_table + n;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline struct fdt_reserve_entry *fdt_mem_rsv_w_(void *fdt, int n)
 {
 	return (void *)(uintptr_t)fdt_mem_rsv_(fdt, n);
+=======
+static inline struct fdt_reserve_entry *_fdt_mem_rsv_w(void *fdt, int n)
+{
+	return (void *)(uintptr_t)_fdt_mem_rsv(fdt, n);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline struct fdt_reserve_entry *_fdt_mem_rsv_w(void *fdt, int n)
 {
@@ -127,7 +150,11 @@ static inline struct fdt_reserve_entry *_fdt_mem_rsv_w(void *fdt, int n)
 #define FDT_SW_MAGIC		(~FDT_MAGIC)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif /* LIBFDT_INTERNAL_H */
+=======
+#endif /* _LIBFDT_INTERNAL_H */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #endif /* _LIBFDT_INTERNAL_H */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

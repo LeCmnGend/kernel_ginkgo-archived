@@ -2323,7 +2323,11 @@ static int aac_read(struct scsi_cmnd * scsicmd)
 			SAM_STAT_CHECK_CONDITION;
 		set_sense(&dev->fsa_dev[cid].sense_data,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			  ILLEGAL_REQUEST, SENCODE_LBA_OUT_OF_RANGE,
+=======
+			  HARDWARE_ERROR, SENCODE_INTERNAL_TARGET_FAILURE,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			  HARDWARE_ERROR, SENCODE_INTERNAL_TARGET_FAILURE,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2333,7 +2337,11 @@ static int aac_read(struct scsi_cmnd * scsicmd)
 			     SCSI_SENSE_BUFFERSIZE));
 		scsicmd->scsi_done(scsicmd);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2423,7 +2431,11 @@ static int aac_write(struct scsi_cmnd * scsicmd)
 			SAM_STAT_CHECK_CONDITION;
 		set_sense(&dev->fsa_dev[cid].sense_data,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			  ILLEGAL_REQUEST, SENCODE_LBA_OUT_OF_RANGE,
+=======
+			  HARDWARE_ERROR, SENCODE_INTERNAL_TARGET_FAILURE,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			  HARDWARE_ERROR, SENCODE_INTERNAL_TARGET_FAILURE,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2433,7 +2445,11 @@ static int aac_write(struct scsi_cmnd * scsicmd)
 			     SCSI_SENSE_BUFFERSIZE));
 		scsicmd->scsi_done(scsicmd);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

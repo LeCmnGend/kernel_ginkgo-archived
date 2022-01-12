@@ -454,7 +454,11 @@ void sctp_icmp_proto_unreachable(struct sock *sk,
 			if (!mod_timer(&t->proto_unreach_timer,
 						jiffies + (HZ/20)))
 <<<<<<< HEAD
+<<<<<<< HEAD
 				sctp_transport_hold(t);
+=======
+				sctp_association_hold(asoc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				sctp_association_hold(asoc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -467,7 +471,11 @@ void sctp_icmp_proto_unreachable(struct sock *sk,
 
 		if (del_timer(&t->proto_unreach_timer))
 <<<<<<< HEAD
+<<<<<<< HEAD
 			sctp_transport_put(t);
+=======
+			sctp_association_put(asoc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			sctp_association_put(asoc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1090,8 +1098,12 @@ static struct sctp_association *__sctp_rcv_init_lookup(struct net *net,
 			continue;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!af->from_addr_param(paddr, params.addr, sh->source, 0))
 			continue;
+=======
+		af->from_addr_param(paddr, params.addr, sh->source, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		af->from_addr_param(paddr, params.addr, sh->source, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1138,8 +1150,12 @@ static struct sctp_association *__sctp_rcv_asconf_lookup(
 		return NULL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!af->from_addr_param(&paddr, param, peer_port, 0))
 		return NULL;
+=======
+	af->from_addr_param(&paddr, param, peer_port, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	af->from_addr_param(&paddr, param, peer_port, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1214,7 +1230,11 @@ static struct sctp_association *__sctp_rcv_walk_lookup(struct net *net,
 		ch = (struct sctp_chunkhdr *)ch_end;
 		chunk_num++;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} while (ch_end + sizeof(*ch) < skb_tail_pointer(skb));
+=======
+	} while (ch_end < skb_tail_pointer(skb));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	} while (ch_end < skb_tail_pointer(skb));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -354,7 +354,11 @@ static inline bool cpu_have_feature(unsigned int num)
 
 /* System capability check for constant caps */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __always_inline bool __cpus_have_const_cap(int num)
+=======
+static inline bool __cpus_have_const_cap(int num)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline bool __cpus_have_const_cap(int num)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -372,7 +376,11 @@ static inline bool cpus_have_cap(unsigned int num)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __always_inline bool cpus_have_const_cap(int num)
+=======
+static inline bool cpus_have_const_cap(int num)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline bool cpus_have_const_cap(int num)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -504,6 +512,7 @@ static inline int arm64_get_ssbd_state(void)
 void arm64_set_ssbd_mitigation(bool state);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Check whether hardware update of the Access flag is supported */
 static inline bool cpu_has_hw_af(void)
 {
@@ -517,6 +526,8 @@ static inline bool cpu_has_hw_af(void)
 						ID_AA64MMFR1_HADBS_SHIFT);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* __ASSEMBLY__ */

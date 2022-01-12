@@ -93,7 +93,11 @@ struct mount_options
 	unsigned long	mount_opt;
 	unsigned int	atime_quantum;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned short	slot;
+=======
+	signed short	slot;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	signed short	slot;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1374,7 +1378,11 @@ static int ocfs2_parse_options(struct super_block *sb,
 			}
 			if (option)
 <<<<<<< HEAD
+<<<<<<< HEAD
 				mopt->slot = (u16)option;
+=======
+				mopt->slot = (s16)option;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				mopt->slot = (s16)option;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1742,7 +1750,10 @@ static void ocfs2_inode_init_once(void *data)
 	oi->ip_blkno = 0ULL;
 	oi->ip_clusters = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	oi->ip_next_orphan = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

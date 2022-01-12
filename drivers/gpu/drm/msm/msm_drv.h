@@ -1,7 +1,10 @@
 /*
  * Copyright (c) 2016-2020, The Linux Foundation. All rights reserved.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2019 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Copyright (C) 2013 Red Hat
@@ -31,7 +34,10 @@
 #include <linux/platform_device.h>
 #include <linux/pm.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/pm_qos.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/pm_runtime.h>
@@ -82,9 +88,12 @@ struct msm_gem_vma;
 #define TEARDOWN_DEADLOCK_RETRY_MAX 5
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern atomic_t resume_pending;
 extern wait_queue_head_t resume_wait_q;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct msm_file_private {
@@ -702,10 +711,13 @@ struct msm_drm_private {
 	/* update the flag when msm driver receives shutdown notification */
 	bool shutdown_in_progress;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	struct pm_qos_request pm_irq_req;
 	struct delayed_work pm_unreq_dwork;
 	atomic_t pm_req_set;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

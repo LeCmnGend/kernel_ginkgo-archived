@@ -23,7 +23,10 @@
 #include <linux/string.h>
 #include <linux/types.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/pagemap.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/ptrace.h>
@@ -71,12 +74,15 @@ static inline bool notify_page_fault(struct pt_regs *regs)
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Check whether the instruction inst is a store using
  * an update addressing form which will update r1.
  */
 static bool store_updates_sp(unsigned int inst)
 {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Check whether the instruction at regs->nip is a store using
  * an update addressing form which will update r1.
  */
@@ -86,6 +92,9 @@ static bool store_updates_sp(struct pt_regs *regs)
 
 	if (get_user(inst, (unsigned int __user *)regs->nip))
 		return false;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* check for 1 in the rA field */
 	if (((inst >> 16) & 0x1f) != 1)
@@ -240,6 +249,7 @@ static bool bad_kernel_fault(bool is_exec, unsigned long error_code,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // This comes from 64-bit struct rt_sigframe + __SIGNAL_FRAMESIZE
 #define SIGFRAME_MAX_SIZE	(4096 + 128)
 
@@ -251,12 +261,21 @@ static bool bad_stack_expansion(struct pt_regs *regs, unsigned long address,
 				struct vm_area_struct *vma,
 				bool store_update_sp)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+static bool bad_stack_expansion(struct pt_regs *regs, unsigned long address,
+				struct vm_area_struct *vma,
+				bool store_update_sp)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	/*
 	 * N.B. The POWER/Open ABI allows programs to access up to
 	 * 288 bytes below the stack pointer.
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * The kernel signal delivery code writes a bit over 4KB
+=======
+	 * The kernel signal delivery code writes up to about 1.5kB
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 * The kernel signal delivery code writes up to about 1.5kB
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -267,7 +286,10 @@ static bool bad_stack_expansion(struct pt_regs *regs, unsigned long address,
 	 */
 	if (address + 0x100000 < vma->vm_end) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unsigned int __user *nip = (unsigned int __user *)regs->nip;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* get user regs even if this fault is in kernel mode */
@@ -288,6 +310,7 @@ static bool bad_stack_expansion(struct pt_regs *regs, unsigned long address,
 		 * expand the stack rather than segfaulting.
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (address + SIGFRAME_MAX_SIZE >= uregs->gpr[1])
 			return false;
 
@@ -304,6 +327,10 @@ static bool bad_stack_expansion(struct pt_regs *regs, unsigned long address,
 			*must_retry = true;
 		}
 		return true;
+=======
+		if (address + 2048 < uregs->gpr[1] && !store_update_sp)
+			return true;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (address + 2048 < uregs->gpr[1] && !store_update_sp)
 			return true;
@@ -338,7 +365,11 @@ static bool access_error(bool is_write, bool is_exec,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(!vma_is_accessible(vma)))
+=======
+	if (unlikely(!(vma->vm_flags & (VM_READ | VM_EXEC | VM_WRITE))))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(!(vma->vm_flags & (VM_READ | VM_EXEC | VM_WRITE))))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -445,7 +476,11 @@ static int __do_page_fault(struct pt_regs *regs, unsigned long address,
 	int is_write = page_fault_is_write(error_code);
 	int fault, major = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool must_retry = false;
+=======
+	bool store_update_sp = false;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bool store_update_sp = false;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -496,6 +531,12 @@ static int __do_page_fault(struct pt_regs *regs, unsigned long address,
 	 * mmap_sem held
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (is_write && is_user)
+		store_update_sp = store_updates_sp(regs);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (is_write && is_user)
 		store_update_sp = store_updates_sp(regs);
@@ -548,6 +589,7 @@ retry:
 
 	/* The stack is being expanded, check if it's valid */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(bad_stack_expansion(regs, address, vma, flags,
 					 &must_retry))) {
 		if (!must_retry)
@@ -559,6 +601,10 @@ retry:
 			return bad_area_nosemaphore(regs, address);
 		goto retry;
 	}
+=======
+	if (unlikely(bad_stack_expansion(regs, address, vma, store_update_sp)))
+		return bad_area(regs, address);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(bad_stack_expansion(regs, address, vma, store_update_sp)))
 		return bad_area(regs, address);

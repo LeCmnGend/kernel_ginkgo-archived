@@ -491,7 +491,10 @@ static int gbcodec_hw_params(struct snd_pcm_substream *substream,
 		dev_err_ratelimited(dai->dev, "%d: Error during set_config\n",
 				    ret);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		gb_pm_runtime_put_noidle(bundle);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mutex_unlock(&codec->lock);
@@ -571,7 +574,10 @@ static int gbcodec_prepare(struct snd_pcm_substream *substream,
 	}
 	if (ret) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		gb_pm_runtime_put_noidle(bundle);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mutex_unlock(&codec->lock);

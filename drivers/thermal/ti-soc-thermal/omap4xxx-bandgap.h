@@ -68,6 +68,7 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * ADC conversion table limits. Ignore values outside the TRM listed
  * range to avoid bogus thermal shutdowns. See omap4430 TRM chapter
@@ -75,6 +76,11 @@
  */
 #define OMAP4430_ADC_START_VALUE			13
 #define OMAP4430_ADC_END_VALUE				107
+=======
+/* ADC conversion table limits */
+#define OMAP4430_ADC_START_VALUE			0
+#define OMAP4430_ADC_END_VALUE				127
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* ADC conversion table limits */
 #define OMAP4430_ADC_START_VALUE			0

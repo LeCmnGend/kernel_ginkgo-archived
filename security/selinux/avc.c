@@ -129,7 +129,11 @@ static inline int avc_hash(u32 ssid, u32 tsid, u16 tclass)
 	return (ssid ^ (tsid<<2) ^ (tclass<<4)) & (AVC_CACHE_SLOTS - 1);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_AUDIT
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -202,7 +206,10 @@ static void avc_dump_query(struct audit_buffer *ab, struct selinux_state *state,
 	audit_log_format(ab, " tclass=%s", secclass_map[tclass-1].name);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -500,7 +507,10 @@ static inline int avc_xperms_audit(struct selinux_state *state,
 				   struct common_audit_data *ad)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_AUDIT
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32 audited, denied;
@@ -512,9 +522,12 @@ static inline int avc_xperms_audit(struct selinux_state *state,
 	return slow_avc_audit(state, ssid, tsid, tclass, requested,
 			audited, denied, result, ad, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #else
 	return 0;
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -671,7 +684,11 @@ static int avc_latest_notif_update(struct selinux_avc *avc,
 	if (is_insert) {
 		if (seqno < avc->avc_cache.latest_notif) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_warn("SELinux: avc:  seqno %d < latest_notif %d\n",
+=======
+			printk(KERN_WARNING "SELinux: avc:  seqno %d < latest_notif %d\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_WARNING "SELinux: avc:  seqno %d < latest_notif %d\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -749,7 +766,10 @@ found:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_AUDIT
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -789,7 +809,10 @@ static void avc_audit_post_callback(struct audit_buffer *ab, void *a)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* This is the slow part of avc audit with big stack footprint */
@@ -833,7 +856,10 @@ noinline int slow_avc_audit(struct selinux_state *state,
 	return 0;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

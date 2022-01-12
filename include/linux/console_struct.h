@@ -63,7 +63,10 @@ struct vc_data {
 	unsigned int	vc_size_row;		/* Bytes per row */
 	unsigned int	vc_scan_lines;		/* # of scan lines */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int	vc_cell_height;		/* CRTC character cell height */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long	vc_origin;		/* [!] Start of real screen */

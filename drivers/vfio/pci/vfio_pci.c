@@ -30,7 +30,10 @@
 #include <linux/vgaarb.h>
 #include <linux/nospec.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/sched/mm.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -122,6 +125,11 @@ static void vfio_pci_probe_mmaps(struct vfio_pci_device *vdev)
 	struct vfio_pci_dummy_resource *dummy_res;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	INIT_LIST_HEAD(&vdev->dummy_resources_list);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	INIT_LIST_HEAD(&vdev->dummy_resources_list);
 
@@ -189,7 +197,10 @@ no_mmap:
 static void vfio_pci_try_bus_reset(struct vfio_pci_device *vdev);
 static void vfio_pci_disable(struct vfio_pci_device *vdev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int vfio_pci_try_zap_and_vma_lock_cb(struct pci_dev *pdev, void *data);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -409,6 +420,7 @@ static void vfio_pci_release(void *device_data)
 		vfio_spapr_pci_eeh_release(vdev->pdev);
 		vfio_pci_disable(vdev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mutex_lock(&vdev->igate);
 		if (vdev->err_trigger) {
 			eventfd_ctx_put(vdev->err_trigger);
@@ -422,6 +434,8 @@ static void vfio_pci_release(void *device_data)
 			vdev->req_trigger = NULL;
 		}
 		mutex_unlock(&vdev->igate);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -672,12 +686,15 @@ int vfio_pci_register_dev_region(struct vfio_pci_device *vdev,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct vfio_devices {
 	struct vfio_device **devices;
 	int cur_index;
 	int max_index;
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static long vfio_pci_ioctl(void *device_data,
@@ -754,7 +771,11 @@ static long vfio_pci_ioctl(void *device_data,
 			void __iomem *io;
 			size_t size;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			u16 cmd;
+=======
+			u16 orig_cmd;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			u16 orig_cmd;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -778,12 +799,18 @@ static long vfio_pci_ioctl(void *device_data,
 			 * implicit access in pci_map_rom().
 			 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			cmd = vfio_pci_memory_lock_and_enable(vdev);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			pci_read_config_word(pdev, PCI_COMMAND, &orig_cmd);
 			pci_write_config_word(pdev, PCI_COMMAND,
 					      orig_cmd | PCI_COMMAND_MEMORY);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			io = pci_map_rom(pdev, &size);
 			if (io) {
@@ -793,8 +820,13 @@ static long vfio_pci_ioctl(void *device_data,
 				info.size = 0;
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 			vfio_pci_memory_unlock_and_restore(vdev, cmd);
 
+=======
+
+			pci_write_config_word(pdev, PCI_COMMAND, orig_cmd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 			pci_write_config_word(pdev, PCI_COMMAND, orig_cmd);
@@ -935,6 +967,7 @@ static long vfio_pci_ioctl(void *device_data,
 
 	} else if (cmd == VFIO_DEVICE_RESET) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		int ret;
 
 		if (!vdev->reset_works)
@@ -945,6 +978,10 @@ static long vfio_pci_ioctl(void *device_data,
 		up_write(&vdev->memory_lock);
 
 		return ret;
+=======
+		return vdev->reset_works ?
+			pci_try_reset_function(vdev->pdev) : -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return vdev->reset_works ?
 			pci_try_reset_function(vdev->pdev) : -EINVAL;
@@ -1029,9 +1066,14 @@ reset_info_exit:
 		struct vfio_pci_group_entry *groups;
 		struct vfio_pci_group_info info;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		struct vfio_devices devs = { .cur_index = 0 };
 		bool slot = false;
 		int i, group_idx, mem_idx = 0, count = 0, ret = 0;
+=======
+		bool slot = false;
+		int i, count = 0, ret = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		bool slot = false;
 		int i, count = 0, ret = 0;
@@ -1088,9 +1130,15 @@ reset_info_exit:
 		 * ensures the group is held across the reset.
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		for (group_idx = 0; group_idx < hdr.count; group_idx++) {
 			struct vfio_group *group;
 			struct fd f = fdget(group_fds[group_idx]);
+=======
+		for (i = 0; i < hdr.count; i++) {
+			struct vfio_group *group;
+			struct fd f = fdget(group_fds[i]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		for (i = 0; i < hdr.count; i++) {
 			struct vfio_group *group;
@@ -1109,9 +1157,14 @@ reset_info_exit:
 			}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			groups[group_idx].group = group;
 			groups[group_idx].id =
 					vfio_external_user_iommu_id(group);
+=======
+			groups[i].group = group;
+			groups[i].id = vfio_external_user_iommu_id(group);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			groups[i].group = group;
 			groups[i].id = vfio_external_user_iommu_id(group);
@@ -1134,6 +1187,7 @@ reset_info_exit:
 		ret = vfio_pci_for_each_slot_or_bus(vdev->pdev,
 						    vfio_pci_validate_devs,
 						    &info, slot);
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 		if (ret)
@@ -1195,6 +1249,8 @@ hot_reset_release:
 		for (group_idx--; group_idx >= 0; group_idx--)
 			vfio_group_put_external_user(groups[group_idx].group);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!ret)
 			/* User has access, do the reset */
 			ret = slot ? pci_try_reset_slot(vdev->pdev->slot) :
@@ -1203,6 +1259,9 @@ hot_reset_release:
 hot_reset_release:
 		for (i--; i >= 0; i--)
 			vfio_group_put_external_user(groups[i].group);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		kfree(groups);
@@ -1262,6 +1321,7 @@ static ssize_t vfio_pci_write(void *device_data, const char __user *buf,
 	return vfio_pci_rw(device_data, (char __user *)buf, count, ppos, true);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* Return 1 on zap and vma_lock acquired, 0 on contention (only with @try) */
 static int vfio_pci_zap_and_vma_lock(struct vfio_pci_device *vdev, bool try)
@@ -1461,6 +1521,8 @@ static const struct vm_operations_struct vfio_pci_mmap_ops = {
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int vfio_pci_mmap(void *device_data, struct vm_area_struct *vma)
 {
 	struct vfio_pci_device *vdev = device_data;
@@ -1527,6 +1589,7 @@ static int vfio_pci_mmap(void *device_data, struct vm_area_struct *vma)
 	vma->vm_pgoff = (pci_resource_start(pdev, index) >> PAGE_SHIFT) + pgoff;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * See remap_pfn_range(), called from vfio_pci_fault() but we can't
 	 * change vm_flags within the fault handler.  Set them now.
@@ -1535,6 +1598,10 @@ static int vfio_pci_mmap(void *device_data, struct vm_area_struct *vma)
 	vma->vm_ops = &vfio_pci_mmap_ops;
 
 	return 0;
+=======
+	return remap_pfn_range(vma, vma->vm_start, vma->vm_pgoff,
+			       req_len, vma->vm_page_prot);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return remap_pfn_range(vma, vma->vm_start, vma->vm_pgoff,
 			       req_len, vma->vm_page_prot);
@@ -1596,10 +1663,13 @@ static int vfio_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 	mutex_init(&vdev->igate);
 	spin_lock_init(&vdev->irqlock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	INIT_LIST_HEAD(&vdev->dummy_resources_list);
 	mutex_init(&vdev->vma_lock);
 	INIT_LIST_HEAD(&vdev->vma_list);
 	init_rwsem(&vdev->memory_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1697,6 +1767,7 @@ static struct pci_driver vfio_pci_driver = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int vfio_pci_get_devs(struct pci_dev *pdev, void *data)
 {
 	struct vfio_devices *devs = data;
@@ -1724,6 +1795,8 @@ static int vfio_pci_try_zap_and_vma_lock_cb(struct pci_dev *pdev, void *data)
 	struct vfio_device *device;
 	struct vfio_pci_device *vdev;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct vfio_devices {
 	struct vfio_device **devices;
 	int cur_index;
@@ -1734,6 +1807,9 @@ static int vfio_pci_get_devs(struct pci_dev *pdev, void *data)
 {
 	struct vfio_devices *devs = data;
 	struct vfio_device *device;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (devs->cur_index == devs->max_index)
@@ -1749,6 +1825,7 @@ static int vfio_pci_get_devs(struct pci_dev *pdev, void *data)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vdev = vfio_device_data(device);
 
 	/*
@@ -1760,6 +1837,8 @@ static int vfio_pci_get_devs(struct pci_dev *pdev, void *data)
 		return -EBUSY;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	devs->devices[devs->cur_index++] = device;

@@ -582,7 +582,10 @@ list_start:
 		break;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cipso_v4_doi_putdef(doi_def);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rcu_read_unlock();
@@ -594,7 +597,10 @@ list_retry:
 	/* XXX - this limit is a guesstimate */
 	if (nlsze_mult < 4) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cipso_v4_doi_putdef(doi_def);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rcu_read_unlock();
@@ -604,7 +610,10 @@ list_retry:
 	}
 list_failure_lock:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cipso_v4_doi_putdef(doi_def);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rcu_read_unlock();

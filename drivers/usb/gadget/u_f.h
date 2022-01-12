@@ -18,7 +18,10 @@
 
 #include <linux/usb/gadget.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/overflow.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -28,6 +31,7 @@
 
 #define vla_item(groupname, type, name, n) \
 	size_t groupname##_##name##__offset = ({			       \
+<<<<<<< HEAD
 <<<<<<< HEAD
 		size_t offset = 0;					       \
 		if (groupname##__next != SIZE_MAX) {			       \
@@ -42,15 +46,21 @@
 			}						       \
 		}							       \
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		size_t align_mask = __alignof__(type) - 1;		       \
 		size_t offset = (groupname##__next + align_mask) & ~align_mask;\
 		size_t size = (n) * sizeof(type);			       \
 		groupname##__next = offset + size;			       \
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		offset;							       \
 	})
 
 #define vla_item_with_sz(groupname, type, name, n) \
+<<<<<<< HEAD
 <<<<<<< HEAD
 	size_t groupname##_##name##__sz = array_size(n, sizeof(type));	        \
 	size_t groupname##_##name##__offset = ({			        \
@@ -67,6 +77,8 @@
 		}								\
 		offset;								\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	size_t groupname##_##name##__sz = (n) * sizeof(type);		       \
 	size_t groupname##_##name##__offset = ({			       \
 		size_t align_mask = __alignof__(type) - 1;		       \
@@ -74,6 +86,9 @@
 		size_t size = groupname##_##name##__sz;			       \
 		groupname##__next = offset + size;			       \
 		offset;							       \
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	})
 

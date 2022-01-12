@@ -1320,7 +1320,11 @@ xfs_rmap_convert_shared(
 	 * start block contiguity tests.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	error = xfs_rmap_lookup_le_range(cur, bno, owner, offset, oldext,
+=======
+	error = xfs_rmap_lookup_le_range(cur, bno, owner, offset, flags,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	error = xfs_rmap_lookup_le_range(cur, bno, owner, offset, flags,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

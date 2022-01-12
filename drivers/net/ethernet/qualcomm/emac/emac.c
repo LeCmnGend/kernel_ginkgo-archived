@@ -494,6 +494,7 @@ static int emac_clks_phase1_init(struct platform_device *pdev,
 	ret = clk_prepare_enable(adpt->clk[EMAC_CLK_CFG_AHB]);
 	if (ret)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto disable_clk_axi;
 
 	ret = clk_set_rate(adpt->clk[EMAC_CLK_HIGH_SPEED], 19200000);
@@ -513,6 +514,8 @@ disable_clk_axi:
 
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return ret;
 
 	ret = clk_set_rate(adpt->clk[EMAC_CLK_HIGH_SPEED], 19200000);
@@ -520,6 +523,9 @@ disable_clk_axi:
 		return ret;
 
 	return clk_prepare_enable(adpt->clk[EMAC_CLK_HIGH_SPEED]);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -776,6 +782,10 @@ static int emac_remove(struct platform_device *pdev)
 	put_device(&adpt->phydev->mdio.dev);
 	mdiobus_unregister(adpt->mii_bus);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	free_netdev(netdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	free_netdev(netdev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -785,8 +795,11 @@ static int emac_remove(struct platform_device *pdev)
 	iounmap(adpt->phy.base);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	free_netdev(netdev);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;

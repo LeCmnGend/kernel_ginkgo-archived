@@ -169,17 +169,23 @@ static void tmio_mmc_clk_start(struct tmio_mmc_host *host)
 	/* HW engineers overrode docs: no sleep needed on R-Car2+ */
 	if (!(host->pdata->flags & TMIO_MMC_MIN_RCAR2))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		usleep_range(10000, 11000);
 
 	if (host->pdata->flags & TMIO_MMC_HAVE_HIGH_REG) {
 		sd_ctrl_write16(host, CTL_CLK_AND_WAIT_CTL, 0x0100);
 		usleep_range(10000, 11000);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		msleep(10);
 
 	if (host->pdata->flags & TMIO_MMC_HAVE_HIGH_REG) {
 		sd_ctrl_write16(host, CTL_CLK_AND_WAIT_CTL, 0x0100);
 		msleep(10);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 }
@@ -189,7 +195,11 @@ static void tmio_mmc_clk_stop(struct tmio_mmc_host *host)
 	if (host->pdata->flags & TMIO_MMC_HAVE_HIGH_REG) {
 		sd_ctrl_write16(host, CTL_CLK_AND_WAIT_CTL, 0x0000);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		usleep_range(10000, 11000);
+=======
+		msleep(10);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		msleep(10);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -201,7 +211,11 @@ static void tmio_mmc_clk_stop(struct tmio_mmc_host *host)
 	/* HW engineers overrode docs: no sleep needed on R-Car2+ */
 	if (!(host->pdata->flags & TMIO_MMC_MIN_RCAR2))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		usleep_range(10000, 11000);
+=======
+		msleep(10);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		msleep(10);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -237,7 +251,11 @@ static void tmio_mmc_set_clock(struct tmio_mmc_host *host,
 	sd_ctrl_write16(host, CTL_SD_CARD_CLK_CTL, clk & CLK_CTL_DIV_MASK);
 	if (!(host->pdata->flags & TMIO_MMC_MIN_RCAR2))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		usleep_range(10000, 11000);
+=======
+		msleep(10);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		msleep(10);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -252,17 +270,23 @@ static void tmio_mmc_reset(struct tmio_mmc_host *host)
 	if (host->pdata->flags & TMIO_MMC_HAVE_HIGH_REG)
 		sd_ctrl_write16(host, CTL_RESET_SDIO, 0x0000);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	usleep_range(10000, 11000);
 	sd_ctrl_write16(host, CTL_RESET_SD, 0x0001);
 	if (host->pdata->flags & TMIO_MMC_HAVE_HIGH_REG)
 		sd_ctrl_write16(host, CTL_RESET_SDIO, 0x0001);
 	usleep_range(10000, 11000);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	msleep(10);
 	sd_ctrl_write16(host, CTL_RESET_SD, 0x0001);
 	if (host->pdata->flags & TMIO_MMC_HAVE_HIGH_REG)
 		sd_ctrl_write16(host, CTL_RESET_SDIO, 0x0001);
 	msleep(10);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (host->pdata->flags & TMIO_MMC_SDIO_IRQ) {

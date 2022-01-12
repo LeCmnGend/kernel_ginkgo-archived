@@ -238,7 +238,10 @@ static int ehci_hcd_omap_probe(struct platform_device *pdev)
 err_pm_runtime:
 	pm_runtime_put_sync(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pm_runtime_disable(dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

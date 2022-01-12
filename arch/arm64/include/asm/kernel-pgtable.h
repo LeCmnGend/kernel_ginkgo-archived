@@ -73,6 +73,12 @@
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+/* The size of the initial kernel direct mapping */
+#define SWAPPER_INIT_MAP_SIZE	(_AC(1, UL) << SWAPPER_TABLE_SHIFT)
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* The size of the initial kernel direct mapping */
 #define SWAPPER_INIT_MAP_SIZE	(_AC(1, UL) << SWAPPER_TABLE_SHIFT)

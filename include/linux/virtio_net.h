@@ -63,6 +63,7 @@ static inline int virtio_net_hdr_to_skb(struct sk_buff *skb,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	skb_reset_mac_header(skb);
 
 	if (hdr->flags & VIRTIO_NET_HDR_F_NEEDS_CSUM) {
@@ -77,13 +78,22 @@ static inline int virtio_net_hdr_to_skb(struct sk_buff *skb,
 		u16 start = __virtio16_to_cpu(little_endian, hdr->csum_start);
 		u16 off = __virtio16_to_cpu(little_endian, hdr->csum_offset);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	if (hdr->flags & VIRTIO_NET_HDR_F_NEEDS_CSUM) {
+		u16 start = __virtio16_to_cpu(little_endian, hdr->csum_start);
+		u16 off = __virtio16_to_cpu(little_endian, hdr->csum_offset);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		if (!skb_partial_csum_set(skb, start, off))
 			return -EINVAL;
 
 		p_off = skb_transport_offset(skb) + thlen;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!pskb_may_pull(skb, p_off))
+=======
+		if (p_off > skb_headlen(skb))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (p_off > skb_headlen(skb))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -96,6 +106,7 @@ static inline int virtio_net_hdr_to_skb(struct sk_buff *skb,
 			struct flow_keys keys;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (!skb->protocol) {
 				__be16 protocol = dev_parse_header_protocol(skb);
 
@@ -103,6 +114,10 @@ static inline int virtio_net_hdr_to_skb(struct sk_buff *skb,
 				if (protocol && protocol != skb->protocol)
 					return -EINVAL;
 			}
+=======
+			if (!skb->protocol)
+				virtio_net_hdr_set_proto(skb, hdr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (!skb->protocol)
 				virtio_net_hdr_set_proto(skb, hdr);
@@ -120,7 +135,11 @@ retry:
 
 			p_off = keys.control.thoff + thlen;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (!pskb_may_pull(skb, p_off) ||
+=======
+			if (p_off > skb_headlen(skb) ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (p_off > skb_headlen(skb) ||
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -131,7 +150,11 @@ retry:
 		} else if (gso_type) {
 			p_off = thlen;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (!pskb_may_pull(skb, p_off))
+=======
+			if (p_off > skb_headlen(skb))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (p_off > skb_headlen(skb))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

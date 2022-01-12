@@ -395,6 +395,7 @@ static int i_ipmi_set_timeout(struct ipmi_smi_msg  *smi_msg,
 	WDOG_SET_TIMER_USE(data[0], WDOG_TIMER_USE_SMS_OS);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ipmi_watchdog_state != WDOG_TIMEOUT_NONE) {
 		if ((ipmi_version_major > 1) ||
 		    ((ipmi_version_major == 1) && (ipmi_version_minor >= 5))) {
@@ -408,6 +409,8 @@ static int i_ipmi_set_timeout(struct ipmi_smi_msg  *smi_msg,
 			hbnow = 1;
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if ((ipmi_version_major > 1)
 	    || ((ipmi_version_major == 1) && (ipmi_version_minor >= 5))) {
 		/* This is an IPMI 1.5-only feature. */
@@ -418,6 +421,9 @@ static int i_ipmi_set_timeout(struct ipmi_smi_msg  *smi_msg,
 		 * need to start it back up again.
 		 */
 		hbnow = 1;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 

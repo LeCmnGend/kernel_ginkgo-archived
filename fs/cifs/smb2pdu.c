@@ -943,8 +943,11 @@ SMB2_auth_kerberos(struct SMB2_sess_data *sess_data)
 	if (IS_ERR(spnego_key)) {
 		rc = PTR_ERR(spnego_key);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (rc == -ENOKEY)
 			cifs_dbg(VFS, "Verify user has a krb5 ticket and keyutils is installed\n");
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		spnego_key = NULL;
@@ -2522,15 +2525,21 @@ smb2_new_read_req(void **buf, unsigned int *total_len,
 			 * in chain.
 			 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			shdr->SessionId = 0xFFFFFFFFFFFFFFFF;
 			shdr->TreeId = 0xFFFFFFFF;
 			req->PersistentFileId = 0xFFFFFFFFFFFFFFFF;
 			req->VolatileFileId = 0xFFFFFFFFFFFFFFFF;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			shdr->SessionId = 0xFFFFFFFF;
 			shdr->TreeId = 0xFFFFFFFF;
 			req->PersistentFileId = 0xFFFFFFFF;
 			req->VolatileFileId = 0xFFFFFFFF;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 	}

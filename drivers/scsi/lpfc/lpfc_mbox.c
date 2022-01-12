@@ -2621,7 +2621,10 @@ lpfc_resume_rpi(struct lpfcMboxq *mbox, struct lpfc_nodelist *ndlp)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * lpfc_supported_pages - Initialize the PORT_CAPABILITIES supported pages
  *                        mailbox command.
@@ -2658,4 +2661,7 @@ lpfc_pc_sli4_params(struct lpfcMboxq *mbox)
 	bf_set(lpfc_mqe_command, &mbox->u.mqe, MBX_PORT_CAPABILITIES);
 	bf_set(cpn, sli4_params, LPFC_SLI4_PARAMETERS);
 }
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

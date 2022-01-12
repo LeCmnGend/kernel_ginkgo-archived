@@ -153,7 +153,10 @@ static struct clk __init *alchemy_clk_setup_cpu(const char *parent_name,
 	struct clk_init_data id;
 	struct clk_hw *h;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct clk *clk;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -169,6 +172,7 @@ static struct clk __init *alchemy_clk_setup_cpu(const char *parent_name,
 	h->init = &id;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	clk = clk_register(NULL, h);
 	if (IS_ERR(clk)) {
 		pr_err("failed to register clock\n");
@@ -176,6 +180,9 @@ static struct clk __init *alchemy_clk_setup_cpu(const char *parent_name,
 	}
 
 	return clk;
+=======
+	return clk_register(NULL, h);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return clk_register(NULL, h);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

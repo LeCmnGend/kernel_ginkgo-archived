@@ -1518,7 +1518,10 @@ void qlt_stop_phase2(struct qla_tgt *tgt)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&tgt->ha->optrom_mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_lock(&vha->vha_tgt.tgt_mutex);
@@ -1526,7 +1529,10 @@ void qlt_stop_phase2(struct qla_tgt *tgt)
 	tgt->tgt_stopped = 1;
 	mutex_unlock(&vha->vha_tgt.tgt_mutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_unlock(&tgt->ha->optrom_mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

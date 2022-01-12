@@ -305,6 +305,7 @@ int adf_vf_isr_resource_alloc(struct adf_accel_dev *accel_dev)
 
 	if (adf_setup_pf2vf_bh(accel_dev))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto err_disable_msi;
 
 	if (adf_setup_bh(accel_dev))
@@ -326,6 +327,8 @@ err_disable_msi:
 
 err_out:
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto err_out;
 
 	if (adf_setup_bh(accel_dev))
@@ -337,6 +340,9 @@ err_out:
 	return 0;
 err_out:
 	adf_vf_isr_resource_free(accel_dev);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return -EFAULT;
 }

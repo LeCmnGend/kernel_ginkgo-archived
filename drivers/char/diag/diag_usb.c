@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2014-2021, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2014-2020, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2014-2020, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -265,12 +269,15 @@ static void usb_event_work_fn(struct work_struct *work)
 		wait_event_interruptible(ch->wait_q, ch->enabled > 0);
 		ch->max_size = usb_diag_request_size(ch->hdl);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ch->max_size <= 0) {
 			DIAG_LOG(DIAG_DEBUG_PERIPHERALS,
 			"diag: USB channel %s: invalid max size,returning..\n",
 			ch->name);
 			break;
 		}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		atomic_set(&ch->connected, 1);

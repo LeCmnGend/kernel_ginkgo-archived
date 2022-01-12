@@ -16,9 +16,15 @@ static int walk_pte_range(pmd_t *pmd, unsigned long addr, unsigned long end,
 		if (err)
 		       break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (addr >= end - PAGE_SIZE)
 			break;
 		addr += PAGE_SIZE;
+=======
+		addr += PAGE_SIZE;
+		if (addr == end)
+			break;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		addr += PAGE_SIZE;
 		if (addr == end)

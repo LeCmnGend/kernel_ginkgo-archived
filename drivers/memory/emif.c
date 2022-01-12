@@ -166,6 +166,7 @@ static const struct file_operations emif_mr4_fops = {
 static int __init_or_module emif_debugfs_init(struct emif_data *emif)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	emif->debugfs_root = debugfs_create_dir(dev_name(emif->dev), NULL);
 	debugfs_create_file("regcache_dump", S_IRUGO, emif->debugfs_root, emif,
 			    &emif_regdump_fops);
@@ -173,6 +174,8 @@ static int __init_or_module emif_debugfs_init(struct emif_data *emif)
 			    &emif_mr4_fops);
 	return 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct dentry	*dentry;
 	int		ret;
 
@@ -202,6 +205,9 @@ err1:
 	debugfs_remove_recursive(emif->debugfs_root);
 err0:
 	return ret;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

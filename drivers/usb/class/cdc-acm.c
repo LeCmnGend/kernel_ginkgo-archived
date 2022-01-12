@@ -161,6 +161,7 @@ static inline int acm_set_control(struct acm *acm, int control)
 	acm_ctrl_msg(acm, USB_CDC_REQ_SEND_BREAK, ms, NULL, 0)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void acm_poison_urbs(struct acm *acm)
 {
 	int i;
@@ -185,6 +186,8 @@ static void acm_unpoison_urbs(struct acm *acm)
 
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void acm_kill_urbs(struct acm *acm)
 {
 	int i;
@@ -196,6 +199,9 @@ static void acm_kill_urbs(struct acm *acm)
 		usb_kill_urb(acm->read_urbs[i]);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Write buffer management.
@@ -265,10 +271,16 @@ static int acm_start_wb(struct acm *acm, struct acm_wb *wb)
 	rc = usb_submit_urb(wb->urb, GFP_ATOMIC);
 	if (rc < 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (rc != -EPERM)
 			dev_err(&acm->data->dev,
 				"%s - usb_submit_urb(write bulk) failed: %d\n",
 				__func__, rc);
+=======
+		dev_err(&acm->data->dev,
+			"%s - usb_submit_urb(write bulk) failed: %d\n",
+			__func__, rc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dev_err(&acm->data->dev,
 			"%s - usb_submit_urb(write bulk) failed: %d\n",
@@ -358,10 +370,15 @@ static void acm_process_notification(struct acm *acm, unsigned char *buf)
 		if (difference & ACM_CTRL_DCD)
 			acm->iocount.dcd++;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (newctrl & ACM_CTRL_BRK) {
 			acm->iocount.brk++;
 			tty_insert_flip_char(&acm->port, 0, TTY_BREAK);
 		}
+=======
+		if (newctrl & ACM_CTRL_BRK)
+			acm->iocount.brk++;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (newctrl & ACM_CTRL_BRK)
 			acm->iocount.brk++;
@@ -431,6 +448,7 @@ static void acm_ctrl_irq(struct urb *urb)
 		/* notification is transmitted fragmented, reassemble */
 		if (acm->nb_size < expected_size) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			u8 *new_buffer;
 			alloc_size = roundup_pow_of_two(expected_size);
 			/* Final freeing is done on disconnect. */
@@ -445,6 +463,8 @@ static void acm_ctrl_irq(struct urb *urb)
 			acm->nb_size = alloc_size;
 			dr = (struct usb_cdc_notification *)acm->notification_buffer;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (acm->nb_size) {
 				kfree(acm->notification_buffer);
 				acm->nb_size = 0;
@@ -460,6 +480,9 @@ static void acm_ctrl_irq(struct urb *urb)
 			if (!acm->notification_buffer)
 				goto exit;
 			acm->nb_size = alloc_size;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 
@@ -551,12 +574,18 @@ static void acm_read_bulk_callback(struct urb *urb)
 		rb->index, urb->actual_length, status);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!acm->dev) {
 		dev_dbg(&acm->data->dev, "%s - disconnected\n", __func__);
 		return;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	switch (status) {
 	case 0:
@@ -582,7 +611,10 @@ static void acm_read_bulk_callback(struct urb *urb)
 		usb_mark_last_busy(acm->dev);
 		set_bit(rb->index, &acm->urbs_in_error_delay);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		set_bit(ACM_ERROR_DELAY, &acm->flags);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		cooldown = true;
@@ -611,7 +643,11 @@ static void acm_read_bulk_callback(struct urb *urb)
 	if (stopped || stalled || cooldown) {
 		if (stalled)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			schedule_delayed_work(&acm->dwork, 0);
+=======
+			schedule_work(&acm->work);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			schedule_work(&acm->work);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -650,7 +686,11 @@ static void acm_write_bulk(struct urb *urb)
 	spin_unlock_irqrestore(&acm->write_lock, flags);
 	set_bit(EVENT_TTY_WAKEUP, &acm->flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	schedule_delayed_work(&acm->dwork, 0);
+=======
+	schedule_work(&acm->work);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	schedule_work(&acm->work);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -660,7 +700,11 @@ static void acm_softint(struct work_struct *work)
 {
 	int i;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct acm *acm = container_of(work, struct acm, dwork.work);
+=======
+	struct acm *acm = container_of(work, struct acm, work);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct acm *acm = container_of(work, struct acm, work);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -680,7 +724,11 @@ static void acm_softint(struct work_struct *work)
 		for (i = 0; i < acm->rx_buflimit; i++)
 			if (test_and_clear_bit(i, &acm->urbs_in_error_delay))
 <<<<<<< HEAD
+<<<<<<< HEAD
 				acm_submit_read_urb(acm, i, GFP_KERNEL);
+=======
+					acm_submit_read_urb(acm, i, GFP_NOIO);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					acm_submit_read_urb(acm, i, GFP_NOIO);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -747,8 +795,12 @@ static void acm_port_dtr_rts(struct tty_port *port, int raise)
 	res = acm_set_control(acm, val);
 	if (res && (acm->ctrl_caps & USB_CDC_CAP_LINE))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* This is broken in too many devices to spam the logs */
 		dev_dbg(&acm->control->dev, "failed to set dtr/rts\n");
+=======
+		dev_err(&acm->control->dev, "failed to set dtr/rts\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dev_err(&acm->control->dev, "failed to set dtr/rts\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -837,7 +889,10 @@ static void acm_port_shutdown(struct tty_port *port)
 	 * hold it due to the tty-port initialised flag.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	acm_poison_urbs(acm);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_irq(&acm->write_lock);
@@ -857,8 +912,12 @@ static void acm_port_shutdown(struct tty_port *port)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	acm_unpoison_urbs(acm);
 
+=======
+	acm_kill_urbs(acm);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	acm_kill_urbs(acm);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1081,6 +1140,11 @@ static int set_serial_info(struct acm *acm,
 	            (new_serial.closing_wait != old_closing_wait))
 			retval = -EPERM;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		else
+			retval = -EOPNOTSUPP;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		else
 			retval = -EOPNOTSUPP;
@@ -1386,6 +1450,7 @@ static int acm_probe(struct usb_interface *intf,
 		}
 	} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		int class = -1;
 
 		data_intf_num = union_header->bSlaveInterface0;
@@ -1401,6 +1466,11 @@ static int acm_probe(struct usb_interface *intf,
 			control_interface = data_interface = intf;
 			goto look_for_collapsed_interface;
 		}
+=======
+		data_intf_num = union_header->bSlaveInterface0;
+		control_interface = usb_ifnum_to_if(usb_dev, union_header->bMasterInterface0);
+		data_interface = usb_ifnum_to_if(usb_dev, data_intf_num);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		data_intf_num = union_header->bSlaveInterface0;
 		control_interface = usb_ifnum_to_if(usb_dev, union_header->bMasterInterface0);
@@ -1510,6 +1580,10 @@ made_compressed_probe:
 	acm->readsize = readsize;
 	acm->rx_buflimit = num_rx_buf;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	INIT_WORK(&acm->work, acm_softint);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	INIT_WORK(&acm->work, acm_softint);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1667,11 +1741,14 @@ skip_countries:
 	return 0;
 alloc_fail8:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!acm->combined_interfaces) {
 		/* Clear driver data so that disconnect() returns early. */
 		usb_set_intfdata(data_interface, NULL);
 		usb_driver_release_interface(&acm_driver, data_interface);
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (acm->country_codes) {
@@ -1714,6 +1791,7 @@ static void acm_disconnect(struct usb_interface *intf)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	acm->disconnected = true;
 	/*
 	 * there is a circular dependency. acm_softint() can resubmit
@@ -1722,6 +1800,10 @@ static void acm_disconnect(struct usb_interface *intf)
 	 */
 	acm_poison_urbs(acm);
 	mutex_lock(&acm->mutex);
+=======
+	mutex_lock(&acm->mutex);
+	acm->disconnected = true;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mutex_lock(&acm->mutex);
 	acm->disconnected = true;
@@ -1745,6 +1827,11 @@ static void acm_disconnect(struct usb_interface *intf)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	acm_kill_urbs(acm);
+	cancel_work_sync(&acm->work);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	acm_kill_urbs(acm);
 	cancel_work_sync(&acm->work);
@@ -1791,7 +1878,12 @@ static int acm_suspend(struct usb_interface *intf, pm_message_t message)
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	acm_poison_urbs(acm);
+=======
+	acm_kill_urbs(acm);
+	cancel_work_sync(&acm->work);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	acm_kill_urbs(acm);
 	cancel_work_sync(&acm->work);
@@ -1814,8 +1906,11 @@ static int acm_resume(struct usb_interface *intf)
 		goto out;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	acm_unpoison_urbs(acm);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (tty_port_initialized(&acm->port)) {
@@ -1892,6 +1987,7 @@ static const struct usb_device_id acm_ids[] = {
 	.driver_info = NO_UNION_NORMAL, /* has no union descriptor */
 	},
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ USB_DEVICE(0x045b, 0x023c),	/* Renesas USB Download mode */
 	.driver_info = DISABLE_ECHO,	/* Don't echo banner */
 	},
@@ -1901,6 +1997,8 @@ static const struct usb_device_id acm_ids[] = {
 	{ USB_DEVICE(0x045b, 0x024D),	/* Renesas USB Download mode */
 	.driver_info = DISABLE_ECHO,	/* Don't echo banner */
 	},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ USB_DEVICE(0x0e8d, 0x0003), /* FIREFLY, MediaTek Inc; andrey.arapov@gmail.com */
@@ -2096,10 +2194,13 @@ static const struct usb_device_id acm_ids[] = {
 	.driver_info = IGNORE_DEVICE,
 	},
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	{ USB_DEVICE(0x04d8, 0xf58b),
 	.driver_info = IGNORE_DEVICE,
 	},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
@@ -2115,6 +2216,7 @@ static const struct usb_device_id acm_ids[] = {
 	},
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Exclude ETAS ES58x */
 	{ USB_DEVICE(0x108c, 0x0159), /* ES581.4 */
 	.driver_info = IGNORE_DEVICE,
@@ -2128,6 +2230,8 @@ static const struct usb_device_id acm_ids[] = {
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ USB_DEVICE(0x1bc7, 0x0021), /* Telit 3G ACM only composition */
 	.driver_info = SEND_ZERO_PACKET,
 	},
@@ -2135,6 +2239,7 @@ static const struct usb_device_id acm_ids[] = {
 	.driver_info = SEND_ZERO_PACKET,
 	},
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	/* Exclude Goodix Fingerprint Reader */
 	{ USB_DEVICE(0x27c6, 0x5395),
@@ -2146,6 +2251,8 @@ static const struct usb_device_id acm_ids[] = {
 	.driver_info = IGNORE_DEVICE,
 	},
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* control interfaces without any protocol set */

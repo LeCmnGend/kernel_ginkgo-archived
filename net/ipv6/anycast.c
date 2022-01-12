@@ -171,7 +171,11 @@ int ipv6_sock_ac_drop(struct sock *sk, int ifindex, const struct in6_addr *addr)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void __ipv6_sock_ac_close(struct sock *sk)
+=======
+void ipv6_sock_ac_close(struct sock *sk)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void ipv6_sock_ac_close(struct sock *sk)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -183,12 +187,18 @@ void ipv6_sock_ac_close(struct sock *sk)
 	int	prev_index;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ASSERT_RTNL();
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!np->ipv6_ac_list)
 		return;
 
 	rtnl_lock();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pac = np->ipv6_ac_list;
 	np->ipv6_ac_list = NULL;
@@ -207,6 +217,7 @@ void ipv6_sock_ac_close(struct sock *sk)
 		pac = next;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 void ipv6_sock_ac_close(struct sock *sk)
@@ -217,6 +228,8 @@ void ipv6_sock_ac_close(struct sock *sk)
 		return;
 	rtnl_lock();
 	__ipv6_sock_ac_close(sk);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rtnl_unlock();

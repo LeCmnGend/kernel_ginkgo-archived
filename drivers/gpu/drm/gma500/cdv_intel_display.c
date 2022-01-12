@@ -416,8 +416,11 @@ static bool cdv_intel_find_dp_pll(const struct gma_limit_t *limit,
 	struct gma_clock_t clock;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(&clock, 0, sizeof(clock));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	switch (refclk) {

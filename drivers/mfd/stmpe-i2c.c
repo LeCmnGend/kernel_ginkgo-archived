@@ -110,7 +110,11 @@ static const struct i2c_device_id stmpe_i2c_id[] = {
 	{ }
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 MODULE_DEVICE_TABLE(i2c, stmpe_i2c_id);
+=======
+MODULE_DEVICE_TABLE(i2c, stmpe_id);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 MODULE_DEVICE_TABLE(i2c, stmpe_id);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

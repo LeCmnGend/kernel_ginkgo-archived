@@ -34,7 +34,11 @@
 
 #define THERMAL_TRIPS_NONE	-1
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define THERMAL_MAX_TRIPS	16
+=======
+#define THERMAL_MAX_TRIPS	12
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define THERMAL_MAX_TRIPS	12
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -262,6 +266,7 @@ struct thermal_zone_device {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_THERMAL_SWITCH
 struct thermal_message_device {
 	struct device device;
@@ -272,6 +277,8 @@ int thermal_message_device_register(void);
 void thermal_message_device_unregister(void);
 #endif //CONFIG_THERMAL_SWITCH
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -443,7 +450,10 @@ enum aggregation_logic {
 	VIRT_MINIMUM,
 	VIRT_AGGREGATION_NR,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	VIRT_COUNT_THRESHOLD,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -556,15 +566,21 @@ void thermal_zone_device_update_temp(struct thermal_zone_device *tz,
 void thermal_zone_set_trips(struct thermal_zone_device *);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct thermal_cooling_device *thermal_cooling_device_register(const char *,
 		void *, const struct thermal_cooling_device_ops *);
 struct thermal_cooling_device *
 thermal_of_cooling_device_register(struct device_node *np, const char *, void *,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct thermal_cooling_device *thermal_cooling_device_register(char *, void *,
 		const struct thermal_cooling_device_ops *);
 struct thermal_cooling_device *
 thermal_of_cooling_device_register(struct device_node *np, char *, void *,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				   const struct thermal_cooling_device_ops *);
 void thermal_cooling_device_unregister(struct thermal_cooling_device *);
@@ -621,6 +637,7 @@ static inline void thermal_zone_set_trips(struct thermal_zone_device *tz)
 { }
 static inline struct thermal_cooling_device *
 <<<<<<< HEAD
+<<<<<<< HEAD
 thermal_cooling_device_register(const char *type, void *devdata,
 	const struct thermal_cooling_device_ops *ops)
 { return ERR_PTR(-ENODEV); }
@@ -628,12 +645,17 @@ static inline struct thermal_cooling_device *
 thermal_of_cooling_device_register(struct device_node *np, const char *type,
 	void *devdata, const struct thermal_cooling_device_ops *ops)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 thermal_cooling_device_register(char *type, void *devdata,
 	const struct thermal_cooling_device_ops *ops)
 { return ERR_PTR(-ENODEV); }
 static inline struct thermal_cooling_device *
 thermal_of_cooling_device_register(struct device_node *np,
 	char *type, void *devdata, const struct thermal_cooling_device_ops *ops)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 { return ERR_PTR(-ENODEV); }
 static inline void thermal_cooling_device_unregister(

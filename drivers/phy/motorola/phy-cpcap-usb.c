@@ -624,7 +624,11 @@ static int cpcap_usb_phy_probe(struct platform_device *pdev)
 	if (IS_ERR(generic_phy)) {
 		error = PTR_ERR(generic_phy);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_reg_disable;
+=======
+		return PTR_ERR(generic_phy);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return PTR_ERR(generic_phy);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -635,6 +639,7 @@ static int cpcap_usb_phy_probe(struct platform_device *pdev)
 	phy_provider = devm_of_phy_provider_register(ddata->dev,
 						     of_phy_simple_xlate);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (IS_ERR(phy_provider)) {
 		error = PTR_ERR(phy_provider);
 		goto out_reg_disable;
@@ -644,12 +649,17 @@ static int cpcap_usb_phy_probe(struct platform_device *pdev)
 	if (error)
 		goto out_reg_disable;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (IS_ERR(phy_provider))
 		return PTR_ERR(phy_provider);
 
 	error = cpcap_usb_init_optional_pins(ddata);
 	if (error)
 		return error;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	cpcap_usb_init_optional_gpios(ddata);
@@ -657,17 +667,23 @@ static int cpcap_usb_phy_probe(struct platform_device *pdev)
 	error = cpcap_usb_init_iio(ddata);
 	if (error)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_reg_disable;
 
 	error = cpcap_usb_init_interrupts(pdev, ddata);
 	if (error)
 		goto out_reg_disable;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return error;
 
 	error = cpcap_usb_init_interrupts(pdev, ddata);
 	if (error)
 		return error;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	usb_add_phy_dev(&ddata->phy);
@@ -676,11 +692,14 @@ static int cpcap_usb_phy_probe(struct platform_device *pdev)
 
 	return 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 out_reg_disable:
 	regulator_disable(ddata->vusb);
 
 	return error;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

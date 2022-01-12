@@ -2833,9 +2833,12 @@ static int wlcore_join(struct wl1271 *wl, struct wl12xx_vif *wlvif)
 	if (is_ibss)
 		ret = wl12xx_cmd_role_start_ibss(wl, wlvif);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	else
 		ret = wl12xx_cmd_role_start_sta(wl, wlvif);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	else {
 		if (wl->quirks & WLCORE_QUIRK_START_STA_FAILS) {
 			/*
@@ -2851,6 +2854,9 @@ static int wlcore_join(struct wl1271 *wl, struct wl12xx_vif *wlvif)
 
 		ret = wl12xx_cmd_role_start_sta(wl, wlvif);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return ret;

@@ -25,8 +25,11 @@
 #include "sdio_ops.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define SDIO_READ_CIS_TIMEOUT_MS  (10 * 1000) /* 10s */
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int cistpl_vers_1(struct mmc_card *card, struct sdio_func *func,
@@ -36,9 +39,12 @@ static int cistpl_vers_1(struct mmc_card *card, struct sdio_func *func,
 	char **buffer, *string;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (size < 2)
 		return 0;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Find all null-terminated (including zero length) strings in
@@ -67,7 +73,11 @@ static int cistpl_vers_1(struct mmc_card *card, struct sdio_func *func,
 	for (i = 0; i < nr_strings; i++) {
 		buffer[i] = string;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		memcpy(string, buf, strlen(buf) + 1);
+=======
+		strlcpy(string, buf, strlen(buf) + 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		strlcpy(string, buf, strlen(buf) + 1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -283,8 +293,11 @@ static int sdio_read_cis(struct mmc_card *card, struct sdio_func *func)
 	do {
 		unsigned char tpl_code, tpl_link;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unsigned long timeout = jiffies +
 			msecs_to_jiffies(SDIO_READ_CIS_TIMEOUT_MS);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -348,8 +361,11 @@ static int sdio_read_cis(struct mmc_card *card, struct sdio_func *func)
 
 			if (ret == -ENOENT) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if (time_after(jiffies, timeout))
 					break;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				/* warn about unknown tuples */

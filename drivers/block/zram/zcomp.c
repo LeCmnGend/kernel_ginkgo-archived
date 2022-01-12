@@ -44,6 +44,7 @@ static void zcomp_strm_free(struct zcomp_strm *zstrm)
 		crypto_free_comp(zstrm->tfm);
 	free_pages((unsigned long)zstrm->buffer, 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	zstrm->tfm = NULL;
 	zstrm->buffer = NULL;
 }
@@ -55,6 +56,8 @@ static void zcomp_strm_free(struct zcomp_strm *zstrm)
 static int zcomp_strm_init(struct zcomp_strm *zstrm, struct zcomp *comp)
 {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kfree(zstrm);
 }
 
@@ -68,6 +71,9 @@ static struct zcomp_strm *zcomp_strm_alloc(struct zcomp *comp)
 	if (!zstrm)
 		return NULL;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	zstrm->tfm = crypto_alloc_comp(comp->name, 0, 0);
 	/*
@@ -78,9 +84,15 @@ static struct zcomp_strm *zcomp_strm_alloc(struct zcomp *comp)
 	if (IS_ERR_OR_NULL(zstrm->tfm) || !zstrm->buffer) {
 		zcomp_strm_free(zstrm);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -ENOMEM;
 	}
 	return 0;
+=======
+		zstrm = NULL;
+	}
+	return zstrm;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		zstrm = NULL;
 	}
@@ -139,7 +151,11 @@ ssize_t zcomp_available_show(const char *comp, char *buf)
 struct zcomp_strm *zcomp_stream_get(struct zcomp *comp)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return get_cpu_ptr(comp->stream);
+=======
+	return *get_cpu_ptr(comp->stream);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return *get_cpu_ptr(comp->stream);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -189,6 +205,7 @@ int zcomp_cpu_up_prepare(unsigned int cpu, struct hlist_node *node)
 	struct zcomp *comp = hlist_entry(node, struct zcomp, node);
 	struct zcomp_strm *zstrm;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret;
 
 	zstrm = per_cpu_ptr(comp->stream, cpu);
@@ -197,6 +214,8 @@ int zcomp_cpu_up_prepare(unsigned int cpu, struct hlist_node *node)
 		pr_err("Can't allocate a compression stream\n");
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (WARN_ON(*per_cpu_ptr(comp->stream, cpu)))
 		return 0;
@@ -208,6 +227,9 @@ int zcomp_cpu_up_prepare(unsigned int cpu, struct hlist_node *node)
 	}
 	*per_cpu_ptr(comp->stream, cpu) = zstrm;
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -217,13 +239,19 @@ int zcomp_cpu_dead(unsigned int cpu, struct hlist_node *node)
 	struct zcomp_strm *zstrm;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	zstrm = per_cpu_ptr(comp->stream, cpu);
 	zcomp_strm_free(zstrm);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	zstrm = *per_cpu_ptr(comp->stream, cpu);
 	if (!IS_ERR_OR_NULL(zstrm))
 		zcomp_strm_free(zstrm);
 	*per_cpu_ptr(comp->stream, cpu) = NULL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
@@ -233,7 +261,11 @@ static int zcomp_init(struct zcomp *comp)
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	comp->stream = alloc_percpu(struct zcomp_strm);
+=======
+	comp->stream = alloc_percpu(struct zcomp_strm *);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	comp->stream = alloc_percpu(struct zcomp_strm *);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

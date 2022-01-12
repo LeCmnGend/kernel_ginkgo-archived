@@ -64,7 +64,10 @@ extern bool treesource_error;
 %token DT_DEL_PROP
 %token DT_DEL_NODE
 <<<<<<< HEAD
+<<<<<<< HEAD
 %token DT_OMIT_NO_REF
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 %token <propnodename> DT_PROPNODENAME
@@ -171,6 +174,7 @@ devicetree:
 			$$ = merge_nodes($1, $3);
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	| DT_REF nodedef
 		{
 			/*
@@ -182,6 +186,9 @@ devicetree:
 				ERROR(&@2, "Label or path %s not found", $1);
 			$$ = add_orphan_node(name_node(build_node(NULL, NULL), ""), $2, $1);
 		}
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -198,6 +205,7 @@ devicetree:
 		}
 	| devicetree DT_REF nodedef
 		{
+<<<<<<< HEAD
 <<<<<<< HEAD
 			/*
 			 * We rely on the rule being always:
@@ -230,6 +238,8 @@ devicetree:
 		}
 	| devicetree DT_OMIT_NO_REF DT_REF ';'
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			struct node *target = get_node_by_ref($1, $2);
 
 			if (target)
@@ -239,13 +249,20 @@ devicetree:
 			$$ = $1;
 		}
 	| devicetree DT_DEL_NODE DT_REF ';'
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		{
 			struct node *target = get_node_by_ref($1, $3);
 
 			if (target)
 <<<<<<< HEAD
+<<<<<<< HEAD
 				omit_node_if_unused(target);
+=======
+				delete_node(target);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				delete_node(target);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -560,10 +577,13 @@ subnode:
 			$$ = name_node(build_node_delete(), $2);
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	| DT_OMIT_NO_REF subnode
 		{
 			$$ = omit_node_if_unused($2);
 		}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	| DT_LABEL subnode

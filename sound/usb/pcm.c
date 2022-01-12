@@ -388,7 +388,10 @@ static int set_sync_ep_implicit_fb_quirk(struct snd_usb_substream *subs,
 	struct usb_interface *iface;
 	unsigned int ep;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int ifnum;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -399,6 +402,7 @@ static int set_sync_ep_implicit_fb_quirk(struct snd_usb_substream *subs,
 	switch (subs->stream->chip->usb_id) {
 	case USB_ID(0x0763, 0x2030): /* M-Audio Fast Track C400 */
 	case USB_ID(0x0763, 0x2031): /* M-Audio Fast Track C600 */
+<<<<<<< HEAD
 <<<<<<< HEAD
 	case USB_ID(0x22f0, 0x0006): /* Allen&Heath Qu-16 */
 		ep = 0x81;
@@ -420,6 +424,8 @@ static int set_sync_ep_implicit_fb_quirk(struct snd_usb_substream *subs,
 	}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ep = 0x81;
 		iface = usb_ifnum_to_if(dev, 3);
 
@@ -459,6 +465,9 @@ static int set_sync_ep_implicit_fb_quirk(struct snd_usb_substream *subs,
 		goto add_sync_ep;
 
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (attr == USB_ENDPOINT_SYNC_ASYNC &&
 	    altsd->bInterfaceClass == USB_CLASS_VENDOR_SPEC &&
@@ -475,6 +484,7 @@ static int set_sync_ep_implicit_fb_quirk(struct snd_usb_substream *subs,
 	return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 add_sync_ep_from_ifnum:
 	iface = usb_ifnum_to_if(dev, ifnum);
 
@@ -483,6 +493,8 @@ add_sync_ep_from_ifnum:
 
 	alts = &iface->altsetting[1];
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 add_sync_ep:
@@ -1481,12 +1493,15 @@ static void retire_capture_urb(struct snd_usb_substream *subs,
 		}
 		bytes = urb->iso_frame_desc[i].actual_length;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (subs->stream_offset_adj > 0) {
 			unsigned int adj = min(subs->stream_offset_adj, bytes);
 			cp += adj;
 			bytes -= adj;
 			subs->stream_offset_adj -= adj;
 		}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		frames = bytes / stride;

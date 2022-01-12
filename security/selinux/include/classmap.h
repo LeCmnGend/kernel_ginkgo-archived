@@ -116,8 +116,12 @@ struct security_class_mapping secclass_map[] = {
 	{ "netlink_route_socket",
 	  { COMMON_SOCK_PERMS,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    "nlmsg_read", "nlmsg_write", "nlmsg_readpriv", "nlmsg_getneigh",
 	    NULL } },
+=======
+	    "nlmsg_read", "nlmsg_write", "nlmsg_readpriv", NULL } },
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	    "nlmsg_read", "nlmsg_write", "nlmsg_readpriv", NULL } },
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

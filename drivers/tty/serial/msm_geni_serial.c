@@ -118,7 +118,11 @@
 #define UART_CONSOLE_CORE2X_VOTE (960)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define WAKEBYTE_TIMEOUT_MSEC	(100)
+=======
+#define WAKEBYTE_TIMEOUT_MSEC	(2000)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define WAKEBYTE_TIMEOUT_MSEC	(2000)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -220,7 +224,10 @@ struct msm_geni_serial_port {
 	struct completion m_cmd_timeout;
 	struct completion s_cmd_timeout;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct mutex ioctl_mutex;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -604,9 +611,13 @@ static int msm_geni_serial_ioctl(struct uart_port *uport, unsigned int cmd,
 {
 	struct msm_geni_serial_port *port = GET_DEV_PORT(uport);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret;
 
 	mutex_lock(&port->ioctl_mutex);
+=======
+	int ret = -ENOIOCTLCMD;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int ret = -ENOIOCTLCMD;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -615,6 +626,7 @@ static int msm_geni_serial_ioctl(struct uart_port *uport, unsigned int cmd,
 		return ret;
 
 	switch (cmd) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	case TIOCPMGET:
 		ret = vote_clock_on(uport);
@@ -633,6 +645,8 @@ static int msm_geni_serial_ioctl(struct uart_port *uport, unsigned int cmd,
 	mutex_unlock(&port->ioctl_mutex);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case TIOCPMGET: {
 		ret = vote_clock_on(uport);
 		break;
@@ -648,6 +662,9 @@ static int msm_geni_serial_ioctl(struct uart_port *uport, unsigned int cmd,
 	default:
 		break;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 }
@@ -1478,10 +1495,13 @@ static void start_rx_sequencer(struct uart_port *uport)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Start RX with the RFR_OPEN to keep RFR in always ready state */
 	msm_geni_serial_enable_interrupts(uport);
 	geni_setup_s_cmd(uport->membase, UART_START_READ, geni_se_param);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (port->xfer_mode == SE_DMA)
@@ -1489,11 +1509,17 @@ static void start_rx_sequencer(struct uart_port *uport)
 							&port->rx_dma);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Start RX with the RFR_OPEN to keep RFR in always ready state */
 	geni_setup_s_cmd(uport->membase, UART_START_READ, geni_se_param);
 	msm_geni_serial_enable_interrupts(uport);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Ensure that the above writes go through */
 	mb();
@@ -2308,10 +2334,13 @@ static int msm_geni_serial_port_setup(struct uart_port *uport)
 		geni_write_reg_nolog(cfg1, uport->membase,
 						SE_GENI_RX_PACKING_CFG1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		msm_port->handle_rx = handle_rx_hs;
 		msm_port->rx_fifo = devm_kzalloc(uport->dev,
 				sizeof(msm_port->rx_fifo_depth * sizeof(u32)),
 								GFP_KERNEL);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!msm_port->rx_fifo) {
@@ -2836,13 +2865,19 @@ static void msm_geni_serial_cancel_rx(struct uart_port *uport)
 	u32 rx_fifo_status;
 	u32 rx_fifo_wc;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32 geni_status;
 
 	geni_status = geni_read_reg_nolog(uport->membase, SE_GENI_STATUS);
 	/* Possible thats stop rx is already done from UEFI end */
 	if (!(geni_status & S_GENI_CMD_ACTIVE))
 		return;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	geni_cancel_s_cmd(uport->membase);
@@ -3444,11 +3479,17 @@ static int msm_geni_serial_probe(struct platform_device *pdev)
 								GFP_KERNEL);
 	} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dev_port->handle_rx = handle_rx_hs;
 		dev_port->rx_fifo = devm_kzalloc(uport->dev,
 				sizeof(dev_port->rx_fifo_depth * sizeof(u32)),
 								GFP_KERNEL);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (dev_port->pm_auto_suspend_disable) {
 			pm_runtime_set_active(&pdev->dev);
@@ -3769,7 +3810,10 @@ static int __init msm_geni_serial_init(void)
 		msm_geni_serial_ports[i].uport.flags = UPF_BOOT_AUTOCONF;
 		msm_geni_serial_ports[i].uport.line = i;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mutex_init(&msm_geni_serial_ports[i].ioctl_mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -3780,7 +3824,10 @@ static int __init msm_geni_serial_init(void)
 		msm_geni_console_port.uport.flags = UPF_BOOT_AUTOCONF;
 		msm_geni_console_port.uport.line = i;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mutex_init(&msm_geni_console_port.ioctl_mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

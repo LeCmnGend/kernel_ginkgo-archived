@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ifneq ($(CONFIG_MACH_XIAOMI),y)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 # SPDX-License-Identifier: GPL-2.0
@@ -591,7 +594,10 @@ endif
 
 endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 endif # CONFIG_MACH_XIAOMI
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

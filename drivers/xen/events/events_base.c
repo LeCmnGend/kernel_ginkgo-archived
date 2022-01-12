@@ -33,10 +33,13 @@
 #include <linux/irqnr.h>
 #include <linux/pci.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/spinlock.h>
 #include <linux/cpuhotplug.h>
 #include <linux/atomic.h>
 #include <linux/ktime.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -69,6 +72,7 @@
 #include "events_internal.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #undef MODULE_PARAM_PREFIX
 #define MODULE_PARAM_PREFIX "xen."
 
@@ -80,6 +84,8 @@ module_param(event_eoi_delay, uint, 0644);
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 const struct evtchn_ops *evtchn_ops;
 
 /*
@@ -88,6 +94,7 @@ const struct evtchn_ops *evtchn_ops;
  */
 static DEFINE_MUTEX(irq_mapping_update_lock);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /*
  * Lock protecting event handling loop against removing event channels.
@@ -108,6 +115,8 @@ static DEFINE_RWLOCK(evtchn_rwlock);
  *         irq_info->lock
  */
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static LIST_HEAD(xen_irq_list_head);
@@ -132,10 +141,14 @@ static bool (*pirq_needs_eoi)(unsigned irq);
 #define VALID_EVTCHN(chn)	((chn) != 0)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct irq_info *legacy_info_ptrs[NR_IRQS_LEGACY];
 
 static struct irq_chip xen_dynamic_chip;
 static struct irq_chip xen_lateeoi_chip;
+=======
+static struct irq_chip xen_dynamic_chip;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static struct irq_chip xen_dynamic_chip;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -145,9 +158,13 @@ static void enable_dynirq(struct irq_data *data);
 static void disable_dynirq(struct irq_data *data);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static DEFINE_PER_CPU(unsigned int, irq_epoch);
 
 static void clear_evtchn_to_irq_row(int *evtchn_row)
+=======
+static void clear_evtchn_to_irq_row(unsigned row)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void clear_evtchn_to_irq_row(unsigned row)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -156,7 +173,11 @@ static void clear_evtchn_to_irq_row(unsigned row)
 
 	for (col = 0; col < EVTCHN_PER_ROW; col++)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		WRITE_ONCE(evtchn_row[col], -1);
+=======
+		evtchn_to_irq[row][col] = -1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		evtchn_to_irq[row][col] = -1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -170,7 +191,11 @@ static void clear_evtchn_to_irq_all(void)
 		if (evtchn_to_irq[row] == NULL)
 			continue;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		clear_evtchn_to_irq_row(evtchn_to_irq[row]);
+=======
+		clear_evtchn_to_irq_row(row);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		clear_evtchn_to_irq_row(row);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -182,7 +207,10 @@ static int set_evtchn_to_irq(unsigned evtchn, unsigned irq)
 	unsigned row;
 	unsigned col;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int *evtchn_row;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -197,6 +225,7 @@ static int set_evtchn_to_irq(unsigned evtchn, unsigned irq)
 		if (irq == -1)
 			return 0;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 		evtchn_row = (int *) __get_free_pages(GFP_KERNEL, 0);
 		if (evtchn_row == NULL)
@@ -214,6 +243,8 @@ static int set_evtchn_to_irq(unsigned evtchn, unsigned irq)
 
 	WRITE_ONCE(evtchn_to_irq[row][col], irq);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		evtchn_to_irq[row] = (int *)get_zeroed_page(GFP_KERNEL);
 		if (evtchn_to_irq[row] == NULL)
 			return -ENOMEM;
@@ -222,6 +253,9 @@ static int set_evtchn_to_irq(unsigned evtchn, unsigned irq)
 	}
 
 	evtchn_to_irq[row][col] = irq;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
@@ -233,7 +267,11 @@ int get_evtchn_to_irq(unsigned evtchn)
 	if (evtchn_to_irq[EVTCHN_ROW(evtchn)] == NULL)
 		return -1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return READ_ONCE(evtchn_to_irq[EVTCHN_ROW(evtchn)][EVTCHN_COL(evtchn)]);
+=======
+	return evtchn_to_irq[EVTCHN_ROW(evtchn)][EVTCHN_COL(evtchn)];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return evtchn_to_irq[EVTCHN_ROW(evtchn)][EVTCHN_COL(evtchn)];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -242,6 +280,7 @@ int get_evtchn_to_irq(unsigned evtchn)
 /* Get info for IRQ */
 struct irq_info *info_for_irq(unsigned irq)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (irq < nr_legacy_irqs())
 		return legacy_info_ptrs[irq];
@@ -255,6 +294,9 @@ static void set_info_for_irq(unsigned int irq, struct irq_info *info)
 		legacy_info_ptrs[irq] = info;
 	else
 		irq_set_chip_data(irq, info);
+=======
+	return irq_get_handler_data(irq);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return irq_get_handler_data(irq);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -276,8 +318,11 @@ static int xen_irq_info_common_setup(struct irq_info *info,
 	info->evtchn = evtchn;
 	info->cpu = cpu;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	info->mask_reason = EVT_MASK_REASON_EXPLICIT;
 	raw_spin_lock_init(&info->lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -347,7 +392,10 @@ static void xen_irq_info_cleanup(struct irq_info *info)
 {
 	set_evtchn_to_irq(info->evtchn, -1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	xen_evtchn_port_remove(info->evtchn, info->cpu);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	info->evtchn = 0;
@@ -359,6 +407,7 @@ static void xen_irq_info_cleanup(struct irq_info *info)
 unsigned int evtchn_from_irq(unsigned irq)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	const struct irq_info *info = NULL;
 
 	if (likely(irq < nr_irqs))
@@ -368,10 +417,15 @@ unsigned int evtchn_from_irq(unsigned irq)
 
 	return info->evtchn;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (unlikely(WARN(irq >= nr_irqs, "Invalid irq %d!\n", irq)))
 		return 0;
 
 	return info_for_irq(irq)->evtchn;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -438,6 +492,7 @@ unsigned int cpu_from_evtchn(unsigned int evtchn)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void do_mask(struct irq_info *info, u8 reason)
 {
 	unsigned long flags;
@@ -466,6 +521,8 @@ static void do_unmask(struct irq_info *info, u8 reason)
 	raw_spin_unlock_irqrestore(&info->lock, flags);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_X86
@@ -514,6 +571,7 @@ void notify_remote_via_irq(int irq)
 }
 EXPORT_SYMBOL_GPL(notify_remote_via_irq);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 struct lateeoi_work {
 	struct delayed_work delayed;
@@ -674,6 +732,11 @@ static void xen_irq_init(unsigned irq)
 {
 	struct irq_info *info;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+static void xen_irq_init(unsigned irq)
+{
+	struct irq_info *info;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_SMP
 	/* By default all event channels notify CPU#0. */
 	cpumask_copy(irq_get_affinity_mask(irq), cpumask_of(0));
@@ -687,9 +750,14 @@ static void xen_irq_init(unsigned irq)
 	info->refcnt = -1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	set_info_for_irq(irq, info);
 
 	INIT_LIST_HEAD(&info->eoi_list);
+=======
+	irq_set_handler_data(irq, info);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	irq_set_handler_data(irq, info);
 
@@ -742,8 +810,12 @@ static int __must_check xen_allocate_irq_gsi(unsigned gsi)
 static void xen_free_irq(unsigned irq)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct irq_info *info = info_for_irq(irq);
 	unsigned long flags;
+=======
+	struct irq_info *info = irq_get_handler_data(irq);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct irq_info *info = irq_get_handler_data(irq);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -751,6 +823,7 @@ static void xen_free_irq(unsigned irq)
 	if (WARN_ON(!info))
 		return;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	write_lock_irqsave(&evtchn_rwlock, flags);
 
@@ -766,12 +839,17 @@ static void xen_free_irq(unsigned irq)
 	write_unlock_irqrestore(&evtchn_rwlock, flags);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	list_del(&info->list);
 
 	irq_set_handler_data(irq, NULL);
 
 	WARN_ON(info->refcnt > 0);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kfree(info);
 
@@ -792,12 +870,15 @@ static void xen_evtchn_close(unsigned int port)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void event_handler_exit(struct irq_info *info)
 {
 	smp_store_release(&info->is_active, 0);
 	clear_evtchn(info->evtchn);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void pirq_query_unmask(int irq)
@@ -819,8 +900,12 @@ static void pirq_query_unmask(int irq)
 static void eoi_pirq(struct irq_data *data)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct irq_info *info = info_for_irq(data->irq);
 	int evtchn = info ? info->evtchn : 0;
+=======
+	int evtchn = evtchn_from_irq(data->irq);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int evtchn = evtchn_from_irq(data->irq);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -833,6 +918,7 @@ static void eoi_pirq(struct irq_data *data)
 	if (unlikely(irqd_is_setaffinity_pending(data)) &&
 	    likely(!irqd_irq_disabled(data))) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		do_mask(info, EVT_MASK_REASON_TEMPORARY);
 
 		event_handler_exit(info);
@@ -843,6 +929,8 @@ static void eoi_pirq(struct irq_data *data)
 	} else
 		event_handler_exit(info);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		int masked = test_and_set_mask(evtchn);
 
 		clear_evtchn(evtchn);
@@ -853,6 +941,9 @@ static void eoi_pirq(struct irq_data *data)
 			unmask_evtchn(evtchn);
 	} else
 		clear_evtchn(evtchn);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (pirq_needs_eoi(data->irq)) {
@@ -905,8 +996,12 @@ static unsigned int __startup_pirq(unsigned int irq)
 
 out:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	do_unmask(info, EVT_MASK_REASON_EXPLICIT);
 
+=======
+	unmask_evtchn(evtchn);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unmask_evtchn(evtchn);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -937,7 +1032,11 @@ static void shutdown_pirq(struct irq_data *data)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	do_mask(info, EVT_MASK_REASON_EXPLICIT);
+=======
+	mask_evtchn(evtchn);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mask_evtchn(evtchn);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -975,7 +1074,11 @@ static void __unbind_from_irq(unsigned int irq)
 {
 	int evtchn = evtchn_from_irq(irq);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct irq_info *info = info_for_irq(irq);
+=======
+	struct irq_info *info = irq_get_handler_data(irq);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct irq_info *info = irq_get_handler_data(irq);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1204,7 +1307,11 @@ int xen_pirq_from_irq(unsigned irq)
 EXPORT_SYMBOL_GPL(xen_pirq_from_irq);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int bind_evtchn_to_irq_chip(evtchn_port_t evtchn, struct irq_chip *chip)
+=======
+int bind_evtchn_to_irq(unsigned int evtchn)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int bind_evtchn_to_irq(unsigned int evtchn)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1225,7 +1332,11 @@ int bind_evtchn_to_irq(unsigned int evtchn)
 			goto out;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		irq_set_chip_and_handler_name(irq, chip,
+=======
+		irq_set_chip_and_handler_name(irq, &xen_dynamic_chip,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		irq_set_chip_and_handler_name(irq, &xen_dynamic_chip,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1250,6 +1361,7 @@ out:
 	return irq;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 int bind_evtchn_to_irq(evtchn_port_t evtchn)
 {
@@ -1263,6 +1375,10 @@ int bind_evtchn_to_irq_lateeoi(evtchn_port_t evtchn)
 }
 EXPORT_SYMBOL_GPL(bind_evtchn_to_irq_lateeoi);
 
+=======
+EXPORT_SYMBOL_GPL(bind_evtchn_to_irq);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 EXPORT_SYMBOL_GPL(bind_evtchn_to_irq);
 
@@ -1309,9 +1425,14 @@ static int bind_ipi_to_irq(unsigned int ipi, unsigned int cpu)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int bind_interdomain_evtchn_to_irq_chip(unsigned int remote_domain,
 					       evtchn_port_t remote_port,
 					       struct irq_chip *chip)
+=======
+int bind_interdomain_evtchn_to_irq(unsigned int remote_domain,
+				   unsigned int remote_port)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int bind_interdomain_evtchn_to_irq(unsigned int remote_domain,
 				   unsigned int remote_port)
@@ -1326,6 +1447,7 @@ int bind_interdomain_evtchn_to_irq(unsigned int remote_domain,
 	err = HYPERVISOR_event_channel_op(EVTCHNOP_bind_interdomain,
 					  &bind_interdomain);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	return err ? : bind_evtchn_to_irq_chip(bind_interdomain.local_port,
 					       chip);
@@ -1348,10 +1470,15 @@ int bind_interdomain_evtchn_to_irq_lateeoi(unsigned int remote_domain,
 EXPORT_SYMBOL_GPL(bind_interdomain_evtchn_to_irq_lateeoi);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return err ? : bind_evtchn_to_irq(bind_interdomain.local_port);
 }
 EXPORT_SYMBOL_GPL(bind_interdomain_evtchn_to_irq);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int find_virq(unsigned int virq, unsigned int cpu)
 {
@@ -1449,6 +1576,7 @@ static void unbind_from_irq(unsigned int irq)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int bind_evtchn_to_irqhandler_chip(evtchn_port_t evtchn,
 					  irq_handler_t handler,
 					  unsigned long irqflags,
@@ -1459,6 +1587,8 @@ static int bind_evtchn_to_irqhandler_chip(evtchn_port_t evtchn,
 
 	irq = bind_evtchn_to_irq_chip(evtchn, chip);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int bind_evtchn_to_irqhandler(unsigned int evtchn,
 			      irq_handler_t handler,
 			      unsigned long irqflags,
@@ -1467,6 +1597,9 @@ int bind_evtchn_to_irqhandler(unsigned int evtchn,
 	int irq, retval;
 
 	irq = bind_evtchn_to_irq(evtchn);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (irq < 0)
 		return irq;
@@ -1478,6 +1611,7 @@ int bind_evtchn_to_irqhandler(unsigned int evtchn,
 
 	return irq;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 int bind_evtchn_to_irqhandler(evtchn_port_t evtchn,
@@ -1512,6 +1646,8 @@ static int bind_interdomain_evtchn_to_irqhandler_chip(
 	irq = bind_interdomain_evtchn_to_irq_chip(remote_domain, remote_port,
 						  chip);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 EXPORT_SYMBOL_GPL(bind_evtchn_to_irqhandler);
 
 int bind_interdomain_evtchn_to_irqhandler(unsigned int remote_domain,
@@ -1524,6 +1660,9 @@ int bind_interdomain_evtchn_to_irqhandler(unsigned int remote_domain,
 	int irq, retval;
 
 	irq = bind_interdomain_evtchn_to_irq(remote_domain, remote_port);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (irq < 0)
 		return irq;
@@ -1536,6 +1675,7 @@ int bind_interdomain_evtchn_to_irqhandler(unsigned int remote_domain,
 
 	return irq;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 int bind_interdomain_evtchn_to_irqhandler(unsigned int remote_domain,
@@ -1564,6 +1704,10 @@ int bind_interdomain_evtchn_to_irqhandler_lateeoi(unsigned int remote_domain,
 }
 EXPORT_SYMBOL_GPL(bind_interdomain_evtchn_to_irqhandler_lateeoi);
 
+=======
+EXPORT_SYMBOL_GPL(bind_interdomain_evtchn_to_irqhandler);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 EXPORT_SYMBOL_GPL(bind_interdomain_evtchn_to_irqhandler);
 
@@ -1613,7 +1757,11 @@ int bind_ipi_to_irqhandler(enum ipi_vector ipi,
 void unbind_from_irqhandler(unsigned int irq, void *dev_id)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct irq_info *info = info_for_irq(irq);
+=======
+	struct irq_info *info = irq_get_handler_data(irq);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct irq_info *info = irq_get_handler_data(irq);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1651,7 +1799,11 @@ int evtchn_make_refcounted(unsigned int evtchn)
 		return -ENOENT;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	info = info_for_irq(irq);
+=======
+	info = irq_get_handler_data(irq);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	info = irq_get_handler_data(irq);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1683,7 +1835,11 @@ int evtchn_get(unsigned int evtchn)
 		goto done;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	info = info_for_irq(irq);
+=======
+	info = irq_get_handler_data(irq);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	info = irq_get_handler_data(irq);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1693,7 +1849,11 @@ int evtchn_get(unsigned int evtchn)
 
 	err = -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (info->refcnt <= 0 || info->refcnt == SHRT_MAX)
+=======
+	if (info->refcnt <= 0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (info->refcnt <= 0)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1735,6 +1895,7 @@ void xen_send_IPI_one(unsigned int cpu, enum ipi_vector vector)
 	notify_remote_via_irq(irq);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 struct evtchn_loop_ctrl {
 	ktime_t timeout;
@@ -1788,6 +1949,8 @@ void handle_irq_for_port(evtchn_port_t port, struct evtchn_loop_ctrl *ctrl)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static DEFINE_PER_CPU(unsigned, xed_nesting_count);
 
 static void __xen_evtchn_do_upcall(void)
@@ -1796,9 +1959,12 @@ static void __xen_evtchn_do_upcall(void)
 	int cpu = get_cpu();
 	unsigned count;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct evtchn_loop_ctrl ctrl = { 0 };
 
 	read_lock(&evtchn_rwlock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1809,7 +1975,11 @@ static void __xen_evtchn_do_upcall(void)
 			goto out;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		xen_evtchn_handle_events(cpu, &ctrl);
+=======
+		xen_evtchn_handle_events(cpu);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		xen_evtchn_handle_events(cpu);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1822,6 +1992,7 @@ static void __xen_evtchn_do_upcall(void)
 
 out:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	read_unlock(&evtchn_rwlock);
 
 	/*
@@ -1830,6 +2001,8 @@ out:
 	 * above.
 	 */
 	__this_cpu_inc(irq_epoch);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1891,15 +2064,21 @@ void rebind_evtchn_irq(int evtchn, int irq)
 
 /* Rebind an evtchn so that it gets delivered to a specific cpu */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int xen_rebind_evtchn_to_cpu(struct irq_info *info, unsigned int tcpu)
 {
 	struct evtchn_bind_vcpu bind_vcpu;
 	evtchn_port_t evtchn = info ? info->evtchn : 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int xen_rebind_evtchn_to_cpu(int evtchn, unsigned int tcpu)
 {
 	struct evtchn_bind_vcpu bind_vcpu;
 	int masked;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!VALID_EVTCHN(evtchn))
@@ -1917,7 +2096,11 @@ static int xen_rebind_evtchn_to_cpu(int evtchn, unsigned int tcpu)
 	 * it being delivered on an unexpected VCPU.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	do_mask(info, EVT_MASK_REASON_TEMPORARY);
+=======
+	masked = test_and_set_mask(evtchn);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	masked = test_and_set_mask(evtchn);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1931,7 +2114,12 @@ static int xen_rebind_evtchn_to_cpu(int evtchn, unsigned int tcpu)
 		bind_evtchn_to_cpu(evtchn, tcpu);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	do_unmask(info, EVT_MASK_REASON_TEMPORARY);
+=======
+	if (!masked)
+		unmask_evtchn(evtchn);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!masked)
 		unmask_evtchn(evtchn);
@@ -1945,7 +2133,11 @@ static int set_affinity_irq(struct irq_data *data, const struct cpumask *dest,
 {
 	unsigned tcpu = cpumask_first_and(dest, cpu_online_mask);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret = xen_rebind_evtchn_to_cpu(info_for_irq(data->irq), tcpu);
+=======
+	int ret = xen_rebind_evtchn_to_cpu(evtchn_from_irq(data->irq), tcpu);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int ret = xen_rebind_evtchn_to_cpu(evtchn_from_irq(data->irq), tcpu);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1968,21 +2160,28 @@ EXPORT_SYMBOL_GPL(xen_set_affinity_evtchn);
 static void enable_dynirq(struct irq_data *data)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct irq_info *info = info_for_irq(data->irq);
 	evtchn_port_t evtchn = info ? info->evtchn : 0;
 
 	if (VALID_EVTCHN(evtchn))
 		do_unmask(info, EVT_MASK_REASON_EXPLICIT);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int evtchn = evtchn_from_irq(data->irq);
 
 	if (VALID_EVTCHN(evtchn))
 		unmask_evtchn(evtchn);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void disable_dynirq(struct irq_data *data)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	struct irq_info *info = info_for_irq(data->irq);
 	evtchn_port_t evtchn = info ? info->evtchn : 0;
@@ -1990,18 +2189,27 @@ static void disable_dynirq(struct irq_data *data)
 	if (VALID_EVTCHN(evtchn))
 		do_mask(info, EVT_MASK_REASON_EXPLICIT);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int evtchn = evtchn_from_irq(data->irq);
 
 	if (VALID_EVTCHN(evtchn))
 		mask_evtchn(evtchn);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void ack_dynirq(struct irq_data *data)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct irq_info *info = info_for_irq(data->irq);
 	evtchn_port_t evtchn = info ? info->evtchn : 0;
+=======
+	int evtchn = evtchn_from_irq(data->irq);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int evtchn = evtchn_from_irq(data->irq);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2011,6 +2219,7 @@ static void ack_dynirq(struct irq_data *data)
 
 	if (unlikely(irqd_is_setaffinity_pending(data)) &&
 	    likely(!irqd_irq_disabled(data))) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 		do_mask(info, EVT_MASK_REASON_TEMPORARY);
 
@@ -2022,6 +2231,8 @@ static void ack_dynirq(struct irq_data *data)
 	} else
 		event_handler_exit(info);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		int masked = test_and_set_mask(evtchn);
 
 		clear_evtchn(evtchn);
@@ -2032,6 +2243,9 @@ static void ack_dynirq(struct irq_data *data)
 			unmask_evtchn(evtchn);
 	} else
 		clear_evtchn(evtchn);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -2041,6 +2255,7 @@ static void mask_ack_dynirq(struct irq_data *data)
 	ack_dynirq(data);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static void lateeoi_ack_dynirq(struct irq_data *data)
 {
@@ -2081,24 +2296,35 @@ static int retrigger_dynirq(struct irq_data *data)
 	struct irq_info *info = info_for_irq(data->irq);
 	evtchn_port_t evtchn = info ? info->evtchn : 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int retrigger_dynirq(struct irq_data *data)
 {
 	unsigned int evtchn = evtchn_from_irq(data->irq);
 	int masked;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!VALID_EVTCHN(evtchn))
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	do_mask(info, EVT_MASK_REASON_TEMPORARY);
 	set_evtchn(evtchn);
 	do_unmask(info, EVT_MASK_REASON_TEMPORARY);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	masked = test_and_set_mask(evtchn);
 	set_evtchn(evtchn);
 	if (!masked)
 		unmask_evtchn(evtchn);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 1;
@@ -2195,16 +2421,22 @@ static void restore_cpu_ipis(unsigned int cpu)
 void xen_clear_irq_pending(int irq)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct irq_info *info = info_for_irq(irq);
 	evtchn_port_t evtchn = info ? info->evtchn : 0;
 
 	if (VALID_EVTCHN(evtchn))
 		event_handler_exit(info);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int evtchn = evtchn_from_irq(irq);
 
 	if (VALID_EVTCHN(evtchn))
 		clear_evtchn(evtchn);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL(xen_clear_irq_pending);
@@ -2306,6 +2538,7 @@ static struct irq_chip xen_dynamic_chip __read_mostly = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct irq_chip xen_lateeoi_chip __read_mostly = {
 	/* The chip name needs to contain "xen-dyn" for irqbalance to work. */
 	.name			= "xen-dyn-lateeoi",
@@ -2321,6 +2554,8 @@ static struct irq_chip xen_lateeoi_chip __read_mostly = {
 	.irq_retrigger		= retrigger_dynirq,
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct irq_chip xen_pirq_chip __read_mostly = {
@@ -2354,7 +2589,10 @@ static struct irq_chip xen_percpu_chip __read_mostly = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int xen_set_callback_via(uint64_t via)
 {
 	struct xen_hvm_param a;
@@ -2365,6 +2603,9 @@ int xen_set_callback_via(uint64_t via)
 }
 EXPORT_SYMBOL_GPL(xen_set_callback_via);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_XEN_PVHVM
 /* Vector callbacks are better than PCI interrupts to receive event
@@ -2393,6 +2634,7 @@ void xen_callback_vector(void) {}
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool fifo_events = true;
 module_param(fifo_events, bool, 0);
 
@@ -2419,12 +2661,17 @@ static int xen_evtchn_cpu_dead(unsigned int cpu)
 }
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #undef MODULE_PARAM_PREFIX
 #define MODULE_PARAM_PREFIX "xen."
 
 static bool fifo_events = true;
 module_param(fifo_events, bool, 0);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void __init xen_init_IRQ(void)
 {
@@ -2437,12 +2684,15 @@ void __init xen_init_IRQ(void)
 		xen_evtchn_2l_init();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	xen_cpu_init_eoi(smp_processor_id());
 
 	cpuhp_setup_state_nocalls(CPUHP_XEN_EVTCHN_PREPARE,
 				  "xen/evtchn:prepare",
 				  xen_evtchn_cpu_prepare, xen_evtchn_cpu_dead);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	evtchn_to_irq = kcalloc(EVTCHN_ROW(xen_evtchn_max_channels()),

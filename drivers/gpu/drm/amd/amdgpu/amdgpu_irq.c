@@ -438,7 +438,11 @@ void amdgpu_irq_gpu_reset_resume_helper(struct amdgpu_device *adev)
 			struct amdgpu_irq_src *src = adev->irq.client[i].sources[j];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (!src || !src->funcs || !src->funcs->set)
+=======
+			if (!src)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (!src)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

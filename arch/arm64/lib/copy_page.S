@@ -29,7 +29,11 @@
  *	x1 - src
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 SYM_FUNC_START_PI(copy_page)
+=======
+ENTRY(copy_page)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 ENTRY(copy_page)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -91,7 +95,11 @@ alternative_else_nop_endif
 
 	ret
 <<<<<<< HEAD
+<<<<<<< HEAD
 SYM_FUNC_END_PI(copy_page)
+=======
+ENDPROC(copy_page)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 ENDPROC(copy_page)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

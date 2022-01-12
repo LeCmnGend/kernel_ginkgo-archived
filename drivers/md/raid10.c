@@ -1121,7 +1121,11 @@ static void raid10_read_request(struct mddev *mddev, struct bio *bio,
 	gfp_t gfp = GFP_NOIO;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (slot >= 0 && r10_bio->devs[slot].rdev) {
+=======
+	if (r10_bio->devs[slot].rdev) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (r10_bio->devs[slot].rdev) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1518,7 +1522,10 @@ static void __make_request(struct mddev *mddev, struct bio *bio, int sectors)
 	r10_bio->sector = bio->bi_iter.bi_sector;
 	r10_bio->state = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	r10_bio->read_slot = -1;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	memset(r10_bio->devs, 0, sizeof(r10_bio->devs[0]) * conf->copies);

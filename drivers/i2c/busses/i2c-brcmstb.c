@@ -319,7 +319,11 @@ static int brcmstb_send_i2c_cmd(struct brcmstb_i2c_dev *dev,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if ((cmd == CMD_RD || cmd == CMD_WR) &&
+=======
+	if ((CMD_RD || CMD_WR) &&
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if ((CMD_RD || CMD_WR) &&
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -216,8 +216,11 @@ source "drivers/input/sensors/smi130/Kconfig"
 source "drivers/input/rmi4/Kconfig"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 source "drivers/input/fingerprint/Kconfig"
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 endif

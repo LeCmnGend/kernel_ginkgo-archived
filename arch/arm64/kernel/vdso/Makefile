@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0
 #
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Makefile for the linux kernel.
 #
 
@@ -82,6 +83,8 @@ ifeq ($(CONFIG_DEBUG_EFI),y)
 AFLAGS_head.o += -DVMLINUX_PATH="\"$(realpath $(objtree)/vmlinux)\""
 endif
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 # Building a vDSO image for AArch64.
 #
 # Author: Will Deacon <will.deacon@arm.com>
@@ -146,4 +149,7 @@ vdso.so: $(obj)/vdso.so.dbg
 	$(call cmd,vdso_install)
 
 vdso_install: vdso.so
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

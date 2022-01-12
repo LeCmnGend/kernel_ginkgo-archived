@@ -732,7 +732,11 @@ static char *nodename_from_path(const char *ppath, const char *cpath)
 	plen = strlen(ppath);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!strstarts(cpath, ppath))
+=======
+	if (!strneq(ppath, cpath, plen))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!strneq(ppath, cpath, plen))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -27,7 +27,11 @@ Example (for ARM-based BeagleBone with NPC100 NFC controller on I2C2):
 
 		interrupt-parent = <&gpio1>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		interrupts = <29 IRQ_TYPE_LEVEL_HIGH>;
+=======
+		interrupts = <29 GPIO_ACTIVE_HIGH>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		interrupts = <29 GPIO_ACTIVE_HIGH>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

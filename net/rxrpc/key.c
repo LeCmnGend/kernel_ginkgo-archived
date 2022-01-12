@@ -906,7 +906,11 @@ int rxrpc_request_key(struct rxrpc_sock *rx, char __user *optval, int optlen)
 	_enter("");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (optlen <= 0 || optlen > PAGE_SIZE - 1 || rx->securities)
+=======
+	if (optlen <= 0 || optlen > PAGE_SIZE - 1)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (optlen <= 0 || optlen > PAGE_SIZE - 1)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1080,7 +1084,11 @@ static long rxrpc_read(const struct key *key,
 		switch (token->security_index) {
 		case RXRPC_SECURITY_RXKAD:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			toksize += 8 * 4;	/* viceid, kvno, key*2, begin,
+=======
+			toksize += 9 * 4;	/* viceid, kvno, key*2 + len, begin,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			toksize += 9 * 4;	/* viceid, kvno, key*2 + len, begin,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1119,9 +1127,14 @@ static long rxrpc_read(const struct key *key,
 
 		default: /* we have a ticket we can't encode */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_err("Unsupported key token type (%u)\n",
 			       token->security_index);
 			return -ENOPKG;
+=======
+			BUG();
+			continue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			BUG();
 			continue;
@@ -1156,6 +1169,7 @@ static long rxrpc_read(const struct key *key,
 		xdr += (_l + 3) >> 2;					\
 	} while(0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define ENCODE_BYTES(l, s)						\
 	do {								\
 		u32 _l = (l);						\
@@ -1164,6 +1178,8 @@ static long rxrpc_read(const struct key *key,
 			memcpy((u8 *)xdr + _l, &zero, 4 - (_l & 3));	\
 		xdr += (_l + 3) >> 2;					\
 	} while(0)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define ENCODE64(x)					\
@@ -1194,7 +1210,11 @@ static long rxrpc_read(const struct key *key,
 			ENCODE(token->kad->vice_id);
 			ENCODE(token->kad->kvno);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ENCODE_BYTES(8, token->kad->session_key);
+=======
+			ENCODE_DATA(8, token->kad->session_key);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ENCODE_DATA(8, token->kad->session_key);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1248,9 +1268,14 @@ static long rxrpc_read(const struct key *key,
 
 		default:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_err("Unsupported key token type (%u)\n",
 			       token->security_index);
 			return -ENOPKG;
+=======
+			BUG();
+			break;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			BUG();
 			break;

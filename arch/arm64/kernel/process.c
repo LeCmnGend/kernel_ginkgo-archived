@@ -265,11 +265,14 @@ void __show_regs(struct pt_regs *regs)
 
 	while (i >= 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		printk("x%-2d: %016llx", i, regs->regs[i]);
 
 		while (i-- % 3)
 			pr_cont(" x%-2d: %016llx", i, regs->regs[i]);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		printk("x%-2d: %016llx ", i, regs->regs[i]);
 		i--;
 
@@ -277,6 +280,9 @@ void __show_regs(struct pt_regs *regs)
 			pr_cont("x%-2d: %016llx ", i, regs->regs[i]);
 			i--;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		pr_cont("\n");

@@ -316,7 +316,11 @@ static struct bio *__bio_chain_endio(struct bio *bio)
 	struct bio *parent = bio->bi_private;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (bio->bi_status && !parent->bi_status)
+=======
+	if (!parent->bi_status)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!parent->bi_status)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1026,6 +1030,7 @@ int submit_bio_wait(struct bio *bio)
 EXPORT_SYMBOL(submit_bio_wait);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void submit_bio_nowait_endio(struct bio *bio)
 {
 	bio_put(bio);
@@ -1045,6 +1050,8 @@ void submit_bio_nowait(struct bio *bio)
 }
 EXPORT_SYMBOL(submit_bio_nowait);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**

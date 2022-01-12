@@ -509,7 +509,11 @@ static struct socket *sockfd_lookup_light(int fd, int *err, int *fput_needed)
 		sock = sock_from_file(f.file, err);
 		if (likely(sock)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			*fput_needed = f.flags & FDPUT_FPUT;
+=======
+			*fput_needed = f.flags;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			*fput_needed = f.flags;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

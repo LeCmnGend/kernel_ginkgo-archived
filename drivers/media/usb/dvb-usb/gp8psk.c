@@ -186,7 +186,11 @@ out_rel_fw:
 static int gp8psk_power_ctrl(struct dvb_usb_device *d, int onoff)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8 status = 0, buf;
+=======
+	u8 status, buf;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u8 status, buf;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

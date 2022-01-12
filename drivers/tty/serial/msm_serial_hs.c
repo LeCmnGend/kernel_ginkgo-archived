@@ -62,7 +62,10 @@
 #include <asm/irq.h>
 #include <linux/kthread.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <uapi/linux/sched.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2764,7 +2767,10 @@ static int uartdm_init_port(struct uart_port *uport)
 	struct msm_hs_tx *tx = &msm_uport->tx;
 	struct msm_hs_rx *rx = &msm_uport->rx;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct sched_param param = { .sched_priority = 1 };
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2782,8 +2788,11 @@ static int uartdm_init_port(struct uart_port *uport)
 		goto exit_lh_init;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sched_setscheduler(rx->task, SCHED_FIFO, &param);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kthread_init_work(&rx->kwork, msm_serial_hs_rx_work);
@@ -2796,7 +2805,10 @@ static int uartdm_init_port(struct uart_port *uport)
 		goto exit_lh_init;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sched_setscheduler(tx->task, SCHED_FIFO, &param);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -3319,7 +3331,10 @@ static void  msm_serial_hs_rt_init(struct uart_port *uport)
 	mutex_unlock(&msm_uport->mtx);
 	pm_runtime_enable(uport->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tty_port_set_policy(&uport->state->port, SCHED_FIFO, 1);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

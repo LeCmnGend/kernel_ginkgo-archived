@@ -779,11 +779,16 @@ int dss_runtime_get(void)
 
 	r = pm_runtime_get_sync(&dss.pdev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (WARN_ON(r < 0)) {
 		pm_runtime_put_sync(&dss.pdev->dev);
 		return r;
 	}
 	return 0;
+=======
+	WARN_ON(r < 0);
+	return r < 0 ? r : 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	WARN_ON(r < 0);
 	return r < 0 ? r : 0;
@@ -852,7 +857,11 @@ static const struct dss_features omap34xx_dss_feats = {
 
 static const struct dss_features omap3630_dss_feats = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.fck_div_max		=	31,
+=======
+	.fck_div_max		=	32,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.fck_div_max		=	32,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

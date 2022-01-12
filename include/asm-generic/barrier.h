@@ -222,26 +222,37 @@ do {									\
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * smp_cond_load_relaxed() - (Spin) wait for cond with no ordering guarantees
  * @ptr: pointer to the variable to wait on
  * @cond: boolean expression to wait for
  *
  * Equivalent to using READ_ONCE() on the condition variable.
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * smp_cond_load_acquire() - (Spin) wait for cond with ACQUIRE ordering
  * @ptr: pointer to the variable to wait on
  * @cond: boolean expression to wait for
  *
  * Equivalent to using smp_load_acquire() on the condition variable but employs
  * the control dependency of the wait to reduce the barrier on many platforms.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * Due to C lacking lambda expressions we load the value of *ptr into a
  * pre-named variable @VAL to be used in @cond.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef smp_cond_load_relaxed
 #define smp_cond_load_relaxed(ptr, cond_expr) ({		\
+=======
+#ifndef smp_cond_load_acquire
+#define smp_cond_load_acquire(ptr, cond_expr) ({		\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #ifndef smp_cond_load_acquire
 #define smp_cond_load_acquire(ptr, cond_expr) ({		\
@@ -254,6 +265,7 @@ do {									\
 			break;					\
 		cpu_relax();					\
 	}							\
+<<<<<<< HEAD
 <<<<<<< HEAD
 	VAL;							\
 })
@@ -273,6 +285,10 @@ do {									\
 	_val = smp_cond_load_relaxed(ptr, cond_expr);		\
 	smp_acquire__after_ctrl_dep();				\
 	_val;							\
+=======
+	smp_acquire__after_ctrl_dep();				\
+	VAL;							\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	smp_acquire__after_ctrl_dep();				\
 	VAL;							\

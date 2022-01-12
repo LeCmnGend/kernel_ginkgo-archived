@@ -212,7 +212,11 @@ autoconf_fail:
 
 	ret = usb_assign_descriptors(f, fs_loopback_descs, hs_loopback_descs,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ss_loopback_descs, ss_loopback_descs);
+=======
+			ss_loopback_descs, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ss_loopback_descs, NULL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

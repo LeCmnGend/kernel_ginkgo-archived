@@ -80,7 +80,11 @@ static int timeriomem_rng_read(struct hwrng *hwrng, void *data,
 		if (retval > 0)
 			usleep_range(period_us,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					period_us + max(1, period_us / 100));
+=======
+					period_us + min(1, period_us / 100));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					period_us + min(1, period_us / 100));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

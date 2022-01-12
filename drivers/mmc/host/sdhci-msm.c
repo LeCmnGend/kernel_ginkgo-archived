@@ -1405,6 +1405,7 @@ retry:
 
 	if (tuned_phase_cnt) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (tuned_phase_cnt == ARRAY_SIZE(tuned_phases)) {
 			/*
 			 * All phases valid is _almost_ as bad as no phases
@@ -1421,6 +1422,8 @@ retry:
 			}
 		}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rc = msm_find_most_appropriate_phase(host, tuned_phases,
@@ -1867,11 +1870,14 @@ static int sdhci_msm_pm_qos_parse_cpu_groups(struct device *dev,
 	struct device_node *np = dev->of_node;
 	u32 mask;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int nr_groups = 1;
 	int ret;
 	int i;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int nr_groups;
 	int ret;
 	int i;
@@ -1882,6 +1888,9 @@ static int sdhci_msm_pm_qos_parse_cpu_groups(struct device *dev,
 		ret = -EINVAL;
 		goto out;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pdata->pm_qos_data.cpu_group_map.nr_groups = nr_groups;
 	pdata->pm_qos_data.cpu_group_map.mask =
@@ -4173,8 +4182,13 @@ void sdhci_msm_pm_qos_irq_init(struct sdhci_host *host)
 		set_affine_irq(msm_host, host);
 	else
 <<<<<<< HEAD
+<<<<<<< HEAD
 		atomic_set(&msm_host->pm_qos_irq.req.cpus_affine,
 			*cpumask_bits(cpumask_of(msm_host->pdata->pm_qos_data.irq_cpu)));
+=======
+		cpumask_copy(&msm_host->pm_qos_irq.req.cpus_affine,
+			cpumask_of(msm_host->pdata->pm_qos_data.irq_cpu));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		cpumask_copy(&msm_host->pm_qos_irq.req.cpus_affine,
 			cpumask_of(msm_host->pdata->pm_qos_data.irq_cpu));
@@ -4233,8 +4247,13 @@ static ssize_t sdhci_msm_pm_qos_group_show(struct device *dev,
 		group = &msm_host->pm_qos[i];
 		offset += snprintf(&buf[offset], PAGE_SIZE,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			"Group #%d PM QoS: enabled=%d, counter=%d, latency=%d\n",
 			i,
+=======
+			"Group #%d (mask=0x%lx) PM QoS: enabled=%d, counter=%d, latency=%d\n",
+			i, group->req.cpus_affine.bits[0],
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			"Group #%d (mask=0x%lx) PM QoS: enabled=%d, counter=%d, latency=%d\n",
 			i, group->req.cpus_affine.bits[0],
@@ -4398,8 +4417,13 @@ void sdhci_msm_pm_qos_cpu_init(struct sdhci_host *host,
 		atomic_set(&group->counter, 0);
 		group->req.type = PM_QOS_REQ_AFFINE_CORES;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		atomic_set(&group->req.cpus_affine,
 			*cpumask_bits(&msm_host->pdata->pm_qos_data.cpu_group_map.mask[i]));
+=======
+		cpumask_copy(&group->req.cpus_affine,
+			&msm_host->pdata->pm_qos_data.cpu_group_map.mask[i]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		cpumask_copy(&group->req.cpus_affine,
 			&msm_host->pdata->pm_qos_data.cpu_group_map.mask[i]);
@@ -4409,8 +4433,14 @@ void sdhci_msm_pm_qos_cpu_init(struct sdhci_host *host,
 		pm_qos_add_request(&group->req, PM_QOS_CPU_DMA_LATENCY,
 			group->latency);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_info("%s (): voted for group #%d latency=%d\n",
 			__func__, i,
+=======
+		pr_info("%s (): voted for group #%d (mask=0x%lx) latency=%d\n",
+			__func__, i,
+			group->req.cpus_affine.bits[0],
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pr_info("%s (): voted for group #%d (mask=0x%lx) latency=%d\n",
 			__func__, i,

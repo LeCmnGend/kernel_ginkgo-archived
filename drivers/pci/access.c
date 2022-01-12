@@ -206,6 +206,7 @@ static DECLARE_WAIT_QUEUE_HEAD(pci_cfg_wait);
 
 static noinline void pci_wait_cfg(struct pci_dev *dev)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__must_hold(&pci_lock)
 {
 	do {
@@ -214,6 +215,8 @@ static noinline void pci_wait_cfg(struct pci_dev *dev)
 		raw_spin_lock_irq(&pci_lock);
 	} while (dev->block_cfg_access);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	DECLARE_WAITQUEUE(wait, current);
 
@@ -225,6 +228,9 @@ static noinline void pci_wait_cfg(struct pci_dev *dev)
 		raw_spin_lock_irq(&pci_lock);
 	} while (dev->block_cfg_access);
 	__remove_wait_queue(&pci_cfg_wait, &wait);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

@@ -15,9 +15,15 @@
 #include <asm/mach-types.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int irqmap_ebsa285[] = { IRQ_IN3, IRQ_IN1, IRQ_IN0, IRQ_PCI };
 
 static int ebsa285_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+=======
+static int irqmap_ebsa285[] __initdata = { IRQ_IN3, IRQ_IN1, IRQ_IN0, IRQ_PCI };
+
+static int __init ebsa285_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int irqmap_ebsa285[] __initdata = { IRQ_IN3, IRQ_IN1, IRQ_IN0, IRQ_PCI };
 

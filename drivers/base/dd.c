@@ -404,8 +404,12 @@ static int really_probe(struct device *dev, struct device_driver *drv)
 	if (!list_empty(&dev->devres_head)) {
 		dev_crit(dev, "Resources present before probing\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = -EBUSY;
 		goto done;
+=======
+		return -EBUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EBUSY;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -518,7 +522,11 @@ pinctrl_bind_failed:
 done:
 	atomic_dec(&probe_count);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	wake_up_all(&probe_waitqueue);
+=======
+	wake_up(&probe_waitqueue);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	wake_up(&probe_waitqueue);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -886,8 +894,11 @@ static void __device_release_driver(struct device *dev, struct device *parent)
 	drv = dev->driver;
 	if (drv) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pm_runtime_get_sync(dev);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		while (device_links_busy(dev)) {
@@ -906,6 +917,7 @@ static void __device_release_driver(struct device *dev, struct device *parent)
 			 * was waiting, so check for that.
 			 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (dev->driver != drv) {
 				pm_runtime_put(dev);
 				return;
@@ -913,11 +925,16 @@ static void __device_release_driver(struct device *dev, struct device *parent)
 		}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (dev->driver != drv)
 				return;
 		}
 
 		pm_runtime_get_sync(dev);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		pm_runtime_clean_up_links(dev);
 

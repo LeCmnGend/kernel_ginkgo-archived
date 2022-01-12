@@ -134,7 +134,11 @@ static inline void percpu_rwsem_release(struct percpu_rw_semaphore *sem,
 #ifdef CONFIG_RWSEM_SPIN_ON_OWNER
 	if (!read)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		atomic_long_set(&sem->rw_sem.owner, RWSEM_OWNER_UNKNOWN);
+=======
+		sem->rw_sem.owner = RWSEM_OWNER_UNKNOWN;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		sem->rw_sem.owner = RWSEM_OWNER_UNKNOWN;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -148,7 +152,11 @@ static inline void percpu_rwsem_acquire(struct percpu_rw_semaphore *sem,
 #ifdef CONFIG_RWSEM_SPIN_ON_OWNER
 	if (!read)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		atomic_long_set(&sem->rw_sem.owner, (long)current);
+=======
+		sem->rw_sem.owner = current;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		sem->rw_sem.owner = current;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

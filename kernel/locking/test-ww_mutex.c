@@ -27,7 +27,11 @@
 #include <linux/ww_mutex.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static DEFINE_WD_CLASS(ww_class);
+=======
+static DEFINE_WW_CLASS(ww_class);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static DEFINE_WW_CLASS(ww_class);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -331,7 +335,11 @@ static int __test_cycle(unsigned int nthreads)
 			continue;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("cyclic deadlock not resolved, ret[%d/%d] = %d\n",
+=======
+		pr_err("cylic deadlock not resolved, ret[%d/%d] = %d\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pr_err("cylic deadlock not resolved, ret[%d/%d] = %d\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

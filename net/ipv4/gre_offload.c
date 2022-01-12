@@ -20,7 +20,10 @@ static struct sk_buff *gre_gso_segment(struct sk_buff *skb,
 {
 	int tnl_hlen = skb_inner_mac_header(skb) - skb_transport_header(skb);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool need_csum, need_recompute_csum, gso_partial;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct sk_buff *segs = ERR_PTR(-EINVAL);
@@ -29,6 +32,10 @@ static struct sk_buff *gre_gso_segment(struct sk_buff *skb,
 	u16 mac_len = skb->mac_len;
 	int gre_offset, outer_hlen;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	bool need_csum, gso_partial;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bool need_csum, gso_partial;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -53,7 +60,10 @@ static struct sk_buff *gre_gso_segment(struct sk_buff *skb,
 
 	need_csum = !!(skb_shinfo(skb)->gso_type & SKB_GSO_GRE_CSUM);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	need_recompute_csum = skb->csum_not_inet;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	skb->encap_hdr_csum = need_csum;
@@ -114,6 +124,7 @@ static struct sk_buff *gre_gso_segment(struct sk_buff *skb,
 
 		*(pcsum + 1) = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (need_recompute_csum && !skb_is_gso(skb)) {
 			__wsum csum;
 
@@ -123,6 +134,9 @@ static struct sk_buff *gre_gso_segment(struct sk_buff *skb,
 		} else {
 			*pcsum = gso_make_checksum(skb, 0);
 		}
+=======
+		*pcsum = gso_make_checksum(skb, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		*pcsum = gso_make_checksum(skb, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

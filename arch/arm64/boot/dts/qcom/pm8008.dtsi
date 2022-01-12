@@ -58,7 +58,11 @@ pm8008_9: qcom,pm8008@9 {
 			regulator-max-microvolt = <1504000>;
 			qcom,min-dropout-voltage = <225000>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			qcom,hpm-min-load = <10000>;
+=======
+			qcom,hpm-min-load = <0>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			qcom,hpm-min-load = <0>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -71,7 +75,11 @@ pm8008_9: qcom,pm8008@9 {
 			regulator-max-microvolt = <1504000>;
 			qcom,min-dropout-voltage = <225000>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			qcom,hpm-min-load = <10000>;
+=======
+			qcom,hpm-min-load = <0>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			qcom,hpm-min-load = <0>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -84,7 +92,11 @@ pm8008_9: qcom,pm8008@9 {
 			regulator-max-microvolt = <3400000>;
 			qcom,min-dropout-voltage = <200000>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			qcom,hpm-min-load = <10000>;
+=======
+			qcom,hpm-min-load = <0>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			qcom,hpm-min-load = <0>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -97,7 +109,11 @@ pm8008_9: qcom,pm8008@9 {
 			regulator-max-microvolt = <3400000>;
 			qcom,min-dropout-voltage = <200000>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			qcom,hpm-min-load = <10000>;
+=======
+			qcom,hpm-min-load = <0>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			qcom,hpm-min-load = <0>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -110,7 +126,11 @@ pm8008_9: qcom,pm8008@9 {
 			regulator-max-microvolt = <3400000>;
 			qcom,min-dropout-voltage = <300000>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			qcom,hpm-min-load = <10000>;
+=======
+			qcom,hpm-min-load = <0>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			qcom,hpm-min-load = <0>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -123,7 +143,11 @@ pm8008_9: qcom,pm8008@9 {
 			regulator-max-microvolt = <3400000>;
 			qcom,min-dropout-voltage = <300000>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			qcom,hpm-min-load = <10000>;
+=======
+			qcom,hpm-min-load = <0>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			qcom,hpm-min-load = <0>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -136,7 +160,11 @@ pm8008_9: qcom,pm8008@9 {
 			regulator-max-microvolt = <3400000>;
 			qcom,min-dropout-voltage = <300000>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			qcom,hpm-min-load = <10000>;
+=======
+			qcom,hpm-min-load = <0>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			qcom,hpm-min-load = <0>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

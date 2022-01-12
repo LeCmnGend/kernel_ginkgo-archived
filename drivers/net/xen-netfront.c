@@ -64,8 +64,11 @@ MODULE_PARM_DESC(max_queues,
 		 "Maximum number of queues per virtual interface");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define XENNET_TIMEOUT  (5 * HZ)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static const struct ethtool_ops xennet_ethtool_ops;
@@ -1342,6 +1345,7 @@ static struct net_device *xennet_create_dev(struct xenbus_device *dev)
 	netif_carrier_off(netdev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	do {
 		xenbus_switch_state(dev, XenbusStateInitialising);
 		err = wait_event_timeout(module_wq,
@@ -1352,12 +1356,17 @@ static struct net_device *xennet_create_dev(struct xenbus_device *dev)
 	} while (!err);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	xenbus_switch_state(dev, XenbusStateInitialising);
 	wait_event(module_wq,
 		   xenbus_read_driver_state(dev->otherend) !=
 		   XenbusStateClosed &&
 		   xenbus_read_driver_state(dev->otherend) !=
 		   XenbusStateUnknown);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return netdev;
 
@@ -2160,6 +2169,7 @@ static const struct attribute_group xennet_dev_group = {
 #endif /* CONFIG_SYSFS */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void xennet_bus_close(struct xenbus_device *dev)
 {
 	int ret;
@@ -2198,6 +2208,8 @@ static int xennet_remove(struct xenbus_device *dev)
 
 	xennet_bus_close(dev);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int xennet_remove(struct xenbus_device *dev)
 {
 	struct netfront_info *info = dev_get_drvdata(&dev->dev);
@@ -2220,6 +2232,9 @@ static int xennet_remove(struct xenbus_device *dev)
 			   XenbusStateUnknown);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	xennet_disconnect_backend(info);
 

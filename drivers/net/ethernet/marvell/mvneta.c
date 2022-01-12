@@ -2959,9 +2959,13 @@ static int mvneta_txq_init(struct mvneta_port *pp,
 
 	/* Setup XPS mapping */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (pp->neta_armada3700)
 		cpu = 0;
 	else if (txq_number > 1)
+=======
+	if (txq_number > 1)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (txq_number > 1)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3416,11 +3420,14 @@ static int mvneta_cpu_online(unsigned int cpu, struct hlist_node *node)
 	struct mvneta_pcpu_port *port = per_cpu_ptr(pp->ports, cpu);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Armada 3700's per-cpu interrupt for mvneta is broken, all interrupts
 	 * are routed to CPU 0, so we don't need all the cpu-hotplug support
 	 */
 	if (pp->neta_armada3700)
 		return 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

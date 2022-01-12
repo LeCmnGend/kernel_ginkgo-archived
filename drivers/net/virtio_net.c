@@ -340,6 +340,7 @@ static struct sk_buff *page_to_skb(struct virtnet_info *vi,
 	p += hdr_padded_len;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Copy all frame if it fits skb->head, otherwise
 	 * we let virtio_net_hdr_to_skb() and GRO pull headers as needed.
 	 */
@@ -347,6 +348,11 @@ static struct sk_buff *page_to_skb(struct virtnet_info *vi,
 		copy = len;
 	else
 		copy = ETH_HLEN;
+=======
+	copy = len;
+	if (copy > skb_tailroom(skb))
+		copy = skb_tailroom(skb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	copy = len;
 	if (copy > skb_tailroom(skb))
@@ -1273,7 +1279,11 @@ static int xmit_skb(struct send_queue *sq, struct sk_buff *skb)
 				    virtio_is_little_endian(vi->vdev), false,
 				    0))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -EPROTO;
+=======
+		BUG();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		BUG();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1803,6 +1813,7 @@ static int virtnet_set_channels(struct net_device *dev,
 	get_online_cpus();
 	err = _virtnet_set_queues(vi, queue_pairs);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (err) {
 		put_online_cpus();
 		goto err;
@@ -1814,6 +1825,8 @@ static int virtnet_set_channels(struct net_device *dev,
 	netif_set_real_num_rx_queues(dev, queue_pairs);
  err:
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!err) {
 		netif_set_real_num_tx_queues(dev, queue_pairs);
 		netif_set_real_num_rx_queues(dev, queue_pairs);
@@ -1822,6 +1835,9 @@ static int virtnet_set_channels(struct net_device *dev,
 	}
 	put_online_cpus();
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return err;
 }
@@ -2791,11 +2807,16 @@ static __maybe_unused int virtnet_restore(struct virtio_device *vdev)
 
 	err = virtnet_cpu_notif_add(vi);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (err) {
 		virtnet_freeze_down(vdev);
 		remove_vq_common(vi);
 		return err;
 	}
+=======
+	if (err)
+		return err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (err)
 		return err;

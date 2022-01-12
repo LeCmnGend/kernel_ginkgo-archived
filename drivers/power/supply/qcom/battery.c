@@ -1,6 +1,9 @@
 /* Copyright (c) 2017-2020 The Linux Foundation. All rights reserved.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -1198,7 +1201,11 @@ stepper_exit:
 
 	if (reschedule_ms) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		queue_delayed_work(system_power_efficient_wq, &chip->fcc_stepper_work,
+=======
+		schedule_delayed_work(&chip->fcc_stepper_work,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		schedule_delayed_work(&chip->fcc_stepper_work,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1224,8 +1231,11 @@ static bool is_batt_available(struct pl_data *chip)
 
 #define PARALLEL_FLOAT_VOLTAGE_DELTA_UV 50000
 <<<<<<< HEAD
+<<<<<<< HEAD
 static u8 cycle_flag = 0;
 extern u8 set_cycle_flag;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int pl_fv_vote_callback(struct votable *votable, void *data,
@@ -1235,7 +1245,10 @@ static int pl_fv_vote_callback(struct votable *votable, void *data,
 	union power_supply_propval pval = {0, };
 	int rc = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int charge_cycle_count;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1245,6 +1258,7 @@ static int pl_fv_vote_callback(struct votable *votable, void *data,
 	if (!chip->main_psy)
 		return 0;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	rc = power_supply_get_property(chip->batt_psy,
 			POWER_SUPPLY_PROP_CYCLE_COUNT,&pval);
@@ -1274,6 +1288,9 @@ static int pl_fv_vote_callback(struct votable *votable, void *data,
 		else
 			pval.intval = fv_uv- 10000;
 	}
+=======
+	pval.intval = fv_uv;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pval.intval = fv_uv;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1359,7 +1376,11 @@ static int usb_icl_vote_callback(struct votable *votable, void *data,
 		vote(chip->pl_enable_votable_indirect, USBIN_I_VOTER, false, 0);
 	else
 <<<<<<< HEAD
+<<<<<<< HEAD
 		queue_delayed_work(system_power_efficient_wq, &chip->status_change_work,
+=======
+		schedule_delayed_work(&chip->status_change_work,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		schedule_delayed_work(&chip->status_change_work,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1500,7 +1521,11 @@ static int pl_disable_vote_callback(struct votable *votable,
 				vote(chip->pl_awake_votable, FCC_STEPPER_VOTER,
 					true, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				queue_delayed_work(system_power_efficient_wq, &chip->fcc_stepper_work,
+=======
+				schedule_delayed_work(&chip->fcc_stepper_work,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				schedule_delayed_work(&chip->fcc_stepper_work,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1621,7 +1646,11 @@ static int pl_disable_vote_callback(struct votable *votable,
 				vote(chip->pl_awake_votable, FCC_STEPPER_VOTER,
 					true, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				queue_delayed_work(system_power_efficient_wq, &chip->fcc_stepper_work,
+=======
+				schedule_delayed_work(&chip->fcc_stepper_work,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				schedule_delayed_work(&chip->fcc_stepper_work,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1662,7 +1691,11 @@ static int pl_awake_vote_callback(struct votable *votable,
 
 	if (awake)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__pm_wakeup_event(chip->pl_ws, 500);
+=======
+		__pm_stay_awake(chip->pl_ws);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__pm_stay_awake(chip->pl_ws);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1976,7 +2009,11 @@ static int pl_notifier_call(struct notifier_block *nb,
 	    || (strcmp(psy->desc->name, "battery") == 0)
 	    || (strcmp(psy->desc->name, "main") == 0))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		queue_delayed_work(system_power_efficient_wq, &chip->status_change_work, 0);
+=======
+		schedule_delayed_work(&chip->status_change_work, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		schedule_delayed_work(&chip->status_change_work, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

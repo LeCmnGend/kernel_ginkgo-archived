@@ -164,6 +164,7 @@ void __ptrace_unlink(struct task_struct *child)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool looks_like_a_spurious_pid(struct task_struct *task)
 {
 	if (task->exit_code != ((PTRACE_EVENT_EXEC << 8) | SIGTRAP))
@@ -181,6 +182,8 @@ static bool looks_like_a_spurious_pid(struct task_struct *task)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Ensure that nothing can wake it up, even SIGKILL */
 static bool ptrace_freeze_traced(struct task_struct *task)
 {
@@ -192,8 +195,12 @@ static bool ptrace_freeze_traced(struct task_struct *task)
 
 	spin_lock_irq(&task->sighand->siglock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (task_is_traced(task) && !looks_like_a_spurious_pid(task) &&
 	    !__fatal_signal_pending(task)) {
+=======
+	if (task_is_traced(task) && !__fatal_signal_pending(task)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (task_is_traced(task) && !__fatal_signal_pending(task)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

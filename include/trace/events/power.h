@@ -630,8 +630,13 @@ TRACE_EVENT(sugov_util_update,
 		     unsigned long util, unsigned long avg_cap,
 		     unsigned long max_cap, unsigned long nl, unsigned long pl,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		     unsigned int rtgb, unsigned int flags),
 	    TP_ARGS(cpu, util, avg_cap, max_cap, nl, pl, rtgb, flags),
+=======
+		     unsigned int flags),
+	    TP_ARGS(cpu, util, avg_cap, max_cap, nl, pl, flags),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		     unsigned int flags),
 	    TP_ARGS(cpu, util, avg_cap, max_cap, nl, pl, flags),
@@ -644,7 +649,10 @@ TRACE_EVENT(sugov_util_update,
 		    __field(	unsigned long,	nl)
 		    __field(	unsigned long,	pl)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		    __field(	unsigned int,	rtgb)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		    __field(	unsigned int,	flags)
@@ -657,6 +665,7 @@ TRACE_EVENT(sugov_util_update,
 		    __entry->nl = nl;
 		    __entry->pl = pl;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		    __entry->rtgb = rtgb;
 		    __entry->flags = flags;
 	    ),
@@ -665,12 +674,17 @@ TRACE_EVENT(sugov_util_update,
 		      __entry->max_cap, __entry->nl,
 		      __entry->pl, __entry->rtgb, __entry->flags)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		    __entry->flags = flags;
 	    ),
 	    TP_printk("cpu=%d util=%lu avg_cap=%lu max_cap=%lu nl=%lu pl=%lu flags=0x%x",
 		      __entry->cpu, __entry->util, __entry->avg_cap,
 		      __entry->max_cap, __entry->nl,
 		      __entry->pl, __entry->flags)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 );
 

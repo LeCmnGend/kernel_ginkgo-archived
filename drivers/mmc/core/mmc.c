@@ -303,7 +303,11 @@ static void mmc_manage_enhanced_area(struct mmc_card *card, u8 *ext_csd)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void mmc_part_add(struct mmc_card *card, u64 size,
+=======
+static void mmc_part_add(struct mmc_card *card, unsigned int size,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void mmc_part_add(struct mmc_card *card, unsigned int size,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -323,7 +327,11 @@ static void mmc_manage_gp_partitions(struct mmc_card *card, u8 *ext_csd)
 	int idx;
 	u8 hc_erase_grp_sz, hc_wp_grp_sz;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64 part_size;
+=======
+	unsigned int part_size;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned int part_size;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -357,7 +365,12 @@ static void mmc_manage_gp_partitions(struct mmc_card *card, u8 *ext_csd)
 				<< 8) +
 				ext_csd[EXT_CSD_GP_SIZE_MULT + idx * 3];
 <<<<<<< HEAD
+<<<<<<< HEAD
 			part_size *= (hc_erase_grp_sz * hc_wp_grp_sz);
+=======
+			part_size *= (size_t)(hc_erase_grp_sz *
+				hc_wp_grp_sz);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			part_size *= (size_t)(hc_erase_grp_sz *
 				hc_wp_grp_sz);
@@ -380,7 +393,11 @@ static int mmc_decode_ext_csd(struct mmc_card *card, u8 *ext_csd)
 {
 	int err = 0, idx;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64 part_size;
+=======
+	unsigned int part_size;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned int part_size;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -446,11 +463,17 @@ static int mmc_decode_ext_csd(struct mmc_card *card, u8 *ext_csd)
 		/* EXT_CSD value is in units of 10ms, but we store in ms */
 		card->ext_csd.part_time = 10 * ext_csd[EXT_CSD_PART_SWITCH_TIME];
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* Some eMMC set the value too low so set a minimum */
 		if (card->ext_csd.part_time &&
 		    card->ext_csd.part_time < MMC_MIN_PART_SWITCH_TIME)
 			card->ext_csd.part_time = MMC_MIN_PART_SWITCH_TIME;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		/* Sleep / awake timeout in 100ns units */
@@ -671,6 +694,7 @@ static int mmc_decode_ext_csd(struct mmc_card *card, u8 *ext_csd)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * GENERIC_CMD6_TIME is to be used "unless a specific timeout is defined
 	 * when accessing a specific field", so use it here if there is no
@@ -682,6 +706,8 @@ static int mmc_decode_ext_csd(struct mmc_card *card, u8 *ext_csd)
 	if (card->ext_csd.part_time < MMC_MIN_PART_SWITCH_TIME)
 		card->ext_csd.part_time = MMC_MIN_PART_SWITCH_TIME;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (card->ext_csd.rev >= 7) {
@@ -714,7 +740,10 @@ static int mmc_decode_ext_csd(struct mmc_card *card, u8 *ext_csd)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* eMMC v5 or later */

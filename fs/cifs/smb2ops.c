@@ -653,7 +653,11 @@ smb2_set_ea(const unsigned int xid, struct cifs_tcon *tcon,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	len = sizeof(*ea) + ea_name_len + ea_value_len + 1;
+=======
+	len = sizeof(ea) + ea_name_len + ea_value_len + 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	len = sizeof(ea) + ea_name_len + ea_value_len + 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -890,8 +894,11 @@ smb2_copychunk_range(const unsigned int xid,
 
 		/* Request server copy to target from src identified by key */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kfree(retbuf);
 		retbuf = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rc = SMB2_ioctl(xid, tcon, trgtfile->fid.persistent_fid,
@@ -1945,6 +1952,7 @@ static long smb3_fallocate(struct file *file, struct cifs_tcon *tcon, int mode,
 static void
 smb2_downgrade_oplock(struct TCP_Server_Info *server,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		      struct cifsInodeInfo *cinode, __u32 oplock,
 		      unsigned int epoch, bool *purge_cache)
 {
@@ -1978,6 +1986,8 @@ smb3_downgrade_oplock(struct TCP_Server_Info *server,
 	else if (old_state == new_state && (epoch - old_epoch > 1))
 		*purge_cache = true;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			struct cifsInodeInfo *cinode, bool set_level2)
 {
 	if (set_level2)
@@ -1994,6 +2004,9 @@ smb21_downgrade_oplock(struct TCP_Server_Info *server,
 	server->ops->set_oplock_level(cinode,
 				      set_level2 ? SMB2_LEASE_READ_CACHING_HE :
 				      0, 0, NULL);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -2302,7 +2315,11 @@ smb2_get_enc_key(struct TCP_Server_Info *server, __u64 ses_id, int enc, u8 *key)
 	spin_unlock(&cifs_tcp_ses_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return -EAGAIN;
+=======
+	return 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2338,7 +2355,11 @@ crypt_message(struct TCP_Server_Info *server, struct smb_rqst *rqst, int enc)
 		cifs_dbg(VFS, "%s: Could not get %scryption key\n", __func__,
 			 enc ? "en" : "de");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return rc;
+=======
+		return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3006,7 +3027,11 @@ struct smb_version_operations smb21_operations = {
 	.is_oplock_break = smb2_is_valid_oplock_break,
 	.handle_cancelled_mid = smb2_handle_cancelled_mid,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.downgrade_oplock = smb2_downgrade_oplock,
+=======
+	.downgrade_oplock = smb21_downgrade_oplock,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.downgrade_oplock = smb21_downgrade_oplock,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3105,7 +3130,11 @@ struct smb_version_operations smb30_operations = {
 	.is_oplock_break = smb2_is_valid_oplock_break,
 	.handle_cancelled_mid = smb2_handle_cancelled_mid,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.downgrade_oplock = smb3_downgrade_oplock,
+=======
+	.downgrade_oplock = smb21_downgrade_oplock,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.downgrade_oplock = smb21_downgrade_oplock,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3214,7 +3243,11 @@ struct smb_version_operations smb311_operations = {
 	.is_oplock_break = smb2_is_valid_oplock_break,
 	.handle_cancelled_mid = smb2_handle_cancelled_mid,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.downgrade_oplock = smb3_downgrade_oplock,
+=======
+	.downgrade_oplock = smb21_downgrade_oplock,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.downgrade_oplock = smb21_downgrade_oplock,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

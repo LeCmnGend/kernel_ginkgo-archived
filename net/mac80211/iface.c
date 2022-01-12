@@ -1128,6 +1128,11 @@ static void ieee80211_set_multicast_list(struct net_device *dev)
 static void ieee80211_teardown_sdata(struct ieee80211_sub_if_data *sdata)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int i;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int i;
 
@@ -1138,7 +1143,13 @@ static void ieee80211_teardown_sdata(struct ieee80211_sub_if_data *sdata)
 	ieee80211_debugfs_remove_netdev(sdata);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ieee80211_destroy_frag_cache(&sdata->frags);
+=======
+	for (i = 0; i < IEEE80211_FRAGMENT_MAX; i++)
+		__skb_queue_purge(&sdata->fragments[i].skb_list);
+	sdata->fragment_next = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (i = 0; i < IEEE80211_FRAGMENT_MAX; i++)
 		__skb_queue_purge(&sdata->fragments[i].skb_list);
@@ -1567,10 +1578,13 @@ static int ieee80211_runtime_change_iftype(struct ieee80211_sub_if_data *sdata,
 		return ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ieee80211_stop_vif_queues(local, sdata,
 				  IEEE80211_QUEUE_STOP_REASON_IFTYPE_CHANGE);
 	synchronize_net();
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ieee80211_do_stop(sdata, false);
@@ -1594,8 +1608,11 @@ static int ieee80211_runtime_change_iftype(struct ieee80211_sub_if_data *sdata,
 	WARN(err, "type change: do_open returned %d", err);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ieee80211_wake_vif_queues(local, sdata,
 				  IEEE80211_QUEUE_STOP_REASON_IFTYPE_CHANGE);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
@@ -1860,7 +1877,12 @@ int ieee80211_if_add(struct ieee80211_local *local, const char *name,
 	sdata->local = local;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ieee80211_init_frag_cache(&sdata->frags);
+=======
+	for (i = 0; i < IEEE80211_FRAGMENT_MAX; i++)
+		skb_queue_head_init(&sdata->fragments[i].skb_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (i = 0; i < IEEE80211_FRAGMENT_MAX; i++)
 		skb_queue_head_init(&sdata->fragments[i].skb_list);

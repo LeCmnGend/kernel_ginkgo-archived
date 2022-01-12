@@ -47,6 +47,7 @@ static struct net_bridge_vlan *br_vlan_tunnel_lookup(struct rhashtable *tbl,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void vlan_tunnel_info_release(struct net_bridge_vlan *vlan)
 {
 	struct metadata_dst *tdst = rtnl_dereference(vlan->tinfo.tunnel_dst);
@@ -65,6 +66,8 @@ void vlan_tunnel_info_del(struct net_bridge_vlan_group *vg,
 			       br_vlan_tunnel_rht_params);
 	vlan_tunnel_info_release(vlan);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void vlan_tunnel_info_del(struct net_bridge_vlan_group *vg,
 			  struct net_bridge_vlan *vlan)
 {
@@ -75,6 +78,9 @@ void vlan_tunnel_info_del(struct net_bridge_vlan_group *vg,
 	vlan->tinfo.tunnel_id = 0;
 	dst_release(&vlan->tinfo.tunnel_dst->dst);
 	vlan->tinfo.tunnel_dst = NULL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -82,17 +88,23 @@ static int __vlan_tunnel_info_add(struct net_bridge_vlan_group *vg,
 				  struct net_bridge_vlan *vlan, u32 tun_id)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct metadata_dst *metadata = rtnl_dereference(vlan->tinfo.tunnel_dst);
 	__be64 key = key32_to_tunnel_id(cpu_to_be32(tun_id));
 	int err;
 
 	if (metadata)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct metadata_dst *metadata = NULL;
 	__be64 key = key32_to_tunnel_id(cpu_to_be32(tun_id));
 	int err;
 
 	if (vlan->tinfo.tunnel_dst)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EEXIST;
 
@@ -103,8 +115,13 @@ static int __vlan_tunnel_info_add(struct net_bridge_vlan_group *vg,
 
 	metadata->u.tun_info.mode |= IP_TUNNEL_INFO_TX | IP_TUNNEL_INFO_BRIDGE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rcu_assign_pointer(vlan->tinfo.tunnel_dst, metadata);
 	WRITE_ONCE(vlan->tinfo.tunnel_id, key);
+=======
+	vlan->tinfo.tunnel_dst = metadata;
+	vlan->tinfo.tunnel_id = key;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	vlan->tinfo.tunnel_dst = metadata;
 	vlan->tinfo.tunnel_id = key;
@@ -118,7 +135,13 @@ static int __vlan_tunnel_info_add(struct net_bridge_vlan_group *vg,
 	return 0;
 out:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vlan_tunnel_info_release(vlan);
+=======
+	dst_release(&vlan->tinfo.tunnel_dst->dst);
+	vlan->tinfo.tunnel_dst = NULL;
+	vlan->tinfo.tunnel_id = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dst_release(&vlan->tinfo.tunnel_dst->dst);
 	vlan->tinfo.tunnel_dst = NULL;
@@ -224,6 +247,7 @@ int br_handle_egress_vlan_tunnel(struct sk_buff *skb,
 				 struct net_bridge_vlan *vlan)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct metadata_dst *tunnel_dst;
 	__be64 tunnel_id;
 	int err;
@@ -234,12 +258,17 @@ int br_handle_egress_vlan_tunnel(struct sk_buff *skb,
 	tunnel_id = READ_ONCE(vlan->tinfo.tunnel_id);
 	if (!tunnel_id || unlikely(!skb_vlan_tag_present(skb)))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int err;
 
 	if (!vlan || !vlan->tinfo.tunnel_id)
 		return 0;
 
 	if (unlikely(!skb_vlan_tag_present(skb)))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return 0;
 
@@ -249,9 +278,13 @@ int br_handle_egress_vlan_tunnel(struct sk_buff *skb,
 		return err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tunnel_dst = rcu_dereference(vlan->tinfo.tunnel_dst);
 	if (tunnel_dst && dst_hold_safe(&tunnel_dst->dst))
 		skb_dst_set(skb, &tunnel_dst->dst);
+=======
+	skb_dst_set(skb, dst_clone(&vlan->tinfo.tunnel_dst->dst));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	skb_dst_set(skb, dst_clone(&vlan->tinfo.tunnel_dst->dst));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

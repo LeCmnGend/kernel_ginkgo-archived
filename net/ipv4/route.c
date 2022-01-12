@@ -71,7 +71,10 @@
 #include <linux/kernel.h>
 #include <linux/mm.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/bootmem.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/string.h>
@@ -281,7 +284,10 @@ static void *rt_cpu_seq_next(struct seq_file *seq, void *v, loff_t *pos)
 		return &per_cpu(rt_cache_stat, cpu);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	(*pos)++;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return NULL;
@@ -493,10 +499,15 @@ static void ipv4_confirm_neigh(const struct dst_entry *dst, const void *daddr)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Hash tables of size 2048..262144 depending on RAM size.
  * Each bucket uses 8 bytes.
  */
 static u32 ip_idents_mask __read_mostly;
+=======
+#define IP_IDENTS_SZ 2048u
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define IP_IDENTS_SZ 2048u
 
@@ -511,6 +522,7 @@ static u32 *ip_tstamps __read_mostly;
 u32 ip_idents_reserve(u32 hash, int segs)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 bucket, old, now = (u32)jiffies;
 	atomic_t *p_id;
 	u32 *p_tstamp;
@@ -522,12 +534,17 @@ u32 ip_idents_reserve(u32 hash, int segs)
 	old = ACCESS_ONCE(*p_tstamp);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32 *p_tstamp = ip_tstamps + hash % IP_IDENTS_SZ;
 	atomic_t *p_id = ip_idents + hash % IP_IDENTS_SZ;
 	u32 old = ACCESS_ONCE(*p_tstamp);
 	u32 now = (u32)jiffies;
 	u32 delta = 0;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (old != now && cmpxchg(p_tstamp, old, now) == old)
 		delta = prandom_u32_max(now - old);
@@ -823,8 +840,11 @@ static void __ip_do_redirect(struct rtable *rt, struct sk_buff *skb, struct flow
 				struct fib_nh *nh = &FIB_RES_NH(res);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 				fib_select_path(net, &res, fl4, skb);
 				nh = &FIB_RES_NH(res);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				update_or_create_fnhe(nh, fl4->daddr, new_gw,
@@ -1044,7 +1064,10 @@ static void __ip_rt_update_pmtu(struct rtable *rt, struct flowi4 *fl4, u32 mtu)
 {
 	struct dst_entry *dst = &rt->dst;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct net *net = dev_net(dst->dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32 old_mtu = ipv4_mtu(dst);
@@ -1068,11 +1091,17 @@ static void __ip_rt_update_pmtu(struct rtable *rt, struct flowi4 *fl4, u32 mtu)
 
 	rcu_read_lock();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (fib_lookup(net, fl4, &res, 0) == 0) {
 		struct fib_nh *nh;
 
 		fib_select_path(net, &res, fl4, NULL);
 		nh = &FIB_RES_NH(res);
+=======
+	if (fib_lookup(dev_net(dst->dev), fl4, &res, 0) == 0) {
+		struct fib_nh *nh = &FIB_RES_NH(res);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (fib_lookup(dev_net(dst->dev), fl4, &res, 0) == 0) {
 		struct fib_nh *nh = &FIB_RES_NH(res);
@@ -1477,6 +1506,7 @@ static bool rt_bind_exception(struct rtable *rt, struct fib_nh_exception *fnhe,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct uncached_list {
 	spinlock_t		lock;
 	struct list_head	head;
@@ -1495,6 +1525,8 @@ static void rt_add_uncached_list(struct rtable *rt)
 	spin_unlock_bh(&ul->lock);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static bool rt_cache_route(struct fib_nh *nh, struct rtable *rt)
@@ -1517,7 +1549,11 @@ static bool rt_cache_route(struct fib_nh *nh, struct rtable *rt)
 	if (prev == orig) {
 		if (orig) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			rt_add_uncached_list(orig);
+=======
+			dst_dev_put(&orig->dst);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			dst_dev_put(&orig->dst);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1532,7 +1568,10 @@ static bool rt_cache_route(struct fib_nh *nh, struct rtable *rt)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct uncached_list {
 	spinlock_t		lock;
 	struct list_head	head;
@@ -1551,6 +1590,9 @@ static void rt_add_uncached_list(struct rtable *rt)
 	spin_unlock_bh(&ul->lock);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void ipv4_dst_destroy(struct dst_entry *dst)
 {
@@ -2579,6 +2621,11 @@ struct rtable *ip_route_output_key_hash_rcu(struct net *net, struct flowi4 *fl4,
 
 	dev_out = FIB_RES_DEV(*res);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	fl4->flowi4_oif = dev_out->ifindex;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	fl4->flowi4_oif = dev_out->ifindex;
 
@@ -2676,6 +2723,7 @@ struct rtable *ip_route_output_flow(struct net *net, struct flowi4 *flp4,
 		return rt;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (flp4->flowi4_proto) {
 		flp4->flowi4_oif = rt->dst.dev->ifindex;
 		rt = (struct rtable *)xfrm_lookup_route(net, &rt->dst,
@@ -2683,10 +2731,15 @@ struct rtable *ip_route_output_flow(struct net *net, struct flowi4 *flp4,
 							sk, 0);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (flp4->flowi4_proto)
 		rt = (struct rtable *)xfrm_lookup_route(net, &rt->dst,
 							flowi4_to_flowi(flp4),
 							sk, 0);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return rt;
@@ -2868,7 +2921,11 @@ static int inet_rtm_getroute(struct sk_buff *in_skb, struct nlmsghdr *nlh,
 	fl4.daddr = dst;
 	fl4.saddr = src;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	fl4.flowi4_tos = rtm->rtm_tos & IPTOS_RT_MASK;
+=======
+	fl4.flowi4_tos = rtm->rtm_tos;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	fl4.flowi4_tos = rtm->rtm_tos;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2891,9 +2948,14 @@ static int inet_rtm_getroute(struct sk_buff *in_skb, struct nlmsghdr *nlh,
 		skb->dev	= dev;
 		skb->mark	= mark;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		err = ip_route_input_rcu(skb, dst, src,
 					 rtm->rtm_tos & IPTOS_RT_MASK, dev,
 					 &res);
+=======
+		err = ip_route_input_rcu(skb, dst, src, rtm->rtm_tos,
+					 dev, &res);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		err = ip_route_input_rcu(skb, dst, src, rtm->rtm_tos,
 					 dev, &res);
@@ -3187,6 +3249,7 @@ struct ip_rt_acct __percpu *ip_rt_acct __read_mostly;
 int __init ip_rt_init(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	void *idents_hash;
 	int rc = 0;
 	int cpu;
@@ -3208,6 +3271,8 @@ int __init ip_rt_init(void)
 
 	ip_tstamps = idents_hash + (ip_idents_mask + 1) * sizeof(*ip_idents);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int rc = 0;
 	int cpu;
 
@@ -3220,6 +3285,9 @@ int __init ip_rt_init(void)
 	ip_tstamps = kcalloc(IP_IDENTS_SZ, sizeof(*ip_tstamps), GFP_KERNEL);
 	if (!ip_tstamps)
 		panic("IP: failed to allocate ip_tstamps\n");
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	for_each_possible_cpu(cpu) {

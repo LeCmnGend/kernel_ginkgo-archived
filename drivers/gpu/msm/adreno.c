@@ -17,6 +17,10 @@
 #include <linux/of_device.h>
 #include <linux/delay.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <linux/input.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/input.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -64,9 +68,15 @@ MODULE_PARM_DESC(swfdetect, "Enable soft fault detection");
 #define DRIVER_VERSION_MINOR   1
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define KGSL_LOG_LEVEL_DEFAULT 0
 
 static void adreno_pwr_on_work(struct work_struct *work);
+=======
+#define KGSL_LOG_LEVEL_DEFAULT 3
+
+static void adreno_input_work(struct work_struct *work);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define KGSL_LOG_LEVEL_DEFAULT 3
 
@@ -78,7 +88,11 @@ static unsigned int counter_delta(struct kgsl_device *device,
 static struct devfreq_msm_adreno_tz_data adreno_tz_data = {
 	.bus = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.max = 1200,
+=======
+		.max = 350,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.max = 350,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -117,6 +131,11 @@ static struct adreno_device device_3d0 = {
 	.ft_pf_policy = KGSL_FT_PAGEFAULT_DEFAULT_POLICY,
 	.long_ib_detect = 1,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	.input_work = __WORK_INITIALIZER(device_3d0.input_work,
+		adreno_input_work),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.input_work = __WORK_INITIALIZER(device_3d0.input_work,
 		adreno_input_work),
@@ -133,8 +152,11 @@ static struct adreno_device device_3d0 = {
 		.usesgmem = 1,
 	},
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.pwr_on_work = __WORK_INITIALIZER(device_3d0.pwr_on_work,
 		adreno_pwr_on_work),
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -159,6 +181,12 @@ static unsigned int adreno_ft_regs_default[] = {
 int adreno_wake_nice = -7;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+/* Number of milliseconds to stay active active after a wake on touch */
+unsigned int adreno_wake_timeout = 100;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Number of milliseconds to stay active active after a wake on touch */
 unsigned int adreno_wake_timeout = 100;
@@ -394,6 +422,7 @@ void adreno_fault_detect_stop(struct adreno_device *adreno_dev)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void adreno_pwr_on_work(struct work_struct *work)
 {
 	struct adreno_device *adreno_dev =
@@ -403,6 +432,8 @@ static void adreno_pwr_on_work(struct work_struct *work)
 	mutex_lock(&device->mutex);
 	kgsl_pwrctrl_change_state(device, KGSL_STATE_ACTIVE);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * A workqueue callback responsible for actually turning on the GPU after a
  * touch event. kgsl_pwrctrl_change_state(ACTIVE) is used without any
@@ -434,13 +465,19 @@ static void adreno_input_work(struct work_struct *work)
 	 */
 	mod_timer(&device->idle_timer,
 		jiffies + msecs_to_jiffies(adreno_wake_timeout));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_unlock(&device->mutex);
 }
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Process input events and schedule work if needed.  At this point we are only
  * interested in groking EV_ABS touchscreen events
  */
@@ -553,6 +590,9 @@ static struct input_handler adreno_input_handler = {
 };
 
 /*
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * _soft_reset() - Soft reset GPU
  * @adreno_dev: Pointer to adreno device
@@ -736,6 +776,11 @@ static irqreturn_t adreno_irq_handler(struct kgsl_device *device)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	gpudev->irq_trace(adreno_dev, status);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	gpudev->irq_trace(adreno_dev, status);
 
@@ -1040,6 +1085,10 @@ static void adreno_of_get_initial_pwrlevel(struct adreno_device *adreno_dev,
 
 	pwr->active_pwrlevel = init_level;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	pwr->default_pwrlevel = init_level;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pwr->default_pwrlevel = init_level;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1193,12 +1242,18 @@ static int adreno_of_get_power(struct adreno_device *adreno_dev,
 		device->pwrctrl.pm_qos_active_latency = 501;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* get pm-qos-cpu-mask-latency, set it to default if not found */
 	if (of_property_read_u32(node, "qcom,l2pc-cpu-mask-latency",
 		&device->pwrctrl.pm_qos_cpu_mask_latency))
 		device->pwrctrl.pm_qos_cpu_mask_latency = 501;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* get pm-qos-wakeup-latency, set it to default if not found */
 	if (of_property_read_u32(node, "qcom,pm-qos-wakeup-latency",
@@ -1207,7 +1262,11 @@ static int adreno_of_get_power(struct adreno_device *adreno_dev,
 
 	if (of_property_read_u32(node, "qcom,idle-timeout", &timeout))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		timeout = 64;
+=======
+		timeout = 80;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		timeout = 80;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1218,6 +1277,12 @@ static int adreno_of_get_power(struct adreno_device *adreno_dev,
 		"qcom,bus-control");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	device->pwrctrl.input_disable = of_property_read_bool(node,
+		"qcom,disable-wake-on-touch");
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	device->pwrctrl.input_disable = of_property_read_bool(node,
 		"qcom,disable-wake-on-touch");
@@ -1504,6 +1569,12 @@ static int adreno_probe(struct platform_device *pdev)
 	kgsl_pwrscale_init(&pdev->dev, CONFIG_QCOM_ADRENO_DEFAULT_GOVERNOR);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/* Initialize coresight for the target */
+	adreno_coresight_init(adreno_dev);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Initialize coresight for the target */
 	adreno_coresight_init(adreno_dev);
@@ -1526,7 +1597,10 @@ static int adreno_probe(struct platform_device *pdev)
 			PTR_ERR(adreno_dev->gpuhtw_llc_slice));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_INPUT
 	if (!device->pwrctrl.input_disable) {
 		adreno_input_handler.private = device;
@@ -1542,6 +1616,9 @@ static int adreno_probe(struct platform_device *pdev)
 	}
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	place_marker("M - DRIVER GPU Ready");
 out:
@@ -1596,9 +1673,12 @@ static int adreno_remove(struct platform_device *pdev)
 	_adreno_free_memories(adreno_dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	adreno_sysfs_close(adreno_dev);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_INPUT
 	if (adreno_input_handler.private)
 		input_unregister_handler(&adreno_input_handler);
@@ -1606,6 +1686,9 @@ static int adreno_remove(struct platform_device *pdev)
 	adreno_sysfs_close(adreno_dev);
 
 	adreno_coresight_remove(adreno_dev);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	adreno_profile_close(adreno_dev);
 
@@ -1919,7 +2002,10 @@ int adreno_set_unsecured_mode(struct adreno_device *adreno_dev,
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ADRENO_QUIRK(adreno_dev, ADRENO_QUIRK_CRITICAL_PACKETS) &&
 			adreno_is_a5xx(adreno_dev)) {
 		ret = a5xx_critical_packet_submit(adreno_dev, rb);
@@ -1927,6 +2013,9 @@ int adreno_set_unsecured_mode(struct adreno_device *adreno_dev,
 			return ret;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* GPU comes up in secured mode, make it unsecured by default */
 	if (adreno_dev->zap_handle_ptr)
@@ -1996,11 +2085,17 @@ static int _adreno_start(struct adreno_device *adreno_dev)
 	WARN_ON(test_bit(ADRENO_DEVICE_STARTED, &adreno_dev->priv));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* disallow l2pc during wake up to improve GPU wake up time */
 	kgsl_pwrctrl_update_l2pc(&adreno_dev->dev,
 			KGSL_L2PC_WAKEUP_TIMEOUT);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pm_qos_update_request(&device->pwrctrl.pm_qos_req_dma,
 			pmqos_wakeup_vote);
@@ -2008,6 +2103,12 @@ static int _adreno_start(struct adreno_device *adreno_dev)
 	regulator_left_on = regulators_left_on(device);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/* Clear any GPU faults that might have been left over */
+	adreno_clear_gpu_fault(adreno_dev);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Clear any GPU faults that might have been left over */
 	adreno_clear_gpu_fault(adreno_dev);
@@ -2049,6 +2150,7 @@ static int _adreno_start(struct adreno_device *adreno_dev)
 	adreno_deassert_gbif_halt(adreno_dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Observed race between timeout fault (long IB detection) and
 	 * MISC hang (hard fault). MISC hang can be set while in recovery from
@@ -2057,6 +2159,8 @@ static int _adreno_start(struct adreno_device *adreno_dev)
 	 */
 	adreno_clear_gpu_fault(adreno_dev);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (adreno_is_a640v1(adreno_dev)) {
@@ -2252,6 +2356,12 @@ static int _adreno_start(struct adreno_device *adreno_dev)
 	adreno_llc_setup(device);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/* Re-initialize the coresight registers if applicable */
+	adreno_coresight_start(adreno_dev);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Re-initialize the coresight registers if applicable */
 	adreno_coresight_start(adreno_dev);
@@ -2398,6 +2508,12 @@ static int adreno_stop(struct kgsl_device *device)
 	adreno_llc_deactivate_slice(adreno_dev->gpuhtw_llc_slice);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/* Save active coresight registers if applicable */
+	adreno_coresight_stop(adreno_dev);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Save active coresight registers if applicable */
 	adreno_coresight_stop(adreno_dev);
@@ -3253,6 +3369,12 @@ int adreno_soft_reset(struct kgsl_device *device)
 	gpudev->start(adreno_dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/* Re-initialize the coresight registers if applicable */
+	adreno_coresight_start(adreno_dev);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Re-initialize the coresight registers if applicable */
 	adreno_coresight_start(adreno_dev);
@@ -3622,11 +3744,15 @@ int adreno_gmu_fenced_write(struct adreno_device *adreno_dev,
 			return 0;
 		/* Wait a small amount of time before trying again */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (in_atomic())
 			udelay(GMU_CORE_WAKEUP_DELAY_US);
 		else
 			usleep_range(GMU_CORE_WAKEUP_DELAY_US,
 				     3 * GMU_CORE_WAKEUP_DELAY_US);
+=======
+		udelay(GMU_CORE_WAKEUP_DELAY_US);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		udelay(GMU_CORE_WAKEUP_DELAY_US);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4360,7 +4486,10 @@ static struct platform_driver adreno_platform_driver = {
 		.pm = &kgsl_pm_ops,
 		.of_match_table = adreno_match_table,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.probe_type = PROBE_PREFER_ASYNCHRONOUS,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -4414,6 +4543,10 @@ static int __kgsl_3d_init(void *arg)
 static int __init kgsl_3d_init(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#ifdef CONFIG_PLATFORM_AUTO
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #ifdef CONFIG_PLATFORM_AUTO
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4424,11 +4557,17 @@ static int __init kgsl_3d_init(void)
 	else
 		return 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #else
 	__kgsl_3d_init(NULL);
 	return 0;
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

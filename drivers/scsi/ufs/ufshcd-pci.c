@@ -98,6 +98,7 @@ static int ufshcd_pci_resume(struct device *dev)
 	return ufshcd_system_resume(dev_get_drvdata(dev));
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 /**
  * ufshcd_pci_poweroff - suspend-to-disk poweroff function
@@ -122,6 +123,8 @@ static int ufshcd_pci_poweroff(struct device *dev)
 	return ret;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* !CONFIG_PM_SLEEP */
@@ -219,6 +222,7 @@ ufshcd_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 
 static const struct dev_pm_ops ufshcd_pci_pm_ops = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_PM_SLEEP
 	.suspend	= ufshcd_pci_suspend,
 	.resume		= ufshcd_pci_resume,
@@ -227,6 +231,10 @@ static const struct dev_pm_ops ufshcd_pci_pm_ops = {
 	.poweroff	= ufshcd_pci_poweroff,
 	.restore	= ufshcd_pci_resume,
 #endif
+=======
+	SET_SYSTEM_SLEEP_PM_OPS(ufshcd_pci_suspend,
+				ufshcd_pci_resume)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	SET_SYSTEM_SLEEP_PM_OPS(ufshcd_pci_suspend,
 				ufshcd_pci_resume)

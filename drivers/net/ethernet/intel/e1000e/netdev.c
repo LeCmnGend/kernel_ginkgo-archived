@@ -5943,12 +5943,18 @@ static void e1000_reset_task(struct work_struct *work)
 	adapter = container_of(work, struct e1000_adapter, reset_task);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rtnl_lock();
 	/* don't run the task if already down */
 	if (test_bit(__E1000_DOWN, &adapter->state)) {
 		rtnl_unlock();
 		return;
 	}
+=======
+	/* don't run the task if already down */
+	if (test_bit(__E1000_DOWN, &adapter->state))
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* don't run the task if already down */
 	if (test_bit(__E1000_DOWN, &adapter->state))
@@ -5961,7 +5967,10 @@ static void e1000_reset_task(struct work_struct *work)
 	}
 	e1000e_reinit_locked(adapter);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rtnl_unlock();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -7402,7 +7411,10 @@ err_ioremap:
 	free_netdev(netdev);
 err_alloc_etherdev:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pci_disable_pcie_error_reporting(pdev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pci_release_mem_regions(pdev);

@@ -376,7 +376,11 @@ static struct lock_torture_ops mutex_lock_ops = {
 
 #include <linux/ww_mutex.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 static DEFINE_WD_CLASS(torture_ww_class);
+=======
+static DEFINE_WW_CLASS(torture_ww_class);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static DEFINE_WW_CLASS(torture_ww_class);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

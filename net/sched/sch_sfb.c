@@ -270,7 +270,10 @@ static bool sfb_classify(struct sk_buff *skb, struct tcf_proto *fl,
 		case TC_ACT_TRAP:
 			*qerr = NET_XMIT_SUCCESS | __NET_XMIT_STOLEN;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			/* fall through */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		case TC_ACT_SHOT:
@@ -559,7 +562,11 @@ static int sfb_init(struct Qdisc *sch, struct nlattr *opt)
 	int err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = tcf_block_get(&q->block, &q->filter_list, sch);
+=======
+	err = tcf_block_get(&q->block, &q->filter_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = tcf_block_get(&q->block, &q->filter_list);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

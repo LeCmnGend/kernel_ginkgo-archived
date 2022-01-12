@@ -28,7 +28,11 @@
 #define __LL_SC_ATOMIC(op)	__LL_SC_CALL(atomic_##op)
 #define ATOMIC_OP(op, asm_op)						\
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __always_inline void atomic_##op(int i, atomic_t *v)			\
+=======
+static inline void atomic_##op(int i, atomic_t *v)			\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline void atomic_##op(int i, atomic_t *v)			\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -52,7 +56,11 @@ ATOMIC_OP(add, stadd)
 
 #define ATOMIC_FETCH_OP(name, mb, op, asm_op, cl...)			\
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __always_inline int atomic_fetch_##op##name(int i, atomic_t *v)		\
+=======
+static inline int atomic_fetch_##op##name(int i, atomic_t *v)		\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int atomic_fetch_##op##name(int i, atomic_t *v)		\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -233,7 +241,11 @@ ATOMIC_FETCH_OP_SUB(        , al, "memory")
 #define __LL_SC_ATOMIC64(op)	__LL_SC_CALL(atomic64_##op)
 #define ATOMIC64_OP(op, asm_op)						\
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __always_inline void atomic64_##op(long i, atomic64_t *v)			\
+=======
+static inline void atomic64_##op(long i, atomic64_t *v)			\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline void atomic64_##op(long i, atomic64_t *v)			\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -257,7 +269,11 @@ ATOMIC64_OP(add, stadd)
 
 #define ATOMIC64_FETCH_OP(name, mb, op, asm_op, cl...)			\
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __always_inline long atomic64_fetch_##op##name(long i, atomic64_t *v)	\
+=======
+static inline long atomic64_fetch_##op##name(long i, atomic64_t *v)	\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline long atomic64_fetch_##op##name(long i, atomic64_t *v)	\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -435,7 +451,11 @@ ATOMIC64_FETCH_OP_SUB(        , al, "memory")
 #undef ATOMIC64_FETCH_OP_SUB
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __always_inline long atomic64_dec_if_positive(atomic64_t *v)
+=======
+static inline long atomic64_dec_if_positive(atomic64_t *v)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline long atomic64_dec_if_positive(atomic64_t *v)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -467,6 +487,7 @@ static inline long atomic64_dec_if_positive(atomic64_t *v)
 #define __LL_SC_CMPXCHG(op)	__LL_SC_CALL(__cmpxchg_case_##op)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define __CMPXCHG_CASE(w, sfx, name, sz, mb, cl...)			\
 static inline u##sz __cmpxchg_case_##name##sz(volatile void *ptr,	\
 					      unsigned long old,	\
@@ -484,6 +505,8 @@ static inline u##sz __cmpxchg_case_##name##sz(volatile void *ptr,	\
 	"	mov	" #w "30, %" #w "[old]\n"			\
 	"	cas" #mb #sfx "\t" #w "30, %" #w "[new], %[v]\n"	\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define __CMPXCHG_CASE(w, sz, name, mb, cl...)				\
 static inline unsigned long __cmpxchg_case_##name(volatile void *ptr,	\
 						  unsigned long old,	\
@@ -500,6 +523,9 @@ static inline unsigned long __cmpxchg_case_##name(volatile void *ptr,	\
 	/* LSE atomics */						\
 	"	mov	" #w "30, %" #w "[old]\n"			\
 	"	cas" #mb #sz "\t" #w "30, %" #w "[new], %[v]\n"		\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	"	mov	%" #w "[ret], " #w "30")			\
 	: [ret] "+r" (x0), [v] "+Q" (*(unsigned long *)ptr)		\
@@ -509,6 +535,7 @@ static inline unsigned long __cmpxchg_case_##name(volatile void *ptr,	\
 	return x0;							\
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 __CMPXCHG_CASE(w, b,     ,  8,   )
 __CMPXCHG_CASE(w, h,     , 16,   )
@@ -527,6 +554,8 @@ __CMPXCHG_CASE(w, h,  mb_, 16, al, "memory")
 __CMPXCHG_CASE(w,  ,  mb_, 32, al, "memory")
 __CMPXCHG_CASE(x,  ,  mb_, 64, al, "memory")
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 __CMPXCHG_CASE(w, b,     1,   )
 __CMPXCHG_CASE(w, h,     2,   )
 __CMPXCHG_CASE(w,  ,     4,   )
@@ -543,6 +572,9 @@ __CMPXCHG_CASE(w, b,  mb_1, al, "memory")
 __CMPXCHG_CASE(w, h,  mb_2, al, "memory")
 __CMPXCHG_CASE(w,  ,  mb_4, al, "memory")
 __CMPXCHG_CASE(x,  ,  mb_8, al, "memory")
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #undef __LL_SC_CMPXCHG
@@ -589,6 +621,7 @@ __CMPXCHG_DBL(_mb, al, "memory")
 #undef __LL_SC_CMPXCHG_DBL
 #undef __CMPXCHG_DBL
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #define REFCOUNT_ADD_OP(op, pre, post)					\
 static inline int __refcount_##op(int i, atomic_t *r)			\
@@ -671,6 +704,8 @@ static inline int __refcount_add_not_zero(int i, atomic_t *r)
 	return result;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif	/* __ASM_ATOMIC_LSE_H */

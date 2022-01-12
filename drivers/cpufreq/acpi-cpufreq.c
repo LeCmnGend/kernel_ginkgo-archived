@@ -702,8 +702,12 @@ static int acpi_cpufreq_cpu_init(struct cpufreq_policy *policy)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (check_amd_hwpstate_cpu(cpu) && boot_cpu_data.x86 < 0x19 &&
 	    !acpi_pstate_strict) {
+=======
+	if (check_amd_hwpstate_cpu(cpu) && !acpi_pstate_strict) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (check_amd_hwpstate_cpu(cpu) && !acpi_pstate_strict) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

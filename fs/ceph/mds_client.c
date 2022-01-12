@@ -3519,9 +3519,12 @@ static void delayed_work(struct work_struct *work)
 	ceph_check_delayed_caps(mdsc);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (mdsc->stopping)
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_lock(&mdsc->mutex);
@@ -3858,6 +3861,7 @@ static void ceph_mdsc_stop(struct ceph_mds_client *mdsc)
 {
 	dout("stop\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Make sure the delayed work stopped before releasing
 	 * the resources.
@@ -3868,6 +3872,9 @@ static void ceph_mdsc_stop(struct ceph_mds_client *mdsc)
 	 */
 	flush_delayed_work(&mdsc->delayed_work);
 
+=======
+	cancel_delayed_work_sync(&mdsc->delayed_work); /* cancel timer */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cancel_delayed_work_sync(&mdsc->delayed_work); /* cancel timer */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

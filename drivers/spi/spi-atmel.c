@@ -1583,7 +1583,11 @@ static int atmel_spi_probe(struct platform_device *pdev)
 			as->use_dma = true;
 		} else if (ret == -EPROBE_DEFER) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto out_unmap_regs;
+=======
+			return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			return ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

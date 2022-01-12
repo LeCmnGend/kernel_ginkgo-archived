@@ -811,7 +811,10 @@ static void mkiss_close(struct tty_struct *tty)
 
 	unregister_netdev(ax->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	free_netdev(ax->dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

@@ -144,8 +144,11 @@ struct board_info {
 
 	int		ip_summed;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	struct regulator *power_supply;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -1466,7 +1469,11 @@ dm9000_probe(struct platform_device *pdev)
 			dev_err(dev, "failed to request reset gpio %d: %d\n",
 				reset_gpios, ret);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto out_regulator_disable;
+=======
+			return -ENODEV;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			return -ENODEV;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1482,10 +1489,15 @@ dm9000_probe(struct platform_device *pdev)
 	if (!pdata) {
 		pdata = dm9000_parse_dt(&pdev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (IS_ERR(pdata)) {
 			ret = PTR_ERR(pdata);
 			goto out_regulator_disable;
 		}
+=======
+		if (IS_ERR(pdata))
+			return PTR_ERR(pdata);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (IS_ERR(pdata))
 			return PTR_ERR(pdata);
@@ -1495,10 +1507,15 @@ dm9000_probe(struct platform_device *pdev)
 	/* Init network device */
 	ndev = alloc_etherdev(sizeof(struct board_info));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!ndev) {
 		ret = -ENOMEM;
 		goto out_regulator_disable;
 	}
+=======
+	if (!ndev)
+		return -ENOMEM;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!ndev)
 		return -ENOMEM;
@@ -1514,8 +1531,11 @@ dm9000_probe(struct platform_device *pdev)
 	db->dev = &pdev->dev;
 	db->ndev = ndev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!IS_ERR(power))
 		db->power_supply = power;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1745,10 +1765,13 @@ out:
 	free_netdev(ndev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 out_regulator_disable:
 	if (!IS_ERR(power))
 		regulator_disable(power);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
@@ -1811,6 +1834,7 @@ dm9000_drv_remove(struct platform_device *pdev)
 {
 	struct net_device *ndev = platform_get_drvdata(pdev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct board_info *dm = to_dm9000_board(ndev);
 
 	unregister_netdev(ndev);
@@ -1819,10 +1843,15 @@ dm9000_drv_remove(struct platform_device *pdev)
 	if (dm->power_supply)
 		regulator_disable(dm->power_supply);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	unregister_netdev(ndev);
 	dm9000_release_board(pdev, netdev_priv(ndev));
 	free_netdev(ndev);		/* free device structure */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	dev_dbg(&pdev->dev, "released and freed device\n");

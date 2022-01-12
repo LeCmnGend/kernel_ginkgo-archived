@@ -18,7 +18,10 @@
 #include <linux/mutex.h>
 #include <linux/seq_file.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/mm.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -556,6 +559,7 @@ void sysfs_remove_bin_file(struct kobject *kobj,
 }
 EXPORT_SYMBOL_GPL(sysfs_remove_bin_file);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 /**
  *	sysfs_emit - scnprintf equivalent, aware of PAGE_SIZE buffer.
@@ -610,5 +614,7 @@ int sysfs_emit_at(char *buf, int at, const char *fmt, ...)
 	return len;
 }
 EXPORT_SYMBOL_GPL(sysfs_emit_at);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

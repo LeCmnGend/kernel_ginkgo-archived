@@ -554,7 +554,10 @@ int amdgpu_gem_va_ioctl(struct drm_device *dev, void *data,
 	struct list_head list;
 	uint64_t va_flags;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	uint64_t vm_size;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int r = 0;
@@ -568,6 +571,7 @@ int amdgpu_gem_va_ioctl(struct drm_device *dev, void *data,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vm_size = adev->vm_manager.max_pfn * AMDGPU_GPU_PAGE_SIZE;
 	vm_size -= AMDGPU_VA_RESERVED_SIZE;
 	if (args->va_address + args->map_size > vm_size) {
@@ -577,6 +581,8 @@ int amdgpu_gem_va_ioctl(struct drm_device *dev, void *data,
 		return -EINVAL;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if ((args->flags & ~valid_flags) && (args->flags & ~prt_flags)) {

@@ -2350,7 +2350,11 @@ HFC_cleanup(void)
 {
 	if (timer_pending(&hfc_tl))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		del_timer_sync(&hfc_tl);
+=======
+		del_timer(&hfc_tl);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		del_timer(&hfc_tl);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

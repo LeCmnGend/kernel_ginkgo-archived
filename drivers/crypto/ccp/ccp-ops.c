@@ -68,7 +68,11 @@ static void ccp_sg_free(struct ccp_sg_workarea *wa)
 {
 	if (wa->dma_count)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		dma_unmap_sg(wa->dma_dev, wa->dma_sg_head, wa->nents, wa->dma_dir);
+=======
+		dma_unmap_sg(wa->dma_dev, wa->dma_sg, wa->nents, wa->dma_dir);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dma_unmap_sg(wa->dma_dev, wa->dma_sg, wa->nents, wa->dma_dir);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -101,7 +105,10 @@ static int ccp_init_sg_workarea(struct ccp_sg_workarea *wa, struct device *dev,
 
 	wa->dma_sg = sg;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	wa->dma_sg_head = sg;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	wa->dma_dev = dev;
@@ -117,7 +124,10 @@ static void ccp_update_sg_workarea(struct ccp_sg_workarea *wa, unsigned int len)
 {
 	unsigned int nbytes = min_t(u64, len, wa->bytes_left);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int sg_combined_len = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -126,6 +136,7 @@ static void ccp_update_sg_workarea(struct ccp_sg_workarea *wa, unsigned int len)
 
 	wa->sg_used += nbytes;
 	wa->bytes_left -= nbytes;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (wa->sg_used == sg_dma_len(wa->dma_sg)) {
 		/* Advance to the next DMA scatterlist entry */
@@ -142,6 +153,10 @@ static void ccp_update_sg_workarea(struct ccp_sg_workarea *wa, unsigned int len)
 			wa->sg = sg_next(wa->sg);
 		} while (wa->sg_used > sg_combined_len);
 
+=======
+	if (wa->sg_used == wa->sg->length) {
+		wa->sg = sg_next(wa->sg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (wa->sg_used == wa->sg->length) {
 		wa->sg = sg_next(wa->sg);
@@ -335,7 +350,11 @@ static unsigned int ccp_queue_buf(struct ccp_data *data, unsigned int from)
 	buf_count = 0;
 	while (sg_wa->bytes_left && (buf_count < dm_wa->length)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		nbytes = min(sg_dma_len(sg_wa->dma_sg) - sg_wa->sg_used,
+=======
+		nbytes = min(sg_wa->sg->length - sg_wa->sg_used,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		nbytes = min(sg_wa->sg->length - sg_wa->sg_used,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -371,17 +390,23 @@ static void ccp_prepare_data(struct ccp_data *src, struct ccp_data *dst,
 	 * because the dma length is an unsigned int.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sg_src_len = sg_dma_len(src->sg_wa.dma_sg) - src->sg_wa.sg_used;
 	sg_src_len = min_t(u64, src->sg_wa.bytes_left, sg_src_len);
 
 	if (dst) {
 		sg_dst_len = sg_dma_len(dst->sg_wa.dma_sg) - dst->sg_wa.sg_used;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	sg_src_len = sg_dma_len(src->sg_wa.sg) - src->sg_wa.sg_used;
 	sg_src_len = min_t(u64, src->sg_wa.bytes_left, sg_src_len);
 
 	if (dst) {
 		sg_dst_len = sg_dma_len(dst->sg_wa.sg) - dst->sg_wa.sg_used;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		sg_dst_len = min_t(u64, src->sg_wa.bytes_left, sg_dst_len);
 		op_len = min(sg_src_len, sg_dst_len);
@@ -413,7 +438,11 @@ static void ccp_prepare_data(struct ccp_data *src, struct ccp_data *dst,
 		 * adjust for any previously copied data
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		op->src.u.dma.address = sg_dma_address(src->sg_wa.dma_sg);
+=======
+		op->src.u.dma.address = sg_dma_address(src->sg_wa.sg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		op->src.u.dma.address = sg_dma_address(src->sg_wa.sg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -438,7 +467,11 @@ static void ccp_prepare_data(struct ccp_data *src, struct ccp_data *dst,
 			 * adjust for any previously used area
 			 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			op->dst.u.dma.address = sg_dma_address(dst->sg_wa.dma_sg);
+=======
+			op->dst.u.dma.address = sg_dma_address(dst->sg_wa.sg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			op->dst.u.dma.address = sg_dma_address(dst->sg_wa.sg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1788,7 +1821,11 @@ ccp_run_sha_cmd(struct ccp_cmd_queue *cmd_q, struct ccp_cmd *cmd)
 		default:
 			ret = -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto e_data;
+=======
+			goto e_ctx;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto e_ctx;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1838,9 +1875,14 @@ ccp_run_sha_cmd(struct ccp_cmd_queue *cmd_q, struct ccp_cmd *cmd)
 			break;
 		default:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			kfree(hmac_buf);
 			ret = -EINVAL;
 			goto e_data;
+=======
+			ret = -EINVAL;
+			goto e_ctx;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ret = -EINVAL;
 			goto e_ctx;
@@ -2094,7 +2136,11 @@ ccp_run_passthru_cmd(struct ccp_cmd_queue *cmd_q, struct ccp_cmd *cmd)
 	for (i = 1; i <= src.sg_wa.dma_count; i++) {
 		if (!dst.sg_wa.sg ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 		    (sg_dma_len(dst.sg_wa.sg) < sg_dma_len(src.sg_wa.sg))) {
+=======
+		    (dst.sg_wa.sg->length < src.sg_wa.sg->length)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		    (dst.sg_wa.sg->length < src.sg_wa.sg->length)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2124,8 +2170,13 @@ ccp_run_passthru_cmd(struct ccp_cmd_queue *cmd_q, struct ccp_cmd *cmd)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		dst.sg_wa.sg_used += sg_dma_len(src.sg_wa.sg);
 		if (dst.sg_wa.sg_used == sg_dma_len(dst.sg_wa.sg)) {
+=======
+		dst.sg_wa.sg_used += src.sg_wa.sg->length;
+		if (dst.sg_wa.sg_used == dst.sg_wa.sg->length) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dst.sg_wa.sg_used += src.sg_wa.sg->length;
 		if (dst.sg_wa.sg_used == dst.sg_wa.sg->length) {

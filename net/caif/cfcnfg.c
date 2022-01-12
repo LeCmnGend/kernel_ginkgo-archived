@@ -453,7 +453,11 @@ unlock:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int
+=======
+void
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -466,7 +470,11 @@ cfcnfg_add_phy_layer(struct cfcnfg *cnfg,
 	struct cflayer *frml;
 	struct cfcnfg_phyinfo *phyinfo = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int i, res = 0;
+=======
+	int i;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int i;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -484,7 +492,10 @@ cfcnfg_add_phy_layer(struct cfcnfg *cnfg,
 	}
 	pr_warn("Too many CAIF Link Layers (max 6)\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 	res = -EEXIST;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	goto out;
@@ -492,10 +503,15 @@ cfcnfg_add_phy_layer(struct cfcnfg *cnfg,
 got_phyid:
 	phyinfo = kzalloc(sizeof(struct cfcnfg_phyinfo), GFP_ATOMIC);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!phyinfo) {
 		res = -ENOMEM;
 		goto out_err;
 	}
+=======
+	if (!phyinfo)
+		goto out_err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!phyinfo)
 		goto out_err;
@@ -514,10 +530,15 @@ got_phyid:
 	frml = cffrml_create(phyid, fcs);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!frml) {
 		res = -ENOMEM;
 		goto out_err;
 	}
+=======
+	if (!frml)
+		goto out_err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!frml)
 		goto out_err;
@@ -540,7 +561,11 @@ got_phyid:
 out:
 	mutex_unlock(&cnfg->lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return res;
+=======
+	return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -549,7 +574,10 @@ out_err:
 	kfree(phyinfo);
 	mutex_unlock(&cnfg->lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return res;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

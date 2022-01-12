@@ -50,6 +50,7 @@ static int hdlc_rcv(struct sk_buff *skb, struct net_device *dev,
 		    struct packet_type *p, struct net_device *orig_dev)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct hdlc_device *hdlc;
 
 	/* First make sure "dev" is an HDLC device */
@@ -59,6 +60,9 @@ static int hdlc_rcv(struct sk_buff *skb, struct net_device *dev,
 	}
 
 	hdlc = dev_to_hdlc(dev);
+=======
+	struct hdlc_device *hdlc = dev_to_hdlc(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct hdlc_device *hdlc = dev_to_hdlc(dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -219,7 +219,11 @@ static void pdc_freeze(struct ata_port *ap);
 static void pdc_thaw(struct ata_port *ap);
 static int pdc_port_start(struct ata_port *ap);
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors pdc20621_qc_prep(struct ata_queued_cmd *qc);
+=======
+static void pdc20621_qc_prep(struct ata_queued_cmd *qc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void pdc20621_qc_prep(struct ata_queued_cmd *qc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -551,7 +555,11 @@ static void pdc20621_nodata_prep(struct ata_queued_cmd *qc)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors pdc20621_qc_prep(struct ata_queued_cmd *qc)
+=======
+static void pdc20621_qc_prep(struct ata_queued_cmd *qc)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void pdc20621_qc_prep(struct ata_queued_cmd *qc)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -567,8 +575,11 @@ static void pdc20621_qc_prep(struct ata_queued_cmd *qc)
 		break;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	return AC_ERR_OK;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

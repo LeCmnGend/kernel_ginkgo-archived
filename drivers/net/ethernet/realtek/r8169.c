@@ -2356,7 +2356,11 @@ static void rtl8169_get_strings(struct net_device *dev, u32 stringset, u8 *data)
 	switch(stringset) {
 	case ETH_SS_STATS:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		memcpy(data, rtl8169_gstrings, sizeof(rtl8169_gstrings));
+=======
+		memcpy(data, *rtl8169_gstrings, sizeof(rtl8169_gstrings));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		memcpy(data, *rtl8169_gstrings, sizeof(rtl8169_gstrings));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4506,6 +4510,7 @@ static void rtl_rar_set(struct rtl8169_private *tp, u8 *addr)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void rtl_init_rxcfg(struct rtl8169_private *tp)
 {
 	void __iomem *ioaddr = tp->mmio_addr;
@@ -4560,6 +4565,8 @@ static void rtl_init_rxcfg(struct rtl8169_private *tp)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int rtl_set_mac_address(struct net_device *dev, void *p)
 {
 	struct rtl8169_private *tp = netdev_priv(dev);
@@ -4579,10 +4586,13 @@ static int rtl_set_mac_address(struct net_device *dev, void *p)
 	pm_runtime_put_noidle(d);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Reportedly at least Asus X453MA truncates packets otherwise */
 	if (tp->mac_version == RTL_GIGA_MAC_VER_37)
 		rtl_init_rxcfg(tp);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
@@ -5023,7 +5033,10 @@ static void rtl_init_pll_power_ops(struct rtl8169_private *tp)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void rtl_init_rxcfg(struct rtl8169_private *tp)
 {
 	void __iomem *ioaddr = tp->mmio_addr;
@@ -5076,6 +5089,9 @@ static void rtl_init_rxcfg(struct rtl8169_private *tp)
 	}
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void rtl8169_init_ring_indexes(struct rtl8169_private *tp)
 {
@@ -7209,8 +7225,12 @@ static bool rtl8169_tso_csum_v2(struct rtl8169_private *tp,
 	} else {
 		if (unlikely(rtl_test_hw_pad_bug(tp, skb)))
 <<<<<<< HEAD
+<<<<<<< HEAD
 			/* eth_skb_pad would free the skb on error */
 			return !__skb_put_padto(skb, ETH_ZLEN, false);
+=======
+			return !eth_skb_pad(skb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			return !eth_skb_pad(skb);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -975,7 +975,10 @@ static int vxlan_fdb_dump(struct sk_buff *skb, struct netlink_callback *cb,
 		struct vxlan_fdb *f;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rcu_read_lock();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		hlist_for_each_entry_rcu(f, &vxlan->fdb_head[h], hlist) {
@@ -991,10 +994,15 @@ static int vxlan_fdb_dump(struct sk_buff *skb, struct netlink_callback *cb,
 						     RTM_NEWNEIGH,
 						     NLM_F_MULTI, rd);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if (err < 0) {
 					rcu_read_unlock();
 					goto out;
 				}
+=======
+				if (err < 0)
+					goto out;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				if (err < 0)
 					goto out;
@@ -1004,7 +1012,10 @@ skip:
 			}
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rcu_read_unlock();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -1693,7 +1704,10 @@ static int neigh_reduce(struct net_device *dev, struct sk_buff *skb, __be32 vni)
 	struct nd_msg *msg;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rcu_read_lock();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	in6_dev = __in6_dev_get(dev);
@@ -1748,7 +1762,10 @@ static int neigh_reduce(struct net_device *dev, struct sk_buff *skb, __be32 vni)
 
 out:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rcu_read_unlock();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	consume_skb(skb);
@@ -2242,7 +2259,11 @@ static void vxlan_xmit_one(struct sk_buff *skb, struct net_device *dev,
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		tos = ip_tunnel_ecn_encap(tos, old_iph, skb);
+=======
+		tos = ip_tunnel_ecn_encap(RT_TOS(tos), old_iph, skb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		tos = ip_tunnel_ecn_encap(RT_TOS(tos), old_iph, skb);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2287,7 +2308,11 @@ static void vxlan_xmit_one(struct sk_buff *skb, struct net_device *dev,
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		tos = ip_tunnel_ecn_encap(tos, old_iph, skb);
+=======
+		tos = ip_tunnel_ecn_encap(RT_TOS(tos), old_iph, skb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		tos = ip_tunnel_ecn_encap(RT_TOS(tos), old_iph, skb);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3212,9 +3237,12 @@ static void vxlan_config_apply(struct net_device *dev,
 
 		needed_headroom = lowerdev->hard_header_len;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		needed_headroom += lowerdev->needed_headroom;
 
 		dev->needed_tailroom = lowerdev->needed_tailroom;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

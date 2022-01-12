@@ -747,6 +747,7 @@ static int32_t msm_sensor_driver_is_special_support(
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct kobject *msm_sensor_device=NULL;
 static char module_info[256] = {0};
 
@@ -1043,6 +1044,9 @@ int32_t msm_sensorid_init_device_name(void)
 =======
 /* static function definition */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+/* static function definition */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int32_t msm_sensor_driver_probe(void *setting,
 	struct msm_sensor_info_t *probed_info, char *entity_name)
 {
@@ -1111,7 +1115,11 @@ int32_t msm_sensor_driver_probe(void *setting,
 		slave_info->sensor_id_info.sensor_id =
 			slave_info32->sensor_id_info.sensor_id;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		slave_info->vendor_id_info = slave_info32->vendor_id_info;
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1297,8 +1305,12 @@ int32_t msm_sensor_driver_probe(void *setting,
 			s_ctrl->sensordata->cam_slave_info->sensor_id_info
 			.sensor_id && !(strcmp(slave_info->sensor_name,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			s_ctrl->sensordata->cam_slave_info->sensor_name))&& (slave_info->vendor_id_info.vendor_id ==
 			s_ctrl->sensordata->cam_slave_info->vendor_id_info.vendor_id)) {
+=======
+			s_ctrl->sensordata->cam_slave_info->sensor_name))) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			s_ctrl->sensordata->cam_slave_info->sensor_name))) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1403,7 +1415,10 @@ CSID_TG:
 	s_ctrl->sensordata->ois_name = slave_info->ois_name;
 	s_ctrl->sensordata->flash_name = slave_info->flash_name;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	s_ctrl->sensordata->vendor_id_info = &(slave_info->vendor_id_info);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
@@ -1467,8 +1482,13 @@ CSID_TG:
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //	/* Power down */
 //	s_ctrl->func_tbl->sensor_power_down(s_ctrl);
+=======
+	/* Power down */
+	s_ctrl->func_tbl->sensor_power_down(s_ctrl);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Power down */
 	s_ctrl->func_tbl->sensor_power_down(s_ctrl);
@@ -1480,8 +1500,12 @@ CSID_TG:
 	if (rc < 0) {
 		pr_err("%s Fill slave info failed", slave_info->sensor_name);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		//goto free_camera_info;
 		goto camera_power_down;
+=======
+		goto free_camera_info;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto free_camera_info;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1491,8 +1515,12 @@ CSID_TG:
 		pr_err("%s Validate slave info failed",
 			slave_info->sensor_name);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		//goto free_camera_info;
 		goto camera_power_down;
+=======
+		goto free_camera_info;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto free_camera_info;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1511,6 +1539,7 @@ CSID_TG:
 
 	msm_sensor_fill_sensor_info(s_ctrl, probed_info, entity_name);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	msm_sensor_init_device_name();
 	msm_sensor_set_module_info(s_ctrl);
 	msm_sensorid_init_device_name();
@@ -1518,6 +1547,8 @@ CSID_TG:
 
 	/* Power down */
 	s_ctrl->func_tbl->sensor_power_down(s_ctrl);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

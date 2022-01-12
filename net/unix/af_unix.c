@@ -120,8 +120,11 @@
 #include <linux/file.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "scm.h"
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct hlist_head unix_socket_table[2 * UNIX_HASH_SIZE];
@@ -198,7 +201,11 @@ static inline int unix_may_send(struct sock *sk, struct sock *osk)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int unix_recvq_full(const struct sock *sk)
+=======
+static inline int unix_recvq_full(struct sock const *sk)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int unix_recvq_full(struct sock const *sk)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -207,12 +214,15 @@ static inline int unix_recvq_full(struct sock const *sk)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int unix_recvq_full_lockless(const struct sock *sk)
 {
 	return skb_queue_len_lockless(&sk->sk_receive_queue) >
 		READ_ONCE(sk->sk_max_ack_backlog);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct sock *unix_peer_get(struct sock *s)
@@ -548,10 +558,13 @@ static void unix_release_sock(struct sock *sk, int embrion)
 	state = sk->sk_state;
 	sk->sk_state = TCP_CLOSE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	skpair = unix_peer(sk);
 	unix_peer(sk) = NULL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unix_state_unlock(sk);
@@ -559,6 +572,11 @@ static void unix_release_sock(struct sock *sk, int embrion)
 	wake_up_interruptible_all(&u->peer_wait);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	skpair = unix_peer(sk);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	skpair = unix_peer(sk);
 
@@ -578,6 +596,10 @@ static void unix_release_sock(struct sock *sk, int embrion)
 		unix_dgram_peer_wake_disconnect(sk, skpair);
 		sock_put(skpair); /* It may now die */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		unix_peer(sk) = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		unix_peer(sk) = NULL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1544,6 +1566,7 @@ out:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void unix_peek_fds(struct scm_cookie *scm, struct sk_buff *skb)
 {
 	scm->fp = scm_fp_dup(UNIXCB(skb).fp);
@@ -1590,6 +1613,8 @@ static void unix_peek_fds(struct scm_cookie *scm, struct sk_buff *skb)
 	spin_lock(&unix_gc_lock);
 	spin_unlock(&unix_gc_lock);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void unix_detach_fds(struct scm_cookie *scm, struct sk_buff *skb)
 {
 	int i;
@@ -1649,6 +1674,9 @@ static int unix_attach_fds(struct scm_cookie *scm, struct sk_buff *skb)
 	for (i = scm->fp->count - 1; i >= 0; i--)
 		unix_inflight(scm->fp->user, scm->fp->fp[i]);
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -1872,8 +1900,12 @@ restart_locked:
 	 */
 	if (other != sk &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    unlikely(unix_peer(other) != sk &&
 	    unix_recvq_full_lockless(other))) {
+=======
+	    unlikely(unix_peer(other) != sk && unix_recvq_full(other))) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	    unlikely(unix_peer(other) != sk && unix_recvq_full(other))) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2282,7 +2314,11 @@ static int unix_dgram_recvmsg(struct socket *sock, struct msghdr *msg,
 
 		if (UNIXCB(skb).fp)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			unix_peek_fds(&scm, skb);
+=======
+			scm.fp = scm_fp_dup(UNIXCB(skb).fp);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			scm.fp = scm_fp_dup(UNIXCB(skb).fp);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2527,7 +2563,11 @@ unlock:
 			 */
 			if (UNIXCB(skb).fp)
 <<<<<<< HEAD
+<<<<<<< HEAD
 				unix_peek_fds(&scm, skb);
+=======
+				scm.fp = scm_fp_dup(UNIXCB(skb).fp);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				scm.fp = scm_fp_dup(UNIXCB(skb).fp);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

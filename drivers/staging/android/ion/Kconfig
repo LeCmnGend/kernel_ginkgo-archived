@@ -45,7 +45,10 @@ config ION_CMA_HEAP
 	  regions, you should say Y here.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config ION_FORCE_DMA_SYNC
 	bool "Force ION to always DMA sync buffer memory"
 	depends on ION
@@ -58,6 +61,9 @@ config ION_FORCE_DMA_SYNC
 	  cache maintenance model.
 	  If you're not sure say N here.
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config ION_DEFER_FREE_NO_SCHED_IDLE
 	bool "Increases the priority of ION defer free thead"

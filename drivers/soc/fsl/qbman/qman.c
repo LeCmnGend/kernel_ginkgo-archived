@@ -147,7 +147,11 @@ struct qm_eqcr_entry {
 	struct qm_fd fd;
 	u8 __reserved3[32];
 <<<<<<< HEAD
+<<<<<<< HEAD
 } __packed __aligned(8);
+=======
+} __packed;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 } __packed;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -778,6 +778,7 @@ static int __init tlclk_init(void)
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	telclk_interrupt = (inb(TLCLK_REG7) & 0x0f);
 
 	alarm_events = kzalloc( sizeof(struct tlclk_alarms), GFP_KERNEL);
@@ -794,6 +795,8 @@ static int __init tlclk_init(void)
 	}
 	tlclk_major = ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = register_chrdev(tlclk_major, "telco_clock", &tlclk_fops);
 	if (ret < 0) {
 		printk(KERN_ERR "tlclk: can't get major %d.\n", tlclk_major);
@@ -805,6 +808,9 @@ static int __init tlclk_init(void)
 		ret = -ENOMEM;
 		goto out1;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Read telecom clock IRQ number (Set by BIOS) */
@@ -815,6 +821,10 @@ static int __init tlclk_init(void)
 		goto out2;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	telclk_interrupt = (inb(TLCLK_REG7) & 0x0f);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	telclk_interrupt = (inb(TLCLK_REG7) & 0x0f);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -859,8 +869,13 @@ out3:
 out2:
 	kfree(alarm_events);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unregister_chrdev(tlclk_major, "telco_clock");
 out1:
+=======
+out1:
+	unregister_chrdev(tlclk_major, "telco_clock");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 out1:
 	unregister_chrdev(tlclk_major, "telco_clock");

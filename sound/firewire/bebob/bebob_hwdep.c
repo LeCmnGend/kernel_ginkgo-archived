@@ -38,7 +38,10 @@ hwdep_read(struct snd_hwdep *hwdep, char __user *buf,  long count,
 
 	memset(&event, 0, sizeof(event));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	count = min_t(long, count, sizeof(event.lock_status));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (bebob->dev_lock_changed) {
@@ -46,6 +49,11 @@ hwdep_read(struct snd_hwdep *hwdep, char __user *buf,  long count,
 		event.lock_status.status = (bebob->dev_lock_count > 0);
 		bebob->dev_lock_changed = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+		count = min_t(long, count, sizeof(event.lock_status));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 		count = min_t(long, count, sizeof(event.lock_status));

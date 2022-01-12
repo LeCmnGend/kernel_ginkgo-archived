@@ -20,6 +20,10 @@ struct adreno_context_type {
 
 #define ADRENO_CONTEXT_DRAWQUEUE_SIZE 128
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define SUBMIT_RETIRE_TICKS_SIZE 7
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define SUBMIT_RETIRE_TICKS_SIZE 7
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -51,11 +55,17 @@ struct kgsl_context;
  * @rb: The ringbuffer in which this context submits commands.
  * @submitted_timestamp: The last timestamp that was submitted for this context
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * @submit_retire_ticks: Array to hold command obj execution times from submit
  *                       to retire
  * @ticks_index: The index into submit_retire_ticks[] where the new delta will
  *		 be written.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * @active_node: Linkage for nodes in active_list
  * @active_time: Time when this context last seen
@@ -84,6 +94,11 @@ struct adreno_context {
 	struct adreno_ringbuffer *rb;
 	unsigned int submitted_timestamp;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	uint64_t submit_retire_ticks[SUBMIT_RETIRE_TICKS_SIZE];
+	int ticks_index;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	uint64_t submit_retire_ticks[SUBMIT_RETIRE_TICKS_SIZE];
 	int ticks_index;

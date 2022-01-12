@@ -874,6 +874,7 @@ static u16 ef4_farch_handle_rx_not_ok(struct ef4_rx_queue *rx_queue,
 	struct ef4_channel *channel = ef4_rx_queue_channel(rx_queue);
 	struct ef4_nic *efx = rx_queue->efx;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool __maybe_unused rx_ev_buf_owner_id_err, rx_ev_ip_hdr_chksum_err;
 	bool rx_ev_tcp_udp_chksum_err, rx_ev_eth_crc_err;
 	bool rx_ev_frm_trunc, rx_ev_drib_nib, rx_ev_tobe_disc;
@@ -881,6 +882,8 @@ static u16 ef4_farch_handle_rx_not_ok(struct ef4_rx_queue *rx_queue,
 
 	rx_ev_tobe_disc = EF4_QWORD_FIELD(*event, FSF_AZ_RX_EV_TOBE_DISC);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool rx_ev_buf_owner_id_err, rx_ev_ip_hdr_chksum_err;
 	bool rx_ev_tcp_udp_chksum_err, rx_ev_eth_crc_err;
 	bool rx_ev_frm_trunc, rx_ev_drib_nib, rx_ev_tobe_disc;
@@ -892,6 +895,9 @@ static u16 ef4_farch_handle_rx_not_ok(struct ef4_rx_queue *rx_queue,
 	rx_ev_mcast_pkt = EF4_QWORD_FIELD(*event, FSF_AZ_RX_EV_MCAST_PKT);
 	rx_ev_tobe_disc = EF4_QWORD_FIELD(*event, FSF_AZ_RX_EV_TOBE_DISC);
 	rx_ev_pkt_type = EF4_QWORD_FIELD(*event, FSF_AZ_RX_EV_PKT_TYPE);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rx_ev_buf_owner_id_err = EF4_QWORD_FIELD(*event,
 						 FSF_AZ_RX_EV_BUF_OWNER_ID_ERR);
@@ -906,11 +912,17 @@ static u16 ef4_farch_handle_rx_not_ok(struct ef4_rx_queue *rx_queue,
 	rx_ev_pause_frm = EF4_QWORD_FIELD(*event, FSF_AZ_RX_EV_PAUSE_FRM_ERR);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Every error apart from tobe_disc and pause_frm */
 	rx_ev_other_err = (rx_ev_drib_nib | rx_ev_tcp_udp_chksum_err |
 			   rx_ev_buf_owner_id_err | rx_ev_eth_crc_err |
 			   rx_ev_frm_trunc | rx_ev_ip_hdr_chksum_err);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Count errors that are not in MAC stats.  Ignore expected
@@ -932,6 +944,7 @@ static u16 ef4_farch_handle_rx_not_ok(struct ef4_rx_queue *rx_queue,
 	 */
 #ifdef DEBUG
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{
 	/* Every error apart from tobe_disc and pause_frm */
 
@@ -939,6 +952,8 @@ static u16 ef4_farch_handle_rx_not_ok(struct ef4_rx_queue *rx_queue,
 				rx_ev_buf_owner_id_err | rx_ev_eth_crc_err |
 				rx_ev_frm_trunc | rx_ev_ip_hdr_chksum_err);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (rx_ev_other_err && net_ratelimit()) {
@@ -958,7 +973,10 @@ static u16 ef4_farch_handle_rx_not_ok(struct ef4_rx_queue *rx_queue,
 			  rx_ev_pause_frm ? " [PAUSE]" : "");
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
@@ -1673,7 +1691,11 @@ void ef4_farch_rx_push_indir_table(struct ef4_nic *efx)
 void ef4_farch_dimension_resources(struct ef4_nic *efx, unsigned sram_lim_qw)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned vi_count;
+=======
+	unsigned vi_count, buftbl_min;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned vi_count, buftbl_min;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1682,11 +1704,17 @@ void ef4_farch_dimension_resources(struct ef4_nic *efx, unsigned sram_lim_qw)
 	 * and the descriptor caches for those channels.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	buftbl_min = ((efx->n_rx_channels * EF4_MAX_DMAQ_SIZE +
 		       efx->n_tx_channels * EF4_TXQ_TYPES * EF4_MAX_DMAQ_SIZE +
 		       efx->n_channels * EF4_MAX_EVQ_SIZE)
 		      * sizeof(ef4_qword_t) / EF4_BUF_SIZE);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	vi_count = max(efx->n_channels, efx->n_tx_channels * EF4_TXQ_TYPES);
 
@@ -2569,6 +2597,10 @@ int ef4_farch_filter_remove_safe(struct ef4_nic *efx,
 	struct ef4_farch_filter_table *table;
 	unsigned int filter_idx;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct ef4_farch_filter_spec *spec;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct ef4_farch_filter_spec *spec;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2583,6 +2615,10 @@ int ef4_farch_filter_remove_safe(struct ef4_nic *efx,
 	if (filter_idx >= table->size)
 		return -ENOENT;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	spec = &table->spec[filter_idx];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spec = &table->spec[filter_idx];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -101,6 +101,7 @@ asm (
 	"	orq	$0x7f7f7f7f, %r8\n"
 	"	movq	%r8, %r9\n"
 <<<<<<< HEAD
+<<<<<<< HEAD
 	"	incq	%r9\n"
 	"	movq	%r9, %r10\n"
 	"	incq	%r10\n"
@@ -115,12 +116,17 @@ asm (
 	"	movq	%r14, %r15\n"
 	"	incq	%r15\n"
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	"	movq	%r8, %r10\n"
 	"	movq	%r8, %r11\n"
 	"	movq	%r8, %r12\n"
 	"	movq	%r8, %r13\n"
 	"	movq	%r8, %r14\n"
 	"	movq	%r8, %r15\n"
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	"	ret\n"
 	"	.code32\n"
@@ -145,7 +151,10 @@ int check_regs64(void)
 	int num = 8;
 	uint64_t *r64 = &regs64.r8;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	uint64_t expected = 0x7f7f7f7f7f7f7f7fULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -154,7 +163,11 @@ int check_regs64(void)
 
 	do {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (*r64 == expected++)
+=======
+		if (*r64 == 0x7f7f7f7f7f7f7f7fULL)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (*r64 == 0x7f7f7f7f7f7f7f7fULL)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -172,8 +185,12 @@ int check_regs64(void)
 			}
 		} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			/*
 			 * INT80 syscall entrypoint can be used by
+=======
+			/* INT80 syscall entrypoint can be used by
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			/* INT80 syscall entrypoint can be used by
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -182,12 +199,15 @@ int check_regs64(void)
 			 * (they are callee-saved registers in 64-bit C ABI).
 			 *
 <<<<<<< HEAD
+<<<<<<< HEAD
 			 * Starting in Linux 4.17 (and any kernel that
 			 * backports the change), R8..11 are preserved.
 			 * Historically (and probably unintentionally), they
 			 * were clobbered or zeroed.
 			 */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			 * This was probably historically not intended,
 			 * but R8..11 are clobbered (cleared to 0).
 			 * IOW: they are the only registers which aren't
@@ -195,6 +215,9 @@ int check_regs64(void)
 			 */
 			if (*r64 == 0 && num <= 11)
 				continue;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 		printf("[FAIL]\tR%d has changed:%016llx\n", num, *r64);

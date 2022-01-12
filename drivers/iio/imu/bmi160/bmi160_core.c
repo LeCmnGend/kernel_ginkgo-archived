@@ -111,6 +111,7 @@ enum bmi160_sensor_type {
 struct bmi160_data {
 	struct regmap *regmap;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Ensure natural alignment for timestamp if present.
 	 * Max length needed: 2 * 3 channels + 4 bytes padding + 8 byte ts.
@@ -118,6 +119,8 @@ struct bmi160_data {
 	 * long as the timestamp is still aligned to 8 bytes.
 	 */
 	__le16 buf[12] __aligned(8);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -396,6 +399,11 @@ static irqreturn_t bmi160_trigger_handler(int irq, void *p)
 	struct iio_dev *indio_dev = pf->indio_dev;
 	struct bmi160_data *data = iio_priv(indio_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	__le16 buf[16];
+	/* 3 sens x 3 axis x __le16 + 3 x __le16 pad + 4 x __le16 tstamp */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__le16 buf[16];
 	/* 3 sens x 3 axis x __le16 + 3 x __le16 pad + 4 x __le16 tstamp */
@@ -410,15 +418,21 @@ static irqreturn_t bmi160_trigger_handler(int irq, void *p)
 		if (ret < 0)
 			goto done;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		data->buf[j++] = sample;
 	}
 
 	iio_push_to_buffers_with_timestamp(indio_dev, data->buf,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		buf[j++] = sample;
 	}
 
 	iio_push_to_buffers_with_timestamp(indio_dev, buf,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					   iio_get_time_ns(indio_dev));
 done:

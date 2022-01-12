@@ -43,17 +43,23 @@ void ieee802154_xmit_worker(struct work_struct *work)
 		goto err_tx;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev->stats.tx_packets++;
 	dev->stats.tx_bytes += skb->len;
 
 	ieee802154_xmit_complete(&local->hw, skb, false);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ieee802154_xmit_complete(&local->hw, skb, false);
 
 	dev->stats.tx_packets++;
 	dev->stats.tx_bytes += skb->len;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return;
 
@@ -95,8 +101,11 @@ ieee802154_tx(struct ieee802154_local *local, struct sk_buff *skb)
 	/* async is priority, otherwise sync is fallback */
 	if (local->ops->xmit_async) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unsigned int len = skb->len;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = drv_xmit_async(local, skb);
@@ -107,7 +116,11 @@ ieee802154_tx(struct ieee802154_local *local, struct sk_buff *skb)
 
 		dev->stats.tx_packets++;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		dev->stats.tx_bytes += len;
+=======
+		dev->stats.tx_bytes += skb->len;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dev->stats.tx_bytes += skb->len;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -193,8 +193,12 @@ static int fw_cfg_do_platform_probe(struct platform_device *pdev)
 static u32 fw_cfg_rev;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static ssize_t fw_cfg_showrev(struct kobject *k, struct kobj_attribute *a,
 			      char *buf)
+=======
+static ssize_t fw_cfg_showrev(struct kobject *k, struct attribute *a, char *buf)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static ssize_t fw_cfg_showrev(struct kobject *k, struct attribute *a, char *buf)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -203,12 +207,18 @@ static ssize_t fw_cfg_showrev(struct kobject *k, struct attribute *a, char *buf)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const struct kobj_attribute fw_cfg_rev_attr = {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static const struct {
 	struct attribute attr;
 	ssize_t (*show)(struct kobject *k, struct attribute *a, char *buf);
 } fw_cfg_rev_attr = {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.attr = { .name = "rev", .mode = S_IRUSR },
 	.show = fw_cfg_showrev,

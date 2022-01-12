@@ -436,8 +436,12 @@ no_iso:
 
 	ret = usb_assign_descriptors(f, fs_source_sink_descs,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			hs_source_sink_descs, ss_source_sink_descs,
 			ss_source_sink_descs);
+=======
+			hs_source_sink_descs, ss_source_sink_descs, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			hs_source_sink_descs, ss_source_sink_descs, NULL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

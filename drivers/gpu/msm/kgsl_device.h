@@ -69,6 +69,10 @@ enum kgsl_event_results {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define KGSL_FLAG_WAKE_ON_TOUCH BIT(0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define KGSL_FLAG_WAKE_ON_TOUCH BIT(0)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -735,6 +739,7 @@ void kgsl_device_platform_remove(struct kgsl_device *device);
 const char *kgsl_pwrstate_to_str(unsigned int state);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int kgsl_device_snapshot_init(struct kgsl_device *device)
 {
 	return 0;
@@ -743,10 +748,15 @@ static inline void kgsl_device_snapshot(struct kgsl_device *device,
 			struct kgsl_context *context, bool gmu_fault) {}
 static inline void kgsl_device_snapshot_close(struct kgsl_device *device) {}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int kgsl_device_snapshot_init(struct kgsl_device *device);
 void kgsl_device_snapshot(struct kgsl_device *device,
 			struct kgsl_context *context, bool gmu_fault);
 void kgsl_device_snapshot_close(struct kgsl_device *device);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 void kgsl_events_init(void);

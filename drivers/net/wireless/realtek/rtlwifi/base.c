@@ -457,6 +457,7 @@ static void _rtl_init_mac80211(struct ieee80211_hw *hw)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int _rtl_init_deferred_work(struct ieee80211_hw *hw)
 {
 	struct rtl_priv *rtlpriv = rtl_priv(hw);
@@ -465,6 +466,11 @@ static int _rtl_init_deferred_work(struct ieee80211_hw *hw)
 	wq = alloc_workqueue("%s", 0, 0, rtlpriv->cfg->name);
 	if (!wq)
 		return -ENOMEM;
+=======
+static void _rtl_init_deferred_work(struct ieee80211_hw *hw)
+{
+	struct rtl_priv *rtlpriv = rtl_priv(hw);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void _rtl_init_deferred_work(struct ieee80211_hw *hw)
 {
@@ -479,13 +485,19 @@ static void _rtl_init_deferred_work(struct ieee80211_hw *hw)
 	/* <2> work queue */
 	rtlpriv->works.hw = hw;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rtlpriv->works.rtl_wq = wq;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rtlpriv->works.rtl_wq = alloc_workqueue("%s", 0, 0, rtlpriv->cfg->name);
 	if (unlikely(!rtlpriv->works.rtl_wq)) {
 		pr_err("Failed to allocate work queue\n");
 		return;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	INIT_DELAYED_WORK(&rtlpriv->works.watchdog_wq,
@@ -501,7 +513,11 @@ static void _rtl_init_deferred_work(struct ieee80211_hw *hw)
 	INIT_DELAYED_WORK(&rtlpriv->works.c2hcmd_wq,
 			  (void *)rtl_c2hcmd_wq_callback);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return 0;
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -605,7 +621,13 @@ int rtl_init_core(struct ieee80211_hw *hw)
 
 	/* <6> init deferred work */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return _rtl_init_deferred_work(hw);
+=======
+	_rtl_init_deferred_work(hw);
+
+	return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	_rtl_init_deferred_work(hw);
 

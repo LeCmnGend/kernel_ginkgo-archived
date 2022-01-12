@@ -102,7 +102,11 @@ int drm_irq_install(struct drm_device *dev, int irq)
 {
 	int ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long sh_flags = IRQF_PERF_CRITICAL;
+=======
+	unsigned long sh_flags = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long sh_flags = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

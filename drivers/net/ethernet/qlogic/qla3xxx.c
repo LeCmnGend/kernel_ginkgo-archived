@@ -116,7 +116,11 @@ static int ql_sem_spinlock(struct ql3_adapter *qdev,
 		if ((value & (sem_mask >> 16)) == sem_bits)
 			return 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mdelay(1000);
+=======
+		ssleep(1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ssleep(1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -160,7 +164,11 @@ static int ql_wait_for_drvr_lock(struct ql3_adapter *qdev)
 			return 1;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mdelay(1000);
+=======
+		ssleep(1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ssleep(1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3300,7 +3308,11 @@ static int ql_adapter_reset(struct ql3_adapter *qdev)
 			break;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mdelay(1000);
+=======
+		ssleep(1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ssleep(1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3340,7 +3352,11 @@ static int ql_adapter_reset(struct ql3_adapter *qdev)
 			if ((value & ISP_CONTROL_FSR) == 0)
 				break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			mdelay(1000);
+=======
+			ssleep(1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ssleep(1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

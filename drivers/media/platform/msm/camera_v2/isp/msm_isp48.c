@@ -31,7 +31,11 @@
 #define VFE48_STATS_BURST_LEN 3
 #define VFE48_UB_SIZE_VFE 2048 /* 2048 * 256 bits = 64KB */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define VFE48_UB_STATS_SIZE 608
+=======
+#define VFE48_UB_STATS_SIZE 352
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define VFE48_UB_STATS_SIZE 352
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -326,6 +330,7 @@ void msm_vfe48_stats_cfg_ub(struct vfe_device *vfe_dev)
 	uint32_t ub_offset = 0, stats_burst_len;
 	uint32_t ub_size[VFE47_NUM_STATS_TYPE] = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		80, /* MSM_ISP_STATS_HDR_BE */
 		64, /* MSM_ISP_STATS_BG */
 		64, /* MSM_ISP_STATS_BF */
@@ -336,6 +341,8 @@ void msm_vfe48_stats_cfg_ub(struct vfe_device *vfe_dev)
 		64, /* MSM_ISP_STATS_BHIST */
 		80, /* MSM_ISP_STATS_AEC_BG */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		64, /* MSM_ISP_STATS_HDR_BE */
 		64, /* MSM_ISP_STATS_BG */
 		32, /* MSM_ISP_STATS_BF */
@@ -345,6 +352,9 @@ void msm_vfe48_stats_cfg_ub(struct vfe_device *vfe_dev)
 		32, /* MSM_ISP_STATS_IHIST */
 		32, /* MSM_ISP_STATS_BHIST */
 		32, /* MSM_ISP_STATS_AEC_BG */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	};
 

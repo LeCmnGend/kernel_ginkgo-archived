@@ -19,8 +19,12 @@
 #define __ASM_CMPXCHG_H
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/build_bug.h>
 #include <linux/compiler.h>
+=======
+#include <linux/bug.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/bug.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -34,6 +38,7 @@
  * barrier case is generated as release+dmb for the former and
  * acquire+release for the latter.
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
 #define __XCHG_CASE(w, sfx, name, sz, mb, nop_lse, acq, acq_lse, rel, cl)	\
 static inline u##sz __xchg_case_##name##sz(u##sz x, volatile void *ptr)		\
@@ -76,6 +81,8 @@ __XCHG_CASE(w, h,  mb_, 16, dmb ish, nop,  , a, l, "memory")
 __XCHG_CASE(w,  ,  mb_, 32, dmb ish, nop,  , a, l, "memory")
 __XCHG_CASE( ,  ,  mb_, 64, dmb ish, nop,  , a, l, "memory")
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define __XCHG_CASE(w, sz, name, mb, nop_lse, acq, acq_lse, rel, cl)	\
 static inline unsigned long __xchg_case_##name(unsigned long x,		\
 					       volatile void *ptr)	\
@@ -116,6 +123,9 @@ __XCHG_CASE(w, b,  mb_1, dmb ish, nop,  , a, l, "memory")
 __XCHG_CASE(w, h,  mb_2, dmb ish, nop,  , a, l, "memory")
 __XCHG_CASE(w,  ,  mb_4, dmb ish, nop,  , a, l, "memory")
 __XCHG_CASE( ,  ,  mb_8, dmb ish, nop,  , a, l, "memory")
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #undef __XCHG_CASE
@@ -128,6 +138,7 @@ static __always_inline  unsigned long __xchg##sfx(unsigned long x,	\
 	switch (size) {							\
 	case 1:								\
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return __xchg_case##sfx##_8(x, ptr);			\
 	case 2:								\
 		return __xchg_case##sfx##_16(x, ptr);			\
@@ -136,6 +147,8 @@ static __always_inline  unsigned long __xchg##sfx(unsigned long x,	\
 	case 8:								\
 		return __xchg_case##sfx##_64(x, ptr);			\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return __xchg_case##sfx##_1(x, ptr);			\
 	case 2:								\
 		return __xchg_case##sfx##_2(x, ptr);			\
@@ -143,6 +156,9 @@ static __always_inline  unsigned long __xchg##sfx(unsigned long x,	\
 		return __xchg_case##sfx##_4(x, ptr);			\
 	case 8:								\
 		return __xchg_case##sfx##_8(x, ptr);			\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	default:							\
 		BUILD_BUG();						\
@@ -181,6 +197,7 @@ static __always_inline unsigned long __cmpxchg##sfx(volatile void *ptr,	\
 	switch (size) {							\
 	case 1:								\
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return __cmpxchg_case##sfx##_8(ptr, old, new);		\
 	case 2:								\
 		return __cmpxchg_case##sfx##_16(ptr, old, new);		\
@@ -189,6 +206,8 @@ static __always_inline unsigned long __cmpxchg##sfx(volatile void *ptr,	\
 	case 8:								\
 		return __cmpxchg_case##sfx##_64(ptr, old, new);		\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return __cmpxchg_case##sfx##_1(ptr, (u8)old, new);	\
 	case 2:								\
 		return __cmpxchg_case##sfx##_2(ptr, (u16)old, new);	\
@@ -196,6 +215,9 @@ static __always_inline unsigned long __cmpxchg##sfx(volatile void *ptr,	\
 		return __cmpxchg_case##sfx##_4(ptr, old, new);		\
 	case 8:								\
 		return __cmpxchg_case##sfx##_8(ptr, old, new);		\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	default:							\
 		BUILD_BUG();						\
@@ -265,10 +287,13 @@ __CMPXCHG_GEN(_mb)
 })
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define __CMPWAIT_CASE(w, sfx, sz)					\
 static inline void __cmpwait_case_##sz(volatile void *ptr,		\
 				       unsigned long val)		\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* this_cpu_cmpxchg */
 #define _protect_cmpxchg_local(pcp, o, n)			\
 ({								\
@@ -298,6 +323,9 @@ static inline void __cmpwait_case_##sz(volatile void *ptr,		\
 #define __CMPWAIT_CASE(w, sz, name)					\
 static inline void __cmpwait_case_##name(volatile void *ptr,		\
 					 unsigned long val)		\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {									\
 	unsigned long tmp;						\
@@ -306,7 +334,11 @@ static inline void __cmpwait_case_##name(volatile void *ptr,		\
 	"	sevl\n"							\
 	"	wfe\n"							\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	"	ldxr" #sfx "\t%" #w "[tmp], %[v]\n"			\
+=======
+	"	ldxr" #sz "\t%" #w "[tmp], %[v]\n"			\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	"	ldxr" #sz "\t%" #w "[tmp], %[v]\n"			\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -319,15 +351,21 @@ static inline void __cmpwait_case_##name(volatile void *ptr,		\
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 __CMPWAIT_CASE(w, b, 8);
 __CMPWAIT_CASE(w, h, 16);
 __CMPWAIT_CASE(w,  , 32);
 __CMPWAIT_CASE( ,  , 64);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 __CMPWAIT_CASE(w, b, 1);
 __CMPWAIT_CASE(w, h, 2);
 __CMPWAIT_CASE(w,  , 4);
 __CMPWAIT_CASE( ,  , 8);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #undef __CMPWAIT_CASE
@@ -340,6 +378,7 @@ static __always_inline void __cmpwait##sfx(volatile void *ptr,		\
 	switch (size) {							\
 	case 1:								\
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return __cmpwait_case##sfx##_8(ptr, (u8)val);		\
 	case 2:								\
 		return __cmpwait_case##sfx##_16(ptr, (u16)val);		\
@@ -348,6 +387,8 @@ static __always_inline void __cmpwait##sfx(volatile void *ptr,		\
 	case 8:								\
 		return __cmpwait_case##sfx##_64(ptr, val);		\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return __cmpwait_case##sfx##_1(ptr, (u8)val);		\
 	case 2:								\
 		return __cmpwait_case##sfx##_2(ptr, (u16)val);		\
@@ -355,6 +396,9 @@ static __always_inline void __cmpwait##sfx(volatile void *ptr,		\
 		return __cmpwait_case##sfx##_4(ptr, val);		\
 	case 8:								\
 		return __cmpwait_case##sfx##_8(ptr, val);		\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	default:							\
 		BUILD_BUG();						\

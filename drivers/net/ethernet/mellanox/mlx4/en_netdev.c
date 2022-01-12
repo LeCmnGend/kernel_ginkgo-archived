@@ -1390,10 +1390,15 @@ static void mlx4_en_tx_timeout(struct net_device *dev)
 
 	priv->port_stats.tx_timeout++;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!test_and_set_bit(MLX4_EN_STATE_FLAG_RESTARTING, &priv->state)) {
 		en_dbg(DRV, priv, "Scheduling port restart\n");
 		queue_work(mdev->workqueue, &priv->restart_task);
 	}
+=======
+	en_dbg(DRV, priv, "Scheduling watchdog\n");
+	queue_work(mdev->workqueue, &priv->watchdog_task);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	en_dbg(DRV, priv, "Scheduling watchdog\n");
 	queue_work(mdev->workqueue, &priv->watchdog_task);
@@ -1752,7 +1757,10 @@ int mlx4_en_start_port(struct net_device *dev)
 				goto tx_err;
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 			clear_bit(MLX4_EN_TX_RING_STATE_RECOVERING, &tx_ring->state);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (t != TX_XDP) {
@@ -1851,7 +1859,10 @@ int mlx4_en_start_port(struct net_device *dev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	clear_bit(MLX4_EN_STATE_FLAG_RESTARTING, &priv->state);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	netif_tx_start_all_queues(dev);
@@ -2025,7 +2036,11 @@ static void mlx4_en_restart(struct work_struct *work)
 {
 	struct mlx4_en_priv *priv = container_of(work, struct mlx4_en_priv,
 <<<<<<< HEAD
+<<<<<<< HEAD
 						 restart_task);
+=======
+						 watchdog_task);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 						 watchdog_task);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2408,7 +2423,11 @@ static int mlx4_en_change_mtu(struct net_device *dev, int new_mtu)
 		mutex_lock(&mdev->state_lock);
 		if (!mdev->device_up) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			/* NIC is probably restarting - let restart task reset
+=======
+			/* NIC is probably restarting - let watchdog task reset
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			/* NIC is probably restarting - let watchdog task reset
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2421,9 +2440,13 @@ static int mlx4_en_change_mtu(struct net_device *dev, int new_mtu)
 				en_err(priv, "Failed restarting port:%d\n",
 					 priv->port);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if (!test_and_set_bit(MLX4_EN_STATE_FLAG_RESTARTING,
 						      &priv->state))
 					queue_work(mdev->workqueue, &priv->restart_task);
+=======
+				queue_work(mdev->workqueue, &priv->watchdog_task);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				queue_work(mdev->workqueue, &priv->watchdog_task);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2913,8 +2936,12 @@ static int mlx4_xdp_set(struct net_device *dev, struct bpf_prog *prog)
 			en_err(priv, "Failed starting port %d for XDP change\n",
 			       priv->port);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (!test_and_set_bit(MLX4_EN_STATE_FLAG_RESTARTING, &priv->state))
 				queue_work(mdev->workqueue, &priv->restart_task);
+=======
+			queue_work(mdev->workqueue, &priv->watchdog_task);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			queue_work(mdev->workqueue, &priv->watchdog_task);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3319,7 +3346,11 @@ int mlx4_en_init_netdev(struct mlx4_en_dev *mdev, int port,
 	spin_lock_init(&priv->stats_lock);
 	INIT_WORK(&priv->rx_mode_task, mlx4_en_do_set_rx_mode);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	INIT_WORK(&priv->restart_task, mlx4_en_restart);
+=======
+	INIT_WORK(&priv->watchdog_task, mlx4_en_restart);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	INIT_WORK(&priv->watchdog_task, mlx4_en_restart);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3705,8 +3736,11 @@ int mlx4_en_reset_config(struct net_device *dev,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!err)
 		err = mlx4_en_moderation_update(priv);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out:

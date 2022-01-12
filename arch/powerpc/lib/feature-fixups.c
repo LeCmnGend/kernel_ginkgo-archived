@@ -19,7 +19,10 @@
 #include <linux/init.h>
 #include <linux/sched/mm.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/stop_machine.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <asm/cputable.h>
@@ -230,6 +233,7 @@ void do_stf_exit_barrier_fixups(enum stf_barrier_type types)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int __do_stf_barrier_fixups(void *data)
 {
 	enum stf_barrier_type *types = data;
@@ -368,11 +372,16 @@ void do_entry_flush_fixups(enum l1d_flush_type types)
 	 */
 	stop_machine(__do_entry_flush_fixups, &types, NULL);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 void do_stf_barrier_fixups(enum stf_barrier_type types)
 {
 	do_stf_entry_barrier_fixups(types);
 	do_stf_exit_barrier_fixups(types);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

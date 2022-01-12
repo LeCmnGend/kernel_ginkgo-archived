@@ -1054,6 +1054,10 @@ static int _regulator_do_enable(struct regulator_dev *rdev);
  * set_machine_constraints - sets regulator constraints
  * @rdev: regulator source
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+ * @constraints: constraints to apply
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * @constraints: constraints to apply
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1065,7 +1069,12 @@ static int _regulator_do_enable(struct regulator_dev *rdev);
  * set_mode.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int set_machine_constraints(struct regulator_dev *rdev)
+=======
+static int set_machine_constraints(struct regulator_dev *rdev,
+	const struct regulation_constraints *constraints)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int set_machine_constraints(struct regulator_dev *rdev,
 	const struct regulation_constraints *constraints)
@@ -1075,7 +1084,10 @@ static int set_machine_constraints(struct regulator_dev *rdev,
 	const struct regulator_ops *ops = rdev->desc->ops;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (constraints)
 		rdev->constraints = kmemdup(constraints, sizeof(*constraints),
 					    GFP_KERNEL);
@@ -1085,6 +1097,9 @@ static int set_machine_constraints(struct regulator_dev *rdev,
 	if (!rdev->constraints)
 		return -ENOMEM;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = machine_constraints_voltage(rdev, rdev->constraints);
 	if (ret != 0)
@@ -1130,12 +1145,15 @@ static int set_machine_constraints(struct regulator_dev *rdev,
 	 */
 	if (rdev->constraints->always_on || rdev->constraints->boot_on) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* If we want to enable this regulator, make sure that we know
 		 * the supplying regulator.
 		 */
 		if (rdev->supply_name && !rdev->supply)
 			return -EPROBE_DEFER;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = _regulator_do_enable(rdev);
@@ -1239,7 +1257,11 @@ static int set_consumer_device_supply(struct regulator_dev *rdev,
 				      const char *supply)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct regulator_map *node, *new_node;
+=======
+	struct regulator_map *node;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct regulator_map *node;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1253,6 +1275,7 @@ static int set_consumer_device_supply(struct regulator_dev *rdev,
 	else
 		has_dev = 0;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	new_node = kzalloc(sizeof(struct regulator_map), GFP_KERNEL);
 	if (new_node == NULL)
@@ -1270,6 +1293,8 @@ static int set_consumer_device_supply(struct regulator_dev *rdev,
 	}
 
 	mutex_lock(&regulator_list_mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	list_for_each_entry(node, &regulator_map_list, list) {
@@ -1290,6 +1315,7 @@ static int set_consumer_device_supply(struct regulator_dev *rdev,
 			 supply,
 			 dev_name(&rdev->dev), rdev_get_name(rdev));
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto fail;
 	}
 
@@ -1304,6 +1330,8 @@ fail:
 	kfree(new_node);
 	return -EBUSY;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EBUSY;
 	}
 
@@ -1324,6 +1352,9 @@ fail:
 
 	list_add(&node->list, &regulator_map_list);
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -1632,6 +1663,7 @@ static int regulator_resolve_supply(struct regulator_dev *rdev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (r == rdev) {
 		dev_err(dev, "Supply for %s (%s) resolved to itself\n",
 			rdev->desc->name, rdev->supply_name);
@@ -1641,6 +1673,8 @@ static int regulator_resolve_supply(struct regulator_dev *rdev)
 		get_device(&r->dev);
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
@@ -3336,8 +3370,11 @@ static int _regulator_get_voltage(struct regulator_dev *rdev)
 	} else if (rdev->supply) {
 		ret = _regulator_get_voltage(rdev->supply->rdev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else if (rdev->supply_name) {
 		return -EPROBE_DEFER;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
@@ -4434,6 +4471,10 @@ regulator_register(const struct regulator_desc *regulator_desc,
 		   const struct regulator_config *cfg)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	const struct regulation_constraints *constraints = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	const struct regulation_constraints *constraints = NULL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4537,6 +4578,7 @@ regulator_register(const struct regulator_desc *regulator_desc,
 	/* set regulator constraints */
 	if (init_data)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rdev->constraints = kmemdup(&init_data->constraints,
 					    sizeof(*rdev->constraints),
 					    GFP_KERNEL);
@@ -4550,12 +4592,16 @@ regulator_register(const struct regulator_desc *regulator_desc,
 =======
 		constraints = &init_data->constraints;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+		constraints = &init_data->constraints;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (init_data && init_data->supply_regulator)
 		rdev->supply_name = init_data->supply_regulator;
 	else if (regulator_desc->supply_name)
 		rdev->supply_name = regulator_desc->supply_name;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	ret = set_machine_constraints(rdev);
 	if (ret == -EPROBE_DEFER) {
@@ -4572,6 +4618,8 @@ regulator_register(const struct regulator_desc *regulator_desc,
 				 ERR_PTR(ret));
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * Attempt to resolve the regulator supply, if specified,
 	 * but don't return an error if we fail because we will try
@@ -4581,6 +4629,9 @@ regulator_register(const struct regulator_desc *regulator_desc,
 		rdev_dbg(rdev, "unable to resolve supply\n");
 
 	ret = set_machine_constraints(rdev, constraints);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret < 0)
 		goto wash;
@@ -4588,6 +4639,10 @@ regulator_register(const struct regulator_desc *regulator_desc,
 	/* add consumers devices */
 	if (init_data) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		mutex_lock(&regulator_list_mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		mutex_lock(&regulator_list_mutex);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4597,6 +4652,10 @@ regulator_register(const struct regulator_desc *regulator_desc,
 				init_data->consumer_supplies[i].supply);
 			if (ret < 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+				mutex_unlock(&regulator_list_mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				mutex_unlock(&regulator_list_mutex);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4606,6 +4665,10 @@ regulator_register(const struct regulator_desc *regulator_desc,
 			}
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		mutex_unlock(&regulator_list_mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		mutex_unlock(&regulator_list_mutex);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

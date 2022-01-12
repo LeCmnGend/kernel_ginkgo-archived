@@ -175,7 +175,10 @@ struct tpm_space {
 	u32 session_tbl[3];
 	u8 *session_buf;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 buf_size;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -266,9 +269,12 @@ struct tpm_output_header {
 #define TPM_TAG_RQU_COMMAND 193
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* TPM2 specific constants. */
 #define TPM2_SPACE_BUFFER_SIZE		16384 /* 16 kB */
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct	stclear_flags_t {
@@ -594,7 +600,11 @@ unsigned long tpm2_calc_ordinal_duration(struct tpm_chip *chip, u32 ordinal);
 int tpm2_probe(struct tpm_chip *chip);
 int tpm2_find_cc(struct tpm_chip *chip, u32 cc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 int tpm2_init_space(struct tpm_space *space, unsigned int buf_size);
+=======
+int tpm2_init_space(struct tpm_space *space);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int tpm2_init_space(struct tpm_space *space);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -49,6 +49,7 @@ int squashfs_get_id(struct super_block *sb, unsigned int index,
 	int block = SQUASHFS_ID_BLOCK(index);
 	int offset = SQUASHFS_ID_BLOCK_OFFSET(index);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64 start_block;
 	__le32 disk_id;
 	int err;
@@ -59,10 +60,15 @@ int squashfs_get_id(struct super_block *sb, unsigned int index,
 	start_block = le64_to_cpu(msblk->id_table[block]);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u64 start_block = le64_to_cpu(msblk->id_table[block]);
 	__le32 disk_id;
 	int err;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = squashfs_read_metadata(sb, &disk_id, &start_block, &offset,
 							sizeof(disk_id));
@@ -82,10 +88,14 @@ __le64 *squashfs_read_id_index_table(struct super_block *sb,
 {
 	unsigned int length = SQUASHFS_ID_BLOCK_BYTES(no_ids);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int indexes = SQUASHFS_ID_BLOCKS(no_ids);
 	int n;
 	__le64 *table;
 	u64 start, end;
+=======
+	__le64 *table;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__le64 *table;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -99,6 +109,7 @@ __le64 *squashfs_read_id_index_table(struct super_block *sb,
 		return ERR_PTR(-EINVAL);
 
 	/*
+<<<<<<< HEAD
 <<<<<<< HEAD
 	 * The computed size of the index table (length bytes) should exactly
 	 * match the table start and end points
@@ -133,6 +144,8 @@ __le64 *squashfs_read_id_index_table(struct super_block *sb,
 	if (start >= id_table_start || (id_table_start - start) >
 				(SQUASHFS_METADATA_SIZE + SQUASHFS_BLOCK_OFFSET)) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * length bytes should not extend into the next table - this check
 	 * also traps instances where id_table_start is incorrectly larger
 	 * than the next table start
@@ -147,6 +160,9 @@ __le64 *squashfs_read_id_index_table(struct super_block *sb,
 	 * should be less than id_table_start
 	 */
 	if (!IS_ERR(table) && le64_to_cpu(table[0]) >= id_table_start) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		kfree(table);
 		return ERR_PTR(-EINVAL);

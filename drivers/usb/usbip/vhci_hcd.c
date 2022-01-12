@@ -411,8 +411,11 @@ static int vhci_hub_control(struct usb_hcd *hcd, u16 typeReq, u16 wValue,
 			usbip_dbg_vhci_rh(" ClearPortFeature: default %x\n",
 					  wValue);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (wValue >= 32)
 				goto error;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			vhci_hcd->port_status[rhport] &= ~(1 << wValue);
@@ -612,8 +615,11 @@ static int vhci_hub_control(struct usb_hcd *hcd, u16 typeReq, u16 wValue,
 				goto error;
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (wValue >= 32)
 				goto error;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (hcd->speed == HCD_USB3) {
@@ -1122,7 +1128,10 @@ static void vhci_device_init(struct vhci_device *vdev)
 	vdev->ud.status = VDEV_ST_NULL;
 	spin_lock_init(&vdev->ud.lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_init(&vdev->ud.sysfs_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

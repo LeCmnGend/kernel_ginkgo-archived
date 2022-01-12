@@ -243,7 +243,10 @@ config SAMSUNG_PM_DEBUG
 	depends on PM && DEBUG_KERNEL
 	depends on DEBUG_EXYNOS_UART || DEBUG_S3C24XX_UART || DEBUG_S3C2410_UART
 <<<<<<< HEAD
+<<<<<<< HEAD
 	depends on DEBUG_LL && MMU
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	help

@@ -244,6 +244,7 @@ done:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static pgprot_t __acpi_get_writethrough_mem_attribute(void)
 {
 	/*
@@ -258,6 +259,8 @@ static pgprot_t __acpi_get_writethrough_mem_attribute(void)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_ACPI_APEI
 pgprot_t arch_apei_get_mem_attribute(phys_addr_t addr)
 {
@@ -267,7 +270,11 @@ pgprot_t arch_apei_get_mem_attribute(phys_addr_t addr)
 	 * mapped to a corresponding MAIR attribute encoding.
 	 * The EFI memory attribute advises all possible capabilities
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * of a memory region.
+=======
+	 * of a memory region. We use the most efficient capability.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 * of a memory region. We use the most efficient capability.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -279,15 +286,21 @@ pgprot_t arch_apei_get_mem_attribute(phys_addr_t addr)
 	if (attr & EFI_MEMORY_WB)
 		return PAGE_KERNEL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (attr & EFI_MEMORY_WC)
 		return __pgprot(PROT_NORMAL_NC);
 	if (attr & EFI_MEMORY_WT)
 		return __acpi_get_writethrough_mem_attribute();
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (attr & EFI_MEMORY_WT)
 		return __pgprot(PROT_NORMAL_WT);
 	if (attr & EFI_MEMORY_WC)
 		return __pgprot(PROT_NORMAL_NC);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return __pgprot(PROT_DEVICE_nGnRnE);
 }

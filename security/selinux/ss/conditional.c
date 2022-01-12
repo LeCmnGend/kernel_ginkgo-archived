@@ -97,7 +97,11 @@ int evaluate_cond_node(struct policydb *p, struct cond_node *node)
 		node->cur_state = new_state;
 		if (new_state == -1)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_err("SELinux: expression result was undefined - disabling all rules.\n");
+=======
+			printk(KERN_ERR "SELinux: expression result was undefined - disabling all rules.\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_ERR "SELinux: expression result was undefined - disabling all rules.\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -200,6 +204,10 @@ int cond_index_bool(void *key, void *datum, void *datap)
 	struct policydb *p;
 	struct cond_bool_datum *booldatum;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct flex_array *fa;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct flex_array *fa;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -211,12 +219,18 @@ int cond_index_bool(void *key, void *datum, void *datap)
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	p->sym_val_to_name[SYM_BOOLS][booldatum->value - 1] = key;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	fa = p->sym_val_to_name[SYM_BOOLS];
 	if (flex_array_put_ptr(fa, booldatum->value - 1, key,
 			       GFP_KERNEL | __GFP_ZERO))
 		BUG();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	p->bool_val_to_struct[booldatum->value - 1] = booldatum;
 
@@ -299,7 +313,11 @@ static int cond_insertf(struct avtab *a, struct avtab_key *k, struct avtab_datum
 	if (k->specified & AVTAB_TYPE) {
 		if (avtab_search(&p->te_avtab, k)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pr_err("SELinux: type rule already exists outside of a conditional.\n");
+=======
+			printk(KERN_ERR "SELinux: type rule already exists outside of a conditional.\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			printk(KERN_ERR "SELinux: type rule already exists outside of a conditional.\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -318,7 +336,11 @@ static int cond_insertf(struct avtab *a, struct avtab_key *k, struct avtab_datum
 			if (node_ptr) {
 				if (avtab_search_node_next(node_ptr, k->specified)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 					pr_err("SELinux: too many conflicting type rules.\n");
+=======
+					printk(KERN_ERR "SELinux: too many conflicting type rules.\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					printk(KERN_ERR "SELinux: too many conflicting type rules.\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -333,7 +355,11 @@ static int cond_insertf(struct avtab *a, struct avtab_key *k, struct avtab_datum
 				}
 				if (!found) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 					pr_err("SELinux: conflicting type rules.\n");
+=======
+					printk(KERN_ERR "SELinux: conflicting type rules.\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					printk(KERN_ERR "SELinux: conflicting type rules.\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -343,7 +369,11 @@ static int cond_insertf(struct avtab *a, struct avtab_key *k, struct avtab_datum
 		} else {
 			if (avtab_search(&p->te_cond_avtab, k)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				pr_err("SELinux: conflicting type rules when adding type rule for true.\n");
+=======
+				printk(KERN_ERR "SELinux: conflicting type rules when adding type rule for true.\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				printk(KERN_ERR "SELinux: conflicting type rules when adding type rule for true.\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -355,7 +385,11 @@ static int cond_insertf(struct avtab *a, struct avtab_key *k, struct avtab_datum
 	node_ptr = avtab_insert_nonunique(&p->te_cond_avtab, k, d);
 	if (!node_ptr) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux: could not insert rule.\n");
+=======
+		printk(KERN_ERR "SELinux: could not insert rule.\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux: could not insert rule.\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -420,7 +454,11 @@ static int expr_isvalid(struct policydb *p, struct cond_expr *expr)
 {
 	if (expr->expr_type <= 0 || expr->expr_type > COND_LAST) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux: conditional expressions uses unknown operator.\n");
+=======
+		printk(KERN_ERR "SELinux: conditional expressions uses unknown operator.\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux: conditional expressions uses unknown operator.\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -429,7 +467,11 @@ static int expr_isvalid(struct policydb *p, struct cond_expr *expr)
 
 	if (expr->bool > p->p_bools.nprim) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux: conditional expressions uses unknown bool.\n");
+=======
+		printk(KERN_ERR "SELinux: conditional expressions uses unknown bool.\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux: conditional expressions uses unknown bool.\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

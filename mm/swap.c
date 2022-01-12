@@ -834,10 +834,14 @@ EXPORT_SYMBOL(release_pages);
 void __pagevec_release(struct pagevec *pvec)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!pvec->drained) {
 		lru_add_drain();
 		pvec->drained = true;
 	}
+=======
+	lru_add_drain();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	lru_add_drain();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1018,7 +1022,11 @@ EXPORT_SYMBOL(pagevec_lookup_range_nr_tag);
 void __init swap_setup(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long megs = totalram_pages() >> (20 - PAGE_SHIFT);
+=======
+	unsigned long megs = totalram_pages >> (20 - PAGE_SHIFT);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long megs = totalram_pages >> (20 - PAGE_SHIFT);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

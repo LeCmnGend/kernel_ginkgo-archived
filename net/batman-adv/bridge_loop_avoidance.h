@@ -48,7 +48,11 @@ static inline bool batadv_bla_is_loopdetect_mac(const uint8_t *mac)
 #ifdef CONFIG_BATMAN_ADV_BLA
 bool batadv_bla_rx(struct batadv_priv *bat_priv, struct sk_buff *skb,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		   unsigned short vid, int packet_type);
+=======
+		   unsigned short vid, bool is_bcast);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		   unsigned short vid, bool is_bcast);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -83,7 +87,11 @@ bool batadv_bla_check_claim(struct batadv_priv *bat_priv, u8 *addr,
 static inline bool batadv_bla_rx(struct batadv_priv *bat_priv,
 				 struct sk_buff *skb, unsigned short vid,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				 int packet_type)
+=======
+				 bool is_bcast)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				 bool is_bcast)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

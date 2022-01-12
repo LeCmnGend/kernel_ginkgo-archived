@@ -200,8 +200,11 @@ static int vhci_port_disconnect(struct vhci_hcd *vhci_hcd, __u32 rhport)
 	usbip_dbg_vhci_sysfs("enter\n");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&vdev->ud.sysfs_lock);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* lock */
@@ -215,7 +218,10 @@ static int vhci_port_disconnect(struct vhci_hcd *vhci_hcd, __u32 rhport)
 		spin_unlock(&vdev->ud.lock);
 		spin_unlock_irqrestore(&vhci->lock, flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mutex_unlock(&vdev->ud.sysfs_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -229,8 +235,11 @@ static int vhci_port_disconnect(struct vhci_hcd *vhci_hcd, __u32 rhport)
 	usbip_event_add(&vdev->ud, VDEV_EVENT_DOWN);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_unlock(&vdev->ud.sysfs_lock);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
@@ -341,8 +350,11 @@ static ssize_t store_attach(struct device *dev, struct device_attribute *attr,
 	int err;
 	unsigned long flags;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct task_struct *tcp_rx = NULL;
 	struct task_struct *tcp_tx = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -380,6 +392,7 @@ static ssize_t store_attach(struct device *dev, struct device_attribute *attr,
 	else
 		vdev = &vhci->vhci_hcd_hs->vdev[rhport];
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	mutex_lock(&vdev->ud.sysfs_lock);
 
@@ -419,6 +432,8 @@ static ssize_t store_attach(struct device *dev, struct device_attribute *attr,
 
 	/* now begin lock until setting vdev status set */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Extract socket from fd. */
 	socket = sockfd_lookup(sockfd, &err);
 	if (!socket)
@@ -427,6 +442,9 @@ static ssize_t store_attach(struct device *dev, struct device_attribute *attr,
 	/* now need lock until setting vdev status as used */
 
 	/* begin a lock */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_irqsave(&vhci->lock, flags);
 	spin_lock(&vdev->ud.lock);
@@ -438,8 +456,11 @@ static ssize_t store_attach(struct device *dev, struct device_attribute *attr,
 
 		sockfd_put(socket);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kthread_stop_put(tcp_rx);
 		kthread_stop_put(tcp_tx);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -449,8 +470,12 @@ static ssize_t store_attach(struct device *dev, struct device_attribute *attr,
 		 * if there's another free port.
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		err = -EBUSY;
 		goto unlock_mutex;
+=======
+		return -EBUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EBUSY;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -466,8 +491,11 @@ static ssize_t store_attach(struct device *dev, struct device_attribute *attr,
 	vdev->ud.sockfd     = sockfd;
 	vdev->ud.tcp_socket = socket;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vdev->ud.tcp_rx     = tcp_rx;
 	vdev->ud.tcp_tx     = tcp_tx;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	vdev->ud.status     = VDEV_ST_NOTASSIGNED;
@@ -476,6 +504,7 @@ static ssize_t store_attach(struct device *dev, struct device_attribute *attr,
 	spin_unlock_irqrestore(&vhci->lock, flags);
 	/* end the lock */
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	wake_up_process(vdev->ud.tcp_rx);
 	wake_up_process(vdev->ud.tcp_tx);
@@ -492,12 +521,17 @@ unlock_mutex:
 	mutex_unlock(&vdev->ud.sysfs_lock);
 	return err;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	vdev->ud.tcp_rx = kthread_get_run(vhci_rx_loop, &vdev->ud, "vhci_rx");
 	vdev->ud.tcp_tx = kthread_get_run(vhci_tx_loop, &vdev->ud, "vhci_tx");
 
 	rh_port_connect(vdev, speed);
 
 	return count;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 static DEVICE_ATTR(attach, S_IWUSR, NULL, store_attach);

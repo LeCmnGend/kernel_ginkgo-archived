@@ -3008,11 +3008,14 @@ static void con_fault(struct ceph_connection *con)
 		con->in_msg = NULL;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (con->out_msg) {
 		BUG_ON(con->out_msg->con != con);
 		ceph_msg_put(con->out_msg);
 		con->out_msg = NULL;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

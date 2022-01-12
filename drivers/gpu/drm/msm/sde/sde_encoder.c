@@ -230,6 +230,10 @@ enum sde_enc_rc_states {
  * @elevated_ahb_vote:		increase AHB bus speed for the first frame
  *				after power collapse
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+ * @pm_qos_cpu_req:		pm_qos request for cpu frequency
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * @pm_qos_cpu_req:		pm_qos request for cpu frequency
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -296,6 +300,10 @@ struct sde_encoder_virt {
 	bool recovery_events_enabled;
 	bool elevated_ahb_vote;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct pm_qos_request pm_qos_cpu_req;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct pm_qos_request pm_qos_cpu_req;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -304,7 +312,10 @@ struct sde_encoder_virt {
 #define to_sde_encoder_virt(x) container_of(x, struct sde_encoder_virt, base)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void _sde_encoder_pm_qos_add_request(struct drm_encoder *drm_enc,
 	struct sde_kms *sde_kms)
 {
@@ -343,6 +354,9 @@ static void _sde_encoder_pm_qos_remove_request(struct drm_encoder *drm_enc,
 	pm_qos_remove_request(&sde_enc->pm_qos_cpu_req);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct drm_connector_state *_sde_encoder_get_conn_state(
 		struct drm_encoder *drm_enc)
@@ -2281,8 +2295,11 @@ static int _sde_encoder_resource_control_helper(struct drm_encoder *drm_enc,
 		_sde_encoder_irq_control(drm_enc, true);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (is_cmd_mode)
 			_sde_encoder_pm_qos_add_request(drm_enc, sde_kms);
 
@@ -2290,6 +2307,9 @@ static int _sde_encoder_resource_control_helper(struct drm_encoder *drm_enc,
 		if (is_cmd_mode)
 			_sde_encoder_pm_qos_remove_request(drm_enc, sde_kms);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* disable all the irq */
 		_sde_encoder_irq_control(drm_enc, false);
@@ -2403,6 +2423,7 @@ static int sde_encoder_resource_control(struct drm_encoder *drm_enc,
 	switch (sw_event) {
 	case SDE_ENC_RC_EVENT_KICKOFF:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{
 		struct msm_drm_private *priv;
 		struct sde_kms *sde_kms;
@@ -2410,6 +2431,8 @@ static int sde_encoder_resource_control(struct drm_encoder *drm_enc,
 		priv = drm_enc->dev->dev_private;
 		sde_kms = to_sde_kms(priv->kms);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* cancel delayed off work, if any */
@@ -2441,7 +2464,10 @@ static int sde_encoder_resource_control(struct drm_encoder *drm_enc,
 		if (is_vid_mode && sde_enc->rc_state == SDE_ENC_RC_STATE_IDLE) {
 			_sde_encoder_irq_control(drm_enc, true);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			sde_kms_update_pm_qos_irq_request(sde_kms, true, false);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		} else {
@@ -2469,7 +2495,11 @@ static int sde_encoder_resource_control(struct drm_encoder *drm_enc,
 		mutex_unlock(&sde_enc->rc_lock);
 		break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2715,6 +2745,7 @@ static int sde_encoder_resource_control(struct drm_encoder *drm_enc,
 
 	case SDE_ENC_RC_EVENT_ENTER_IDLE:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{
 		struct msm_drm_private *priv;
 		struct sde_kms *sde_kms;
@@ -2722,6 +2753,8 @@ static int sde_encoder_resource_control(struct drm_encoder *drm_enc,
 		priv = drm_enc->dev->dev_private;
 		sde_kms = to_sde_kms(priv->kms);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mutex_lock(&sde_enc->rc_lock);
@@ -2752,7 +2785,10 @@ static int sde_encoder_resource_control(struct drm_encoder *drm_enc,
 		if (is_vid_mode) {
 			_sde_encoder_irq_control(drm_enc, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			sde_kms_update_pm_qos_irq_request(sde_kms, false, false);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		} else {
@@ -2769,7 +2805,10 @@ static int sde_encoder_resource_control(struct drm_encoder *drm_enc,
 		mutex_unlock(&sde_enc->rc_lock);
 		break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case SDE_ENC_RC_EVENT_EARLY_WAKEUP:

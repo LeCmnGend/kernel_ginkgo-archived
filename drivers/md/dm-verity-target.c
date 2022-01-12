@@ -615,7 +615,11 @@ static void verity_end_io(struct bio *bio)
 
 	if (bio->bi_status &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    (!verity_fec_is_enabled(io->v) || verity_is_system_shutting_down())) {
+=======
+		(!verity_fec_is_enabled(io->v) || verity_is_system_shutting_down())) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		(!verity_fec_is_enabled(io->v) || verity_is_system_shutting_down())) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -1032,7 +1032,11 @@ static int devlink_nl_sb_port_pool_fill(struct sk_buff *msg,
 						pool_index, &cur, &max);
 		if (err && err != -EOPNOTSUPP)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto sb_occ_get_failure;
+=======
+			return err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			return err;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1049,10 +1053,15 @@ static int devlink_nl_sb_port_pool_fill(struct sk_buff *msg,
 
 nla_put_failure:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = -EMSGSIZE;
 sb_occ_get_failure:
 	genlmsg_cancel(msg, hdr);
 	return err;
+=======
+	genlmsg_cancel(msg, hdr);
+	return -EMSGSIZE;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	genlmsg_cancel(msg, hdr);
 	return -EMSGSIZE;

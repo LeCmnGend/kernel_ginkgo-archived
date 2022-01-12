@@ -107,6 +107,7 @@ static void quota2_log(unsigned int hooknum,
 	}
 	pm = nlmsg_data(nlh);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(pm, 0, sizeof(*pm));
 	if (skb->tstamp == 0)
 		__net_timestamp((struct sk_buff *)skb);
@@ -118,6 +119,8 @@ static void quota2_log(unsigned int hooknum,
 	if (out)
 		strlcpy(pm->outdev_name, out->name, sizeof(pm->outdev_name));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (skb->tstamp == 0)
 		__net_timestamp((struct sk_buff *)skb);
 	pm->data_len = 0;
@@ -135,6 +138,9 @@ static void quota2_log(unsigned int hooknum,
 		strlcpy(pm->outdev_name, out->name, sizeof(pm->outdev_name));
 	else
 		pm->outdev_name[0] = '\0';
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	NETLINK_CB(log_skb).dst_group = 1;
@@ -176,8 +182,11 @@ static ssize_t quota_proc_write(struct file *file, const char __user *input,
 		return -EFAULT;
 	buf[sizeof(buf)-1] = '\0';
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (size < sizeof(buf))
 		buf[size] = '\0';
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -325,8 +334,11 @@ quota_mt2(const struct sk_buff *skb, struct xt_action_param *par)
 	struct xt_quota_mtinfo2 *q = (void *)par->matchinfo;
 	struct xt_quota_counter *e = q->master;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int charge = (q->flags & XT_QUOTA_PACKET) ? 1 : skb->len;
 	bool no_change = q->flags & XT_QUOTA_NO_CHANGE;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool ret = q->flags & XT_QUOTA_INVERT;
@@ -337,6 +349,7 @@ quota_mt2(const struct sk_buff *skb, struct xt_action_param *par)
 		 * While no_change is pointless in "grow" mode, we will
 		 * implement it here simply to have a consistent behavior.
 		 */
+<<<<<<< HEAD
 <<<<<<< HEAD
 		if (!no_change)
 			e->quota += charge;
@@ -354,6 +367,8 @@ quota_mt2(const struct sk_buff *skb, struct xt_action_param *par)
 				   xt_out(par),
 				   q->name);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!(q->flags & XT_QUOTA_NO_CHANGE)) {
 			e->quota += (q->flags & XT_QUOTA_PACKET) ? 1 : skb->len;
 		}
@@ -372,6 +387,9 @@ quota_mt2(const struct sk_buff *skb, struct xt_action_param *par)
 					   xt_out(par),
 					   q->name);
 			}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			/* we do not allow even small packets from now on */
 			e->quota = 0;
@@ -391,7 +409,10 @@ static struct xt_match quota_mt2_reg[] __read_mostly = {
 		.destroy    = quota_mt2_destroy,
 		.matchsize  = sizeof(struct xt_quota_mtinfo2),
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.usersize   = offsetof(struct xt_quota_mtinfo2, master),
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		.me         = THIS_MODULE,
@@ -405,7 +426,10 @@ static struct xt_match quota_mt2_reg[] __read_mostly = {
 		.destroy    = quota_mt2_destroy,
 		.matchsize  = sizeof(struct xt_quota_mtinfo2),
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.usersize   = offsetof(struct xt_quota_mtinfo2, master),
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		.me         = THIS_MODULE,

@@ -332,9 +332,12 @@ static const struct hid_device_id hid_battery_quirks[] = {
 		USB_DEVICE_ID_ASUSTEK_T100CHI_KEYBOARD),
 	  HID_BATTERY_QUIRK_IGNORE },
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_LOGITECH,
 		USB_DEVICE_ID_LOGITECH_DINOVO_EDGE_KBD),
 	  HID_BATTERY_QUIRK_IGNORE },
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{}
@@ -369,6 +372,7 @@ static int hidinput_query_battery_capacity(struct hid_device *dev)
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	buf = kmalloc(4, GFP_KERNEL);
 	if (!buf)
 		return -ENOMEM;
@@ -377,6 +381,8 @@ static int hidinput_query_battery_capacity(struct hid_device *dev)
 				 dev->battery_report_type, HID_REQ_GET_REPORT);
 	if (ret < 2) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	buf = kmalloc(2, GFP_KERNEL);
 	if (!buf)
 		return -ENOMEM;
@@ -384,6 +390,9 @@ static int hidinput_query_battery_capacity(struct hid_device *dev)
 	ret = hid_hw_raw_request(dev, dev->battery_report_id, buf, 2,
 				 dev->battery_report_type, HID_REQ_GET_REPORT);
 	if (ret != 2) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		kfree(buf);
 		return -ENODATA;
@@ -813,7 +822,11 @@ static void hidinput_configure_usage(struct hid_input *hidinput, struct hid_fiel
 			hidinput_setup_battery(device, HID_INPUT_REPORT, field);
 			usage->type = EV_PWR;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			return;
+=======
+			goto ignore;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto ignore;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1064,7 +1077,11 @@ static void hidinput_configure_usage(struct hid_input *hidinput, struct hid_fiel
 			hidinput_setup_battery(device, HID_INPUT_REPORT, field);
 			usage->type = EV_PWR;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			return;
+=======
+			goto ignore;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto ignore;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1141,10 +1158,13 @@ static void hidinput_configure_usage(struct hid_input *hidinput, struct hid_fiel
 
 mapped:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Mapping failed, bail out */
 	if (!bit)
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (device->driver->input_mapped &&

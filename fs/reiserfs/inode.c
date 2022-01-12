@@ -1553,13 +1553,19 @@ void reiserfs_read_locked_inode(struct inode *inode,
 	 * key is the same in both versions
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	_make_cpu_key(&key, KEY_FORMAT_3_5, dirino, inode->i_ino, 0, 0, 3);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	key.version = KEY_FORMAT_3_5;
 	key.on_disk_key.k_dir_id = dirino;
 	key.on_disk_key.k_objectid = inode->i_ino;
 	key.on_disk_key.k_offset = 0;
 	key.on_disk_key.k_type = 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* look for the object's stat data */
@@ -2169,8 +2175,12 @@ out_inserted_sd:
 	clear_nlink(inode);
 	th->t_trans_id = 0;	/* so the caller can't use this handle later */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (inode->i_state & I_NEW)
 		unlock_new_inode(inode);
+=======
+	unlock_new_inode(inode); /* OK to do even if we hadn't locked it */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unlock_new_inode(inode); /* OK to do even if we hadn't locked it */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

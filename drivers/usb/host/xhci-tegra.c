@@ -580,6 +580,7 @@ static void tegra_xusb_mbox_handle(struct tegra_xusb *tegra,
 			if (err < 0)
 				break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 			/*
 			 * wait 500us for LFPS detector to be disabled before
@@ -587,6 +588,8 @@ static void tegra_xusb_mbox_handle(struct tegra_xusb *tegra,
 			 */
 			if (!enable)
 				usleep_range(500, 1000);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}

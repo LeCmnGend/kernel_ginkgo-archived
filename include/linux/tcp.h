@@ -210,8 +210,11 @@ struct tcp_sock {
 	} rack;
 	u16	advmss;		/* Advertised MSS			*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8	tlp_retrans:1,	/* TLP is a retransmission */
 		unused_1:7;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32	chrono_start;	/* Start time in jiffies of a TCP chrono */
@@ -235,7 +238,11 @@ struct tcp_sock {
 		save_syn:1,	/* Save headers of SYN packet */
 		is_cwnd_limited:1;/* forward progress limited by snd_cwnd? */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32	tlp_high_seq;	/* snd_nxt at the time of TLP */
+=======
+	u32	tlp_high_seq;	/* snd_nxt at the time of TLP retransmit. */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32	tlp_high_seq;	/* snd_nxt at the time of TLP retransmit. */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -489,6 +489,7 @@
 			only cgroup_disable=memory is actually worthy}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cgroup_no_v1=	[KNL] Disable cgroup controllers and named hierarchies in v1
 			Format: { { controller | "all" | "named" }
 			          [,{ controller | "all" | "named" }...] }
@@ -498,10 +499,15 @@
 			named mounts. Specifying both "all" and "named" disables
 			all v1 hierarchies.
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cgroup_no_v1=	[KNL] Disable one, multiple, all cgroup controllers in v1
 			Format: { controller[,controller...] | "all" }
 			Like cgroup_disable, but only applies to cgroup v1;
 			the blacklisted controllers remain available in cgroup2.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	cgroup.memory=	[KNL] Pass options to the cgroup memory controller.
@@ -568,7 +574,11 @@
 			systems.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	clearcpuid=BITNUM[,BITNUM...] [X86]
+=======
+	clearcpuid=BITNUM [X86]
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	clearcpuid=BITNUM [X86]
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2484,8 +2494,11 @@
 					       tsx_async_abort=off [X86]
 					       kvm.nx_huge_pages=off [X86]
 <<<<<<< HEAD
+<<<<<<< HEAD
 					       no_entry_flush [PPC]
 					       no_uaccess_flush [PPC]
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2792,8 +2805,11 @@
 	noefi		Disable EFI runtime services support.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	no_entry_flush  [PPC] Don't flush the L1-D cache when entering the kernel.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	noexec		[IA-64]
@@ -2846,9 +2862,12 @@
 			[HW] Disable all mitigations for the Speculative Store Bypass vulnerability
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	no_uaccess_flush
 	                [PPC] Don't flush the L1-D cache after accessing user data.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	noxsave		[BUGS=X86] Disables x86 extended register state save
@@ -4812,7 +4831,10 @@
 				j = NO_REPORT_LUNS (don't use report luns
 					command, uas only);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				k = NO_SAME (do not use WRITE_SAME, uas only)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				l = NOT_LOCKABLE (don't try to lock and
@@ -5095,6 +5117,7 @@
 			run as generic HVM guest with no PV drivers.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	xen.event_eoi_delay=	[XEN]
 			How long to delay EOI handling in case of event
 			storms (jiffies). Default is 10.
@@ -5103,6 +5126,8 @@
 			After which time (jiffies) the event handling loop
 			should start to delay EOI handling. Default is 2.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	xirc2ps_cs=	[NET,PCMCIA]

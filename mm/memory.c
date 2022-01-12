@@ -121,6 +121,7 @@ int randomize_va_space __read_mostly =
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef arch_faults_on_old_pte
 static inline bool arch_faults_on_old_pte(void)
 {
@@ -133,6 +134,8 @@ static inline bool arch_faults_on_old_pte(void)
 }
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int __init disable_randmaps(char *s)
@@ -156,7 +159,11 @@ static int __init init_zero_pfn(void)
 	return 0;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 early_initcall(init_zero_pfn);
+=======
+core_initcall(init_zero_pfn);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 core_initcall(init_zero_pfn);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -210,7 +217,10 @@ static void check_sync_rss_stat(struct task_struct *task)
 #endif /* SPLIT_RSS_COUNTING */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef HAVE_GENERIC_MMU_GATHER
 
 static bool tlb_next_batch(struct mmu_gather *tlb)
@@ -461,6 +471,9 @@ void tlb_finish_mmu(struct mmu_gather *tlb,
 	dec_tlb_flush_pending(tlb->mm);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Note: this doesn't free the actual pages themselves. That
@@ -473,7 +486,11 @@ static void free_pte_range(struct mmu_gather *tlb, pmd_t *pmd,
 	pmd_clear(pmd);
 	pte_free_tlb(tlb, token, addr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mm_dec_nr_ptes(tlb->mm);
+=======
+	atomic_long_dec(&tlb->mm->nr_ptes);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	atomic_long_dec(&tlb->mm->nr_ptes);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -578,7 +595,10 @@ static inline void free_p4d_range(struct mmu_gather *tlb, pgd_t *pgd,
 	pgd_clear(pgd);
 	p4d_free_tlb(tlb, p4d, start);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mm_dec_nr_puds(tlb->mm);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -639,7 +659,11 @@ void free_pgd_range(struct mmu_gather *tlb,
 	 * (see pte_free_tlb()), flush the tlb if we need
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tlb_change_page_size(tlb, PAGE_SIZE);
+=======
+	tlb_remove_check_page_size_change(tlb, PAGE_SIZE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	tlb_remove_check_page_size_change(tlb, PAGE_SIZE);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -716,7 +740,11 @@ int __pte_alloc(struct mm_struct *mm, pmd_t *pmd, unsigned long address)
 	ptl = pmd_lock(mm, pmd);
 	if (likely(pmd_none(*pmd))) {	/* Has another populated it ? */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mm_inc_nr_ptes(mm);
+=======
+		atomic_long_inc(&mm->nr_ptes);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		atomic_long_inc(&mm->nr_ptes);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1360,7 +1388,11 @@ static unsigned long zap_pte_range(struct mmu_gather *tlb,
 	swp_entry_t entry;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tlb_change_page_size(tlb, PAGE_SIZE);
+=======
+	tlb_remove_check_page_size_change(tlb, PAGE_SIZE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	tlb_remove_check_page_size_change(tlb, PAGE_SIZE);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1446,6 +1478,10 @@ again:
 			continue;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		entry = pte_to_swp_entry(ptent);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		entry = pte_to_swp_entry(ptent);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1479,7 +1515,11 @@ again:
 	if (force_flush) {
 		force_flush = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		tlb_flush_mmu(tlb);
+=======
+		tlb_flush_mmu_free(tlb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		tlb_flush_mmu_free(tlb);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2042,17 +2082,23 @@ static int remap_pte_range(struct mm_struct *mm, pmd_t *pmd,
 			unsigned long pfn, pgprot_t prot)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pte_t *pte, *mapped_pte;
 	spinlock_t *ptl;
 	int err = 0;
 
 	mapped_pte = pte = pte_alloc_map_lock(mm, pmd, addr, &ptl);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pte_t *pte;
 	spinlock_t *ptl;
 	int err = 0;
 
 	pte = pte_alloc_map_lock(mm, pmd, addr, &ptl);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!pte)
 		return -ENOMEM;
@@ -2068,7 +2114,11 @@ static int remap_pte_range(struct mm_struct *mm, pmd_t *pmd,
 	} while (pte++, addr += PAGE_SIZE, addr != end);
 	arch_leave_lazy_mmu_mode();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pte_unmap_unlock(mapped_pte, ptl);
+=======
+	pte_unmap_unlock(pte - 1, ptl);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pte_unmap_unlock(pte - 1, ptl);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2549,6 +2599,7 @@ static inline int pte_unmap_same(struct vm_fault *vmf)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline bool cow_user_page(struct page *dst, struct page *src,
 				 struct vm_fault *vmf)
 {
@@ -2568,10 +2619,15 @@ static inline bool cow_user_page(struct page *dst, struct page *src,
 	}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void cow_user_page(struct page *dst, struct page *src, unsigned long va, struct vm_area_struct *vma)
 {
 	debug_dma_assert_idle(src);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * If the source page was a PFN mapping, we don't have
@@ -2579,6 +2635,7 @@ static inline void cow_user_page(struct page *dst, struct page *src, unsigned lo
 	 * just copying from the original user address. If that
 	 * fails, we just zero-fill it. Live with it.
 	 */
+<<<<<<< HEAD
 <<<<<<< HEAD
 	kaddr = kmap_atomic(dst);
 	uaddr = (void __user *)(addr & PAGE_MASK);
@@ -2652,6 +2709,8 @@ pte_unlock:
 
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (unlikely(!src)) {
 		void *kaddr = kmap_atomic(dst);
 		void __user *uaddr = (void __user *)(va & PAGE_MASK);
@@ -2668,6 +2727,9 @@ pte_unlock:
 		flush_dcache_page(dst);
 	} else
 		copy_user_highpage(dst, src, va, vma);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -2828,6 +2890,7 @@ static int wp_page_copy(struct vm_fault *vmf)
 		if (!new_page)
 			goto out;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		if (!cow_user_page(new_page, old_page, vmf)) {
 			/*
@@ -2841,6 +2904,9 @@ static int wp_page_copy(struct vm_fault *vmf)
 				put_page(old_page);
 			return 0;
 		}
+=======
+		cow_user_page(new_page, old_page, vmf->address, vma);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		cow_user_page(new_page, old_page, vmf->address, vma);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3678,7 +3744,11 @@ static int pte_alloc_one_map(struct vm_fault *vmf)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mm_inc_nr_ptes(vma->vm_mm);
+=======
+		atomic_long_inc(&vma->vm_mm->nr_ptes);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		atomic_long_inc(&vma->vm_mm->nr_ptes);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3742,7 +3812,11 @@ static void deposit_prealloc_pte(struct vm_fault *vmf)
 	 * count that as nr_ptes.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mm_dec_nr_ptes(vma->vm_mm);
+=======
+	atomic_long_inc(&vma->vm_mm->nr_ptes);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	atomic_long_inc(&vma->vm_mm->nr_ptes);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4332,12 +4406,18 @@ static int wp_huge_pmd(struct vm_fault *vmf, pmd_t orig_pmd)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline bool vma_is_accessible(struct vm_area_struct *vma)
 {
 	return vma->vm_flags & (VM_READ | VM_EXEC | VM_WRITE);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int create_huge_pud(struct vm_fault *vmf)
 {
@@ -4913,6 +4993,7 @@ int __pud_alloc(struct mm_struct *mm, p4d_t *p4d, unsigned long address)
 	spin_lock(&mm->page_table_lock);
 #ifndef __ARCH_HAS_5LEVEL_HACK
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (p4d_present(*p4d)) {
 		/* Another has populated it */
 		pud_free(mm, new);
@@ -4929,6 +5010,8 @@ int __pud_alloc(struct mm_struct *mm, p4d_t *p4d, unsigned long address)
 		pgd_populate(mm, p4d, new);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (p4d_present(*p4d))		/* Another has populated it */
 		pud_free(mm, new);
 	else
@@ -4938,6 +5021,9 @@ int __pud_alloc(struct mm_struct *mm, p4d_t *p4d, unsigned long address)
 		pud_free(mm, new);
 	else
 		pgd_populate(mm, p4d, new);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* __ARCH_HAS_5LEVEL_HACK */
 	spin_unlock(&mm->page_table_lock);
@@ -5428,6 +5514,7 @@ long copy_huge_page_from_user(struct page *dst_page,
 	unsigned long i, rc = 0;
 	unsigned long ret_val = pages_per_huge_page * PAGE_SIZE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct page *subpage = dst_page;
 
 	for (i = 0; i < pages_per_huge_page;
@@ -5437,19 +5524,28 @@ long copy_huge_page_from_user(struct page *dst_page,
 		else
 			page_kaddr = kmap_atomic(subpage);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	for (i = 0; i < pages_per_huge_page; i++) {
 		if (allow_pagefault)
 			page_kaddr = kmap(dst_page + i);
 		else
 			page_kaddr = kmap_atomic(dst_page + i);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rc = copy_from_user(page_kaddr,
 				(const void __user *)(src + i * PAGE_SIZE),
 				PAGE_SIZE);
 		if (allow_pagefault)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			kunmap(subpage);
+=======
+			kunmap(dst_page + i);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			kunmap(dst_page + i);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -18,6 +18,10 @@
 
 #include <linux/compiler.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <asm/barrier.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <asm/barrier.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -27,7 +31,10 @@
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Little endian assembly atomic bitops.
  */
@@ -38,6 +45,9 @@ extern int test_and_set_bit(int nr, volatile unsigned long *p);
 extern int test_and_clear_bit(int nr, volatile unsigned long *p);
 extern int test_and_change_bit(int nr, volatile unsigned long *p);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <asm-generic/bitops/builtin-__ffs.h>
 #include <asm-generic/bitops/builtin-ffs.h>
@@ -51,6 +61,7 @@ extern int test_and_change_bit(int nr, volatile unsigned long *p);
 #include <asm-generic/bitops/sched.h>
 #include <asm-generic/bitops/hweight.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 #include <asm-generic/bitops/atomic.h>
 #include <asm-generic/bitops/lock.h>
@@ -58,6 +69,8 @@ extern int test_and_change_bit(int nr, volatile unsigned long *p);
 #include <asm-generic/bitops/le.h>
 #include <asm-generic/bitops/ext2-atomic-setbit.h>
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <asm-generic/bitops/lock.h>
 
 #include <asm-generic/bitops/non-atomic.h>
@@ -68,6 +81,9 @@ extern int test_and_change_bit(int nr, volatile unsigned long *p);
  */
 #define ext2_set_bit_atomic(lock, nr, p)	test_and_set_bit_le(nr, p)
 #define ext2_clear_bit_atomic(lock, nr, p)	test_and_clear_bit_le(nr, p)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #endif /* __ASM_BITOPS_H */

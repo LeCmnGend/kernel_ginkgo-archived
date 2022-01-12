@@ -65,6 +65,7 @@ MODULE_LICENSE("GPL v2");
 /* defined in aes-modes.S */
 asmlinkage void aes_ecb_encrypt(u8 out[], u8 const in[], u8 const rk[],
 <<<<<<< HEAD
+<<<<<<< HEAD
 				int rounds, int blocks);
 asmlinkage void aes_ecb_decrypt(u8 out[], u8 const in[], u8 const rk[],
 				int rounds, int blocks);
@@ -77,6 +78,8 @@ asmlinkage void aes_cbc_decrypt(u8 out[], u8 const in[], u8 const rk[],
 asmlinkage void aes_ctr_encrypt(u8 out[], u8 const in[], u8 const rk[],
 				int rounds, int blocks, u8 ctr[]);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				int rounds, int blocks, int first);
 asmlinkage void aes_ecb_decrypt(u8 out[], u8 const in[], u8 const rk[],
 				int rounds, int blocks, int first);
@@ -88,6 +91,9 @@ asmlinkage void aes_cbc_decrypt(u8 out[], u8 const in[], u8 const rk[],
 
 asmlinkage void aes_ctr_encrypt(u8 out[], u8 const in[], u8 const rk[],
 				int rounds, int blocks, u8 ctr[], int first);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 asmlinkage void aes_xts_encrypt(u8 out[], u8 const in[], u8 const rk1[],
@@ -148,6 +154,7 @@ static int ecb_encrypt(struct skcipher_request *req)
 	struct crypto_skcipher *tfm = crypto_skcipher_reqtfm(req);
 	struct crypto_aes_ctx *ctx = crypto_skcipher_ctx(tfm);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int err, rounds = 6 + ctx->key_length / 4;
 	struct skcipher_walk walk;
 	unsigned int blocks;
@@ -162,6 +169,8 @@ static int ecb_encrypt(struct skcipher_request *req)
 		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int err, first, rounds = 6 + ctx->key_length / 4;
 	struct skcipher_walk walk;
 	unsigned int blocks;
@@ -175,6 +184,9 @@ static int ecb_encrypt(struct skcipher_request *req)
 		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
 	}
 	kernel_neon_end();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return err;
 }
@@ -183,6 +195,7 @@ static int ecb_decrypt(struct skcipher_request *req)
 {
 	struct crypto_skcipher *tfm = crypto_skcipher_reqtfm(req);
 	struct crypto_aes_ctx *ctx = crypto_skcipher_ctx(tfm);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	int err, rounds = 6 + ctx->key_length / 4;
 	struct skcipher_walk walk;
@@ -198,6 +211,8 @@ static int ecb_decrypt(struct skcipher_request *req)
 		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int err, first, rounds = 6 + ctx->key_length / 4;
 	struct skcipher_walk walk;
 	unsigned int blocks;
@@ -211,6 +226,9 @@ static int ecb_decrypt(struct skcipher_request *req)
 		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
 	}
 	kernel_neon_end();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return err;
 }
@@ -219,6 +237,7 @@ static int cbc_encrypt(struct skcipher_request *req)
 {
 	struct crypto_skcipher *tfm = crypto_skcipher_reqtfm(req);
 	struct crypto_aes_ctx *ctx = crypto_skcipher_ctx(tfm);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	int err, rounds = 6 + ctx->key_length / 4;
 	struct skcipher_walk walk;
@@ -234,6 +253,8 @@ static int cbc_encrypt(struct skcipher_request *req)
 		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int err, first, rounds = 6 + ctx->key_length / 4;
 	struct skcipher_walk walk;
 	unsigned int blocks;
@@ -248,6 +269,9 @@ static int cbc_encrypt(struct skcipher_request *req)
 		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
 	}
 	kernel_neon_end();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return err;
 }
@@ -256,6 +280,7 @@ static int cbc_decrypt(struct skcipher_request *req)
 {
 	struct crypto_skcipher *tfm = crypto_skcipher_reqtfm(req);
 	struct crypto_aes_ctx *ctx = crypto_skcipher_ctx(tfm);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	int err, rounds = 6 + ctx->key_length / 4;
 	struct skcipher_walk walk;
@@ -271,6 +296,8 @@ static int cbc_decrypt(struct skcipher_request *req)
 		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int err, first, rounds = 6 + ctx->key_length / 4;
 	struct skcipher_walk walk;
 	unsigned int blocks;
@@ -285,6 +312,9 @@ static int cbc_decrypt(struct skcipher_request *req)
 		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
 	}
 	kernel_neon_end();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return err;
 }
@@ -293,6 +323,7 @@ static int ctr_encrypt(struct skcipher_request *req)
 {
 	struct crypto_skcipher *tfm = crypto_skcipher_reqtfm(req);
 	struct crypto_aes_ctx *ctx = crypto_skcipher_ctx(tfm);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	int err, rounds = 6 + ctx->key_length / 4;
 	struct skcipher_walk walk;
@@ -307,6 +338,8 @@ static int ctr_encrypt(struct skcipher_request *req)
 		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
 		kernel_neon_end();
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int err, first, rounds = 6 + ctx->key_length / 4;
 	struct skcipher_walk walk;
 	int blocks;
@@ -321,6 +354,9 @@ static int ctr_encrypt(struct skcipher_request *req)
 				first);
 		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
 		first = 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	if (walk.nbytes) {
@@ -335,6 +371,7 @@ static int ctr_encrypt(struct skcipher_request *req)
 		blocks = -1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kernel_neon_begin();
 		aes_ctr_encrypt(tail, NULL, (u8 *)ctx->key_enc, rounds,
 				blocks, walk.iv);
@@ -343,12 +380,17 @@ static int ctr_encrypt(struct skcipher_request *req)
 		err = skcipher_walk_done(&walk, 0);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		aes_ctr_encrypt(tail, NULL, (u8 *)ctx->key_enc, rounds,
 				blocks, walk.iv, first);
 		crypto_xor_cpy(tdst, tsrc, tail, nbytes);
 		err = skcipher_walk_done(&walk, 0);
 	}
 	kernel_neon_end();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return err;
@@ -374,6 +416,7 @@ static int xts_encrypt(struct skcipher_request *req)
 	unsigned int blocks;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = skcipher_walk_virt(&walk, req, false);
 
 	for (first = 1; (blocks = (walk.nbytes / AES_BLOCK_SIZE)); first = 0) {
@@ -385,6 +428,8 @@ static int xts_encrypt(struct skcipher_request *req)
 		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = skcipher_walk_virt(&walk, req, true);
 
 	kernel_neon_begin();
@@ -395,6 +440,9 @@ static int xts_encrypt(struct skcipher_request *req)
 		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
 	}
 	kernel_neon_end();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return err;
@@ -409,6 +457,7 @@ static int xts_decrypt(struct skcipher_request *req)
 	unsigned int blocks;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = skcipher_walk_virt(&walk, req, false);
 
 	for (first = 1; (blocks = (walk.nbytes / AES_BLOCK_SIZE)); first = 0) {
@@ -420,6 +469,8 @@ static int xts_decrypt(struct skcipher_request *req)
 		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = skcipher_walk_virt(&walk, req, true);
 
 	kernel_neon_begin();
@@ -430,6 +481,9 @@ static int xts_decrypt(struct skcipher_request *req)
 		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
 	}
 	kernel_neon_end();
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return err;
@@ -555,7 +609,11 @@ static int cmac_setkey(struct crypto_shash *tfm, const u8 *in_key,
 	/* encrypt the zero vector */
 	kernel_neon_begin();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	aes_ecb_encrypt(ctx->consts, (u8[AES_BLOCK_SIZE]){}, rk, rounds, 1);
+=======
+	aes_ecb_encrypt(ctx->consts, (u8[AES_BLOCK_SIZE]){}, rk, rounds, 1, 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	aes_ecb_encrypt(ctx->consts, (u8[AES_BLOCK_SIZE]){}, rk, rounds, 1, 1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -588,8 +646,13 @@ static int xcbc_setkey(struct crypto_shash *tfm, const u8 *in_key,
 
 	kernel_neon_begin();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	aes_ecb_encrypt(key, ks[0], rk, rounds, 1);
 	aes_ecb_encrypt(ctx->consts, ks[1], rk, rounds, 2);
+=======
+	aes_ecb_encrypt(key, ks[0], rk, rounds, 1, 1);
+	aes_ecb_encrypt(ctx->consts, ks[1], rk, rounds, 2, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	aes_ecb_encrypt(key, ks[0], rk, rounds, 1, 1);
 	aes_ecb_encrypt(ctx->consts, ks[1], rk, rounds, 2, 0);

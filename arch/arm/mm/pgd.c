@@ -143,7 +143,11 @@ void pgd_free(struct mm_struct *mm, pgd_t *pgd_base)
 	pmd_clear(pmd);
 	pte_free(mm, pte);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mm_dec_nr_ptes(mm);
+=======
+	atomic_long_dec(&mm->nr_ptes);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	atomic_long_dec(&mm->nr_ptes);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

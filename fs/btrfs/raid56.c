@@ -1191,7 +1191,12 @@ static noinline void finish_rmw(struct btrfs_raid_bio *rbio)
 	int stripe;
 	int pagenr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool has_qstripe;
+=======
+	int p_stripe = -1;
+	int q_stripe = -1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int p_stripe = -1;
 	int q_stripe = -1;
@@ -1203,6 +1208,7 @@ static noinline void finish_rmw(struct btrfs_raid_bio *rbio)
 	bio_list_init(&bio_list);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (rbio->real_stripes - rbio->nr_data == 1)
 		has_qstripe = false;
 	else if (rbio->real_stripes - rbio->nr_data == 2)
@@ -1210,6 +1216,8 @@ static noinline void finish_rmw(struct btrfs_raid_bio *rbio)
 	else
 		BUG();
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (rbio->real_stripes - rbio->nr_data == 1) {
 		p_stripe = rbio->real_stripes - 1;
 	} else if (rbio->real_stripes - rbio->nr_data == 2) {
@@ -1218,6 +1226,9 @@ static noinline void finish_rmw(struct btrfs_raid_bio *rbio)
 	} else {
 		BUG();
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* at this point we either have a full stripe,
@@ -1263,7 +1274,11 @@ static noinline void finish_rmw(struct btrfs_raid_bio *rbio)
 		pointers[stripe++] = kmap(p);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (has_qstripe) {
+=======
+		if (q_stripe != -1) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (q_stripe != -1) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2343,7 +2358,12 @@ static noinline void finish_parity_scrub(struct btrfs_raid_bio *rbio,
 	int stripe;
 	int pagenr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool has_qstripe;
+=======
+	int p_stripe = -1;
+	int q_stripe = -1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int p_stripe = -1;
 	int q_stripe = -1;
@@ -2358,6 +2378,7 @@ static noinline void finish_parity_scrub(struct btrfs_raid_bio *rbio,
 	bio_list_init(&bio_list);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (rbio->real_stripes - rbio->nr_data == 1)
 		has_qstripe = false;
 	else if (rbio->real_stripes - rbio->nr_data == 2)
@@ -2365,6 +2386,8 @@ static noinline void finish_parity_scrub(struct btrfs_raid_bio *rbio,
 	else
 		BUG();
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (rbio->real_stripes - rbio->nr_data == 1) {
 		p_stripe = rbio->real_stripes - 1;
 	} else if (rbio->real_stripes - rbio->nr_data == 2) {
@@ -2373,6 +2396,9 @@ static noinline void finish_parity_scrub(struct btrfs_raid_bio *rbio,
 	} else {
 		BUG();
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (bbio->num_tgtdevs && bbio->tgtdev_map[rbio->scrubp]) {
@@ -2396,8 +2422,12 @@ static noinline void finish_parity_scrub(struct btrfs_raid_bio *rbio,
 	SetPageUptodate(p_page);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (has_qstripe) {
 		/* RAID6, allocate and map temp space for the Q stripe */
+=======
+	if (q_stripe != -1) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (q_stripe != -1) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2408,7 +2438,10 @@ static noinline void finish_parity_scrub(struct btrfs_raid_bio *rbio,
 		}
 		SetPageUptodate(q_page);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pointers[rbio->real_stripes - 1] = kmap(q_page);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -2416,9 +2449,12 @@ static noinline void finish_parity_scrub(struct btrfs_raid_bio *rbio,
 	atomic_set(&rbio->error, 0);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Map the parity stripe just once */
 	pointers[nr_data] = kmap(p_page);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	for_each_set_bit(pagenr, rbio->dbitmap, rbio->stripe_npages) {
@@ -2431,9 +2467,12 @@ static noinline void finish_parity_scrub(struct btrfs_raid_bio *rbio,
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (has_qstripe) {
 			/* RAID6, call the library function to fill in our P/Q */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* then add the parity stripe */
 		pointers[stripe++] = kmap(p_page);
 
@@ -2445,6 +2484,9 @@ static noinline void finish_parity_scrub(struct btrfs_raid_bio *rbio,
 			 */
 			pointers[stripe++] = kmap(q_page);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			raid6_call.gen_syndrome(rbio->real_stripes, PAGE_SIZE,
 						pointers);
@@ -2467,6 +2509,7 @@ static noinline void finish_parity_scrub(struct btrfs_raid_bio *rbio,
 		for (stripe = 0; stripe < nr_data; stripe++)
 			kunmap(page_in_rbio(rbio, stripe, pagenr, 0));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}
 
 	kunmap(p_page);
@@ -2476,12 +2519,17 @@ static noinline void finish_parity_scrub(struct btrfs_raid_bio *rbio,
 		__free_page(q_page);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		kunmap(p_page);
 	}
 
 	__free_page(p_page);
 	if (q_page)
 		__free_page(q_page);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 writeback:

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* SPDX-License-Identifier: GPL-2.0-only */
 /*
  * Copyright (c) 2012-2021, Arm Limited.
@@ -6,6 +7,8 @@
  * Adapted from the original at:
  * https://github.com/ARM-software/optimized-routines/blob/afd6244a1f8d9229/string/aarch64/strcmp.S
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Copyright (C) 2013 ARM Ltd.
  * Copyright (C) 2013 Linaro.
@@ -28,12 +31,16 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 
 #include <linux/linkage.h>
 #include <asm/assembler.h>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* Assumptions:
  *
@@ -43,6 +50,8 @@
 #define L(label) .L ## label
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * compare two strings
  *
@@ -55,12 +64,16 @@
  * or be greater than s2.
  */
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define REP8_01 0x0101010101010101
 #define REP8_7f 0x7f7f7f7f7f7f7f7f
 #define REP8_80 0x8080808080808080
 
 /* Parameters and result.  */
+<<<<<<< HEAD
 <<<<<<< HEAD
 #define src1		x0
 #define src2		x1
@@ -97,6 +110,8 @@ L(loop_aligned):
 	ldr	data2, [src2], #8
 L(start_realigned):
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 src1		.req	x0
 src2		.req	x1
 result		.req	x0
@@ -132,12 +147,16 @@ WEAK(strcmp)
 	ldr	data1, [src1], #8
 	ldr	data2, [src2], #8
 .Lstart_realigned:
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	sub	tmp1, data1, zeroones
 	orr	tmp2, data1, #REP8_7f
 	eor	diff, data1, data2	/* Non-zero if differences found.  */
 	bic	has_nul, tmp1, tmp2	/* Non-zero if NUL terminator.  */
 	orr	syndrome, diff, has_nul
+<<<<<<< HEAD
 <<<<<<< HEAD
 	cbz	syndrome, L(loop_aligned)
 	/* End of performance-critical section  -- one 64B cache line.  */
@@ -198,6 +217,8 @@ L(mutual_align):
 	   alignment boundary.  Round down the addresses and then mask off
 	   the bytes that preceed the start point.  */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cbz	syndrome, .Lloop_aligned
 	b	.Lcal_cmpresult
 
@@ -207,6 +228,9 @@ L(mutual_align):
 	* alignment boundary.  Round down the addresses and then mask off
 	* the bytes that preceed the start point.
 	*/
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bic	src1, src1, #7
 	bic	src2, src2, #7
@@ -215,6 +239,7 @@ L(mutual_align):
 	neg	tmp1, tmp1		/* Bits to alignment -64.  */
 	ldr	data2, [src2], #8
 	mov	tmp2, #~0
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef __AARCH64EB__
 	/* Big-endian.  Early bytes are at MSB.  */
@@ -249,6 +274,8 @@ L(loop_misaligned):
 	eor	tmp1, tmp1, #0xff8
 	cbz	tmp1, L(do_misaligned)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Big-endian.  Early bytes are at MSB.  */
 CPU_BE( lsl	tmp2, tmp2, tmp1 )	/* Shift (tmp1 & 63).  */
 	/* Little-endian.  Early bytes are at LSB.  */
@@ -293,12 +320,16 @@ CPU_LE( lsr	tmp2, tmp2, tmp1 )	/* Shift (tmp1 & 63).  */
 	add	src1, src1, tmp3
 	add	src2, src2, tmp3
 	/*load 8 bytes from aligned str1 and non-aligned str2..*/
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ldr	data1, [src1], #8
 	ldr	data2, [src2], #8
 
 	sub	tmp1, data1, zeroones
 	orr	tmp2, data1, #REP8_7f
+<<<<<<< HEAD
 <<<<<<< HEAD
 	eor	diff, data1, data2	/* Non-zero if differences found.  */
 	bic	has_nul, tmp1, tmp2	/* Non-zero if NUL terminator.  */
@@ -312,6 +343,8 @@ L(done):
 
 SYM_FUNC_END_PI(strcmp)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bic	has_nul, tmp1, tmp2
 	eor	diff, data1, data2 /* Non-zero if differences found.  */
 	orr	syndrome, diff, has_nul
@@ -397,4 +430,7 @@ CPU_BE(	orr	syndrome, diff, has_nul )
 	sub	result, data1, data2, lsr #56
 	ret
 ENDPIPROC(strcmp)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

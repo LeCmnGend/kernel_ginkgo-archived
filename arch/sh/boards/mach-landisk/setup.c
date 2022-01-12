@@ -86,9 +86,12 @@ device_initcall(landisk_devices_setup);
 static void __init landisk_setup(char **cmdline_p)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* I/O port identity mapping */
 	__set_io_port_base(0);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* LED ON */

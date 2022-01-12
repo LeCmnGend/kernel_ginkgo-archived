@@ -102,7 +102,11 @@
 
 		clocks: clock-controller@e0100000 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			compatible = "samsung,s5pv210-clock";
+=======
+			compatible = "samsung,s5pv210-clock", "simple-bus";
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			compatible = "samsung,s5pv210-clock", "simple-bus";
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -111,12 +115,15 @@
 			clocks = <&xxti>, <&xusbxti>;
 			#clock-cells = <1>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		};
 
 		pmu_syscon: syscon@e0108000 {
 			compatible = "samsung-s5pv210-pmu", "syscon";
 			reg = <0xe0108000 0x8000>;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			#address-cells = <1>;
 			#size-cells = <1>;
 			ranges;
@@ -125,6 +132,9 @@
 				compatible = "samsung-s5pv210-pmu", "syscon";
 				reg = <0xe0108000 0x8000>;
 			};
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		};
 
@@ -141,6 +151,7 @@
 			};
 		};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 		pdma0: dma@e0900000 {
 			compatible = "arm,pl330", "arm,primecell";
@@ -165,6 +176,8 @@
 			#dma-channels = <8>;
 			#dma-requests = <32>;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		amba {
 			#address-cells = <1>;
 			#size-cells = <1>;
@@ -194,6 +207,9 @@
 				#dma-channels = <8>;
 				#dma-requests = <32>;
 			};
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		};
 
@@ -268,6 +284,7 @@
 		};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		clk_audss: clock-controller@eee10000 {
 			compatible = "samsung,s5pv210-audss-clock";
 			reg = <0xeee10000 0x1000>;
@@ -299,6 +316,8 @@
 			#sound-dai-cells = <0>;
 			status = "disabled";
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		audio-subsystem {
 			compatible = "samsung,s5pv210-audss", "simple-bus";
 			#address-cells = <1>;
@@ -336,6 +355,9 @@
 				#sound-dai-cells = <0>;
 				status = "disabled";
 			};
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		};
 

@@ -40,6 +40,12 @@ config XTENSA
 	  a home page at <http://www.linux-xtensa.org/>.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+config RWSEM_XCHGADD_ALGORITHM
+	def_bool y
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 config RWSEM_XCHGADD_ALGORITHM
 	def_bool y

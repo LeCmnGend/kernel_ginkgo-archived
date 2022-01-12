@@ -298,7 +298,10 @@ static ssize_t kone_sysfs_write_settings(struct file *fp, struct kobject *kobj,
 	struct usb_device *usb_dev = interface_to_usbdev(to_usb_interface(dev));
 	int retval = 0, difference, old_profile;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct kone_settings *settings = (struct kone_settings *)buf;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -307,6 +310,7 @@ static ssize_t kone_sysfs_write_settings(struct file *fp, struct kobject *kobj,
 		return -EINVAL;
 
 	mutex_lock(&kone->kone_lock);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	difference = memcmp(settings, &kone->settings,
 			    sizeof(struct kone_settings));
@@ -324,6 +328,8 @@ static ssize_t kone_sysfs_write_settings(struct file *fp, struct kobject *kobj,
 		old_profile = kone->settings.startup_profile;
 		memcpy(&kone->settings, settings, sizeof(struct kone_settings));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	difference = memcmp(buf, &kone->settings, sizeof(struct kone_settings));
 	if (difference) {
 		retval = kone_set_settings(usb_dev,
@@ -335,6 +341,9 @@ static ssize_t kone_sysfs_write_settings(struct file *fp, struct kobject *kobj,
 
 		old_profile = kone->settings.startup_profile;
 		memcpy(&kone->settings, buf, sizeof(struct kone_settings));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		kone_profile_activated(kone, kone->settings.startup_profile);
@@ -343,12 +352,17 @@ static ssize_t kone_sysfs_write_settings(struct file *fp, struct kobject *kobj,
 			kone_profile_report(kone, kone->settings.startup_profile);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 unlock:
 	mutex_unlock(&kone->kone_lock);
 
 	if (retval)
 		return retval;
 
+=======
+	mutex_unlock(&kone->kone_lock);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mutex_unlock(&kone->kone_lock);
 

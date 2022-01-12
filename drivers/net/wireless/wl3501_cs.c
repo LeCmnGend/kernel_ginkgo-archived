@@ -469,7 +469,10 @@ static int wl3501_send_pkt(struct wl3501_card *this, u8 *data, u16 len)
 		.sig_id = WL3501_SIG_MD_REQ,
 	};
 <<<<<<< HEAD
+<<<<<<< HEAD
 	size_t sig_addr_len = sizeof(sig.addr);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u8 *pdata = (char *)data;
@@ -488,9 +491,15 @@ static int wl3501_send_pkt(struct wl3501_card *this, u8 *data, u16 len)
 		}
 		rc = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		memcpy(&sig.addr, pdata, sig_addr_len);
 		pktlen = len - sig_addr_len;
 		pdata += sig_addr_len;
+=======
+		memcpy(&sig.daddr[0], pdata, 12);
+		pktlen = len - 12;
+		pdata += 12;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		memcpy(&sig.daddr[0], pdata, 12);
 		pktlen = len - 12;
@@ -599,7 +608,11 @@ static int wl3501_mgmt_join(struct wl3501_card *this, u16 stas)
 		.sig_id		  = WL3501_SIG_JOIN_REQ,
 		.timeout	  = 10,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.req.ds_pset = {
+=======
+		.ds_pset = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.ds_pset = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -612,7 +625,11 @@ static int wl3501_mgmt_join(struct wl3501_card *this, u16 stas)
 	};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memcpy(&sig.req, &this->bss_set[stas].req, sizeof(sig.req));
+=======
+	memcpy(&sig.beacon_period, &this->bss_set[stas].beacon_period, 72);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memcpy(&sig.beacon_period, &this->bss_set[stas].beacon_period, 72);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -684,9 +701,15 @@ static void wl3501_mgmt_scan_confirm(struct wl3501_card *this, u16 addr)
 		pr_debug("success");
 		if ((this->net_type == IW_MODE_INFRA &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 		     (sig.req.cap_info & WL3501_MGMT_CAPABILITY_ESS)) ||
 		    (this->net_type == IW_MODE_ADHOC &&
 		     (sig.req.cap_info & WL3501_MGMT_CAPABILITY_IBSS)) ||
+=======
+		     (sig.cap_info & WL3501_MGMT_CAPABILITY_ESS)) ||
+		    (this->net_type == IW_MODE_ADHOC &&
+		     (sig.cap_info & WL3501_MGMT_CAPABILITY_IBSS)) ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		     (sig.cap_info & WL3501_MGMT_CAPABILITY_ESS)) ||
 		    (this->net_type == IW_MODE_ADHOC &&
@@ -699,9 +722,15 @@ static void wl3501_mgmt_scan_confirm(struct wl3501_card *this, u16 addr)
 				 !memcmp(this->essid.essid, "ANY", 3))
 				matchflag = 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			else if (this->essid.el.len != sig.req.ssid.el.len)
 				matchflag = 0;
 			else if (memcmp(this->essid.essid, sig.req.ssid.essid,
+=======
+			else if (this->essid.el.len != sig.ssid.el.len)
+				matchflag = 0;
+			else if (memcmp(this->essid.essid, sig.ssid.essid,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			else if (this->essid.el.len != sig.ssid.el.len)
 				matchflag = 0;
@@ -714,8 +743,12 @@ static void wl3501_mgmt_scan_confirm(struct wl3501_card *this, u16 addr)
 			if (matchflag) {
 				for (i = 0; i < this->bss_cnt; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 					if (ether_addr_equal_unaligned(this->bss_set[i].req.bssid,
 								       sig.req.bssid)) {
+=======
+					if (ether_addr_equal_unaligned(this->bss_set[i].bssid, sig.bssid)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					if (ether_addr_equal_unaligned(this->bss_set[i].bssid, sig.bssid)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -726,16 +759,22 @@ static void wl3501_mgmt_scan_confirm(struct wl3501_card *this, u16 addr)
 			}
 			if (matchflag && (i < 20)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				memcpy(&this->bss_set[i].req,
 				       &sig.req, sizeof(sig.req));
 				this->bss_cnt++;
 				this->rssi = sig.rssi;
 				this->bss_set[i].rssi = sig.rssi;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				memcpy(&this->bss_set[i].beacon_period,
 				       &sig.beacon_period, 73);
 				this->bss_cnt++;
 				this->rssi = sig.rssi;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			}
 		}
@@ -929,15 +968,21 @@ static void wl3501_mgmt_join_confirm(struct net_device *dev, u16 addr)
 				const int i = this->join_sta_bss;
 				memcpy(this->bssid,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				       this->bss_set[i].req.bssid, ETH_ALEN);
 				this->chan = this->bss_set[i].req.ds_pset.chan;
 				iw_copy_mgmt_info_element(&this->keep_essid.el,
 						     &this->bss_set[i].req.ssid.el);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				       this->bss_set[i].bssid, ETH_ALEN);
 				this->chan = this->bss_set[i].ds_pset.chan;
 				iw_copy_mgmt_info_element(&this->keep_essid.el,
 						     &this->bss_set[i].ssid.el);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				wl3501_mgmt_auth(this);
 			}
@@ -945,15 +990,21 @@ static void wl3501_mgmt_join_confirm(struct net_device *dev, u16 addr)
 			const int i = this->join_sta_bss;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			memcpy(&this->bssid, &this->bss_set[i].req.bssid, ETH_ALEN);
 			this->chan = this->bss_set[i].req.ds_pset.chan;
 			iw_copy_mgmt_info_element(&this->keep_essid.el,
 						  &this->bss_set[i].req.ssid.el);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			memcpy(&this->bssid, &this->bss_set[i].bssid, ETH_ALEN);
 			this->chan = this->bss_set[i].ds_pset.chan;
 			iw_copy_mgmt_info_element(&this->keep_essid.el,
 						  &this->bss_set[i].ssid.el);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			wl3501_online(dev);
 		}
@@ -1037,8 +1088,12 @@ static inline void wl3501_md_ind_interrupt(struct net_device *dev,
 		skb->dev = dev;
 		skb_reserve(skb, 2); /* IP headers on 16 bytes boundaries */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		skb_copy_to_linear_data(skb, (unsigned char *)&sig.addr,
 					sizeof(sig.addr));
+=======
+		skb_copy_to_linear_data(skb, (unsigned char *)&sig.daddr, 12);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		skb_copy_to_linear_data(skb, (unsigned char *)&sig.daddr, 12);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1637,7 +1692,11 @@ static int wl3501_get_scan(struct net_device *dev, struct iw_request_info *info,
 		iwe.cmd			= SIOCGIWAP;
 		iwe.u.ap_addr.sa_family = ARPHRD_ETHER;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		memcpy(iwe.u.ap_addr.sa_data, this->bss_set[i].req.bssid, ETH_ALEN);
+=======
+		memcpy(iwe.u.ap_addr.sa_data, this->bss_set[i].bssid, ETH_ALEN);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		memcpy(iwe.u.ap_addr.sa_data, this->bss_set[i].bssid, ETH_ALEN);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1647,6 +1706,7 @@ static int wl3501_get_scan(struct net_device *dev, struct iw_request_info *info,
 		iwe.cmd		  = SIOCGIWESSID;
 		iwe.u.data.flags  = 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		iwe.u.data.length = this->bss_set[i].req.ssid.el.len;
 		current_ev = iwe_stream_add_point(info, current_ev,
 						  extra + IW_SCAN_MAX_DATA,
@@ -1655,6 +1715,8 @@ static int wl3501_get_scan(struct net_device *dev, struct iw_request_info *info,
 		iwe.cmd	   = SIOCGIWMODE;
 		iwe.u.mode = this->bss_set[i].req.bss_type;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		iwe.u.data.length = this->bss_set[i].ssid.el.len;
 		current_ev = iwe_stream_add_point(info, current_ev,
 						  extra + IW_SCAN_MAX_DATA,
@@ -1662,13 +1724,20 @@ static int wl3501_get_scan(struct net_device *dev, struct iw_request_info *info,
 						  this->bss_set[i].ssid.essid);
 		iwe.cmd	   = SIOCGIWMODE;
 		iwe.u.mode = this->bss_set[i].bss_type;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		current_ev = iwe_stream_add_event(info, current_ev,
 						  extra + IW_SCAN_MAX_DATA,
 						  &iwe, IW_EV_UINT_LEN);
 		iwe.cmd = SIOCGIWFREQ;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		iwe.u.freq.m = this->bss_set[i].req.ds_pset.chan;
+=======
+		iwe.u.freq.m = this->bss_set[i].ds_pset.chan;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		iwe.u.freq.m = this->bss_set[i].ds_pset.chan;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1678,7 +1747,11 @@ static int wl3501_get_scan(struct net_device *dev, struct iw_request_info *info,
 						  &iwe, IW_EV_FREQ_LEN);
 		iwe.cmd = SIOCGIWENCODE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (this->bss_set[i].req.cap_info & WL3501_MGMT_CAPABILITY_PRIVACY)
+=======
+		if (this->bss_set[i].cap_info & WL3501_MGMT_CAPABILITY_PRIVACY)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (this->bss_set[i].cap_info & WL3501_MGMT_CAPABILITY_PRIVACY)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

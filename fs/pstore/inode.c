@@ -37,9 +37,12 @@
 #include <linux/spinlock.h>
 #include <linux/uaccess.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_PSTORE_LAST_KMSG
 #include <linux/proc_fs.h>
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -301,6 +304,7 @@ bool pstore_is_mounted(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_PSTORE_LAST_KMSG
 static char *console_buffer;
 static ssize_t console_bufsize;
@@ -319,6 +323,8 @@ static const struct file_operations last_kmsg_fops = {
 };
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -428,6 +434,7 @@ int pstore_mkfile(struct dentry *root, struct pstore_record *record)
 	spin_unlock_irqrestore(&allpstore_lock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_PSTORE_LAST_KMSG
 	if (record->type == PSTORE_TYPE_CONSOLE) {
 		console_buffer = record->buf;
@@ -435,6 +442,8 @@ int pstore_mkfile(struct dentry *root, struct pstore_record *record)
 	}
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
@@ -487,7 +496,11 @@ static int pstore_fill_super(struct super_block *sb, void *data, int silent)
 	inode = pstore_get_inode(sb);
 	if (inode) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		inode->i_mode = S_IFDIR | 0755;
+=======
+		inode->i_mode = S_IFDIR | 0750;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		inode->i_mode = S_IFDIR | 0750;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -527,9 +540,12 @@ static int __init init_pstore_fs(void)
 {
 	int err;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_PSTORE_LAST_KMSG
 	struct proc_dir_entry *last_kmsg_entry = NULL;
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -539,6 +555,7 @@ static int __init init_pstore_fs(void)
 		goto out;
 
 	err = register_filesystem(&pstore_fs_type);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (err < 0) {
 		sysfs_remove_mount_point(fs_kobj, "pstore");
@@ -553,6 +570,10 @@ static int __init init_pstore_fs(void)
 		goto out;
 	}
 #endif
+=======
+	if (err < 0)
+		sysfs_remove_mount_point(fs_kobj, "pstore");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (err < 0)
 		sysfs_remove_mount_point(fs_kobj, "pstore");

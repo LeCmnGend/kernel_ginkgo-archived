@@ -25,7 +25,10 @@
 #include <linux/sysfs.h>
 #include <linux/kthread.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/file.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/byteorder/generic.h>
@@ -107,9 +110,14 @@ unlock:
 static BIN_ATTR_RO(dev_desc, sizeof(struct usb_device_descriptor));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static ssize_t store_sockfd(struct device *dev,
 				 struct device_attribute *attr,
 				 const char *in, size_t count)
+=======
+static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
+		     const char *in, size_t count)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 		     const char *in, size_t count)
@@ -123,8 +131,11 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 	unsigned long flags;
 	int ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct task_struct *tcp_rx = NULL;
 	struct task_struct *tcp_tx = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -137,7 +148,10 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 		return -ENODEV;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&udc->ud.sysfs_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_irqsave(&udc->lock, flags);
@@ -169,6 +183,7 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 			goto unlock_ud;
 		}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 		if (socket->type != SOCK_STREAM) {
 			dev_err(dev, "Expecting SOCK_STREAM - found %d",
@@ -207,6 +222,8 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 		udc->ud.status = SDEV_ST_USED;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		udc->ud.tcp_socket = socket;
 
 		spin_unlock_irq(&udc->ud.lock);
@@ -220,12 +237,16 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 		spin_lock_irqsave(&udc->lock, flags);
 		spin_lock_irq(&udc->ud.lock);
 		udc->ud.status = SDEV_ST_USED;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		spin_unlock_irq(&udc->ud.lock);
 
 		do_gettimeofday(&udc->start_time);
 		v_start_timer(udc);
 		udc->connected = 1;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 		spin_unlock_irqrestore(&udc->lock, flags);
@@ -236,6 +257,8 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 		mutex_unlock(&udc->ud.sysfs_lock);
 		return count;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
@@ -257,6 +280,7 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 
 	spin_unlock_irqrestore(&udc->lock, flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_unlock(&udc->ud.sysfs_lock);
 
 	return count;
@@ -268,12 +292,20 @@ sock_err:
 	return count;
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+
+	return count;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 unlock_ud:
 	spin_unlock_irq(&udc->ud.lock);
 unlock:
 	spin_unlock_irqrestore(&udc->lock, flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_unlock(&udc->ud.sysfs_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

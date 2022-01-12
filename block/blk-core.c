@@ -872,7 +872,11 @@ int blk_queue_enter(struct request_queue *q, unsigned int op)
 		smp_rmb();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		wait_event_interruptible(q->mq_freeze_wq,
+=======
+		wait_event(q->mq_freeze_wq,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		wait_event(q->mq_freeze_wq,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -933,8 +937,11 @@ struct request_queue *blk_alloc_queue_node(gfp_t gfp_mask, int node_id)
 	q->backing_dev_info->ra_pages =
 			(VM_MAX_READAHEAD * 1024) / PAGE_SIZE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	q->backing_dev_info->io_pages =
 			(VM_MAX_READAHEAD * 1024) / PAGE_SIZE;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	q->backing_dev_info->capabilities = BDI_CAP_CGROUP_WRITEBACK;
@@ -1479,11 +1486,15 @@ retry:
 
 	spin_unlock_irq(q->queue_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * FIXME: this should be io_schedule().  The timeout is there as a
 	 * workaround for some io timeout problems.
 	 */
 	io_schedule_timeout(5*HZ);
+=======
+	io_schedule();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	io_schedule();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1650,12 +1661,17 @@ EXPORT_SYMBOL_GPL(part_round_stats);
 static void blk_pm_put_request(struct request *rq)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (rq->q->dev && !(rq->rq_flags & RQF_PM) &&
 	    (rq->rq_flags & RQF_PM_ADDED)) {
 		rq->rq_flags &= ~RQF_PM_ADDED;
 		if (!--rq->q->nr_pending)
 			pm_runtime_mark_last_busy(rq->q->dev);
 	}
+=======
+	if (rq->q->dev && !(rq->rq_flags & RQF_PM) && !--rq->q->nr_pending)
+		pm_runtime_mark_last_busy(rq->q->dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (rq->q->dev && !(rq->rq_flags & RQF_PM) && !--rq->q->nr_pending)
 		pm_runtime_mark_last_busy(rq->q->dev);
@@ -3795,8 +3811,12 @@ int __init blk_dev_init(void)
 	/* used for unplugging and affects IO latency/throughput - HIGHPRI */
 	kblockd_workqueue = alloc_workqueue("kblockd",
 <<<<<<< HEAD
+<<<<<<< HEAD
 					    WQ_MEM_RECLAIM | WQ_HIGHPRI |
 					    WQ_POWER_EFFICIENT, 0);
+=======
+					    WQ_MEM_RECLAIM | WQ_HIGHPRI, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					    WQ_MEM_RECLAIM | WQ_HIGHPRI, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

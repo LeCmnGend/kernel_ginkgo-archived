@@ -106,8 +106,14 @@ static inline wait_queue_head_t *get_pkmap_wait_queue_head(unsigned int color)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 atomic_long_t _totalhigh_pages __read_mostly;
 EXPORT_SYMBOL(_totalhigh_pages);
+=======
+unsigned long totalhigh_pages __read_mostly;
+EXPORT_SYMBOL(totalhigh_pages);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 unsigned long totalhigh_pages __read_mostly;
 EXPORT_SYMBOL(totalhigh_pages);

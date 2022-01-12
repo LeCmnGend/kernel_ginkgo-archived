@@ -472,7 +472,10 @@ void cpts_unregister(struct cpts *cpts)
 	ptp_clock_unregister(cpts->clock);
 	cpts->clock = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cpts->phc_index = -1;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -577,7 +580,10 @@ struct cpts *cpts_create(struct device *dev, void __iomem *regs,
 	cpts->cc.mask = CLOCKSOURCE_MASK(32);
 	cpts->info = cpts_info;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cpts->phc_index = -1;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

@@ -69,6 +69,7 @@ static struct dma_chan *of_dma_router_xlate(struct of_phandle_args *dma_spec,
 
 	ofdma_target = of_dma_find_controller(&dma_spec_target);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!ofdma_target) {
 		ofdma->dma_router->route_free(ofdma->dma_router->dev,
 					      route_data);
@@ -87,6 +88,8 @@ static struct dma_chan *of_dma_router_xlate(struct of_phandle_args *dma_spec,
 
 err:
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!ofdma_target)
 		return NULL;
 
@@ -99,6 +102,9 @@ err:
 					      route_data);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * Need to put the node back since the ofdma->of_dma_route_allocate

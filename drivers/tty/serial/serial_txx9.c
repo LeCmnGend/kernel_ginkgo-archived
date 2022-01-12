@@ -1288,9 +1288,12 @@ static int __init serial_txx9_init(void)
 #ifdef ENABLE_SERIAL_TXX9_PCI
 	ret = pci_register_driver(&serial_txx9_pci_driver);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret) {
 		platform_driver_unregister(&serial_txx9_plat_driver);
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif

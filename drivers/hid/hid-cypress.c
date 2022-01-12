@@ -27,8 +27,11 @@
 #define CP_2WHEEL_MOUSE_HACK_ON		0x04
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define VA_INVAL_LOGICAL_BOUNDARY	0x08
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -36,12 +39,15 @@
  * the wrong order
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __u8 *cp_rdesc_fixup(struct hid_device *hdev, __u8 *rdesc,
 		unsigned int *rsize)
 {
 	unsigned int i;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static __u8 *cp_report_fixup(struct hid_device *hdev, __u8 *rdesc,
 		unsigned int *rsize)
 {
@@ -51,6 +57,9 @@ static __u8 *cp_report_fixup(struct hid_device *hdev, __u8 *rdesc,
 	if (!(quirks & CP_RDESC_SWAPPED_MIN_MAX))
 		return rdesc;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (*rsize < 4)
 		return rdesc;
@@ -64,6 +73,7 @@ static __u8 *cp_report_fixup(struct hid_device *hdev, __u8 *rdesc,
 	return rdesc;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static __u8 *va_logical_boundary_fixup(struct hid_device *hdev, __u8 *rdesc,
 		unsigned int *rsize)
@@ -99,6 +109,8 @@ static __u8 *cp_report_fixup(struct hid_device *hdev, __u8 *rdesc,
 	return rdesc;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int cp_input_mapped(struct hid_device *hdev, struct hid_input *hi,
@@ -182,8 +194,11 @@ static const struct hid_device_id cp_devices[] = {
 	{ HID_USB_DEVICE(USB_VENDOR_ID_CYPRESS, USB_DEVICE_ID_CYPRESS_MOUSE),
 		.driver_data = CP_2WHEEL_MOUSE_HACK },
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ HID_USB_DEVICE(USB_VENDOR_ID_CYPRESS, USB_DEVICE_ID_CYPRESS_VARMILO_VA104M_07B1),
 		.driver_data = VA_INVAL_LOGICAL_BOUNDARY },
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ }

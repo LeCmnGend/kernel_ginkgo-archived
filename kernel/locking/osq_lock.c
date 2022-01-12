@@ -135,6 +135,7 @@ bool osq_lock(struct optimistic_spin_queue *lock)
 	 */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Wait to acquire the lock or cancelation. Note that need_resched()
 	 * will come with an IPI, which will wake smp_cond_load_relaxed() if it
@@ -147,6 +148,8 @@ bool osq_lock(struct optimistic_spin_queue *lock)
 
 	/* unqueue */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	while (!READ_ONCE(node->locked)) {
 		/*
 		 * If we need to reschedule bail... so we can block.
@@ -161,6 +164,9 @@ bool osq_lock(struct optimistic_spin_queue *lock)
 	return true;
 
 unqueue:
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * Step - A  -- stabilize @prev

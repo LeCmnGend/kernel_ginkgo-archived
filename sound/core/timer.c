@@ -491,10 +491,16 @@ static void snd_timer_notify1(struct snd_timer_instance *ti, int event)
 	if (timer->hw.flags & SNDRV_TIMER_HW_SLAVE)
 		return;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	event += 10; /* convert to SNDRV_TIMER_EVENT_MXXX */
 	list_for_each_entry(ts, &ti->slave_active_head, active_list)
 		if (ts->ccallback)
 			ts->ccallback(ts, event, &tstamp, resolution);
+=======
+	list_for_each_entry(ts, &ti->slave_active_head, active_list)
+		if (ts->ccallback)
+			ts->ccallback(ts, event + 100, &tstamp, resolution);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	list_for_each_entry(ts, &ti->slave_active_head, active_list)
 		if (ts->ccallback)

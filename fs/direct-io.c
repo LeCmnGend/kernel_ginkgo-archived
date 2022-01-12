@@ -871,7 +871,10 @@ submit_page_section(struct dio *dio, struct dio_submit *sdio, struct page *page,
 {
 	int ret = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int boundary = sdio->boundary;	/* dio_send_cur_page may clear it */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -913,15 +916,21 @@ submit_page_section(struct dio *dio, struct dio_submit *sdio, struct page *page,
 out:
 	/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * If boundary then we want to schedule the IO now to
 	 * avoid metadata seeks.
 	 */
 	if (boundary) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * If sdio->boundary then we want to schedule the IO now to
 	 * avoid metadata seeks.
 	 */
 	if (sdio->boundary) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = dio_send_cur_page(dio, sdio, map_bh);
 		if (sdio->bio)

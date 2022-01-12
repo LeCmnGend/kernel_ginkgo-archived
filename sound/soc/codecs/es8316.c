@@ -57,9 +57,12 @@ static const SNDRV_CTL_TLVD_DECLARE_DB_RANGE(adc_pga_gain_tlv,
 	2, 2, TLV_DB_SCALE_ITEM(250, 0, 0),
 	3, 3, TLV_DB_SCALE_ITEM(450, 0, 0),
 <<<<<<< HEAD
+<<<<<<< HEAD
 	4, 7, TLV_DB_SCALE_ITEM(700, 300, 0),
 	8, 10, TLV_DB_SCALE_ITEM(1800, 300, 0),
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	4, 4, TLV_DB_SCALE_ITEM(700, 0, 0),
 	5, 5, TLV_DB_SCALE_ITEM(1000, 0, 0),
 	6, 6, TLV_DB_SCALE_ITEM(1300, 0, 0),
@@ -67,6 +70,9 @@ static const SNDRV_CTL_TLVD_DECLARE_DB_RANGE(adc_pga_gain_tlv,
 	8, 8, TLV_DB_SCALE_ITEM(1800, 0, 0),
 	9, 9, TLV_DB_SCALE_ITEM(2100, 0, 0),
 	10, 10, TLV_DB_SCALE_ITEM(2400, 0, 0),
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 );
 

@@ -36,7 +36,10 @@
 #include <linux/module.h>
 #include <asm/irq.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <asm/unaligned.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -204,6 +207,7 @@ struct ads7846 {
 #define	REF_OFF	(READ_12BIT_DFR(y, 0, 0))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int get_pendown_state(struct ads7846 *ts)
 {
 	if (ts->get_pendown_state)
@@ -226,6 +230,8 @@ static void ads7846_report_pen_up(struct ads7846 *ts)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Must be called with ts->lock held */
 static void ads7846_stop(struct ads7846 *ts)
 {
@@ -243,10 +249,13 @@ static void ads7846_restart(struct ads7846 *ts)
 {
 	if (!ts->disabled && !ts->suspended) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* Check if pen was released since last stop */
 		if (ts->pendown && !get_pendown_state(ts))
 			ads7846_report_pen_up(ts);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* Tell IRQ thread that it may poll the device. */
@@ -445,7 +454,11 @@ static int ads7845_read12_ser(struct device *dev, unsigned command)
 	if (status == 0) {
 		/* BE12 value, then padding */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		status = get_unaligned_be16(&req->sample[1]);
+=======
+		status = be16_to_cpu(*((u16 *)&req->sample[1]));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		status = be16_to_cpu(*((u16 *)&req->sample[1]));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -644,7 +657,10 @@ static const struct attribute_group ads784x_attr_group = {
 /*--------------------------------------------------------------------------*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int get_pendown_state(struct ads7846 *ts)
 {
 	if (ts->get_pendown_state)
@@ -653,6 +669,9 @@ static int get_pendown_state(struct ads7846 *ts)
 	return !gpio_get_value(ts->gpio_pendown);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void null_wait_for_sync(void)
 {
@@ -827,16 +846,22 @@ static void ads7846_report_state(struct ads7846 *ts)
 		Rt = z2;
 		Rt -= z1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		Rt *= ts->x_plate_ohms;
 		Rt = DIV_ROUND_CLOSEST(Rt, 16);
 		Rt *= x;
 		Rt /= z1;
 		Rt = DIV_ROUND_CLOSEST(Rt, 256);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		Rt *= x;
 		Rt *= ts->x_plate_ohms;
 		Rt /= z1;
 		Rt = (Rt + 2047) >> 12;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
 		Rt = 0;
@@ -921,9 +946,12 @@ static irqreturn_t ads7846_irq(int irq, void *handle)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ts->pendown && !ts->stopped)
 		ads7846_report_pen_up(ts);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ts->pendown && !ts->stopped) {
 		struct input_dev *input = ts->input;
 
@@ -934,6 +962,9 @@ static irqreturn_t ads7846_irq(int irq, void *handle)
 		ts->pendown = false;
 		dev_vdbg(&ts->spi->dev, "UP\n");
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return IRQ_HANDLED;

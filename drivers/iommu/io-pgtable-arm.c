@@ -635,8 +635,12 @@ static int arm_lpae_map_sg(struct io_pgtable_ops *ops, unsigned long iova,
 	struct scatterlist *s;
 	size_t mapped = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int i;
 	int ret = -EINVAL;
+=======
+	int i, ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int i, ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -711,7 +715,11 @@ out_err:
 	/* Return the size of the partial mapping so that they can be undone */
 	*size = mapped;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return ret;
+=======
+	return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

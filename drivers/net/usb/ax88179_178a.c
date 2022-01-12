@@ -308,7 +308,11 @@ static int ax88179_read_cmd(struct usbnet *dev, u8 cmd, u16 value, u16 index,
 
 	if (2 == size) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		u16 buf = 0;
+=======
+		u16 buf;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		u16 buf;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -317,7 +321,11 @@ static int ax88179_read_cmd(struct usbnet *dev, u8 cmd, u16 value, u16 index,
 		*((u16 *)data) = buf;
 	} else if (4 == size) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		u32 buf = 0;
+=======
+		u32 buf;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		u32 buf;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1746,7 +1754,10 @@ static const struct driver_info belkin_info = {
 	.link_reset = ax88179_link_reset,
 	.reset	= ax88179_reset,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.stop	= ax88179_stop,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.flags	= FLAG_ETHER | FLAG_FRAMING_AX,

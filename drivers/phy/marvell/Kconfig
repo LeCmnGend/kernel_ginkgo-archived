@@ -3,8 +3,13 @@
 #
 config ARMADA375_USBCLUSTER_PHY
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool "Armada 375 USB cluster PHY support" if COMPILE_TEST
 	default y if MACH_ARMADA_375
+=======
+	def_bool y
+	depends on MACH_ARMADA_375 || COMPILE_TEST
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	def_bool y
 	depends on MACH_ARMADA_375 || COMPILE_TEST

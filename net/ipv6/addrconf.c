@@ -2396,7 +2396,10 @@ static void addrconf_add_mroute(struct net_device *dev)
 		.fc_flags = RTF_UP,
 		.fc_nlinfo.nl_net = dev_net(dev),
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.fc_protocol = RTPROT_KERNEL,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	};

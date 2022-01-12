@@ -150,6 +150,11 @@ struct max3421_hcd {
 	struct urb *curr_urb;
 	enum scheduling_pass sched_pass;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct usb_device *loaded_dev;	/* dev that's loaded into the chip */
+	int loaded_epnum;		/* epnum whose toggles are loaded */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct usb_device *loaded_dev;	/* dev that's loaded into the chip */
 	int loaded_epnum;		/* epnum whose toggles are loaded */
@@ -492,12 +497,15 @@ max3421_set_speed(struct usb_hcd *hcd, struct usb_device *dev)
  */
 static void
 <<<<<<< HEAD
+<<<<<<< HEAD
 max3421_set_address(struct usb_hcd *hcd, struct usb_device *dev, int epnum)
 {
 	int rcvtog, sndtog;
 	u8 hctl;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 max3421_set_address(struct usb_hcd *hcd, struct usb_device *dev, int epnum,
 		    int force_toggles)
 {
@@ -524,6 +532,9 @@ max3421_set_address(struct usb_hcd *hcd, struct usb_device *dev, int epnum,
 		usb_settoggle(old_dev, old_epnum, 0, rcvtog);
 		usb_settoggle(old_dev, old_epnum, 1, sndtog);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* setup new endpoint's toggle bits: */
 	rcvtog = usb_gettoggle(dev, epnum, 0);
@@ -532,6 +543,10 @@ max3421_set_address(struct usb_hcd *hcd, struct usb_device *dev, int epnum,
 		BIT(sndtog + MAX3421_HCTL_SNDTOG0_BIT));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	max3421_hcd->loaded_epnum = epnum;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	max3421_hcd->loaded_epnum = epnum;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -543,6 +558,10 @@ max3421_set_address(struct usb_hcd *hcd, struct usb_device *dev, int epnum,
 	 * address whenever the end-point changed/was forced.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	max3421_hcd->loaded_dev = dev;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	max3421_hcd->loaded_dev = dev;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -681,7 +700,11 @@ max3421_select_and_start_urb(struct usb_hcd *hcd)
 	struct urb *urb, *curr_urb = NULL;
 	struct max3421_ep *max3421_ep;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int epnum;
+=======
+	int epnum, force_toggles = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int epnum, force_toggles = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -795,6 +818,10 @@ done:
 			usb_settoggle(urb->dev, epnum, 1, 1);
 			max3421_ep->pkt_state = PKT_STATE_SETUP;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			force_toggles = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			force_toggles = 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -806,7 +833,11 @@ done:
 
 	max3421_ep->last_active = max3421_hcd->frame_number;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	max3421_set_address(hcd, urb->dev, epnum);
+=======
+	max3421_set_address(hcd, urb->dev, epnum, force_toggles);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	max3421_set_address(hcd, urb->dev, epnum, force_toggles);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1405,6 +1436,7 @@ max3421_urb_done(struct usb_hcd *hcd)
 	urb = max3421_hcd->curr_urb;
 	if (urb) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* save the old end-points toggles: */
 		u8 hrsl = spi_rd8(hcd, MAX3421_REG_HRSL);
 		int rcvtog = (hrsl >> MAX3421_HRSL_RCVTOGRD_BIT) & 1;
@@ -1415,6 +1447,8 @@ max3421_urb_done(struct usb_hcd *hcd)
 		usb_settoggle(urb->dev, epnum, 0, rcvtog);
 		usb_settoggle(urb->dev, epnum, 1, sndtog);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		max3421_hcd->curr_urb = NULL;

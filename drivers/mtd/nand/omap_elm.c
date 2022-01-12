@@ -422,7 +422,10 @@ static int elm_probe(struct platform_device *pdev)
 	if (pm_runtime_get_sync(&pdev->dev) < 0) {
 		ret = -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pm_runtime_put_sync(&pdev->dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		pm_runtime_disable(&pdev->dev);

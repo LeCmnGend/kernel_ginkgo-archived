@@ -59,6 +59,10 @@
 #define PSCI_POWER_STATE(reset) (reset << 30)
 #define PSCI_AFFINITY_LEVEL(lvl) ((lvl & 0x3) << 24)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define BIAS_HYST (bias_hyst * NSEC_PER_MSEC)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define BIAS_HYST (bias_hyst * NSEC_PER_MSEC)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -98,6 +102,11 @@ static bool lpm_prediction = true;
 module_param_named(lpm_prediction, lpm_prediction, bool, 0664);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+static uint32_t bias_hyst;
+module_param_named(bias_hyst, bias_hyst, uint, 0664);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static uint32_t bias_hyst;
 module_param_named(bias_hyst, bias_hyst, uint, 0664);
@@ -552,7 +561,11 @@ static uint64_t lpm_cpuidle_predict(struct cpuidle_device *dev,
 		history->htmr_wkup = 1;
 		history->stime = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 1;
+=======
+		return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -673,6 +686,7 @@ static void clear_predict_history(void)
 static void update_history(struct cpuidle_device *dev, int idx);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline bool lpm_disallowed(s64 sleep_us, int cpu, struct lpm_cpu *pm_cpu)
 {
 	uint64_t bias_time = 0;
@@ -694,6 +708,8 @@ out:
 		return true;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline bool is_cpu_biased(int cpu, uint64_t *bias_time)
 {
 	u64 now = sched_clock();
@@ -709,6 +725,9 @@ static inline bool is_cpu_biased(int cpu, uint64_t *bias_time)
 		return true;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return false;
 }
@@ -731,6 +750,7 @@ static int cpu_power_select(struct cpuidle_device *dev,
 	uint32_t min_residency, max_residency;
 	struct power_params *pwr_params;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (lpm_disallowed(sleep_us, dev->cpu, cpu))
 		goto done_select;
@@ -741,6 +761,8 @@ static int cpu_power_select(struct cpuidle_device *dev,
 	for (i = 0; i < cpu->nlevels; i++) {
 		if (!lpm_cpu_mode_allow(dev->cpu, i, true))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	uint64_t bias_time = 0;
 
 	if ((sleep_disabled && !cpu_isolated(dev->cpu)) || sleep_us < 0)
@@ -761,6 +783,9 @@ static int cpu_power_select(struct cpuidle_device *dev,
 		allow = i ? lpm_cpu_mode_allow(dev->cpu, i, true) : true;
 
 		if (!allow)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			continue;
 
@@ -789,10 +814,16 @@ static int cpu_power_select(struct cpuidle_device *dev,
 			 */
 			if (next_wakeup_us > max_residency) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				predicted = (lpm_cpuidle_predict(dev, cpu,
 					&idx_restrict,
 					&idx_restrict_time, &ipi_predicted) == 1) ? 0 :
 						(max_residency >> 1);
+=======
+				predicted = lpm_cpuidle_predict(dev, cpu,
+					&idx_restrict, &idx_restrict_time,
+					&ipi_predicted);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				predicted = lpm_cpuidle_predict(dev, cpu,
 					&idx_restrict, &idx_restrict_time,
@@ -1556,9 +1587,13 @@ static int lpm_cpuidle_enter(struct cpuidle_device *dev,
 		goto exit;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cpuidle_set_idle_cpu(dev->cpu);
 	success = psci_enter_sleep(cpu, idx, true);
 	cpuidle_clear_idle_cpu(dev->cpu);
+=======
+	success = psci_enter_sleep(cpu, idx, true);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	success = psci_enter_sleep(cpu, idx, true);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1578,8 +1613,12 @@ exit:
 	}
 	if (cpu->bias) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!idx)
 			biastimer_cancel();
+=======
+		biastimer_cancel();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		biastimer_cancel();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

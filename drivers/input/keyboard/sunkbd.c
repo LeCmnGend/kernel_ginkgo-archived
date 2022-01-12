@@ -116,8 +116,12 @@ static irqreturn_t sunkbd_interrupt(struct serio *serio,
 
 	case SUNKBD_RET_RESET:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (sunkbd->enabled)
 			schedule_work(&sunkbd->tq);
+=======
+		schedule_work(&sunkbd->tq);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		schedule_work(&sunkbd->tq);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -222,6 +226,7 @@ static int sunkbd_initialize(struct sunkbd *sunkbd)
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * sunkbd_set_leds_beeps() sets leds and beeps to a state the computer remembers
  * they were in.
  */
@@ -229,6 +234,8 @@ static int sunkbd_initialize(struct sunkbd *sunkbd)
 static void sunkbd_set_leds_beeps(struct sunkbd *sunkbd)
 {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * sunkbd_reinit() sets leds and beeps to a state the computer remembers they
  * were in.
  */
@@ -239,6 +246,9 @@ static void sunkbd_reinit(struct work_struct *work)
 
 	wait_event_interruptible_timeout(sunkbd->wait, sunkbd->reset >= 0, HZ);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	serio_write(sunkbd->serio, SUNKBD_CMD_SETLED);
 	serio_write(sunkbd->serio,
@@ -252,6 +262,7 @@ static void sunkbd_reinit(struct work_struct *work)
 		SUNKBD_CMD_BELLOFF - !!test_bit(SND_BELL, sunkbd->dev->snd));
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 /*
@@ -278,17 +289,22 @@ static void sunkbd_reinit(struct work_struct *work)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void sunkbd_enable(struct sunkbd *sunkbd, bool enable)
 {
 	serio_pause_rx(sunkbd->serio);
 	sunkbd->enabled = enable;
 	serio_continue_rx(sunkbd->serio);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (!enable) {
 		wake_up_interruptible(&sunkbd->wait);
 		cancel_work_sync(&sunkbd->tq);
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

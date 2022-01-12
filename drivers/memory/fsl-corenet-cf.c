@@ -216,13 +216,19 @@ static int ccf_probe(struct platform_device *pdev)
 
 	irq = platform_get_irq(pdev, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (irq < 0)
 		return irq;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!irq) {
 		dev_err(&pdev->dev, "%s: no irq\n", __func__);
 		return -ENXIO;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	ret = devm_request_irq(&pdev->dev, irq, ccf_irq, 0, pdev->name, ccf);

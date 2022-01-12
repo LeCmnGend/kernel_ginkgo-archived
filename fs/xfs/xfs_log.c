@@ -2685,6 +2685,10 @@ xlog_state_do_callback(
 	int		   repeats;	/* for issuing console warnings if
 					 * looping too many times */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int		   wake = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int		   wake = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2890,15 +2894,21 @@ xlog_state_do_callback(
 
 	if (log->l_iclog->ic_state & (XLOG_STATE_ACTIVE|XLOG_STATE_IOERROR))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		wake_up_all(&log->l_flush_wait);
 
 	spin_unlock(&log->l_icloglock);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		wake = 1;
 	spin_unlock(&log->l_icloglock);
 
 	if (wake)
 		wake_up_all(&log->l_flush_wait);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -4062,9 +4072,13 @@ xfs_log_force_umount(
 	 * avoid races.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock(&log->l_cilp->xc_push_lock);
 	wake_up_all(&log->l_cilp->xc_commit_wait);
 	spin_unlock(&log->l_cilp->xc_push_lock);
+=======
+	wake_up_all(&log->l_cilp->xc_commit_wait);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	wake_up_all(&log->l_cilp->xc_commit_wait);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

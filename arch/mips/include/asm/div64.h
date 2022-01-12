@@ -1,6 +1,10 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2000, 2004, 2021  Maciej W. Rozycki
+=======
+ * Copyright (C) 2000, 2004  Maciej W. Rozycki
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * Copyright (C) 2000, 2004  Maciej W. Rozycki
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -14,15 +18,21 @@
 #define __ASM_DIV64_H
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <asm/bitsperlong.h>
 
 #if BITS_PER_LONG == 32
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <asm-generic/div64.h>
 
 #if BITS_PER_LONG == 64
 
 #include <linux/types.h>
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*
@@ -30,11 +40,14 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define do_div64_32(res, high, low, base) ({				\
 	unsigned long __cf, __tmp, __tmp2, __i;				\
 	unsigned long __quot32, __mod32;				\
 									\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define __div64_32(n, base)						\
 ({									\
 	unsigned long __cf, __tmp, __tmp2, __i;				\
@@ -44,6 +57,9 @@
 									\
 	__high = *__n >> 32;						\
 	__low = __n;							\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__asm__(							\
 	"	.set	push					\n"	\
@@ -69,8 +85,13 @@
 	"	addiu	%2, %2, 1				\n"	\
 	"3:							\n"	\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	"	bnez	%4, 0b					\n"	\
 	"	 srl	%5, %1, 0x1f				\n"	\
+=======
+	"	bnez	%4, 0b\n\t"					\
+	"	 srl	%5, %1, 0x1f\n\t"				\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	"	bnez	%4, 0b\n\t"					\
 	"	 srl	%5, %1, 0x1f\n\t"				\
@@ -79,6 +100,7 @@
 	: "=&r" (__mod32), "=&r" (__tmp),				\
 	  "=&r" (__quot32), "=&r" (__cf),				\
 	  "=&r" (__i), "=&r" (__tmp2)					\
+<<<<<<< HEAD
 <<<<<<< HEAD
 	: "Jr" (base), "0" (high), "1" (low));				\
 									\
@@ -118,6 +140,8 @@
 
 #include <asm-generic/div64.h>
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	: "Jr" (base), "0" (__high), "1" (__low));			\
 									\
 	(__n) = __quot32;						\
@@ -125,6 +149,9 @@
 })
 
 #endif /* BITS_PER_LONG == 64 */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #endif /* __ASM_DIV64_H */

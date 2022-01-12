@@ -260,6 +260,7 @@ int __acpi_device_uevent_modalias(struct acpi_device *adev,
 		return -ENOMEM;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (adev->data.of_compatible)
 		len = create_of_modalias(adev, &env->buf[env->buflen - 1],
 					 sizeof(env->buf) - env->buflen);
@@ -267,6 +268,8 @@ int __acpi_device_uevent_modalias(struct acpi_device *adev,
 		len = create_pnp_modalias(adev, &env->buf[env->buflen - 1],
 					  sizeof(env->buf) - env->buflen);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	len = create_pnp_modalias(adev, &env->buf[env->buflen - 1],
 				  sizeof(env->buf) - env->buflen);
 	if (len < 0)
@@ -281,6 +284,9 @@ int __acpi_device_uevent_modalias(struct acpi_device *adev,
 
 	len = create_of_modalias(adev, &env->buf[env->buflen - 1],
 				 sizeof(env->buf) - env->buflen);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (len < 0)
 		return len;
@@ -470,7 +476,11 @@ static ssize_t description_show(struct device *dev,
 		acpi_dev->pnp.str_obj->buffer.length,
 		UTF16_LITTLE_ENDIAN, buf,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		PAGE_SIZE - 1);
+=======
+		PAGE_SIZE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		PAGE_SIZE);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

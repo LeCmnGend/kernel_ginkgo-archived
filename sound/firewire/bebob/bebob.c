@@ -61,7 +61,10 @@ static DECLARE_BITMAP(devices_used, SNDRV_CARDS);
 #define VEN_MAUDIO2	0x000007f5
 #define VEN_DIGIDESIGN	0x00a07e
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define OUI_SHOUYO	0x002327
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -419,7 +422,11 @@ static const struct ieee1394_device_id bebob_id_table[] = {
 	/* Mackie, Onyx 1220/1620/1640 (Firewire I/O Card) */
 	SND_BEBOB_DEV_ENTRY(VEN_MACKIE2, 0x00010065, &spec_normal),
 <<<<<<< HEAD
+<<<<<<< HEAD
 	// Mackie, d.2 (optional Firewire card with DM1000).
+=======
+	/* Mackie, d.2 (Firewire Option) */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Mackie, d.2 (Firewire Option) */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -522,8 +529,11 @@ static const struct ieee1394_device_id bebob_id_table[] = {
 	/* Digidesign Mbox 2 Pro */
 	SND_BEBOB_DEV_ENTRY(VEN_DIGIDESIGN, 0x0000a9, &spec_normal),
 <<<<<<< HEAD
+<<<<<<< HEAD
 	// Toneweal FW66.
 	SND_BEBOB_DEV_ENTRY(OUI_SHOUYO, 0x020002, &spec_normal),
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* IDs are unknown but able to be supported */

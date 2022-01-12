@@ -9,9 +9,12 @@
 DECLARE_PER_CPU(int, __preempt_count);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* We use the MSB mostly because its available */
 #define PREEMPT_NEED_RESCHED	0x80000000
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*

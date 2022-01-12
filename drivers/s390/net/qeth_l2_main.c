@@ -1560,10 +1560,13 @@ static void qeth_bridge_state_change(struct qeth_card *card,
 
 	QETH_CARD_TEXT(card, 2, "brstchng");
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (qports->num_entries == 0) {
 		QETH_CARD_TEXT(card, 2, "BPempty");
 		return;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (qports->entry_length != sizeof(struct qeth_sbp_port_entry)) {

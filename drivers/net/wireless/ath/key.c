@@ -85,7 +85,12 @@ bool ath_hw_keyreset(struct ath_common *common, u16 entry)
 EXPORT_SYMBOL(ath_hw_keyreset);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 bool ath_hw_keysetmac(struct ath_common *common, u16 entry, const u8 *mac)
+=======
+static bool ath_hw_keysetmac(struct ath_common *common,
+			     u16 entry, const u8 *mac)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static bool ath_hw_keysetmac(struct ath_common *common,
 			     u16 entry, const u8 *mac)
@@ -130,7 +135,10 @@ static bool ath_hw_keysetmac(struct ath_common *common,
 	return true;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 EXPORT_SYMBOL(ath_hw_keysetmac);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -590,6 +598,7 @@ EXPORT_SYMBOL(ath_key_config);
  * Delete Key.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 void ath_key_delete(struct ath_common *common, u8 hw_key_idx)
 {
 	/* Leave CCMP and TKIP (main key) configured to avoid disabling
@@ -623,6 +632,8 @@ void ath_key_delete(struct ath_common *common, u8 hw_key_idx)
 		clear_bit(hw_key_idx + 32, common->tkip_keymap);
 		clear_bit(hw_key_idx + 64 + 32, common->tkip_keymap);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void ath_key_delete(struct ath_common *common, struct ieee80211_key_conf *key)
 {
 	ath_hw_keyreset(common, key->hw_key_idx);
@@ -646,6 +657,9 @@ void ath_key_delete(struct ath_common *common, struct ieee80211_key_conf *key)
 
 		clear_bit(key->hw_key_idx + 32, common->tkip_keymap);
 		clear_bit(key->hw_key_idx + 64 + 32, common->tkip_keymap);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 }

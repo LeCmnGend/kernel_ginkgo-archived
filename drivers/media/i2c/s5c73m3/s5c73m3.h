@@ -362,7 +362,11 @@ struct s5c73m3_ctrls {
 enum s5c73m3_gpio_id {
 	STBY,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	RSET,
+=======
+	RST,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	RST,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

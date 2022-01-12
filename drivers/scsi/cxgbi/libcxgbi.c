@@ -340,7 +340,11 @@ EXPORT_SYMBOL_GPL(cxgbi_hbas_remove);
 
 int cxgbi_hbas_add(struct cxgbi_device *cdev, u64 max_lun,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unsigned int max_conns, struct scsi_host_template *sht,
+=======
+		unsigned int max_id, struct scsi_host_template *sht,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		unsigned int max_id, struct scsi_host_template *sht,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -364,7 +368,11 @@ int cxgbi_hbas_add(struct cxgbi_device *cdev, u64 max_lun,
 		shost->transportt = stt;
 		shost->max_lun = max_lun;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		shost->max_id = max_conns - 1;
+=======
+		shost->max_id = max_id;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		shost->max_id = max_id;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

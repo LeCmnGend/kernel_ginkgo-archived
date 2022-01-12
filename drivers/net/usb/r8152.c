@@ -2589,7 +2589,10 @@ static void __rtl_set_wol(struct r8152 *tp, u32 wolopts)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void r8153_mac_clk_spd(struct r8152 *tp, bool enable)
 {
 	/* MAC clock speed down */
@@ -2613,6 +2616,9 @@ static void r8153_mac_clk_spd(struct r8152 *tp, bool enable)
 	}
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void r8153_u1u2en(struct r8152 *tp, bool enable)
 {
@@ -2845,15 +2851,21 @@ static void rtl8153_runtime_enable(struct r8152 *tp, bool enable)
 		r8153_u1u2en(tp, false);
 		r8153_u2p3en(tp, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rtl_runtime_suspend_enable(tp, true);
 	} else {
 		rtl_runtime_suspend_enable(tp, false);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		r8153_mac_clk_spd(tp, true);
 		rtl_runtime_suspend_enable(tp, true);
 	} else {
 		rtl_runtime_suspend_enable(tp, false);
 		r8153_mac_clk_spd(tp, false);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		switch (tp->version) {
@@ -3417,6 +3429,10 @@ static void r8153_first_init(struct r8152 *tp)
 	int i;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	r8153_mac_clk_spd(tp, false);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	r8153_mac_clk_spd(tp, false);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3482,6 +3498,11 @@ static void r8153_enter_oob(struct r8152 *tp)
 	int i;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	r8153_mac_clk_spd(tp, true);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	r8153_mac_clk_spd(tp, true);
 
@@ -3997,10 +4018,16 @@ static int rtl8152_close(struct net_device *netdev)
 
 		mutex_unlock(&tp->control);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}
 
 	if (!res)
 		usb_autopm_put_interface(tp->intf);
+=======
+
+		usb_autopm_put_interface(tp->intf);
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 		usb_autopm_put_interface(tp->intf);
@@ -4157,6 +4184,7 @@ static void r8153_init(struct r8152 *tp)
 	ocp_write_word(tp, MCU_TYPE_USB, USB_CONNECT_TIMER, 0x0001);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* MAC clock speed down */
 	ocp_write_word(tp, MCU_TYPE_PLA, PLA_MAC_PWR_CTRL, 0);
 	ocp_write_word(tp, MCU_TYPE_PLA, PLA_MAC_PWR_CTRL2, 0);
@@ -4165,6 +4193,11 @@ static void r8153_init(struct r8152 *tp)
 
 	r8153_power_cut_en(tp, false);
 	r8153_u1u2en(tp, true);
+=======
+	r8153_power_cut_en(tp, false);
+	r8153_u1u2en(tp, true);
+	r8153_mac_clk_spd(tp, false);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	r8153_power_cut_en(tp, false);
 	r8153_u1u2en(tp, true);
@@ -4697,7 +4730,11 @@ static void rtl8152_get_strings(struct net_device *dev, u32 stringset, u8 *data)
 	switch (stringset) {
 	case ETH_SS_STATS:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		memcpy(data, rtl8152_gstrings, sizeof(rtl8152_gstrings));
+=======
+		memcpy(data, *rtl8152_gstrings, sizeof(rtl8152_gstrings));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		memcpy(data, *rtl8152_gstrings, sizeof(rtl8152_gstrings));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5375,7 +5412,10 @@ static const struct usb_device_id rtl8152_table[] = {
 	{REALTEK_USB_DEVICE(VENDOR_ID_LENOVO,  0x720c)},
 	{REALTEK_USB_DEVICE(VENDOR_ID_LENOVO,  0x7214)},
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{REALTEK_USB_DEVICE(VENDOR_ID_LENOVO,  0x721e)},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{REALTEK_USB_DEVICE(VENDOR_ID_LENOVO,  0xa387)},

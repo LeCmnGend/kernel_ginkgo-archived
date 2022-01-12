@@ -139,17 +139,23 @@ static inline u8 mei_cl_me_id(const struct mei_cl *cl)
  * @cl: host client
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Return: mtu or 0 if client is not connected
  */
 static inline size_t mei_cl_mtu(const struct mei_cl *cl)
 {
 	return cl->me_cl ? cl->me_cl->props.max_msg_length : 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Return: mtu
  */
 static inline size_t mei_cl_mtu(const struct mei_cl *cl)
 {
 	return cl->me_cl->props.max_msg_length;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

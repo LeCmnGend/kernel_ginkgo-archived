@@ -1127,7 +1127,10 @@ static int __init dccp_init(void)
 {
 	unsigned long goal;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long nr_pages = totalram_pages();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ehash_order, bhash_order, i;
@@ -1154,15 +1157,21 @@ static int __init dccp_init(void)
 	 * The methodology is similar to that of the buffer cache.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (nr_pages >= (128 * 1024))
 		goal = nr_pages >> (21 - PAGE_SHIFT);
 	else
 		goal = nr_pages >> (23 - PAGE_SHIFT);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (totalram_pages >= (128 * 1024))
 		goal = totalram_pages >> (21 - PAGE_SHIFT);
 	else
 		goal = totalram_pages >> (23 - PAGE_SHIFT);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (thash_entries)

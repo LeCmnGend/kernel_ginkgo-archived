@@ -76,6 +76,10 @@ static int octeon_mdiobus_probe(struct platform_device *pdev)
 	return 0;
 fail_register:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	mdiobus_free(bus->mii_bus);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mdiobus_free(bus->mii_bus);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -93,6 +97,10 @@ static int octeon_mdiobus_remove(struct platform_device *pdev)
 
 	mdiobus_unregister(bus->mii_bus);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	mdiobus_free(bus->mii_bus);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mdiobus_free(bus->mii_bus);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

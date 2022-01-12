@@ -255,7 +255,10 @@ static void ppp_tx_cp(struct net_device *dev, u16 pid, u8 code,
 	skb->priority = TC_PRIO_CONTROL;
 	skb->dev = dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	skb->protocol = htons(ETH_P_HDLC);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	skb_reset_network_header(skb);
@@ -391,14 +394,20 @@ static void ppp_cp_parse_cr(struct net_device *dev, u16 pid, u8 id,
 
 	for (opt = data; len; len -= opt[1], opt += opt[1]) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (len < 2 || opt[1] < 2 || len < opt[1])
 			goto err_out;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (len < 2 || len < opt[1]) {
 			dev->stats.rx_errors++;
 			kfree(out);
 			return; /* bad packet, drop silently */
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		if (pid == PID_LCP)
@@ -408,8 +417,11 @@ static void ppp_cp_parse_cr(struct net_device *dev, u16 pid, u8 id,
 
 			case LCP_OPTION_ACCM: /* async control character map */
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if (opt[1] < sizeof(valid_accm))
 					goto err_out;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				if (!memcmp(opt, valid_accm,
@@ -424,8 +436,11 @@ static void ppp_cp_parse_cr(struct net_device *dev, u16 pid, u8 id,
 				break;
 			case LCP_OPTION_MAGIC:
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if (len < 6)
 					goto err_out;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				if (opt[1] != 6 || (!opt[2] && !opt[3] &&
@@ -447,11 +462,14 @@ static void ppp_cp_parse_cr(struct net_device *dev, u16 pid, u8 id,
 
 	kfree(out);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return;
 
 err_out:
 	dev->stats.rx_errors++;
 	kfree(out);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -593,6 +611,7 @@ static void ppp_timer(unsigned long arg)
 
 	spin_lock_irqsave(&ppp->lock, flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* mod_timer could be called after we entered this function but
 	 * before we got the lock.
 	 */
@@ -600,6 +619,8 @@ static void ppp_timer(unsigned long arg)
 		spin_unlock_irqrestore(&ppp->lock, flags);
 		return;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	switch (proto->state) {

@@ -130,6 +130,10 @@ static void thunder_mdiobus_pci_remove(struct pci_dev *pdev)
 
 		mdiobus_unregister(bus->mii_bus);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		mdiobus_free(bus->mii_bus);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		mdiobus_free(bus->mii_bus);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

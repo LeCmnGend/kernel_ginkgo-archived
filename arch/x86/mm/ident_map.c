@@ -63,7 +63,10 @@ static int ident_p4d_init(struct x86_mapping_info *info, p4d_t *p4d_page,
 {
 	unsigned long next;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int result;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -78,10 +81,14 @@ static int ident_p4d_init(struct x86_mapping_info *info, p4d_t *p4d_page,
 		if (p4d_present(*p4d)) {
 			pud = pud_offset(p4d, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			result = ident_pud_init(info, pud, addr, next);
 			if (result)
 				return result;
 
+=======
+			ident_pud_init(info, pud, addr, next);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ident_pud_init(info, pud, addr, next);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -91,11 +98,15 @@ static int ident_p4d_init(struct x86_mapping_info *info, p4d_t *p4d_page,
 		if (!pud)
 			return -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		result = ident_pud_init(info, pud, addr, next);
 		if (result)
 			return result;
 
+=======
+		ident_pud_init(info, pud, addr, next);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ident_pud_init(info, pud, addr, next);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

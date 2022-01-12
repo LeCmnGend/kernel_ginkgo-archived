@@ -392,6 +392,7 @@ static int mtk_spi_fifo_transfer(struct spi_master *master,
 	mtk_spi_setup_packet(master);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (xfer->tx_buf) {
 		cnt = xfer->len / 4;
 		iowrite32_rep(mdata->base + SPI_TX_DATA_REG, xfer->tx_buf, cnt);
@@ -402,6 +403,8 @@ static int mtk_spi_fifo_transfer(struct spi_master *master,
 			writel(reg_val, mdata->base + SPI_TX_DATA_REG);
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cnt = xfer->len / 4;
 	iowrite32_rep(mdata->base + SPI_TX_DATA_REG, xfer->tx_buf, cnt);
 
@@ -410,6 +413,9 @@ static int mtk_spi_fifo_transfer(struct spi_master *master,
 		reg_val = 0;
 		memcpy(&reg_val, xfer->tx_buf + (cnt * 4), remainder);
 		writel(reg_val, mdata->base + SPI_TX_DATA_REG);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 

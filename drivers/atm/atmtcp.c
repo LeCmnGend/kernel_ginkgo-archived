@@ -433,6 +433,7 @@ static int atmtcp_remove_persistent(int itf)
 	}
 	dev_data = PRIV(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!dev_data->persist) {
 		atm_dev_put(dev);
 		return 0;
@@ -442,6 +443,11 @@ static int atmtcp_remove_persistent(int itf)
 		atm_dev_put(dev);
 		return 0;
 	}
+=======
+	if (!dev_data->persist) return 0;
+	dev_data->persist = 0;
+	if (PRIV(dev)->vcc) return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!dev_data->persist) return 0;
 	dev_data->persist = 0;

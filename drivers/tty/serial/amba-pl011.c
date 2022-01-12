@@ -2273,8 +2273,14 @@ pl011_console_write(struct console *co, const char *s, unsigned int count)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void pl011_console_get_options(struct uart_amba_port *uap, int *baud,
 				      int *parity, int *bits)
+=======
+static void __init
+pl011_console_get_options(struct uart_amba_port *uap, int *baud,
+			     int *parity, int *bits)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void __init
 pl011_console_get_options(struct uart_amba_port *uap, int *baud,
@@ -2313,7 +2319,11 @@ pl011_console_get_options(struct uart_amba_port *uap, int *baud,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int pl011_console_setup(struct console *co, char *options)
+=======
+static int __init pl011_console_setup(struct console *co, char *options)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int __init pl011_console_setup(struct console *co, char *options)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2385,8 +2395,13 @@ static int __init pl011_console_setup(struct console *co, char *options)
  *	Returns 0 if console matches; otherwise non-zero to use default matching
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int pl011_console_match(struct console *co, char *name, int idx,
 			       char *options)
+=======
+static int __init pl011_console_match(struct console *co, char *name, int idx,
+				      char *options)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int __init pl011_console_match(struct console *co, char *name, int idx,
 				      char *options)
@@ -2629,7 +2644,11 @@ static int pl011_setup_port(struct device *dev, struct uart_amba_port *uap,
 static int pl011_register_port(struct uart_amba_port *uap)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret, i;
+=======
+	int ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2644,9 +2663,12 @@ static int pl011_register_port(struct uart_amba_port *uap)
 			dev_err(uap->port.dev,
 				"Failed to register AMBA-PL011 driver\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 			for (i = 0; i < ARRAY_SIZE(amba_ports); i++)
 				if (amba_ports[i] == uap)
 					amba_ports[i] = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return ret;

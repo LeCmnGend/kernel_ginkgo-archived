@@ -796,7 +796,11 @@ static int connect_flow_table(struct mlx5_core_dev *dev, struct mlx5_flow_table 
 			      struct fs_prio *prio)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct mlx5_flow_table *next_ft, *first_ft;
+=======
+	struct mlx5_flow_table *next_ft;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct mlx5_flow_table *next_ft;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -805,9 +809,13 @@ static int connect_flow_table(struct mlx5_core_dev *dev, struct mlx5_flow_table 
 	/* Connect_prev_fts and update_root_ft_create are mutually exclusive */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	first_ft = list_first_entry_or_null(&prio->node.children,
 					    struct mlx5_flow_table, node.list);
 	if (!first_ft || first_ft->level > ft->level) {
+=======
+	if (list_empty(&prio->node.children)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (list_empty(&prio->node.children)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -816,7 +824,11 @@ static int connect_flow_table(struct mlx5_core_dev *dev, struct mlx5_flow_table 
 			return err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		next_ft = first_ft ? first_ft : find_next_chained_ft(prio);
+=======
+		next_ft = find_next_chained_ft(prio);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		next_ft = find_next_chained_ft(prio);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1718,7 +1730,11 @@ static int disconnect_flow_table(struct mlx5_flow_table *ft)
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	next_ft = find_next_ft(ft);
+=======
+	next_ft = find_next_chained_ft(prio);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	next_ft = find_next_chained_ft(prio);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

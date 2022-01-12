@@ -65,7 +65,11 @@ static const u32 rco_tab[10] = { 1, 2, 4, 8, 16, 32, 64, 128, 27, 54 };
 
 /* cacheline-aligned to facilitate prefetching into cache */
 <<<<<<< HEAD
+<<<<<<< HEAD
 __visible const u32 crypto_ft_tab[4][256] ____cacheline_aligned = {
+=======
+__visible const u32 crypto_ft_tab[4][256] __cacheline_aligned = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 __visible const u32 crypto_ft_tab[4][256] __cacheline_aligned = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -333,7 +337,11 @@ __visible const u32 crypto_ft_tab[4][256] __cacheline_aligned = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 __visible const u32 crypto_fl_tab[4][256] ____cacheline_aligned = {
+=======
+__visible const u32 crypto_fl_tab[4][256] __cacheline_aligned = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 __visible const u32 crypto_fl_tab[4][256] __cacheline_aligned = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -601,7 +609,11 @@ __visible const u32 crypto_fl_tab[4][256] __cacheline_aligned = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 __visible const u32 crypto_it_tab[4][256] ____cacheline_aligned = {
+=======
+__visible const u32 crypto_it_tab[4][256] __cacheline_aligned = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 __visible const u32 crypto_it_tab[4][256] __cacheline_aligned = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -869,7 +881,11 @@ __visible const u32 crypto_it_tab[4][256] __cacheline_aligned = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 __visible const u32 crypto_il_tab[4][256] ____cacheline_aligned = {
+=======
+__visible const u32 crypto_il_tab[4][256] __cacheline_aligned = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 __visible const u32 crypto_il_tab[4][256] __cacheline_aligned = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

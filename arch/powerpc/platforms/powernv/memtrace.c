@@ -100,6 +100,7 @@ static int change_memblock_state(struct memory_block *mem, void *arg)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void memtrace_clear_range(unsigned long start_pfn,
 				 unsigned long nr_pages)
 {
@@ -117,6 +118,8 @@ static void memtrace_clear_range(unsigned long start_pfn,
 	}
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* called with device_hotplug_lock held */
@@ -165,11 +168,14 @@ static u64 memtrace_alloc_node(u32 nid, u64 size)
 		if (memtrace_offline_pages(nid, base_pfn, nr_pages) == true) {
 			/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 			 * Clear the range while we still have a linear
 			 * mapping.
 			 */
 			memtrace_clear_range(base_pfn, nr_pages);
 			/*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			 * Remove memory in memory block size chunks so that

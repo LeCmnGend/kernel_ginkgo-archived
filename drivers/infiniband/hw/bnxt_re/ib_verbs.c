@@ -1591,7 +1591,10 @@ int bnxt_re_query_qp(struct ib_qp *ib_qp, struct ib_qp_attr *qp_attr,
 	}
 	qp_attr->qp_state = __to_ib_qp_state(qplib_qp->state);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	qp_attr->cur_qp_state = __to_ib_qp_state(qplib_qp->cur_qp_state);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	qp_attr->en_sqd_async_notify = qplib_qp->en_sqd_async_notify ? 1 : 0;

@@ -586,7 +586,11 @@ smp_send_stop(void)
 {
 	cpumask_t to_whom;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cpumask_copy(&to_whom, cpu_online_mask);
+=======
+	cpumask_copy(&to_whom, cpu_possible_mask);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cpumask_copy(&to_whom, cpu_possible_mask);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

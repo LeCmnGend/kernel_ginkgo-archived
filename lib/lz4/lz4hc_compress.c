@@ -571,7 +571,11 @@ _Search3:
 		} else
 			*op++ = (BYTE)(lastRun<<ML_BITS);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		LZ4_memcpy(op, anchor, iend - anchor);
+=======
+		memcpy(op, anchor, iend - anchor);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		memcpy(op, anchor, iend - anchor);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -668,6 +672,10 @@ static void LZ4HC_setExternalDict(
 	ctxPtr->nextToUpdate = ctxPtr->dictLimit;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+EXPORT_SYMBOL(LZ4HC_setExternalDict);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 EXPORT_SYMBOL(LZ4HC_setExternalDict);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

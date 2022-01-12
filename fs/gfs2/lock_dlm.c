@@ -284,6 +284,10 @@ static void gdlm_put_lock(struct gfs2_glock *gl)
 	struct gfs2_sbd *sdp = gl->gl_name.ln_sbd;
 	struct lm_lockstruct *ls = &sdp->sd_lockstruct;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int lvb_needs_unlock = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int lvb_needs_unlock = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -300,11 +304,14 @@ static void gdlm_put_lock(struct gfs2_glock *gl)
 	gfs2_update_request_times(gl);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* don't want to skip dlm_unlock writing the lvb when lock has one */
 
 	if (test_bit(SDF_SKIP_DLM_UNLOCK, &sdp->sd_flags) &&
 	    !gl->gl_lksb.sb_lvbptr) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* don't want to skip dlm_unlock writing the lvb when lock is ex */
 
 	if (gl->gl_lksb.sb_lvbptr && (gl->gl_state == LM_ST_EXCLUSIVE))
@@ -312,6 +319,9 @@ static void gdlm_put_lock(struct gfs2_glock *gl)
 
 	if (test_bit(SDF_SKIP_DLM_UNLOCK, &sdp->sd_flags) &&
 	    !lvb_needs_unlock) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		gfs2_glock_free(gl);
 		return;

@@ -347,7 +347,11 @@ static int octeon_i2c_read(struct octeon_i2c *i2c, int target,
 			return result;
 		if (recv_len && i == 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (data[i] > I2C_SMBUS_BLOCK_MAX)
+=======
+			if (data[i] > I2C_SMBUS_BLOCK_MAX + 1)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (data[i] > I2C_SMBUS_BLOCK_MAX + 1)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

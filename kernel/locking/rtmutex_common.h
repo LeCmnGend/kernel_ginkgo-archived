@@ -53,6 +53,7 @@ static inline struct rt_mutex_waiter *
 rt_mutex_top_waiter(struct rt_mutex *lock)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct rb_node *leftmost = rb_first_cached(&lock->waiters);
 	struct rt_mutex_waiter *w = NULL;
 
@@ -61,12 +62,17 @@ rt_mutex_top_waiter(struct rt_mutex *lock)
 		BUG_ON(w->lock != lock);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct rt_mutex_waiter *w;
 
 	w = rb_entry(lock->waiters.rb_leftmost,
 		     struct rt_mutex_waiter, tree_entry);
 	BUG_ON(w->lock != lock);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return w;
 }
@@ -143,7 +149,12 @@ extern struct task_struct *rt_mutex_next_owner(struct rt_mutex *lock);
 extern void rt_mutex_init_proxy_locked(struct rt_mutex *lock,
 				       struct task_struct *proxy_owner);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern void rt_mutex_proxy_unlock(struct rt_mutex *lock);
+=======
+extern void rt_mutex_proxy_unlock(struct rt_mutex *lock,
+				  struct task_struct *proxy_owner);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern void rt_mutex_proxy_unlock(struct rt_mutex *lock,
 				  struct task_struct *proxy_owner);

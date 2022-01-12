@@ -2216,6 +2216,10 @@ static int snd_echo_resume(struct device *dev)
 		kfree(commpage_bak);
 		dev_err(dev, "resume init_hw err=%d\n", err);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		snd_echo_free(chip);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		snd_echo_free(chip);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2246,6 +2250,10 @@ static int snd_echo_resume(struct device *dev)
 			KBUILD_MODNAME, chip)) {
 		dev_err(chip->card->dev, "cannot grab irq\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		snd_echo_free(chip);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		snd_echo_free(chip);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -286,7 +286,11 @@ static bool ath9k_hw_read_revisions(struct ath_hw *ah)
 	srev = REG_READ(ah, AR_SREV);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (srev == -1) {
+=======
+	if (srev == -EIO) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (srev == -EIO) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

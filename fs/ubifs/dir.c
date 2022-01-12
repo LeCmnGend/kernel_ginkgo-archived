@@ -735,7 +735,11 @@ static int ubifs_link(struct dentry *old_dentry, struct inode *dir,
 	if (ubifs_crypt_is_encrypted(dir) &&
 	    !fscrypt_has_permitted_context(dir, inode))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -EXDEV;
+=======
+		return -EPERM;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EPERM;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1318,7 +1322,11 @@ static int do_rename(struct inode *old_dir, struct dentry *old_dentry,
 		if (ubifs_crypt_is_encrypted(new_dir) &&
 		    !fscrypt_has_permitted_context(new_dir, old_inode))
 <<<<<<< HEAD
+<<<<<<< HEAD
 			return -EXDEV;
+=======
+			return -EPERM;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			return -EPERM;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1373,10 +1381,14 @@ static int do_rename(struct inode *old_dir, struct dentry *old_dentry,
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		spin_lock(&whiteout->i_lock);
 		whiteout->i_state |= I_LINKABLE;
 		spin_unlock(&whiteout->i_lock);
 
+=======
+		whiteout->i_state |= I_LINKABLE;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		whiteout->i_state |= I_LINKABLE;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1473,11 +1485,15 @@ static int do_rename(struct inode *old_dir, struct dentry *old_dentry,
 		inc_nlink(whiteout);
 		mark_inode_dirty(whiteout);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		spin_lock(&whiteout->i_lock);
 		whiteout->i_state &= ~I_LINKABLE;
 		spin_unlock(&whiteout->i_lock);
 
+=======
+		whiteout->i_state &= ~I_LINKABLE;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		whiteout->i_state &= ~I_LINKABLE;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1559,7 +1575,11 @@ static int ubifs_xrename(struct inode *old_dir, struct dentry *old_dentry,
 	    (!fscrypt_has_permitted_context(new_dir, fst_inode) ||
 	     !fscrypt_has_permitted_context(old_dir, snd_inode)))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -EXDEV;
+=======
+		return -EPERM;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EPERM;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

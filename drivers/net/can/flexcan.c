@@ -414,6 +414,7 @@ static int flexcan_chip_freeze(struct flexcan_priv *priv)
 {
 	struct flexcan_regs __iomem *regs = priv->regs;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int timeout;
 	u32 bitrate = priv->can.bittiming.bitrate;
 	u32 reg;
@@ -426,11 +427,16 @@ static int flexcan_chip_freeze(struct flexcan_priv *priv)
 	reg = flexcan_read(&regs->mcr);
 	reg |= FLEXCAN_MCR_FRZ | FLEXCAN_MCR_HALT;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned int timeout = 1000 * 1000 * 10 / priv->can.bittiming.bitrate;
 	u32 reg;
 
 	reg = flexcan_read(&regs->mcr);
 	reg |= FLEXCAN_MCR_HALT;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	flexcan_write(reg, &regs->mcr);
 
@@ -1070,6 +1076,7 @@ static int flexcan_chip_start(struct net_device *dev)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* __flexcan_chip_stop
  *
  * this function is entered with clocks enabled
@@ -1088,6 +1095,8 @@ static int __flexcan_chip_stop(struct net_device *dev, bool disable_on_error)
 	if (err && !disable_on_error)
 		goto out_chip_unfreeze;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* flexcan_chip_stop
  *
  * this functions is entered with clocks enabled
@@ -1100,6 +1109,9 @@ static void flexcan_chip_stop(struct net_device *dev)
 	/* freeze + disable module */
 	flexcan_chip_freeze(priv);
 	flexcan_chip_disable(priv);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Disable all interrupts */
@@ -1110,6 +1122,7 @@ static void flexcan_chip_stop(struct net_device *dev)
 
 	flexcan_transceiver_disable(priv);
 	priv->can.state = CAN_STATE_STOPPED;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 	return 0;
@@ -1128,6 +1141,8 @@ static inline int flexcan_chip_stop_disable_on_error(struct net_device *dev)
 static inline int flexcan_chip_stop(struct net_device *dev)
 {
 	return __flexcan_chip_stop(dev, false);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -1184,7 +1199,11 @@ static int flexcan_close(struct net_device *dev)
 	netif_stop_queue(dev);
 	can_rx_offload_disable(&priv->offload);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	flexcan_chip_stop_disable_on_error(dev);
+=======
+	flexcan_chip_stop(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	flexcan_chip_stop(dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1254,6 +1273,7 @@ static int register_flexcandev(struct net_device *dev)
 		goto out_chip_disable;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* set freeze, halt */
 	err = flexcan_chip_freeze(priv);
 	if (err)
@@ -1263,10 +1283,15 @@ static int register_flexcandev(struct net_device *dev)
 	reg = flexcan_read(&regs->mcr);
 	reg |=  FLEXCAN_MCR_FEN | FLEXCAN_MCR_SUPV;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* set freeze, halt and activate FIFO, restrict register access */
 	reg = flexcan_read(&regs->mcr);
 	reg |= FLEXCAN_MCR_FRZ | FLEXCAN_MCR_HALT |
 		FLEXCAN_MCR_FEN | FLEXCAN_MCR_SUPV;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	flexcan_write(reg, &regs->mcr);
 

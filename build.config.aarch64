@@ -2,8 +2,13 @@ ARCH=arm64
 
 CLANG_TRIPLE=aarch64-linux-gnu-
 <<<<<<< HEAD
+<<<<<<< HEAD
 CROSS_COMPILE=aarch64-linux-gnu-
 CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+=======
+CROSS_COMPILE=aarch64-linux-androidkernel-
+LINUX_GCC_CROSS_COMPILE_PREBUILTS_BIN=prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 CROSS_COMPILE=aarch64-linux-androidkernel-
 LINUX_GCC_CROSS_COMPILE_PREBUILTS_BIN=prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin

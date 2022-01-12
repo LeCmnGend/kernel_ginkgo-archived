@@ -100,8 +100,13 @@ MODULE_LICENSE("GPL");
 
 #define DEFINE_CSTATE_FORMAT_ATTR(_var, _name, _format)		\
 <<<<<<< HEAD
+<<<<<<< HEAD
 static ssize_t __cstate_##_var##_show(struct device *dev,	\
 				struct device_attribute *attr,	\
+=======
+static ssize_t __cstate_##_var##_show(struct kobject *kobj,	\
+				struct kobj_attribute *attr,	\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static ssize_t __cstate_##_var##_show(struct kobject *kobj,	\
 				struct kobj_attribute *attr,	\
@@ -112,7 +117,11 @@ static ssize_t __cstate_##_var##_show(struct kobject *kobj,	\
 	return sprintf(page, _format "\n");			\
 }								\
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct device_attribute format_attr_##_var =		\
+=======
+static struct kobj_attribute format_attr_##_var =		\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static struct kobj_attribute format_attr_##_var =		\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

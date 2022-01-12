@@ -268,8 +268,11 @@ struct ems_usb {
 
 	struct ems_cpc_msg active_params; /* active controller parameters */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	void *rxbuf[MAX_RX_URBS];
 	dma_addr_t rxbuf_dma[MAX_RX_URBS];
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -604,7 +607,10 @@ static int ems_usb_start(struct ems_usb *dev)
 		struct urb *urb = NULL;
 		u8 *buf = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		dma_addr_t buf_dma;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -617,7 +623,11 @@ static int ems_usb_start(struct ems_usb *dev)
 
 		buf = usb_alloc_coherent(dev->udev, RX_BUFFER_SIZE, GFP_KERNEL,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					 &buf_dma);
+=======
+					 &urb->transfer_dma);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					 &urb->transfer_dma);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -629,8 +639,11 @@ static int ems_usb_start(struct ems_usb *dev)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		urb->transfer_dma = buf_dma;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		usb_fill_bulk_urb(urb, dev->udev, usb_rcvbulkpipe(dev->udev, 2),
@@ -649,9 +662,12 @@ static int ems_usb_start(struct ems_usb *dev)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		dev->rxbuf[i] = buf;
 		dev->rxbuf_dma[i] = buf_dma;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* Drop reference, USB core will take care of freeing it */
@@ -720,10 +736,13 @@ static void unlink_all_urbs(struct ems_usb *dev)
 	usb_kill_anchored_urbs(&dev->rx_submitted);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (i = 0; i < MAX_RX_URBS; ++i)
 		usb_free_coherent(dev->udev, RX_BUFFER_SIZE,
 				  dev->rxbuf[i], dev->rxbuf_dma[i]);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	usb_kill_anchored_urbs(&dev->tx_submitted);
@@ -1096,6 +1115,10 @@ static void ems_usb_disconnect(struct usb_interface *intf)
 	if (dev) {
 		unregister_netdev(dev->netdev);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		free_candev(dev->netdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		free_candev(dev->netdev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1107,8 +1130,11 @@ static void ems_usb_disconnect(struct usb_interface *intf)
 		kfree(dev->intr_in_buffer);
 		kfree(dev->tx_msg_buffer);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		free_candev(dev->netdev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

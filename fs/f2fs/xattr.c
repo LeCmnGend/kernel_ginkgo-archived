@@ -132,6 +132,7 @@ static int f2fs_xattr_advise_set(const struct xattr_handler *handler,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct inode *get_parent_inode(struct inode *inode)
 {
 	struct inode *dir = NULL;
@@ -154,6 +155,8 @@ out:
 	return dir;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_F2FS_FS_SECURITY
@@ -774,7 +777,11 @@ static int __f2fs_setxattr(struct inode *inode, int index,
 	f2fs_mark_inode_dirty_sync(inode, true);
 	if (!error && S_ISDIR(inode->i_mode))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		f2fs_inode_xattr_set(inode);
+=======
+		set_sbi_flag(F2FS_I_SB(inode), SBI_NEED_CP);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		set_sbi_flag(F2FS_I_SB(inode), SBI_NEED_CP);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -838,6 +845,7 @@ void f2fs_destroy_xattr_caches(struct f2fs_sb_info *sbi)
 	kmem_cache_destroy(sbi->inline_xattr_slab);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 void f2fs_inode_xattr_set(struct inode *inode)
 {
@@ -886,5 +894,7 @@ int f2fs_parent_inode_xattr_set(struct inode *inode)
 
 	return ret;
 }
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

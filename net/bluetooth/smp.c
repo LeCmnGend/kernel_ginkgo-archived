@@ -2694,6 +2694,7 @@ static int smp_cmd_public_key(struct l2cap_conn *conn, struct sk_buff *skb)
 		return SMP_INVALID_PARAMS;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Check if remote and local public keys are the same and debug key is
 	 * not in use.
 	 */
@@ -2703,6 +2704,8 @@ static int smp_cmd_public_key(struct l2cap_conn *conn, struct sk_buff *skb)
 		return SMP_UNSPECIFIED;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	memcpy(smp->remote_pk, key, 64);

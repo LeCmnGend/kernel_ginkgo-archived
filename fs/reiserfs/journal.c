@@ -2770,6 +2770,7 @@ int journal_init(struct super_block *sb, const char *j_dev_name,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Sanity check to see if journal first block is correct.
 	 * If journal first block is invalid it can cause
@@ -2784,6 +2785,8 @@ int journal_init(struct super_block *sb, const char *j_dev_name,
 		goto free_and_return;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (journal_init_dev(sb, journal, j_dev_name) != 0) {

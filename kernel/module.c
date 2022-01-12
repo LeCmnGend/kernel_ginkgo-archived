@@ -431,7 +431,11 @@ static bool each_symbol_in_section(const struct symsearch *arr,
 
 /* Returns true as soon as fn returns true, otherwise false. */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool each_symbol_section(bool (*fn)(const struct symsearch *arr,
+=======
+bool each_symbol_section(bool (*fn)(const struct symsearch *arr,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 bool each_symbol_section(bool (*fn)(const struct symsearch *arr,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -496,6 +500,10 @@ bool each_symbol_section(bool (*fn)(const struct symsearch *arr,
 	return false;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+EXPORT_SYMBOL_GPL(each_symbol_section);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 EXPORT_SYMBOL_GPL(each_symbol_section);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -511,7 +519,10 @@ struct find_symbol_arg {
 	const s32 *crc;
 	const struct kernel_symbol *sym;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	enum mod_license license;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -524,9 +535,15 @@ static bool check_symbol(const struct symsearch *syms,
 
 	if (!fsa->gplok) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (syms->license == GPL_ONLY)
 			return false;
 		if (syms->license == WILL_BE_GPL_ONLY && fsa->warn) {
+=======
+		if (syms->licence == GPL_ONLY)
+			return false;
+		if (syms->licence == WILL_BE_GPL_ONLY && fsa->warn) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (syms->licence == GPL_ONLY)
 			return false;
@@ -554,7 +571,10 @@ static bool check_symbol(const struct symsearch *syms,
 	fsa->crc = symversion(syms->crcs, symnum);
 	fsa->sym = &syms->start[symnum];
 <<<<<<< HEAD
+<<<<<<< HEAD
 	fsa->license = syms->license;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return true;
@@ -587,10 +607,16 @@ static bool find_symbol_in_section(const struct symsearch *syms,
 /* Find a symbol and return it, along with, (optional) crc and
  * (optional) module which owns it.  Needs preempt disabled or module_mutex. */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const struct kernel_symbol *find_symbol(const char *name,
 					struct module **owner,
 					const s32 **crc,
 					enum mod_license *license,
+=======
+const struct kernel_symbol *find_symbol(const char *name,
+					struct module **owner,
+					const s32 **crc,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 const struct kernel_symbol *find_symbol(const char *name,
 					struct module **owner,
@@ -611,8 +637,11 @@ const struct kernel_symbol *find_symbol(const char *name,
 		if (crc)
 			*crc = fsa.crc;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (license)
 			*license = fsa.license;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return fsa.sym;
@@ -622,6 +651,10 @@ const struct kernel_symbol *find_symbol(const char *name,
 	return NULL;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+EXPORT_SYMBOL_GPL(find_symbol);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 EXPORT_SYMBOL_GPL(find_symbol);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -887,7 +920,11 @@ static int add_module_usage(struct module *a, struct module *b)
 
 /* Module a uses b: caller needs module_mutex() */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int ref_module(struct module *a, struct module *b)
+=======
+int ref_module(struct module *a, struct module *b)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int ref_module(struct module *a, struct module *b)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -910,6 +947,10 @@ int ref_module(struct module *a, struct module *b)
 	return 0;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+EXPORT_SYMBOL_GPL(ref_module);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 EXPORT_SYMBOL_GPL(ref_module);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1102,7 +1143,11 @@ void __symbol_put(const char *symbol)
 
 	preempt_disable();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!find_symbol(symbol, &owner, NULL, NULL, true, false))
+=======
+	if (!find_symbol(symbol, &owner, NULL, true, false))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!find_symbol(symbol, &owner, NULL, true, false))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1198,16 +1243,22 @@ static inline void module_unload_free(struct module *mod)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int ref_module(struct module *a, struct module *b)
 {
 	return strong_try_module_get(b);
 }
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int ref_module(struct module *a, struct module *b)
 {
 	return strong_try_module_get(b);
 }
 EXPORT_SYMBOL_GPL(ref_module);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static inline int module_unload_init(struct module *mod)
@@ -1393,7 +1444,11 @@ static inline int check_modstruct_version(const struct load_info *info,
 	preempt_disable();
 	if (!find_symbol(VMLINUX_SYMBOL_STR(module_layout), NULL,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			 &crc, NULL, true, false)) {
+=======
+			 &crc, true, false)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			 &crc, true, false)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1438,6 +1493,7 @@ static inline int same_magic(const char *amagic, const char *bmagic,
 #endif /* CONFIG_MODVERSIONS */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool inherit_taint(struct module *mod, struct module *owner)
 {
 	if (!owner || !test_bit(TAINT_PROPRIETARY_MODULE, &owner->taints))
@@ -1459,6 +1515,8 @@ static bool inherit_taint(struct module *mod, struct module *owner)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Resolve a symbol for this module.  I.e. if we find one, record usage. */
 static const struct kernel_symbol *resolve_symbol(struct module *mod,
 						  const struct load_info *info,
@@ -1469,7 +1527,10 @@ static const struct kernel_symbol *resolve_symbol(struct module *mod,
 	const struct kernel_symbol *sym;
 	const s32 *crc;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	enum mod_license license;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int err;
@@ -1482,7 +1543,11 @@ static const struct kernel_symbol *resolve_symbol(struct module *mod,
 	sched_annotate_sleep();
 	mutex_lock(&module_mutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sym = find_symbol(name, &owner, &crc, &license,
+=======
+	sym = find_symbol(name, &owner, &crc,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sym = find_symbol(name, &owner, &crc,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1490,6 +1555,7 @@ static const struct kernel_symbol *resolve_symbol(struct module *mod,
 	if (!sym)
 		goto unlock;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (license == GPL_ONLY)
 		mod->using_gplonly_symbols = true;
@@ -1499,6 +1565,8 @@ static const struct kernel_symbol *resolve_symbol(struct module *mod,
 		goto getname;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!check_version(info, name, mod, crc)) {
@@ -1889,6 +1957,10 @@ static int mod_sysfs_init(struct module *mod)
 		mod_kobject_put(mod);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/* delay uevent until full sysfs population */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* delay uevent until full sysfs population */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1929,6 +2001,10 @@ static int mod_sysfs_setup(struct module *mod,
 	add_notes_attrs(mod, info);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kobject_uevent(&mod->mkobj.kobj, KOBJ_ADD);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kobject_uevent(&mod->mkobj.kobj, KOBJ_ADD);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2320,7 +2396,11 @@ void *__symbol_get(const char *symbol)
 
 	preempt_disable();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sym = find_symbol(symbol, &owner, NULL, NULL, true, true);
+=======
+	sym = find_symbol(symbol, &owner, NULL, true, true);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sym = find_symbol(symbol, &owner, NULL, true, true);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2359,7 +2439,11 @@ static int verify_export_symbols(struct module *mod)
 	for (i = 0; i < ARRAY_SIZE(arr); i++) {
 		for (s = arr[i].sym; s < arr[i].sym + arr[i].num; s++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (find_symbol(s->name, &owner, NULL, NULL, true, false)) {
+=======
+			if (find_symbol(s->name, &owner, NULL, true, false)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (find_symbol(s->name, &owner, NULL, true, false)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2373,6 +2457,7 @@ static int verify_export_symbols(struct module *mod)
 	return 0;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static bool ignore_undef_symbol(Elf_Half emachine, const char *name)
 {
@@ -2389,6 +2474,8 @@ static bool ignore_undef_symbol(Elf_Half emachine, const char *name)
 	return false;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Change all symbols so that st_value encodes the pointer directly. */
@@ -2437,10 +2524,15 @@ static int simplify_symbols(struct module *mod, const struct load_info *info)
 			}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			/* Ok if weak or ignored.  */
 			if (!ksym &&
 			    (ELF_ST_BIND(sym[i].st_info) == STB_WEAK ||
 			     ignore_undef_symbol(info->hdr->e_machine, name)))
+=======
+			/* Ok if weak.  */
+			if (!ksym && ELF_ST_BIND(sym[i].st_info) == STB_WEAK)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			/* Ok if weak.  */
 			if (!ksym && ELF_ST_BIND(sym[i].st_info) == STB_WEAK)
@@ -3636,9 +3728,12 @@ static noinline int do_init_module(struct module *mod)
 				     MODULE_STATE_LIVE, mod);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Delay uevent until module has finished its init routine */
 	kobject_uevent(&mod->mkobj.kobj, KOBJ_ADD);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
@@ -3970,7 +4065,10 @@ static int load_module(struct load_info *info, const char __user *uargs,
 	klp_module_going(mod);
  bug_cleanup:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mod->state = MODULE_STATE_GOING;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* module_bug_cleanup needs module_mutex protection */
@@ -4500,6 +4598,10 @@ struct module *__module_address(unsigned long addr)
 	return mod;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+EXPORT_SYMBOL_GPL(__module_address);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 EXPORT_SYMBOL_GPL(__module_address);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4542,6 +4644,10 @@ struct module *__module_text_address(unsigned long addr)
 	return mod;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+EXPORT_SYMBOL_GPL(__module_text_address);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 EXPORT_SYMBOL_GPL(__module_text_address);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

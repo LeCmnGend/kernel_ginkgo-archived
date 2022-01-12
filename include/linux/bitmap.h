@@ -77,12 +77,17 @@
  * find_first_zero_bit(addr, nbits)	Position first zero bit in *addr
  * find_first_bit(addr, nbits)		Position first set bit in *addr
 <<<<<<< HEAD
+<<<<<<< HEAD
  * find_next_zero_bit(addr, nbits, bit)
  *                                      Position next zero bit in *addr >= bit
  * find_next_bit(addr, nbits, bit)     Position next set bit in *addr >= bit
  * find_next_and_bit(addr1, addr2, nbits, bit)
  *                                      Same as find_next_bit, but in
  *                                      (*addr1 & *addr2)
+=======
+ * find_next_zero_bit(addr, nbits, bit)	Position next zero bit in *addr >= bit
+ * find_next_bit(addr, nbits, bit)	Position next set bit in *addr >= bit
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * find_next_zero_bit(addr, nbits, bit)	Position next zero bit in *addr >= bit
  * find_next_bit(addr, nbits, bit)	Position next set bit in *addr >= bit

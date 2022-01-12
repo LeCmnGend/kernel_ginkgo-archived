@@ -39,7 +39,11 @@
 
 static sense_reason_t
 <<<<<<< HEAD
+<<<<<<< HEAD
 sbc_check_prot(struct se_device *, struct se_cmd *, unsigned char, u32, bool);
+=======
+sbc_check_prot(struct se_device *, struct se_cmd *, unsigned char *, u32, bool);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 sbc_check_prot(struct se_device *, struct se_cmd *, unsigned char *, u32, bool);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -297,7 +301,11 @@ static inline unsigned long long transport_lba_64_ext(unsigned char *cdb)
 
 static sense_reason_t
 <<<<<<< HEAD
+<<<<<<< HEAD
 sbc_setup_write_same(struct se_cmd *cmd, unsigned char flags, struct sbc_ops *ops)
+=======
+sbc_setup_write_same(struct se_cmd *cmd, unsigned char *flags, struct sbc_ops *ops)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 sbc_setup_write_same(struct se_cmd *cmd, unsigned char *flags, struct sbc_ops *ops)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -308,7 +316,11 @@ sbc_setup_write_same(struct se_cmd *cmd, unsigned char *flags, struct sbc_ops *o
 	sense_reason_t ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if ((flags & 0x04) || (flags & 0x02)) {
+=======
+	if ((flags[0] & 0x04) || (flags[0] & 0x02)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if ((flags[0] & 0x04) || (flags[0] & 0x02)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -334,7 +346,11 @@ sbc_setup_write_same(struct se_cmd *cmd, unsigned char *flags, struct sbc_ops *o
 
 	/* We always have ANC_SUP == 0 so setting ANCHOR is always an error */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (flags & 0x10) {
+=======
+	if (flags[0] & 0x10) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (flags[0] & 0x10) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -346,7 +362,11 @@ sbc_setup_write_same(struct se_cmd *cmd, unsigned char *flags, struct sbc_ops *o
 	 * translated into block discard requests within backend code.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (flags & 0x08) {
+=======
+	if (flags[0] & 0x08) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (flags[0] & 0x08) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -365,7 +385,11 @@ sbc_setup_write_same(struct se_cmd *cmd, unsigned char *flags, struct sbc_ops *o
 		return TCM_UNSUPPORTED_SCSI_OPCODE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = sbc_check_prot(dev, cmd, flags >> 5, sectors, true);
+=======
+	ret = sbc_check_prot(dev, cmd, &cmd->t_task_cdb[0], sectors, true);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = sbc_check_prot(dev, cmd, &cmd->t_task_cdb[0], sectors, true);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -727,14 +751,20 @@ sbc_set_prot_op_checks(u8 protect, bool fabric_prot, enum target_prot_type prot_
 
 static sense_reason_t
 <<<<<<< HEAD
+<<<<<<< HEAD
 sbc_check_prot(struct se_device *dev, struct se_cmd *cmd, unsigned char protect,
 	       u32 sectors, bool is_write)
 {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 sbc_check_prot(struct se_device *dev, struct se_cmd *cmd, unsigned char *cdb,
 	       u32 sectors, bool is_write)
 {
 	u8 protect = cdb[1] >> 5;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int sp_ops = cmd->se_sess->sup_prot_ops;
 	int pi_prot_type = dev->dev_attrib.pi_prot_type;
@@ -784,7 +814,11 @@ sbc_check_prot(struct se_device *dev, struct se_cmd *cmd, unsigned char *cdb,
 	default:
 		pr_err("Unable to determine pi_prot_type for CDB: 0x%02x "
 <<<<<<< HEAD
+<<<<<<< HEAD
 		       "PROTECT: 0x%02x\n", cmd->t_task_cdb[0], protect);
+=======
+		       "PROTECT: 0x%02x\n", cdb[0], protect);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		       "PROTECT: 0x%02x\n", cdb[0], protect);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -863,7 +897,11 @@ sbc_parse_cdb(struct se_cmd *cmd, struct sbc_ops *ops)
 			return TCM_INVALID_CDB_FIELD;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = sbc_check_prot(dev, cmd, cdb[1] >> 5, sectors, false);
+=======
+		ret = sbc_check_prot(dev, cmd, cdb, sectors, false);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = sbc_check_prot(dev, cmd, cdb, sectors, false);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -881,7 +919,11 @@ sbc_parse_cdb(struct se_cmd *cmd, struct sbc_ops *ops)
 			return TCM_INVALID_CDB_FIELD;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = sbc_check_prot(dev, cmd, cdb[1] >> 5, sectors, false);
+=======
+		ret = sbc_check_prot(dev, cmd, cdb, sectors, false);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = sbc_check_prot(dev, cmd, cdb, sectors, false);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -899,7 +941,11 @@ sbc_parse_cdb(struct se_cmd *cmd, struct sbc_ops *ops)
 			return TCM_INVALID_CDB_FIELD;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = sbc_check_prot(dev, cmd, cdb[1] >> 5, sectors, false);
+=======
+		ret = sbc_check_prot(dev, cmd, cdb, sectors, false);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = sbc_check_prot(dev, cmd, cdb, sectors, false);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -924,7 +970,11 @@ sbc_parse_cdb(struct se_cmd *cmd, struct sbc_ops *ops)
 			return TCM_INVALID_CDB_FIELD;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = sbc_check_prot(dev, cmd, cdb[1] >> 5, sectors, true);
+=======
+		ret = sbc_check_prot(dev, cmd, cdb, sectors, true);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = sbc_check_prot(dev, cmd, cdb, sectors, true);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -942,7 +992,11 @@ sbc_parse_cdb(struct se_cmd *cmd, struct sbc_ops *ops)
 			return TCM_INVALID_CDB_FIELD;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = sbc_check_prot(dev, cmd, cdb[1] >> 5, sectors, true);
+=======
+		ret = sbc_check_prot(dev, cmd, cdb, sectors, true);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = sbc_check_prot(dev, cmd, cdb, sectors, true);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -961,7 +1015,11 @@ sbc_parse_cdb(struct se_cmd *cmd, struct sbc_ops *ops)
 			return TCM_INVALID_CDB_FIELD;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = sbc_check_prot(dev, cmd, cdb[1] >> 5, sectors, true);
+=======
+		ret = sbc_check_prot(dev, cmd, cdb, sectors, true);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = sbc_check_prot(dev, cmd, cdb, sectors, true);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1024,7 +1082,11 @@ sbc_parse_cdb(struct se_cmd *cmd, struct sbc_ops *ops)
 			cmd->t_task_lba = get_unaligned_be64(&cdb[12]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ret = sbc_setup_write_same(cmd, cdb[10], ops);
+=======
+			ret = sbc_setup_write_same(cmd, &cdb[10], ops);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ret = sbc_setup_write_same(cmd, &cdb[10], ops);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1126,7 +1188,11 @@ sbc_parse_cdb(struct se_cmd *cmd, struct sbc_ops *ops)
 		cmd->t_task_lba = get_unaligned_be64(&cdb[2]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = sbc_setup_write_same(cmd, cdb[1], ops);
+=======
+		ret = sbc_setup_write_same(cmd, &cdb[1], ops);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = sbc_setup_write_same(cmd, &cdb[1], ops);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1148,7 +1214,11 @@ sbc_parse_cdb(struct se_cmd *cmd, struct sbc_ops *ops)
 		 * of byte 1 bit 3 UNMAP instead of original reserved field
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = sbc_setup_write_same(cmd, cdb[1], ops);
+=======
+		ret = sbc_setup_write_same(cmd, &cdb[1], ops);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = sbc_setup_write_same(cmd, &cdb[1], ops);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

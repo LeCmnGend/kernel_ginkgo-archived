@@ -348,14 +348,20 @@ static ssize_t state_show(struct device *dev, struct device_attribute *attr,
 static DEVICE_ATTR_RO(state);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static ssize_t __available_slots_show(struct nvdimm_drvdata *ndd, char *buf)
 {
 	struct device *dev;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static ssize_t available_slots_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
 	struct nvdimm_drvdata *ndd = dev_get_drvdata(dev);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ssize_t rc;
 	u32 nfree;
@@ -364,7 +370,10 @@ static ssize_t available_slots_show(struct device *dev,
 		return -ENXIO;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev = ndd->dev;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	nvdimm_bus_lock(dev);
@@ -379,6 +388,7 @@ static ssize_t available_slots_show(struct device *dev,
 	return rc;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 static ssize_t available_slots_show(struct device *dev,
 				    struct device_attribute *attr, char *buf)
@@ -391,6 +401,8 @@ static ssize_t available_slots_show(struct device *dev,
 
 	return rc;
 }
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static DEVICE_ATTR_RO(available_slots);

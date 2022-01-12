@@ -188,6 +188,7 @@ static void ipvlan_port_destroy(struct net_device *dev)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define IPVLAN_ALWAYS_ON_OFLOADS \
 	(NETIF_F_SG | NETIF_F_HW_CSUM | \
 	 NETIF_F_GSO_ROBUST | NETIF_F_GSO_SOFTWARE | NETIF_F_GSO_ENCAP_ALL)
@@ -201,13 +202,20 @@ static void ipvlan_port_destroy(struct net_device *dev)
 #define IPVLAN_FEATURES \
 	(NETIF_F_SG | NETIF_F_CSUM_MASK | NETIF_F_HIGHDMA | NETIF_F_FRAGLIST | \
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+#define IPVLAN_FEATURES \
+	(NETIF_F_SG | NETIF_F_CSUM_MASK | NETIF_F_HIGHDMA | NETIF_F_FRAGLIST | \
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 NETIF_F_GSO | NETIF_F_TSO | NETIF_F_GSO_ROBUST | \
 	 NETIF_F_TSO_ECN | NETIF_F_TSO6 | NETIF_F_GRO | NETIF_F_RXCSUM | \
 	 NETIF_F_HW_VLAN_CTAG_FILTER | NETIF_F_HW_VLAN_STAG_FILTER)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* NETIF_F_GSO_ENCAP_ALL NETIF_F_GSO_SOFTWARE Newly added */
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define IPVLAN_STATE_MASK \
@@ -223,9 +231,13 @@ static int ipvlan_init(struct net_device *dev)
 		     (phy_dev->state & IPVLAN_STATE_MASK);
 	dev->features = phy_dev->features & IPVLAN_FEATURES;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev->features |= IPVLAN_ALWAYS_ON;
 	dev->vlan_features = phy_dev->vlan_features & IPVLAN_FEATURES;
 	dev->vlan_features |= IPVLAN_ALWAYS_ON_OFLOADS;
+=======
+	dev->features |= NETIF_F_LLTX;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev->features |= NETIF_F_LLTX;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -317,6 +329,7 @@ static netdev_features_t ipvlan_fix_features(struct net_device *dev,
 	struct ipvl_dev *ipvlan = netdev_priv(dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	features |= NETIF_F_ALL_FOR_ALL;
 	features &= (ipvlan->sfeatures | ~IPVLAN_FEATURES);
 	features = netdev_increment_features(ipvlan->phy_dev->features,
@@ -325,6 +338,9 @@ static netdev_features_t ipvlan_fix_features(struct net_device *dev,
 	features &= (IPVLAN_FEATURES | IPVLAN_ALWAYS_ON);
 
 	return features;
+=======
+	return features & (ipvlan->sfeatures | ~IPVLAN_FEATURES);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return features & (ipvlan->sfeatures | ~IPVLAN_FEATURES);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -778,14 +794,20 @@ static int ipvlan_device_event(struct notifier_block *unused,
 	case NETDEV_FEAT_CHANGE:
 		list_for_each_entry(ipvlan, &port->ipvlans, pnode) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ipvlan->dev->gso_max_size = dev->gso_max_size;
 			ipvlan->dev->gso_max_segs = dev->gso_max_segs;
 			netdev_update_features(ipvlan->dev);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			ipvlan->dev->features = dev->features & IPVLAN_FEATURES;
 			ipvlan->dev->gso_max_size = dev->gso_max_size;
 			ipvlan->dev->gso_max_segs = dev->gso_max_segs;
 			netdev_features_change(ipvlan->dev);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 		break;

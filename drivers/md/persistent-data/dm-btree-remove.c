@@ -550,8 +550,12 @@ int dm_btree_remove(struct dm_btree_info *info, dm_block_t root,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!r)
 		*new_root = shadow_root(&spine);
+=======
+	*new_root = shadow_root(&spine);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	*new_root = shadow_root(&spine);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -1327,9 +1327,12 @@ struct fc_rdp_res_frame {
 #define  SLI_CT_FDMI_Subtypes     0x10	/* Management Service Subtype */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Definitions for HBA / Port attribute entries */
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Registered Port List Format
  */
@@ -1349,6 +1352,9 @@ struct lpfc_fdmi_attr_def { /* Defined in TLV format */
 };
 
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Attribute Entry */
 struct lpfc_fdmi_attr_entry {
@@ -1361,6 +1367,7 @@ struct lpfc_fdmi_attr_entry {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct lpfc_fdmi_attr_def { /* Defined in TLV format */
 	/* Structure is in Big Endian format */
 	uint32_t AttrType:16;
@@ -1368,6 +1375,9 @@ struct lpfc_fdmi_attr_def { /* Defined in TLV format */
 	/* Marks start of Value (ATTRIBUTE_ENTRY) */
 	struct lpfc_fdmi_attr_entry AttrValue;
 } __packed;
+=======
+#define LPFC_FDMI_MAX_AE_SIZE	sizeof(struct lpfc_fdmi_attr_entry)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define LPFC_FDMI_MAX_AE_SIZE	sizeof(struct lpfc_fdmi_attr_entry)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1396,6 +1406,7 @@ struct lpfc_fdmi_hba_ident {
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Registered Port List Format
  */
 struct lpfc_fdmi_reg_port_list {
@@ -1406,12 +1417,19 @@ struct lpfc_fdmi_reg_port_list {
 /*
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Register HBA(RHBA)
  */
 struct lpfc_fdmi_reg_hba {
 	struct lpfc_fdmi_hba_ident hi;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct lpfc_fdmi_reg_port_list rpl;
+=======
+	struct lpfc_fdmi_reg_port_list rpl;	/* variable-length array */
+/* struct lpfc_fdmi_attr_block   ab; */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct lpfc_fdmi_reg_port_list rpl;	/* variable-length array */
 /* struct lpfc_fdmi_attr_block   ab; */

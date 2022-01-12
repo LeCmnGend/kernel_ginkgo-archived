@@ -2234,7 +2234,11 @@ static void fg_ttf_update(struct fg_dev *fg)
 	chip->ttf.last_ms = 0;
 	mutex_unlock(&chip->ttf.lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	queue_delayed_work(system_power_efficient_wq, &chip->ttf_work, msecs_to_jiffies(delay_ms));
+=======
+	schedule_delayed_work(&chip->ttf_work, msecs_to_jiffies(delay_ms));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	schedule_delayed_work(&chip->ttf_work, msecs_to_jiffies(delay_ms));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2906,7 +2910,11 @@ out:
 	fg->soc_reporting_ready = true;
 	vote(fg->awake_votable, ESR_FCC_VOTER, true, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	queue_delayed_work(system_power_efficient_wq, &chip->pl_enable_work, msecs_to_jiffies(5000));
+=======
+	schedule_delayed_work(&chip->pl_enable_work, msecs_to_jiffies(5000));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	schedule_delayed_work(&chip->pl_enable_work, msecs_to_jiffies(5000));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2943,7 +2951,11 @@ static void sram_dump_work(struct work_struct *work)
 		quotient, remainder);
 resched:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	queue_delayed_work(system_power_efficient_wq, &fg->sram_dump_work,
+=======
+	schedule_delayed_work(&fg->sram_dump_work,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	schedule_delayed_work(&fg->sram_dump_work,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2977,7 +2989,11 @@ static int fg_sram_dump_sysfs(const char *val, const struct kernel_param *kp)
 	fg = &chip->fg;
 	if (fg_sram_dump)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		queue_delayed_work(system_power_efficient_wq, &fg->sram_dump_work,
+=======
+		schedule_delayed_work(&fg->sram_dump_work,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		schedule_delayed_work(&fg->sram_dump_work,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3558,7 +3574,11 @@ static void ttf_work(struct work_struct *work)
 		if (ttf < 0) {
 			/* delay for one FG cycle */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			queue_delayed_work(system_power_efficient_wq, &chip->ttf_work,
+=======
+			schedule_delayed_work(&chip->ttf_work,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			schedule_delayed_work(&chip->ttf_work,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3579,7 +3599,11 @@ static void ttf_work(struct work_struct *work)
 
 	/* recurse every 10 seconds */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	queue_delayed_work(system_power_efficient_wq, &chip->ttf_work, msecs_to_jiffies(10000));
+=======
+	schedule_delayed_work(&chip->ttf_work, msecs_to_jiffies(10000));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	schedule_delayed_work(&chip->ttf_work, msecs_to_jiffies(10000));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4352,7 +4376,11 @@ static irqreturn_t fg_batt_missing_irq_handler(int irq, void *data)
 
 	clear_battery_profile(fg);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	queue_delayed_work(system_power_efficient_wq, &fg->profile_load_work, 0);
+=======
+	schedule_delayed_work(&fg->profile_load_work, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	schedule_delayed_work(&fg->profile_load_work, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5370,7 +5398,11 @@ static int fg_gen3_probe(struct platform_device *pdev)
 
 	device_init_wakeup(fg->dev, true);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	queue_delayed_work(system_power_efficient_wq, &fg->profile_load_work, 0);
+=======
+	schedule_delayed_work(&fg->profile_load_work, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	schedule_delayed_work(&fg->profile_load_work, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5413,9 +5445,15 @@ static int fg_gen3_resume(struct device *dev)
 		pr_err("Error in configuring ESR timer, rc=%d\n", rc);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	queue_delayed_work(system_power_efficient_wq, &chip->ttf_work, 0);
 	if (fg_sram_dump)
 		queue_delayed_work(system_power_efficient_wq, &fg->sram_dump_work,
+=======
+	schedule_delayed_work(&chip->ttf_work, 0);
+	if (fg_sram_dump)
+		schedule_delayed_work(&fg->sram_dump_work,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	schedule_delayed_work(&chip->ttf_work, 0);
 	if (fg_sram_dump)

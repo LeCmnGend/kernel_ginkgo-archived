@@ -289,7 +289,10 @@ static void bdc_mem_init(struct bdc *bdc, bool reinit)
 	 */
 	if (reinit) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		int i;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* Enable interrupts */
@@ -302,9 +305,12 @@ static void bdc_mem_init(struct bdc *bdc, bool reinit)
 		memset(bdc->srr.sr_bds, 0,
 					NUM_SR_ENTRIES * sizeof(struct bdc_bd));
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* clear ep flags to avoid post disconnect stops/deconfigs */
 		for (i = 1; i < bdc->num_eps; ++i)
 			bdc->bdc_ep_array[i]->flags = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
@@ -620,6 +626,7 @@ static int bdc_suspend(struct device *dev)
 {
 	struct bdc *bdc = dev_get_drvdata(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret;
 
 	/* Halt the controller */
@@ -628,6 +635,11 @@ static int bdc_suspend(struct device *dev)
 		clk_disable_unprepare(bdc->clk);
 
 	return ret;
+=======
+
+	clk_disable_unprepare(bdc->clk);
+	return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	clk_disable_unprepare(bdc->clk);

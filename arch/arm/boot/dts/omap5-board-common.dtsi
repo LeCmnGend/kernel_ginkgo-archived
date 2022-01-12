@@ -30,7 +30,10 @@
 	};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	vdds_1v8_main: fixedregulator-vdds_1v8_main {
 		compatible = "regulator-fixed";
 		regulator-name = "vdds_1v8_main";
@@ -39,6 +42,9 @@
 		regulator-max-microvolt = <1800000>;
 	};
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	vmmcsd_fixed: fixedregulator-mmcsd {
 		compatible = "regulator-fixed";
@@ -486,7 +492,10 @@
 				};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 				vdds_1v8_main:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				smps7_reg: smps7 {

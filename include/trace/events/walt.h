@@ -79,15 +79,21 @@ __get_update_sum(struct rq *rq, enum migrate_types migrate_type,
 TRACE_EVENT(sched_update_pred_demand,
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	TP_PROTO(struct task_struct *p, u32 runtime, int pct,
 		 unsigned int pred_demand),
 
 	TP_ARGS(p, runtime, pct, pred_demand),
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	TP_PROTO(struct rq *rq, struct task_struct *p, u32 runtime, int pct,
 		 unsigned int pred_demand),
 
 	TP_ARGS(rq, p, runtime, pct, pred_demand),
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	TP_STRUCT__entry(
@@ -109,7 +115,11 @@ TRACE_EVENT(sched_update_pred_demand,
 		memcpy(__entry->bucket, p->ravg.busy_buckets,
 					NUM_BUSY_BUCKETS * sizeof(u8));
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__entry->cpu            = task_cpu(p);
+=======
+		__entry->cpu            = rq->cpu;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__entry->cpu            = rq->cpu;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -211,15 +221,21 @@ TRACE_EVENT(sched_update_task_ravg,
 
 	TP_PROTO(struct task_struct *p, struct rq *rq, enum task_event evt,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 u64 wallclock, u64 irqtime,
 		 struct group_cpu_time *cpu_time),
 
 	TP_ARGS(p, rq, evt, wallclock, irqtime, cpu_time),
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		 u64 wallclock, u64 irqtime, u64 cycles, u64 exec_time,
 		 struct group_cpu_time *cpu_time),
 
 	TP_ARGS(p, rq, evt, wallclock, irqtime, cycles, exec_time, cpu_time),
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	TP_STRUCT__entry(
@@ -252,9 +268,15 @@ TRACE_EVENT(sched_update_task_ravg,
 		__field(	u64,	nt_cs			)
 		__field(	u64,	nt_ps			)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__field(	u64,	active_time		)
 		__field(	u32,	curr_top		)
 		__field(	u32,	prev_top		)
+=======
+		__field(	u32,	active_windows		)
+		__field(	u8,	curr_top		)
+		__field(	u8,	prev_top		)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__field(	u32,	active_windows		)
 		__field(	u8,	curr_top		)
@@ -270,7 +292,11 @@ TRACE_EVENT(sched_update_task_ravg,
 		__entry->cpu            = rq->cpu;
 		__entry->cur_pid        = rq->curr->pid;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__entry->cur_freq       = rq->task_exec_scale;
+=======
+		__entry->cur_freq       = cpu_cycles_to_freq(cycles, exec_time);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__entry->cur_freq       = cpu_cycles_to_freq(cycles, exec_time);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -296,7 +322,11 @@ TRACE_EVENT(sched_update_task_ravg,
 		__entry->nt_cs		= rq->nt_curr_runnable_sum;
 		__entry->nt_ps		= rq->nt_prev_runnable_sum;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__entry->active_time	= p->ravg.active_time;
+=======
+		__entry->active_windows	= p->ravg.active_windows;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__entry->active_windows	= p->ravg.active_windows;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -305,7 +335,11 @@ TRACE_EVENT(sched_update_task_ravg,
 	),
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    TP_printk("wc %llu ws %llu delta %llu event %s cpu %d cur_freq %u cur_pid %d task %d (%s) ms %llu delta %llu demand %u coloc_demand: %u sum %u irqtime %llu pred_demand %u rq_cs %llu rq_ps %llu cur_window %u (%s) prev_window %u (%s) nt_cs %llu nt_ps %llu active_time %u grp_cs %lld grp_ps %lld, grp_nt_cs %llu, grp_nt_ps: %llu curr_top %u prev_top %u",
+=======
+	TP_printk("wc %llu ws %llu delta %llu event %s cpu %d cur_freq %u cur_pid %d task %d (%s) ms %llu delta %llu demand %u coloc_demand: %u sum %u irqtime %llu pred_demand %u rq_cs %llu rq_ps %llu cur_window %u (%s) prev_window %u (%s) nt_cs %llu nt_ps %llu active_wins %u grp_cs %lld grp_ps %lld, grp_nt_cs %llu, grp_nt_ps: %llu curr_top %u prev_top %u",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	TP_printk("wc %llu ws %llu delta %llu event %s cpu %d cur_freq %u cur_pid %d task %d (%s) ms %llu delta %llu demand %u coloc_demand: %u sum %u irqtime %llu pred_demand %u rq_cs %llu rq_ps %llu cur_window %u (%s) prev_window %u (%s) nt_cs %llu nt_ps %llu active_wins %u grp_cs %lld grp_ps %lld, grp_nt_cs %llu, grp_nt_ps: %llu curr_top %u prev_top %u",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -321,7 +355,11 @@ TRACE_EVENT(sched_update_task_ravg,
 		__window_print(p, __get_dynamic_array(prev_sum), nr_cpu_ids),
 		__entry->nt_cs, __entry->nt_ps,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__entry->active_time, __entry->grp_cs,
+=======
+		__entry->active_windows, __entry->grp_cs,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__entry->active_windows, __entry->grp_cs,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -333,15 +371,21 @@ TRACE_EVENT(sched_update_task_ravg_mini,
 
 	TP_PROTO(struct task_struct *p, struct rq *rq, enum task_event evt,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 u64 wallclock, u64 irqtime,
 		 struct group_cpu_time *cpu_time),
 
 	TP_ARGS(p, rq, evt, wallclock, irqtime, cpu_time),
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		 u64 wallclock, u64 irqtime, u64 cycles, u64 exec_time,
 		 struct group_cpu_time *cpu_time),
 
 	TP_ARGS(p, rq, evt, wallclock, irqtime, cycles, exec_time, cpu_time),
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	TP_STRUCT__entry(
@@ -405,6 +449,7 @@ TRACE_EVENT(sched_set_preferred_cluster,
 	TP_STRUCT__entry(
 		__field(	int,	id			)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__field(	u64,	total_demand		)
 		__field(	bool,	skip_min)		),
 
@@ -417,6 +462,8 @@ TRACE_EVENT(sched_set_preferred_cluster,
 			__entry->id, __entry->total_demand,
 			__entry->skip_min)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__field(	u64,	demand			)
 		__field(	int,	cluster_first_cpu	)
 		__array(	char,	comm,	TASK_COMM_LEN	)
@@ -435,6 +482,9 @@ TRACE_EVENT(sched_set_preferred_cluster,
 	TP_printk("group_id %d total_demand %llu preferred_cluster_first_cpu %d",
 			__entry->id, __entry->demand,
 			__entry->cluster_first_cpu)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 );
 
@@ -538,7 +588,10 @@ TRACE_EVENT(sched_load_balance_skip_tasks,
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 DECLARE_EVENT_CLASS(sched_cpu_load,
 
 	TP_PROTO(struct rq *rq, int idle, u64 irqload, unsigned int power_cost),
@@ -588,6 +641,9 @@ DEFINE_EVENT(sched_cpu_load, sched_cpu_load_lb,
 	TP_ARGS(rq, idle, irqload, power_cost)
 );
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 TRACE_EVENT(sched_load_to_gov,
 
@@ -595,15 +651,21 @@ TRACE_EVENT(sched_load_to_gov,
 		int freq_aggr, u64 load, int policy,
 		int big_task_rotation,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unsigned int user_hint),
 	TP_ARGS(rq, aggr_grp_load, tt_load, freq_aggr, load, policy,
 		big_task_rotation, user_hint),
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		unsigned int sysctl_sched_little_cluster_coloc_fmin_khz,
 		u64 coloc_boost_load),
 	TP_ARGS(rq, aggr_grp_load, tt_load, freq_aggr, load, policy,
 		big_task_rotation, sysctl_sched_little_cluster_coloc_fmin_khz,
 		coloc_boost_load),
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	TP_STRUCT__entry(
@@ -621,7 +683,13 @@ TRACE_EVENT(sched_load_to_gov,
 		__field(	u64,    load			)
 		__field(	int,    big_task_rotation	)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__field(unsigned int, user_hint)
+=======
+		__field(unsigned int,
+				sysctl_sched_little_cluster_coloc_fmin_khz)
+		__field(u64,	coloc_boost_load)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__field(unsigned int,
 				sysctl_sched_little_cluster_coloc_fmin_khz)
@@ -644,24 +712,36 @@ TRACE_EVENT(sched_load_to_gov,
 		__entry->load		= load;
 		__entry->big_task_rotation = big_task_rotation;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__entry->user_hint = user_hint;
 	),
 
 	TP_printk("cpu=%d policy=%d ed_task_pid=%d aggr_grp_load=%llu freq_aggr=%d tt_load=%llu rq_ps=%llu grp_rq_ps=%llu nt_ps=%llu grp_nt_ps=%llu pl=%llu load=%llu big_task_rotation=%d user_hint=%u",
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__entry->sysctl_sched_little_cluster_coloc_fmin_khz =
 				sysctl_sched_little_cluster_coloc_fmin_khz;
 		__entry->coloc_boost_load = coloc_boost_load;
 	),
 
 	TP_printk("cpu=%d policy=%d ed_task_pid=%d aggr_grp_load=%llu freq_aggr=%d tt_load=%llu rq_ps=%llu grp_rq_ps=%llu nt_ps=%llu grp_nt_ps=%llu pl=%llu load=%llu big_task_rotation=%d sysctl_sched_little_cluster_coloc_fmin_khz=%u coloc_boost_load=%llu",
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__entry->cpu, __entry->policy, __entry->ed_task_pid,
 		__entry->aggr_grp_load, __entry->freq_aggr,
 		__entry->tt_load, __entry->rq_ps, __entry->grp_rq_ps,
 		__entry->nt_ps, __entry->grp_nt_ps, __entry->pl, __entry->load,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__entry->big_task_rotation, __entry->user_hint)
+=======
+		__entry->big_task_rotation,
+		__entry->sysctl_sched_little_cluster_coloc_fmin_khz,
+		__entry->coloc_boost_load)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__entry->big_task_rotation,
 		__entry->sysctl_sched_little_cluster_coloc_fmin_khz,

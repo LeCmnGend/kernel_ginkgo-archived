@@ -167,6 +167,12 @@ static u8 mtrr_type_lookup_variable(u64 start, u64 end, u64 *partial_end,
 	*uniform = 1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/* Make end inclusive instead of exclusive */
+	end--;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Make end inclusive instead of exclusive */
 	end--;
@@ -264,9 +270,12 @@ u8 mtrr_type_lookup(u64 start, u64 end, u8 *uniform)
 	u64 partial_end;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Make end inclusive instead of exclusive */
 	end--;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!mtrr_state_set)

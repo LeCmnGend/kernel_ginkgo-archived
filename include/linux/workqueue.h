@@ -14,7 +14,10 @@
 #include <linux/atomic.h>
 #include <linux/cpumask.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/rcupdate.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -125,6 +128,7 @@ struct delayed_work {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct rcu_work {
 	struct work_struct work;
 	struct rcu_head rcu;
@@ -133,6 +137,8 @@ struct rcu_work {
 	struct workqueue_struct *wq;
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -167,11 +173,14 @@ static inline struct delayed_work *to_delayed_work(struct work_struct *work)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline struct rcu_work *to_rcu_work(struct work_struct *work)
 {
 	return container_of(work, struct rcu_work, work);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct execute_work {
@@ -292,12 +301,15 @@ static inline unsigned int work_static(struct work_struct *work) { return 0; }
 	__INIT_DELAYED_WORK_ONSTACK(_work, _func, TIMER_DEFERRABLE)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define INIT_RCU_WORK(_work, _func)					\
 	INIT_WORK(&(_work)->work, (_func))
 
 #define INIT_RCU_WORK_ONSTACK(_work, _func)				\
 	INIT_WORK_ONSTACK(&(_work)->work, (_func))
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -482,7 +494,10 @@ extern bool queue_delayed_work_on(int cpu, struct workqueue_struct *wq,
 extern bool mod_delayed_work_on(int cpu, struct workqueue_struct *wq,
 			struct delayed_work *dwork, unsigned long delay);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern bool queue_rcu_work(struct workqueue_struct *wq, struct rcu_work *rwork);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -502,8 +517,11 @@ extern bool cancel_delayed_work(struct delayed_work *dwork);
 extern bool cancel_delayed_work_sync(struct delayed_work *dwork);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern bool flush_rcu_work(struct rcu_work *rwork);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern void workqueue_set_max_active(struct workqueue_struct *wq,
@@ -649,6 +667,7 @@ static inline bool schedule_delayed_work(struct delayed_work *dwork,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * delayed_work_busy - See work_busy()
  * @dwork: the delayed work to be tested
@@ -658,6 +677,8 @@ static inline unsigned int delayed_work_busy(struct delayed_work *dwork)
 	return work_busy(&dwork->work);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifndef CONFIG_SMP

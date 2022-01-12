@@ -90,15 +90,19 @@ static void uvc_fixup_video_ctrl(struct uvc_streaming *stream,
 	struct uvc_streaming_control *ctrl)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	static const struct usb_device_id elgato_cam_link_4k = {
 		USB_DEVICE(0x0fd9, 0x0066)
 	};
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct uvc_format *format = NULL;
 	struct uvc_frame *frame = NULL;
 	unsigned int i;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	/*
 	 * The response of the Elgato Cam Link 4K is incorrect: The second byte
@@ -124,6 +128,8 @@ static void uvc_fixup_video_ctrl(struct uvc_streaming *stream,
 		ctrl->bFormatIndex = corrected_format_index;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	for (i = 0; i < stream->nformats; ++i) {

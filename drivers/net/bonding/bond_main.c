@@ -1130,7 +1130,10 @@ static void bond_setup_by_slave(struct net_device *bond_dev,
 	bond_dev->type		    = slave_dev->type;
 	bond_dev->hard_header_len   = slave_dev->hard_header_len;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bond_dev->needed_headroom   = slave_dev->needed_headroom;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bond_dev->addr_len	    = slave_dev->addr_len;
@@ -1257,6 +1260,7 @@ static void bond_upper_dev_unlink(struct bonding *bond, struct slave *slave)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void slave_kobj_release(struct kobject *kobj)
 {
 	struct slave *slave = to_slave(kobj);
@@ -1293,6 +1297,9 @@ static struct slave *bond_alloc_slave(struct bonding *bond,
 =======
 static struct slave *bond_alloc_slave(struct bonding *bond)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+static struct slave *bond_alloc_slave(struct bonding *bond)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	struct slave *slave = NULL;
 
@@ -1300,6 +1307,7 @@ static struct slave *bond_alloc_slave(struct bonding *bond)
 	if (!slave)
 		return NULL;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	slave->bond = bond;
 	slave->dev = slave_dev;
@@ -1310,28 +1318,39 @@ static struct slave *bond_alloc_slave(struct bonding *bond)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (BOND_MODE(bond) == BOND_MODE_8023AD) {
 		SLAVE_AD_INFO(slave) = kzalloc(sizeof(struct ad_slave_info),
 					       GFP_KERNEL);
 		if (!SLAVE_AD_INFO(slave)) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 			kobject_put(&slave->kobj);
 			return NULL;
 		}
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			kfree(slave);
 			return NULL;
 		}
 	}
 	INIT_DELAYED_WORK(&slave->notify_work, bond_netdev_notify_work);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return slave;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void bond_free_slave(struct slave *slave)
 {
 	struct bonding *bond = bond_get_bond_by_slave(slave);
@@ -1343,6 +1362,9 @@ static void bond_free_slave(struct slave *slave)
 	kfree(slave);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void bond_fill_ifbond(struct bonding *bond, struct ifbond *info)
 {
@@ -1524,7 +1546,11 @@ int bond_enslave(struct net_device *bond_dev, struct net_device *slave_dev)
 		bond_set_dev_addr(bond->dev, slave_dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	new_slave = bond_alloc_slave(bond, slave_dev);
+=======
+	new_slave = bond_alloc_slave(bond);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	new_slave = bond_alloc_slave(bond);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1534,6 +1560,11 @@ int bond_enslave(struct net_device *bond_dev, struct net_device *slave_dev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	new_slave->bond = bond;
+	new_slave->dev = slave_dev;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	new_slave->bond = bond;
 	new_slave->dev = slave_dev;
@@ -1869,7 +1900,11 @@ err_restore_mtu:
 
 err_free:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kobject_put(&new_slave->kobj);
+=======
+	bond_free_slave(new_slave);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bond_free_slave(new_slave);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2061,7 +2096,11 @@ static int __bond_release_one(struct net_device *bond_dev,
 		slave_dev->priv_flags &= ~IFF_BONDING;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kobject_put(&slave->kobj);
+=======
+	bond_free_slave(slave);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bond_free_slave(slave);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2086,8 +2125,12 @@ static int  bond_release_and_destroy(struct net_device *bond_dev,
 
 	ret = __bond_release_one(bond_dev, slave_dev, false, true);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret == 0 && !bond_has_slaves(bond) &&
 	    bond_dev->reg_state != NETREG_UNREGISTERING) {
+=======
+	if (ret == 0 && !bond_has_slaves(bond)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret == 0 && !bond_has_slaves(bond)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2833,9 +2876,12 @@ static int bond_ab_arp_inspect(struct bonding *bond)
 				bond_propose_link_state(slave, BOND_LINK_UP);
 				commit++;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			} else if (slave->link == BOND_LINK_BACK) {
 				bond_propose_link_state(slave, BOND_LINK_FAIL);
 				commit++;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			}
@@ -2949,6 +2995,7 @@ static void bond_ab_arp_commit(struct bonding *bond)
 			continue;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		case BOND_LINK_FAIL:
 			bond_set_slave_link_state(slave, BOND_LINK_FAIL,
 						  BOND_SLAVE_NOTIFY_NOW);
@@ -2962,6 +3009,8 @@ static void bond_ab_arp_commit(struct bonding *bond)
 				RCU_INIT_POINTER(bond->current_arp_slave, NULL);
 			continue;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		default:
@@ -3014,6 +3063,11 @@ static bool bond_ab_arp_probe(struct bonding *bond)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	bond_set_slave_inactive_flags(curr_arp_slave, BOND_SLAVE_NOTIFY_LATER);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bond_set_slave_inactive_flags(curr_arp_slave, BOND_SLAVE_NOTIFY_LATER);
 
@@ -4262,6 +4316,7 @@ static netdev_tx_t bond_start_xmit(struct sk_buff *skb, struct net_device *dev)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static u32 bond_mode_bcast_speed(struct slave *slave, u32 speed)
 {
 	if (speed == 0 || speed == SPEED_UNKNOWN)
@@ -4274,14 +4329,22 @@ static u32 bond_mode_bcast_speed(struct slave *slave, u32 speed)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int bond_ethtool_get_link_ksettings(struct net_device *bond_dev,
 					   struct ethtool_link_ksettings *cmd)
 {
 	struct bonding *bond = netdev_priv(bond_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct list_head *iter;
 	struct slave *slave;
 	u32 speed = 0;
+=======
+	unsigned long speed = 0;
+	struct list_head *iter;
+	struct slave *slave;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long speed = 0;
 	struct list_head *iter;
@@ -4299,6 +4362,7 @@ static int bond_ethtool_get_link_ksettings(struct net_device *bond_dev,
 	bond_for_each_slave(bond, slave, iter) {
 		if (bond_slave_can_tx(slave)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (slave->speed != SPEED_UNKNOWN) {
 				if (BOND_MODE(bond) == BOND_MODE_BROADCAST)
 					speed = bond_mode_bcast_speed(slave,
@@ -4306,6 +4370,10 @@ static int bond_ethtool_get_link_ksettings(struct net_device *bond_dev,
 				else
 					speed += slave->speed;
 			}
+=======
+			if (slave->speed != SPEED_UNKNOWN)
+				speed += slave->speed;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (slave->speed != SPEED_UNKNOWN)
 				speed += slave->speed;

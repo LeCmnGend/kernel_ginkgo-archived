@@ -3293,7 +3293,11 @@ bnad_change_mtu(struct net_device *netdev, int new_mtu)
 	int err, mtu;
 	struct bnad *bnad = netdev_priv(netdev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 frame, new_frame;
+=======
+	u32 rx_count = 0, frame, new_frame;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 rx_count = 0, frame, new_frame;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3313,16 +3317,22 @@ bnad_change_mtu(struct net_device *netdev, int new_mtu)
 		if ((frame <= 4096 && new_frame > 4096) ||
 		    (frame > 4096 && new_frame <= 4096))
 <<<<<<< HEAD
+<<<<<<< HEAD
 			bnad_reinit_rx(bnad);
 	}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			rx_count = bnad_reinit_rx(bnad);
 	}
 
 	/* rx_count > 0 - new rx created
 	 *	- Linux set err = 0 and return
 	 */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = bnad_mtu_set(bnad, new_frame);
 	if (err)

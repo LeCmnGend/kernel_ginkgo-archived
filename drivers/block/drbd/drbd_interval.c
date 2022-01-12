@@ -14,11 +14,14 @@ sector_t interval_end(struct rb_node *node)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define NODE_END(node) ((node)->sector + ((node)->size >> 9))
 
 RB_DECLARE_CALLBACKS_MAX(static, augment_callbacks,
 			 struct drbd_interval, rb, sector_t, end, NODE_END);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * compute_subtree_last  -  compute end of @node
  *
@@ -46,6 +49,9 @@ compute_subtree_last(struct drbd_interval *node)
 
 RB_DECLARE_CALLBACKS(static, augment_callbacks, struct drbd_interval, rb,
 		     sector_t, end, compute_subtree_last);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**

@@ -42,8 +42,12 @@
 /* Handle HCI Event packets */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void hci_cc_inquiry_cancel(struct hci_dev *hdev, struct sk_buff *skb,
 				  u8 *new_status)
+=======
+static void hci_cc_inquiry_cancel(struct hci_dev *hdev, struct sk_buff *skb)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void hci_cc_inquiry_cancel(struct hci_dev *hdev, struct sk_buff *skb)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -52,6 +56,7 @@ static void hci_cc_inquiry_cancel(struct hci_dev *hdev, struct sk_buff *skb)
 
 	BT_DBG("%s status 0x%2.2x", hdev->name, status);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	/* It is possible that we receive Inquiry Complete event right
 	 * before we receive Inquiry Cancel Command Complete event, in
@@ -67,6 +72,8 @@ static void hci_cc_inquiry_cancel(struct hci_dev *hdev, struct sk_buff *skb)
 
 	*new_status = status;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (status)
@@ -1141,9 +1148,12 @@ static void store_pending_adv_report(struct hci_dev *hdev, bdaddr_t *bdaddr,
 	struct discovery_state *d = &hdev->discovery;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (len > HCI_MAX_AD_LENGTH)
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bacpy(&d->last_adv_addr, bdaddr);
@@ -2123,7 +2133,11 @@ static void hci_inquiry_result_evt(struct hci_dev *hdev, struct sk_buff *skb)
 	BT_DBG("%s num_rsp %d", hdev->name, num_rsp);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!num_rsp || skb->len < num_rsp * sizeof(*info) + 1)
+=======
+	if (!num_rsp)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!num_rsp)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2508,7 +2522,11 @@ static void hci_auth_complete_evt(struct hci_dev *hdev, struct sk_buff *skb)
 		} else {
 			clear_bit(HCI_CONN_ENCRYPT_PEND, &conn->flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			hci_encrypt_cfm(conn, ev->status);
+=======
+			hci_encrypt_cfm(conn, ev->status, 0x00);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			hci_encrypt_cfm(conn, ev->status, 0x00);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2598,8 +2616,11 @@ static void read_enc_key_size_complete(struct hci_dev *hdev, u8 status,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	hci_encrypt_cfm(conn, 0);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (conn->state == BT_CONFIG) {
 		conn->state = BT_CONNECTED;
 		hci_connect_cfm(conn, 0);
@@ -2616,6 +2637,9 @@ static void read_enc_key_size_complete(struct hci_dev *hdev, u8 status,
 
 		hci_encrypt_cfm(conn, 0, encrypt);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 unlock:
@@ -2664,10 +2688,13 @@ static void hci_encrypt_change_evt(struct hci_dev *hdev, struct sk_buff *skb)
 	clear_bit(HCI_CONN_ENCRYPT_PEND, &conn->flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Check link security requirements are met */
 	if (!hci_conn_check_link_mode(conn))
 		ev->status = HCI_ERROR_AUTH_FAILURE;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ev->status && conn->state == BT_CONNECTED) {
@@ -2675,10 +2702,13 @@ static void hci_encrypt_change_evt(struct hci_dev *hdev, struct sk_buff *skb)
 			set_bit(HCI_CONN_AUTH_FAILURE, &conn->flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* Notify upper layers so they can cleanup before
 		 * disconnecting.
 		 */
 		hci_encrypt_cfm(conn, ev->status);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		hci_disconnect(conn, HCI_ERROR_AUTH_FAILURE);
@@ -2687,7 +2717,10 @@ static void hci_encrypt_change_evt(struct hci_dev *hdev, struct sk_buff *skb)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* In Secure Connections Only mode, do not allow any connections
 	 * that are not encrypted with AES-CCM using a P-256 authenticated
 	 * combination key.
@@ -2700,6 +2733,9 @@ static void hci_encrypt_change_evt(struct hci_dev *hdev, struct sk_buff *skb)
 		goto unlock;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Try reading the encryption key size for encrypted ACL links */
 	if (!ev->status && ev->encrypt && conn->type == ACL_LINK) {
@@ -2731,8 +2767,11 @@ static void hci_encrypt_change_evt(struct hci_dev *hdev, struct sk_buff *skb)
 
 notify:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	hci_encrypt_cfm(conn, ev->status);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (conn->state == BT_CONFIG) {
 		if (!ev->status)
 			conn->state = BT_CONNECTED;
@@ -2741,6 +2780,9 @@ notify:
 		hci_conn_drop(conn);
 	} else
 		hci_encrypt_cfm(conn, ev->status, ev->encrypt);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 unlock:
@@ -2834,7 +2876,11 @@ static void hci_cmd_complete_evt(struct hci_dev *hdev, struct sk_buff *skb,
 	switch (*opcode) {
 	case HCI_OP_INQUIRY_CANCEL:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		hci_cc_inquiry_cancel(hdev, skb, status);
+=======
+		hci_cc_inquiry_cancel(hdev, skb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		hci_cc_inquiry_cancel(hdev, skb);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3689,9 +3735,12 @@ static void hci_inquiry_result_with_rssi_evt(struct hci_dev *hdev,
 		info = (void *) (skb->data + 1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (skb->len < num_rsp * sizeof(*info) + 1)
 			goto unlock;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		for (; num_rsp; num_rsp--, info++) {
@@ -3716,9 +3765,12 @@ static void hci_inquiry_result_with_rssi_evt(struct hci_dev *hdev,
 		struct inquiry_info_with_rssi *info = (void *) (skb->data + 1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (skb->len < num_rsp * sizeof(*info) + 1)
 			goto unlock;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		for (; num_rsp; num_rsp--, info++) {
@@ -3742,7 +3794,10 @@ static void hci_inquiry_result_with_rssi_evt(struct hci_dev *hdev,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 unlock:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	hci_dev_unlock(hdev);
@@ -3908,7 +3963,11 @@ static void hci_extended_inquiry_result_evt(struct hci_dev *hdev,
 	BT_DBG("%s num_rsp %d", hdev->name, num_rsp);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!num_rsp || skb->len < num_rsp * sizeof(*info) + 1)
+=======
+	if (!num_rsp)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!num_rsp)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4437,11 +4496,14 @@ static void hci_phy_link_complete_evt(struct hci_dev *hdev,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!hcon->amp_mgr) {
 		hci_dev_unlock(hdev);
 		return;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ev->status) {
@@ -4489,7 +4551,10 @@ static void hci_loglink_complete_evt(struct hci_dev *hdev, struct sk_buff *skb)
 
 	hchan->handle = le16_to_cpu(ev->handle);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	hchan->amp = true;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -4525,7 +4590,11 @@ static void hci_disconn_loglink_complete_evt(struct hci_dev *hdev,
 
 	hchan = hci_chan_lookup_handle(hdev, le16_to_cpu(ev->handle));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!hchan || !hchan->amp)
+=======
+	if (!hchan)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!hchan)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4859,11 +4928,14 @@ static void process_adv_report(struct hci_dev *hdev, u8 type, bdaddr_t *bdaddr,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (len > HCI_MAX_AD_LENGTH) {
 		pr_err_ratelimited("legacy adv larger than 31 bytes");
 		return;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Find the end of the data in case the report contains padded zero
@@ -4927,7 +4999,11 @@ static void process_adv_report(struct hci_dev *hdev, u8 type, bdaddr_t *bdaddr,
 	conn = check_pending_le_conn(hdev, bdaddr, bdaddr_type, type,
 								direct_addr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (conn && type == LE_ADV_IND && len <= HCI_MAX_AD_LENGTH) {
+=======
+	if (conn && type == LE_ADV_IND) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (conn && type == LE_ADV_IND) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5056,6 +5132,7 @@ static void hci_le_adv_report_evt(struct hci_dev *hdev, struct sk_buff *skb)
 		s8 rssi;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ev->length <= HCI_MAX_AD_LENGTH) {
 			rssi = ev->data[ev->length];
 			process_adv_report(hdev, ev->evt_type, &ev->bdaddr,
@@ -5065,10 +5142,15 @@ static void hci_le_adv_report_evt(struct hci_dev *hdev, struct sk_buff *skb)
 			bt_dev_err(hdev, "Dropping invalid advertising data");
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rssi = ev->data[ev->length];
 		process_adv_report(hdev, ev->evt_type, &ev->bdaddr,
 				   ev->bdaddr_type, NULL, 0, rssi,
 				   ev->data, ev->length);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		ptr += sizeof(*ev) + ev->length + 1;
@@ -5258,6 +5340,7 @@ static void hci_le_direct_adv_report_evt(struct hci_dev *hdev,
 {
 	u8 num_reports = skb->data[0];
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct hci_ev_le_direct_adv_info *ev = (void *)&skb->data[1];
 
 	if (!num_reports || skb->len < num_reports * sizeof(*ev) + 1)
@@ -5267,6 +5350,8 @@ static void hci_le_direct_adv_report_evt(struct hci_dev *hdev,
 
 	for (; num_reports; num_reports--, ev++)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	void *ptr = &skb->data[1];
 
 	hci_dev_lock(hdev);
@@ -5274,12 +5359,21 @@ static void hci_le_direct_adv_report_evt(struct hci_dev *hdev,
 	while (num_reports--) {
 		struct hci_ev_le_direct_adv_info *ev = ptr;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		process_adv_report(hdev, ev->evt_type, &ev->bdaddr,
 				   ev->bdaddr_type, &ev->direct_addr,
 				   ev->direct_addr_type, ev->rssi, NULL, 0);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		ptr += sizeof(*ev);
+	}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ptr += sizeof(*ev);
 	}
@@ -5389,11 +5483,14 @@ void hci_event_packet(struct hci_dev *hdev, struct sk_buff *skb)
 	u16 opcode = HCI_OP_NOP;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!event) {
 		bt_dev_warn(hdev, "Received unexpected HCI Event 00000000");
 		goto done;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (hdev->sent_cmd && bt_cb(hdev->sent_cmd)->hci.req_event == event) {
@@ -5608,7 +5705,10 @@ void hci_event_packet(struct hci_dev *hdev, struct sk_buff *skb)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 done:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kfree_skb(orig_skb);

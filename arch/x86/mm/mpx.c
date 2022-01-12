@@ -1010,10 +1010,16 @@ static int mpx_unmap_tables(struct mm_struct *mm,
  * necessary, and the 'vma' is the first vma in this range (start -> end).
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 void mpx_notify_unmap(struct mm_struct *mm, unsigned long start,
 		      unsigned long end)
 {
 	struct vm_area_struct *vma;
+=======
+void mpx_notify_unmap(struct mm_struct *mm, struct vm_area_struct *vma,
+		unsigned long start, unsigned long end)
+{
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void mpx_notify_unmap(struct mm_struct *mm, struct vm_area_struct *vma,
 		unsigned long start, unsigned long end)
@@ -1038,6 +1044,7 @@ void mpx_notify_unmap(struct mm_struct *mm, struct vm_area_struct *vma,
 	 * helps ensure that we do not have an exploitable stack overflow.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vma = find_vma(mm, start);
 	while (vma && vma->vm_start < end) {
 		if (vma->vm_flags & VM_MPX)
@@ -1045,11 +1052,16 @@ void mpx_notify_unmap(struct mm_struct *mm, struct vm_area_struct *vma,
 		vma = vma->vm_next;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	do {
 		if (vma->vm_flags & VM_MPX)
 			return;
 		vma = vma->vm_next;
 	} while (vma && vma->vm_start < end);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	ret = mpx_unmap_tables(mm, start, end);

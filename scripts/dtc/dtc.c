@@ -32,7 +32,11 @@ int minsize;		/* Minimum blob size */
 int padsize;		/* Additional padding to blob */
 int alignsize;		/* Additional padding to blob accroding to the alignsize */
 <<<<<<< HEAD
+<<<<<<< HEAD
 int phandle_format = PHANDLE_EPAPR;	/* Use linux,phandle or phandle properties */
+=======
+int phandle_format = PHANDLE_BOTH;	/* Use linux,phandle or phandle properties */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int phandle_format = PHANDLE_BOTH;	/* Use linux,phandle or phandle properties */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -64,6 +68,11 @@ static void fill_fullpaths(struct node *tree, const char *prefix)
 
 /* Usage related data. */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define FDT_VERSION(version)	_FDT_VERSION(version)
+#define _FDT_VERSION(version)	#version
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define FDT_VERSION(version)	_FDT_VERSION(version)
 #define _FDT_VERSION(version)	#version
@@ -106,7 +115,11 @@ static const char * const usage_opts_help[] = {
 	 "\t\tdtb - device tree blob\n"
 	 "\t\tasm - assembler source",
 <<<<<<< HEAD
+<<<<<<< HEAD
 	"\n\tBlob version to produce, defaults to "stringify(DEFAULT_FDT_VERSION)" (for dtb and asm output)",
+=======
+	"\n\tBlob version to produce, defaults to "FDT_VERSION(DEFAULT_FDT_VERSION)" (for dtb and asm output)",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	"\n\tBlob version to produce, defaults to "FDT_VERSION(DEFAULT_FDT_VERSION)" (for dtb and asm output)",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -331,6 +344,10 @@ int main(int argc, char *argv[])
 
 	fill_fullpaths(dti->dt, "");
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	process_checks(force, dti);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	process_checks(force, dti);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -341,8 +358,11 @@ int main(int argc, char *argv[])
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	process_checks(force, dti);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (auto_label_aliases)

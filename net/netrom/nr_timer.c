@@ -126,15 +126,21 @@ static void nr_heartbeat_expiry(unsigned long param)
 		if (sock_flag(sk, SOCK_DESTROY) ||
 		    (sk->sk_state == TCP_LISTEN && sock_flag(sk, SOCK_DEAD))) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			bh_unlock_sock(sk);
 			nr_destroy_socket(sk);
 			goto out;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			sock_hold(sk);
 			bh_unlock_sock(sk);
 			nr_destroy_socket(sk);
 			sock_put(sk);
 			return;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 		break;
@@ -157,8 +163,11 @@ static void nr_heartbeat_expiry(unsigned long param)
 	nr_start_heartbeat(sk);
 	bh_unlock_sock(sk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 out:
 	sock_put(sk);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -175,7 +184,10 @@ static void nr_t2timer_expiry(unsigned long param)
 	}
 	bh_unlock_sock(sk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sock_put(sk);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -188,7 +200,10 @@ static void nr_t4timer_expiry(unsigned long param)
 	nr_sk(sk)->condition &= ~NR_COND_PEER_RX_BUSY;
 	bh_unlock_sock(sk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sock_put(sk);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -220,7 +235,10 @@ static void nr_idletimer_expiry(unsigned long param)
 	}
 	bh_unlock_sock(sk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sock_put(sk);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -236,7 +254,12 @@ static void nr_t1timer_expiry(unsigned long param)
 		if (nr->n2count == nr->n2) {
 			nr_disconnect(sk, ETIMEDOUT);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto out;
+=======
+			bh_unlock_sock(sk);
+			return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			bh_unlock_sock(sk);
 			return;
@@ -251,7 +274,12 @@ static void nr_t1timer_expiry(unsigned long param)
 		if (nr->n2count == nr->n2) {
 			nr_disconnect(sk, ETIMEDOUT);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto out;
+=======
+			bh_unlock_sock(sk);
+			return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			bh_unlock_sock(sk);
 			return;
@@ -266,7 +294,12 @@ static void nr_t1timer_expiry(unsigned long param)
 		if (nr->n2count == nr->n2) {
 			nr_disconnect(sk, ETIMEDOUT);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto out;
+=======
+			bh_unlock_sock(sk);
+			return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			bh_unlock_sock(sk);
 			return;
@@ -280,9 +313,13 @@ static void nr_t1timer_expiry(unsigned long param)
 
 	nr_start_t1timer(sk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 out:
 	bh_unlock_sock(sk);
 	sock_put(sk);
+=======
+	bh_unlock_sock(sk);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bh_unlock_sock(sk);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

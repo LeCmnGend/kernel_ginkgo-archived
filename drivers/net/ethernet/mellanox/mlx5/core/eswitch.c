@@ -1922,6 +1922,7 @@ static u32 calculate_vports_min_rate_divider(struct mlx5_eswitch *esw)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (max_guarantee)
 		return max_t(u32, max_guarantee / fw_max_bw_share, 1);
 	return 0;
@@ -1932,12 +1933,17 @@ static int normalize_vports_min_rate(struct mlx5_eswitch *esw)
 	u32 fw_max_bw_share = MLX5_CAP_QOS(esw->dev, max_tsar_bw_share);
 	u32 divider = calculate_vports_min_rate_divider(esw);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return max_t(u32, max_guarantee / fw_max_bw_share, 1);
 }
 
 static int normalize_vports_min_rate(struct mlx5_eswitch *esw, u32 divider)
 {
 	u32 fw_max_bw_share = MLX5_CAP_QOS(esw->dev, max_tsar_bw_share);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct mlx5_vport *evport;
 	u32 vport_max_rate;
@@ -1953,9 +1959,15 @@ static int normalize_vports_min_rate(struct mlx5_eswitch *esw, u32 divider)
 		vport_min_rate = evport->info.min_rate;
 		vport_max_rate = evport->info.max_rate;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		bw_share = 0;
 
 		if (divider)
+=======
+		bw_share = MLX5_MIN_BW_SHARE;
+
+		if (vport_min_rate)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		bw_share = MLX5_MIN_BW_SHARE;
 
@@ -1986,6 +1998,10 @@ int mlx5_eswitch_set_vport_rate(struct mlx5_eswitch *esw, int vport,
 	u32 fw_max_bw_share;
 	u32 previous_min_rate;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u32 divider;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 divider;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2015,7 +2031,12 @@ int mlx5_eswitch_set_vport_rate(struct mlx5_eswitch *esw, int vport,
 	previous_min_rate = evport->info.min_rate;
 	evport->info.min_rate = min_rate;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = normalize_vports_min_rate(esw);
+=======
+	divider = calculate_vports_min_rate_divider(esw);
+	err = normalize_vports_min_rate(esw, divider);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	divider = calculate_vports_min_rate_divider(esw);
 	err = normalize_vports_min_rate(esw, divider);

@@ -96,6 +96,7 @@ struct step_hook {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void register_user_step_hook(struct step_hook *hook);
 void unregister_user_step_hook(struct step_hook *hook);
 
@@ -115,6 +116,8 @@ void unregister_user_break_hook(struct break_hook *hook);
 void register_kernel_break_hook(struct break_hook *hook);
 void unregister_kernel_break_hook(struct break_hook *hook);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void register_step_hook(struct step_hook *hook);
 void unregister_step_hook(struct step_hook *hook);
 
@@ -127,6 +130,9 @@ struct break_hook {
 
 void register_break_hook(struct break_hook *hook);
 void unregister_break_hook(struct break_hook *hook);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 u8 debug_monitors_arch(void);

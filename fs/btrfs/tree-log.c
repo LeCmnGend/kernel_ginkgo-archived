@@ -1559,7 +1559,10 @@ static noinline int fixup_inode_link_counts(struct btrfs_trans_handle *trans,
 
 		if (ret == 1) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ret = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (path->slots[0] == 0)
@@ -1575,6 +1578,7 @@ static noinline int fixup_inode_link_counts(struct btrfs_trans_handle *trans,
 		ret = btrfs_del_item(trans, root, path);
 		if (ret)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			break;
 
 		btrfs_release_path(path);
@@ -1584,19 +1588,28 @@ static noinline int fixup_inode_link_counts(struct btrfs_trans_handle *trans,
 			break;
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			goto out;
 
 		btrfs_release_path(path);
 		inode = read_one_inode(root, key.offset);
 		if (!inode)
 			return -EIO;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		ret = fixup_inode_link_count(trans, root, inode);
 		iput(inode);
 		if (ret)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			break;
+=======
+			goto out;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto out;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1609,6 +1622,11 @@ static noinline int fixup_inode_link_counts(struct btrfs_trans_handle *trans,
 		key.offset = (u64)-1;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	ret = 0;
+out:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = 0;
 out:
@@ -1652,6 +1670,11 @@ static noinline int link_to_fixup_dir(struct btrfs_trans_handle *trans,
 	} else if (ret == -EEXIST) {
 		ret = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	} else {
+		BUG(); /* Logic Error */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	} else {
 		BUG(); /* Logic Error */
@@ -3337,6 +3360,7 @@ fail:
 out_unlock:
 	mutex_unlock(&dir->log_mutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (err == -ENOSPC) {
 		btrfs_set_log_full_commit(root->fs_info, trans);
 		err = 0;
@@ -3345,11 +3369,16 @@ out_unlock:
 		btrfs_abort_transaction(trans, err);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret == -ENOSPC) {
 		btrfs_set_log_full_commit(root->fs_info, trans);
 		ret = 0;
 	} else if (ret < 0)
 		btrfs_abort_transaction(trans, ret);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	btrfs_end_log_trans(root);
@@ -3512,7 +3541,10 @@ static noinline int log_dir_items(struct btrfs_trans_handle *trans,
 	 * bail.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 search:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = btrfs_search_slot(NULL, root, &min_key, path, 0, 0);
@@ -3535,6 +3567,7 @@ search:
 			if (min_key.objectid != ino || min_key.type != key_type)
 				goto done;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 			if (need_resched()) {
 				btrfs_release_path(path);
@@ -3542,6 +3575,8 @@ search:
 				goto search;
 			}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			ret = overwrite_item(trans, log, dst_path, src, i,
@@ -3904,14 +3939,20 @@ static noinline int copy_items(struct btrfs_trans_handle *trans,
 						ds + cs, ds + cs + cl - 1,
 						&ordered_sums, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if (ret)
 					break;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				if (ret) {
 					btrfs_release_path(dst_path);
 					kfree(ins_data);
 					return ret;
 				}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			}
 		}
@@ -3926,6 +3967,10 @@ static noinline int copy_items(struct btrfs_trans_handle *trans,
 	 * log tree while trying to change the log tree.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	ret = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6010,7 +6055,10 @@ error:
 	if (wc.trans)
 		btrfs_end_transaction(wc.trans);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	clear_bit(BTRFS_FS_LOG_RECOVERING, &fs_info->flags);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	btrfs_free_path(path);

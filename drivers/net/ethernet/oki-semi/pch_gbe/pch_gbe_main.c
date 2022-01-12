@@ -125,7 +125,11 @@ static int pch_ptp_match(struct sk_buff *skb, u16 uid_hi, u32 uid_lo, u16 seqid)
 	u8 *data = skb->data;
 	unsigned int offset;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u16 hi, id;
+=======
+	u16 *hi, *id;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u16 *hi, *id;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -140,12 +144,15 @@ static int pch_ptp_match(struct sk_buff *skb, u16 uid_hi, u32 uid_lo, u16 seqid)
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	hi = get_unaligned_be16(data + offset + OFF_PTP_SOURCE_UUID + 0);
 	lo = get_unaligned_be32(data + offset + OFF_PTP_SOURCE_UUID + 2);
 	id = get_unaligned_be16(data + offset + OFF_PTP_SEQUENCE_ID);
 
 	return (uid_hi == hi && uid_lo == lo && seqid == id);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	hi = (u16 *)(data + offset + OFF_PTP_SOURCE_UUID);
 	id = (u16 *)(data + offset + OFF_PTP_SEQUENCE_ID);
 
@@ -154,6 +161,9 @@ static int pch_ptp_match(struct sk_buff *skb, u16 uid_hi, u32 uid_lo, u16 seqid)
 	return (uid_hi == *hi &&
 		uid_lo == lo &&
 		seqid  == *id);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -165,6 +175,10 @@ pch_rx_timestamp(struct pch_gbe_adapter *adapter, struct sk_buff *skb)
 	u64 ns;
 	u32 hi, lo, val;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u16 uid, seq;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u16 uid, seq;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -184,12 +198,18 @@ pch_rx_timestamp(struct pch_gbe_adapter *adapter, struct sk_buff *skb)
 	hi = pch_src_uuid_hi_read(pdev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!pch_ptp_match(skb, hi, lo, hi >> 16))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	uid = hi & 0xffff;
 	seq = (hi >> 16) & 0xffff;
 
 	if (!pch_ptp_match(skb, htons(uid), htonl(lo), htons(seq)))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto out;
 
@@ -2619,6 +2639,7 @@ static int pch_gbe_probe(struct pci_dev *pdev,
 	adapter->hw.back = adapter;
 	adapter->hw.reg = pcim_iomap_table(pdev)[PCH_GBE_PCI_BAR];
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	adapter->pdata = (struct pch_gbe_privdata *)pci_id->driver_data;
 	if (adapter->pdata && adapter->pdata->platform_init) {
@@ -2626,6 +2647,11 @@ static int pch_gbe_probe(struct pci_dev *pdev,
 		if (ret)
 			goto err_free_netdev;
 	}
+=======
+	adapter->pdata = (struct pch_gbe_privdata *)pci_id->driver_data;
+	if (adapter->pdata && adapter->pdata->platform_init)
+		adapter->pdata->platform_init(pdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	adapter->pdata = (struct pch_gbe_privdata *)pci_id->driver_data;
 	if (adapter->pdata && adapter->pdata->platform_init)
@@ -2726,7 +2752,11 @@ err_free_netdev:
 static int pch_gbe_minnow_platform_init(struct pci_dev *pdev)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long flags = GPIOF_OUT_INIT_HIGH;
+=======
+	unsigned long flags = GPIOF_DIR_OUT | GPIOF_INIT_HIGH | GPIOF_EXPORT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long flags = GPIOF_DIR_OUT | GPIOF_INIT_HIGH | GPIOF_EXPORT;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

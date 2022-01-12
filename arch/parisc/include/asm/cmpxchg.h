@@ -61,7 +61,10 @@ extern unsigned long __cmpxchg_u32(volatile unsigned int *m, unsigned int old,
 				   unsigned int new_);
 extern u64 __cmpxchg_u64(volatile u64 *ptr, u64 old, u64 new_);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern u8 __cmpxchg_u8(volatile u8 *ptr, u8 old, u8 new_);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -76,7 +79,10 @@ __cmpxchg(volatile void *ptr, unsigned long old, unsigned long new_, int size)
 	case 4: return __cmpxchg_u32((unsigned int *)ptr,
 				     (unsigned int)old, (unsigned int)new_);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case 1: return __cmpxchg_u8((u8 *)ptr, old & 0xff, new_ & 0xff);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

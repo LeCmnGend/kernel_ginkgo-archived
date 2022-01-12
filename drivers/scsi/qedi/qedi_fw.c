@@ -63,7 +63,10 @@ static void qedi_process_logout_resp(struct qedi_ctx *qedi,
 		  cmd->task_id, qedi_conn->iscsi_conn_id);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock(&qedi_conn->list_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (likely(cmd->io_cmd_in_list)) {
@@ -77,7 +80,10 @@ static void qedi_process_logout_resp(struct qedi_ctx *qedi,
 			  &cmd->io_cmd);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_unlock(&qedi_conn->list_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -136,7 +142,10 @@ static void qedi_process_text_resp(struct qedi_ctx *qedi,
 		  cmd->task_id, qedi_conn->iscsi_conn_id);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock(&qedi_conn->list_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (likely(cmd->io_cmd_in_list)) {
@@ -150,7 +159,10 @@ static void qedi_process_text_resp(struct qedi_ctx *qedi,
 			  &cmd->io_cmd);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_unlock(&qedi_conn->list_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -248,7 +260,10 @@ static void qedi_process_tmf_resp(struct qedi_ctx *qedi,
 	tmf_hdr = (struct iscsi_tm *)qedi_cmd->task->hdr;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock(&qedi_conn->list_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (likely(qedi_cmd->io_cmd_in_list)) {
@@ -257,7 +272,10 @@ static void qedi_process_tmf_resp(struct qedi_ctx *qedi,
 		qedi_conn->active_cmd_count--;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_unlock(&qedi_conn->list_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -324,7 +342,10 @@ static void qedi_process_login_resp(struct qedi_ctx *qedi,
 	qedi_conn->gen_pdu.resp_wr_ptr = qedi_conn->gen_pdu.resp_buf + pld_len;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock(&qedi_conn->list_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (likely(cmd->io_cmd_in_list)) {
@@ -333,7 +354,10 @@ static void qedi_process_login_resp(struct qedi_ctx *qedi,
 		qedi_conn->active_cmd_count--;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_unlock(&qedi_conn->list_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -869,11 +893,16 @@ static void qedi_process_cmd_cleanup_resp(struct qedi_ctx *qedi,
 
 			spin_lock(&qedi_conn->list_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (likely(dbg_cmd->io_cmd_in_list)) {
 				dbg_cmd->io_cmd_in_list = false;
 				list_del_init(&dbg_cmd->io_cmd);
 				qedi_conn->active_cmd_count--;
 			}
+=======
+			list_del_init(&dbg_cmd->io_cmd);
+			qedi_conn->active_cmd_count--;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			list_del_init(&dbg_cmd->io_cmd);
 			qedi_conn->active_cmd_count--;
@@ -1298,7 +1327,10 @@ int qedi_cleanup_all_io(struct qedi_ctx *qedi, struct qedi_conn *qedi_conn,
 		qedi_iscsi_cleanup_task(ctask, true);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cmd->io_cmd_in_list = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		list_del_init(&cmd->io_cmd);
@@ -1507,7 +1539,11 @@ abort_ret:
 ldel_exit:
 	spin_lock_bh(&qedi_conn->tmf_work_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (qedi_cmd->list_tmf_work) {
+=======
+	if (!qedi_cmd->list_tmf_work) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!qedi_cmd->list_tmf_work) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1519,11 +1555,16 @@ ldel_exit:
 
 	spin_lock(&qedi_conn->list_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (likely(cmd->io_cmd_in_list)) {
 		cmd->io_cmd_in_list = false;
 		list_del_init(&cmd->io_cmd);
 		qedi_conn->active_cmd_count--;
 	}
+=======
+	list_del_init(&cmd->io_cmd);
+	qedi_conn->active_cmd_count--;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	list_del_init(&cmd->io_cmd);
 	qedi_conn->active_cmd_count--;

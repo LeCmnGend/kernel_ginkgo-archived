@@ -349,7 +349,12 @@ enum {
 
 /* Based on IPv4 scoping <draft-stewart-tsvwg-sctp-ipv4-00.txt>,
 <<<<<<< HEAD
+<<<<<<< HEAD
  * SCTP IPv4 unusable addresses: 0.0.0.0/8, 224.0.0.0/4, 192.88.99.0/24.
+=======
+ * SCTP IPv4 unusable addresses: 0.0.0.0/8, 224.0.0.0/4, 198.18.0.0/24,
+ * 192.88.99.0/24.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * SCTP IPv4 unusable addresses: 0.0.0.0/8, 224.0.0.0/4, 198.18.0.0/24,
  * 192.88.99.0/24.
@@ -362,6 +367,10 @@ enum {
 	 ipv4_is_multicast(a) ||	    \
 	 ipv4_is_zeronet(a) ||		    \
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	 ipv4_is_test_198(a) ||		    \
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 ipv4_is_test_198(a) ||		    \
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -337,7 +337,11 @@ static int bcm6328_led(struct device *dev, struct device_node *nc, u32 reg,
 	led->cdev.blink_set = bcm6328_blink_set;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rc = devm_led_classdev_register(dev, &led->cdev);
+=======
+	rc = led_classdev_register(dev, &led->cdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rc = led_classdev_register(dev, &led->cdev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

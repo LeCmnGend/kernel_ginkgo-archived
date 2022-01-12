@@ -1323,6 +1323,10 @@ int msm_vdec_s_ctrl(struct msm_vidc_inst *inst, struct v4l2_ctrl *ctrl)
 					inst, ctrl->val >> 16,
 					inst->clk_data.operating_rate >> 16);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+				inst->operating_rate_set = true;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				inst->operating_rate_set = true;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1336,6 +1340,10 @@ int msm_vdec_s_ctrl(struct msm_vidc_inst *inst, struct v4l2_ctrl *ctrl)
 				"inst(%pK) Request for turbo mode\n", inst);
 			inst->clk_data.turbo_mode = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			inst->operating_rate_set = true;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			inst->operating_rate_set = true;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1349,6 +1357,10 @@ int msm_vdec_s_ctrl(struct msm_vidc_inst *inst, struct v4l2_ctrl *ctrl)
 					ctrl->val >> 16);
 			inst->clk_data.operating_rate = ctrl->val;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			inst->operating_rate_set = true;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			inst->operating_rate_set = true;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

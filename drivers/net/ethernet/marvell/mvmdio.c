@@ -320,6 +320,7 @@ static int orion_mdio_probe(struct platform_device *pdev)
 	init_waitqueue_head(&dev->smi_busy_wait);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (pdev->dev.of_node) {
 		for (i = 0; i < ARRAY_SIZE(dev->clk); i++) {
 			dev->clk[i] = of_clk_get(pdev->dev.of_node, i);
@@ -340,6 +341,8 @@ static int orion_mdio_probe(struct platform_device *pdev)
 		if (!IS_ERR(dev->clk[0]))
 			clk_prepare_enable(dev->clk[0]);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	for (i = 0; i < ARRAY_SIZE(dev->clk); i++) {
 		dev->clk[i] = of_clk_get(pdev->dev.of_node, i);
 		if (PTR_ERR(dev->clk[i]) == -EPROBE_DEFER) {
@@ -349,6 +352,9 @@ static int orion_mdio_probe(struct platform_device *pdev)
 		if (IS_ERR(dev->clk[i]))
 			break;
 		clk_prepare_enable(dev->clk[i]);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 

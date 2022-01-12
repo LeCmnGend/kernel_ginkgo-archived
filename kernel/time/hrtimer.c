@@ -53,6 +53,10 @@
 #include <linux/freezer.h>
 #include <linux/compat.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <linux/delay.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/delay.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -157,6 +161,10 @@ struct hrtimer_clock_base *lock_hrtimer_base(const struct hrtimer *timer,
 		}
 		cpu_relax();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		ndelay(TIMER_LOCK_TIGHT_LOOP_DELAY_NS);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ndelay(TIMER_LOCK_TIGHT_LOOP_DELAY_NS);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1080,6 +1088,10 @@ int hrtimer_cancel(struct hrtimer *timer)
 			return ret;
 		cpu_relax();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		ndelay(TIMER_LOCK_TIGHT_LOOP_DELAY_NS);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ndelay(TIMER_LOCK_TIGHT_LOOP_DELAY_NS);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1613,9 +1625,15 @@ long hrtimer_nanosleep(const struct timespec64 *rqtp,
 
 	restart = &current->restart_block;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	restart->nanosleep.clockid = t.timer.base->clockid;
 	restart->nanosleep.expires = hrtimer_get_expires_tv64(&t.timer);
 	set_restart_fn(restart, hrtimer_nanosleep_restart);
+=======
+	restart->fn = hrtimer_nanosleep_restart;
+	restart->nanosleep.clockid = t.timer.base->clockid;
+	restart->nanosleep.expires = hrtimer_get_expires_tv64(&t.timer);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	restart->fn = hrtimer_nanosleep_restart;
 	restart->nanosleep.clockid = t.timer.base->clockid;

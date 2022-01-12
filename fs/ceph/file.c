@@ -1729,7 +1729,10 @@ const struct file_operations ceph_file_fops = {
 	.fsync = ceph_fsync,
 	.lock = ceph_lock,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.setlease = simple_nosetlease,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.flock = ceph_flock,

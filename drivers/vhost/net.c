@@ -467,7 +467,10 @@ static void handle_tx(struct vhost_net *net)
 	struct socket *sock;
 	struct vhost_net_ubuf_ref *uninitialized_var(ubufs);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct ubuf_info *ubuf;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool zcopy, zcopy_used;
@@ -537,7 +540,13 @@ static void handle_tx(struct vhost_net *net)
 		/* use msg_control to pass vhost zerocopy ubuf info to skb */
 		if (zcopy_used) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ubuf = nvq->ubuf_info + nvq->upend_idx;
+=======
+			struct ubuf_info *ubuf;
+			ubuf = nvq->ubuf_info + nvq->upend_idx;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			struct ubuf_info *ubuf;
 			ubuf = nvq->ubuf_info + nvq->upend_idx;
@@ -572,8 +581,12 @@ static void handle_tx(struct vhost_net *net)
 		if (unlikely(err < 0)) {
 			if (zcopy_used) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if (vq->heads[ubuf->desc].len == VHOST_DMA_IN_PROGRESS)
 					vhost_net_ubuf_put(ubufs);
+=======
+				vhost_net_ubuf_put(ubufs);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				vhost_net_ubuf_put(ubufs);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

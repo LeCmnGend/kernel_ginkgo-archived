@@ -114,8 +114,12 @@ struct kfifo_rec_ptr_2 __STRUCT_KFIFO_PTR(unsigned char, 2, void);
  * outside of the fifo structure.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define	__is_kfifo_ptr(fifo) \
 	(sizeof(*fifo) == sizeof(STRUCT_KFIFO_PTR(typeof(*(fifo)->type))))
+=======
+#define	__is_kfifo_ptr(fifo)	(sizeof(*fifo) == sizeof(struct __kfifo))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define	__is_kfifo_ptr(fifo)	(sizeof(*fifo) == sizeof(struct __kfifo))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

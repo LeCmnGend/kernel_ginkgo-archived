@@ -13,7 +13,11 @@
 
 struct trace_seq {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	char			buffer[PAGE_SIZE];
+=======
+	unsigned char		buffer[PAGE_SIZE];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned char		buffer[PAGE_SIZE];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -56,7 +60,11 @@ static inline int trace_seq_used(struct trace_seq *s)
  * of that write.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline char *
+=======
+static inline unsigned char *
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline unsigned char *
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

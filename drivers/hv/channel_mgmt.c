@@ -769,12 +769,15 @@ static void init_vp_index(struct vmbus_channel *channel, u16 dev_type)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define UNLOAD_DELAY_UNIT_MS	10		/* 10 milliseconds */
 #define UNLOAD_WAIT_MS		(100*1000)	/* 100 seconds */
 #define UNLOAD_WAIT_LOOPS	(UNLOAD_WAIT_MS/UNLOAD_DELAY_UNIT_MS)
 #define UNLOAD_MSG_MS		(5*1000)	/* Every 5 seconds */
 #define UNLOAD_MSG_LOOPS	(UNLOAD_MSG_MS/UNLOAD_DELAY_UNIT_MS)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void vmbus_wait_for_unload(void)
@@ -784,7 +787,11 @@ static void vmbus_wait_for_unload(void)
 	struct hv_message *msg;
 	struct vmbus_channel_message_header *hdr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 message_type, i;
+=======
+	u32 message_type;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 message_type;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -797,6 +804,7 @@ static void vmbus_wait_for_unload(void)
 	 * functional and vmbus_unload_response() will complete
 	 * vmbus_connection.unload_event. If not, the last thing we can do is
 	 * read message pages for all CPUs directly.
+<<<<<<< HEAD
 <<<<<<< HEAD
 	 *
 	 * Wait up to 100 seconds since an Azure host must writeback any dirty
@@ -811,10 +819,15 @@ static void vmbus_wait_for_unload(void)
 		if (completion_done(&vmbus_connection.unload_event))
 			goto completed;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 */
 	while (1) {
 		if (completion_done(&vmbus_connection.unload_event))
 			break;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		for_each_online_cpu(cpu) {
@@ -839,6 +852,7 @@ static void vmbus_wait_for_unload(void)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/*
 		 * Give a notice periodically so someone watching the
 		 * serial output won't think it is completely hung.
@@ -851,6 +865,11 @@ static void vmbus_wait_for_unload(void)
 	pr_err("Continuing even though VMBus UNLOAD did not complete\n");
 
 completed:
+=======
+		mdelay(10);
+	}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		mdelay(10);
 	}
@@ -1030,7 +1049,12 @@ static void vmbus_onoffer_rescind(struct vmbus_channel_message_header *hdr)
 			put_device(dev);
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else if (channel->primary_channel != NULL) {
+=======
+	}
+	if (channel->primary_channel != NULL) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	}
 	if (channel->primary_channel != NULL) {
@@ -1276,8 +1300,11 @@ channel_message_table[CHANNELMSG_COUNT] = {
 	{ CHANNELMSG_20,			0, NULL },
 	{ CHANNELMSG_TL_CONNECT_REQUEST,	0, NULL },
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ CHANNELMSG_22,			0, NULL },
 	{ CHANNELMSG_TL_CONNECT_RESULT,		0, NULL },
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -1292,6 +1319,7 @@ void vmbus_onmessage(void *context)
 	struct hv_message *msg = context;
 	struct vmbus_channel_message_header *hdr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	hdr = (struct vmbus_channel_message_header *)msg->u.payload;
 
@@ -1301,6 +1329,8 @@ void vmbus_onmessage(void *context)
 	 */
 	channel_message_table[hdr->msgtype].message_handler(hdr);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int size;
 
 	hdr = (struct vmbus_channel_message_header *)msg->u.payload;
@@ -1318,6 +1348,9 @@ void vmbus_onmessage(void *context)
 		channel_message_table[hdr->msgtype].message_handler(hdr);
 	else
 		pr_err("Unhandled channel message type %d\n", hdr->msgtype);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

@@ -713,7 +713,11 @@ static ide_startstop_t cdrom_start_rw(ide_drive_t *drive, struct request *rq)
 	int write = rq_data_dir(rq) == WRITE;
 	unsigned short sectors_per_frame =
 <<<<<<< HEAD
+<<<<<<< HEAD
 		queue_logical_block_size(q) >> SECTOR_SHIFT;
+=======
+		queue_logical_block_size(q) >> SECTOR_BITS;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		queue_logical_block_size(q) >> SECTOR_BITS;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -924,7 +928,11 @@ static int cdrom_read_capacity(ide_drive_t *drive, unsigned long *capacity,
 	 */
 	blocklen = be32_to_cpu(capbuf.blocklen);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	blocklen = (blocklen >> SECTOR_SHIFT) << SECTOR_SHIFT;
+=======
+	blocklen = (blocklen >> SECTOR_BITS) << SECTOR_BITS;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	blocklen = (blocklen >> SECTOR_BITS) << SECTOR_BITS;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -944,7 +952,11 @@ static int cdrom_read_capacity(ide_drive_t *drive, unsigned long *capacity,
 
 	*capacity = 1 + be32_to_cpu(capbuf.lba);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	*sectors_per_frame = blocklen >> SECTOR_SHIFT;
+=======
+	*sectors_per_frame = blocklen >> SECTOR_BITS;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	*sectors_per_frame = blocklen >> SECTOR_BITS;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1025,7 +1037,11 @@ int ide_cd_read_toc(ide_drive_t *drive, struct request_sense *sense)
 
 	blk_queue_logical_block_size(drive->queue,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				     sectors_per_frame << SECTOR_SHIFT);
+=======
+				     sectors_per_frame << SECTOR_BITS);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				     sectors_per_frame << SECTOR_BITS);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

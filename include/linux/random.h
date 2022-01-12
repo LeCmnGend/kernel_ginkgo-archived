@@ -39,7 +39,11 @@ extern int wait_for_random_bytes(void);
 extern int add_random_ready_callback(struct random_ready_callback *rdy);
 extern void del_random_ready_callback(struct random_ready_callback *rdy);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern int __must_check get_random_bytes_arch(void *buf, int nbytes);
+=======
+extern void get_random_bytes_arch(void *buf, int nbytes);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern void get_random_bytes_arch(void *buf, int nbytes);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -112,6 +116,7 @@ declare_get_random_var_wait(long)
 unsigned long randomize_page(unsigned long start, unsigned long range);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * This is designed to be standalone for just prandom
  * users, but for now we include it from <linux/random.h>
@@ -119,6 +124,8 @@ unsigned long randomize_page(unsigned long start, unsigned long range);
  */
 #include <linux/prandom.h>
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 u32 prandom_u32(void);
 void prandom_bytes(void *buf, size_t nbytes);
 void prandom_seed(u32 seed);
@@ -174,6 +181,9 @@ static inline void prandom_seed_state(struct rnd_state *state, u64 seed)
 	state->s3 = __seed(i,  16U);
 	state->s4 = __seed(i, 128U);
 }
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #ifdef CONFIG_ARCH_RANDOM
@@ -206,12 +216,18 @@ static inline bool arch_has_random_seed(void)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Pseudo random number generator from numerical recipes. */
 static inline u32 next_pseudo_random32(u32 seed)
 {
 	return seed * 1664525 + 1013904223;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* _LINUX_RANDOM_H */

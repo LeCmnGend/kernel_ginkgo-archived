@@ -89,7 +89,11 @@ static int __init set_permissions(pte_t *ptep, pgtable_t token,
 {
 	efi_memory_desc_t *md = data;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pte_t pte = READ_ONCE(*ptep);
+=======
+	pte_t pte = *ptep;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pte_t pte = *ptep;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

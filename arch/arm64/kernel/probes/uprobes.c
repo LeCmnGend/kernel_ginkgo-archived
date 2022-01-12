@@ -42,7 +42,11 @@ int arch_uprobe_analyze_insn(struct arch_uprobe *auprobe, struct mm_struct *mm,
 	/* TODO: Currently we do not support AARCH32 instruction probing */
 	if (mm->context.flags & MMCF_AARCH32)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -EOPNOTSUPP;
+=======
+		return -ENOTSUPP;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -ENOTSUPP;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -200,7 +204,12 @@ static int uprobe_single_step_handler(struct pt_regs *regs,
 /* uprobe breakpoint handler hook */
 static struct break_hook uprobes_break_hook = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.imm = BRK64_ESR_UPROBES,
+=======
+	.esr_mask = BRK64_ESR_MASK,
+	.esr_val = BRK64_ESR_UPROBES,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.esr_mask = BRK64_ESR_MASK,
 	.esr_val = BRK64_ESR_UPROBES,
@@ -216,8 +225,13 @@ static struct step_hook uprobes_step_hook = {
 static int __init arch_init_uprobes(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	register_user_break_hook(&uprobes_break_hook);
 	register_user_step_hook(&uprobes_step_hook);
+=======
+	register_break_hook(&uprobes_break_hook);
+	register_step_hook(&uprobes_step_hook);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	register_break_hook(&uprobes_break_hook);
 	register_step_hook(&uprobes_step_hook);

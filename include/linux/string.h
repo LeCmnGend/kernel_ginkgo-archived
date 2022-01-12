@@ -31,10 +31,13 @@ size_t strlcpy(char *, const char *, size_t);
 ssize_t strscpy(char *, const char *, size_t);
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 /* Wraps calls to strscpy()/memset(), no arch specific code required */
 ssize_t strscpy_pad(char *dest, const char *src, size_t count);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifndef __HAVE_ARCH_STRCAT

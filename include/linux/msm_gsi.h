@@ -1277,7 +1277,11 @@ int gsi_alloc_evt_ring(struct gsi_evt_ring_props *props, unsigned long dev_hdl,
  */
 int gsi_write_evt_ring_scratch(unsigned long evt_ring_hdl,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		union gsi_evt_scratch val);
+=======
+		union __packed gsi_evt_scratch val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		union __packed gsi_evt_scratch val);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1408,7 +1412,11 @@ int gsi_alloc_channel(struct gsi_chan_props *props, unsigned long dev_hdl,
  */
 int gsi_write_channel_scratch(unsigned long chan_hdl,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		union gsi_channel_scratch val);
+=======
+		union __packed gsi_channel_scratch val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		union __packed gsi_channel_scratch val);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1425,7 +1433,11 @@ int gsi_write_channel_scratch(unsigned long chan_hdl,
  */
 int gsi_write_channel_scratch3_reg(unsigned long chan_hdl,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		union gsi_wdi_channel_scratch3_reg val);
+=======
+		union __packed gsi_wdi_channel_scratch3_reg val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		union __packed gsi_wdi_channel_scratch3_reg val);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1467,7 +1479,11 @@ int gsi_write_channel_scratch2_reg(unsigned long chan_hdl,
  */
 int gsi_read_channel_scratch(unsigned long chan_hdl,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		union gsi_channel_scratch *val);
+=======
+		union __packed gsi_channel_scratch *val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		union __packed gsi_channel_scratch *val);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1499,7 +1515,11 @@ int gsi_read_wdi3_channel_scratch2_reg(unsigned long chan_hdl,
  */
 int gsi_update_mhi_channel_scratch(unsigned long chan_hdl,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		struct gsi_mhi_channel_scratch mscr);
+=======
+		struct __packed gsi_mhi_channel_scratch mscr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		struct __packed gsi_mhi_channel_scratch mscr);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1909,7 +1929,11 @@ static inline int gsi_alloc_evt_ring(struct gsi_evt_ring_props *props,
 
 static inline int gsi_write_evt_ring_scratch(unsigned long evt_ring_hdl,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		union gsi_evt_scratch val)
+=======
+		union __packed gsi_evt_scratch val)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		union __packed gsi_evt_scratch val)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1953,7 +1977,11 @@ static inline int gsi_alloc_channel(struct gsi_chan_props *props,
 
 static inline int gsi_write_channel_scratch(unsigned long chan_hdl,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		union gsi_channel_scratch val)
+=======
+		union __packed gsi_channel_scratch val)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		union __packed gsi_channel_scratch val)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1962,7 +1990,11 @@ static inline int gsi_write_channel_scratch(unsigned long chan_hdl,
 }
 static inline int gsi_write_channel_scratch3_reg(unsigned long chan_hdl,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		union gsi_wdi_channel_scratch3_reg val)
+=======
+		union __packed gsi_wdi_channel_scratch3_reg val)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		union __packed gsi_wdi_channel_scratch3_reg val)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1978,7 +2010,11 @@ static inline int gsi_write_channel_scratch2_reg(unsigned long chan_hdl,
 
 static inline int gsi_read_channel_scratch(unsigned long chan_hdl,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		union gsi_channel_scratch *val)
+=======
+		union __packed gsi_channel_scratch *val)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		union __packed gsi_channel_scratch *val)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1988,7 +2024,11 @@ static inline int gsi_read_channel_scratch(unsigned long chan_hdl,
 
 static inline int gsi_update_mhi_channel_scratch(unsigned long chan_hdl,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		struct gsi_mhi_channel_scratch mscr)
+=======
+		struct __packed gsi_mhi_channel_scratch mscr)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		struct __packed gsi_mhi_channel_scratch mscr)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

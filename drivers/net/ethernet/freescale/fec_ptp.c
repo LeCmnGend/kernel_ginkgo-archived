@@ -397,6 +397,7 @@ static int fec_ptp_gettime(struct ptp_clock_info *ptp, struct timespec64 *ts)
 	unsigned long flags;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&adapter->ptp_clk_mutex);
 	/* Check the ptp clock */
 	if (!adapter->ptp_clk_on) {
@@ -407,6 +408,11 @@ static int fec_ptp_gettime(struct ptp_clock_info *ptp, struct timespec64 *ts)
 	ns = timecounter_read(&adapter->tc);
 	spin_unlock_irqrestore(&adapter->tmreg_lock, flags);
 	mutex_unlock(&adapter->ptp_clk_mutex);
+=======
+	spin_lock_irqsave(&adapter->tmreg_lock, flags);
+	ns = timecounter_read(&adapter->tc);
+	spin_unlock_irqrestore(&adapter->tmreg_lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spin_lock_irqsave(&adapter->tmreg_lock, flags);
 	ns = timecounter_read(&adapter->tc);
@@ -593,10 +599,13 @@ void fec_ptp_init(struct platform_device *pdev)
 
 	fep->cycle_speed = clk_get_rate(fep->clk_ptp);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!fep->cycle_speed) {
 		fep->cycle_speed = NSEC_PER_SEC;
 		dev_err(&fep->pdev->dev, "clk_ptp clock rate is zero\n");
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	fep->ptp_inc = NSEC_PER_SEC / fep->cycle_speed;

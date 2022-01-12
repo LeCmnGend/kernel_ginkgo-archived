@@ -319,7 +319,10 @@ static const char *kgsl_sync_fence_driver_name(struct dma_fence *fence)
 static const char *kgsl_sync_timeline_name(struct dma_fence *fence)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct kgsl_sync_fence *kfence = (struct kgsl_sync_fence *)fence;
@@ -327,9 +330,12 @@ static const char *kgsl_sync_timeline_name(struct dma_fence *fence)
 
 	return ktimeline->name;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #else
 	return "kgsl_sync_timeline";
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -339,7 +345,10 @@ int kgsl_sync_timeline_create(struct kgsl_context *context)
 	struct kgsl_sync_timeline *ktimeline;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
@@ -349,7 +358,10 @@ int kgsl_sync_timeline_create(struct kgsl_context *context)
 	 */
 	char ktimeline_name[sizeof(ktimeline->name)] = {};
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -358,7 +370,10 @@ int kgsl_sync_timeline_create(struct kgsl_context *context)
 		return -ENOENT;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	snprintf(ktimeline_name, sizeof(ktimeline_name),
@@ -367,7 +382,10 @@ int kgsl_sync_timeline_create(struct kgsl_context *context)
 		current->group_leader->comm, current->group_leader->pid,
 		current->comm, current->pid);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -379,9 +397,13 @@ int kgsl_sync_timeline_create(struct kgsl_context *context)
 
 	kref_init(&ktimeline->kref);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
 	strlcpy(ktimeline->name, ktimeline_name, KGSL_TIMELINE_NAME_LEN);
 #endif
+=======
+	strlcpy(ktimeline->name, ktimeline_name, KGSL_TIMELINE_NAME_LEN);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	strlcpy(ktimeline->name, ktimeline_name, KGSL_TIMELINE_NAME_LEN);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -473,7 +495,10 @@ static void kgsl_sync_fence_callback(struct dma_fence *fence,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void kgsl_get_fence_names(struct dma_fence *fence,
@@ -522,7 +547,10 @@ static void kgsl_get_fence_names(struct dma_fence *fence,
 	}
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -538,11 +566,14 @@ struct kgsl_sync_fence_cb *kgsl_sync_fence_async_wait(int fd,
 		return ERR_PTR(-EINVAL);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (test_bit(DMA_FENCE_FLAG_SIGNALED_BIT, &fence->flags)) {
 		dma_fence_put(fence);
 		return NULL;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* create the callback */
@@ -557,9 +588,13 @@ struct kgsl_sync_fence_cb *kgsl_sync_fence_async_wait(int fd,
 	kcb->func = func;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
 	kgsl_get_fence_names(fence, info_ptr);
 #endif
+=======
+	kgsl_get_fence_names(fence, info_ptr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kgsl_get_fence_names(fence, info_ptr);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

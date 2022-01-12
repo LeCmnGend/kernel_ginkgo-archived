@@ -277,6 +277,10 @@ static void _retire_timestamp(struct kgsl_drawobj *drawobj)
 {
 	struct kgsl_context *context = drawobj->context;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct adreno_context *drawctxt = ADRENO_CONTEXT(context);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct adreno_context *drawctxt = ADRENO_CONTEXT(context);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -304,6 +308,7 @@ static void _retire_timestamp(struct kgsl_drawobj *drawobj)
 	 * So avoid reading GPU register directly for A3xx.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (adreno_is_a3xx(ADRENO_DEVICE(device))) {
 		trace_adreno_cmdbatch_retired(drawobj, -1, 0, 0, drawctxt->rb,
 				0, 0);
@@ -312,12 +317,17 @@ static void _retire_timestamp(struct kgsl_drawobj *drawobj)
 			adreno_get_rptr(drawctxt->rb), 0);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (adreno_is_a3xx(ADRENO_DEVICE(device)))
 		trace_adreno_cmdbatch_retired(drawobj, -1, 0, 0, drawctxt->rb,
 				0, 0);
 	else
 		trace_adreno_cmdbatch_retired(drawobj, -1, 0, 0, drawctxt->rb,
 			adreno_get_rptr(drawctxt->rb), 0);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kgsl_drawobj_destroy(drawobj);
 }
@@ -550,15 +560,21 @@ static int sendcmd(struct adreno_device *adreno_dev,
 	struct adreno_gpudev *gpudev = ADRENO_GPU_DEVICE(adreno_dev);
 	struct adreno_dispatcher *dispatcher = &adreno_dev->dispatcher;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct adreno_dispatcher_drawqueue *dispatch_q =
 				ADRENO_DRAWOBJ_DISPATCH_DRAWQUEUE(drawobj);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct adreno_context *drawctxt = ADRENO_CONTEXT(drawobj->context);
 	struct adreno_dispatcher_drawqueue *dispatch_q =
 				ADRENO_DRAWOBJ_DISPATCH_DRAWQUEUE(drawobj);
 	struct adreno_submit_time time;
 	uint64_t secs = 0;
 	unsigned long nsecs = 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret;
 
@@ -569,6 +585,11 @@ static int sendcmd(struct adreno_device *adreno_dev,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	memset(&time, 0x0, sizeof(time));
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memset(&time, 0x0, sizeof(time));
 
@@ -599,7 +620,11 @@ static int sendcmd(struct adreno_device *adreno_dev,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = adreno_ringbuffer_submitcmd(adreno_dev, cmdobj, NULL);
+=======
+	ret = adreno_ringbuffer_submitcmd(adreno_dev, cmdobj, &time);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = adreno_ringbuffer_submitcmd(adreno_dev, cmdobj, &time);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -663,6 +688,12 @@ static int sendcmd(struct adreno_device *adreno_dev,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	secs = time.ktime;
+	nsecs = do_div(secs, 1000000000);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	secs = time.ktime;
 	nsecs = do_div(secs, 1000000000);
@@ -680,9 +711,12 @@ static int sendcmd(struct adreno_device *adreno_dev,
 			msecs_to_jiffies(adreno_drawobj_timeout);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_unlock(&device->mutex);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	trace_adreno_cmdbatch_submitted(drawobj, (int) dispatcher->inflight,
 		time.ticks, (unsigned long) secs, nsecs / 1000, drawctxt->rb,
 		adreno_get_rptr(drawctxt->rb));
@@ -691,6 +725,9 @@ static int sendcmd(struct adreno_device *adreno_dev,
 
 	cmdobj->submit_ticks = time.ticks;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dispatch_q->cmd_q[dispatch_q->tail] = cmdobj;
 	dispatch_q->tail = (dispatch_q->tail + 1) %
@@ -1201,13 +1238,19 @@ static inline int _verify_cmdobj(struct kgsl_device_private *dev_priv,
 					== false)
 					return -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			/*
 			 * Clear the wake on touch bit to indicate an IB has
 			 * been submitted since the last time we set it.
 			 * But only clear it when we have rendering commands.
 			 */
 			device->flags &= ~KGSL_FLAG_WAKE_ON_TOUCH;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 
@@ -1504,11 +1547,17 @@ int adreno_dispatcher_queue_cmds(struct kgsl_device_private *dev_priv,
 	spin_unlock(&drawctxt->lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (device->pwrctrl.l2pc_update_queue)
 		kgsl_pwrctrl_update_l2pc(&adreno_dev->dev,
 				KGSL_L2PC_QUEUE_TIMEOUT);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Add the context to the dispatcher pending list */
 	dispatcher_queue_context(adreno_dev, drawctxt);
@@ -2373,7 +2422,13 @@ static void retire_cmdobj(struct adreno_device *adreno_dev,
 		struct kgsl_drawobj_cmd *cmdobj)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct kgsl_drawobj *drawobj = DRAWOBJ(cmdobj);
+=======
+	struct adreno_dispatcher *dispatcher = &adreno_dev->dispatcher;
+	struct kgsl_drawobj *drawobj = DRAWOBJ(cmdobj);
+	struct adreno_context *drawctxt = ADRENO_CONTEXT(drawobj->context);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct adreno_dispatcher *dispatcher = &adreno_dev->dispatcher;
 	struct kgsl_drawobj *drawobj = DRAWOBJ(cmdobj);
@@ -2395,31 +2450,43 @@ static void retire_cmdobj(struct adreno_device *adreno_dev,
 	 * So avoid reading GPU register directly for A3xx.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (adreno_is_a3xx(adreno_dev)) {
 		trace_adreno_cmdbatch_retired(drawobj,
 			(int) dispatcher->inflight, start, end,
 			ADRENO_DRAWOBJ_RB(drawobj), 0, cmdobj->fault_recovery);
 	} else {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (adreno_is_a3xx(adreno_dev))
 		trace_adreno_cmdbatch_retired(drawobj,
 			(int) dispatcher->inflight, start, end,
 			ADRENO_DRAWOBJ_RB(drawobj), 0, cmdobj->fault_recovery);
 	else
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		trace_adreno_cmdbatch_retired(drawobj,
 			(int) dispatcher->inflight, start, end,
 			ADRENO_DRAWOBJ_RB(drawobj),
 			adreno_get_rptr(drawctxt->rb), cmdobj->fault_recovery);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	drawctxt->submit_retire_ticks[drawctxt->ticks_index] =
 		end - cmdobj->submit_ticks;
 
 	drawctxt->ticks_index = (drawctxt->ticks_index + 1) %
 		SUBMIT_RETIRE_TICKS_SIZE;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	kgsl_drawobj_destroy(drawobj);

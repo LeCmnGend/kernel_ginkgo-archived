@@ -617,8 +617,11 @@ static int __init cuse_init(void)
 	cuse_channel_fops.open		= cuse_channel_open;
 	cuse_channel_fops.release	= cuse_channel_release;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* CUSE is not prepared for FUSE_DEV_IOC_CLONE */
 	cuse_channel_fops.unlocked_ioctl	= NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

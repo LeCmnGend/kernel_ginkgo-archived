@@ -287,7 +287,11 @@ static int ppp_connect_channel(struct channel *pch, int unit);
 static int ppp_disconnect_channel(struct channel *pch);
 static void ppp_destroy_channel(struct channel *pch);
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int unit_get(struct idr *p, void *ptr, int min);
+=======
+static int unit_get(struct idr *p, void *ptr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int unit_get(struct idr *p, void *ptr);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -982,6 +986,7 @@ static int ppp_unit_register(struct ppp *ppp, int unit, bool ifname_is_set)
 
 	if (unit < 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = unit_get(&pn->units_idr, ppp, 0);
 		if (ret < 0)
 			goto err;
@@ -996,6 +1001,11 @@ static int ppp_unit_register(struct ppp *ppp, int unit, bool ifname_is_set)
 					goto err;
 			}
 		}
+=======
+		ret = unit_get(&pn->units_idr, ppp);
+		if (ret < 0)
+			goto err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = unit_get(&pn->units_idr, ppp);
 		if (ret < 0)
@@ -1150,7 +1160,11 @@ static int ppp_nl_newlink(struct net *src_net, struct net_device *dev,
 	 * userspace to infer the device name using to the PPPIOCGUNIT ioctl.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!tb[IFLA_IFNAME] || !nla_len(tb[IFLA_IFNAME]) || !*(char *)nla_data(tb[IFLA_IFNAME]))
+=======
+	if (!tb[IFLA_IFNAME])
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!tb[IFLA_IFNAME])
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3340,9 +3354,15 @@ static int unit_set(struct idr *p, void *ptr, int n)
 
 /* get new free unit number and associate pointer with it */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int unit_get(struct idr *p, void *ptr, int min)
 {
 	return idr_alloc(p, ptr, min, 0, GFP_KERNEL);
+=======
+static int unit_get(struct idr *p, void *ptr)
+{
+	return idr_alloc(p, ptr, 0, 0, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int unit_get(struct idr *p, void *ptr)
 {

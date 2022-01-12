@@ -1459,7 +1459,10 @@ int emac_mac_tx_buf_send(struct emac_adapter *adpt, struct emac_tx_queue *tx_q,
 	struct emac_tpd tpd;
 	u32 prod_idx;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int len;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1482,10 +1485,16 @@ int emac_mac_tx_buf_send(struct emac_adapter *adpt, struct emac_tx_queue *tx_q,
 		TPD_TYP_SET(&tpd, 1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	len = skb->len;
 	emac_tx_fill_tpd(adpt, tx_q, skb, &tpd);
 
 	netdev_sent_queue(adpt->netdev, len);
+=======
+	emac_tx_fill_tpd(adpt, tx_q, skb, &tpd);
+
+	netdev_sent_queue(adpt->netdev, skb->len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	emac_tx_fill_tpd(adpt, tx_q, skb, &tpd);
 

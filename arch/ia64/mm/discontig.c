@@ -101,7 +101,11 @@ static int __init build_node_maps(unsigned long start, unsigned long len,
  * called yet.  Note that node 0 will also count all non-existent cpus.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int early_nr_cpus_node(int node)
+=======
+static int __meminit early_nr_cpus_node(int node)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int __meminit early_nr_cpus_node(int node)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -120,7 +124,11 @@ static int __meminit early_nr_cpus_node(int node)
  * @node: the node id.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static unsigned long compute_pernodesize(int node)
+=======
+static unsigned long __meminit compute_pernodesize(int node)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static unsigned long __meminit compute_pernodesize(int node)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -421,7 +429,11 @@ static void __init reserve_pernode_space(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void scatter_node_data(void)
+=======
+static void __meminit scatter_node_data(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void __meminit scatter_node_data(void)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

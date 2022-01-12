@@ -480,6 +480,7 @@ static void iommu_enable_irq_remapping(struct intel_iommu *iommu)
 	/* Enable interrupt-remapping */
 	iommu->gcmd |= DMA_GCMD_IRE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	writel(iommu->gcmd, iommu->reg + DMAR_GCMD_REG);
 	IOMMU_WAIT_OP(iommu, DMAR_GSTS_REG,
 		      readl, (sts & DMA_GSTS_IRES), sts);
@@ -493,12 +494,17 @@ static void iommu_enable_irq_remapping(struct intel_iommu *iommu)
 	}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	iommu->gcmd &= ~DMA_GCMD_CFI;  /* Block compatibility-format MSIs */
 	writel(iommu->gcmd, iommu->reg + DMAR_GCMD_REG);
 
 	IOMMU_WAIT_OP(iommu, DMAR_GSTS_REG,
 		      readl, (sts & DMA_GSTS_IRES), sts);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * With CFI clear in the Global Command register, we should be
@@ -617,6 +623,7 @@ out_free_table:
 static void intel_teardown_irq_remapping(struct intel_iommu *iommu)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct fwnode_handle *fn;
 
 	if (iommu && iommu->ir_table) {
@@ -633,6 +640,8 @@ static void intel_teardown_irq_remapping(struct intel_iommu *iommu)
 			irq_domain_remove(iommu->ir_domain);
 			irq_domain_free_fwnode(fn);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (iommu && iommu->ir_table) {
 		if (iommu->ir_msi_domain) {
 			irq_domain_remove(iommu->ir_msi_domain);
@@ -640,6 +649,9 @@ static void intel_teardown_irq_remapping(struct intel_iommu *iommu)
 		}
 		if (iommu->ir_domain) {
 			irq_domain_remove(iommu->ir_domain);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			iommu->ir_domain = NULL;
 		}
@@ -1387,8 +1399,11 @@ static int intel_irq_remapping_alloc(struct irq_domain *domain,
 		irq_cfg = irqd_cfg(irq_data);
 		if (!irq_data || !irq_cfg) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (!i)
 				kfree(data);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			ret = -EINVAL;

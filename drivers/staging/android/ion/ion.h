@@ -30,7 +30,10 @@
 #include <linux/miscdevice.h>
 #include <linux/bitops.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/msm_dma_iommu_mapping.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include "ion_kernel.h"
@@ -125,6 +128,7 @@ struct ion_vma_list {
  * @vmas:		list of vma's mapping this buffer
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct ion_dma_buf_attachment;
 struct ion_buffer {
 	struct ion_heap *heap;
@@ -142,6 +146,8 @@ struct ion_buffer {
 	int kmap_refcount;
 	struct msm_iommu_data iommu_data;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct ion_buffer {
 	union {
 		struct rb_node node;
@@ -160,6 +166,9 @@ struct ion_buffer {
 	struct sg_table *sg_table;
 	struct list_head attachments;
 	struct list_head vmas;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
@@ -175,10 +184,13 @@ void ion_buffer_destroy(struct ion_buffer *buffer);
 struct ion_device {
 	struct miscdevice dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct plist_head heaps;
 	struct ion_heap_data *heap_data;
 	u32 heap_count;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct rb_root buffers;
 	/* buffer_lock used for adding and removing buffers */
 	struct mutex buffer_lock;
@@ -186,6 +198,9 @@ struct ion_device {
 	struct plist_head heaps;
 	struct dentry *debug_root;
 	int heap_cnt;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
@@ -268,6 +283,10 @@ struct ion_heap_ops {
 struct ion_heap {
 	struct plist_node node;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct ion_device *dev;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct ion_device *dev;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -279,8 +298,11 @@ struct ion_heap {
 	struct shrinker shrinker;
 	void *priv;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct workqueue_struct *wq;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct list_head free_list;
 	size_t free_list_size;
 	/* Protect the free list */
@@ -290,6 +312,9 @@ struct ion_heap {
 	atomic_long_t total_allocated;
 
 	int (*debug_show)(struct ion_heap *heap, struct seq_file *, void *);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
@@ -300,10 +325,14 @@ struct ion_heap {
  * indicates whether this ion buffer is cached
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline bool ion_buffer_cached(struct ion_buffer *buffer)
 {
 	return buffer->flags & ION_FLAG_CACHED;
 }
+=======
+bool ion_buffer_cached(struct ion_buffer *buffer);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 bool ion_buffer_cached(struct ion_buffer *buffer);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -323,7 +352,11 @@ bool ion_buffer_fault_user_mappings(struct ion_buffer *buffer);
  * returns a valid device or -PTR_ERR
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct ion_device *ion_device_create(struct ion_heap_data *heap_data);
+=======
+struct ion_device *ion_device_create(void);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 struct ion_device *ion_device_create(void);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -334,7 +367,11 @@ struct ion_device *ion_device_create(void);
  * @heap:		the heap to add
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 void ion_add_heap(struct ion_device *idev, struct ion_heap *heap);
+=======
+void ion_device_add_heap(struct ion_device *dev, struct ion_heap *heap);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void ion_device_add_heap(struct ion_device *dev, struct ion_heap *heap);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -351,6 +388,11 @@ int ion_heap_buffer_zero(struct ion_buffer *buffer);
 int ion_heap_pages_zero(struct page *page, size_t size, pgprot_t pgprot);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+int ion_alloc_fd(size_t len, unsigned int heap_id_mask, unsigned int flags);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int ion_alloc_fd(size_t len, unsigned int heap_id_mask, unsigned int flags);
 
@@ -367,7 +409,10 @@ void ion_heap_init_shrinker(struct ion_heap *heap);
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * ion_heap_init_deferred_free -- initialize deferred free functionality
  * @heap:		the heap
  *
@@ -427,6 +472,9 @@ size_t ion_heap_freelist_shrink(struct ion_heap *heap, size_t size);
 size_t ion_heap_freelist_size(struct ion_heap *heap);
 
 /**
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * functions for creating and destroying the built in ion heaps.
  * architectures can add their own custom architecture specific
@@ -503,7 +551,11 @@ struct ion_page_pool {
 	struct list_head low_items;
 	/* Protect the pool */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spinlock_t lock;
+=======
+	struct mutex mutex;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct mutex mutex;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -550,6 +602,7 @@ int ion_page_pool_shrink(struct ion_page_pool *pool, gfp_t gfp_mask,
  * @dir:		direction of dma transfer
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void ion_pages_sync_for_device(struct device *dev,
 					     struct page *page, size_t size,
 					     enum dma_data_direction dir)
@@ -562,6 +615,8 @@ static inline void ion_pages_sync_for_device(struct device *dev,
 	dma_sync_sg_for_device(dev, &sg, 1, dir);
 }
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void ion_pages_sync_for_device(struct device *dev, struct page *page,
 			       size_t size, enum dma_data_direction dir);
 
@@ -571,6 +626,9 @@ int ion_walk_heaps(int heap_id, enum ion_heap_type type, void *data,
 long ion_ioctl(struct file *filp, unsigned int cmd, unsigned long arg);
 
 int ion_query_heaps(struct ion_heap_query *query);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #endif /* _ION_H */

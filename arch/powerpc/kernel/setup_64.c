@@ -793,6 +793,7 @@ static enum l1d_flush_type enabled_flush_types;
 static void *l1d_flush_fallback_area;
 static bool no_rfi_flush;
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool no_entry_flush;
 static bool no_uaccess_flush;
 bool rfi_flush;
@@ -800,6 +801,9 @@ bool entry_flush;
 bool uaccess_flush;
 DEFINE_STATIC_KEY_FALSE(uaccess_flush_key);
 EXPORT_SYMBOL(uaccess_flush_key);
+=======
+bool rfi_flush;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 bool rfi_flush;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -812,6 +816,7 @@ static int __init handle_no_rfi_flush(char *p)
 }
 early_param("no_rfi_flush", handle_no_rfi_flush);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static int __init handle_no_entry_flush(char *p)
 {
@@ -829,6 +834,8 @@ static int __init handle_no_uaccess_flush(char *p)
 }
 early_param("no_uaccess_flush", handle_no_uaccess_flush);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -863,6 +870,7 @@ void rfi_flush_enable(bool enable)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void entry_flush_enable(bool enable)
 {
 	if (enable) {
@@ -889,6 +897,8 @@ void uaccess_flush_enable(bool enable)
 	uaccess_flush = enable;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void __ref init_fallback_flush(void)
@@ -933,6 +943,7 @@ void setup_rfi_flush(enum l1d_flush_type types, bool enable)
 	enabled_flush_types = types;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!cpu_mitigations_off() && !no_rfi_flush)
 		rfi_flush_enable(enable);
 }
@@ -956,10 +967,15 @@ void setup_uaccess_flush(bool enable)
 }
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!no_rfi_flush && !cpu_mitigations_off())
 		rfi_flush_enable(enable);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_DEBUG_FS
 static int rfi_flush_set(void *data, u64 val)
@@ -988,6 +1004,7 @@ static int rfi_flush_get(void *data, u64 *val)
 
 DEFINE_SIMPLE_ATTRIBUTE(fops_rfi_flush, rfi_flush_get, rfi_flush_set, "%llu\n");
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static int entry_flush_set(void *data, u64 val)
 {
@@ -1046,6 +1063,11 @@ static __init int rfi_flush_debugfs_init(void)
 	debugfs_create_file("rfi_flush", 0600, powerpc_debugfs_root, NULL, &fops_rfi_flush);
 	debugfs_create_file("entry_flush", 0600, powerpc_debugfs_root, NULL, &fops_entry_flush);
 	debugfs_create_file("uaccess_flush", 0600, powerpc_debugfs_root, NULL, &fops_uaccess_flush);
+=======
+static __init int rfi_flush_debugfs_init(void)
+{
+	debugfs_create_file("rfi_flush", 0600, powerpc_debugfs_root, NULL, &fops_rfi_flush);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static __init int rfi_flush_debugfs_init(void)
 {

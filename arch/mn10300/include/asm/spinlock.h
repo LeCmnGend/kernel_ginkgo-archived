@@ -85,7 +85,10 @@ static inline void arch_spin_lock_flags(arch_spinlock_t *lock,
 		: "memory", "cc");
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define arch_spin_lock_flags	arch_spin_lock_flags
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -188,6 +191,12 @@ static inline int arch_write_trylock(arch_rwlock_t *lock)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define arch_read_lock_flags(lock, flags)  arch_read_lock(lock)
+#define arch_write_lock_flags(lock, flags) arch_write_lock(lock)
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define arch_read_lock_flags(lock, flags)  arch_read_lock(lock)
 #define arch_write_lock_flags(lock, flags) arch_write_lock(lock)

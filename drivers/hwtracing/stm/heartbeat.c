@@ -73,7 +73,11 @@ static void stm_heartbeat_unlink(struct stm_source_data *data)
 static int stm_heartbeat_init(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int i, ret;
+=======
+	int i, ret = -ENOMEM;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int i, ret = -ENOMEM;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -85,10 +89,15 @@ static int stm_heartbeat_init(void)
 		stm_heartbeat[i].data.name =
 			kasprintf(GFP_KERNEL, "heartbeat.%d", i);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!stm_heartbeat[i].data.name) {
 			ret = -ENOMEM;
 			goto fail_unregister;
 		}
+=======
+		if (!stm_heartbeat[i].data.name)
+			goto fail_unregister;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!stm_heartbeat[i].data.name)
 			goto fail_unregister;

@@ -472,6 +472,7 @@ exit:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_TOUCHSCREEN_NT36xxx_HOSTDL_SPI_C3J
 static bool lcd_reset_keep_high = false;
 void set_lcd_reset_gpio_keep_high(bool en)
@@ -483,6 +484,8 @@ EXPORT_SYMBOL(set_lcd_reset_gpio_keep_high);
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int dsi_panel_power_off(struct dsi_panel *panel)
 {
 	int rc = 0;
@@ -491,11 +494,16 @@ static int dsi_panel_power_off(struct dsi_panel *panel)
 		gpio_set_value(panel->reset_config.disp_en_gpio, 0);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_TOUCHSCREEN_NT36xxx_HOSTDL_SPI_C3J
 	if (!lcd_reset_keep_high)
 #endif
 		if (gpio_is_valid(panel->reset_config.reset_gpio))
 			gpio_set_value(panel->reset_config.reset_gpio, 0);
+=======
+	if (gpio_is_valid(panel->reset_config.reset_gpio))
+		gpio_set_value(panel->reset_config.reset_gpio, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (gpio_is_valid(panel->reset_config.reset_gpio))
 		gpio_set_value(panel->reset_config.reset_gpio, 0);
@@ -628,10 +636,13 @@ static int dsi_panel_wled_register(struct dsi_panel *panel,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_BACKLIGHT_KTD3136
 extern int sgm_brightness_set(uint16_t brightness);
 extern int backlight_hbm_set(int hbm_mode);
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int dsi_panel_update_backlight(struct dsi_panel *panel,
@@ -651,6 +662,7 @@ static int dsi_panel_update_backlight(struct dsi_panel *panel,
 		bl_lvl = (((bl_lvl & 0xff) << 8) | (bl_lvl >> 8));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_BACKLIGHT_KTD3136
 	sgm_brightness_set(bl_lvl);
 #else
@@ -658,6 +670,11 @@ static int dsi_panel_update_backlight(struct dsi_panel *panel,
 	if (rc < 0)
 		pr_err("failed to update dcs backlight:%d\n", bl_lvl);
 #endif
+=======
+	rc = mipi_dsi_dcs_set_display_brightness(dsi, bl_lvl);
+	if (rc < 0)
+		pr_err("failed to update dcs backlight:%d\n", bl_lvl);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rc = mipi_dsi_dcs_set_display_brightness(dsi, bl_lvl);
 	if (rc < 0)
@@ -1787,6 +1804,7 @@ const char *cmd_set_prop_map[DSI_CMD_SET_MAX] = {
 	"qcom,mdss-dsi-qsync-on-commands",
 	"qcom,mdss-dsi-qsync-off-commands",
 <<<<<<< HEAD
+<<<<<<< HEAD
 	"qcom,mdss-dsi-hbm1-on-command",
 	"qcom,mdss-dsi-hbm2-on-command",
 	"qcom,mdss-dsi-hbm3-on-command",
@@ -1795,6 +1813,8 @@ const char *cmd_set_prop_map[DSI_CMD_SET_MAX] = {
 	"qcom,mdss-dsi-cabc_still-on-command",
 	"qcom,mdss-dsi-cabc_movie-on-command",
 	"qcom,mdss-dsi-cabc-off-command",
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -1824,6 +1844,7 @@ const char *cmd_set_state_map[DSI_CMD_SET_MAX] = {
 	"qcom,mdss-dsi-qsync-on-commands-state",
 	"qcom,mdss-dsi-qsync-off-commands-state",
 <<<<<<< HEAD
+<<<<<<< HEAD
 	"qcom,mdss-dsi-hbm1-on-command-state",
 	"qcom,mdss-dsi-hbm2-on-command-state",
 	"qcom,mdss-dsi-hbm3-on-command-state",
@@ -1832,6 +1853,8 @@ const char *cmd_set_state_map[DSI_CMD_SET_MAX] = {
 	"qcom,mdss-dsi-cabc_still-on-command-state",
 	"qcom,mdss-dsi-cabc_movie-on-command-state",
 	"qcom,mdss-dsi-cabc-off-command-state",
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -4324,6 +4347,7 @@ int dsi_panel_enable(struct dsi_panel *panel)
 		panel->panel_initialized = true;
 	mutex_unlock(&panel->panel_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (panel->hbm_mode)
 		dsi_panel_apply_hbm_mode(panel);
@@ -4331,6 +4355,8 @@ int dsi_panel_enable(struct dsi_panel *panel)
 	if (panel->cabc_mode)
 		dsi_panel_apply_cabc_mode(panel);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return rc;
@@ -4469,6 +4495,7 @@ error:
 	return rc;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 int dsi_panel_apply_hbm_mode(struct dsi_panel *panel)
 {
@@ -4521,5 +4548,7 @@ int dsi_panel_apply_cabc_mode(struct dsi_panel *panel)
 
 	return rc;
 }
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

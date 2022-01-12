@@ -1342,6 +1342,7 @@ static inline void skb_zcopy_abort(struct sk_buff *skb)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void skb_mark_not_on_list(struct sk_buff *skb)
 {
 	skb->next = NULL;
@@ -1358,6 +1359,8 @@ static inline void skb_list_del_init(struct sk_buff *skb)
 	skb_mark_not_on_list(skb);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -1701,6 +1704,7 @@ static inline __u32 skb_queue_len(const struct sk_buff_head *list_)
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  *	skb_queue_len_lockless	- get queue length
  *	@list_: list to measure
  *
@@ -1713,6 +1717,8 @@ static inline __u32 skb_queue_len_lockless(const struct sk_buff_head *list_)
 }
 
 /**
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *	__skb_queue_head_init - initialize non-spinlock portions of sk_buff_head
@@ -1922,7 +1928,11 @@ static inline void __skb_unlink(struct sk_buff *skb, struct sk_buff_head *list)
 	struct sk_buff *next, *prev;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	WRITE_ONCE(list->qlen, list->qlen - 1);
+=======
+	list->qlen--;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	list->qlen--;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2802,6 +2812,7 @@ static inline void skb_propagate_pfmemalloc(struct page *page,
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * skb_frag_off() - Returns the offset of a skb fragment
  * @frag: the paged fragment
  */
@@ -2811,6 +2822,8 @@ static inline unsigned int skb_frag_off(const skb_frag_t *frag)
 }
 
 /**
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * skb_frag_page - retrieve the page referred to by a paged fragment
@@ -3056,9 +3069,14 @@ static inline int skb_padto(struct sk_buff *skb, unsigned int len)
  *	success. The skb is freed on error if @free_on_error is true.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int __must_check __skb_put_padto(struct sk_buff *skb,
 					       unsigned int len,
 					       bool free_on_error)
+=======
+static inline int __skb_put_padto(struct sk_buff *skb, unsigned int len,
+				  bool free_on_error)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int __skb_put_padto(struct sk_buff *skb, unsigned int len,
 				  bool free_on_error)
@@ -3086,7 +3104,11 @@ static inline int __skb_put_padto(struct sk_buff *skb, unsigned int len,
  *	success. The skb is freed on error.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int __must_check skb_put_padto(struct sk_buff *skb, unsigned int len)
+=======
+static inline int skb_put_padto(struct sk_buff *skb, unsigned int len)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int skb_put_padto(struct sk_buff *skb, unsigned int len)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

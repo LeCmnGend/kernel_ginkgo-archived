@@ -30,7 +30,11 @@ static int change_page_range(pte_t *ptep, pgtable_t token, unsigned long addr,
 {
 	struct page_change_data *cdata = data;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pte_t pte = READ_ONCE(*ptep);
+=======
+	pte_t pte = *ptep;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pte_t pte = *ptep;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -161,6 +165,7 @@ void __kernel_map_pages(struct page *page, int numpages, int enable)
 bool kernel_page_present(struct page *page)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pgd_t *pgdp;
 	pud_t *pudp, pud;
 	pmd_t *pmdp, pmd;
@@ -188,6 +193,8 @@ bool kernel_page_present(struct page *page)
 	ptep = pte_offset_kernel(pmdp, addr);
 	return pte_valid(READ_ONCE(*ptep));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pgd_t *pgd;
 	pud_t *pud;
 	pmd_t *pmd;
@@ -212,6 +219,9 @@ bool kernel_page_present(struct page *page)
 
 	pte = pte_offset_kernel(pmd, addr);
 	return pte_valid(*pte);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 #endif /* CONFIG_HIBERNATION */

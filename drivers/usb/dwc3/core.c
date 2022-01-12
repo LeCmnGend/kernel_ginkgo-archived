@@ -1412,7 +1412,11 @@ static int dwc3_probe(struct platform_device *pdev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dwc->dwc_wq = alloc_ordered_workqueue("dwc_wq", 0);
+=======
+	dwc->dwc_wq = alloc_ordered_workqueue("dwc_wq", WQ_HIGHPRI);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dwc->dwc_wq = alloc_ordered_workqueue("dwc_wq", WQ_HIGHPRI);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

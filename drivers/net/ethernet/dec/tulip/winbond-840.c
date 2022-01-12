@@ -368,7 +368,11 @@ static int w840_probe1(struct pci_dev *pdev, const struct pci_device_id *ent)
 	void __iomem *ioaddr;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	i = pcim_enable_device(pdev);
+=======
+	i = pci_enable_device(pdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	i = pci_enable_device(pdev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -394,7 +398,11 @@ static int w840_probe1(struct pci_dev *pdev, const struct pci_device_id *ent)
 	ioaddr = pci_iomap(pdev, TULIP_BAR, netdev_res_size);
 	if (!ioaddr)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto err_out_netdev;
+=======
+		goto err_out_free_res;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto err_out_free_res;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -477,6 +485,11 @@ static int w840_probe1(struct pci_dev *pdev, const struct pci_device_id *ent)
 err_out_cleardev:
 	pci_iounmap(pdev, ioaddr);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+err_out_free_res:
+	pci_release_regions(pdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 err_out_free_res:
 	pci_release_regions(pdev);
@@ -1549,6 +1562,10 @@ static void w840_remove1(struct pci_dev *pdev)
 		struct netdev_private *np = netdev_priv(dev);
 		unregister_netdev(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		pci_release_regions(pdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pci_release_regions(pdev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

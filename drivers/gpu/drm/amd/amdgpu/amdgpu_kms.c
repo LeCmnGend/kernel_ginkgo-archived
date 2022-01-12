@@ -503,12 +503,17 @@ static int amdgpu_info_ioctl(struct drm_device *dev, void *data, struct drm_file
 		if (se_num == AMDGPU_INFO_MMR_SE_INDEX_MASK)
 			se_num = 0xffffffff;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		else if (se_num >= AMDGPU_GFX_MAX_SE)
 			return -EINVAL;
 		if (sh_num == AMDGPU_INFO_MMR_SH_INDEX_MASK)
 			sh_num = 0xffffffff;
 		else if (sh_num >= AMDGPU_GFX_MAX_SH_PER_SE)
 			return -EINVAL;
+=======
+		if (sh_num == AMDGPU_INFO_MMR_SH_INDEX_MASK)
+			sh_num = 0xffffffff;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (sh_num == AMDGPU_INFO_MMR_SH_INDEX_MASK)
 			sh_num = 0xffffffff;
@@ -537,9 +542,14 @@ static int amdgpu_info_ioctl(struct drm_device *dev, void *data, struct drm_file
 	}
 	case AMDGPU_INFO_DEV_INFO: {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		struct drm_amdgpu_info_device dev_info;
 
 		memset(&dev_info, 0, sizeof(dev_info));
+=======
+		struct drm_amdgpu_info_device dev_info = {};
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		struct drm_amdgpu_info_device dev_info = {};
 
@@ -800,7 +810,11 @@ int amdgpu_driver_open_kms(struct drm_device *dev, struct drm_file *file_priv)
 	r = pm_runtime_get_sync(dev->dev);
 	if (r < 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto pm_put;
+=======
+		return r;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return r;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -843,7 +857,10 @@ int amdgpu_driver_open_kms(struct drm_device *dev, struct drm_file *file_priv)
 out_suspend:
 	pm_runtime_mark_last_busy(dev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 pm_put:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pm_runtime_put_autosuspend(dev->dev);

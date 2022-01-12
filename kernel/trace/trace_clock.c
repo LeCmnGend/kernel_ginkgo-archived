@@ -95,7 +95,11 @@ u64 notrace trace_clock_global(void)
 	unsigned long flags;
 	int this_cpu;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64 now, prev_time;
+=======
+	u64 now;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u64 now;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -103,6 +107,7 @@ u64 notrace trace_clock_global(void)
 	local_irq_save(flags);
 
 	this_cpu = raw_smp_processor_id();
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 	/*
@@ -143,6 +148,8 @@ u64 notrace trace_clock_global(void)
 		arch_spin_unlock(&trace_clock_struct.lock);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	now = sched_clock_cpu(this_cpu);
 	/*
 	 * If in an NMI context then dont risk lockups and return the
@@ -165,6 +172,9 @@ u64 notrace trace_clock_global(void)
 
 	arch_spin_unlock(&trace_clock_struct.lock);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  out:
 	local_irq_restore(flags);

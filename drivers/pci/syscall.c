@@ -23,7 +23,11 @@ SYSCALL_DEFINE5(pciconfig_read, unsigned long, bus, unsigned long, dfn,
 	u32 dword;
 	long err;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int cfg_ret;
+=======
+	long cfg_ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	long cfg_ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -53,7 +57,11 @@ SYSCALL_DEFINE5(pciconfig_read, unsigned long, bus, unsigned long, dfn,
 
 	err = -EIO;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (cfg_ret)
+=======
+	if (cfg_ret != PCIBIOS_SUCCESSFUL)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (cfg_ret != PCIBIOS_SUCCESSFUL)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -115,7 +123,11 @@ SYSCALL_DEFINE5(pciconfig_write, unsigned long, bus, unsigned long, dfn,
 			break;
 		err = pci_user_write_config_byte(dev, off, byte);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (err)
+=======
+		if (err != PCIBIOS_SUCCESSFUL)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (err != PCIBIOS_SUCCESSFUL)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -128,7 +140,11 @@ SYSCALL_DEFINE5(pciconfig_write, unsigned long, bus, unsigned long, dfn,
 			break;
 		err = pci_user_write_config_word(dev, off, word);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (err)
+=======
+		if (err != PCIBIOS_SUCCESSFUL)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (err != PCIBIOS_SUCCESSFUL)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -141,7 +157,11 @@ SYSCALL_DEFINE5(pciconfig_write, unsigned long, bus, unsigned long, dfn,
 			break;
 		err = pci_user_write_config_dword(dev, off, dword);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (err)
+=======
+		if (err != PCIBIOS_SUCCESSFUL)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (err != PCIBIOS_SUCCESSFUL)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

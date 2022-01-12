@@ -28,10 +28,13 @@
 #define VSOCK_CLOSE_TIMEOUT (8 * HZ)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 uint virtio_transport_max_vsock_pkt_buf_size = 64 * 1024;
 module_param(virtio_transport_max_vsock_pkt_buf_size, uint, 0444);
 EXPORT_SYMBOL_GPL(virtio_transport_max_vsock_pkt_buf_size);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static const struct virtio_transport *virtio_transport_get_ops(void)
@@ -677,9 +680,15 @@ static int virtio_transport_reset(struct vsock_sock *vsk,
  * attempt was made to connect to a socket that does not exist.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int virtio_transport_reset_no_sock(const struct virtio_transport *t,
 					  struct virtio_vsock_pkt *pkt)
 {
+=======
+static int virtio_transport_reset_no_sock(struct virtio_vsock_pkt *pkt)
+{
+	const struct virtio_transport *t;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int virtio_transport_reset_no_sock(struct virtio_vsock_pkt *pkt)
 {
@@ -705,6 +714,10 @@ static int virtio_transport_reset_no_sock(struct virtio_vsock_pkt *pkt)
 		return -ENOMEM;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	t = virtio_transport_get_ops();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	t = virtio_transport_get_ops();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1006,8 +1019,12 @@ static bool virtio_transport_space_update(struct sock *sk,
  * lock.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 void virtio_transport_recv_pkt(struct virtio_transport *t,
 			       struct virtio_vsock_pkt *pkt)
+=======
+void virtio_transport_recv_pkt(struct virtio_vsock_pkt *pkt)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void virtio_transport_recv_pkt(struct virtio_vsock_pkt *pkt)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1033,7 +1050,11 @@ void virtio_transport_recv_pkt(struct virtio_vsock_pkt *pkt)
 
 	if (le16_to_cpu(pkt->hdr.type) != VIRTIO_VSOCK_TYPE_STREAM) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		(void)virtio_transport_reset_no_sock(t, pkt);
+=======
+		(void)virtio_transport_reset_no_sock(pkt);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		(void)virtio_transport_reset_no_sock(pkt);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1048,7 +1069,11 @@ void virtio_transport_recv_pkt(struct virtio_vsock_pkt *pkt)
 		sk = vsock_find_bound_socket(&dst);
 		if (!sk) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			(void)virtio_transport_reset_no_sock(t, pkt);
+=======
+			(void)virtio_transport_reset_no_sock(pkt);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			(void)virtio_transport_reset_no_sock(pkt);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1059,15 +1084,21 @@ void virtio_transport_recv_pkt(struct virtio_vsock_pkt *pkt)
 	vsk = vsock_sk(sk);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	lock_sock(sk);
 
 	space_available = virtio_transport_space_update(sk, pkt);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	space_available = virtio_transport_space_update(sk, pkt);
 
 	lock_sock(sk);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Update CID in case it has changed after a transport reset event */
 	vsk->local_addr.svm_cid = dst.svm_cid;
@@ -1093,7 +1124,10 @@ void virtio_transport_recv_pkt(struct virtio_vsock_pkt *pkt)
 		break;
 	default:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		(void)virtio_transport_reset_no_sock(t, pkt);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		virtio_transport_free_pkt(pkt);

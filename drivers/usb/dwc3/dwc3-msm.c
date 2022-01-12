@@ -1,6 +1,9 @@
 /* Copyright (c) 2012-2021, The Linux Foundation. All rights reserved.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -76,9 +79,12 @@
 #define USB3_PORTSC		(0x420)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define DWC3_DCTL	0xc704 
 #define DWC3_DCTL_RUN_STOP	BIT(31) 
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -2891,9 +2897,15 @@ static int dwc3_msm_suspend(struct dwc3_msm *mdwc, bool force_power_collapse,
 
 	/* kick_sm if it is waiting for lpm sequence to finish */
 <<<<<<< HEAD
+<<<<<<< HEAD
 //	if (test_and_clear_bit(WAIT_FOR_LPM, &mdwc->inputs))
 //		queue_delayed_work(mdwc->sm_usb_wq, &mdwc->sm_work, 0);
 	test_and_clear_bit(WAIT_FOR_LPM, &mdwc->inputs);
+=======
+	if (test_and_clear_bit(WAIT_FOR_LPM, &mdwc->inputs))
+		queue_delayed_work(mdwc->sm_usb_wq, &mdwc->sm_work, 0);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (test_and_clear_bit(WAIT_FOR_LPM, &mdwc->inputs))
 		queue_delayed_work(mdwc->sm_usb_wq, &mdwc->sm_work, 0);
@@ -5025,6 +5037,7 @@ static void dwc3_otg_sm_work(struct work_struct *w)
 			dwc3_otg_start_peripheral(mdwc, 1);
 			mdwc->drd_state = DRD_STATE_PERIPHERAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			
 			if(!dwc->softconnect && get_psy_type(mdwc) == POWER_SUPPLY_TYPE_USB_CDP){ 
 			     u32 reg; 
@@ -5035,6 +5048,8 @@ static void dwc3_otg_sm_work(struct work_struct *w)
 			     dwc3_writel(dwc->regs, DWC3_DCTL, reg); 
 			     break; 
 			}			
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			work = 1;

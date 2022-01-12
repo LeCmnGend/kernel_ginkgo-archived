@@ -48,7 +48,11 @@ static inline void *__ntfs_malloc(unsigned long size, gfp_t gfp_mask)
 		/* return (void *)__get_free_page(gfp_mask); */
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (likely((size >> PAGE_SHIFT) < totalram_pages()))
+=======
+	if (likely((size >> PAGE_SHIFT) < totalram_pages))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (likely((size >> PAGE_SHIFT) < totalram_pages))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -1106,7 +1106,10 @@ config I2C_RCAR
 	depends on ARCH_RENESAS || COMPILE_TEST
 	select I2C_SLAVE
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select RESET_CONTROLLER if ARCH_RCAR_GEN3
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	help

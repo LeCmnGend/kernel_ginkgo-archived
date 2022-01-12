@@ -25,6 +25,11 @@
 #define _SS_POLICYDB_H_
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <linux/flex_array.h>
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/flex_array.h>
 
@@ -243,7 +248,10 @@ struct policydb {
 	int mls_enabled;
 	int android_netlink_route;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int android_netlink_getneigh;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -260,7 +268,11 @@ struct policydb {
 
 	/* symbol names indexed by (value - 1) */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	char		**sym_val_to_name[SYM_NUM];
+=======
+	struct flex_array *sym_val_to_name[SYM_NUM];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct flex_array *sym_val_to_name[SYM_NUM];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -270,7 +282,11 @@ struct policydb {
 	struct role_datum **role_val_to_struct;
 	struct user_datum **user_val_to_struct;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct type_datum **type_val_to_struct_array;
+=======
+	struct flex_array *type_val_to_struct_array;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct flex_array *type_val_to_struct_array;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -311,7 +327,11 @@ struct policydb {
 
 	/* type -> attribute reverse mapping */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct ebitmap *type_attr_map_array;
+=======
+	struct flex_array *type_attr_map_array;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct flex_array *type_attr_map_array;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -346,7 +366,10 @@ extern int policydb_write(struct policydb *p, void *fp);
 #define POLICYDB_CONFIG_MLS    1
 #define POLICYDB_CONFIG_ANDROID_NETLINK_ROUTE    (1 << 31)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define POLICYDB_CONFIG_ANDROID_NETLINK_GETNEIGH (1 << 30)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -395,7 +418,13 @@ static inline int put_entry(const void *buf, size_t bytes, int num, struct polic
 static inline char *sym_name(struct policydb *p, unsigned int sym_num, unsigned int element_nr)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return p->sym_val_to_name[sym_num][element_nr];
+=======
+	struct flex_array *fa = p->sym_val_to_name[sym_num];
+
+	return flex_array_get_ptr(fa, element_nr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct flex_array *fa = p->sym_val_to_name[sym_num];
 

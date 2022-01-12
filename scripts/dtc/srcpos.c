@@ -210,6 +210,11 @@ struct srcpos srcpos_empty = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define TAB_SIZE      8
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define TAB_SIZE      8
 
@@ -228,6 +233,12 @@ void srcpos_update(struct srcpos *pos, const char *text, int len)
 			current_srcfile->lineno++;
 			current_srcfile->colno = 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		} else if (text[i] == '\t') {
+			current_srcfile->colno =
+				ALIGN(current_srcfile->colno, TAB_SIZE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		} else if (text[i] == '\t') {
 			current_srcfile->colno =

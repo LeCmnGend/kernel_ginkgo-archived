@@ -158,7 +158,11 @@ void set_bh_page(struct buffer_head *bh,
 int try_to_free_buffers(struct page *);
 struct buffer_head *alloc_page_buffers(struct page *page, unsigned long size,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		bool retry);
+=======
+		int retry);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		int retry);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

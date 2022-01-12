@@ -1339,7 +1339,12 @@ exit_register_client:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int update_client_paths(struct msm_bus_client *client, unsigned int idx)
+=======
+static int update_client_paths(struct msm_bus_client *client, bool log_trns,
+							unsigned int idx)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int update_client_paths(struct msm_bus_client *client, bool log_trns,
 							unsigned int idx)
@@ -1414,6 +1419,12 @@ static int update_client_paths(struct msm_bus_client *client, bool log_trns,
 				msm_bus_commit_single(dev);
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+		if (log_trns)
+			getpath_debug(src, lnode, pdata->active_only);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 		if (log_trns)
@@ -1426,7 +1437,12 @@ exit_update_client_paths:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int update_client_alc(struct msm_bus_client *client, unsigned int idx)
+=======
+static int update_client_alc(struct msm_bus_client *client, bool log_trns,
+							unsigned int idx)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int update_client_alc(struct msm_bus_client *client, bool log_trns,
 							unsigned int idx)
@@ -1610,7 +1626,11 @@ static int update_context(uint32_t cl, bool active_only,
 
 	msm_bus_dbg_client_data(client->pdata, ctx_idx, cl);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = update_client_paths(client, ctx_idx);
+=======
+	ret = update_client_paths(client, false, ctx_idx);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = update_client_paths(client, false, ctx_idx);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1632,6 +1652,11 @@ static int update_request_adhoc(uint32_t cl, unsigned int index)
 	struct msm_bus_scale_pdata *pdata;
 	struct msm_bus_client *client;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	const char *test_cl = "Null";
+	bool log_transaction = false;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	const char *test_cl = "Null";
 	bool log_transaction = false;
@@ -1674,6 +1699,12 @@ static int update_request_adhoc(uint32_t cl, unsigned int index)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (!strcmp(test_cl, pdata->name))
+		log_transaction = true;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!strcmp(test_cl, pdata->name))
 		log_transaction = true;
@@ -1684,15 +1715,21 @@ static int update_request_adhoc(uint32_t cl, unsigned int index)
 
 	if (pdata->alc)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = update_client_alc(client, index);
 	else {
 		msm_bus_dbg_client_data(client->pdata, index, cl);
 		ret = update_client_paths(client, index);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = update_client_alc(client, log_transaction, index);
 	else {
 		msm_bus_dbg_client_data(client->pdata, index, cl);
 		ret = update_client_paths(client, log_transaction, index);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	if (ret) {

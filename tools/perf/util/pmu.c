@@ -1101,6 +1101,7 @@ void perf_pmu__set_format(unsigned long *bits, long from, long to)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void perf_pmu__del_formats(struct list_head *formats)
 {
 	struct perf_pmu_format *fmt, *tmp;
@@ -1112,6 +1113,8 @@ void perf_pmu__del_formats(struct list_head *formats)
 	}
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int sub_non_neg(int a, int b)

@@ -1368,7 +1368,11 @@ static int bdisp_probe(struct platform_device *pdev)
 	if (ret < 0) {
 		dev_err(dev, "failed to set PM\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto err_pm;
+=======
+		goto err_dbg;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto err_dbg;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1400,6 +1404,10 @@ err_filter:
 err_pm:
 	pm_runtime_put(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+err_dbg:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 err_dbg:
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

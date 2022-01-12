@@ -35,9 +35,12 @@ synproxy_parse_options(const struct sk_buff *skb, unsigned int doff,
 	u8 buf[40], *ptr;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(length < 0))
 		return false;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ptr = skb_header_pointer(skb, doff + sizeof(*th), length, buf);
@@ -57,8 +60,11 @@ synproxy_parse_options(const struct sk_buff *skb, unsigned int doff,
 			continue;
 		default:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (length < 2)
 				return true;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			opsize = *ptr++;

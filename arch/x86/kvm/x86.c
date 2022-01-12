@@ -99,7 +99,10 @@ static u64 __read_mostly efer_reserved_bits = ~((u64)EFER_SCE);
 static void update_cr8_intercept(struct kvm_vcpu *vcpu);
 static void process_nmi(struct kvm_vcpu *vcpu);
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void process_smi(struct kvm_vcpu *vcpu);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void enter_smm(struct kvm_vcpu *vcpu);
@@ -404,6 +407,11 @@ static void kvm_multiple_exception(struct kvm_vcpu *vcpu,
 	if (!vcpu->arch.exception.pending && !vcpu->arch.exception.injected) {
 	queue:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		if (has_error && !is_protmode(vcpu))
+			has_error = false;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (has_error && !is_protmode(vcpu))
 			has_error = false;
@@ -3083,9 +3091,12 @@ static void kvm_steal_time_set_preempted(struct kvm_vcpu *vcpu)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (vcpu->arch.st.steal.preempted)
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	vcpu->arch.st.steal.preempted = 1;
@@ -3301,10 +3312,13 @@ static void kvm_vcpu_ioctl_x86_get_vcpu_events(struct kvm_vcpu *vcpu,
 {
 	process_nmi(vcpu);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (kvm_check_request(KVM_REQ_SMI, vcpu))
 		process_smi(vcpu);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
@@ -4388,6 +4402,7 @@ long kvm_arch_vm_ioctl(struct file *filp,
 		if (copy_from_user(&u.ps, argp, sizeof u.ps))
 			goto out;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mutex_lock(&kvm->lock);
 		r = -ENXIO;
 		if (!kvm->arch.vpit)
@@ -4396,10 +4411,15 @@ long kvm_arch_vm_ioctl(struct file *filp,
 set_pit_out:
 		mutex_unlock(&kvm->lock);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		r = -ENXIO;
 		if (!kvm->arch.vpit)
 			goto out;
 		r = kvm_vm_ioctl_set_pit(kvm, &u.ps);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 	}
@@ -4421,6 +4441,7 @@ set_pit_out:
 		if (copy_from_user(&u.ps2, argp, sizeof(u.ps2)))
 			goto out;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mutex_lock(&kvm->lock);
 		r = -ENXIO;
 		if (!kvm->arch.vpit)
@@ -4429,10 +4450,15 @@ set_pit_out:
 set_pit2_out:
 		mutex_unlock(&kvm->lock);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		r = -ENXIO;
 		if (!kvm->arch.vpit)
 			goto out;
 		r = kvm_vm_ioctl_set_pit2(kvm, &u.ps2);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 	}
@@ -6447,7 +6473,10 @@ void kvm_arch_exit(void)
 #ifdef CONFIG_X86_64
 	pvclock_gtod_unregister_notifier(&pvclock_gtod_notifier);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cancel_work_sync(&pvclock_gtod_work);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
@@ -6654,6 +6683,7 @@ static void update_cr8_intercept(struct kvm_vcpu *vcpu)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void kvm_inject_exception(struct kvm_vcpu *vcpu)
 {
        if (vcpu->arch.exception.error_code && !is_protmode(vcpu))
@@ -6663,6 +6693,8 @@ static void kvm_inject_exception(struct kvm_vcpu *vcpu)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int inject_pending_event(struct kvm_vcpu *vcpu)
 {
 	int r;
@@ -6670,7 +6702,11 @@ static int inject_pending_event(struct kvm_vcpu *vcpu)
 	/* try to reinject previous events if any */
 	if (vcpu->arch.exception.injected) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kvm_inject_exception(vcpu);
+=======
+		kvm_x86_ops->queue_exception(vcpu);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kvm_x86_ops->queue_exception(vcpu);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6719,7 +6755,11 @@ static int inject_pending_event(struct kvm_vcpu *vcpu)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kvm_inject_exception(vcpu);
+=======
+		kvm_x86_ops->queue_exception(vcpu);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kvm_x86_ops->queue_exception(vcpu);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -7285,8 +7325,11 @@ static int vcpu_enter_guest(struct kvm_vcpu *vcpu)
 		set_debugreg(vcpu->arch.dr6, 6);
 		vcpu->arch.switch_db_regs &= ~KVM_DEBUGREG_RELOAD;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else if (unlikely(hw_breakpoint_active())) {
 		set_debugreg(0, 7);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

@@ -534,8 +534,11 @@ static struct sh_eth_cpu_data r7s72100_data = {
 	.fdr_value	= 0x0000070f,
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.trscer_err_mask = DESC_I_RINT8 | DESC_I_RINT5,
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.no_psr		= 1,
@@ -941,9 +944,12 @@ static struct sh_eth_cpu_data sh771x_data = {
 			  EESIPR_RRFIP | EESIPR_RTLFIP | EESIPR_RTSFIP |
 			  EESIPR_PREIP | EESIPR_CERFIP,
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	.trscer_err_mask = DESC_I_RINT8,
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.tsu		= 1,
@@ -2204,7 +2210,11 @@ static void sh_eth_get_strings(struct net_device *ndev, u32 stringset, u8 *data)
 	switch (stringset) {
 	case ETH_SS_STATS:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		memcpy(data, sh_eth_gstrings_stats,
+=======
+		memcpy(data, *sh_eth_gstrings_stats,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		memcpy(data, *sh_eth_gstrings_stats,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2533,9 +2543,15 @@ static int sh_eth_close(struct net_device *ndev)
 	sh_eth_ring_free(ndev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mdp->is_opened = 0;
 
 	pm_runtime_put(&mdp->pdev->dev);
+=======
+	pm_runtime_put_sync(&mdp->pdev->dev);
+
+	mdp->is_opened = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pm_runtime_put_sync(&mdp->pdev->dev);
 

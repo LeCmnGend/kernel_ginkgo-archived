@@ -99,6 +99,7 @@ asm (
 
 #define TMPL_VAL_IDX \
 <<<<<<< HEAD
+<<<<<<< HEAD
 	((unsigned long *)optprobe_template_val - (unsigned long *)optprobe_template_entry)
 #define TMPL_CALL_IDX \
 	((unsigned long *)optprobe_template_call - (unsigned long *)optprobe_template_entry)
@@ -115,6 +116,8 @@ asm (
 #define TMPL_RESTORE_END \
 	((unsigned long *)optprobe_template_restore_end - (unsigned long *)optprobe_template_entry)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	((unsigned long *)&optprobe_template_val - (unsigned long *)&optprobe_template_entry)
 #define TMPL_CALL_IDX \
 	((unsigned long *)&optprobe_template_call - (unsigned long *)&optprobe_template_entry)
@@ -130,6 +133,9 @@ asm (
 	((unsigned long *)&optprobe_template_restore_orig_insn - (unsigned long *)&optprobe_template_entry)
 #define TMPL_RESTORE_END \
 	((unsigned long *)&optprobe_template_restore_end - (unsigned long *)&optprobe_template_entry)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*
@@ -266,7 +272,11 @@ int arch_prepare_optimized_kprobe(struct optimized_kprobe *op, struct kprobe *or
 
 	/* Copy arch-dep-instance from template. */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memcpy(code, (unsigned long *)optprobe_template_entry,
+=======
+	memcpy(code, (unsigned long *)&optprobe_template_entry,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memcpy(code, (unsigned long *)&optprobe_template_entry,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

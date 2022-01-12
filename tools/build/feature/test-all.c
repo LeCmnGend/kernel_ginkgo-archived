@@ -35,6 +35,7 @@
 #undef main
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define main main_test_get_current_dir_name
 # include "test-get_current_dir_name.c"
 #undef main
@@ -43,6 +44,8 @@
 # include "test-gettid.c"
 #undef main
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define main main_test_glibc
@@ -58,10 +61,13 @@
 #undef main
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define main main_test_eventfd
 # include "test-eventfd.c"
 #undef main
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define main main_test_libelf_getphdrnum
@@ -137,10 +143,13 @@
 #undef main
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define main main_test_pthread_barrier
 # include "test-pthread-barrier.c"
 #undef main
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define main main_test_sched_getcpu
@@ -192,12 +201,18 @@ int main(int argc, char *argv[])
 	main_test_libelf();
 	main_test_libelf_mmap();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	main_test_get_current_dir_name();
 	main_test_gettid();
 	main_test_glibc();
 	main_test_dwarf();
 	main_test_dwarf_getlocations();
 	main_test_eventfd();
+=======
+	main_test_glibc();
+	main_test_dwarf();
+	main_test_dwarf_getlocations();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	main_test_glibc();
 	main_test_dwarf();
@@ -222,7 +237,10 @@ int main(int argc, char *argv[])
 	main_test_zlib();
 	main_test_pthread_attr_setaffinity_np();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	main_test_pthread_barrier();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	main_test_lzma();

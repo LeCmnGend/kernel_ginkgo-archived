@@ -245,6 +245,7 @@ struct sta_info *sta_info_get_by_idx(struct ieee80211_sub_if_data *sdata,
 void sta_info_free(struct ieee80211_local *local, struct sta_info *sta)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * If we had used sta_info_pre_move_state() then we might not
 	 * have gone through the state transitions down again, so do
@@ -263,6 +264,8 @@ void sta_info_free(struct ieee80211_local *local, struct sta_info *sta)
 			break;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (sta->rate_ctrl)
@@ -371,8 +374,11 @@ struct sta_info *sta_info_alloc(struct ieee80211_sub_if_data *sdata,
 	u64_stats_init(&sta->rx_stats.syncp);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ieee80211_init_frag_cache(&sta->frags);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	sta->sta_state = IEEE80211_STA_NONE;
@@ -616,7 +622,11 @@ static int sta_info_insert_finish(struct sta_info *sta) __acquires(RCU)
 	local->num_sta--;
 	synchronize_net();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cleanup_single_sta(sta);
+=======
+	__cleanup_single_sta(sta);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__cleanup_single_sta(sta);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -639,6 +649,7 @@ int sta_info_insert_rcu(struct sta_info *sta) __acquires(RCU)
 	err = sta_info_insert_check(sta);
 	if (err) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		sta_info_free(local, sta);
 		mutex_unlock(&local->sta_mtx);
 		rcu_read_lock();
@@ -647,6 +658,8 @@ int sta_info_insert_rcu(struct sta_info *sta) __acquires(RCU)
 
 	return sta_info_insert_finish(sta);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mutex_unlock(&local->sta_mtx);
 		rcu_read_lock();
 		goto out_free;
@@ -660,6 +673,9 @@ int sta_info_insert_rcu(struct sta_info *sta) __acquires(RCU)
  out_free:
 	sta_info_free(local, sta);
 	return err;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -993,7 +1009,11 @@ static void __sta_info_destroy_part2(struct sta_info *sta)
 	lockdep_assert_held(&local->sta_mtx);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (sta->sta_state == IEEE80211_STA_AUTHORIZED) {
+=======
+	while (sta->sta_state == IEEE80211_STA_AUTHORIZED) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	while (sta->sta_state == IEEE80211_STA_AUTHORIZED) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1038,8 +1058,11 @@ static void __sta_info_destroy_part2(struct sta_info *sta)
 	ieee80211_sta_debugfs_remove(sta);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ieee80211_destroy_frag_cache(&sta->frags);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cleanup_single_sta(sta);
@@ -2054,10 +2077,13 @@ static void sta_stats_decode_rate(struct ieee80211_local *local, u16 rate,
 		rinfo->flags = 0;
 		sband = local->hw.wiphy->bands[band];
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		if (WARN_ON_ONCE(!sband->bitrates))
 			break;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		brate = sband->bitrates[rate_idx].bitrate;

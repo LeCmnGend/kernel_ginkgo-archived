@@ -40,7 +40,10 @@ MODULE_LICENSE("GPL");
 
 static struct dasd_discipline dasd_fba_discipline;
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void *dasd_fba_zero_page;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -274,7 +277,11 @@ static void ccw_write_zero(struct ccw1 *ccw, int count)
 	ccw->flags |= CCW_FLAG_SLI;
 	ccw->count = count;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ccw->cda = (__u32) (addr_t) dasd_fba_zero_page;
+=======
+	ccw->cda = (__u32) (addr_t) page_to_phys(ZERO_PAGE(0));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ccw->cda = (__u32) (addr_t) page_to_phys(ZERO_PAGE(0));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -817,11 +824,14 @@ dasd_fba_init(void)
 
 	ASCEBC(dasd_fba_discipline.ebcname, 4);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	dasd_fba_zero_page = (void *)get_zeroed_page(GFP_KERNEL | GFP_DMA);
 	if (!dasd_fba_zero_page)
 		return -ENOMEM;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = ccw_driver_register(&dasd_fba_driver);
@@ -836,7 +846,10 @@ dasd_fba_cleanup(void)
 {
 	ccw_driver_unregister(&dasd_fba_driver);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	free_page((unsigned long)dasd_fba_zero_page);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

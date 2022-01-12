@@ -49,6 +49,7 @@ enum memcg_stat_item {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 enum memcg_memory_event {
 	MEMCG_LOW,
 	MEMCG_HIGH,
@@ -57,6 +58,8 @@ enum memcg_memory_event {
 	MEMCG_OOM_KILL,
 	MEMCG_NR_MEMORY_EVENTS,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Cgroup-specific events, on top of universal VM events */
 enum memcg_event_item {
 	MEMCG_LOW = NR_VM_EVENT_ITEMS,
@@ -64,6 +67,9 @@ enum memcg_event_item {
 	MEMCG_MAX,
 	MEMCG_OOM,
 	MEMCG_NR_EVENTS,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
@@ -99,7 +105,11 @@ enum mem_cgroup_events_target {
 struct mem_cgroup_stat_cpu {
 	long count[MEMCG_NR_STAT];
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long events[NR_VM_EVENT_ITEMS];
+=======
+	unsigned long events[MEMCG_NR_EVENTS];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long events[MEMCG_NR_EVENTS];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -123,10 +133,14 @@ struct lruvec_stat {
 struct mem_cgroup_per_node {
 	struct lruvec		lruvec;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	struct lruvec_stat __percpu *lruvec_stat_cpu;
 	atomic_long_t		lruvec_stat[NR_VM_NODE_STAT_ITEMS];
 
+=======
+	struct lruvec_stat __percpu *lruvec_stat;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct lruvec_stat __percpu *lruvec_stat;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -175,6 +189,7 @@ enum memcg_kmem_state {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined(CONFIG_SMP)
 struct memcg_padding {
 	char x[0];
@@ -184,6 +199,8 @@ struct memcg_padding {
 #define MEMCG_PADDING(name)
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -233,7 +250,11 @@ struct mem_cgroup {
 	int		oom_kill_disable;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* memory.events */
+=======
+	/* handle for "memory.events" */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* handle for "memory.events" */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -257,6 +278,7 @@ struct mem_cgroup {
 	 */
 	unsigned long move_charge_at_immigrate;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* taken only while moving_account > 0 */
 	spinlock_t		move_lock;
 	unsigned long		move_lock_flags;
@@ -265,10 +287,13 @@ struct mem_cgroup {
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * set > 0 if pages under this cgroup are moving to other cgroup.
 	 */
 	atomic_t		moving_account;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	struct task_struct	*move_lock_task;
 
@@ -281,6 +306,8 @@ struct mem_cgroup {
 	atomic_long_t		events[NR_VM_EVENT_ITEMS];
 	atomic_long_t memory_events[MEMCG_NR_MEMORY_EVENTS];
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* taken only while moving_account > 0 */
 	spinlock_t		move_lock;
 	struct task_struct	*move_lock_task;
@@ -289,6 +316,9 @@ struct mem_cgroup {
 	 * percpu counter.
 	 */
 	struct mem_cgroup_stat_cpu __percpu *stat;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	unsigned long		socket_pressure;
@@ -325,12 +355,15 @@ struct mem_cgroup {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * size of first charge trial. "32" comes from vmscan.c's magic value.
  * TODO: maybe necessary to use big numbers in big irons.
  */
 #define MEMCG_CHARGE_BATCH 32U
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern struct mem_cgroup *root_mem_cgroup;
@@ -341,7 +374,10 @@ static inline bool mem_cgroup_disabled(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void mem_cgroup_event(struct mem_cgroup *memcg,
 				    enum memcg_event_item event)
 {
@@ -349,6 +385,9 @@ static inline void mem_cgroup_event(struct mem_cgroup *memcg,
 	cgroup_file_notify(&memcg->events_file);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 bool mem_cgroup_low(struct mem_cgroup *root, struct mem_cgroup *memcg);
 
@@ -560,6 +599,7 @@ void __unlock_page_memcg(struct mem_cgroup *memcg);
 void unlock_page_memcg(struct page *page);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * idx can be of type enum memcg_stat_item or node_stat_item.
  * Keep in sync with memcg_exact_page_state().
@@ -574,6 +614,8 @@ static inline unsigned long memcg_page_state(struct mem_cgroup *memcg,
 #endif
 	return x;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* idx can be of type enum memcg_stat_item or node_stat_item */
 static inline unsigned long memcg_page_state(struct mem_cgroup *memcg,
 					     int idx)
@@ -588,6 +630,9 @@ static inline unsigned long memcg_page_state(struct mem_cgroup *memcg,
 		val = 0;
 
 	return val;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -595,6 +640,7 @@ static inline unsigned long memcg_page_state(struct mem_cgroup *memcg,
 static inline void __mod_memcg_state(struct mem_cgroup *memcg,
 				     int idx, int val)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	long x;
 
@@ -611,6 +657,10 @@ static inline void __mod_memcg_state(struct mem_cgroup *memcg,
 	if (!mem_cgroup_disabled())
 		__this_cpu_add(memcg->stat->count[idx], val);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	if (!mem_cgroup_disabled())
+		__this_cpu_add(memcg->stat->count[idx], val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 /* idx can be of type enum memcg_stat_item or node_stat_item */
@@ -618,11 +668,16 @@ static inline void mod_memcg_state(struct mem_cgroup *memcg,
 				   int idx, int val)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long flags;
 
 	local_irq_save(flags);
 	__mod_memcg_state(memcg, idx, val);
 	local_irq_restore(flags);
+=======
+	if (!mem_cgroup_disabled())
+		this_cpu_add(memcg->stat->count[idx], val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!mem_cgroup_disabled())
 		this_cpu_add(memcg->stat->count[idx], val);
@@ -665,7 +720,12 @@ static inline unsigned long lruvec_page_state(struct lruvec *lruvec,
 {
 	struct mem_cgroup_per_node *pn;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	long x;
+=======
+	long val = 0;
+	int cpu;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	long val = 0;
 	int cpu;
@@ -676,6 +736,7 @@ static inline unsigned long lruvec_page_state(struct lruvec *lruvec,
 
 	pn = container_of(lruvec, struct mem_cgroup_per_node, lruvec);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	x = atomic_long_read(&pn->lruvec_stat[idx]);
 #ifdef CONFIG_SMP
 	if (x < 0)
@@ -683,6 +744,8 @@ static inline unsigned long lruvec_page_state(struct lruvec *lruvec,
 #endif
 	return x;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	for_each_possible_cpu(cpu)
 		val += per_cpu(pn->lruvec_stat->count[idx], cpu);
 
@@ -690,6 +753,9 @@ static inline unsigned long lruvec_page_state(struct lruvec *lruvec,
 		val = 0;
 
 	return val;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -697,6 +763,7 @@ static inline void __mod_lruvec_state(struct lruvec *lruvec,
 				      enum node_stat_item idx, int val)
 {
 	struct mem_cgroup_per_node *pn;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	long x;
 
@@ -719,6 +786,8 @@ static inline void __mod_lruvec_state(struct lruvec *lruvec,
 	}
 	__this_cpu_write(pn->lruvec_stat_cpu->count[idx], x);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	__mod_node_page_state(lruvec_pgdat(lruvec), idx, val);
 	if (mem_cgroup_disabled())
@@ -726,6 +795,9 @@ static inline void __mod_lruvec_state(struct lruvec *lruvec,
 	pn = container_of(lruvec, struct mem_cgroup_per_node, lruvec);
 	__mod_memcg_state(pn->memcg, idx, val);
 	__this_cpu_add(pn->lruvec_stat->count[idx], val);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -733,12 +805,15 @@ static inline void mod_lruvec_state(struct lruvec *lruvec,
 				    enum node_stat_item idx, int val)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long flags;
 
 	local_irq_save(flags);
 	__mod_lruvec_state(lruvec, idx, val);
 	local_irq_restore(flags);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct mem_cgroup_per_node *pn;
 
 	mod_node_page_state(lruvec_pgdat(lruvec), idx, val);
@@ -747,12 +822,16 @@ static inline void mod_lruvec_state(struct lruvec *lruvec,
 	pn = container_of(lruvec, struct mem_cgroup_per_node, lruvec);
 	mod_memcg_state(pn->memcg, idx, val);
 	this_cpu_add(pn->lruvec_stat->count[idx], val);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static inline void __mod_lruvec_page_state(struct page *page,
 					   enum node_stat_item idx, int val)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	pg_data_t *pgdat = page_pgdat(page);
 	struct lruvec *lruvec;
@@ -766,6 +845,8 @@ static inline void __mod_lruvec_page_state(struct page *page,
 	lruvec = mem_cgroup_lruvec(pgdat, page->mem_cgroup);
 	__mod_lruvec_state(lruvec, idx, val);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct mem_cgroup_per_node *pn;
 
 	__mod_node_page_state(page_pgdat(page), idx, val);
@@ -774,6 +855,9 @@ static inline void __mod_lruvec_page_state(struct page *page,
 	__mod_memcg_state(page->mem_cgroup, idx, val);
 	pn = page->mem_cgroup->nodeinfo[page_to_nid(page)];
 	__this_cpu_add(pn->lruvec_stat->count[idx], val);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -781,12 +865,15 @@ static inline void mod_lruvec_page_state(struct page *page,
 					 enum node_stat_item idx, int val)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long flags;
 
 	local_irq_save(flags);
 	__mod_lruvec_page_state(page, idx, val);
 	local_irq_restore(flags);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct mem_cgroup_per_node *pn;
 
 	mod_node_page_state(page_pgdat(page), idx, val);
@@ -795,6 +882,9 @@ static inline void mod_lruvec_page_state(struct page *page,
 	mod_memcg_state(page->mem_cgroup, idx, val);
 	pn = page->mem_cgroup->nodeinfo[page_to_nid(page)];
 	this_cpu_add(pn->lruvec_stat->count[idx], val);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -802,6 +892,7 @@ unsigned long mem_cgroup_soft_limit_reclaim(pg_data_t *pgdat, int order,
 						gfp_t gfp_mask,
 						unsigned long *total_scanned);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static inline void __count_memcg_events(struct mem_cgroup *memcg,
 					enum vm_event_item idx,
@@ -822,10 +913,13 @@ static inline void __count_memcg_events(struct mem_cgroup *memcg,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void count_memcg_events(struct mem_cgroup *memcg,
 				      enum vm_event_item idx,
 				      unsigned long count)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	unsigned long flags;
 
@@ -837,6 +931,8 @@ static inline void count_memcg_events(struct mem_cgroup *memcg,
 static inline void count_memcg_page_event(struct page *page,
 					  enum vm_event_item idx)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!mem_cgroup_disabled())
 		this_cpu_add(memcg->stat->events[idx], count);
 }
@@ -844,6 +940,9 @@ static inline void count_memcg_page_event(struct page *page,
 /* idx can be of type enum memcg_stat_item or node_stat_item */
 static inline void count_memcg_page_event(struct page *page,
 					  int idx)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	if (page->mem_cgroup)
@@ -860,6 +959,7 @@ static inline void count_memcg_event_mm(struct mm_struct *mm,
 
 	rcu_read_lock();
 	memcg = mem_cgroup_from_task(rcu_dereference(mm->owner));
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (likely(memcg))
 		count_memcg_events(memcg, idx, 1);
@@ -889,6 +989,8 @@ static inline void memcg_memory_event_mm(struct mm_struct *mm,
 }
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (likely(memcg)) {
 		this_cpu_inc(memcg->stat->events[idx]);
 		if (idx == OOM_KILL)
@@ -896,6 +998,9 @@ static inline void memcg_memory_event_mm(struct mm_struct *mm,
 	}
 	rcu_read_unlock();
 }
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_TRANSPARENT_HUGEPAGE
 void mem_cgroup_split_huge_fixup(struct page *head);
@@ -914,6 +1019,7 @@ static inline bool mem_cgroup_disabled(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void memcg_memory_event(struct mem_cgroup *memcg,
 				      enum memcg_memory_event event)
 {
@@ -921,6 +1027,10 @@ static inline void memcg_memory_event(struct mem_cgroup *memcg,
 
 static inline void memcg_memory_event_mm(struct mm_struct *mm,
 					 enum memcg_memory_event event)
+=======
+static inline void mem_cgroup_event(struct mem_cgroup *memcg,
+				    enum memcg_event_item event)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline void mem_cgroup_event(struct mem_cgroup *memcg,
 				    enum memcg_event_item event)

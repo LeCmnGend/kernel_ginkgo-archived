@@ -433,7 +433,11 @@ struct spu_hw {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct bcm_device_private {
+=======
+struct device_private {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 struct device_private {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -484,7 +488,11 @@ struct device_private {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern struct bcm_device_private iproc_priv;
+=======
+extern struct device_private iproc_priv;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern struct device_private iproc_priv;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

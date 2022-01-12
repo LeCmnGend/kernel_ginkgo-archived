@@ -116,9 +116,15 @@ static int agp_find_max(void)
 
 #if PAGE_SHIFT < 20
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memory = totalram_pages() >> (20 - PAGE_SHIFT);
 #else
 	memory = totalram_pages() << (PAGE_SHIFT - 20);
+=======
+	memory = totalram_pages >> (20 - PAGE_SHIFT);
+#else
+	memory = totalram_pages << (PAGE_SHIFT - 20);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memory = totalram_pages >> (20 - PAGE_SHIFT);
 #else

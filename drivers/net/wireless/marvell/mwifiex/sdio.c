@@ -1974,8 +1974,11 @@ error:
 		card->mpa_tx.buf_size = 0;
 		card->mpa_rx.buf_size = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		card->mpa_tx.buf = NULL;
 		card->mpa_rx.buf = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

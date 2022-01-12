@@ -624,6 +624,10 @@ static ADRENO_SYSFS_BOOL(gpuhtw_llc_slice_enable);
 
 static DEVICE_INT_ATTR(wake_nice, 0644, adreno_wake_nice);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+static DEVICE_INT_ATTR(wake_timeout, 0644, adreno_wake_timeout);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static DEVICE_INT_ATTR(wake_timeout, 0644, adreno_wake_timeout);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -651,6 +655,10 @@ static const struct device_attribute *_attr_list[] = {
 	&adreno_attr_ft_hang_intr_status.attr,
 	&dev_attr_wake_nice.attr,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	&dev_attr_wake_timeout.attr,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	&dev_attr_wake_timeout.attr,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

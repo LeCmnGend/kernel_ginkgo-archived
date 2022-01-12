@@ -71,6 +71,10 @@ static int cpu_psci_cpu_disable(unsigned int cpu)
 static void cpu_psci_cpu_die(unsigned int cpu)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -82,7 +86,13 @@ static void cpu_psci_cpu_die(unsigned int cpu)
 		    PSCI_0_2_POWER_STATE_TYPE_SHIFT;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	psci_ops.cpu_off(state);
+=======
+	ret = psci_ops.cpu_off(state);
+
+	pr_crit("unable to power off CPU%u (%d)\n", cpu, ret);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = psci_ops.cpu_off(state);
 

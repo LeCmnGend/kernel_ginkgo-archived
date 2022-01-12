@@ -1051,7 +1051,10 @@ static unsigned long compute_balloon_floor(void)
 {
 	unsigned long min_pages;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long nr_pages = totalram_pages();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define MB2PAGES(mb) ((mb) << (20 - PAGE_SHIFT))
@@ -1067,6 +1070,7 @@ static unsigned long compute_balloon_floor(void)
 	 *   32768      1512	(1/32)
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (nr_pages < MB2PAGES(128))
 		min_pages = MB2PAGES(8) + (nr_pages >> 1);
 	else if (nr_pages < MB2PAGES(512))
@@ -1078,6 +1082,8 @@ static unsigned long compute_balloon_floor(void)
 	else
 		min_pages = MB2PAGES(488) + (nr_pages >> 5);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (totalram_pages < MB2PAGES(128))
 		min_pages = MB2PAGES(8) + (totalram_pages >> 1);
 	else if (totalram_pages < MB2PAGES(512))
@@ -1088,6 +1094,9 @@ static unsigned long compute_balloon_floor(void)
 		min_pages = MB2PAGES(232) + (totalram_pages >> 4);
 	else
 		min_pages = MB2PAGES(488) + (totalram_pages >> 5);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #undef MB2PAGES
 	return min_pages;
@@ -1248,7 +1257,11 @@ static void balloon_up(struct work_struct *dummy)
 	/* Refuse to balloon below the floor. */
 	if (avail_pages < num_pages || avail_pages - num_pages < floor) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_info("Balloon request will be partially fulfilled. %s\n",
+=======
+		pr_warn("Balloon request will be partially fulfilled. %s\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pr_warn("Balloon request will be partially fulfilled. %s\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

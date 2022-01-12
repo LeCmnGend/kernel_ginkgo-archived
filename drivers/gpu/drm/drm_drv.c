@@ -34,6 +34,10 @@
 #include <linux/slab.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <drm/drm_client.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <drm/drm_client.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -515,6 +519,11 @@ int drm_dev_init(struct drm_device *dev,
 
 	INIT_LIST_HEAD(&dev->filelist);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	INIT_LIST_HEAD(&dev->filelist_internal);
+	INIT_LIST_HEAD(&dev->clientlist);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	INIT_LIST_HEAD(&dev->filelist_internal);
 	INIT_LIST_HEAD(&dev->clientlist);
@@ -529,6 +538,10 @@ int drm_dev_init(struct drm_device *dev,
 	mutex_init(&dev->struct_mutex);
 	mutex_init(&dev->filelist_mutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	mutex_init(&dev->clientlist_mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mutex_init(&dev->clientlist_mutex);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -590,6 +603,10 @@ err_free:
 	mutex_destroy(&dev->master_mutex);
 	mutex_destroy(&dev->ctxlist_mutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	mutex_destroy(&dev->clientlist_mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mutex_destroy(&dev->clientlist_mutex);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -631,6 +648,10 @@ void drm_dev_fini(struct drm_device *dev)
 	mutex_destroy(&dev->master_mutex);
 	mutex_destroy(&dev->ctxlist_mutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	mutex_destroy(&dev->clientlist_mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mutex_destroy(&dev->clientlist_mutex);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -882,6 +903,11 @@ void drm_dev_unregister(struct drm_device *dev)
 	dev->registered = false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	drm_client_dev_unregister(dev);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	drm_client_dev_unregister(dev);
 

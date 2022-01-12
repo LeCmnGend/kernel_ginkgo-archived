@@ -80,8 +80,11 @@
 	arcpct: pct {
 		compatible = "snps,archs-pct";
 <<<<<<< HEAD
+<<<<<<< HEAD
 		interrupt-parent = <&cpu_intc>;
 		interrupts = <20>;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	};
@@ -167,7 +170,11 @@
 			interrupts = <10>;
 			interrupt-names = "macirq";
 <<<<<<< HEAD
+<<<<<<< HEAD
 			phy-mode = "rgmii-id";
+=======
+			phy-mode = "rgmii";
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			phy-mode = "rgmii";
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -187,7 +194,11 @@
 				#size-cells = <0>;
 				compatible = "snps,dwmac-mdio";
 <<<<<<< HEAD
+<<<<<<< HEAD
 				phy0: ethernet-phy@0 { /* Micrel KSZ9031 */
+=======
+				phy0: ethernet-phy@0 {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				phy0: ethernet-phy@0 {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

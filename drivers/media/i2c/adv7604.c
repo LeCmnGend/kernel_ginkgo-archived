@@ -3558,7 +3558,11 @@ static int adv76xx_remove(struct i2c_client *client)
 	io_write(sd, 0x73, 0);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cancel_delayed_work_sync(&state->delayed_work_enable_hotplug);
+=======
+	cancel_delayed_work(&state->delayed_work_enable_hotplug);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cancel_delayed_work(&state->delayed_work_enable_hotplug);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

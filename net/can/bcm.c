@@ -126,7 +126,11 @@ struct bcm_sock {
 	int bound;
 	int ifindex;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct list_head notifier;
+=======
+	struct notifier_block notifier;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct notifier_block notifier;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -138,10 +142,13 @@ struct bcm_sock {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static LIST_HEAD(bcm_notifier_list);
 static DEFINE_SPINLOCK(bcm_notifier_lock);
 static struct bcm_sock *bcm_busy_notifier;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline struct bcm_sock *bcm_sk(const struct sock *sk)
@@ -418,7 +425,10 @@ static void bcm_tx_timeout_tsklet(unsigned long data)
 
 			/* create notification to user */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			memset(&msg_head, 0, sizeof(msg_head));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			msg_head.opcode  = TX_EXPIRED;
@@ -469,7 +479,10 @@ static void bcm_rx_changed(struct bcm_op *op, struct canfd_frame *data)
 	data->flags &= (BCM_CAN_FLAGS_MASK|RX_RECV);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(&head, 0, sizeof(head));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	head.opcode  = RX_CHANGED;
@@ -587,7 +600,10 @@ static void bcm_rx_timeout_tsklet(unsigned long data)
 
 	/* create notification to user */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(&msg_head, 0, sizeof(msg_head));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	msg_head.opcode  = RX_TIMEOUT;
@@ -858,7 +874,10 @@ static int bcm_delete_rx_op(struct list_head *ops, struct bcm_msg_head *mh,
 
 			list_del(&op->list);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			synchronize_rcu();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			bcm_remove_op(op);
@@ -1467,15 +1486,21 @@ static int bcm_sendmsg(struct socket *sock, struct msghdr *msg, size_t size)
  * notification handler for netdevice status changes
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void bcm_notify(struct bcm_sock *bo, unsigned long msg,
 		       struct net_device *dev)
 {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int bcm_notifier(struct notifier_block *nb, unsigned long msg,
 			void *ptr)
 {
 	struct net_device *dev = netdev_notifier_info_to_dev(ptr);
 	struct bcm_sock *bo = container_of(nb, struct bcm_sock, notifier);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct sock *sk = &bo->sk;
 	struct bcm_op *op;
@@ -1483,12 +1508,18 @@ static int bcm_notifier(struct notifier_block *nb, unsigned long msg,
 
 	if (!net_eq(dev_net(dev), sock_net(sk)))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return NOTIFY_DONE;
 
 	if (dev->type != ARPHRD_CAN)
 		return NOTIFY_DONE;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	switch (msg) {
@@ -1525,6 +1556,7 @@ static int bcm_notifier(struct notifier_block *nb, unsigned long msg,
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 static int bcm_notifier(struct notifier_block *nb, unsigned long msg,
@@ -1550,6 +1582,9 @@ static int bcm_notifier(struct notifier_block *nb, unsigned long msg,
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return NOTIFY_DONE;
 }
 
@@ -1570,9 +1605,15 @@ static int bcm_init(struct sock *sk)
 
 	/* set notifier */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock(&bcm_notifier_lock);
 	list_add_tail(&bo->notifier, &bcm_notifier_list);
 	spin_unlock(&bcm_notifier_lock);
+=======
+	bo->notifier.notifier_call = bcm_notifier;
+
+	register_netdevice_notifier(&bo->notifier);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bo->notifier.notifier_call = bcm_notifier;
 
@@ -1601,6 +1642,7 @@ static int bcm_release(struct socket *sock)
 	/* remove bcm_ops, timer, rx_unregister(), etc. */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock(&bcm_notifier_lock);
 	while (bcm_busy_notifier == bo) {
 		spin_unlock(&bcm_notifier_lock);
@@ -1609,6 +1651,9 @@ static int bcm_release(struct socket *sock)
 	}
 	list_del(&bo->notifier);
 	spin_unlock(&bcm_notifier_lock);
+=======
+	unregister_netdevice_notifier(&bo->notifier);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unregister_netdevice_notifier(&bo->notifier);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1644,12 +1689,17 @@ static int bcm_release(struct socket *sock)
 					  bcm_rx_handler, op);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}
 
 	synchronize_rcu();
 
 	list_for_each_entry_safe(op, next, &bo->rx_ops, list)
 		bcm_remove_op(op);
+=======
+		bcm_remove_op(op);
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		bcm_remove_op(op);
 	}
@@ -1836,10 +1886,13 @@ static struct pernet_operations canbcm_pernet_ops __read_mostly = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct notifier_block canbcm_notifier = {
 	.notifier_call = bcm_notifier
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int __init bcm_module_init(void)
@@ -1856,7 +1909,10 @@ static int __init bcm_module_init(void)
 
 	register_pernet_subsys(&canbcm_pernet_ops);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	register_netdevice_notifier(&canbcm_notifier);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
@@ -1866,7 +1922,10 @@ static void __exit bcm_module_exit(void)
 {
 	can_proto_unregister(&bcm_can_proto);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unregister_netdevice_notifier(&canbcm_notifier);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unregister_pernet_subsys(&canbcm_pernet_ops);

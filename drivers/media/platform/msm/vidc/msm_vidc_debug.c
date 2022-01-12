@@ -18,6 +18,7 @@
 #include "vidc_hfi_api.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int msm_vidc_debug = 0;
 EXPORT_SYMBOL(msm_vidc_debug);
 
@@ -28,6 +29,8 @@ EXPORT_SYMBOL(msm_vidc_debug_out);
 int msm_vidc_fw_debug = 0;
 int msm_vidc_fw_debug_mode = 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int msm_vidc_debug = VIDC_ERR | VIDC_WARN | VIDC_FW;
 EXPORT_SYMBOL(msm_vidc_debug);
 
@@ -37,6 +40,9 @@ EXPORT_SYMBOL(msm_vidc_debug_out);
 /* 0x18 = HFI_DEBUG_MSG_FATAL | HFI_DEBUG_MSG_ERROR */
 int msm_vidc_fw_debug = 0x18;
 int msm_vidc_fw_debug_mode = 1;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int msm_vidc_fw_low_power_mode = 1;
 bool msm_vidc_fw_coverage = !true;

@@ -35,11 +35,14 @@ struct f_eem {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct in_context {
 	struct sk_buff	*skb;
 	struct usb_ep	*ep;
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline struct f_eem *func_to_eem(struct usb_function *f)
@@ -318,7 +321,11 @@ static int eem_bind(struct usb_configuration *c, struct usb_function *f)
 
 	status = usb_assign_descriptors(f, eem_fs_function, eem_hs_function,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			eem_ss_function, eem_ss_function);
+=======
+			eem_ss_function, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			eem_ss_function, NULL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -340,12 +347,18 @@ fail:
 static void eem_cmd_complete(struct usb_ep *ep, struct usb_request *req)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct in_context *ctx = req->context;
 
 	dev_kfree_skb_any(ctx->skb);
 	kfree(req->buf);
 	usb_ep_free_request(ctx->ep, req);
 	kfree(ctx);
+=======
+	struct sk_buff *skb = (struct sk_buff *)req->context;
+
+	dev_kfree_skb_any(skb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct sk_buff *skb = (struct sk_buff *)req->context;
 
@@ -439,9 +452,13 @@ static int eem_unwrap(struct gether *port,
 		 */
 		if (header & BIT(15)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			struct usb_request	*req;
 			struct in_context	*ctx;
 			struct usb_ep		*ep;
+=======
+			struct usb_request	*req = cdev->req;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			struct usb_request	*req = cdev->req;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -474,6 +491,7 @@ static int eem_unwrap(struct gether *port,
 				put_unaligned_le16(BIT(15) | BIT(11) | len,
 							skb_push(skb2, 2));
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 				ep = port->in_ep;
 				req = usb_ep_alloc_request(ep, GFP_ATOMIC);
@@ -501,12 +519,18 @@ static int eem_unwrap(struct gether *port,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				skb_copy_bits(skb2, 0, req->buf, skb2->len);
 				req->length = skb2->len;
 				req->complete = eem_cmd_complete;
 				req->zero = 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				req->context = ctx;
+=======
+				req->context = skb2;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				req->context = skb2;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -562,7 +586,11 @@ static int eem_unwrap(struct gether *port,
 			if (unlikely(!skb2)) {
 				DBG(cdev, "unable to unframe EEM packet\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 				goto next;
+=======
+				continue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				continue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -577,7 +605,11 @@ static int eem_unwrap(struct gether *port,
 				DBG(cdev, "unable to realign EEM packet\n");
 				dev_kfree_skb_any(skb2);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				goto next;
+=======
+				continue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				continue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

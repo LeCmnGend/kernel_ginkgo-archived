@@ -27,7 +27,11 @@ static int throtl_quantum = 32;
 #define MIN_THROTL_BPS (320 * 1024)
 #define MIN_THROTL_IOPS (10)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define DFL_LATENCY_TARGET (1000L) /* 1ms */
+=======
+#define DFL_LATENCY_TARGET (-1L)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define DFL_LATENCY_TARGET (-1L)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

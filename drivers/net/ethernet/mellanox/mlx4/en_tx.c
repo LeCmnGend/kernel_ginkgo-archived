@@ -344,7 +344,11 @@ u32 mlx4_en_recycle_tx_desc(struct mlx4_en_priv *priv,
 	};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!napi_mode || !mlx4_en_rx_recycle(ring->recycle_ring, &frame)) {
+=======
+	if (!mlx4_en_rx_recycle(ring->recycle_ring, &frame)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!mlx4_en_rx_recycle(ring->recycle_ring, &frame)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -390,6 +394,7 @@ int mlx4_en_free_tx_buf(struct net_device *dev, struct mlx4_en_tx_ring *ring)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void mlx4_en_handle_err_cqe(struct mlx4_en_priv *priv, struct mlx4_err_cqe *err_cqe,
 				   u16 cqe_index, struct mlx4_en_tx_ring *ring)
 {
@@ -419,6 +424,8 @@ static void mlx4_en_handle_err_cqe(struct mlx4_en_priv *priv, struct mlx4_err_cq
 	queue_work(mdev->workqueue, &priv->restart_task);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 bool mlx4_en_process_tx_cq(struct net_device *dev,
@@ -468,11 +475,14 @@ bool mlx4_en_process_tx_cq(struct net_device *dev,
 
 		if (unlikely((cqe->owner_sr_opcode & MLX4_CQE_OPCODE_MASK) ==
 <<<<<<< HEAD
+<<<<<<< HEAD
 			     MLX4_CQE_OPCODE_ERROR))
 			if (!test_and_set_bit(MLX4_EN_TX_RING_STATE_RECOVERING, &ring->state))
 				mlx4_en_handle_err_cqe(priv, (struct mlx4_err_cqe *)cqe, index,
 						       ring);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			     MLX4_CQE_OPCODE_ERROR)) {
 			struct mlx4_err_cqe *cqe_err = (struct mlx4_err_cqe *)cqe;
 
@@ -480,6 +490,9 @@ bool mlx4_en_process_tx_cq(struct net_device *dev,
 			       cqe_err->vendor_err_syndrome,
 			       cqe_err->syndrome);
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		/* Skip over last polled CQE */
@@ -879,7 +892,10 @@ netdev_tx_t mlx4_en_xmit(struct sk_buff *skb, struct net_device *dev)
 	struct mlx4_wqe_data_seg *data;
 	struct mlx4_en_tx_info *tx_info;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 __maybe_unused ring_cons;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int tx_ind;
@@ -896,6 +912,10 @@ netdev_tx_t mlx4_en_xmit(struct sk_buff *skb, struct net_device *dev)
 	bool inline_ok;
 	u8 data_offset;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u32 ring_cons;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 ring_cons;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

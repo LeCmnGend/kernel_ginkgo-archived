@@ -531,7 +531,11 @@ static struct shrinker workingset_shadow_shrinker = {
 	.count_objects = count_shadow_nodes,
 	.scan_objects = scan_shadow_nodes,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.seeks = 0, /* ->count reports only fully expendable nodes */
+=======
+	.seeks = DEFAULT_SEEKS,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.seeks = DEFAULT_SEEKS,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -560,7 +564,11 @@ static int __init workingset_init(void)
 	 */
 	timestamp_bits = BITS_PER_LONG - EVICTION_SHIFT;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	max_order = fls_long(totalram_pages() - 1);
+=======
+	max_order = fls_long(totalram_pages - 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	max_order = fls_long(totalram_pages - 1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

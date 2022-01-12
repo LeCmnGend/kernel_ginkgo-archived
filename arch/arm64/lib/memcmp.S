@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* SPDX-License-Identifier: GPL-2.0-only */
 /*
  * Copyright (c) 2013-2021, Arm Limited.
@@ -6,6 +7,8 @@
  * Adapted from the original at:
  * https://github.com/ARM-software/optimized-routines/blob/e823e3abf5f89ecb/string/aarch64/memcmp.S
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Copyright (C) 2013 ARM Ltd.
  * Copyright (C) 2013 Linaro.
@@ -28,12 +31,16 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 
 #include <linux/linkage.h>
 #include <asm/assembler.h>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* Assumptions:
  *
@@ -163,6 +170,8 @@ L(byte_loop):
 
 SYM_FUNC_END_PI(memcmp)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
 * compare memory areas(when two memory areas' offset are different,
 * alignment handled by the hardware)
@@ -394,4 +403,7 @@ CPU_LE( rev	data2, data2 )
 	mov	result, #0
 	ret
 ENDPIPROC(memcmp)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

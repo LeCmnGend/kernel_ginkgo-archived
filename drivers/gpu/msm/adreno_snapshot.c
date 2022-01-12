@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2012-2021, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2012-2020, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2012-2020, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -750,7 +754,11 @@ static void setup_fault_process(struct kgsl_device *device,
 		struct kgsl_process_private *tmp;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		spin_lock(&kgsl_driver.proclist_lock);
+=======
+		mutex_lock(&kgsl_driver.process_mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		mutex_lock(&kgsl_driver.process_mutex);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -765,7 +773,11 @@ static void setup_fault_process(struct kgsl_device *device,
 			}
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		spin_unlock(&kgsl_driver.proclist_lock);
+=======
+		mutex_unlock(&kgsl_driver.process_mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		mutex_unlock(&kgsl_driver.process_mutex);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

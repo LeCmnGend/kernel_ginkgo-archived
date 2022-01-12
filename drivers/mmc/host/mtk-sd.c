@@ -759,6 +759,7 @@ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
 {
 	unsigned long flags;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/*
 	 * No need check the return value of cancel_delayed_work, as only ONE
@@ -767,6 +768,8 @@ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
 	cancel_delayed_work(&host->req_timeout);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool ret;
 
 	ret = cancel_delayed_work(&host->req_timeout);
@@ -774,6 +777,9 @@ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
 		/* delay work already running */
 		return;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_irqsave(&host->lock, flags);
 	host->mrq = NULL;
@@ -793,7 +799,11 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
 	bool sbc_error;
 	unsigned long flags;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 *rsp;
+=======
+	u32 *rsp = cmd->resp;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 *rsp = cmd->resp;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -818,7 +828,10 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
 	if (done)
 		return true;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rsp = cmd->resp;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1003,7 +1016,11 @@ static bool msdc_data_xfer_done(struct msdc_host *host, u32 events,
 				struct mmc_request *mrq, struct mmc_data *data)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct mmc_command *stop;
+=======
+	struct mmc_command *stop = data->stop;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct mmc_command *stop = data->stop;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1023,7 +1040,10 @@ static bool msdc_data_xfer_done(struct msdc_host *host, u32 events,
 	if (done)
 		return true;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	stop = data->stop;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

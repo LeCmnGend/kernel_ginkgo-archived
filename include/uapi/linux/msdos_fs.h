@@ -11,9 +11,13 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef SECTOR_SIZE
 #define SECTOR_SIZE	512		/* sector size (bytes) */
 #endif
+=======
+#define SECTOR_SIZE	512		/* sector size (bytes) */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define SECTOR_SIZE	512		/* sector size (bytes) */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

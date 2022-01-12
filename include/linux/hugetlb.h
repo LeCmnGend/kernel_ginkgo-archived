@@ -124,7 +124,11 @@ void hugetlb_fix_reserve_counts(struct inode *inode);
 extern struct mutex *hugetlb_fault_mutex_table;
 u32 hugetlb_fault_mutex_hash(struct hstate *h, struct address_space *mapping,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				pgoff_t idx);
+=======
+				pgoff_t idx, unsigned long address);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				pgoff_t idx, unsigned long address);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -472,7 +476,10 @@ static inline int hstate_index(struct hstate *h)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 pgoff_t __basepage_index(struct page *page);
 
 /* Return page->index in PAGE_SIZE units */
@@ -484,6 +491,9 @@ static inline pgoff_t basepage_index(struct page *page)
 	return __basepage_index(page);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern int dissolve_free_huge_page(struct page *page);
 extern int dissolve_free_huge_pages(unsigned long start_pfn,
@@ -539,9 +549,12 @@ static inline void set_huge_swap_pte_at(struct mm_struct *mm, unsigned long addr
 }
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 void set_page_huge_active(struct page *page);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #else	/* CONFIG_HUGETLB_PAGE */
@@ -583,12 +596,18 @@ static inline int hstate_index(struct hstate *h)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline pgoff_t basepage_index(struct page *page)
 {
 	return page->index;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline int dissolve_free_huge_page(struct page *page)
 {

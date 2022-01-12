@@ -784,7 +784,11 @@ exit_free_master:
 static int dln2_spi_remove(struct platform_device *pdev)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct spi_master *master = platform_get_drvdata(pdev);
+=======
+	struct spi_master *master = spi_master_get(platform_get_drvdata(pdev));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct spi_master *master = spi_master_get(platform_get_drvdata(pdev));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

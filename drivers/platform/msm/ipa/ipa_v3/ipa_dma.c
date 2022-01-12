@@ -68,7 +68,11 @@
 #ifdef CONFIG_DEBUG_FS
 #define IPADMA_MAX_MSG_LEN 1024
 <<<<<<< HEAD
+<<<<<<< HEAD
 static char *dbg_buff;
+=======
+static char dbg_buff[IPADMA_MAX_MSG_LEN];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static char dbg_buff[IPADMA_MAX_MSG_LEN];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1201,15 +1205,21 @@ static ssize_t ipa3_dma_debugfs_reset_statistics(struct file *file,
 	s8 in_num = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (IPADMA_MAX_MSG_LEN < count + 1)
 		return -EFAULT;
 
 	missing = ipa_safe_copy_from_user(dbg_buff, ubuf, count);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (sizeof(dbg_buff) < count + 1)
 		return -EFAULT;
 
 	missing = copy_from_user(dbg_buff, ubuf, min(sizeof(dbg_buff), count));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (missing)
 		return -EFAULT;
@@ -1248,10 +1258,13 @@ static void ipa3_dma_debugfs_init(void)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dbg_buff = kmalloc(IPADMA_MAX_MSG_LEN * sizeof(char), GFP_KERNEL);
 	if (!dbg_buff)
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dfile_info =
@@ -1264,7 +1277,10 @@ static void ipa3_dma_debugfs_init(void)
 	return;
 fail:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(dbg_buff);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	debugfs_remove_recursive(dent);
@@ -1274,7 +1290,10 @@ static void ipa3_dma_debugfs_destroy(void)
 {
 	debugfs_remove_recursive(dent);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(dbg_buff);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

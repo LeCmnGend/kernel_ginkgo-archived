@@ -206,10 +206,15 @@ static int nft_dynset_init(const struct nft_ctx *ctx,
 				       priv->expr->ops->size);
 	if (set->flags & NFT_SET_TIMEOUT) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (timeout || set->timeout) {
 			nft_set_ext_add(&priv->tmpl, NFT_SET_EXT_TIMEOUT);
 			nft_set_ext_add(&priv->tmpl, NFT_SET_EXT_EXPIRATION);
 		}
+=======
+		if (timeout || set->timeout)
+			nft_set_ext_add(&priv->tmpl, NFT_SET_EXT_EXPIRATION);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (timeout || set->timeout)
 			nft_set_ext_add(&priv->tmpl, NFT_SET_EXT_EXPIRATION);

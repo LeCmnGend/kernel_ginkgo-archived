@@ -209,6 +209,7 @@ struct hd_struct *disk_part_iter_next(struct disk_part_iter *piter)
 		if (!part)
 			continue;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		get_device(part_to_dev(part));
 		piter->part = part;
 		if (!part_nr_sects_read(part) &&
@@ -221,6 +222,8 @@ struct hd_struct *disk_part_iter_next(struct disk_part_iter *piter)
 		}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!part_nr_sects_read(part) &&
 		    !(piter->flags & DISK_PITER_INCL_EMPTY) &&
 		    !(piter->flags & DISK_PITER_INCL_EMPTY_PART0 &&
@@ -229,6 +232,9 @@ struct hd_struct *disk_part_iter_next(struct disk_part_iter *piter)
 
 		get_device(part_to_dev(part));
 		piter->part = part;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		piter->idx += inc;
 		break;

@@ -102,7 +102,10 @@ enum ieee80211_sta_info_flags {
 	WLAN_STA_MPSP_RECIPIENT,
 	WLAN_STA_PS_DELIVER,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	WLAN_STA_USES_ENCRYPTION,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -403,6 +406,7 @@ struct ieee80211_sta_rx_stats {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * IEEE 802.11-2016 (10.6 "Defragmentation") recommends support for "concurrent
  * reception of at least one MSDU per access category per associated STA"
@@ -431,6 +435,8 @@ struct ieee80211_fragment_cache {
 	unsigned int next;
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -506,7 +512,10 @@ struct ieee80211_fragment_cache {
  *	this (by advertising the USES_RSS hw flag)
  * @status_stats: TX status statistics
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @frags: fragment cache
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
@@ -609,8 +618,11 @@ struct sta_info {
 	struct cfg80211_chan_def tdls_chandef;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct ieee80211_fragment_cache frags;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* keep last! */

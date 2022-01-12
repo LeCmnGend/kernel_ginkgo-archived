@@ -1057,7 +1057,10 @@ int xhci_resume(struct xhci_hcd *xhci, bool hibernated)
 	int			retval = 0;
 	bool			comp_timer_running = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool			pending_portevent = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1194,6 +1197,7 @@ int xhci_resume(struct xhci_hcd *xhci, bool hibernated)
  done:
 	if (retval == 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/*
 		 * Resume roothubs only if there are pending events.
 		 * USB 3 devices resend U3 LFPS wake after a 100ms delay if
@@ -1210,11 +1214,19 @@ int xhci_resume(struct xhci_hcd *xhci, bool hibernated)
 		/* Resume root hubs only when have pending events. */
 		if (xhci_pending_portevent(xhci)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+		/* Resume root hubs only when have pending events. */
+		if (xhci_pending_portevent(xhci)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			usb_hcd_resume_root_hub(xhci->shared_hcd);
 			usb_hcd_resume_root_hub(hcd);
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1356,7 +1368,11 @@ static int xhci_configure_endpoint(struct xhci_hcd *xhci,
  */
 static int xhci_check_maxpacket(struct xhci_hcd *xhci, unsigned int slot_id,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unsigned int ep_index, struct urb *urb, gfp_t mem_flags)
+=======
+		unsigned int ep_index, struct urb *urb)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		unsigned int ep_index, struct urb *urb)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1391,7 +1407,11 @@ static int xhci_check_maxpacket(struct xhci_hcd *xhci, unsigned int slot_id,
 		 */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		command = xhci_alloc_command(xhci, false, true, mem_flags);
+=======
+		command = xhci_alloc_command(xhci, false, true, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		command = xhci_alloc_command(xhci, false, true, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1486,7 +1506,11 @@ static int xhci_urb_enqueue(struct usb_hcd *hcd, struct urb *urb, gfp_t mem_flag
 		if (urb->dev->speed == USB_SPEED_FULL) {
 			ret = xhci_check_maxpacket(xhci, slot_id,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					ep_index, urb, mem_flags);
+=======
+					ep_index, urb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					ep_index, urb);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4460,6 +4484,7 @@ static u16 xhci_calculate_u1_timeout(struct xhci_hcd *xhci,
 	unsigned long long timeout_ns;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (xhci->quirks & XHCI_INTEL_HOST)
 		timeout_ns = xhci_calculate_intel_u1_timeout(udev, desc);
 	else
@@ -4473,18 +4498,29 @@ static u16 xhci_calculate_u1_timeout(struct xhci_hcd *xhci,
 	if (usb_endpoint_xfer_int(desc) || usb_endpoint_xfer_isoc(desc)) {
 		if (xhci_service_interval_to_ns(desc) <= udev->u1_params.mel) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	/* Prevent U1 if service interval is shorter than U1 exit latency */
+	if (usb_endpoint_xfer_int(desc) || usb_endpoint_xfer_isoc(desc)) {
+		if (xhci_service_interval_to_ns(desc) <= udev->u1_params.mel) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			dev_dbg(&udev->dev, "Disable U1, ESIT shorter than exit latency\n");
 			return USB3_LPM_DISABLED;
 		}
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (xhci->quirks & XHCI_INTEL_HOST)
 		timeout_ns = xhci_calculate_intel_u1_timeout(udev, desc);
 	else
 		timeout_ns = udev->u1_params.sel;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* The U1 timeout is encoded in 1us intervals.
 	 * Don't return a timeout of zero, because that's USB3_LPM_DISABLED.
@@ -4538,6 +4574,7 @@ static u16 xhci_calculate_u2_timeout(struct xhci_hcd *xhci,
 	unsigned long long timeout_ns;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (xhci->quirks & XHCI_INTEL_HOST)
 		timeout_ns = xhci_calculate_intel_u2_timeout(udev, desc);
 	else
@@ -4551,18 +4588,29 @@ static u16 xhci_calculate_u2_timeout(struct xhci_hcd *xhci,
 	if (usb_endpoint_xfer_int(desc) || usb_endpoint_xfer_isoc(desc)) {
 		if (xhci_service_interval_to_ns(desc) <= udev->u2_params.mel) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	/* Prevent U2 if service interval is shorter than U2 exit latency */
+	if (usb_endpoint_xfer_int(desc) || usb_endpoint_xfer_isoc(desc)) {
+		if (xhci_service_interval_to_ns(desc) <= udev->u2_params.mel) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			dev_dbg(&udev->dev, "Disable U2, ESIT shorter than exit latency\n");
 			return USB3_LPM_DISABLED;
 		}
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (xhci->quirks & XHCI_INTEL_HOST)
 		timeout_ns = xhci_calculate_intel_u2_timeout(udev, desc);
 	else
 		timeout_ns = udev->u2_params.sel;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* The U2 timeout is encoded in 256us intervals */
 	timeout_ns = DIV_ROUND_UP_ULL(timeout_ns, 256 * 1000);

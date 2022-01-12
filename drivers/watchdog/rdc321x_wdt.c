@@ -245,8 +245,11 @@ static int rdc321x_wdt_probe(struct platform_device *pdev)
 	rdc321x_wdt_device.sb_pdev = pdata->sb_pdev;
 	rdc321x_wdt_device.base_reg = r->start;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rdc321x_wdt_device.queue = 0;
 	rdc321x_wdt_device.default_ticks = ticks;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -264,6 +267,10 @@ static int rdc321x_wdt_probe(struct platform_device *pdev)
 
 	init_completion(&rdc321x_wdt_device.stop);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	rdc321x_wdt_device.queue = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rdc321x_wdt_device.queue = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -273,6 +280,11 @@ static int rdc321x_wdt_probe(struct platform_device *pdev)
 	setup_timer(&rdc321x_wdt_device.timer, rdc321x_wdt_trigger, 0);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	rdc321x_wdt_device.default_ticks = ticks;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rdc321x_wdt_device.default_ticks = ticks;
 

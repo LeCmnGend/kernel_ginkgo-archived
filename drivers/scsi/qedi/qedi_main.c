@@ -629,7 +629,11 @@ static struct qedi_ctx *qedi_host_alloc(struct pci_dev *pdev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	shost->max_id = QEDI_MAX_ISCSI_CONNS_PER_HBA - 1;
+=======
+	shost->max_id = QEDI_MAX_ISCSI_CONNS_PER_HBA;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	shost->max_id = QEDI_MAX_ISCSI_CONNS_PER_HBA;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1359,7 +1363,10 @@ static int qedi_alloc_global_queues(struct qedi_ctx *qedi)
 			QEDI_ERR(&qedi->dbg_ctx,
 				 "Unable to allocation global queue %d.\n", i);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			status = -ENOMEM;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			goto mem_alloc_failure;
@@ -2396,7 +2403,11 @@ static int __qedi_probe(struct pci_dev *pdev, int mode)
 				 "Unable to start offload thread!\n");
 			rc = -ENODEV;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto free_tmf_thread;
+=======
+			goto free_cid_que;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto free_cid_que;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2420,8 +2431,11 @@ static int __qedi_probe(struct pci_dev *pdev, int mode)
 	return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 free_tmf_thread:
 	destroy_workqueue(qedi->tmf_thread);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 free_cid_que:

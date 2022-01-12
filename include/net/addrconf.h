@@ -273,7 +273,10 @@ int ipv6_sock_ac_join(struct sock *sk, int ifindex,
 int ipv6_sock_ac_drop(struct sock *sk, int ifindex,
 		      const struct in6_addr *addr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 void __ipv6_sock_ac_close(struct sock *sk);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void ipv6_sock_ac_close(struct sock *sk);

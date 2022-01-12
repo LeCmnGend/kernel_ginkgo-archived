@@ -197,6 +197,10 @@ static int vti6_tnl_create2(struct net_device *dev)
 	strcpy(t->parms.name, dev->name);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	dev_hold(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev_hold(dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -907,7 +911,10 @@ static inline int vti6_dev_init_gen(struct net_device *dev)
 	if (!dev->tstats)
 		return -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev_hold(dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
@@ -942,6 +949,10 @@ static int __net_init vti6_fb_tnl_dev_init(struct net_device *dev)
 
 	t->parms.proto = IPPROTO_IPV6;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	dev_hold(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev_hold(dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

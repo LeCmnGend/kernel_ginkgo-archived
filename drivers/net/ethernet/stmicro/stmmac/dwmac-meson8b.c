@@ -31,6 +31,10 @@
 
 /* mux to choose between fclk_div2 (bit unset) and mpll2 (bit set) */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define PRG_ETH0_CLK_M250_SEL_SHIFT	4
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define PRG_ETH0_CLK_M250_SEL_SHIFT	4
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -125,9 +129,14 @@ static int meson8b_init_clk(struct meson8b_dwmac *dwmac)
 
 	dwmac->m250_mux.reg = dwmac->regs + PRG_ETH0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dwmac->m250_mux.shift = __ffs(PRG_ETH0_CLK_M250_SEL_MASK);
 	dwmac->m250_mux.mask = PRG_ETH0_CLK_M250_SEL_MASK >>
 			       dwmac->m250_mux.shift;
+=======
+	dwmac->m250_mux.shift = PRG_ETH0_CLK_M250_SEL_SHIFT;
+	dwmac->m250_mux.mask = PRG_ETH0_CLK_M250_SEL_MASK;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dwmac->m250_mux.shift = PRG_ETH0_CLK_M250_SEL_SHIFT;
 	dwmac->m250_mux.mask = PRG_ETH0_CLK_M250_SEL_MASK;

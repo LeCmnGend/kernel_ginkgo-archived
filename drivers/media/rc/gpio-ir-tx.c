@@ -88,9 +88,12 @@ static int gpio_ir_tx(struct rc_dev *dev, unsigned int *txbuf,
 			edge = ktime_add_us(edge, txbuf[i]);
 			delta = ktime_us_delta(edge, ktime_get());
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (delta > 0)
 				udelay(delta);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (delta > 10) {
 				spin_unlock_irqrestore(&gpio_ir->lock, flags);
 				usleep_range(delta, delta + 10);
@@ -98,6 +101,9 @@ static int gpio_ir_tx(struct rc_dev *dev, unsigned int *txbuf,
 			} else if (delta > 0) {
 				udelay(delta);
 			}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		} else {
 			// pulse

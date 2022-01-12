@@ -23,6 +23,7 @@
 #include <linux/kernel.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if !defined(find_next_bit) || !defined(find_next_zero_bit) || \
 		!defined(find_next_and_bit)
 
@@ -37,6 +38,8 @@ static inline unsigned long _find_next_bit(const unsigned long *addr1,
 		const unsigned long *addr2, unsigned long nbits,
 		unsigned long start, unsigned long invert)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #if !defined(find_next_bit)
 
 /*
@@ -46,6 +49,9 @@ static inline unsigned long _find_next_bit(const unsigned long *addr1,
  */
 static unsigned long _find_next_bit(const unsigned long *addr,
 		unsigned long nbits, unsigned long start, unsigned long invert)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	unsigned long tmp;
@@ -54,10 +60,14 @@ static unsigned long _find_next_bit(const unsigned long *addr,
 		return nbits;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tmp = addr1[start / BITS_PER_LONG];
 	if (addr2)
 		tmp &= addr2[start / BITS_PER_LONG];
 	tmp ^= invert;
+=======
+	tmp = addr[start / BITS_PER_LONG] ^ invert;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	tmp = addr[start / BITS_PER_LONG] ^ invert;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -72,10 +82,14 @@ static unsigned long _find_next_bit(const unsigned long *addr,
 			return nbits;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		tmp = addr1[start / BITS_PER_LONG];
 		if (addr2)
 			tmp &= addr2[start / BITS_PER_LONG];
 		tmp ^= invert;
+=======
+		tmp = addr[start / BITS_PER_LONG] ^ invert;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		tmp = addr[start / BITS_PER_LONG] ^ invert;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -93,7 +107,11 @@ unsigned long find_next_bit(const unsigned long *addr, unsigned long size,
 			    unsigned long offset)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return _find_next_bit(addr, NULL, size, offset, 0UL);
+=======
+	return _find_next_bit(addr, size, offset, 0UL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return _find_next_bit(addr, size, offset, 0UL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -139,6 +157,7 @@ unsigned long find_next_zero_bit(const unsigned long *addr, unsigned long size,
 				 unsigned long offset)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return _find_next_bit(addr, NULL, size, offset, ~0UL);
 }
 #endif
@@ -149,6 +168,9 @@ unsigned long find_next_and_bit(const unsigned long *addr1,
 		unsigned long offset)
 {
 	return _find_next_bit(addr1, addr2, size, offset, 0UL);
+=======
+	return _find_next_bit(addr, size, offset, ~0UL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return _find_next_bit(addr, size, offset, ~0UL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

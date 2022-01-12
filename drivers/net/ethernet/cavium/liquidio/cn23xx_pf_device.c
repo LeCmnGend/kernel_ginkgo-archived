@@ -421,7 +421,11 @@ static int cn23xx_pf_setup_global_input_regs(struct octeon_device *oct)
 	 */
 	for (q_no = 0; q_no < ern; q_no++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		reg_val = (u64)oct->pcie_port << CN23XX_PKT_INPUT_CTL_MAC_NUM_POS;
+=======
+		reg_val = oct->pcie_port << CN23XX_PKT_INPUT_CTL_MAC_NUM_POS;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		reg_val = oct->pcie_port << CN23XX_PKT_INPUT_CTL_MAC_NUM_POS;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1172,7 +1176,11 @@ static int cn23xx_get_pf_num(struct octeon_device *oct)
 			       CN23XX_PCIE_SRIOV_FDL_MASK);
 	} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = -EINVAL;
+=======
+		ret = EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = EINVAL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

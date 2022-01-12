@@ -1,6 +1,9 @@
 /* Copyright (c) 2018-2020 The Linux Foundation. All rights reserved.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -47,8 +50,11 @@
 #include "qg-defs.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 u8 set_cycle_flag = 0;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int qg_debug_mask;
@@ -220,7 +226,10 @@ static void qg_notify_charger(struct qpnp_qg *chip)
 
 	prop.intval = chip->bp.float_volt_uv;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rc = power_supply_set_property(chip->batt_psy,
@@ -1755,6 +1764,7 @@ static int qg_get_charge_counter(struct qpnp_qg *chip, int *charge_counter)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int qg_get_charge_raw(struct qpnp_qg *chip, int *charge_raw)
 {
 	int rc, cur_soc = 0;
@@ -1786,6 +1796,8 @@ static int qg_get_charge_raw(struct qpnp_qg *chip, int *charge_raw)
 	return 0;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int qg_get_power(struct qpnp_qg *chip, int *val, bool average)
@@ -2095,9 +2107,12 @@ static int qg_psy_set_property(struct power_supply *psy,
 		qg_reset(chip);
 		break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case POWER_SUPPLY_PROP_CYCLE_COUNT:
 		rc = set_cycle_count(chip->counter, pval->intval);
 		break;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case POWER_SUPPLY_PROP_BATT_AGE_LEVEL:
@@ -2242,9 +2257,12 @@ static int qg_psy_get_property(struct power_supply *psy,
 		pval->intval = chip->batt_age_level;
 		break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case POWER_SUPPLY_PROP_CHARGE_NOW_RAW:
 		rc = qg_get_charge_raw(chip, &pval->intval);
 		break;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	default:
@@ -2311,7 +2329,10 @@ static enum power_supply_property qg_psy_props[] = {
 	POWER_SUPPLY_PROP_SCALE_MODE_EN,
 	POWER_SUPPLY_PROP_BATT_AGE_LEVEL,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	POWER_SUPPLY_PROP_CHARGE_NOW_RAW,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -2369,8 +2390,12 @@ static int qg_charge_full_update(struct qpnp_qg *chip)
 				chip->charge_done);
 	if (chip->charge_done && !chip->charge_full) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (chip->msoc >= 99 && (health == POWER_SUPPLY_HEALTH_GOOD || 
 			health == POWER_SUPPLY_HEALTH_WARM || health == POWER_SUPPLY_HEALTH_COOL) ) {
+=======
+		if (chip->msoc >= 99 && health == POWER_SUPPLY_HEALTH_GOOD) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (chip->msoc >= 99 && health == POWER_SUPPLY_HEALTH_GOOD) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4627,12 +4652,15 @@ static int qpnp_qg_probe(struct platform_device *pdev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rc = qg_sanitize_sdam(chip);
 	if (rc < 0) {
 		pr_err("Failed to sanitize SDAM, rc=%d\n", rc);
 		return rc;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rc = qg_soc_init(chip);

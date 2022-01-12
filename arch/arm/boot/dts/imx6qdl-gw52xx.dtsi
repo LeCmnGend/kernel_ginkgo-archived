@@ -279,7 +279,11 @@
 			/* VDD_AUD_1P8: Audio codec */
 			reg_aud_1p8v: ldo3 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				regulator-name = "vdd1p8a";
+=======
+				regulator-name = "vdd1p8";
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				regulator-name = "vdd1p8";
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

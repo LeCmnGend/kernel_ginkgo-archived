@@ -1092,8 +1092,12 @@ static int clk_pllu_enable(struct clk_hw *hw)
 		spin_lock_irqsave(pll->lock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!clk_pll_is_enabled(hw))
 		_clk_pll_enable(hw);
+=======
+	_clk_pll_enable(hw);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	_clk_pll_enable(hw);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1714,8 +1718,12 @@ static int clk_pllu_tegra114_enable(struct clk_hw *hw)
 		spin_lock_irqsave(pll->lock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!clk_pll_is_enabled(hw))
 		_clk_pll_enable(hw);
+=======
+	_clk_pll_enable(hw);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	_clk_pll_enable(hw);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

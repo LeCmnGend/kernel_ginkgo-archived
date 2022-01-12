@@ -253,6 +253,7 @@ static int uvc_v4l2_try_format(struct uvc_streaming *stream,
 		goto done;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* After the probe, update fmt with the values returned from
 	 * negotiation with the device. Some devices return invalid bFormatIndex
 	 * and bFrameIndex values, in which case we can only assume they have
@@ -284,13 +285,18 @@ static int uvc_v4l2_try_format(struct uvc_streaming *stream,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	fmt->fmt.pix.width = frame->wWidth;
 	fmt->fmt.pix.height = frame->wHeight;
 	fmt->fmt.pix.field = V4L2_FIELD_NONE;
 	fmt->fmt.pix.bytesperline = uvc_v4l2_get_bytesperline(format, frame);
 	fmt->fmt.pix.sizeimage = probe->dwMaxVideoFrameSize;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	fmt->fmt.pix.pixelformat = format->fcc;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	fmt->fmt.pix.colorspace = format->colorspace;

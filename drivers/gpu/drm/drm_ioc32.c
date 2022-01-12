@@ -97,8 +97,11 @@ static int compat_drm_version(struct file *file, unsigned int cmd,
 		return -EFAULT;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(&v, 0, sizeof(v));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	v = (struct drm_version) {
@@ -140,9 +143,12 @@ static int compat_drm_getunique(struct file *file, unsigned int cmd,
 	if (copy_from_user(&uq32, (void __user *)arg, sizeof(uq32)))
 		return -EFAULT;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	memset(&uq, 0, sizeof(uq));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	uq = (struct drm_unique){
@@ -272,8 +278,11 @@ static int compat_drm_getclient(struct file *file, unsigned int cmd,
 		return -EFAULT;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(&client, 0, sizeof(client));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	client.idx = c32.idx;
@@ -859,8 +868,11 @@ static int compat_drm_wait_vblank(struct file *file, unsigned int cmd,
 		return -EFAULT;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(&req, 0, sizeof(req));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	req.request.type = req32.request.type;
@@ -901,8 +913,11 @@ static int compat_drm_mode_addfb2(struct file *file, unsigned int cmd,
 	int err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(&req64, 0, sizeof(req64));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (copy_from_user(&req64, argp,

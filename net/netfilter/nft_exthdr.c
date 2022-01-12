@@ -47,9 +47,12 @@ static void nft_exthdr_ipv6_eval(const struct nft_expr *expr,
 	int err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (pkt->skb->protocol != htons(ETH_P_IPV6))
 		goto err;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = ipv6_find_hdr(pkt->skb, &offset, priv->type, NULL, NULL);
@@ -142,6 +145,10 @@ static void nft_exthdr_tcp_set_eval(const struct nft_expr *expr,
 	struct tcphdr *tcph;
 	u8 *opt;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u32 src;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 src;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -154,6 +161,10 @@ static void nft_exthdr_tcp_set_eval(const struct nft_expr *expr,
 	for (i = sizeof(*tcph); i < tcphdr_len - 1; i += optl) {
 		union {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			u8 octet;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			u8 octet;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -178,6 +189,10 @@ static void nft_exthdr_tcp_set_eval(const struct nft_expr *expr,
 			return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		src = regs->data[priv->sreg];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		src = regs->data[priv->sreg];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -187,8 +202,12 @@ static void nft_exthdr_tcp_set_eval(const struct nft_expr *expr,
 		case 2:
 			old.v16 = get_unaligned((u16 *)(opt + offset));
 <<<<<<< HEAD
+<<<<<<< HEAD
 			new.v16 = (__force __be16)nft_reg_load16(
 				&regs->data[priv->sreg]);
+=======
+			new.v16 = src;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			new.v16 = src;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -210,7 +229,11 @@ static void nft_exthdr_tcp_set_eval(const struct nft_expr *expr,
 			break;
 		case 4:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			new.v32 = regs->data[priv->sreg];
+=======
+			new.v32 = src;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			new.v32 = src;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

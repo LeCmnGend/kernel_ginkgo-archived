@@ -178,7 +178,11 @@ static const char * const s5k4ecgx_supply_names[] = {
 enum s5k4ecgx_gpio_id {
 	STBY,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	RSET,
+=======
+	RST,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	RST,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -487,7 +491,11 @@ static int __s5k4ecgx_power_on(struct s5k4ecgx *priv)
 		usleep_range(30, 50);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (s5k4ecgx_gpio_set_value(priv, RSET, priv->gpio[RSET].level))
+=======
+	if (s5k4ecgx_gpio_set_value(priv, RST, priv->gpio[RST].level))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (s5k4ecgx_gpio_set_value(priv, RST, priv->gpio[RST].level))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -499,7 +507,11 @@ static int __s5k4ecgx_power_on(struct s5k4ecgx *priv)
 static int __s5k4ecgx_power_off(struct s5k4ecgx *priv)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (s5k4ecgx_gpio_set_value(priv, RSET, !priv->gpio[RSET].level))
+=======
+	if (s5k4ecgx_gpio_set_value(priv, RST, !priv->gpio[RST].level))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (s5k4ecgx_gpio_set_value(priv, RST, !priv->gpio[RST].level))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -891,7 +903,11 @@ static int s5k4ecgx_config_gpios(struct s5k4ecgx *priv,
 
 	priv->gpio[STBY].gpio = -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	priv->gpio[RSET].gpio  = -EINVAL;
+=======
+	priv->gpio[RST].gpio  = -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	priv->gpio[RST].gpio  = -EINVAL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -914,7 +930,11 @@ static int s5k4ecgx_config_gpios(struct s5k4ecgx *priv,
 		return ret;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	priv->gpio[RSET] = *gpio;
+=======
+	priv->gpio[RST] = *gpio;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	priv->gpio[RST] = *gpio;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

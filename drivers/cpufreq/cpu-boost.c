@@ -18,7 +18,10 @@
 #include <linux/cpufreq.h>
 #include <linux/cpu.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/kthread.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/sched.h>
@@ -27,10 +30,13 @@
 #include <linux/input.h>
 #include <linux/time.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/battery_saver.h>
 #include <uapi/linux/sched/types.h>
 
 #include <linux/sched/rt.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -38,6 +44,7 @@ struct cpu_sync {
 	int cpu;
 	unsigned int input_boost_min;
 	unsigned int input_boost_freq;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	unsigned int powerkey_input_boost_freq;
 };
@@ -53,12 +60,17 @@ static struct kthread_work input_boost_work;
 
 static struct kthread_work powerkey_input_boost_work;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
 static DEFINE_PER_CPU(struct cpu_sync, sync_info);
 static struct workqueue_struct *cpu_boost_wq;
 
 static struct work_struct input_boost_work;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static bool input_boost_enabled;
@@ -66,6 +78,7 @@ static bool input_boost_enabled;
 static unsigned int input_boost_ms = 40;
 module_param(input_boost_ms, uint, 0644);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static unsigned int powerkey_input_boost_ms = 400;
 module_param(powerkey_input_boost_ms, uint, 0644);
@@ -81,10 +94,16 @@ static unsigned int sched_boost_on_input;
 module_param(sched_boost_on_input, uint, 0644);
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+static unsigned int sched_boost_on_input;
+module_param(sched_boost_on_input, uint, 0644);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static bool sched_boost_active;
 
 static struct delayed_work input_boost_rem;
 static u64 last_input_time;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 static struct kthread_worker cpu_boost_worker;
@@ -98,6 +117,9 @@ static struct task_struct *powerkey_cpu_boost_worker_thread;
 =======
 #define MIN_INPUT_INTERVAL (150 * USEC_PER_MSEC)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+#define MIN_INPUT_INTERVAL (150 * USEC_PER_MSEC)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static int set_input_boost_freq(const char *buf, const struct kernel_param *kp)
 {
@@ -106,6 +128,7 @@ static int set_input_boost_freq(const char *buf, const struct kernel_param *kp)
 	const char *cp = buf;
 	bool enabled = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	enum input_boost_type type;
 
 	if (strnstr(kp->name, "input_boost_freq", MAX_NAME_LENGTH))
@@ -113,6 +136,8 @@ static int set_input_boost_freq(const char *buf, const struct kernel_param *kp)
 	if (strnstr(kp->name, "powerkey_input_boost_freq",
 			MAX_NAME_LENGTH))
 		type = powerkey_input_boost;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -124,12 +149,17 @@ static int set_input_boost_freq(const char *buf, const struct kernel_param *kp)
 		if (sscanf(buf, "%u\n", &val) != 1)
 			return -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		for_each_possible_cpu(i) {
 			if (type == default_input_boost)
 				per_cpu(sync_info, i).input_boost_freq = val;
 			else if (type == powerkey_input_boost)
 				per_cpu(sync_info, i).powerkey_input_boost_freq = val;
 		}
+=======
+		for_each_possible_cpu(i)
+			per_cpu(sync_info, i).input_boost_freq = val;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		for_each_possible_cpu(i)
 			per_cpu(sync_info, i).input_boost_freq = val;
@@ -149,10 +179,14 @@ static int set_input_boost_freq(const char *buf, const struct kernel_param *kp)
 			return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (type == default_input_boost)
 			per_cpu(sync_info, cpu).input_boost_freq = val;
 		else if (type == powerkey_input_boost)
 			per_cpu(sync_info, cpu).powerkey_input_boost_freq = val;
+=======
+		per_cpu(sync_info, cpu).input_boost_freq = val;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		per_cpu(sync_info, cpu).input_boost_freq = val;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -163,8 +197,12 @@ static int set_input_boost_freq(const char *buf, const struct kernel_param *kp)
 check_enable:
 	for_each_possible_cpu(i) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (per_cpu(sync_info, i).input_boost_freq
 			|| per_cpu(sync_info, i).powerkey_input_boost_freq) {
+=======
+		if (per_cpu(sync_info, i).input_boost_freq) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (per_cpu(sync_info, i).input_boost_freq) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -181,6 +219,7 @@ static int get_input_boost_freq(char *buf, const struct kernel_param *kp)
 {
 	int cnt = 0, cpu;
 	struct cpu_sync *s;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	unsigned int boost_freq = 0;
 	enum input_boost_type type;
@@ -199,11 +238,16 @@ static int get_input_boost_freq(char *buf, const struct kernel_param *kp)
 		cnt += snprintf(buf + cnt, PAGE_SIZE - cnt,
 				"%d:%u ", cpu, boost_freq);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	for_each_possible_cpu(cpu) {
 		s = &per_cpu(sync_info, cpu);
 		cnt += snprintf(buf + cnt, PAGE_SIZE - cnt,
 				"%d:%u ", cpu, s->input_boost_freq);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	cnt += snprintf(buf + cnt, PAGE_SIZE - cnt, "\n");
@@ -217,8 +261,11 @@ static const struct kernel_param_ops param_ops_input_boost_freq = {
 module_param_cb(input_boost_freq, &param_ops_input_boost_freq, NULL, 0644);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 module_param_cb(powerkey_input_boost_freq, &param_ops_input_boost_freq, NULL, 0644);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -240,8 +287,11 @@ static int boost_adjust_notify(struct notifier_block *nb, unsigned long val,
 			break;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ib_min = min(ib_min, policy->max);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		pr_debug("CPU%u policy min before boost: %u kHz\n",
@@ -270,6 +320,7 @@ static void update_policy_online(void)
 	get_online_cpus();
 	for_each_online_cpu(i) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/*
 		 * both clusters have synchronous cpus
 		 * no need to upldate the policy for each core
@@ -280,6 +331,10 @@ static void update_policy_online(void)
 			pr_debug("Updating policy for CPU%d\n", i);
 			cpufreq_update_policy(i);
 		}
+=======
+		pr_debug("Updating policy for CPU%d\n", i);
+		cpufreq_update_policy(i);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pr_debug("Updating policy for CPU%d\n", i);
 		cpufreq_update_policy(i);
@@ -312,7 +367,11 @@ static void do_input_boost_rem(struct work_struct *work)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void do_input_boost(struct kthread_work *work)
+=======
+static void do_input_boost(struct work_struct *work)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void do_input_boost(struct work_struct *work)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -345,6 +404,7 @@ static void do_input_boost(struct work_struct *work)
 			sched_boost_active = true;
 	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	schedule_delayed_work(&input_boost_rem, msecs_to_jiffies(input_boost_ms));
 }
@@ -385,6 +445,10 @@ static void do_powerkey_input_boost(struct kthread_work *work)
 	queue_delayed_work(cpu_boost_wq, &input_boost_rem,
 					msecs_to_jiffies(input_boost_ms));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	queue_delayed_work(cpu_boost_wq, &input_boost_rem,
+					msecs_to_jiffies(input_boost_ms));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void cpuboost_input_event(struct input_handle *handle,
@@ -393,7 +457,11 @@ static void cpuboost_input_event(struct input_handle *handle,
 	u64 now;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!input_boost_enabled || is_battery_saver_on())
+=======
+	if (!input_boost_enabled)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!input_boost_enabled)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -403,6 +471,7 @@ static void cpuboost_input_event(struct input_handle *handle,
 	if (now - last_input_time < MIN_INPUT_INTERVAL)
 		return;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (queuing_blocked(&cpu_boost_worker, &input_boost_work))
 		return;
@@ -414,10 +483,15 @@ static void cpuboost_input_event(struct input_handle *handle,
 		kthread_queue_work(&cpu_boost_worker, &input_boost_work);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (work_pending(&input_boost_work))
 		return;
 
 	queue_work(cpu_boost_wq, &input_boost_work);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	last_input_time = ktime_to_us(ktime_get());
 }
@@ -496,6 +570,7 @@ static struct input_handler cpuboost_input_handler = {
 static int cpu_boost_init(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int cpu, ret, i;
 	struct cpu_sync *s;
 	struct sched_param param = { .sched_priority = 2 };
@@ -542,6 +617,8 @@ static int cpu_boost_init(void)
 	kthread_init_work(&input_boost_work, do_input_boost);
 	kthread_init_work(&powerkey_input_boost_work, do_powerkey_input_boost);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int cpu, ret;
 	struct cpu_sync *s;
 
@@ -550,6 +627,9 @@ static int cpu_boost_init(void)
 		return -EFAULT;
 
 	INIT_WORK(&input_boost_work, do_input_boost);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	INIT_DELAYED_WORK(&input_boost_rem, do_input_boost_rem);
 

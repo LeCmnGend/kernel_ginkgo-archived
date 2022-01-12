@@ -79,6 +79,7 @@ TRACE_EVENT(mm_vmscan_kswapd_wake,
 TRACE_EVENT(mm_vmscan_wakeup_kswapd,
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	TP_PROTO(int nid, int zid, int order, gfp_t gfp_flags),
 
 	TP_ARGS(nid, zid, order, gfp_flags),
@@ -89,6 +90,8 @@ TRACE_EVENT(mm_vmscan_wakeup_kswapd,
 		__field(	int,	order		)
 		__field(	gfp_t,	gfp_flags	)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	TP_PROTO(int nid, int zid, int order),
 
 	TP_ARGS(nid, zid, order),
@@ -97,6 +100,9 @@ TRACE_EVENT(mm_vmscan_wakeup_kswapd,
 		__field(	int,		nid	)
 		__field(	int,		zid	)
 		__field(	int,		order	)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	),
 
@@ -104,6 +110,7 @@ TRACE_EVENT(mm_vmscan_wakeup_kswapd,
 		__entry->nid		= nid;
 		__entry->zid		= zid;
 		__entry->order		= order;
+<<<<<<< HEAD
 <<<<<<< HEAD
 		__entry->gfp_flags	= gfp_flags;
 	),
@@ -114,12 +121,17 @@ TRACE_EVENT(mm_vmscan_wakeup_kswapd,
 		__entry->order,
 		show_gfp_flags(__entry->gfp_flags))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	),
 
 	TP_printk("nid=%d zid=%d order=%d",
 		__entry->nid,
 		__entry->zid,
 		__entry->order)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 );
 

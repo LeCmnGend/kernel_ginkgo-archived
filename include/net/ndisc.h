@@ -40,7 +40,11 @@ enum {
 	ND_OPT_6CO = 34,		/* RFC6775 */
 	ND_OPT_CAPTIVE_PORTAL = 37,	/* RFC7710 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ND_OPT_PREF64 = 38,		/* RFC8781 */
+=======
+	ND_OPT_PREF64 = 38,		/* RFC-ietf-6man-ra-pref64-09 */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ND_OPT_PREF64 = 38,		/* RFC-ietf-6man-ra-pref64-09 */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

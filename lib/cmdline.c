@@ -39,7 +39,11 @@ static int get_range(char **str, int *pint, int n)
  *	get_option - Parse integer from an option string
  *	@str: option string
 <<<<<<< HEAD
+<<<<<<< HEAD
  *	@pint: (optional output) integer value parsed from @str
+=======
+ *	@pint: (output) integer value parsed from @str
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  *	@pint: (output) integer value parsed from @str
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -48,9 +52,12 @@ static int get_range(char **str, int *pint, int n)
  *	comma as well.
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  *	When @pint is NULL the function can be used as a validator of
  *	the current option in the string.
  *
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *	Return values:
@@ -59,9 +66,12 @@ static int get_range(char **str, int *pint, int n)
  *	2 - int found including a subsequent comma
  *	3 - hyphen found to denote a range
 <<<<<<< HEAD
+<<<<<<< HEAD
  *
  *	Leading hyphen without integer is no integer case, but we consume it
  *	for the sake of simplification.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
@@ -69,6 +79,7 @@ static int get_range(char **str, int *pint, int n)
 int get_option(char **str, int *pint)
 {
 	char *cur = *str;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	int value;
 
@@ -81,10 +92,15 @@ int get_option(char **str, int *pint)
 	if (pint)
 		*pint = value;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!cur || !(*cur))
 		return 0;
 	*pint = simple_strtol(cur, str, 0);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (cur == *str)
 		return 0;

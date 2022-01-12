@@ -2609,7 +2609,11 @@ int drm_atomic_helper_set_config(struct drm_mode_set *set,
 	ret = handle_conflicting_encoders(state, true);
 	if (ret)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto fail;
+=======
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

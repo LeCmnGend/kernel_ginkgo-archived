@@ -653,9 +653,13 @@ repeat:
 	set_term_quiet_input(&save);
 	/* trash return*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 	clearerr(stdin);
 	if (poll(&stdin_poll, 1, 0) > 0)
 		getc(stdin);
+=======
+	getc(stdin);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	getc(stdin);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -105,6 +105,7 @@ out_put_node:
 module_init(hb_cpufreq_driver_init);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const struct of_device_id __maybe_unused hb_cpufreq_of_match[] = {
 	{ .compatible = "calxeda,highbank" },
 	{ .compatible = "calxeda,ecx-2000" },
@@ -112,6 +113,8 @@ static const struct of_device_id __maybe_unused hb_cpufreq_of_match[] = {
 };
 MODULE_DEVICE_TABLE(of, hb_cpufreq_of_match);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 MODULE_AUTHOR("Mark Langsdorf <mark.langsdorf@calxeda.com>");

@@ -309,7 +309,11 @@ static int vop_virtio_add_device(struct vop_vdev *vdev,
 		num = le16_to_cpu(vqconfig[i].num);
 		mutex_init(&vvr->vr_mutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		vr_size = PAGE_ALIGN(round_up(vring_size(num, MIC_VIRTIO_RING_ALIGN), 4) +
+=======
+		vr_size = PAGE_ALIGN(vring_size(num, MIC_VIRTIO_RING_ALIGN) +
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		vr_size = PAGE_ALIGN(vring_size(num, MIC_VIRTIO_RING_ALIGN) +
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -325,7 +329,11 @@ static int vop_virtio_add_device(struct vop_vdev *vdev,
 		}
 		vr->len = vr_size;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		vr->info = vr->va + round_up(vring_size(num, MIC_VIRTIO_RING_ALIGN), 4);
+=======
+		vr->info = vr->va + vring_size(num, MIC_VIRTIO_RING_ALIGN);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		vr->info = vr->va + vring_size(num, MIC_VIRTIO_RING_ALIGN);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -620,7 +628,10 @@ static int vop_virtio_copy_from_user(struct vop_vdev *vdev, void __user *ubuf,
 	bool dma = VOP_USE_DMA;
 	int err = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	size_t offset = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -672,6 +683,7 @@ memcpy:
 	 * like copy_from_user_toio(..) if it existed.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	while (len) {
 		partlen = min_t(size_t, len, VOP_INT_DMA_BUF_SIZE);
 
@@ -687,6 +699,8 @@ memcpy:
 		len -= partlen;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (copy_from_user((void __force *)dbuf, ubuf, len)) {
 		err = -EFAULT;
 		dev_err(vop_dev(vdev), "%s %d err %d\n",
@@ -694,6 +708,9 @@ memcpy:
 		goto err;
 	}
 	vdev->out_bytes += len;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = 0;
 err:

@@ -441,6 +441,7 @@ static int dwc3_omap_extcon_register(struct dwc3_omap *omap)
 		if (extcon_get_state(edev, EXTCON_USB) == true)
 			dwc3_omap_set_mailbox(omap, OMAP_DWC3_VBUS_VALID);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		else
 			dwc3_omap_set_mailbox(omap, OMAP_DWC3_VBUS_OFF);
 
@@ -448,6 +449,10 @@ static int dwc3_omap_extcon_register(struct dwc3_omap *omap)
 			dwc3_omap_set_mailbox(omap, OMAP_DWC3_ID_GROUND);
 		else
 			dwc3_omap_set_mailbox(omap, OMAP_DWC3_ID_FLOAT);
+=======
+		if (extcon_get_state(edev, EXTCON_USB_HOST) == true)
+			dwc3_omap_set_mailbox(omap, OMAP_DWC3_ID_GROUND);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (extcon_get_state(edev, EXTCON_USB_HOST) == true)
 			dwc3_omap_set_mailbox(omap, OMAP_DWC3_ID_GROUND);

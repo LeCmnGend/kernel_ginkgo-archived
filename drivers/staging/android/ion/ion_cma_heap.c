@@ -279,7 +279,10 @@ static int ion_secure_cma_map_user(struct ion_heap *mapper,
 static int ion_secure_cma_pm_freeze(struct ion_heap *heap)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	long sz;
 
 	sz = atomic_long_read(&heap->total_allocated);
@@ -289,6 +292,9 @@ static int ion_secure_cma_pm_freeze(struct ion_heap *heap)
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }

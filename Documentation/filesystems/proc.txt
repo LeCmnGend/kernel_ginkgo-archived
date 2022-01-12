@@ -252,6 +252,10 @@ Table 1-2: Contents of the status files (as of 4.8)
  VmLib                       size of shared library code
  VmPTE                       size of page table entries
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+ VmPMD                       size of second level page tables
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  VmPMD                       size of second level page tables
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2008-2017,2021, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2008-2017, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2008-2017, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -22,7 +26,10 @@
 #include "kgsl_device.h"
 #include "kgsl_sync.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "adreno.h"
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -173,6 +180,7 @@ long kgsl_ioctl_helper(struct file *filep, unsigned int cmd, unsigned long arg,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static long __kgsl_ioctl(struct file *filep, unsigned int cmd,
 			 unsigned long arg)
 {
@@ -186,12 +194,17 @@ static long __kgsl_ioctl(struct file *filep, unsigned int cmd,
 		kgsl_schedule_work(&adreno_dev->pwr_on_work);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 long kgsl_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
 {
 	struct kgsl_device_private *dev_priv = filep->private_data;
 	struct kgsl_device *device = dev_priv->device;
 	long ret;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = kgsl_ioctl_helper(filep, cmd, arg, kgsl_ioctl_funcs,
 		ARRAY_SIZE(kgsl_ioctl_funcs));
@@ -206,6 +219,7 @@ long kgsl_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
 			return device->ftbl->compat_ioctl(dev_priv, cmd, arg);
 		else if (device->ftbl->ioctl != NULL)
 			return device->ftbl->ioctl(dev_priv, cmd, arg);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	}
 
@@ -229,6 +243,11 @@ long kgsl_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
 	pm_qos_add_request(&req, PM_QOS_CPU_DMA_LATENCY, 100);
 	ret = __kgsl_ioctl(filep, cmd, arg);
 	pm_qos_remove_request(&req);
+=======
+
+		KGSL_DRV_INFO(device, "invalid ioctl code 0x%08X\n", cmd);
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 		KGSL_DRV_INFO(device, "invalid ioctl code 0x%08X\n", cmd);

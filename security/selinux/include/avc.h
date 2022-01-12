@@ -132,7 +132,10 @@ static inline int avc_audit(struct selinux_state *state,
 			    int flags)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_AUDIT
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32 audited, denied;
@@ -143,9 +146,12 @@ static inline int avc_audit(struct selinux_state *state,
 			      requested, audited, denied, result,
 			      a, flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #else
 	return 0;
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

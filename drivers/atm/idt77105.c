@@ -262,7 +262,11 @@ static int idt77105_start(struct atm_dev *dev)
 	unsigned long flags;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!(dev->phy_data = kmalloc(sizeof(struct idt77105_priv),GFP_KERNEL)))
+=======
+	if (!(dev->dev_data = kmalloc(sizeof(struct idt77105_priv),GFP_KERNEL)))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!(dev->dev_data = kmalloc(sizeof(struct idt77105_priv),GFP_KERNEL)))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -343,7 +347,11 @@ static int idt77105_stop(struct atm_dev *dev)
                     idt77105_all = walk->next;
 	        dev->phy = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
                 dev->phy_data = NULL;
+=======
+                dev->dev_data = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
                 dev->dev_data = NULL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

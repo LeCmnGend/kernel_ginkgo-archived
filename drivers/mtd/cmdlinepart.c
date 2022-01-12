@@ -229,6 +229,7 @@ static int mtdpart_setup_real(char *s)
 		struct mtd_partition *parts;
 		int mtd_id_len, num_parts;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		char *p, *mtd_id, *semicol, *open_parenth;
 
 		/*
@@ -265,12 +266,17 @@ static int mtdpart_setup_real(char *s)
 			*semicol = ';';
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		char *p, *mtd_id;
 
 		mtd_id = s;
 
 		/* fetch <mtd-id> */
 		p = strchr(s, ':');
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!p) {
 			pr_err("no mtd-id\n");

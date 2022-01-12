@@ -146,8 +146,12 @@ static int slip_open(void *data)
 	sfd = err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = set_up_tty(sfd);
 	if (err)
+=======
+	if (set_up_tty(sfd))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (set_up_tty(sfd))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

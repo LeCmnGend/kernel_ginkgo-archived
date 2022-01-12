@@ -67,17 +67,23 @@ struct srf08_data {
 	struct mutex		lock;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Ensure timestamp is naturally aligned */
 	struct {
 		s16 chan;
 		s64 timestamp __aligned(8);
 	} scan;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * triggered buffer
 	 * 1x16-bit channel + 3x16 padding + 4x16 timestamp
 	 */
 	s16			buffer[8];
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Sensor-Type */
@@ -202,9 +208,15 @@ static irqreturn_t srf08_trigger_handler(int irq, void *p)
 	mutex_lock(&data->lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	data->scan.chan = sensor_data;
 	iio_push_to_buffers_with_timestamp(indio_dev,
 					   &data->scan, pf->timestamp);
+=======
+	data->buffer[0] = sensor_data;
+	iio_push_to_buffers_with_timestamp(indio_dev,
+						data->buffer, pf->timestamp);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	data->buffer[0] = sensor_data;
 	iio_push_to_buffers_with_timestamp(indio_dev,

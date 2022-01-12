@@ -185,7 +185,11 @@ static int lm3630a_bank_a_update_status(struct backlight_device *bl)
 		lm3630a_pwm_ctrl(pchip, bl->props.brightness,
 				 bl->props.max_brightness);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return bl->props.brightness;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return bl->props.brightness;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -209,8 +213,13 @@ static int lm3630a_bank_a_update_status(struct backlight_device *bl)
 
 out_i2c_err:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev_err(pchip->dev, "i2c failed to access (%pe)\n", ERR_PTR(ret));
 	return ret;
+=======
+	dev_err(pchip->dev, "i2c failed to access\n");
+	return bl->props.brightness;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev_err(pchip->dev, "i2c failed to access\n");
 	return bl->props.brightness;
@@ -271,7 +280,11 @@ static int lm3630a_bank_b_update_status(struct backlight_device *bl)
 		lm3630a_pwm_ctrl(pchip, bl->props.brightness,
 				 bl->props.max_brightness);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return 0;
+=======
+		return bl->props.brightness;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return bl->props.brightness;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -295,8 +308,13 @@ static int lm3630a_bank_b_update_status(struct backlight_device *bl)
 
 out_i2c_err:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev_err(pchip->dev, "i2c failed to access (%pe)\n", ERR_PTR(ret));
 	return ret;
+=======
+	dev_err(pchip->dev, "i2c failed to access REG_CTRL\n");
+	return bl->props.brightness;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev_err(pchip->dev, "i2c failed to access REG_CTRL\n");
 	return bl->props.brightness;

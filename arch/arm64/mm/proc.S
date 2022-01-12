@@ -483,6 +483,7 @@ ENTRY(__cpu_setup)
 	 *   DEVICE_nGnRnE	000	00000000
 	 *   DEVICE_nGnRE	001	00000100
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 *   NORMAL_NC		011	01000100
 	 *   NORMAL		100	11111111
 	 */
@@ -491,6 +492,8 @@ ENTRY(__cpu_setup)
 		     MAIR(0x44, MT_NORMAL_NC) | \
 		     MAIR(0xff, MT_NORMAL)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 *   DEVICE_GRE		010	00001100
 	 *   NORMAL_NC		011	01000100
 	 *   NORMAL		100	11111111
@@ -502,6 +505,9 @@ ENTRY(__cpu_setup)
 		     MAIR(0x44, MT_NORMAL_NC) | \
 		     MAIR(0xff, MT_NORMAL) | \
 		     MAIR(0xbb, MT_NORMAL_WT)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	msr	mair_el1, x5
 	/*

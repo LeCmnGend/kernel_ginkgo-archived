@@ -1201,7 +1201,10 @@ static void __setup_root(struct btrfs_root *root, struct btrfs_fs_info *fs_info,
 	atomic_set(&root->will_be_snapshotted, 0);
 	atomic64_set(&root->qgroup_meta_rsv, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	atomic_set(&root->snapshot_force_cow, 0);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	root->log_transid = 0;
@@ -1514,6 +1517,7 @@ int btrfs_init_fs_root(struct btrfs_root *root)
 	init_waitqueue_head(&root->ino_cache_wait);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Don't assign anonymous block device to roots that are not exposed to
 	 * userspace, the id pool is limited to 1M
@@ -1524,6 +1528,11 @@ int btrfs_init_fs_root(struct btrfs_root *root)
 		if (ret)
 			goto fail;
 	}
+=======
+	ret = get_anon_bdev(&root->anon_dev);
+	if (ret)
+		goto fail;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = get_anon_bdev(&root->anon_dev);
 	if (ret)
@@ -4355,7 +4364,10 @@ static void btrfs_cleanup_bg_io(struct btrfs_block_group_cache *cache)
 		iput(inode);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ASSERT(cache->io_ctl.pages == NULL);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	btrfs_put_block_group(cache);

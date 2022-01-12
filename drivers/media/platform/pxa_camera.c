@@ -1451,9 +1451,12 @@ static int pxac_vb2_prepare(struct vb2_buffer *vb)
 	struct pxa_buffer *buf = vb2_to_pxa_buffer(vb);
 	int ret = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef DEBUG
 	int i;
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

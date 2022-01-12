@@ -100,7 +100,10 @@ static void netlbl_domhsh_free_entry(struct rcu_head *entry)
 		}
 #endif /* IPv6 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kfree(ptr->def.addrsel);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -555,8 +558,11 @@ int netlbl_domhsh_add(struct netlbl_dom_map *entry,
 		}
 #endif /* IPv6 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* cleanup the new entry since we've moved everything over */
 		netlbl_domhsh_free_entry(&entry->rcu);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else
@@ -603,12 +609,15 @@ int netlbl_domhsh_remove_entry(struct netlbl_dom_map *entry,
 	int ret_val = 0;
 	struct audit_buffer *audit_buf;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct netlbl_af4list *iter4;
 	struct netlbl_domaddr4_map *map4;
 #if IS_ENABLED(CONFIG_IPV6)
 	struct netlbl_af6list *iter6;
 	struct netlbl_domaddr6_map *map6;
 #endif /* IPv6 */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -629,9 +638,12 @@ int netlbl_domhsh_remove_entry(struct netlbl_dom_map *entry,
 	spin_unlock(&netlbl_domhsh_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret_val)
 		return ret_val;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	audit_buf = netlbl_audit_start_common(AUDIT_MAC_MAP_DEL, audit_info);
@@ -643,6 +655,7 @@ int netlbl_domhsh_remove_entry(struct netlbl_dom_map *entry,
 		audit_log_end(audit_buf);
 	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	switch (entry->def.type) {
 	case NETLBL_NLTYPE_ADDRSELECT:
@@ -668,6 +681,8 @@ int netlbl_domhsh_remove_entry(struct netlbl_dom_map *entry,
 	}
 	call_rcu(&entry->rcu, netlbl_domhsh_free_entry);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret_val == 0) {
 		struct netlbl_af4list *iter4;
 		struct netlbl_domaddr4_map *map4;
@@ -702,6 +717,9 @@ int netlbl_domhsh_remove_entry(struct netlbl_dom_map *entry,
 		}
 		call_rcu(&entry->rcu, netlbl_domhsh_free_entry);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return ret_val;

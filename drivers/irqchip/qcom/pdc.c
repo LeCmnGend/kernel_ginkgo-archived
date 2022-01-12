@@ -377,6 +377,11 @@ int qcom_pdc_init(struct device_node *node,
 		max_enable_regs++;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	pdc_domain->name = "qcom,pdc";
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pdc_domain->name = "qcom,pdc";
 

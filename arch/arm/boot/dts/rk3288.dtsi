@@ -221,8 +221,13 @@
 		reg = <0x0 0xff810000 0x0 0x20>;
 		interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		clocks = <&cru PCLK_TIMER>, <&xin24m>;
 		clock-names = "pclk", "timer";
+=======
+		clocks = <&xin24m>, <&cru PCLK_TIMER>;
+		clock-names = "timer", "pclk";
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		clocks = <&xin24m>, <&cru PCLK_TIMER>;
 		clock-names = "timer", "pclk";
@@ -751,7 +756,11 @@
 			 *	*_MIPI_*	MIPI
 			 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			power-domain@RK3288_PD_VIO {
+=======
+			pd_vio@RK3288_PD_VIO {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			pd_vio@RK3288_PD_VIO {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -797,7 +806,11 @@
 			 * and on the ACLK_HEVC_NIU (NOC).
 			 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			power-domain@RK3288_PD_HEVC {
+=======
+			pd_hevc@RK3288_PD_HEVC {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			pd_hevc@RK3288_PD_HEVC {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -815,7 +828,11 @@
 			 * ACLK_VCODEC_NIU and HCLK_VCODEC_NIU (NOC).
 			 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			power-domain@RK3288_PD_VIDEO {
+=======
+			pd_video@RK3288_PD_VIDEO {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			pd_video@RK3288_PD_VIDEO {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -830,7 +847,11 @@
 			 * and on the ACLK_GPU_NIU (NOC).
 			 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			power-domain@RK3288_PD_GPU {
+=======
+			pd_gpu@RK3288_PD_GPU {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			pd_gpu@RK3288_PD_GPU {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1475,7 +1496,11 @@
 		};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		suspend {
+=======
+		sleep {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		sleep {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

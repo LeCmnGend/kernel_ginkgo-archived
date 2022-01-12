@@ -1,6 +1,9 @@
 /* Copyright (c) 2018-2020 The Linux Foundation. All rights reserved.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -32,6 +35,7 @@
 #include "storm-watch.h"
 #include "schgm-flash.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef NS_QC3_CHG_WA
 #include <linux/jiffies.h>
 #endif
@@ -44,6 +48,8 @@
 #ifdef CONFIG_FORCE_FAST_CHARGE
 #include <linux/fastchg.h>
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1100,7 +1106,10 @@ static const struct apsd_result *smblib_update_usb_type(struct smb_charger *chg)
 	if (chg->pd_active) {
 		chg->real_charger_type = POWER_SUPPLY_TYPE_USB_PD;
 <<<<<<< HEAD
+<<<<<<< HEAD
         chg->usb_psy_desc.type = POWER_SUPPLY_TYPE_USB_PD;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else if (chg->qc3p5_detected) {
@@ -1114,15 +1123,21 @@ static const struct apsd_result *smblib_update_usb_type(struct smb_charger *chg)
 			chg->real_charger_type == POWER_SUPPLY_TYPE_USB))
 			chg->real_charger_type = apsd_result->pst;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			chg->usb_psy_desc.type = apsd_result->pst;
 	}
 
 	smblib_dbg(chg, PR_MISC, "APSD=%s PD=%d\n",apsd_result->name, chg->pd_active);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	smblib_dbg(chg, PR_MISC, "APSD=%s PD=%d QC3P5=%d\n",
 			apsd_result->name, chg->pd_active, chg->qc3p5_detected);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return apsd_result;
 }
@@ -1368,6 +1383,10 @@ static int smblib_get_pulse_cnt(struct smb_charger *chg, int *count)
 #define USBIN_500MA	500000
 #define USBIN_900MA	900000
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define USBIN_1000MA	1000000
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define USBIN_1000MA	1000000
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1378,6 +1397,7 @@ static int set_sdp_current(struct smb_charger *chg, int icl_ua)
 	const struct apsd_result *apsd_result = smblib_get_apsd_result(chg);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_FORCE_FAST_CHARGE
 	if (force_fast_charge > 0 && icl_ua == USBIN_500MA)
 	{
@@ -1385,6 +1405,8 @@ static int set_sdp_current(struct smb_charger *chg, int icl_ua)
 	}
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* power source is SDP */
@@ -1702,7 +1724,11 @@ static int smblib_awake_vote_callback(struct votable *votable, void *data,
 
 	if (awake)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pm_wakeup_event(chg->dev, 500);
+=======
+		pm_stay_awake(chg->dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pm_stay_awake(chg->dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2001,7 +2027,10 @@ int smblib_get_prop_batt_status(struct smb_charger *chg,
 	bool usb_online, dc_online;
 	u8 stat;
 <<<<<<< HEAD
+<<<<<<< HEAD
   int batt_health;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int rc, suspend = 0;
@@ -2060,6 +2089,7 @@ int smblib_get_prop_batt_status(struct smb_charger *chg,
 	dc_online = (bool)pval.intval;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rc = smblib_get_prop_batt_health(chg, &pval);
 	if (rc < 0) {
 		smblib_err(chg, "Couldn't get batt health property rc=%d\n",
@@ -2067,6 +2097,8 @@ int smblib_get_prop_batt_status(struct smb_charger *chg,
 		return rc;
 	}
 	batt_health = pval.intval;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rc = smblib_read(chg, BATTERY_CHARGER_STATUS_1_REG, &stat);
@@ -2125,11 +2157,14 @@ int smblib_get_prop_batt_status(struct smb_charger *chg,
 		return 0;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if((POWER_SUPPLY_HEALTH_WARM == batt_health || POWER_SUPPLY_HEALTH_OVERHEAT == batt_health || POWER_SUPPLY_HEALTH_OVERVOLTAGE == batt_health)
 		&& val->intval == POWER_SUPPLY_STATUS_FULL){
 		val->intval = POWER_SUPPLY_STATUS_CHARGING;
 		return 0;
 		}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2215,7 +2250,11 @@ int smblib_get_prop_batt_health(struct smb_charger *chg,
 			 * treat it as overvoltage.
 			 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			effective_fv_uv = get_effective_result_locked(chg->fv_votable);
+=======
+			effective_fv_uv = get_effective_result(chg->fv_votable);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			effective_fv_uv = get_effective_result(chg->fv_votable);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2347,6 +2386,7 @@ int smblib_get_prop_batt_charge_done(struct smb_charger *chg,
 	return 0;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 int smblib_get_prop_battery_charging_enabled(struct smb_charger *chg,
                 union power_supply_propval *val)
 {
@@ -2365,6 +2405,9 @@ int smblib_get_prop_battery_charging_enabled(struct smb_charger *chg,
 	val->intval = (reg == CHARGING_ENABLE_CMD_BIT);
 	return 0;
 }
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2396,6 +2439,7 @@ int smblib_set_prop_input_suspend(struct smb_charger *chg,
 	return rc;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 int smblib_set_prop_battery_charging_enabled(struct smb_charger *chg,
                 const union power_supply_propval *val)
@@ -2429,6 +2473,8 @@ int smblib_set_prop_battery_charging_enabled(struct smb_charger *chg,
 }
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int smblib_set_prop_batt_capacity(struct smb_charger *chg,
 				  const union power_supply_propval *val)
 {
@@ -2454,11 +2500,14 @@ int smblib_set_prop_batt_status(struct smb_charger *chg,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern union power_supply_propval lct_therm_lvl_reserved;
 extern bool lct_backlight_off;
 extern int LctIsInCall;
 extern int LctThermal;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int smblib_set_prop_system_temp_level(struct smb_charger *chg,
@@ -2473,6 +2522,7 @@ int smblib_set_prop_system_temp_level(struct smb_charger *chg,
 	if (val->intval > chg->thermal_levels)
 		return -EINVAL;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	pr_info("%s val=%d, chg->system_temp_level=%d, LctThermal=%d, lct_backlight_off= %d, IsInCall=%d \n " 
 		,__FUNCTION__,val->intval,chg->system_temp_level, LctThermal, lct_backlight_off, LctIsInCall);
@@ -2499,6 +2549,9 @@ int smblib_set_prop_system_temp_level(struct smb_charger *chg,
 	chg->system_temp_level = val->intval;
 	pr_info("%s intval:%d system temp level:%d thermal_levels:%d",
 		__FUNCTION__,val->intval,chg->system_temp_level,chg->thermal_levels);
+=======
+	chg->system_temp_level = val->intval;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	chg->system_temp_level = val->intval;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3726,6 +3779,7 @@ static int smblib_get_prop_ufp_mode(struct smb_charger *chg)
 	smblib_dbg(chg, PR_REGISTER, "TYPE_C_STATUS_1 = 0x%02x\n", stat);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (stat &
 	(SNK_RP_STD_DAM_BIT | SNK_RP_1P5_DAM_BIT | SNK_RP_3P0_DAM_BIT)) {
 		smblib_masked_write(chg, TYPE_C_DEBUG_ACC_SNK_CFG,
@@ -3737,14 +3791,19 @@ static int smblib_get_prop_ufp_mode(struct smb_charger *chg)
 	}
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	switch (stat & DETECTED_SRC_TYPE_MASK) {
 	case SNK_RP_STD_BIT:
 		return POWER_SUPPLY_TYPEC_SOURCE_DEFAULT;
 	case SNK_RP_1P5_BIT:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case SNK_DAM_500MA_BIT:
 	case SNK_DAM_1500MA_BIT:
 	case SNK_DAM_3000MA_BIT:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return POWER_SUPPLY_TYPEC_SOURCE_MEDIUM;
@@ -3752,6 +3811,7 @@ static int smblib_get_prop_ufp_mode(struct smb_charger *chg)
 		return POWER_SUPPLY_TYPEC_SOURCE_HIGH;
 	case SNK_RP_SHORT_BIT:
 		return POWER_SUPPLY_TYPEC_NON_COMPLIANT;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 
@@ -3769,6 +3829,8 @@ static int smblib_get_prop_ufp_mode(struct smb_charger *chg)
 	}
 #endif
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case SNK_DAM_500MA_BIT:
 	case SNK_DAM_1500MA_BIT:
 	case SNK_DAM_3000MA_BIT:
@@ -3777,6 +3839,9 @@ static int smblib_get_prop_ufp_mode(struct smb_charger *chg)
 		break;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return POWER_SUPPLY_TYPEC_NONE;
 }
@@ -3839,7 +3904,10 @@ int smblib_get_prop_typec_power_role(struct smb_charger *chg,
 	u8 ctrl;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock(&chg->typec_pr_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rc = smblib_read(chg, TYPE_C_MODE_CFG_REG, &ctrl);
@@ -3847,7 +3915,11 @@ int smblib_get_prop_typec_power_role(struct smb_charger *chg,
 		smblib_err(chg, "Couldn't read TYPE_C_MODE_CFG_REG rc=%d\n",
 			rc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto unlock;
+=======
+		return rc;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return rc;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3858,7 +3930,11 @@ int smblib_get_prop_typec_power_role(struct smb_charger *chg,
 	if (ctrl & TYPEC_DISABLE_CMD_BIT) {
 		val->intval = POWER_SUPPLY_TYPEC_PR_NONE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto unlock;
+=======
+		return rc;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return rc;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3879,6 +3955,7 @@ int smblib_get_prop_typec_power_role(struct smb_charger *chg,
 		smblib_err(chg, "unsupported power role 0x%02lx\n",
 			ctrl & (EN_SRC_ONLY_BIT | EN_SNK_ONLY_BIT));
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rc = -EINVAL;
 		goto unlock;
 	}
@@ -3888,10 +3965,15 @@ unlock:
 	spin_unlock(&chg->typec_pr_lock);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EINVAL;
 	}
 
 	chg->power_role = val->intval;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return rc;
 }
@@ -4022,7 +4104,10 @@ int smblib_get_prop_input_current_settled(struct smb_charger *chg,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int smblib_get_prop_input_current_max(struct smb_charger *chg,
 					  union power_supply_propval *val)
 {
@@ -4041,6 +4126,9 @@ int smblib_get_prop_input_current_max(struct smb_charger *chg,
 	return smblib_get_charge_param(chg, &chg->param.icl_stat, &val->intval);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int smblib_get_prop_input_voltage_settled(struct smb_charger *chg,
 						union power_supply_propval *val)
@@ -4295,7 +4383,11 @@ int smblib_set_prop_pd_current_max(struct smb_charger *chg,
 	return rc;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define FLOAT_CURRENT_UA                1000000
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4330,7 +4422,12 @@ static int smblib_handle_usb_current(struct smb_charger *chg,
 				 */
 				typec_mode = smblib_get_prop_typec_mode(chg);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				rp_ua =FLOAT_CURRENT_UA;// get_rp_based_dcp_current(chg,typec_mode);
+=======
+				rp_ua = get_rp_based_dcp_current(chg,
+								typec_mode);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				rp_ua = get_rp_based_dcp_current(chg,
 								typec_mode);
@@ -4368,9 +4465,15 @@ static int smblib_handle_usb_current(struct smb_charger *chg,
 
 		/* if flash is active force 500mA */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (usb_current < SDP_CURRENT_UA)
 			usb_current = SDP_CURRENT_UA;
 		smblib_dbg(chg, PR_MISC, "sunxing set SDP ICL =%d\n", usb_current);
+=======
+		if ((usb_current < SDP_CURRENT_UA) && is_flash_active(chg))
+			usb_current = SDP_CURRENT_UA;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if ((usb_current < SDP_CURRENT_UA) && is_flash_active(chg))
 			usb_current = SDP_CURRENT_UA;
@@ -4503,7 +4606,10 @@ int smblib_set_prop_typec_power_role(struct smb_charger *chg,
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock(&chg->typec_pr_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	smblib_dbg(chg, PR_MISC, "power role change: %d --> %d!",
@@ -4513,7 +4619,11 @@ int smblib_set_prop_typec_power_role(struct smb_charger *chg,
 		smblib_dbg(chg, PR_MISC, "power role already in %d, ignore!",
 				chg->power_role);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto unlock;
+=======
+		return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4543,6 +4653,10 @@ int smblib_set_prop_typec_power_role(struct smb_charger *chg,
 			snk_attached, src_attached, is_pr_lock);
 	cancel_delayed_work(&chg->pr_lock_clear_work);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	spin_lock(&chg->typec_pr_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spin_lock(&chg->typec_pr_lock);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4558,6 +4672,10 @@ int smblib_set_prop_typec_power_role(struct smb_charger *chg,
 
 	chg->pr_lock_in_progress = is_pr_lock;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	spin_unlock(&chg->typec_pr_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spin_unlock(&chg->typec_pr_lock);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4578,8 +4696,12 @@ int smblib_set_prop_typec_power_role(struct smb_charger *chg,
 	default:
 		smblib_err(chg, "power role %d not supported\n", val->intval);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rc = -EINVAL;
 		goto unlock;
+=======
+		return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EINVAL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4592,6 +4714,7 @@ int smblib_set_prop_typec_power_role(struct smb_charger *chg,
 		smblib_err(chg, "Couldn't write 0x%02x to TYPE_C_INTRPT_ENB_SOFTWARE_CTRL rc=%d\n",
 			power_role, rc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto unlock;
 	}
 
@@ -4600,10 +4723,15 @@ unlock:
 	spin_unlock(&chg->typec_pr_lock);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return rc;
 	}
 
 	chg->power_role = val->intval;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return rc;
 }
@@ -4850,9 +4978,13 @@ static int smblib_soft_jeita_arb_wa(struct smb_charger *chg)
 		return rc;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
   smblib_dbg(chg,PR_MISC,"pval.intval %d,jeita_arb_flag %d, jeita %d %d %d %d\n",
   pval.intval,chg->jeita_arb_flag,
   chg->jeita_soft_fcc[0],chg->jeita_soft_fcc[1],chg->jeita_soft_fv[0],chg->jeita_soft_fv[1]);
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4991,6 +5123,7 @@ int smblib_get_charge_current(struct smb_charger *chg,
 	typec_source_rd = smblib_get_prop_ufp_mode(chg);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* QC 3.0 adapter */
 	if (apsd_result->bit & QC_3P0_BIT) {
 		*total_current_ua = HVDCP_CURRENT_UA;
@@ -5002,12 +5135,17 @@ if (apsd_result->bit & QC_2P0_BIT) {
 		return 0;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* QC 2.0/3.0 adapter */
 	if (apsd_result->bit & (QC_3P0_BIT | QC_2P0_BIT)) {
 		*total_current_ua = HVDCP_CURRENT_UA;
 		return 0;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (non_compliant && !chg->typec_legacy_use_rp_icl) {
 		switch (apsd_result->bit) {
@@ -5015,11 +5153,17 @@ if (apsd_result->bit & QC_2P0_BIT) {
 			current_ua = CDP_CURRENT_UA;
 			break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		case FLOAT_CHARGER_BIT:
 			current_ua = FLOAT_CURRENT_UA;
 			break;
 		case DCP_CHARGER_BIT:
 		case OCP_CHARGER_BIT:
+=======
+		case DCP_CHARGER_BIT:
+		case OCP_CHARGER_BIT:
+		case FLOAT_CHARGER_BIT:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		case DCP_CHARGER_BIT:
 		case OCP_CHARGER_BIT:
@@ -5043,11 +5187,17 @@ if (apsd_result->bit & QC_2P0_BIT) {
 			current_ua = CDP_CURRENT_UA;
 			break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		case FLOAT_CHARGER_BIT:
 			current_ua = FLOAT_CURRENT_UA;
 			break;
 		case DCP_CHARGER_BIT:
 		case OCP_CHARGER_BIT:
+=======
+		case DCP_CHARGER_BIT:
+		case OCP_CHARGER_BIT:
+		case FLOAT_CHARGER_BIT:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		case DCP_CHARGER_BIT:
 		case OCP_CHARGER_BIT:
@@ -5113,6 +5263,7 @@ irqreturn_t default_irq_handler(int irq, void *data)
 	struct smb_irq_data *irq_data = data;
 	struct smb_charger *chg = irq_data->parent_data;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	#ifdef NS_QC3_CHG_WA
 	const struct apsd_result *apsd_result;
 
@@ -5126,6 +5277,9 @@ irqreturn_t default_irq_handler(int irq, void *data)
 		}
 	}
 	#endif
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5253,7 +5407,11 @@ irqreturn_t batt_temp_changed_irq_handler(int irq, void *data)
 	int rc;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	smblib_dbg(chg, PR_INTERRUPT, "IRQ: %s,jeita_configued: %d\n", irq_data->name,chg->jeita_configured);
+=======
+	smblib_dbg(chg, PR_INTERRUPT, "IRQ: %s\n", irq_data->name);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	smblib_dbg(chg, PR_INTERRUPT, "IRQ: %s\n", irq_data->name);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5486,6 +5644,7 @@ void smblib_usb_plugin_hard_reset_locked(struct smb_charger *chg)
 	struct smb_irq_data *data;
 	struct storm_watch *wdata;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if 0
 	#ifdef NS_QC3_CHG_WA
 	static unsigned long detach_time;
@@ -5493,6 +5652,9 @@ void smblib_usb_plugin_hard_reset_locked(struct smb_charger *chg)
 	static bool need_confirm = false;
 	#endif
 #endif
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5542,11 +5704,15 @@ void smblib_usb_plugin_locked(struct smb_charger *chg)
 	struct smb_irq_data *data;
 	struct storm_watch *wdata;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	#ifdef NS_QC3_CHG_WA
 	static unsigned long detach_time;
 	static unsigned long attach_time;
 	static bool need_confirm = false;
 	#endif
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5564,6 +5730,7 @@ void smblib_usb_plugin_locked(struct smb_charger *chg)
 		cancel_delayed_work_sync(&chg->pr_swap_detach_work);
 		vote(chg->awake_votable, DETACH_DETECT_VOTER, false, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	#ifdef NS_QC3_CHG_WA
 		attach_time = jiffies;
 		smblib_dbg(chg, PR_MISC, "attach_time = %lu\n", attach_time);
@@ -5576,6 +5743,8 @@ void smblib_usb_plugin_locked(struct smb_charger *chg)
 		}
 		need_confirm = false;
 	#endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rc = smblib_request_dpdm(chg, true);
@@ -5603,6 +5772,7 @@ void smblib_usb_plugin_locked(struct smb_charger *chg)
 			smblib_err(chg, "Couldn't stop SW thermal regulation WA, rc=%d\n",
 				rc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		#ifdef NS_QC3_CHG_WA
 			if (chg->hvdcp_disabled) {
 				rc = smblib_masked_write(chg, USBIN_OPTIONS_1_CFG_REG, HVDCP_EN_BIT, HVDCP_EN_BIT);
@@ -5622,6 +5792,9 @@ void smblib_usb_plugin_locked(struct smb_charger *chg)
 			chg->collapsed = false;
 		}
 		#endif
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5676,9 +5849,12 @@ void smblib_usb_plugin_locked(struct smb_charger *chg)
 
 		smblib_update_usb_type(chg);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if(chg->use_extcon)
 			smblib_notify_device_mode(chg, false);
 		vote(chg->usb_icl_votable, USB_PSY_VOTER, false, 0);//remove USB_PSY voting when plgin detach
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -5751,6 +5927,7 @@ static void smblib_handle_hvdcp_3p0_auth_done(struct smb_charger *chg,
 				"Couldn't enable secondary chargers  rc=%d\n",
 					rc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			}else if(apsd_result->bit & QC_2P0_BIT) {
 				//pr_info("force 9V for QC2 charger\n");
     			//msleep(3000);
@@ -5760,6 +5937,9 @@ static void smblib_handle_hvdcp_3p0_auth_done(struct smb_charger *chg,
 				vote(chg->usb_icl_votable, SW_ICL_MAX_VOTER, true,
 					HVDCP2_CURRENT_UA);
 			}
+=======
+		}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		}
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

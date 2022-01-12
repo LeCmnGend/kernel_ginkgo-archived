@@ -33,6 +33,7 @@
  */
 	.macro ldrb1 ptr, regB, val
 <<<<<<< HEAD
+<<<<<<< HEAD
 	uao_user_alternative 9997f, ldrb, ldtrb, \ptr, \regB, \val
 	.endm
 
@@ -67,6 +68,8 @@
 end	.req	x5
 srcin	.req	x15
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	uao_user_alternative 9998f, ldrb, ldtrb, \ptr, \regB, \val
 	.endm
 
@@ -99,13 +102,19 @@ srcin	.req	x15
 	.endm
 
 end	.req	x5
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 ENTRY(__arch_copy_in_user)
 	uaccess_enable_not_uao x3, x4, x5
 	add	end, x0, x2
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mov	srcin, x1
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include "copy_template.S"
@@ -117,12 +126,15 @@ ENDPROC(__arch_copy_in_user)
 	.section .fixup,"ax"
 	.align	2
 <<<<<<< HEAD
+<<<<<<< HEAD
 9997:	cmp	dst, dstin
 	b.ne	9998f
 	// Before being absolutely sure we couldn't copy anything, try harder
 USER(9998f, ldtrb tmp1w, [srcin])
 USER(9998f, sttrb tmp1w, [dst])
 	add	dst, dst, #1
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 9998:	sub	x0, end, dst			// bytes not copied

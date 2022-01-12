@@ -244,7 +244,11 @@ config TAU
 
 config TAU_INT
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool "Interrupt driven TAU driver (EXPERIMENTAL)"
+=======
+	bool "Interrupt driven TAU driver (DANGEROUS)"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bool "Interrupt driven TAU driver (DANGEROUS)"
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -256,14 +260,20 @@ config TAU_INT
 	  a timer is used to re-check the temperature periodically.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	  If in doubt, say N here.
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	  However, on some cpus it appears that the TAU interrupt hardware
 	  is buggy and can cause a situation which would lead unexplained hard
 	  lockups.
 
 	  Unless you are extending the TAU driver, or enjoy kernel/hardware
 	  debugging, leave this option off.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 config TAU_AVERAGE

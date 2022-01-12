@@ -14,7 +14,10 @@
 
 #define clear_page(paddr)		memset((paddr), 0, PAGE_SIZE)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define copy_user_page(to, from, vaddr, pg)	copy_page(to, from)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define copy_page(to, from)		memcpy((to), (from), PAGE_SIZE)

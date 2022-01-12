@@ -502,6 +502,7 @@ static void b53_imp_vlan_setup(struct dsa_switch *ds, int cpu_port)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void b53_port_set_learning(struct b53_device *dev, int port,
 				  bool learning)
 {
@@ -517,6 +518,8 @@ static void b53_port_set_learning(struct b53_device *dev, int port,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int b53_enable_port(struct dsa_switch *ds, int port,
 			   struct phy_device *phy)
 {
@@ -525,8 +528,11 @@ static int b53_enable_port(struct dsa_switch *ds, int port,
 	u16 pvlan;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	b53_port_set_learning(dev, port, false);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Clear the Rx and Tx disable bits and set to no spanning tree */
@@ -573,8 +579,11 @@ static void b53_enable_cpu_port(struct b53_device *dev)
 		    PORT_CTRL_RX_UCST_EN;
 	b53_write8(dev, B53_CTRL_PAGE, B53_PORT_CTRL(cpu_port), port_ctrl);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	b53_port_set_learning(dev, cpu_port, false);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -997,7 +1006,11 @@ int b53_vlan_prepare(struct dsa_switch *ds, int port,
 		return -EOPNOTSUPP;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (vlan->vid_end >= dev->num_vlans)
+=======
+	if (vlan->vid_end > dev->num_vlans)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (vlan->vid_end > dev->num_vlans)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1191,8 +1204,11 @@ static int b53_arl_op(struct b53_device *dev, int op, int port,
 
 	switch (ret) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case -ETIMEDOUT:
 		return ret;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case -ENOSPC:
@@ -1376,8 +1392,11 @@ int b53_br_join(struct dsa_switch *ds, int port, struct net_device *br)
 	dev->ports[port].vlan_ctl_mask = pvlan;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	b53_port_set_learning(dev, port, true);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
@@ -1431,7 +1450,10 @@ void b53_br_leave(struct dsa_switch *ds, int port, struct net_device *br)
 		b53_set_vlan_entry(dev, pvid, vl);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	b53_port_set_learning(dev, port, false);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

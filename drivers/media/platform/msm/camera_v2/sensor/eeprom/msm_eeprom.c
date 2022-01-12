@@ -330,6 +330,7 @@ static int eeprom_parse_memory_map(struct msm_eeprom_ctrl_t *e_ctrl,
 	uint8_t *memptr;
 	struct msm_eeprom_mem_map_t *eeprom_map;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if 0
 	int ret = 0;
 	uint8_t *buffer;
@@ -342,6 +343,8 @@ static int eeprom_parse_memory_map(struct msm_eeprom_ctrl_t *e_ctrl,
 	uint16_t csp_config_addr = 0x8000;
 	uint16_t csp_reg_val;
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -433,6 +436,7 @@ static int eeprom_parse_memory_map(struct msm_eeprom_ctrl_t *e_ctrl,
 	memptr = e_ctrl->cal_data.mapdata;
 	for (i = 0; i < e_ctrl->cal_data.num_data; i++)
 		CDBG("memory_data[%d] = 0x%X\n", i, memptr[i]);
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 #if 0
@@ -530,6 +534,8 @@ static int eeprom_parse_memory_map(struct msm_eeprom_ctrl_t *e_ctrl,
 	}
 
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return rc;

@@ -30,6 +30,10 @@ static irqreturn_t hsu_pci_irq(int irq, void *dev)
 {
 	struct hsu_dma_chip *chip = dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct pci_dev *pdev = to_pci_dev(chip->dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct pci_dev *pdev = to_pci_dev(chip->dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -40,7 +44,10 @@ static irqreturn_t hsu_pci_irq(int irq, void *dev)
 	int err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * On Intel Tangier B0 and Anniedale the interrupt line, disregarding
 	 * to have different numbers, is shared between HSU DMA and UART IPs.
@@ -50,6 +57,9 @@ static irqreturn_t hsu_pci_irq(int irq, void *dev)
 	if (pdev->device == PCI_DEVICE_ID_INTEL_MRFLD_HSU_DMA)
 		return IRQ_HANDLED;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dmaisr = readl(chip->regs + HSU_PCI_DMAISR);
 	for (i = 0; i < chip->hsu->nr_channels; i++) {
@@ -115,6 +125,7 @@ static int hsu_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 		goto err_register_irq;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * On Intel Tangier B0 and Anniedale the interrupt line, disregarding
 	 * to have different numbers, is shared between HSU DMA and UART IPs.
@@ -126,6 +137,8 @@ static int hsu_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 	if (pdev->device == PCI_DEVICE_ID_INTEL_MRFLD_HSU_DMA)
 		disable_irq_nosync(chip->irq);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pci_set_drvdata(pdev, chip);

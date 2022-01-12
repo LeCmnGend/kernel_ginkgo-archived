@@ -1715,8 +1715,13 @@ lpfc_fdmi_hba_attr_wwnn(struct lpfc_vport *vport, struct lpfc_fdmi_attr_def *ad)
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, sizeof(struct lpfc_name));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, sizeof(struct lpfc_name));
@@ -1737,8 +1742,13 @@ lpfc_fdmi_hba_attr_manufacturer(struct lpfc_vport *vport,
 	uint32_t len, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -1767,8 +1777,13 @@ lpfc_fdmi_hba_attr_sn(struct lpfc_vport *vport, struct lpfc_fdmi_attr_def *ad)
 	uint32_t len, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -1794,8 +1809,13 @@ lpfc_fdmi_hba_attr_model(struct lpfc_vport *vport,
 	uint32_t len, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -1820,8 +1840,13 @@ lpfc_fdmi_hba_attr_description(struct lpfc_vport *vport,
 	uint32_t len, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -1848,8 +1873,13 @@ lpfc_fdmi_hba_attr_hdw_ver(struct lpfc_vport *vport,
 	uint32_t i, j, incr, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -1883,8 +1913,13 @@ lpfc_fdmi_hba_attr_drvr_ver(struct lpfc_vport *vport,
 	uint32_t len, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -1910,8 +1945,13 @@ lpfc_fdmi_hba_attr_rom_ver(struct lpfc_vport *vport,
 	uint32_t len, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -1940,8 +1980,13 @@ lpfc_fdmi_hba_attr_fmw_ver(struct lpfc_vport *vport,
 	uint32_t len, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -1965,8 +2010,13 @@ lpfc_fdmi_hba_attr_os_ver(struct lpfc_vport *vport,
 	uint32_t len, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -1993,7 +2043,11 @@ lpfc_fdmi_hba_attr_ct_len(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2013,8 +2067,13 @@ lpfc_fdmi_hba_attr_symbolic_name(struct lpfc_vport *vport,
 	uint32_t len, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -2037,7 +2096,11 @@ lpfc_fdmi_hba_attr_vendor_info(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2058,7 +2121,11 @@ lpfc_fdmi_hba_attr_num_ports(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2079,8 +2146,13 @@ lpfc_fdmi_hba_attr_fabric_wwnn(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, sizeof(struct lpfc_name));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, sizeof(struct lpfc_name));
@@ -2103,8 +2175,13 @@ lpfc_fdmi_hba_attr_bios_ver(struct lpfc_vport *vport,
 	uint32_t len, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -2128,7 +2205,11 @@ lpfc_fdmi_hba_attr_bios_state(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2149,8 +2230,13 @@ lpfc_fdmi_hba_attr_vendor_id(struct lpfc_vport *vport,
 	uint32_t len, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -2176,8 +2262,13 @@ lpfc_fdmi_port_attr_fc4type(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 32);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 32);
@@ -2203,7 +2294,11 @@ lpfc_fdmi_port_attr_support_speed(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2257,7 +2352,11 @@ lpfc_fdmi_port_attr_speed(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2325,7 +2424,11 @@ lpfc_fdmi_port_attr_max_frame(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2349,8 +2452,13 @@ lpfc_fdmi_port_attr_os_devname(struct lpfc_vport *vport,
 	uint32_t len, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -2375,8 +2483,13 @@ lpfc_fdmi_port_attr_host_name(struct lpfc_vport *vport,
 	uint32_t len, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -2401,8 +2514,13 @@ lpfc_fdmi_port_attr_wwnn(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0,  sizeof(struct lpfc_name));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0,  sizeof(struct lpfc_name));
@@ -2424,8 +2542,13 @@ lpfc_fdmi_port_attr_wwpn(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0,  sizeof(struct lpfc_name));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0,  sizeof(struct lpfc_name));
@@ -2447,8 +2570,13 @@ lpfc_fdmi_port_attr_symbolic_name(struct lpfc_vport *vport,
 	uint32_t len, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -2471,7 +2599,11 @@ lpfc_fdmi_port_attr_port_type(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2493,7 +2625,11 @@ lpfc_fdmi_port_attr_class(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2512,8 +2648,13 @@ lpfc_fdmi_port_attr_fabric_wwpn(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0,  sizeof(struct lpfc_name));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0,  sizeof(struct lpfc_name));
@@ -2535,8 +2676,13 @@ lpfc_fdmi_port_attr_active_fc4type(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 32);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 32);
@@ -2561,7 +2707,11 @@ lpfc_fdmi_port_attr_port_state(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2581,7 +2731,11 @@ lpfc_fdmi_port_attr_num_disc(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2601,7 +2755,11 @@ lpfc_fdmi_port_attr_nportid(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2620,8 +2778,13 @@ lpfc_fdmi_smart_attr_service(struct lpfc_vport *vport,
 	uint32_t len, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -2646,8 +2809,13 @@ lpfc_fdmi_smart_attr_guid(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -2672,8 +2840,13 @@ lpfc_fdmi_smart_attr_version(struct lpfc_vport *vport,
 	uint32_t len, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -2699,8 +2872,13 @@ lpfc_fdmi_smart_attr_model(struct lpfc_vport *vport,
 	uint32_t len, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
 	memset(ae, 0, sizeof(*ae));
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	memset(ae, 0, 256);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 	memset(ae, 0, 256);
@@ -2724,7 +2902,11 @@ lpfc_fdmi_smart_attr_port_info(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2748,7 +2930,11 @@ lpfc_fdmi_smart_attr_qos(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2767,7 +2953,11 @@ lpfc_fdmi_smart_attr_security(struct lpfc_vport *vport,
 	uint32_t size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ae = &ad->AttrValue;
+=======
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2919,8 +3109,12 @@ lpfc_fdmi_cmd(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
 			/* One entry (port) per adapter */
 			rh->rpl.EntryCnt = cpu_to_be32(1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			memcpy(&rh->rpl.pe.PortName,
 			       &phba->pport->fc_sparam.portName,
+=======
+			memcpy(&rh->rpl.pe, &phba->pport->fc_sparam.portName,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			memcpy(&rh->rpl.pe, &phba->pport->fc_sparam.portName,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

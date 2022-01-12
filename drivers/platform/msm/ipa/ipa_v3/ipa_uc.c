@@ -696,7 +696,11 @@ send_cmd:
 			}
 			usleep_range(IPA_UC_POLL_SLEEP_USEC,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				IPA_UC_POLL_SLEEP_USEC * 1.2);
+=======
+				IPA_UC_POLL_SLEEP_USEC);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				IPA_UC_POLL_SLEEP_USEC);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

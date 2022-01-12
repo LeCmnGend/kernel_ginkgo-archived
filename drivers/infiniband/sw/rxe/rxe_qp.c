@@ -259,7 +259,10 @@ static int rxe_qp_init_req(struct rxe_dev *rxe, struct rxe_qp *qp,
 		vfree(qp->sq.queue->buf);
 		kfree(qp->sq.queue);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		qp->sq.queue = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return err;
@@ -316,7 +319,10 @@ static int rxe_qp_init_resp(struct rxe_dev *rxe, struct rxe_qp *qp,
 			vfree(qp->rq.queue->buf);
 			kfree(qp->rq.queue);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			qp->rq.queue = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			return err;
@@ -379,11 +385,14 @@ err2:
 	rxe_queue_cleanup(qp->sq.queue);
 err1:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	qp->pd = NULL;
 	qp->rcq = NULL;
 	qp->scq = NULL;
 	qp->srq = NULL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (srq)
@@ -610,8 +619,12 @@ int rxe_qp_from_attr(struct rxe_qp *qp, struct ib_qp_attr *attr, int mask,
 
 	if (mask & IB_QP_MAX_QP_RD_ATOMIC) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		int max_rd_atomic = attr->max_rd_atomic ?
 			roundup_pow_of_two(attr->max_rd_atomic) : 0;
+=======
+		int max_rd_atomic = __roundup_pow_of_two(attr->max_rd_atomic);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		int max_rd_atomic = __roundup_pow_of_two(attr->max_rd_atomic);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -622,8 +635,13 @@ int rxe_qp_from_attr(struct rxe_qp *qp, struct ib_qp_attr *attr, int mask,
 
 	if (mask & IB_QP_MAX_DEST_RD_ATOMIC) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		int max_dest_rd_atomic = attr->max_dest_rd_atomic ?
 			roundup_pow_of_two(attr->max_dest_rd_atomic) : 0;
+=======
+		int max_dest_rd_atomic =
+			__roundup_pow_of_two(attr->max_dest_rd_atomic);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		int max_dest_rd_atomic =
 			__roundup_pow_of_two(attr->max_dest_rd_atomic);

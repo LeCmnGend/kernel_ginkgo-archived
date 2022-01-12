@@ -17,9 +17,12 @@
 #include <linux/quotaops.h>
 #include <linux/uuid.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/quotaops.h>
 #include <linux/random.h>
 #include <linux/uuid.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/uaccess.h>
@@ -110,6 +113,10 @@ static long swap_inode_boot_loader(struct super_block *sb,
 	struct inode *inode_bl;
 	struct ext4_inode_info *ei_bl;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct ext4_sb_info *sbi = EXT4_SB(sb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct ext4_sb_info *sbi = EXT4_SB(sb);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -172,13 +179,19 @@ static long swap_inode_boot_loader(struct super_block *sb,
 	inode->i_ctime = inode_bl->i_ctime = current_time(inode);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	inode->i_generation = prandom_u32();
 	inode_bl->i_generation = prandom_u32();
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock(&sbi->s_next_gen_lock);
 	inode->i_generation = sbi->s_next_generation++;
 	inode_bl->i_generation = sbi->s_next_generation++;
 	spin_unlock(&sbi->s_next_gen_lock);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	ext4_discard_preallocations(inode);
@@ -1065,10 +1078,14 @@ resizefs_out:
 			if (err)
 				goto pwsalt_err_journal;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			lock_buffer(sbi->s_sbh);
 			generate_random_uuid(sbi->s_es->s_encrypt_pw_salt);
 			ext4_superblock_csum_set(sb);
 			unlock_buffer(sbi->s_sbh);
+=======
+			generate_random_uuid(sbi->s_es->s_encrypt_pw_salt);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			generate_random_uuid(sbi->s_es->s_encrypt_pw_salt);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

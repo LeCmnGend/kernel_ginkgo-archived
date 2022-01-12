@@ -421,7 +421,11 @@ static void qt2_close(struct usb_serial_port *port)
 	/* flush the port transmit buffer */
 	i = usb_control_msg(serial->dev,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			    usb_sndctrlpipe(serial->dev, 0),
+=======
+			    usb_rcvctrlpipe(serial->dev, 0),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			    usb_rcvctrlpipe(serial->dev, 0),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -435,7 +439,11 @@ static void qt2_close(struct usb_serial_port *port)
 	/* flush the port receive buffer */
 	i = usb_control_msg(serial->dev,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			    usb_sndctrlpipe(serial->dev, 0),
+=======
+			    usb_rcvctrlpipe(serial->dev, 0),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			    usb_rcvctrlpipe(serial->dev, 0),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -705,7 +713,11 @@ static int qt2_attach(struct usb_serial *serial)
 
 	/* power on unit */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	status = usb_control_msg(serial->dev, usb_sndctrlpipe(serial->dev, 0),
+=======
+	status = usb_control_msg(serial->dev, usb_rcvctrlpipe(serial->dev, 0),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	status = usb_control_msg(serial->dev, usb_rcvctrlpipe(serial->dev, 0),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

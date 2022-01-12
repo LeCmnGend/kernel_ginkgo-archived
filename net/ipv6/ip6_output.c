@@ -129,6 +129,7 @@ static int ip6_finish_output2(struct net *net, struct sock *sk, struct sk_buff *
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int
 ip6_finish_output_gso_slowpath_drop(struct net *net, struct sock *sk,
 				    struct sk_buff *skb, unsigned int mtu)
@@ -169,6 +170,10 @@ static int ip6_finish_output(struct net *net, struct sock *sk, struct sk_buff *s
 static int ip6_finish_output(struct net *net, struct sock *sk, struct sk_buff *skb)
 {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+static int ip6_finish_output(struct net *net, struct sock *sk, struct sk_buff *skb)
+{
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret;
 
 	ret = BPF_CGROUP_RUN_PROG_INET_EGRESS(sk, skb);
@@ -186,11 +191,15 @@ static int ip6_finish_output(struct net *net, struct sock *sk, struct sk_buff *s
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mtu = ip6_skb_dst_mtu(skb);
 	if (skb_is_gso(skb) && !skb_gso_validate_mtu(skb, mtu))
 		return ip6_finish_output_gso_slowpath_drop(net, sk, skb, mtu);
 
 	if ((skb->len > mtu && !skb_is_gso(skb)) ||
+=======
+	if ((skb->len > ip6_skb_dst_mtu(skb) && !skb_is_gso(skb)) ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if ((skb->len > ip6_skb_dst_mtu(skb) && !skb_is_gso(skb)) ||
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -518,6 +527,11 @@ int ip6_forward(struct sk_buff *skb)
 	 */
 	if (hdr->hop_limit <= 1) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		/* Force OUTPUT device used as source address */
+		skb->dev = dst->dev;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		/* Force OUTPUT device used as source address */
 		skb->dev = dst->dev;

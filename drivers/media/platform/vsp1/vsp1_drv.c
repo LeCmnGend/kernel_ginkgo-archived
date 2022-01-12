@@ -550,12 +550,16 @@ int vsp1_device_get(struct vsp1_device *vsp1)
 
 	ret = pm_runtime_get_sync(vsp1->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret < 0) {
 		pm_runtime_put_noidle(vsp1->dev);
 		return ret;
 	}
 
 	return 0;
+=======
+	return ret < 0 ? ret : 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return ret < 0 ? ret : 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -839,7 +843,11 @@ static int vsp1_probe(struct platform_device *pdev)
 	pm_runtime_enable(&pdev->dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = vsp1_device_get(vsp1);
+=======
+	ret = pm_runtime_get_sync(&pdev->dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = pm_runtime_get_sync(&pdev->dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -848,7 +856,11 @@ static int vsp1_probe(struct platform_device *pdev)
 
 	vsp1->version = vsp1_read(vsp1, VI6_IP_VERSION);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vsp1_device_put(vsp1);
+=======
+	pm_runtime_put_sync(&pdev->dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pm_runtime_put_sync(&pdev->dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -879,10 +891,15 @@ static int vsp1_probe(struct platform_device *pdev)
 
 done:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret) {
 		pm_runtime_disable(&pdev->dev);
 		rcar_fcp_put(vsp1->fcp);
 	}
+=======
+	if (ret)
+		pm_runtime_disable(&pdev->dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret)
 		pm_runtime_disable(&pdev->dev);

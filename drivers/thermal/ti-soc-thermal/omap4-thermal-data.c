@@ -50,6 +50,7 @@ static struct temp_sensor_data omap4430_mpu_temp_sensor_data = {
 /*
  * Temperature values in milli degree celsius
 <<<<<<< HEAD
+<<<<<<< HEAD
  * ADC code values from 13 to 107, see TRM
  * "18.4.10.2.3 ADC Codes Versus Temperature".
  */
@@ -66,6 +67,8 @@ omap4430_adc_to_temp[OMAP4430_ADC_END_VALUE - OMAP4430_ADC_START_VALUE + 1] = {
 	98500, 100000, 102000, 103500, 105000, 107000, 109000, 111000, 113000,
 	115000, 117000, 118500, 120000, 122000, 123500, 125000,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * ADC code values from 530 to 923
  */
 static const int
@@ -80,6 +83,9 @@ omap4430_adc_to_temp[OMAP4430_ADC_END_VALUE - OMAP4430_ADC_START_VALUE + 1] = {
 	83000, 85000, 87000, 88000, 90000, 92000, 93000, 95000, 97000, 98000,
 	100000, 102000, 103000, 105000, 107000, 109000, 111000, 113000, 115000,
 	117000, 118000, 120000, 122000, 123000,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 

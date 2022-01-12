@@ -196,7 +196,10 @@ struct otg_fsm {
 	u8 *host_req_flag;
 	struct delayed_work hnp_polling_work;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool hnp_work_inited;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool state_changed;

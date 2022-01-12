@@ -174,7 +174,11 @@ static int sp_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 			dev_err(dev, "dma_set_mask_and_coherent failed (%d)\n",
 				ret);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto free_irqs;
+=======
+			goto e_err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto e_err;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -186,7 +190,11 @@ static int sp_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 	ret = sp_init(sp);
 	if (ret)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto free_irqs;
+=======
+		goto e_err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto e_err;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -196,8 +204,11 @@ static int sp_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 	return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 free_irqs:
 	sp_free_irqs(sp);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 e_err:

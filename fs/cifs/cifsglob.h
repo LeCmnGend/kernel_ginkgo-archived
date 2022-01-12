@@ -247,9 +247,14 @@ struct smb_version_operations {
 	bool (*is_oplock_break)(char *, struct TCP_Server_Info *);
 	int (*handle_cancelled_mid)(char *, struct TCP_Server_Info *);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	void (*downgrade_oplock)(struct TCP_Server_Info *server,
 				 struct cifsInodeInfo *cinode, __u32 oplock,
 				 unsigned int epoch, bool *purge_cache);
+=======
+	void (*downgrade_oplock)(struct TCP_Server_Info *,
+					struct cifsInodeInfo *, bool);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	void (*downgrade_oplock)(struct TCP_Server_Info *,
 					struct cifsInodeInfo *, bool);
@@ -1099,8 +1104,11 @@ struct cifsFileInfo {
 	bool invalidHandle:1;	/* file closed via session abend */
 	bool oplock_break_cancelled:1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int oplock_epoch; /* epoch from the lease break */
 	__u32 oplock_level; /* oplock/lease level from the lease break */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int count;
@@ -1235,7 +1243,11 @@ struct cifsInodeInfo {
 #define CIFS_INODE_PENDING_OPLOCK_BREAK   (0) /* oplock break in progress */
 #define CIFS_INODE_PENDING_WRITERS	  (1) /* Writes in progress */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define CIFS_INODE_FLAG_UNUSED		  (2) /* Unused flag */
+=======
+#define CIFS_INODE_DOWNGRADE_OPLOCK_TO_L2 (2) /* Downgrade oplock to L2 */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define CIFS_INODE_DOWNGRADE_OPLOCK_TO_L2 (2) /* Downgrade oplock to L2 */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

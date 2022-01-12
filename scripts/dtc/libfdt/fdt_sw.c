@@ -56,7 +56,11 @@
 #include "libfdt_internal.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int fdt_sw_check_header_(void *fdt)
+=======
+static int _fdt_sw_check_header(void *fdt)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int _fdt_sw_check_header(void *fdt)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -71,17 +75,23 @@ static int _fdt_sw_check_header(void *fdt)
 	{ \
 		int err; \
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if ((err = fdt_sw_check_header_(fdt)) != 0) \
 			return err; \
 	}
 
 static void *fdt_grab_space_(void *fdt, size_t len)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if ((err = _fdt_sw_check_header(fdt)) != 0) \
 			return err; \
 	}
 
 static void *_fdt_grab_space(void *fdt, size_t len)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	int offset = fdt_size_dt_struct(fdt);
@@ -95,7 +105,11 @@ static void *_fdt_grab_space(void *fdt, size_t len)
 
 	fdt_set_size_dt_struct(fdt, offset + len);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return fdt_offset_ptr_w_(fdt, offset);
+=======
+	return _fdt_offset_ptr_w(fdt, offset);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return _fdt_offset_ptr_w(fdt, offset);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -191,7 +205,11 @@ int fdt_begin_node(void *fdt, const char *name)
 	FDT_SW_CHECK_HEADER(fdt);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	nh = fdt_grab_space_(fdt, sizeof(*nh) + FDT_TAGALIGN(namelen));
+=======
+	nh = _fdt_grab_space(fdt, sizeof(*nh) + FDT_TAGALIGN(namelen));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	nh = _fdt_grab_space(fdt, sizeof(*nh) + FDT_TAGALIGN(namelen));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -210,7 +228,11 @@ int fdt_end_node(void *fdt)
 	FDT_SW_CHECK_HEADER(fdt);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	en = fdt_grab_space_(fdt, FDT_TAGSIZE);
+=======
+	en = _fdt_grab_space(fdt, FDT_TAGSIZE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	en = _fdt_grab_space(fdt, FDT_TAGSIZE);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -222,7 +244,11 @@ int fdt_end_node(void *fdt)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int fdt_find_add_string_(void *fdt, const char *s)
+=======
+static int _fdt_find_add_string(void *fdt, const char *s)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int _fdt_find_add_string(void *fdt, const char *s)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -234,7 +260,11 @@ static int _fdt_find_add_string(void *fdt, const char *s)
 	int struct_top, offset;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	p = fdt_find_string_(strtab - strtabsize, strtabsize, s);
+=======
+	p = _fdt_find_string(strtab - strtabsize, strtabsize, s);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	p = _fdt_find_string(strtab - strtabsize, strtabsize, s);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -253,7 +283,11 @@ static int _fdt_find_add_string(void *fdt, const char *s)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int fdt_property_placeholder(void *fdt, const char *name, int len, void **valp)
+=======
+int fdt_property(void *fdt, const char *name, const void *val, int len)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int fdt_property(void *fdt, const char *name, const void *val, int len)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -264,17 +298,23 @@ int fdt_property(void *fdt, const char *name, const void *val, int len)
 	FDT_SW_CHECK_HEADER(fdt);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	nameoff = fdt_find_add_string_(fdt, name);
 	if (nameoff == 0)
 		return -FDT_ERR_NOSPACE;
 
 	prop = fdt_grab_space_(fdt, sizeof(*prop) + FDT_TAGALIGN(len));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	nameoff = _fdt_find_add_string(fdt, name);
 	if (nameoff == 0)
 		return -FDT_ERR_NOSPACE;
 
 	prop = _fdt_grab_space(fdt, sizeof(*prop) + FDT_TAGALIGN(len));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (! prop)
 		return -FDT_ERR_NOSPACE;
@@ -282,6 +322,7 @@ int fdt_property(void *fdt, const char *name, const void *val, int len)
 	prop->tag = cpu_to_fdt32(FDT_PROP);
 	prop->nameoff = cpu_to_fdt32(nameoff);
 	prop->len = cpu_to_fdt32(len);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	*valp = prop->data;
 	return 0;
@@ -296,6 +337,9 @@ int fdt_property(void *fdt, const char *name, const void *val, int len)
 	if (ret)
 		return ret;
 	memcpy(ptr, val, len);
+=======
+	memcpy(prop->data, val, len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memcpy(prop->data, val, len);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -314,7 +358,11 @@ int fdt_finish(void *fdt)
 
 	/* Add terminator */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	end = fdt_grab_space_(fdt, sizeof(*end));
+=======
+	end = _fdt_grab_space(fdt, sizeof(*end));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	end = _fdt_grab_space(fdt, sizeof(*end));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -334,7 +382,11 @@ int fdt_finish(void *fdt)
 		if (tag == FDT_PROP) {
 			struct fdt_property *prop =
 <<<<<<< HEAD
+<<<<<<< HEAD
 				fdt_offset_ptr_w_(fdt, offset);
+=======
+				_fdt_offset_ptr_w(fdt, offset);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				_fdt_offset_ptr_w(fdt, offset);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

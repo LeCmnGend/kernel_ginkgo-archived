@@ -1013,7 +1013,10 @@ static rx_handler_result_t macsec_handle_frame(struct sk_buff **pskb)
 	struct macsec_rxh_data *rxd;
 	struct macsec_dev *macsec;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int len;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	sci_t sci;
@@ -1168,10 +1171,16 @@ deliver:
 
 	skb_orphan(skb);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	len = skb->len;
 	ret = gro_cells_receive(&macsec->gro_cells, skb);
 	if (ret == NET_RX_SUCCESS)
 		count_rx(dev, len);
+=======
+	ret = gro_cells_receive(&macsec->gro_cells, skb);
+	if (ret == NET_RX_SUCCESS)
+		count_rx(dev, skb->len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = gro_cells_receive(&macsec->gro_cells, skb);
 	if (ret == NET_RX_SUCCESS)

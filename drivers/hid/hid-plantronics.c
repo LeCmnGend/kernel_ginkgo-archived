@@ -17,7 +17,10 @@
 #include <linux/hid.h>
 #include <linux/module.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/jiffies.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -44,6 +47,7 @@
 			    (usage->hid & HID_USAGE_PAGE) == HID_UP_CONSUMER)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define PLT_QUIRK_DOUBLE_VOLUME_KEYS BIT(0)
 
 #define PLT_DOUBLE_KEY_TIMEOUT 5 /* ms */
@@ -56,6 +60,8 @@ struct plt_drv_data {
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int plantronics_input_mapping(struct hid_device *hdev,
 				     struct hid_input *hi,
 				     struct hid_field *field,
@@ -64,8 +70,12 @@ static int plantronics_input_mapping(struct hid_device *hdev,
 {
 	unsigned short mapped_key;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct plt_drv_data *drv_data = hid_get_drvdata(hdev);
 	unsigned long plt_type = drv_data->device_type;
+=======
+	unsigned long plt_type = (unsigned long)hid_get_drvdata(hdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long plt_type = (unsigned long)hid_get_drvdata(hdev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -131,6 +141,7 @@ mapped:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int plantronics_event(struct hid_device *hdev, struct hid_field *field,
 			     struct hid_usage *usage, __s32 value)
 {
@@ -155,6 +166,8 @@ static int plantronics_event(struct hid_device *hdev, struct hid_field *field,
 	return 0;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static unsigned long plantronics_device_type(struct hid_device *hdev)
@@ -186,6 +199,7 @@ static int plantronics_probe(struct hid_device *hdev,
 			     const struct hid_device_id *id)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct plt_drv_data *drv_data;
 	int ret;
 
@@ -197,6 +211,10 @@ static int plantronics_probe(struct hid_device *hdev,
 	int ret;
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	int ret;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = hid_parse(hdev);
 	if (ret) {
 		hid_err(hdev, "parse failed\n");
@@ -204,11 +222,15 @@ static int plantronics_probe(struct hid_device *hdev,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	drv_data->device_type = plantronics_device_type(hdev);
 	drv_data->quirks = id->driver_data;
 	drv_data->last_volume_key_ts = jiffies - msecs_to_jiffies(PLT_DOUBLE_KEY_TIMEOUT);
 
 	hid_set_drvdata(hdev, drv_data);
+=======
+	hid_set_drvdata(hdev, (void *)plantronics_device_type(hdev));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	hid_set_drvdata(hdev, (void *)plantronics_device_type(hdev));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -224,9 +246,12 @@ err:
 
 static const struct hid_device_id plantronics_devices[] = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ HID_USB_DEVICE(USB_VENDOR_ID_PLANTRONICS,
 					 USB_DEVICE_ID_PLANTRONICS_BLACKWIRE_3220_SERIES),
 		.driver_data = PLT_QUIRK_DOUBLE_VOLUME_KEYS },
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ HID_USB_DEVICE(USB_VENDOR_ID_PLANTRONICS, HID_ANY_ID) },
@@ -234,6 +259,7 @@ static const struct hid_device_id plantronics_devices[] = {
 };
 MODULE_DEVICE_TABLE(hid, plantronics_devices);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static const struct hid_usage_id plantronics_usages[] = {
 	{ HID_CP_VOLUMEUP, EV_KEY, HID_ANY_ID },
@@ -248,10 +274,15 @@ static struct hid_driver plantronics_driver = {
 	.input_mapping = plantronics_input_mapping,
 	.event = plantronics_event,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct hid_driver plantronics_driver = {
 	.name = "plantronics",
 	.id_table = plantronics_devices,
 	.input_mapping = plantronics_input_mapping,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.probe = plantronics_probe,
 };

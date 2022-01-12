@@ -1045,8 +1045,11 @@ static void handle_error(struct mesh_state *ms)
 			udelay(1);
 		printk("done\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ms->dma_started)
 			halt_dma(ms);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		handle_reset(ms);
@@ -1362,8 +1365,12 @@ static void halt_dma(struct mesh_state *ms)
 		       ms->tgts[ms->conn_tgt].data_goes_out);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (cmd)
 		scsi_dma_unmap(cmd);
+=======
+	scsi_dma_unmap(cmd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	scsi_dma_unmap(cmd);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1722,9 +1729,12 @@ static int mesh_host_reset(struct scsi_cmnd *cmd)
 	spin_lock_irqsave(ms->host->host_lock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ms->dma_started)
 		halt_dma(ms);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Reset the controller & dbdma channel */

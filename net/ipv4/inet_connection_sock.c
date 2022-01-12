@@ -277,6 +277,7 @@ static inline int sk_reuseport_match(struct inet_bind_bucket *tb,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void inet_csk_update_fastreuse(struct inet_bind_bucket *tb,
 			       struct sock *sk)
 {
@@ -330,6 +331,8 @@ void inet_csk_update_fastreuse(struct inet_bind_bucket *tb,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Obtain a reference to a local port for the given sock,
  * if snum is zero it means select any available local port.
  * We try to allocate an odd port (and leave even ports for connect())
@@ -343,6 +346,10 @@ int inet_csk_get_port(struct sock *sk, unsigned short snum)
 	struct net *net = sock_net(sk);
 	struct inet_bind_bucket *tb = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kuid_t uid = sock_i_uid(sk);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kuid_t uid = sock_i_uid(sk);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -386,9 +393,12 @@ tb_found:
 	}
 success:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	inet_csk_update_fastreuse(tb, sk);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (hlist_empty(&tb->owners)) {
 		tb->fastreuse = reuse;
 		if (sk->sk_reuseport) {
@@ -432,6 +442,9 @@ success:
 			tb->fastreuseport = 0;
 		}
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!inet_csk(sk)->icsk_bind_hash)
 		inet_bind_hash(sk, tb, port);
@@ -470,7 +483,11 @@ static int inet_csk_wait_for_connect(struct sock *sk, long timeo)
 	 */
 	for (;;) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		prepare_to_wait_exclusive_lifo(sk_sleep(sk), &wait,
+=======
+		prepare_to_wait_exclusive(sk_sleep(sk), &wait,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		prepare_to_wait_exclusive(sk_sleep(sk), &wait,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

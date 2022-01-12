@@ -241,8 +241,11 @@ static int bmips_boot_secondary(int cpu, struct task_struct *idle)
 static void bmips_init_secondary(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bmips_cpu_setup();
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	switch (current_cpu_type()) {
@@ -578,7 +581,11 @@ asmlinkage void __weak plat_wired_tlb_setup(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void bmips_cpu_setup(void)
+=======
+void __init bmips_cpu_setup(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void __init bmips_cpu_setup(void)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

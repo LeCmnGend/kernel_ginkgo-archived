@@ -1329,7 +1329,10 @@ static int ftgmac100_poll(struct napi_struct *napi, int budget)
 	if (unlikely(priv->need_mac_restart)) {
 		ftgmac100_start_hw(priv);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		priv->need_mac_restart = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1865,8 +1868,11 @@ static int ftgmac100_probe(struct platform_device *pdev)
 
 err_ncsi_dev:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (priv->ndev)
 		ncsi_unregister_dev(priv->ndev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 err_register_netdev:
@@ -1890,8 +1896,11 @@ static int ftgmac100_remove(struct platform_device *pdev)
 	priv = netdev_priv(netdev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (priv->ndev)
 		ncsi_unregister_dev(priv->ndev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unregister_netdev(netdev);

@@ -33,11 +33,16 @@ struct binder_transaction;
  * @rb_node:            node for allocated_buffers/free_buffers rb trees
  * @free:               %true if buffer is free
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @clear_on_free:      %true if buffer must be zeroed after use
  * @allow_user_free:    %true if user is allowed to free buffer
  * @async_transaction:  %true if buffer is in use for an async txn
  * @oneway_spam_suspect: %true if total async allocate size just exceed
  * spamming detect threshold
+=======
+ * @allow_user_free:    %true if user is allowed to free buffer
+ * @async_transaction:  %true if buffer is in use for an async txn
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * @allow_user_free:    %true if user is allowed to free buffer
  * @async_transaction:  %true if buffer is in use for an async txn
@@ -50,7 +55,10 @@ struct binder_transaction;
  * @extra_buffers_size: size of space for other objects (like sg lists)
  * @user_data:          user pointer to base of buffer space
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @pid:                pid to attribute the buffer to (caller)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -62,11 +70,17 @@ struct binder_buffer {
 				/* by address */
 	unsigned free:1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned clear_on_free:1;
 	unsigned allow_user_free:1;
 	unsigned async_transaction:1;
 	unsigned oneway_spam_suspect:1;
 	unsigned debug_id:27;
+=======
+	unsigned allow_user_free:1;
+	unsigned async_transaction:1;
+	unsigned debug_id:29;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned allow_user_free:1;
 	unsigned async_transaction:1;
@@ -81,7 +95,10 @@ struct binder_buffer {
 	size_t extra_buffers_size;
 	void __user *user_data;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int    pid;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -117,8 +134,11 @@ struct binder_lru_page {
  * @pid:                pid for associated binder_proc (invariant after init)
  * @pages_high:         high watermark of offset in @pages
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @oneway_spam_detected: %true if oneway spam detection fired, clear that
  * flag once the async buffer has returned to a healthy state
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -142,7 +162,10 @@ struct binder_alloc {
 	int pid;
 	size_t pages_high;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool oneway_spam_detected;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -160,8 +183,12 @@ extern struct binder_buffer *binder_alloc_new_buf(struct binder_alloc *alloc,
 						  size_t offsets_size,
 						  size_t extra_buffers_size,
 <<<<<<< HEAD
+<<<<<<< HEAD
 						  int is_async,
 						  int pid);
+=======
+						  int is_async);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 						  int is_async);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -182,8 +209,11 @@ extern void binder_alloc_print_allocated(struct seq_file *m,
 void binder_alloc_print_pages(struct seq_file *m,
 			      struct binder_alloc *alloc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern int binder_buffer_pool_create(void);
 extern void binder_buffer_pool_destroy(void);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

@@ -51,6 +51,7 @@ static int rtl28xxu_ctrl_msg(struct dvb_usb_device *d, struct rtl28xxu_req *req)
 		/* read */
 		requesttype = (USB_TYPE_VENDOR | USB_DIR_IN);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		/*
 		 * Zero-length transfers must use usb_sndctrlpipe() and
@@ -61,6 +62,9 @@ static int rtl28xxu_ctrl_msg(struct dvb_usb_device *d, struct rtl28xxu_req *req)
 			pipe = usb_rcvctrlpipe(d->udev, 0);
 		else
 			pipe = usb_sndctrlpipe(d->udev, 0);
+=======
+		pipe = usb_rcvctrlpipe(d->udev, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pipe = usb_rcvctrlpipe(d->udev, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

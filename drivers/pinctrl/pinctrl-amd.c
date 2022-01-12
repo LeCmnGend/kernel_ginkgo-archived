@@ -145,7 +145,11 @@ static int amd_gpio_set_debounce(struct gpio_chip *gc, unsigned offset,
 			pin_reg &= ~BIT(DB_TMR_LARGE_OFF);
 		} else if (debounce < 250000) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			time = debounce / 15625;
+=======
+			time = debounce / 15600;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			time = debounce / 15600;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -159,7 +163,11 @@ static int amd_gpio_set_debounce(struct gpio_chip *gc, unsigned offset,
 			pin_reg |= BIT(DB_TMR_LARGE_OFF);
 		} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			pin_reg &= ~(DB_CNTRl_MASK << DB_CNTRL_OFF);
+=======
+			pin_reg &= ~DB_CNTRl_MASK;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			pin_reg &= ~DB_CNTRl_MASK;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -170,7 +178,11 @@ static int amd_gpio_set_debounce(struct gpio_chip *gc, unsigned offset,
 		pin_reg &= ~BIT(DB_TMR_LARGE_OFF);
 		pin_reg &= ~DB_TMR_OUT_MASK;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pin_reg &= ~(DB_CNTRl_MASK << DB_CNTRL_OFF);
+=======
+		pin_reg &= ~DB_CNTRl_MASK;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pin_reg &= ~DB_CNTRl_MASK;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -439,6 +451,10 @@ static int amd_gpio_irq_set_type(struct irq_data *d, unsigned int type)
 		pin_reg &= ~(ACTIVE_LEVEL_MASK << ACTIVE_LEVEL_OFF);
 		pin_reg |= ACTIVE_HIGH << ACTIVE_LEVEL_OFF;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		pin_reg |= DB_TYPE_REMOVE_GLITCH << DB_CNTRL_OFF;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pin_reg |= DB_TYPE_REMOVE_GLITCH << DB_CNTRL_OFF;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -450,6 +466,10 @@ static int amd_gpio_irq_set_type(struct irq_data *d, unsigned int type)
 		pin_reg &= ~(ACTIVE_LEVEL_MASK << ACTIVE_LEVEL_OFF);
 		pin_reg |= ACTIVE_LOW << ACTIVE_LEVEL_OFF;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		pin_reg |= DB_TYPE_REMOVE_GLITCH << DB_CNTRL_OFF;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pin_reg |= DB_TYPE_REMOVE_GLITCH << DB_CNTRL_OFF;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -461,6 +481,10 @@ static int amd_gpio_irq_set_type(struct irq_data *d, unsigned int type)
 		pin_reg &= ~(ACTIVE_LEVEL_MASK << ACTIVE_LEVEL_OFF);
 		pin_reg |= BOTH_EADGE << ACTIVE_LEVEL_OFF;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		pin_reg |= DB_TYPE_REMOVE_GLITCH << DB_CNTRL_OFF;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pin_reg |= DB_TYPE_REMOVE_GLITCH << DB_CNTRL_OFF;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -472,6 +496,11 @@ static int amd_gpio_irq_set_type(struct irq_data *d, unsigned int type)
 		pin_reg &= ~(ACTIVE_LEVEL_MASK << ACTIVE_LEVEL_OFF);
 		pin_reg |= ACTIVE_HIGH << ACTIVE_LEVEL_OFF;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		pin_reg &= ~(DB_CNTRl_MASK << DB_CNTRL_OFF);
+		pin_reg |= DB_TYPE_PRESERVE_LOW_GLITCH << DB_CNTRL_OFF;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pin_reg &= ~(DB_CNTRl_MASK << DB_CNTRL_OFF);
 		pin_reg |= DB_TYPE_PRESERVE_LOW_GLITCH << DB_CNTRL_OFF;
@@ -484,6 +513,11 @@ static int amd_gpio_irq_set_type(struct irq_data *d, unsigned int type)
 		pin_reg &= ~(ACTIVE_LEVEL_MASK << ACTIVE_LEVEL_OFF);
 		pin_reg |= ACTIVE_LOW << ACTIVE_LEVEL_OFF;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		pin_reg &= ~(DB_CNTRl_MASK << DB_CNTRL_OFF);
+		pin_reg |= DB_TYPE_PRESERVE_HIGH_GLITCH << DB_CNTRL_OFF;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pin_reg &= ~(DB_CNTRl_MASK << DB_CNTRL_OFF);
 		pin_reg |= DB_TYPE_PRESERVE_HIGH_GLITCH << DB_CNTRL_OFF;
@@ -955,7 +989,10 @@ static const struct acpi_device_id amd_gpio_acpi_match[] = {
 	{ "AMD0030", 0 },
 	{ "AMDI0030", 0},
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ "AMDI0031", 0},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ },

@@ -1016,8 +1016,12 @@ static int qed_int_attentions(struct qed_hwfn *p_hwfn)
 			deasserted_bits, p_sb_attn_sw->known_attn);
 	} else if (asserted_bits == 0x100) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		DP_VERBOSE(p_hwfn, NETIF_MSG_INTR,
 			   "MFW indication via attention\n");
+=======
+		DP_INFO(p_hwfn, "MFW indication via attention\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		DP_INFO(p_hwfn, "MFW indication via attention\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

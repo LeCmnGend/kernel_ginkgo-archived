@@ -89,6 +89,10 @@ static inline int arch_dup_mmap(struct mm_struct *oldmm,
 
 static inline void arch_unmap(struct mm_struct *mm,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			struct vm_area_struct *vma,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			struct vm_area_struct *vma,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

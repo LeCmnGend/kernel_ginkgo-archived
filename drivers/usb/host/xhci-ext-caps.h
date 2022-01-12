@@ -20,9 +20,14 @@
  * Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 /* HC should halt within 16 ms, but use 32 ms as some hosts take longer */
 #define XHCI_MAX_HALT_USEC	(32 * 1000)
+=======
+/* Up to 16 ms to halt an HC */
+#define XHCI_MAX_HALT_USEC	(16*1000)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Up to 16 ms to halt an HC */
 #define XHCI_MAX_HALT_USEC	(16*1000)

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 // SPDX-License-Identifier: GPL-2.0
 /*
  * Copyright (C) 2011 Google, Inc.
@@ -92,6 +93,8 @@ static struct ion_buffer *ion_buffer_create(struct ion_heap *heap, size_t len,
 
 free_buffer:
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  *
  * drivers/staging/android/ion/ion.c
@@ -273,11 +276,15 @@ static struct ion_buffer *ion_buffer_create(struct ion_heap *heap,
 err1:
 	heap->ops->free(buffer);
 err2:
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kfree(buffer);
 	return ERR_PTR(ret);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static struct sg_table *ion_map_dma_buf(struct dma_buf_attachment *attachment,
 					enum dma_data_direction dir)
@@ -289,6 +296,8 @@ static struct sg_table *ion_map_dma_buf(struct dma_buf_attachment *attachment,
 	int count, map_attrs = attachment->dma_map_attrs;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void ion_buffer_destroy(struct ion_buffer *buffer)
 {
 	if (buffer->kmap_cnt > 0) {
@@ -449,11 +458,15 @@ static struct sg_table *ion_map_dma_buf(struct dma_buf_attachment *attachment,
 	table = a->table;
 
 	map_attrs = attachment->dma_map_attrs;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!(buffer->flags & ION_FLAG_CACHED) ||
 	    !hlos_accessible_buffer(buffer))
 		map_attrs |= DMA_ATTR_SKIP_CPU_SYNC;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	down_write(&a->map_rwsem);
 	if (map_attrs & DMA_ATTR_DELAYED_UNMAP)
@@ -469,6 +482,8 @@ static struct sg_table *ion_map_dma_buf(struct dma_buf_attachment *attachment,
 
 	return count ? &a->table : ERR_PTR(-ENOMEM);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_lock(&buffer->lock);
 	if (map_attrs & DMA_ATTR_SKIP_CPU_SYNC)
 		trace_ion_dma_map_cmo_skip(attachment->dev,
@@ -503,11 +518,15 @@ static struct sg_table *ion_map_dma_buf(struct dma_buf_attachment *attachment,
 	a->dma_mapped = true;
 	mutex_unlock(&buffer->lock);
 	return table;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void ion_unmap_dma_buf(struct dma_buf_attachment *attachment,
 			      struct sg_table *table,
+<<<<<<< HEAD
 <<<<<<< HEAD
 			      enum dma_data_direction dir)
 {
@@ -518,6 +537,8 @@ static void ion_unmap_dma_buf(struct dma_buf_attachment *attachment,
 	int map_attrs = attachment->dma_map_attrs;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			      enum dma_data_direction direction)
 {
 	int map_attrs;
@@ -525,11 +546,15 @@ static void ion_unmap_dma_buf(struct dma_buf_attachment *attachment,
 	struct ion_dma_buf_attachment *a = attachment->priv;
 
 	map_attrs = attachment->dma_map_attrs;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!(buffer->flags & ION_FLAG_CACHED) ||
 	    !hlos_accessible_buffer(buffer))
 		map_attrs |= DMA_ATTR_SKIP_CPU_SYNC;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	down_write(&a->map_rwsem);
 	if (map_attrs & DMA_ATTR_DELAYED_UNMAP)
@@ -551,6 +576,8 @@ static int ion_mmap(struct dma_buf *dmabuf, struct vm_area_struct *vma)
 	if (!buffer->heap->ops->map_user)
 		return -EINVAL;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_lock(&buffer->lock);
 	if (map_attrs & DMA_ATTR_SKIP_CPU_SYNC)
 		trace_ion_dma_unmap_cmo_skip(attachment->dev,
@@ -640,14 +667,20 @@ static int ion_mmap(struct dma_buf *dmabuf, struct vm_area_struct *vma)
 		       __func__);
 		return -EINVAL;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!(buffer->flags & ION_FLAG_CACHED))
 		vma->vm_page_prot = pgprot_writecombine(vma->vm_page_prot);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return heap->ops->map_user(heap, buffer, vma);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	vma->vm_private_data = buffer;
 	vma->vm_ops = &ion_vma_ops;
 	ion_vm_open(vma);
@@ -662,11 +695,15 @@ static int ion_mmap(struct dma_buf *dmabuf, struct vm_area_struct *vma)
 		       __func__);
 
 	return ret;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void ion_dma_buf_release(struct dma_buf *dmabuf)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	struct ion_buffer *buffer = container_of(dmabuf->priv, typeof(*buffer),
 						 iommu_data);
@@ -677,15 +714,21 @@ static void ion_dma_buf_release(struct dma_buf *dmabuf)
 	else
 		ion_buffer_free_work(&buffer->free);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct ion_buffer *buffer = dmabuf->priv;
 
 	_ion_buffer_destroy(buffer);
 	kfree(dmabuf->exp_name);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void *ion_dma_buf_vmap(struct dma_buf *dmabuf)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	struct ion_buffer *buffer = container_of(dmabuf->priv, typeof(*buffer),
 						 iommu_data);
@@ -710,6 +753,8 @@ static void *ion_dma_buf_vmap(struct dma_buf *dmabuf)
 	}
 	mutex_unlock(&buffer->kmap_lock);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct ion_buffer *buffer = dmabuf->priv;
 	void *vaddr = ERR_PTR(-EINVAL);
 
@@ -721,6 +766,9 @@ static void *ion_dma_buf_vmap(struct dma_buf *dmabuf)
 		pr_warn_ratelimited("heap %s doesn't support map_kernel\n",
 				    buffer->heap->name);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return vaddr;
@@ -728,6 +776,7 @@ static void *ion_dma_buf_vmap(struct dma_buf *dmabuf)
 
 static void ion_dma_buf_vunmap(struct dma_buf *dmabuf, void *vaddr)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	struct ion_buffer *buffer = container_of(dmabuf->priv, typeof(*buffer),
 						 iommu_data);
@@ -738,6 +787,8 @@ static void ion_dma_buf_vunmap(struct dma_buf *dmabuf, void *vaddr)
 		heap->ops->unmap_kernel(heap, buffer);
 	mutex_unlock(&buffer->kmap_lock);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct ion_buffer *buffer = dmabuf->priv;
 
 	if (buffer->heap->ops->map_kernel) {
@@ -745,22 +796,31 @@ static void ion_dma_buf_vunmap(struct dma_buf *dmabuf, void *vaddr)
 		ion_buffer_kmap_put(buffer);
 		mutex_unlock(&buffer->lock);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void *ion_dma_buf_kmap(struct dma_buf *dmabuf, unsigned long offset)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	void *vaddr;
 
 	vaddr = ion_dma_buf_vmap(dmabuf);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * TODO: Once clients remove their hacks where they assume kmap(ed)
 	 * addresses are virtually contiguous implement this properly
 	 */
 	void *vaddr = ion_dma_buf_vmap(dmabuf);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (IS_ERR(vaddr))
 		return vaddr;
@@ -771,6 +831,7 @@ static void *ion_dma_buf_kmap(struct dma_buf *dmabuf, unsigned long offset)
 static void ion_dma_buf_kunmap(struct dma_buf *dmabuf, unsigned long offset,
 			       void *ptr)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	ion_dma_buf_vunmap(dmabuf, NULL);
 }
@@ -829,6 +890,8 @@ static int ion_dma_buf_attach(struct dma_buf *dmabuf, struct device *dev,
 	a->next = buffer->attachments;
 	buffer->attachments = a;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * TODO: Once clients remove their hacks where they assume kmap(ed)
 	 * addresses are virtually contiguous implement this properly
@@ -890,6 +953,7 @@ static int ion_sgl_sync_range(struct device *dev, struct scatterlist *sgl,
 		if (length == 0)
 			break;
 	}
+<<<<<<< HEAD
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
@@ -929,10 +993,13 @@ static int ion_dma_buf_begin_cpu_access(struct dma_buf *dmabuf,
 			up_read(&a->map_rwsem);
 		}
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
 }
 
+<<<<<<< HEAD
 static int ion_dma_buf_end_cpu_access(struct dma_buf *dmabuf,
 				      enum dma_data_direction dir)
 {
@@ -994,6 +1061,8 @@ static void ion_sgl_sync_range(struct device *dev, struct scatterlist *sgl,
 		sg_dma_addr += sg->length;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int ion_sgl_sync_mapped(struct device *dev, struct scatterlist *sgl,
 			       unsigned int nents, struct list_head *vmas,
 			       enum dma_data_direction dir, bool for_cpu)
@@ -1226,6 +1295,9 @@ static int ion_dma_buf_end_cpu_access_umapped(struct dma_buf *dmabuf,
 					      enum dma_data_direction dir)
 {
 	return __ion_dma_buf_end_cpu_access(dmabuf, dir, true);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -1234,6 +1306,7 @@ static int ion_dma_buf_begin_cpu_access_partial(struct dma_buf *dmabuf,
 						unsigned int offset,
 						unsigned int len)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	struct ion_buffer *buffer = container_of(dmabuf->priv, typeof(*buffer),
 						 iommu_data);
@@ -1262,6 +1335,8 @@ static int ion_dma_buf_begin_cpu_access_partial(struct dma_buf *dmabuf,
 	}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct ion_buffer *buffer = dmabuf->priv;
 	struct ion_dma_buf_attachment *a;
 	int ret = 0;
@@ -1336,11 +1411,15 @@ static int ion_dma_buf_begin_cpu_access_partial(struct dma_buf *dmabuf,
 	mutex_unlock(&buffer->lock);
 
 out:
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 }
 
 static int ion_dma_buf_end_cpu_access_partial(struct dma_buf *dmabuf,
+<<<<<<< HEAD
 <<<<<<< HEAD
 					      enum dma_data_direction dir,
 					      unsigned int offset,
@@ -1386,6 +1465,8 @@ static int ion_dma_buf_get_flags(struct dma_buf *dmabuf, unsigned long *flags)
 
 static const struct dma_buf_ops ion_dma_buf_ops = {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					      enum dma_data_direction direction,
 					      unsigned int offset,
 					      unsigned int len)
@@ -1477,6 +1558,9 @@ static int ion_dma_buf_get_flags(struct dma_buf *dmabuf,
 }
 
 static const struct dma_buf_ops dma_buf_ops = {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.map_dma_buf = ion_map_dma_buf,
 	.unmap_dma_buf = ion_unmap_dma_buf,
@@ -1484,15 +1568,21 @@ static const struct dma_buf_ops dma_buf_ops = {
 	.release = ion_dma_buf_release,
 	.attach = ion_dma_buf_attach,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.detach = ion_dma_buf_detach,
 	.begin_cpu_access = ion_dma_buf_begin_cpu_access,
 	.end_cpu_access = ion_dma_buf_end_cpu_access,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.detach = ion_dma_buf_detatch,
 	.begin_cpu_access = ion_dma_buf_begin_cpu_access,
 	.end_cpu_access = ion_dma_buf_end_cpu_access,
 	.begin_cpu_access_umapped = ion_dma_buf_begin_cpu_access_umapped,
 	.end_cpu_access_umapped = ion_dma_buf_end_cpu_access_umapped,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.begin_cpu_access_partial = ion_dma_buf_begin_cpu_access_partial,
 	.end_cpu_access_partial = ion_dma_buf_end_cpu_access_partial,
@@ -1503,7 +1593,11 @@ static const struct dma_buf_ops dma_buf_ops = {
 	.vmap = ion_dma_buf_vmap,
 	.vunmap = ion_dma_buf_vunmap,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.get_flags = ion_dma_buf_get_flags
+=======
+	.get_flags = ion_dma_buf_get_flags,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.get_flags = ion_dma_buf_get_flags,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1512,6 +1606,7 @@ static const struct dma_buf_ops dma_buf_ops = {
 struct dma_buf *ion_alloc_dmabuf(size_t len, unsigned int heap_id_mask,
 				 unsigned int flags)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	struct ion_device *idev = &ion_dev;
 	struct dma_buf_export_info exp_info;
@@ -1531,6 +1626,8 @@ struct dma_buf *ion_alloc_dmabuf(size_t len, unsigned int heap_id_mask,
 		}
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct ion_device *dev = internal_dev;
 	struct ion_buffer *buffer = NULL;
 	struct ion_heap *heap;
@@ -1561,6 +1658,9 @@ struct dma_buf *ion_alloc_dmabuf(size_t len, unsigned int heap_id_mask,
 			break;
 	}
 	up_read(&dev->lock);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!buffer)
@@ -1569,6 +1669,7 @@ struct dma_buf *ion_alloc_dmabuf(size_t len, unsigned int heap_id_mask,
 	if (IS_ERR(buffer))
 		return ERR_CAST(buffer);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	exp_info = (typeof(exp_info)){
 		.ops = &ion_dma_buf_ops,
@@ -1581,6 +1682,8 @@ struct dma_buf *ion_alloc_dmabuf(size_t len, unsigned int heap_id_mask,
 	if (IS_ERR(dmabuf))
 		ion_buffer_free_work(&buffer->free);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	get_task_comm(task_comm, current->group_leader);
 
 	exp_info.ops = &dma_buf_ops;
@@ -1595,11 +1698,15 @@ struct dma_buf *ion_alloc_dmabuf(size_t len, unsigned int heap_id_mask,
 		_ion_buffer_destroy(buffer);
 		kfree(exp_info.exp_name);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return dmabuf;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static int ion_alloc_fd(struct ion_allocation_data *a)
 {
@@ -1610,6 +1717,8 @@ static int ion_alloc_fd(struct ion_allocation_data *a)
 	if (IS_ERR(dmabuf))
 		return PTR_ERR(dmabuf);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct dma_buf *ion_alloc(size_t len, unsigned int heap_id_mask,
 			  unsigned int flags)
 {
@@ -1660,6 +1769,9 @@ int ion_alloc_fd(size_t len, unsigned int heap_id_mask, unsigned int flags)
 	if (IS_ERR(dmabuf)) {
 		return PTR_ERR(dmabuf);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	fd = dma_buf_fd(dmabuf, O_CLOEXEC);
@@ -1669,6 +1781,7 @@ int ion_alloc_fd(size_t len, unsigned int heap_id_mask, unsigned int flags)
 	return fd;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 void ion_add_heap(struct ion_device *idev, struct ion_heap *heap)
 {
@@ -1793,6 +1906,8 @@ static long ion_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 	if (copy_to_user((void __user *)arg, output, sizeof(*output)))
 		return -EFAULT;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int ion_query_heaps(struct ion_heap_query *query)
 {
 	struct ion_device *dev = internal_dev;
@@ -1974,11 +2089,15 @@ static int ion_init_sysfs(void)
 		kobject_put(ion_kobj);
 		return ret;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 struct ion_device *ion_device_create(struct ion_heap_data *heap_data)
 {
@@ -1993,6 +2112,8 @@ struct ion_device *ion_device_create(struct ion_heap_data *heap_data)
 	return idev;
 }
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct ion_device *ion_device_create(void)
 {
 	struct ion_device *idev;
@@ -2040,4 +2161,7 @@ err_reg:
 	return ERR_PTR(ret);
 }
 EXPORT_SYMBOL(ion_device_create);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

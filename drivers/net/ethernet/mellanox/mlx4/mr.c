@@ -115,7 +115,11 @@ static int mlx4_buddy_init(struct mlx4_buddy *buddy, int max_order)
 
 	for (i = 0; i <= buddy->max_order; ++i) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		s = BITS_TO_LONGS(1UL << (buddy->max_order - i));
+=======
+		s = BITS_TO_LONGS(1 << (buddy->max_order - i));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		s = BITS_TO_LONGS(1 << (buddy->max_order - i));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

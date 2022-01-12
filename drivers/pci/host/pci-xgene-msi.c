@@ -394,10 +394,13 @@ static int xgene_msi_hwirq_alloc(unsigned int cpu)
 			continue;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		irq_set_chained_handler_and_data(msi_group->gic_irq,
 			xgene_msi_isr, msi_group);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		irq_set_chained_handler(msi_group->gic_irq,
 					xgene_msi_isr);
 		err = irq_set_handler_data(msi_group->gic_irq, msi_group);
@@ -405,6 +408,9 @@ static int xgene_msi_hwirq_alloc(unsigned int cpu)
 			pr_err("failed to register GIC IRQ handler\n");
 			return -EINVAL;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
 		 * Statically allocate MSI GIC IRQs to each CPU core.

@@ -275,6 +275,7 @@ static const struct dmi_system_id video_detect_dmi_table[] = {
 		},
 	},
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* https://bugs.launchpad.net/bugs/1894667 */
 	{
 	 .callback = video_detect_force_video,
@@ -284,6 +285,8 @@ static const struct dmi_system_id video_detect_dmi_table[] = {
 		DMI_MATCH(DMI_PRODUCT_NAME, "HP 635 Notebook PC"),
 		},
 	},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

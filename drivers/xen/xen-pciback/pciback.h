@@ -15,7 +15,10 @@
 #include <linux/workqueue.h>
 #include <linux/atomic.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <xen/events.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <xen/interface/io/pciif.h>
@@ -32,8 +35,11 @@ struct pci_dev_entry {
 #define _PCIB_op_pending	(1)
 #define PCIB_op_pending		(1<<(_PCIB_op_pending))
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define _EOI_pending		(2)
 #define EOI_pending		(1<<(_EOI_pending))
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -192,6 +198,7 @@ irqreturn_t xen_pcibk_handle_event(int irq, void *dev_id);
 void xen_pcibk_do_op(struct work_struct *data);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void xen_pcibk_lateeoi(struct xen_pcibk_device *pdev,
 				     unsigned int eoi_flag)
 {
@@ -201,11 +208,18 @@ static inline void xen_pcibk_lateeoi(struct xen_pcibk_device *pdev,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int xen_pcibk_xenbus_register(void);
 void xen_pcibk_xenbus_unregister(void);
 
 extern int verbose_request;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+void xen_pcibk_test_and_schedule_op(struct xen_pcibk_device *pdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 void xen_pcibk_test_and_schedule_op(struct xen_pcibk_device *pdev);

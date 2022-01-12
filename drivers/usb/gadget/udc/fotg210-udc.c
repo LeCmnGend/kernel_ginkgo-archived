@@ -341,9 +341,14 @@ static void fotg210_start_dma(struct fotg210_ep *ep,
 			buffer = req->req.buf + req->req.actual;
 			length = ioread32(ep->fotg210->reg +
 <<<<<<< HEAD
+<<<<<<< HEAD
 					FOTG210_FIBCR(ep->epnum - 1)) & FIBCR_BCFX;
 			if (length > req->req.length - req->req.actual)
 				length = req->req.length - req->req.actual;
+=======
+					FOTG210_FIBCR(ep->epnum - 1));
+			length &= FIBCR_BCFX;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					FOTG210_FIBCR(ep->epnum - 1));
 			length &= FIBCR_BCFX;
@@ -355,7 +360,11 @@ static void fotg210_start_dma(struct fotg210_ep *ep,
 			length = ep->ep.maxpacket;
 		else
 <<<<<<< HEAD
+<<<<<<< HEAD
 			length = req->req.length - req->req.actual;
+=======
+			length = req->req.length;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			length = req->req.length;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -396,7 +405,12 @@ static void fotg210_ep0_queue(struct fotg210_ep *ep,
 	if (ep->dir_in) { /* if IN */
 		fotg210_start_dma(ep, req);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (req->req.length == req->req.actual)
+=======
+		if ((req->req.length == req->req.actual) ||
+		    (req->req.actual < ep->ep.maxpacket))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if ((req->req.length == req->req.actual) ||
 		    (req->req.actual < ep->ep.maxpacket))
@@ -842,7 +856,11 @@ static void fotg210_ep0in(struct fotg210_udc *fotg210)
 			fotg210_start_dma(ep, req);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (req->req.actual == req->req.length)
+=======
+		if ((req->req.length - req->req.actual) < ep->ep.maxpacket)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if ((req->req.length - req->req.actual) < ep->ep.maxpacket)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -875,6 +893,7 @@ static void fotg210_out_fifo_handler(struct fotg210_ep *ep)
 	struct fotg210_request *req = list_entry(ep->queue.next,
 						 struct fotg210_request, queue);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int disgr1 = ioread32(ep->fotg210->reg + FOTG210_DISGR1);
 
 	fotg210_start_dma(ep, req);
@@ -886,12 +905,17 @@ static void fotg210_out_fifo_handler(struct fotg210_ep *ep)
 	if (req->req.length == req->req.actual ||
 	    (disgr1 & DISGR1_SPK_INT(ep->epnum - 1)))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	fotg210_start_dma(ep, req);
 
 	/* finish out transfer */
 	if (req->req.length == req->req.actual ||
 	    req->req.actual < ep->ep.maxpacket)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		fotg210_done(ep, req, 0);
 }
@@ -1066,12 +1090,15 @@ static void fotg210_init(struct fotg210_udc *fotg210)
 	iowrite32(value, fotg210->reg + FOTG210_DMCR);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* enable only grp2 irqs we handle */
 	iowrite32(~(DISGR2_DMA_ERROR | DISGR2_RX0BYTE_INT | DISGR2_TX0BYTE_INT
 		    | DISGR2_ISO_SEQ_ABORT_INT | DISGR2_ISO_SEQ_ERR_INT
 		    | DISGR2_RESM_INT | DISGR2_SUSP_INT | DISGR2_USBRST_INT),
 		  fotg210->reg + FOTG210_DMISGR2);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* disable all fifo interrupt */

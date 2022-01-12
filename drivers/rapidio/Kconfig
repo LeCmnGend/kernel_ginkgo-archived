@@ -26,7 +26,11 @@ config RAPIDIO_DMA_ENGINE
 	bool "DMA Engine support for RapidIO"
 	depends on RAPIDIO
 <<<<<<< HEAD
+<<<<<<< HEAD
 	depends on DMADEVICES
+=======
+	select DMADEVICES
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	select DMADEVICES
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

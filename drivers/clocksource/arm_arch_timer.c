@@ -81,7 +81,10 @@ static bool arch_counter_suspend_stop;
 static bool vdso_default = true;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static cpumask_t evtstrm_available = CPU_MASK_NONE;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static bool evtstrm_enable = IS_ENABLED(CONFIG_ARM_ARCH_TIMER_EVTSTREAM);
@@ -763,13 +766,17 @@ static void arch_timer_evtstrm_enable(int divider)
 	compat_elf_hwcap |= COMPAT_HWCAP_EVTSTRM;
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cpumask_set_cpu(smp_processor_id(), &evtstrm_available);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void arch_timer_configure_evtstream(void)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	int evt_stream_div, lsb;
 
@@ -790,6 +797,8 @@ static void arch_timer_configure_evtstream(void)
 	/* enable event stream */
 	arch_timer_evtstrm_enable(max(0, min(lsb, 15)));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int evt_stream_div, pos;
 
 	/* Find the closest power of two to the divisor */
@@ -799,6 +808,9 @@ static void arch_timer_configure_evtstream(void)
 		pos--;
 	/* enable event stream */
 	arch_timer_evtstrm_enable(min(pos, 15));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -929,6 +941,7 @@ void arch_timer_mem_get_cval(u32 *lo, u32 *hi)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 bool arch_timer_evtstrm_available(void)
 {
 	/*
@@ -939,6 +952,8 @@ bool arch_timer_evtstrm_available(void)
 	return cpumask_test_cpu(raw_smp_processor_id(), &evtstrm_available);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static u64 arch_counter_get_cntvct_mem(void)
@@ -1007,8 +1022,11 @@ static int arch_timer_dying_cpu(unsigned int cpu)
 	struct clock_event_device *clk = this_cpu_ptr(arch_timer_evt);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cpumask_clear_cpu(smp_processor_id(), &evtstrm_available);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	arch_timer_stop(clk);
@@ -1021,6 +1039,7 @@ static int arch_timer_cpu_pm_notify(struct notifier_block *self,
 				    unsigned long action, void *hcpu)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (action == CPU_PM_ENTER) {
 		__this_cpu_write(saved_cntkctl, arch_timer_get_cntkctl());
 
@@ -1032,10 +1051,15 @@ static int arch_timer_cpu_pm_notify(struct notifier_block *self,
 			cpumask_set_cpu(smp_processor_id(), &evtstrm_available);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (action == CPU_PM_ENTER)
 		__this_cpu_write(saved_cntkctl, arch_timer_get_cntkctl());
 	else if (action == CPU_PM_ENTER_FAILED || action == CPU_PM_EXIT)
 		arch_timer_set_cntkctl(__this_cpu_read(saved_cntkctl));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return NOTIFY_OK;
 }
@@ -1113,6 +1137,10 @@ static int __init arch_timer_register(void)
 		goto out_unreg_notify;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

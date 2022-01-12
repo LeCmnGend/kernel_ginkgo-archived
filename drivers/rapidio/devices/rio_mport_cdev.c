@@ -901,6 +901,7 @@ rio_dma_transfer(struct file *filp, u32 transfer_mode,
 					   pinned);
 				nr_pages = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			} else {
 				rmcd_error("pinned %ld out of %ld pages",
 					   pinned, nr_pages);
@@ -912,6 +913,8 @@ rio_dma_transfer(struct file *filp, u32 transfer_mode,
 			}
 			ret = -EFAULT;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			} else
 				rmcd_error("pinned %ld out of %ld pages",
 					   pinned, nr_pages);
@@ -921,6 +924,9 @@ rio_dma_transfer(struct file *filp, u32 transfer_mode,
 			 * the error handler:
 			 */
 			nr_pages = pinned;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			goto err_pg;
 		}
@@ -1752,7 +1758,10 @@ static int rio_mport_add_riodev(struct mport_cdev_priv *priv,
 	struct rio_switch *rswitch = NULL;
 	struct rio_mport *mport;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct device *dev;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	size_t size;
@@ -1770,10 +1779,15 @@ static int rio_mport_add_riodev(struct mport_cdev_priv *priv,
 		   dev_info.comptag, dev_info.destid, dev_info.hopcount);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev = bus_find_device_by_name(&rio_bus_type, NULL, dev_info.name);
 	if (dev) {
 		rmcd_debug(RDEV, "device %s already exists", dev_info.name);
 		put_device(dev);
+=======
+	if (bus_find_device_by_name(&rio_bus_type, NULL, dev_info.name)) {
+		rmcd_debug(RDEV, "device %s already exists", dev_info.name);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (bus_find_device_by_name(&rio_bus_type, NULL, dev_info.name)) {
 		rmcd_debug(RDEV, "device %s already exists", dev_info.name);
@@ -2489,7 +2503,10 @@ static struct mport_dev *mport_cdev_add(struct rio_mport *mport)
 	md->cdev.owner = THIS_MODULE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = cdev_device_add(&md->cdev, &md->dev);
 	if (ret) {
 		rmcd_error("Failed to register mport %d (err=%d)",
@@ -2497,6 +2514,9 @@ static struct mport_dev *mport_cdev_add(struct rio_mport *mport)
 		goto err_cdev;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	INIT_LIST_HEAD(&md->doorbells);
 	spin_lock_init(&md->db_lock);
@@ -2518,6 +2538,7 @@ static struct mport_dev *mport_cdev_add(struct rio_mport *mport)
 	md->properties.transfer_mode |= RIO_TRANSFER_MODE_TRANSFER;
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	ret = cdev_device_add(&md->cdev, &md->dev);
 	if (ret) {
@@ -2525,6 +2546,8 @@ static struct mport_dev *mport_cdev_add(struct rio_mport *mport)
 		       mport->id, ret);
 		goto err_cdev;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = rio_query_mport(mport, &attr);

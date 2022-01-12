@@ -496,10 +496,14 @@ static int i2c_s3c_irq_nextbyte(struct s3c24xx_i2c *i2c, unsigned long iicstat)
 					 * when we change direction
 					 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 					dev_dbg(i2c->dev,
 						"missing START before write->read\n");
 					s3c24xx_i2c_stop(i2c, -EINVAL);
 					break;
+=======
+					s3c24xx_i2c_stop(i2c, -EINVAL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					s3c24xx_i2c_stop(i2c, -EINVAL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

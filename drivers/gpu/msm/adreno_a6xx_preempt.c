@@ -36,8 +36,11 @@ static void _update_wptr(struct adreno_device *adreno_dev, bool reset_timer)
 	struct adreno_ringbuffer *rb = adreno_dev->cur_rb;
 	unsigned long flags;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool write = false;
 	unsigned int val;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret = 0;
@@ -67,8 +70,14 @@ static void _update_wptr(struct adreno_device *adreno_dev, bool reset_timer)
 					0x0, 0x2);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			write = true;
 			val = rb->wptr;
+=======
+			ret = adreno_gmu_fenced_write(adreno_dev,
+				ADRENO_REG_CP_RB_WPTR, rb->wptr,
+				FENCE_STATUS_WRITEDROPPED0_MASK);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ret = adreno_gmu_fenced_write(adreno_dev,
 				ADRENO_REG_CP_RB_WPTR, rb->wptr,
@@ -101,10 +110,13 @@ static void _update_wptr(struct adreno_device *adreno_dev, bool reset_timer)
 	spin_unlock_irqrestore(&rb->preempt_lock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (write)
 		ret = adreno_gmu_fenced_write(adreno_dev, ADRENO_REG_CP_RB_WPTR,
 			val, FENCE_STATUS_WRITEDROPPED0_MASK);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (in_interrupt() == 0) {

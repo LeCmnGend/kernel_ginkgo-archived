@@ -29,7 +29,11 @@ static struct dentry *sysfs_mount(struct file_system_type *fs_type,
 	struct dentry *root;
 	void *ns;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool new_sb = false;
+=======
+	bool new_sb;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bool new_sb;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -43,9 +47,15 @@ static struct dentry *sysfs_mount(struct file_system_type *fs_type,
 	root = kernfs_mount_ns(fs_type, flags, sysfs_root,
 				SYSFS_MAGIC, &new_sb, ns);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!new_sb)
 		kobj_ns_drop(KOBJ_NS_TYPE_NET, ns);
 	else if (!IS_ERR(root))
+=======
+	if (IS_ERR(root) || !new_sb)
+		kobj_ns_drop(KOBJ_NS_TYPE_NET, ns);
+	else if (new_sb)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (IS_ERR(root) || !new_sb)
 		kobj_ns_drop(KOBJ_NS_TYPE_NET, ns);

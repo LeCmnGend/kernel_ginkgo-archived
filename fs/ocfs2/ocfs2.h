@@ -337,8 +337,13 @@ struct ocfs2_super
 	u32 s_next_generation;
 	unsigned long osb_flags;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u16 s_inode_steal_slot;
 	u16 s_meta_steal_slot;
+=======
+	s16 s_inode_steal_slot;
+	s16 s_meta_steal_slot;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	s16 s_inode_steal_slot;
 	s16 s_meta_steal_slot;

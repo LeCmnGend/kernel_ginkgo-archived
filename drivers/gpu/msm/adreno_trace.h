@@ -12,6 +12,7 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define trace_adreno_cmdbatch_fault(...) {}
 #define trace_adreno_cmdbatch_queued(...) {}
 #define trace_adreno_cmdbatch_recovery(...) {}
@@ -37,6 +38,8 @@
 #define trace_kgsl_a5xx_irq_status(...) {}
 
 #if 0
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #if !defined(_ADRENO_TRACE_H) || defined(TRACE_HEADER_MULTI_READ)
@@ -81,7 +84,10 @@ TRACE_EVENT(adreno_cmdbatch_queued,
 );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 TRACE_EVENT(adreno_cmdbatch_submitted,
 	TP_PROTO(struct kgsl_drawobj *drawobj, int inflight, uint64_t ticks,
 		unsigned long secs, unsigned long usecs,
@@ -127,6 +133,9 @@ TRACE_EVENT(adreno_cmdbatch_submitted,
 	)
 );
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 TRACE_EVENT(adreno_cmdbatch_retired,
 	TP_PROTO(struct kgsl_drawobj *drawobj, int inflight,
@@ -658,6 +667,9 @@ TRACE_EVENT(adreno_ifpc_count,
 /* This part must be outside protection */
 #include <trace/define_trace.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -2781,7 +2781,10 @@ process_dynamic_array_len(struct event_format *event, struct print_arg *arg,
 		goto out_err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	free_token(token);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	type = read_token(&token);

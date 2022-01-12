@@ -5756,8 +5756,11 @@ int i40e_vsi_open(struct i40e_vsi *vsi)
 			 dev_name(&pf->pdev->dev));
 		err = i40e_vsi_request_irq(vsi, int_name);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (err)
 			goto err_setup_rx;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -7191,6 +7194,10 @@ static void i40e_rebuild(struct i40e_pf *pf, bool reinit, bool lock_acquired)
 {
 	struct i40e_hw *hw = &pf->hw;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u8 set_fc_aq_fail = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u8 set_fc_aq_fail = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -7272,7 +7279,10 @@ static void i40e_rebuild(struct i40e_pf *pf, bool reinit, bool lock_acquired)
 			 i40e_aq_str(&pf->hw, pf->hw.aq.asq_last_status));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* make sure our flow control settings are restored */
 	ret = i40e_set_fc(&pf->hw, &set_fc_aq_fail, true);
 	if (ret)
@@ -7280,6 +7290,9 @@ static void i40e_rebuild(struct i40e_pf *pf, bool reinit, bool lock_acquired)
 			i40e_stat_str(&pf->hw, ret),
 			i40e_aq_str(&pf->hw, pf->hw.aq.asq_last_status));
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Rebuild the VSIs and VEBs that existed before reset.
 	 * They are still in our local switch element arrays, so only
@@ -8961,7 +8974,10 @@ static int i40e_sw_init(struct i40e_pf *pf)
 	int err = 0;
 	int size;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u16 pow;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -8983,11 +8999,14 @@ static int i40e_sw_init(struct i40e_pf *pf)
 	pf->rss_size_max = min_t(int, pf->rss_size_max,
 				 pf->hw.func_caps.num_tx_qp);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* find the next higher power-of-2 of num cpus */
 	pow = roundup_pow_of_two(num_online_cpus());
 	pf->rss_size_max = min_t(int, pf->rss_size_max, pow);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (pf->hw.func_caps.rss) {
@@ -11310,6 +11329,10 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
 	u32 val;
 	u32 i;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u8 set_fc_aq_fail;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u8 set_fc_aq_fail;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -11582,7 +11605,10 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Make sure flow control is set according to current settings */
 	err = i40e_set_fc(hw, &set_fc_aq_fail, true);
 	if (set_fc_aq_fail & I40E_SET_FC_AQ_FAIL_GET)
@@ -11601,6 +11627,9 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
 			i40e_stat_str(hw, err),
 			i40e_aq_str(hw, hw->aq.asq_last_status));
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* if FDIR VSI was set up, start it now */
 	for (i = 0; i < pf->num_alloc_vsi; i++) {
@@ -11852,9 +11881,12 @@ static void i40e_remove(struct pci_dev *pdev)
 	i40e_write_rx_ctl(hw, I40E_PFQF_HENA(1), 0);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	while (test_bit(__I40E_RESET_RECOVERY_PENDING, pf->state))
 		usleep_range(1000, 2000);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* no more scheduling of any task */

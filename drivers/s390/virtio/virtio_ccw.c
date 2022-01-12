@@ -107,7 +107,11 @@ struct virtio_rev_info {
 
 /* the highest virtio-ccw revision we support */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define VIRTIO_CCW_REV_MAX 2
+=======
+#define VIRTIO_CCW_REV_MAX 1
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define VIRTIO_CCW_REV_MAX 1
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -916,7 +920,11 @@ static u8 virtio_ccw_get_status(struct virtio_device *vdev)
 	struct ccw1 *ccw;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (vcdev->revision < 2)
+=======
+	if (vcdev->revision < 1)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (vcdev->revision < 1)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

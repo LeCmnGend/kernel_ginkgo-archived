@@ -134,11 +134,14 @@ struct ina2xx_chip_info {
 	int int_time_vshunt; /* Shunt voltage integration time uS */
 	bool allow_async_readout;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* data buffer needs space for channel data and timestamp */
 	struct {
 		u16 chan[4];
 		u64 ts __aligned(8);
 	} scan;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -607,6 +610,10 @@ static int ina2xx_work_buffer(struct iio_dev *indio_dev)
 {
 	struct ina2xx_chip_info *chip = iio_priv(indio_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	unsigned short data[8];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned short data[8];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -660,7 +667,11 @@ static int ina2xx_work_buffer(struct iio_dev *indio_dev)
 			return ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		chip->scan.chan[i++] = val;
+=======
+		data[i++] = val;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		data[i++] = val;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -681,7 +692,12 @@ static int ina2xx_work_buffer(struct iio_dev *indio_dev)
 	time_b = iio_get_time_ns(indio_dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	iio_push_to_buffers_with_timestamp(indio_dev, &chip->scan, time_a);
+=======
+	iio_push_to_buffers_with_timestamp(indio_dev,
+					   (unsigned int *)data, time_a);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	iio_push_to_buffers_with_timestamp(indio_dev,
 					   (unsigned int *)data, time_a);

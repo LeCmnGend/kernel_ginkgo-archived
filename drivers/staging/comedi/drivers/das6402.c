@@ -196,7 +196,11 @@ static irqreturn_t das6402_interrupt(int irq, void *d)
 		async->events |= COMEDI_CB_OVERFLOW;
 	} else if (status & DAS6402_STATUS_FFNE) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unsigned short val;
+=======
+		unsigned int val;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		unsigned int val;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

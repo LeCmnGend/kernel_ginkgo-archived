@@ -207,11 +207,14 @@ static void imx_ldb_encoder_enable(struct drm_encoder *encoder)
 	int mux = drm_of_encoder_active_port_id(imx_ldb_ch->child, encoder);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (mux < 0 || mux >= ARRAY_SIZE(ldb->clk_sel)) {
 		dev_warn(ldb->dev, "%s: invalid mux %d\n", __func__, mux);
 		return;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	drm_panel_prepare(imx_ldb_ch->panel);
@@ -273,11 +276,14 @@ imx_ldb_encoder_atomic_mode_set(struct drm_encoder *encoder,
 	u32 bus_format = imx_ldb_ch->bus_format;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (mux < 0 || mux >= ARRAY_SIZE(ldb->clk_sel)) {
 		dev_warn(ldb->dev, "%s: invalid mux %d\n", __func__, mux);
 		return;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (mode->clock > 170000) {
@@ -328,7 +334,10 @@ static void imx_ldb_encoder_disable(struct drm_encoder *encoder)
 	struct imx_ldb_channel *imx_ldb_ch = enc_to_imx_ldb_ch(encoder);
 	struct imx_ldb *ldb = imx_ldb_ch->ldb;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int dual = ldb->ldb_ctrl & LDB_SPLIT_MODE_EN;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int mux, ret;
@@ -336,9 +345,15 @@ static void imx_ldb_encoder_disable(struct drm_encoder *encoder)
 	drm_panel_disable(imx_ldb_ch->panel);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (imx_ldb_ch == &ldb->channel[0] || dual)
 		ldb->ldb_ctrl &= ~LDB_CH0_MODE_EN_MASK;
 	if (imx_ldb_ch == &ldb->channel[1] || dual)
+=======
+	if (imx_ldb_ch == &ldb->channel[0])
+		ldb->ldb_ctrl &= ~LDB_CH0_MODE_EN_MASK;
+	else if (imx_ldb_ch == &ldb->channel[1])
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (imx_ldb_ch == &ldb->channel[0])
 		ldb->ldb_ctrl &= ~LDB_CH0_MODE_EN_MASK;
@@ -349,7 +364,11 @@ static void imx_ldb_encoder_disable(struct drm_encoder *encoder)
 	regmap_write(ldb->regmap, IOMUXC_GPR2, ldb->ldb_ctrl);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (dual) {
+=======
+	if (ldb->ldb_ctrl & LDB_SPLIT_MODE_EN) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ldb->ldb_ctrl & LDB_SPLIT_MODE_EN) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -730,7 +730,11 @@ bool ttm_bo_eviction_valuable(struct ttm_buffer_object *bo,
 	 * requested placement range
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (place->fpfn >= (bo->mem.start + bo->mem.num_pages) ||
+=======
+	if (place->fpfn >= (bo->mem.start + bo->mem.size) ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (place->fpfn >= (bo->mem.start + bo->mem.size) ||
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -170,7 +170,11 @@ static int vmci_check_host_caps(struct pci_dev *pdev)
 	struct vmci_datagram *check_msg;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	check_msg = kzalloc(msg_size, GFP_KERNEL);
+=======
+	check_msg = kmalloc(msg_size, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	check_msg = kmalloc(msg_size, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

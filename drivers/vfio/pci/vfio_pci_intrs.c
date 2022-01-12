@@ -253,7 +253,10 @@ static int vfio_msi_enable(struct vfio_pci_device *vdev, int nvec, bool msix)
 	unsigned int flag = msix ? PCI_IRQ_MSIX : PCI_IRQ_MSI;
 	int ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u16 cmd;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -266,7 +269,10 @@ static int vfio_msi_enable(struct vfio_pci_device *vdev, int nvec, bool msix)
 
 	/* return the number of supported vectors if we can't get all: */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cmd = vfio_pci_memory_lock_and_enable(vdev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = pci_alloc_irq_vectors(pdev, 1, nvec, flag);
@@ -274,11 +280,17 @@ static int vfio_msi_enable(struct vfio_pci_device *vdev, int nvec, bool msix)
 		if (ret > 0)
 			pci_free_irq_vectors(pdev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		vfio_pci_memory_unlock_and_restore(vdev, cmd);
 		kfree(vdev->ctx);
 		return ret;
 	}
 	vfio_pci_memory_unlock_and_restore(vdev, cmd);
+=======
+		kfree(vdev->ctx);
+		return ret;
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kfree(vdev->ctx);
 		return ret;
@@ -307,7 +319,10 @@ static int vfio_msi_set_vector_signal(struct vfio_pci_device *vdev,
 	struct eventfd_ctx *trigger;
 	int irq, ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u16 cmd;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -319,11 +334,15 @@ static int vfio_msi_set_vector_signal(struct vfio_pci_device *vdev,
 	if (vdev->ctx[vector].trigger) {
 		irq_bypass_unregister_producer(&vdev->ctx[vector].producer);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		cmd = vfio_pci_memory_lock_and_enable(vdev);
 		free_irq(irq, vdev->ctx[vector].trigger);
 		vfio_pci_memory_unlock_and_restore(vdev, cmd);
 
+=======
+		free_irq(irq, vdev->ctx[vector].trigger);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		free_irq(irq, vdev->ctx[vector].trigger);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -355,7 +374,10 @@ static int vfio_msi_set_vector_signal(struct vfio_pci_device *vdev,
 	 * cached value of the message prior to enabling.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cmd = vfio_pci_memory_lock_and_enable(vdev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (msix) {
@@ -368,7 +390,10 @@ static int vfio_msi_set_vector_signal(struct vfio_pci_device *vdev,
 	ret = request_irq(irq, vfio_msihandler, 0,
 			  vdev->ctx[vector].name, trigger);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vfio_pci_memory_unlock_and_restore(vdev, cmd);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret) {
@@ -381,7 +406,11 @@ static int vfio_msi_set_vector_signal(struct vfio_pci_device *vdev,
 	vdev->ctx[vector].producer.irq = irq;
 	ret = irq_bypass_register_producer(&vdev->ctx[vector].producer);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(ret)) {
+=======
+	if (unlikely(ret))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(ret))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -390,8 +419,11 @@ static int vfio_msi_set_vector_signal(struct vfio_pci_device *vdev,
 		vdev->ctx[vector].producer.token, ret);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		vdev->ctx[vector].producer.token = NULL;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	vdev->ctx[vector].trigger = trigger;
@@ -425,7 +457,10 @@ static void vfio_msi_disable(struct vfio_pci_device *vdev, bool msix)
 	struct pci_dev *pdev = vdev->pdev;
 	int i;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u16 cmd;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -437,9 +472,13 @@ static void vfio_msi_disable(struct vfio_pci_device *vdev, bool msix)
 	vfio_msi_set_block(vdev, 0, vdev->num_ctx, NULL, msix);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cmd = vfio_pci_memory_lock_and_enable(vdev);
 	pci_free_irq_vectors(pdev);
 	vfio_pci_memory_unlock_and_restore(vdev, cmd);
+=======
+	pci_free_irq_vectors(pdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pci_free_irq_vectors(pdev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

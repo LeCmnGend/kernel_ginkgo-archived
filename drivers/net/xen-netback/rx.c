@@ -39,6 +39,7 @@ static bool xenvif_rx_ring_slots_available(struct xenvif_queue *queue)
 	struct sk_buff *skb;
 	int needed;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long flags;
 
 	spin_lock_irqsave(&queue->rx_queue.lock, flags);
@@ -49,10 +50,15 @@ static bool xenvif_rx_ring_slots_available(struct xenvif_queue *queue)
 		return false;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	skb = skb_peek(&queue->rx_queue);
 	if (!skb)
 		return false;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	needed = DIV_ROUND_UP(skb->len, XEN_PAGE_SIZE);
@@ -62,8 +68,11 @@ static bool xenvif_rx_ring_slots_available(struct xenvif_queue *queue)
 		needed++;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_unlock_irqrestore(&queue->rx_queue.lock, flags);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	do {
@@ -508,7 +517,11 @@ static bool xenvif_rx_queue_ready(struct xenvif_queue *queue)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 bool xenvif_have_rx_work(struct xenvif_queue *queue, bool test_kthread)
+=======
+static bool xenvif_have_rx_work(struct xenvif_queue *queue)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static bool xenvif_have_rx_work(struct xenvif_queue *queue)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -518,7 +531,11 @@ static bool xenvif_have_rx_work(struct xenvif_queue *queue)
 		 (xenvif_rx_queue_stalled(queue) ||
 		  xenvif_rx_queue_ready(queue))) ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 		(test_kthread && kthread_should_stop()) ||
+=======
+		kthread_should_stop() ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kthread_should_stop() ||
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -553,7 +570,11 @@ static void xenvif_wait_for_rx_work(struct xenvif_queue *queue)
 	DEFINE_WAIT(wait);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (xenvif_have_rx_work(queue, true))
+=======
+	if (xenvif_have_rx_work(queue))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (xenvif_have_rx_work(queue))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -564,6 +585,7 @@ static void xenvif_wait_for_rx_work(struct xenvif_queue *queue)
 
 		prepare_to_wait(&queue->wq, &wait, TASK_INTERRUPTIBLE);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (xenvif_have_rx_work(queue, true))
 			break;
 		if (atomic_fetch_andnot(NETBK_RX_EOI | NETBK_COMMON_EOI,
@@ -571,6 +593,10 @@ static void xenvif_wait_for_rx_work(struct xenvif_queue *queue)
 		    (NETBK_RX_EOI | NETBK_COMMON_EOI))
 			xen_irq_lateeoi(queue->rx_irq, 0);
 
+=======
+		if (xenvif_have_rx_work(queue))
+			break;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (xenvif_have_rx_work(queue))
 			break;

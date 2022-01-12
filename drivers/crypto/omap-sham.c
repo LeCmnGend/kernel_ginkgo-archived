@@ -456,9 +456,12 @@ static void omap_sham_write_ctrl_omap4(struct omap_sham_dev *dd, size_t length,
 	u32 val, mask;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (likely(ctx->digcnt))
 		omap_sham_write(dd, SHA_REG_DIGCNT(dd), ctx->digcnt);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*

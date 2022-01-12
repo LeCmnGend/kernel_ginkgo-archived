@@ -249,6 +249,10 @@ static int sc18is602_probe(struct i2c_client *client,
 	struct sc18is602 *hw;
 	struct spi_master *master;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int error;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int error;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -258,7 +262,11 @@ static int sc18is602_probe(struct i2c_client *client,
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	master = devm_spi_alloc_master(dev, sizeof(struct sc18is602));
+=======
+	master = spi_alloc_master(dev, sizeof(struct sc18is602));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	master = spi_alloc_master(dev, sizeof(struct sc18is602));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -316,8 +324,11 @@ static int sc18is602_probe(struct i2c_client *client,
 	master->max_speed_hz = hw->freq / 4;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return devm_spi_register_master(dev, master);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	error = devm_spi_register_master(dev, master);
 	if (error)
 		goto error_reg;
@@ -327,6 +338,9 @@ static int sc18is602_probe(struct i2c_client *client,
 error_reg:
 	spi_master_put(master);
 	return error;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

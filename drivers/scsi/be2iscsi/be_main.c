@@ -413,7 +413,11 @@ static struct beiscsi_hba *beiscsi_hba_alloc(struct pci_dev *pcidev)
 		return NULL;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	shost->max_id = BE2_MAX_SESSIONS - 1;
+=======
+	shost->max_id = BE2_MAX_SESSIONS;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	shost->max_id = BE2_MAX_SESSIONS;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5308,7 +5312,11 @@ static int beiscsi_enable_port(struct beiscsi_hba *phba)
 	beiscsi_set_uer_feature(phba);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	phba->shost->max_id = phba->params.cxns_per_ctrl - 1;
+=======
+	phba->shost->max_id = phba->params.cxns_per_ctrl;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	phba->shost->max_id = phba->params.cxns_per_ctrl;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5746,7 +5754,10 @@ hba_free:
 	pci_dev_put(phba->pcidev);
 	iscsi_host_free(phba->shost);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pci_disable_pcie_error_reporting(pcidev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pci_set_drvdata(pcidev, NULL);

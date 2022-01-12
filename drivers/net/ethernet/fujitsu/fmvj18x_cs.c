@@ -548,11 +548,14 @@ static int fmvj18x_get_hwinfo(struct pcmcia_device *link, u_char *node_id)
 
     base = ioremap(link->resource[2]->start, resource_size(link->resource[2]));
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (!base) {
 	pcmcia_release_window(link, link->resource[2]);
 	return -1;
     }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
     pcmcia_map_mem_page(link, link->resource[2], 0);

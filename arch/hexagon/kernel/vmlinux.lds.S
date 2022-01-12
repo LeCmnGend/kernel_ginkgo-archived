@@ -72,11 +72,14 @@ SECTIONS
 	_end = .;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	STABS_DEBUG
 	DWARF_DEBUG
 
 	DISCARDS
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/DISCARD/ : {
 		EXIT_TEXT
 		EXIT_DATA
@@ -86,5 +89,8 @@ SECTIONS
 	STABS_DEBUG
 	DWARF_DEBUG
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

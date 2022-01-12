@@ -1052,7 +1052,10 @@ static int tpm2_get_cc_attrs_tbl(struct tpm_chip *chip)
 	if (nr_commands !=
 	    be32_to_cpup((__be32 *)&buf.data[TPM_HEADER_SIZE + 5])) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rc = -EFAULT;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		tpm_buf_destroy(&buf);

@@ -162,7 +162,11 @@ static void dsm_label_utf16s_to_utf8s(union acpi_object *obj, char *buf)
 			      obj->buffer.length,
 			      UTF16_LITTLE_ENDIAN,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			      buf, PAGE_SIZE - 1);
+=======
+			      buf, PAGE_SIZE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			      buf, PAGE_SIZE);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

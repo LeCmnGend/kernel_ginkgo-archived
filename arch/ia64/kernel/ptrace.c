@@ -2148,7 +2148,11 @@ static void syscall_get_set_args_cb(struct unw_frame_info *info, void *data)
 	struct syscall_get_set_args *args = data;
 	struct pt_regs *pt = args->regs;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long *krbs, cfm, ndirty, nlocals, nouts;
+=======
+	unsigned long *krbs, cfm, ndirty;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long *krbs, cfm, ndirty;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2157,6 +2161,7 @@ static void syscall_get_set_args_cb(struct unw_frame_info *info, void *data)
 	if (unw_unwind_to_user(info) < 0)
 		return;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	/*
 	 * We get here via a few paths:
@@ -2174,11 +2179,15 @@ static void syscall_get_set_args_cb(struct unw_frame_info *info, void *data)
 =======
 	cfm = pt->cr_ifs;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	cfm = pt->cr_ifs;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	krbs = (unsigned long *)info->task + IA64_RBS_OFFSET/8;
 	ndirty = ia64_rse_num_regs(krbs, krbs + (pt->loadrs >> 19));
 
 	count = 0;
 	if (in_syscall(pt))
+<<<<<<< HEAD
 <<<<<<< HEAD
 		count = min_t(int, args->n, nouts);
 
@@ -2190,6 +2199,8 @@ static void syscall_get_set_args_cb(struct unw_frame_info *info, void *data)
 		else
 			args->args[i] = *ia64_rse_skip_regs(krbs, j);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		count = min_t(int, args->n, cfm & 0x7f);
 
 	for (i = 0; i < count; i++) {
@@ -2199,6 +2210,9 @@ static void syscall_get_set_args_cb(struct unw_frame_info *info, void *data)
 		else
 			args->args[i] = *ia64_rse_skip_regs(krbs,
 				ndirty + i + args->i);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 

@@ -8,7 +8,10 @@
 
 #include "fuse_i.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "fuse_shortcircuit.h"
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -42,6 +45,7 @@ static struct fuse_dev *fuse_get_dev(struct file *file)
 	return ACCESS_ONCE(file->private_data);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef CONFIG_FUSE_SHORTCIRCUIT
 #include <linux/cred.h>
@@ -110,6 +114,8 @@ static inline void fuse_boost_active_check(struct fuse_req *req) {}
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void fuse_request_init(struct fuse_req *req, struct page **pages,
 			      struct fuse_page_desc *page_descs,
 			      unsigned npages)
@@ -126,8 +132,11 @@ static void fuse_request_init(struct fuse_req *req, struct page **pages,
 	req->max_pages = npages;
 	__set_bit(FR_PENDING, &req->flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	fuse_boost_init(req);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -178,10 +187,13 @@ void fuse_request_free(struct fuse_req *req)
 		kfree(req->page_descs);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (req->iname) {
 		__putname(req->iname);
 		req->iname = NULL;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kmem_cache_free(fuse_req_cachep, req);
@@ -560,17 +572,23 @@ static void request_wait_answer(struct fuse_conn *fc, struct fuse_req *req)
 	/*
 	 * Either request is already in userspace, or it was forced.
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * Wait half of freeze_timeout_msecs to avoid getting stuck.
 	 */
 	while (!test_bit(FR_FINISHED, &req->flags))
 		wait_event_freezable_timeout(req->waitq,
 			test_bit(FR_FINISHED, &req->flags), freeze_timeout_msecs / 2);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * Wait it out.
 	 */
 	while (!test_bit(FR_FINISHED, &req->flags))
 		wait_event_freezable(req->waitq,
 				test_bit(FR_FINISHED, &req->flags));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -661,8 +679,11 @@ ssize_t fuse_simple_request(struct fuse_conn *fc, struct fuse_args *args)
 	req->out.argvar = args->out.argvar;
 	req->out.numargs = args->out.numargs;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	req->iname = args->iname;
 	args->iname = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	memcpy(req->out.args, args->out.args,
@@ -670,10 +691,13 @@ ssize_t fuse_simple_request(struct fuse_conn *fc, struct fuse_args *args)
 	fuse_request_send(fc, req);
 	ret = req->out.h.error;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!ret) {
 		if (req->private_lower_rw_file != NULL)
 			args->private_lower_rw_file = req->private_lower_rw_file;
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!ret && args->out.argvar) {
@@ -933,6 +957,10 @@ static int fuse_check_page(struct page *page)
 	if (page_mapcount(page) ||
 	    page->mapping != NULL ||
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	    page_count(page) != 1 ||
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	    page_count(page) != 1 ||
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -958,10 +986,16 @@ static int fuse_try_move_page(struct fuse_copy_state *cs, struct page **pagep)
 	struct pipe_buffer *buf = cs->pipebufs;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	get_page(oldpage);
 	err = unlock_request(cs->req);
 	if (err)
 		goto out_put_old;
+=======
+	err = unlock_request(cs->req);
+	if (err)
+		return err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = unlock_request(cs->req);
 	if (err)
@@ -973,7 +1007,11 @@ static int fuse_try_move_page(struct fuse_copy_state *cs, struct page **pagep)
 	err = pipe_buf_confirm(cs->pipe, buf);
 	if (err)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_put_old;
+=======
+		return err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return err;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1017,7 +1055,11 @@ static int fuse_try_move_page(struct fuse_copy_state *cs, struct page **pagep)
 	if (err) {
 		unlock_page(newpage);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_put_old;
+=======
+		return err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return err;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1040,6 +1082,7 @@ static int fuse_try_move_page(struct fuse_copy_state *cs, struct page **pagep)
 		unlock_page(newpage);
 		put_page(newpage);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_put_old;
 	}
 
@@ -1054,6 +1097,8 @@ out_put_old:
 	put_page(oldpage);
 	return err;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return err;
 	}
 
@@ -1062,6 +1107,9 @@ out_put_old:
 	cs->len = 0;
 
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 out_fallback_unlock:
@@ -1072,15 +1120,21 @@ out_fallback:
 
 	err = lock_request(cs->req);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!err)
 		err = 1;
 
 	goto out_put_old;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		return err;
 
 	return 1;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -1094,6 +1148,7 @@ static int fuse_ref_page(struct fuse_copy_state *cs, struct page *page,
 		return -EIO;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	get_page(page);
 	err = unlock_request(cs->req);
 	if (err) {
@@ -1105,11 +1160,20 @@ static int fuse_ref_page(struct fuse_copy_state *cs, struct page *page,
 	if (err)
 		return err;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	err = unlock_request(cs->req);
+	if (err)
+		return err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	fuse_copy_finish(cs);
 
 	buf = cs->pipebufs;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	get_page(page);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	get_page(page);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1437,9 +1501,12 @@ static ssize_t fuse_dev_do_read(struct fuse_dev *fud, struct file *file,
 	req = list_entry(fiq->pending.next, struct fuse_req, list);
 	clear_bit(FR_PENDING, &req->flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	fuse_boost_active_check(req);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	list_del_init(&req->list);
@@ -1465,6 +1532,7 @@ static ssize_t fuse_dev_do_read(struct fuse_dev *fud, struct file *file,
 	}
 	spin_lock(&fpq->lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 *  Must not put request on fpq->io queue after having been shut down by
 	 *  fuse_abort_conn()
@@ -1474,6 +1542,8 @@ static ssize_t fuse_dev_do_read(struct fuse_dev *fud, struct file *file,
 		goto out_end;
 
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	list_add(&req->list, &fpq->io);
@@ -1504,6 +1574,7 @@ static ssize_t fuse_dev_do_read(struct fuse_dev *fud, struct file *file,
 	set_bit(FR_SENT, &req->flags);
 	spin_unlock(&fpq->lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (sct_mode == 1) {
 		if (current->fpack) {
@@ -1522,6 +1593,8 @@ static ssize_t fuse_dev_do_read(struct fuse_dev *fud, struct file *file,
 		}
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* matches barrier in request_wait_answer() */
@@ -2054,11 +2127,14 @@ static ssize_t fuse_dev_do_write(struct fuse_dev *fud,
 	struct fuse_out_header oh;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (current->fpack && current->fpack->iname) {
 		__putname(current->fpack->iname);
 		current->fpack->iname = NULL;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (nbytes < sizeof(struct fuse_out_header))
@@ -2083,7 +2159,11 @@ static ssize_t fuse_dev_do_write(struct fuse_dev *fud,
 
 	err = -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (oh.error <= -512 || oh.error > 0)
+=======
+	if (oh.error <= -1000 || oh.error > 0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (oh.error <= -1000 || oh.error > 0)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2099,8 +2179,11 @@ static ssize_t fuse_dev_do_write(struct fuse_dev *fud,
 		goto err_unlock_pq;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	fuse_boost_active_check(req);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Is it an interrupt reply? */
@@ -2143,8 +2226,11 @@ static ssize_t fuse_dev_do_write(struct fuse_dev *fud,
 	fuse_copy_finish(cs);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	fuse_setup_shortcircuit(fc, req);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock(&fpq->lock);

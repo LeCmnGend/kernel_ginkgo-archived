@@ -630,6 +630,7 @@ static const struct exar8250_board pbn_exar_XR17V35x = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const struct exar8250_board pbn_fastcom35x_2 = {
 	.num_ports	= 2,
 	.setup		= pci_xr17v35x_setup,
@@ -648,6 +649,8 @@ static const struct exar8250_board pbn_fastcom35x_8 = {
 	.exit		= pci_xr17v35x_exit,
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static const struct exar8250_board pbn_exar_XR17V4358 = {
@@ -723,9 +726,15 @@ static const struct pci_device_id exar_pci_tbl[] = {
 	EXAR_DEVICE(EXAR, EXAR_XR17V4358, pbn_exar_XR17V4358),
 	EXAR_DEVICE(EXAR, EXAR_XR17V8358, pbn_exar_XR17V8358),
 <<<<<<< HEAD
+<<<<<<< HEAD
 	EXAR_DEVICE(COMMTECH, COMMTECH_4222PCIE, pbn_fastcom35x_2),
 	EXAR_DEVICE(COMMTECH, COMMTECH_4224PCIE, pbn_fastcom35x_4),
 	EXAR_DEVICE(COMMTECH, COMMTECH_4228PCIE, pbn_fastcom35x_8),
+=======
+	EXAR_DEVICE(COMMTECH, COMMTECH_4222PCIE, pbn_exar_XR17V35x),
+	EXAR_DEVICE(COMMTECH, COMMTECH_4224PCIE, pbn_exar_XR17V35x),
+	EXAR_DEVICE(COMMTECH, COMMTECH_4228PCIE, pbn_exar_XR17V35x),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	EXAR_DEVICE(COMMTECH, COMMTECH_4222PCIE, pbn_exar_XR17V35x),
 	EXAR_DEVICE(COMMTECH, COMMTECH_4224PCIE, pbn_exar_XR17V35x),

@@ -60,7 +60,10 @@ config SPARC64
 	select HAVE_KPROBES
 	select HAVE_RCU_TABLE_FREE if SMP
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select HAVE_RCU_TABLE_NO_INVALIDATE if HAVE_RCU_TABLE_FREE
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select HAVE_MEMBLOCK
@@ -210,7 +213,10 @@ config NR_CPUS
 source kernel/Kconfig.hz
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config RWSEM_GENERIC_SPINLOCK
 	bool
 	default y if SPARC32
@@ -219,6 +225,9 @@ config RWSEM_XCHGADD_ALGORITHM
 	bool
 	default y if SPARC64
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config GENERIC_HWEIGHT
 	bool
@@ -582,7 +591,11 @@ config COMPAT
 	depends on SPARC64
 	default y
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select COMPAT_BINFMT_ELF if BINFMT_ELF
+=======
+	select COMPAT_BINFMT_ELF
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	select COMPAT_BINFMT_ELF
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

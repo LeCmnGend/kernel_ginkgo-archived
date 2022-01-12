@@ -1483,7 +1483,10 @@ static void ravb_tx_timeout_work(struct work_struct *work)
 						 work);
 	struct net_device *ndev = priv->ndev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int error;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1494,6 +1497,7 @@ static void ravb_tx_timeout_work(struct work_struct *work)
 		ravb_ptp_stop(ndev);
 
 	/* Wait for DMA stopping */
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (ravb_stop_dma(ndev)) {
 		/* If ravb_stop_dma() fails, the hardware is still operating
@@ -1510,11 +1514,15 @@ static void ravb_tx_timeout_work(struct work_struct *work)
 =======
 	ravb_stop_dma(ndev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	ravb_stop_dma(ndev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	ravb_ring_free(ndev, RAVB_BE);
 	ravb_ring_free(ndev, RAVB_NC);
 
 	/* Device init */
+<<<<<<< HEAD
 <<<<<<< HEAD
 	error = ravb_dmac_init(ndev);
 	if (error) {
@@ -1529,6 +1537,11 @@ static void ravb_tx_timeout_work(struct work_struct *work)
 	ravb_emac_init(ndev);
 
 out:
+=======
+	ravb_dmac_init(ndev);
+	ravb_emac_init(ndev);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ravb_dmac_init(ndev);
 	ravb_emac_init(ndev);
@@ -1782,6 +1795,7 @@ static int ravb_hwtstamp_get(struct net_device *ndev, struct ifreq *req)
 	config.tx_type = priv->tstamp_tx_ctrl ? HWTSTAMP_TX_ON :
 						HWTSTAMP_TX_OFF;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	switch (priv->tstamp_rx_ctrl & RAVB_RXTSTAMP_TYPE) {
 	case RAVB_RXTSTAMP_TYPE_V2_L2_EVENT:
 		config.rx_filter = HWTSTAMP_FILTER_PTP_V2_L2_EVENT;
@@ -1793,12 +1807,17 @@ static int ravb_hwtstamp_get(struct net_device *ndev, struct ifreq *req)
 		config.rx_filter = HWTSTAMP_FILTER_NONE;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (priv->tstamp_rx_ctrl & RAVB_RXTSTAMP_TYPE_V2_L2_EVENT)
 		config.rx_filter = HWTSTAMP_FILTER_PTP_V2_L2_EVENT;
 	else if (priv->tstamp_rx_ctrl & RAVB_RXTSTAMP_TYPE_ALL)
 		config.rx_filter = HWTSTAMP_FILTER_ALL;
 	else
 		config.rx_filter = HWTSTAMP_FILTER_NONE;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return copy_to_user(req->ifr_data, &config, sizeof(config)) ?

@@ -74,7 +74,11 @@ static bool ahci_qc_fill_rtf(struct ata_queued_cmd *qc);
 static int ahci_port_start(struct ata_port *ap);
 static void ahci_port_stop(struct ata_port *ap);
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors ahci_qc_prep(struct ata_queued_cmd *qc);
+=======
+static void ahci_qc_prep(struct ata_queued_cmd *qc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void ahci_qc_prep(struct ata_queued_cmd *qc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1631,7 +1635,11 @@ static int ahci_pmp_qc_defer(struct ata_queued_cmd *qc)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors ahci_qc_prep(struct ata_queued_cmd *qc)
+=======
+static void ahci_qc_prep(struct ata_queued_cmd *qc)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void ahci_qc_prep(struct ata_queued_cmd *qc)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1671,8 +1679,11 @@ static void ahci_qc_prep(struct ata_queued_cmd *qc)
 
 	ahci_fill_cmd_slot(pp, qc->tag, opts);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	return AC_ERR_OK;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

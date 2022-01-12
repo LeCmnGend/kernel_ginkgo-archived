@@ -234,7 +234,11 @@ extern struct task_struct *kdb_curr_task(int);
 #define	kdb_while_each_thread(g, p) while_each_thread(g, p)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define GFP_KDB (in_dbg_master() ? GFP_ATOMIC : GFP_KERNEL)
+=======
+#define GFP_KDB (in_interrupt() ? GFP_ATOMIC : GFP_KERNEL)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define GFP_KDB (in_interrupt() ? GFP_ATOMIC : GFP_KERNEL)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

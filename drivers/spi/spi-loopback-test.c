@@ -100,7 +100,11 @@ static struct spi_test spi_tests[] = {
 		.description	= "tx/rx-transfer - crossing PAGE_SIZE",
 		.fill_option	= FILL_COUNT_8,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.iterate_len    = { ITERATE_LEN },
+=======
+		.iterate_len    = { ITERATE_MAX_LEN },
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.iterate_len    = { ITERATE_MAX_LEN },
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -882,7 +886,11 @@ static int spi_test_run_iter(struct spi_device *spi,
 		if (test.transfers[i].tx_buf)
 			test.transfers[i].tx_buf += tx_off;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (test.transfers[i].rx_buf)
+=======
+		if (test.transfers[i].tx_buf)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (test.transfers[i].tx_buf)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

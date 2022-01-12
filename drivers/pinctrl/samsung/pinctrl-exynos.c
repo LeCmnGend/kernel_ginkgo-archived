@@ -56,7 +56,11 @@ static void exynos_irq_mask(struct irq_data *irqd)
 	struct samsung_pin_bank *bank = irq_data_get_irq_chip_data(irqd);
 	unsigned long reg_mask = our_chip->eint_mask + bank->eint_offset;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int mask;
+=======
+	unsigned long mask;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long mask;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -88,7 +92,11 @@ static void exynos_irq_unmask(struct irq_data *irqd)
 	struct samsung_pin_bank *bank = irq_data_get_irq_chip_data(irqd);
 	unsigned long reg_mask = our_chip->eint_mask + bank->eint_offset;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int mask;
+=======
+	unsigned long mask;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long mask;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -418,7 +426,11 @@ static void exynos_irq_eint0_15(struct irq_desc *desc)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void exynos_irq_demux_eint(unsigned int pend,
+=======
+static inline void exynos_irq_demux_eint(unsigned long pend,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline void exynos_irq_demux_eint(unsigned long pend,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -439,8 +451,13 @@ static void exynos_irq_demux_eint16_31(struct irq_desc *desc)
 	struct irq_chip *chip = irq_desc_get_chip(desc);
 	struct exynos_muxed_weint_data *eintd = irq_desc_get_handler_data(desc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int pend;
 	unsigned int mask;
+=======
+	unsigned long pend;
+	unsigned long mask;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long pend;
 	unsigned long mask;

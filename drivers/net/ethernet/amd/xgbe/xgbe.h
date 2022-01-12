@@ -177,9 +177,15 @@
 
 /* DMA cache settings - PCI device */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define XGBE_DMA_PCI_ARCR	0x000f0f0f
 #define XGBE_DMA_PCI_AWCR	0x0f0f0f0f
 #define XGBE_DMA_PCI_AWARCR	0x00000f0f
+=======
+#define XGBE_DMA_PCI_ARCR	0x00000003
+#define XGBE_DMA_PCI_AWCR	0x13131313
+#define XGBE_DMA_PCI_AWARCR	0x00000313
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define XGBE_DMA_PCI_ARCR	0x00000003
 #define XGBE_DMA_PCI_AWCR	0x13131313

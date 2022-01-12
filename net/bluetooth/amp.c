@@ -306,9 +306,12 @@ void amp_read_loc_assoc_final_data(struct hci_dev *hdev,
 	int err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!mgr)
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cp.phy_handle = hcon->handle;

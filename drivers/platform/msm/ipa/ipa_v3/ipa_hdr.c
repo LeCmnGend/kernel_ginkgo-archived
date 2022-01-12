@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2012-2020, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2012-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2012-2021, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -103,7 +107,10 @@ static int ipa3_hdr_proc_ctx_to_hw_format(struct ipa_mem_buffer *mem,
 			}
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* Check the pointer and header length to avoid
 		 *	dangerous overflow in HW
 		 */
@@ -113,6 +120,9 @@ static int ipa3_hdr_proc_ctx_to_hw_format(struct ipa_mem_buffer *mem,
 				entry->hdr->hdr_len >
 				ipa_hdr_bin_sz[IPA_HDR_BIN_MAX - 1]))
 			return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		ret = ipahal_cp_proc_ctx_to_hw_buff(entry->type, mem->base,
@@ -776,7 +786,11 @@ int __ipa3_del_hdr(u32 hdr_hdl, bool by_user)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (entry->is_hdr_proc_ctx) {
+=======
+	if (entry->is_hdr_proc_ctx || entry->proc_ctx) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (entry->is_hdr_proc_ctx || entry->proc_ctx) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1109,6 +1123,10 @@ int ipa3_reset_hdr(bool user_only)
 		if (ipa3_id_find(entry->id) == NULL) {
 			mutex_unlock(&ipa3_ctx->lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			IPAERR_RL("Invalid header ID\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			IPAERR_RL("Invalid header ID\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1123,6 +1141,10 @@ int ipa3_reset_hdr(bool user_only)
 					entry->hdr_len,
 					DMA_TO_DEVICE);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+				entry->proc_ctx->hdr = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				entry->proc_ctx->hdr = NULL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1184,6 +1206,10 @@ int ipa3_reset_hdr(bool user_only)
 		if (ipa3_id_find(ctx_entry->id) == NULL) {
 			mutex_unlock(&ipa3_ctx->lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			IPAERR_RL("Invalid proc header ID\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			IPAERR_RL("Invalid proc header ID\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

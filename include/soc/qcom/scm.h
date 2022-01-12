@@ -125,7 +125,11 @@ struct scm_hdcp_req {
 
 extern struct mutex scm_lmh_lock;
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern bool under_scm_call(int cpu);
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -191,10 +195,13 @@ static inline int scm_enable_mem_protection(void)
 	return 0;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern bool under_scm_call(int cpu)
 {
 	return false;
 }
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif

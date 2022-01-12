@@ -1443,7 +1443,11 @@ static void usb3_start_pipen(struct renesas_usb3_ep *usb3_ep,
 {
 	struct renesas_usb3 *usb3 = usb3_ep_to_usb3(usb3_ep);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct renesas_usb3_request *usb3_req_first;
+=======
+	struct renesas_usb3_request *usb3_req_first = usb3_get_request(usb3_ep);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct renesas_usb3_request *usb3_req_first = usb3_get_request(usb3_ep);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1455,8 +1459,12 @@ static void usb3_start_pipen(struct renesas_usb3_ep *usb3_ep,
 	if (usb3_ep->halt || usb3_ep->started)
 		goto out;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	usb3_req_first = __usb3_get_request(usb3_ep);
 	if (!usb3_req_first || usb3_req != usb3_req_first)
+=======
+	if (usb3_req != usb3_req_first)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (usb3_req != usb3_req_first)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -126,7 +126,11 @@ modpost_link()
 	fi
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	${LDFINAL} ${LDFLAGS} -r -o ${1} $(lto_lds) ${objects}
+=======
+	${LD} ${LDFLAGS} -r -o ${1} $(lto_lds) ${objects}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	${LD} ${LDFLAGS} -r -o ${1} $(lto_lds) ${objects}
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -155,7 +159,11 @@ vmlinux_link()
 
 	if [ "${SRCARCH}" != "um" ]; then
 <<<<<<< HEAD
+<<<<<<< HEAD
 		local ld=${LDFINAL}
+=======
+		local ld=${LD}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		local ld=${LD}
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -340,6 +340,7 @@ static int hdmi_eld_ctl_info(struct snd_kcontrol *kcontrol,
 		/* no pin is bound to the pcm */
 		uinfo->count = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto unlock;
 	}
 	eld = &per_pin->sink_eld;
@@ -348,6 +349,8 @@ static int hdmi_eld_ctl_info(struct snd_kcontrol *kcontrol,
  unlock:
 	mutex_unlock(&spec->pcm_lock);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mutex_unlock(&spec->pcm_lock);
 		return 0;
 	}
@@ -355,6 +358,9 @@ static int hdmi_eld_ctl_info(struct snd_kcontrol *kcontrol,
 	uinfo->count = eld->eld_valid ? eld->eld_size : 0;
 	mutex_unlock(&spec->pcm_lock);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
@@ -368,7 +374,10 @@ static int hdmi_eld_ctl_get(struct snd_kcontrol *kcontrol,
 	struct hdmi_eld *eld;
 	int pcm_idx;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int err = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -380,6 +389,7 @@ static int hdmi_eld_ctl_get(struct snd_kcontrol *kcontrol,
 		memset(ucontrol->value.bytes.data, 0,
 		       ARRAY_SIZE(ucontrol->value.bytes.data));
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto unlock;
 	}
 
@@ -390,6 +400,8 @@ static int hdmi_eld_ctl_get(struct snd_kcontrol *kcontrol,
 		err = -EINVAL;
 		goto unlock;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mutex_unlock(&spec->pcm_lock);
 		return 0;
 	}
@@ -400,6 +412,9 @@ static int hdmi_eld_ctl_get(struct snd_kcontrol *kcontrol,
 		mutex_unlock(&spec->pcm_lock);
 		snd_BUG();
 		return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -409,10 +424,16 @@ static int hdmi_eld_ctl_get(struct snd_kcontrol *kcontrol,
 		memcpy(ucontrol->value.bytes.data, eld->eld_buffer,
 		       eld->eld_size);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
  unlock:
 	mutex_unlock(&spec->pcm_lock);
 	return err;
+=======
+	mutex_unlock(&spec->pcm_lock);
+
+	return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mutex_unlock(&spec->pcm_lock);
 
@@ -1243,8 +1264,13 @@ static int hdmi_pcm_open(struct hda_pcm_stream *hinfo,
 	if (!spec->dyn_pcm_assign) {
 		if (snd_BUG_ON(pin_idx < 0)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			err = -EINVAL;
 			goto unlock;
+=======
+			mutex_unlock(&spec->pcm_lock);
+			return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			mutex_unlock(&spec->pcm_lock);
 			return -EINVAL;
@@ -1257,7 +1283,12 @@ static int hdmi_pcm_open(struct hda_pcm_stream *hinfo,
 		if (pin_idx < 0) {
 			err = hdmi_pcm_open_no_pin(hinfo, codec, substream);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto unlock;
+=======
+			mutex_unlock(&spec->pcm_lock);
+			return err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			mutex_unlock(&spec->pcm_lock);
 			return err;
@@ -1267,13 +1298,19 @@ static int hdmi_pcm_open(struct hda_pcm_stream *hinfo,
 
 	err = hdmi_choose_cvt(codec, pin_idx, &cvt_idx);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (err < 0)
 		goto unlock;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err < 0) {
 		mutex_unlock(&spec->pcm_lock);
 		return err;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	per_cvt = get_cvt(spec, cvt_idx);
@@ -1312,18 +1349,24 @@ static int hdmi_pcm_open(struct hda_pcm_stream *hinfo,
 			hinfo->nid = 0;
 			snd_hda_spdif_ctls_unassign(codec, pcm_idx);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			err = -ENODEV;
 			goto unlock;
 		}
 	}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			mutex_unlock(&spec->pcm_lock);
 			return -ENODEV;
 		}
 	}
 
 	mutex_unlock(&spec->pcm_lock);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Store the updated parameters */
 	runtime->hw.channels_min = hinfo->channels_min;
@@ -1334,9 +1377,13 @@ static int hdmi_pcm_open(struct hda_pcm_stream *hinfo,
 	snd_pcm_hw_constraint_step(substream->runtime, 0,
 				   SNDRV_PCM_HW_PARAM_CHANNELS, 2);
 <<<<<<< HEAD
+<<<<<<< HEAD
  unlock:
 	mutex_unlock(&spec->pcm_lock);
 	return err;
+=======
+	return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1938,7 +1985,11 @@ static int generic_hdmi_playback_pcm_prepare(struct hda_pcm_stream *hinfo,
 	bool non_pcm;
 	int pinctl;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int err = 0;
+=======
+	int err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int err;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1954,6 +2005,7 @@ static int generic_hdmi_playback_pcm_prepare(struct hda_pcm_stream *hinfo,
 		snd_hda_codec_setup_stream(codec, cvt_nid,
 					stream_tag, 0, format);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto unlock;
 	}
 
@@ -1961,6 +2013,8 @@ static int generic_hdmi_playback_pcm_prepare(struct hda_pcm_stream *hinfo,
 		err = -EINVAL;
 		goto unlock;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mutex_unlock(&spec->pcm_lock);
 		return 0;
 	}
@@ -1968,6 +2022,9 @@ static int generic_hdmi_playback_pcm_prepare(struct hda_pcm_stream *hinfo,
 	if (snd_BUG_ON(pin_idx < 0)) {
 		mutex_unlock(&spec->pcm_lock);
 		return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	per_pin = get_pin(spec, pin_idx);
@@ -2008,7 +2065,10 @@ static int generic_hdmi_playback_pcm_prepare(struct hda_pcm_stream *hinfo,
 	err = spec->ops.setup_stream(codec, cvt_nid, pin_nid,
 				 stream_tag, format);
 <<<<<<< HEAD
+<<<<<<< HEAD
  unlock:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_unlock(&spec->pcm_lock);
@@ -2033,6 +2093,7 @@ static int hdmi_pcm_close(struct hda_pcm_stream *hinfo,
 	struct hdmi_spec_per_pin *per_pin;
 	int pinctl;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int err = 0;
 
 	mutex_lock(&spec->pcm_lock);
@@ -2049,6 +2110,8 @@ static int hdmi_pcm_close(struct hda_pcm_stream *hinfo,
 		}
 		per_cvt = get_cvt(spec, cvt_idx);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (hinfo->nid) {
 		pcm_idx = hinfo_to_pcm_index(codec, hinfo);
@@ -2059,11 +2122,15 @@ static int hdmi_pcm_close(struct hda_pcm_stream *hinfo,
 			return -EINVAL;
 		per_cvt = get_cvt(spec, cvt_idx);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		snd_BUG_ON(!per_cvt->assigned);
 		per_cvt->assigned = 0;
 		hinfo->nid = 0;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 		snd_hda_spdif_ctls_unassign(codec, pcm_idx);
 		clear_bit(pcm_idx, &spec->pcm_in_use);
@@ -2075,6 +2142,8 @@ static int hdmi_pcm_close(struct hda_pcm_stream *hinfo,
 			err = -EINVAL;
 			goto unlock;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mutex_lock(&spec->pcm_lock);
 		snd_hda_spdif_ctls_unassign(codec, pcm_idx);
 		clear_bit(pcm_idx, &spec->pcm_in_use);
@@ -2087,6 +2156,9 @@ static int hdmi_pcm_close(struct hda_pcm_stream *hinfo,
 		if (snd_BUG_ON(pin_idx < 0)) {
 			mutex_unlock(&spec->pcm_lock);
 			return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 		per_pin = get_pin(spec, pin_idx);
@@ -2107,6 +2179,7 @@ static int hdmi_pcm_close(struct hda_pcm_stream *hinfo,
 		per_pin->channels = 0;
 		mutex_unlock(&per_pin->lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}
 
 unlock:
@@ -2114,10 +2187,15 @@ unlock:
 
 	return err;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mutex_unlock(&spec->pcm_lock);
 	}
 
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -2439,6 +2517,7 @@ static void generic_hdmi_free(struct hda_codec *codec)
 
 #ifdef CONFIG_PM
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int generic_hdmi_suspend(struct hda_codec *codec)
 {
 	struct hdmi_spec *spec = codec->spec;
@@ -2451,6 +2530,8 @@ static int generic_hdmi_suspend(struct hda_codec *codec)
 	return 0;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int generic_hdmi_resume(struct hda_codec *codec)
@@ -2477,7 +2558,10 @@ static const struct hda_codec_ops generic_hdmi_patch_ops = {
 	.unsol_event		= hdmi_unsol_event,
 #ifdef CONFIG_PM
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.suspend		= generic_hdmi_suspend,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.resume			= generic_hdmi_resume,
@@ -2683,7 +2767,10 @@ static void i915_pin_cvt_fixup(struct hda_codec *codec,
 {
 	if (per_pin) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		haswell_verify_D0(codec, per_pin->cvt_nid, per_pin->pin_nid);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		snd_hda_set_dev_select(codec, per_pin->pin_nid,
@@ -3539,7 +3626,10 @@ static int tegra_hdmi_build_pcms(struct hda_codec *codec)
 static int patch_tegra_hdmi(struct hda_codec *codec)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct hdmi_spec *spec;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int err;
@@ -3550,10 +3640,13 @@ static int patch_tegra_hdmi(struct hda_codec *codec)
 
 	codec->patch_ops.build_pcms = tegra_hdmi_build_pcms;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spec = codec->spec;
 	spec->chmap.ops.chmap_cea_alloc_validate_get_type =
 		nvhdmi_chmap_cea_alloc_validate_get_type;
 	spec->chmap.ops.chmap_validate = nvhdmi_chmap_validate;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

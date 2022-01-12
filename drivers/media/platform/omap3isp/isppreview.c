@@ -2291,7 +2291,11 @@ static int preview_init_entities(struct isp_prev_device *prev)
 	ret = media_entity_pads_init(me, PREV_PADS_NUM, pads);
 	if (ret < 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto error_handler_free;
+=======
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2328,8 +2332,11 @@ error_video_out:
 error_video_in:
 	media_entity_cleanup(&prev->subdev.entity);
 <<<<<<< HEAD
+<<<<<<< HEAD
 error_handler_free:
 	v4l2_ctrl_handler_free(&prev->ctrls);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;

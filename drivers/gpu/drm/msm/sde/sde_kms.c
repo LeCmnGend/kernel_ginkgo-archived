@@ -3190,6 +3190,7 @@ static void _sde_kms_set_lutdma_vbif_remap(struct sde_kms *sde_kms)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void sde_kms_update_pm_qos_irq_request(struct sde_kms *sde_kms,
 			 bool enable, bool skip_lock)
 {
@@ -3226,6 +3227,8 @@ void sde_kms_update_pm_qos_irq_request(struct sde_kms *sde_kms,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void sde_kms_handle_power_event(u32 event_type, void *usr)
 {
 	struct sde_kms *sde_kms = usr;
@@ -3245,9 +3248,13 @@ static void sde_kms_handle_power_event(u32 event_type, void *usr)
 		_sde_kms_set_lutdma_vbif_remap(sde_kms);
 		sde_kms->first_kickoff = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		sde_kms_update_pm_qos_irq_request(sde_kms, true, true);
 	} else if (event_type == SDE_POWER_EVENT_PRE_DISABLE) {
 		sde_kms_update_pm_qos_irq_request(sde_kms, false, true);
+=======
+	} else if (event_type == SDE_POWER_EVENT_PRE_DISABLE) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	} else if (event_type == SDE_POWER_EVENT_PRE_DISABLE) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3706,7 +3713,10 @@ static int sde_kms_hw_init(struct msm_kms *kms)
 						sde_kms->core_client, false);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;

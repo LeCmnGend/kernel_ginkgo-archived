@@ -169,6 +169,7 @@ static ssize_t sel_write_enforce(struct file *file, const char __user *buf,
 			goto out;
 		audit_log(current->audit_context, GFP_KERNEL, AUDIT_MAC_STATUS,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			"enforcing=%d old_enforcing=%d auid=%u ses=%u"
 			" enabled=%d old-enabled=%d lsm=selinux res=1",
 			new_value, old_value,
@@ -176,10 +177,15 @@ static ssize_t sel_write_enforce(struct file *file, const char __user *buf,
 			audit_get_sessionid(current),
 			selinux_enabled, selinux_enabled);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			"enforcing=%d old_enforcing=%d auid=%u ses=%u",
 			new_value, old_value,
 			from_kuid(&init_user_ns, audit_get_loginuid(current)),
 			audit_get_sessionid(current));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		enforcing_set(state, new_value);
 		if (new_value)
@@ -289,7 +295,10 @@ static ssize_t sel_write_disable(struct file *file, const char __user *buf,
 	ssize_t length;
 	int new_value;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int enforcing;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -310,7 +319,10 @@ static ssize_t sel_write_disable(struct file *file, const char __user *buf,
 
 	if (new_value) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		enforcing = enforcing_enabled(fsi->state);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		length = selinux_disable(fsi->state);
@@ -318,11 +330,17 @@ static ssize_t sel_write_disable(struct file *file, const char __user *buf,
 			goto out;
 		audit_log(current->audit_context, GFP_KERNEL, AUDIT_MAC_STATUS,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			"enforcing=%d old_enforcing=%d auid=%u ses=%u"
 			" enabled=%d old-enabled=%d lsm=selinux res=1",
 			enforcing, enforcing,
 			from_kuid(&init_user_ns, audit_get_loginuid(current)),
 			audit_get_sessionid(current), 0, 1);
+=======
+			"selinux=0 auid=%u ses=%u",
+			from_kuid(&init_user_ns, audit_get_loginuid(current)),
+			audit_get_sessionid(current));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			"selinux=0 auid=%u ses=%u",
 			from_kuid(&init_user_ns, audit_get_loginuid(current)),
@@ -602,7 +620,11 @@ static ssize_t sel_write_load(struct file *file, const char __user *buf,
 out1:
 	audit_log(current->audit_context, GFP_KERNEL, AUDIT_MAC_POLICY_LOAD,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		"auid=%u ses=%u lsm=selinux res=1",
+=======
+		"policy loaded auid=%u ses=%u",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		"policy loaded auid=%u ses=%u",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -644,7 +666,11 @@ static ssize_t sel_write_context(struct file *file, char *buf, size_t size)
 	length = -ERANGE;
 	if (len > SIMPLE_TRANSACTION_LIMIT) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux: %s:  context size (%u) exceeds "
+=======
+		printk(KERN_ERR "SELinux: %s:  context size (%u) exceeds "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux: %s:  context size (%u) exceeds "
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -801,7 +827,11 @@ static ssize_t sel_write_user(struct file *file, char *buf, size_t size);
 static ssize_t sel_write_member(struct file *file, char *buf, size_t size);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static ssize_t (*const write_op[])(struct file *, char *, size_t) = {
+=======
+static ssize_t (*write_op[])(struct file *, char *, size_t) = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static ssize_t (*write_op[])(struct file *, char *, size_t) = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -988,7 +1018,11 @@ static ssize_t sel_write_create(struct file *file, char *buf, size_t size)
 	length = -ERANGE;
 	if (len > SIMPLE_TRANSACTION_LIMIT) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux: %s:  context size (%u) exceeds "
+=======
+		printk(KERN_ERR "SELinux: %s:  context size (%u) exceeds "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux: %s:  context size (%u) exceeds "
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1183,7 +1217,11 @@ static ssize_t sel_write_member(struct file *file, char *buf, size_t size)
 	length = -ERANGE;
 	if (len > SIMPLE_TRANSACTION_LIMIT) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("SELinux: %s:  context size (%u) exceeds "
+=======
+		printk(KERN_ERR "SELinux: %s:  context size (%u) exceeds "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "SELinux: %s:  context size (%u) exceeds "
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1582,7 +1620,10 @@ static struct avc_cache_stats *sel_avc_get_stat_idx(loff_t *idx)
 		return &per_cpu(avc_cache_stats, cpu);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	(*idx)++;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return NULL;
@@ -2105,7 +2146,11 @@ static int sel_fill_super(struct super_block *sb, void *data, int silent)
 	return 0;
 err:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pr_err("SELinux: %s:  failed while creating inodes\n",
+=======
+	printk(KERN_ERR "SELinux: %s:  failed while creating inodes\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	printk(KERN_ERR "SELinux: %s:  failed while creating inodes\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2159,7 +2204,11 @@ static int __init init_sel_fs(void)
 	selinux_null.mnt = selinuxfs_mount = kern_mount(&sel_fs_type);
 	if (IS_ERR(selinuxfs_mount)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pr_err("selinuxfs:  could not mount!\n");
+=======
+		printk(KERN_ERR "selinuxfs:  could not mount!\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		printk(KERN_ERR "selinuxfs:  could not mount!\n");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2184,7 +2233,10 @@ void exit_sel_fs(void)
 {
 	sysfs_remove_mount_point(fs_kobj, "selinux");
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dput(selinux_null.dentry);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kern_unmount(selinuxfs_mount);

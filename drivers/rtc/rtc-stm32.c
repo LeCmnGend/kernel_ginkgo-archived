@@ -637,7 +637,11 @@ static int stm32_rtc_probe(struct platform_device *pdev)
 	ret = stm32_rtc_init(pdev, rtc);
 	if (ret)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto err_no_rtc_ck;
+=======
+		goto err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto err;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -685,6 +689,7 @@ static int stm32_rtc_probe(struct platform_device *pdev)
 
 	return 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 err:
 	clk_disable_unprepare(rtc->rtc_ck);
@@ -692,10 +697,15 @@ err_no_rtc_ck:
 	if (rtc->data->has_pclk)
 		clk_disable_unprepare(rtc->pclk);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 err:
 	if (rtc->data->has_pclk)
 		clk_disable_unprepare(rtc->pclk);
 	clk_disable_unprepare(rtc->rtc_ck);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	regmap_update_bits(rtc->dbp, PWR_CR, PWR_CR_DBP, 0);

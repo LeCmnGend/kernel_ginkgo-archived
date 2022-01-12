@@ -29,6 +29,7 @@
 #define PD_RETRY_COUNT 3
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define tcpc_presenting_cc1_rd(reg) \
 	(!(TCPC_ROLE_CTRL_DRP & (reg)) && \
 	 (((reg) & (TCPC_ROLE_CTRL_CC1_MASK << TCPC_ROLE_CTRL_CC1_SHIFT)) == \
@@ -38,6 +39,8 @@
 	 (((reg) & (TCPC_ROLE_CTRL_CC2_MASK << TCPC_ROLE_CTRL_CC2_SHIFT)) == \
 	  (TCPC_ROLE_CTRL_CC_RD << TCPC_ROLE_CTRL_CC2_SHIFT)))
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct tcpci {
@@ -162,6 +165,7 @@ static int tcpci_get_cc(struct tcpc_dev *tcpc,
 {
 	struct tcpci *tcpci = tcpc_to_tcpci(tcpc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int reg, role_control;
 	int ret;
 
@@ -174,12 +178,18 @@ static int tcpci_get_cc(struct tcpc_dev *tcpc,
 	int ret;
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	unsigned int reg;
+	int ret;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = regmap_read(tcpci->regmap, TCPC_CC_STATUS, &reg);
 	if (ret < 0)
 		return ret;
 
 	*cc1 = tcpci_to_typec_cc((reg >> TCPC_CC_STATUS_CC1_SHIFT) &
 				 TCPC_CC_STATUS_CC1_MASK,
+<<<<<<< HEAD
 <<<<<<< HEAD
 				 reg & TCPC_CC_STATUS_TERM ||
 				 tcpc_presenting_cc1_rd(role_control));
@@ -188,10 +198,15 @@ static int tcpci_get_cc(struct tcpc_dev *tcpc,
 				 reg & TCPC_CC_STATUS_TERM ||
 				 tcpc_presenting_cc2_rd(role_control));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				 reg & TCPC_CC_STATUS_TERM);
 	*cc2 = tcpci_to_typec_cc((reg >> TCPC_CC_STATUS_CC2_SHIFT) &
 				 TCPC_CC_STATUS_CC2_MASK,
 				 reg & TCPC_CC_STATUS_TERM);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;

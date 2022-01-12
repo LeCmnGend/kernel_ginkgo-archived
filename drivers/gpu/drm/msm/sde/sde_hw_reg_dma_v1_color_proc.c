@@ -14,7 +14,10 @@
 #include "sde_hw_reg_dma_v1_color_proc.h"
 #include "sde_hw_color_proc_common_v4.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "sde_hw_kcal_ctrl.h"
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include "sde_hw_ctl.h"
@@ -934,6 +937,7 @@ static void _dspp_pccv4_off(struct sde_hw_dspp *ctx, void *cfg)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int
 reg_dmav1_setup_dspp_pa_hsicv17_apply(struct sde_hw_dspp *ctx,
 				      struct drm_msm_pa_hsic *hsic_cfg,
@@ -1048,13 +1052,18 @@ reg_dmav1_setup_dspp_pa_hsicv17_kcal(struct sde_hw_dspp *ctx, void *ctl)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void reg_dmav1_setup_dspp_pccv4(struct sde_hw_dspp *ctx, void *cfg)
 {
 	struct sde_hw_reg_dma_ops *dma_ops;
 	struct sde_reg_dma_kickoff_cfg kick_off;
 	struct sde_hw_cp_cfg *hw_cfg = cfg;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct sde_hw_kcal *kcal = sde_hw_kcal_get();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct sde_reg_dma_setup_ops_cfg dma_write_cfg;
@@ -1129,10 +1138,13 @@ void reg_dmav1_setup_dspp_pccv4(struct sde_hw_dspp *ctx, void *cfg)
 		data[i + 6] = coeffs->g;
 		data[i + 9] = coeffs->b;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		if (kcal->enabled)
 			sde_hw_kcal_pcc_adjust(data, i);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		data[i + 12] = coeffs->rg;
@@ -1168,8 +1180,11 @@ void reg_dmav1_setup_dspp_pccv4(struct sde_hw_dspp *ctx, void *cfg)
 		DRM_ERROR("failed to kick off ret %d\n", rc);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (kcal->enabled)
 		reg_dmav1_setup_dspp_pa_hsicv17_kcal(ctx, hw_cfg->ctl);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 exit:
@@ -1178,6 +1193,7 @@ exit:
 
 void reg_dmav1_setup_dspp_pa_hsicv17(struct sde_hw_dspp *ctx, void *cfg)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	struct sde_hw_cp_cfg *hw_cfg = cfg;
 	struct sde_hw_kcal *kcal = sde_hw_kcal_get();
@@ -1188,6 +1204,8 @@ void reg_dmav1_setup_dspp_pa_hsicv17(struct sde_hw_dspp *ctx, void *cfg)
 		return;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct sde_hw_reg_dma_ops *dma_ops;
 	struct sde_reg_dma_kickoff_cfg kick_off;
 	struct sde_hw_cp_cfg *hw_cfg = cfg;
@@ -1196,6 +1214,9 @@ void reg_dmav1_setup_dspp_pa_hsicv17(struct sde_hw_dspp *ctx, void *cfg)
 	u32 reg = 0, opcode = 0, local_opcode = 0;
 	int rc;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	opcode = SDE_REG_READ(&ctx->hw, ctx->cap->sblk->hsic.base);
 
@@ -1219,11 +1240,14 @@ void reg_dmav1_setup_dspp_pa_hsicv17(struct sde_hw_dspp *ctx, void *cfg)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rc = reg_dmav1_setup_dspp_pa_hsicv17_apply(ctx,
 		hw_cfg->payload, hw_cfg->ctl);
 	if (rc)
 		DRM_ERROR("hsic application failed ret %d\n", rc);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	hsic_cfg = hw_cfg->payload;
 
 	dma_ops = sde_reg_dma_get_ops();
@@ -1312,6 +1336,9 @@ void reg_dmav1_setup_dspp_pa_hsicv17(struct sde_hw_dspp *ctx, void *cfg)
 	rc = dma_ops->kick_off(&kick_off);
 	if (rc)
 		DRM_ERROR("failed to kick off ret %d\n", rc);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

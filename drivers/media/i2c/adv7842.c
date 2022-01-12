@@ -3600,7 +3600,11 @@ static int adv7842_remove(struct i2c_client *client)
 
 	adv7842_irq_enable(sd, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cancel_delayed_work_sync(&state->delayed_work_enable_hotplug);
+=======
+	cancel_delayed_work(&state->delayed_work_enable_hotplug);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cancel_delayed_work(&state->delayed_work_enable_hotplug);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

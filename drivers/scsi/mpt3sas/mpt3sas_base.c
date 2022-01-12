@@ -4576,7 +4576,11 @@ _base_send_ioc_init(struct MPT3SAS_ADAPTER *ioc)
 	r = _base_handshake_req_reply_wait(ioc,
 	    sizeof(Mpi2IOCInitRequest_t), (u32 *)&mpi_request,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    sizeof(Mpi2IOCInitReply_t), (u16 *)&mpi_reply, 30);
+=======
+	    sizeof(Mpi2IOCInitReply_t), (u16 *)&mpi_reply, 10);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	    sizeof(Mpi2IOCInitReply_t), (u16 *)&mpi_reply, 10);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5460,10 +5464,15 @@ mpt3sas_base_attach(struct MPT3SAS_ADAPTER *ioc)
 	ioc->pend_os_device_add = kzalloc(ioc->pend_os_device_add_sz,
 	    GFP_KERNEL);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!ioc->pend_os_device_add) {
 		r = -ENOMEM;
 		goto out_free_resources;
 	}
+=======
+	if (!ioc->pend_os_device_add)
+		goto out_free_resources;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!ioc->pend_os_device_add)
 		goto out_free_resources;
@@ -5473,10 +5482,15 @@ mpt3sas_base_attach(struct MPT3SAS_ADAPTER *ioc)
 	ioc->device_remove_in_progress =
 		kzalloc(ioc->device_remove_in_progress_sz, GFP_KERNEL);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!ioc->device_remove_in_progress) {
 		r = -ENOMEM;
 		goto out_free_resources;
 	}
+=======
+	if (!ioc->device_remove_in_progress)
+		goto out_free_resources;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!ioc->device_remove_in_progress)
 		goto out_free_resources;

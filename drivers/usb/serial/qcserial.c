@@ -160,7 +160,10 @@ static const struct usb_device_id id_table[] = {
 	{DEVICE_SWI(0x1199, 0x9060)},	/* Sierra Wireless Modem */
 	{DEVICE_SWI(0x1199, 0x9061)},	/* Sierra Wireless Modem */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{DEVICE_SWI(0x1199, 0x9062)},	/* Sierra Wireless EM7305 QDL */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{DEVICE_SWI(0x1199, 0x9063)},	/* Sierra Wireless EM7305 */

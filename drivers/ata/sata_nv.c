@@ -314,7 +314,11 @@ static void nv_ck804_thaw(struct ata_port *ap);
 static int nv_adma_slave_config(struct scsi_device *sdev);
 static int nv_adma_check_atapi_dma(struct ata_queued_cmd *qc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors nv_adma_qc_prep(struct ata_queued_cmd *qc);
+=======
+static void nv_adma_qc_prep(struct ata_queued_cmd *qc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void nv_adma_qc_prep(struct ata_queued_cmd *qc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -340,7 +344,11 @@ static void nv_swncq_error_handler(struct ata_port *ap);
 static int nv_swncq_slave_config(struct scsi_device *sdev);
 static int nv_swncq_port_start(struct ata_port *ap);
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors nv_swncq_qc_prep(struct ata_queued_cmd *qc);
+=======
+static void nv_swncq_qc_prep(struct ata_queued_cmd *qc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void nv_swncq_qc_prep(struct ata_queued_cmd *qc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1391,7 +1399,11 @@ static int nv_adma_use_reg_mode(struct ata_queued_cmd *qc)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors nv_adma_qc_prep(struct ata_queued_cmd *qc)
+=======
+static void nv_adma_qc_prep(struct ata_queued_cmd *qc)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void nv_adma_qc_prep(struct ata_queued_cmd *qc)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1407,7 +1419,11 @@ static void nv_adma_qc_prep(struct ata_queued_cmd *qc)
 		nv_adma_register_mode(qc->ap);
 		ata_bmdma_qc_prep(qc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return AC_ERR_OK;
+=======
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1443,8 +1459,11 @@ static void nv_adma_qc_prep(struct ata_queued_cmd *qc)
 	wmb();
 	cpb->resp_flags = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	return AC_ERR_OK;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -2011,6 +2030,7 @@ static int nv_swncq_port_start(struct ata_port *ap)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static enum ata_completion_errors nv_swncq_qc_prep(struct ata_queued_cmd *qc)
 {
 	if (qc->tf.protocol != ATA_PROT_NCQ) {
@@ -2025,6 +2045,8 @@ static enum ata_completion_errors nv_swncq_qc_prep(struct ata_queued_cmd *qc)
 
 	return AC_ERR_OK;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void nv_swncq_qc_prep(struct ata_queued_cmd *qc)
 {
 	if (qc->tf.protocol != ATA_PROT_NCQ) {
@@ -2036,6 +2058,9 @@ static void nv_swncq_qc_prep(struct ata_queued_cmd *qc)
 		return;
 
 	nv_swncq_fill_sg(qc);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

@@ -172,8 +172,12 @@ static inline bool in_vfork(struct task_struct *tsk)
 	 */
 	rcu_read_lock();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = tsk->vfork_done &&
 			rcu_dereference(tsk->real_parent)->mm == tsk->mm;
+=======
+	ret = tsk->vfork_done && tsk->real_parent->mm == tsk->mm;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = tsk->vfork_done && tsk->real_parent->mm == tsk->mm;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

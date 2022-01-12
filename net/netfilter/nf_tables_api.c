@@ -2883,8 +2883,12 @@ static int nf_tables_fill_set(struct sk_buff *skb, const struct nft_ctx *ctx,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (set->udata &&
 	    nla_put(skb, NFTA_SET_USERDATA, set->udlen, set->udata))
+=======
+	if (nla_put(skb, NFTA_SET_USERDATA, set->udlen, set->udata))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (nla_put(skb, NFTA_SET_USERDATA, set->udlen, set->udata))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

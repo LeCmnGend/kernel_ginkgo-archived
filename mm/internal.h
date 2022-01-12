@@ -188,7 +188,10 @@ extern void post_alloc_hook(struct page *page, unsigned int order,
 					gfp_t gfp_flags);
 extern int user_min_free_kbytes;
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern atomic_long_t kswapd_waiters;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -237,7 +240,11 @@ isolate_migratepages_range(struct compact_control *cc,
 			   unsigned long low_pfn, unsigned long end_pfn);
 int find_suitable_fallback(struct free_area *area, unsigned int order,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			int migratetype, bool only_stealable, bool *can_steal, unsigned int start_order);
+=======
+			int migratetype, bool only_stealable, bool *can_steal);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			int migratetype, bool only_stealable, bool *can_steal);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -310,8 +317,12 @@ static inline bool is_data_mapping(vm_flags_t flags)
 /* mm/util.c */
 void __vma_link_list(struct mm_struct *mm, struct vm_area_struct *vma,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		struct vm_area_struct *prev);
 void __vma_unlink_list(struct mm_struct *mm, struct vm_area_struct *vma);
+=======
+		struct vm_area_struct *prev, struct rb_node *rb_parent);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		struct vm_area_struct *prev, struct rb_node *rb_parent);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -364,6 +375,7 @@ extern pmd_t maybe_pmd_mkwrite(pmd_t pmd, struct vm_area_struct *vma);
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * At what user virtual address is page expected in vma?
  * Returns -EFAULT if all of the page is outside the range of vma.
  * If page is a compound head, the entire compound page is considered.
@@ -411,6 +423,8 @@ vma_address_end(struct page *page, struct vm_area_struct *vma)
 		address = vma->vm_end;
 	return address;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * At what user virtual address is page expected in @vma?
  */
 static inline unsigned long
@@ -432,6 +446,9 @@ vma_address(struct page *page, struct vm_area_struct *vma)
 	VM_BUG_ON_VMA(end < vma->vm_start || start >= vma->vm_end, vma);
 
 	return max(start, vma->vm_start);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

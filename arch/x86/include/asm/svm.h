@@ -118,8 +118,11 @@ struct __attribute__ ((__packed__)) vmcb_control_area {
 #define V_IGN_TPR_MASK (1 << V_IGN_TPR_SHIFT)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define V_IRQ_INJECTION_BITS_MASK (V_IRQ_MASK | V_INTR_PRIO_MASK | V_IGN_TPR_MASK)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define V_INTR_MASKING_SHIFT 24

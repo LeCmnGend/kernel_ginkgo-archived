@@ -1900,6 +1900,7 @@ ieee80211_rx_h_decrypt(struct ieee80211_rx_data *rx)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void ieee80211_init_frag_cache(struct ieee80211_fragment_cache *cache)
 {
 	int i;
@@ -1922,11 +1923,16 @@ ieee80211_reassemble_add(struct ieee80211_fragment_cache *cache,
 static inline struct ieee80211_fragment_entry *
 ieee80211_reassemble_add(struct ieee80211_sub_if_data *sdata,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+static inline struct ieee80211_fragment_entry *
+ieee80211_reassemble_add(struct ieee80211_sub_if_data *sdata,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			 unsigned int frag, unsigned int seq, int rx_queue,
 			 struct sk_buff **skb)
 {
 	struct ieee80211_fragment_entry *entry;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	entry = &cache->entries[cache->next++];
 	if (cache->next >= IEEE80211_FRAGMENT_MAX)
@@ -1934,12 +1940,17 @@ ieee80211_reassemble_add(struct ieee80211_sub_if_data *sdata,
 
 	__skb_queue_purge(&entry->skb_list);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	entry = &sdata->fragments[sdata->fragment_next++];
 	if (sdata->fragment_next >= IEEE80211_FRAGMENT_MAX)
 		sdata->fragment_next = 0;
 
 	if (!skb_queue_empty(&entry->skb_list))
 		__skb_queue_purge(&entry->skb_list);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	__skb_queue_tail(&entry->skb_list, *skb); /* no need for locking */
@@ -1956,7 +1967,11 @@ ieee80211_reassemble_add(struct ieee80211_sub_if_data *sdata,
 
 static inline struct ieee80211_fragment_entry *
 <<<<<<< HEAD
+<<<<<<< HEAD
 ieee80211_reassemble_find(struct ieee80211_fragment_cache *cache,
+=======
+ieee80211_reassemble_find(struct ieee80211_sub_if_data *sdata,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 ieee80211_reassemble_find(struct ieee80211_sub_if_data *sdata,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1967,7 +1982,11 @@ ieee80211_reassemble_find(struct ieee80211_sub_if_data *sdata,
 	int i, idx;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	idx = cache->next;
+=======
+	idx = sdata->fragment_next;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	idx = sdata->fragment_next;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1979,7 +1998,11 @@ ieee80211_reassemble_find(struct ieee80211_sub_if_data *sdata,
 			idx = IEEE80211_FRAGMENT_MAX - 1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		entry = &cache->entries[idx];
+=======
+		entry = &sdata->fragments[idx];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		entry = &sdata->fragments[idx];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2010,6 +2033,7 @@ ieee80211_reassemble_find(struct ieee80211_sub_if_data *sdata,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool requires_sequential_pn(struct ieee80211_rx_data *rx, __le16 fc)
 {
 	return rx->key &&
@@ -2029,6 +2053,11 @@ static ieee80211_rx_result debug_noinline
 ieee80211_rx_h_defragment(struct ieee80211_rx_data *rx)
 {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+static ieee80211_rx_result debug_noinline
+ieee80211_rx_h_defragment(struct ieee80211_rx_data *rx)
+{
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct ieee80211_hdr *hdr;
 	u16 sc;
 	__le16 fc;
@@ -2036,7 +2065,10 @@ ieee80211_rx_h_defragment(struct ieee80211_rx_data *rx)
 	struct ieee80211_fragment_entry *entry;
 	struct sk_buff *skb;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct ieee80211_rx_status *status = IEEE80211_SKB_RXCB(rx->skb);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2050,22 +2082,31 @@ ieee80211_rx_h_defragment(struct ieee80211_rx_data *rx)
 	frag = sc & IEEE80211_SCTL_FRAG;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (rx->sta)
 		cache = &rx->sta->frags;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (is_multicast_ether_addr(hdr->addr1)) {
 		I802_DEBUG_INC(rx->local->dot11MulticastReceivedFrameCount);
 		goto out_no_led;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (likely(!ieee80211_has_morefrags(fc) && frag == 0))
 		goto out;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (is_multicast_ether_addr(hdr->addr1))
 		return RX_DROP_MONITOR;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	I802_DEBUG_INC(rx->local->rx_handlers_fragments);
@@ -2084,10 +2125,13 @@ ieee80211_rx_h_defragment(struct ieee80211_rx_data *rx)
 	if (frag == 0) {
 		/* This is the first fragment of a new frame. */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		entry = ieee80211_reassemble_add(cache, frag, seq,
 						 rx->seqno_idx, &(rx->skb));
 		if (requires_sequential_pn(rx, fc)) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		entry = ieee80211_reassemble_add(rx->sdata, frag, seq,
 						 rx->seqno_idx, &(rx->skb));
 		if (rx->key &&
@@ -2096,6 +2140,9 @@ ieee80211_rx_h_defragment(struct ieee80211_rx_data *rx)
 		     rx->key->conf.cipher == WLAN_CIPHER_SUITE_GCMP ||
 		     rx->key->conf.cipher == WLAN_CIPHER_SUITE_GCMP_256) &&
 		    ieee80211_has_protected(fc)) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			int queue = rx->security_idx;
 
@@ -2104,8 +2151,11 @@ ieee80211_rx_h_defragment(struct ieee80211_rx_data *rx)
 			 */
 			entry->check_sequential_pn = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			entry->is_protected = true;
 			entry->key_color = rx->key->color;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			memcpy(entry->last_pn,
@@ -2120,11 +2170,14 @@ ieee80211_rx_h_defragment(struct ieee80211_rx_data *rx)
 			BUILD_BUG_ON(IEEE80211_CCMP_PN_LEN !=
 				     IEEE80211_GCMP_PN_LEN);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		} else if (rx->key &&
 			   (ieee80211_has_protected(fc) ||
 			    (status->flag & RX_FLAG_DECRYPTED))) {
 			entry->is_protected = true;
 			entry->key_color = rx->key->color;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
@@ -2135,7 +2188,11 @@ ieee80211_rx_h_defragment(struct ieee80211_rx_data *rx)
 	 * fragment cache. Add this fragment to the end of the pending entry.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	entry = ieee80211_reassemble_find(cache, frag, seq,
+=======
+	entry = ieee80211_reassemble_find(rx->sdata, frag, seq,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	entry = ieee80211_reassemble_find(rx->sdata, frag, seq,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2154,6 +2211,7 @@ ieee80211_rx_h_defragment(struct ieee80211_rx_data *rx)
 		int i;
 		u8 pn[IEEE80211_CCMP_PN_LEN], *rpn;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		if (!requires_sequential_pn(rx, fc))
 			return RX_DROP_UNUSABLE;
@@ -2163,6 +2221,8 @@ ieee80211_rx_h_defragment(struct ieee80211_rx_data *rx)
 			return RX_DROP_UNUSABLE;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		int queue;
 
 		if (!rx->key ||
@@ -2171,6 +2231,9 @@ ieee80211_rx_h_defragment(struct ieee80211_rx_data *rx)
 		     rx->key->conf.cipher != WLAN_CIPHER_SUITE_GCMP &&
 		     rx->key->conf.cipher != WLAN_CIPHER_SUITE_GCMP_256))
 			return RX_DROP_UNUSABLE;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		memcpy(pn, entry->last_pn, IEEE80211_CCMP_PN_LEN);
 		for (i = IEEE80211_CCMP_PN_LEN - 1; i >= 0; i--) {
@@ -2178,6 +2241,7 @@ ieee80211_rx_h_defragment(struct ieee80211_rx_data *rx)
 			if (pn[i])
 				break;
 		}
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 		rpn = rx->ccm_gcm.pn;
@@ -2199,11 +2263,16 @@ ieee80211_rx_h_defragment(struct ieee80211_rx_data *rx)
 		   (status->flag & RX_FLAG_DECRYPTED)) {
 		return RX_DROP_UNUSABLE;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		queue = rx->security_idx;
 		rpn = rx->key->u.ccmp.rx_pn[queue];
 		if (memcmp(pn, rpn, IEEE80211_CCMP_PN_LEN))
 			return RX_DROP_UNUSABLE;
 		memcpy(entry->last_pn, pn, IEEE80211_CCMP_PN_LEN);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -2234,6 +2303,10 @@ ieee80211_rx_h_defragment(struct ieee80211_rx_data *rx)
  out:
 	ieee80211_led_rx(rx->local);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+ out_no_led:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  out_no_led:
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2394,6 +2467,7 @@ static bool ieee80211_frame_allowed(struct ieee80211_rx_data *rx, __le16 fc)
 
 	/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * Allow EAPOL frames to us/the PAE group address regardless of
 	 * whether the frame was encrypted or not, and always disallow
 	 * all other destination addresses for them.
@@ -2402,6 +2476,8 @@ static bool ieee80211_frame_allowed(struct ieee80211_rx_data *rx, __le16 fc)
 		return ether_addr_equal(ehdr->h_dest, rx->sdata->vif.addr) ||
 		       ether_addr_equal(ehdr->h_dest, pae_group_addr);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * Allow EAPOL frames to us/the PAE group address regardless
 	 * of whether the frame was encrypted or not.
 	 */
@@ -2409,6 +2485,9 @@ static bool ieee80211_frame_allowed(struct ieee80211_rx_data *rx, __le16 fc)
 	    (ether_addr_equal(ehdr->h_dest, rx->sdata->vif.addr) ||
 	     ether_addr_equal(ehdr->h_dest, pae_group_addr)))
 		return true;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (ieee80211_802_1x_port_control(rx) ||
@@ -2450,7 +2529,10 @@ ieee80211_deliver_skb(struct ieee80211_rx_data *rx)
 	     sdata->vif.type == NL80211_IFTYPE_AP_VLAN) &&
 	    !(sdata->flags & IEEE80211_SDATA_DONT_BRIDGE_PACKETS) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    ehdr->h_proto != rx->sdata->control_port_protocol &&
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	    (sdata->vif.type != NL80211_IFTYPE_AP_VLAN || !sdata->u.vlan.sta)) {
@@ -2507,6 +2589,7 @@ ieee80211_deliver_skb(struct ieee80211_rx_data *rx)
 
 	if (skb) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		struct ethhdr *ehdr = (struct ethhdr *)skb->data;
 
 		/* deliver to local stack */
@@ -2531,6 +2614,11 @@ ieee80211_deliver_skb(struct ieee80211_rx_data *rx)
 			     !ether_addr_equal(ehdr->h_dest, sdata->vif.addr)))
 			ether_addr_copy(ehdr->h_dest, sdata->vif.addr);
 
+=======
+		/* deliver to local stack */
+		skb->protocol = eth_type_trans(skb, dev);
+		memset(skb->cb, 0, sizeof(skb->cb));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		/* deliver to local stack */
 		skb->protocol = eth_type_trans(skb, dev);
@@ -2618,6 +2706,7 @@ ieee80211_rx_h_amsdu(struct ieee80211_rx_data *rx)
 	if (ieee80211_data_to_8023_exthdr(skb, &ethhdr,
 					  rx->sdata->vif.addr,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					  rx->sdata->vif.type,
 					  true))
 		return RX_DROP_UNUSABLE;
@@ -2639,6 +2728,11 @@ ieee80211_rx_h_amsdu(struct ieee80211_rx_data *rx)
 		}
 	}
 
+=======
+					  rx->sdata->vif.type))
+		return RX_DROP_UNUSABLE;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					  rx->sdata->vif.type))
 		return RX_DROP_UNUSABLE;
@@ -4021,8 +4115,11 @@ void ieee80211_check_fast_rx(struct sta_info *sta)
 	rcu_read_lock();
 	key = rcu_dereference(sta->ptk[sta->ptk_idx]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!key)
 		key = rcu_dereference(sdata->default_unicast_key);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (key) {

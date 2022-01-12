@@ -2187,7 +2187,11 @@ struct dentry *incfs_mount_fs(struct file_system_type *type, int flags,
 	sb->s_d_op = &incfs_dentry_ops;
 	sb->s_flags |= S_NOATIME;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sb->s_magic = INCFS_MAGIC_NUMBER;
+=======
+	sb->s_magic = (long)INCFS_MAGIC_NUMBER;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sb->s_magic = (long)INCFS_MAGIC_NUMBER;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

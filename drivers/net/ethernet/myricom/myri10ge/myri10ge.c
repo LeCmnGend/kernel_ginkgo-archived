@@ -3854,7 +3854,10 @@ static int myri10ge_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
 			"invalid sram_size %dB or board span %ldB\n",
 			mgp->sram_size, mgp->board_span);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		status = -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto abort_with_ioremap;

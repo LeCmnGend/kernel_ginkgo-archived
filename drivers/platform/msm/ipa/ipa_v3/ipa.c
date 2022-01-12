@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2012-2020, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2012-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2012-2021, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -588,6 +592,11 @@ static int ipa3_send_pdn_config_msg(unsigned long usr_param)
 
 	msg_meta.msg_type = pdn_info->pdn_cfg_type;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/* null terminate the string */
+	pdn_info->dev_name[IPA_RESOURCE_NAME_MAX - 1] = '\0';
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* null terminate the string */
 	pdn_info->dev_name[IPA_RESOURCE_NAME_MAX - 1] = '\0';
@@ -6692,6 +6701,7 @@ static ssize_t ipa3_write(struct file *file, const char __user *buf,
 {
 	unsigned long missing;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	char *dbg_buff = NULL;
 	int ret = 0;
 
@@ -6711,6 +6721,8 @@ static ssize_t ipa3_write(struct file *file, const char __user *buf,
 		ret = -EFAULT;
 		goto end;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	char dbg_buff[32] = { 0 };
 
@@ -6724,6 +6736,9 @@ static ssize_t ipa3_write(struct file *file, const char __user *buf,
 	if (missing) {
 		IPAERR("Unable to copy data from user\n");
 		return -EFAULT;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -6742,7 +6757,11 @@ static ssize_t ipa3_write(struct file *file, const char __user *buf,
 	if (i == count) {
 		IPADBG("Empty ipa_config file\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto end_msg;
+=======
+		return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return count;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6777,7 +6796,11 @@ static ssize_t ipa3_write(struct file *file, const char __user *buf,
 			IPAERR("ecm vlan(%d)\n",
 				ipa3_ctx->vlan_mode_iface[IPA_VLAN_IF_ECM]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto end_msg;
+=======
+			return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			return count;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6798,7 +6821,11 @@ static ssize_t ipa3_write(struct file *file, const char __user *buf,
 			IPAERR("got invalid string %s not loading FW\n",
 				dbg_buff);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto end;
+=======
+			return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			return count;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6810,7 +6837,11 @@ static ssize_t ipa3_write(struct file *file, const char __user *buf,
 	/* Prevent consequent calls from trying to load the FW again. */
 	if (ipa3_is_ready())
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto end_msg;
+=======
+		return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return count;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6819,7 +6850,11 @@ static ssize_t ipa3_write(struct file *file, const char __user *buf,
 	if (ipa3_ctx->fw_loaded) {
 		IPAERR("not load FW again\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto end_msg;
+=======
+		return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return count;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6832,11 +6867,16 @@ static ssize_t ipa3_write(struct file *file, const char __user *buf,
 		&ipa3_fw_loading_work);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 end_msg:
 	IPADBG("Scheduled a work to load IPA FW\n");
 end:
 	kfree(dbg_buff);
 	return ret < 0 ? ret : count;
+=======
+	IPADBG("Scheduled a work to load IPA FW\n");
+	return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	IPADBG("Scheduled a work to load IPA FW\n");
 	return count;

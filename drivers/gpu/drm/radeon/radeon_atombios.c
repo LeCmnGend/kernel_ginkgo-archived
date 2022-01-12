@@ -2261,15 +2261,21 @@ static int radeon_atombios_parse_power_table_1_3(struct radeon_device *rdev)
 		rdev->pm.power_state[state_index - 1].default_clock_mode =
 			&rdev->pm.power_state[state_index - 1].clock_info[0];
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rdev->pm.power_state[state_index - 1].flags &=
 			~RADEON_PM_STATE_SINGLE_DISPLAY_ONLY;
 		rdev->pm.power_state[state_index - 1].misc = 0;
 		rdev->pm.power_state[state_index - 1].misc2 = 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rdev->pm.power_state[state_index].flags &=
 			~RADEON_PM_STATE_SINGLE_DISPLAY_ONLY;
 		rdev->pm.power_state[state_index].misc = 0;
 		rdev->pm.power_state[state_index].misc2 = 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	return state_index;

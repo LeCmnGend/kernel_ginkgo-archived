@@ -53,8 +53,13 @@
 #define MAX_HW_FIFO_SIZE (MAX_HW_FIFO_DEPTH * 4) /* FIFO is 32 bits wide  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define RETRY_MAX_CNT		500	/* max retry times to read register */
 #define RETRY_DELAY_INTERVAL	6	/* retry delay interval in us */
+=======
+#define RETRY_MAX_CNT		5	/* max retry times to read register */
+#define RETRY_DELAY_INTERVAL	440	/* retry delay interval in us */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define RETRY_MAX_CNT		5	/* max retry times to read register */
 #define RETRY_DELAY_INTERVAL	440	/* retry delay interval in us */

@@ -161,7 +161,10 @@ static inline void vga_set_mem_top(struct vc_data *c)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_VGACON_SOFT_SCROLLBACK
 /* software scrollback */
 struct vgacon_scrollback_info {
@@ -365,6 +368,9 @@ static void vgacon_flush_scrollback(struct vc_data *c)
 #define vgacon_scrollback_update(...)  do { } while (0)
 #define vgacon_scrollback_switch(...)  do { } while (0)
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void vgacon_restore_screen(struct vc_data *c)
 {
@@ -380,12 +386,18 @@ static void vgacon_scrolldelta(struct vc_data *c, int lines)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void vgacon_flush_scrollback(struct vc_data *c)
 {
 }
 #endif /* CONFIG_VGACON_SOFT_SCROLLBACK */
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static const char *vgacon_startup(void)
 {
@@ -570,12 +582,18 @@ static const char *vgacon_startup(void)
 	vgacon_yres = vga_scan_lines;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vga_init_done = true;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!vga_init_done) {
 		vgacon_scrollback_startup();
 		vga_init_done = true;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return display_desc;
@@ -601,7 +619,11 @@ static void vgacon_init(struct vc_data *c, int init)
 
 	c->vc_scan_lines = vga_scan_lines;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	c->vc_font.height = c->vc_cell_height = vga_video_font_height;
+=======
+	c->vc_font.height = vga_video_font_height;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	c->vc_font.height = vga_video_font_height;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -738,26 +760,38 @@ static void vgacon_cursor(struct vc_data *c, int mode)
 		case CUR_UNDERLINE:
 			vgacon_set_cursor_size(c->vc_x,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					       c->vc_cell_height -
 					       (c->vc_cell_height <
 						10 ? 2 : 3),
 					       c->vc_cell_height -
 					       (c->vc_cell_height <
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					       c->vc_font.height -
 					       (c->vc_font.height <
 						10 ? 2 : 3),
 					       c->vc_font.height -
 					       (c->vc_font.height <
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 						10 ? 1 : 2));
 			break;
 		case CUR_TWO_THIRDS:
 			vgacon_set_cursor_size(c->vc_x,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					       c->vc_cell_height / 3,
 					       c->vc_cell_height -
 					       (c->vc_cell_height <
+=======
+					       c->vc_font.height / 3,
+					       c->vc_font.height -
+					       (c->vc_font.height <
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					       c->vc_font.height / 3,
 					       c->vc_font.height -
@@ -768,9 +802,15 @@ static void vgacon_cursor(struct vc_data *c, int mode)
 		case CUR_LOWER_THIRD:
 			vgacon_set_cursor_size(c->vc_x,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					       (c->vc_cell_height * 2) / 3,
 					       c->vc_cell_height -
 					       (c->vc_cell_height <
+=======
+					       (c->vc_font.height * 2) / 3,
+					       c->vc_font.height -
+					       (c->vc_font.height <
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					       (c->vc_font.height * 2) / 3,
 					       c->vc_font.height -
@@ -781,9 +821,15 @@ static void vgacon_cursor(struct vc_data *c, int mode)
 		case CUR_LOWER_HALF:
 			vgacon_set_cursor_size(c->vc_x,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					       c->vc_cell_height / 2,
 					       c->vc_cell_height -
 					       (c->vc_cell_height <
+=======
+					       c->vc_font.height / 2,
+					       c->vc_font.height -
+					       (c->vc_font.height <
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					       c->vc_font.height / 2,
 					       c->vc_font.height -
@@ -800,7 +846,11 @@ static void vgacon_cursor(struct vc_data *c, int mode)
 		default:
 			vgacon_set_cursor_size(c->vc_x, 1,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					       c->vc_cell_height);
+=======
+					       c->vc_font.height);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					       c->vc_font.height);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -815,7 +865,11 @@ static int vgacon_doresize(struct vc_data *c,
 {
 	unsigned long flags;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int scanlines = height * c->vc_cell_height;
+=======
+	unsigned int scanlines = height * c->vc_font.height;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned int scanlines = height * c->vc_font.height;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -825,7 +879,11 @@ static int vgacon_doresize(struct vc_data *c,
 
 	vgacon_xres = width * VGA_FONTWIDTH;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vgacon_yres = height * c->vc_cell_height;
+=======
+	vgacon_yres = height * c->vc_font.height;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	vgacon_yres = height * c->vc_font.height;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -884,9 +942,15 @@ static int vgacon_switch(struct vc_data *c)
 {
 	int x = c->vc_cols * VGA_FONTWIDTH;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int y = c->vc_rows * c->vc_cell_height;
 	int rows = screen_info.orig_video_lines * vga_default_font_height/
 		c->vc_cell_height;
+=======
+	int y = c->vc_rows * c->vc_font.height;
+	int rows = screen_info.orig_video_lines * vga_default_font_height/
+		c->vc_font.height;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int y = c->vc_rows * c->vc_font.height;
 	int rows = screen_info.orig_video_lines * vga_default_font_height/
@@ -916,6 +980,10 @@ static int vgacon_switch(struct vc_data *c)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	vgacon_scrollback_switch(c->vc_num);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	vgacon_scrollback_switch(c->vc_num);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1327,7 +1395,11 @@ static int vgacon_adjust_height(struct vc_data *vc, unsigned fontheight)
 				c->vc_sw->con_cursor(c, CM_DRAW);
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 			c->vc_font.height = c->vc_cell_height = fontheight;
+=======
+			c->vc_font.height = fontheight;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			c->vc_font.height = fontheight;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1379,6 +1451,7 @@ static int vgacon_resize(struct vc_data *c, unsigned int width,
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (user) {
 		/*
 		 * Ho ho!  Someone (svgatextmode, eh?) may have reprogrammed
@@ -1394,12 +1467,17 @@ static int vgacon_resize(struct vc_data *c, unsigned int width,
 	    c->vc_cell_height)
 		return -EINVAL;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (width % 2 || width > screen_info.orig_video_cols ||
 	    height > (screen_info.orig_video_lines * vga_default_font_height)/
 	    c->vc_font.height)
 		/* let svgatextmode tinker with video timings and
 		   return success */
 		return (user) ? 0 : -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (con_is_visible(c) && !vga_is_gfx) /* who knows */
@@ -1457,6 +1535,10 @@ static bool vgacon_scroll(struct vc_data *c, unsigned int t, unsigned int b,
 	delta = lines * c->vc_size_row;
 	if (dir == SM_UP) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		vgacon_scrollback_update(c, t, lines);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		vgacon_scrollback_update(c, t, lines);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1524,6 +1606,10 @@ const struct consw vga_con = {
 	.con_build_attr = vgacon_build_attr,
 	.con_invert_region = vgacon_invert_region,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	.con_flush_scrollback = vgacon_flush_scrollback,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.con_flush_scrollback = vgacon_flush_scrollback,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

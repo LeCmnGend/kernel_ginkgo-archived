@@ -194,8 +194,11 @@ static void __init patch_vdso(void *ehdr)
 		vdso_nullpatch_one(&einfo, "__vdso_gettimeofday");
 		vdso_nullpatch_one(&einfo, "__vdso_clock_gettime");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		vdso_nullpatch_one(&einfo, "__vdso_clock_getres");
 		/* do not zero out __vdso_time, no cntvct_ok dependency */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
@@ -284,7 +287,11 @@ void arm_install_vdso(struct mm_struct *mm, unsigned long addr)
 static void vdso_write_begin(struct vdso_data *vdata)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	++vdso_data->tb_seq_count;
+=======
+	++vdso_data->seq_count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	++vdso_data->seq_count;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -295,7 +302,11 @@ static void vdso_write_end(struct vdso_data *vdata)
 {
 	smp_wmb(); /* Pairs with smp_rmb in vdso_read_begin */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	++vdso_data->tb_seq_count;
+=======
+	++vdso_data->seq_count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	++vdso_data->seq_count;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -323,15 +334,21 @@ static bool tk_is_cntvct(const struct timekeeper *tk)
  * update is finished.
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Userspace is expected to sample tb_seq_count before reading any other
  * fields from the data page.  If tb_seq_count is odd, userspace is
  * expected to wait until it becomes even.  After copying data from
  * the page, userspace must sample tb_seq_count again; if it has changed
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Userspace is expected to sample seq_count before reading any other
  * fields from the data page.  If seq_count is odd, userspace is
  * expected to wait until it becomes even.  After copying data from
  * the page, userspace must sample seq_count again; if it has changed
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * from its previous value, userspace must retry the whole sequence.
  *
@@ -351,7 +368,11 @@ void update_vsyscall(struct timekeeper *tk)
 	vdso_write_begin(vdso_data);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vdso_data->use_syscall			= !tk_is_cntvct(tk);
+=======
+	vdso_data->tk_is_cntvct			= tk_is_cntvct(tk);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	vdso_data->tk_is_cntvct			= tk_is_cntvct(tk);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -361,6 +382,7 @@ void update_vsyscall(struct timekeeper *tk)
 	vdso_data->wtm_clock_sec		= wtm->tv_sec;
 	vdso_data->wtm_clock_nsec		= wtm->tv_nsec;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (!vdso_data->use_syscall) {
 		struct timespec btm = ktime_to_timespec(tk->offs_boot);
@@ -378,6 +400,8 @@ void update_vsyscall(struct timekeeper *tk)
 		vdso_data->btm_sec		= btm.tv_sec;
 		vdso_data->btm_nsec		= btm.tv_nsec;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (vdso_data->tk_is_cntvct) {
 		vdso_data->cs_cycle_last	= tk->tkr_mono.cycle_last;
 		vdso_data->xtime_clock_sec	= tk->xtime_sec;
@@ -385,6 +409,9 @@ void update_vsyscall(struct timekeeper *tk)
 		vdso_data->cs_mult		= tk->tkr_mono.mult;
 		vdso_data->cs_shift		= tk->tkr_mono.shift;
 		vdso_data->cs_mask		= tk->tkr_mono.mask;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 

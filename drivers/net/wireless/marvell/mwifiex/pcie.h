@@ -392,8 +392,11 @@ struct pcie_service_card {
 	struct work_struct work;
 	unsigned long work_flags;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	bool pci_reset_ongoing;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

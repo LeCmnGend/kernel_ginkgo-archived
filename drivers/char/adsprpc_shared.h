@@ -33,6 +33,11 @@
 #define FASTRPC_IOCTL_CONTROL   _IOWR('R', 12, struct fastrpc_ioctl_control)
 #define FASTRPC_IOCTL_MUNMAP_FD _IOWR('R', 13, struct fastrpc_ioctl_munmap_fd)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define FASTRPC_IOCTL_GET_DSP_INFO \
+			_IOWR('R', 16, struct fastrpc_ioctl_dsp_capabilities)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define FASTRPC_IOCTL_GET_DSP_INFO \
 			_IOWR('R', 16, struct fastrpc_ioctl_dsp_capabilities)
@@ -276,13 +281,19 @@ struct fastrpc_ioctl_control {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define FASTRPC_MAX_DSP_ATTRIBUTES            (7)
 struct fastrpc_ioctl_dsp_capabilities {
 	uint32_t domain;	//! DSP domain to query capabilities
 	uint32_t dsp_attributes[FASTRPC_MAX_DSP_ATTRIBUTES];
 };
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct smq_null_invoke {
 	uint64_t ctx;			/* invoke caller context */

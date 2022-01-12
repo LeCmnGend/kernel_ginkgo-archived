@@ -26,6 +26,7 @@
 #include "power.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //Boeffla config 1.1.0
 #ifdef CONFIG_BOEFFLA_WL_BLOCKER
 	#include "boeffla_wl_blocker.h"
@@ -39,6 +40,8 @@
 
 
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifndef CONFIG_SUSPEND
@@ -613,6 +616,7 @@ static void wakeup_source_activate(struct wakeup_source *ws)
 	trace_wakeup_source_activate(ws->name, cec);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * Add boeffla config here
  */
@@ -670,6 +674,8 @@ static bool check_for_block(struct wakeup_source *ws)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /**
  * wakeup_source_report_event - Report wakeup event using the given source.
@@ -678,6 +684,7 @@ static bool check_for_block(struct wakeup_source *ws)
  */
 static void wakeup_source_report_event(struct wakeup_source *ws, bool hard)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	#ifdef CONFIG_BOEFFLA_WL_BLOCKER
 	if (!check_for_block(ws))	// AP: check if wakelock is on wakelock blocker list
@@ -694,6 +701,8 @@ static void wakeup_source_report_event(struct wakeup_source *ws, bool hard)
 	}
 	#endif
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ws->event_count++;
 	/* This is racy, but the counter is approximate anyway. */
 	if (events_check_enabled)
@@ -701,6 +710,9 @@ static void wakeup_source_report_event(struct wakeup_source *ws, bool hard)
 
 	if (!ws->active)
 		wakeup_source_activate(ws);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (hard)
@@ -995,9 +1007,12 @@ void pm_print_active_wakeup_sources(void)
 		if (ws->active) {
 			pr_debug("active wakeup source: %s\n", ws->name);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			#ifdef CONFIG_BOEFFLA_WL_BLOCKER
 				if (!check_for_block(ws))	// AP: check if wakelock is on wakelock blocker list
 			#endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			active = 1;

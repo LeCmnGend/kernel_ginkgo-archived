@@ -403,10 +403,15 @@ static struct sysrq_key_op sysrq_thaw_op = {
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern void msm_drm_notifier_enable(bool val);
 static void sysrq_handle_kill(int key)
 {
 	msm_drm_notifier_enable(false);
+=======
+static void sysrq_handle_kill(int key)
+{
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void sysrq_handle_kill(int key)
 {

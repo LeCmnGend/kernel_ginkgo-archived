@@ -168,9 +168,12 @@ static struct file_system_type proc_fs_type = {
 void __init proc_root_init(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	proc_init_kmemcache();
 	set_proc_pid_nlink();
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int err;
 
 	proc_init_inodecache();
@@ -179,6 +182,9 @@ void __init proc_root_init(void)
 	if (err)
 		return;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	proc_self_init();
 	proc_thread_self_init();
@@ -187,6 +193,12 @@ void __init proc_root_init(void)
 	proc_net_init();
 	proc_uid_init();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#ifdef CONFIG_SYSVIPC
+	proc_mkdir("sysvipc", NULL);
+#endif
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #ifdef CONFIG_SYSVIPC
 	proc_mkdir("sysvipc", NULL);
@@ -203,8 +215,11 @@ void __init proc_root_init(void)
 	proc_mkdir("bus", NULL);
 	proc_sys_init();
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	register_filesystem(&proc_fs_type);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

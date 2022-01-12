@@ -95,18 +95,24 @@ struct stk8ba50_data {
 	struct iio_trigger *dready_trig;
 	bool dready_trigger_on;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Ensure timestamp is naturally aligned */
 	struct {
 		s16 chans[3];
 		s64 timetamp __aligned(8);
 	} scan;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * 3 x 16-bit channels (10-bit data, 6-bit padding) +
 	 * 1 x 16 padding +
 	 * 4 x 16 64-bit timestamp
 	 */
 	s16 buffer[8];
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
 
@@ -338,7 +344,11 @@ static irqreturn_t stk8ba50_trigger_handler(int irq, void *p)
 						    STK8BA50_REG_XOUT,
 						    STK8BA50_ALL_CHANNEL_SIZE,
 <<<<<<< HEAD
+<<<<<<< HEAD
 						    (u8 *)data->scan.chans);
+=======
+						    (u8 *)data->buffer);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 						    (u8 *)data->buffer);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -355,15 +365,21 @@ static irqreturn_t stk8ba50_trigger_handler(int irq, void *p)
 				goto err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			data->scan.chans[i++] = ret;
 		}
 	}
 	iio_push_to_buffers_with_timestamp(indio_dev, &data->scan,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			data->buffer[i++] = ret;
 		}
 	}
 	iio_push_to_buffers_with_timestamp(indio_dev, data->buffer,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					   pf->timestamp);
 err:

@@ -116,9 +116,12 @@ STATIC inline int INIT unlz4(u8 *input, long in_len,
 				goto exit_2;
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		} else if (size < 4) {
 			/* empty or end-of-file */
 			goto exit_3;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
@@ -135,10 +138,13 @@ STATIC inline int INIT unlz4(u8 *input, long in_len,
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!fill && chunksize == 0) {
 			/* empty or end-of-file */
 			goto exit_3;
 		}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -201,7 +207,10 @@ STATIC inline int INIT unlz4(u8 *input, long in_len,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 exit_3:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = 0;

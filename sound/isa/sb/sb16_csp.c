@@ -829,7 +829,10 @@ static int snd_sb_csp_start(struct snd_sb_csp * p, int sample_width, int channel
 	snd_sbmixer_write(p->chip, SB_DSP4_PCM_DEV, mixL & 0x7);
 	snd_sbmixer_write(p->chip, SB_DSP4_PCM_DEV + 1, mixR & 0x7);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_unlock_irqrestore(&p->chip->mixer_lock, flags);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -872,7 +875,10 @@ static int snd_sb_csp_start(struct snd_sb_csp * p, int sample_width, int channel
 
 	/* restore PCM volume */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock_irqsave(&p->chip->mixer_lock, flags);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	snd_sbmixer_write(p->chip, SB_DSP4_PCM_DEV, mixL);
@@ -901,7 +907,10 @@ static int snd_sb_csp_stop(struct snd_sb_csp * p)
 	snd_sbmixer_write(p->chip, SB_DSP4_PCM_DEV, mixL & 0x7);
 	snd_sbmixer_write(p->chip, SB_DSP4_PCM_DEV + 1, mixR & 0x7);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_unlock_irqrestore(&p->chip->mixer_lock, flags);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -919,7 +928,10 @@ static int snd_sb_csp_stop(struct snd_sb_csp * p)
 
 	/* restore PCM volume */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock_irqsave(&p->chip->mixer_lock, flags);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	snd_sbmixer_write(p->chip, SB_DSP4_PCM_DEV, mixL);
@@ -1076,6 +1088,7 @@ static int snd_sb_qsound_build(struct snd_sb_csp * p)
 	spin_lock_init(&p->q_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if ((err = snd_ctl_add(card, p->qsound_switch = snd_ctl_new1(&snd_sb_qsound_switch, p))) < 0) {
 		p->qsound_switch = NULL;
 		goto __error;
@@ -1085,10 +1098,15 @@ static int snd_sb_qsound_build(struct snd_sb_csp * p)
 		goto __error;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if ((err = snd_ctl_add(card, p->qsound_switch = snd_ctl_new1(&snd_sb_qsound_switch, p))) < 0)
 		goto __error;
 	if ((err = snd_ctl_add(card, p->qsound_space = snd_ctl_new1(&snd_sb_qsound_space, p))) < 0)
 		goto __error;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return 0;
@@ -1110,6 +1128,7 @@ static void snd_sb_qsound_destroy(struct snd_sb_csp * p)
 	
 	down_write(&card->controls_rwsem);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (p->qsound_switch) {
 		snd_ctl_remove(card, p->qsound_switch);
 		p->qsound_switch = NULL;
@@ -1119,10 +1138,15 @@ static void snd_sb_qsound_destroy(struct snd_sb_csp * p)
 		p->qsound_space = NULL;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (p->qsound_switch)
 		snd_ctl_remove(card, p->qsound_switch);
 	if (p->qsound_space)
 		snd_ctl_remove(card, p->qsound_space);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	up_write(&card->controls_rwsem);
 

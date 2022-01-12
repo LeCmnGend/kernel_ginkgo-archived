@@ -888,9 +888,15 @@ static int get_transition_latency(struct powernow_k8_data *data)
 /* Take a frequency, and issue the fid/vid transition command */
 static int transition_frequency_fidvid(struct powernow_k8_data *data,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unsigned int index,
 		struct cpufreq_policy *policy)
 {
+=======
+		unsigned int index)
+{
+	struct cpufreq_policy *policy;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		unsigned int index)
 {
@@ -928,6 +934,12 @@ static int transition_frequency_fidvid(struct powernow_k8_data *data,
 	freqs.new = find_khz_freq_from_fid(fid);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	policy = cpufreq_cpu_get(smp_processor_id());
+	cpufreq_cpu_put(policy);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	policy = cpufreq_cpu_get(smp_processor_id());
 	cpufreq_cpu_put(policy);
@@ -988,7 +1000,11 @@ static long powernowk8_target_fn(void *arg)
 	powernow_k8_acpi_pst_values(data, newstate);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = transition_frequency_fidvid(data, newstate, pol);
+=======
+	ret = transition_frequency_fidvid(data, newstate);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = transition_frequency_fidvid(data, newstate);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

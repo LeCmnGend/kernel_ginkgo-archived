@@ -761,8 +761,11 @@ static ssize_t applesmc_light_show(struct device *dev,
 
 	ret = applesmc_read_key(LIGHT_SENSOR_LEFT_KEY, buffer, data_length);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret)
 		goto out;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* newer macbooks report a single 10-bit bigendian value */
@@ -772,10 +775,16 @@ static ssize_t applesmc_light_show(struct device *dev,
 	}
 	left = buffer[2];
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	ret = applesmc_read_key(LIGHT_SENSOR_RIGHT_KEY, buffer, data_length);
 	if (ret)
 		goto out;
+=======
+	if (ret)
+		goto out;
+	ret = applesmc_read_key(LIGHT_SENSOR_RIGHT_KEY, buffer, data_length);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret)
 		goto out;
@@ -830,18 +839,24 @@ static ssize_t applesmc_show_fan_speed(struct device *dev,
 
 	ret = applesmc_read_key(newkey, buffer, 2);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret)
 		return ret;
 
 	speed = ((buffer[0] << 8 | buffer[1]) >> 2);
 	return snprintf(sysfsbuf, PAGE_SIZE, "%u\n", speed);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	speed = ((buffer[0] << 8 | buffer[1]) >> 2);
 
 	if (ret)
 		return ret;
 	else
 		return snprintf(sysfsbuf, PAGE_SIZE, "%u\n", speed);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -879,18 +894,24 @@ static ssize_t applesmc_show_fan_manual(struct device *dev,
 
 	ret = applesmc_read_key(FANS_MANUAL, buffer, 2);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret)
 		return ret;
 
 	manual = ((buffer[0] << 8 | buffer[1]) >> to_index(attr)) & 0x01;
 	return snprintf(sysfsbuf, PAGE_SIZE, "%d\n", manual);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	manual = ((buffer[0] << 8 | buffer[1]) >> to_index(attr)) & 0x01;
 
 	if (ret)
 		return ret;
 	else
 		return snprintf(sysfsbuf, PAGE_SIZE, "%d\n", manual);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -908,16 +929,22 @@ static ssize_t applesmc_store_fan_manual(struct device *dev,
 
 	ret = applesmc_read_key(FANS_MANUAL, buffer, 2);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret)
 		goto out;
 
 	val = (buffer[0] << 8 | buffer[1]);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	val = (buffer[0] << 8 | buffer[1]);
 	if (ret)
 		goto out;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (input)
 		val = val | (0x01 << to_index(attr));
@@ -995,6 +1022,7 @@ static ssize_t applesmc_key_count_show(struct device *dev,
 
 	ret = applesmc_read_key(KEY_COUNT_KEY, buffer, 4);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret)
 		return ret;
 
@@ -1002,6 +1030,8 @@ static ssize_t applesmc_key_count_show(struct device *dev,
 						((u32)buffer[2]<<8) + buffer[3];
 	return snprintf(sysfsbuf, PAGE_SIZE, "%d\n", count);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	count = ((u32)buffer[0]<<24) + ((u32)buffer[1]<<16) +
 						((u32)buffer[2]<<8) + buffer[3];
 
@@ -1009,6 +1039,9 @@ static ssize_t applesmc_key_count_show(struct device *dev,
 		return ret;
 	else
 		return snprintf(sysfsbuf, PAGE_SIZE, "%d\n", count);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

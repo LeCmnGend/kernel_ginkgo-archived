@@ -498,6 +498,7 @@ _qed_mcp_cmd_and_union(struct qed_hwfn *p_hwfn,
 		spin_lock_bh(&p_hwfn->mcp_info->cmd_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!qed_mcp_has_pending_cmd(p_hwfn)) {
 			spin_unlock_bh(&p_hwfn->mcp_info->cmd_lock);
 			break;
@@ -511,6 +512,8 @@ _qed_mcp_cmd_and_union(struct qed_hwfn *p_hwfn,
 			goto err;
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!qed_mcp_has_pending_cmd(p_hwfn))
 			break;
 
@@ -519,6 +522,9 @@ _qed_mcp_cmd_and_union(struct qed_hwfn *p_hwfn,
 			break;
 		else if (rc != -EAGAIN)
 			goto err;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		spin_unlock_bh(&p_hwfn->mcp_info->cmd_lock);
@@ -537,8 +543,11 @@ _qed_mcp_cmd_and_union(struct qed_hwfn *p_hwfn,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock_bh(&p_hwfn->mcp_info->cmd_lock);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Send the mailbox command */
@@ -568,6 +577,7 @@ _qed_mcp_cmd_and_union(struct qed_hwfn *p_hwfn,
 		spin_lock_bh(&p_hwfn->mcp_info->cmd_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (p_cmd_elem->b_is_completed) {
 			spin_unlock_bh(&p_hwfn->mcp_info->cmd_lock);
 			break;
@@ -581,6 +591,8 @@ _qed_mcp_cmd_and_union(struct qed_hwfn *p_hwfn,
 			goto err;
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (p_cmd_elem->b_is_completed)
 			break;
 
@@ -589,6 +601,9 @@ _qed_mcp_cmd_and_union(struct qed_hwfn *p_hwfn,
 			break;
 		else if (rc != -EAGAIN)
 			goto err;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		spin_unlock_bh(&p_hwfn->mcp_info->cmd_lock);
@@ -611,7 +626,10 @@ _qed_mcp_cmd_and_union(struct qed_hwfn *p_hwfn,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock_bh(&p_hwfn->mcp_info->cmd_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	qed_mcp_cmd_del_elem(p_hwfn, p_cmd_elem);

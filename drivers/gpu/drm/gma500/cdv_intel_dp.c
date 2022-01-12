@@ -2122,7 +2122,11 @@ cdv_intel_dp_init(struct drm_device *dev, struct psb_intel_mode_device *mode_dev
 					       sizeof(intel_dp->dpcd));
 		cdv_intel_edp_panel_vdd_off(gma_encoder);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ret <= 0) {
+=======
+		if (ret == 0) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (ret == 0) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2131,7 +2135,11 @@ cdv_intel_dp_init(struct drm_device *dev, struct psb_intel_mode_device *mode_dev
 			cdv_intel_dp_encoder_destroy(encoder);
 			cdv_intel_dp_destroy(connector);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto err_connector;
+=======
+			goto err_priv;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto err_priv;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

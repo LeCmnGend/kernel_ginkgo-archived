@@ -513,6 +513,7 @@ static void inode_switch_wbs(struct inode *inode, int new_wb_id)
 	rcu_read_lock();
 	memcg_css = css_from_id(new_wb_id, &memory_cgrp_subsys);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (memcg_css && !css_tryget(memcg_css))
 		memcg_css = NULL;
 	rcu_read_unlock();
@@ -521,6 +522,11 @@ static void inode_switch_wbs(struct inode *inode, int new_wb_id)
 
 	isw->new_wb = wb_get_create(bdi, memcg_css, GFP_ATOMIC);
 	css_put(memcg_css);
+=======
+	if (memcg_css)
+		isw->new_wb = wb_get_create(bdi, memcg_css, GFP_ATOMIC);
+	rcu_read_unlock();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (memcg_css)
 		isw->new_wb = wb_get_create(bdi, memcg_css, GFP_ATOMIC);
@@ -1402,6 +1408,7 @@ __writeback_single_inode(struct inode *inode, struct writeback_control *wbc)
 
 	/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * If the inode has dirty timestamps and we need to write them, call
 	 * mark_inode_dirty_sync() to notify the filesystem about it and to
 	 * change I_DIRTY_TIME into I_DIRTY_SYNC.
@@ -1417,14 +1424,19 @@ __writeback_single_inode(struct inode *inode, struct writeback_control *wbc)
 	/*
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * Some filesystems may redirty the inode during the writeback
 	 * due to delalloc, clear dirty metadata flags right before
 	 * write_inode()
 	 */
 	spin_lock(&inode->i_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dirty = inode->i_state & I_DIRTY;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	dirty = inode->i_state & I_DIRTY;
 	if ((inode->i_state & I_DIRTY_TIME) &&
@@ -1435,6 +1447,9 @@ __writeback_single_inode(struct inode *inode, struct writeback_control *wbc)
 		dirty |= I_DIRTY_TIME;
 		trace_writeback_lazytime(inode);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	inode->i_state &= ~dirty;
 
@@ -1457,6 +1472,11 @@ __writeback_single_inode(struct inode *inode, struct writeback_control *wbc)
 	spin_unlock(&inode->i_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (dirty & I_DIRTY_TIME)
+		mark_inode_dirty_sync(inode);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (dirty & I_DIRTY_TIME)
 		mark_inode_dirty_sync(inode);
@@ -1998,7 +2018,11 @@ void wb_workfn(struct work_struct *work)
 	long pages_written;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	set_worker_desc("flush-%s", bdi_dev_name(wb->bdi));
+=======
+	set_worker_desc("flush-%s", dev_name(wb->bdi->dev));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	set_worker_desc("flush-%s", dev_name(wb->bdi->dev));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2119,7 +2143,10 @@ int dirtytime_interval_handler(struct ctl_table *table, int write,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static noinline void block_dump___mark_inode_dirty(struct inode *inode)
 {
 	if (inode->i_ino || strcmp(inode->i_sb->s_id, "bdev")) {
@@ -2142,6 +2169,9 @@ static noinline void block_dump___mark_inode_dirty(struct inode *inode)
 	}
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * __mark_inode_dirty -	internal function
@@ -2172,6 +2202,10 @@ static noinline void block_dump___mark_inode_dirty(struct inode *inode)
 void __mark_inode_dirty(struct inode *inode, int flags)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define I_DIRTY_INODE (I_DIRTY_SYNC | I_DIRTY_DATASYNC)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define I_DIRTY_INODE (I_DIRTY_SYNC | I_DIRTY_DATASYNC)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2185,7 +2219,11 @@ void __mark_inode_dirty(struct inode *inode, int flags)
 	 * dirty the inode itself
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (flags & (I_DIRTY_INODE | I_DIRTY_TIME)) {
+=======
+	if (flags & (I_DIRTY_SYNC | I_DIRTY_DATASYNC | I_DIRTY_TIME)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (flags & (I_DIRTY_SYNC | I_DIRTY_DATASYNC | I_DIRTY_TIME)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2211,6 +2249,12 @@ void __mark_inode_dirty(struct inode *inode, int flags)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (unlikely(block_dump > 1))
+		block_dump___mark_inode_dirty(inode);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(block_dump > 1))
 		block_dump___mark_inode_dirty(inode);
@@ -2268,7 +2312,11 @@ void __mark_inode_dirty(struct inode *inode, int flags)
 				inode->dirtied_time_when = jiffies;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (inode->i_state & I_DIRTY)
+=======
+			if (inode->i_state & (I_DIRTY_INODE | I_DIRTY_PAGES))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (inode->i_state & (I_DIRTY_INODE | I_DIRTY_PAGES))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2302,6 +2350,11 @@ void __mark_inode_dirty(struct inode *inode, int flags)
 out_unlock_inode:
 	spin_unlock(&inode->i_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+#undef I_DIRTY_INODE
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 #undef I_DIRTY_INODE

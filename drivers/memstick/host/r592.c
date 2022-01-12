@@ -763,10 +763,15 @@ static int r592_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 
 	dev->mmio = pci_ioremap_bar(pdev, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!dev->mmio) {
 		error = -ENOMEM;
 		goto error4;
 	}
+=======
+	if (!dev->mmio)
+		goto error4;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!dev->mmio)
 		goto error4;
@@ -798,6 +803,7 @@ static int r592_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 	r592_stop_dma(dev , 0);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	error = request_irq(dev->irq, &r592_irq, IRQF_SHARED,
 			  DRV_NAME, dev);
 	if (error)
@@ -807,12 +813,17 @@ static int r592_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 	error = memstick_add_host(host);
 	if (error)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (request_irq(dev->irq, &r592_irq, IRQF_SHARED,
 			  DRV_NAME, dev))
 		goto error6;
 
 	r592_update_card_detect(dev);
 	if (memstick_add_host(host))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto error7;
 

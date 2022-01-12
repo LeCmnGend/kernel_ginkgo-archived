@@ -949,11 +949,15 @@ extern void efi_map_pal_code (void);
 extern void efi_memmap_walk (efi_freemem_callback_t callback, void *arg);
 extern void efi_gettimeofday (struct timespec64 *ts);
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_EFI
 extern void efi_enter_virtual_mode (void);	/* switch EFI to virtual mode, if possible */
 #else
 static inline void efi_enter_virtual_mode (void) {}
 #endif
+=======
+extern void efi_enter_virtual_mode (void);	/* switch EFI to virtual mode, if possible */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern void efi_enter_virtual_mode (void);	/* switch EFI to virtual mode, if possible */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

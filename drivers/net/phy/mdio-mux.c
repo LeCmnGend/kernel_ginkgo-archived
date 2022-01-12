@@ -86,6 +86,7 @@ out:
 static int parent_count;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void mdio_mux_uninit_children(struct mdio_mux_parent_bus *pb)
 {
 	struct mdio_mux_child_bus *cb = pb->children;
@@ -97,6 +98,8 @@ static void mdio_mux_uninit_children(struct mdio_mux_parent_bus *pb)
 	}
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int mdio_mux_init(struct device *dev,
@@ -162,7 +165,11 @@ int mdio_mux_init(struct device *dev,
 		if (!cb) {
 			ret_val = -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto err_loop;
+=======
+			continue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			continue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -174,7 +181,12 @@ int mdio_mux_init(struct device *dev,
 		if (!cb->mii_bus) {
 			ret_val = -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto err_loop;
+=======
+			devm_kfree(dev, cb);
+			continue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			devm_kfree(dev, cb);
 			continue;
@@ -191,6 +203,7 @@ int mdio_mux_init(struct device *dev,
 		r = of_mdiobus_register(cb->mii_bus, child_bus_node);
 		if (r) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			mdiobus_free(cb->mii_bus);
 			if (r == -EPROBE_DEFER) {
 				ret_val = r;
@@ -201,11 +214,16 @@ int mdio_mux_init(struct device *dev,
 				"Error: Failed to register MDIO bus for child %pOF\n",
 				child_bus_node);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			dev_err(dev,
 				"Error: Failed to register MDIO bus for child %pOF\n",
 				child_bus_node);
 			mdiobus_free(cb->mii_bus);
 			devm_kfree(dev, cb);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		} else {
 			cb->next = pb->children;
@@ -220,10 +238,13 @@ int mdio_mux_init(struct device *dev,
 	dev_err(dev, "Error: No acceptable child buses found\n");
 	devm_kfree(dev, pb);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 err_loop:
 	mdio_mux_uninit_children(pb);
 	of_node_put(child_bus_node);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 err_pb_kz:
@@ -238,9 +259,12 @@ void mdio_mux_uninit(void *mux_handle)
 {
 	struct mdio_mux_parent_bus *pb = mux_handle;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	mdio_mux_uninit_children(pb);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct mdio_mux_child_bus *cb = pb->children;
 
 	while (cb) {
@@ -249,6 +273,9 @@ void mdio_mux_uninit(void *mux_handle)
 		cb = cb->next;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	put_device(&pb->mii_bus->dev);
 }

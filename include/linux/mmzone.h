@@ -445,7 +445,11 @@ struct zone {
 	 * touching zone->managed_pages and totalram_pages.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	atomic_long_t		managed_pages;
+=======
+	unsigned long		managed_pages;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long		managed_pages;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -538,11 +542,14 @@ enum pgdat_flags {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline unsigned long zone_managed_pages(struct zone *zone)
 {
 	return (unsigned long)atomic_long_read(&zone->managed_pages);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline unsigned long zone_end_pfn(const struct zone *zone)
@@ -738,13 +745,19 @@ typedef struct pglist_data {
 	struct lruvec		lruvec;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * The target ratio of ACTIVE_ANON to INACTIVE_ANON pages on
 	 * this node's LRU.  Maintained by the pageout code.
 	 */
 	unsigned int inactive_ratio;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long		flags;
 
@@ -809,8 +822,12 @@ static inline bool is_dev_zone(const struct zone *zone)
 
 void build_all_zonelists(pg_data_t *pgdat);
 <<<<<<< HEAD
+<<<<<<< HEAD
 void wakeup_kswapd(struct zone *zone, gfp_t gfp_mask, int order,
 		   enum zone_type classzone_idx);
+=======
+void wakeup_kswapd(struct zone *zone, int order, enum zone_type classzone_idx);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void wakeup_kswapd(struct zone *zone, int order, enum zone_type classzone_idx);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -872,7 +889,11 @@ unsigned long __init node_memmap_size_bytes(int, unsigned long, unsigned long);
 static inline bool managed_zone(struct zone *zone)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return zone_managed_pages(zone);
+=======
+	return zone->managed_pages;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return zone->managed_pages;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1328,7 +1349,11 @@ unsigned long __init node_memmap_size_bytes(int, unsigned long, unsigned long);
 /*
  * If it is possible to have holes within a MAX_ORDER_NR_PAGES, then we
 <<<<<<< HEAD
+<<<<<<< HEAD
  * need to check pfn validity within that MAX_ORDER_NR_PAGES block.
+=======
+ * need to check pfn validility within that MAX_ORDER_NR_PAGES block.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * need to check pfn validility within that MAX_ORDER_NR_PAGES block.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

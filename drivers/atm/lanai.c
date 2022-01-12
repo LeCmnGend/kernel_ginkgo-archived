@@ -2241,7 +2241,10 @@ static int lanai_dev_open(struct atm_dev *atmdev)
 #endif
 	iounmap(lanai->base);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	lanai->base = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
     error_pci:
@@ -2257,8 +2260,11 @@ static void lanai_dev_close(struct atm_dev *atmdev)
 {
 	struct lanai_dev *lanai = (struct lanai_dev *) atmdev->dev_data;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (lanai->base==NULL)
 		return;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	printk(KERN_INFO DEV_LABEL "(itf %d): shutting down interface\n",
@@ -2571,7 +2577,11 @@ static int lanai_init_one(struct pci_dev *pci,
 	int result;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	lanai = kzalloc(sizeof(*lanai), GFP_KERNEL);
+=======
+	lanai = kmalloc(sizeof(*lanai), GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	lanai = kmalloc(sizeof(*lanai), GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

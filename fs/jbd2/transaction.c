@@ -1915,9 +1915,12 @@ static void __jbd2_journal_temp_unlink_buffer(struct journal_head *jh)
 static void __jbd2_journal_unfile_buffer(struct journal_head *jh)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	J_ASSERT_JH(jh, jh->b_transaction != NULL);
 	J_ASSERT_JH(jh, jh->b_next_transaction == NULL);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__jbd2_journal_temp_unlink_buffer(jh);
@@ -2012,7 +2015,10 @@ int jbd2_journal_try_to_free_buffers(journal_t *journal,
 	struct buffer_head *head;
 	struct buffer_head *bh;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool has_write_io_error = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret = 0;
@@ -2040,6 +2046,7 @@ int jbd2_journal_try_to_free_buffers(journal_t *journal,
 		if (buffer_jbd(bh))
 			goto busy;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		/*
 		 * If we free a metadata buffer which has been failed to
@@ -2054,15 +2061,20 @@ int jbd2_journal_try_to_free_buffers(journal_t *journal,
 		}
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} while ((bh = bh->b_this_page) != head);
 
 	ret = try_to_free_buffers(page);
 
 busy:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (has_write_io_error)
 		jbd2_journal_abort(journal, -EIO);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
@@ -2493,6 +2505,7 @@ void __jbd2_journal_refile_buffer(struct journal_head *jh)
 	was_dirty = test_clear_buffer_jbddirty(bh);
 	__jbd2_journal_temp_unlink_buffer(jh);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/*
 	 * b_transaction must be set, otherwise the new b_transaction won't
@@ -2500,6 +2513,8 @@ void __jbd2_journal_refile_buffer(struct journal_head *jh)
 	 */
 	J_ASSERT_JH(jh, jh->b_transaction != NULL);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*

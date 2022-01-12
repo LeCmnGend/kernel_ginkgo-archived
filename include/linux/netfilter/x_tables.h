@@ -374,7 +374,11 @@ static inline unsigned int xt_write_recseq_begin(void)
 	 */
 	__this_cpu_add(xt_recseq.sequence, addend);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	smp_mb();
+=======
+	smp_wmb();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	smp_wmb();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -247,10 +247,15 @@ static int dm816x_usb_phy_probe(struct platform_device *pdev)
 	pm_runtime_enable(phy->dev);
 	generic_phy = devm_phy_create(phy->dev, NULL, &ops);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (IS_ERR(generic_phy)) {
 		error = PTR_ERR(generic_phy);
 		goto clk_unprepare;
 	}
+=======
+	if (IS_ERR(generic_phy))
+		return PTR_ERR(generic_phy);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (IS_ERR(generic_phy))
 		return PTR_ERR(generic_phy);
@@ -261,10 +266,15 @@ static int dm816x_usb_phy_probe(struct platform_device *pdev)
 	phy_provider = devm_of_phy_provider_register(phy->dev,
 						     of_phy_simple_xlate);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (IS_ERR(phy_provider)) {
 		error = PTR_ERR(phy_provider);
 		goto clk_unprepare;
 	}
+=======
+	if (IS_ERR(phy_provider))
+		return PTR_ERR(phy_provider);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (IS_ERR(phy_provider))
 		return PTR_ERR(phy_provider);
@@ -274,11 +284,14 @@ static int dm816x_usb_phy_probe(struct platform_device *pdev)
 
 	return 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 clk_unprepare:
 	pm_runtime_disable(phy->dev);
 	clk_unprepare(phy->refclk);
 	return error;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

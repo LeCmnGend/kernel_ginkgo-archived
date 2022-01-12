@@ -337,6 +337,7 @@ static int put_pfn(unsigned long pfn, int prot)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int follow_fault_pfn(struct vm_area_struct *vma, struct mm_struct *mm,
 			    unsigned long vaddr, unsigned long *pfn,
 			    bool write_fault)
@@ -363,6 +364,8 @@ static int follow_fault_pfn(struct vm_area_struct *vma, struct mm_struct *mm,
 	return ret;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int vaddr_get_pfn(struct mm_struct *mm, unsigned long vaddr,
@@ -407,6 +410,7 @@ static int vaddr_get_pfn(struct mm_struct *mm, unsigned long vaddr,
 	vaddr = untagged_addr(vaddr);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 retry:
 	vma = find_vma_intersection(mm, vaddr, vaddr + 1);
 
@@ -418,12 +422,17 @@ retry:
 		if (!ret && !is_invalid_reserved_pfn(*pfn))
 			ret = -EFAULT;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	vma = find_vma_intersection(mm, vaddr, vaddr + 1);
 
 	if (vma && vma->vm_flags & VM_PFNMAP) {
 		if (!follow_pfn(vma, vaddr, pfn) &&
 		    is_invalid_reserved_pfn(*pfn))
 			ret = 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -644,8 +653,12 @@ static int vfio_iommu_type1_pin_pages(void *iommu_data,
 		ret = vfio_add_to_pfn_list(dma, iova, phys_pfn[i]);
 		if (ret) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (put_pfn(phys_pfn[i], dma->prot) && do_accounting)
 				vfio_lock_acct(dma, -1, true);
+=======
+			vfio_unpin_page_external(dma, iova, do_accounting);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			vfio_unpin_page_external(dma, iova, do_accounting);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1136,7 +1149,11 @@ static int vfio_iommu_replay(struct vfio_iommu *iommu,
 			     struct vfio_domain *domain)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct vfio_domain *d = NULL;
+=======
+	struct vfio_domain *d;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct vfio_domain *d;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1146,10 +1163,14 @@ static int vfio_iommu_replay(struct vfio_iommu *iommu,
 
 	/* Arbitrarily pick the first domain in the list for lookups */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!list_empty(&iommu->domain_list))
 		d = list_first_entry(&iommu->domain_list,
 				     struct vfio_domain, next);
 
+=======
+	d = list_first_entry(&iommu->domain_list, struct vfio_domain, next);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	d = list_first_entry(&iommu->domain_list, struct vfio_domain, next);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1171,11 +1192,14 @@ static int vfio_iommu_replay(struct vfio_iommu *iommu,
 				dma_addr_t i;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if (WARN_ON(!d)) { /* mapped w/o a domain?! */
 					ret = -EINVAL;
 					goto unwind;
 				}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				phys = iommu_iova_to_phys(d->domain, iova);
@@ -1208,7 +1232,11 @@ static int vfio_iommu_replay(struct vfio_iommu *iommu,
 					WARN_ON(!npage);
 					ret = (int)npage;
 <<<<<<< HEAD
+<<<<<<< HEAD
 					goto unwind;
+=======
+					return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					return ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1220,6 +1248,7 @@ static int vfio_iommu_replay(struct vfio_iommu *iommu,
 
 			ret = iommu_map(domain->domain, iova, phys,
 					size, dma->prot | domain->prot);
+<<<<<<< HEAD
 <<<<<<< HEAD
 			if (ret) {
 				if (!dma->iommu_mapped)
@@ -1283,6 +1312,8 @@ unwind:
 
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (ret)
 				return ret;
 
@@ -1291,6 +1322,9 @@ unwind:
 		dma->iommu_mapped = true;
 	}
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

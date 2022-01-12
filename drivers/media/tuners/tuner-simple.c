@@ -500,7 +500,11 @@ static int simple_radio_bandswitch(struct dvb_frontend *fe, u8 *buffer)
 	case TUNER_YMEC_TVF_5533MF:
 		tuner_dbg("This tuner doesn't have FM. Most cards have a TEA5767 for FM\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -EINVAL;
+=======
+		return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -705,8 +709,12 @@ static int simple_set_radio_freq(struct dvb_frontend *fe,
 
 	/* Bandswitch byte */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (simple_radio_bandswitch(fe, &buffer[0]))
 		return 0;
+=======
+	simple_radio_bandswitch(fe, &buffer[0]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	simple_radio_bandswitch(fe, &buffer[0]);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

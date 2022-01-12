@@ -54,15 +54,21 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int drm_mode_create_dumb_ioctl(struct drm_device *dev,
 			       void *data, struct drm_file *file_priv)
 {
 	struct drm_mode_create_dumb *args = data;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int drm_mode_create_dumb(struct drm_device *dev,
 			 struct drm_mode_create_dumb *args,
 			 struct drm_file *file_priv)
 {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32 cpp, stride, size;
 
@@ -100,13 +106,19 @@ int drm_mode_create_dumb(struct drm_device *dev,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int drm_mode_create_dumb_ioctl(struct drm_device *dev,
 			       void *data, struct drm_file *file_priv)
 {
 	return drm_mode_create_dumb(dev, data, file_priv);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * drm_mode_mmap_dumb_ioctl - create an mmap offset for a dumb backing storage buffer
@@ -140,6 +152,7 @@ int drm_mode_mmap_dumb_ioctl(struct drm_device *dev,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int drm_mode_destroy_dumb_ioctl(struct drm_device *dev,
 				void *data, struct drm_file *file_priv)
 {
@@ -150,10 +163,16 @@ int drm_mode_destroy_dumb(struct drm_device *dev, u32 handle,
 			  struct drm_file *file_priv)
 {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+int drm_mode_destroy_dumb(struct drm_device *dev, u32 handle,
+			  struct drm_file *file_priv)
+{
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!dev->driver->dumb_create)
 		return -ENOSYS;
 
 	if (dev->driver->dumb_destroy)
+<<<<<<< HEAD
 <<<<<<< HEAD
 		return dev->driver->dumb_destroy(file_priv, dev, args->handle);
 	else
@@ -161,6 +180,8 @@ int drm_mode_destroy_dumb(struct drm_device *dev, u32 handle,
 }
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return dev->driver->dumb_destroy(file_priv, dev, handle);
 	else
 		return drm_gem_dumb_destroy(file_priv, dev, handle);
@@ -173,4 +194,7 @@ int drm_mode_destroy_dumb_ioctl(struct drm_device *dev,
 
 	return drm_mode_destroy_dumb(dev, args->handle, file_priv);
 }
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

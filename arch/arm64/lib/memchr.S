@@ -1,8 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* SPDX-License-Identifier: GPL-2.0-only */
 /*
  * Copyright (C) 2021 Arm Ltd.
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Based on arch/arm/lib/memchr.S
  *
@@ -20,6 +23,9 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 
@@ -36,6 +42,7 @@
  * Returns:
  *	x0 - address of first occurrence of 'c' or 0
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 #define L(label) .L ## label
@@ -94,6 +101,8 @@ L(not_found):
 	ret
 SYM_FUNC_END_PI(memchr)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 WEAK(memchr)
 	and	w1, w1, #0xff
 1:	subs	x2, x2, #1
@@ -106,4 +115,7 @@ WEAK(memchr)
 2:	mov	x0, #0
 	ret
 ENDPIPROC(memchr)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

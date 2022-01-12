@@ -978,8 +978,11 @@ static acpi_status hpet_resources(struct acpi_resource *res, void *data)
 		hdp->hd_phys_address = addr.address.minimum;
 		hdp->hd_address = ioremap(addr.address.minimum, addr.address.address_length);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!hdp->hd_address)
 			return AE_ERROR;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -996,8 +999,11 @@ static acpi_status hpet_resources(struct acpi_resource *res, void *data)
 		hdp->hd_address = ioremap(fixmem32->address,
 						HPET_RANGE_SIZE);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!hdp->hd_address)
 			return AE_ERROR;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

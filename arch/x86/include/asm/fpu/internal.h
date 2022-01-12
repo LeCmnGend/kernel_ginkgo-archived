@@ -104,7 +104,10 @@ static inline void fpstate_init_fxstate(struct fxregs_state *fx)
 extern void fpstate_sanitize_xstate(struct fpu *fpu);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Returns 0 or the negated trap number, which results in -EFAULT for #PF */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define user_insn(insn, output, input...)				\
@@ -115,6 +118,7 @@ extern void fpstate_sanitize_xstate(struct fpu *fpu);
 									\
 	asm volatile(ASM_STAC "\n"					\
 <<<<<<< HEAD
+<<<<<<< HEAD
 		     "1: " #insn "\n"					\
 		     "2: " ASM_CLAC "\n"				\
 		     ".section .fixup,\"ax\"\n"				\
@@ -124,6 +128,8 @@ extern void fpstate_sanitize_xstate(struct fpu *fpu);
 		     _ASM_EXTABLE_FAULT(1b, 3b)				\
 		     : [err] "=a" (err), output				\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		     "1:" #insn "\n\t"					\
 		     "2: " ASM_CLAC "\n"				\
 		     ".section .fixup,\"ax\"\n"				\
@@ -132,6 +138,9 @@ extern void fpstate_sanitize_xstate(struct fpu *fpu);
 		     ".previous\n"					\
 		     _ASM_EXTABLE(1b, 3b)				\
 		     : [err] "=r" (err), output				\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		     : "0"(0), input);					\
 	err;								\
@@ -230,6 +239,7 @@ static inline void copy_fxregs_to_kernel(struct fpu *fpu)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void fxsave(struct fxregs_state *fx)
 {
 	if (IS_ENABLED(CONFIG_X86_32))
@@ -240,6 +250,8 @@ static inline void fxsave(struct fxregs_state *fx)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* These macros all use (%edi)/(%rdi) as the single memory argument. */
 #define XSAVE		".byte " REX_PREFIX "0x0f,0xae,0x27"
 #define XSAVEOPT	".byte " REX_PREFIX "0x0f,0xae,0x37"
@@ -248,10 +260,13 @@ static inline void fxsave(struct fxregs_state *fx)
 #define XRSTORS		".byte " REX_PREFIX "0x0f,0xc7,0x1f"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * After this @err contains 0 on success or the negated trap number when
  * the operation raises an exception. For faults this results in -EFAULT.
  */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define XSTATE_OP(op, st, lmask, hmask, err)				\
@@ -260,17 +275,23 @@ static inline void fxsave(struct fxregs_state *fx)
 		     "2:\n\t"						\
 		     ".pushsection .fixup,\"ax\"\n\t"			\
 <<<<<<< HEAD
+<<<<<<< HEAD
 		     "3: negl %%eax\n\t"				\
 		     "jmp 2b\n\t"					\
 		     ".popsection\n\t"					\
 		     _ASM_EXTABLE_FAULT(1b, 3b)				\
 		     : [err] "=a" (err)					\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		     "3: movl $-2,%[err]\n\t"				\
 		     "jmp 2b\n\t"					\
 		     ".popsection\n\t"					\
 		     _ASM_EXTABLE(1b, 3b)				\
 		     : [err] "=r" (err)					\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		     : "D" (st), "m" (*st), "a" (lmask), "d" (hmask)	\
 		     : "memory")
@@ -324,7 +345,10 @@ static inline void fxsave(struct fxregs_state *fx)
  * up and alternative can not be used yet.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void copy_xregs_to_kernel_booting(struct xregs_state *xstate)
 {
 	u64 mask = -1;
@@ -347,6 +371,9 @@ static inline void copy_xregs_to_kernel_booting(struct xregs_state *xstate)
  * This function is called only during boot time when x86 caps are not set
  * up and alternative can not be used yet.
  */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void copy_kernel_to_xregs_booting(struct xregs_state *xstate)
 {

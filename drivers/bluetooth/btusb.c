@@ -2615,11 +2615,14 @@ static int btusb_setup_qca_download_fw(struct hci_dev *hdev,
 	count -= size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* ep2 need time to switch from function acl to function dfu,
 	 * so we add 20ms delay here.
 	 */
 	msleep(20);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	while (count) {

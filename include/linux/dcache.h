@@ -77,12 +77,17 @@ extern struct dentry_stat_t dentry_stat;
  */
 #ifdef CONFIG_64BIT
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_ARM64
 # define DNAME_INLINE_LEN 32 + 192 /* 384 bytes */
 #else
 # define DNAME_INLINE_LEN 32 /* 192 bytes */
 #endif
 #else /* CONFIG_64BIT */
+=======
+# define DNAME_INLINE_LEN 32 /* 192 bytes */
+#else
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 # define DNAME_INLINE_LEN 32 /* 192 bytes */
 #else

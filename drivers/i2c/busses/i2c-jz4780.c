@@ -761,10 +761,14 @@ static int jz4780_i2c_probe(struct platform_device *pdev)
 	jz4780_i2c_writew(i2c, JZ4780_I2C_INTM, 0x0);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = platform_get_irq(pdev, 0);
 	if (ret < 0)
 		goto err;
 	i2c->irq = ret;
+=======
+	i2c->irq = platform_get_irq(pdev, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	i2c->irq = platform_get_irq(pdev, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -383,13 +383,19 @@ static void cdns_i2c_mrecv(struct cdns_i2c *id)
 	 * 'hold bus' bit if it is greater than FIFO depth.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (id->recv_count > CDNS_I2C_FIFO_DEPTH)
 		ctrl_reg |= CDNS_I2C_CR_HOLD;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if ((id->recv_count > CDNS_I2C_FIFO_DEPTH)  || id->bus_hold_flag)
 		ctrl_reg |= CDNS_I2C_CR_HOLD;
 	else
 		ctrl_reg = ctrl_reg & ~CDNS_I2C_CR_HOLD;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	cdns_i2c_writereg(ctrl_reg, CDNS_I2C_CR_OFFSET);
@@ -448,14 +454,20 @@ static void cdns_i2c_msend(struct cdns_i2c *id)
 	 * 'hold bus' bit if it is greater than FIFO depth.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (id->send_count > CDNS_I2C_FIFO_DEPTH)
 		ctrl_reg |= CDNS_I2C_CR_HOLD;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if ((id->send_count > CDNS_I2C_FIFO_DEPTH) || id->bus_hold_flag)
 		ctrl_reg |= CDNS_I2C_CR_HOLD;
 	else
 		ctrl_reg = ctrl_reg & ~CDNS_I2C_CR_HOLD;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cdns_i2c_writereg(ctrl_reg, CDNS_I2C_CR_OFFSET);
 
@@ -922,10 +934,14 @@ static int cdns_i2c_probe(struct platform_device *pdev)
 		return PTR_ERR(id->membase);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = platform_get_irq(pdev, 0);
 	if (ret < 0)
 		return ret;
 	id->irq = ret;
+=======
+	id->irq = platform_get_irq(pdev, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	id->irq = platform_get_irq(pdev, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

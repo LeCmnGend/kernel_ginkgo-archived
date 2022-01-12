@@ -557,6 +557,7 @@ static const struct dmi_system_id video_dmi_table[] = {
 		},
 	},
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{
 	 .callback = video_set_report_key_events,
 	 .driver_data = (void *)((uintptr_t)REPORT_BRIGHTNESS_KEY_EVENTS),
@@ -566,6 +567,8 @@ static const struct dmi_system_id video_dmi_table[] = {
 		DMI_MATCH(DMI_PRODUCT_NAME, "Vostro 3350"),
 		},
 	},
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*

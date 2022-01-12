@@ -23,6 +23,12 @@
 #include <linux/swap.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#ifdef CONFIG_HAVE_RCU_TABLE_FREE
+
+#define tlb_remove_entry(tlb, entry)	tlb_remove_table(tlb, entry)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #ifdef CONFIG_HAVE_RCU_TABLE_FREE
 
@@ -33,9 +39,15 @@ static inline void __tlb_remove_table(void *_table)
 	free_page_and_swap_cache((struct page *)_table);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 #define tlb_flush tlb_flush
 static void tlb_flush(struct mmu_gather *tlb);
+=======
+#else
+#define tlb_remove_entry(tlb, entry)	tlb_remove_page(tlb, entry)
+#endif /* CONFIG_HAVE_RCU_TABLE_FREE */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #else
 #define tlb_remove_entry(tlb, entry)	tlb_remove_page(tlb, entry)
@@ -47,6 +59,7 @@ static void tlb_flush(struct mmu_gather *tlb);
 static inline void tlb_flush(struct mmu_gather *tlb)
 {
 	struct vm_area_struct vma = { .vm_mm = tlb->mm, };
+<<<<<<< HEAD
 <<<<<<< HEAD
 	bool last_level = !tlb->freed_tables;
 	unsigned long stride = tlb_get_unmap_size(tlb);
@@ -64,6 +77,8 @@ static inline void tlb_flush(struct mmu_gather *tlb)
 
 	__flush_tlb_range(&vma, tlb->start, tlb->end, stride, last_level);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*
 	 * The ASID allocator will either invalidate the ASID or mark
@@ -78,6 +93,9 @@ static inline void tlb_flush(struct mmu_gather *tlb)
 	 * TLBI is sufficient here.
 	 */
 	__flush_tlb_range(&vma, tlb->start, tlb->end, true);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -85,8 +103,14 @@ static inline void __pte_free_tlb(struct mmu_gather *tlb, pgtable_t pte,
 				  unsigned long addr)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pgtable_page_dtor(pte);
 	tlb_remove_table(tlb, pte);
+=======
+	__flush_tlb_pgtable(tlb->mm, addr);
+	pgtable_page_dtor(pte);
+	tlb_remove_entry(tlb, pte);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__flush_tlb_pgtable(tlb->mm, addr);
 	pgtable_page_dtor(pte);
@@ -99,10 +123,15 @@ static inline void __pmd_free_tlb(struct mmu_gather *tlb, pmd_t *pmdp,
 				  unsigned long addr)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct page *page = virt_to_page(pmdp);
 
 	pgtable_pmd_page_dtor(page);
 	tlb_remove_table(tlb, page);
+=======
+	__flush_tlb_pgtable(tlb->mm, addr);
+	tlb_remove_entry(tlb, virt_to_page(pmdp));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__flush_tlb_pgtable(tlb->mm, addr);
 	tlb_remove_entry(tlb, virt_to_page(pmdp));
@@ -115,7 +144,12 @@ static inline void __pud_free_tlb(struct mmu_gather *tlb, pud_t *pudp,
 				  unsigned long addr)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tlb_remove_table(tlb, virt_to_page(pudp));
+=======
+	__flush_tlb_pgtable(tlb->mm, addr);
+	tlb_remove_entry(tlb, virt_to_page(pudp));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__flush_tlb_pgtable(tlb->mm, addr);
 	tlb_remove_entry(tlb, virt_to_page(pudp));

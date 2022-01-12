@@ -405,8 +405,13 @@ static const struct regmap_config cs42l42_regmap = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static DECLARE_TLV_DB_SCALE(adc_tlv, -9700, 100, true);
 static DECLARE_TLV_DB_SCALE(mixer_tlv, -6300, 100, true);
+=======
+static DECLARE_TLV_DB_SCALE(adc_tlv, -9600, 100, false);
+static DECLARE_TLV_DB_SCALE(mixer_tlv, -6200, 100, false);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static DECLARE_TLV_DB_SCALE(adc_tlv, -9600, 100, false);
 static DECLARE_TLV_DB_SCALE(mixer_tlv, -6200, 100, false);
@@ -430,11 +435,14 @@ static SOC_ENUM_SINGLE_DECL(cs42l42_wnf3_freq_enum, CS42L42_ADC_WNF_HPF_CTL,
 			    cs42l42_wnf3_freq_text);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const struct snd_kcontrol_new cs42l42_snd_controls[] = {
 	/* ADC Volume and Filter Controls */
 	SOC_SINGLE("ADC Notch Switch", CS42L42_ADC_CTL,
 				CS42L42_ADC_NOTCH_DIS_SHIFT, true, true),
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static const char * const cs42l42_wnf05_freq_text[] = {
 	"280Hz", "315Hz", "350Hz", "385Hz",
 	"420Hz", "455Hz", "490Hz", "525Hz"
@@ -448,6 +456,9 @@ static const struct snd_kcontrol_new cs42l42_snd_controls[] = {
 	/* ADC Volume and Filter Controls */
 	SOC_SINGLE("ADC Notch Switch", CS42L42_ADC_CTL,
 				CS42L42_ADC_NOTCH_DIS_SHIFT, true, false),
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	SOC_SINGLE("ADC Weak Force Switch", CS42L42_ADC_CTL,
 				CS42L42_ADC_FORCE_WEAK_VCM_SHIFT, true, false),
@@ -456,7 +467,12 @@ static const struct snd_kcontrol_new cs42l42_snd_controls[] = {
 	SOC_SINGLE("ADC Boost Switch", CS42L42_ADC_CTL,
 				CS42L42_ADC_DIG_BOOST_SHIFT, true, false),
 <<<<<<< HEAD
+<<<<<<< HEAD
 	SOC_SINGLE_S8_TLV("ADC Volume", CS42L42_ADC_VOLUME, -97, 12, adc_tlv),
+=======
+	SOC_SINGLE_SX_TLV("ADC Volume", CS42L42_ADC_VOLUME,
+				CS42L42_ADC_VOL_SHIFT, 0xA0, 0x6C, adc_tlv),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	SOC_SINGLE_SX_TLV("ADC Volume", CS42L42_ADC_VOLUME,
 				CS42L42_ADC_VOL_SHIFT, 0xA0, 0x6C, adc_tlv),
@@ -468,6 +484,10 @@ static const struct snd_kcontrol_new cs42l42_snd_controls[] = {
 	SOC_ENUM("HPF Corner Freq", cs42l42_hpf_freq_enum),
 	SOC_ENUM("WNF 3dB Freq", cs42l42_wnf3_freq_enum),
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	SOC_ENUM("WNF 05dB Freq", cs42l42_wnf05_freq_enum),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	SOC_ENUM("WNF 05dB Freq", cs42l42_wnf05_freq_enum),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -482,7 +502,11 @@ static const struct snd_kcontrol_new cs42l42_snd_controls[] = {
 	SOC_DOUBLE_R_TLV("Mixer Volume", CS42L42_MIXER_CHA_VOL,
 			 CS42L42_MIXER_CHB_VOL, CS42L42_MIXER_CH_VOL_SHIFT,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				0x3f, 1, mixer_tlv)
+=======
+				0x3e, 1, mixer_tlv)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				0x3e, 1, mixer_tlv)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -818,6 +842,10 @@ static int cs42l42_set_dai_fmt(struct snd_soc_dai *codec_dai, unsigned int fmt)
 	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
 	case SND_SOC_DAIFMT_I2S:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	case SND_SOC_DAIFMT_LEFT_J:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	case SND_SOC_DAIFMT_LEFT_J:
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1836,7 +1864,11 @@ static int cs42l42_i2c_probe(struct i2c_client *i2c_client,
 		gpiod_set_value_cansleep(cs42l42->reset_gpio, 1);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	usleep_range(CS42L42_BOOT_TIME_US, CS42L42_BOOT_TIME_US * 2);
+=======
+	mdelay(3);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mdelay(3);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1967,7 +1999,10 @@ static int cs42l42_runtime_resume(struct device *dev)
 
 	gpiod_set_value_cansleep(cs42l42->reset_gpio, 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	usleep_range(CS42L42_BOOT_TIME_US, CS42L42_BOOT_TIME_US * 2);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

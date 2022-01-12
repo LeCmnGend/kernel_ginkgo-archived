@@ -698,6 +698,7 @@ static int vfat_find(struct inode *dir, const struct qstr *qname,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * (nfsd's) anonymous disconnected dentry?
  * NOTE: !IS_ROOT() is not anonymous (I.e. d_splice_alias() did the job).
@@ -707,6 +708,8 @@ static int vfat_d_anon_disconn(struct dentry *dentry)
 	return IS_ROOT(dentry) && (dentry->d_flags & DCACHE_DISCONNECTED);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct dentry *vfat_lookup(struct inode *dir, struct dentry *dentry,
@@ -742,8 +745,12 @@ static struct dentry *vfat_lookup(struct inode *dir, struct dentry *dentry,
 	 * FS is not corrupted (especially double linked dir).
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (alias && alias->d_parent == dentry->d_parent &&
 	    !vfat_d_anon_disconn(alias)) {
+=======
+	if (alias && alias->d_parent == dentry->d_parent) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (alias && alias->d_parent == dentry->d_parent) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -755,7 +762,10 @@ static struct dentry *vfat_lookup(struct inode *dir, struct dentry *dentry,
 		 * Switch to new one for reason of locality if possible.
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		BUG_ON(d_unhashed(alias));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!S_ISDIR(inode->i_mode))

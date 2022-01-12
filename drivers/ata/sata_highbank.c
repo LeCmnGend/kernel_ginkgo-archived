@@ -484,6 +484,7 @@ static int ahci_highbank_probe(struct platform_device *pdev)
 
 	irq = platform_get_irq(pdev, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (irq < 0) {
 		dev_err(dev, "no irq\n");
 		return irq;
@@ -491,10 +492,15 @@ static int ahci_highbank_probe(struct platform_device *pdev)
 	if (!irq)
 		return -EINVAL;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (irq <= 0) {
 		dev_err(dev, "no irq\n");
 		return -EINVAL;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	hpriv = devm_kzalloc(dev, sizeof(*hpriv), GFP_KERNEL);

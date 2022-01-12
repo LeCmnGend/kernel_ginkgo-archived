@@ -995,7 +995,11 @@ start:
 		}
 		if (cluster) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (si->flags & SWP_BLKDEV)
+=======
+			if (!(si->flags & SWP_FILE))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (!(si->flags & SWP_FILE))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2337,7 +2341,11 @@ sector_t map_swap_page(struct page *page, struct block_device **bdev)
 	swp_entry_t entry;
 	entry.val = page_private(page);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return map_swap_entry(entry, bdev) << (PAGE_SHIFT - 9);
+=======
+	return map_swap_entry(entry, bdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return map_swap_entry(entry, bdev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2867,7 +2875,10 @@ static struct swap_info_struct *alloc_swap_info(void)
 {
 	struct swap_info_struct *p;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct swap_info_struct *defer = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned int type;
@@ -2900,7 +2911,11 @@ static struct swap_info_struct *alloc_swap_info(void)
 		nr_swapfiles++;
 	} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		defer = p;
+=======
+		kvfree(p);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kvfree(p);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2917,7 +2932,10 @@ static struct swap_info_struct *alloc_swap_info(void)
 	p->flags = SWP_USED;
 	spin_unlock(&swap_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kvfree(defer);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_init(&p->lock);

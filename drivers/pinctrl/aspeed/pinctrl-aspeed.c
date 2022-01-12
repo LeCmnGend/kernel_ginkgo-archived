@@ -459,6 +459,7 @@ static bool aspeed_expr_is_gpio(const struct aspeed_sig_expr *expr)
 {
 	/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * The signal type is GPIO if the signal name has "GPI" as a prefix.
 	 * strncmp (rather than strcmp) is used to implement the prefix
 	 * requirement.
@@ -468,6 +469,8 @@ static bool aspeed_expr_is_gpio(const struct aspeed_sig_expr *expr)
 	 */
 	return strncmp(expr->signal, "GPI", 3) == 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * The signal type is GPIO if the signal name has "GPIO" as a prefix.
 	 * strncmp (rather than strcmp) is used to implement the prefix
 	 * requirement.
@@ -475,6 +478,9 @@ static bool aspeed_expr_is_gpio(const struct aspeed_sig_expr *expr)
 	 * expr->signal might look like "GPIOT3" in the GPIO case.
 	 */
 	return strncmp(expr->signal, "GPIO", 4) == 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

@@ -12,8 +12,11 @@ config BTRFS_FS
 	select XOR_BLOCKS
 	select SRCU
 <<<<<<< HEAD
+<<<<<<< HEAD
 	depends on !PPC_256K_PAGES	# powerpc
 	depends on !PAGE_SIZE_256KB	# hexagon
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

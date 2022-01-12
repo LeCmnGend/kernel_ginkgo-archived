@@ -331,7 +331,11 @@ static int madvise_free_pte_range(pmd_t *pmd, unsigned long addr,
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tlb_change_page_size(tlb, PAGE_SIZE);
+=======
+	tlb_remove_check_page_size_change(tlb, PAGE_SIZE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	tlb_remove_check_page_size_change(tlb, PAGE_SIZE);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

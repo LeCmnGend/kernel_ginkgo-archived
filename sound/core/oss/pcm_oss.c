@@ -709,8 +709,11 @@ static int snd_pcm_oss_period_size(struct snd_pcm_substream *substream,
 	oss_buffer_size = snd_pcm_plug_client_size(substream,
 						   snd_pcm_hw_param_value_max(slave_params, SNDRV_PCM_HW_PARAM_BUFFER_SIZE, NULL)) * oss_frame_size;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!oss_buffer_size)
 		return -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	oss_buffer_size = rounddown_pow_of_two(oss_buffer_size);
@@ -749,6 +752,7 @@ static int snd_pcm_oss_period_size(struct snd_pcm_substream *substream,
 	min_period_size = snd_pcm_plug_client_size(substream,
 						   snd_pcm_hw_param_value_min(slave_params, SNDRV_PCM_HW_PARAM_PERIOD_SIZE, NULL));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (min_period_size) {
 		min_period_size *= oss_frame_size;
 		min_period_size = roundup_pow_of_two(min_period_size);
@@ -765,6 +769,8 @@ static int snd_pcm_oss_period_size(struct snd_pcm_substream *substream,
 			oss_period_size = max_period_size;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	min_period_size *= oss_frame_size;
 	min_period_size = roundup_pow_of_two(min_period_size);
 	if (oss_period_size < min_period_size)
@@ -776,6 +782,9 @@ static int snd_pcm_oss_period_size(struct snd_pcm_substream *substream,
 	max_period_size = rounddown_pow_of_two(max_period_size);
 	if (oss_period_size > max_period_size)
 		oss_period_size = max_period_size;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	oss_periods = oss_buffer_size / oss_period_size;
@@ -1973,7 +1982,10 @@ static int snd_pcm_oss_set_fragment1(struct snd_pcm_substream *substream, unsign
 {
 	struct snd_pcm_runtime *runtime;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int fragshift;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1981,10 +1993,14 @@ static int snd_pcm_oss_set_fragment1(struct snd_pcm_substream *substream, unsign
 	if (runtime->oss.subdivision || runtime->oss.fragshift)
 		return -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	fragshift = val & 0xffff;
 	if (fragshift >= 31)
 		return -EINVAL;
 	runtime->oss.fragshift = fragshift;
+=======
+	runtime->oss.fragshift = val & 0xffff;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	runtime->oss.fragshift = val & 0xffff;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

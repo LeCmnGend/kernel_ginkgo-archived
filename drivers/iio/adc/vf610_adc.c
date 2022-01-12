@@ -181,11 +181,15 @@ struct vf610_adc {
 
 	struct completion completion;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Ensure the timestamp is naturally aligned */
 	struct {
 		u16 chan;
 		s64 timestamp __aligned(8);
 	} scan;
+=======
+	u16 buffer[8];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u16 buffer[8];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -601,9 +605,15 @@ static irqreturn_t vf610_adc_isr(int irq, void *dev_id)
 		info->value = vf610_adc_read_data(info);
 		if (iio_buffer_enabled(indio_dev)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			info->scan.chan = info->value;
 			iio_push_to_buffers_with_timestamp(indio_dev,
 					&info->scan,
+=======
+			info->buffer[0] = info->value;
+			iio_push_to_buffers_with_timestamp(indio_dev,
+					info->buffer,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			info->buffer[0] = info->value;
 			iio_push_to_buffers_with_timestamp(indio_dev,

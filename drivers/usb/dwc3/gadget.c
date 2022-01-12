@@ -3,7 +3,10 @@
  *
  * Copyright (C) 2010-2011 Texas Instruments Incorporated - http://www.ti.com
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -41,7 +44,10 @@
 #include "io.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define DWC3_SOFT_RESET_TIMEOUT	10 /* 10 msec */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void dwc3_gadget_wakeup_interrupt(struct dwc3 *dwc, bool remote_wakeup);
@@ -736,6 +742,7 @@ static int dwc3_gadget_set_ep_config(struct dwc3 *dwc, struct dwc3_ep *dep,
 
 	if (desc->bInterval) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		u8 bInterval_m1;
 
 		/*
@@ -753,6 +760,10 @@ static int dwc3_gadget_set_ep_config(struct dwc3 *dwc, struct dwc3_ep *dep,
 			dep->interval = 1 << (desc->bInterval - 1);
 
 		params.param1 |= DWC3_DEPCFG_BINTERVAL_M1(bInterval_m1);
+=======
+		params.param1 |= DWC3_DEPCFG_BINTERVAL_M1(desc->bInterval - 1);
+		dep->interval = 1 << (desc->bInterval - 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		params.param1 |= DWC3_DEPCFG_BINTERVAL_M1(desc->bInterval - 1);
 		dep->interval = 1 << (desc->bInterval - 1);
@@ -2000,7 +2011,10 @@ static int dwc3_gadget_wakeup_int(struct dwc3 *dwc)
 	case DWC3_LINK_STATE_RX_DET:	/* in HS, means Early Suspend */
 	case DWC3_LINK_STATE_U3:	/* in HS, means SUSPEND */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case DWC3_LINK_STATE_U2:	/* in HS, means Sleep (L1) */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case DWC3_LINK_STATE_RESUME:
@@ -2176,12 +2190,15 @@ done:
 	msleep(50);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Soft reset clears the block on the doorbell,
 	 * set it back to prevent unwanted writes to the doorbell.
 	 */
 	dwc3_notify_event(dwc, DWC3_CONTROLLER_NOTIFY_CLEAR_DB, 0);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
@@ -2194,7 +2211,11 @@ static int dwc3_gadget_run_stop(struct dwc3 *dwc, int is_on, int suspend)
 	u32			reg, reg1;
 	u32			timeout = 1500;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ktime_t			start, diff;
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2209,6 +2230,7 @@ static int dwc3_gadget_run_stop(struct dwc3 *dwc, int is_on, int suspend)
 		if (dwc->revision >= DWC3_REVISION_194A)
 			reg &= ~DWC3_DCTL_KEEP_CONNECT;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 		start = ktime_get(); 
 		/* issue device SoftReset */ 
@@ -2228,6 +2250,8 @@ static int dwc3_gadget_run_stop(struct dwc3 *dwc, int is_on, int suspend)
 			cpu_relax(); 
 		} while (true); 
  
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dwc3_event_buffers_setup(dwc);
@@ -2378,9 +2402,12 @@ static int dwc3_gadget_pullup(struct usb_gadget *g, int is_on)
 	flush_work(&dwc->bh_work);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (is_on)
 		dwc3_device_core_soft_reset(dwc);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_irqsave(&dwc->lock, flags);
@@ -2436,10 +2463,13 @@ static void dwc3_gadget_enable_irq(struct dwc3 *dwc)
 		reg |= DWC3_DEVTEN_ULSTCNGEN;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* On 2.30a and above this bit enables U3/L2-L1 Suspend Events */
 	if (dwc->revision >= DWC3_REVISION_230A)
 		reg |= DWC3_DEVTEN_EOPFEN;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dwc3_writel(dwc->regs, DWC3_DEVTEN, reg);
@@ -2931,8 +2961,12 @@ static int __dwc3_cleanup_done_trbs(struct dwc3 *dwc, struct dwc3_ep *dep,
 	if ((req->zero || req->unaligned) && !(trb->ctrl & DWC3_TRB_CTRL_CHN)) {
 		trb->ctrl &= ~DWC3_TRB_CTRL_HWO;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return (((event->status & DEPEVT_STATUS_IOC) &&
 				(trb->ctrl & DWC3_TRB_CTRL_IOC)) ? 1 : 0);
+=======
+		return 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3405,6 +3439,7 @@ static void dwc3_gadget_reset_interrupt(struct dwc3 *dwc)
 
 	/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * Ideally, dwc3_reset_gadget() would trigger the function
 	 * drivers to stop any active transfers through ep disable.
 	 * However, for functions which defer ep disable, such as mass
@@ -3414,6 +3449,8 @@ static void dwc3_gadget_reset_interrupt(struct dwc3 *dwc)
 	dwc->connected = false;
 
 	/*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * WORKAROUND: DWC3 revisions <1.88a have an issue which

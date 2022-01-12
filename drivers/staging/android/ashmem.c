@@ -1,10 +1,13 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 // SPDX-License-Identifier: GPL-2.0
 /*
  * Copyright (C) 2008 Google, Inc.
  * Robert Love <rlove@google.com>
  * Copyright (C) 2021 Sultan Alsawaf <sultan@kerneltoast.com>.
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* mm/ashmem.c
  *
  * Anonymous Shared Memory Subsystem, ashmem
@@ -21,11 +24,15 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  */
 
 #define pr_fmt(fmt) "ashmem: " fmt
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #include <linux/miscdevice.h>
 #include <linux/mman.h>
@@ -36,6 +43,8 @@
  * struct ashmem_area - The anonymous shared memory area
  * @mmap_lock:		The mmap mutex lock
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/init.h>
 #include <linux/export.h>
 #include <linux/file.h>
@@ -60,6 +69,9 @@
  * struct ashmem_area - The anonymous shared memory area
  * @name:		The optional name in /proc/pid/maps
  * @unpinned_list:	The list of all ashmem areas
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * @file:		The shmem-based backing file
  * @size:		The size of the mapping, in bytes
@@ -67,7 +79,11 @@
  *
  * The lifecycle of this structure is from our parent file's open() until
 <<<<<<< HEAD
+<<<<<<< HEAD
  * its release().
+=======
+ * its release(). It is also protected by 'ashmem_mutex'
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * its release(). It is also protected by 'ashmem_mutex'
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -76,7 +92,12 @@
  */
 struct ashmem_area {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct mutex mmap_lock;
+=======
+	char name[ASHMEM_FULL_NAME_LEN];
+	struct list_head unpinned_list;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	char name[ASHMEM_FULL_NAME_LEN];
 	struct list_head unpinned_list;
@@ -87,8 +108,11 @@ struct ashmem_area {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct kmem_cache *ashmem_area_cachep __read_mostly;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * struct ashmem_range - A range of unpinned/evictable pages
  * @lru:	         The entry in the LRU list
@@ -168,13 +192,19 @@ static inline bool range_before_page(struct ashmem_range *range, size_t page)
 {
 	return range->pgend < page;
 }
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #define PROT_MASK		(PROT_EXEC | PROT_READ | PROT_WRITE)
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * lru_add() - Adds a range of memory to the LRU list
  * @range:     The memory range being added.
  *
@@ -272,6 +302,9 @@ static inline void range_shrink(struct ashmem_range *range,
 }
 
 /**
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * ashmem_open() - Opens an Anonymous Shared Memory structure
  * @inode:	   The backing file's index node(?)
@@ -292,6 +325,7 @@ static int ashmem_open(struct inode *inode, struct file *file)
 		return ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	asma = kmem_cache_alloc(ashmem_area_cachep, GFP_KERNEL);
 	if (unlikely(!asma))
 		return -ENOMEM;
@@ -302,6 +336,8 @@ static int ashmem_open(struct inode *inode, struct file *file)
 	};
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	asma = kmem_cache_zalloc(ashmem_area_cachep, GFP_KERNEL);
 	if (unlikely(!asma))
 		return -ENOMEM;
@@ -309,6 +345,9 @@ static int ashmem_open(struct inode *inode, struct file *file)
 	INIT_LIST_HEAD(&asma->unpinned_list);
 	memcpy(asma->name, ASHMEM_NAME_PREFIX, ASHMEM_NAME_PREFIX_LEN);
 	asma->prot_mask = PROT_MASK;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	file->private_data = asma;
 
@@ -327,13 +366,19 @@ static int ashmem_release(struct inode *ignored, struct file *file)
 {
 	struct ashmem_area *asma = file->private_data;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct ashmem_range *range, *next;
 
 	mutex_lock(&ashmem_mutex);
 	list_for_each_entry_safe(range, next, &asma->unpinned_list, unpinned)
 		range_del(range);
 	mutex_unlock(&ashmem_mutex);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (asma->file)
@@ -347,6 +392,7 @@ static ssize_t ashmem_read_iter(struct kiocb *iocb, struct iov_iter *iter)
 {
 	struct ashmem_area *asma = iocb->ki_filp->private_data;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct file *vmfile;
 	ssize_t ret;
 
@@ -358,6 +404,8 @@ static ssize_t ashmem_read_iter(struct kiocb *iocb, struct iov_iter *iter)
 	if (!vmfile)
 		return -EBADF;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret = 0;
 
 	mutex_lock(&ashmem_mutex);
@@ -370,6 +418,9 @@ static ssize_t ashmem_read_iter(struct kiocb *iocb, struct iov_iter *iter)
 		ret = -EBADF;
 		goto out_unlock;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*
@@ -379,10 +430,13 @@ static ssize_t ashmem_read_iter(struct kiocb *iocb, struct iov_iter *iter)
 	 * ashmem_release is called.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = vfs_iter_read(vmfile, iter, &iocb->ki_pos, 0);
 	if (ret > 0)
 		vmfile->f_pos = iocb->ki_pos;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_unlock(&ashmem_mutex);
 	ret = vfs_iter_read(asma->file, iter, &iocb->ki_pos, 0);
 	mutex_lock(&ashmem_mutex);
@@ -390,6 +444,9 @@ static ssize_t ashmem_read_iter(struct kiocb *iocb, struct iov_iter *iter)
 		asma->file->f_pos = iocb->ki_pos;
 out_unlock:
 	mutex_unlock(&ashmem_mutex);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 }
@@ -397,6 +454,7 @@ out_unlock:
 static loff_t ashmem_llseek(struct file *file, loff_t offset, int origin)
 {
 	struct ashmem_area *asma = file->private_data;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	struct file *vmfile;
 	loff_t ret;
@@ -410,6 +468,8 @@ static loff_t ashmem_llseek(struct file *file, loff_t offset, int origin)
 
 	ret = vfs_llseek(vmfile, offset, origin);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int ret;
 
 	mutex_lock(&ashmem_mutex);
@@ -427,13 +487,20 @@ static loff_t ashmem_llseek(struct file *file, loff_t offset, int origin)
 	mutex_unlock(&ashmem_mutex);
 
 	ret = vfs_llseek(asma->file, offset, origin);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret < 0)
 		return ret;
 
 	/** Copy f_pos from backing file, since f_ops->llseek() sets it */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	file->f_pos = vmfile->f_pos;
+=======
+	file->f_pos = asma->file->f_pos;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	file->f_pos = asma->file->f_pos;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -461,6 +528,7 @@ ashmem_vmfile_get_unmapped_area(struct file *file, unsigned long addr,
 	return current->mm->get_unmapped_area(file, addr, len, pgoff, flags);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static int ashmem_file_setup(struct ashmem_area *asma, size_t size,
 			     struct vm_area_struct *vma)
@@ -537,6 +605,8 @@ static int ashmem_mmap(struct file *file, struct vm_area_struct *vma)
 		shmem_set_file(vma, asma->file);
 	} else {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int ashmem_mmap(struct file *file, struct vm_area_struct *vma)
 {
 	static struct file_operations vmfile_fops;
@@ -599,12 +669,16 @@ static int ashmem_mmap(struct file *file, struct vm_area_struct *vma)
 	if (vma->vm_flags & VM_SHARED)
 		shmem_set_file(vma, asma->file);
 	else {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (vma->vm_file)
 			fput(vma->vm_file);
 		vma->vm_file = asma->file;
 	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	return 0;
 }
@@ -615,6 +689,8 @@ static int set_prot_mask(struct ashmem_area *asma, unsigned long prot)
 	if (unlikely((READ_ONCE(asma->prot_mask) & prot) != prot))
 		return -EINVAL;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out:
 	mutex_unlock(&ashmem_mutex);
 	return ret;
@@ -697,6 +773,9 @@ static int set_prot_mask(struct ashmem_area *asma, unsigned long prot)
 		ret = -EINVAL;
 		goto out;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* does the application expect PROT_READ to imply PROT_EXEC? */
@@ -704,9 +783,12 @@ static int set_prot_mask(struct ashmem_area *asma, unsigned long prot)
 		prot |= PROT_EXEC;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	WRITE_ONCE(asma->prot_mask, prot);
 	return 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	asma->prot_mask = prot;
 
 out:
@@ -953,12 +1035,16 @@ out_unlock:
 	mutex_unlock(&ashmem_mutex);
 
 	return ret;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static long ashmem_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
 	struct ashmem_area *asma = file->private_data;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 	switch (cmd) {
@@ -990,6 +1076,8 @@ static long ashmem_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 
 	return -ENOTTY;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	long ret = -ENOTTY;
 
 	switch (cmd) {
@@ -1036,6 +1124,9 @@ static long ashmem_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 	}
 
 	return ret;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -1078,7 +1169,11 @@ static struct miscdevice ashmem_misc = {
 static int __init ashmem_init(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret;
+=======
+	int ret = -ENOMEM;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int ret = -ENOMEM;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1088,6 +1183,7 @@ static int __init ashmem_init(void)
 					       0, 0, NULL);
 	if (unlikely(!ashmem_area_cachep)) {
 		pr_err("failed to create slab cache\n");
+<<<<<<< HEAD
 <<<<<<< HEAD
 		ret = -ENOMEM;
 		goto out;
@@ -1100,6 +1196,8 @@ static int __init ashmem_init(void)
 	}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto out;
 	}
 
@@ -1119,12 +1217,20 @@ static int __init ashmem_init(void)
 
 	register_shrinker(&ashmem_shrinker);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pr_info("initialized\n");
 
 	return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+out_free2:
+	kmem_cache_destroy(ashmem_range_cachep);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 out_free2:
 	kmem_cache_destroy(ashmem_range_cachep);

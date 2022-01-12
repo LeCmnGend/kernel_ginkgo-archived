@@ -86,7 +86,10 @@ static struct platform_driver scpi_cpufreq_platdrv = {
 module_platform_driver(scpi_cpufreq_platdrv);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 MODULE_ALIAS("platform:scpi-cpufreq");
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 MODULE_AUTHOR("Sudeep Holla <sudeep.holla@arm.com>");

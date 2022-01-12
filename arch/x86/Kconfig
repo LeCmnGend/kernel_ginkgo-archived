@@ -171,6 +171,10 @@ config X86
 	select HAVE_PERF_USER_STACK_DUMP
 	select HAVE_RCU_TABLE_FREE
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	select HAVE_RCU_TABLE_INVALIDATE	if HAVE_RCU_TABLE_FREE
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	select HAVE_RCU_TABLE_INVALIDATE	if HAVE_RCU_TABLE_FREE
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -261,6 +265,12 @@ config ARCH_MAY_HAVE_PC_FDC
 	depends on ISA_DMA_API
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+config RWSEM_XCHGADD_ALGORITHM
+	def_bool y
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 config RWSEM_XCHGADD_ALGORITHM
 	def_bool y
@@ -303,6 +313,12 @@ config AUDIT_ARCH
 	def_bool y if X86_64
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+config ARCH_SUPPORTS_OPTIMIZED_INLINING
+	def_bool y
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 config ARCH_SUPPORTS_OPTIMIZED_INLINING
 	def_bool y
@@ -536,7 +552,10 @@ config X86_UV
 	depends on NUMA
 	depends on EFI
 <<<<<<< HEAD
+<<<<<<< HEAD
 	depends on KEXEC_CORE
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	depends on X86_X2APIC

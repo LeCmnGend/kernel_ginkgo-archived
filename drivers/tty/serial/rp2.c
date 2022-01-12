@@ -199,6 +199,10 @@ struct rp2_card {
 	void __iomem			*bar1;
 	spinlock_t			card_lock;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct completion		fw_loaded;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct completion		fw_loaded;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -671,11 +675,14 @@ static void rp2_remove_ports(struct rp2_card *card)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int rp2_load_firmware(struct rp2_card *card, const struct firmware *fw)
 {
 	resource_size_t phys_base;
 	int i, rc = 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void rp2_fw_cb(const struct firmware *fw, void *context)
 {
 	struct rp2_card *card = context;
@@ -687,6 +694,9 @@ static void rp2_fw_cb(const struct firmware *fw, void *context)
 			RP2_FW_NAME);
 		goto no_fw;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	phys_base = pci_resource_start(card->pdev, 1);
@@ -734,8 +744,11 @@ static void rp2_fw_cb(const struct firmware *fw, void *context)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return rc;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	release_firmware(fw);
 no_fw:
 	/*
@@ -748,6 +761,9 @@ no_fw:
 		dev_warn(&card->pdev->dev, "driver initialization failed\n");
 
 	complete(&card->fw_loaded);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -755,7 +771,10 @@ static int rp2_probe(struct pci_dev *pdev,
 				   const struct pci_device_id *id)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	const struct firmware *fw;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct rp2_card *card;
@@ -769,6 +788,10 @@ static int rp2_probe(struct pci_dev *pdev,
 	pci_set_drvdata(pdev, card);
 	spin_lock_init(&card->card_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	init_completion(&card->fw_loaded);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	init_completion(&card->fw_loaded);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -805,6 +828,7 @@ static int rp2_probe(struct pci_dev *pdev,
 	card->ports = ports;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rc = request_firmware(&fw, RP2_FW_NAME, &pdev->dev);
 	if (rc < 0) {
 		dev_err(&pdev->dev, "cannot find '%s' firmware image\n",
@@ -820,13 +844,18 @@ static int rp2_probe(struct pci_dev *pdev,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rc = devm_request_irq(&pdev->dev, pdev->irq, rp2_uart_interrupt,
 			      IRQF_SHARED, DRV_NAME, card);
 	if (rc)
 		return rc;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * Only catastrophic errors (e.g. ENOMEM) are reported here.
 	 * If the FW image is missing, we'll find out in rp2_fw_cb()
@@ -838,6 +867,9 @@ static int rp2_probe(struct pci_dev *pdev,
 		return rc;
 	dev_dbg(&pdev->dev, "waiting for firmware blob...\n");
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
@@ -847,6 +879,10 @@ static void rp2_remove(struct pci_dev *pdev)
 	struct rp2_card *card = pci_get_drvdata(pdev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	wait_for_completion(&card->fw_loaded);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	wait_for_completion(&card->fw_loaded);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

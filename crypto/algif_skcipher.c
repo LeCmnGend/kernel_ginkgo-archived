@@ -134,7 +134,11 @@ static int _skcipher_recvmsg(struct socket *sock, struct msghdr *msg,
 
 		/* AIO operation in progress */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (err == -EINPROGRESS)
+=======
+		if (err == -EINPROGRESS || err == -EBUSY)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (err == -EINPROGRESS || err == -EBUSY)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

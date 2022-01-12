@@ -61,7 +61,11 @@ static int socfpga_setup_ocram_self_refresh(void)
 		pr_warn("%s: ocram pool unavailable!\n", __func__);
 		ret = -ENODEV;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto put_device;
+=======
+		goto put_node;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto put_node;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -72,7 +76,11 @@ static int socfpga_setup_ocram_self_refresh(void)
 		pr_warn("%s: unable to alloc ocram!\n", __func__);
 		ret = -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto put_device;
+=======
+		goto put_node;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto put_node;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -87,7 +95,11 @@ static int socfpga_setup_ocram_self_refresh(void)
 		pr_warn("%s: __arm_ioremap_exec failed!\n", __func__);
 		ret = -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto put_device;
+=======
+		goto put_node;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto put_node;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -105,8 +117,11 @@ static int socfpga_setup_ocram_self_refresh(void)
 		ret = -EFAULT;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 put_device:
 	put_device(&pdev->dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 put_node:

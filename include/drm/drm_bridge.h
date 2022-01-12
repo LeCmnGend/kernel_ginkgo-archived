@@ -1,7 +1,10 @@
 /*
  * Copyright (c) 2016 Intel Corporation
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (C) 2019 XiaoMi, Inc.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -264,8 +267,11 @@ struct drm_bridge {
 	const struct drm_bridge_funcs *funcs;
 	void *driver_private;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct mutex lock;
 	bool is_dsi_drm_bridge;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -289,7 +295,10 @@ void drm_bridge_mode_set(struct drm_bridge *bridge,
 void drm_bridge_pre_enable(struct drm_bridge *bridge);
 void drm_bridge_enable(struct drm_bridge *bridge);
 <<<<<<< HEAD
+<<<<<<< HEAD
 int dsi_bridge_interface_enable(int timeout);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int drm_bridge_connector_init(struct drm_bridge *bridge,

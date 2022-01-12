@@ -498,7 +498,10 @@ static struct clk * __init ti_fapll_synth_setup(struct fapll_data *fd,
 	struct clk_init_data *init;
 	struct fapll_synth *synth;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct clk *clk = ERR_PTR(-ENOMEM);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -524,6 +527,7 @@ static struct clk * __init ti_fapll_synth_setup(struct fapll_data *fd,
 	synth->clk_pll = pll_clk;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	clk = clk_register(NULL, &synth->hw);
 	if (IS_ERR(clk)) {
 		pr_err("failed to register clock\n");
@@ -534,13 +538,20 @@ static struct clk * __init ti_fapll_synth_setup(struct fapll_data *fd,
 =======
 	return clk_register(NULL, &synth->hw);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	return clk_register(NULL, &synth->hw);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 free:
 	kfree(synth);
 	kfree(init);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return clk;
+=======
+	return ERR_PTR(-ENOMEM);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return ERR_PTR(-ENOMEM);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -855,7 +855,10 @@ static int truncate_node(struct dnode_of_data *dn)
 	dn->node_page = NULL;
 	trace_f2fs_truncate_node(dn->inode, dn->nid, ni.blk_addr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
@@ -884,7 +887,10 @@ static int truncate_dnode(struct dnode_of_data *dn)
 	if (err)
 		return err;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 1;
@@ -2299,10 +2305,16 @@ static int scan_nat_page(struct f2fs_sb_info *sbi,
 
 		blk_addr = le32_to_cpu(nat_blk->entries[i].block_addr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		if (blk_addr == NEW_ADDR)
 			return -EINVAL;
 
+=======
+		f2fs_bug_on(sbi, blk_addr == NEW_ADDR);
+		if (blk_addr == NEW_ADDR)
+			return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		f2fs_bug_on(sbi, blk_addr == NEW_ADDR);
 		if (blk_addr == NEW_ADDR)
@@ -2317,7 +2329,10 @@ static int scan_nat_page(struct f2fs_sb_info *sbi,
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
@@ -2387,9 +2402,12 @@ static int __f2fs_build_free_nids(struct f2fs_sb_info *sbi,
 		nid = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(nid % NAT_ENTRY_PER_BLOCK))
 		nid = NAT_BLOCK_OFFSET(nid) * NAT_ENTRY_PER_BLOCK;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Enough entries */
@@ -2451,7 +2469,10 @@ static int __f2fs_build_free_nids(struct f2fs_sb_info *sbi,
 	f2fs_ra_meta_pages(sbi, NAT_BLOCK_OFFSET(nm_i->next_scan_nid),
 					nm_i->ra_nid_pages, META_NAT, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
@@ -2461,11 +2482,17 @@ int f2fs_build_free_nids(struct f2fs_sb_info *sbi, bool sync, bool mount)
 {
 	int ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	mutex_lock(&NM_I(sbi)->build_lock);
 	ret = __f2fs_build_free_nids(sbi, sync, mount);
 	mutex_unlock(&NM_I(sbi)->build_lock);
 
+=======
+	mutex_lock(&NM_I(sbi)->build_lock);
+	ret = __f2fs_build_free_nids(sbi, sync, mount);
+	mutex_unlock(&NM_I(sbi)->build_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mutex_lock(&NM_I(sbi)->build_lock);
 	ret = __f2fs_build_free_nids(sbi, sync, mount);
@@ -2649,7 +2676,10 @@ int f2fs_recover_xattr_data(struct inode *inode, struct page *page)
 	if (err)
 		return err;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	f2fs_invalidate_blocks(sbi, ni.blk_addr);
@@ -2907,7 +2937,10 @@ static int __flush_nat_entry_set(struct f2fs_sb_info *sbi,
 		if (IS_ERR(page))
 			return PTR_ERR(page);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		nat_blk = page_address(page);

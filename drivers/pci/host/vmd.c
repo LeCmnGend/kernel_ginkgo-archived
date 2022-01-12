@@ -652,7 +652,10 @@ static int vmd_enable_domain(struct vmd_dev *vmd)
 		pci_free_resource_list(&resources);
 		irq_domain_remove(vmd->irq_domain);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		irq_domain_free_fwnode(fn);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -ENODEV;
@@ -758,7 +761,10 @@ static void vmd_remove(struct pci_dev *dev)
 {
 	struct vmd_dev *vmd = pci_get_drvdata(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct fwnode_handle *fn = vmd->irq_domain->fwnode;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -770,7 +776,10 @@ static void vmd_remove(struct pci_dev *dev)
 	vmd_detach_resources(vmd);
 	irq_domain_remove(vmd->irq_domain);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	irq_domain_free_fwnode(fn);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

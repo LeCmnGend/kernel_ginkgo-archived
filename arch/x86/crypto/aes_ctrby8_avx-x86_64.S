@@ -128,11 +128,17 @@ ddq_add_8:
 /* generate a unique variable for ddq_add_x */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 .macro setddq n
 	var_ddq_add = ddq_add_\n
 .endm
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* generate a unique variable for xmm register */
 .macro setxdata n
@@ -144,7 +150,13 @@ ddq_add_8:
 .macro club name, id
 .altmacro
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.if \name == XDATA
+=======
+	.if \name == DDQ_DATA
+		setddq %\id
+	.elseif \name == XDATA
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.if \name == DDQ_DATA
 		setddq %\id
@@ -173,8 +185,14 @@ ddq_add_8:
 	.set i, 1
 	.rept (by - 1)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		club XDATA, i
 		vpaddq	(ddq_add_1 + 16 * (i - 1))(%rip), xcounter, var_xdata
+=======
+		club DDQ_DATA, i
+		club XDATA, i
+		vpaddq	var_ddq_add(%rip), xcounter, var_xdata
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		club DDQ_DATA, i
 		club XDATA, i
@@ -193,7 +211,12 @@ ddq_add_8:
 
 	vpxor	xkey0, xdata0, xdata0
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vpaddq	(ddq_add_1 + 16 * (by - 1))(%rip), xcounter, xcounter
+=======
+	club DDQ_DATA, by
+	vpaddq	var_ddq_add(%rip), xcounter, xcounter
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	club DDQ_DATA, by
 	vpaddq	var_ddq_add(%rip), xcounter, xcounter

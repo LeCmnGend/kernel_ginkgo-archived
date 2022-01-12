@@ -998,6 +998,7 @@ static unsigned int tcmu_handle_completions(struct tcmu_dev *udev)
 		struct tcmu_cmd *cmd;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/*
 		 * Flush max. up to end of cmd ring since current entry might
 		 * be a padding that is shorter than sizeof(*entry)
@@ -1006,6 +1007,9 @@ static unsigned int tcmu_handle_completions(struct tcmu_dev *udev)
 					       udev->cmdr_size);
 		tcmu_flush_dcache_range(entry, ring_left < sizeof(*entry) ?
 					ring_left : sizeof(*entry));
+=======
+		tcmu_flush_dcache_range(entry, sizeof(*entry));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		tcmu_flush_dcache_range(entry, sizeof(*entry));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

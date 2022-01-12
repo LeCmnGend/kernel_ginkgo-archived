@@ -333,7 +333,11 @@ static int __init gtdt_import_sbsa_gwdt(struct acpi_gtdt_watchdog *wd,
 {
 	struct platform_device *pdev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int irq;
+=======
+	int irq = map_gt_gsi(wd->timer_interrupt, wd->timer_flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int irq = map_gt_gsi(wd->timer_interrupt, wd->timer_flags);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -346,7 +350,11 @@ static int __init gtdt_import_sbsa_gwdt(struct acpi_gtdt_watchdog *wd,
 		DEFINE_RES_MEM(wd->control_frame_address, SZ_4K),
 		DEFINE_RES_MEM(wd->refresh_frame_address, SZ_4K),
 <<<<<<< HEAD
+<<<<<<< HEAD
 		{},
+=======
+		DEFINE_RES_IRQ(irq),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		DEFINE_RES_IRQ(irq),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -360,16 +368,22 @@ static int __init gtdt_import_sbsa_gwdt(struct acpi_gtdt_watchdog *wd,
 	if (!(wd->refresh_frame_address && wd->control_frame_address)) {
 		pr_err(FW_BUG "failed to get the Watchdog base address.\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -EINVAL;
 	}
 
 	irq = map_gt_gsi(wd->timer_interrupt, wd->timer_flags);
 	res[2] = (struct resource)DEFINE_RES_IRQ(irq);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		acpi_unregister_gsi(wd->timer_interrupt);
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (irq <= 0) {
 		pr_warn("failed to map the Watchdog interrupt.\n");
@@ -384,8 +398,12 @@ static int __init gtdt_import_sbsa_gwdt(struct acpi_gtdt_watchdog *wd,
 	pdev = platform_device_register_simple("sbsa-gwdt", index, res, nr_res);
 	if (IS_ERR(pdev)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (irq > 0)
 			acpi_unregister_gsi(wd->timer_interrupt);
+=======
+		acpi_unregister_gsi(wd->timer_interrupt);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		acpi_unregister_gsi(wd->timer_interrupt);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

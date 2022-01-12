@@ -70,6 +70,7 @@ dc21285_read_config(struct pci_bus *bus, unsigned int devfn, int where,
 		switch (size) {
 		case 1:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			asm volatile("ldrb	%0, [%1, %2]"
 				: "=r" (v) : "r" (addr), "r" (where) : "cc");
 			break;
@@ -80,6 +81,8 @@ dc21285_read_config(struct pci_bus *bus, unsigned int devfn, int where,
 		case 4:
 			asm volatile("ldr	%0, [%1, %2]"
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			asm("ldrb	%0, [%1, %2]"
 				: "=r" (v) : "r" (addr), "r" (where) : "cc");
 			break;
@@ -89,6 +92,9 @@ dc21285_read_config(struct pci_bus *bus, unsigned int devfn, int where,
 			break;
 		case 4:
 			asm("ldr	%0, [%1, %2]"
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				: "=r" (v) : "r" (addr), "r" (where) : "cc");
 			break;
@@ -116,7 +122,11 @@ dc21285_write_config(struct pci_bus *bus, unsigned int devfn, int where,
 		switch (size) {
 		case 1:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			asm volatile("strb	%0, [%1, %2]"
+=======
+			asm("strb	%0, [%1, %2]"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			asm("strb	%0, [%1, %2]"
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -125,7 +135,11 @@ dc21285_write_config(struct pci_bus *bus, unsigned int devfn, int where,
 			break;
 		case 2:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			asm volatile("strh	%0, [%1, %2]"
+=======
+			asm("strh	%0, [%1, %2]"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			asm("strh	%0, [%1, %2]"
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -134,7 +148,11 @@ dc21285_write_config(struct pci_bus *bus, unsigned int devfn, int where,
 			break;
 		case 4:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			asm volatile("str	%0, [%1, %2]"
+=======
+			asm("str	%0, [%1, %2]"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			asm("str	%0, [%1, %2]"
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

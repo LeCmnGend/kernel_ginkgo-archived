@@ -62,6 +62,7 @@
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Lock dirty background writeback to the dirty ratio divided by this number.
  */
 #define LOCKED_DIRTY_RATIO	2
@@ -72,17 +73,25 @@
  */
 static long ratelimit_pages = 256;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * After a CPU has dirtied this many pages, balance_dirty_pages_ratelimited
  * will look to see if it needs to force writeback or throttling.
  */
 static long ratelimit_pages = 32;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* The following parameters are exported via /proc/sys/vm */
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Start background writeback (via writeback threads) at this percentage
  */
 int dirty_background_ratio = 10;
@@ -94,6 +103,9 @@ int dirty_background_ratio = 10;
 unsigned long dirty_background_bytes;
 
 /*
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * free highmem will not be subtracted from the total free memory
  * for calculating free ratios if vm_highmem_is_dirtyable is true
@@ -104,7 +116,11 @@ int vm_highmem_is_dirtyable;
  * The generator of dirty data starts writeback at this percentage
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 int vm_dirty_ratio = 30;
+=======
+int vm_dirty_ratio = 20;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int vm_dirty_ratio = 20;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -415,15 +431,21 @@ static void domain_dirty_limits(struct dirty_throttle_control *dtc)
 	struct dirty_throttle_control *gdtc = mdtc_gdtc(dtc);
 	unsigned long bytes = vm_dirty_bytes;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long bg_bytes = vm_dirty_bytes / LOCKED_DIRTY_RATIO;
 	/* convert ratios to per-PAGE_SIZE for higher precision */
 	unsigned long ratio = (vm_dirty_ratio * PAGE_SIZE) / 100;
 	unsigned long bg_ratio = ratio / LOCKED_DIRTY_RATIO;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long bg_bytes = dirty_background_bytes;
 	/* convert ratios to per-PAGE_SIZE for higher precision */
 	unsigned long ratio = (vm_dirty_ratio * PAGE_SIZE) / 100;
 	unsigned long bg_ratio = (dirty_background_ratio * PAGE_SIZE) / 100;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long thresh;
 	unsigned long bg_thresh;
@@ -538,7 +560,10 @@ bool node_dirty_ok(struct pglist_data *pgdat)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int dirty_background_ratio_handler(struct ctl_table *table, int write,
 		void __user *buffer, size_t *lenp,
 		loff_t *ppos)
@@ -563,6 +588,9 @@ int dirty_background_bytes_handler(struct ctl_table *table, int write,
 	return ret;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int dirty_ratio_handler(struct ctl_table *table, int write,
 		void __user *buffer, size_t *lenp,

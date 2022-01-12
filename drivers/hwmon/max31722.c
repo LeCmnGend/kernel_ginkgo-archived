@@ -10,6 +10,10 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <linux/acpi.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/acpi.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -142,7 +146,10 @@ static const struct spi_device_id max31722_spi_id[] = {
 	{}
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static const struct acpi_device_id __maybe_unused max31722_acpi_id[] = {
 	{"MAX31722", 0},
@@ -150,6 +157,9 @@ static const struct acpi_device_id __maybe_unused max31722_acpi_id[] = {
 	{}
 };
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 MODULE_DEVICE_TABLE(spi, max31722_spi_id);
 
@@ -158,6 +168,10 @@ static struct spi_driver max31722_driver = {
 		.name = "max31722",
 		.pm = &max31722_pm_ops,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		.acpi_match_table = ACPI_PTR(max31722_acpi_id),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.acpi_match_table = ACPI_PTR(max31722_acpi_id),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

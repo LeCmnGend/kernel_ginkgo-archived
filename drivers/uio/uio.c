@@ -415,15 +415,21 @@ static int uio_get_minor(struct uio_device *idev)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void uio_free_minor(unsigned long minor)
 {
 	mutex_lock(&minor_lock);
 	idr_remove(&uio_idr, minor);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void uio_free_minor(struct uio_device *idev)
 {
 	mutex_lock(&minor_lock);
 	idr_remove(&uio_idr, idev->minor);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_unlock(&minor_lock);
 }
@@ -997,7 +1003,11 @@ err_uio_dev_add_attributes:
 	device_del(&idev->dev);
 err_device_create:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	uio_free_minor(idev->minor);
+=======
+	uio_free_minor(idev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	uio_free_minor(idev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1015,7 +1025,10 @@ void uio_unregister_device(struct uio_info *info)
 {
 	struct uio_device *idev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long minor;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1024,7 +1037,12 @@ void uio_unregister_device(struct uio_info *info)
 
 	idev = info->uio_dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	minor = idev->minor;
+=======
+
+	uio_free_minor(idev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	uio_free_minor(idev);
@@ -1042,8 +1060,11 @@ void uio_unregister_device(struct uio_info *info)
 	device_unregister(&idev->dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	uio_free_minor(minor);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return;

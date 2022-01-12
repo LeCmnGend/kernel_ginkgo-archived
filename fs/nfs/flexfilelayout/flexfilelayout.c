@@ -102,7 +102,11 @@ static int decode_nfs_fh(struct xdr_stream *xdr, struct nfs_fh *fh)
 		return -ENOBUFS;
 	fh->size = be32_to_cpup(p++);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (fh->size > NFS_MAXFHSIZE) {
+=======
+	if (fh->size > sizeof(struct nfs_fh)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (fh->size > sizeof(struct nfs_fh)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

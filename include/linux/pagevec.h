@@ -10,8 +10,13 @@
 #define _LINUX_PAGEVEC_H
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* 15 pointers + header align the pagevec structure to a power of two */
 #define PAGEVEC_SIZE	15
+=======
+/* 14 pointers + two long's align the pagevec structure to a power of two */
+#define PAGEVEC_SIZE	14
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* 14 pointers + two long's align the pagevec structure to a power of two */
 #define PAGEVEC_SIZE	14
@@ -22,9 +27,14 @@ struct address_space;
 
 struct pagevec {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned char nr;
 	bool cold;
 	bool drained;
+=======
+	unsigned long nr;
+	unsigned long cold;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long nr;
 	unsigned long cold;
@@ -66,7 +76,10 @@ static inline void pagevec_init(struct pagevec *pvec, int cold)
 	pvec->nr = 0;
 	pvec->cold = cold;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pvec->drained = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

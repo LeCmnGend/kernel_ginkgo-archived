@@ -21,6 +21,10 @@
 *.gcno
 *.gz
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+*.i
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 *.i
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -130,12 +134,18 @@ all.config
 kernel/configs/android-*.cfg
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # build
 out/
 *.zip
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #
 #Ignoring Android.bp link file
 #
 Android.bp
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

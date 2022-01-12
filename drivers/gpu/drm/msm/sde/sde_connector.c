@@ -83,6 +83,7 @@ static int sde_backlight_device_update_status(struct backlight_device *bd)
 	c_conn = bl_get_data(bd);
 	display = (struct dsi_display *) c_conn->display;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (brightness > display->panel->bl_config.brightness_max_level)
 		brightness = display->panel->bl_config.brightness_max_level;
 
@@ -97,6 +98,8 @@ static int sde_backlight_device_update_status(struct backlight_device *bd)
 		bl_lvl = 0;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (brightness > display->panel->bl_config.bl_max_level)
 		brightness = display->panel->bl_config.bl_max_level;
 
@@ -106,6 +109,9 @@ static int sde_backlight_device_update_status(struct backlight_device *bd)
 
 	if (!bl_lvl && brightness)
 		bl_lvl = 1;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!c_conn->allow_bl_update) {
@@ -409,7 +415,11 @@ void sde_connector_schedule_status_work(struct drm_connector *connector,
 					STATUS_CHECK_INTERVAL_MS;
 			/* Schedule ESD status check */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			queue_delayed_work(system_power_efficient_wq, &c_conn->status_work,
+=======
+			schedule_delayed_work(&c_conn->status_work,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			schedule_delayed_work(&c_conn->status_work,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1963,7 +1973,11 @@ static void sde_connector_check_status_work(struct work_struct *work)
 		interval = conn->esd_status_interval ?
 			conn->esd_status_interval : STATUS_CHECK_INTERVAL_MS;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		queue_delayed_work(system_power_efficient_wq, &conn->status_work,
+=======
+		schedule_delayed_work(&conn->status_work,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		schedule_delayed_work(&conn->status_work,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

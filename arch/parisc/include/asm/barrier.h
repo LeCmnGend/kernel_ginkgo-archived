@@ -27,6 +27,7 @@
 #define __smp_wmb()	mb()
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define __smp_store_release(p, v)					\
 do {									\
 	typeof(p) __p = (p);						\
@@ -88,6 +89,8 @@ do {									\
 	}								\
 	__u.__val;							\
 })
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <asm-generic/barrier.h>

@@ -179,8 +179,12 @@
 
 		qcom,sde-qos-cpu-mask = <0x3>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		qcom,sde-qos-cpu-dma-latency = <43>;
 		qcom,sde-qos-cpu-irq-latency = <43>;
+=======
+		qcom,sde-qos-cpu-dma-latency = <300>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		qcom,sde-qos-cpu-dma-latency = <300>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

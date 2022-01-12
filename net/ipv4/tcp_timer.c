@@ -304,7 +304,11 @@ void tcp_delack_timer_handler(struct sock *sk)
 
 	if (inet_csk_ack_scheduled(sk)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!inet_csk_in_pingpong_mode(sk)) {
+=======
+		if (!icsk->icsk_ack.pingpong) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!icsk->icsk_ack.pingpong) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -315,7 +319,11 @@ void tcp_delack_timer_handler(struct sock *sk)
 			 * deflate ATO.
 			 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			inet_csk_exit_pingpong_mode(sk);
+=======
+			icsk->icsk_ack.pingpong = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			icsk->icsk_ack.pingpong = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -609,7 +617,10 @@ void tcp_write_timer_handler(struct sock *sk)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tcp_rate_check_app_limited(sk);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	tcp_mstamp_refresh(tcp_sk(sk));

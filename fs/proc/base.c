@@ -76,7 +76,10 @@
 #include <linux/tracehook.h>
 #include <linux/printk.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/cache.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/cgroup.h>
@@ -355,6 +358,7 @@ static int proc_pid_wchan(struct seq_file *m, struct pid_namespace *ns,
 	char symname[KSYM_NAME_LEN];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!ptrace_may_access(task, PTRACE_MODE_READ_FSCREDS))
 		goto print0;
 
@@ -367,6 +371,8 @@ static int proc_pid_wchan(struct seq_file *m, struct pid_namespace *ns,
 print0:
 	seq_putc(m, '0');
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	wchan = get_wchan(task);
 
 	if (wchan && ptrace_may_access(task, PTRACE_MODE_READ_FSCREDS)
@@ -375,6 +381,9 @@ print0:
 	else
 		seq_putc(m, '0');
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
@@ -531,7 +540,11 @@ static int proc_oom_score(struct seq_file *m, struct pid_namespace *ns,
 			  struct pid *pid, struct task_struct *task)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long totalpages = totalram_pages() + total_swap_pages;
+=======
+	unsigned long totalpages = totalram_pages + total_swap_pages;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long totalpages = totalram_pages + total_swap_pages;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -824,7 +837,11 @@ static ssize_t mem_rw(struct file *file, char __user *buf,
 
 	while (count > 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		size_t this_len = min_t(size_t, count, PAGE_SIZE);
+=======
+		int this_len = min_t(int, count, PAGE_SIZE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		int this_len = min_t(int, count, PAGE_SIZE);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1028,6 +1045,10 @@ static ssize_t oom_adj_read(struct file *file, char __user *buf, size_t count,
 static int __set_oom_adj(struct file *file, int oom_adj, bool legacy)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	static DEFINE_MUTEX(oom_adj_mutex);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	static DEFINE_MUTEX(oom_adj_mutex);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1041,7 +1062,11 @@ static int __set_oom_adj(struct file *file, int oom_adj, bool legacy)
 
 	mutex_lock(&oom_adj_mutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(legacy)) {
+=======
+	if (legacy) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (legacy) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1075,7 +1100,11 @@ static int __set_oom_adj(struct file *file, int oom_adj, bool legacy)
 
 		if (p) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (test_bit(MMF_MULTIPROCESS, &p->mm->flags)) {
+=======
+			if (atomic_read(&p->mm->mm_users) > 1) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (atomic_read(&p->mm->mm_users) > 1) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1088,7 +1117,11 @@ static int __set_oom_adj(struct file *file, int oom_adj, bool legacy)
 
 	task->signal->oom_score_adj = oom_adj;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (likely(!legacy) && has_capability_noaudit(current, CAP_SYS_RESOURCE))
+=======
+	if (!legacy && has_capability_noaudit(current, CAP_SYS_RESOURCE))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!legacy && has_capability_noaudit(current, CAP_SYS_RESOURCE))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1111,7 +1144,11 @@ static int __set_oom_adj(struct file *file, int oom_adj, bool legacy)
 			if (!p->vfork_done && process_shares_mm(p, mm)) {
 				p->signal->oom_score_adj = oom_adj;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if (likely(!legacy) && has_capability_noaudit(current, CAP_SYS_RESOURCE))
+=======
+				if (!legacy && has_capability_noaudit(current, CAP_SYS_RESOURCE))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				if (!legacy && has_capability_noaudit(current, CAP_SYS_RESOURCE))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2134,8 +2171,11 @@ static int dname_to_vma_addr(struct dentry *dentry,
 	unsigned int len;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (str[0] == '0' && str[1] != '-')
 		return -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	len = _parse_integer(str, 16, &sval);
@@ -2150,8 +2190,11 @@ static int dname_to_vma_addr(struct dentry *dentry,
 	str++;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (str[0] == '0' && str[1])
 		return -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	len = _parse_integer(str, 16, &eval);
@@ -2439,7 +2482,10 @@ proc_map_files_readdir(struct file *file, struct dir_context *ctx)
 	}
 	up_read(&mm->mmap_sem);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mmput(mm);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2456,6 +2502,10 @@ proc_map_files_readdir(struct file *file, struct dir_context *ctx)
 	if (fa)
 		flex_array_free(fa);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	mmput(mm);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mmput(mm);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2750,6 +2800,7 @@ out:
 
 #ifdef CONFIG_SECURITY
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int proc_pid_attr_open(struct inode *inode, struct file *file)
 {
 	file->private_data = NULL;
@@ -2757,6 +2808,8 @@ static int proc_pid_attr_open(struct inode *inode, struct file *file)
 	return 0;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static ssize_t proc_pid_attr_read(struct file * file, char __user * buf,
@@ -2789,10 +2842,13 @@ static ssize_t proc_pid_attr_write(struct file * file, const char __user * buf,
 	struct task_struct *task = get_proc_task(inode);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* A task may only write when it was the opener. */
 	if (file->private_data != current->mm)
 		return -EPERM;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	length = -ESRCH;
@@ -2836,11 +2892,17 @@ out_no_task:
 
 static const struct file_operations proc_pid_attr_operations = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.open		= proc_pid_attr_open,
 	.read		= proc_pid_attr_read,
 	.write		= proc_pid_attr_write,
 	.llseek		= generic_file_llseek,
 	.release	= mem_release,
+=======
+	.read		= proc_pid_attr_read,
+	.write		= proc_pid_attr_write,
+	.llseek		= generic_file_llseek,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.read		= proc_pid_attr_read,
 	.write		= proc_pid_attr_write,
@@ -3387,7 +3449,11 @@ static const struct pid_entry tgid_base_stuff[] = {
 	REG("mountstats", S_IRUSR, proc_mountstats_operations),
 #ifdef CONFIG_PROCESS_RECLAIM
 <<<<<<< HEAD
+<<<<<<< HEAD
 	REG("reclaim", 0222, proc_reclaim_operations),
+=======
+	REG("reclaim", 0200, proc_reclaim_operations),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	REG("reclaim", 0200, proc_reclaim_operations),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

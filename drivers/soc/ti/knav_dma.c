@@ -753,9 +753,14 @@ static int knav_dma_probe(struct platform_device *pdev)
 	ret = pm_runtime_get_sync(kdev->dev);
 	if (ret < 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		pm_runtime_put_noidle(kdev->dev);
 		dev_err(kdev->dev, "unable to enable pktdma, err %d\n", ret);
 		goto err_pm_disable;
+=======
+		dev_err(kdev->dev, "unable to enable pktdma, err %d\n", ret);
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dev_err(kdev->dev, "unable to enable pktdma, err %d\n", ret);
 		return ret;
@@ -774,8 +779,12 @@ static int knav_dma_probe(struct platform_device *pdev)
 	if (list_empty(&kdev->list)) {
 		dev_err(dev, "no valid dma instance\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = -ENODEV;
 		goto err_put_sync;
+=======
+		return -ENODEV;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -ENODEV;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -786,6 +795,7 @@ static int knav_dma_probe(struct platform_device *pdev)
 
 	return ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 err_put_sync:
 	pm_runtime_put_sync(kdev->dev);
@@ -793,6 +803,8 @@ err_pm_disable:
 	pm_runtime_disable(kdev->dev);
 
 	return ret;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

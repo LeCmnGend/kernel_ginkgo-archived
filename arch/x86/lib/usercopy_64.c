@@ -119,7 +119,11 @@ long __copy_user_flushcache(void *dst, const void __user *src, unsigned size)
 	if (size < 8) {
 		if (!IS_ALIGNED(dest, 4) || size != 4)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			clean_cache_range(dst, size);
+=======
+			clean_cache_range(dst, 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			clean_cache_range(dst, 1);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

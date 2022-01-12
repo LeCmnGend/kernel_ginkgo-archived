@@ -1754,7 +1754,11 @@ lpfc_debugfs_dif_err_write(struct file *file, const char __user *buf,
 	size = (nbytes < 32) ? nbytes : 32;
 	if (copy_from_user(dstbuf, buf, size))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -EFAULT;
+=======
+		return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1766,7 +1770,11 @@ lpfc_debugfs_dif_err_write(struct file *file, const char __user *buf,
 
 	if ((tmp == 0) && (kstrtoull(dstbuf, 0, &tmp)))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -EINVAL;
+=======
+		return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -127,7 +127,10 @@
 /* Hewlett-Packard POS Pole Displays */
 #define HP_VENDOR_ID		0x03f0
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define HP_LD381GC_PRODUCT_ID	0x0183
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define HP_LM920_PRODUCT_ID	0x026b
@@ -161,7 +164,10 @@
 #define ADLINK_VENDOR_ID		0x0b63
 #define ADLINK_ND6530_PRODUCT_ID	0x6530
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define ADLINK_ND6530GC_PRODUCT_ID	0x653a
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

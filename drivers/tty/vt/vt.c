@@ -836,7 +836,11 @@ static inline int resize_screen(struct vc_data *vc, int width, int height,
 	int err = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (vc->vc_sw->con_resize)
+=======
+	if (vc->vc_mode != KD_GRAPHICS && vc->vc_sw->con_resize)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (vc->vc_mode != KD_GRAPHICS && vc->vc_sw->con_resize)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -870,7 +874,11 @@ static int vc_do_resize(struct tty_struct *tty, struct vc_data *vc,
 	unsigned int new_cols, new_rows, new_row_size, new_screen_size;
 	unsigned int user;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned short *oldscreen, *newscreen;
+=======
+	unsigned short *newscreen;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned short *newscreen;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -956,16 +964,22 @@ static int vc_do_resize(struct tty_struct *tty, struct vc_data *vc,
 		scr_memsetw((void *)new_origin, vc->vc_video_erase_char,
 			    new_scr_end - new_origin);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	oldscreen = vc->vc_screenbuf;
 	vc->vc_screenbuf = newscreen;
 	vc->vc_screenbuf_size = new_screen_size;
 	set_origin(vc);
 	kfree(oldscreen);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kfree(vc->vc_screenbuf);
 	vc->vc_screenbuf = newscreen;
 	vc->vc_screenbuf_size = new_screen_size;
 	set_origin(vc);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* do part of a reset_terminal() */
@@ -4243,7 +4257,10 @@ static int con_font_default(struct vc_data *vc, struct console_font_op *op)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int con_font_copy(struct vc_data *vc, struct console_font_op *op)
 {
 	int con = op->height;
@@ -4265,6 +4282,9 @@ static int con_font_copy(struct vc_data *vc, struct console_font_op *op)
 	return rc;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int con_font_op(struct vc_data *vc, struct console_font_op *op)
 {
@@ -4277,8 +4297,12 @@ int con_font_op(struct vc_data *vc, struct console_font_op *op)
 		return con_font_default(vc, op);
 	case KD_FONT_OP_COPY:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* was buggy and never really used */
 		return -EINVAL;
+=======
+		return con_font_copy(vc, op);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return con_font_copy(vc, op);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -97,7 +97,10 @@ struct qcom_pcie_resources_2_1_0 {
 	struct reset_control *por_reset;
 	struct reset_control *phy_reset;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct reset_control *ext_reset;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct regulator *vdda;
@@ -270,10 +273,13 @@ static int qcom_pcie_get_resources_2_1_0(struct qcom_pcie *pcie)
 		return PTR_ERR(res->por_reset);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	res->ext_reset = devm_reset_control_get_optional_exclusive(dev, "ext");
 	if (IS_ERR(res->ext_reset))
 		return PTR_ERR(res->ext_reset);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	res->phy_reset = devm_reset_control_get_exclusive(dev, "phy");
@@ -289,7 +295,10 @@ static void qcom_pcie_deinit_2_1_0(struct qcom_pcie *pcie)
 	reset_control_assert(res->ahb_reset);
 	reset_control_assert(res->por_reset);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	reset_control_assert(res->ext_reset);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	reset_control_assert(res->pci_reset);
@@ -358,12 +367,15 @@ static int qcom_pcie_init_2_1_0(struct qcom_pcie *pcie)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = reset_control_deassert(res->ext_reset);
 	if (ret) {
 		dev_err(dev, "cannot deassert ext reset\n");
 		goto err_deassert_ahb;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* enable PCIe clocks and resets */

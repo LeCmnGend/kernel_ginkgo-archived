@@ -882,8 +882,12 @@ static int sfp_probe(struct platform_device *pdev)
 
 		irq = gpiod_to_irq(sfp->gpio[i]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (irq < 0) {
 			irq = 0;
+=======
+		if (!irq) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!irq) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

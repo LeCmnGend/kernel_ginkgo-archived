@@ -34,6 +34,7 @@
 static inline pmd_t *pmd_alloc_one(struct mm_struct *mm, unsigned long addr)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct page *page;
 
 	page = alloc_page(PGALLOC_GFP);
@@ -65,6 +66,8 @@ static inline void pud_populate(struct mm_struct *mm, pud_t *pudp, pmd_t *pmdp)
 #else
 static inline void __pud_populate(pud_t *pudp, phys_addr_t pmdp, pudval_t prot)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return (pmd_t *)__get_free_page(PGALLOC_GFP);
 }
 
@@ -85,6 +88,9 @@ static inline void pud_populate(struct mm_struct *mm, pud_t *pud, pmd_t *pmd)
 }
 #else
 static inline void __pud_populate(pud_t *pud, phys_addr_t pmd, pudval_t prot)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	BUILD_BUG();
@@ -98,6 +104,7 @@ static inline pud_t *pud_alloc_one(struct mm_struct *mm, unsigned long addr)
 	return (pud_t *)__get_free_page(PGALLOC_GFP);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static inline void pud_free(struct mm_struct *mm, pud_t *pudp)
 {
@@ -117,6 +124,8 @@ static inline void pgd_populate(struct mm_struct *mm, pgd_t *pgdp, pud_t *pudp)
 #else
 static inline void __pgd_populate(pgd_t *pgdp, phys_addr_t pudp, pgdval_t prot)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void pud_free(struct mm_struct *mm, pud_t *pud)
 {
 	BUG_ON((unsigned long)pud & (PAGE_SIZE-1));
@@ -134,6 +143,9 @@ static inline void pgd_populate(struct mm_struct *mm, pgd_t *pgd, pud_t *pud)
 }
 #else
 static inline void __pgd_populate(pgd_t *pgdp, phys_addr_t pud, pgdval_t prot)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 {
 	BUILD_BUG();
@@ -142,7 +154,11 @@ static inline void __pgd_populate(pgd_t *pgdp, phys_addr_t pud, pgdval_t prot)
 
 extern pgd_t *pgd_alloc(struct mm_struct *mm);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern void pgd_free(struct mm_struct *mm, pgd_t *pgdp);
+=======
+extern void pgd_free(struct mm_struct *mm, pgd_t *pgd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern void pgd_free(struct mm_struct *mm, pgd_t *pgd);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -172,15 +188,21 @@ pte_alloc_one(struct mm_struct *mm, unsigned long addr)
  * Free a PTE table.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void pte_free_kernel(struct mm_struct *mm, pte_t *ptep)
 {
 	if (ptep)
 		free_page((unsigned long)ptep);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void pte_free_kernel(struct mm_struct *mm, pte_t *pte)
 {
 	if (pte)
 		free_page((unsigned long)pte);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -191,15 +213,21 @@ static inline void pte_free(struct mm_struct *mm, pgtable_t pte)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void __pmd_populate(pmd_t *pmdp, phys_addr_t ptep,
 				  pmdval_t prot)
 {
 	set_pmd(pmdp, __pmd(ptep | prot));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void __pmd_populate(pmd_t *pmdp, phys_addr_t pte,
 				  pmdval_t prot)
 {
 	set_pmd(pmdp, __pmd(pte | prot));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

@@ -41,7 +41,10 @@
 #include <asm/unaligned.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_RANDOM32_SELFTEST
 static void __init prandom_state_selftest(void);
 #else
@@ -52,6 +55,9 @@ static inline void prandom_state_selftest(void)
 
 static DEFINE_PER_CPU(struct rnd_state, net_rand_state) __latent_entropy;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  *	prandom_u32_state - seeded pseudo-random number generator.
@@ -74,7 +80,10 @@ EXPORT_SYMBOL(prandom_u32_state);
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *	prandom_u32 - pseudo random number generator
  *
  *	A 32 bit pseudo-random number is generated using a fast
@@ -94,6 +103,9 @@ u32 prandom_u32(void)
 EXPORT_SYMBOL(prandom_u32);
 
 /**
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *	prandom_bytes_state - get the requested number of pseudo-random bytes
  *
@@ -126,7 +138,10 @@ void prandom_bytes_state(struct rnd_state *state, void *buf, size_t bytes)
 EXPORT_SYMBOL(prandom_bytes_state);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  *	prandom_bytes - get the requested number of pseudo-random bytes
  *	@buf: where to copy the pseudo-random bytes to
@@ -141,6 +156,9 @@ void prandom_bytes(void *buf, size_t bytes)
 }
 EXPORT_SYMBOL(prandom_bytes);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void prandom_warmup(struct rnd_state *state)
 {
@@ -158,7 +176,10 @@ static void prandom_warmup(struct rnd_state *state)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static u32 __extract_hwseed(void)
 {
 	unsigned int val = 0;
@@ -249,6 +270,9 @@ static void __init __prandom_start_seed_timer(void)
 	add_timer(&seed_timer);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void prandom_seed_full_state(struct rnd_state __percpu *pcpu_state)
 {
@@ -270,7 +294,10 @@ void prandom_seed_full_state(struct rnd_state __percpu *pcpu_state)
 EXPORT_SYMBOL(prandom_seed_full_state);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  *	Generate better values after random number generator
  *	is fully initialized.
@@ -316,6 +343,9 @@ static int __init prandom_reseed(void)
 }
 late_initcall(prandom_reseed);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_RANDOM32_SELFTEST
 static struct prandom_test1 {
@@ -437,6 +467,7 @@ static struct prandom_test2 {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static u32 __extract_hwseed(void)
 {
 	unsigned int val = 0;
@@ -459,6 +490,9 @@ static void prandom_seed_early(struct rnd_state *state, u32 seed,
 }
 
 static int __init prandom_state_selftest(void)
+=======
+static void __init prandom_state_selftest(void)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void __init prandom_state_selftest(void)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -501,6 +535,7 @@ static void __init prandom_state_selftest(void)
 		pr_warn("prandom: %d/%d self tests failed\n", errors, runs);
 	else
 		pr_info("prandom: %d self tests passed\n", runs);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	return 0;
 }
@@ -765,6 +800,10 @@ static int __init prandom_init_late(void)
 	return ret;
 }
 late_initcall(prandom_init_late);
+=======
+}
+#endif
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 }
 #endif

@@ -136,6 +136,7 @@ config GENERIC_TRACER
 	select TRACING
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 if TRACING
 
 config DISABLE_TRACE_PRINTK
@@ -150,6 +151,8 @@ config DISABLE_TRACE_PRINTK
 
 endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #

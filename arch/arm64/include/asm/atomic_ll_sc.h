@@ -38,7 +38,11 @@
  */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define ATOMIC_OP(op, asm_op, constraint)				\
+=======
+#define ATOMIC_OP(op, asm_op)						\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define ATOMIC_OP(op, asm_op)						\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -56,17 +60,23 @@ __LL_SC_PREFIX(atomic_##op(int i, atomic_t *v))				\
 "	cbnz	%w1, 1b"						\
 	: "=&r" (result), "=&r" (tmp), "+Q" (v->counter)		\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	: #constraint "r" (i));						\
 }									\
 __LL_SC_EXPORT(atomic_##op);
 
 #define ATOMIC_OP_RETURN(name, mb, acq, rel, cl, op, asm_op, constraint)\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	: "Ir" (i));							\
 }									\
 __LL_SC_EXPORT(atomic_##op);
 
 #define ATOMIC_OP_RETURN(name, mb, acq, rel, cl, op, asm_op)		\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 __LL_SC_INLINE int							\
 __LL_SC_PREFIX(atomic_##op##_return##name(int i, atomic_t *v))		\
@@ -83,7 +93,11 @@ __LL_SC_PREFIX(atomic_##op##_return##name(int i, atomic_t *v))		\
 "	" #mb								\
 	: "=&r" (result), "=&r" (tmp), "+Q" (v->counter)		\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	: #constraint "r" (i)						\
+=======
+	: "Ir" (i)							\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	: "Ir" (i)							\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -94,7 +108,11 @@ __LL_SC_PREFIX(atomic_##op##_return##name(int i, atomic_t *v))		\
 __LL_SC_EXPORT(atomic_##op##_return##name);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define ATOMIC_FETCH_OP(name, mb, acq, rel, cl, op, asm_op, constraint)	\
+=======
+#define ATOMIC_FETCH_OP(name, mb, acq, rel, cl, op, asm_op)		\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define ATOMIC_FETCH_OP(name, mb, acq, rel, cl, op, asm_op)		\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -113,7 +131,11 @@ __LL_SC_PREFIX(atomic_fetch_##op##name(int i, atomic_t *v))		\
 "	" #mb								\
 	: "=&r" (result), "=&r" (val), "=&r" (tmp), "+Q" (v->counter)	\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	: #constraint "r" (i)						\
+=======
+	: "Ir" (i)							\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	: "Ir" (i)							\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -135,8 +157,13 @@ __LL_SC_EXPORT(atomic_fetch_##op##name);
 	ATOMIC_FETCH_OP (_release,        ,  , l, "memory", __VA_ARGS__)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ATOMIC_OPS(add, add, I)
 ATOMIC_OPS(sub, sub, J)
+=======
+ATOMIC_OPS(add, add)
+ATOMIC_OPS(sub, sub)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 ATOMIC_OPS(add, add)
 ATOMIC_OPS(sub, sub)
@@ -151,15 +178,21 @@ ATOMIC_OPS(sub, sub)
 	ATOMIC_FETCH_OP (_release,        ,  , l, "memory", __VA_ARGS__)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ATOMIC_OPS(and, and, )
 ATOMIC_OPS(andnot, bic, )
 ATOMIC_OPS(or, orr, )
 ATOMIC_OPS(xor, eor, )
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 ATOMIC_OPS(and, and)
 ATOMIC_OPS(andnot, bic)
 ATOMIC_OPS(or, orr)
 ATOMIC_OPS(xor, eor)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #undef ATOMIC_OPS
@@ -168,7 +201,11 @@ ATOMIC_OPS(xor, eor)
 #undef ATOMIC_OP
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define ATOMIC64_OP(op, asm_op, constraint)				\
+=======
+#define ATOMIC64_OP(op, asm_op)						\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define ATOMIC64_OP(op, asm_op)						\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -186,17 +223,23 @@ __LL_SC_PREFIX(atomic64_##op(long i, atomic64_t *v))			\
 "	cbnz	%w1, 1b"						\
 	: "=&r" (result), "=&r" (tmp), "+Q" (v->counter)		\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	: #constraint "r" (i));						\
 }									\
 __LL_SC_EXPORT(atomic64_##op);
 
 #define ATOMIC64_OP_RETURN(name, mb, acq, rel, cl, op, asm_op, constraint)\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	: "Ir" (i));							\
 }									\
 __LL_SC_EXPORT(atomic64_##op);
 
 #define ATOMIC64_OP_RETURN(name, mb, acq, rel, cl, op, asm_op)		\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 __LL_SC_INLINE long							\
 __LL_SC_PREFIX(atomic64_##op##_return##name(long i, atomic64_t *v))	\
@@ -213,7 +256,11 @@ __LL_SC_PREFIX(atomic64_##op##_return##name(long i, atomic64_t *v))	\
 "	" #mb								\
 	: "=&r" (result), "=&r" (tmp), "+Q" (v->counter)		\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	: #constraint "r" (i)						\
+=======
+	: "Ir" (i)							\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	: "Ir" (i)							\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -224,7 +271,11 @@ __LL_SC_PREFIX(atomic64_##op##_return##name(long i, atomic64_t *v))	\
 __LL_SC_EXPORT(atomic64_##op##_return##name);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define ATOMIC64_FETCH_OP(name, mb, acq, rel, cl, op, asm_op, constraint)\
+=======
+#define ATOMIC64_FETCH_OP(name, mb, acq, rel, cl, op, asm_op)		\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define ATOMIC64_FETCH_OP(name, mb, acq, rel, cl, op, asm_op)		\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -243,7 +294,11 @@ __LL_SC_PREFIX(atomic64_fetch_##op##name(long i, atomic64_t *v))	\
 "	" #mb								\
 	: "=&r" (result), "=&r" (val), "=&r" (tmp), "+Q" (v->counter)	\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	: #constraint "r" (i)						\
+=======
+	: "Ir" (i)							\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	: "Ir" (i)							\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -265,8 +320,13 @@ __LL_SC_EXPORT(atomic64_fetch_##op##name);
 	ATOMIC64_FETCH_OP (_release,,  , l, "memory", __VA_ARGS__)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ATOMIC64_OPS(add, add, I)
 ATOMIC64_OPS(sub, sub, J)
+=======
+ATOMIC64_OPS(add, add)
+ATOMIC64_OPS(sub, sub)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 ATOMIC64_OPS(add, add)
 ATOMIC64_OPS(sub, sub)
@@ -281,15 +341,21 @@ ATOMIC64_OPS(sub, sub)
 	ATOMIC64_FETCH_OP (_release,,  , l, "memory", __VA_ARGS__)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ATOMIC64_OPS(and, and, L)
 ATOMIC64_OPS(andnot, bic, )
 ATOMIC64_OPS(or, orr, L)
 ATOMIC64_OPS(xor, eor, L)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 ATOMIC64_OPS(and, and)
 ATOMIC64_OPS(andnot, bic)
 ATOMIC64_OPS(or, orr)
 ATOMIC64_OPS(xor, eor)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #undef ATOMIC64_OPS
@@ -321,6 +387,7 @@ __LL_SC_PREFIX(atomic64_dec_if_positive(atomic64_t *v))
 __LL_SC_EXPORT(atomic64_dec_if_positive);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define __CMPXCHG_CASE(w, sfx, name, sz, mb, acq, rel, cl, constraint)	\
 __LL_SC_INLINE u##sz							\
 __LL_SC_PREFIX(__cmpxchg_case_##name##sz(volatile void *ptr,		\
@@ -345,6 +412,8 @@ __LL_SC_PREFIX(__cmpxchg_case_##name##sz(volatile void *ptr,		\
 	"	cbnz	%" #w "[tmp], 2f\n"				\
 	"	st" #rel "xr" #sfx "\t%w[tmp], %" #w "[new], %[v]\n"	\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define __CMPXCHG_CASE(w, sz, name, mb, acq, rel, cl)			\
 __LL_SC_INLINE unsigned long						\
 __LL_SC_PREFIX(__cmpxchg_case_##name(volatile void *ptr,		\
@@ -359,14 +428,22 @@ __LL_SC_PREFIX(__cmpxchg_case_##name(volatile void *ptr,		\
 	"	eor	%" #w "[tmp], %" #w "[oldval], %" #w "[old]\n"	\
 	"	cbnz	%" #w "[tmp], 2f\n"				\
 	"	st" #rel "xr" #sz "\t%w[tmp], %" #w "[new], %[v]\n"	\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	"	cbnz	%w[tmp], 1b\n"					\
 	"	" #mb "\n"						\
 	"2:"								\
 	: [tmp] "=&r" (tmp), [oldval] "=&r" (oldval),			\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	  [v] "+Q" (*(u##sz *)ptr)					\
 	: [old] #constraint "r" (old), [new] "r" (new)			\
+=======
+	  [v] "+Q" (*(unsigned long *)ptr)				\
+	: [old] "Lr" (old), [new] "r" (new)				\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	  [v] "+Q" (*(unsigned long *)ptr)				\
 	: [old] "Lr" (old), [new] "r" (new)				\
@@ -375,6 +452,7 @@ __LL_SC_PREFIX(__cmpxchg_case_##name(volatile void *ptr,		\
 									\
 	return oldval;							\
 }									\
+<<<<<<< HEAD
 <<<<<<< HEAD
 __LL_SC_EXPORT(__cmpxchg_case_##name##sz);
 
@@ -400,6 +478,8 @@ __CMPXCHG_CASE(w, h,  mb_, 16, dmb ish,  , l, "memory", )
 __CMPXCHG_CASE(w,  ,  mb_, 32, dmb ish,  , l, "memory", )
 __CMPXCHG_CASE( ,  ,  mb_, 64, dmb ish,  , l, "memory", L)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 __LL_SC_EXPORT(__cmpxchg_case_##name);
 
 __CMPXCHG_CASE(w, b,     1,        ,  ,  ,         )
@@ -418,6 +498,9 @@ __CMPXCHG_CASE(w, b,  mb_1, dmb ish,  , l, "memory")
 __CMPXCHG_CASE(w, h,  mb_2, dmb ish,  , l, "memory")
 __CMPXCHG_CASE(w,  ,  mb_4, dmb ish,  , l, "memory")
 __CMPXCHG_CASE( ,  ,  mb_8, dmb ish,  , l, "memory")
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #undef __CMPXCHG_CASE
@@ -456,6 +539,7 @@ __CMPXCHG_DBL(_mb, dmb ish, l, "memory")
 
 #undef __CMPXCHG_DBL
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #define REFCOUNT_OP(op, asm_op, pre, post, l)				\
 __LL_SC_INLINE int							\
@@ -507,6 +591,8 @@ __LL_SC_PREFIX(__refcount_add_not_zero(int i, atomic_t *r))
 }
 __LL_SC_EXPORT(__refcount_add_not_zero);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif	/* __ASM_ATOMIC_LL_SC_H */

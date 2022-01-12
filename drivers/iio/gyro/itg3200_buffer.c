@@ -50,6 +50,7 @@ static irqreturn_t itg3200_trigger_handler(int irq, void *p)
 	struct iio_dev *indio_dev = pf->indio_dev;
 	struct itg3200 *st = iio_priv(indio_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Ensure correct alignment and padding including for the
 	 * timestamp that may be inserted.
@@ -65,6 +66,8 @@ static irqreturn_t itg3200_trigger_handler(int irq, void *p)
 
 	iio_push_to_buffers_with_timestamp(indio_dev, &scan, pf->timestamp);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__be16 buf[ITG3200_SCAN_ELEMENTS + sizeof(s64)/sizeof(u16)];
 
 	int ret = itg3200_read_all_channels(st->i2c, buf);
@@ -72,6 +75,9 @@ static irqreturn_t itg3200_trigger_handler(int irq, void *p)
 		goto error_ret;
 
 	iio_push_to_buffers_with_timestamp(indio_dev, buf, pf->timestamp);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	iio_trigger_notify_done(indio_dev->trig);

@@ -794,7 +794,10 @@ static const struct attribute_group mesh_ie_group = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void lbs_persist_config_init(struct net_device *dev)
 {
 	int ret;
@@ -808,6 +811,9 @@ static void lbs_persist_config_remove(struct net_device *dev)
 	sysfs_remove_group(&(dev->dev.kobj), &mesh_ie_group);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /***************************************************************************
@@ -1009,10 +1015,13 @@ static int lbs_add_mesh(struct lbs_private *priv)
 
 	mesh_dev->flags |= IFF_BROADCAST | IFF_MULTICAST;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mesh_dev->sysfs_groups[0] = &lbs_mesh_attr_group;
 	mesh_dev->sysfs_groups[1] = &boot_opts_group;
 	mesh_dev->sysfs_groups[2] = &mesh_ie_group;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Register virtual mesh interface */
@@ -1023,19 +1032,31 @@ static int lbs_add_mesh(struct lbs_private *priv)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = sysfs_create_group(&(mesh_dev->dev.kobj), &lbs_mesh_attr_group);
 	if (ret)
 		goto err_unregister;
 
 	lbs_persist_config_init(mesh_dev);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Everything successful */
 	ret = 0;
 	goto done;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+err_unregister:
+	unregister_netdev(mesh_dev);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 err_unregister:
 	unregister_netdev(mesh_dev);
@@ -1062,6 +1083,11 @@ void lbs_remove_mesh(struct lbs_private *priv)
 	netif_stop_queue(mesh_dev);
 	netif_carrier_off(mesh_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	sysfs_remove_group(&(mesh_dev->dev.kobj), &lbs_mesh_attr_group);
+	lbs_persist_config_remove(mesh_dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sysfs_remove_group(&(mesh_dev->dev.kobj), &lbs_mesh_attr_group);
 	lbs_persist_config_remove(mesh_dev);

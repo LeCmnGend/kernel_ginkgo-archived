@@ -2949,9 +2949,12 @@ static u8 drm_match_cea_mode_clock_tolerance(const struct drm_display_mode *to_m
  * mode.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 inline u8 drm_match_cea_mode(const struct drm_display_mode *to_match)
 {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 u8 drm_match_cea_mode(const struct drm_display_mode *to_match)
 {
 	u8 vic;
@@ -2977,6 +2980,9 @@ u8 drm_match_cea_mode(const struct drm_display_mode *to_match)
 		} while (cea_mode_alternate_timings(vic, &cea_mode));
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }

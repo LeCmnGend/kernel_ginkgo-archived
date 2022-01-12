@@ -194,9 +194,12 @@ static inline int cpu_to_mem(int cpu)
 #define topology_core_cpumask(cpu)		cpumask_of(cpu)
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef topology_possible_sibling_cpumask
 #define topology_possible_sibling_cpumask(cpu)	cpumask_of(cpu)
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

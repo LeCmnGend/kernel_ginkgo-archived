@@ -153,12 +153,18 @@ static void mxs_irq_clear(char *state)
 	/* Clear pending interrupt */
 	timrot_irq_acknowledge();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pr_debug("%s: changing mode to %s\n", __func__, state);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #ifdef DEBUG
 	pr_info("%s: changing mode to %s\n", __func__, state)
 #endif /* DEBUG */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

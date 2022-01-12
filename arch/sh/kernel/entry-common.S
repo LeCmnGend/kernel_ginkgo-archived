@@ -204,7 +204,11 @@ syscall_trace_entry:
 	mov.l	@(OFF_R3,r15), r3   ! syscall_nr
 	!
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mov.l	6f, r10			! Number of syscalls
+=======
+	mov.l	2f, r10			! Number of syscalls
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mov.l	2f, r10			! Number of syscalls
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -362,7 +366,11 @@ ENTRY(system_call)
 	bf	syscall_trace_entry
 	!
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mov.l	6f, r8			! Number of syscalls
+=======
+	mov.l	2f, r8			! Number of syscalls
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mov.l	2f, r8			! Number of syscalls
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -405,7 +413,11 @@ syscall_exit:
 1:	.long	TRA
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 6:	.long	NR_syscalls
+=======
+2:	.long	NR_syscalls
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 2:	.long	NR_syscalls
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

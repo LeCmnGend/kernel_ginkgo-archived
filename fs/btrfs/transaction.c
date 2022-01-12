@@ -1320,10 +1320,15 @@ int btrfs_defrag_root(struct btrfs_root *root)
 	while (1) {
 		trans = btrfs_start_transaction(root, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (IS_ERR(trans)) {
 			ret = PTR_ERR(trans);
 			break;
 		}
+=======
+		if (IS_ERR(trans))
+			return PTR_ERR(trans);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (IS_ERR(trans))
 			return PTR_ERR(trans);

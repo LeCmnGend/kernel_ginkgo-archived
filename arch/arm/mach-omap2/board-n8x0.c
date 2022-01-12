@@ -326,7 +326,10 @@ static int n8x0_mmc_get_cover_state(struct device *dev, int slot)
 static void n8x0_mmc_callback(void *data, u8 card_mask)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_MMC_OMAP
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int bit, *openp, index;
@@ -347,6 +350,10 @@ static void n8x0_mmc_callback(void *data, u8 card_mask)
 		*openp = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#ifdef CONFIG_MMC_OMAP
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #ifdef CONFIG_MMC_OMAP
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

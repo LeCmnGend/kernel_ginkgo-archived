@@ -455,6 +455,7 @@ static int __init hidma_mgmt_init(void)
 	}
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * We do not check for return value here, as it is assumed that
 	 * platform_driver_register must not fail. The reason for this is that
@@ -469,6 +470,8 @@ static int __init hidma_mgmt_init(void)
 	 * no module_exit function defined which does the needed cleanup. For
 	 * this reason, we have to assume success here.
 	 */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	platform_driver_register(&hidma_mgmt_driver);

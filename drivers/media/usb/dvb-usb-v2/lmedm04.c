@@ -437,7 +437,11 @@ static int lme2510_int_read(struct dvb_usb_adapter *adap)
 
 	if (usb_endpoint_type(&ep->desc) == USB_ENDPOINT_XFER_BULK)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		lme_int->lme_urb->pipe = usb_rcvbulkpipe(d->udev, 0xa);
+=======
+		lme_int->lme_urb->pipe = usb_rcvbulkpipe(d->udev, 0xa),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		lme_int->lme_urb->pipe = usb_rcvbulkpipe(d->udev, 0xa),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

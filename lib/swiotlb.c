@@ -255,7 +255,10 @@ int __init swiotlb_init_with_tbl(char *tlb, unsigned long nslabs, int verbose)
 	}
 	io_tlb_index = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	no_iotlb_memory = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -290,11 +293,17 @@ swiotlb_init(int verbose)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (io_tlb_start) {
 		memblock_free_early(io_tlb_start,
 				    PAGE_ALIGN(io_tlb_nslabs << IO_TLB_SHIFT));
 		io_tlb_start = 0;
 	}
+=======
+	if (io_tlb_start)
+		memblock_free_early(io_tlb_start,
+				    PAGE_ALIGN(io_tlb_nslabs << IO_TLB_SHIFT));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (io_tlb_start)
 		memblock_free_early(io_tlb_start,
@@ -403,7 +412,10 @@ swiotlb_late_init_with_tbl(char *tlb, unsigned long nslabs)
 	}
 	io_tlb_index = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	no_iotlb_memory = false;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

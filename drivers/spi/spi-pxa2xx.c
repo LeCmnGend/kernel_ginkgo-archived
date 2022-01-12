@@ -1661,7 +1661,11 @@ static int pxa2xx_spi_probe(struct platform_device *pdev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	master = devm_spi_alloc_master(dev, sizeof(*drv_data));
+=======
+	master = spi_alloc_master(dev, sizeof(struct driver_data));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	master = spi_alloc_master(dev, sizeof(struct driver_data));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1846,6 +1850,10 @@ out_error_clock_enabled:
 
 out_error_master_alloc:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	spi_master_put(master);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spi_master_put(master);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

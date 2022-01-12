@@ -245,7 +245,11 @@ static void ltq_hw_irq_handler(struct irq_desc *desc)
 
 	/* if this is a EBU irq, we need to ack it or get a deadlock */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (irq == LTQ_ICU_EBU_IRQ && !module && LTQ_EBU_PCC_ISTAT != 0)
+=======
+	if ((irq == LTQ_ICU_EBU_IRQ) && (module == 0) && LTQ_EBU_PCC_ISTAT)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if ((irq == LTQ_ICU_EBU_IRQ) && (module == 0) && LTQ_EBU_PCC_ISTAT)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

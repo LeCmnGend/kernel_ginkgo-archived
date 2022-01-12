@@ -663,8 +663,12 @@ int tmc_read_unprepare_etb(struct tmc_drvdata *drvdata)
 	spin_lock_irqsave(&drvdata->spinlock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Re-enable the TMC if need be */
 	if (drvdata->mode == CS_MODE_SYSFS) {
+=======
+	if (drvdata->enable) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (drvdata->enable) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -675,11 +679,17 @@ int tmc_read_unprepare_etb(struct tmc_drvdata *drvdata)
 			return -EINVAL;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	/* Re-enable the TMC if need be */
 	if (drvdata->mode == CS_MODE_SYSFS) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
 		 * The trace run will continue with the same allocated trace

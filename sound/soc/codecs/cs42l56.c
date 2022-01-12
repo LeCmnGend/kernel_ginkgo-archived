@@ -1267,7 +1267,10 @@ static int cs42l56_i2c_probe(struct i2c_client *i2c_client,
 			"CS42L56 Device ID (%X). Expected %X\n",
 			devid, CS42L56_DEVID);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto err_enable;
@@ -1328,7 +1331,11 @@ static int cs42l56_i2c_probe(struct i2c_client *i2c_client,
 			&soc_codec_dev_cs42l56, &cs42l56_dai, 1);
 	if (ret < 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto err_enable;
+=======
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

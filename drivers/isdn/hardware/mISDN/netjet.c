@@ -1115,6 +1115,10 @@ nj_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
 
 	card->base = pci_resource_start(pdev, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	card->irq = pdev->irq;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	card->irq = pdev->irq;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

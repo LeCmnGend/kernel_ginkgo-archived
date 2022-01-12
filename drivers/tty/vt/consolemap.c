@@ -494,7 +494,11 @@ con_insert_unipair(struct uni_pagedir *p, u_short unicode, u_short fontpos)
 	p2[unicode & 0x3f] = fontpos;
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	p->sum += (fontpos << 20U) + unicode;
+=======
+	p->sum += (fontpos << 20) + unicode;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	p->sum += (fontpos << 20) + unicode;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

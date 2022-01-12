@@ -561,16 +561,22 @@ static int alua_rtpg(struct scsi_device *sdev, struct alua_port_group *pg)
 		 * The retry without rtpg_ext_hdr_req set
 		 * handles this.
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 * Note:  some arrays return a sense key of ILLEGAL_REQUEST
 		 * with ASC 00h if they don't support the extended header.
 		 */
 		if (!(pg->flags & ALUA_RTPG_EXT_HDR_UNSUPP) &&
 		    sense_hdr.sense_key == ILLEGAL_REQUEST) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		 */
 		if (!(pg->flags & ALUA_RTPG_EXT_HDR_UNSUPP) &&
 		    sense_hdr.sense_key == ILLEGAL_REQUEST &&
 		    sense_hdr.asc == 0x24 && sense_hdr.ascq == 0) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			pg->flags |= ALUA_RTPG_EXT_HDR_UNSUPP;
 			goto retry;
@@ -662,8 +668,13 @@ static int alua_rtpg(struct scsi_device *sdev, struct alua_port_group *pg)
 					list_for_each_entry_rcu(h,
 						&tmp_pg->dh_list, node) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 						if (!h->sdev)
 							continue;
+=======
+						/* h->sdev should always be valid */
+						BUG_ON(!h->sdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 						/* h->sdev should always be valid */
 						BUG_ON(!h->sdev);
@@ -714,8 +725,12 @@ static int alua_rtpg(struct scsi_device *sdev, struct alua_port_group *pg)
 			rcu_read_lock();
 			list_for_each_entry_rcu(h, &pg->dh_list, node) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if (!h->sdev)
 					continue;
+=======
+				BUG_ON(!h->sdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				BUG_ON(!h->sdev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1157,6 +1172,10 @@ static void alua_bus_detach(struct scsi_device *sdev)
 	pg = rcu_dereference_protected(h->pg, lockdep_is_held(&h->pg_lock));
 	rcu_assign_pointer(h->pg, NULL);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	h->sdev = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	h->sdev = NULL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1169,7 +1188,10 @@ static void alua_bus_detach(struct scsi_device *sdev)
 	}
 	sdev->handler_data = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	synchronize_rcu();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kfree(h);

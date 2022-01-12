@@ -363,7 +363,10 @@ struct module {
 	const struct kernel_symbol *gpl_syms;
 	const s32 *gpl_crcs;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool using_gplonly_symbols;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -532,6 +535,7 @@ struct symsearch {
 	const struct kernel_symbol *start, *stop;
 	const s32 *crcs;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	enum mod_license {
 		NOT_GPL_ONLY,
 		GPL_ONLY,
@@ -541,6 +545,8 @@ struct symsearch {
 };
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	enum {
 		NOT_GPL_ONLY,
 		GPL_ONLY,
@@ -569,6 +575,9 @@ bool each_symbol_section(bool (*fn)(const struct symsearch *arr,
 				    struct module *owner,
 				    void *data), void *data);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Returns 0 and fills in value, defined and namebuf, or -ERANGE if
    symnum out of range. */
@@ -618,6 +627,10 @@ static inline void __module_get(struct module *module)
 
 #endif /* CONFIG_MODULE_UNLOAD */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+int ref_module(struct module *a, struct module *b);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int ref_module(struct module *a, struct module *b);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

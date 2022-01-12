@@ -30,7 +30,10 @@ __wsum csum_and_copy_from_user(const void __user *src, void *dst,
 
 	might_sleep();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	allow_read_from_user(src, len);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -65,7 +68,10 @@ __wsum csum_and_copy_from_user(const void __user *src, void *dst,
 
 out:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	prevent_read_from_user(src, len);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return (__force __wsum)csum;
@@ -79,7 +85,10 @@ __wsum csum_and_copy_to_user(const void *src, void __user *dst, int len,
 
 	might_sleep();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	allow_write_to_user(dst, len);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -110,7 +119,10 @@ __wsum csum_and_copy_to_user(const void *src, void __user *dst, int len,
 
 out:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	prevent_write_to_user(dst, len);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return (__force __wsum)csum;

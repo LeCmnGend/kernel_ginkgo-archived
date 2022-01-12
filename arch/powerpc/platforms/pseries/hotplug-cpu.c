@@ -96,6 +96,12 @@ static void rtas_stop_self(void)
 	BUG_ON(rtas_stop_self_token == RTAS_UNKNOWN_SERVICE);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	printk("cpu %u (hwid %u) Ready to die...\n",
+	       smp_processor_id(), hard_smp_processor_id());
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	printk("cpu %u (hwid %u) Ready to die...\n",
 	       smp_processor_id(), hard_smp_processor_id());

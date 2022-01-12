@@ -162,6 +162,7 @@ static int gfs2_check_sb(struct gfs2_sbd *sdp, int silent)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (sb->sb_fs_format != GFS2_FORMAT_FS ||
 	    sb->sb_multihost_format != GFS2_FORMAT_MULTI) {
 		fs_warn(sdp, "Unknown on-disk format, unable to mount\n");
@@ -176,6 +177,8 @@ static int gfs2_check_sb(struct gfs2_sbd *sdp, int silent)
 
 	return 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*  If format numbers match exactly, we're done.  */
 
 	if (sb->sb_fs_format == GFS2_FORMAT_FS &&
@@ -185,6 +188,9 @@ static int gfs2_check_sb(struct gfs2_sbd *sdp, int silent)
 	fs_warn(sdp, "Unknown on-disk format, unable to mount\n");
 
 	return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

@@ -104,7 +104,10 @@ static int has_newer_microcode(void *mc, unsigned int csig, int cpf, int new_rev
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Given CPU signature and a microcode patch, this function finds if the
  * microcode patch has matching family and model with the CPU.
@@ -152,6 +155,9 @@ static bool microcode_matches(struct microcode_header_intel *mc_header,
 	return false;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct ucode_patch *memdup_patch(void *data, unsigned int size)
 {
@@ -171,7 +177,11 @@ static struct ucode_patch *memdup_patch(void *data, unsigned int size)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void save_microcode_patch(struct ucode_cpu_info *uci, void *data, unsigned int size)
+=======
+static void save_microcode_patch(void *data, unsigned int size)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void save_microcode_patch(void *data, unsigned int size)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -221,9 +231,12 @@ static void save_microcode_patch(void *data, unsigned int size)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!find_matching_signature(p->data, uci->cpu_sig.sig, uci->cpu_sig.pf))
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
@@ -361,8 +374,12 @@ scan_microcode(void *data, size_t size, struct ucode_cpu_info *uci, bool save)
 		size -= mc_size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!find_matching_signature(data, uci->cpu_sig.sig,
 					     uci->cpu_sig.pf)) {
+=======
+		if (!microcode_matches(mc_header, uci->cpu_sig.sig)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!microcode_matches(mc_header, uci->cpu_sig.sig)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -372,7 +389,11 @@ scan_microcode(void *data, size_t size, struct ucode_cpu_info *uci, bool save)
 
 		if (save) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			save_microcode_patch(uci, data, mc_size);
+=======
+			save_microcode_patch(data, mc_size);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			save_microcode_patch(data, mc_size);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -509,7 +530,11 @@ static void show_saved_mc(void)
  * hot-added or resumes.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void save_mc_for_early(struct ucode_cpu_info *uci, u8 *mc, unsigned int size)
+=======
+static void save_mc_for_early(u8 *mc, unsigned int size)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void save_mc_for_early(u8 *mc, unsigned int size)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -520,7 +545,11 @@ static void save_mc_for_early(u8 *mc, unsigned int size)
 	mutex_lock(&x86_cpu_microcode_mutex);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	save_microcode_patch(uci, mc, size);
+=======
+	save_microcode_patch(mc, size);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	save_microcode_patch(mc, size);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -968,7 +997,11 @@ static enum ucode_state generic_load_microcode(int cpu, void *data, size_t size,
 	 * or resumes.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	save_mc_for_early(uci, new_mc, new_mc_size);
+=======
+	save_mc_for_early(new_mc, new_mc_size);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	save_mc_for_early(new_mc, new_mc_size);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

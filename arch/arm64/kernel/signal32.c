@@ -29,8 +29,11 @@
 #include <linux/uaccess.h>
 #include <asm/unistd.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <asm/vdso.h>
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 struct compat_sigcontext {
 	/* We always set these two fields to 0 */
@@ -67,6 +70,9 @@ struct compat_ucontext {
 	int		__unused[32 - (sizeof (compat_sigset_t) / sizeof (int))];
 	compat_ulong_t	uc_regspace[128] __attribute__((__aligned__(8)));
 };
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 struct compat_vfp_sigframe {
@@ -96,7 +102,10 @@ struct compat_aux_sigframe {
 } __attribute__((__aligned__(8)));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct compat_sigframe {
 	struct compat_ucontext	uc;
 	compat_ulong_t		retcode[2];
@@ -107,6 +116,9 @@ struct compat_rt_sigframe {
 	struct compat_sigframe sig;
 };
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define _BLOCKABLE (~(sigmask(SIGKILL) | sigmask(SIGSTOP)))
 
@@ -490,6 +502,7 @@ static void compat_setup_return(struct pt_regs *regs, struct k_sigaction *ka,
 	} else {
 		/* Set up sigreturn pointer */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_VDSO32
 		void *vdso_base = current->mm->context.vdso;
 		void *trampoline =
@@ -506,14 +519,22 @@ static void compat_setup_return(struct pt_regs *regs, struct k_sigaction *ka,
 		void *sigreturn_base = current->mm->context.vdso;
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		unsigned int idx = thumb << 1;
 
 		if (ka->sa.sa_flags & SA_SIGINFO)
 			idx += 3;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		retcode = ptr_to_compat(sigreturn_base) + (idx << 2) + thumb;
 #endif
+=======
+		retcode = AARCH32_VECTORS_BASE +
+			  AARCH32_KERN_SIGRET_CODE_OFFSET +
+			  (idx << 2) + thumb;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		retcode = AARCH32_VECTORS_BASE +
 			  AARCH32_KERN_SIGRET_CODE_OFFSET +

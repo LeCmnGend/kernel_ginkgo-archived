@@ -794,7 +794,11 @@ struct bnx2i_hba *bnx2i_alloc_hba(struct cnic_dev *cnic)
 	shost->dma_boundary = cnic->pcidev->dma_mask;
 	shost->transportt = bnx2i_scsi_xport_template;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	shost->max_id = ISCSI_MAX_CONNS_PER_HBA - 1;
+=======
+	shost->max_id = ISCSI_MAX_CONNS_PER_HBA;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	shost->max_id = ISCSI_MAX_CONNS_PER_HBA;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

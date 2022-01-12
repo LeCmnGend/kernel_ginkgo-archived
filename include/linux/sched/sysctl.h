@@ -31,6 +31,7 @@ extern unsigned int sysctl_sched_cstate_aware;
 extern unsigned int sysctl_sched_wakeup_granularity;
 extern unsigned int sysctl_sched_child_runs_first;
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern unsigned int sysctl_sched_force_lb_enable;
 #ifdef CONFIG_SCHED_WALT
 extern unsigned int sysctl_sched_capacity_margin_up[MAX_MARGIN_LEVELS];
@@ -38,12 +39,17 @@ extern unsigned int sysctl_sched_capacity_margin_down[MAX_MARGIN_LEVELS];
 extern unsigned int sysctl_sched_user_hint;
 extern const int sched_user_hint_max;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern unsigned int sysctl_sched_capacity_margin_up[MAX_MARGIN_LEVELS];
 extern unsigned int sysctl_sched_capacity_margin_down[MAX_MARGIN_LEVELS];
 #ifdef CONFIG_SCHED_WALT
 extern unsigned int sysctl_sched_use_walt_cpu_util;
 extern unsigned int sysctl_sched_use_walt_task_util;
 extern unsigned int sysctl_sched_walt_init_task_load_pct;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern unsigned int sysctl_sched_cpu_high_irqload;
 extern unsigned int sysctl_sched_boost;
@@ -54,6 +60,7 @@ extern unsigned int sysctl_sched_many_wakeup_threshold;
 extern unsigned int sysctl_sched_walt_rotate_big_tasks;
 extern unsigned int sysctl_sched_min_task_util_for_boost;
 extern unsigned int sysctl_sched_min_task_util_for_colocation;
+<<<<<<< HEAD
 <<<<<<< HEAD
 extern unsigned int sysctl_sched_asym_cap_sibling_freq_match_pct;
 extern unsigned int sysctl_sched_coloc_downmigrate_ns;
@@ -86,6 +93,8 @@ extern int sched_updown_migrate_handler(struct ctl_table *table,
 					int write, void __user *buffer,
 					size_t *lenp, loff_t *ppos);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern unsigned int sysctl_sched_little_cluster_coloc_fmin_khz;
 
 extern int
@@ -93,6 +102,9 @@ walt_proc_update_handler(struct ctl_table *table, int write,
 			 void __user *buffer, size_t *lenp,
 			 loff_t *ppos);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 
@@ -159,11 +171,17 @@ extern int sched_rt_handler(struct ctl_table *table, int write,
 		loff_t *ppos);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern int sched_updown_migrate_handler(struct ctl_table *table,
 					int write, void __user *buffer,
 					size_t *lenp, loff_t *ppos);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern int sysctl_numa_balancing(struct ctl_table *table, int write,
 				 void __user *buffer, size_t *lenp,
@@ -173,7 +191,10 @@ extern int sysctl_schedstats(struct ctl_table *table, int write,
 				 void __user *buffer, size_t *lenp,
 				 loff_t *ppos);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #ifdef CONFIG_SCHED_WALT
 extern int sched_little_cluster_coloc_fmin_khz_handler(struct ctl_table *table,
@@ -181,6 +202,9 @@ extern int sched_little_cluster_coloc_fmin_khz_handler(struct ctl_table *table,
 					size_t *lenp, loff_t *ppos);
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define LIB_PATH_LENGTH 512
 extern char sched_lib_name[LIB_PATH_LENGTH];

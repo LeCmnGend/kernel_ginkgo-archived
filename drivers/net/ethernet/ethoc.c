@@ -1213,7 +1213,11 @@ static int ethoc_probe(struct platform_device *pdev)
 	if (ret) {
 		dev_err(&netdev->dev, "failed to register MDIO bus\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto free3;
+=======
+		goto free2;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto free2;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1249,7 +1253,10 @@ error2:
 error:
 	mdiobus_unregister(priv->mdio);
 <<<<<<< HEAD
+<<<<<<< HEAD
 free3:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mdiobus_free(priv->mdio);

@@ -952,7 +952,11 @@ static int gpmc_cs_remap(int cs, u32 base)
 	u32 old_base, size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (cs >= gpmc_cs_num) {
+=======
+	if (cs > gpmc_cs_num) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (cs > gpmc_cs_num) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -991,7 +995,11 @@ int gpmc_cs_request(int cs, unsigned long size, unsigned long *base)
 	int r = -1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (cs >= gpmc_cs_num) {
+=======
+	if (cs > gpmc_cs_num) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (cs > gpmc_cs_num) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1037,8 +1045,13 @@ EXPORT_SYMBOL(gpmc_cs_request);
 void gpmc_cs_free(int cs)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct gpmc_cs_data *gpmc;
 	struct resource *res;
+=======
+	struct gpmc_cs_data *gpmc = &gpmc_cs[cs];
+	struct resource *res = &gpmc->mem;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct gpmc_cs_data *gpmc = &gpmc_cs[cs];
 	struct resource *res = &gpmc->mem;
@@ -1052,9 +1065,12 @@ void gpmc_cs_free(int cs)
 		return;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	gpmc = &gpmc_cs[cs];
 	res = &gpmc->mem;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	gpmc_cs_disable_mem(cs);

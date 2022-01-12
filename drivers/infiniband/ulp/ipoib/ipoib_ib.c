@@ -810,7 +810,11 @@ timeout:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void ipoib_ib_dev_stop(struct net_device *dev)
+=======
+int ipoib_ib_dev_stop(struct net_device *dev)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int ipoib_ib_dev_stop(struct net_device *dev)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -822,6 +826,11 @@ int ipoib_ib_dev_stop(struct net_device *dev)
 	clear_bit(IPOIB_FLAG_INITIALIZED, &priv->flags);
 	ipoib_flush_ah(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+	return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	return 0;

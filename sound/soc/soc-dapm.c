@@ -2452,7 +2452,10 @@ void snd_soc_dapm_free_widget(struct snd_soc_dapm_widget *w)
 
 	list_del(&w->list);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	list_del(&w->dirty);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*

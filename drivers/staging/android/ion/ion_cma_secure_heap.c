@@ -24,6 +24,10 @@
 #include <linux/dma-mapping.h>
 #include <linux/msm_ion.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <trace/events/kmem.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <trace/events/kmem.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -144,6 +148,12 @@ static int ion_secure_cma_add_to_pool(
 	struct ion_cma_alloc_chunk *chunk;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	trace_ion_secure_cma_add_to_pool_start(len,
+					atomic_read(&sheap->total_pool_size),
+					prefetch);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_ion_secure_cma_add_to_pool_start(len,
 					atomic_read(&sheap->total_pool_size),
@@ -184,11 +194,17 @@ out:
 	mutex_unlock(&sheap->chunk_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	trace_ion_secure_cma_add_to_pool_end(len,
 					atomic_read(&sheap->total_pool_size),
 					prefetch);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 }
@@ -275,6 +291,10 @@ int ion_secure_cma_prefetch(struct ion_heap *heap, void *data)
 
 	sheap->last_alloc = len;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	trace_ion_prefetching(sheap->last_alloc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_ion_prefetching(sheap->last_alloc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -372,6 +392,11 @@ __ion_secure_cma_shrink_pool(struct ion_cma_secure_heap *sheap, int max_nr)
 	unsigned long drained_size = 0, skipped_size = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	trace_ion_secure_cma_shrink_pool_start(drained_size, skipped_size);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_ion_secure_cma_shrink_pool_start(drained_size, skipped_size);
 
@@ -393,6 +418,10 @@ __ion_secure_cma_shrink_pool(struct ion_cma_secure_heap *sheap, int max_nr)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	trace_ion_secure_cma_shrink_pool_end(drained_size, skipped_size);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_ion_secure_cma_shrink_pool_end(drained_size, skipped_size);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -714,6 +743,10 @@ static int ion_secure_cma_allocate(struct ion_heap *heap,
 		return -ENOMEM;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	trace_ion_secure_cma_allocate_start(heap->name, len, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_ion_secure_cma_allocate_start(heap->name, len, flags);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -724,6 +757,10 @@ static int ion_secure_cma_allocate(struct ion_heap *heap,
 		buf = __ion_secure_cma_allocate_non_contig(heap, buffer, len,
 							   flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	trace_ion_secure_cma_allocate_end(heap->name, len, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_ion_secure_cma_allocate_end(heap->name, len, flags);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -736,13 +773,19 @@ static int ion_secure_cma_allocate(struct ion_heap *heap,
 			ret = 1;
 		} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ret = msm_secure_table(buf->table);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			trace_ion_cp_secure_buffer_start(heap->name, len,
 							 flags);
 			ret = msm_secure_table(buf->table);
 			trace_ion_cp_secure_buffer_end(heap->name, len,
 						       flags);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 		if (ret) {

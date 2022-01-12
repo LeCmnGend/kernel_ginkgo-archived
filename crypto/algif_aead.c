@@ -84,7 +84,11 @@ static int crypto_aead_copy_sgl(struct crypto_skcipher *null_tfm,
 
 	skcipher_request_set_tfm(skreq, null_tfm);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	skcipher_request_set_callback(skreq, CRYPTO_TFM_REQ_MAY_SLEEP,
+=======
+	skcipher_request_set_callback(skreq, CRYPTO_TFM_REQ_MAY_BACKLOG,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	skcipher_request_set_callback(skreq, CRYPTO_TFM_REQ_MAY_BACKLOG,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -301,7 +305,11 @@ static int _aead_recvmsg(struct socket *sock, struct msghdr *msg,
 
 		aead_request_set_callback(&areq->cra_u.aead_req,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					  CRYPTO_TFM_REQ_MAY_SLEEP,
+=======
+					  CRYPTO_TFM_REQ_MAY_BACKLOG,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					  CRYPTO_TFM_REQ_MAY_BACKLOG,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -311,7 +319,11 @@ static int _aead_recvmsg(struct socket *sock, struct msghdr *msg,
 
 		/* AIO operation in progress */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (err == -EINPROGRESS)
+=======
+		if (err == -EINPROGRESS || err == -EBUSY)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (err == -EINPROGRESS || err == -EBUSY)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -322,7 +334,10 @@ static int _aead_recvmsg(struct socket *sock, struct msghdr *msg,
 		/* Synchronous operation */
 		aead_request_set_callback(&areq->cra_u.aead_req,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					  CRYPTO_TFM_REQ_MAY_SLEEP |
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					  CRYPTO_TFM_REQ_MAY_BACKLOG,

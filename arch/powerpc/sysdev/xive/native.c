@@ -23,7 +23,10 @@
 #include <linux/cpumask.h>
 #include <linux/mm.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/kmemleak.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -635,7 +638,10 @@ static bool xive_native_provision_pages(void)
 			return false;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kmemleak_ignore(p);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		opal_xive_donate_page(chip, __pa(p));

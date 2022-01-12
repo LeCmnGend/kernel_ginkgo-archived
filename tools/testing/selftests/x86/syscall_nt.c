@@ -68,7 +68,10 @@ static void do_it(unsigned long extraflags)
 	syscall(SYS_getpid);
 	flags = get_eflags();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	set_eflags(X86_EFLAGS_IF | X86_EFLAGS_FIXED);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if ((flags & extraflags) == extraflags) {

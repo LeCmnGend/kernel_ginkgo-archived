@@ -39,11 +39,14 @@ struct max1118 {
 	struct mutex lock;
 	struct regulator *reg;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Ensure natural alignment of buffer elements */
 	struct {
 		u8 channels[2];
 		s64 ts __aligned(8);
 	} scan;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -172,6 +175,10 @@ static irqreturn_t max1118_trigger_handler(int irq, void *p)
 	struct iio_dev *indio_dev = pf->indio_dev;
 	struct max1118 *adc = iio_priv(indio_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u8 data[16] = { }; /* 2x 8-bit ADC data + padding + 8 bytes timestamp */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u8 data[16] = { }; /* 2x 8-bit ADC data + padding + 8 bytes timestamp */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -193,15 +200,21 @@ static irqreturn_t max1118_trigger_handler(int irq, void *p)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		adc->scan.channels[i] = ret;
 		i++;
 	}
 	iio_push_to_buffers_with_timestamp(indio_dev, &adc->scan,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		data[i] = ret;
 		i++;
 	}
 	iio_push_to_buffers_with_timestamp(indio_dev, data,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					   iio_get_time_ns(indio_dev));
 out:

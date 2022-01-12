@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2015-2021 The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2015-2020, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2015-2020, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -46,7 +50,10 @@ struct diag_socket_info {
 	uint8_t port_type;
 	uint8_t inited;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	uint8_t reset_flag;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	atomic_t opened;
@@ -85,7 +92,10 @@ int diag_socket_init(void);
 void diag_socket_exit(void);
 int diag_socket_init_peripheral(uint8_t peripheral);
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct diag_socket_info *diag_get_socket_info_ptr(int type, int peripheral);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif

@@ -45,6 +45,7 @@ static void tpm2_flush_sessions(struct tpm_chip *chip, struct tpm_space *space)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int tpm2_init_space(struct tpm_space *space, unsigned int buf_size)
 {
 	space->context_buf = kzalloc(buf_size, GFP_KERNEL);
@@ -61,6 +62,8 @@ int tpm2_init_space(struct tpm_space *space, unsigned int buf_size)
 
 	space->buf_size = buf_size;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int tpm2_init_space(struct tpm_space *space)
 {
 	space->context_buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
@@ -73,6 +76,9 @@ int tpm2_init_space(struct tpm_space *space)
 		return -ENOMEM;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
@@ -297,10 +303,15 @@ int tpm2_prepare_space(struct tpm_chip *chip, struct tpm_space *space, u32 cc,
 	memcpy(&chip->work_space.session_tbl, &space->session_tbl,
 	       sizeof(space->session_tbl));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memcpy(chip->work_space.context_buf, space->context_buf,
 	       space->buf_size);
 	memcpy(chip->work_space.session_buf, space->session_buf,
 	       space->buf_size);
+=======
+	memcpy(chip->work_space.context_buf, space->context_buf, PAGE_SIZE);
+	memcpy(chip->work_space.session_buf, space->session_buf, PAGE_SIZE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memcpy(chip->work_space.context_buf, space->context_buf, PAGE_SIZE);
 	memcpy(chip->work_space.session_buf, space->session_buf, PAGE_SIZE);
@@ -485,7 +496,11 @@ static int tpm2_save_space(struct tpm_chip *chip)
 
 		rc = tpm2_save_context(chip, space->context_tbl[i],
 <<<<<<< HEAD
+<<<<<<< HEAD
 				       space->context_buf, space->buf_size,
+=======
+				       space->context_buf, PAGE_SIZE,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				       space->context_buf, PAGE_SIZE,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -508,8 +523,14 @@ static int tpm2_save_space(struct tpm_chip *chip)
 
 		rc = tpm2_save_context(chip, space->session_tbl[i],
 <<<<<<< HEAD
+<<<<<<< HEAD
 				       space->session_buf, space->buf_size,
 				       &offset);
+=======
+				       space->session_buf, PAGE_SIZE,
+				       &offset);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				       space->session_buf, PAGE_SIZE,
 				       &offset);
@@ -561,10 +582,15 @@ int tpm2_commit_space(struct tpm_chip *chip, struct tpm_space *space,
 	memcpy(&space->session_tbl, &chip->work_space.session_tbl,
 	       sizeof(space->session_tbl));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memcpy(space->context_buf, chip->work_space.context_buf,
 	       space->buf_size);
 	memcpy(space->session_buf, chip->work_space.session_buf,
 	       space->buf_size);
+=======
+	memcpy(space->context_buf, chip->work_space.context_buf, PAGE_SIZE);
+	memcpy(space->session_buf, chip->work_space.session_buf, PAGE_SIZE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memcpy(space->context_buf, chip->work_space.context_buf, PAGE_SIZE);
 	memcpy(space->session_buf, chip->work_space.session_buf, PAGE_SIZE);

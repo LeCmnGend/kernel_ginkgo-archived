@@ -45,7 +45,10 @@
 #include <linux/oom.h>
 #include <linux/capability.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/cgroup.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -157,10 +160,16 @@ static inline int has_pending_signals(sigset_t *signal, sigset_t *blocked)
 static int recalc_sigpending_tsk(struct task_struct *t)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if ((t->jobctl & (JOBCTL_PENDING_MASK | JOBCTL_TRAP_FREEZE)) ||
 	    PENDING(&t->pending, &t->blocked) ||
 	    PENDING(&t->signal->shared_pending, &t->blocked) ||
 	    cgroup_task_frozen(t)) {
+=======
+	if ((t->jobctl & JOBCTL_PENDING_MASK) ||
+	    PENDING(&t->pending, &t->blocked) ||
+	    PENDING(&t->signal->shared_pending, &t->blocked)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if ((t->jobctl & JOBCTL_PENDING_MASK) ||
 	    PENDING(&t->pending, &t->blocked) ||
@@ -1982,10 +1991,15 @@ static void ptrace_stop(int exit_code, int why, int clear_code, siginfo_t *info)
 		preempt_disable();
 		read_unlock(&tasklist_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cgroup_enter_frozen();
 		preempt_enable_no_resched();
 		freezable_schedule();
 		cgroup_leave_frozen(true);
+=======
+		preempt_enable_no_resched();
+		freezable_schedule();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		preempt_enable_no_resched();
 		freezable_schedule();
@@ -2168,7 +2182,10 @@ static bool do_signal_stop(int signr)
 
 		/* Now we don't run again until woken by SIGCONT or SIGKILL */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cgroup_enter_frozen();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		freezable_schedule();
@@ -2218,6 +2235,7 @@ static void do_jobctl_trap(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * do_freezer_trap - handle the freezer jobctl trap
  *
@@ -2255,6 +2273,8 @@ static void do_freezer_trap(void)
 	freezable_schedule();
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int ptrace_signal(int signr, siginfo_t *info)
@@ -2369,10 +2389,13 @@ relock:
 				&sighand->action[SIGKILL - 1]);
 		recalc_sigpending();
 <<<<<<< HEAD
+<<<<<<< HEAD
 		current->jobctl &= ~JOBCTL_TRAP_FREEZE;
 		spin_unlock_irq(&sighand->siglock);
 		if (unlikely(cgroup_task_frozen(current)))
 			cgroup_leave_frozen(true);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto fatal;
@@ -2385,6 +2408,7 @@ relock:
 		    do_signal_stop(0))
 			goto relock;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 		if (unlikely(current->jobctl &
 			     (JOBCTL_TRAP_MASK | JOBCTL_TRAP_FREEZE))) {
@@ -2404,6 +2428,11 @@ relock:
 		if (unlikely(cgroup_task_frozen(current))) {
 			spin_unlock_irq(&sighand->siglock);
 			cgroup_leave_frozen(true);
+=======
+		if (unlikely(current->jobctl & JOBCTL_TRAP_MASK)) {
+			do_jobctl_trap();
+			spin_unlock_irq(&sighand->siglock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (unlikely(current->jobctl & JOBCTL_TRAP_MASK)) {
 			do_jobctl_trap();
@@ -2503,8 +2532,13 @@ relock:
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		spin_unlock_irq(&sighand->siglock);
 	fatal:
+=======
+	fatal:
+		spin_unlock_irq(&sighand->siglock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	fatal:
 		spin_unlock_irq(&sighand->siglock);

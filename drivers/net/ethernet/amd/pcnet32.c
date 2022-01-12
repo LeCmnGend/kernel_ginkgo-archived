@@ -1549,7 +1549,12 @@ pcnet32_probe_pci(struct pci_dev *pdev, const struct pci_device_id *ent)
 	pci_set_master(pdev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!pci_resource_len(pdev, 0)) {
+=======
+	ioaddr = pci_resource_start(pdev, 0);
+	if (!ioaddr) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ioaddr = pci_resource_start(pdev, 0);
 	if (!ioaddr) {
@@ -1566,8 +1571,11 @@ pcnet32_probe_pci(struct pci_dev *pdev, const struct pci_device_id *ent)
 		return err;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	ioaddr = pci_resource_start(pdev, 0);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!request_region(ioaddr, PCNET32_TOTAL_SIZE, "pcnet32_probe_pci")) {

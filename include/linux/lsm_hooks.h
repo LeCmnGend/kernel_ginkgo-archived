@@ -555,10 +555,13 @@
  *	@old points to the original credentials.
  *	Transfer data from original creds to new creds
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @cred_getsecid:
  *	Retrieve the security identifier of the cred structure @c
  *	@c contains the credentials, secid will be placed into @secid.
  *	In case of failure, @secid will be set to zero.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * @kernel_act_as:
@@ -1549,7 +1552,10 @@ union security_list_options {
 				gfp_t gfp);
 	void (*cred_transfer)(struct cred *new, const struct cred *old);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	void (*cred_getsecid)(const struct cred *c, u32 *secid);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int (*kernel_act_as)(struct cred *new, u32 secid);
@@ -1587,6 +1593,7 @@ union security_list_options {
 	void (*msg_msg_free_security)(struct msg_msg *msg);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int (*msg_queue_alloc_security)(struct kern_ipc_perm *msq);
 	void (*msg_queue_free_security)(struct kern_ipc_perm *msq);
 	int (*msg_queue_associate)(struct kern_ipc_perm *msq, int msqflg);
@@ -1610,6 +1617,8 @@ union security_list_options {
 	int (*sem_semctl)(struct kern_ipc_perm *sma, int cmd);
 	int (*sem_semop)(struct kern_ipc_perm *sma, struct sembuf *sops,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int (*msg_queue_alloc_security)(struct msg_queue *msq);
 	void (*msg_queue_free_security)(struct msg_queue *msq);
 	int (*msg_queue_associate)(struct msg_queue *msq, int msqflg);
@@ -1632,6 +1641,9 @@ union security_list_options {
 	int (*sem_associate)(struct sem_array *sma, int semflg);
 	int (*sem_semctl)(struct sem_array *sma, int cmd);
 	int (*sem_semop)(struct sem_array *sma, struct sembuf *sops,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				unsigned nsops, int alter);
 
@@ -1869,7 +1881,10 @@ struct security_hook_heads {
 	struct list_head cred_prepare;
 	struct list_head cred_transfer;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct list_head cred_getsecid;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct list_head kernel_act_as;

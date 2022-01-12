@@ -27,11 +27,17 @@
 #include "internal.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define SEQ_PUT_DEC(str, val) \
 		seq_put_decimal_ull_width(m, str, (val) << (PAGE_SHIFT-10), 8)
 void task_mem(struct seq_file *m, struct mm_struct *mm)
 {
 	unsigned long text, lib, swap, anon, file, shmem;
+=======
+void task_mem(struct seq_file *m, struct mm_struct *mm)
+{
+	unsigned long text, lib, swap, ptes, pmds, anon, file, shmem;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void task_mem(struct seq_file *m, struct mm_struct *mm)
 {
@@ -57,6 +63,7 @@ void task_mem(struct seq_file *m, struct mm_struct *mm)
 	if (hiwater_rss < mm->hiwater_rss)
 		hiwater_rss = mm->hiwater_rss;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	/* split executable areas between text and lib */
 	text = PAGE_ALIGN(mm->end_code) - (mm->start_code & PAGE_MASK);
@@ -87,6 +94,8 @@ void task_mem(struct seq_file *m, struct mm_struct *mm)
 }
 #undef SEQ_PUT_DEC
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	text = (PAGE_ALIGN(mm->end_code) - (mm->start_code & PAGE_MASK)) >> 10;
 	lib = (mm->exec_vm << (PAGE_SHIFT-10)) - text;
 	swap = get_mm_counter(mm, MM_SWAPENTS);
@@ -125,6 +134,9 @@ void task_mem(struct seq_file *m, struct mm_struct *mm)
 		swap << (PAGE_SHIFT-10));
 	hugetlb_report_usage(m, mm);
 }
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 unsigned long task_vsize(struct mm_struct *mm)
@@ -187,7 +199,11 @@ static void seq_print_vma_name(struct seq_file *m, struct vm_area_struct *vma)
 	num_pages = DIV_ROUND_UP(page_offset + max_len, PAGE_SIZE);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	seq_write(m, "[anon:", 6);
+=======
+	seq_puts(m, "[anon:");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	seq_puts(m, "[anon:");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -203,7 +219,11 @@ static void seq_print_vma_name(struct seq_file *m, struct vm_area_struct *vma)
 				page_start_vaddr, 1, 0, &page, NULL, NULL);
 		if (pages_pinned < 1) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			seq_write(m, "<fault>]\n", 9);
+=======
+			seq_puts(m, "<fault>]");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			seq_puts(m, "<fault>]");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -227,7 +247,11 @@ static void seq_print_vma_name(struct seq_file *m, struct vm_area_struct *vma)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	seq_write(m, "]\n", 2);
+=======
+	seq_putc(m, ']');
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	seq_putc(m, ']');
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -241,9 +265,12 @@ static void vma_stop(struct proc_maps_private *priv)
 	up_read(&mm->mmap_sem);
 	mmput(mm);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	sched_migrate_to_cpumask_end(to_cpumask(&priv->old_cpus_allowed),
 				     cpu_lp_mask);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -283,9 +310,12 @@ static void *m_start(struct seq_file *m, loff_t *ppos)
 		return NULL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sched_migrate_to_cpumask_start(to_cpumask(&priv->old_cpus_allowed),
 				       cpu_lp_mask);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	down_read(&mm->mmap_sem);
@@ -395,6 +425,7 @@ static int is_stack(struct vm_area_struct *vma)
 		vma->vm_end >= vma->vm_mm->start_stack;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #define print_vma_hex10(out, val, clz_fn) \
 ({									\
@@ -508,6 +539,8 @@ static int show_vma_header_prefix(struct seq_file *m, unsigned long start,
 	m->count += len;
 	return 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void show_vma_header_prefix(struct seq_file *m,
 				   unsigned long start, unsigned long end,
 				   vm_flags_t flags, unsigned long long pgoff,
@@ -523,6 +556,9 @@ static void show_vma_header_prefix(struct seq_file *m,
 		   flags & VM_MAYSHARE ? 's' : 'p',
 		   pgoff,
 		   MAJOR(dev), MINOR(dev), ino);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -548,8 +584,12 @@ show_map_vma(struct seq_file *m, struct vm_area_struct *vma, int is_pid)
 	start = vma->vm_start;
 	end = vma->vm_end;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (show_vma_header_prefix(m, start, end, flags, pgoff, dev, ino))
 		return;
+=======
+	show_vma_header_prefix(m, start, end, flags, pgoff, dev, ino);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	show_vma_header_prefix(m, start, end, flags, pgoff, dev, ino);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -559,6 +599,7 @@ show_map_vma(struct seq_file *m, struct vm_area_struct *vma, int is_pid)
 	 * special [heap] marker for the heap:
 	 */
 	if (file) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 		char *buf;
 		size_t size = seq_get_buf(m, &buf);
@@ -592,6 +633,11 @@ show_map_vma(struct seq_file *m, struct vm_area_struct *vma, int is_pid)
 		seq_file_path(m, file, "\n");
 		goto done;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+		seq_pad(m, ' ');
+		seq_file_path(m, file, "\n");
+		goto done;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	if (vma->vm_ops && vma->vm_ops->name) {
@@ -604,8 +650,13 @@ show_map_vma(struct seq_file *m, struct vm_area_struct *vma, int is_pid)
 	if (!name) {
 		if (!mm) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			seq_write(m, "[vdso]\n", 7);
 			return;
+=======
+			name = "[vdso]";
+			goto done;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			name = "[vdso]";
 			goto done;
@@ -614,6 +665,7 @@ show_map_vma(struct seq_file *m, struct vm_area_struct *vma, int is_pid)
 
 		if (vma->vm_start <= mm->brk &&
 		    vma->vm_end >= mm->start_brk) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 			seq_write(m, "[heap]\n", 7);
 			return;
@@ -628,6 +680,8 @@ show_map_vma(struct seq_file *m, struct vm_area_struct *vma, int is_pid)
 			seq_print_vma_name(m, vma);
 			return;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			name = "[heap]";
 			goto done;
 		}
@@ -640,19 +694,28 @@ show_map_vma(struct seq_file *m, struct vm_area_struct *vma, int is_pid)
 		if (vma_get_anon_name(vma)) {
 			seq_pad(m, ' ');
 			seq_print_vma_name(m, vma);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 	}
 
 done:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (name)
 		seq_puts(m, name);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (name) {
 		seq_pad(m, ' ');
 		seq_puts(m, name);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	seq_putc(m, '\n');
 }
@@ -998,9 +1061,14 @@ static void show_smap_vma_flags(struct seq_file *m, struct vm_area_struct *vma)
 			continue;
 		if (vma->vm_flags & (1UL << i)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			seq_putc(m, mnemonics[i][0]);
 			seq_putc(m, mnemonics[i][1]);
 			seq_putc(m, ' ');
+=======
+			seq_printf(m, "%c%c ",
+				   mnemonics[i][0], mnemonics[i][1]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			seq_printf(m, "%c%c ",
 				   mnemonics[i][0], mnemonics[i][1]);
@@ -1046,8 +1114,11 @@ void __weak arch_show_smap(struct seq_file *m, struct vm_area_struct *vma)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define SEQ_PUT_DEC(str, val) \
 		seq_put_decimal_ull_width(m, str, (val) >> 10, 8)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int show_smap(struct seq_file *m, void *v, int is_pid)
@@ -1117,6 +1188,10 @@ static int show_smap(struct seq_file *m, void *v, int is_pid)
 			seq_puts(m, "Name:           ");
 			seq_print_vma_name(m, vma);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			seq_putc(m, '\n');
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			seq_putc(m, '\n');
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1125,6 +1200,10 @@ static int show_smap(struct seq_file *m, void *v, int is_pid)
 		show_vma_header_prefix(
 			m, mss->first_vma_start, vma->vm_end, 0, 0, 0, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		seq_pad(m, ' ');
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		seq_pad(m, ' ');
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1136,6 +1215,7 @@ static int show_smap(struct seq_file *m, void *v, int is_pid)
 	if (vma_get_anon_name(vma)) {
 		seq_puts(m, "Name:           ");
 		seq_print_vma_name(m, vma);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	}
 
@@ -1168,6 +1248,8 @@ static int show_smap(struct seq_file *m, void *v, int is_pid)
 		seq_puts(m, " kB\n");
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		seq_putc(m, '\n');
 	}
 
@@ -1215,6 +1297,9 @@ static int show_smap(struct seq_file *m, void *v, int is_pid)
 			   mss->swap >> 10,
 			   (unsigned long)(mss->swap_pss >> (10 + PSS_SHIFT)),
 			   (unsigned long)(mss->pss_locked >> (10 + PSS_SHIFT)));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!rollup_mode) {
@@ -1222,11 +1307,17 @@ static int show_smap(struct seq_file *m, void *v, int is_pid)
 		show_smap_vma_flags(m, vma);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	m_cache_vma(m, vma);
 	return ret;
 }
 #undef SEQ_PUT_DEC
+=======
+	m_cache_vma(m, vma);
+	return ret;
+}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	m_cache_vma(m, vma);
 	return ret;
@@ -1977,7 +2068,11 @@ const struct file_operations proc_pagemap_operations = {
 
 #ifdef CONFIG_PROCESS_RECLAIM
 <<<<<<< HEAD
+<<<<<<< HEAD
 int reclaim_pte_range(pmd_t *pmd, unsigned long addr,
+=======
+static int reclaim_pte_range(pmd_t *pmd, unsigned long addr,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int reclaim_pte_range(pmd_t *pmd, unsigned long addr,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2008,10 +2103,14 @@ cont:
 			continue;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (page_mapcount(page) != 1)
 			continue;
 
 		if (isolate_lru_page(compound_head(page)))
+=======
+		if (isolate_lru_page(page))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (isolate_lru_page(page))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2049,7 +2148,11 @@ cont:
 
 	cond_resched();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return (rp->nr_to_reclaim == 0) ? -EPIPE : 0;
+=======
+	return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2120,7 +2223,10 @@ static ssize_t reclaim_write(struct file *file, const char __user *buf,
 	unsigned long end = 0;
 	struct reclaim_param rp;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2200,11 +2306,17 @@ static ssize_t reclaim_write(struct file *file, const char __user *buf,
 
 			rp.vma = vma;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ret = walk_page_range(max(vma->vm_start, start),
 					min(vma->vm_end, end),
 					&reclaim_walk);
 			if (ret)
 				break;
+=======
+			walk_page_range(max(vma->vm_start, start),
+					min(vma->vm_end, end),
+					&reclaim_walk);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			walk_page_range(max(vma->vm_start, start),
 					min(vma->vm_end, end),
@@ -2225,10 +2337,15 @@ static ssize_t reclaim_write(struct file *file, const char __user *buf,
 
 			rp.vma = vma;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ret = walk_page_range(vma->vm_start, vma->vm_end,
 				&reclaim_walk);
 			if (ret)
 				break;
+=======
+			walk_page_range(vma->vm_start, vma->vm_end,
+				&reclaim_walk);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			walk_page_range(vma->vm_start, vma->vm_end,
 				&reclaim_walk);

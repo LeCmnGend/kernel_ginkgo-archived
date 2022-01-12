@@ -5847,7 +5847,10 @@ static void kvm_recover_nx_lpages(struct kvm *kvm)
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kvm_mmu_commit_zap_page(kvm, &invalid_list);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

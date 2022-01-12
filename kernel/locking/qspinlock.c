@@ -13,17 +13,23 @@
  *
  * (C) Copyright 2013-2015 Hewlett-Packard Development Company, L.P.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * (C) Copyright 2013-2014,2018 Red Hat, Inc.
  * (C) Copyright 2015 Intel Corp.
  * (C) Copyright 2015 Hewlett-Packard Enterprise Development LP
  *
  * Authors: Waiman Long <longman@redhat.com>
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * (C) Copyright 2013-2014 Red Hat, Inc.
  * (C) Copyright 2015 Intel Corp.
  * (C) Copyright 2015 Hewlett-Packard Enterprise Development LP
  *
  * Authors: Waiman Long <waiman.long@hpe.com>
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *          Peter Zijlstra <peterz@infradead.org>
  */
@@ -42,11 +48,14 @@
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Include queued spinlock statistics code
  */
 #include "qspinlock_stat.h"
 
 /*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * The basic principle of a queue-based spinlock can best be understood
@@ -86,6 +95,7 @@
 
 #include "mcs_spinlock.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define MAX_NODES	4
 
 /*
@@ -105,12 +115,17 @@ struct qnode {
 #endif
 };
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #ifdef CONFIG_PARAVIRT_SPINLOCKS
 #define MAX_NODES	8
 #else
 #define MAX_NODES	4
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /*
@@ -134,7 +149,11 @@ struct qnode {
  * PV doubles the storage and uses the second cacheline for PV state.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static DEFINE_PER_CPU_ALIGNED(struct qnode, qnodes[MAX_NODES]);
+=======
+static DEFINE_PER_CPU_ALIGNED(struct mcs_spinlock, mcs_nodes[MAX_NODES]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static DEFINE_PER_CPU_ALIGNED(struct mcs_spinlock, mcs_nodes[MAX_NODES]);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -149,6 +168,12 @@ static inline __pure u32 encode_tail(int cpu, int idx)
 	u32 tail;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#ifdef CONFIG_DEBUG_SPINLOCK
+	BUG_ON(idx > 3);
+#endif
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #ifdef CONFIG_DEBUG_SPINLOCK
 	BUG_ON(idx > 3);
@@ -166,6 +191,7 @@ static inline __pure struct mcs_spinlock *decode_tail(u32 tail)
 	int idx = (tail &  _Q_TAIL_IDX_MASK) >> _Q_TAIL_IDX_OFFSET;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return per_cpu_ptr(&qnodes[idx].mcs, cpu);
 }
 
@@ -173,6 +199,9 @@ static inline __pure
 struct mcs_spinlock *grab_mcs_node(struct mcs_spinlock *base, int idx)
 {
 	return &((struct qnode *)base + idx)->mcs;
+=======
+	return per_cpu_ptr(&mcs_nodes[idx], cpu);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return per_cpu_ptr(&mcs_nodes[idx], cpu);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -219,15 +248,21 @@ static __always_inline u32 xchg_tail(struct qspinlock *lock, u32 tail)
 {
 	/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * We can use relaxed semantics since the caller ensures that the
 	 * MCS node is properly initialized before updating the tail.
 	 */
 	return (u32)xchg_relaxed(&lock->tail,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * Use release semantics to make sure that the MCS node is properly
 	 * initialized before changing the tail code.
 	 */
 	return (u32)xchg_release(&lock->tail,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				 tail >> _Q_TAIL_OFFSET) << _Q_TAIL_OFFSET;
 }
@@ -274,16 +309,22 @@ static __always_inline u32 xchg_tail(struct qspinlock *lock, u32 tail)
 		new = (val & _Q_LOCKED_PENDING_MASK) | tail;
 		/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 * We can use relaxed semantics since the caller ensures that
 		 * the MCS node is properly initialized before updating the
 		 * tail.
 		 */
 		old = atomic_cmpxchg_relaxed(&lock->val, val, new);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		 * Use release semantics to make sure that the MCS node is
 		 * properly initialized before changing the tail code.
 		 */
 		old = atomic_cmpxchg_release(&lock->val, val, new);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (old == val)
 			break;
@@ -378,7 +419,11 @@ void queued_spin_lock_slowpath(struct qspinlock *lock, u32 val)
 
 	if (pv_enabled())
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto pv_queue;
+=======
+		goto queue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto queue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -408,7 +453,12 @@ void queued_spin_lock_slowpath(struct qspinlock *lock, u32 val)
 	 * trylock || pending
 	 *
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * 0,0,* -> 0,1,* -> 0,0,1 pending, trylock
+=======
+	 * 0,0,0 -> 0,0,1 ; trylock
+	 * 0,0,1 -> 0,1,1 ; pending
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 * 0,0,0 -> 0,0,1 ; trylock
 	 * 0,0,1 -> 0,1,1 ; pending
@@ -417,6 +467,7 @@ void queued_spin_lock_slowpath(struct qspinlock *lock, u32 val)
 	val = queued_fetch_set_pending_acquire(lock);
 
 	/*
+<<<<<<< HEAD
 <<<<<<< HEAD
 	 * If we observe contention, there is a concurrent locker.
 	 *
@@ -431,11 +482,16 @@ void queued_spin_lock_slowpath(struct qspinlock *lock, u32 val)
 			clear_pending(lock);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * If we observe any contention; undo and queue.
 	 */
 	if (unlikely(val & ~_Q_LOCKED_MASK)) {
 		if (!(val & _Q_PENDING_MASK))
 			clear_pending(lock);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto queue;
 	}
@@ -453,7 +509,11 @@ void queued_spin_lock_slowpath(struct qspinlock *lock, u32 val)
 	 */
 	if (val & _Q_LOCKED_MASK)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		atomic_cond_read_acquire(&lock->val, !(VAL & _Q_LOCKED_MASK));
+=======
+		smp_cond_load_acquire(&lock->val.counter, !(VAL & _Q_LOCKED_MASK));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		smp_cond_load_acquire(&lock->val.counter, !(VAL & _Q_LOCKED_MASK));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -465,7 +525,10 @@ void queued_spin_lock_slowpath(struct qspinlock *lock, u32 val)
 	 */
 	clear_pending_set_locked(lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	qstat_inc(qstat_lock_pending, true);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return;
@@ -475,6 +538,7 @@ void queued_spin_lock_slowpath(struct qspinlock *lock, u32 val)
 	 * queuing.
 	 */
 queue:
+<<<<<<< HEAD
 <<<<<<< HEAD
 	qstat_inc(qstat_lock_slowpath, true);
 pv_queue:
@@ -505,11 +569,16 @@ pv_queue:
 	 */
 	qstat_inc(qstat_lock_use_node2 + idx - 1, idx);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	node = this_cpu_ptr(&mcs_nodes[0]);
 	idx = node->count++;
 	tail = encode_tail(smp_processor_id(), idx);
 
 	node += idx;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*
@@ -533,6 +602,7 @@ pv_queue:
 
 	/*
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * Ensure that the initialisation of @node is complete before we
 	 * publish the updated tail via xchg_tail() and potentially link
 	 * @node into the waitqueue via WRITE_ONCE(prev->next, node) below.
@@ -543,11 +613,18 @@ pv_queue:
 	 * Publish the updated tail.
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * We have already touched the queueing cacheline; don't bother with
 	 * pending stuff.
 	 *
 	 * p,*,* -> n,*,*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	 *
+	 * RELEASE, such that the stores to @node must be complete.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 *
 	 * RELEASE, such that the stores to @node must be complete.
@@ -564,9 +641,12 @@ pv_queue:
 		prev = decode_tail(old);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* Link @node into the waitqueue. */
 		WRITE_ONCE(prev->next, node);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
 		 * We must ensure that the stores to @node are observed before
 		 * the write to prev->next. The address dependency from
@@ -575,6 +655,9 @@ pv_queue:
 		 * initialisation of @node.
 		 */
 		smp_store_release(&prev->next, node);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		pv_wait_node(node, prev);
@@ -605,8 +688,13 @@ pv_queue:
 	 * The PV pv_wait_head_or_lock function, if active, will acquire
 	 * the lock and return a non-zero value. So we have to skip the
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * atomic_cond_read_acquire() call. As the next PV queue head hasn't
 	 * been designated yet, there is no way for the locked value to become
+=======
+	 * smp_cond_load_acquire() call. As the next PV queue head hasn't been
+	 * designated yet, there is no way for the locked value to become
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 * smp_cond_load_acquire() call. As the next PV queue head hasn't been
 	 * designated yet, there is no way for the locked value to become
@@ -621,7 +709,11 @@ pv_queue:
 		goto locked;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	val = atomic_cond_read_acquire(&lock->val, !(VAL & _Q_LOCKED_PENDING_MASK));
+=======
+	val = smp_cond_load_acquire(&lock->val.counter, !(VAL & _Q_LOCKED_PENDING_MASK));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	val = smp_cond_load_acquire(&lock->val.counter, !(VAL & _Q_LOCKED_PENDING_MASK));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -638,6 +730,7 @@ locked:
 	 * Otherwise, we only need to grab the lock.
 	 */
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	/*
 	 * In the PV case we might already have _Q_LOCKED_VAL set, because
@@ -660,6 +753,8 @@ locked:
 	 * ensuring we'll see a @next.
 	 */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* In the PV case we might already have _Q_LOCKED_VAL set */
 	if ((val & _Q_TAIL_MASK) == tail) {
 		/*
@@ -672,6 +767,9 @@ locked:
 	}
 
 	/* Either somebody is queued behind us or _Q_PENDING_VAL is set */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	set_locked(lock);
 
@@ -679,13 +777,19 @@ locked:
 	 * contended path; wait for next if not observed yet, release.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!next)
 		next = smp_cond_load_relaxed(&node->next, (VAL));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!next) {
 		while (!(next = READ_ONCE(node->next)))
 			cpu_relax();
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	arch_mcs_spin_unlock_contended(&next->locked);
@@ -696,7 +800,11 @@ release:
 	 * release the node
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__this_cpu_dec(qnodes[0].mcs.count);
+=======
+	__this_cpu_dec(mcs_nodes[0].count);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__this_cpu_dec(mcs_nodes[0].count);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -65,7 +65,11 @@ static int w1_ds2438_get_page(struct w1_slave *sl, int pageno, u8 *buf)
 			continue;
 		w1_buf[0] = W1_DS2438_RECALL_MEMORY;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		w1_buf[1] = (u8)pageno;
+=======
+		w1_buf[1] = 0x00;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		w1_buf[1] = 0x00;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -75,7 +79,11 @@ static int w1_ds2438_get_page(struct w1_slave *sl, int pageno, u8 *buf)
 			continue;
 		w1_buf[0] = W1_DS2438_READ_SCRATCH;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		w1_buf[1] = (u8)pageno;
+=======
+		w1_buf[1] = 0x00;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		w1_buf[1] = 0x00;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

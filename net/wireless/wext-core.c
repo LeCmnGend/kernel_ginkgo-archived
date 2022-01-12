@@ -899,9 +899,14 @@ int call_commit_handler(struct net_device *dev)
 {
 #ifdef CONFIG_WIRELESS_EXT
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (netif_running(dev) &&
 	    dev->wireless_handlers &&
 	    dev->wireless_handlers->standard[0])
+=======
+	if ((netif_running(dev)) &&
+	   (dev->wireless_handlers->standard[0] != NULL))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if ((netif_running(dev)) &&
 	   (dev->wireless_handlers->standard[0] != NULL))

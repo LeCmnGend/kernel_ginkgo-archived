@@ -159,6 +159,7 @@ static int v2_read_file_info(struct super_block *sb, int type)
 		qinfo->dqi_ops = &v2r1_qtree_ops;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = -EUCLEAN;
 	/* Some sanity checks of the read headers... */
 	if ((loff_t)qinfo->dqi_blocks << qinfo->dqi_blocksize_bits >
@@ -184,6 +185,9 @@ out_free:
 		kfree(info->dqi_priv);
 		info->dqi_priv = NULL;
 	}
+=======
+	ret = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -312,7 +316,10 @@ static void v2r1_mem2diskdqb(void *dp, struct dquot *dquot)
 	d->dqb_btime = cpu_to_le64(m->dqb_btime);
 	d->dqb_id = cpu_to_le32(from_kqid(&init_user_ns, dquot->dq_id));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	d->dqb_pad = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (qtree_entry_unused(info, dp))

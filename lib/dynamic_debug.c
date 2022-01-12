@@ -86,6 +86,7 @@ static struct { unsigned flag:8; char opt_char; } opt_array[] = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct flagsbuf { char buf[ARRAY_SIZE(opt_array)+1]; };
 
 /* format a string into buf[] which describes the _ddebug's flags */
@@ -103,6 +104,8 @@ static char *ddebug_describe_flags(unsigned int flags, struct flagsbuf *fb)
 
 	return fb->buf;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* format a string into buf[] which describes the _ddebug's flags */
 static char *ddebug_describe_flags(struct _ddebug *dp, char *buf,
 				    size_t maxlen)
@@ -119,6 +122,9 @@ static char *ddebug_describe_flags(struct _ddebug *dp, char *buf,
 	*p = '\0';
 
 	return buf;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -162,7 +168,11 @@ static int ddebug_change(const struct ddebug_query *query,
 	unsigned int newflags;
 	unsigned int nfound = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct flagsbuf fbuf;
+=======
+	char flagbuf[10];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	char flagbuf[10];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -223,7 +233,12 @@ static int ddebug_change(const struct ddebug_query *query,
 				 trim_prefix(dp->filename), dp->lineno,
 				 dt->mod_name, dp->function,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				 ddebug_describe_flags(dp->flags, &fbuf));
+=======
+				 ddebug_describe_flags(dp, flagbuf,
+						       sizeof(flagbuf)));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				 ddebug_describe_flags(dp, flagbuf,
 						       sizeof(flagbuf)));
@@ -807,7 +822,11 @@ static int ddebug_proc_show(struct seq_file *m, void *p)
 	struct ddebug_iter *iter = m->private;
 	struct _ddebug *dp = p;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct flagsbuf flags;
+=======
+	char flagsbuf[10];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	char flagsbuf[10];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -824,7 +843,11 @@ static int ddebug_proc_show(struct seq_file *m, void *p)
 		   trim_prefix(dp->filename), dp->lineno,
 		   iter->table->mod_name, dp->function,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		   ddebug_describe_flags(dp->flags, &flags));
+=======
+		   ddebug_describe_flags(dp, flagsbuf, sizeof(flagsbuf)));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		   ddebug_describe_flags(dp, flagsbuf, sizeof(flagsbuf)));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

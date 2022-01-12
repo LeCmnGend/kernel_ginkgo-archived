@@ -89,7 +89,11 @@ EXPORT_SYMBOL(memchr)
 
 #ifdef CONFIG_PPC32
 <<<<<<< HEAD
+<<<<<<< HEAD
 _GLOBAL(__arch_clear_user)
+=======
+_GLOBAL(__clear_user)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 _GLOBAL(__clear_user)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -133,7 +137,11 @@ _GLOBAL(__clear_user)
 	EX_TABLE(8b, 92b)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 EXPORT_SYMBOL(__arch_clear_user)
+=======
+EXPORT_SYMBOL(__clear_user)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 EXPORT_SYMBOL(__clear_user)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

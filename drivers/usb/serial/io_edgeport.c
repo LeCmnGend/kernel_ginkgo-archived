@@ -3026,8 +3026,11 @@ static int edge_startup(struct usb_serial *serial)
 			}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			goto error;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			usb_free_urb(edge_serial->interrupt_read_urb);
 			kfree(edge_serial->interrupt_in_buffer);
 
@@ -3037,6 +3040,9 @@ static int edge_startup(struct usb_serial *serial)
 			kfree(edge_serial);
 
 			return response;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 
@@ -3044,6 +3050,7 @@ static int edge_startup(struct usb_serial *serial)
 		 * continue as long as the edgeport is connected */
 		response = usb_submit_urb(edge_serial->interrupt_read_urb,
 								GFP_KERNEL);
+<<<<<<< HEAD
 <<<<<<< HEAD
 		if (response) {
 			dev_err(ddev, "%s - Error %d submitting control urb\n",
@@ -3065,11 +3072,16 @@ error:
 
 	return response;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (response)
 			dev_err(ddev, "%s - Error %d submitting control urb\n",
 				__func__, response);
 	}
 	return response;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

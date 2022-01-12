@@ -41,15 +41,21 @@ struct snd_seq_queue {
 	struct snd_seq_timer *timer;	/* time keeper for this queue */
 	int	owner;		/* client that 'owns' the timer */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool	locked;		/* timer is only accesibble by owner if set */
 	bool	klocked;	/* kernel lock (after START) */
 	bool	check_again;	/* concurrent access happened during check */
 	bool	check_blocked;	/* queue being checked */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned int	locked:1,	/* timer is only accesibble by owner if set */
 		klocked:1,	/* kernel lock (after START) */	
 		check_again:1,
 		check_blocked:1;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	unsigned int flags;		/* status flags */

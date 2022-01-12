@@ -447,15 +447,21 @@ static struct bpf_align_test tests[] = {
 			PREP_PKT_POINTERS,
 			BPF_MOV64_IMM(BPF_REG_0, 0),
 <<<<<<< HEAD
+<<<<<<< HEAD
 			/* (ptr - ptr) << 2 */
 			BPF_MOV64_REG(BPF_REG_5, BPF_REG_3),
 			BPF_ALU64_REG(BPF_SUB, BPF_REG_5, BPF_REG_2),
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			/* ptr & const => unknown & const */
 			BPF_MOV64_REG(BPF_REG_5, BPF_REG_2),
 			BPF_ALU64_IMM(BPF_AND, BPF_REG_5, 0x40),
 			/* ptr << const => unknown << const */
 			BPF_MOV64_REG(BPF_REG_5, BPF_REG_2),
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			BPF_ALU64_IMM(BPF_LSH, BPF_REG_5, 2),
 			/* We have a (4n) value.  Let's make a packet offset
@@ -480,6 +486,7 @@ static struct bpf_align_test tests[] = {
 		.result = REJECT,
 		.matches = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			{4, "R5=pkt_end(id=0,off=0,imm=0)"},
 			/* (ptr - ptr) << 2 == unknown, (4n) */
 			{6, "R5=inv(id=0,smax_value=9223372036854775804,umax_value=18446744073709551612,var_off=(0x0; 0xfffffffffffffffc))"},
@@ -493,6 +500,8 @@ static struct bpf_align_test tests[] = {
 			{11, "R6=pkt(id=1,off=0,r=0,umin_value=2,umax_value=9223372036854775806,var_off=(0x2; 0x7ffffffffffffffc))"},
 			{13, "R4=pkt(id=1,off=4,r=0,umin_value=2,umax_value=9223372036854775806,var_off=(0x2; 0x7ffffffffffffffc))"},
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			{4, "R5=pkt(id=0,off=0,r=0,imm=0)"},
 			/* ptr & 0x40 == either 0 or 0x40 */
 			{5, "R5=inv(id=0,umax_value=64,var_off=(0x0; 0x40))"},
@@ -507,6 +516,9 @@ static struct bpf_align_test tests[] = {
 			/* packet pointer + nonnegative (4n+2) */
 			{12, "R6=pkt(id=1,off=0,r=0,umin_value=2,umax_value=9223372036854775806,var_off=(0x2; 0x7ffffffffffffffc))"},
 			{14, "R4=pkt(id=1,off=4,r=0,umin_value=2,umax_value=9223372036854775806,var_off=(0x2; 0x7ffffffffffffffc))"},
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			/* NET_IP_ALIGN + (4n+2) == (4n), alignment is fine.
 			 * We checked the bounds, but it might have been able
@@ -516,7 +528,11 @@ static struct bpf_align_test tests[] = {
 			 * attempt will fail.
 			 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			{15, "R6=pkt(id=1,off=0,r=0,umin_value=2,umax_value=9223372036854775806,var_off=(0x2; 0x7ffffffffffffffc))"},
+=======
+			{16, "R6=pkt(id=1,off=0,r=0,umin_value=2,umax_value=9223372036854775806,var_off=(0x2; 0x7ffffffffffffffc))"},
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			{16, "R6=pkt(id=1,off=0,r=0,umin_value=2,umax_value=9223372036854775806,var_off=(0x2; 0x7ffffffffffffffc))"},
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

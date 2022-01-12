@@ -555,9 +555,12 @@ void can_init_proc(struct net *net)
 void can_remove_proc(struct net *net)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!net->can.proc_dir)
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (net->can.pde_version)
@@ -588,7 +591,12 @@ void can_remove_proc(struct net *net)
 		remove_proc_entry(CAN_PROC_RCVLIST_SFF, net->can.proc_dir);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	remove_proc_entry("can", net->proc_net);
+=======
+	if (net->can.proc_dir)
+		remove_proc_entry("can", net->proc_net);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (net->can.proc_dir)
 		remove_proc_entry("can", net->proc_net);

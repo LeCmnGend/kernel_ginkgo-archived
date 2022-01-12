@@ -90,8 +90,13 @@ static inline int queued_write_trylock(struct qrwlock *lock)
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return likely(atomic_try_cmpxchg_acquire(&lock->cnts, &cnts,
 				_QW_LOCKED));
+=======
+	return likely(atomic_cmpxchg_acquire(&lock->cnts,
+					     cnts, cnts | _QW_LOCKED) == cnts);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return likely(atomic_cmpxchg_acquire(&lock->cnts,
 					     cnts, cnts | _QW_LOCKED) == cnts);
@@ -120,9 +125,14 @@ static inline void queued_read_lock(struct qrwlock *lock)
 static inline void queued_write_lock(struct qrwlock *lock)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 cnts = 0;
 	/* Optimize for the unfair lock case where the fair flag is 0. */
 	if (likely(atomic_try_cmpxchg_acquire(&lock->cnts, &cnts, _QW_LOCKED)))
+=======
+	/* Optimize for the unfair lock case where the fair flag is 0. */
+	if (atomic_cmpxchg_acquire(&lock->cnts, 0, _QW_LOCKED) == 0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Optimize for the unfair lock case where the fair flag is 0. */
 	if (atomic_cmpxchg_acquire(&lock->cnts, 0, _QW_LOCKED) == 0)

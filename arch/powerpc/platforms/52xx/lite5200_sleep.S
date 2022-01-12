@@ -182,7 +182,11 @@ sram_code:
 	mullw	r12, r12, r11
 	mftb	r13	/* start */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	add	r12, r13, r12 /* end */
+=======
+	addi	r12, r13, r12 /* end */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	addi	r12, r13, r12 /* end */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

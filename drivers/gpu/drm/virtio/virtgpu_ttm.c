@@ -360,7 +360,12 @@ static struct ttm_tt *virtio_gpu_ttm_tt_create2(struct ttm_buffer_object *bo,
 	gtt->obj = obj;
 	has_guest = (obj->blob_mem == VIRTGPU_BLOB_MEM_GUEST ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 		     obj->blob_mem == VIRTGPU_BLOB_MEM_HOST3D_GUEST);
+=======
+		     obj->blob_mem == VIRTGPU_BLOB_MEM_HOST_GUEST);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		     obj->blob_mem == VIRTGPU_BLOB_MEM_HOST_GUEST);
 

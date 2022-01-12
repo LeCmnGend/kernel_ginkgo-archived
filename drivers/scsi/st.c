@@ -1269,8 +1269,13 @@ static int st_open(struct inode *inode, struct file *filp)
 	if (STp->in_use) {
 		spin_unlock(&st_use_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		DEBC_printk(STp, "Device already in use.\n");
 		scsi_tape_put(STp);
+=======
+		scsi_tape_put(STp);
+		DEBC_printk(STp, "Device already in use.\n");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		scsi_tape_put(STp);
 		DEBC_printk(STp, "Device already in use.\n");

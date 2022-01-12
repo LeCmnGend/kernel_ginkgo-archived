@@ -182,7 +182,11 @@ static const char * const s5k6aa_supply_names[] = {
 enum s5k6aa_gpio_id {
 	STBY,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	RSET,
+=======
+	RST,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	RST,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -850,7 +854,11 @@ static int __s5k6aa_power_on(struct s5k6aa *s5k6aa)
 	usleep_range(4000, 5000);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (s5k6aa_gpio_deassert(s5k6aa, RSET))
+=======
+	if (s5k6aa_gpio_deassert(s5k6aa, RST))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (s5k6aa_gpio_deassert(s5k6aa, RST))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -864,7 +872,11 @@ static int __s5k6aa_power_off(struct s5k6aa *s5k6aa)
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (s5k6aa_gpio_assert(s5k6aa, RSET))
+=======
+	if (s5k6aa_gpio_assert(s5k6aa, RST))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (s5k6aa_gpio_assert(s5k6aa, RST))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1527,7 +1539,11 @@ static int s5k6aa_configure_gpios(struct s5k6aa *s5k6aa,
 
 	s5k6aa->gpio[STBY].gpio = -EINVAL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	s5k6aa->gpio[RSET].gpio  = -EINVAL;
+=======
+	s5k6aa->gpio[RST].gpio  = -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	s5k6aa->gpio[RST].gpio  = -EINVAL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1554,7 +1570,11 @@ static int s5k6aa_configure_gpios(struct s5k6aa *s5k6aa,
 			return ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		s5k6aa->gpio[RSET] = *gpio;
+=======
+		s5k6aa->gpio[RST] = *gpio;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		s5k6aa->gpio[RST] = *gpio;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

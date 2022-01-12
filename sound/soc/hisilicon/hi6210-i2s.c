@@ -112,14 +112,20 @@ static int hi6210_i2s_startup(struct snd_pcm_substream *substream,
 	for (n = 0; n < i2s->clocks; n++) {
 		ret = clk_prepare_enable(i2s->clk[n]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ret)
 			goto err_unprepare_clk;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (ret) {
 			while (n--)
 				clk_disable_unprepare(i2s->clk[n]);
 			return ret;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -128,7 +134,11 @@ static int hi6210_i2s_startup(struct snd_pcm_substream *substream,
 		dev_err(i2s->dev, "%s: setting 49.152MHz base rate failed %d\n",
 			__func__, ret);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto err_unprepare_clk;
+=======
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -184,11 +194,14 @@ static int hi6210_i2s_startup(struct snd_pcm_substream *substream,
 
 	return 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 err_unprepare_clk:
 	while (n--)
 		clk_disable_unprepare(i2s->clk[n]);
 	return ret;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

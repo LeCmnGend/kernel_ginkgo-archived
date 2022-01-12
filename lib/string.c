@@ -33,6 +33,7 @@
 #include <asm/page.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define BYTES_LONG	sizeof(long)
 #define WORD_MASK	(BYTES_LONG - 1)
 #define MIN_THRESHOLD	(BYTES_LONG * 2)
@@ -50,6 +51,8 @@ union const_types {
 	uintptr_t as_uptr;
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifndef __HAVE_ARCH_STRNCASECMP
@@ -179,15 +182,21 @@ EXPORT_SYMBOL(strlcpy);
  * @count: Size of destination buffer
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copy the string, or as much of it as fits, into the dest buffer.  The
  * behavior is undefined if the string buffers overlap.  The destination
  * buffer is always NUL terminated, unless it's zero-sized.
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Copy the string, or as much of it as fits, into the dest buffer.
  * The routine returns the number of characters copied (not including
  * the trailing NUL) or -E2BIG if the destination buffer wasn't big enough.
  * The behavior is undefined if the string buffers overlap.
  * The destination buffer is always NUL terminated, unless it's zero-sized.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * Preferred to strlcpy() since the API doesn't require reading memory
@@ -199,10 +208,15 @@ EXPORT_SYMBOL(strlcpy);
  * Preferred to strncpy() since it always returns a valid string, and
  * doesn't unnecessarily force the tail of the destination buffer to be
 <<<<<<< HEAD
+<<<<<<< HEAD
  * zeroed.  If zeroing is desired please use strscpy_pad().
  *
  * Return: The number of characters copied (not including the trailing
  *         %NUL) or -E2BIG if the destination buffer wasn't big enough.
+=======
+ * zeroed.  If the zeroing is desired, it's likely cleaner to use strscpy()
+ * with an overflow test, then just memset() the tail of the dest buffer.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * zeroed.  If the zeroing is desired, it's likely cleaner to use strscpy()
  * with an overflow test, then just memset() the tail of the dest buffer.
@@ -270,6 +284,7 @@ EXPORT_SYMBOL(strscpy);
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * stpcpy - copy a string from src to dest returning a pointer to the new end
  *          of dest, including src's %NUL-terminator. May overrun dest.
@@ -327,6 +342,8 @@ ssize_t strscpy_pad(char *dest, const char *src, size_t count)
 }
 EXPORT_SYMBOL(strscpy_pad);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifndef __HAVE_ARCH_STRCAT
@@ -788,6 +805,7 @@ EXPORT_SYMBOL(__sysfs_match_string);
 void *memset(void *s, int c, size_t count)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	union types dest = { .as_u8 = s };
 
 	if (count >= MIN_THRESHOLD) {
@@ -821,10 +839,15 @@ void *memset(void *s, int c, size_t count)
 		*dest.as_u8++ = c;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	char *xs = s;
 
 	while (count--)
 		*xs++ = c;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return s;
 }
@@ -920,6 +943,7 @@ EXPORT_SYMBOL(memset64);
 
 #ifndef __HAVE_ARCH_MEMCPY
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 #ifdef __BIG_ENDIAN
 #define MERGE_UL(h, l, d) ((h) << ((d) * 8) | (l) >> ((BYTES_LONG - (d)) * 8))
@@ -927,6 +951,8 @@ EXPORT_SYMBOL(memset64);
 #define MERGE_UL(h, l, d) ((h) >> ((d) * 8) | (l) << ((BYTES_LONG - (d)) * 8))
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -940,6 +966,7 @@ EXPORT_SYMBOL(memset64);
  */
 void *memcpy(void *dest, const void *src, size_t count)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	union const_types s = { .as_u8 = src };
 	union types d = { .as_u8 = dest };
@@ -1000,6 +1027,8 @@ EXPORT_SYMBOL(memcpy);
 #undef MERGE_UL
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	char *tmp = dest;
 	const char *s = src;
 
@@ -1008,6 +1037,9 @@ EXPORT_SYMBOL(memcpy);
 	return dest;
 }
 EXPORT_SYMBOL(memcpy);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 
@@ -1023,6 +1055,7 @@ EXPORT_SYMBOL(memcpy);
 void *memmove(void *dest, const void *src, size_t count)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (dest < src || src + count <= dest)
 		return memcpy(dest, src, count);
 
@@ -1031,6 +1064,8 @@ void *memmove(void *dest, const void *src, size_t count)
 		char *tmp = dest + count;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	char *tmp;
 	const char *s;
 
@@ -1044,6 +1079,9 @@ void *memmove(void *dest, const void *src, size_t count)
 		tmp += count;
 		s = src;
 		s += count;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		while (count--)
 			*--tmp = *--s;

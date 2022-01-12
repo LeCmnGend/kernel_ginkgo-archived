@@ -23,6 +23,7 @@ KCOV_INSTRUMENT_vmstat.o := n
 
 mmu-y			:= nommu.o
 <<<<<<< HEAD
+<<<<<<< HEAD
 mmu-$(CONFIG_MMU)	:= gup.o memory.o mincore.o \
 			   mlock.o mmap.o mmu_gather.o mprotect.o mremap.o \
 			   msync.o page_vma_mapped.o pagewalk.o \
@@ -30,11 +31,16 @@ mmu-$(CONFIG_MMU)	:= gup.o memory.o mincore.o \
 
 mmu-$(CONFIG_HIGHMEM)	+= highmem.o
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 mmu-$(CONFIG_MMU)	:= gup.o highmem.o memory.o mincore.o \
 			   mlock.o mmap.o mprotect.o mremap.o msync.o \
 			   page_vma_mapped.o pagewalk.o pgtable-generic.o \
 			   rmap.o vmalloc.o
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 ifdef CONFIG_CROSS_MEMORY_ATTACH
@@ -115,7 +121,10 @@ obj-$(CONFIG_PERCPU_STATS) += percpu-stats.o
 obj-$(CONFIG_HMM) += hmm.o
 obj-$(CONFIG_PROCESS_RECLAIM)	+= process_reclaim.o
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 CFLAGS_kmemleak.o += -DCONFIG_DEBUG_FS
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

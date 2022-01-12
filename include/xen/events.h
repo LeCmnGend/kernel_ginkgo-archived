@@ -15,6 +15,7 @@
 unsigned xen_evtchn_nr_channels(void);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int bind_evtchn_to_irq(evtchn_port_t evtchn);
 int bind_evtchn_to_irq_lateeoi(evtchn_port_t evtchn);
 int bind_evtchn_to_irqhandler(evtchn_port_t evtchn,
@@ -26,11 +27,16 @@ int bind_evtchn_to_irqhandler_lateeoi(evtchn_port_t evtchn,
 				      unsigned long irqflags, const char *devname,
 				      void *dev_id);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int bind_evtchn_to_irq(unsigned int evtchn);
 int bind_evtchn_to_irqhandler(unsigned int evtchn,
 			      irq_handler_t handler,
 			      unsigned long irqflags, const char *devname,
 			      void *dev_id);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int bind_virq_to_irq(unsigned int virq, unsigned int cpu, bool percpu);
 int bind_virq_to_irqhandler(unsigned int virq, unsigned int cpu,
@@ -45,6 +51,7 @@ int bind_ipi_to_irqhandler(enum ipi_vector ipi,
 			   void *dev_id);
 int bind_interdomain_evtchn_to_irq(unsigned int remote_domain,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				   evtchn_port_t remote_port);
 int bind_interdomain_evtchn_to_irq_lateeoi(unsigned int remote_domain,
 					   evtchn_port_t remote_port);
@@ -55,10 +62,16 @@ int bind_interdomain_evtchn_to_irqhandler(unsigned int remote_domain,
 int bind_interdomain_evtchn_to_irqhandler(unsigned int remote_domain,
 					  unsigned int remote_port,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+				   unsigned int remote_port);
+int bind_interdomain_evtchn_to_irqhandler(unsigned int remote_domain,
+					  unsigned int remote_port,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					  irq_handler_t handler,
 					  unsigned long irqflags,
 					  const char *devname,
 					  void *dev_id);
+<<<<<<< HEAD
 <<<<<<< HEAD
 int bind_interdomain_evtchn_to_irqhandler_lateeoi(unsigned int remote_domain,
 						  evtchn_port_t remote_port,
@@ -66,6 +79,8 @@ int bind_interdomain_evtchn_to_irqhandler_lateeoi(unsigned int remote_domain,
 						  unsigned long irqflags,
 						  const char *devname,
 						  void *dev_id);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -77,6 +92,7 @@ int bind_interdomain_evtchn_to_irqhandler_lateeoi(unsigned int remote_domain,
 void unbind_from_irqhandler(unsigned int irq, void *dev_id);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * Send late EOI for an IRQ bound to an event channel via one of the *_lateeoi
  * functions above.
@@ -85,6 +101,8 @@ void xen_irq_lateeoi(unsigned int irq, unsigned int eoi_flags);
 /* Signal an event was spurious, i.e. there was no action resulting from it. */
 #define XEN_EOI_FLAG_SPURIOUS	0x00000001
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define XEN_IRQ_PRIORITY_MAX     EVTCHN_FIFO_PRIORITY_MAX

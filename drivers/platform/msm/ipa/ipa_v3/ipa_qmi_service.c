@@ -1603,10 +1603,13 @@ static void ipa3_q6_clnt_svc_arrive(struct work_struct *work)
 		IPAWANERR(
 		"ipa3_qmi_init_modem_send_sync_msg failed due to SSR!\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* Cleanup when ipa3_wwan_remove is called */
 		vfree(ipa_q6_clnt);
 		ipa_q6_clnt = NULL;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		/* Cleanup when ipa3_wwan_remove is called */
 		mutex_lock(&ipa3_qmi_lock);
@@ -1617,6 +1620,9 @@ static void ipa3_q6_clnt_svc_arrive(struct work_struct *work)
 		}
 		mutex_unlock(&ipa3_qmi_lock);
 		IPAWANERR("Exit from service arrive fun\n");
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return;
 	}
@@ -2293,6 +2299,11 @@ int ipa3_qmi_enable_per_client_stats(
 	IPAWANDBG("Sending QMI_IPA_ENABLE_PER_CLIENT_STATS_REQ_V01\n");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (unlikely(!ipa_q6_clnt))
+		return -ETIMEDOUT;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(!ipa_q6_clnt))
 		return -ETIMEDOUT;
@@ -2335,6 +2346,12 @@ int ipa3_qmi_get_per_client_packet_stats(
 	IPAWANDBG("Sending QMI_IPA_GET_STATS_PER_CLIENT_REQ_V01\n");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (unlikely(!ipa_q6_clnt))
+		return -ETIMEDOUT;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(!ipa_q6_clnt))
 		return -ETIMEDOUT;
@@ -2398,6 +2415,12 @@ int ipa3_qmi_send_mhi_cleanup_request(struct ipa_mhi_cleanup_req_msg_v01 *req)
 	resp_desc.ei_array = ipa_mhi_cleanup_resp_msg_v01_ei;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (unlikely(!ipa_q6_clnt))
+		return -ETIMEDOUT;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(!ipa_q6_clnt))
 		return -ETIMEDOUT;

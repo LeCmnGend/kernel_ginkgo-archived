@@ -757,8 +757,11 @@ static void clean_demultiplex_info(struct TCP_Server_Info *server)
 	spin_unlock(&cifs_tcp_ses_lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cancel_delayed_work_sync(&server->echo);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock(&GlobalMid_Lock);

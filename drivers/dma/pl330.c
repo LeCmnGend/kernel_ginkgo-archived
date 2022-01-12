@@ -2564,8 +2564,11 @@ static struct dma_async_tx_descriptor *pl330_prep_dma_cyclic(
 		desc = pl330_get_desc(pch);
 		if (!desc) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			unsigned long iflags;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			dev_err(pch->dmac->ddma.dev, "%s:%d Unable to fetch desc\n",
@@ -2575,7 +2578,11 @@ static struct dma_async_tx_descriptor *pl330_prep_dma_cyclic(
 				return NULL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			spin_lock_irqsave(&pl330->pool_lock, iflags);
+=======
+			spin_lock_irqsave(&pl330->pool_lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			spin_lock_irqsave(&pl330->pool_lock, flags);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2589,7 +2596,11 @@ static struct dma_async_tx_descriptor *pl330_prep_dma_cyclic(
 			list_move_tail(&first->node, &pl330->desc_pool);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			spin_unlock_irqrestore(&pl330->pool_lock, iflags);
+=======
+			spin_unlock_irqrestore(&pl330->pool_lock, flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			spin_unlock_irqrestore(&pl330->pool_lock, flags);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2675,7 +2686,10 @@ pl330_prep_dma_memcpy(struct dma_chan *chan, dma_addr_t dst,
 		desc->rqcfg.brst_size++;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	desc->rqcfg.brst_len = get_burst_len(desc, len);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
@@ -2683,14 +2697,20 @@ pl330_prep_dma_memcpy(struct dma_chan *chan, dma_addr_t dst,
 	 * transfer one at a time to avoid a burst stradling an MFIFO entry.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (burst * 8 < pl330->pcfg.data_bus_width)
 		desc->rqcfg.brst_len = 1;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (desc->rqcfg.brst_size * 8 < pl330->pcfg.data_bus_width)
 		desc->rqcfg.brst_len = 1;
 
 	desc->rqcfg.brst_len = get_burst_len(desc, len);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	desc->bytes_requested = len;
 

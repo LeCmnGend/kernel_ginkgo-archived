@@ -199,7 +199,11 @@ int msm_comm_vote_bus(struct msm_vidc_core *core)
 	struct hfi_device *hdev;
 	struct msm_vidc_inst *inst = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct vidc_bus_vote_data vote_data[MAX_SUPPORTED_INSTANCES] __aligned(8);
+=======
+	struct vidc_bus_vote_data *vote_data = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct vidc_bus_vote_data *vote_data = NULL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -212,8 +216,11 @@ int msm_comm_vote_bus(struct msm_vidc_core *core)
 	hdev = core->device;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(vote_data, 0, sizeof(struct vidc_bus_vote_data));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	vote_data = kzalloc(sizeof(struct vidc_bus_vote_data) *
 			MAX_SUPPORTED_INSTANCES, GFP_ATOMIC);
 	if (!vote_data) {
@@ -227,6 +234,9 @@ int msm_comm_vote_bus(struct msm_vidc_core *core)
 			return -EINVAL;
 		}
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	mutex_lock(&core->lock);
@@ -359,6 +369,10 @@ int msm_comm_vote_bus(struct msm_vidc_core *core)
 			vote_data, vote_data_count);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kfree(vote_data);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(vote_data);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1596,6 +1610,10 @@ int msm_vidc_decide_core_and_power_mode(struct msm_vidc_inst *inst)
 		min_load = 0, min_lp_load = 0;
 	u32 min_core_id, min_lp_core_id;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u32 complexity;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 complexity;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1709,10 +1727,13 @@ int msm_vidc_decide_core_and_power_mode(struct msm_vidc_inst *inst)
 		msm_vidc_move_core_to_power_save_mode(core, min_lp_core_id);
 	} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rc = -EINVAL;
 		dprintk(VIDC_ERR,
 			"Sorry ... Core Can't support this load\n");
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		complexity = msm_comm_g_ctrl_for_id(inst,
 			V4L2_CID_MPEG_VIDC_VENC_COMPLEXITY);
 		if (!is_realtime_session(inst)) {
@@ -1728,6 +1749,9 @@ int msm_vidc_decide_core_and_power_mode(struct msm_vidc_inst *inst)
 			dprintk(VIDC_ERR,
 				"Sorry ... Core Can't support this load\n");
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return rc;
 	}

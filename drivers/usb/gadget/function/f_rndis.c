@@ -105,10 +105,15 @@ static inline struct f_rndis *func_to_rndis(struct usb_function *f)
 static unsigned int bitrate(struct usb_gadget *g)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (gadget_is_superspeed(g) && g->speed >= USB_SPEED_SUPER_PLUS)
 		return 4250000000U;
 	if (gadget_is_superspeed(g) && g->speed == USB_SPEED_SUPER)
 		return 3750000000U;
+=======
+	if (gadget_is_superspeed(g) && g->speed == USB_SPEED_SUPER)
+		return 13 * 1024 * 8 * 1000 * 8;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (gadget_is_superspeed(g) && g->speed == USB_SPEED_SUPER)
 		return 13 * 1024 * 8 * 1000 * 8;
@@ -923,7 +928,11 @@ rndis_bind(struct usb_configuration *c, struct usb_function *f)
 
 	status = usb_assign_descriptors(f, eth_fs_function, eth_hs_function,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			eth_ss_function, eth_ss_function);
+=======
+			eth_ss_function, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			eth_ss_function, NULL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

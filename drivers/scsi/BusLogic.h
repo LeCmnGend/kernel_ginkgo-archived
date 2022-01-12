@@ -822,7 +822,11 @@ struct blogic_ccb {
 	unsigned char sense_datalen;			/* Byte 3 */
 	u32 datalen;					/* Bytes 4-7 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 data;					/* Bytes 8-11 */
+=======
+	void *data;					/* Bytes 8-11 */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	void *data;					/* Bytes 8-11 */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

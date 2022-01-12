@@ -986,9 +986,12 @@ void start_secondary(void *unused)
 	vdso_getcpu_init();
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 	set_numa_node(numa_cpu_lookup_table[cpu]);
 	set_numa_mem(local_memory_node(numa_cpu_lookup_table[cpu]));
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Update topology CPU masks */
@@ -1002,6 +1005,12 @@ void start_secondary(void *unused)
 		shared_caches = true;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	set_numa_node(numa_cpu_lookup_table[cpu]);
+	set_numa_mem(local_memory_node(numa_cpu_lookup_table[cpu]));
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	set_numa_node(numa_cpu_lookup_table[cpu]);
 	set_numa_mem(local_memory_node(numa_cpu_lookup_table[cpu]));

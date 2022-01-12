@@ -231,7 +231,10 @@ struct hda_gen_spec {
 	unsigned int dac_min_mute:1; /* minimal = mute for DACs */
 	unsigned int suppress_vmaster:1; /* don't create vmaster kctls */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int obey_preferred_dacs:1; /* obey preferred_dacs assignment */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

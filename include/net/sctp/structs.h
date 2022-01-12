@@ -442,7 +442,11 @@ struct sctp_af {
 	void		(*from_sk)	(union sctp_addr *,
 					 struct sock *sk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool		(*from_addr_param) (union sctp_addr *,
+=======
+	void		(*from_addr_param) (union sctp_addr *,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	void		(*from_addr_param) (union sctp_addr *,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

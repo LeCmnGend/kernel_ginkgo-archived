@@ -11,7 +11,10 @@
 #include <linux/fs.h>
 #include <linux/ctype.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/kmemleak.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <linux/slab.h>
@@ -109,7 +112,10 @@ static int efivarfs_create(struct inode *dir, struct dentry *dentry,
 
 	inode->i_private = var;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kmemleak_ignore(var);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

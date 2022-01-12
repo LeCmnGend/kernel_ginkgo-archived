@@ -4070,6 +4070,7 @@ static int floppy_open(struct block_device *bdev, fmode_t mode)
 		UFDCS->rawcmd = 2;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (mode & (FMODE_READ|FMODE_WRITE)) {
 		UDRS->last_checked = 0;
 		clear_bit(FD_OPEN_SHOULD_FAIL_BIT, &UDRS->flags);
@@ -4087,6 +4088,8 @@ static int floppy_open(struct block_device *bdev, fmode_t mode)
 		goto out;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!(mode & FMODE_NDELAY)) {
 		if (mode & (FMODE_READ|FMODE_WRITE)) {
 			UDRS->last_checked = 0;
@@ -4102,6 +4105,9 @@ static int floppy_open(struct block_device *bdev, fmode_t mode)
 		    !test_bit(FD_DISK_WRITABLE_BIT, &UDRS->flags))
 			goto out;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_unlock(&open_lock);
 	mutex_unlock(&floppy_mutex);

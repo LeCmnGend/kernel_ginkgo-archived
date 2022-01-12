@@ -2009,7 +2009,11 @@ static void _sde_crtc_blend_setup_mixer(struct drm_crtc *crtc,
 	struct sde_crtc_state *cstate;
 	struct sde_plane_state *pstate = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct plane_state pstates[SDE_PSTATES_MAX];
+=======
+	struct plane_state *pstates = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct plane_state *pstates = NULL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2040,12 +2044,18 @@ static void _sde_crtc_blend_setup_mixer(struct drm_crtc *crtc,
 	sde_crtc->sbuf_rot_id_delta = 0x0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pstates = kcalloc(SDE_PSTATES_MAX,
 			sizeof(struct plane_state), GFP_KERNEL);
 	if (!pstates)
 		return;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	drm_atomic_crtc_for_each_plane(plane, crtc) {
 		state = plane->state;
@@ -2087,7 +2097,11 @@ static void _sde_crtc_blend_setup_mixer(struct drm_crtc *crtc,
 		if (!format) {
 			SDE_ERROR("invalid format\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 			return;
+=======
+			goto end;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto end;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2153,6 +2167,12 @@ static void _sde_crtc_blend_setup_mixer(struct drm_crtc *crtc,
 
 	_sde_crtc_program_lm_output_roi(crtc);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+end:
+	kfree(pstates);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 end:
@@ -2845,7 +2865,11 @@ void sde_crtc_prepare_commit(struct drm_crtc *crtc,
 	struct drm_connector *conn;
 	struct drm_encoder *encoder;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int i;
+=======
+	struct drm_connector_list_iter conn_iter;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct drm_connector_list_iter conn_iter;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2863,6 +2887,7 @@ void sde_crtc_prepare_commit(struct drm_crtc *crtc,
 	SDE_ATRACE_BEGIN("sde_crtc_prepare_commit");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (i = 0; i < cstate->num_connectors; i++) {
 		conn = cstate->connectors[i];
 		encoder = conn->state->best_encoder;
@@ -2874,6 +2899,8 @@ void sde_crtc_prepare_commit(struct drm_crtc *crtc,
 		sde_connector_prepare_fence(conn);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* identify connectors attached to this crtc */
 	cstate->num_connectors = 0;
 
@@ -2892,6 +2919,9 @@ void sde_crtc_prepare_commit(struct drm_crtc *crtc,
 			sde_connector_prepare_fence(conn);
 		}
 	drm_connector_list_iter_end(&conn_iter);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* prepare main output fence */
@@ -3750,9 +3780,15 @@ static void sde_crtc_atomic_begin(struct drm_crtc *crtc,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!crtc->state->active) {
 		SDE_DEBUG("crtc%d -> active %d, skip atomic_begin\n",
 				crtc->base.id, crtc->state->active);
+=======
+	if (!crtc->state->enable) {
+		SDE_DEBUG("crtc%d -> enable %d, skip atomic_begin\n",
+				crtc->base.id, crtc->state->enable);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!crtc->state->enable) {
 		SDE_DEBUG("crtc%d -> enable %d, skip atomic_begin\n",
@@ -4433,6 +4469,11 @@ void sde_crtc_commit_kickoff(struct drm_crtc *crtc,
 			is_error = true;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	sde_vbif_clear_errors(sde_kms);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sde_vbif_clear_errors(sde_kms);
 
@@ -5297,7 +5338,11 @@ static int sde_crtc_atomic_check(struct drm_crtc *crtc,
 	struct drm_device *dev;
 	struct sde_crtc *sde_crtc;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct plane_state pstates[SDE_PSTATES_MAX];
+=======
+	struct plane_state *pstates = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct plane_state *pstates = NULL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5311,7 +5356,11 @@ static int sde_crtc_atomic_check(struct drm_crtc *crtc,
 	int cnt = 0, rc = 0, mixer_width, i, z_pos, mixer_height;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct sde_multirect_plane_states multirect_plane[SDE_MULTIRECT_PLANE_MAX];
+=======
+	struct sde_multirect_plane_states *multirect_plane = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct sde_multirect_plane_states *multirect_plane = NULL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -5346,10 +5395,13 @@ static int sde_crtc_atomic_check(struct drm_crtc *crtc,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(pstates, 0, SDE_PSTATES_MAX * sizeof(struct plane_state));
 	memset(multirect_plane, 0,
 		   SDE_MULTIRECT_PLANE_MAX * sizeof(struct sde_multirect_plane_states));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pstates = kcalloc(SDE_PSTATES_MAX,
 			sizeof(struct plane_state), GFP_KERNEL);
 
@@ -5361,6 +5413,9 @@ static int sde_crtc_atomic_check(struct drm_crtc *crtc,
 		rc = -ENOMEM;
 		goto end;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	mode = &state->adjusted_mode;
@@ -5602,6 +5657,11 @@ static int sde_crtc_atomic_check(struct drm_crtc *crtc,
 
 end:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kfree(pstates);
+	kfree(multirect_plane);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(pstates);
 	kfree(multirect_plane);
@@ -6056,7 +6116,11 @@ static int sde_crtc_atomic_set_property(struct drm_crtc *crtc,
 	uint64_t fence_fd;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(!crtc || !state || !property)) {
+=======
+	if (!crtc || !state || !property) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!crtc || !state || !property) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6071,7 +6135,11 @@ static int sde_crtc_atomic_set_property(struct drm_crtc *crtc,
 	/* check with cp property system first */
 	ret = sde_cp_crtc_set_property(crtc, property, val);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(ret != -ENOENT))
+=======
+	if (ret != -ENOENT)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret != -ENOENT)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6081,7 +6149,11 @@ static int sde_crtc_atomic_set_property(struct drm_crtc *crtc,
 	ret = msm_property_atomic_set(&sde_crtc->property_info,
 			&cstate->property_state, property, val);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(ret))
+=======
+	if (ret)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6123,17 +6195,23 @@ static int sde_crtc_atomic_set_property(struct drm_crtc *crtc,
 		break;
 	case CRTC_PROP_OUTPUT_FENCE:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (unlikely(!val))
 			goto exit;
 
 		ret = _sde_crtc_get_output_fence(crtc, state, &fence_fd);
 		if (unlikely(ret)) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!val)
 			goto exit;
 
 		ret = _sde_crtc_get_output_fence(crtc, state, &fence_fd);
 		if (ret) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			SDE_ERROR("fence create failed rc:%d\n", ret);
 			goto exit;
@@ -6142,7 +6220,11 @@ static int sde_crtc_atomic_set_property(struct drm_crtc *crtc,
 		ret = copy_to_user((uint64_t __user *)(uintptr_t)val, &fence_fd,
 				sizeof(uint64_t));
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (unlikely(ret)) {
+=======
+		if (ret) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (ret) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -7082,7 +7164,10 @@ static int _sde_crtc_event_enable(struct sde_kms *kms,
 				return -ENOMEM;
 			INIT_LIST_HEAD(&node->list);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			INIT_LIST_HEAD(&node->irq.list);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			node->func = custom_events[i].func;
@@ -7111,6 +7196,11 @@ static int _sde_crtc_event_enable(struct sde_kms *kms,
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		INIT_LIST_HEAD(&node->irq.list);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		INIT_LIST_HEAD(&node->irq.list);
 

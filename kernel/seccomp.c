@@ -776,8 +776,11 @@ static int __seccomp_filter(int this_syscall, const struct seccomp_data *sd,
 {
 	BUG();
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	return -1;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

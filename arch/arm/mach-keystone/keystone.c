@@ -66,7 +66,11 @@ static long long __init keystone_pv_fixup(void)
 {
 	long long offset;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64 mem_start, mem_end;
+=======
+	phys_addr_t mem_start, mem_end;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	phys_addr_t mem_start, mem_end;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -83,7 +87,11 @@ static long long __init keystone_pv_fixup(void)
 	    mem_end   > KEYSTONE_HIGH_PHYS_END) {
 		pr_crit("Invalid address space for memory (%08llx-%08llx)\n",
 <<<<<<< HEAD
+<<<<<<< HEAD
 		        mem_start, mem_end);
+=======
+		        (u64)mem_start, (u64)mem_end);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		        (u64)mem_start, (u64)mem_end);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

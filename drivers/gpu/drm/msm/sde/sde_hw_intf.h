@@ -142,7 +142,11 @@ struct sde_hw_intf_ops {
 	 */
 	int (*get_vsync_info)(struct sde_hw_intf *intf,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			struct sde_hw_pp_vsync_info  *info, bool wr_ptr_only);
+=======
+			struct sde_hw_pp_vsync_info  *info);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			struct sde_hw_pp_vsync_info  *info);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

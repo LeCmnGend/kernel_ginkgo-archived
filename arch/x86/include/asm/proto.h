@@ -5,8 +5,11 @@
 #include <asm/ldt.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct task_struct;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* misc architecture specific prototypes */

@@ -705,7 +705,11 @@ int vdso_getcpu_init(void)
 	WARN_ON_ONCE(node > 0xffff);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	val = (cpu & 0xffff) | ((node & 0xffff) << 16);
+=======
+	val = (cpu & 0xfff) | ((node & 0xffff) << 16);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	val = (cpu & 0xfff) | ((node & 0xffff) << 16);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

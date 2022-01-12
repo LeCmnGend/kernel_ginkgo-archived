@@ -104,8 +104,11 @@ struct bictcp {
 static inline void bictcp_reset(struct bictcp *ca)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(ca, 0, offsetof(struct bictcp, unused));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ca->cnt = 0;
 	ca->last_max_cwnd = 0;
 	ca->last_cwnd = 0;
@@ -116,6 +119,9 @@ static inline void bictcp_reset(struct bictcp *ca)
 	ca->epoch_start = 0;
 	ca->ack_cnt = 0;
 	ca->tcp_cwnd = 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ca->found = 0;
 }

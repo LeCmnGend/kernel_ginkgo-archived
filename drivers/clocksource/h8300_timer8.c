@@ -170,7 +170,11 @@ static int __init h8300_8timer_init(struct device_node *node)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = -ENXIO;
+=======
+	ret = ENXIO;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = ENXIO;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

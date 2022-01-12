@@ -735,6 +735,11 @@ void gfs2_log_flush(struct gfs2_sbd *sdp, struct gfs2_glock *gl,
 	if (tr) {
 		sdp->sd_log_tr = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		INIT_LIST_HEAD(&tr->tr_ail1_list);
+		INIT_LIST_HEAD(&tr->tr_ail2_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		INIT_LIST_HEAD(&tr->tr_ail1_list);
 		INIT_LIST_HEAD(&tr->tr_ail2_list);

@@ -610,7 +610,11 @@ static inline int mthca_poll_one(struct mthca_dev *dev,
 			break;
 		default:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			entry->opcode = 0xFF;
+=======
+			entry->opcode    = MTHCA_OPCODE_INVALID;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			entry->opcode    = MTHCA_OPCODE_INVALID;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -813,10 +817,15 @@ int mthca_init_cq(struct mthca_dev *dev, int nent,
 
 	mailbox = mthca_alloc_mailbox(dev, GFP_KERNEL);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (IS_ERR(mailbox)) {
 		err = PTR_ERR(mailbox);
 		goto err_out_arm;
 	}
+=======
+	if (IS_ERR(mailbox))
+		goto err_out_arm;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (IS_ERR(mailbox))
 		goto err_out_arm;
@@ -863,9 +872,15 @@ int mthca_init_cq(struct mthca_dev *dev, int nent,
 
 	spin_lock_irq(&dev->cq_table.lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = mthca_array_set(&dev->cq_table.cq,
 			      cq->cqn & (dev->limits.num_cqs - 1), cq);
 	if (err) {
+=======
+	if (mthca_array_set(&dev->cq_table.cq,
+			    cq->cqn & (dev->limits.num_cqs - 1),
+			    cq)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (mthca_array_set(&dev->cq_table.cq,
 			    cq->cqn & (dev->limits.num_cqs - 1),

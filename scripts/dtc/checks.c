@@ -54,6 +54,7 @@ struct check {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define CHECK_ENTRY(nm_, fn_, d_, w_, e_, ...)	       \
 	static struct check *nm_##_prereqs[] = { __VA_ARGS__ }; \
 	static struct check nm_ = { \
@@ -77,6 +78,8 @@ static inline void  PRINTF(5, 6) check_msg(struct check *c, struct dt_info *dti,
 					   struct node *node,
 					   struct property *prop,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define CHECK_ENTRY(_nm, _fn, _d, _w, _e, ...)	       \
 	static struct check *_nm##_prereqs[] = { __VA_ARGS__ }; \
 	static struct check _nm = { \
@@ -97,6 +100,9 @@ static inline void  PRINTF(5, 6) check_msg(struct check *c, struct dt_info *dti,
 	CHECK_ENTRY(_nm, _fn, _d, false, false, __VA_ARGS__)
 
 static inline void  PRINTF(3, 4) check_msg(struct check *c, struct dt_info *dti,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					   const char *fmt, ...)
 {
@@ -109,6 +115,7 @@ static inline void  PRINTF(3, 4) check_msg(struct check *c, struct dt_info *dti,
 			strcmp(dti->outname, "-") ? dti->outname : "<stdout>",
 			(c->error) ? "ERROR" : "Warning", c->name);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (node) {
 			fprintf(stderr, "%s", node->fullpath);
 			if (prop)
@@ -117,12 +124,15 @@ static inline void  PRINTF(3, 4) check_msg(struct check *c, struct dt_info *dti,
 		}
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		vfprintf(stderr, fmt, ap);
 		fprintf(stderr, "\n");
 	}
 	va_end(ap);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #define FAIL(c, dti, node, ...)						\
 	do {								\
@@ -140,6 +150,8 @@ static inline void  PRINTF(3, 4) check_msg(struct check *c, struct dt_info *dti,
 
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define FAIL(c, dti, ...)						\
 	do {								\
 		TRACE((c), "\t\tFAILED at %s:%d", __FILE__, __LINE__);	\
@@ -147,6 +159,9 @@ static inline void  PRINTF(3, 4) check_msg(struct check *c, struct dt_info *dti,
 		check_msg((c), dti, __VA_ARGS__);			\
 	} while (0)
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void check_nodes_props(struct check *c, struct dt_info *dti, struct node *node)
 {
@@ -179,7 +194,11 @@ static bool run_check(struct check *c, struct dt_info *dti)
 		if (prq->status != PASSED) {
 			c->status = PREREQ;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			check_msg(c, dti, NULL, NULL, "Failed prerequisite '%s'",
+=======
+			check_msg(c, dti, "Failed prerequisite '%s'",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			check_msg(c, dti, "Failed prerequisite '%s'",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -213,7 +232,11 @@ static inline void check_always_fail(struct check *c, struct dt_info *dti,
 				     struct node *node)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	FAIL(c, dti, node, "always_fail check");
+=======
+	FAIL(c, dti, "always_fail check");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	FAIL(c, dti, "always_fail check");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -232,7 +255,12 @@ static void check_is_string(struct check *c, struct dt_info *dti,
 
 	if (!data_is_one_string(prop->val))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL_PROP(c, dti, node, prop, "property is not a string");
+=======
+		FAIL(c, dti, "\"%s\" property in %s is not a string",
+		     propname, node->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "\"%s\" property in %s is not a string",
 		     propname, node->fullpath);
@@ -243,6 +271,7 @@ static void check_is_string(struct check *c, struct dt_info *dti,
 #define ERROR_IF_NOT_STRING(nm, propname) \
 	ERROR(nm, check_is_string, (propname))
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static void check_is_string_list(struct check *c, struct dt_info *dti,
 				 struct node *node)
@@ -275,6 +304,8 @@ static void check_is_string_list(struct check *c, struct dt_info *dti,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void check_is_cell(struct check *c, struct dt_info *dti,
 			  struct node *node)
 {
@@ -287,7 +318,12 @@ static void check_is_cell(struct check *c, struct dt_info *dti,
 
 	if (prop->val.len != sizeof(cell_t))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL_PROP(c, dti, node, prop, "property is not a single cell");
+=======
+		FAIL(c, dti, "\"%s\" property in %s is not a single cell",
+		     propname, node->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "\"%s\" property in %s is not a single cell",
 		     propname, node->fullpath);
@@ -313,7 +349,12 @@ static void check_duplicate_node_names(struct check *c, struct dt_info *dti,
 		     child2 = child2->next_sibling)
 			if (streq(child->name, child2->name))
 <<<<<<< HEAD
+<<<<<<< HEAD
 				FAIL(c, dti, child2, "Duplicate node name");
+=======
+				FAIL(c, dti, "Duplicate node name %s",
+				     child->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				FAIL(c, dti, "Duplicate node name %s",
 				     child->fullpath);
@@ -332,7 +373,12 @@ static void check_duplicate_property_names(struct check *c, struct dt_info *dti,
 				continue;
 			if (streq(prop->name, prop2->name))
 <<<<<<< HEAD
+<<<<<<< HEAD
 				FAIL_PROP(c, dti, node, prop, "Duplicate property name");
+=======
+				FAIL(c, dti, "Duplicate property name %s in %s",
+				     prop->name, node->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				FAIL(c, dti, "Duplicate property name %s in %s",
 				     prop->name, node->fullpath);
@@ -355,8 +401,13 @@ static void check_node_name_chars(struct check *c, struct dt_info *dti,
 
 	if (n < strlen(node->name))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL(c, dti, node, "Bad character '%c' in node name",
 		     node->name[n]);
+=======
+		FAIL(c, dti, "Bad character '%c' in node %s",
+		     node->name[n], node->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "Bad character '%c' in node %s",
 		     node->name[n], node->fullpath);
@@ -371,8 +422,13 @@ static void check_node_name_chars_strict(struct check *c, struct dt_info *dti,
 
 	if (n < node->basenamelen)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL(c, dti, node, "Character '%c' not recommended in node name",
 		     node->name[n]);
+=======
+		FAIL(c, dti, "Character '%c' not recommended in node %s",
+		     node->name[n], node->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "Character '%c' not recommended in node %s",
 		     node->name[n], node->fullpath);
@@ -385,7 +441,12 @@ static void check_node_name_format(struct check *c, struct dt_info *dti,
 {
 	if (strchr(get_unitname(node), '@'))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL(c, dti, node, "multiple '@' characters in node name");
+=======
+		FAIL(c, dti, "Node %s has multiple '@' characters in name",
+		     node->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "Node %s has multiple '@' characters in name",
 		     node->fullpath);
@@ -400,11 +461,14 @@ static void check_unit_address_vs_reg(struct check *c, struct dt_info *dti,
 	struct property *prop = get_property(node, "reg");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (get_subnode(node, "__overlay__")) {
 		/* HACK: Overlay fragments are a special case */
 		return;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!prop) {
@@ -416,17 +480,23 @@ static void check_unit_address_vs_reg(struct check *c, struct dt_info *dti,
 	if (prop) {
 		if (!unitname[0])
 <<<<<<< HEAD
+<<<<<<< HEAD
 			FAIL(c, dti, node, "node has a reg or ranges property, but no unit name");
 	} else {
 		if (unitname[0])
 			FAIL(c, dti, node, "node has a unit name, but no reg property");
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			FAIL(c, dti, "Node %s has a reg or ranges property, but no unit name",
 			    node->fullpath);
 	} else {
 		if (unitname[0])
 			FAIL(c, dti, "Node %s has a unit name, but no reg property",
 			    node->fullpath);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 }
@@ -442,8 +512,13 @@ static void check_property_name_chars(struct check *c, struct dt_info *dti,
 
 		if (n < strlen(prop->name))
 <<<<<<< HEAD
+<<<<<<< HEAD
 			FAIL_PROP(c, dti, node, prop, "Bad character '%c' in property name",
 				  prop->name[n]);
+=======
+			FAIL(c, dti, "Bad character '%c' in property name \"%s\", node %s",
+			     prop->name[n], prop->name, node->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			FAIL(c, dti, "Bad character '%c' in property name \"%s\", node %s",
 			     prop->name[n], prop->name, node->fullpath);
@@ -479,8 +554,13 @@ static void check_property_name_chars_strict(struct check *c,
 		}
 		if (n < strlen(name))
 <<<<<<< HEAD
+<<<<<<< HEAD
 			FAIL_PROP(c, dti, node, prop, "Character '%c' not recommended in property name",
 				  name[n]);
+=======
+			FAIL(c, dti, "Character '%c' not recommended in property name \"%s\", node %s",
+			     name[n], prop->name, node->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			FAIL(c, dti, "Character '%c' not recommended in property name \"%s\", node %s",
 			     name[n], prop->name, node->fullpath);
@@ -518,7 +598,11 @@ static void check_duplicate_label(struct check *c, struct dt_info *dti,
 
 	if ((othernode != node) || (otherprop != prop) || (othermark != mark))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL(c, dti, node, "Duplicate label '%s' on " DESCLABEL_FMT
+=======
+		FAIL(c, dti, "Duplicate label '%s' on " DESCLABEL_FMT
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "Duplicate label '%s' on " DESCLABEL_FMT
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -562,8 +646,13 @@ static cell_t check_phandle_prop(struct check *c, struct dt_info *dti,
 
 	if (prop->val.len != sizeof(cell_t)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL_PROP(c, dti, node, prop, "bad length (%d) %s property",
 			  prop->val.len, prop->name);
+=======
+		FAIL(c, dti, "%s has bad length (%d) %s property",
+		     node->fullpath, prop->val.len, prop->name);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "%s has bad length (%d) %s property",
 		     node->fullpath, prop->val.len, prop->name);
@@ -579,8 +668,13 @@ static cell_t check_phandle_prop(struct check *c, struct dt_info *dti,
 			 * other node's phandle".  That's nonsensical
 			 * by construction. */ {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			FAIL(c, dti, node, "%s is a reference to another node",
 			     prop->name);
+=======
+			FAIL(c, dti, "%s in %s is a reference to another node",
+			     prop->name, node->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			FAIL(c, dti, "%s in %s is a reference to another node",
 			     prop->name, node->fullpath);
@@ -598,8 +692,13 @@ static cell_t check_phandle_prop(struct check *c, struct dt_info *dti,
 
 	if ((phandle == 0) || (phandle == -1)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL_PROP(c, dti, node, prop, "bad value (0x%x) in %s property",
 		     phandle, prop->name);
+=======
+		FAIL(c, dti, "%s has bad value (0x%x) in %s property",
+		     node->fullpath, phandle, prop->name);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "%s has bad value (0x%x) in %s property",
 		     node->fullpath, phandle, prop->name);
@@ -630,8 +729,13 @@ static void check_explicit_phandles(struct check *c, struct dt_info *dti,
 
 	if (linux_phandle && phandle && (phandle != linux_phandle))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL(c, dti, node, "mismatching 'phandle' and 'linux,phandle'"
 		     " properties");
+=======
+		FAIL(c, dti, "%s has mismatching 'phandle' and 'linux,phandle'"
+		     " properties", node->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "%s has mismatching 'phandle' and 'linux,phandle'"
 		     " properties", node->fullpath);
@@ -643,8 +747,13 @@ static void check_explicit_phandles(struct check *c, struct dt_info *dti,
 	other = get_node_by_phandle(root, phandle);
 	if (other && (other != node)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL(c, dti, node, "duplicated phandle 0x%x (seen before at %s)",
 		     phandle, other->fullpath);
+=======
+		FAIL(c, dti, "%s has duplicated phandle 0x%x (seen before at %s)",
+		     node->fullpath, phandle, other->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "%s has duplicated phandle 0x%x (seen before at %s)",
 		     node->fullpath, phandle, other->fullpath);
@@ -673,8 +782,13 @@ static void check_name_properties(struct check *c, struct dt_info *dti,
 	if ((prop->val.len != node->basenamelen+1)
 	    || (memcmp(prop->val.val, node->name, node->basenamelen) != 0)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL(c, dti, node, "\"name\" property is incorrect (\"%s\" instead"
 		     " of base node name)", prop->val.val);
+=======
+		FAIL(c, dti, "\"name\" property in %s is incorrect (\"%s\" instead"
+		     " of base node name)", node->fullpath, prop->val.val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "\"name\" property in %s is incorrect (\"%s\" instead"
 		     " of base node name)", node->fullpath, prop->val.val);
@@ -713,7 +827,11 @@ static void fixup_phandle_references(struct check *c, struct dt_info *dti,
 			if (! refnode) {
 				if (!(dti->dtsflags & DTSF_PLUGIN))
 <<<<<<< HEAD
+<<<<<<< HEAD
 					FAIL(c, dti, node, "Reference to non-existent node or "
+=======
+					FAIL(c, dti, "Reference to non-existent node or "
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					FAIL(c, dti, "Reference to non-existent node or "
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -727,8 +845,11 @@ static void fixup_phandle_references(struct check *c, struct dt_info *dti,
 			phandle = get_node_phandle(dt, refnode);
 			*((fdt32_t *)(prop->val.val + m->offset)) = cpu_to_fdt32(phandle);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 			reference_node(refnode);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
@@ -754,7 +875,11 @@ static void fixup_path_references(struct check *c, struct dt_info *dti,
 			refnode = get_node_by_ref(dt, m->ref);
 			if (!refnode) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				FAIL(c, dti, node, "Reference to non-existent node or label \"%s\"\n",
+=======
+				FAIL(c, dti, "Reference to non-existent node or label \"%s\"\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				FAIL(c, dti, "Reference to non-existent node or label \"%s\"\n",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -766,8 +891,11 @@ static void fixup_path_references(struct check *c, struct dt_info *dti,
 			prop->val = data_insert_at_marker(prop->val, m, path,
 							  strlen(path) + 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 			reference_node(refnode);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
@@ -775,6 +903,7 @@ static void fixup_path_references(struct check *c, struct dt_info *dti,
 }
 ERROR(path_references, fixup_path_references, NULL, &duplicate_node_names);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static void fixup_omit_unused_nodes(struct check *c, struct dt_info *dti,
 				    struct node *node)
@@ -784,6 +913,8 @@ static void fixup_omit_unused_nodes(struct check *c, struct dt_info *dti,
 }
 ERROR(omit_unused_nodes, fixup_omit_unused_nodes, NULL, &phandle_references, &path_references);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -796,6 +927,7 @@ WARNING_IF_NOT_CELL(interrupt_cells_is_cell, "#interrupt-cells");
 WARNING_IF_NOT_STRING(device_type_is_string, "device_type");
 WARNING_IF_NOT_STRING(model_is_string, "model");
 WARNING_IF_NOT_STRING(status_is_string, "status");
+<<<<<<< HEAD
 <<<<<<< HEAD
 WARNING_IF_NOT_STRING(label_is_string, "label");
 
@@ -838,6 +970,8 @@ static void check_alias_paths(struct check *c, struct dt_info *dti,
 WARNING(alias_paths, check_alias_paths, NULL);
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static void fixup_addr_size_cells(struct check *c, struct dt_info *dti,
 				  struct node *node)
@@ -875,7 +1009,11 @@ static void check_reg_format(struct check *c, struct dt_info *dti,
 
 	if (!node->parent) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL(c, dti, node, "Root node has a \"reg\" property");
+=======
+		FAIL(c, dti, "Root node has a \"reg\" property");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "Root node has a \"reg\" property");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -884,7 +1022,11 @@ static void check_reg_format(struct check *c, struct dt_info *dti,
 
 	if (prop->val.len == 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL_PROP(c, dti, node, prop, "property is empty");
+=======
+		FAIL(c, dti, "\"reg\" property in %s is empty", node->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "\"reg\" property in %s is empty", node->fullpath);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -895,9 +1037,15 @@ static void check_reg_format(struct check *c, struct dt_info *dti,
 
 	if (!entrylen || (prop->val.len % entrylen) != 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL_PROP(c, dti, node, prop, "property has invalid length (%d bytes) "
 			  "(#address-cells == %d, #size-cells == %d)",
 			  prop->val.len, addr_cells, size_cells);
+=======
+		FAIL(c, dti, "\"reg\" property in %s has invalid length (%d bytes) "
+		     "(#address-cells == %d, #size-cells == %d)",
+		     node->fullpath, prop->val.len, addr_cells, size_cells);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "\"reg\" property in %s has invalid length (%d bytes) "
 		     "(#address-cells == %d, #size-cells == %d)",
@@ -918,7 +1066,11 @@ static void check_ranges_format(struct check *c, struct dt_info *dti,
 
 	if (!node->parent) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL_PROP(c, dti, node, prop, "Root node has a \"ranges\" property");
+=======
+		FAIL(c, dti, "Root node has a \"ranges\" property");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "Root node has a \"ranges\" property");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -933,6 +1085,7 @@ static void check_ranges_format(struct check *c, struct dt_info *dti,
 
 	if (prop->val.len == 0) {
 		if (p_addr_cells != c_addr_cells)
+<<<<<<< HEAD
 <<<<<<< HEAD
 			FAIL_PROP(c, dti, node, prop, "empty \"ranges\" property but its "
 				  "#address-cells (%d) differs from %s (%d)",
@@ -949,6 +1102,8 @@ static void check_ranges_format(struct check *c, struct dt_info *dti,
 			  "#size-cells == %d)", prop->val.len,
 			  p_addr_cells, c_addr_cells, c_size_cells);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			FAIL(c, dti, "%s has empty \"ranges\" property but its "
 			     "#address-cells (%d) differs from %s (%d)",
 			     node->fullpath, c_addr_cells, node->parent->fullpath,
@@ -963,6 +1118,9 @@ static void check_ranges_format(struct check *c, struct dt_info *dti,
 		     "(parent #address-cells == %d, child #address-cells == %d, "
 		     "#size-cells == %d)", node->fullpath, prop->val.len,
 		     p_addr_cells, c_addr_cells, c_size_cells);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 }
@@ -983,6 +1141,7 @@ static void check_pci_bridge(struct check *c, struct dt_info *dti, struct node *
 
 	node->bus = &pci_bus;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (!strprefixeq(node->name, node->basenamelen, "pci") &&
 	    !strprefixeq(node->name, node->basenamelen, "pcie"))
@@ -1005,6 +1164,8 @@ static void check_pci_bridge(struct check *c, struct dt_info *dti, struct node *
 	if (prop->val.len != (sizeof(cell_t) * 2)) {
 		FAIL_PROP(c, dti, node, prop, "value must be 2 cells");
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!strneq(node->name, "pci", node->basenamelen) &&
 	    !strneq(node->name, "pcie", node->basenamelen))
 		FAIL(c, dti, "Node %s node name is not \"pci\" or \"pcie\"",
@@ -1031,21 +1192,30 @@ static void check_pci_bridge(struct check *c, struct dt_info *dti, struct node *
 	if (prop->val.len != (sizeof(cell_t) * 2)) {
 		FAIL(c, dti, "Node %s bus-range must be 2 cells",
 			     node->fullpath);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return;
 	}
 	cells = (cell_t *)prop->val.val;
 	if (fdt32_to_cpu(cells[0]) > fdt32_to_cpu(cells[1]))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL_PROP(c, dti, node, prop, "1st cell must be less than or equal to 2nd cell");
 	if (fdt32_to_cpu(cells[1]) > 0xff)
 		FAIL_PROP(c, dti, node, prop, "maximum bus number must be less than 256");
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		FAIL(c, dti, "Node %s bus-range 1st cell must be less than or equal to 2nd cell",
 			     node->fullpath);
 	if (fdt32_to_cpu(cells[1]) > 0xff)
 		FAIL(c, dti, "Node %s bus-range maximum bus number must be less than 256",
 			     node->fullpath);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 WARNING(pci_bridge, check_pci_bridge, NULL,
@@ -1077,8 +1247,13 @@ static void check_pci_device_bus_num(struct check *c, struct dt_info *dti, struc
 	}
 	if ((bus_num < min_bus) || (bus_num > max_bus))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL_PROP(c, dti, node, prop, "PCI bus number %d out of range, expected (%d - %d)",
 			  bus_num, min_bus, max_bus);
+=======
+		FAIL(c, dti, "Node %s PCI bus number %d out of range, expected (%d - %d)",
+		     node->fullpath, bus_num, min_bus, max_bus);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "Node %s PCI bus number %d out of range, expected (%d - %d)",
 		     node->fullpath, bus_num, min_bus, max_bus);
@@ -1100,7 +1275,11 @@ static void check_pci_device_reg(struct check *c, struct dt_info *dti, struct no
 	prop = get_property(node, "reg");
 	if (!prop) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL(c, dti, node, "missing PCI reg property");
+=======
+		FAIL(c, dti, "Node %s missing PCI reg property", node->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "Node %s missing PCI reg property", node->fullpath);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1110,7 +1289,12 @@ static void check_pci_device_reg(struct check *c, struct dt_info *dti, struct no
 	cells = (cell_t *)prop->val.val;
 	if (cells[1] || cells[2])
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL_PROP(c, dti, node, prop, "PCI reg config space address cells 2 and 3 must be 0");
+=======
+		FAIL(c, dti, "Node %s PCI reg config space address cells 2 and 3 must be 0",
+			     node->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "Node %s PCI reg config space address cells 2 and 3 must be 0",
 			     node->fullpath);
@@ -1122,15 +1306,21 @@ static void check_pci_device_reg(struct check *c, struct dt_info *dti, struct no
 
 	if (reg & 0xff000000)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL_PROP(c, dti, node, prop, "PCI reg address is not configuration space");
 	if (reg & 0x000000ff)
 		FAIL_PROP(c, dti, node, prop, "PCI reg config space address register number must be 0");
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		FAIL(c, dti, "Node %s PCI reg address is not configuration space",
 			     node->fullpath);
 	if (reg & 0x000000ff)
 		FAIL(c, dti, "Node %s PCI reg config space address register number must be 0",
 			     node->fullpath);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (func == 0) {
@@ -1144,8 +1334,13 @@ static void check_pci_device_reg(struct check *c, struct dt_info *dti, struct no
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	FAIL(c, dti, node, "PCI unit address format error, expected \"%s\"",
 	     unit_addr);
+=======
+	FAIL(c, dti, "Node %s PCI unit address format error, expected \"%s\"",
+	     node->fullpath, unit_addr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	FAIL(c, dti, "Node %s PCI unit address format error, expected \"%s\"",
 	     node->fullpath, unit_addr);
@@ -1169,7 +1364,11 @@ static bool node_is_compatible(struct node *node, const char *compat)
 	for (str = prop->val.val, end = str + prop->val.len; str < end;
 	     str += strnlen(str, end - str) + 1) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (strprefixeq(str, end - str, compat))
+=======
+		if (strneq(str, compat, end - str))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (strneq(str, compat, end - str))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1210,7 +1409,11 @@ static void check_simple_bus_reg(struct check *c, struct dt_info *dti, struct no
 	if (!cells) {
 		if (node->parent->parent && !(node->bus == &simple_bus))
 <<<<<<< HEAD
+<<<<<<< HEAD
 			FAIL(c, dti, node, "missing or empty reg/ranges property");
+=======
+			FAIL(c, dti, "Node %s missing or empty reg/ranges property", node->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			FAIL(c, dti, "Node %s missing or empty reg/ranges property", node->fullpath);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1222,15 +1425,21 @@ static void check_simple_bus_reg(struct check *c, struct dt_info *dti, struct no
 		reg = (reg << 32) | fdt32_to_cpu(*(cells++));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	snprintf(unit_addr, sizeof(unit_addr), "%"PRIx64, reg);
 	if (!streq(unitname, unit_addr))
 		FAIL(c, dti, node, "simple-bus unit address format error, expected \"%s\"",
 		     unit_addr);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	snprintf(unit_addr, sizeof(unit_addr), "%llx", (unsigned long long)reg);
 	if (!streq(unitname, unit_addr))
 		FAIL(c, dti, "Node %s simple-bus unit address format error, expected \"%s\"",
 		     node->fullpath, unit_addr);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 WARNING(simple_bus_reg, check_simple_bus_reg, NULL, &reg_format, &simple_bus_bridge);
@@ -1248,7 +1457,12 @@ static void check_unit_address_format(struct check *c, struct dt_info *dti,
 
 	if (!strncmp(unitname, "0x", 2)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL(c, dti, node, "unit name should not have leading \"0x\"");
+=======
+		FAIL(c, dti, "Node %s unit name should not have leading \"0x\"",
+		    node->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "Node %s unit name should not have leading \"0x\"",
 		    node->fullpath);
@@ -1258,7 +1472,12 @@ static void check_unit_address_format(struct check *c, struct dt_info *dti,
 	}
 	if (unitname[0] == '0' && isxdigit(unitname[1]))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL(c, dti, node, "unit name should not have leading 0s");
+=======
+		FAIL(c, dti, "Node %s unit name should not have leading 0s",
+		    node->fullpath);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "Node %s unit name should not have leading 0s",
 		    node->fullpath);
@@ -1286,22 +1505,29 @@ static void check_avoid_default_addr_size(struct check *c, struct dt_info *dti,
 
 	if (node->parent->addr_cells == -1)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL(c, dti, node, "Relying on default #address-cells value");
 
 	if (node->parent->size_cells == -1)
 		FAIL(c, dti, node, "Relying on default #size-cells value");
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		FAIL(c, dti, "Relying on default #address-cells value for %s",
 		     node->fullpath);
 
 	if (node->parent->size_cells == -1)
 		FAIL(c, dti, "Relying on default #size-cells value for %s",
 		     node->fullpath);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 WARNING(avoid_default_addr_size, check_avoid_default_addr_size, NULL,
 	&addr_size_cells);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static void check_avoid_unnecessary_addr_size(struct check *c, struct dt_info *dti,
 					      struct node *node)
@@ -1359,6 +1585,8 @@ WARNING(unique_unit_address, check_unique_unit_address, NULL, &avoid_default_add
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void check_obsolete_chosen_interrupt_controller(struct check *c,
 						       struct dt_info *dti,
 						       struct node *node)
@@ -1378,8 +1606,13 @@ static void check_obsolete_chosen_interrupt_controller(struct check *c,
 	prop = get_property(chosen, "interrupt-controller");
 	if (prop)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		FAIL_PROP(c, dti, node, prop,
 			  "/chosen has obsolete \"interrupt-controller\" property");
+=======
+		FAIL(c, dti, "/chosen has obsolete \"interrupt-controller\" "
+		     "property");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		FAIL(c, dti, "/chosen has obsolete \"interrupt-controller\" "
 		     "property");
@@ -1388,6 +1621,7 @@ static void check_obsolete_chosen_interrupt_controller(struct check *c,
 WARNING(obsolete_chosen_interrupt_controller,
 	check_obsolete_chosen_interrupt_controller, NULL);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static void check_chosen_node_is_root(struct check *c, struct dt_info *dti,
 				      struct node *node)
@@ -1853,6 +2087,8 @@ WARNING(graph_endpoint, check_graph_endpoint, NULL, &graph_nodes);
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct check *check_table[] = {
 	&duplicate_node_names, &duplicate_property_names,
 	&node_name_chars, &node_name_format, &property_name_chars,
@@ -1863,6 +2099,7 @@ static struct check *check_table[] = {
 	&explicit_phandles,
 	&phandle_references, &path_references,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	&omit_unused_nodes,
 
 	&address_cells_is_cell, &size_cells_is_cell, &interrupt_cells_is_cell,
@@ -1870,6 +2107,11 @@ static struct check *check_table[] = {
 	&label_is_string,
 
 	&compatible_is_string_list, &names_is_string_list,
+=======
+
+	&address_cells_is_cell, &size_cells_is_cell, &interrupt_cells_is_cell,
+	&device_type_is_string, &model_is_string, &status_is_string,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	&address_cells_is_cell, &size_cells_is_cell, &interrupt_cells_is_cell,
@@ -1892,6 +2134,7 @@ static struct check *check_table[] = {
 	&simple_bus_reg,
 
 	&avoid_default_addr_size,
+<<<<<<< HEAD
 <<<<<<< HEAD
 	&avoid_unnecessary_addr_size,
 	&unique_unit_address,
@@ -1922,6 +2165,9 @@ static struct check *check_table[] = {
 	&alias_paths,
 
 	&graph_nodes, &graph_child_address, &graph_port, &graph_endpoint,
+=======
+	&obsolete_chosen_interrupt_controller,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	&obsolete_chosen_interrupt_controller,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

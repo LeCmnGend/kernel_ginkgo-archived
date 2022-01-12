@@ -183,7 +183,10 @@ static int lpass_cpu_daiops_hw_params(struct snd_pcm_substream *substream,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int lpass_cpu_daiops_hw_free(struct snd_pcm_substream *substream,
 		struct snd_soc_dai *dai)
 {
@@ -199,6 +202,9 @@ static int lpass_cpu_daiops_hw_free(struct snd_pcm_substream *substream,
 	return ret;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int lpass_cpu_daiops_prepare(struct snd_pcm_substream *substream,
 		struct snd_soc_dai *dai)
@@ -281,6 +287,10 @@ const struct snd_soc_dai_ops asoc_qcom_lpass_cpu_dai_ops = {
 	.shutdown	= lpass_cpu_daiops_shutdown,
 	.hw_params	= lpass_cpu_daiops_hw_params,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	.hw_free	= lpass_cpu_daiops_hw_free,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.hw_free	= lpass_cpu_daiops_hw_free,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

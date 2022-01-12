@@ -274,7 +274,10 @@ struct tcf_chain {
 struct tcf_block {
 	struct list_head chain_list;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct Qdisc *q;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

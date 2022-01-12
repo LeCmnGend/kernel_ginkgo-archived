@@ -359,6 +359,7 @@ static int menu_select(struct cpuidle_driver *drv, struct cpuidle_device *dev,
 		 * idle duration misprediction is much higher, because the CPU
 		 * may be stuck in a shallow idle state for a long time as a
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 * result of it.  In that case say we might mispredict and use
 		 * the known time till the closest timer event for the idle
 		 * state selection.
@@ -366,6 +367,8 @@ static int menu_select(struct cpuidle_driver *drv, struct cpuidle_device *dev,
 		if (data->predicted_us < TICK_USEC)
 			data->predicted_us = ktime_to_us(delta_next);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		 * result of it.  In that case say we might mispredict and try
 		 * to force the CPU into a state for which we would have stopped
 		 * the tick, unless a timer is going to expire really soon
@@ -374,6 +377,9 @@ static int menu_select(struct cpuidle_driver *drv, struct cpuidle_device *dev,
 		if (data->predicted_us < TICK_USEC)
 			data->predicted_us = min_t(unsigned int, TICK_USEC,
 						   ktime_to_us(delta_next));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {
 		/*
@@ -400,6 +406,7 @@ static int menu_select(struct cpuidle_driver *drv, struct cpuidle_device *dev,
 		if (idx == -1)
 			idx = i; /* first enabled state */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (s->target_residency > data->predicted_us) {
 			if (!tick_nohz_tick_stopped())
 				break;
@@ -416,6 +423,10 @@ static int menu_select(struct cpuidle_driver *drv, struct cpuidle_device *dev,
 
 			goto out;
 		}
+=======
+		if (s->target_residency > data->predicted_us)
+			break;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (s->target_residency > data->predicted_us)
 			break;
@@ -441,8 +452,13 @@ static int menu_select(struct cpuidle_driver *drv, struct cpuidle_device *dev,
 	 * expected idle duration is shorter than the tick period length.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (((drv->states[idx].flags & CPUIDLE_FLAG_POLLING) ||
 	     expected_interval < TICK_USEC) && !tick_nohz_tick_stopped()) {
+=======
+	if ((drv->states[idx].flags & CPUIDLE_FLAG_POLLING) ||
+	    expected_interval < TICK_USEC) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if ((drv->states[idx].flags & CPUIDLE_FLAG_POLLING) ||
 	    expected_interval < TICK_USEC) {
@@ -452,7 +468,12 @@ static int menu_select(struct cpuidle_driver *drv, struct cpuidle_device *dev,
 		*stop_tick = false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (idx > 0 && drv->states[idx].target_residency > delta_next_us) {
+=======
+		if (!tick_nohz_tick_stopped() && idx > 0 &&
+		    drv->states[idx].target_residency > delta_next_us) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!tick_nohz_tick_stopped() && idx > 0 &&
 		    drv->states[idx].target_residency > delta_next_us) {
@@ -476,7 +497,10 @@ static int menu_select(struct cpuidle_driver *drv, struct cpuidle_device *dev,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 out:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	data->last_state_idx = idx;

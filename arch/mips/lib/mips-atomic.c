@@ -38,7 +38,11 @@
 notrace void arch_local_irq_disable(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_disable_notrace();
+=======
+	preempt_disable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	preempt_disable();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -58,7 +62,11 @@ notrace void arch_local_irq_disable(void)
 	: "memory");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_enable_notrace();
+=======
+	preempt_enable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	preempt_enable();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -70,7 +78,11 @@ notrace unsigned long arch_local_irq_save(void)
 	unsigned long flags;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_disable_notrace();
+=======
+	preempt_disable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	preempt_disable();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -91,7 +103,11 @@ notrace unsigned long arch_local_irq_save(void)
 	: "memory");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_enable_notrace();
+=======
+	preempt_enable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	preempt_enable();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -105,7 +121,11 @@ notrace void arch_local_irq_restore(unsigned long flags)
 	unsigned long __tmp1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_disable_notrace();
+=======
+	preempt_disable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	preempt_disable();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -127,7 +147,11 @@ notrace void arch_local_irq_restore(unsigned long flags)
 	: "memory");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_enable_notrace();
+=======
+	preempt_enable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	preempt_enable();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -837,6 +837,7 @@ nl802154_send_iface(struct sk_buff *msg, u32 portid, u32 seq, int flags,
 
 #ifdef CONFIG_IEEE802154_NL802154_EXPERIMENTAL
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (wpan_dev->iftype == NL802154_IFTYPE_MONITOR)
 		goto out;
 
@@ -844,6 +845,10 @@ nl802154_send_iface(struct sk_buff *msg, u32 portid, u32 seq, int flags,
 		goto nla_put_failure;
 
 out:
+=======
+	if (nl802154_get_llsec_params(msg, rdev, wpan_dev) < 0)
+		goto nla_put_failure;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (nl802154_get_llsec_params(msg, rdev, wpan_dev) < 0)
 		goto nla_put_failure;
@@ -1321,12 +1326,18 @@ ieee802154_llsec_parse_dev_addr(struct nlattr *nla,
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!attrs[NL802154_DEV_ADDR_ATTR_PAN_ID] || !attrs[NL802154_DEV_ADDR_ATTR_MODE])
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!attrs[NL802154_DEV_ADDR_ATTR_PAN_ID] ||
 	    !attrs[NL802154_DEV_ADDR_ATTR_MODE] ||
 	    !(attrs[NL802154_DEV_ADDR_ATTR_SHORT] ||
 	      attrs[NL802154_DEV_ADDR_ATTR_EXTENDED]))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EINVAL;
 
@@ -1335,6 +1346,7 @@ ieee802154_llsec_parse_dev_addr(struct nlattr *nla,
 	switch (addr->mode) {
 	case NL802154_DEV_ADDR_SHORT:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!attrs[NL802154_DEV_ADDR_ATTR_SHORT])
 			return -EINVAL;
 		addr->short_addr = nla_get_le16(attrs[NL802154_DEV_ADDR_ATTR_SHORT]);
@@ -1342,6 +1354,11 @@ ieee802154_llsec_parse_dev_addr(struct nlattr *nla,
 	case NL802154_DEV_ADDR_EXTENDED:
 		if (!attrs[NL802154_DEV_ADDR_ATTR_EXTENDED])
 			return -EINVAL;
+=======
+		addr->short_addr = nla_get_le16(attrs[NL802154_DEV_ADDR_ATTR_SHORT]);
+		break;
+	case NL802154_DEV_ADDR_EXTENDED:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		addr->short_addr = nla_get_le16(attrs[NL802154_DEV_ADDR_ATTR_SHORT]);
 		break;
@@ -1427,9 +1444,12 @@ static int nl802154_set_llsec_params(struct sk_buff *skb,
 	int ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (wpan_dev->iftype == NL802154_IFTYPE_MONITOR)
 		return -EOPNOTSUPP;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (info->attrs[NL802154_ATTR_SEC_ENABLED]) {
@@ -1539,11 +1559,14 @@ nl802154_dump_llsec_key(struct sk_buff *skb, struct netlink_callback *cb)
 		return err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (wpan_dev->iftype == NL802154_IFTYPE_MONITOR) {
 		err = skb->len;
 		goto out_err;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!wpan_dev->netdev) {
@@ -1601,8 +1624,12 @@ static int nl802154_add_llsec_key(struct sk_buff *skb, struct genl_info *info)
 	u32 commands[NL802154_CMD_FRAME_NR_IDS / 32] = { };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!info->attrs[NL802154_ATTR_SEC_KEY] ||
 	    nla_parse_nested(attrs, NL802154_KEY_ATTR_MAX,
+=======
+	if (nla_parse_nested(attrs, NL802154_KEY_ATTR_MAX,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (nla_parse_nested(attrs, NL802154_KEY_ATTR_MAX,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1656,8 +1683,12 @@ static int nl802154_del_llsec_key(struct sk_buff *skb, struct genl_info *info)
 	struct ieee802154_llsec_key_id id;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!info->attrs[NL802154_ATTR_SEC_KEY] ||
 	    nla_parse_nested(attrs, NL802154_KEY_ATTR_MAX,
+=======
+	if (nla_parse_nested(attrs, NL802154_KEY_ATTR_MAX,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (nla_parse_nested(attrs, NL802154_KEY_ATTR_MAX,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1727,11 +1758,14 @@ nl802154_dump_llsec_dev(struct sk_buff *skb, struct netlink_callback *cb)
 		return err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (wpan_dev->iftype == NL802154_IFTYPE_MONITOR) {
 		err = skb->len;
 		goto out_err;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!wpan_dev->netdev) {
@@ -1822,9 +1856,12 @@ static int nl802154_add_llsec_dev(struct sk_buff *skb, struct genl_info *info)
 	struct ieee802154_llsec_device dev_desc;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (wpan_dev->iftype == NL802154_IFTYPE_MONITOR)
 		return -EOPNOTSUPP;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ieee802154_llsec_parse_device(info->attrs[NL802154_ATTR_SEC_DEVICE],
@@ -1843,8 +1880,12 @@ static int nl802154_del_llsec_dev(struct sk_buff *skb, struct genl_info *info)
 	__le64 extended_addr;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!info->attrs[NL802154_ATTR_SEC_DEVICE] ||
 	    nla_parse_nested(attrs, NL802154_DEV_ATTR_MAX,
+=======
+	if (nla_parse_nested(attrs, NL802154_DEV_ATTR_MAX,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (nla_parse_nested(attrs, NL802154_DEV_ATTR_MAX,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1918,11 +1959,14 @@ nl802154_dump_llsec_devkey(struct sk_buff *skb, struct netlink_callback *cb)
 		return err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (wpan_dev->iftype == NL802154_IFTYPE_MONITOR) {
 		err = skb->len;
 		goto out_err;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!wpan_dev->netdev) {
@@ -1983,9 +2027,12 @@ static int nl802154_add_llsec_devkey(struct sk_buff *skb, struct genl_info *info
 	__le64 extended_addr;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (wpan_dev->iftype == NL802154_IFTYPE_MONITOR)
 		return -EOPNOTSUPP;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!info->attrs[NL802154_ATTR_SEC_DEVKEY] ||
@@ -2022,8 +2069,12 @@ static int nl802154_del_llsec_devkey(struct sk_buff *skb, struct genl_info *info
 	__le64 extended_addr;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!info->attrs[NL802154_ATTR_SEC_DEVKEY] ||
 	    nla_parse_nested(attrs, NL802154_DEVKEY_ATTR_MAX,
+=======
+	if (nla_parse_nested(attrs, NL802154_DEVKEY_ATTR_MAX,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (nla_parse_nested(attrs, NL802154_DEVKEY_ATTR_MAX,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2102,11 +2153,14 @@ nl802154_dump_llsec_seclevel(struct sk_buff *skb, struct netlink_callback *cb)
 		return err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (wpan_dev->iftype == NL802154_IFTYPE_MONITOR) {
 		err = skb->len;
 		goto out_err;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!wpan_dev->netdev) {
@@ -2195,9 +2249,12 @@ static int nl802154_add_llsec_seclevel(struct sk_buff *skb,
 	struct ieee802154_llsec_seclevel sl;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (wpan_dev->iftype == NL802154_IFTYPE_MONITOR)
 		return -EOPNOTSUPP;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (llsec_parse_seclevel(info->attrs[NL802154_ATTR_SEC_LEVEL],
@@ -2216,9 +2273,12 @@ static int nl802154_del_llsec_seclevel(struct sk_buff *skb,
 	struct ieee802154_llsec_seclevel sl;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (wpan_dev->iftype == NL802154_IFTYPE_MONITOR)
 		return -EOPNOTSUPP;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!info->attrs[NL802154_ATTR_SEC_LEVEL] ||

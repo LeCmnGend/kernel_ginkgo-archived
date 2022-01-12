@@ -658,6 +658,7 @@ unsigned int ata_sff_data_xfer32(struct ata_queued_cmd *qc, unsigned char *buf,
 EXPORT_SYMBOL_GPL(ata_sff_data_xfer32);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void ata_pio_xfer(struct ata_queued_cmd *qc, struct page *page,
 		unsigned int offset, size_t xfer_size)
 {
@@ -672,6 +673,8 @@ static void ata_pio_xfer(struct ata_queued_cmd *qc, struct page *page,
 		flush_dcache_page(page);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -716,15 +719,21 @@ EXPORT_SYMBOL_GPL(ata_sff_data_xfer_noirq);
 static void ata_pio_sector(struct ata_queued_cmd *qc)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct ata_port *ap = qc->ap;
 	struct page *page;
 	unsigned int offset;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int do_write = (qc->tf.flags & ATA_TFLAG_WRITE);
 	struct ata_port *ap = qc->ap;
 	struct page *page;
 	unsigned int offset;
 	unsigned char *buf;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!qc->cursg) {
@@ -744,6 +753,7 @@ static void ata_pio_sector(struct ata_queued_cmd *qc)
 	DPRINTK("data %s\n", qc->tf.flags & ATA_TFLAG_WRITE ? "write" : "read");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Split the transfer when it splits a page boundary.  Note that the
 	 * split still has to be dword aligned like all ATA data transfers.
@@ -759,6 +769,8 @@ static void ata_pio_sector(struct ata_queued_cmd *qc)
 		ata_pio_xfer(qc, page, offset, qc->sect_size);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* do the actual data transfer */
 	buf = kmap_atomic(page);
 	ap->ops->sff_data_xfer(qc, buf + offset, qc->sect_size, do_write);
@@ -766,6 +778,9 @@ static void ata_pio_sector(struct ata_queued_cmd *qc)
 
 	if (!do_write && !PageSlab(page))
 		flush_dcache_page(page);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	qc->curbytes += qc->sect_size;
@@ -2766,6 +2781,7 @@ static void ata_bmdma_fill_sg_dumb(struct ata_queued_cmd *qc)
  *	spin_lock_irqsave(host lock)
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 enum ata_completion_errors ata_bmdma_qc_prep(struct ata_queued_cmd *qc)
 {
 	if (!(qc->flags & ATA_QCFLAG_DMAMAP))
@@ -2775,12 +2791,17 @@ enum ata_completion_errors ata_bmdma_qc_prep(struct ata_queued_cmd *qc)
 
 	return AC_ERR_OK;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void ata_bmdma_qc_prep(struct ata_queued_cmd *qc)
 {
 	if (!(qc->flags & ATA_QCFLAG_DMAMAP))
 		return;
 
 	ata_bmdma_fill_sg(qc);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL_GPL(ata_bmdma_qc_prep);
@@ -2795,6 +2816,7 @@ EXPORT_SYMBOL_GPL(ata_bmdma_qc_prep);
  *	spin_lock_irqsave(host lock)
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 enum ata_completion_errors ata_bmdma_dumb_qc_prep(struct ata_queued_cmd *qc)
 {
 	if (!(qc->flags & ATA_QCFLAG_DMAMAP))
@@ -2804,12 +2826,17 @@ enum ata_completion_errors ata_bmdma_dumb_qc_prep(struct ata_queued_cmd *qc)
 
 	return AC_ERR_OK;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void ata_bmdma_dumb_qc_prep(struct ata_queued_cmd *qc)
 {
 	if (!(qc->flags & ATA_QCFLAG_DMAMAP))
 		return;
 
 	ata_bmdma_fill_sg_dumb(qc);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL_GPL(ata_bmdma_dumb_qc_prep);

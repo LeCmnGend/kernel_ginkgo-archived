@@ -190,9 +190,15 @@ static ssize_t ad5504_write_dac_powerdown(struct iio_dev *indio_dev,
 
 	if (pwr_down)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		st->pwr_down_mask &= ~(1 << chan->channel);
 	else
 		st->pwr_down_mask |= (1 << chan->channel);
+=======
+		st->pwr_down_mask |= (1 << chan->channel);
+	else
+		st->pwr_down_mask &= ~(1 << chan->channel);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		st->pwr_down_mask |= (1 << chan->channel);
 	else

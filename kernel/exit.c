@@ -186,6 +186,7 @@ void release_task(struct task_struct *p)
 	struct task_struct *leader;
 	int zap_leader;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (p->fpack) {
 		if (p->fpack->iname)
@@ -194,6 +195,8 @@ void release_task(struct task_struct *p)
 		p->fpack = NULL;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 repeat:
@@ -529,10 +532,14 @@ static void exit_mm(void)
 
 		self.task = current;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (self.task->flags & PF_SIGNALED)
 			self.next = xchg(&core_state->dumper.next, &self);
 		else
 			self.task = NULL;
+=======
+		self.next = xchg(&core_state->dumper.next, &self);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		self.next = xchg(&core_state->dumper.next, &self);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -564,6 +571,7 @@ static void exit_mm(void)
 
 	mm_released = mmput(mm);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (mm_released)
 		set_tsk_thread_flag(current, TIF_MM_RELEASED);
 #ifdef CONFIG_ANDROID_SIMPLE_LMK
@@ -573,10 +581,15 @@ static void exit_mm(void)
 		exit_oom_victim();
 #endif
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (test_thread_flag(TIF_MEMDIE))
 		exit_oom_victim();
 	if (mm_released)
 		set_tsk_thread_flag(current, TIF_MM_RELEASED);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

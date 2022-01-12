@@ -143,7 +143,10 @@ static inline const char *get_task_state(struct task_struct *tsk)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline int get_task_umask(struct task_struct *tsk)
 {
 	struct fs_struct *fs;
@@ -157,6 +160,9 @@ static inline int get_task_umask(struct task_struct *tsk)
 	return umask;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void task_state(struct seq_file *m, struct pid_namespace *ns,
 				struct pid *pid, struct task_struct *p)
@@ -164,7 +170,11 @@ static inline void task_state(struct seq_file *m, struct pid_namespace *ns,
 	struct user_namespace *user_ns = seq_user_ns(m);
 	struct group_info *group_info;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int g, umask = -1;
+=======
+	int g, umask;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int g, umask;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -186,15 +196,21 @@ static inline void task_state(struct seq_file *m, struct pid_namespace *ns,
 	cred = get_task_cred(p);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	task_lock(p);
 	if (p->fs)
 		umask = p->fs->umask;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	umask = get_task_umask(p);
 	if (umask >= 0)
 		seq_printf(m, "Umask:\t%#04o\n", umask);
 
 	task_lock(p);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (p->files)
 		max_fds = files_fdtable(p->files)->max_fds;
@@ -202,10 +218,14 @@ static inline void task_state(struct seq_file *m, struct pid_namespace *ns,
 	rcu_read_unlock();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (umask >= 0)
 		seq_printf(m, "Umask:\t%#04o\n", umask);
 	seq_puts(m, "State:\t");
 	seq_puts(m, get_task_state(p));
+=======
+	seq_printf(m, "State:\t%s", get_task_state(p));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	seq_printf(m, "State:\t%s", get_task_state(p));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -335,8 +355,13 @@ static void render_cap_t(struct seq_file *m, const char *header,
 	seq_puts(m, header);
 	CAP_FOR_EACH_U32(__capi) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		seq_put_hex_ll(m, NULL,
 			   a->cap[CAP_LAST_U32 - __capi], 8);
+=======
+		seq_printf(m, "%08x",
+			   a->cap[CAP_LAST_U32 - __capi]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		seq_printf(m, "%08x",
 			   a->cap[CAP_LAST_U32 - __capi]);
@@ -549,11 +574,15 @@ static int do_task_stat(struct seq_file *m, struct pid_namespace *ns,
 	start_time = nsec_to_clock_t(task->real_start_time);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	seq_put_decimal_ull(m, "", pid_nr_ns(pid, ns));
 	seq_puts(m, " (");
 	seq_puts(m, tcomm);
 	seq_puts(m, ") ");
 	seq_putc(m, state);
+=======
+	seq_printf(m, "%d (%s) %c", pid_nr_ns(pid, ns), tcomm, state);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	seq_printf(m, "%d (%s) %c", pid_nr_ns(pid, ns), tcomm, state);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

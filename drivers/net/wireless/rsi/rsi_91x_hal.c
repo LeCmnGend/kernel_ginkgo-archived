@@ -387,9 +387,15 @@ int rsi_prepare_beacon(struct rsi_common *common, struct sk_buff *skb)
 
 	if (common->band == NL80211_BAND_2GHZ)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		bcn_frm->rate_info |= cpu_to_le16(RSI_RATE_1);
 	else
 		bcn_frm->rate_info |= cpu_to_le16(RSI_RATE_6);
+=======
+		bcn_frm->bbp_info |= cpu_to_le16(RSI_RATE_1);
+	else
+		bcn_frm->bbp_info |= cpu_to_le16(RSI_RATE_6);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		bcn_frm->bbp_info |= cpu_to_le16(RSI_RATE_1);
 	else

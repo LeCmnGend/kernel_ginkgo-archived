@@ -34,7 +34,11 @@ KCOV_INSTRUMENT		:= n
 
 # decompressor objects (linked with vmlinuz)
 <<<<<<< HEAD
+<<<<<<< HEAD
 vmlinuzobjs-y := $(obj)/head.o $(obj)/decompress.o $(obj)/string.o $(obj)/bswapsi.o
+=======
+vmlinuzobjs-y := $(obj)/head.o $(obj)/decompress.o $(obj)/string.o
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 vmlinuzobjs-y := $(obj)/head.o $(obj)/decompress.o $(obj)/string.o
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -52,7 +56,11 @@ $(obj)/uart-ath79.c: $(srctree)/arch/mips/ath79/early_printk.c
 	$(call cmd,shipped)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 vmlinuzobjs-$(CONFIG_KERNEL_XZ) += $(obj)/ashldi3.o
+=======
+vmlinuzobjs-$(CONFIG_KERNEL_XZ) += $(obj)/ashldi3.o $(obj)/bswapsi.o
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 vmlinuzobjs-$(CONFIG_KERNEL_XZ) += $(obj)/ashldi3.o $(obj)/bswapsi.o
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

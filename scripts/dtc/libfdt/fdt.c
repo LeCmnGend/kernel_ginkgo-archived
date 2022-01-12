@@ -103,7 +103,11 @@ const void *fdt_offset_ptr(const void *fdt, int offset, unsigned int len)
 			return NULL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return fdt_offset_ptr_(fdt, offset);
+=======
+	return _fdt_offset_ptr(fdt, offset);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return _fdt_offset_ptr(fdt, offset);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -142,9 +146,12 @@ uint32_t fdt_next_tag(const void *fdt, int startoffset, int *nextoffset)
 		offset += sizeof(struct fdt_property) - FDT_TAGSIZE
 			+ fdt32_to_cpu(*lenp);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (fdt_version(fdt) < 0x10 && fdt32_to_cpu(*lenp) >= 8 &&
 		    ((offset - fdt32_to_cpu(*lenp)) % 8) != 0)
 			offset += 4;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
@@ -166,7 +173,11 @@ uint32_t fdt_next_tag(const void *fdt, int startoffset, int *nextoffset)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int fdt_check_node_offset_(const void *fdt, int offset)
+=======
+int _fdt_check_node_offset(const void *fdt, int offset)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int _fdt_check_node_offset(const void *fdt, int offset)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -179,7 +190,11 @@ int _fdt_check_node_offset(const void *fdt, int offset)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int fdt_check_prop_offset_(const void *fdt, int offset)
+=======
+int _fdt_check_prop_offset(const void *fdt, int offset)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int _fdt_check_prop_offset(const void *fdt, int offset)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -198,7 +213,11 @@ int fdt_next_node(const void *fdt, int offset, int *depth)
 
 	if (offset >= 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if ((nextoffset = fdt_check_node_offset_(fdt, offset)) < 0)
+=======
+		if ((nextoffset = _fdt_check_node_offset(fdt, offset)) < 0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if ((nextoffset = _fdt_check_node_offset(fdt, offset)) < 0)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -264,7 +283,11 @@ int fdt_next_subnode(const void *fdt, int offset)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const char *fdt_find_string_(const char *strtab, int tabsize, const char *s)
+=======
+const char *_fdt_find_string(const char *strtab, int tabsize, const char *s)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 const char *_fdt_find_string(const char *strtab, int tabsize, const char *s)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

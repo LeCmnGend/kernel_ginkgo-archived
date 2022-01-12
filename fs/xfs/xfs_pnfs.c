@@ -141,7 +141,11 @@ xfs_fs_map_blocks(
 	error = invalidate_inode_pages2(inode->i_mapping);
 	if (WARN_ON_ONCE(error))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_unlock;
+=======
+		return error;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return error;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

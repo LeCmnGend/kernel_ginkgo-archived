@@ -143,10 +143,13 @@ static void s5pv210_phy_pwr(struct samsung_usb2_phy_instance *inst, bool on)
 		rst &= ~rstbits;
 		writel(rst, drv->reg_phy + S5PV210_UPHYRST);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* The following delay is necessary for the reset sequence to be
 		 * completed
 		 */
 		udelay(80);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {

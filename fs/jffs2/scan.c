@@ -1076,7 +1076,11 @@ static int jffs2_scan_dirent_node(struct jffs2_sb_info *c, struct jffs2_eraseblo
 	fd->name[checkedlen] = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	crc = crc32(0, fd->name, checkedlen);
+=======
+	crc = crc32(0, fd->name, rd->nsize);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	crc = crc32(0, fd->name, rd->nsize);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -41,7 +41,10 @@ static __init int rng_init(void)
 	ppc_md.get_random_seed = pseries_get_random_long;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	of_node_put(dn);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;

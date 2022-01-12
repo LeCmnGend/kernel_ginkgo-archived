@@ -14,6 +14,7 @@
 #ifdef __ASSEMBLY__
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * GLOBAL is DEPRECATED
  *
@@ -21,6 +22,11 @@
  * similar
  */
 #define GLOBAL(name)	SYM_ENTRY(name, SYM_L_GLOBAL, SYM_A_NONE)
+=======
+#define GLOBAL(name)	\
+	.globl name;	\
+	name:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define GLOBAL(name)	\
 	.globl name;	\

@@ -312,7 +312,10 @@ config USB_CONFIGFS_NCM
 	select USB_U_ETHER
 	select USB_F_NCM
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select CRC32
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	help
@@ -399,7 +402,10 @@ config USB_CONFIGFS_EEM
 	select USB_U_ETHER
 	select USB_F_EEM
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select CRC32
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	help

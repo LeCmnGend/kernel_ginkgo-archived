@@ -198,6 +198,7 @@ struct rpr0521_data {
 
 	struct regmap *regmap;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/*
 	 * Ensure correct naturally aligned timestamp.
@@ -209,6 +210,8 @@ struct rpr0521_data {
 		u8 garbage;
 		s64 ts __aligned(8);
 	} scan;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -467,6 +470,11 @@ static irqreturn_t rpr0521_trigger_consumer_handler(int irq, void *p)
 	int err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u8 buffer[16]; /* 3 16-bit channels + padding + ts */
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u8 buffer[16]; /* 3 16-bit channels + padding + ts */
 
@@ -482,17 +490,23 @@ static irqreturn_t rpr0521_trigger_consumer_handler(int irq, void *p)
 
 	err = regmap_bulk_read(data->regmap, RPR0521_REG_PXS_DATA,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		data->scan.channels,
 		(3 * 2) + 1);	/* 3 * 16-bit + (discarded) int clear reg. */
 	if (!err)
 		iio_push_to_buffers_with_timestamp(indio_dev,
 						   &data->scan, pf->timestamp);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		&buffer,
 		(3 * 2) + 1);	/* 3 * 16-bit + (discarded) int clear reg. */
 	if (!err)
 		iio_push_to_buffers_with_timestamp(indio_dev,
 						   buffer, pf->timestamp);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	else
 		dev_err(&data->client->dev,

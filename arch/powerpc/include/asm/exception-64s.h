@@ -85,6 +85,7 @@
 	nop
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define ENTRY_FLUSH_SLOT						\
 	ENTRY_FLUSH_FIXUP_SECTION;					\
 	nop;								\
@@ -93,13 +94,19 @@
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * r10 must be free to use, r13 must be paca
  */
 #define INTERRUPT_TO_KERNEL						\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	STF_ENTRY_BARRIER_SLOT;						\
 	ENTRY_FLUSH_SLOT
+=======
+	STF_ENTRY_BARRIER_SLOT
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	STF_ENTRY_BARRIER_SLOT
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -660,10 +667,13 @@ END_FTR_SECTION_NESTED(ftr,ftr,943)
 	EXCEPTION_RELON_PROLOG_PSERIES_1(label, EXC_HV)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define MASKABLE_RELON_EXCEPTION_PSERIES_OOL(vec, label)               \
        EXCEPTION_PROLOG_1(PACA_EXGEN, SOFTEN_NOTEST_PR, vec);          \
        EXCEPTION_PROLOG_PSERIES_1(label, EXC_STD)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*

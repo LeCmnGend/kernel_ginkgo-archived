@@ -20,7 +20,10 @@ EXPORT_SYMBOL_GPL(noop_backing_dev_info);
 
 static struct class *bdi_class;
 <<<<<<< HEAD
+<<<<<<< HEAD
 const char *bdi_unknown_name = "(unknown)";
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

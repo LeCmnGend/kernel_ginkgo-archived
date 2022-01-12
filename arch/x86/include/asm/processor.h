@@ -513,7 +513,10 @@ struct thread_struct {
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Thread-synchronous status.
  *
  * This is different from the flags in that nobody else
@@ -523,6 +526,9 @@ struct thread_struct {
 #define TS_COMPAT		0x0002	/* 32bit syscall active (64BIT)*/
 
 /*
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * Set IOPL bits in EFLAGS from given mask
  */

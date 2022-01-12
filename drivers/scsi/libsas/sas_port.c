@@ -42,7 +42,11 @@ static bool phy_is_wideport_member(struct asd_sas_port *port, struct asd_sas_phy
 static void sas_resume_port(struct asd_sas_phy *phy)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct domain_device *dev, *n;
+=======
+	struct domain_device *dev;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct domain_device *dev;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -65,7 +69,11 @@ static void sas_resume_port(struct asd_sas_phy *phy)
 	 * 2/ force the next revalidation to check all expander phys
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	list_for_each_entry_safe(dev, n, &port->dev_list, dev_list_node) {
+=======
+	list_for_each_entry(dev, &port->dev_list, dev_list_node) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	list_for_each_entry(dev, &port->dev_list, dev_list_node) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

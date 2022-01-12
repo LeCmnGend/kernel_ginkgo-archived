@@ -180,7 +180,11 @@ FTRACE_ENTRY(kernel_stack, stack_entry,
 	F_STRUCT(
 		__field(	int,		size	)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__array(	unsigned long,	caller,	FTRACE_STACK_ENTRIES	)
+=======
+		__dynamic_array(unsigned long,	caller	)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__dynamic_array(unsigned long,	caller	)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

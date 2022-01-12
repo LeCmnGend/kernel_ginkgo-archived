@@ -21,6 +21,10 @@
  *
  * NOTE: These only make a difference when a mapped object spans pages.
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+ * They also have no effect when PGTABLE_MAPPING is selected.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * They also have no effect when PGTABLE_MAPPING is selected.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -40,7 +44,11 @@ enum zs_mapmode {
 struct zs_pool_stats {
 	/* How many pages were migrated (freed) */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	atomic_long_t pages_compacted;
+=======
+	unsigned long pages_compacted;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long pages_compacted;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

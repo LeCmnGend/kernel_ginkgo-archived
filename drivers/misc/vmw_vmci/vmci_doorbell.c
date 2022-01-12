@@ -335,7 +335,11 @@ bool vmci_dbell_register_notification_bitmap(u32 bitmap_ppn)
 {
 	int result;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct vmci_notify_bm_set_msg bitmap_set_msg = { };
+=======
+	struct vmci_notify_bm_set_msg bitmap_set_msg;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct vmci_notify_bm_set_msg bitmap_set_msg;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

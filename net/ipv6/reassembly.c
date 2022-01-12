@@ -348,7 +348,11 @@ static int ipv6_frag_rcv(struct sk_buff *skb)
 	fhdr = (struct frag_hdr *)skb_transport_header(skb);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!(fhdr->frag_off & htons(IP6_OFFSET | IP6_MF))) {
+=======
+	if (!(fhdr->frag_off & htons(0xFFF9))) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!(fhdr->frag_off & htons(0xFFF9))) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -360,8 +364,11 @@ static int ipv6_frag_rcv(struct sk_buff *skb)
 		IP6CB(skb)->nhoff = (u8 *)fhdr - skb_network_header(skb);
 		IP6CB(skb)->flags |= IP6SKB_FRAGMENTED;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		IP6CB(skb)->frag_max_size = ntohs(hdr->payload_len) +
 					    sizeof(struct ipv6hdr);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return 1;

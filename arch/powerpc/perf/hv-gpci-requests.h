@@ -96,7 +96,11 @@ REQUEST(__field(0,	8,	partition_id)
 #define REQUEST_NAME system_performance_capabilities
 #define REQUEST_NUM 0x40
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define REQUEST_IDX_KIND "starting_index=0xffffffff"
+=======
+#define REQUEST_IDX_KIND "starting_index=0xffffffffffffffff"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define REQUEST_IDX_KIND "starting_index=0xffffffffffffffff"
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -228,7 +232,11 @@ REQUEST(__field(0,	2, partition_id)
 #define REQUEST_NAME system_hypervisor_times
 #define REQUEST_NUM 0xF0
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define REQUEST_IDX_KIND "starting_index=0xffffffff"
+=======
+#define REQUEST_IDX_KIND "starting_index=0xffffffffffffffff"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define REQUEST_IDX_KIND "starting_index=0xffffffffffffffff"
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -243,7 +251,11 @@ REQUEST(__count(0,	8,	time_spent_to_dispatch_virtual_processors)
 #define REQUEST_NAME system_tlbie_count_and_time
 #define REQUEST_NUM 0xF4
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define REQUEST_IDX_KIND "starting_index=0xffffffff"
+=======
+#define REQUEST_IDX_KIND "starting_index=0xffffffffffffffff"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define REQUEST_IDX_KIND "starting_index=0xffffffffffffffff"
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

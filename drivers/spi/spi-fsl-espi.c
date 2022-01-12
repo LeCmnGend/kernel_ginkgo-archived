@@ -557,7 +557,11 @@ static irqreturn_t fsl_espi_irq(s32 irq, void *context_data)
 {
 	struct fsl_espi *espi = context_data;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 events, mask;
+=======
+	u32 events;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 events;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -567,8 +571,12 @@ static irqreturn_t fsl_espi_irq(s32 irq, void *context_data)
 	/* Get interrupt events(tx/rx) */
 	events = fsl_espi_read_reg(espi, ESPI_SPIE);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mask = fsl_espi_read_reg(espi, ESPI_SPIM);
 	if (!(events & mask)) {
+=======
+	if (!events) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!events) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

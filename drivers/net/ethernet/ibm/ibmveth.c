@@ -1331,7 +1331,10 @@ static int ibmveth_poll(struct napi_struct *napi, int budget)
 			int csum_good = ibmveth_rxq_csum_good(adapter);
 			int lrg_pkt = ibmveth_rxq_large_packet(adapter);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			__sum16 iph_check = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1371,6 +1374,7 @@ static int ibmveth_poll(struct napi_struct *napi, int budget)
 			skb->protocol = eth_type_trans(skb, netdev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			/* PHYP without PLSO support places a -1 in the ip
 			 * checksum for large send frames.
 			 */
@@ -1383,23 +1387,31 @@ static int ibmveth_poll(struct napi_struct *napi, int budget)
 			if ((length > netdev->mtu + ETH_HLEN) ||
 			    lrg_pkt || iph_check == 0xffff) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (csum_good) {
 				skb->ip_summed = CHECKSUM_UNNECESSARY;
 				ibmveth_rx_csum_helper(skb, adapter);
 			}
 
 			if (length > netdev->mtu + ETH_HLEN) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				ibmveth_rx_mss_helper(skb, mss, lrg_pkt);
 				adapter->rx_large_packets++;
 			}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (csum_good) {
 				skb->ip_summed = CHECKSUM_UNNECESSARY;
 				ibmveth_rx_csum_helper(skb, adapter);
 			}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			napi_gro_receive(napi, skb);	/* send it up */

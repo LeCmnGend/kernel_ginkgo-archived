@@ -45,6 +45,7 @@
 #define DRIVER_DESC "USB Keyspan PDA Converter driver"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define KEYSPAN_TX_THRESHOLD	16
 
 struct keyspan_pda_private {
@@ -52,11 +53,16 @@ struct keyspan_pda_private {
 	int			tx_throttled;
 	struct work_struct	unthrottle_work;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct keyspan_pda_private {
 	int			tx_room;
 	int			tx_throttled;
 	struct work_struct			wakeup_work;
 	struct work_struct			unthrottle_work;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct usb_serial	*serial;
 	struct usb_serial_port	*port;
@@ -111,7 +117,10 @@ static const struct usb_device_id id_table_fake_xircom[] = {
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void keyspan_pda_wakeup_write(struct work_struct *work)
 {
 	struct keyspan_pda_private *priv =
@@ -121,6 +130,9 @@ static void keyspan_pda_wakeup_write(struct work_struct *work)
 	tty_port_tty_wakeup(&port->port);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void keyspan_pda_request_unthrottle(struct work_struct *work)
 {
@@ -137,7 +149,11 @@ static void keyspan_pda_request_unthrottle(struct work_struct *work)
 				 USB_TYPE_VENDOR | USB_RECIP_INTERFACE
 				 | USB_DIR_OUT,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				 KEYSPAN_TX_THRESHOLD,
+=======
+				 16, /* value: threshold */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				 16, /* value: threshold */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -160,8 +176,11 @@ static void keyspan_pda_rx_interrupt(struct urb *urb)
 	int status = urb->status;
 	struct keyspan_pda_private *priv;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long flags;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	priv = usb_get_serial_port_data(port);
@@ -198,22 +217,29 @@ static void keyspan_pda_rx_interrupt(struct urb *urb)
 	case 1:
 		/* status interrupt */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (len < 2) {
 			dev_warn(&port->dev, "short interrupt message received\n");
 			break;
 		}
 		dev_dbg(&port->dev, "rx int, d1=%d\n", data[1]);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (len < 3) {
 			dev_warn(&port->dev, "short interrupt message received\n");
 			break;
 		}
 		dev_dbg(&port->dev, "rx int, d1=%d, d2=%d\n", data[1], data[2]);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		switch (data[1]) {
 		case 1: /* modemline change */
 			break;
 		case 2: /* tx unthrottle interrupt */
+<<<<<<< HEAD
 <<<<<<< HEAD
 			spin_lock_irqsave(&port->lock, flags);
 			priv->tx_throttled = 0;
@@ -221,6 +247,11 @@ static void keyspan_pda_rx_interrupt(struct urb *urb)
 			spin_unlock_irqrestore(&port->lock, flags);
 			/* queue up a wakeup at scheduler time */
 			usb_serial_port_softint(port);
+=======
+			priv->tx_throttled = 0;
+			/* queue up a wakeup at scheduler time */
+			schedule_work(&priv->wakeup_work);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			priv->tx_throttled = 0;
 			/* queue up a wakeup at scheduler time */
@@ -486,7 +517,10 @@ static int keyspan_pda_write(struct tty_struct *tty,
 	int rc = 0;
 	struct keyspan_pda_private *priv;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long flags;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -509,6 +543,7 @@ static int keyspan_pda_write(struct tty_struct *tty,
 	   the device is full (wait until it says there is room)
 	*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock_irqsave(&port->lock, flags);
 	if (!test_bit(0, &port->write_urbs_free) || priv->tx_throttled) {
 		spin_unlock_irqrestore(&port->lock, flags);
@@ -517,6 +552,8 @@ static int keyspan_pda_write(struct tty_struct *tty,
 	clear_bit(0, &port->write_urbs_free);
 	spin_unlock_irqrestore(&port->lock, flags);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_bh(&port->lock);
 	if (!test_bit(0, &port->write_urbs_free) || priv->tx_throttled) {
 		spin_unlock_bh(&port->lock);
@@ -524,6 +561,9 @@ static int keyspan_pda_write(struct tty_struct *tty,
 	}
 	clear_bit(0, &port->write_urbs_free);
 	spin_unlock_bh(&port->lock);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* At this point the URB is in our control, nobody else can submit it
@@ -571,8 +611,12 @@ static int keyspan_pda_write(struct tty_struct *tty,
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (count >= priv->tx_room) {
+=======
+	if (count > priv->tx_room) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (count > priv->tx_room) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -609,7 +653,11 @@ static int keyspan_pda_write(struct tty_struct *tty,
 	rc = count;
 exit:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (rc <= 0)
+=======
+	if (rc < 0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (rc < 0)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -622,12 +670,15 @@ static void keyspan_pda_write_bulk_callback(struct urb *urb)
 {
 	struct usb_serial_port *port = urb->context;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	set_bit(0, &port->write_urbs_free);
 
 	/* queue up a wakeup at scheduler time */
 	usb_serial_port_softint(port);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct keyspan_pda_private *priv;
 
 	set_bit(0, &port->write_urbs_free);
@@ -635,6 +686,9 @@ static void keyspan_pda_write_bulk_callback(struct urb *urb)
 
 	/* queue up a wakeup at scheduler time */
 	schedule_work(&priv->wakeup_work);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -642,6 +696,7 @@ static void keyspan_pda_write_bulk_callback(struct urb *urb)
 static int keyspan_pda_write_room(struct tty_struct *tty)
 {
 	struct usb_serial_port *port = tty->driver_data;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	struct keyspan_pda_private *priv = usb_get_serial_port_data(port);
 	unsigned long flags;
@@ -656,6 +711,8 @@ static int keyspan_pda_write_room(struct tty_struct *tty)
 }
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct keyspan_pda_private *priv;
 	priv = usb_get_serial_port_data(port);
 	/* used by n_tty.c for processing of tabs and such. Giving it our
@@ -665,6 +722,9 @@ static int keyspan_pda_write_room(struct tty_struct *tty)
 }
 
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int keyspan_pda_chars_in_buffer(struct tty_struct *tty)
 {
@@ -745,12 +805,17 @@ error:
 static void keyspan_pda_close(struct usb_serial_port *port)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct keyspan_pda_private *priv = usb_get_serial_port_data(port);
 
 	usb_kill_urb(port->write_urb);
 	usb_kill_urb(port->interrupt_in_urb);
 
 	cancel_work_sync(&priv->unthrottle_work);
+=======
+	usb_kill_urb(port->write_urb);
+	usb_kill_urb(port->interrupt_in_urb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	usb_kill_urb(port->write_urb);
 	usb_kill_urb(port->interrupt_in_urb);
@@ -813,6 +878,10 @@ static int keyspan_pda_port_probe(struct usb_serial_port *port)
 		return -ENOMEM;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	INIT_WORK(&priv->wakeup_work, keyspan_pda_wakeup_write);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	INIT_WORK(&priv->wakeup_work, keyspan_pda_wakeup_write);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

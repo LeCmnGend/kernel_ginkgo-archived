@@ -802,7 +802,11 @@ static int twl4030_usb_remove(struct platform_device *pdev)
 	usb_remove_phy(&twl->phy);
 	pm_runtime_get_sync(twl->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cancel_delayed_work_sync(&twl->id_workaround_work);
+=======
+	cancel_delayed_work(&twl->id_workaround_work);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cancel_delayed_work(&twl->id_workaround_work);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

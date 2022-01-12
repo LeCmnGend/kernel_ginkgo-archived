@@ -116,6 +116,7 @@ static void dwmac4_dma_init_channel(void __iomem *ioaddr,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void dwmac410_dma_init_channel(void __iomem *ioaddr,
 				      struct stmmac_dma_cfg *dma_cfg, u32 chan)
 {
@@ -133,6 +134,8 @@ static void dwmac410_dma_init_channel(void __iomem *ioaddr,
 	       ioaddr + DMA_CHAN_INTR_ENA(chan));
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void dwmac4_dma_init(void __iomem *ioaddr,
@@ -464,7 +467,11 @@ const struct stmmac_dma_ops dwmac410_dma_ops = {
 	.reset = dwmac4_dma_reset,
 	.init = dwmac4_dma_init,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.init_chan = dwmac410_dma_init_channel,
+=======
+	.init_chan = dwmac4_dma_init_channel,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.init_chan = dwmac4_dma_init_channel,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

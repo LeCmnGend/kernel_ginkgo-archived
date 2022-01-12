@@ -962,7 +962,10 @@ static int mlx5e_create_inner_ttc_table_groups(struct mlx5e_ttc_table *ttc)
 	if (!in) {
 		kfree(ft->g);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ft->g = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -ENOMEM;
@@ -1186,7 +1189,10 @@ static int mlx5e_create_l2_table_groups(struct mlx5e_l2_table *l2_table)
 	if (!in) {
 		kfree(ft->g);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ft->g = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -ENOMEM;
@@ -1235,7 +1241,10 @@ err_destroy_groups:
 	mlx5e_destroy_groups(ft);
 	kvfree(in);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(ft->g);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

@@ -103,7 +103,10 @@ struct sd_desc {
 	cam_op init;		/* called on probe and resume */
 	cam_op init_controls;	/* called on probe */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cam_v_op probe_error;	/* called if probe failed, do cleanup here */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cam_op start;		/* called on stream on after URBs creation */

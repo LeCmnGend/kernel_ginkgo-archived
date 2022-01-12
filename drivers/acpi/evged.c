@@ -105,7 +105,11 @@ static acpi_status acpi_ged_request_interrupt(struct acpi_resource *ares,
 	switch (gsi) {
 	case 0 ... 255:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		sprintf(ev_name, "_%c%02X",
+=======
+		sprintf(ev_name, "_%c%02hhX",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		sprintf(ev_name, "_%c%02hhX",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

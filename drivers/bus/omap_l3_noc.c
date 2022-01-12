@@ -286,7 +286,11 @@ static int omap_l3_probe(struct platform_device *pdev)
 	l3->debug_irq = platform_get_irq(pdev, 0);
 	ret = devm_request_irq(l3->dev, l3->debug_irq, l3_interrupt_handler,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			       IRQF_NO_THREAD, "l3-dbg-irq", l3);
+=======
+			       0x0, "l3-dbg-irq", l3);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			       0x0, "l3-dbg-irq", l3);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -299,7 +303,11 @@ static int omap_l3_probe(struct platform_device *pdev)
 	l3->app_irq = platform_get_irq(pdev, 1);
 	ret = devm_request_irq(l3->dev, l3->app_irq, l3_interrupt_handler,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			       IRQF_NO_THREAD, "l3-app-irq", l3);
+=======
+			       0x0, "l3-app-irq", l3);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			       0x0, "l3-app-irq", l3);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

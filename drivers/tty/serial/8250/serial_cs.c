@@ -306,7 +306,10 @@ static int serial_probe(struct pcmcia_device *link)
 {
 	struct serial_info *info;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -324,6 +327,7 @@ static int serial_probe(struct pcmcia_device *link)
 		link->config_flags |= CONF_ENABLE_SPKR;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = serial_config(link);
 	if (ret)
 		goto free_info;
@@ -333,6 +337,9 @@ static int serial_probe(struct pcmcia_device *link)
 free_info:
 	kfree(info);
 	return ret;
+=======
+	return serial_config(link);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return serial_config(link);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -796,7 +803,10 @@ static const struct pcmcia_device_id serial_ids[] = {
 	PCMCIA_DEVICE_PROD_ID12("OEM      ", "C288MX     ", 0xb572d360, 0xd2385b7a),
 	PCMCIA_DEVICE_PROD_ID12("Option International", "V34bis GSM/PSTN Data/Fax Modem", 0x9d7cd6f5, 0x5cb8bf41),
 <<<<<<< HEAD
+<<<<<<< HEAD
 	PCMCIA_DEVICE_PROD_ID12("Option International", "GSM-Ready 56K/ISDN", 0x9d7cd6f5, 0xb23844aa),
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	PCMCIA_DEVICE_PROD_ID12("PCMCIA   ", "C336MX     ", 0x99bcafe9, 0xaa25bcab),
@@ -827,6 +837,10 @@ static const struct pcmcia_device_id serial_ids[] = {
 	PCMCIA_DEVICE_CIS_PROD_ID123("ADVANTECH", "COMpad-32/85", "1.0", 0x96913a85, 0x8fbe92ae, 0x0877b627, "cis/COMpad2.cis"),
 	PCMCIA_DEVICE_CIS_PROD_ID2("RS-COM 2P", 0xad20b156, "cis/RS-COM-2P.cis"),
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	PCMCIA_DEVICE_CIS_MANF_CARD(0x0013, 0x0000, "cis/GLOBETROTTER.cis"),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	PCMCIA_DEVICE_CIS_MANF_CARD(0x0013, 0x0000, "cis/GLOBETROTTER.cis"),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -169,6 +169,7 @@ int usb_assign_descriptors(struct usb_function *f,
 	struct usb_gadget *g = f->config->cdev->gadget;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* super-speed-plus descriptor falls back to super-speed one,
 	 * if such a descriptor was provided, thus avoiding a NULL
 	 * pointer dereference if a 5gbps capable gadget is used with
@@ -177,6 +178,8 @@ int usb_assign_descriptors(struct usb_function *f,
 	if (!ssp)
 		ssp = ss;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (fs) {

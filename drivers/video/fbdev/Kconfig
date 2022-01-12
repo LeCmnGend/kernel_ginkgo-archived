@@ -1412,7 +1412,10 @@ config FB_ATY
 	select FB_BACKLIGHT if FB_ATY_BACKLIGHT
 	select FB_MACMODES if PPC
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select FB_ATY_CT if SPARC64 && PCI
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	help
@@ -1426,6 +1429,10 @@ config FB_ATY_CT
 	bool "Mach64 CT/VT/GT/LT (incl. 3D RAGE) support"
 	depends on PCI && FB_ATY
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	default y if SPARC64 && PCI
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	default y if SPARC64 && PCI
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

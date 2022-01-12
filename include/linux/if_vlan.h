@@ -31,8 +31,11 @@
 #define VLAN_ETH_FRAME_LEN	1518	/* Max. octets in frame sans FCS */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define VLAN_MAX_DEPTH	8		/* Max. number of nested VLAN tags parsed */
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -540,15 +543,21 @@ static inline int vlan_get_tag(const struct sk_buff *skb, u16 *vlan_tci)
  * vlan encapsulated (normal or hardware accelerated) or not.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline __be16 __vlan_get_protocol(const struct sk_buff *skb, __be16 type,
 					 int *depth)
 {
 	unsigned int vlan_depth = skb->mac_len, parse_depth = VLAN_MAX_DEPTH;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline __be16 __vlan_get_protocol(struct sk_buff *skb, __be16 type,
 					 int *depth)
 {
 	unsigned int vlan_depth = skb->mac_len;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* if type is 802.1Q/AD then the header should already be
@@ -565,6 +574,7 @@ static inline __be16 __vlan_get_protocol(struct sk_buff *skb, __be16 type,
 		}
 		do {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			struct vlan_hdr vhdr, *vh;
 
 			vh = skb_header_pointer(skb, vlan_depth, sizeof(vhdr), &vhdr);
@@ -572,6 +582,8 @@ static inline __be16 __vlan_get_protocol(struct sk_buff *skb, __be16 type,
 				return 0;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			struct vlan_hdr *vh;
 
 			if (unlikely(!pskb_may_pull(skb,
@@ -579,6 +591,9 @@ static inline __be16 __vlan_get_protocol(struct sk_buff *skb, __be16 type,
 				return 0;
 
 			vh = (struct vlan_hdr *)(skb->data + vlan_depth);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			type = vh->h_vlan_encapsulated_proto;
 			vlan_depth += VLAN_HLEN;
@@ -599,7 +614,11 @@ static inline __be16 __vlan_get_protocol(struct sk_buff *skb, __be16 type,
  * vlan encapsulated (normal or hardware accelerated) or not.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline __be16 vlan_get_protocol(const struct sk_buff *skb)
+=======
+static inline __be16 vlan_get_protocol(struct sk_buff *skb)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline __be16 vlan_get_protocol(struct sk_buff *skb)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -607,6 +626,7 @@ static inline __be16 vlan_get_protocol(struct sk_buff *skb)
 	return __vlan_get_protocol(skb, skb->protocol, NULL);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* A getter for the SKB protocol field which will handle VLAN tags consistently
  * whether VLAN acceleration is enabled or not.
@@ -622,6 +642,8 @@ static inline __be16 skb_protocol(const struct sk_buff *skb, bool skip_vlan)
 	return vlan_get_protocol(skb);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void vlan_set_encap_proto(struct sk_buff *skb,

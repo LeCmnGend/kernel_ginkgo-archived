@@ -740,11 +740,16 @@ static int _rtl_usb_receive(struct ieee80211_hw *hw)
 		usb_anchor_urb(urb, &rtlusb->rx_submitted);
 		err = usb_submit_urb(urb, GFP_KERNEL);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (err) {
 			usb_unanchor_urb(urb);
 			usb_free_urb(urb);
 			goto err_out;
 		}
+=======
+		if (err)
+			goto err_out;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (err)
 			goto err_out;

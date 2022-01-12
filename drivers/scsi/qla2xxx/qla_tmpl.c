@@ -898,8 +898,12 @@ static inline int
 qla27xx_verify_template_checksum(struct qla27xx_fwdt_template *tmp)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return qla27xx_template_checksum(tmp,
 		le32_to_cpu(tmp->template_size)) == 0;
+=======
+	return qla27xx_template_checksum(tmp, tmp->template_size) == 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return qla27xx_template_checksum(tmp, tmp->template_size) == 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -919,7 +923,11 @@ qla27xx_execute_fwdt_template(struct scsi_qla_host *vha)
 
 	if (qla27xx_fwdt_template_valid(tmp)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		len = le32_to_cpu(tmp->template_size);
+=======
+		len = tmp->template_size;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		len = tmp->template_size;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -939,7 +947,11 @@ qla27xx_fwdt_calculate_dump_size(struct scsi_qla_host *vha)
 
 	if (qla27xx_fwdt_template_valid(tmp)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		len = le32_to_cpu(tmp->template_size);
+=======
+		len = tmp->template_size;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		len = tmp->template_size;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -955,7 +967,11 @@ qla27xx_fwdt_template_size(void *p)
 	struct qla27xx_fwdt_template *tmp = p;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return le32_to_cpu(tmp->template_size);
+=======
+	return tmp->template_size;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return tmp->template_size;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

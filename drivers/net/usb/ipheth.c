@@ -71,7 +71,11 @@
 #define IPHETH_USBINTF_PROTO    1
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define IPHETH_BUF_SIZE         1514
+=======
+#define IPHETH_BUF_SIZE         1516
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define IPHETH_BUF_SIZE         1516
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

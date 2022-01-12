@@ -213,7 +213,10 @@ static const struct can_bittiming_const c_can_bittiming_const = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void c_can_pm_runtime_enable(const struct c_can_priv *priv)
 {
 	if (priv->device)
@@ -226,6 +229,9 @@ static inline void c_can_pm_runtime_disable(const struct c_can_priv *priv)
 		pm_runtime_disable(priv->device);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void c_can_pm_runtime_get_sync(const struct c_can_priv *priv)
 {
@@ -1322,6 +1328,10 @@ static const struct net_device_ops c_can_netdev_ops = {
 int register_c_can_dev(struct net_device *dev)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct c_can_priv *priv = netdev_priv(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct c_can_priv *priv = netdev_priv(dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1335,6 +1345,11 @@ int register_c_can_dev(struct net_device *dev)
 	pinctrl_pm_select_sleep_state(dev->dev.parent);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	c_can_pm_runtime_enable(priv);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	c_can_pm_runtime_enable(priv);
 
@@ -1344,14 +1359,20 @@ int register_c_can_dev(struct net_device *dev)
 
 	err = register_candev(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!err)
 		devm_can_led_init(dev);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		c_can_pm_runtime_disable(priv);
 	else
 		devm_can_led_init(dev);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return err;
 }
@@ -1360,13 +1381,19 @@ EXPORT_SYMBOL_GPL(register_c_can_dev);
 void unregister_c_can_dev(struct net_device *dev)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unregister_candev(dev);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct c_can_priv *priv = netdev_priv(dev);
 
 	unregister_candev(dev);
 
 	c_can_pm_runtime_disable(priv);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL_GPL(unregister_c_can_dev);

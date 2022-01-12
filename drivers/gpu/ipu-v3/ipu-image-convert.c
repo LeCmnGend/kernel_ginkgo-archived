@@ -993,10 +993,16 @@ done:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static irqreturn_t eof_irq(int irq, void *data)
 {
 	struct ipu_image_convert_chan *chan = data;
 	struct ipu_image_convert_priv *priv = chan->priv;
+=======
+static irqreturn_t norotate_irq(int irq, void *data)
+{
+	struct ipu_image_convert_chan *chan = data;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static irqreturn_t norotate_irq(int irq, void *data)
 {
@@ -1019,6 +1025,7 @@ static irqreturn_t norotate_irq(int irq, void *data)
 	ctx = run->ctx;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (irq == chan->out_eof_irq) {
 		if (ipu_rot_mode_is_irt(ctx->rot_mode)) {
 			/* this is a rotation op, just ignore */
@@ -1036,6 +1043,8 @@ static irqreturn_t norotate_irq(int irq, void *data)
 	} else {
 		dev_err(priv->ipu->dev, "Received unknown irq %d\n", irq);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ipu_rot_mode_is_irt(ctx->rot_mode)) {
 		/* this is a rotation operation, just ignore */
 		spin_unlock_irqrestore(&chan->irqlock, flags);
@@ -1062,13 +1071,19 @@ static irqreturn_t rotate_irq(int irq, void *data)
 	/* get current run and its context */
 	run = chan->current_run;
 	if (!run) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ret = IRQ_NONE;
 		goto out;
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ctx = run->ctx;
 
 	if (!ipu_rot_mode_is_irt(ctx->rot_mode)) {
@@ -1078,6 +1093,9 @@ static irqreturn_t rotate_irq(int irq, void *data)
 		return IRQ_HANDLED;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = do_irq(run);
 out:
@@ -1172,7 +1190,11 @@ static int get_ipu_resources(struct ipu_image_convert_chan *chan)
 						  IPU_IRQ_EOF);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = request_threaded_irq(chan->out_eof_irq, eof_irq, do_bh,
+=======
+	ret = request_threaded_irq(chan->out_eof_irq, norotate_irq, do_bh,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = request_threaded_irq(chan->out_eof_irq, norotate_irq, do_bh,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1189,7 +1211,11 @@ static int get_ipu_resources(struct ipu_image_convert_chan *chan)
 						     IPU_IRQ_EOF);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = request_threaded_irq(chan->rot_out_eof_irq, eof_irq, do_bh,
+=======
+	ret = request_threaded_irq(chan->rot_out_eof_irq, rotate_irq, do_bh,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = request_threaded_irq(chan->rot_out_eof_irq, rotate_irq, do_bh,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

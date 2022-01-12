@@ -445,6 +445,7 @@ static void ring_doorbell_for_active_rings(struct xhci_hcd *xhci,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct xhci_virt_ep *xhci_get_virt_ep(struct xhci_hcd *xhci,
 					     unsigned int slot_id,
 					     unsigned int ep_index)
@@ -467,6 +468,8 @@ static struct xhci_virt_ep *xhci_get_virt_ep(struct xhci_hcd *xhci,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Get the right ring for the given slot_id, ep_index and stream_id.
  * If the endpoint supports streams, boundary check the URB's stream ID.
  * If the endpoint doesn't support streams, return the singular endpoint ring.
@@ -478,10 +481,14 @@ struct xhci_ring *xhci_triad_to_transfer_ring(struct xhci_hcd *xhci,
 	struct xhci_virt_ep *ep;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ep = xhci_get_virt_ep(xhci, slot_id, ep_index);
 	if (!ep)
 		return NULL;
 
+=======
+	ep = &xhci->devs[slot_id]->eps[ep_index];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ep = &xhci->devs[slot_id]->eps[ep_index];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -712,6 +719,7 @@ static void xhci_unmap_td_bounce_buffer(struct xhci_hcd *xhci,
 			 DMA_FROM_DEVICE);
 	/* for in tranfers we need to copy the data from bounce to sg */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (urb->num_sgs) {
 		len = sg_pcopy_from_buffer(urb->sg, urb->num_sgs, seg->bounce_buf,
 					   seg->bounce_len, seg->bounce_offs);
@@ -723,11 +731,16 @@ static void xhci_unmap_td_bounce_buffer(struct xhci_hcd *xhci,
 		       seg->bounce_len);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	len = sg_pcopy_from_buffer(urb->sg, urb->num_sgs, seg->bounce_buf,
 			     seg->bounce_len, seg->bounce_offs);
 	if (len != seg->bounce_len)
 		xhci_warn(xhci, "WARN Wrong bounce buffer read length: %zu != %d\n",
 				len, seg->bounce_len);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	seg->bounce_len = 0;
 	seg->bounce_offs = 0;
@@ -768,10 +781,13 @@ static void xhci_handle_cmd_stop_ep(struct xhci_hcd *xhci, int slot_id,
 	ep_index = TRB_TO_EP_INDEX(le32_to_cpu(trb->generic.field[3]));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ep = xhci_get_virt_ep(xhci, slot_id, ep_index);
 	if (!ep)
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	vdev = xhci->devs[slot_id];
@@ -779,6 +795,10 @@ static void xhci_handle_cmd_stop_ep(struct xhci_hcd *xhci, int slot_id,
 	trace_xhci_handle_cmd_stop_ep(ep_ctx);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	ep = &xhci->devs[slot_id]->eps[ep_index];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ep = &xhci->devs[slot_id]->eps[ep_index];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1106,11 +1126,17 @@ static void xhci_handle_cmd_set_deq(struct xhci_hcd *xhci, int slot_id,
 	ep_index = TRB_TO_EP_INDEX(le32_to_cpu(trb->generic.field[3]));
 	stream_id = TRB_TO_STREAM_ID(le32_to_cpu(trb->generic.field[2]));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ep = xhci_get_virt_ep(xhci, slot_id, ep_index);
 	if (!ep)
 		return;
 
 	dev = xhci->devs[slot_id];
+=======
+	dev = xhci->devs[slot_id];
+	ep = &dev->eps[ep_index];
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev = xhci->devs[slot_id];
 	ep = &dev->eps[ep_index];
@@ -1189,9 +1215,15 @@ static void xhci_handle_cmd_set_deq(struct xhci_hcd *xhci, int slot_id,
 
 cleanup:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ep->ep_state &= ~SET_DEQ_PENDING;
 	ep->queued_deq_seg = NULL;
 	ep->queued_deq_ptr = NULL;
+=======
+	dev->eps[ep_index].ep_state &= ~SET_DEQ_PENDING;
+	dev->eps[ep_index].queued_deq_seg = NULL;
+	dev->eps[ep_index].queued_deq_ptr = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dev->eps[ep_index].ep_state &= ~SET_DEQ_PENDING;
 	dev->eps[ep_index].queued_deq_seg = NULL;
@@ -1206,7 +1238,10 @@ static void xhci_handle_cmd_reset_ep(struct xhci_hcd *xhci, int slot_id,
 {
 	struct xhci_virt_device *vdev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct xhci_virt_ep *ep;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct xhci_ep_ctx *ep_ctx;
@@ -1214,10 +1249,13 @@ static void xhci_handle_cmd_reset_ep(struct xhci_hcd *xhci, int slot_id,
 
 	ep_index = TRB_TO_EP_INDEX(le32_to_cpu(trb->generic.field[3]));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ep = xhci_get_virt_ep(xhci, slot_id, ep_index);
 	if (!ep)
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	vdev = xhci->devs[slot_id];
@@ -1250,7 +1288,11 @@ static void xhci_handle_cmd_reset_ep(struct xhci_hcd *xhci, int slot_id,
 	} else {
 		/* Clear our internal halted state */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ep->ep_state &= ~EP_HALTED;
+=======
+		xhci->devs[slot_id]->eps[ep_index].ep_state &= ~EP_HALTED;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		xhci->devs[slot_id]->eps[ep_index].ep_state &= ~EP_HALTED;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2430,6 +2472,7 @@ static int handle_tx_event(struct xhci_hcd *xhci,
 	ep_trb_dma = le64_to_cpu(event->buffer);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ep = xhci_get_virt_ep(xhci, slot_id, ep_index);
 	if (!ep) {
 		xhci_err(xhci, "ERROR Invalid Transfer event\n");
@@ -2438,6 +2481,8 @@ static int handle_tx_event(struct xhci_hcd *xhci,
 
 	xdev = xhci->devs[slot_id];
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	xdev = xhci->devs[slot_id];
 	if (!xdev) {
 		xhci_err(xhci, "ERROR Transfer event pointed to bad slot %u\n",
@@ -2446,6 +2491,9 @@ static int handle_tx_event(struct xhci_hcd *xhci,
 	}
 
 	ep = &xdev->eps[ep_index];
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ep_ring = xhci_dma_to_transfer_ring(ep, ep_trb_dma);
 	ep_ctx = xhci_get_ep_ctx(xhci, xdev->out_ctx, ep_index);
@@ -3000,8 +3048,11 @@ static void queue_trb(struct xhci_hcd *xhci, struct xhci_ring *ring,
 	trb->field[1] = cpu_to_le32(field2);
 	trb->field[2] = cpu_to_le32(field3);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* make sure TRB is fully written before giving it to the controller */
 	wmb();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	trb->field[3] = cpu_to_le32(field4);
@@ -3348,6 +3399,7 @@ static int xhci_align_td(struct xhci_hcd *xhci, struct urb *urb, u32 enqd_len,
 	/* create a max max_pkt sized bounce buffer pointed to by last trb */
 	if (usb_urb_dir_out(urb)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (urb->num_sgs) {
 			len = sg_pcopy_to_buffer(urb->sg, urb->num_sgs,
 						 seg->bounce_buf, new_buff_len, enqd_len);
@@ -3359,12 +3411,17 @@ static int xhci_align_td(struct xhci_hcd *xhci, struct urb *urb, u32 enqd_len,
 		}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		len = sg_pcopy_to_buffer(urb->sg, urb->num_sgs,
 				   seg->bounce_buf, new_buff_len, enqd_len);
 		if (len != new_buff_len)
 			xhci_warn(xhci,
 				"WARN Wrong bounce buffer write length: %zu != %d\n",
 				len, new_buff_len);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		seg->bounce_dma = dma_map_single(dev, seg->bounce_buf,
 						 max_pkt, DMA_TO_DEVICE);

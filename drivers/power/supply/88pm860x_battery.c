@@ -437,7 +437,11 @@ static void pm860x_init_battery(struct pm860x_battery_info *info)
 	int data;
 	int bat_remove;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int soc = 0;
+=======
+	int soc;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int soc;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -504,9 +508,13 @@ static void pm860x_init_battery(struct pm860x_battery_info *info)
 	mutex_unlock(&info->lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = calc_soc(info, OCV_MODE_ACTIVE, &soc);
 	if (ret < 0)
 		goto out;
+=======
+	calc_soc(info, OCV_MODE_ACTIVE, &soc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	calc_soc(info, OCV_MODE_ACTIVE, &soc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

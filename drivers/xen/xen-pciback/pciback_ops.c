@@ -298,6 +298,7 @@ int xen_pcibk_disable_msix(struct xen_pcibk_device *pdev,
 }
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 static inline bool xen_pcibk_test_op_pending(struct xen_pcibk_device *pdev)
 {
@@ -308,12 +309,15 @@ static inline bool xen_pcibk_test_op_pending(struct xen_pcibk_device *pdev)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
 * Now the same evtchn is used for both pcifront conf_read_write request
 * as well as pcie aer front end ack. We use a new work_queue to schedule
 * xen_pcibk conf_read_write service for avoiding confict with aer_core
 * do_recovery job which also use the system default work_queue
 */
+<<<<<<< HEAD
 <<<<<<< HEAD
 static void xen_pcibk_test_and_schedule_op(struct xen_pcibk_device *pdev)
 {
@@ -325,6 +329,8 @@ static void xen_pcibk_test_and_schedule_op(struct xen_pcibk_device *pdev)
 		schedule_work(&pdev->op_work);
 		eoi = false;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void xen_pcibk_test_and_schedule_op(struct xen_pcibk_device *pdev)
 {
 	/* Check that frontend is requesting an operation and that we are not
@@ -332,6 +338,9 @@ void xen_pcibk_test_and_schedule_op(struct xen_pcibk_device *pdev)
 	if (test_bit(_XEN_PCIF_active, (unsigned long *)&pdev->sh_info->flags)
 	    && !test_and_set_bit(_PDEVF_op_active, &pdev->flags)) {
 		schedule_work(&pdev->op_work);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	/*_XEN_PCIB_active should have been cleared by pcifront. And also make
@@ -340,12 +349,16 @@ void xen_pcibk_test_and_schedule_op(struct xen_pcibk_device *pdev)
 	    && test_bit(_PCIB_op_pending, &pdev->flags)) {
 		wake_up(&xen_pcibk_aer_wait_queue);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		eoi = false;
 	}
 
 	/* EOI if there was nothing to do. */
 	if (eoi)
 		xen_pcibk_lateeoi(pdev, XEN_EOI_FLAG_SPURIOUS);
+=======
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	}
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -357,13 +370,19 @@ void xen_pcibk_test_and_schedule_op(struct xen_pcibk_device *pdev)
  * queue in process context taking a struct xen_pcibk_device as a parameter */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void xen_pcibk_do_one_op(struct xen_pcibk_device *pdev)
 {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 void xen_pcibk_do_op(struct work_struct *data)
 {
 	struct xen_pcibk_device *pdev =
 		container_of(data, struct xen_pcibk_device, op_work);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct pci_dev *dev;
 	struct xen_pcibk_dev_data *dev_data = NULL;
@@ -438,6 +457,7 @@ void xen_pcibk_do_op(struct work_struct *data)
 	clear_bit(_PDEVF_op_active, &pdev->flags);
 	smp_mb__after_atomic(); /* /before/ final check for work */
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 void xen_pcibk_do_op(struct work_struct *data)
@@ -451,17 +471,23 @@ void xen_pcibk_do_op(struct work_struct *data)
 
 	xen_pcibk_lateeoi(pdev, 0);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Check to see if the driver domain tried to start another request in
 	 * between clearing _XEN_PCIF_active and clearing _PDEVF_op_active.
 	*/
 	xen_pcibk_test_and_schedule_op(pdev);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 irqreturn_t xen_pcibk_handle_event(int irq, void *dev_id)
 {
 	struct xen_pcibk_device *pdev = dev_id;
+<<<<<<< HEAD
 <<<<<<< HEAD
 	bool eoi;
 
@@ -471,6 +497,8 @@ irqreturn_t xen_pcibk_handle_event(int irq, void *dev_id)
 
 	eoi = test_and_set_bit(_EOI_pending, &pdev->flags);
 	WARN(eoi, "IRQ while EOI pending\n");
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

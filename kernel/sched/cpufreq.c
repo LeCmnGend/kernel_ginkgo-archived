@@ -9,7 +9,10 @@
  * published by the Free Software Foundation.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/cpufreq.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -66,6 +69,7 @@ void cpufreq_remove_update_util_hook(int cpu)
 }
 EXPORT_SYMBOL_GPL(cpufreq_remove_update_util_hook);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 /**
  * cpufreq_can_do_remote_dvfs - Check if cpufreq policy can be updated.
@@ -82,5 +86,7 @@ bool cpufreq_can_do_remote_dvfs(struct cpufreq_policy *policy)
 		(policy->dvfs_possible_from_any_cpu &&
 		 rcu_dereference_sched(*this_cpu_ptr(&cpufreq_update_util_data)));
 }
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -120,7 +120,11 @@ void caif_free_client(struct cflayer *adap_layer);
  * framing.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 int caif_enroll_dev(struct net_device *dev, struct caif_dev_common *caifdev,
+=======
+void caif_enroll_dev(struct net_device *dev, struct caif_dev_common *caifdev,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void caif_enroll_dev(struct net_device *dev, struct caif_dev_common *caifdev,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

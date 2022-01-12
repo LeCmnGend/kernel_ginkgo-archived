@@ -166,7 +166,10 @@ bool kvm_is_reserved_pfn(kvm_pfn_t pfn)
 	if (pfn_valid(pfn))
 		return PageReserved(pfn_to_page(pfn)) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 		       !is_zero_pfn(pfn) &&
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		       !kvm_is_zone_device_pfn(pfn);
@@ -386,8 +389,14 @@ static void kvm_mmu_notifier_invalidate_range_start(struct mmu_notifier *mn,
 	kvm->mmu_notifier_count++;
 	need_tlb_flush = kvm_unmap_hva_range(kvm, start, end);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* we've to flush the tlb before the pages can be freed */
 	if (need_tlb_flush || kvm->tlbs_dirty)
+=======
+	need_tlb_flush |= kvm->tlbs_dirty;
+	/* we've to flush the tlb before the pages can be freed */
+	if (need_tlb_flush)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	need_tlb_flush |= kvm->tlbs_dirty;
 	/* we've to flush the tlb before the pages can be freed */
@@ -1495,6 +1504,7 @@ static bool vma_is_valid(struct vm_area_struct *vma, bool write_fault)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int kvm_try_get_pfn(kvm_pfn_t pfn)
 {
 	if (kvm_is_reserved_pfn(pfn))
@@ -1504,11 +1514,14 @@ static int kvm_try_get_pfn(kvm_pfn_t pfn)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int hva_to_pfn_remapped(struct vm_area_struct *vma,
 			       unsigned long addr, bool *async,
 			       bool write_fault, bool *writable,
 			       kvm_pfn_t *p_pfn)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	kvm_pfn_t pfn;
 	pte_t *ptep;
@@ -1517,10 +1530,15 @@ static int hva_to_pfn_remapped(struct vm_area_struct *vma,
 
 	r = follow_pte_pmd(vma->vm_mm, addr, NULL, NULL, &ptep, NULL, &ptl);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long pfn;
 	int r;
 
 	r = follow_pfn(vma, addr, &pfn);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (r) {
 		/*
@@ -1537,6 +1555,7 @@ static int hva_to_pfn_remapped(struct vm_area_struct *vma,
 			return r;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		r = follow_pte_pmd(vma->vm_mm, addr, NULL, NULL, &ptep, NULL, &ptl);
 		if (r)
 			return r;
@@ -1551,6 +1570,8 @@ static int hva_to_pfn_remapped(struct vm_area_struct *vma,
 		*writable = pte_write(*ptep);
 	pfn = pte_pfn(*ptep);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		r = follow_pfn(vma, addr, &pfn);
 		if (r)
 			return r;
@@ -1559,6 +1580,9 @@ static int hva_to_pfn_remapped(struct vm_area_struct *vma,
 
 	if (writable)
 		*writable = true;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*
@@ -1571,6 +1595,7 @@ static int hva_to_pfn_remapped(struct vm_area_struct *vma,
 	 * Whoever called remap_pfn_range is also going to call e.g.
 	 * unmap_mapping_range before the underlying pages are freed,
 	 * causing a call to our MMU notifier.
+<<<<<<< HEAD
 <<<<<<< HEAD
 	 *
 	 * Certain IO or PFNMAP mappings can be backed with valid
@@ -1588,11 +1613,16 @@ out:
 
 	return r;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 */ 
 	kvm_get_pfn(pfn);
 
 	*p_pfn = pfn;
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -3751,7 +3781,11 @@ void kvm_io_bus_unregister_dev(struct kvm *kvm, enum kvm_bus bus_idx,
 			       struct kvm_io_device *dev)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int i, j;
+=======
+	int i;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int i;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3772,6 +3806,7 @@ void kvm_io_bus_unregister_dev(struct kvm *kvm, enum kvm_bus bus_idx,
 	new_bus = kmalloc(sizeof(*bus) + ((bus->dev_count - 1) *
 			  sizeof(struct kvm_io_range)), GFP_KERNEL);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (new_bus) {
 		memcpy(new_bus, bus, sizeof(*bus) + i * sizeof(struct kvm_io_range));
 		new_bus->dev_count--;
@@ -3787,6 +3822,8 @@ void kvm_io_bus_unregister_dev(struct kvm *kvm, enum kvm_bus bus_idx,
 	}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!new_bus)  {
 		pr_err("kvm: failed to shrink bus, removing it completely\n");
 		goto broken;
@@ -3798,6 +3835,9 @@ void kvm_io_bus_unregister_dev(struct kvm *kvm, enum kvm_bus bus_idx,
 	       (new_bus->dev_count - i) * sizeof(struct kvm_io_range));
 
 broken:
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rcu_assign_pointer(kvm->buses[bus_idx], new_bus);
 	synchronize_srcu_expedited(&kvm->srcu);

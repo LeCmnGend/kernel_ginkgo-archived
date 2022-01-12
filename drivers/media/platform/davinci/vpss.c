@@ -515,8 +515,11 @@ static void vpss_exit(void)
 static int __init vpss_init(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!request_mem_region(VPSS_CLK_CTRL, 4, "vpss_clock_control"))
@@ -524,6 +527,7 @@ static int __init vpss_init(void)
 
 	oper_cfg.vpss_regs_base2 = ioremap(VPSS_CLK_CTRL, 4);
 	if (unlikely(!oper_cfg.vpss_regs_base2)) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 		ret = -ENOMEM;
 		goto err_ioremap;
@@ -544,6 +548,8 @@ err_ioremap:
 	release_mem_region(VPSS_CLK_CTRL, 4);
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		release_mem_region(VPSS_CLK_CTRL, 4);
 		return -ENOMEM;
 	}
@@ -552,6 +558,9 @@ err_ioremap:
 		     VPSS_CLK_CTRL_DACCLKEN, oper_cfg.vpss_regs_base2);
 
 	return platform_driver_register(&vpss_driver);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 subsys_initcall(vpss_init);

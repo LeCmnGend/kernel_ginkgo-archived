@@ -1291,7 +1291,11 @@ static int cb_pcidas_auto_attach(struct comedi_device *dev,
 
 	ret = request_irq(pcidev->irq, cb_pcidas_interrupt, IRQF_SHARED,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			  "cb_pcidas", dev);
+=======
+			  dev->board_name, dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			  dev->board_name, dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1356,7 +1360,10 @@ static int cb_pcidas_auto_attach(struct comedi_device *dev,
 			dev->write_subdev = s;
 			s->subdev_flags	|= SDF_CMD_WRITE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			s->len_chanlist	= s->n_chan;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			s->do_cmdtest	= cb_pcidas_ao_cmdtest;

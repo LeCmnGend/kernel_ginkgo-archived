@@ -274,7 +274,10 @@ struct header_ops {
 				const unsigned char *haddr);
 	bool	(*validate)(const char *ll_header, unsigned int len);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__be16	(*parse_protocol)(const struct sk_buff *skb);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -2770,6 +2773,7 @@ static inline int dev_parse_header(const struct sk_buff *skb,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline __be16 dev_parse_header_protocol(const struct sk_buff *skb)
 {
 	const struct net_device *dev = skb->dev;
@@ -2779,6 +2783,8 @@ static inline __be16 dev_parse_header_protocol(const struct sk_buff *skb)
 	return dev->header_ops->parse_protocol(skb);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* ll_header must have at least hard_header_len allocated */
@@ -3729,7 +3735,10 @@ static inline void netif_tx_disable(struct net_device *dev)
 	local_bh_disable();
 	cpu = smp_processor_id();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock(&dev->tx_global_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	for (i = 0; i < dev->num_tx_queues; i++) {
@@ -3740,7 +3749,10 @@ static inline void netif_tx_disable(struct net_device *dev)
 		__netif_tx_unlock(txq);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_unlock(&dev->tx_global_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	local_bh_enable();

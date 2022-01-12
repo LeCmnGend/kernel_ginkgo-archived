@@ -58,7 +58,10 @@ static bool enable_6lowpan;
  */
 static struct l2cap_chan *listen_chan;
 <<<<<<< HEAD
+<<<<<<< HEAD
 static DEFINE_MUTEX(set_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1087,7 +1090,10 @@ static void do_enable_set(struct work_struct *work)
 	enable_6lowpan = set_enable->flag;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&set_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (listen_chan) {
@@ -1097,7 +1103,10 @@ static void do_enable_set(struct work_struct *work)
 
 	listen_chan = bt_6lowpan_listen();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_unlock(&set_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1152,7 +1161,10 @@ static ssize_t lowpan_control_write(struct file *fp,
 			return ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mutex_lock(&set_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (listen_chan) {
@@ -1161,7 +1173,10 @@ static ssize_t lowpan_control_write(struct file *fp,
 			listen_chan = NULL;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mutex_unlock(&set_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

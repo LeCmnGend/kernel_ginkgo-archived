@@ -572,6 +572,7 @@ static int cm109_input_open(struct input_dev *idev)
 	dev->ctl_data->byte[HID_OR3] = 0x00;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev->ctl_urb_pending = 1;
 	error = usb_submit_urb(dev->urb_ctl, GFP_KERNEL);
 	if (error) {
@@ -582,12 +583,17 @@ static int cm109_input_open(struct input_dev *idev)
 		dev->open = 1;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	error = usb_submit_urb(dev->urb_ctl, GFP_KERNEL);
 	if (error)
 		dev_err(&dev->intf->dev, "%s: usb_submit_urb (urb_ctl) failed %d\n",
 			__func__, error);
 	else
 		dev->open = 1;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	mutex_unlock(&dev->pm_mutex);

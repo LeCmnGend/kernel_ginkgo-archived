@@ -116,7 +116,10 @@ htable_size(u8 hbits)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Compute htable_bits from the user input parameter hashsize */
 static u8
 htable_bits(u32 hashsize)
@@ -131,6 +134,9 @@ htable_bits(u32 hashsize)
 	return bits;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef IP_SET_HASH_WITH_NETS
 #if IPSET_NET_COUNT > 1
@@ -1298,11 +1304,15 @@ IPSET_TOKEN(HTYPE, _create)(struct net *net, struct ip_set *set,
 		return -ENOMEM;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Compute htable_bits from the user input parameter hashsize.
 	 * Assume that hashsize == 2^htable_bits,
 	 * otherwise round up to the first 2^n value.
 	 */
 	hbits = fls(hashsize - 1);
+=======
+	hbits = htable_bits(hashsize);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	hbits = htable_bits(hashsize);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

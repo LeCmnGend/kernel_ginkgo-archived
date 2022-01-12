@@ -552,10 +552,15 @@ static int tegra30_i2s_resume(struct device *dev)
 
 	ret = pm_runtime_get_sync(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret < 0) {
 		pm_runtime_put(dev);
 		return ret;
 	}
+=======
+	if (ret < 0)
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret < 0)
 		return ret;

@@ -448,7 +448,11 @@ DEF_TALITOS2_DONE(ch1_3, TALITOS2_ISR_CH_1_3_DONE)
  * locate current (offending) descriptor
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __be32 current_desc_hdr(struct device *dev, int ch)
+=======
+static u32 current_desc_hdr(struct device *dev, int ch)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static u32 current_desc_hdr(struct device *dev, int ch)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -483,7 +487,11 @@ static u32 current_desc_hdr(struct device *dev, int ch)
  * user diagnostics; report root cause of error based on execution unit status
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void report_eu_error(struct device *dev, int ch, __be32 desc_hdr)
+=======
+static void report_eu_error(struct device *dev, int ch, u32 desc_hdr)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void report_eu_error(struct device *dev, int ch, u32 desc_hdr)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -493,7 +501,11 @@ static void report_eu_error(struct device *dev, int ch, u32 desc_hdr)
 
 	if (!desc_hdr)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		desc_hdr = cpu_to_be32(in_be32(priv->chan[ch].reg + TALITOS_DESCBUF));
+=======
+		desc_hdr = in_be32(priv->chan[ch].reg + TALITOS_DESCBUF);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		desc_hdr = in_be32(priv->chan[ch].reg + TALITOS_DESCBUF);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

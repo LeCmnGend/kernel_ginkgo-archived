@@ -122,6 +122,7 @@ config CPU_FREQ_DEFAULT_GOV_INTERACTIVE
 	  'interactive' governor for latency-sensitive workloads.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 config CPU_FREQ_DEFAULT_GOV_PEGASUSQ
 	bool "pegasusq"
@@ -129,6 +130,8 @@ config CPU_FREQ_DEFAULT_GOV_PEGASUSQ
 	help
 	Use the CPUFreq governor 'pegasusq' as default.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 endchoice
@@ -261,6 +264,7 @@ config CPU_FREQ_GOV_INTERACTIVE
 	  If in doubt, say N.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 config CPU_FREQ_GOV_PEGASUSQ
 	tristate "'pegasusq' cpufreq policy governor"
 	depends on CPU_FREQ && SMP
@@ -273,6 +277,8 @@ config CPU_FREQ_GOV_PEGASUSQ
 	If in doubt, say N.
 
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 comment "CPU frequency scaling drivers"
@@ -292,7 +298,10 @@ config CPUFREQ_DT
 	  If in doubt, say N.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config CPUFREQ_DT_PLATDEV

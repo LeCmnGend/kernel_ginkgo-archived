@@ -864,7 +864,11 @@ static int stac_auto_create_beep_ctls(struct hda_codec *codec,
 		HDA_CODEC_VOLUME(NULL, 0, 0, 0);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* check for mute support for the amp */
+=======
+	/* check for mute support for the the amp */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* check for mute support for the the amp */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 Wound/Wait Deadlock-Proof Mutex Design
+=======
+Wait/Wound Deadlock-Proof Mutex Design
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 Wait/Wound Deadlock-Proof Mutex Design
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -37,6 +41,7 @@ younger task) unlocks all of the buffers that it has already locked, and then
 tries again.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 In the RDBMS literature, a reservation ticket is associated with a transaction.
 and the deadlock handling approach is called Wait-Die. The name is based on
 the actions of a locking thread when it encounters an already locked mutex.
@@ -58,10 +63,15 @@ running transaction. Note that this is not the same as process preemption. A
 Wound-Wait transaction is considered preempted when it dies (returning
 -EDEADLK) following a wound.
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 In the RDBMS literature this deadlock handling approach is called wait/wound:
 The older tasks waits until it can acquire the contended lock. The younger tasks
 needs to back off and drop all the locks it is currently holding, i.e. the
 younger task is wounded.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 Concepts
@@ -75,6 +85,7 @@ trying to acquire locks doesn't grab a new reservation id, but keeps the one it
 acquired when starting the lock acquisition. This ticket is stored in the
 acquire context. Furthermore the acquire context keeps track of debugging state
 <<<<<<< HEAD
+<<<<<<< HEAD
 to catch w/w mutex interface abuse. An acquire context is representing a
 transaction.
 
@@ -82,10 +93,15 @@ W/w class: In contrast to normal mutexes the lock class needs to be explicit for
 w/w mutexes, since it is required to initialize the acquire context. The lock
 class also specifies what algorithm to use, Wound-Wait or Wait-Die.
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 to catch w/w mutex interface abuse.
 
 W/w class: In contrast to normal mutexes the lock class needs to be explicit for
 w/w mutexes, since it is required to initialize the acquire context.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 Furthermore there are three different class of w/w lock acquire functions:
@@ -93,9 +109,15 @@ Furthermore there are three different class of w/w lock acquire functions:
 * Normal lock acquisition with a context, using ww_mutex_lock.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 * Slowpath lock acquisition on the contending lock, used by the task that just
   killed its transaction after having dropped all already acquired locks.
   These functions have the _slow postfix.
+=======
+* Slowpath lock acquisition on the contending lock, used by the wounded task
+  after having dropped all already acquired locks. These functions have the
+  _slow postfix.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 * Slowpath lock acquisition on the contending lock, used by the wounded task
   after having dropped all already acquired locks. These functions have the
@@ -133,12 +155,15 @@ Usage
 -----
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 The algorithm (Wait-Die vs Wound-Wait) is chosen by using either
 DEFINE_WW_CLASS() (Wound-Wait) or DEFINE_WD_CLASS() (Wait-Die)
 As a rough rule of thumb, use Wound-Wait iff you
 expect the number of simultaneous competing transactions to be typically small,
 and you want to reduce the number of rollbacks.
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 Three different ways to acquire locks within the same w/w class. Common
@@ -272,7 +297,11 @@ mutexes are a natural fit for such a case for two reasons:
 Note that this approach differs in two important ways from the above methods:
 - Since the list of objects is dynamically constructed (and might very well be
 <<<<<<< HEAD
+<<<<<<< HEAD
   different when retrying due to hitting the -EDEADLK die condition) there's
+=======
+  different when retrying due to hitting the -EDEADLK wound condition) there's
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
   different when retrying due to hitting the -EDEADLK wound condition) there's
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -368,6 +397,7 @@ Design:
   (1) Waiters with an acquire context are sorted by stamp order; waiters
       without an acquire context are interspersed in FIFO order.
 <<<<<<< HEAD
+<<<<<<< HEAD
   (2) For Wait-Die, among waiters with contexts, only the first one can have
       other locks acquired already (ctx->acquired > 0). Note that this waiter
       may come after other waiters without contexts in the list.
@@ -386,12 +416,17 @@ Design:
   serialize access to resources for devices, and optimization focus should
   therefore be directed towards the uncontended cases.
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
   (2) Among waiters with contexts, only the first one can have other locks
       acquired already (ctx->acquired > 0). Note that this waiter may come
       after other waiters without contexts in the list.
 
   In general, not much contention is expected. The locks are typically used to
   serialize access to resources for devices.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 Lockdep:

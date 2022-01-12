@@ -282,6 +282,7 @@ struct task_struct *__kthread_create_on_node(int (*threadfn)(void *data),
 	DECLARE_COMPLETION_ONSTACK(done);
 	struct task_struct *task;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct kthread_create_info create;
 
 	create.threadfn = threadfn;
@@ -292,6 +293,8 @@ struct task_struct *__kthread_create_on_node(int (*threadfn)(void *data),
 	spin_lock(&kthread_create_lock);
 	list_add_tail(&create.list, &kthread_create_list);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct kthread_create_info *create = kmalloc(sizeof(*create),
 						     GFP_KERNEL);
 
@@ -304,6 +307,9 @@ struct task_struct *__kthread_create_on_node(int (*threadfn)(void *data),
 
 	spin_lock(&kthread_create_lock);
 	list_add_tail(&create->list, &kthread_create_list);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_unlock(&kthread_create_lock);
 
@@ -320,7 +326,11 @@ struct task_struct *__kthread_create_on_node(int (*threadfn)(void *data),
 		 * that thread.
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (xchg(&create.done, NULL))
+=======
+		if (xchg(&create->done, NULL))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (xchg(&create->done, NULL))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -332,7 +342,11 @@ struct task_struct *__kthread_create_on_node(int (*threadfn)(void *data),
 		wait_for_completion(&done);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	task = create.result;
+=======
+	task = create->result;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	task = create->result;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -354,6 +368,10 @@ struct task_struct *__kthread_create_on_node(int (*threadfn)(void *data),
 		set_cpus_allowed_ptr(task, cpu_all_mask);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kfree(create);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(create);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -464,6 +482,10 @@ struct task_struct *kthread_create_on_cpu(int (*threadfn)(void *data),
 	kthread_bind(p, cpu);
 	/* CPU hotplug need to bind once again when unparking the thread. */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	set_bit(KTHREAD_IS_PER_CPU, &to_kthread(p)->flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	set_bit(KTHREAD_IS_PER_CPU, &to_kthread(p)->flags);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -471,6 +493,7 @@ struct task_struct *kthread_create_on_cpu(int (*threadfn)(void *data),
 	return p;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 void kthread_set_per_cpu(struct task_struct *k, int cpu)
 {
@@ -498,6 +521,8 @@ bool kthread_is_per_cpu(struct task_struct *k)
 	return test_bit(KTHREAD_IS_PER_CPU, &kthread->flags);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
@@ -806,7 +831,10 @@ kthread_create_worker_on_cpu(int cpu, unsigned int flags,
 EXPORT_SYMBOL(kthread_create_worker_on_cpu);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Returns true when the work could not be queued at the moment.
  * It happens when it is already pending in a worker list
@@ -820,6 +848,9 @@ static inline bool queuing_blocked(struct kthread_worker *worker,
 	return !list_empty(&work->node) || work->canceling;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void kthread_insert_work_sanity_check(struct kthread_worker *worker,
 					     struct kthread_work *work)
@@ -901,8 +932,12 @@ void kthread_delayed_work_timer_fn(unsigned long __data)
 	WARN_ON_ONCE(list_empty(&work->node));
 	list_del_init(&work->node);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!work->canceling)
 		kthread_insert_work(worker, work, &worker->work_list);
+=======
+	kthread_insert_work(worker, work, &worker->work_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kthread_insert_work(worker, work, &worker->work_list);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1028,6 +1063,7 @@ EXPORT_SYMBOL_GPL(kthread_flush_work);
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Make sure that the timer is neither set nor running and could
  * not manipulate the work list_head any longer.
  *
@@ -1064,6 +1100,10 @@ static void kthread_cancel_delayed_work_timer(struct kthread_work *work,
  * This function removes the work from the worker queue. Also it makes sure
  * that it won't get queued later via the delayed work's timer.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+ * This function removes the work from the worker queue. Also it makes sure
+ * that it won't get queued later via the delayed work's timer.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * The work might still be in use when this function finishes. See the
  * current_work proceed by the worker.
@@ -1072,9 +1112,12 @@ static void kthread_cancel_delayed_work_timer(struct kthread_work *work,
  *	%false if @work was not pending
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool __kthread_cancel_work(struct kthread_work *work)
 {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static bool __kthread_cancel_work(struct kthread_work *work, bool is_dwork,
 				  unsigned long *flags)
 {
@@ -1097,6 +1140,9 @@ static bool __kthread_cancel_work(struct kthread_work *work, bool is_dwork,
 		work->canceling--;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * Try to remove the work from a worker list. It might either
@@ -1151,6 +1197,7 @@ bool kthread_mod_delayed_work(struct kthread_worker *worker,
 	WARN_ON_ONCE(work->worker != worker);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Temporary cancel the work but do not fight with another command
 	 * that is canceling the work as well.
@@ -1169,11 +1216,16 @@ bool kthread_mod_delayed_work(struct kthread_worker *worker,
 	ret = __kthread_cancel_work(work);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Do not fight with another command that is canceling this work. */
 	if (work->canceling)
 		goto out;
 
 	ret = __kthread_cancel_work(work, true, &flags);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 fast_queue:
 	__kthread_queue_delayed_work(worker, dwork, delay);
@@ -1197,10 +1249,14 @@ static bool __kthread_cancel_work_sync(struct kthread_work *work, bool is_dwork)
 	WARN_ON_ONCE(work->worker != worker);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (is_dwork)
 		kthread_cancel_delayed_work_timer(work, &flags);
 
 	ret = __kthread_cancel_work(work);
+=======
+	ret = __kthread_cancel_work(work, is_dwork, &flags);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = __kthread_cancel_work(work, is_dwork, &flags);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

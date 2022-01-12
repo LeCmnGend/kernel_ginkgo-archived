@@ -70,7 +70,11 @@ static int __xen_pcibk_add_pci_dev(struct xen_pcibk_device *pdev,
 				   publish_pci_dev_cb publish_cb)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int err = 0, slot, func = PCI_FUNC(dev->devfn);
+=======
+	int err = 0, slot, func = -1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int err = 0, slot, func = -1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -99,11 +103,17 @@ static int __xen_pcibk_add_pci_dev(struct xen_pcibk_device *pdev,
 	/*
 	 * Keep multi-function devices together on the virtual PCI bus, except
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * that we want to keep virtual functions at func 0 on their own. They
 	 * aren't multi-function devices and hence their presence at func 0
 	 * may cause guests to not scan the other functions.
 	 */
 	if (!dev->is_virtfn || func) {
+=======
+	 * virtual functions.
+	 */
+	if (!dev->is_virtfn) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 * virtual functions.
 	 */
@@ -116,8 +126,11 @@ static int __xen_pcibk_add_pci_dev(struct xen_pcibk_device *pdev,
 			t = list_entry(list_first(&vpci_dev->dev_list[slot]),
 				       struct pci_dev_entry, list);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (t->dev->is_virtfn && !PCI_FUNC(t->dev->devfn))
 				continue;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -125,14 +138,20 @@ static int __xen_pcibk_add_pci_dev(struct xen_pcibk_device *pdev,
 				pr_info("vpci: %s: assign to virtual slot %d func %d\n",
 					pci_name(dev), slot,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					func);
 				list_add_tail(&dev_entry->list,
 					      &vpci_dev->dev_list[slot]);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					PCI_FUNC(dev->devfn));
 				list_add_tail(&dev_entry->list,
 					      &vpci_dev->dev_list[slot]);
 				func = PCI_FUNC(dev->devfn);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				goto unlock;
 			}
@@ -147,6 +166,10 @@ static int __xen_pcibk_add_pci_dev(struct xen_pcibk_device *pdev,
 			list_add_tail(&dev_entry->list,
 				      &vpci_dev->dev_list[slot]);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			func = dev->is_virtfn ? 0 : PCI_FUNC(dev->devfn);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			func = dev->is_virtfn ? 0 : PCI_FUNC(dev->devfn);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

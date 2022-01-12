@@ -1004,7 +1004,11 @@ static int __net_init tcp_net_metrics_init(struct net *net)
 	slots = tcpmhash_entries;
 	if (!slots) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (totalram_pages() >= 128 * 1024)
+=======
+		if (totalram_pages >= 128 * 1024)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (totalram_pages >= 128 * 1024)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -330,9 +330,12 @@ static struct dwc3_ep *dwc3_wIndex_to_dep(struct dwc3 *dwc, __le16 wIndex_le)
 
 	dep = dwc->eps[epnum];
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (dep == NULL)
 		return NULL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (dep->flags & DWC3_EP_ENABLED)
@@ -1124,7 +1127,10 @@ static void __dwc3_ep0_do_control_data(struct dwc3 *dwc,
 		struct dwc3_ep *dep, struct dwc3_request *req)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int		trb_length = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int			ret;
@@ -1133,10 +1139,14 @@ static void __dwc3_ep0_do_control_data(struct dwc3 *dwc,
 
 	if (req->request.length == 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!req->direction)
 			trb_length = dep->endpoint.maxpacket;
 
 		dwc3_ep0_prepare_one_trb(dep, dwc->bounce_addr, trb_length,
+=======
+		dwc3_ep0_prepare_one_trb(dep, dwc->ep0_trb_addr, 0,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dwc3_ep0_prepare_one_trb(dep, dwc->ep0_trb_addr, 0,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1192,12 +1202,18 @@ static void __dwc3_ep0_do_control_data(struct dwc3 *dwc,
 		req->trb = &dwc->ep0_trb[dep->trb_enqueue - 1];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!req->direction)
 			trb_length = dep->endpoint.maxpacket;
 
 		/* Now prepare one extra TRB to align transfer size */
 		dwc3_ep0_prepare_one_trb(dep, dwc->bounce_addr,
 					 trb_length, DWC3_TRBCTL_CONTROL_DATA,
+=======
+		/* Now prepare one extra TRB to align transfer size */
+		dwc3_ep0_prepare_one_trb(dep, dwc->bounce_addr,
+					 0, DWC3_TRBCTL_CONTROL_DATA,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		/* Now prepare one extra TRB to align transfer size */
 		dwc3_ep0_prepare_one_trb(dep, dwc->bounce_addr,

@@ -71,7 +71,10 @@ static int amba_handler_attach(struct acpi_device *adev,
 			if (!address_found) {
 				dev->res = *rentry->res;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				dev->res.name = dev_name(&dev->dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				address_found = true;

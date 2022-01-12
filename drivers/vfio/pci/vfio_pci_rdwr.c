@@ -123,7 +123,10 @@ ssize_t vfio_pci_bar_rw(struct vfio_pci_device *vdev, char __user *buf,
 	resource_size_t end;
 	void __iomem *io;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct resource *res = &vdev->pdev->resource[bar];
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ssize_t done;
@@ -142,6 +145,7 @@ ssize_t vfio_pci_bar_rw(struct vfio_pci_device *vdev, char __user *buf,
 	count = min(count, (size_t)(end - pos));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (res->flags & IORESOURCE_MEM) {
 		down_read(&vdev->memory_lock);
 		if (!__vfio_pci_memory_enabled(vdev)) {
@@ -152,6 +156,8 @@ ssize_t vfio_pci_bar_rw(struct vfio_pci_device *vdev, char __user *buf,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (bar == PCI_ROM_RESOURCE) {
 		/*
 		 * The ROM can fill less space than the BAR, so we start the
@@ -159,6 +165,7 @@ ssize_t vfio_pci_bar_rw(struct vfio_pci_device *vdev, char __user *buf,
 		 * filling large ROM BARs much faster.
 		 */
 		io = pci_map_rom(pdev, &x_start);
+<<<<<<< HEAD
 <<<<<<< HEAD
 		if (!io) {
 			done = -ENOMEM;
@@ -170,6 +177,8 @@ ssize_t vfio_pci_bar_rw(struct vfio_pci_device *vdev, char __user *buf,
 		if (done)
 			goto out;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (!io)
 			return -ENOMEM;
 		x_end = end;
@@ -179,14 +188,21 @@ ssize_t vfio_pci_bar_rw(struct vfio_pci_device *vdev, char __user *buf,
 		ret = pci_request_selected_regions(pdev, 1 << bar, "vfio");
 		if (ret)
 			return ret;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		io = pci_iomap(pdev, bar, 0);
 		if (!io) {
 			pci_release_selected_regions(pdev, 1 << bar);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			done = -ENOMEM;
 			goto out;
+=======
+			return -ENOMEM;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			return -ENOMEM;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -209,9 +225,12 @@ ssize_t vfio_pci_bar_rw(struct vfio_pci_device *vdev, char __user *buf,
 	if (bar == PCI_ROM_RESOURCE)
 		pci_unmap_rom(pdev, io);
 <<<<<<< HEAD
+<<<<<<< HEAD
 out:
 	if (res->flags & IORESOURCE_MEM)
 		up_read(&vdev->memory_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

@@ -24,10 +24,13 @@
 #include <linux/page_owner.h>
 #include <linux/psi.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/msm_drm_notify.h>
 #include <linux/moduleparam.h>
 #include <linux/time.h>
 #include <linux/workqueue.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include "internal.h"
@@ -1390,7 +1393,11 @@ static enum compact_result __compact_finished(struct zone *zone,
 		 */
 		if (find_suitable_fallback(area, order, migratetype,
 <<<<<<< HEAD
+<<<<<<< HEAD
 						true, &can_steal, cc->order) != -1) {
+=======
+						true, &can_steal) != -1) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 						true, &can_steal) != -1) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1757,7 +1764,11 @@ static enum compact_result compact_zone_order(struct zone *zone, int order,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int sysctl_extfrag_threshold = 750;
+=======
+int sysctl_extfrag_threshold = 500;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int sysctl_extfrag_threshold = 500;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1841,6 +1852,7 @@ enum compact_result try_to_compact_pages(gfp_t gfp_mask, unsigned int order,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct workqueue_struct *compaction_wq;
 static struct delayed_work compaction_work;
 static bool screen_on = true;
@@ -1890,6 +1902,8 @@ static struct notifier_block compaction_notifier_block = {
 };
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* Compact all zones within a node */
 static void compact_node(int nid)
@@ -1934,6 +1948,7 @@ static void compact_nodes(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void zram_compact(void);
 
 static void do_compaction(struct work_struct *work)
@@ -1956,6 +1971,8 @@ static void do_compaction(struct work_struct *work)
 	pr_info("Scheduled memory compaction is completed\n");
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* The written value is actually unused, all memory is compacted */
@@ -2244,6 +2261,7 @@ static int __init kcompactd_init(void)
 subsys_initcall(kcompactd_init)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int  __init scheduled_compaction_init(void)
 {
 	compaction_wq = create_freezable_workqueue("compaction_wq");
@@ -2259,6 +2277,8 @@ static int  __init scheduled_compaction_init(void)
 }
 late_initcall(scheduled_compaction_init);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* CONFIG_COMPACTION */

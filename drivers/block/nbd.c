@@ -269,7 +269,11 @@ static void nbd_size_clear(struct nbd_device *nbd)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void nbd_size_update(struct nbd_device *nbd, bool start)
+=======
+static void nbd_size_update(struct nbd_device *nbd)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void nbd_size_update(struct nbd_device *nbd)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -284,8 +288,12 @@ static void nbd_size_update(struct nbd_device *nbd)
 		if (bdev->bd_disk) {
 			bd_set_size(bdev, config->bytesize);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (start)
 				set_blocksize(bdev, config->blksize);
+=======
+			set_blocksize(bdev, config->blksize);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			set_blocksize(bdev, config->blksize);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -304,7 +312,11 @@ static void nbd_size_set(struct nbd_device *nbd, loff_t blocksize,
 	config->bytesize = blocksize * nr_blocks;
 	if (nbd->task_recv != NULL)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		nbd_size_update(nbd, false);
+=======
+		nbd_size_update(nbd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		nbd_size_update(nbd);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -739,9 +751,15 @@ static void recv_work(struct work_struct *work)
 		blk_mq_complete_request(blk_mq_rq_from_pdu(cmd));
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	nbd_config_put(nbd);
 	atomic_dec(&config->recv_threads);
 	wake_up(&config->recv_wq);
+=======
+	atomic_dec(&config->recv_threads);
+	wake_up(&config->recv_wq);
+	nbd_config_put(nbd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	atomic_dec(&config->recv_threads);
 	wake_up(&config->recv_wq);
@@ -971,12 +989,15 @@ static int nbd_add_socket(struct nbd_device *nbd, unsigned long arg,
 		return err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * We need to make sure we don't get any errant requests while we're
 	 * reallocating the ->socks array.
 	 */
 	blk_mq_freeze_queue(nbd->disk->queue);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!netlink && !nbd->task_setup &&
@@ -1018,7 +1039,10 @@ static int nbd_add_socket(struct nbd_device *nbd, unsigned long arg,
 	socks[config->num_connections++] = nsock;
 	atomic_inc(&config->live_connections);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	blk_mq_unfreeze_queue(nbd->disk->queue);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1026,7 +1050,10 @@ static int nbd_add_socket(struct nbd_device *nbd, unsigned long arg,
 
 put_socket:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	blk_mq_unfreeze_queue(nbd->disk->queue);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	sockfd_put(sock);
@@ -1268,7 +1295,11 @@ static int nbd_start_device(struct nbd_device *nbd)
 		queue_work(nbd->recv_workq, &args->work);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	nbd_size_update(nbd, true);
+=======
+	nbd_size_update(nbd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	nbd_size_update(nbd);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1472,7 +1503,10 @@ static void nbd_release(struct gendisk *disk, fmode_t mode)
 			bdev->bd_openers == 0)
 		nbd_disconnect_and_put(nbd);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bdput(bdev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

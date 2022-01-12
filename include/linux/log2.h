@@ -173,7 +173,11 @@ unsigned long __rounddown_pow_of_two(unsigned long n)
 (						\
 	__builtin_constant_p(n) ? (		\
 <<<<<<< HEAD
+<<<<<<< HEAD
 		((n) == 1) ? 1 :		\
+=======
+		(n == 1) ? 1 :			\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		(n == 1) ? 1 :			\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -866,11 +866,15 @@ read_descriptors(struct file *filp, struct kobject *kobj,
 	int cfgno;
 	void *src;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int retval;
 
 	retval = usb_lock_device_interruptible(udev);
 	if (retval < 0)
 		return -EINTR;
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -899,7 +903,10 @@ read_descriptors(struct file *filp, struct kobject *kobj,
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	usb_unlock_device(udev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return count - nleft;

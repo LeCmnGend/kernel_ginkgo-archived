@@ -55,7 +55,12 @@
 static inline unsigned long user_stack_pointer(struct pt_regs *regs)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return regs->r12;
+=======
+	/* FIXME: should this be bspstore + nr_dirty regs? */
+	return regs->ar_bspstore;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* FIXME: should this be bspstore + nr_dirty regs? */
 	return regs->ar_bspstore;
@@ -84,12 +89,18 @@ static inline long regs_return_value(struct pt_regs *regs)
 	(__ip & ~3UL) + ((__ip & 3UL) << 2);				\
 })
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Why not default?  Because user_stack_pointer() on ia64 gives register
  * stack backing store instead...
  */
 #define current_user_stack_pointer() (current_pt_regs()->r12)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
   /* given a pointer to a task_struct, return the user's pt_regs */

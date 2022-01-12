@@ -14,7 +14,10 @@
 #include <linux/vt_kern.h>
 #include <linux/console.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/font.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <asm/types.h>
@@ -85,7 +88,11 @@ static void tile_clear_margins(struct vc_data *vc, struct fb_info *info,
 
 static void tile_cursor(struct vc_data *vc, struct fb_info *info, int mode,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			int fg, int bg)
+=======
+			int softback_lines, int fg, int bg)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			int softback_lines, int fg, int bg)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

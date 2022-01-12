@@ -302,7 +302,11 @@ static struct virtqueue *vop_find_vq(struct virtio_device *dev,
 	vqconfig = _vop_vq_config(vdev->desc) + index;
 	memcpy_fromio(&config, vqconfig, sizeof(config));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	_vr_size = round_up(vring_size(le16_to_cpu(config.num), MIC_VIRTIO_RING_ALIGN), 4);
+=======
+	_vr_size = vring_size(le16_to_cpu(config.num), MIC_VIRTIO_RING_ALIGN);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	_vr_size = vring_size(le16_to_cpu(config.num), MIC_VIRTIO_RING_ALIGN);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

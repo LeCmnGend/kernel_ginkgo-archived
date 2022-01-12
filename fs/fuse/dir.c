@@ -465,7 +465,10 @@ static int fuse_create_open(struct inode *dir, struct dentry *entry,
 	struct fuse_entry_out outentry;
 	struct fuse_file *ff;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	char *iname;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -487,8 +490,11 @@ static int fuse_create_open(struct inode *dir, struct dentry *entry,
 
 	flags &= ~O_NOCTTY;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (fc->writeback_cache)
 		flags &= ~O_APPEND;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	memset(&inarg, 0, sizeof(inarg));
@@ -509,6 +515,7 @@ static int fuse_create_open(struct inode *dir, struct dentry *entry,
 	args.out.args[1].size = sizeof(outopen);
 	args.out.args[1].value = &outopen;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	args.private_lower_rw_file = NULL;
 	iname = inode_name(dir);
 	if (iname) {
@@ -528,6 +535,9 @@ static int fuse_create_open(struct inode *dir, struct dentry *entry,
 =======
 	err = fuse_simple_request(fc, &args);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	err = fuse_simple_request(fc, &args);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		goto out_free_ff;
 
@@ -540,8 +550,11 @@ static int fuse_create_open(struct inode *dir, struct dentry *entry,
 	ff->nodeid = outentry.nodeid;
 	ff->open_flags = outopen.open_flags;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (args.private_lower_rw_file != NULL)
 		ff->rw_lower_file = args.private_lower_rw_file;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	inode = fuse_iget(dir->i_sb, outentry.nodeid, outentry.generation,

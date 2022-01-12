@@ -554,7 +554,11 @@ static int cfg80211_sme_connect(struct wireless_dev *wdev,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (wdev->conn)
+=======
+	if (WARN_ON(wdev->conn))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (WARN_ON(wdev->conn))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

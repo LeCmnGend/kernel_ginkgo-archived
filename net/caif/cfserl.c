@@ -32,11 +32,14 @@ static void cfserl_ctrlcmd(struct cflayer *layr, enum caif_ctrlcmd ctrl,
 			   int phyid);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void cfserl_release(struct cflayer *layer)
 {
 	kfree(layer);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct cflayer *cfserl_create(int instance, bool use_stx)

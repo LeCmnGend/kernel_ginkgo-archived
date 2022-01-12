@@ -246,8 +246,12 @@ void msm_pm_qos_update_request(int val)
 	pr_info("%s: update request %d", __func__, val);
 	msm_pm_qos_add_request();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (pm_qos_request_active(&msm_v4l2_pm_qos_request))
 		pm_qos_update_request(&msm_v4l2_pm_qos_request, val);
+=======
+	pm_qos_update_request(&msm_v4l2_pm_qos_request, val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pm_qos_update_request(&msm_v4l2_pm_qos_request, val);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

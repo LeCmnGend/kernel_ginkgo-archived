@@ -1030,7 +1030,11 @@ cfg80211_bss_update(struct cfg80211_registered_device *rdev,
 			 */
 			if (!cfg80211_combine_bsses(rdev, new)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				bss_ref_put(rdev, new);
+=======
+				kfree(new);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				kfree(new);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1041,7 +1045,11 @@ cfg80211_bss_update(struct cfg80211_registered_device *rdev,
 		if (rdev->bss_entries >= bss_entries_limit &&
 		    !cfg80211_bss_expire_oldest(rdev)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			bss_ref_put(rdev, new);
+=======
+			kfree(new);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			kfree(new);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

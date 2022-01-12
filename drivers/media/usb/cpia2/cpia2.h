@@ -439,7 +439,10 @@ int cpia2_do_command(struct camera_data *cam,
 		     unsigned int command,
 		     unsigned char direction, unsigned char param);
 <<<<<<< HEAD
+<<<<<<< HEAD
 void cpia2_deinit_camera_struct(struct camera_data *cam, struct usb_interface *intf);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct camera_data *cpia2_init_camera_struct(struct usb_interface *intf);

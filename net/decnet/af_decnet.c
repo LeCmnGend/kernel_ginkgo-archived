@@ -825,7 +825,11 @@ static int dn_confirm_accept(struct sock *sk, long *timeo, gfp_t allocation)
 {
 	struct dn_scp *scp = DN_SK(sk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	DEFINE_WAIT_FUNC(wait, woken_wake_function);
+=======
+	DEFINE_WAIT(wait);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	DEFINE_WAIT(wait);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -839,17 +843,23 @@ static int dn_confirm_accept(struct sock *sk, long *timeo, gfp_t allocation)
 	dn_send_conn_conf(sk, allocation);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	add_wait_queue(sk_sleep(sk), &wait);
 	for(;;) {
 		release_sock(sk);
 		if (scp->state == DN_CC)
 			*timeo = wait_woken(&wait, TASK_INTERRUPTIBLE, *timeo);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	prepare_to_wait(sk_sleep(sk), &wait, TASK_INTERRUPTIBLE);
 	for(;;) {
 		release_sock(sk);
 		if (scp->state == DN_CC)
 			*timeo = schedule_timeout(*timeo);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		lock_sock(sk);
 		err = 0;
@@ -865,8 +875,14 @@ static int dn_confirm_accept(struct sock *sk, long *timeo, gfp_t allocation)
 		if (!*timeo)
 			break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}
 	remove_wait_queue(sk_sleep(sk), &wait);
+=======
+		prepare_to_wait(sk_sleep(sk), &wait, TASK_INTERRUPTIBLE);
+	}
+	finish_wait(sk_sleep(sk), &wait);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		prepare_to_wait(sk_sleep(sk), &wait, TASK_INTERRUPTIBLE);
 	}
@@ -884,7 +900,11 @@ static int dn_wait_run(struct sock *sk, long *timeo)
 {
 	struct dn_scp *scp = DN_SK(sk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	DEFINE_WAIT_FUNC(wait, woken_wake_function);
+=======
+	DEFINE_WAIT(wait);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	DEFINE_WAIT(wait);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -897,17 +917,23 @@ static int dn_wait_run(struct sock *sk, long *timeo)
 		return -EALREADY;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	add_wait_queue(sk_sleep(sk), &wait);
 	for(;;) {
 		release_sock(sk);
 		if (scp->state == DN_CI || scp->state == DN_CC)
 			*timeo = wait_woken(&wait, TASK_INTERRUPTIBLE, *timeo);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	prepare_to_wait(sk_sleep(sk), &wait, TASK_INTERRUPTIBLE);
 	for(;;) {
 		release_sock(sk);
 		if (scp->state == DN_CI || scp->state == DN_CC)
 			*timeo = schedule_timeout(*timeo);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		lock_sock(sk);
 		err = 0;
@@ -923,8 +949,14 @@ static int dn_wait_run(struct sock *sk, long *timeo)
 		if (!*timeo)
 			break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}
 	remove_wait_queue(sk_sleep(sk), &wait);
+=======
+		prepare_to_wait(sk_sleep(sk), &wait, TASK_INTERRUPTIBLE);
+	}
+	finish_wait(sk_sleep(sk), &wait);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		prepare_to_wait(sk_sleep(sk), &wait, TASK_INTERRUPTIBLE);
 	}
@@ -1075,24 +1107,34 @@ static void dn_user_copy(struct sk_buff *skb, struct optdata_dn *opt)
 static struct sk_buff *dn_wait_for_connect(struct sock *sk, long *timeo)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	DEFINE_WAIT_FUNC(wait, woken_wake_function);
 	struct sk_buff *skb = NULL;
 	int err = 0;
 
 	add_wait_queue(sk_sleep(sk), &wait);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	DEFINE_WAIT(wait);
 	struct sk_buff *skb = NULL;
 	int err = 0;
 
 	prepare_to_wait(sk_sleep(sk), &wait, TASK_INTERRUPTIBLE);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	for(;;) {
 		release_sock(sk);
 		skb = skb_dequeue(&sk->sk_receive_queue);
 		if (skb == NULL) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			*timeo = wait_woken(&wait, TASK_INTERRUPTIBLE, *timeo);
+=======
+			*timeo = schedule_timeout(*timeo);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			*timeo = schedule_timeout(*timeo);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1111,8 +1153,14 @@ static struct sk_buff *dn_wait_for_connect(struct sock *sk, long *timeo)
 		if (!*timeo)
 			break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}
 	remove_wait_queue(sk_sleep(sk), &wait);
+=======
+		prepare_to_wait(sk_sleep(sk), &wait, TASK_INTERRUPTIBLE);
+	}
+	finish_wait(sk_sleep(sk), &wait);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		prepare_to_wait(sk_sleep(sk), &wait, TASK_INTERRUPTIBLE);
 	}

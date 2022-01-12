@@ -197,7 +197,11 @@ static int mpic_msgr_probe(struct platform_device *dev)
 	/* IO map the message register block. */
 	of_address_to_resource(np, 0, &rsrc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	msgr_block_addr = devm_ioremap(&dev->dev, rsrc.start, resource_size(&rsrc));
+=======
+	msgr_block_addr = ioremap(rsrc.start, resource_size(&rsrc));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	msgr_block_addr = ioremap(rsrc.start, resource_size(&rsrc));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

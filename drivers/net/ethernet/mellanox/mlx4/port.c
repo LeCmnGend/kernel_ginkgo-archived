@@ -1974,7 +1974,10 @@ EXPORT_SYMBOL(mlx4_get_roce_gid_from_slave);
 #define I2C_ADDR_HIGH 0x51
 #define I2C_PAGE_SIZE 256
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define I2C_HIGH_PAGE_SIZE 128
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2030,6 +2033,7 @@ static inline const char *cable_info_mad_err_str(u16 mad_status)
 	return "Unknown Error";
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 static int mlx4_get_module_id(struct mlx4_dev *dev, u8 port, u8 *module_id)
 {
@@ -2115,6 +2119,8 @@ static void mlx4_qsfp_eeprom_params_set(u8 *i2c_addr, u8 *page_num, u16 *offset)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * mlx4_get_module_info - Read cable module eeprom data
  * @dev: mlx4_dev.
@@ -2135,7 +2141,11 @@ int mlx4_get_module_info(struct mlx4_dev *dev, u8 port,
 	struct mlx4_mad_ifc *inmad, *outmad;
 	struct mlx4_cable_info *cable_info;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8 module_id, i2c_addr, page_num;
+=======
+	u16 i2c_addr;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u16 i2c_addr;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2144,6 +2154,7 @@ int mlx4_get_module_info(struct mlx4_dev *dev, u8 port,
 	if (size > MODULE_INFO_MAX_READ)
 		size = MODULE_INFO_MAX_READ;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	ret = mlx4_get_module_id(dev, port, &module_id);
 	if (ret)
@@ -2163,6 +2174,8 @@ int mlx4_get_module_info(struct mlx4_dev *dev, u8 port,
 		return -EINVAL;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	inbox = mlx4_alloc_cmd_mailbox(dev);
@@ -2191,15 +2204,21 @@ int mlx4_get_module_info(struct mlx4_dev *dev, u8 port,
 		size -= offset + size - I2C_PAGE_SIZE;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cable_info = (struct mlx4_cable_info *)inmad->data;
 	cable_info->dev_mem_address = cpu_to_be16(offset);
 	cable_info->page_num = page_num;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	i2c_addr = I2C_ADDR_LOW;
 
 	cable_info = (struct mlx4_cable_info *)inmad->data;
 	cable_info->dev_mem_address = cpu_to_be16(offset);
 	cable_info->page_num = 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cable_info->i2c_addr = i2c_addr;
 	cable_info->size = cpu_to_be16(size);

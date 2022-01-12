@@ -80,8 +80,13 @@ struct lmp91000_data {
 	struct completion completion;
 	u8 chan_select;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* 64-bit data + 64-bit naturally aligned timestamp */
 	u32 buffer[4] __aligned(8);
+=======
+
+	u32 buffer[4]; /* 64-bit data + 64-bit timestamp */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	u32 buffer[4]; /* 64-bit data + 64-bit timestamp */

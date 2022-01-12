@@ -40,6 +40,7 @@ SECTIONS
 	.gnu.version_r	: { *(.gnu.version_r) }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Discard .note.gnu.property sections which are unused and have
 	 * different alignment requirement from vDSO note sections.
@@ -47,6 +48,8 @@ SECTIONS
 	/DISCARD/	: {
 		*(.note.GNU-stack .note.gnu.property)
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.note		: { *(.note.*) }		:text	:note
@@ -70,6 +73,10 @@ SECTIONS
 
 	/DISCARD/	: {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		*(.note.GNU-stack)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		*(.note.GNU-stack)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -102,7 +109,10 @@ VERSION
 		__kernel_clock_gettime;
 		__kernel_clock_getres;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__kernel_time;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	local: *;

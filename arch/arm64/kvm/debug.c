@@ -97,7 +97,10 @@ void kvm_arm_reset_debug_ptr(struct kvm_vcpu *vcpu)
  *  - OS related registers (MDCR_EL2_TDOSA)
  *  - Statistical profiler (MDCR_EL2_TPMS/MDCR_EL2_E2PB)
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  - Self-hosted Trace Filter controls (MDCR_EL2_TTRF)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
@@ -123,7 +126,10 @@ void kvm_arm_setup_debug(struct kvm_vcpu *vcpu)
 	vcpu->arch.mdcr_el2 |= (MDCR_EL2_TPM |
 				MDCR_EL2_TPMS |
 <<<<<<< HEAD
+<<<<<<< HEAD
 				MDCR_EL2_TTRF |
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				MDCR_EL2_TPMCR |

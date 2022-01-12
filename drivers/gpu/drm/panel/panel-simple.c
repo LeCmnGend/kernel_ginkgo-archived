@@ -1254,7 +1254,11 @@ static const struct panel_desc lg_lb070wv8 = {
 	.modes = &lg_lb070wv8_mode,
 	.num_modes = 1,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.bpc = 8,
+=======
+	.bpc = 16,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.bpc = 16,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

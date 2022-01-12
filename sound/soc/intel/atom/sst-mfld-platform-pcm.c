@@ -136,7 +136,11 @@ static void sst_fill_alloc_params(struct snd_pcm_substream *substream,
 	ssize_t periodbytes;
 	ssize_t buffer_bytes = snd_pcm_lib_buffer_bytes(substream);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 buffer_addr = virt_to_phys(substream->runtime->dma_area);
+=======
+	u32 buffer_addr = virt_to_phys(substream->dma_buffer.area);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u32 buffer_addr = virt_to_phys(substream->dma_buffer.area);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -246,6 +250,10 @@ static int sst_platform_alloc_stream(struct snd_pcm_substream *substream,
 	sst_fill_pcm_params(substream, &param);
 	sst_fill_alloc_params(substream, &alloc_params);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	substream->runtime->dma_area = substream->dma_buffer.area;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	substream->runtime->dma_area = substream->dma_buffer.area;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -347,7 +355,11 @@ static int sst_media_open(struct snd_pcm_substream *substream,
 	ret_val = power_up_sst(stream);
 	if (ret_val < 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_power_up;
+=======
+		return ret_val;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return ret_val;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -360,9 +372,14 @@ static int sst_media_open(struct snd_pcm_substream *substream,
 			 SNDRV_PCM_HW_PARAM_PERIODS);
 out_ops:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_unlock(&sst_lock);
 out_power_up:
 	kfree(stream);
+=======
+	kfree(stream);
+	mutex_unlock(&sst_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(stream);
 	mutex_unlock(&sst_lock);
@@ -525,7 +542,11 @@ static struct snd_soc_dai_driver sst_platform_dai[] = {
 		.channels_max = SST_STEREO,
 		.rates = SNDRV_PCM_RATE_44100|SNDRV_PCM_RATE_48000,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.formats = SNDRV_PCM_FMTBIT_S16_LE,
+=======
+		.formats = SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S24_LE,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.formats = SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S24_LE,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -536,7 +557,11 @@ static struct snd_soc_dai_driver sst_platform_dai[] = {
 		.channels_max = 2,
 		.rates = SNDRV_PCM_RATE_44100|SNDRV_PCM_RATE_48000,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.formats = SNDRV_PCM_FMTBIT_S16_LE,
+=======
+		.formats = SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S24_LE,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.formats = SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S24_LE,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -551,7 +576,11 @@ static struct snd_soc_dai_driver sst_platform_dai[] = {
 		.channels_max = SST_STEREO,
 		.rates = SNDRV_PCM_RATE_44100|SNDRV_PCM_RATE_48000,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.formats = SNDRV_PCM_FMTBIT_S16_LE,
+=======
+		.formats = SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S24_LE,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.formats = SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S24_LE,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

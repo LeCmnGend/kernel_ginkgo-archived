@@ -2393,7 +2393,10 @@ static unsigned int ata_scsiop_inq_89(struct ata_scsi_args *args, u8 *rbuf)
 static unsigned int ata_scsiop_inq_b0(struct ata_scsi_args *args, u8 *rbuf)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct ata_device *dev = args->dev;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u16 min_io_sectors;
@@ -2422,12 +2425,16 @@ static unsigned int ata_scsiop_inq_b0(struct ata_scsi_args *args, u8 *rbuf)
 	 */
 	if (ata_id_has_trim(args->id)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		u64 max_blocks = 65535 * ATA_MAX_TRIM_RNUM;
 
 		if (dev->horkage & ATA_HORKAGE_MAX_TRIM_128M)
 			max_blocks = 128 << (20 - SECTOR_SHIFT);
 
 		put_unaligned_be64(max_blocks, &rbuf[36]);
+=======
+		put_unaligned_be64(65535 * ATA_MAX_TRIM_RNUM, &rbuf[36]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		put_unaligned_be64(65535 * ATA_MAX_TRIM_RNUM, &rbuf[36]);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

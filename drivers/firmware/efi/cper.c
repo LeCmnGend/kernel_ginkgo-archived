@@ -381,7 +381,12 @@ static int cper_dimm_err_location(struct cper_mem_err_compact *mem, char *msg)
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	len = CPER_REC_LEN;
+=======
+	n = 0;
+	len = CPER_REC_LEN - 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	n = 0;
 	len = CPER_REC_LEN - 1;
@@ -395,6 +400,10 @@ static int cper_dimm_err_location(struct cper_mem_err_compact *mem, char *msg)
 			     mem->mem_dev_handle);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	msg[n] = '\0';
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	msg[n] = '\0';
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

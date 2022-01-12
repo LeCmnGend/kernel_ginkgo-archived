@@ -811,7 +811,10 @@
 			 <&tegra_car 111>; /* hda2codec_2x */
 		reset-names = "hda", "hda2hdmi", "hda2codec_2x";
 <<<<<<< HEAD
+<<<<<<< HEAD
 		power-domains = <&pd_sor>;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		status = "disabled";

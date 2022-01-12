@@ -380,17 +380,23 @@ coalesce_t2(char *second_buf, struct smb_hdr *target_hdr)
 static void
 cifs_downgrade_oplock(struct TCP_Server_Info *server,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		      struct cifsInodeInfo *cinode, __u32 oplock,
 		      unsigned int epoch, bool *purge_cache)
 {
 	cifs_set_oplock_level(cinode, oplock);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			struct cifsInodeInfo *cinode, bool set_level2)
 {
 	if (set_level2)
 		cifs_set_oplock_level(cinode, OPLOCK_READ);
 	else
 		cifs_set_oplock_level(cinode, 0);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

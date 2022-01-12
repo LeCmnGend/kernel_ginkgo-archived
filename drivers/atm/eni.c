@@ -2244,7 +2244,11 @@ static int eni_init_one(struct pci_dev *pci_dev,
 	rc = dma_set_mask_and_coherent(&pci_dev->dev, DMA_BIT_MASK(32));
 	if (rc < 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto err_disable;
+=======
+		goto out;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto out;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2284,8 +2288,12 @@ out:
 
 err_eni_release:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev->phy = NULL;
 	iounmap(ENI_DEV(dev)->ioaddr);
+=======
+	eni_do_release(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	eni_do_release(dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

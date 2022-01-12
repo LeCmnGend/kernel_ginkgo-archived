@@ -27,6 +27,10 @@
  * Return: 1 if it is locked, 0 otherwise
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#ifndef queued_spin_is_locked
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #ifndef queued_spin_is_locked
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -39,6 +43,10 @@ static __always_inline int queued_spin_is_locked(struct qspinlock *lock)
 	return atomic_read(&lock->val);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #endif
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -75,6 +83,7 @@ static __always_inline int queued_spin_is_contended(struct qspinlock *lock)
 static __always_inline int queued_spin_trylock(struct qspinlock *lock)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 val = atomic_read(&lock->val);
 
 	if (unlikely(val))
@@ -82,10 +91,15 @@ static __always_inline int queued_spin_trylock(struct qspinlock *lock)
 
 	return likely(atomic_try_cmpxchg_acquire(&lock->val, &val, _Q_LOCKED_VAL));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!atomic_read(&lock->val) &&
 	   (atomic_cmpxchg_acquire(&lock->val, 0, _Q_LOCKED_VAL) == 0))
 		return 1;
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -98,17 +112,23 @@ extern void queued_spin_lock_slowpath(struct qspinlock *lock, u32 val);
 static __always_inline void queued_spin_lock(struct qspinlock *lock)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 val = 0;
 
 	if (likely(atomic_try_cmpxchg_acquire(&lock->val, &val, _Q_LOCKED_VAL)))
 		return;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32 val;
 
 	val = atomic_cmpxchg_acquire(&lock->val, 0, _Q_LOCKED_VAL);
 	if (likely(val == 0))
 		return;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	queued_spin_lock_slowpath(lock, val);
 }
@@ -124,7 +144,11 @@ static __always_inline void queued_spin_unlock(struct qspinlock *lock)
 	 * unlock() needs release semantics:
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	smp_store_release(&lock->locked, 0);
+=======
+	(void)atomic_sub_return_release(_Q_LOCKED_VAL, &lock->val);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	(void)atomic_sub_return_release(_Q_LOCKED_VAL, &lock->val);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -149,6 +173,10 @@ static __always_inline bool virt_spin_lock(struct qspinlock *lock)
 #define arch_spin_trylock(l)		queued_spin_trylock(l)
 #define arch_spin_unlock(l)		queued_spin_unlock(l)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define arch_spin_lock_flags(l, f)	queued_spin_lock(l)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define arch_spin_lock_flags(l, f)	queued_spin_lock(l)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

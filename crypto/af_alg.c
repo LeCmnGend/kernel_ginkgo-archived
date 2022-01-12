@@ -152,7 +152,11 @@ static int alg_bind(struct socket *sock, struct sockaddr *uaddr, int addr_len)
 	struct sock *sk = sock->sk;
 	struct alg_sock *ask = alg_sk(sk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct sockaddr_alg_new *sa = (void *)uaddr;
+=======
+	struct sockaddr_alg *sa = (void *)uaddr;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct sockaddr_alg *sa = (void *)uaddr;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -164,11 +168,15 @@ static int alg_bind(struct socket *sock, struct sockaddr *uaddr, int addr_len)
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	BUILD_BUG_ON(offsetof(struct sockaddr_alg_new, salg_name) !=
 		     offsetof(struct sockaddr_alg, salg_name));
 	BUILD_BUG_ON(offsetof(struct sockaddr_alg, salg_name) != sizeof(*sa));
 
 	if (addr_len < sizeof(*sa) + 1)
+=======
+	if (addr_len < sizeof(*sa))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (addr_len < sizeof(*sa))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -180,7 +188,11 @@ static int alg_bind(struct socket *sock, struct sockaddr *uaddr, int addr_len)
 
 	sa->salg_type[sizeof(sa->salg_type) - 1] = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sa->salg_name[addr_len - sizeof(*sa) - 1] = 0;
+=======
+	sa->salg_name[sizeof(sa->salg_name) + addr_len - sizeof(*sa) - 1] = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	sa->salg_name[sizeof(sa->salg_name) + addr_len - sizeof(*sa) - 1] = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

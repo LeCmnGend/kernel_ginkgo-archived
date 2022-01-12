@@ -33,11 +33,14 @@ int mfd_cell_enable(struct platform_device *pdev)
 	int err = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!cell->enable) {
 		dev_dbg(&pdev->dev, "No .enable() call-back registered\n");
 		return 0;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* only call enable hook if the cell wasn't previously enabled */
@@ -58,11 +61,14 @@ int mfd_cell_disable(struct platform_device *pdev)
 	int err = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!cell->disable) {
 		dev_dbg(&pdev->dev, "No .disable() call-back registered\n");
 		return 0;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* only disable if no other clients are using it */

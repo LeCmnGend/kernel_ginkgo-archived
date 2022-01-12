@@ -1405,6 +1405,7 @@ asmlinkage __visible void __init xen_start_kernel(void)
 
 		xen_boot_params_init_edd();
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 #ifdef CONFIG_ACPI
 		/*
@@ -1414,6 +1415,8 @@ asmlinkage __visible void __init xen_start_kernel(void)
 		 */
 		acpi_disable_cmcff = 1;
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

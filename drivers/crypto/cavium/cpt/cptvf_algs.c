@@ -206,7 +206,10 @@ static inline int cvm_enc_dec(struct ablkcipher_request *req, u32 enc)
 
 	memset(req_info, 0, sizeof(struct cpt_request_info));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	req_info->may_sleep = (req->base.flags & CRYPTO_TFM_REQ_MAY_SLEEP) != 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	memset(fctx, 0, sizeof(struct fc_context));

@@ -572,8 +572,13 @@ static void iscsi_complete_task(struct iscsi_task *task, int state)
 		conn->task = NULL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (READ_ONCE(conn->ping_task) == task)
 		WRITE_ONCE(conn->ping_task, NULL);
+=======
+	if (conn->ping_task == task)
+		conn->ping_task = NULL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (conn->ping_task == task)
 		conn->ping_task = NULL;
@@ -787,9 +792,12 @@ __iscsi_conn_send_pdu(struct iscsi_conn *conn, struct iscsi_hdr *hdr,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(READ_ONCE(conn->ping_task) == INVALID_SCSI_TASK))
 		WRITE_ONCE(conn->ping_task, task);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!ihost->workq) {
@@ -1000,11 +1008,16 @@ static int iscsi_send_nopout(struct iscsi_conn *conn, struct iscsi_nopin *rhdr)
 	struct iscsi_task *task;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!rhdr) {
 		if (READ_ONCE(conn->ping_task))
 			return -EINVAL;
 		WRITE_ONCE(conn->ping_task, INVALID_SCSI_TASK);
 	}
+=======
+	if (!rhdr && conn->ping_task)
+		return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!rhdr && conn->ping_task)
 		return -EINVAL;
@@ -1024,8 +1037,11 @@ static int iscsi_send_nopout(struct iscsi_conn *conn, struct iscsi_nopin *rhdr)
 	task = __iscsi_conn_send_pdu(conn, (struct iscsi_hdr *)&hdr, NULL, 0);
 	if (!task) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!rhdr)
 			WRITE_ONCE(conn->ping_task, NULL);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		iscsi_conn_printk(KERN_ERR, conn, "Could not send nopout\n");
@@ -1033,6 +1049,10 @@ static int iscsi_send_nopout(struct iscsi_conn *conn, struct iscsi_nopin *rhdr)
 	} else if (!rhdr) {
 		/* only track our nops */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		conn->ping_task = task;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		conn->ping_task = task;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1049,7 +1069,11 @@ static int iscsi_nop_out_rsp(struct iscsi_task *task,
 	int rc = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (READ_ONCE(conn->ping_task) != task) {
+=======
+	if (conn->ping_task != task) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (conn->ping_task != task) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1410,6 +1434,10 @@ void iscsi_session_failure(struct iscsi_session *session,
 {
 	struct iscsi_conn *conn;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct device *dev;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct device *dev;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1422,13 +1450,19 @@ void iscsi_session_failure(struct iscsi_session *session,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	iscsi_get_conn(conn->cls_conn);
 	spin_unlock_bh(&session->frwd_lock);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dev = get_device(&conn->cls_conn->dev);
 	spin_unlock_bh(&session->frwd_lock);
 	if (!dev)
 	        return;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * if the host is being removed bypass the connection
@@ -1440,7 +1474,11 @@ void iscsi_session_failure(struct iscsi_session *session,
 	else
 		iscsi_conn_failure(conn, err);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	iscsi_put_conn(conn->cls_conn);
+=======
+	put_device(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	put_device(dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1606,10 +1644,13 @@ check_mgmt:
 		rc = iscsi_prep_scsi_cmd_pdu(conn->task);
 		if (rc) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (rc == -ENOMEM || rc == -EACCES)
 				fail_scsi_task(conn->task, DID_IMM_RETRY);
 			else
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (rc == -ENOMEM || rc == -EACCES) {
 				spin_lock_bh(&conn->taskqueuelock);
 				list_add_tail(&conn->task->running,
@@ -1618,6 +1659,9 @@ check_mgmt:
 				spin_unlock_bh(&conn->taskqueuelock);
 				goto done;
 			} else
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				fail_scsi_task(conn->task, DID_ABORT);
 			spin_lock_bh(&conn->taskqueuelock);
@@ -2011,7 +2055,11 @@ static void iscsi_start_tx(struct iscsi_conn *conn)
 static int iscsi_has_ping_timed_out(struct iscsi_conn *conn)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (READ_ONCE(conn->ping_task) &&
+=======
+	if (conn->ping_task &&
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (conn->ping_task &&
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2150,7 +2198,11 @@ enum blk_eh_timer_return iscsi_eh_cmd_timed_out(struct scsi_cmnd *sc)
 	 * running
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (READ_ONCE(conn->ping_task)) {
+=======
+	if (conn->ping_task) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (conn->ping_task) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3419,6 +3471,7 @@ int iscsi_session_get_param(struct iscsi_cls_session *cls_session,
 	switch(param) {
 	case ISCSI_PARAM_FAST_ABORT:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		len = sysfs_emit(buf, "%d\n", session->fast_abort);
 		break;
 	case ISCSI_PARAM_ABORT_TMO:
@@ -3526,6 +3579,8 @@ int iscsi_session_get_param(struct iscsi_cls_session *cls_session,
 	case ISCSI_PARAM_ISID:
 		len = sysfs_emit(buf, "%02x%02x%02x%02x%02x%02x\n",
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		len = sprintf(buf, "%d\n", session->fast_abort);
 		break;
 	case ISCSI_PARAM_ABORT_TMO:
@@ -3632,12 +3687,16 @@ int iscsi_session_get_param(struct iscsi_cls_session *cls_session,
 		break;
 	case ISCSI_PARAM_ISID:
 		len = sprintf(buf, "%02x%02x%02x%02x%02x%02x\n",
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			      session->isid[0], session->isid[1],
 			      session->isid[2], session->isid[3],
 			      session->isid[4], session->isid[5]);
 		break;
 	case ISCSI_PARAM_DISCOVERY_PARENT_IDX:
+<<<<<<< HEAD
 <<<<<<< HEAD
 		len = sysfs_emit(buf, "%u\n", session->discovery_parent_idx);
 		break;
@@ -3648,6 +3707,8 @@ int iscsi_session_get_param(struct iscsi_cls_session *cls_session,
 		else
 			len = sysfs_emit(buf, "\n");
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		len = sprintf(buf, "%u\n", session->discovery_parent_idx);
 		break;
 	case ISCSI_PARAM_DISCOVERY_PARENT_TYPE:
@@ -3656,6 +3717,9 @@ int iscsi_session_get_param(struct iscsi_cls_session *cls_session,
 				      session->discovery_parent_type);
 		else
 			len = sprintf(buf, "\n");
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 	default:
@@ -3689,9 +3753,15 @@ int iscsi_conn_get_addr_param(struct sockaddr_storage *addr,
 	case ISCSI_HOST_PARAM_IPADDRESS:
 		if (sin)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			len = sysfs_emit(buf, "%pI4\n", &sin->sin_addr.s_addr);
 		else
 			len = sysfs_emit(buf, "%pI6\n", &sin6->sin6_addr);
+=======
+			len = sprintf(buf, "%pI4\n", &sin->sin_addr.s_addr);
+		else
+			len = sprintf(buf, "%pI6\n", &sin6->sin6_addr);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			len = sprintf(buf, "%pI4\n", &sin->sin_addr.s_addr);
 		else
@@ -3702,9 +3772,15 @@ int iscsi_conn_get_addr_param(struct sockaddr_storage *addr,
 	case ISCSI_PARAM_LOCAL_PORT:
 		if (sin)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			len = sysfs_emit(buf, "%hu\n", be16_to_cpu(sin->sin_port));
 		else
 			len = sysfs_emit(buf, "%hu\n",
+=======
+			len = sprintf(buf, "%hu\n", be16_to_cpu(sin->sin_port));
+		else
+			len = sprintf(buf, "%hu\n",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			len = sprintf(buf, "%hu\n", be16_to_cpu(sin->sin_port));
 		else
@@ -3728,6 +3804,7 @@ int iscsi_conn_get_param(struct iscsi_cls_conn *cls_conn,
 
 	switch(param) {
 	case ISCSI_PARAM_PING_TMO:
+<<<<<<< HEAD
 <<<<<<< HEAD
 		len = sysfs_emit(buf, "%u\n", conn->ping_timeout);
 		break;
@@ -3812,6 +3889,8 @@ int iscsi_conn_get_param(struct iscsi_cls_conn *cls_conn,
 	case ISCSI_PARAM_LOCAL_IPADDR:
 		len = sysfs_emit(buf, "%s\n", conn->local_ipaddr);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		len = sprintf(buf, "%u\n", conn->ping_timeout);
 		break;
 	case ISCSI_PARAM_RECV_TMO:
@@ -3894,6 +3973,9 @@ int iscsi_conn_get_param(struct iscsi_cls_conn *cls_conn,
 		break;
 	case ISCSI_PARAM_LOCAL_IPADDR:
 		len = sprintf(buf, "%s\n", conn->local_ipaddr);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 	default:
@@ -3913,6 +3995,7 @@ int iscsi_host_get_param(struct Scsi_Host *shost, enum iscsi_host_param param,
 	switch (param) {
 	case ISCSI_HOST_PARAM_NETDEV_NAME:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		len = sysfs_emit(buf, "%s\n", ihost->netdev);
 		break;
 	case ISCSI_HOST_PARAM_HWADDRESS:
@@ -3921,6 +4004,8 @@ int iscsi_host_get_param(struct Scsi_Host *shost, enum iscsi_host_param param,
 	case ISCSI_HOST_PARAM_INITIATOR_NAME:
 		len = sysfs_emit(buf, "%s\n", ihost->initiatorname);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		len = sprintf(buf, "%s\n", ihost->netdev);
 		break;
 	case ISCSI_HOST_PARAM_HWADDRESS:
@@ -3928,6 +4013,9 @@ int iscsi_host_get_param(struct Scsi_Host *shost, enum iscsi_host_param param,
 		break;
 	case ISCSI_HOST_PARAM_INITIATOR_NAME:
 		len = sprintf(buf, "%s\n", ihost->initiatorname);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 	default:

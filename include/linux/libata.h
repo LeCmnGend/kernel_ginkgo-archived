@@ -441,7 +441,10 @@ enum {
 	ATA_HORKAGE_NOTRIM	= (1 << 24),	/* don't use TRIM */
 	ATA_HORKAGE_MAX_SEC_1024 = (1 << 25),	/* Limit max sects to 1024 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ATA_HORKAGE_MAX_TRIM_128M = (1 << 26),	/* Limit max trim size to 128M */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -508,7 +511,10 @@ enum hsm_task_states {
 
 enum ata_completion_errors {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	AC_ERR_OK		= 0,	    /* no error */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	AC_ERR_DEV		= (1 << 0), /* device reported error */
@@ -917,9 +923,15 @@ struct ata_port_operations {
 	 * Command execution
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int (*qc_defer)(struct ata_queued_cmd *qc);
 	int (*check_atapi_dma)(struct ata_queued_cmd *qc);
 	enum ata_completion_errors (*qc_prep)(struct ata_queued_cmd *qc);
+=======
+	int  (*qc_defer)(struct ata_queued_cmd *qc);
+	int  (*check_atapi_dma)(struct ata_queued_cmd *qc);
+	void (*qc_prep)(struct ata_queued_cmd *qc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int  (*qc_defer)(struct ata_queued_cmd *qc);
 	int  (*check_atapi_dma)(struct ata_queued_cmd *qc);
@@ -1189,7 +1201,11 @@ extern const char *ata_mode_string(unsigned long xfer_mask);
 extern unsigned long ata_id_xfermask(const u16 *id);
 extern int ata_std_qc_defer(struct ata_queued_cmd *qc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern enum ata_completion_errors ata_noop_qc_prep(struct ata_queued_cmd *qc);
+=======
+extern void ata_noop_qc_prep(struct ata_queued_cmd *qc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern void ata_noop_qc_prep(struct ata_queued_cmd *qc);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1907,9 +1923,15 @@ extern const struct ata_port_operations ata_bmdma_port_ops;
 	.dma_boundary		= ATA_DMA_BOUNDARY
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern enum ata_completion_errors ata_bmdma_qc_prep(struct ata_queued_cmd *qc);
 extern unsigned int ata_bmdma_qc_issue(struct ata_queued_cmd *qc);
 extern enum ata_completion_errors ata_bmdma_dumb_qc_prep(struct ata_queued_cmd *qc);
+=======
+extern void ata_bmdma_qc_prep(struct ata_queued_cmd *qc);
+extern unsigned int ata_bmdma_qc_issue(struct ata_queued_cmd *qc);
+extern void ata_bmdma_dumb_qc_prep(struct ata_queued_cmd *qc);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern void ata_bmdma_qc_prep(struct ata_queued_cmd *qc);
 extern unsigned int ata_bmdma_qc_issue(struct ata_queued_cmd *qc);

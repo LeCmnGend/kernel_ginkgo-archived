@@ -149,7 +149,11 @@ static ssize_t i2cdev_read(struct file *file, char __user *buf, size_t count,
 		count = 8192;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tmp = kzalloc(count, GFP_KERNEL);
+=======
+	tmp = kmalloc(count, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	tmp = kmalloc(count, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -162,8 +166,12 @@ static ssize_t i2cdev_read(struct file *file, char __user *buf, size_t count,
 	ret = i2c_master_recv(client, tmp, count);
 	if (ret >= 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (copy_to_user(buf, tmp, ret))
 			ret = -EFAULT;
+=======
+		ret = copy_to_user(buf, tmp, count) ? -EFAULT : ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ret = copy_to_user(buf, tmp, count) ? -EFAULT : ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

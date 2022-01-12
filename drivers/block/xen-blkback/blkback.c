@@ -184,7 +184,11 @@ static inline void shrink_free_pagepool(struct xen_blkif_ring *ring, int num)
 #define vaddr(page) ((unsigned long)pfn_to_kaddr(page_to_pfn(page)))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int do_block_io_op(struct xen_blkif_ring *ring, unsigned int *eoi_flags);
+=======
+static int do_block_io_op(struct xen_blkif_ring *ring);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int do_block_io_op(struct xen_blkif_ring *ring);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -613,8 +617,11 @@ int xen_blkif_schedule(void *arg)
 	unsigned long timeout;
 	int ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool do_eoi;
 	unsigned int eoi_flags = XEN_EOI_FLAG_SPURIOUS;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -642,6 +649,7 @@ int xen_blkif_schedule(void *arg)
 			goto purge_gnt_list;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		do_eoi = ring->waiting_reqs;
 
 		ring->waiting_reqs = 0;
@@ -649,10 +657,15 @@ int xen_blkif_schedule(void *arg)
 
 		ret = do_block_io_op(ring, &eoi_flags);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		ring->waiting_reqs = 0;
 		smp_mb(); /* clear flag *before* checking for work */
 
 		ret = do_block_io_op(ring);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (ret > 0)
 			ring->waiting_reqs = 1;
@@ -661,11 +674,14 @@ int xen_blkif_schedule(void *arg)
 						 kthread_should_stop());
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (do_eoi && !ring->waiting_reqs) {
 			xen_irq_lateeoi(ring->irq, eoi_flags);
 			eoi_flags |= XEN_EOI_FLAG_SPURIOUS;
 		}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 purge_gnt_list:
@@ -861,11 +877,16 @@ again:
 			pages[i]->persistent_gnt = persistent_gnt;
 		} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (get_free_page(ring, &pages[i]->page)) {
 				put_free_pages(ring, pages_to_gnt, segs_to_map);
 				ret = -ENOMEM;
 				goto out;
 			}
+=======
+			if (get_free_page(ring, &pages[i]->page))
+				goto out_of_memory;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (get_free_page(ring, &pages[i]->page))
 				goto out_of_memory;
@@ -886,13 +907,19 @@ again:
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (segs_to_map)
 		ret = gnttab_map_refs(map, NULL, pages_to_gnt, segs_to_map);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (segs_to_map) {
 		ret = gnttab_map_refs(map, NULL, pages_to_gnt, segs_to_map);
 		BUG_ON(ret);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/*
@@ -909,7 +936,11 @@ again:
 				put_free_pages(ring, &pages[seg_idx]->page, 1);
 				pages[seg_idx]->handle = BLKBACK_INVALID_HANDLE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				ret |= !ret;
+=======
+				ret |= 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				ret |= 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -965,6 +996,7 @@ next:
 	segs_to_map = 0;
 	last_map = map_until;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!ret && map_until != num)
 		goto again;
 
@@ -978,6 +1010,8 @@ out:
 
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (map_until != num)
 		goto again;
 
@@ -989,6 +1023,9 @@ out_of_memory:
 	for (i = last_map; i < num; i++)
 		pages[i]->handle = BLKBACK_INVALID_HANDLE;
 	return -ENOMEM;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -1173,7 +1210,11 @@ static void end_block_io_op(struct bio *bio)
  */
 static int
 <<<<<<< HEAD
+<<<<<<< HEAD
 __do_block_io_op(struct xen_blkif_ring *ring, unsigned int *eoi_flags)
+=======
+__do_block_io_op(struct xen_blkif_ring *ring)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 __do_block_io_op(struct xen_blkif_ring *ring)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1200,9 +1241,12 @@ __do_block_io_op(struct xen_blkif_ring *ring)
 			break;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* We've seen a request, so clear spurious eoi flag. */
 		*eoi_flags &= ~XEN_EOI_FLAG_SPURIOUS;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (kthread_should_stop()) {
@@ -1264,7 +1308,11 @@ done:
 
 static int
 <<<<<<< HEAD
+<<<<<<< HEAD
 do_block_io_op(struct xen_blkif_ring *ring, unsigned int *eoi_flags)
+=======
+do_block_io_op(struct xen_blkif_ring *ring)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 do_block_io_op(struct xen_blkif_ring *ring)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1274,7 +1322,11 @@ do_block_io_op(struct xen_blkif_ring *ring)
 
 	do {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		more_to_do = __do_block_io_op(ring, eoi_flags);
+=======
+		more_to_do = __do_block_io_op(ring);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		more_to_do = __do_block_io_op(ring);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

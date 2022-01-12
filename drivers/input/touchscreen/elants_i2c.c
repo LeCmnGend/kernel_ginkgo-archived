@@ -41,7 +41,10 @@
 #include <linux/gpio/consumer.h>
 #include <linux/regulator/consumer.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/uuid.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <asm/unaligned.h>
@@ -1143,6 +1146,7 @@ static void elants_i2c_power_off(void *_data)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_ACPI
 static const struct acpi_device_id i2c_hid_ids[] = {
 	{"ACPI0C50", 0 },
@@ -1179,6 +1183,8 @@ static bool elants_acpi_is_hid_device(struct device *dev)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int elants_i2c_probe(struct i2c_client *client,
 			    const struct i2c_device_id *id)
 {
@@ -1188,6 +1194,7 @@ static int elants_i2c_probe(struct i2c_client *client,
 	int error;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Don't bind to i2c-hid compatible devices, these are handled by the i2c-hid drv. */
 	if (elants_acpi_is_hid_device(&client->dev)) {
 		dev_warn(&client->dev, "This device appears to be an I2C-HID device, not binding\n");
@@ -1196,6 +1203,11 @@ static int elants_i2c_probe(struct i2c_client *client,
 
 	if (!i2c_check_functionality(client->adapter, I2C_FUNC_I2C)) {
 		dev_err(&client->dev, "I2C check functionality error\n");
+=======
+	if (!i2c_check_functionality(client->adapter, I2C_FUNC_I2C)) {
+		dev_err(&client->dev,
+			"%s: i2c check functionality error\n", DEVICE_NAME);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!i2c_check_functionality(client->adapter, I2C_FUNC_I2C)) {
 		dev_err(&client->dev,

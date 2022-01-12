@@ -33,7 +33,10 @@
 #include <linux/tick.h>
 #include <linux/slab.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/battery_saver.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -59,6 +62,7 @@ extern unsigned int sched_capacity_margin_up[NR_CPUS];
 extern unsigned int sched_capacity_margin_down[NR_CPUS];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct sched_walt_cpu_load {
 	unsigned long prev_window_util;
 	unsigned long nl;
@@ -74,6 +78,11 @@ extern unsigned int sched_ravg_window;
 extern unsigned int sched_ravg_window;
 extern unsigned int walt_cpu_util_freq_divisor;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+#ifdef CONFIG_SCHED_WALT
+extern unsigned int sched_ravg_window;
+extern unsigned int walt_cpu_util_freq_divisor;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 struct walt_sched_stats {
 	int nr_big_tasks;
@@ -82,12 +91,18 @@ struct walt_sched_stats {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct cpu_cycle {
 	u64 cycles;
 	u64 time;
 };
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct group_cpu_time {
 	u64 curr_runnable_sum;
@@ -114,7 +129,13 @@ struct sched_cluster {
 	int min_power_cost;
 	int max_possible_capacity;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int efficiency; /* Differentiate cpus with different IPC capability */
+=======
+	int capacity;
+	int efficiency; /* Differentiate cpus with different IPC capability */
+	int load_scale_factor;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int capacity;
 	int efficiency; /* Differentiate cpus with different IPC capability */
@@ -130,11 +151,14 @@ struct sched_cluster {
 	unsigned int max_possible_freq;
 	bool freq_init_done;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64 aggr_grp_load;
 };
 
 extern cpumask_t asym_cap_sibling_cpus;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int dstate, dstate_wakeup_latency, dstate_wakeup_energy;
 	unsigned int static_cluster_pwr_cost;
 	int notifier_sent;
@@ -146,6 +170,9 @@ extern cpumask_t asym_cap_sibling_cpus;
 extern unsigned int sched_disable_window_stats;
 
 extern struct timer_list sched_grp_timer;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* CONFIG_SCHED_WALT */
 
@@ -265,12 +292,15 @@ static inline int task_has_dl_policy(struct task_struct *p)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void update_avg(u64 *avg, u64 sample)
 {
 	s64 diff = sample - *avg;
 	*avg += diff / 8;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -302,6 +332,7 @@ struct rt_bandwidth {
 void __dl_clear_params(struct task_struct *p);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct dl_bandwidth {
 	raw_spinlock_t dl_runtime_lock;
 	u64 dl_runtime;
@@ -320,11 +351,16 @@ static inline int dl_bandwidth_enabled(void)
  *  - cache the fraction of bandwidth that is currently allocated in
  *    each root domain;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * To keep the bandwidth of -deadline tasks and groups under control
  * we need some place where:
  *  - store the maximum -deadline bandwidth of the system (the group);
  *  - cache the fraction of that bandwidth that is currently allocated.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *
  * This is all done in the data structure below. It is similar to the
@@ -334,12 +370,15 @@ static inline int dl_bandwidth_enabled(void)
  * need a timer to replenish it.
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * With respect to SMP, bandwidth is given on a per root domain basis,
  * meaning that:
  *  - bw (< 100%) is the deadline bandwidth of each CPU;
  *  - total_bw is the currently allocated bandwidth in each root domain;
  */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * With respect to SMP, the bandwidth is given on a per-CPU basis,
  * meaning that:
  *  - dl_bw (< 100%) is the bandwidth of the system (group) on each CPU;
@@ -363,6 +402,9 @@ static inline int dl_bandwidth_enabled(void)
 	return sysctl_sched_rt_runtime >= 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct dl_bw {
 	raw_spinlock_t lock;
@@ -422,6 +464,7 @@ extern struct list_head task_groups;
 struct cfs_bandwidth {
 #ifdef CONFIG_CFS_BANDWIDTH
 <<<<<<< HEAD
+<<<<<<< HEAD
 	raw_spinlock_t		lock;
 	ktime_t			period;
 	u64			quota;
@@ -443,6 +486,8 @@ struct cfs_bandwidth {
 	int			nr_throttled;
 	u64			throttled_time;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	raw_spinlock_t lock;
 	ktime_t period;
 	u64 quota, runtime;
@@ -457,6 +502,9 @@ struct cfs_bandwidth {
 	u64 throttled_time;
 
 	bool distribute_running;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 };
@@ -590,7 +638,11 @@ struct cfs_bandwidth { };
 struct cfs_rq {
 	struct load_weight load;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int nr_running, h_nr_running, idle_h_nr_running;
+=======
+	unsigned int nr_running, h_nr_running;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned int nr_running, h_nr_running;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -973,8 +1025,14 @@ struct rq {
 	struct walt_sched_stats walt_stats;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64 window_start;
 	u32 prev_window_size;
+=======
+	int cstate, wakeup_latency, wakeup_energy;
+	u64 window_start;
+	s64 cum_window_start;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int cstate, wakeup_latency, wakeup_energy;
 	u64 window_start;
@@ -986,8 +1044,14 @@ struct rq {
 	u64 avg_irqload;
 	u64 irqload_ts;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct task_struct *ed_task;
 	u64 task_exec_scale;
+=======
+	unsigned int static_cpu_pwr_cost;
+	struct task_struct *ed_task;
+	struct cpu_cycle cc;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned int static_cpu_pwr_cost;
 	struct task_struct *ed_task;
@@ -1065,6 +1129,7 @@ struct rq {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_FAIR_GROUP_SCHED
 
 /* CPU runqueue to which this cfs_rq is attached */
@@ -1081,6 +1146,8 @@ static inline struct rq *rq_of(struct cfs_rq *cfs_rq)
 }
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline int cpu_of(struct rq *rq)
@@ -1204,9 +1271,12 @@ static inline void rq_pin_lock(struct rq *rq, struct rq_flags *rf)
 	rf->clock_update_flags = 0;
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_SMP
 	SCHED_WARN_ON(rq->balance_callback);
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -1435,10 +1505,16 @@ DECLARE_PER_CPU(int, sd_llc_id);
 DECLARE_PER_CPU(struct sched_domain_shared *, sd_llc_shared);
 DECLARE_PER_CPU(struct sched_domain *, sd_numa);
 <<<<<<< HEAD
+<<<<<<< HEAD
 DECLARE_PER_CPU(struct sched_domain *, sd_ea);
 DECLARE_PER_CPU(struct sched_domain *, sd_scs);
 DECLARE_PER_CPU(struct sched_domain *, sd_asym_packing);
 DECLARE_PER_CPU(struct sched_domain *, sd_asym_cpucapacity);
+=======
+DECLARE_PER_CPU(struct sched_domain *, sd_asym);
+DECLARE_PER_CPU(struct sched_domain *, sd_ea);
+DECLARE_PER_CPU(struct sched_domain *, sd_scs);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 DECLARE_PER_CPU(struct sched_domain *, sd_asym);
 DECLARE_PER_CPU(struct sched_domain *, sd_ea);
@@ -1482,7 +1558,11 @@ struct sched_group {
 	 * depending on how many CPUs the kernel has booted up with)
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long cpumask[];
+=======
+	unsigned long cpumask[0];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long cpumask[0];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1529,6 +1609,7 @@ static inline void unregister_sched_domain_sysctl(void)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern void flush_smp_call_function_from_idle(void);
 
 #else /* !CONFIG_SMP: */
@@ -1536,11 +1617,16 @@ static inline void flush_smp_call_function_from_idle(void) { }
 static inline void sched_ttwu_pending(void) { }
 #endif
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #else
 
 static inline void sched_ttwu_pending(void) { }
 
 #endif /* CONFIG_SMP */
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #include "stats.h"
@@ -1607,9 +1693,15 @@ static inline void __set_task_cpu(struct task_struct *p, unsigned int cpu)
 	smp_wmb();
 #ifdef CONFIG_THREAD_INFO_IN_TASK
 <<<<<<< HEAD
+<<<<<<< HEAD
 	WRITE_ONCE(p->cpu, cpu);
 #else
 	WRITE_ONCE(task_thread_info(p)->cpu, cpu);
+=======
+	p->cpu = cpu;
+#else
+	task_thread_info(p)->cpu = cpu;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	p->cpu = cpu;
 #else
@@ -1631,6 +1723,11 @@ static inline void __set_task_cpu(struct task_struct *p, unsigned int cpu)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+extern const_debug unsigned int sysctl_sched_features;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern const_debug unsigned int sysctl_sched_features;
 
@@ -1647,6 +1744,7 @@ enum {
 
 #if defined(CONFIG_SCHED_DEBUG) && defined(HAVE_JUMP_LABEL)
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 /*
  * To support run-time toggling of sched features, all the translation units
@@ -1654,6 +1752,8 @@ enum {
  */
 extern const_debug unsigned int sysctl_sched_features;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define SCHED_FEAT(name, enabled)					\
@@ -1664,6 +1764,10 @@ static __always_inline bool static_branch_##name(struct static_key *key) \
 
 #include "features.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1671,6 +1775,7 @@ static __always_inline bool static_branch_##name(struct static_key *key) \
 
 extern struct static_key sched_feat_keys[__SCHED_FEAT_NR];
 #define sched_feat(x) (static_branch_##x(&sched_feat_keys[__SCHED_FEAT_##x]))
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 #else /* !(SCHED_DEBUG && HAVE_JUMP_LABEL) */
@@ -1689,6 +1794,10 @@ static const_debug __maybe_unused unsigned int sysctl_sched_features =
 
 #define sched_feat(x) !!(sysctl_sched_features & (1UL << __SCHED_FEAT_##x))
 
+=======
+#else /* !(SCHED_DEBUG && HAVE_JUMP_LABEL) */
+#define sched_feat(x) !!(sysctl_sched_features & (1UL << __SCHED_FEAT_##x))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #else /* !(SCHED_DEBUG && HAVE_JUMP_LABEL) */
 #define sched_feat(x) !!(sysctl_sched_features & (1UL << __SCHED_FEAT_##x))
@@ -1733,7 +1842,11 @@ static inline int task_on_rq_queued(struct task_struct *p)
 static inline int task_on_rq_migrating(struct task_struct *p)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return READ_ONCE(p->on_rq) == TASK_ON_RQ_MIGRATING;
+=======
+	return p->on_rq == TASK_ON_RQ_MIGRATING;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return p->on_rq == TASK_ON_RQ_MIGRATING;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1833,7 +1946,10 @@ extern const u32 sched_prio_to_wmult[40];
 #define DEQUEUE_MOVE		0x04 /* matches ENQUEUE_MOVE */
 #define DEQUEUE_NOCLOCK		0x08 /* matches ENQUEUE_NOCLOCK */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define DEQUEUE_IDLE		0x80 /* The last dequeue before IDLE */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -2036,8 +2152,11 @@ extern void init_dl_rq_bw_ratio(struct dl_rq *dl_rq);
 #define BW_UNIT		(1 << BW_SHIFT)
 #define RATIO_SHIFT	8
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define MAX_BW_BITS	(64 - BW_SHIFT)
 #define MAX_BW		((1ULL << MAX_BW_BITS) - 1)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 unsigned long to_ratio(u64 period, u64 runtime);
@@ -2150,10 +2269,14 @@ static inline int hrtick_enabled(struct rq *rq)
 #ifdef CONFIG_SCHED_WALT
 u64 sched_ktime_clock(void);
 <<<<<<< HEAD
+<<<<<<< HEAD
 unsigned long
 cpu_util_freq_walt(int cpu, struct sched_walt_cpu_load *walt_load);
 #else
 #define sched_ravg_window TICK_NSEC
+=======
+#else
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #else
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2206,11 +2329,14 @@ static inline unsigned long capacity_orig_of(int cpu)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline unsigned long task_util(struct task_struct *p)
 {
 #ifdef CONFIG_SCHED_WALT
 	return p->ravg.demand_scaled;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern unsigned int sysctl_sched_use_walt_cpu_util;
 extern unsigned int walt_disabled;
 
@@ -2219,6 +2345,9 @@ static inline unsigned long task_util(struct task_struct *p)
 #ifdef CONFIG_SCHED_WALT
 	if (likely(!walt_disabled && sysctl_sched_use_walt_task_util))
 		return p->ravg.demand_scaled;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 	return READ_ONCE(p->se.avg.util_avg);
@@ -2269,12 +2398,15 @@ static inline unsigned long cpu_util(int cpu)
 
 #ifdef CONFIG_SCHED_WALT
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64 walt_cpu_util =
 		cpu_rq(cpu)->walt_stats.cumulative_runnable_avg_scaled;
 
 		return min_t(unsigned long, walt_cpu_util,
 				capacity_orig_of(cpu));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (likely(!walt_disabled && sysctl_sched_use_walt_cpu_util)) {
 		u64 walt_cpu_util =
 			cpu_rq(cpu)->walt_stats.cumulative_runnable_avg_scaled;
@@ -2282,6 +2414,9 @@ static inline unsigned long cpu_util(int cpu)
 		return min_t(unsigned long, walt_cpu_util,
 				capacity_orig_of(cpu));
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
 
@@ -2295,7 +2430,10 @@ static inline unsigned long cpu_util(int cpu)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct sched_walt_cpu_load {
 	unsigned long prev_window_util;
 	unsigned long nl;
@@ -2303,6 +2441,9 @@ struct sched_walt_cpu_load {
 	u64 ws;
 };
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline unsigned long cpu_util_cum(int cpu, int delta)
 {
@@ -2311,7 +2452,12 @@ static inline unsigned long cpu_util_cum(int cpu, int delta)
 
 #ifdef CONFIG_SCHED_WALT
 <<<<<<< HEAD
+<<<<<<< HEAD
 	util = cpu_rq(cpu)->cum_window_demand_scaled;
+=======
+	if (!walt_disabled && sysctl_sched_use_walt_cpu_util)
+		util = cpu_rq(cpu)->cum_window_demand_scaled;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!walt_disabled && sysctl_sched_use_walt_cpu_util)
 		util = cpu_rq(cpu)->cum_window_demand_scaled;
@@ -2325,7 +2471,10 @@ static inline unsigned long cpu_util_cum(int cpu, int delta)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #ifdef CONFIG_SCHED_WALT
 u64 freq_policy_load(struct rq *rq);
@@ -2379,6 +2528,9 @@ cpu_util_freq(int cpu, struct sched_walt_cpu_load *walt_load)
 
 #else
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline unsigned long cpu_util_rt(int cpu)
 {
@@ -2391,6 +2543,7 @@ static inline unsigned long
 cpu_util_freq(int cpu, struct sched_walt_cpu_load *walt_load)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_SCHED_WALT
 	return cpu_util_freq_walt(cpu, walt_load);
 #else
@@ -2399,6 +2552,8 @@ cpu_util_freq(int cpu, struct sched_walt_cpu_load *walt_load)
 }
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return min(cpu_util(cpu) + cpu_util_rt(cpu), capacity_orig_of(cpu));
 }
 
@@ -2407,6 +2562,9 @@ cpu_util_freq(int cpu, struct sched_walt_cpu_load *walt_load)
 
 #endif /* CONFIG_SCHED_WALT */
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern unsigned long
 boosted_cpu_util(int cpu, struct sched_walt_cpu_load *walt_load);
@@ -2798,6 +2956,7 @@ enum sched_boost_policy {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_SCHED_WALT
 
 #define WALT_MANY_WAKEUP_DEFAULT 1000
@@ -2806,6 +2965,8 @@ static inline bool walt_want_remote_wakeup(void)
 	return sysctl_sched_many_wakeup_threshold < WALT_MANY_WAKEUP_DEFAULT;
 }
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * Returns the rq capacity of any rq in a group. This does not play
  * well with groups where rq capacity can change independently.
@@ -2813,6 +2974,9 @@ static inline bool walt_want_remote_wakeup(void)
 #define group_rq_capacity(group) cpu_capacity(group_first_cpu(group))
 
 #ifdef CONFIG_SCHED_WALT
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static inline int cluster_first_cpu(struct sched_cluster *cluster)
@@ -2826,6 +2990,7 @@ struct related_thread_group {
 	struct list_head tasks;
 	struct list_head list;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool skip_min;
 	struct rcu_head rcu;
 	u64 last_update;
@@ -2836,6 +3001,8 @@ struct related_thread_group {
 extern struct sched_cluster *sched_cluster[NR_CPUS];
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct sched_cluster *preferred_cluster;
 	struct rcu_head rcu;
 	u64 last_update;
@@ -2856,12 +3023,19 @@ extern struct sched_cluster *sched_cluster[NR_CPUS];
 #define SCHED_UPMIGRATE_MIN_NICE 15
 #define EXITING_TASK_MARKER	0xdeaddead
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define UP_MIGRATION		1
 #define DOWN_MIGRATION		2
 #define IRQLOAD_MIGRATION	3
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+extern struct mutex policy_mutex;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern struct mutex policy_mutex;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2871,6 +3045,12 @@ extern unsigned int min_max_freq;
 extern unsigned int max_possible_efficiency;
 extern unsigned int min_possible_efficiency;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+extern unsigned int max_capacity;
+extern unsigned int min_capacity;
+extern unsigned int max_load_scale_factor;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern unsigned int max_capacity;
 extern unsigned int min_capacity;
@@ -2881,7 +3061,10 @@ extern unsigned int min_max_possible_capacity;
 extern unsigned int max_power_cost;
 extern unsigned int __read_mostly sched_init_task_load_windows;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern unsigned int up_down_migrate_scale_factor;
 extern unsigned int sysctl_sched_restrict_cluster_spill;
 extern unsigned int sched_pred_alert_load;
@@ -2894,13 +3077,20 @@ extern unsigned int  __read_mostly sched_spill_load;
 extern unsigned int  __read_mostly sched_upmigrate;
 extern unsigned int  __read_mostly sched_downmigrate;
 extern unsigned int  __read_mostly sysctl_sched_spill_nr_run;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 extern unsigned int  __read_mostly sched_load_granule;
 
 extern int register_cpu_cycle_counter_cb(struct cpu_cycle_counter_cb *cb);
 extern int update_preferred_cluster(struct related_thread_group *grp,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			struct task_struct *p, u32 old_load, bool from_tick);
+=======
+			struct task_struct *p, u32 old_load);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			struct task_struct *p, u32 old_load);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2917,10 +3107,16 @@ extern void add_new_task_to_grp(struct task_struct *new);
 #define MAX_NUM_BOOST_TYPE (RESTRAINED_BOOST+1)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int asym_cap_siblings(int cpu1, int cpu2)
 {
 	return (cpumask_test_cpu(cpu1, &asym_cap_sibling_cpus) &&
 		cpumask_test_cpu(cpu2, &asym_cap_sibling_cpus));
+=======
+static inline int cpu_capacity(int cpu)
+{
+	return cpu_rq(cpu)->cluster->capacity;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline int cpu_capacity(int cpu)
 {
@@ -2934,7 +3130,10 @@ static inline int cpu_max_possible_capacity(int cpu)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline int cpu_load_scale_factor(int cpu)
 {
 	return cpu_rq(cpu)->cluster->load_scale_factor;
@@ -2950,6 +3149,9 @@ static inline unsigned int cpu_min_freq(int cpu)
 	return cpu_rq(cpu)->cluster->min_freq;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline unsigned int cluster_max_freq(struct sched_cluster *cluster)
 {
@@ -2972,7 +3174,10 @@ static inline unsigned int cpu_max_possible_freq(int cpu)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* Keep track of max/min capacity possible across CPUs "currently" */
 static inline void __update_min_max_capacity(void)
 {
@@ -3042,6 +3247,9 @@ static inline int cpu_min_power_cost(int cpu)
 	return cpu_rq(cpu)->cluster->min_power_cost;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline bool hmp_capable(void)
 {
@@ -3059,7 +3267,10 @@ static inline bool is_min_capacity_cpu(int cpu)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * 'load' is in reference to "best cpu" at its best frequency.
  * Scale that in reference to a given cpu, accounting for how bad it is
@@ -3109,6 +3320,9 @@ static inline int compute_capacity(struct sched_cluster *cluster)
 	return capacity;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline unsigned int task_load(struct task_struct *p)
 {
@@ -3121,13 +3335,19 @@ static inline unsigned int task_pl(struct task_struct *p)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define pct_to_real(tunable)	\
 		(div64_u64((u64)tunable * (u64)max_task_load(), 100))
 
 #define real_to_pct(tunable)	\
 		(div64_u64((u64)tunable * (u64)100, (u64)max_task_load()))
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline bool task_in_related_thread_group(struct task_struct *p)
 {
@@ -3149,9 +3369,12 @@ static inline int same_freq_domain(int src_cpu, int dst_cpu)
 		return 1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (asym_cap_siblings(src_cpu, dst_cpu))
 		return 1;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return cpumask_test_cpu(dst_cpu, &rq->freq_domain_cpumask);
@@ -3169,7 +3392,11 @@ extern unsigned int sched_boost_type;
 static inline int sched_boost(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return unlikely(is_battery_saver_on()) ? 0 : sched_boost_type;
+=======
+	return sched_boost_type;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return sched_boost_type;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3206,6 +3433,11 @@ static inline void restore_cgroup_boost_settings(void) { }
 extern int alloc_related_thread_groups(void);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+extern unsigned long all_cluster_ids[];
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern unsigned long all_cluster_ids[];
 
@@ -3248,6 +3480,11 @@ static inline void walt_fixup_cum_window_demand(struct rq *rq, s64 scaled_delta)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+extern void update_cpu_cluster_capacity(const cpumask_t *cpus);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern void update_cpu_cluster_capacity(const cpumask_t *cpus);
 
@@ -3293,7 +3530,12 @@ static inline enum sched_boost_policy task_boost_policy(struct task_struct *p)
 		 */
 		if (sched_boost() == CONSERVATIVE_BOOST &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 			task_util(p) <= sysctl_sched_min_task_util_for_boost)
+=======
+				task_util(p) <=
+				sysctl_sched_min_task_util_for_boost)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				task_util(p) <=
 				sysctl_sched_min_task_util_for_boost)
@@ -3305,6 +3547,12 @@ static inline enum sched_boost_policy task_boost_policy(struct task_struct *p)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+extern void walt_map_freq_to_load(void);
+extern void walt_update_min_max_capacity(void);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern void walt_map_freq_to_load(void);
 extern void walt_update_min_max_capacity(void);
@@ -3357,7 +3605,11 @@ static inline int
 preferred_cluster(struct sched_cluster *cluster, struct task_struct *p)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return -1;
+=======
+	return 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3369,8 +3621,11 @@ static inline struct sched_cluster *rq_cluster(struct rq *rq)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int asym_cap_siblings(int cpu1, int cpu2) { return 0; }
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline u64 scale_load_to_cpu(u64 load, int cpu)
 {
 	return load;
@@ -3382,6 +3637,9 @@ static inline int cpu_capacity(int cpu)
 	return SCHED_CAPACITY_SCALE;
 }
 #endif
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static inline void set_preferred_cluster(struct related_thread_group *grp) { }
@@ -3402,7 +3660,11 @@ static inline u32 task_pl(struct task_struct *p) { return 0; }
 
 static inline int update_preferred_cluster(struct related_thread_group *grp,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			 struct task_struct *p, u32 old_load, bool from_tick)
+=======
+			 struct task_struct *p, u32 old_load)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			 struct task_struct *p, u32 old_load)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3421,10 +3683,13 @@ static inline void clear_reserved(int cpu) { }
 static inline int alloc_related_thread_groups(void) { return 0; }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void walt_fixup_cum_window_demand(struct rq *rq,
 						s64 scaled_delta) { }
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define trace_sched_cpu_load(...)
 #define trace_sched_cpu_load_lb(...)
 #define trace_sched_cpu_load_cgroup(...)
@@ -3435,6 +3700,9 @@ static inline void walt_fixup_cum_window_demand(struct rq *rq,
 
 static inline void update_cpu_cluster_capacity(const cpumask_t *cpus) { }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_SMP
 static inline unsigned long thermal_cap(int cpu)
@@ -3473,10 +3741,15 @@ static inline unsigned int power_cost(int cpu, u64 demand)
 
 static inline void note_task_waking(struct task_struct *p, u64 wallclock) { }
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline bool walt_want_remote_wakeup(void)
 {
 	return false;
 }
+=======
+static inline void walt_map_freq_to_load(void) { }
+static inline void walt_update_min_max_capacity(void) { }
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline void walt_map_freq_to_load(void) { }
 static inline void walt_update_min_max_capacity(void) { }
@@ -3493,7 +3766,10 @@ struct sched_avg_stats {
 	int nr_misfit;
 	int nr_max;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int nr_scaled;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

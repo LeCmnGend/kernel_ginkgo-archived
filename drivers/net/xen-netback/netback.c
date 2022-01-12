@@ -163,10 +163,13 @@ void xenvif_napi_schedule_or_enable_events(struct xenvif_queue *queue)
 	if (more_to_do)
 		napi_schedule(&queue->napi);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	else if (atomic_fetch_andnot(NETBK_TX_EOI | NETBK_COMMON_EOI,
 				     &queue->eoi_pending) &
 		 (NETBK_TX_EOI | NETBK_COMMON_EOI))
 		xen_irq_lateeoi(queue->tx_irq, 0);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -1337,6 +1340,7 @@ int xenvif_tx_action(struct xenvif_queue *queue, int budget)
 				      queue->pages_to_map,
 				      nr_mops);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ret) {
 			unsigned int i;
 
@@ -1346,6 +1350,9 @@ int xenvif_tx_action(struct xenvif_queue *queue, int budget)
 				WARN_ON_ONCE(queue->tx_map_ops[i].status ==
 				             GNTST_okay);
 		}
+=======
+		BUG_ON(ret);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		BUG_ON(ret);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1635,6 +1642,7 @@ irqreturn_t xenvif_ctrl_irq_fn(int irq, void *data)
 {
 	struct xenvif *vif = data;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int eoi_flag = XEN_EOI_FLAG_SPURIOUS;
 
 	while (xenvif_ctrl_work_todo(vif)) {
@@ -1643,6 +1651,11 @@ irqreturn_t xenvif_ctrl_irq_fn(int irq, void *data)
 	}
 
 	xen_irq_lateeoi(irq, eoi_flag);
+=======
+
+	while (xenvif_ctrl_work_todo(vif))
+		xenvif_ctrl_action(vif);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	while (xenvif_ctrl_work_todo(vif))

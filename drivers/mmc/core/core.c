@@ -68,7 +68,11 @@ static const unsigned freqs[] = { 400000, 300000, 200000, 100000 };
  * So we allow it it to be disabled.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 bool use_spi_crc = 0;
+=======
+bool use_spi_crc = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 bool use_spi_crc = 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2458,6 +2462,7 @@ int mmc_execute_tuning(struct mmc_card *card)
 	mmc_host_clk_release(host);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (err) {
 		pr_err("%s: tuning execution failed: %d\n",
 			mmc_hostname(host), err);
@@ -2467,11 +2472,16 @@ int mmc_execute_tuning(struct mmc_card *card)
 		mmc_retune_enable(host);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		pr_err("%s: tuning execution failed: %d\n",
 			mmc_hostname(host), err);
 	else
 		mmc_retune_enable(host);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	return err;

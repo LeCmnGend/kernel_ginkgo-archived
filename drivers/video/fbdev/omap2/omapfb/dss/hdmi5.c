@@ -55,10 +55,16 @@ static int hdmi_runtime_get(void)
 
 	r = pm_runtime_get_sync(&hdmi.pdev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (WARN_ON(r < 0)) {
 		pm_runtime_put_sync(&hdmi.pdev->dev);
 		return r;
 	}
+=======
+	WARN_ON(r < 0);
+	if (r < 0)
+		return r;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	WARN_ON(r < 0);
 	if (r < 0)

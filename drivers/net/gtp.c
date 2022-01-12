@@ -550,8 +550,14 @@ static int gtp_build_skb_ip4(struct sk_buff *skb, struct net_device *dev,
 	    mtu < ntohs(iph->tot_len)) {
 		netdev_dbg(dev, "packet too big, fragmentation needed\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		icmp_ndo_send(skb, ICMP_DEST_UNREACH, ICMP_FRAG_NEEDED,
 			      htonl(mtu));
+=======
+		memset(IPCB(skb), 0, sizeof(*IPCB(skb)));
+		icmp_send(skb, ICMP_DEST_UNREACH, ICMP_FRAG_NEEDED,
+			  htonl(mtu));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		memset(IPCB(skb), 0, sizeof(*IPCB(skb)));
 		icmp_send(skb, ICMP_DEST_UNREACH, ICMP_FRAG_NEEDED,
@@ -673,11 +679,17 @@ static int gtp_newlink(struct net *src_net, struct net_device *dev,
 	gtp = netdev_priv(dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = gtp_encap_enable(gtp, data);
 	if (err < 0)
 		return err;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!data[IFLA_GTP_PDP_HASHSIZE]) {
 		hashsize = 1024;
@@ -690,6 +702,7 @@ static int gtp_newlink(struct net *src_net, struct net_device *dev,
 	err = gtp_hashtable_new(gtp, hashsize);
 	if (err < 0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return err;
 
 	err = gtp_encap_enable(gtp, data);
@@ -698,12 +711,19 @@ static int gtp_newlink(struct net *src_net, struct net_device *dev,
 =======
 		goto out_encap;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+		goto out_encap;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	err = register_netdevice(dev);
 	if (err < 0) {
 		netdev_dbg(dev, "failed to register new netdev %d\n", err);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_encap;
+=======
+		goto out_hashtable;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto out_hashtable;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -718,17 +738,23 @@ static int gtp_newlink(struct net *src_net, struct net_device *dev,
 	return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 out_encap:
 	gtp_encap_disable(gtp);
 out_hashtable:
 	kfree(gtp->addr_hash);
 	kfree(gtp->tid_hash);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out_hashtable:
 	kfree(gtp->addr_hash);
 	kfree(gtp->tid_hash);
 out_encap:
 	gtp_encap_disable(gtp);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return err;
 }
@@ -1216,7 +1242,10 @@ static int gtp_genl_fill_info(struct sk_buff *skb, u32 snd_portid, u32 snd_seq,
 
 	if (nla_put_u32(skb, GTPA_VERSION, pctx->gtp_version) ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    nla_put_u32(skb, GTPA_LINK, pctx->dev->ifindex) ||
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	    nla_put_be32(skb, GTPA_PEER_ADDRESS, pctx->peer_addr_ip4.s_addr) ||

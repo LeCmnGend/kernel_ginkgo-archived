@@ -8,7 +8,11 @@
 #include <asm/cputable.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __always_inline bool early_cpu_has_feature(unsigned long feature)
+=======
+static inline bool early_cpu_has_feature(unsigned long feature)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline bool early_cpu_has_feature(unsigned long feature)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -51,7 +55,11 @@ static __always_inline bool cpu_has_feature(unsigned long feature)
 }
 #else
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __always_inline bool cpu_has_feature(unsigned long feature)
+=======
+static inline bool cpu_has_feature(unsigned long feature)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline bool cpu_has_feature(unsigned long feature)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

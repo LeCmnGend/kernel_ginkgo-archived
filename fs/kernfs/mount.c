@@ -241,9 +241,12 @@ static int kernfs_fill_super(struct super_block *sb, unsigned long magic)
 	sb->s_time_gran = 1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* sysfs dentries and inodes don't require IO to create */
 	sb->s_shrink.seeks = 0;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* get root inode, initialize and unlock it */
@@ -327,7 +330,10 @@ struct dentry *kernfs_mount_ns(struct file_system_type *fs_type, int flags,
 	info->root = root;
 	info->ns = ns;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	INIT_LIST_HEAD(&info->node);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -416,7 +422,11 @@ struct super_block *kernfs_pin_sb(struct kernfs_root *root, const void *ns)
 void __init kernfs_init(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	init_kernfs_file_pool();
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

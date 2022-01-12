@@ -189,8 +189,11 @@ struct acpi_thermal {
 	int kelvin_offset;
 	struct work_struct thermal_check_work;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct mutex thermal_check_lock;
 	refcount_t thermal_check_count;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -519,7 +522,10 @@ static int acpi_thermal_get_trip_points(struct acpi_thermal *tz)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void acpi_thermal_check(void *data)
 {
 	struct acpi_thermal *tz = data;
@@ -531,6 +537,9 @@ static void acpi_thermal_check(void *data)
 				   THERMAL_EVENT_UNSPECIFIED);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* sys I/F for generic thermal sysfs support */
 
@@ -566,8 +575,11 @@ static int thermal_get_mode(struct thermal_zone_device *thermal,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void acpi_thermal_check_fn(struct work_struct *work);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int thermal_set_mode(struct thermal_zone_device *thermal,
@@ -596,7 +608,11 @@ static int thermal_set_mode(struct thermal_zone_device *thermal,
 			"%s kernel ACPI thermal control\n",
 			tz->tz_enabled ? "Enable" : "Disable"));
 <<<<<<< HEAD
+<<<<<<< HEAD
 		acpi_thermal_check_fn(&tz->thermal_check_work);
+=======
+		acpi_thermal_check(tz);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		acpi_thermal_check(tz);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -969,12 +985,15 @@ static void acpi_thermal_unregister_thermal_zone(struct acpi_thermal *tz)
    -------------------------------------------------------------------------- */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void acpi_queue_thermal_check(struct acpi_thermal *tz)
 {
 	if (!work_pending(&tz->thermal_check_work))
 		queue_work(acpi_thermal_pm_queue, &tz->thermal_check_work);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void acpi_thermal_notify(struct acpi_device *device, u32 event)
@@ -988,17 +1007,23 @@ static void acpi_thermal_notify(struct acpi_device *device, u32 event)
 	switch (event) {
 	case ACPI_THERMAL_NOTIFY_TEMPERATURE:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		acpi_queue_thermal_check(tz);
 		break;
 	case ACPI_THERMAL_NOTIFY_THRESHOLDS:
 		acpi_thermal_trips_update(tz, ACPI_TRIPS_REFRESH_THRESHOLDS);
 		acpi_queue_thermal_check(tz);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		acpi_thermal_check(tz);
 		break;
 	case ACPI_THERMAL_NOTIFY_THRESHOLDS:
 		acpi_thermal_trips_update(tz, ACPI_TRIPS_REFRESH_THRESHOLDS);
 		acpi_thermal_check(tz);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		acpi_bus_generate_netlink_event(device->pnp.device_class,
 						  dev_name(&device->dev), event, 0);
@@ -1006,7 +1031,11 @@ static void acpi_thermal_notify(struct acpi_device *device, u32 event)
 	case ACPI_THERMAL_NOTIFY_DEVICES:
 		acpi_thermal_trips_update(tz, ACPI_TRIPS_REFRESH_DEVICES);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		acpi_queue_thermal_check(tz);
+=======
+		acpi_thermal_check(tz);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		acpi_thermal_check(tz);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1110,6 +1139,7 @@ static void acpi_thermal_check_fn(struct work_struct *work)
 	struct acpi_thermal *tz = container_of(work, struct acpi_thermal,
 					       thermal_check_work);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (!tz->tz_enabled)
 		return;
@@ -1131,6 +1161,9 @@ static void acpi_thermal_check_fn(struct work_struct *work)
 	refcount_inc(&tz->thermal_check_count);
 
 	mutex_unlock(&tz->thermal_check_lock);
+=======
+	acpi_thermal_check(tz);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	acpi_thermal_check(tz);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1166,8 +1199,11 @@ static int acpi_thermal_add(struct acpi_device *device)
 		goto free_memory;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	refcount_set(&tz->thermal_check_count, 3);
 	mutex_init(&tz->thermal_check_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	INIT_WORK(&tz->thermal_check_work, acpi_thermal_check_fn);
@@ -1236,7 +1272,11 @@ static int acpi_thermal_resume(struct device *dev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	acpi_queue_thermal_check(tz);
+=======
+	queue_work(acpi_thermal_pm_queue, &tz->thermal_check_work);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	queue_work(acpi_thermal_pm_queue, &tz->thermal_check_work);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

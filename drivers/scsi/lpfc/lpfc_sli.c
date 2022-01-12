@@ -7033,7 +7033,11 @@ lpfc_sli4_hba_setup(struct lpfc_hba *phba)
 				rc);
 		rc = -ENODEV;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_free_iocblist;
+=======
+		goto out_destroy_queue;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto out_destroy_queue;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -7162,9 +7166,14 @@ out_unset_queue:
 	/* Unset all the queues set up in this routine when error out */
 	lpfc_sli4_queue_unset(phba);
 <<<<<<< HEAD
+<<<<<<< HEAD
 out_free_iocblist:
 	lpfc_free_iocb_list(phba);
 out_destroy_queue:
+=======
+out_destroy_queue:
+	lpfc_free_iocb_list(phba);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 out_destroy_queue:
 	lpfc_free_iocb_list(phba);
@@ -16648,6 +16657,10 @@ lpfc_sli4_seq_abort_rsp_cmpl(struct lpfc_hba *phba,
 		ndlp = (struct lpfc_nodelist *)cmd_iocbq->context1;
 		lpfc_nlp_put(ndlp);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		lpfc_nlp_not_used(ndlp);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		lpfc_nlp_not_used(ndlp);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -17052,10 +17065,13 @@ lpfc_prep_seq(struct lpfc_vport *vport, struct hbq_dmabuf *seq_dmabuf)
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Free the sequence's header buffer */
 	if (!first_iocbq)
 		lpfc_in_buf_free(vport->phba, &seq_dmabuf->dbuf);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return first_iocbq;

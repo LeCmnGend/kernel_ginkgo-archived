@@ -1813,10 +1813,15 @@ static int hns_nic_clear_all_rx_fetch(struct net_device *ndev)
 				/* alloc one skb and init */
 				skb = hns_assemble_skb(ndev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if (!skb) {
 					ret = -ENOMEM;
 					goto out;
 				}
+=======
+				if (!skb)
+					goto out;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				if (!skb)
 					goto out;
@@ -2441,10 +2446,15 @@ static int hns_nic_dev_probe(struct platform_device *pdev)
 		else if (acpi_dev_found(hns_enet_acpi_match[1].id))
 			priv->enet_ver = AE_VERSION_2;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		else {
 			ret = -ENXIO;
 			goto out_read_prop_fail;
 		}
+=======
+		else
+			return -ENXIO;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		else
 			return -ENXIO;
@@ -2461,8 +2471,12 @@ static int hns_nic_dev_probe(struct platform_device *pdev)
 	} else {
 		dev_err(dev, "cannot read cfg data from OF or acpi\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = -ENXIO;
 		goto out_read_prop_fail;
+=======
+		return -ENXIO;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -ENXIO;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

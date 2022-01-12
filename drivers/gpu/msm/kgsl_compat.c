@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2013-2017,2021, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2013-2017, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2013-2017, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -389,6 +393,11 @@ long kgsl_compat_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
 		if (device->ftbl->compat_ioctl != NULL)
 			return device->ftbl->compat_ioctl(dev_priv, cmd, arg);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+		KGSL_DRV_INFO(device, "invalid ioctl code 0x%08X\n", cmd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 		KGSL_DRV_INFO(device, "invalid ioctl code 0x%08X\n", cmd);

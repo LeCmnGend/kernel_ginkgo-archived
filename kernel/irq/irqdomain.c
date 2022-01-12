@@ -1365,6 +1365,7 @@ static void irq_domain_free_irqs_hierarchy(struct irq_domain *domain,
 					   unsigned int nr_irqs)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int i;
 
 	if (!domain->ops->free)
@@ -1374,6 +1375,10 @@ static void irq_domain_free_irqs_hierarchy(struct irq_domain *domain,
 		if (irq_domain_get_irq_data(domain, irq_base + i))
 			domain->ops->free(domain, irq_base + i, 1);
 	}
+=======
+	if (domain->ops->free)
+		domain->ops->free(domain, irq_base, nr_irqs);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (domain->ops->free)
 		domain->ops->free(domain, irq_base, nr_irqs);

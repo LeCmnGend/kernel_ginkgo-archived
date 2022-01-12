@@ -603,7 +603,11 @@ static irqreturn_t arizona_hpdet_irq(int irq, void *data)
 	int id_gpio = arizona->pdata.hpdet_id_gpio;
 	unsigned int report = EXTCON_JACK_HEADPHONE;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret, reading, state;
+=======
+	int ret, reading;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int ret, reading;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -620,18 +624,24 @@ static irqreturn_t arizona_hpdet_irq(int irq, void *data)
 
 	/* If the cable was removed while measuring ignore the result */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	state = extcon_get_state(info->edev, EXTCON_MECHANICAL);
 	if (state < 0) {
 		dev_err(arizona->dev, "Failed to check cable state: %d\n", state);
 		goto out;
 	} else if (!state) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = extcon_get_state(info->edev, EXTCON_MECHANICAL);
 	if (ret < 0) {
 		dev_err(arizona->dev, "Failed to check cable state: %d\n",
 			ret);
 		goto out;
 	} else if (!ret) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dev_dbg(arizona->dev, "Ignoring HPDET for removed cable\n");
 		goto done;
@@ -686,7 +696,11 @@ done:
 
 	/* If we have a mic then reenable MICDET */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (state && (mic || info->mic))
+=======
+	if (mic || info->mic)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (mic || info->mic)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -698,9 +712,13 @@ done:
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Do not set hp_det done when the cable has been unplugged */
 	if (state)
 		info->hpdet_done = true;
+=======
+	info->hpdet_done = true;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	info->hpdet_done = true;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

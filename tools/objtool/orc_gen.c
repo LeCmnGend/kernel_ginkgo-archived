@@ -99,12 +99,18 @@ static int create_orc_entry(struct section *u_sec, struct section *ip_relasec,
 	struct rela *rela;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!insn_sec->sym) {
 		WARN("missing symbol for section %s", insn_sec->name);
 		return -1;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* populate ORC data */
 	orc = (struct orc_entry *)u_sec->data->d_buf + idx;
@@ -118,6 +124,7 @@ static int create_orc_entry(struct section *u_sec, struct section *ip_relasec,
 	}
 	memset(rela, 0, sizeof(*rela));
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (insn_sec->sym) {
 		rela->sym = insn_sec->sym;
@@ -145,6 +152,10 @@ static int create_orc_entry(struct section *u_sec, struct section *ip_relasec,
 		rela->addend = insn_off - rela->sym->offset;
 	}
 
+=======
+	rela->sym = insn_sec->sym;
+	rela->addend = insn_off;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rela->sym = insn_sec->sym;
 	rela->addend = insn_off;

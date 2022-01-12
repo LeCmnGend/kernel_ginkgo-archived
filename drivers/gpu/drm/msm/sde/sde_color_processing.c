@@ -27,10 +27,13 @@
 #include "dsi_panel.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_DRM_MSM_KCAL_CTRL
 #include "sde_hw_kcal_ctrl.h"
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct sde_cp_node {
@@ -1033,12 +1036,15 @@ exit:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_DRM_MSM_KCAL_CTRL
 struct drm_crtc *g_pcc_crtc;
 struct drm_property *g_pcc_property;
 uint64_t g_pcc_val;
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int sde_cp_crtc_set_property(struct drm_crtc *crtc,
@@ -1075,6 +1081,7 @@ int sde_cp_crtc_set_property(struct drm_crtc *crtc,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_DRM_MSM_KCAL_CTRL
 	if (prop_node->feature == SDE_CP_CRTC_DSPP_PCC) {
 		pr_debug("%s pcc kad kcal\n",__func__);
@@ -1084,6 +1091,8 @@ int sde_cp_crtc_set_property(struct drm_crtc *crtc,
 	}
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/**
@@ -1147,6 +1156,7 @@ exit:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_DRM_MSM_KCAL_CTRL
 void kcal_force_update(void) {
 	if (g_pcc_crtc) {
@@ -1157,6 +1167,8 @@ void kcal_force_update(void) {
 EXPORT_SYMBOL(kcal_force_update);
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int sde_cp_crtc_get_property(struct drm_crtc *crtc,

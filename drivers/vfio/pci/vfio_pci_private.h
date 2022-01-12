@@ -64,11 +64,14 @@ struct vfio_pci_dummy_resource {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct vfio_pci_mmap_vma {
 	struct vm_area_struct	*vma;
 	struct list_head	vma_next;
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct vfio_pci_device {
@@ -104,9 +107,12 @@ struct vfio_pci_device {
 	struct eventfd_ctx	*req_trigger;
 	struct list_head	dummy_resources_list;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct mutex		vma_lock;
 	struct list_head	vma_list;
 	struct rw_semaphore	memory_lock;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -145,6 +151,7 @@ extern int vfio_pci_register_dev_region(struct vfio_pci_device *vdev,
 					const struct vfio_pci_regops *ops,
 					size_t size, u32 flags, void *data);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 extern bool __vfio_pci_memory_enabled(struct vfio_pci_device *vdev);
 extern void vfio_pci_zap_and_down_write_memory_lock(struct vfio_pci_device
@@ -153,6 +160,8 @@ extern u16 vfio_pci_memory_lock_and_enable(struct vfio_pci_device *vdev);
 extern void vfio_pci_memory_unlock_and_restore(struct vfio_pci_device *vdev,
 					       u16 cmd);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_VFIO_PCI_IGD

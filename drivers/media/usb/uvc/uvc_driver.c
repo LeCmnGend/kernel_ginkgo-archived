@@ -905,10 +905,14 @@ static struct uvc_entity *uvc_alloc_entity(u16 type, u8 id,
 
 	extra_size = roundup(extra_size, sizeof(*entity->pads));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (num_pads)
 		num_inputs = type & UVC_TERM_OUTPUT ? num_pads : num_pads - 1;
 	else
 		num_inputs = 0;
+=======
+	num_inputs = (type & UVC_TERM_OUTPUT) ? num_pads : num_pads - 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	num_inputs = (type & UVC_TERM_OUTPUT) ? num_pads : num_pads - 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -928,7 +932,11 @@ static struct uvc_entity *uvc_alloc_entity(u16 type, u8 id,
 	for (i = 0; i < num_inputs; ++i)
 		entity->pads[i].flags = MEDIA_PAD_FL_SINK;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!UVC_ENTITY_IS_OTERM(entity) && num_pads)
+=======
+	if (!UVC_ENTITY_IS_OTERM(entity))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!UVC_ENTITY_IS_OTERM(entity))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

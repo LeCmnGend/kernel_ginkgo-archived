@@ -26,8 +26,11 @@
 #define MAX_STR_CL	50
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define DEBUG_REC_TRANSACTION 0
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct bus_search_type {
@@ -1269,8 +1272,12 @@ static int update_bw_adhoc(struct msm_bus_client_handle *cl, u64 ab, u64 ib)
 		log_transaction = true;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (DEBUG_REC_TRANSACTION)
 		msm_bus_dbg_rec_transaction(cl, ab, ib);
+=======
+	msm_bus_dbg_rec_transaction(cl, ab, ib);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	msm_bus_dbg_rec_transaction(cl, ab, ib);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1335,9 +1342,13 @@ static int update_bw_context(struct msm_bus_client_handle *cl, u64 act_ab,
 	if (!slp_ab && !slp_ib)
 		cl->active_only = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (DEBUG_REC_TRANSACTION)
 		msm_bus_dbg_rec_transaction(cl, cl->cur_act_ab,
 					    cl->cur_dual_ib);
+=======
+	msm_bus_dbg_rec_transaction(cl, cl->cur_act_ab, cl->cur_dual_ib);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	msm_bus_dbg_rec_transaction(cl, cl->cur_act_ab, cl->cur_dual_ib);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

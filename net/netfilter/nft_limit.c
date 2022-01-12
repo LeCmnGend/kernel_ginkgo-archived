@@ -80,7 +80,11 @@ static int nft_limit_init(struct nft_limit *limit,
 
 	if (pkts) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		tokens = div64_u64(limit->nsecs, limit->rate) * limit->burst;
+=======
+		tokens = div_u64(limit->nsecs, limit->rate) * limit->burst;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		tokens = div_u64(limit->nsecs, limit->rate) * limit->burst;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -90,7 +94,11 @@ static int nft_limit_init(struct nft_limit *limit,
 		 * tokens_max = unit * (rate + burst) / rate.
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		tokens = div64_u64(limit->nsecs * (limit->rate + limit->burst),
+=======
+		tokens = div_u64(limit->nsecs * (limit->rate + limit->burst),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		tokens = div_u64(limit->nsecs * (limit->rate + limit->burst),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

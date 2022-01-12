@@ -451,10 +451,15 @@ static ssize_t bq24190_sysfs_show(struct device *dev,
 
 	ret = pm_runtime_get_sync(bdi->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret < 0) {
 		pm_runtime_put_noidle(bdi->dev);
 		return ret;
 	}
+=======
+	if (ret < 0)
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret < 0)
 		return ret;
@@ -1094,10 +1099,15 @@ static int bq24190_charger_get_property(struct power_supply *psy,
 
 	ret = pm_runtime_get_sync(bdi->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret < 0) {
 		pm_runtime_put_noidle(bdi->dev);
 		return ret;
 	}
+=======
+	if (ret < 0)
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret < 0)
 		return ret;
@@ -1173,10 +1183,15 @@ static int bq24190_charger_set_property(struct power_supply *psy,
 
 	ret = pm_runtime_get_sync(bdi->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret < 0) {
 		pm_runtime_put_noidle(bdi->dev);
 		return ret;
 	}
+=======
+	if (ret < 0)
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret < 0)
 		return ret;
@@ -1446,10 +1461,15 @@ static int bq24190_battery_get_property(struct power_supply *psy,
 
 	ret = pm_runtime_get_sync(bdi->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret < 0) {
 		pm_runtime_put_noidle(bdi->dev);
 		return ret;
 	}
+=======
+	if (ret < 0)
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret < 0)
 		return ret;
@@ -1499,10 +1519,15 @@ static int bq24190_battery_set_property(struct power_supply *psy,
 
 	ret = pm_runtime_get_sync(bdi->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret < 0) {
 		pm_runtime_put_noidle(bdi->dev);
 		return ret;
 	}
+=======
+	if (ret < 0)
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret < 0)
 		return ret;

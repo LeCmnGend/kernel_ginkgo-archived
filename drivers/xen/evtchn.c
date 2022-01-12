@@ -167,6 +167,10 @@ static irqreturn_t evtchn_interrupt(int irq, void *data)
 	     evtchn->port, u);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	disable_irq_nosync(irq);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	disable_irq_nosync(irq);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -296,7 +300,11 @@ static ssize_t evtchn_write(struct file *file, const char __user *buf,
 		if (evtchn && !evtchn->enabled) {
 			evtchn->enabled = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			xen_irq_lateeoi(irq_from_evtchn(port), 0);
+=======
+			enable_irq(irq_from_evtchn(port));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			enable_irq(irq_from_evtchn(port));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -400,8 +408,13 @@ static int evtchn_bind_to_user(struct per_user_data *u, int port)
 		goto err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rc = bind_evtchn_to_irqhandler_lateeoi(port, evtchn_interrupt, 0,
 					       u->name, evtchn);
+=======
+	rc = bind_evtchn_to_irqhandler(port, evtchn_interrupt, 0,
+				       u->name, evtchn);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rc = bind_evtchn_to_irqhandler(port, evtchn_interrupt, 0,
 				       u->name, evtchn);

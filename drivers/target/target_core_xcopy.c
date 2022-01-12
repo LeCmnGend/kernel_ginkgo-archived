@@ -56,6 +56,7 @@ static int target_xcopy_gen_naa_ieee(struct se_device *dev, unsigned char *buf)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * target_xcopy_locate_se_dev_e4_iter - compare XCOPY NAA device identifiers
  *
@@ -74,6 +75,8 @@ static int target_xcopy_locate_se_dev_e4_iter(struct se_device *se_dev,
 		return 0;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct xcopy_dev_search_info {
 	const unsigned char *dev_wwn;
 	struct se_device *found_dev;
@@ -88,11 +91,15 @@ static int target_xcopy_locate_se_dev_e4_iter(struct se_device *se_dev,
 
 	if (!se_dev->dev_attrib.emulate_3pc)
 		return 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	memset(&tmp_dev_wwn[0], 0, XCOPY_NAA_IEEE_REGEX_LEN);
 	target_xcopy_gen_naa_ieee(se_dev, &tmp_dev_wwn[0]);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	rc = memcmp(&tmp_dev_wwn[0], dev_wwn, XCOPY_NAA_IEEE_REGEX_LEN);
 	if (rc != 0) {
@@ -151,6 +158,8 @@ err_out:
 	pr_debug_ratelimited("Unable to locate 0xe4 descriptor for EXTENDED_COPY\n");
 	return -EINVAL;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rc = memcmp(&tmp_dev_wwn[0], info->dev_wwn, XCOPY_NAA_IEEE_REGEX_LEN);
 	if (rc != 0)
 		return 0;
@@ -187,6 +196,9 @@ static int target_xcopy_locate_se_dev_e4(const unsigned char *dev_wwn,
 		pr_debug_ratelimited("Unable to locate 0xe4 descriptor for EXTENDED_COPY\n");
 		return -EINVAL;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -335,6 +347,7 @@ static int target_xcopy_parse_target_descriptors(struct se_cmd *se_cmd,
 	switch (xop->op_origin) {
 	case XCOL_SOURCE_RECV_OP:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rc = target_xcopy_locate_se_dev_e4(se_cmd->se_sess,
 						xop->dst_tid_wwn,
 						&xop->dst_dev,
@@ -346,12 +359,17 @@ static int target_xcopy_parse_target_descriptors(struct se_cmd *se_cmd,
 						&xop->src_dev,
 						&xop->remote_lun_ref);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rc = target_xcopy_locate_se_dev_e4(xop->dst_tid_wwn,
 						&xop->dst_dev);
 		break;
 	case XCOL_DEST_RECV_OP:
 		rc = target_xcopy_locate_se_dev_e4(xop->src_tid_wwn,
 						&xop->src_dev);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 	default:
@@ -505,6 +523,7 @@ static int xcopy_pt_get_cmd_state(struct se_cmd *se_cmd)
 static void xcopy_pt_undepend_remotedev(struct xcopy_op *xop)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (xop->op_origin == XCOL_SOURCE_RECV_OP)
 		pr_debug("putting dst lun_ref for %p\n", xop->dst_dev);
 	else
@@ -512,6 +531,8 @@ static void xcopy_pt_undepend_remotedev(struct xcopy_op *xop)
 
 	percpu_ref_put(xop->remote_lun_ref);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct se_device *remote_dev;
 
 	if (xop->op_origin == XCOL_SOURCE_RECV_OP)
@@ -524,6 +545,9 @@ static void xcopy_pt_undepend_remotedev(struct xcopy_op *xop)
 		  remote_dev, &remote_dev->dev_group.cg_item);
 
 	target_undepend_item(&remote_dev->dev_group.cg_item);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

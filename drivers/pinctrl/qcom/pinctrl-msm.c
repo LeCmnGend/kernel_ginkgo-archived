@@ -225,7 +225,11 @@ static int msm_pinmux_set_mux(struct pinctrl_dev *pctldev,
 	raw_spin_lock_irqsave(&pctrl->lock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	val = readl_relaxed(base + g->ctl_reg);
+=======
+	val = readl(base + g->ctl_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	val = readl(base + g->ctl_reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -236,7 +240,11 @@ static int msm_pinmux_set_mux(struct pinctrl_dev *pctldev,
 		val |= BIT(g->egpio_enable);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	writel_relaxed(val, base + g->ctl_reg);
+=======
+	writel(val, base + g->ctl_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	writel(val, base + g->ctl_reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -316,7 +324,11 @@ static int msm_config_group_get(struct pinctrl_dev *pctldev,
 		return ret;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	val = readl_relaxed(base + g->ctl_reg);
+=======
+	val = readl(base + g->ctl_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	val = readl(base + g->ctl_reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -359,7 +371,11 @@ static int msm_config_group_get(struct pinctrl_dev *pctldev,
 			return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		val = readl_relaxed(base + g->io_reg);
+=======
+		val = readl(base + g->io_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		val = readl(base + g->io_reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -439,7 +455,11 @@ static int msm_config_group_set(struct pinctrl_dev *pctldev,
 			/* set output value */
 			raw_spin_lock_irqsave(&pctrl->lock, flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			val = readl_relaxed(base + g->io_reg);
+=======
+			val = readl(base + g->io_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			val = readl(base + g->io_reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -448,7 +468,11 @@ static int msm_config_group_set(struct pinctrl_dev *pctldev,
 			else
 				val &= ~BIT(g->out_bit);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			writel_relaxed(val, base + g->io_reg);
+=======
+			writel(val, base + g->io_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			writel(val, base + g->io_reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -475,15 +499,21 @@ static int msm_config_group_set(struct pinctrl_dev *pctldev,
 
 		raw_spin_lock_irqsave(&pctrl->lock, flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		val = readl_relaxed(base + g->ctl_reg);
 		val &= ~(mask << bit);
 		val |= arg << bit;
 		writel_relaxed(val, base + g->ctl_reg);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		val = readl(base + g->ctl_reg);
 		val &= ~(mask << bit);
 		val |= arg << bit;
 		writel(val, base + g->ctl_reg);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		raw_spin_unlock_irqrestore(&pctrl->lock, flags);
 	}
@@ -518,9 +548,15 @@ static int msm_gpio_direction_input(struct gpio_chip *chip, unsigned offset)
 	raw_spin_lock_irqsave(&pctrl->lock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	val = readl_relaxed(base + g->ctl_reg);
 	val &= ~BIT(g->oe_bit);
 	writel_relaxed(val, base + g->ctl_reg);
+=======
+	val = readl(base + g->ctl_reg);
+	val &= ~BIT(g->oe_bit);
+	writel(val, base + g->ctl_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	val = readl(base + g->ctl_reg);
 	val &= ~BIT(g->oe_bit);
@@ -546,7 +582,11 @@ static int msm_gpio_direction_output(struct gpio_chip *chip, unsigned offset, in
 	raw_spin_lock_irqsave(&pctrl->lock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	val = readl_relaxed(base + g->io_reg);
+=======
+	val = readl(base + g->io_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	val = readl(base + g->io_reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -555,17 +595,23 @@ static int msm_gpio_direction_output(struct gpio_chip *chip, unsigned offset, in
 	else
 		val &= ~BIT(g->out_bit);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	writel_relaxed(val, base + g->io_reg);
 
 	val = readl_relaxed(base + g->ctl_reg);
 	val |= BIT(g->oe_bit);
 	writel_relaxed(val, base + g->ctl_reg);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	writel(val, base + g->io_reg);
 
 	val = readl(base + g->ctl_reg);
 	val |= BIT(g->oe_bit);
 	writel(val, base + g->ctl_reg);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	raw_spin_unlock_irqrestore(&pctrl->lock, flags);
@@ -584,7 +630,11 @@ static int msm_gpio_get_direction(struct gpio_chip *chip, unsigned int offset)
 	base = reassign_pctrl_reg(pctrl->soc, offset);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	val = readl_relaxed(base + g->ctl_reg);
+=======
+	val = readl(base + g->ctl_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	val = readl(base + g->ctl_reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -621,7 +671,11 @@ static void msm_gpio_set(struct gpio_chip *chip, unsigned offset, int value)
 	raw_spin_lock_irqsave(&pctrl->lock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	val = readl_relaxed(base + g->io_reg);
+=======
+	val = readl(base + g->io_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	val = readl(base + g->io_reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -630,7 +684,11 @@ static void msm_gpio_set(struct gpio_chip *chip, unsigned offset, int value)
 	else
 		val &= ~BIT(g->out_bit);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	writel_relaxed(val, base + g->io_reg);
+=======
+	writel(val, base + g->io_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	writel(val, base + g->io_reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -666,7 +724,11 @@ static void msm_gpio_dbg_show_one(struct seq_file *s,
 	g = &pctrl->soc->groups[offset];
 	base = reassign_pctrl_reg(pctrl->soc, offset);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ctl_reg = readl_relaxed(base + g->ctl_reg);
+=======
+	ctl_reg = readl(base + g->ctl_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ctl_reg = readl(base + g->ctl_reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -739,6 +801,7 @@ static void msm_gpio_update_dual_edge_pos(struct msm_pinctrl *pctrl,
 	base = reassign_pctrl_reg(pctrl->soc, d->hwirq);
 	do {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		val = readl_relaxed(base + g->io_reg) & BIT(g->in_bit);
 
 		pol = readl_relaxed(base + g->intr_cfg_reg);
@@ -748,6 +811,8 @@ static void msm_gpio_update_dual_edge_pos(struct msm_pinctrl *pctrl,
 		val2 = readl_relaxed(base + g->io_reg) & BIT(g->in_bit);
 		intstat = readl_relaxed(base + g->intr_status_reg);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		val = readl(base + g->io_reg) & BIT(g->in_bit);
 
 		pol = readl(base + g->intr_cfg_reg);
@@ -756,6 +821,9 @@ static void msm_gpio_update_dual_edge_pos(struct msm_pinctrl *pctrl,
 
 		val2 = readl(base + g->io_reg) & BIT(g->in_bit);
 		intstat = readl(base + g->intr_status_reg);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (intstat || (val == val2))
 			return;
@@ -779,9 +847,15 @@ static void msm_gpio_irq_mask(struct irq_data *d)
 	raw_spin_lock_irqsave(&pctrl->lock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	val = readl_relaxed(base + g->intr_cfg_reg);
 	val &= ~BIT(g->intr_enable_bit);
 	writel_relaxed(val, base + g->intr_cfg_reg);
+=======
+	val = readl(base + g->intr_cfg_reg);
+	val &= ~BIT(g->intr_enable_bit);
+	writel(val, base + g->intr_cfg_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	val = readl(base + g->intr_cfg_reg);
 	val &= ~BIT(g->intr_enable_bit);
@@ -814,6 +888,7 @@ static void msm_gpio_irq_enable(struct irq_data *d)
 	 * when the intterupt is not in use.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	val = readl_relaxed(base + g->intr_status_reg);
 	val &= ~BIT(g->intr_status_bit);
 	writel_relaxed(val, base + g->intr_status_reg);
@@ -822,6 +897,8 @@ static void msm_gpio_irq_enable(struct irq_data *d)
 	val |= BIT(g->intr_enable_bit);
 	writel_relaxed(val, base + g->intr_cfg_reg);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	val = readl(base + g->intr_status_reg);
 	val &= ~BIT(g->intr_status_bit);
 	writel(val, base + g->intr_status_reg);
@@ -829,6 +906,9 @@ static void msm_gpio_irq_enable(struct irq_data *d)
 	val = readl(base + g->intr_cfg_reg);
 	val |= BIT(g->intr_enable_bit);
 	writel(val, base + g->intr_cfg_reg);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	set_bit(d->hwirq, pctrl->enabled_irqs);
@@ -861,9 +941,15 @@ static void msm_gpio_irq_unmask(struct irq_data *d)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	val = readl_relaxed(base + g->intr_cfg_reg);
 	val |= BIT(g->intr_enable_bit);
 	writel_relaxed(val, base + g->intr_cfg_reg);
+=======
+	val = readl(base + g->intr_cfg_reg);
+	val |= BIT(g->intr_enable_bit);
+	writel(val, base + g->intr_cfg_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	val = readl(base + g->intr_cfg_reg);
 	val |= BIT(g->intr_enable_bit);
@@ -893,7 +979,11 @@ static void msm_gpio_irq_ack(struct irq_data *d)
 	raw_spin_lock_irqsave(&pctrl->lock, flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	val = readl_relaxed(base + g->intr_status_reg);
+=======
+	val = readl(base + g->intr_status_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	val = readl(base + g->intr_status_reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -902,7 +992,11 @@ static void msm_gpio_irq_ack(struct irq_data *d)
 	else
 		val &= ~BIT(g->intr_status_bit);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	writel_relaxed(val, base + g->intr_status_reg);
+=======
+	writel(val, base + g->intr_status_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	writel(val, base + g->intr_status_reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -937,15 +1031,21 @@ static int msm_gpio_irq_set_type(struct irq_data *d, unsigned int type)
 
 	/* Route interrupts to application cpu */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	val = readl_relaxed(base + g->intr_target_reg);
 	val &= ~(7 << g->intr_target_bit);
 	val |= g->intr_target_kpss_val << g->intr_target_bit;
 	writel_relaxed(val, base + g->intr_target_reg);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	val = readl(base + g->intr_target_reg);
 	val &= ~(7 << g->intr_target_bit);
 	val |= g->intr_target_kpss_val << g->intr_target_bit;
 	writel(val, base + g->intr_target_reg);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Update configuration for gpio.
@@ -954,7 +1054,11 @@ static int msm_gpio_irq_set_type(struct irq_data *d, unsigned int type)
 	 * could cause the INTR_STATUS to be set for EDGE interrupts.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	val = readl_relaxed(base + g->intr_cfg_reg);
+=======
+	val = readl(base + g->intr_cfg_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	val = readl(base + g->intr_cfg_reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1006,7 +1110,11 @@ static int msm_gpio_irq_set_type(struct irq_data *d, unsigned int type)
 		BUG();
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	writel_relaxed(val, base + g->intr_cfg_reg);
+=======
+	writel(val, base + g->intr_cfg_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	writel(val, base + g->intr_cfg_reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1722,7 +1830,11 @@ static void msm_gpio_irq_handler(struct irq_desc *desc)
 		g = &pctrl->soc->groups[i];
 		base = reassign_pctrl_reg(pctrl->soc, i);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		val = readl_relaxed(base + g->intr_status_reg);
+=======
+		val = readl(base + g->intr_status_reg);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		val = readl(base + g->intr_status_reg);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1953,12 +2065,15 @@ static void msm_pinctrl_setup_pm_reset(struct msm_pinctrl *pctrl)
 
 #ifdef CONFIG_PM
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_QCOM_SHOW_RESUME_IRQ
 extern int msm_show_resume_irq_mask;
 #else
 #define msm_show_resume_irq_mask 0
 #endif
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_HIBERNATION
@@ -2312,6 +2427,10 @@ int msm_pinctrl_remove(struct platform_device *pdev)
 }
 EXPORT_SYMBOL(msm_pinctrl_remove);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

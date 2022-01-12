@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2011-2019, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2011-2019, 2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2011-2019, 2021, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -181,8 +185,12 @@ static int ngd_slim_qmi_new_server(struct qmi_handle *hdl,
 	qmi->svc_info.sq_node = service->node;
 	qmi->svc_info.sq_port = service->port;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	atomic_set(&dev->ssr_in_progress, 0);
 	schedule_work(&dev->dsp.dom_up);
+=======
+	complete(&dev->qmi_up);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	complete(&dev->qmi_up);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -196,12 +204,18 @@ static void ngd_slim_qmi_del_server(struct qmi_handle *hdl,
 	struct msm_slim_qmi *qmi =
 		container_of(hdl, struct msm_slim_qmi, svc_event_hdl);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct msm_slim_ctrl *dev =
 		container_of(qmi, struct msm_slim_ctrl, qmi);
 
 	reinit_completion(&dev->qmi_up);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	qmi->svc_info.sq_node = 0;
 	qmi->svc_info.sq_port = 0;
@@ -279,7 +293,11 @@ static int dsp_domr_notify_cb(struct notifier_block *n, unsigned long code,
 	case SUBSYS_BEFORE_SHUTDOWN:
 	case SERVREG_NOTIF_SERVICE_STATE_DOWN_V01:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		SLIM_INFO(dev, "SLIM DSP SSR notify cb:%lu\n", code);
+=======
+		SLIM_INFO(dev, "SLIM DSP SSR notify cb:0x%lx\n", code);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		SLIM_INFO(dev, "SLIM DSP SSR notify cb:0x%lx\n", code);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -295,13 +313,19 @@ static int dsp_domr_notify_cb(struct notifier_block *n, unsigned long code,
 		mutex_unlock(&dev->tx_lock);
 		break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case SUBSYS_AFTER_POWERUP:
 	case SERVREG_NOTIF_SERVICE_STATE_UP_V01:
 		SLIM_INFO(dev, "SLIM DSP SSR notify cb:0x%x\n", code);
 		atomic_set(&dev->ssr_in_progress, 0);
 		schedule_work(&dev->dsp.dom_up);
 		break;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case LOCATOR_UP:
 		reg = _cmd;
@@ -323,10 +347,13 @@ static int dsp_domr_notify_cb(struct notifier_block *n, unsigned long code,
 		SLIM_INFO(dev, "reg-PD client:%s with service:%s\n",
 				reg->client_name, reg->service_name);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		SLIM_INFO(dev, "reg-PD dom:%s instance:%d, cur:%d\n",
 				reg->domain_list->name,
 				reg->domain_list->instance_id, cur);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		SLIM_INFO(dev, "reg-PD dom:%s instance:%d, cur:0x%x\n",
 				reg->domain_list->name,
 				reg->domain_list->instance_id, cur);
@@ -336,6 +363,9 @@ static int dsp_domr_notify_cb(struct notifier_block *n, unsigned long code,
 			schedule_work(&dev->dsp.dom_up);
 		}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (IS_ERR_OR_NULL(dev->dsp.domr))
 			ngd_reg_ssr(dev);
@@ -1663,6 +1693,10 @@ static int ngd_notify_slaves(void *data)
 		return ret;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	ngd_dom_init(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ngd_dom_init(dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1682,7 +1716,10 @@ static int ngd_notify_slaves(void *data)
 			 */
 			slim_ctrl_add_boarddevs(&dev->ctrl);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ngd_dom_init(dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		} else {
@@ -1731,11 +1768,17 @@ static void ngd_dom_up(struct work_struct *work)
 	struct msm_slim_ctrl *dev =
 		container_of(dsp, struct msm_slim_ctrl, dsp);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* Make sure qmi service is up before continuing */
 	wait_for_completion_interruptible(&dev->qmi_up);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mutex_lock(&dev->ssr_lock);
 	ngd_slim_enable(dev, true);
@@ -1977,6 +2020,10 @@ static int ngd_slim_probe(struct platform_device *pdev)
 	init_completion(&dev->reconf);
 	init_completion(&dev->ctrl_up);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	init_completion(&dev->qmi_up);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	init_completion(&dev->qmi_up);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -6,6 +6,7 @@
 #include <linux/uaccess.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __always_inline long
 probe_read_common(void *dst, const void __user *src, size_t size)
 {
@@ -36,6 +37,10 @@ probe_write_common(void __user *dst, const void *src, size_t size)
 /**
  * probe_kernel_read(): safely attempt to read from a location
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+/**
+ * probe_kernel_read(): safely attempt to read from a location
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * @dst: pointer to the buffer that shall take the data
  * @src: address to read from
  * @size: size of the data chunk
@@ -59,11 +64,14 @@ long __probe_kernel_read(void *dst, const void *src, size_t size)
 
 	set_fs(KERNEL_DS);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = probe_read_common(dst, (__force const void __user *)src, size);
 	set_fs(old_fs);
 
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pagefault_disable();
 	ret = __copy_from_user_inatomic(dst,
 			(__force const void __user *)src, size);
@@ -71,11 +79,15 @@ long __probe_kernel_read(void *dst, const void *src, size_t size)
 	set_fs(old_fs);
 
 	return ret ? -EFAULT : 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL_GPL(probe_kernel_read);
 
 /**
+<<<<<<< HEAD
 <<<<<<< HEAD
  * probe_user_read(): safely attempt to read from a user-space location
  * @dst: pointer to the buffer that shall take the data
@@ -106,6 +118,8 @@ EXPORT_SYMBOL_GPL(probe_user_read);
 /**
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * probe_kernel_write(): safely attempt to write to a location
  * @dst: address to write to
  * @src: pointer to the data that shall be written
@@ -115,7 +129,10 @@ EXPORT_SYMBOL_GPL(probe_user_read);
  * happens, handle that and return -EFAULT.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 long __weak probe_kernel_write(void *dst, const void *src, size_t size)
@@ -128,22 +145,29 @@ long __probe_kernel_write(void *dst, const void *src, size_t size)
 
 	set_fs(KERNEL_DS);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = probe_write_common((__force void __user *)dst, src, size);
 	set_fs(old_fs);
 
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pagefault_disable();
 	ret = __copy_to_user_inatomic((__force void __user *)dst, src, size);
 	pagefault_enable();
 	set_fs(old_fs);
 
 	return ret ? -EFAULT : 0;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL_GPL(probe_kernel_write);
 
 /**
+<<<<<<< HEAD
 <<<<<<< HEAD
  * probe_user_write(): safely attempt to write to a user-space location
  * @dst: address to write to
@@ -172,6 +196,8 @@ long __probe_user_write(void __user *dst, const void *src, size_t size)
 EXPORT_SYMBOL_GPL(probe_user_write);
 
 /**
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * strncpy_from_unsafe: - Copy a NUL terminated string from unsafe address.
@@ -212,6 +238,7 @@ long strncpy_from_unsafe(char *dst, const void *unsafe_addr, long count)
 
 	return ret ? -EFAULT : src - unsafe_addr;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 /**
@@ -286,5 +313,7 @@ long strnlen_unsafe_user(const void __user *unsafe_addr, long count)
 
 	return ret;
 }
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

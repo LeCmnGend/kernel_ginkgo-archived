@@ -1490,6 +1490,11 @@ probe_out:
 		video_unregister_device(&ch->video_dev);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kfree(vpif_obj.sd);
+	v4l2_device_unregister(&vpif_obj.v4l2_dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(vpif_obj.sd);
 	v4l2_device_unregister(&vpif_obj.v4l2_dev);

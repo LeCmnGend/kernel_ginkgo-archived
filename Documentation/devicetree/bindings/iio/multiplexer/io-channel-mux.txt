@@ -22,7 +22,11 @@ controller state. The mux controller state is described in
 Example:
 	mux: mux-controller {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		compatible = "gpio-mux";
+=======
+		compatible = "mux-gpio";
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		compatible = "mux-gpio";
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

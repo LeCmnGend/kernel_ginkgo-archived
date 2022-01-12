@@ -803,6 +803,7 @@ static int _set_pagetable_gpu(struct adreno_ringbuffer *rb,
 			struct kgsl_pagetable *new_pt)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	static unsigned int link[PAGE_SIZE / sizeof(unsigned int)]
 		____cacheline_aligned_in_smp;
 	struct adreno_device *adreno_dev = ADRENO_RB_DEVICE(rb);
@@ -813,6 +814,8 @@ static int _set_pagetable_gpu(struct adreno_ringbuffer *rb,
 	if (test_bit(ADRENO_DEVICE_FAULT, &adreno_dev->priv))
 		return 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct adreno_device *adreno_dev = ADRENO_RB_DEVICE(rb);
 	unsigned int *link = NULL, *cmds;
 	int result;
@@ -828,6 +831,9 @@ static int _set_pagetable_gpu(struct adreno_ringbuffer *rb,
 		kfree(link);
 		return 0;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	cmds += adreno_iommu_set_pt_generate_cmds(rb, cmds, new_pt);
@@ -851,6 +857,10 @@ static int _set_pagetable_gpu(struct adreno_ringbuffer *rb,
 			(unsigned int)(cmds - link));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kfree(link);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(link);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -542,8 +542,13 @@ decode_negTokenInit(unsigned char *security_blob, int length,
 	} else if ((cls != ASN1_CTX) || (con != ASN1_CON)
 		   || (tag != ASN1_EOC)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cifs_dbg(FYI, "cls = %d con = %d tag = %d end = %p exit 0\n",
 			 cls, con, tag, end);
+=======
+		cifs_dbg(FYI, "cls = %d con = %d tag = %d end = %p (%d) exit 0\n",
+			 cls, con, tag, end, *end);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		cifs_dbg(FYI, "cls = %d con = %d tag = %d end = %p (%d) exit 0\n",
 			 cls, con, tag, end, *end);
@@ -558,8 +563,13 @@ decode_negTokenInit(unsigned char *security_blob, int length,
 	} else if ((cls != ASN1_UNI) || (con != ASN1_CON)
 		   || (tag != ASN1_SEQ)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cifs_dbg(FYI, "cls = %d con = %d tag = %d end = %p exit 1\n",
 			 cls, con, tag, end);
+=======
+		cifs_dbg(FYI, "cls = %d con = %d tag = %d end = %p (%d) exit 1\n",
+			 cls, con, tag, end, *end);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		cifs_dbg(FYI, "cls = %d con = %d tag = %d end = %p (%d) exit 1\n",
 			 cls, con, tag, end, *end);
@@ -574,8 +584,13 @@ decode_negTokenInit(unsigned char *security_blob, int length,
 	} else if ((cls != ASN1_CTX) || (con != ASN1_CON)
 		   || (tag != ASN1_EOC)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cifs_dbg(FYI, "cls = %d con = %d tag = %d end = %p exit 0\n",
 			 cls, con, tag, end);
+=======
+		cifs_dbg(FYI, "cls = %d con = %d tag = %d end = %p (%d) exit 0\n",
+			 cls, con, tag, end, *end);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		cifs_dbg(FYI, "cls = %d con = %d tag = %d end = %p (%d) exit 0\n",
 			 cls, con, tag, end, *end);
@@ -591,8 +606,13 @@ decode_negTokenInit(unsigned char *security_blob, int length,
 	} else if ((cls != ASN1_UNI) || (con != ASN1_CON)
 		   || (tag != ASN1_SEQ)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cifs_dbg(FYI, "cls = %d con = %d tag = %d sequence_end = %p exit 1\n",
 			 cls, con, tag, sequence_end);
+=======
+		cifs_dbg(FYI, "cls = %d con = %d tag = %d end = %p (%d) exit 1\n",
+			 cls, con, tag, end, *end);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		cifs_dbg(FYI, "cls = %d con = %d tag = %d end = %p (%d) exit 1\n",
 			 cls, con, tag, end, *end);

@@ -1392,7 +1392,11 @@ static int wm_adsp_create_control(struct wm_adsp *dsp,
 	if (!ctl_work) {
 		ret = -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto err_list_del;
+=======
+		goto err_ctl_cache;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto err_ctl_cache;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1406,8 +1410,12 @@ static int wm_adsp_create_control(struct wm_adsp *dsp,
 	return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 err_list_del:
 	list_del(&ctl->list);
+=======
+err_ctl_cache:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 err_ctl_cache:
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

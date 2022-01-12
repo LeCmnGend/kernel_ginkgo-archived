@@ -190,7 +190,11 @@ __init_LPCR_ISA300:
 __init_FSCR:
 	mfspr	r3,SPRN_FSCR
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ori	r3,r3,FSCR_TAR|FSCR_EBB
+=======
+	ori	r3,r3,FSCR_TAR|FSCR_DSCR|FSCR_EBB
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ori	r3,r3,FSCR_TAR|FSCR_DSCR|FSCR_EBB
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -283,12 +283,18 @@ int btrfs_copy_root(struct btrfs_trans_handle *trans,
 	else
 		ret = btrfs_inc_ref(trans, root, cow, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret) {
 		btrfs_tree_unlock(cow);
 		free_extent_buffer(cow);
 		btrfs_abort_transaction(trans, ret);
 		return ret;
 	}
+=======
+
+	if (ret)
+		return ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	if (ret)
@@ -1140,8 +1146,11 @@ static noinline int __btrfs_cow_block(struct btrfs_trans_handle *trans,
 	ret = update_ref_for_cow(trans, root, buf, cow, &last_ref);
 	if (ret) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		btrfs_tree_unlock(cow);
 		free_extent_buffer(cow);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		btrfs_abort_transaction(trans, ret);
@@ -1152,8 +1161,11 @@ static noinline int __btrfs_cow_block(struct btrfs_trans_handle *trans,
 		ret = btrfs_reloc_cow_block(trans, root, buf, cow);
 		if (ret) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			btrfs_tree_unlock(cow);
 			free_extent_buffer(cow);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			btrfs_abort_transaction(trans, ret);
@@ -1188,8 +1200,11 @@ static noinline int __btrfs_cow_block(struct btrfs_trans_handle *trans,
 			ret = tree_mod_log_free_eb(fs_info, buf);
 			if (ret) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				btrfs_tree_unlock(cow);
 				free_extent_buffer(cow);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				btrfs_abort_transaction(trans, ret);
@@ -1392,8 +1407,12 @@ tree_mod_log_rewind(struct btrfs_fs_info *fs_info, struct btrfs_path *path,
 	free_extent_buffer(eb);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	btrfs_set_buffer_lockdep_class(btrfs_header_owner(eb_rewin),
 				       eb_rewin, btrfs_header_level(eb_rewin));
+=======
+	extent_buffer_get(eb_rewin);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	extent_buffer_get(eb_rewin);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1451,6 +1470,7 @@ get_old_root(struct btrfs_root *root, u64 time_seq)
 				   logical);
 		} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			struct tree_mod_elem *tm2;
 
 			btrfs_tree_read_lock(old);
@@ -1479,6 +1499,10 @@ get_old_root(struct btrfs_root *root, u64 time_seq)
 			eb = btrfs_clone_extent_buffer(old);
 			free_extent_buffer(old);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+			eb = btrfs_clone_extent_buffer(old);
+			free_extent_buffer(old);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
 	} else if (old_root) {
 		eb_root_owner = btrfs_header_owner(eb_root);
@@ -1495,6 +1519,11 @@ get_old_root(struct btrfs_root *root, u64 time_seq)
 	if (!eb)
 		return NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	extent_buffer_get(eb);
+	btrfs_tree_read_lock(eb);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	extent_buffer_get(eb);
 	btrfs_tree_read_lock(eb);
@@ -1507,9 +1536,12 @@ get_old_root(struct btrfs_root *root, u64 time_seq)
 		btrfs_set_header_generation(eb, old_generation);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	btrfs_set_buffer_lockdep_class(btrfs_header_owner(eb), eb,
 				       btrfs_header_level(eb));
 	btrfs_tree_read_lock(eb);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (tm)

@@ -4056,6 +4056,7 @@ static int bttv_probe(struct pci_dev *dev, const struct pci_device_id *pci_id)
 	if (pci_enable_device(dev)) {
 		pr_warn("%d: Can't enable device\n", btv->c.nr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		result = -EIO;
 		goto free_mem;
 	}
@@ -4064,11 +4065,16 @@ static int bttv_probe(struct pci_dev *dev, const struct pci_device_id *pci_id)
 		result = -EIO;
 		goto free_mem;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EIO;
 	}
 	if (pci_set_dma_mask(dev, DMA_BIT_MASK(32))) {
 		pr_warn("%d: No suitable DMA available\n", btv->c.nr);
 		return -EIO;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	if (!request_mem_region(pci_resource_start(dev,0),
@@ -4078,8 +4084,12 @@ static int bttv_probe(struct pci_dev *dev, const struct pci_device_id *pci_id)
 			btv->c.nr,
 			(unsigned long long)pci_resource_start(dev, 0));
 <<<<<<< HEAD
+<<<<<<< HEAD
 		result = -EBUSY;
 		goto free_mem;
+=======
+		return -EBUSY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -EBUSY;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4269,10 +4279,13 @@ fail0:
 			   pci_resource_len(btv->c.pci,0));
 	pci_disable_device(btv->c.pci);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 free_mem:
 	bttvs[btv->c.nr] = NULL;
 	kfree(btv);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return result;

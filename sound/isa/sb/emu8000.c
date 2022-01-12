@@ -1043,10 +1043,15 @@ snd_emu8000_create_mixer(struct snd_card *card, struct snd_emu8000 *emu)
 	memset(emu->controls, 0, sizeof(emu->controls));
 	for (i = 0; i < EMU8000_NUM_CONTROLS; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if ((err = snd_ctl_add(card, emu->controls[i] = snd_ctl_new1(mixer_defs[i], emu))) < 0) {
 			emu->controls[i] = NULL;
 			goto __error;
 		}
+=======
+		if ((err = snd_ctl_add(card, emu->controls[i] = snd_ctl_new1(mixer_defs[i], emu))) < 0)
+			goto __error;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if ((err = snd_ctl_add(card, emu->controls[i] = snd_ctl_new1(mixer_defs[i], emu))) < 0)
 			goto __error;

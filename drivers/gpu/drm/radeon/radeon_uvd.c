@@ -287,7 +287,11 @@ int radeon_uvd_resume(struct radeon_device *rdev)
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memcpy_toio((void __iomem *)rdev->uvd.cpu_addr, rdev->uvd_fw->data, rdev->uvd_fw->size);
+=======
+	memcpy(rdev->uvd.cpu_addr, rdev->uvd_fw->data, rdev->uvd_fw->size);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memcpy(rdev->uvd.cpu_addr, rdev->uvd_fw->data, rdev->uvd_fw->size);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -299,7 +303,11 @@ int radeon_uvd_resume(struct radeon_device *rdev)
 	ptr += rdev->uvd_fw->size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset_io((void __iomem *)ptr, 0, size);
+=======
+	memset(ptr, 0, size);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memset(ptr, 0, size);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

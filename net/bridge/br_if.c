@@ -486,7 +486,11 @@ int br_add_if(struct net_bridge *br, struct net_device *dev)
 	int err = 0;
 	unsigned br_hr, dev_hr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool changed_addr, fdb_synced = false;
+=======
+	bool changed_addr;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bool changed_addr;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -524,7 +528,10 @@ int br_add_if(struct net_bridge *br, struct net_device *dev)
 	err = dev_set_allmulti(dev, 1);
 	if (err) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		br_multicast_del_port(p);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		kfree(p);	/* kobject not yet init'd, manually free */
@@ -564,6 +571,7 @@ int br_add_if(struct net_bridge *br, struct net_device *dev)
 
 	nbp_update_port_count(br);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!br_promisc_port(p) && (p->dev->priv_flags & IFF_UNICAST_FLT)) {
 		/* When updating the port count we also update all ports'
 		 * promiscuous mode.
@@ -577,6 +585,8 @@ int br_add_if(struct net_bridge *br, struct net_device *dev)
 		if (!fdb_synced)
 			netdev_err(dev, "failed to sync bridge static fdb addresses to this port\n");
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -620,8 +630,11 @@ int br_add_if(struct net_bridge *br, struct net_device *dev)
 
 err7:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (fdb_synced)
 		br_fdb_unsync_static(br, p);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	list_del_rcu(&p->list);
@@ -638,7 +651,10 @@ err3:
 	sysfs_remove_link(br->ifobj, p->dev->name);
 err2:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	br_multicast_del_port(p);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kobject_put(&p->kobj);

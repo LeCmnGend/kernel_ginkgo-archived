@@ -471,10 +471,13 @@ static void reset_pmcr(struct kvm_vcpu *vcpu, const struct sys_reg_desc *r)
 	u64 pmcr, val;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* No PMU available, PMCR_EL0 may UNDEF... */
 	if (!kvm_arm_support_pmu_v3())
 		return;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pmcr = read_sysreg(pmcr_el0);
@@ -1186,9 +1189,15 @@ static const struct sys_reg_desc cp14_regs[] = {
 	DBG_BCR_BVR_WCR_WVR(1),
 	/* DBGDCCINT */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ Op1( 0), CRn( 0), CRm( 2), Op2( 0), trap_debug32, NULL, cp14_DBGDCCINT },
 	/* DBGDSCRext */
 	{ Op1( 0), CRn( 0), CRm( 2), Op2( 2), trap_debug32, NULL, cp14_DBGDSCRext },
+=======
+	{ Op1( 0), CRn( 0), CRm( 2), Op2( 0), trap_debug32 },
+	/* DBGDSCRext */
+	{ Op1( 0), CRn( 0), CRm( 2), Op2( 2), trap_debug32 },
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	{ Op1( 0), CRn( 0), CRm( 2), Op2( 0), trap_debug32 },
 	/* DBGDSCRext */
@@ -1209,7 +1218,11 @@ static const struct sys_reg_desc cp14_regs[] = {
 	DBG_BCR_BVR_WCR_WVR(6),
 	/* DBGVCR */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ Op1( 0), CRn( 0), CRm( 7), Op2( 0), trap_debug32, NULL, cp14_DBGVCR },
+=======
+	{ Op1( 0), CRn( 0), CRm( 7), Op2( 0), trap_debug32 },
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	{ Op1( 0), CRn( 0), CRm( 7), Op2( 0), trap_debug32 },
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1304,7 +1317,10 @@ static const struct sys_reg_desc cp15_regs[] = {
 	{ Op1( 0), CRn( 2), CRm( 0), Op2( 1), access_vm_reg, NULL, c2_TTBR1 },
 	{ Op1( 0), CRn( 2), CRm( 0), Op2( 2), access_vm_reg, NULL, c2_TTBCR },
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ Op1( 0), CRn( 2), CRm( 0), Op2( 3), access_vm_reg, NULL, c2_TTBCR2 },
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{ Op1( 0), CRn( 3), CRm( 0), Op2( 0), access_vm_reg, NULL, c3_DACR },

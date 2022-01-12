@@ -455,7 +455,11 @@ static ssize_t fsp_attr_set_setreg(struct psmouse *psmouse, void *data,
 	fsp_reg_write_enable(psmouse, false);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return retval;
+=======
+	return count;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return count;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

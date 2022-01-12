@@ -2413,9 +2413,12 @@ int regulatory_hint_user(const char *alpha2,
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!is_world_regdom(alpha2) && !is_an_alpha2(alpha2))
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	request = kzalloc(sizeof(struct regulatory_request), GFP_KERNEL);
@@ -2855,7 +2858,11 @@ static void print_rd_rules(const struct ieee80211_regdomain *rd)
 
 		if (reg_rule->flags & NL80211_RRF_AUTO_BW)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			snprintf(bw, sizeof(bw), "%d KHz, %u KHz AUTO",
+=======
+			snprintf(bw, sizeof(bw), "%d KHz, %d KHz AUTO",
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			snprintf(bw, sizeof(bw), "%d KHz, %d KHz AUTO",
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

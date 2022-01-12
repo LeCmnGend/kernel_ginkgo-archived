@@ -51,6 +51,9 @@ obj-$(CONFIG_CRYPTO_DEV_CCREE)	+= ccree/
 obj-$(CONFIG_DRM_VBOXVIDEO)	+= vboxvideo/
 obj-$(CONFIG_PI433)		+= pi433/
 <<<<<<< HEAD
+<<<<<<< HEAD
 obj-$(CONFIG_QCA_CLD_WLAN)	+= qcacld-3.0/
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

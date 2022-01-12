@@ -1632,6 +1632,7 @@ static void fc_exch_recv_seq_resp(struct fc_exch_mgr *mp, struct fc_frame *fp)
 		WARN_ON(fc_seq_exch(sp) != ep);
 		spin_unlock_bh(&ep->ex_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!rc) {
 			fc_exch_delete(ep);
 		} else {
@@ -1639,6 +1640,10 @@ static void fc_exch_recv_seq_resp(struct fc_exch_mgr *mp, struct fc_frame *fp)
 					"hence skip calling the resp\n");
 			goto skip_resp;
 		}
+=======
+		if (!rc)
+			fc_exch_delete(ep);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!rc)
 			fc_exch_delete(ep);
@@ -1662,7 +1667,10 @@ static void fc_exch_recv_seq_resp(struct fc_exch_mgr *mp, struct fc_frame *fp)
 		fc_frame_free(fp);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 skip_resp:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	fc_exch_release(ep);
@@ -1922,6 +1930,7 @@ static void fc_exch_reset(struct fc_exch *ep)
 	fc_exch_hold(ep);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!rc) {
 		fc_exch_delete(ep);
 	} else {
@@ -1933,10 +1942,15 @@ static void fc_exch_reset(struct fc_exch *ep)
 	fc_invoke_resp(ep, sp, ERR_PTR(-FC_EX_CLOSED));
 skip_resp:
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!rc)
 		fc_exch_delete(ep);
 
 	fc_invoke_resp(ep, sp, ERR_PTR(-FC_EX_CLOSED));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	fc_seq_set_resp(sp, NULL, ep->arg);
 	fc_exch_release(ep);

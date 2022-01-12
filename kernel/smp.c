@@ -108,7 +108,11 @@ void __init call_function_init(void)
  * as we'll have to ensure no other cpu is observing our csd.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __always_inline void csd_lock_wait(struct __call_single_data *csd)
+=======
+static __always_inline void csd_lock_wait(call_single_data_t *csd)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static __always_inline void csd_lock_wait(call_single_data_t *csd)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -117,7 +121,11 @@ static __always_inline void csd_lock_wait(call_single_data_t *csd)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __always_inline void csd_lock(struct __call_single_data *csd)
+=======
+static __always_inline void csd_lock(call_single_data_t *csd)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static __always_inline void csd_lock(call_single_data_t *csd)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -134,7 +142,11 @@ static __always_inline void csd_lock(call_single_data_t *csd)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __always_inline void csd_unlock(struct __call_single_data *csd)
+=======
+static __always_inline void csd_unlock(call_single_data_t *csd)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static __always_inline void csd_unlock(call_single_data_t *csd)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -150,8 +162,11 @@ static __always_inline void csd_unlock(call_single_data_t *csd)
 static DEFINE_PER_CPU_SHARED_ALIGNED(call_single_data_t, csd_data);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern void send_call_function_single_ipi(int cpu);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -160,7 +175,11 @@ extern void send_call_function_single_ipi(int cpu);
  * ->func, ->info, and ->flags set.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int generic_exec_single(int cpu, struct __call_single_data *csd,
+=======
+static int generic_exec_single(int cpu, call_single_data_t *csd,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int generic_exec_single(int cpu, call_single_data_t *csd,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -202,7 +221,11 @@ static int generic_exec_single(int cpu, call_single_data_t *csd,
 	 */
 	if (llist_add(&csd->llist, &per_cpu(call_single_queue, cpu)))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		send_call_function_single_ipi(cpu);
+=======
+		arch_send_call_function_single_ipi(cpu);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		arch_send_call_function_single_ipi(cpu);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -287,6 +310,7 @@ static void flush_smp_call_function_queue(bool warn_cpu_offline)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void flush_smp_call_function_from_idle(void)
 {
 	unsigned long flags;
@@ -299,6 +323,8 @@ void flush_smp_call_function_from_idle(void)
 	local_irq_restore(flags);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -368,7 +394,11 @@ EXPORT_SYMBOL(smp_call_function_single);
  * validate the correctness of this serialization.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 int smp_call_function_single_async(int cpu, struct __call_single_data *csd)
+=======
+int smp_call_function_single_async(int cpu, call_single_data_t *csd)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int smp_call_function_single_async(int cpu, call_single_data_t *csd)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

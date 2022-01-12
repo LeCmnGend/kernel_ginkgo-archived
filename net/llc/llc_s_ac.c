@@ -80,7 +80,11 @@ int llc_sap_action_send_xid_c(struct llc_sap *sap, struct sk_buff *skb)
 	int rc;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	llc_pdu_header_init(skb, LLC_PDU_TYPE_U_XID, ev->saddr.lsap,
+=======
+	llc_pdu_header_init(skb, LLC_PDU_TYPE_U, ev->saddr.lsap,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	llc_pdu_header_init(skb, LLC_PDU_TYPE_U, ev->saddr.lsap,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

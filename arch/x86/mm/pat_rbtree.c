@@ -55,11 +55,14 @@ static u64 get_subtree_max_end(struct rb_node *node)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define NODE_END(node) ((node)->end)
 
 RB_DECLARE_CALLBACKS_MAX(static, memtype_rb_augment_cb,
 			 struct memtype, rb, u64, subtree_max_end, NODE_END)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static u64 compute_subtree_max_end(struct memtype *data)
 {
 	u64 max_end = data->end, child_max_end;
@@ -77,6 +80,9 @@ static u64 compute_subtree_max_end(struct memtype *data)
 
 RB_DECLARE_CALLBACKS(static, memtype_rb_augment_cb, struct memtype, rb,
 		     u64, subtree_max_end, compute_subtree_max_end)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 /* Find the first (lowest start addr) overlapping range from rb tree */

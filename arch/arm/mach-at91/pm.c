@@ -457,7 +457,11 @@ static void __init at91_pm_sram_init(void)
 	if (!sram_pool) {
 		pr_warn("%s: sram pool unavailable!\n", __func__);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_put_device;
+=======
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -467,7 +471,11 @@ static void __init at91_pm_sram_init(void)
 	if (!sram_base) {
 		pr_warn("%s: unable to alloc sram!\n", __func__);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_put_device;
+=======
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -479,7 +487,11 @@ static void __init at91_pm_sram_init(void)
 	if (!at91_suspend_sram_fn) {
 		pr_warn("SRAM: Could not map\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_put_device;
+=======
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -489,11 +501,14 @@ static void __init at91_pm_sram_init(void)
 	at91_suspend_sram_fn = fncpy(at91_suspend_sram_fn,
 			&at91_pm_suspend_in_sram, at91_pm_suspend_in_sram_sz);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return;
 
 out_put_device:
 	put_device(&pdev->dev);
 	return;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

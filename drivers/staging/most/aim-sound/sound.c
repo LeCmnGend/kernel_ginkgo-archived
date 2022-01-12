@@ -93,8 +93,11 @@ static void swap_copy24(u8 *dest, const u8 *source, unsigned int bytes)
 	unsigned int i = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (bytes < 2)
 		return;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	while (i < bytes - 2) {

@@ -1542,6 +1542,7 @@ static int amsdu_to_msdu(struct adapter *padapter, struct recv_frame *prframe)
 		/* Allocate new skb for releasing to upper layer */
 		sub_skb = dev_alloc_skb(nSubframe_Length + 12);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!sub_skb) {
 			DBG_88E("dev_alloc_skb() Fail!!! , nr_subframes=%d\n", nr_subframes);
 			break;
@@ -1551,6 +1552,8 @@ static int amsdu_to_msdu(struct adapter *padapter, struct recv_frame *prframe)
 		skb_put_data(sub_skb, pdata, nSubframe_Length);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (sub_skb) {
 			skb_reserve(sub_skb, 12);
 			skb_put_data(sub_skb, pdata, nSubframe_Length);
@@ -1566,6 +1569,9 @@ static int amsdu_to_msdu(struct adapter *padapter, struct recv_frame *prframe)
 			}
 		}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		subframes[nr_subframes++] = sub_skb;
 

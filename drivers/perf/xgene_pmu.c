@@ -1475,7 +1475,10 @@ static char *xgene_pmu_dev_name(struct device *dev, u32 type, int id)
 
 #if defined(CONFIG_ACPI)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int acpi_pmu_dev_add_resource(struct acpi_resource *ares, void *data)
 {
 	struct resource *res = data;
@@ -1487,6 +1490,9 @@ static int acpi_pmu_dev_add_resource(struct acpi_resource *ares, void *data)
 	return 1;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct
 xgene_pmu_dev_ctx *acpi_get_pmu_hw_inf(struct xgene_pmu *xgene_pmu,
@@ -1500,7 +1506,10 @@ xgene_pmu_dev_ctx *acpi_get_pmu_hw_inf(struct xgene_pmu *xgene_pmu,
 	void __iomem *dev_csr;
 	struct resource res;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct resource_entry *rentry;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int enable_bit;
@@ -1511,6 +1520,7 @@ xgene_pmu_dev_ctx *acpi_get_pmu_hw_inf(struct xgene_pmu *xgene_pmu,
 		return NULL;
 
 	INIT_LIST_HEAD(&resource_list);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	rc = acpi_dev_get_resources(adev, &resource_list, NULL, NULL);
 	if (rc <= 0) {
@@ -1530,11 +1540,16 @@ xgene_pmu_dev_ctx *acpi_get_pmu_hw_inf(struct xgene_pmu *xgene_pmu,
 	if (rentry) {
 		dev_err(dev, "PMU type %d: No memory resource found\n", type);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rc = acpi_dev_get_resources(adev, &resource_list,
 				    acpi_pmu_dev_add_resource, &res);
 	acpi_dev_free_resource_list(&resource_list);
 	if (rc < 0) {
 		dev_err(dev, "PMU type %d: No resource address found\n", type);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return NULL;
 	}

@@ -1448,10 +1448,13 @@ static u16 sdhci_get_preset_value(struct sdhci_host *host)
 
 	switch (host->timing) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case MMC_TIMING_MMC_HS:
 	case MMC_TIMING_SD_HS:
 		preset = sdhci_readw(host, SDHCI_PRESET_FOR_HIGH_SPEED);
 		break;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	case MMC_TIMING_UHS_SDR12:

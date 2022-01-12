@@ -326,8 +326,13 @@ static void vhost_vq_reset(struct vhost_dev *dev,
 	vq->call = NULL;
 	vq->log_ctx = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vhost_disable_cross_endian(vq);
 	vhost_reset_is_le(vq);
+=======
+	vhost_reset_is_le(vq);
+	vhost_disable_cross_endian(vq);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	vhost_reset_is_le(vq);
 	vhost_disable_cross_endian(vq);
@@ -697,6 +702,7 @@ static int log_access_ok(void __user *log_base, u64 addr, unsigned long sz)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Make sure 64 bit math will not overflow. */
 static bool vhost_overflow(u64 uaddr, u64 size)
 {
@@ -708,10 +714,15 @@ static bool vhost_overflow(u64 uaddr, u64 size)
 
 	return uaddr > ULONG_MAX - size + 1;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static bool vhost_overflow(u64 uaddr, u64 size)
 {
 	/* Make sure 64 bit math will not overflow. */
 	return uaddr > ULONG_MAX || size > ULONG_MAX || uaddr > ULONG_MAX - size;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

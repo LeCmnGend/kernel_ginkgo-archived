@@ -351,7 +351,11 @@ int asihpi_adapter_probe(struct pci_dev *pci_dev,
 	struct hpi_response hr;
 	struct hpi_adapter adapter;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct hpi_pci pci = { 0 };
+=======
+	struct hpi_pci pci;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct hpi_pci pci;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -511,7 +515,11 @@ int asihpi_adapter_probe(struct pci_dev *pci_dev,
 
 err:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	while (--idx >= 0) {
+=======
+	for (idx = 0; idx < HPI_MAX_ADAPTER_MEM_SPACES; idx++) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (idx = 0; idx < HPI_MAX_ADAPTER_MEM_SPACES; idx++) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

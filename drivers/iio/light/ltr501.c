@@ -36,12 +36,18 @@
 #define LTR501_MANUFAC_ID 0x87
 #define LTR501_ALS_DATA1 0x88 /* 16-bit, little endian */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define LTR501_ALS_DATA1_UPPER 0x89 /* upper 8 bits of LTR501_ALS_DATA1 */
 #define LTR501_ALS_DATA0 0x8a /* 16-bit, little endian */
 #define LTR501_ALS_DATA0_UPPER 0x8b /* upper 8 bits of LTR501_ALS_DATA0 */
 #define LTR501_ALS_PS_STATUS 0x8c
 #define LTR501_PS_DATA 0x8d /* 16-bit, little endian */
 #define LTR501_PS_DATA_UPPER 0x8e /* upper 8 bits of LTR501_PS_DATA */
+=======
+#define LTR501_ALS_DATA0 0x8a /* 16-bit, little endian */
+#define LTR501_ALS_PS_STATUS 0x8c
+#define LTR501_PS_DATA 0x8d /* 16-bit, little endian */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define LTR501_ALS_DATA0 0x8a /* 16-bit, little endian */
 #define LTR501_ALS_PS_STATUS 0x8c
@@ -418,8 +424,12 @@ static int ltr501_read_als(struct ltr501_data *data, __le16 buf[2])
 static int ltr501_read_ps(struct ltr501_data *data)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__le16 status;
 	int ret;
+=======
+	int ret, status;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int ret, status;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -430,17 +440,23 @@ static int ltr501_read_ps(struct ltr501_data *data)
 
 	ret = regmap_bulk_read(data->regmap, LTR501_PS_DATA,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			       &status, sizeof(status));
 	if (ret < 0)
 		return ret;
 
 	return le16_to_cpu(status);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			       &status, 2);
 	if (ret < 0)
 		return ret;
 
 	return status;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -1234,7 +1250,11 @@ static struct ltr501_chip_info ltr501_chip_info_tbl[] = {
 		.ps_gain = ltr559_ps_gain_tbl,
 		.ps_gain_tbl_size = ARRAY_SIZE(ltr559_ps_gain_tbl),
 <<<<<<< HEAD
+<<<<<<< HEAD
 		.als_mode_active = BIT(0),
+=======
+		.als_mode_active = BIT(1),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		.als_mode_active = BIT(1),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1276,10 +1296,14 @@ static irqreturn_t ltr501_trigger_handler(int irq, void *p)
 	struct iio_dev *indio_dev = pf->indio_dev;
 	struct ltr501_data *data = iio_priv(indio_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct {
 		u16 channels[3];
 		s64 ts __aligned(8);
 	} scan;
+=======
+	u16 buf[8];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u16 buf[8];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1289,7 +1313,11 @@ static irqreturn_t ltr501_trigger_handler(int irq, void *p)
 	int ret, psdata;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memset(&scan, 0, sizeof(scan));
+=======
+	memset(buf, 0, sizeof(buf));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memset(buf, 0, sizeof(buf));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1312,9 +1340,15 @@ static irqreturn_t ltr501_trigger_handler(int irq, void *p)
 			return ret;
 		if (test_bit(0, indio_dev->active_scan_mask))
 <<<<<<< HEAD
+<<<<<<< HEAD
 			scan.channels[j++] = le16_to_cpu(als_buf[1]);
 		if (test_bit(1, indio_dev->active_scan_mask))
 			scan.channels[j++] = le16_to_cpu(als_buf[0]);
+=======
+			buf[j++] = le16_to_cpu(als_buf[1]);
+		if (test_bit(1, indio_dev->active_scan_mask))
+			buf[j++] = le16_to_cpu(als_buf[0]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			buf[j++] = le16_to_cpu(als_buf[1]);
 		if (test_bit(1, indio_dev->active_scan_mask))
@@ -1328,15 +1362,21 @@ static irqreturn_t ltr501_trigger_handler(int irq, void *p)
 		if (ret < 0)
 			goto done;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		scan.channels[j++] = psdata & LTR501_PS_DATA_MASK;
 	}
 
 	iio_push_to_buffers_with_timestamp(indio_dev, &scan,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		buf[j++] = psdata & LTR501_PS_DATA_MASK;
 	}
 
 	iio_push_to_buffers_with_timestamp(indio_dev, buf,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					   iio_get_time_ns(indio_dev));
 
@@ -1408,12 +1448,18 @@ static bool ltr501_is_volatile_reg(struct device *dev, unsigned int reg)
 	switch (reg) {
 	case LTR501_ALS_DATA1:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case LTR501_ALS_DATA1_UPPER:
 	case LTR501_ALS_DATA0:
 	case LTR501_ALS_DATA0_UPPER:
 	case LTR501_ALS_PS_STATUS:
 	case LTR501_PS_DATA:
 	case LTR501_PS_DATA_UPPER:
+=======
+	case LTR501_ALS_DATA0:
+	case LTR501_ALS_PS_STATUS:
+	case LTR501_PS_DATA:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	case LTR501_ALS_DATA0:
 	case LTR501_ALS_PS_STATUS:

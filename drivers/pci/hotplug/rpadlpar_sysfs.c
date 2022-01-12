@@ -40,18 +40,24 @@ static ssize_t add_slot_store(struct kobject *kobj, struct kobj_attribute *attr,
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	strscpy(drc_name, buf, nbytes + 1);
 
 	end = strchr(drc_name, '\n');
 	if (end)
 		*end = '\0';
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	memcpy(drc_name, buf, nbytes);
 
 	end = strchr(drc_name, '\n');
 	if (!end)
 		end = &drc_name[nbytes];
 	*end = '\0';
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	rc = dlpar_add_slot(drc_name);
@@ -79,18 +85,24 @@ static ssize_t remove_slot_store(struct kobject *kobj,
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	strscpy(drc_name, buf, nbytes + 1);
 
 	end = strchr(drc_name, '\n');
 	if (end)
 		*end = '\0';
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	memcpy(drc_name, buf, nbytes);
 
 	end = strchr(drc_name, '\n');
 	if (!end)
 		end = &drc_name[nbytes];
 	*end = '\0';
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	rc = dlpar_remove_slot(drc_name);

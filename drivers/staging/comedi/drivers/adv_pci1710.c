@@ -300,17 +300,23 @@ static int pci1710_ai_read_sample(struct comedi_device *dev,
 				  struct comedi_subdevice *s,
 				  unsigned int cur_chan,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				  unsigned short *val)
 {
 	const struct boardtype *board = dev->board_ptr;
 	struct pci1710_private *devpriv = dev->private;
 	unsigned short sample;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				  unsigned int *val)
 {
 	const struct boardtype *board = dev->board_ptr;
 	struct pci1710_private *devpriv = dev->private;
 	unsigned int sample;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned int chan;
 
@@ -353,7 +359,11 @@ static int pci1710_ai_insn_read(struct comedi_device *dev,
 
 	for (i = 0; i < insn->n; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unsigned short val;
+=======
+		unsigned int val;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		unsigned int val;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -407,7 +417,11 @@ static void pci1710_handle_every_sample(struct comedi_device *dev,
 	struct comedi_cmd *cmd = &s->async->cmd;
 	unsigned int status;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned short val;
+=======
+	unsigned int val;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned int val;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -471,7 +485,11 @@ static void pci1710_handle_fifo(struct comedi_device *dev,
 
 	for (i = 0; i < devpriv->max_samples; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unsigned short val;
+=======
+		unsigned int val;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		unsigned int val;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

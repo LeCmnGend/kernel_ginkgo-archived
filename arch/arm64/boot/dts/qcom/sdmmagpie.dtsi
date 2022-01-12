@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2018-2020, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2018-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2018-2021, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -634,7 +638,11 @@
 			reusable;
 			alignment = <0 0x400000>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			size = <0 0x5c00000>;
+=======
+			size = <0 0x8c00000>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			size = <0 0x8c00000>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

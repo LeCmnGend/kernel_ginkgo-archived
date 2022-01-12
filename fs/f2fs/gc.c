@@ -15,7 +15,10 @@
 #include <linux/freezer.h>
 #include <linux/sched/signal.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <uapi/linux/sched/types.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -129,7 +132,10 @@ next:
 int f2fs_start_gc_thread(struct f2fs_sb_info *sbi)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	const struct sched_param param = { .sched_priority = 0 };
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct f2fs_gc_kthread *gc_th;
@@ -159,9 +165,12 @@ int f2fs_start_gc_thread(struct f2fs_sb_info *sbi)
 		sbi->gc_thread = NULL;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sched_setscheduler(sbi->gc_thread->f2fs_gc_task, SCHED_IDLE, &param);
 	set_task_ioprio(sbi->gc_thread->f2fs_gc_task,
 			IOPRIO_PRIO_VALUE(IOPRIO_CLASS_IDLE, 0));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 out:
@@ -533,8 +542,13 @@ static int gc_node_segment(struct f2fs_sb_info *sbi,
 	int off;
 	int phase = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool fggc = (gc_type == FG_GC);
 	int submitted = 0;
+=======
+	int submitted = 0;
+	bool fggc = (gc_type == FG_GC);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int submitted = 0;
 	bool fggc = (gc_type == FG_GC);
@@ -807,9 +821,15 @@ static int move_data_block(struct inode *inode, block_t bidx,
 
 	if (f2fs_is_atomic_file(inode)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		F2FS_I(inode)->i_gc_failures[GC_FAILURE_ATOMIC]++;
 		F2FS_I_SB(inode)->skipped_atomic_files[gc_type]++;
 		err = -EAGAIN;
+=======
+		err = -EAGAIN;
+		F2FS_I(inode)->i_gc_failures[GC_FAILURE_ATOMIC]++;
+		F2FS_I_SB(inode)->skipped_atomic_files[gc_type]++;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		err = -EAGAIN;
 		F2FS_I(inode)->i_gc_failures[GC_FAILURE_ATOMIC]++;
@@ -848,6 +868,10 @@ static int move_data_block(struct inode *inode, block_t bidx,
 		goto put_out;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -966,9 +990,15 @@ static int move_data_page(struct inode *inode, block_t bidx, int gc_type,
 
 	if (f2fs_is_atomic_file(inode)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		F2FS_I(inode)->i_gc_failures[GC_FAILURE_ATOMIC]++;
 		F2FS_I_SB(inode)->skipped_atomic_files[gc_type]++;
 		err = -EAGAIN;
+=======
+		err = -EAGAIN;
+		F2FS_I(inode)->i_gc_failures[GC_FAILURE_ATOMIC]++;
+		F2FS_I_SB(inode)->skipped_atomic_files[gc_type]++;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		err = -EAGAIN;
 		F2FS_I(inode)->i_gc_failures[GC_FAILURE_ATOMIC]++;
@@ -1167,8 +1197,13 @@ next_step:
 								+ ofs_in_node;
 			if (f2fs_post_read_required(inode))
 <<<<<<< HEAD
+<<<<<<< HEAD
 				err = move_data_block(inode, start_bidx,
 							gc_type, segno, off);
+=======
+				err = move_data_block(inode, start_bidx, gc_type,
+								segno, off);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				err = move_data_block(inode, start_bidx, gc_type,
 								segno, off);
@@ -1327,7 +1362,10 @@ int f2fs_gc(struct f2fs_sb_info *sbi, bool sync,
 		.iroot = RADIX_TREE_INIT(GFP_NOFS),
 	};
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct super_block *sb = sbi->sb;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long long last_skipped = sbi->skipped_atomic_files[FG_GC];
@@ -1335,7 +1373,11 @@ int f2fs_gc(struct f2fs_sb_info *sbi, bool sync,
 	unsigned int skipped_round = 0, round = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	trace_f2fs_gc_begin(sb, sync, background,
+=======
+	trace_f2fs_gc_begin(sbi->sb, sync, background,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_f2fs_gc_begin(sbi->sb, sync, background,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1352,7 +1394,11 @@ int f2fs_gc(struct f2fs_sb_info *sbi, bool sync,
 	first_skipped = last_skipped;
 gc_more:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (unlikely(!(sb->s_flags & MS_ACTIVE))) {
+=======
+	if (unlikely(!(sbi->sb->s_flags & MS_ACTIVE))) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(!(sbi->sb->s_flags & MS_ACTIVE))) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1431,7 +1477,11 @@ stop:
 	SIT_I(sbi)->last_victim[FLUSH_DEVICE] = init_segno;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	trace_f2fs_gc_end(sb, ret, total_freed, sec_freed,
+=======
+	trace_f2fs_gc_end(sbi->sb, ret, total_freed, sec_freed,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	trace_f2fs_gc_end(sbi->sb, ret, total_freed, sec_freed,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1450,6 +1500,7 @@ stop:
 	if (sync && !ret)
 		ret = sec_freed ? 0 : -EAGAIN;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (gc_type == FG_GC && down_read_trylock(&sb->s_umount)) {
 		writeback_inodes_sb(sb, WB_REASON_SYNC);
@@ -1457,6 +1508,8 @@ stop:
 		up_read(&sb->s_umount);
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;

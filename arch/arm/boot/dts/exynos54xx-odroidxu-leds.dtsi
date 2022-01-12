@@ -26,7 +26,11 @@
 			 * so limit its max brightness
 			 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 			max-brightness = <127>;
+=======
+			max_brightness = <127>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			max_brightness = <127>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -38,7 +42,11 @@
 			pwms = <&pwm 2 2000000 0>;
 			pwm-names = "pwm2";
 <<<<<<< HEAD
+<<<<<<< HEAD
 			max-brightness = <255>;
+=======
+			max_brightness = <255>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			max_brightness = <255>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

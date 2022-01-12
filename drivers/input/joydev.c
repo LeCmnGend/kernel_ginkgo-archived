@@ -461,7 +461,11 @@ static int joydev_handle_JSIOCSAXMAP(struct joydev *joydev,
 		return PTR_ERR(abspam);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (i = 0; i < len && i < joydev->nabs; i++) {
+=======
+	for (i = 0; i < joydev->nabs; i++) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (i = 0; i < joydev->nabs; i++) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -489,9 +493,12 @@ static int joydev_handle_JSIOCSBTNMAP(struct joydev *joydev,
 	int retval = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (len % sizeof(*keypam))
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	len = min(len, sizeof(joydev->keypam));
@@ -502,7 +509,11 @@ static int joydev_handle_JSIOCSBTNMAP(struct joydev *joydev,
 		return PTR_ERR(keypam);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (i = 0; i < (len / 2) && i < joydev->nkey; i++) {
+=======
+	for (i = 0; i < joydev->nkey; i++) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (i = 0; i < joydev->nkey; i++) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -516,7 +527,11 @@ static int joydev_handle_JSIOCSBTNMAP(struct joydev *joydev,
 
 	for (i = 0; i < joydev->nkey; i++)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		joydev->keymap[joydev->keypam[i] - BTN_MISC] = i;
+=======
+		joydev->keymap[keypam[i] - BTN_MISC] = i;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		joydev->keymap[keypam[i] - BTN_MISC] = i;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

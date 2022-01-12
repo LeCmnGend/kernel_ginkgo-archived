@@ -431,7 +431,11 @@ static void seq_lock_time(struct seq_file *m, struct lock_time *lt)
 	seq_time(m, lt->max);
 	seq_time(m, lt->total);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	seq_time(m, lt->nr ? div64_u64(lt->total, lt->nr) : 0);
+=======
+	seq_time(m, lt->nr ? div_s64(lt->total, lt->nr) : 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	seq_time(m, lt->nr ? div_s64(lt->total, lt->nr) : 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

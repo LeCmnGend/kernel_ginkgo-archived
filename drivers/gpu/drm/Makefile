@@ -19,7 +19,11 @@ drm-y       :=	drm_auth.o drm_bufs.o drm_cache.o \
 		drm_plane.o drm_color_mgmt.o drm_print.o \
 		drm_dumb_buffers.o drm_mode_config.o drm_vblank.o \
 <<<<<<< HEAD
+<<<<<<< HEAD
 		drm_syncobj.o drm_lease.o
+=======
+		drm_syncobj.o drm_lease.o drm_client.o drm_client_modeset.o
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		drm_syncobj.o drm_lease.o drm_client.o drm_client_modeset.o
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

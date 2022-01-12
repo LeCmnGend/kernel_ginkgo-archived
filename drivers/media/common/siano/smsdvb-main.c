@@ -1181,7 +1181,11 @@ static int smsdvb_hotplug(struct smscore_device_t *coredev,
 	if (rc < 0) {
 		pr_err("dvb_create_media_graph failed %d\n", rc);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto media_graph_error;
+=======
+		goto client_error;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto client_error;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1191,6 +1195,7 @@ static int smsdvb_hotplug(struct smscore_device_t *coredev,
 	return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 media_graph_error:
 	mutex_lock(&g_smsdvb_clientslock);
 	list_del(&client->entry);
@@ -1198,6 +1203,8 @@ media_graph_error:
 
 	smsdvb_debugfs_release(client);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 client_error:

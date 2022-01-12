@@ -223,15 +223,21 @@ static int bench_mem_common(int argc, const char **argv, struct bench_mem_info *
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void memcpy_prefault(memcpy_t fn, size_t size, void *src, void *dst)
 {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static u64 do_memcpy_cycles(const struct function *r, size_t size, void *src, void *dst)
 {
 	u64 cycle_start = 0ULL, cycle_end = 0ULL;
 	memcpy_t fn = r->fn.memcpy;
 	int i;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Make sure to always prefault zero pages even if MMAP_THRESH is crossed: */
 	memset(src, 0, size);
@@ -242,6 +248,7 @@ static u64 do_memcpy_cycles(const struct function *r, size_t size, void *src, vo
 	 */
 	fn(dst, src, size);
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 static u64 do_memcpy_cycles(const struct function *r, size_t size, void *src, void *dst)
@@ -251,6 +258,8 @@ static u64 do_memcpy_cycles(const struct function *r, size_t size, void *src, vo
 	int i;
 
 	memcpy_prefault(fn, size, src, dst);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -269,13 +278,19 @@ static double do_memcpy_gettimeofday(const struct function *r, size_t size, void
 	int i;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memcpy_prefault(fn, size, src, dst);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * We prefault the freshly allocated memory range here,
 	 * to not measure page fault overhead:
 	 */
 	fn(dst, src, size);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	BUG_ON(gettimeofday(&tv_start, NULL));

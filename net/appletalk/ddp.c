@@ -1576,8 +1576,13 @@ static int atalk_sendmsg(struct socket *sock, struct msghdr *msg, size_t len)
 	struct net_device *dev;
 	struct ddpehdr *ddp;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int size, hard_header_len;
 	struct atalk_route *rt, *rt_lo = NULL;
+=======
+	int size;
+	struct atalk_route *rt;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int size;
 	struct atalk_route *rt;
@@ -1645,6 +1650,7 @@ static int atalk_sendmsg(struct socket *sock, struct msghdr *msg, size_t len)
 			sk, size, dev->name);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	hard_header_len = dev->hard_header_len;
 	/* Leave room for loopback hardware header if necessary */
 	if (usat->sat_addr.s_node == ATADDR_BCAST &&
@@ -1664,6 +1670,9 @@ static int atalk_sendmsg(struct socket *sock, struct msghdr *msg, size_t len)
 =======
 	size += dev->hard_header_len;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	size += dev->hard_header_len;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	release_sock(sk);
 	skb = sock_alloc_send_skb(sk, size, (flags & MSG_DONTWAIT), &err);
 	lock_sock(sk);
@@ -1672,7 +1681,11 @@ static int atalk_sendmsg(struct socket *sock, struct msghdr *msg, size_t len)
 
 	skb_reserve(skb, ddp_dl->header_length);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	skb_reserve(skb, hard_header_len);
+=======
+	skb_reserve(skb, dev->hard_header_len);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	skb_reserve(skb, dev->hard_header_len);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1727,8 +1740,11 @@ static int atalk_sendmsg(struct socket *sock, struct msghdr *msg, size_t len)
 		skb_orphan(skb);
 		if (ddp->deh_dnode == ATADDR_BCAST) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (!rt_lo) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			struct atalk_addr at_lo;
 
 			at_lo.s_node = 0;
@@ -1736,13 +1752,20 @@ static int atalk_sendmsg(struct socket *sock, struct msghdr *msg, size_t len)
 
 			rt = atrtr_find(&at_lo);
 			if (!rt) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				kfree_skb(skb);
 				err = -ENETUNREACH;
 				goto out;
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 			dev = rt_lo->dev;
+=======
+			dev = rt->dev;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			dev = rt->dev;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

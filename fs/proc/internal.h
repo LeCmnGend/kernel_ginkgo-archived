@@ -202,7 +202,11 @@ extern const struct inode_operations proc_pid_link_inode_operations;
 extern const struct file_operations proc_reclaim_operations;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void proc_init_kmemcache(void);
+=======
+extern void proc_init_inodecache(void);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 extern void proc_init_inodecache(void);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -295,7 +299,10 @@ struct proc_maps_private {
 	struct mempolicy *task_mempolicy;
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long old_cpus_allowed;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 } __randomize_layout;

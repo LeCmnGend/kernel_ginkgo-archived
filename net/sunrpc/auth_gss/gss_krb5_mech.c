@@ -47,8 +47,11 @@
 #include <linux/sunrpc/gss_krb5_enctypes.h>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "auth_gss_internal.h"
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #if IS_ENABLED(CONFIG_SUNRPC_DEBUG)
@@ -193,7 +196,10 @@ get_gss_krb5_enctype(int etype)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static const void *
 simple_get_bytes(const void *p, const void *end, void *res, int len)
 {
@@ -223,6 +229,9 @@ simple_get_netobj(const void *p, const void *end, struct xdr_netobj *res)
 	return q;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline const void *
 get_key(const void *p, const void *end,

@@ -746,7 +746,11 @@
 
 		qspi: spi@66470200 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			compatible = "brcm,spi-ns2-qspi", "brcm,spi-bcm-qspi";
+=======
+			compatible = "brcm,spi-bcm-qspi", "brcm,spi-ns2-qspi";
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			compatible = "brcm,spi-bcm-qspi", "brcm,spi-ns2-qspi";
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

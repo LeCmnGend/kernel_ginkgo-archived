@@ -208,7 +208,11 @@ static int pm860x_led_probe(struct platform_device *pdev)
 	mutex_init(&data->lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = led_classdev_register(chip->dev, &data->cdev);
+=======
+	ret = devm_led_classdev_register(chip->dev, &data->cdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = devm_led_classdev_register(chip->dev, &data->cdev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -217,6 +221,7 @@ static int pm860x_led_probe(struct platform_device *pdev)
 		return ret;
 	}
 	pm860x_led_set(&data->cdev, 0);
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 	platform_set_drvdata(pdev, data);
@@ -237,6 +242,11 @@ static int pm860x_led_remove(struct platform_device *pdev)
 }
 
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	return 0;
+}
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 static struct platform_driver pm860x_led_driver = {
 	.driver	= {
@@ -244,7 +254,10 @@ static struct platform_driver pm860x_led_driver = {
 	},
 	.probe	= pm860x_led_probe,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.remove	= pm860x_led_remove,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

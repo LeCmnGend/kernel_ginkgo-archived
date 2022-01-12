@@ -312,6 +312,10 @@ static void dw_mipi_message_config(struct dw_mipi_dsi *dsi,
 		val |= CMD_MODE_ALL_LP;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	dsi_write(dsi, DSI_LPCLK_CTRL, lpm ? 0 : PHY_TXREQUESTCLKHS);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dsi_write(dsi, DSI_LPCLK_CTRL, lpm ? 0 : PHY_TXREQUESTCLKHS);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -472,8 +476,11 @@ static void dw_mipi_dsi_set_mode(struct dw_mipi_dsi *dsi,
 				 unsigned long mode_flags)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 val;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dsi_write(dsi, DSI_PWR_UP, RESET);
@@ -482,6 +489,10 @@ static void dw_mipi_dsi_set_mode(struct dw_mipi_dsi *dsi,
 		dsi_write(dsi, DSI_MODE_CFG, ENABLE_VIDEO_MODE);
 		dw_mipi_dsi_video_mode_config(dsi);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		dsi_write(dsi, DSI_LPCLK_CTRL, PHY_TXREQUESTCLKHS);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dsi_write(dsi, DSI_LPCLK_CTRL, PHY_TXREQUESTCLKHS);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -490,11 +501,14 @@ static void dw_mipi_dsi_set_mode(struct dw_mipi_dsi *dsi,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	val = PHY_TXREQUESTCLKHS;
 	if (dsi->mode_flags & MIPI_DSI_CLOCK_NON_CONTINUOUS)
 		val |= AUTO_CLKLANE_CTRL;
 	dsi_write(dsi, DSI_LPCLK_CTRL, val);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dsi_write(dsi, DSI_PWR_UP, POWERUP);

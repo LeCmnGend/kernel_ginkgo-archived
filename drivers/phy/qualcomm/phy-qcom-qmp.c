@@ -103,8 +103,11 @@
 
 /* QMP PHY TX registers */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define QSERDES_TX_EMP_POST1_LVL			0x018
 #define QSERDES_TX_SLEW_CNTL				0x040
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define QSERDES_TX_RES_CODE_LANE_OFFSET			0x054
@@ -400,8 +403,13 @@ static const struct qmp_phy_init_tbl ipq8074_pcie_serdes_tbl[] = {
 	QMP_PHY_INIT_CFG(QSERDES_COM_LOCK_CMP_EN, 0x1),
 	QMP_PHY_INIT_CFG(QSERDES_COM_VCO_TUNE_MAP, 0x0),
 <<<<<<< HEAD
+<<<<<<< HEAD
 	QMP_PHY_INIT_CFG(QSERDES_COM_VCO_TUNE_TIMER1, 0xff),
 	QMP_PHY_INIT_CFG(QSERDES_COM_VCO_TUNE_TIMER2, 0x1f),
+=======
+	QMP_PHY_INIT_CFG(QSERDES_COM_VCO_TUNE_TIMER1, 0x1f),
+	QMP_PHY_INIT_CFG(QSERDES_COM_VCO_TUNE_TIMER2, 0x3f),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	QMP_PHY_INIT_CFG(QSERDES_COM_VCO_TUNE_TIMER1, 0x1f),
 	QMP_PHY_INIT_CFG(QSERDES_COM_VCO_TUNE_TIMER2, 0x3f),
@@ -432,6 +440,10 @@ static const struct qmp_phy_init_tbl ipq8074_pcie_serdes_tbl[] = {
 	QMP_PHY_INIT_CFG(QSERDES_COM_INTEGLOOP_GAIN0_MODE0, 0x80),
 	QMP_PHY_INIT_CFG(QSERDES_COM_BIAS_EN_CTRL_BY_PSM, 0x1),
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	QMP_PHY_INIT_CFG(QSERDES_COM_VCO_TUNE_CTRL, 0xa),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	QMP_PHY_INIT_CFG(QSERDES_COM_VCO_TUNE_CTRL, 0xa),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -444,6 +456,10 @@ static const struct qmp_phy_init_tbl ipq8074_pcie_serdes_tbl[] = {
 	QMP_PHY_INIT_CFG(QSERDES_COM_SSC_STEP_SIZE2, 0x19),
 	QMP_PHY_INIT_CFG(QSERDES_COM_CLK_EP_DIV, 0x19),
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	QMP_PHY_INIT_CFG(QSERDES_RX_SIGDET_CNTRL, 0x7),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	QMP_PHY_INIT_CFG(QSERDES_RX_SIGDET_CNTRL, 0x7),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -455,8 +471,11 @@ static const struct qmp_phy_init_tbl ipq8074_pcie_tx_tbl[] = {
 	QMP_PHY_INIT_CFG(QSERDES_TX_RES_CODE_LANE_OFFSET, 0x2),
 	QMP_PHY_INIT_CFG(QSERDES_TX_RCV_DETECT_LVL_2, 0x12),
 <<<<<<< HEAD
+<<<<<<< HEAD
 	QMP_PHY_INIT_CFG(QSERDES_TX_EMP_POST1_LVL, 0x36),
 	QMP_PHY_INIT_CFG(QSERDES_TX_SLEW_CNTL, 0x0a),
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -470,6 +489,10 @@ static const struct qmp_phy_init_tbl ipq8074_pcie_rx_tbl[] = {
 	QMP_PHY_INIT_CFG(QSERDES_RX_UCDR_SO_SATURATION_AND_ENABLE, 0x4b),
 	QMP_PHY_INIT_CFG(QSERDES_RX_UCDR_SO_GAIN, 0x4),
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	QMP_PHY_INIT_CFG(QSERDES_RX_UCDR_SO_GAIN_HALF, 0x4),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	QMP_PHY_INIT_CFG(QSERDES_RX_UCDR_SO_GAIN_HALF, 0x4),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -690,9 +713,12 @@ static const struct qmp_phy_cfg msm8996_usb3phy_cfg = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const char * const ipq8074_pciephy_clk_l[] = {
 	"aux", "cfg_ahb",
 };
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* list of resets */
@@ -713,8 +739,13 @@ static const struct qmp_phy_cfg ipq8074_pciephy_cfg = {
 	.pcs_tbl		= ipq8074_pcie_pcs_tbl,
 	.pcs_tbl_num		= ARRAY_SIZE(ipq8074_pcie_pcs_tbl),
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.clk_list		= ipq8074_pciephy_clk_l,
 	.num_clks		= ARRAY_SIZE(ipq8074_pciephy_clk_l),
+=======
+	.clk_list		= NULL,
+	.num_clks		= 0,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	.clk_list		= NULL,
 	.num_clks		= 0,

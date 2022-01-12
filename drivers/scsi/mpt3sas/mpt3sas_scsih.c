@@ -5237,10 +5237,15 @@ _scsih_expander_add(struct MPT3SAS_ADAPTER *ioc, u16 handle)
 	    sas_expander->sas_address, sas_expander->num_phys);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!sas_expander->num_phys) {
 		rc = -1;
 		goto out_fail;
 	}
+=======
+	if (!sas_expander->num_phys)
+		goto out_fail;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!sas_expander->num_phys)
 		goto out_fail;

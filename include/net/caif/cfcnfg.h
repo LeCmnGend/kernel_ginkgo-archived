@@ -63,7 +63,11 @@ void cfcnfg_remove(struct cfcnfg *cfg);
  * @head_room:	Head space needed by link specific protocol.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 int
+=======
+void
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

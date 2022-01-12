@@ -31,7 +31,10 @@
 /* size of metadata (inode and directory) blocks */
 #define SQUASHFS_METADATA_SIZE		8192
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define SQUASHFS_BLOCK_OFFSET		2
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

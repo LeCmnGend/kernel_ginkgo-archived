@@ -532,7 +532,10 @@ static int radeon_info_ioctl(struct drm_device *dev, void *data, struct drm_file
 		} else {
 			DRM_DEBUG_KMS("BACKEND_ENABLED_MASK is si+ only!\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 			return -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
@@ -664,10 +667,15 @@ int radeon_driver_open_kms(struct drm_device *dev, struct drm_file *file_priv)
 
 	r = pm_runtime_get_sync(dev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (r < 0) {
 		pm_runtime_put_autosuspend(dev->dev);
 		return r;
 	}
+=======
+	if (r < 0)
+		return r;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (r < 0)
 		return r;

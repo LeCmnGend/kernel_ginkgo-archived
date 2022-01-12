@@ -569,7 +569,11 @@ void crypto_destroy_tfm(void *mem, struct crypto_tfm *tfm)
 	struct crypto_alg *alg;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (IS_ERR_OR_NULL(mem))
+=======
+	if (unlikely(!mem))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (unlikely(!mem))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

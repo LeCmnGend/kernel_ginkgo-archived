@@ -515,7 +515,10 @@ struct hci_chan {
 	unsigned int	sent;
 	__u8		state;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool		amp;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -1034,7 +1037,10 @@ void hci_free_dev(struct hci_dev *hdev);
 int hci_register_dev(struct hci_dev *hdev);
 void hci_unregister_dev(struct hci_dev *hdev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 void hci_cleanup_dev(struct hci_dev *hdev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 int hci_suspend_dev(struct hci_dev *hdev);
@@ -1261,6 +1267,7 @@ static inline void hci_auth_cfm(struct hci_conn *conn, __u8 status)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void hci_encrypt_cfm(struct hci_conn *conn, __u8 status)
 {
 	struct hci_cb *cb;
@@ -1290,6 +1297,8 @@ static inline void hci_encrypt_cfm(struct hci_conn *conn, __u8 status)
 			conn->sec_level = conn->pending_sec_level;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void hci_encrypt_cfm(struct hci_conn *conn, __u8 status,
 								__u8 encrypt)
 {
@@ -1300,6 +1309,9 @@ static inline void hci_encrypt_cfm(struct hci_conn *conn, __u8 status,
 
 	if (conn->pending_sec_level > conn->sec_level)
 		conn->sec_level = conn->pending_sec_level;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	mutex_lock(&hci_cb_list_lock);

@@ -190,7 +190,10 @@ static unsigned int sfq_classify(struct sk_buff *skb, struct Qdisc *sch,
 		case TC_ACT_TRAP:
 			*qerr = NET_XMIT_SUCCESS | __NET_XMIT_STOLEN;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			/* fall through */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		case TC_ACT_SHOT:
@@ -654,7 +657,11 @@ static int sfq_change(struct Qdisc *sch, struct nlattr *opt)
 
 	if (ctl_v1 && !red_check_params(ctl_v1->qth_min, ctl_v1->qth_max,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					ctl_v1->Wlog, ctl_v1->Scell_log, NULL))
+=======
+					ctl_v1->Wlog))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					ctl_v1->Wlog))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -748,7 +755,11 @@ static int sfq_init(struct Qdisc *sch, struct nlattr *opt)
 			       (unsigned long)sch);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = tcf_block_get(&q->block, &q->filter_list, sch);
+=======
+	err = tcf_block_get(&q->block, &q->filter_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = tcf_block_get(&q->block, &q->filter_list);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

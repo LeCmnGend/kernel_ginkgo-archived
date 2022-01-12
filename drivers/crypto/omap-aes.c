@@ -1072,7 +1072,11 @@ static int omap_aes_probe(struct platform_device *pdev)
 		dev_err(dev, "%s: failed to get_sync(%d)\n",
 			__func__, err);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto err_pm_disable;
+=======
+		goto err_res;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto err_res;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1185,7 +1189,10 @@ err_engine:
 err_irq:
 	tasklet_kill(&dd->done_task);
 <<<<<<< HEAD
+<<<<<<< HEAD
 err_pm_disable:
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pm_runtime_disable(dev);

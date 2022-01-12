@@ -27,6 +27,11 @@
 /* drm_file.c */
 extern struct mutex drm_global_mutex;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+struct drm_file *drm_file_alloc(struct drm_minor *minor);
+void drm_file_free(struct drm_file *file);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 struct drm_file *drm_file_alloc(struct drm_minor *minor);
 void drm_file_free(struct drm_file *file);
@@ -88,7 +93,12 @@ int drm_dropmaster_ioctl(struct drm_device *dev, void *data,
 int drm_master_open(struct drm_file *file_priv);
 void drm_master_release(struct drm_file *file_priv);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+bool drm_master_internal_acquire(struct drm_device *dev);
+void drm_master_internal_release(struct drm_device *dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 bool drm_master_internal_acquire(struct drm_device *dev);
 void drm_master_internal_release(struct drm_device *dev);

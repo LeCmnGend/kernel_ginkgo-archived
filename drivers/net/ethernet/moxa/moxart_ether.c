@@ -539,13 +539,19 @@ static int moxart_mac_probe(struct platform_device *pdev)
 
 	ret = register_netdev(ndev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret)
 		goto init_fail;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (ret) {
 		free_netdev(ndev);
 		goto init_fail;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	netdev_dbg(ndev, "%s: IRQ=%d address=%pM\n",

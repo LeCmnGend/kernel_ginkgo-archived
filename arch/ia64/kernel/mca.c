@@ -1861,7 +1861,11 @@ ia64_mca_cpu_init(void *cpu_data)
 			first_time = 0;
 		} else
 <<<<<<< HEAD
+<<<<<<< HEAD
 			data = (void *)__get_free_pages(GFP_ATOMIC,
+=======
+			data = (void *)__get_free_pages(GFP_KERNEL,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			data = (void *)__get_free_pages(GFP_KERNEL,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -173,7 +173,10 @@ int test__pmu(struct test *test __maybe_unused, int subtest __maybe_unused)
 	} while (0);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	perf_pmu__del_formats(&formats);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	test_format_dir_put(format);

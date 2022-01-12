@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #!/usr/bin/env perl
+=======
+#!/usr/bin/perl
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #!/usr/bin/perl
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -116,7 +120,11 @@ my $regex_direct_end_default = 'nr_reclaimed=([0-9]*)';
 my $regex_kswapd_wake_default = 'nid=([0-9]*) order=([0-9]*)';
 my $regex_kswapd_sleep_default = 'nid=([0-9]*)';
 <<<<<<< HEAD
+<<<<<<< HEAD
 my $regex_wakeup_kswapd_default = 'nid=([0-9]*) zid=([0-9]*) order=([0-9]*) gfp_flags=([A-Z_|]*)';
+=======
+my $regex_wakeup_kswapd_default = 'nid=([0-9]*) zid=([0-9]*) order=([0-9]*)';
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 my $regex_wakeup_kswapd_default = 'nid=([0-9]*) zid=([0-9]*) order=([0-9]*)';
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -210,7 +218,11 @@ $regex_wakeup_kswapd = generate_traceevent_regex(
 			"vmscan/mm_vmscan_wakeup_kswapd",
 			$regex_wakeup_kswapd_default,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			"nid", "zid", "order", "gfp_flags");
+=======
+			"nid", "zid", "order");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			"nid", "zid", "order");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

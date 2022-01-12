@@ -631,6 +631,7 @@ static void mceusb_dev_printdata(struct mceusb_dev *ir, u8 *buf, int buf_len,
 			break;
 		case MCE_RSP_EQIRCFS:
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (!data[0] && !data[1]) {
 				dev_dbg(dev, "%s: no carrier", inout);
 				break;
@@ -640,12 +641,18 @@ static void mceusb_dev_printdata(struct mceusb_dev *ir, u8 *buf, int buf_len,
 				break;
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			period = DIV_ROUND_CLOSEST((1U << data[0] * 2) *
 						   (data[1] + 1), 10);
 			if (!period)
 				break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			carrier = USEC_PER_SEC / period;
+=======
+			carrier = (1000 * 1000) / period;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			carrier = (1000 * 1000) / period;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

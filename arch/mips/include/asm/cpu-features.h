@@ -12,7 +12,10 @@
 #include <asm/cpu.h>
 #include <asm/cpu-info.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <asm/isa-rev.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #include <cpu-feature-overrides.h>
@@ -498,7 +501,11 @@
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined(CONFIG_SMP) && (MIPS_ISA_REV >= 6)
+=======
+#if defined(CONFIG_SMP) && defined(__mips_isa_rev) && (__mips_isa_rev >= 6)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #if defined(CONFIG_SMP) && defined(__mips_isa_rev) && (__mips_isa_rev >= 6)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -534,7 +541,11 @@
 	(current_cpu_data.options & MIPS_CPU_SHARED_FTLB_ENTRIES)
 # endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif /* SMP && MIPS_ISA_REV >= 6 */
+=======
+#endif /* SMP && __mips_isa_rev >= 6 */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #endif /* SMP && __mips_isa_rev >= 6 */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

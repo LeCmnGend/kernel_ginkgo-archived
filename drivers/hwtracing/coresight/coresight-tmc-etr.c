@@ -1,6 +1,10 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright (c) 2017-2020, The Linux Foundation. All rights reserved.
+=======
+ * Copyright (c) 2017-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * Copyright (c) 2017-2021, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -25,6 +29,10 @@
 #include <linux/dma-mapping.h>
 #include <linux/iommu.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <asm/dma-iommu.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <asm/dma-iommu.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1141,7 +1149,10 @@ static void tmc_etr_disable_hw(struct tmc_drvdata *drvdata)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int usb_bam_sysmem_iommu_map(struct device *dev,
 		struct sps_mem_buffer *fifo, bool is_desc_fifo)
 {
@@ -1185,12 +1196,19 @@ static void usb_bam_sysmem_iommu_unmap(struct device *dev,
 	}
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int tmc_etr_fill_usb_bam_data(struct tmc_drvdata *drvdata)
 {
 	struct tmc_etr_bam_data *bamdata = drvdata->bamdata;
 	dma_addr_t data_fifo_iova, desc_fifo_iova;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	int ret;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int ret;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1201,10 +1219,13 @@ static int tmc_etr_fill_usb_bam_data(struct tmc_drvdata *drvdata)
 				    &bamdata->desc_fifo,
 				    &bamdata->data_fifo,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				    NULL);
 
 	if (bamdata->props.options & SPS_BAM_SMMU_EN) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				    &bamdata->mem_type);
 
 	if (!(bamdata->props.options & SPS_BAM_SMMU_EN))
@@ -1212,6 +1233,9 @@ static int tmc_etr_fill_usb_bam_data(struct tmc_drvdata *drvdata)
 
 	dev_dbg(drvdata->dev, "mem_type:%d\n", bamdata->mem_type);
 	if (bamdata->mem_type == OCI_MEM) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		data_fifo_iova = dma_map_resource(drvdata->dev,
 			bamdata->data_fifo.phys_base, bamdata->data_fifo.size,
@@ -1232,11 +1256,14 @@ static int tmc_etr_fill_usb_bam_data(struct tmc_drvdata *drvdata)
 			&desc_fifo_iova, bamdata->desc_fifo.size);
 		bamdata->desc_fifo.iova = desc_fifo_iova;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}
 	return 0;
 }
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else if (bamdata->mem_type == SYSTEM_MEM) {
 
 		if (!bamdata->data_fifo.phys_base || !bamdata->data_fifo.size ||
@@ -1279,6 +1306,9 @@ static void tmc_etr_unmap_usb_bam_data(struct tmc_drvdata *drvdata)
 	}
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int __tmc_etr_enable_to_bam(struct tmc_drvdata *drvdata)
 {
@@ -1541,6 +1571,10 @@ void usb_notifier(void *priv, unsigned int event, struct qdss_request *d_req,
 		spin_unlock_irqrestore(&drvdata->spinlock, flags);
 		tmc_etr_bam_disable(drvdata);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		tmc_etr_unmap_usb_bam_data(drvdata);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		tmc_etr_unmap_usb_bam_data(drvdata);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -552,8 +552,12 @@ static int snd_ca0106_pcm_power_dac(struct snd_ca0106 *chip, int channel_id,
 			/* Power down */
 			chip->spi_dac_reg[reg] |= bit;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (snd_ca0106_spi_write(chip, chip->spi_dac_reg[reg]) != 0)
 			return -ENXIO;
+=======
+		return snd_ca0106_spi_write(chip, chip->spi_dac_reg[reg]);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return snd_ca0106_spi_write(chip, chip->spi_dac_reg[reg]);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

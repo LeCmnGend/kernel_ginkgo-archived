@@ -752,7 +752,11 @@ static int vmci_ctx_get_chkpt_doorbells(struct vmci_ctx *context,
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		dbells = kzalloc(data_size, GFP_ATOMIC);
+=======
+		dbells = kmalloc(data_size, GFP_ATOMIC);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		dbells = kmalloc(data_size, GFP_ATOMIC);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

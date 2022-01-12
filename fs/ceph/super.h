@@ -753,7 +753,11 @@ static inline int default_congestion_kb(void)
 	 * Limit the default to 256M
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	congestion_kb = (16*int_sqrt(totalram_pages())) << (PAGE_SHIFT-10);
+=======
+	congestion_kb = (16*int_sqrt(totalram_pages)) << (PAGE_SHIFT-10);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	congestion_kb = (16*int_sqrt(totalram_pages)) << (PAGE_SHIFT-10);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

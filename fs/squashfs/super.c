@@ -177,7 +177,10 @@ static int squashfs_fill_super(struct super_block *sb, void *data, int silent)
 	msblk->inodes = le32_to_cpu(sblk->inodes);
 	msblk->fragments = le32_to_cpu(sblk->fragments);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	msblk->ids = le16_to_cpu(sblk->no_ids);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	flags = le16_to_cpu(sblk->flags);
@@ -192,7 +195,11 @@ static int squashfs_fill_super(struct super_block *sb, void *data, int silent)
 	TRACE("Number of inodes %d\n", msblk->inodes);
 	TRACE("Number of fragments %d\n", msblk->fragments);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	TRACE("Number of ids %d\n", msblk->ids);
+=======
+	TRACE("Number of ids %d\n", le16_to_cpu(sblk->no_ids));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	TRACE("Number of ids %d\n", le16_to_cpu(sblk->no_ids));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -253,7 +260,12 @@ allocate_id_index_table:
 	/* Allocate and read id index table */
 	msblk->id_table = squashfs_read_id_index_table(sb,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		le64_to_cpu(sblk->id_table_start), next_table, msblk->ids);
+=======
+		le64_to_cpu(sblk->id_table_start), next_table,
+		le16_to_cpu(sblk->no_ids));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		le64_to_cpu(sblk->id_table_start), next_table,
 		le16_to_cpu(sblk->no_ids));

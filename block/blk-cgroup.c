@@ -873,12 +873,15 @@ int blkg_conf_prep(struct blkcg *blkcg, const struct blkcg_policy *pol,
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (radix_tree_preload(GFP_KERNEL)) {
 			blkg_free(new_blkg);
 			ret = -ENOMEM;
 			goto fail;
 		}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		rcu_read_lock();
@@ -888,8 +891,12 @@ int blkg_conf_prep(struct blkcg *blkcg, const struct blkcg_policy *pol,
 		if (IS_ERR(blkg)) {
 			ret = PTR_ERR(blkg);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			blkg_free(new_blkg);
 			goto fail_preloaded;
+=======
+			goto fail_unlock;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			goto fail_unlock;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -902,6 +909,7 @@ int blkg_conf_prep(struct blkcg *blkcg, const struct blkcg_policy *pol,
 			if (unlikely(IS_ERR(blkg))) {
 				ret = PTR_ERR(blkg);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				goto fail_preloaded;
 			}
 		}
@@ -909,10 +917,15 @@ int blkg_conf_prep(struct blkcg *blkcg, const struct blkcg_policy *pol,
 		radix_tree_preload_end();
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				goto fail_unlock;
 			}
 		}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (pos == blkcg)
 			goto success;
@@ -924,8 +937,11 @@ success:
 	return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 fail_preloaded:
 	radix_tree_preload_end();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 fail_unlock:

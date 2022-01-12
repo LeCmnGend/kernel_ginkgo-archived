@@ -15,7 +15,10 @@
 
 static const struct adreno_gpu_core adreno_gpulist[] = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if 0
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{
@@ -340,7 +343,10 @@ static const struct adreno_gpu_core adreno_gpulist[] = {
 		.busy_mask = 0xFFFFFFFE,
 	},
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	{

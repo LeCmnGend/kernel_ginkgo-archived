@@ -1856,6 +1856,7 @@ static int pfkey_dump(struct sock *sk, struct sk_buff *skb, const struct sadb_ms
 		struct sadb_x_filter *xfilter = ext_hdrs[SADB_X_EXT_FILTER - 1];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if ((xfilter->sadb_x_filter_splen >=
 			(sizeof(xfrm_address_t) << 3)) ||
 		    (xfilter->sadb_x_filter_dplen >=
@@ -1863,6 +1864,8 @@ static int pfkey_dump(struct sock *sk, struct sk_buff *skb, const struct sadb_ms
 			mutex_unlock(&pfk->dump_lock);
 			return -EINVAL;
 		}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		filter = kmalloc(sizeof(*filter), GFP_KERNEL);
@@ -2910,7 +2913,11 @@ static int count_ah_combs(const struct xfrm_tmpl *t)
 		if (!aalg->pfkey_supported)
 			continue;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (aalg_tmpl_set(t, aalg))
+=======
+		if (aalg_tmpl_set(t, aalg) && aalg->available)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (aalg_tmpl_set(t, aalg) && aalg->available)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2932,7 +2939,11 @@ static int count_esp_combs(const struct xfrm_tmpl *t)
 			continue;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!(ealg_tmpl_set(t, ealg)))
+=======
+		if (!(ealg_tmpl_set(t, ealg) && ealg->available))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!(ealg_tmpl_set(t, ealg) && ealg->available))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2947,7 +2958,11 @@ static int count_esp_combs(const struct xfrm_tmpl *t)
 				continue;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (aalg_tmpl_set(t, aalg))
+=======
+			if (aalg_tmpl_set(t, aalg) && aalg->available)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (aalg_tmpl_set(t, aalg) && aalg->available)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

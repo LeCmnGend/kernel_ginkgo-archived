@@ -39,6 +39,11 @@ static struct tau_temp
 struct timer_list tau_timer;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#undef DEBUG
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #undef DEBUG
 
@@ -76,6 +81,7 @@ void set_thresholds(unsigned long cpu)
 void TAUupdate(int cpu)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 thrm;
 	u32 bits = THRM1_TIV | THRM1_TIN | THRM1_V;
 
@@ -104,6 +110,8 @@ void TAUupdate(int cpu)
 		pr_debug("%s: high threshold crossed\n", __func__);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned thrm;
 
 #ifdef DEBUG
@@ -145,6 +153,9 @@ void TAUupdate(int cpu)
 	set_thresholds(cpu);
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -171,16 +182,22 @@ static void tau_timeout(void * info)
 {
 	int cpu;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int size;
 	int shrink;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long flags;
 	int size;
 	int shrink;
 
 	/* disabling interrupts *should* be okay */
 	local_irq_save(flags);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cpu = smp_processor_id();
 
@@ -189,9 +206,12 @@ static void tau_timeout(void * info)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Stop thermal sensor comparisons and interrupts */
 	mtspr(SPRN_THRM3, 0);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	size = tau[cpu].high - tau[cpu].low;
@@ -216,6 +236,7 @@ static void tau_timeout(void * info)
 	set_thresholds(cpu);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Restart thermal sensor comparisons and interrupts.
 	 * The "PowerPC 740 and PowerPC 750 Microprocessor Datasheet"
 	 * recommends that "the maximum value be set in THRM3 under all
@@ -223,6 +244,8 @@ static void tau_timeout(void * info)
 	 */
 	mtspr(SPRN_THRM3, THRM3_SITV(0x1fff) | THRM3_E);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * Do the enable every time, since otherwise a bunch of (relatively)
 	 * complex sleep code needs to be added. One mtspr every time
@@ -239,6 +262,9 @@ static void tau_timeout(void * info)
 	mtspr(SPRN_THRM3, THRM3_SITV(500*60) | THRM3_E);
 
 	local_irq_restore(flags);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

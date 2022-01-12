@@ -382,12 +382,15 @@ struct ak8975_data {
 	struct regulator	*vdd;
 	struct regulator	*vid;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* Ensure natural alignment of timestamp */
 	struct {
 		s16 channels[3];
 		s64 ts __aligned(8);
 	} scan;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -825,6 +828,10 @@ static void ak8975_fill_buffer(struct iio_dev *indio_dev)
 	const struct ak_def *def = data->def;
 	int ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	s16 buff[8]; /* 3 x 16 bits axis values + 1 aligned 64 bits timestamp */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	s16 buff[8]; /* 3 x 16 bits axis values + 1 aligned 64 bits timestamp */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -851,6 +858,7 @@ static void ak8975_fill_buffer(struct iio_dev *indio_dev)
 
 	/* Clamp to valid range. */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	data->scan.channels[0] = clamp_t(s16, le16_to_cpu(fval[0]), -def->range, def->range);
 	data->scan.channels[1] = clamp_t(s16, le16_to_cpu(fval[1]), -def->range, def->range);
 	data->scan.channels[2] = clamp_t(s16, le16_to_cpu(fval[2]), -def->range, def->range);
@@ -859,12 +867,17 @@ static void ak8975_fill_buffer(struct iio_dev *indio_dev)
 					   iio_get_time_ns(indio_dev));
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	buff[0] = clamp_t(s16, le16_to_cpu(fval[0]), -def->range, def->range);
 	buff[1] = clamp_t(s16, le16_to_cpu(fval[1]), -def->range, def->range);
 	buff[2] = clamp_t(s16, le16_to_cpu(fval[2]), -def->range, def->range);
 
 	iio_push_to_buffers_with_timestamp(indio_dev, buff,
 					   iio_get_time_ns(indio_dev));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return;
 

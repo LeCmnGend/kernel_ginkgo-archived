@@ -557,11 +557,17 @@ void notrace cpu_init(void)
 	 */
 #ifdef CONFIG_THUMB2_KERNEL
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define PLC_l	"l"
 #define PLC_r	"r"
 #else
 #define PLC_l	"I"
 #define PLC_r	"I"
+=======
+#define PLC	"r"
+#else
+#define PLC	"I"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define PLC	"r"
 #else
@@ -589,6 +595,7 @@ void notrace cpu_init(void)
 	    :
 	    : "r" (stk),
 <<<<<<< HEAD
+<<<<<<< HEAD
 	      PLC_r (PSR_F_BIT | PSR_I_BIT | IRQ_MODE),
 	      "I" (offsetof(struct stack, irq[0])),
 	      PLC_r (PSR_F_BIT | PSR_I_BIT | ABT_MODE),
@@ -599,6 +606,8 @@ void notrace cpu_init(void)
 	      "I" (offsetof(struct stack, fiq[0])),
 	      PLC_l (PSR_F_BIT | PSR_I_BIT | SVC_MODE)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	      PLC (PSR_F_BIT | PSR_I_BIT | IRQ_MODE),
 	      "I" (offsetof(struct stack, irq[0])),
 	      PLC (PSR_F_BIT | PSR_I_BIT | ABT_MODE),
@@ -608,6 +617,9 @@ void notrace cpu_init(void)
 	      PLC (PSR_F_BIT | PSR_I_BIT | FIQ_MODE),
 	      "I" (offsetof(struct stack, fiq[0])),
 	      PLC (PSR_F_BIT | PSR_I_BIT | SVC_MODE)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	    : "r14");
 #endif

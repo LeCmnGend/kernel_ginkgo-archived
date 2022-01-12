@@ -66,8 +66,13 @@ static inline void mtdcrx(unsigned int reg, unsigned int val)
 	({unsigned int rval;					\
 	if (__builtin_constant_p(rn) && rn < 1024)		\
 <<<<<<< HEAD
+<<<<<<< HEAD
 		asm volatile("mfdcr %0, %1" : "=r" (rval)	\
 			      : "n" (rn));			\
+=======
+		asm volatile("mfdcr %0," __stringify(rn)	\
+		              : "=r" (rval));			\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		asm volatile("mfdcr %0," __stringify(rn)	\
 		              : "=r" (rval));			\
@@ -82,8 +87,13 @@ static inline void mtdcrx(unsigned int reg, unsigned int val)
 do {								\
 	if (__builtin_constant_p(rn) && rn < 1024)		\
 <<<<<<< HEAD
+<<<<<<< HEAD
 		asm volatile("mtdcr %0, %1"			\
 			      : : "n" (rn), "r" (v));		\
+=======
+		asm volatile("mtdcr " __stringify(rn) ",%0"	\
+			      : : "r" (v)); 			\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		asm volatile("mtdcr " __stringify(rn) ",%0"	\
 			      : : "r" (v)); 			\

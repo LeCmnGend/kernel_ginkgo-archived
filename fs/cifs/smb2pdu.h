@@ -207,7 +207,11 @@ struct smb2_negotiate_req {
 	__le16 NegotiateContextCount;  /* SMB3.1.1 only. MBZ earlier */
 	__le16 Reserved2;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__le16 Dialects[4]; /* BB expand this if autonegotiate > 4 dialects */
+=======
+	__le16 Dialects[1]; /* One dialect (vers=) at a time for now */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__le16 Dialects[1]; /* One dialect (vers=) at a time for now */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1051,7 +1055,11 @@ struct smb2_lease_break {
 	struct smb2_hdr hdr;
 	__le16 StructureSize; /* Must be 44 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__le16 Epoch;
+=======
+	__le16 Reserved;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__le16 Reserved;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

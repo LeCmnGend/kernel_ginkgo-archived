@@ -31,15 +31,21 @@
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 &nand_controller {
 	status = "okay";
 
 	nand@0 {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 &nand {
 	status = "okay";
 
 	nandcs@0 {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		compatible = "brcm,nandcs";
 		reg = <0>;

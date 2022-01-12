@@ -156,6 +156,7 @@ static int minix_remount (struct super_block * sb, int * flags, char * data)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool minix_check_superblock(struct minix_sb_info *sbi)
 {
 	if (sbi->s_imap_blocks == 0 || sbi->s_zmap_blocks == 0)
@@ -173,6 +174,8 @@ static bool minix_check_superblock(struct minix_sb_info *sbi)
 	return true;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int minix_fill_super(struct super_block *s, void *data, int silent)
@@ -254,6 +257,7 @@ static int minix_fill_super(struct super_block *s, void *data, int silent)
 		goto out_no_fs;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!minix_check_superblock(sbi))
 		goto out_illegal_sb;
 
@@ -261,11 +265,16 @@ static int minix_fill_super(struct super_block *s, void *data, int silent)
 	 * Allocate the buffer map to keep the superblock small.
 	 */
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * Allocate the buffer map to keep the superblock small.
 	 */
 	if (sbi->s_imap_blocks == 0 || sbi->s_zmap_blocks == 0)
 		goto out_illegal_sb;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	i = (sbi->s_imap_blocks + sbi->s_zmap_blocks) * sizeof(bh);
 	map = kzalloc(i, GFP_KERNEL);
@@ -501,6 +510,7 @@ static struct inode *V1_minix_iget(struct inode *inode)
 		return ERR_PTR(-EIO);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (raw_inode->i_nlinks == 0) {
 		printk("MINIX-fs: deleted inode referenced: %lu\n",
 		       inode->i_ino);
@@ -508,6 +518,8 @@ static struct inode *V1_minix_iget(struct inode *inode)
 		iget_failed(inode);
 		return ERR_PTR(-ESTALE);
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	inode->i_mode = raw_inode->i_mode;
@@ -544,6 +556,7 @@ static struct inode *V2_minix_iget(struct inode *inode)
 		return ERR_PTR(-EIO);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (raw_inode->i_nlinks == 0) {
 		printk("MINIX-fs: deleted inode referenced: %lu\n",
 		       inode->i_ino);
@@ -551,6 +564,8 @@ static struct inode *V2_minix_iget(struct inode *inode)
 		iget_failed(inode);
 		return ERR_PTR(-ESTALE);
 	}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	inode->i_mode = raw_inode->i_mode;

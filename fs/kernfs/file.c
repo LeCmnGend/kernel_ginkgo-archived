@@ -40,6 +40,7 @@ struct kernfs_open_node {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct kmem_cache *kmem_open_node_pool;
 static struct kmem_cache *kmem_open_file_pool;
 
@@ -49,6 +50,8 @@ void __init init_kernfs_file_pool(void)
 	kmem_open_file_pool = KMEM_CACHE(kernfs_open_file, SLAB_HWCACHE_ALIGN | SLAB_PANIC);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -286,7 +289,10 @@ static ssize_t kernfs_fop_write(struct file *file, const char __user *user_buf,
 				size_t count, loff_t *ppos)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	char buf_onstack[SZ_4K + 1] __aligned(sizeof(long));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct kernfs_open_file *of = kernfs_of(file);
@@ -304,6 +310,7 @@ static ssize_t kernfs_fop_write(struct file *file, const char __user *user_buf,
 
 	buf = of->prealloc_buf;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (buf) {
 		mutex_lock(&of->prealloc_mutex);
 	} else {
@@ -316,12 +323,17 @@ static ssize_t kernfs_fop_write(struct file *file, const char __user *user_buf,
 		}
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (buf)
 		mutex_lock(&of->prealloc_mutex);
 	else
 		buf = kmalloc(len + 1, GFP_KERNEL);
 	if (!buf)
 		return -ENOMEM;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (copy_from_user(buf, user_buf, len)) {
@@ -357,7 +369,11 @@ out_free:
 	if (buf == of->prealloc_buf)
 		mutex_unlock(&of->prealloc_mutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	else if (buf != buf_onstack)
+=======
+	else
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	else
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -599,8 +615,12 @@ static int kernfs_get_open_node(struct kernfs_node *kn,
 
 	if (on) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (new_on)
 			kmem_cache_free(kmem_open_node_pool, new_on);
+=======
+		kfree(new_on);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kfree(new_on);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -609,7 +629,11 @@ static int kernfs_get_open_node(struct kernfs_node *kn,
 
 	/* not there, initialize a new one and retry */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	new_on = kmem_cache_alloc(kmem_open_node_pool, GFP_KERNEL);
+=======
+	new_on = kmalloc(sizeof(*new_on), GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	new_on = kmalloc(sizeof(*new_on), GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -655,8 +679,12 @@ static void kernfs_put_open_node(struct kernfs_node *kn,
 	mutex_unlock(&kernfs_open_file_mutex);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (on)
 		kmem_cache_free(kmem_open_node_pool, on);
+=======
+	kfree(on);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(on);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -694,7 +722,11 @@ static int kernfs_fop_open(struct inode *inode, struct file *file)
 	/* allocate a kernfs_open_file for the file */
 	error = -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	of = kmem_cache_zalloc(kmem_open_file_pool, GFP_KERNEL);
+=======
+	of = kzalloc(sizeof(struct kernfs_open_file), GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	of = kzalloc(sizeof(struct kernfs_open_file), GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -789,7 +821,11 @@ err_seq_release:
 err_free:
 	kfree(of->prealloc_buf);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kmem_cache_free(kmem_open_file_pool, of);
+=======
+	kfree(of);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(of);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -837,8 +873,12 @@ static int kernfs_fop_release(struct inode *inode, struct file *filp)
 	seq_release(inode, filp);
 	kfree(of->prealloc_buf);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (of)
 		kmem_cache_free(kmem_open_file_pool, of);
+=======
+	kfree(of);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(of);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

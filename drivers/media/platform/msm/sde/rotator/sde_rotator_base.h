@@ -26,6 +26,10 @@
 #include "sde_rotator_smmu.h"
 #include "sde_rotator_formats.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <linux/pm_qos.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/pm_qos.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -274,12 +278,18 @@ struct sde_rot_data_type {
 	u32 vbif_xin_id[MAX_XIN];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct pm_qos_request pm_qos_rot_cpu_req;
 	u32 rot_pm_qos_cpu_count;
 	u32 rot_pm_qos_cpu_mask;
 	u32 rot_pm_qos_cpu_dma_latency;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32 vbif_memtype_count;
 	u32 *vbif_memtype;

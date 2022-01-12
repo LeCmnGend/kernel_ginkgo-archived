@@ -84,7 +84,10 @@ struct ps3_dma_region_ops;
  * @len: The length in bytes of the region.
  * @offset: The offset from the start of memory of the region.
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @dma_mask: Device dma_mask.
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * @ioid: The IOID of the device who owns this region
@@ -102,7 +105,10 @@ struct ps3_dma_region {
 	unsigned long len;
 	unsigned long offset;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64 dma_mask;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

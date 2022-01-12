@@ -342,7 +342,11 @@ eb_vma_misplaced(const struct drm_i915_gem_exec_object2 *entry,
 
 	if (!(flags & EXEC_OBJECT_SUPPORTS_48B_ADDRESS) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    (vma->node.start + vma->node.size + 4095) >> 32)
+=======
+	    (vma->node.start + vma->node.size - 1) >> 32)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	    (vma->node.start + vma->node.size - 1) >> 32)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -25,6 +25,10 @@
 #include <linux/ip.h>
 #include <linux/ipv6.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#include <linux/alarmtimer.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/alarmtimer.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -59,6 +63,10 @@ MODULE_PARM_DESC(rmnet_wq_frequency, "Frequency of PS check in ms");
 					1 : rmnet_wq_frequency/10) * (HZ/100))
 #define NO_DELAY (0x0000 * HZ)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+#define PS_INTERVAL_KT (ms_to_ktime(1000))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define PS_INTERVAL_KT (ms_to_ktime(1000))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1081,6 +1089,10 @@ static LIST_HEAD(ps_list);
 struct rmnet_powersave_work {
 	struct delayed_work work;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct alarm atimer;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct alarm atimer;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1169,7 +1181,10 @@ static void qmi_rmnet_work_restart(void *port)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static enum alarmtimer_restart qmi_rmnet_work_alarm(struct alarm *atimer,
 						    ktime_t now)
 {
@@ -1180,6 +1195,9 @@ static enum alarmtimer_restart qmi_rmnet_work_alarm(struct alarm *atimer,
 	return ALARMTIMER_NORESTART;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void qmi_rmnet_check_stats(struct work_struct *work)
 {
@@ -1189,6 +1207,10 @@ static void qmi_rmnet_check_stats(struct work_struct *work)
 	u64 rx, tx;
 	bool dl_msg_active;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	bool use_alarm_timer = true;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bool use_alarm_timer = true;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1238,13 +1260,19 @@ static void qmi_rmnet_check_stats(struct work_struct *work)
 		 */
 		if (!dl_msg_active &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 		    !rmnet_all_flows_enabled(real_work->port))
 			goto end;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		    !rmnet_all_flows_enabled(real_work->port)) {
 			use_alarm_timer = false;
 			goto end;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		/* Deregister to suppress QMI DFC and DL marker */
@@ -1270,9 +1298,12 @@ static void qmi_rmnet_check_stats(struct work_struct *work)
 end:
 	rcu_read_lock();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!rmnet_work_quit)
 		queue_delayed_work(rmnet_ps_wq, &real_work->work, PS_INTERVAL);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!rmnet_work_quit) {
 		if (use_alarm_timer)
 			alarm_start_relative(&real_work->atimer,
@@ -1281,6 +1312,9 @@ end:
 			queue_delayed_work(rmnet_ps_wq, &real_work->work,
 					   PS_INTERVAL);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rcu_read_unlock();
 }
@@ -1305,7 +1339,12 @@ void qmi_rmnet_work_init(void *port)
 		return;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rmnet_ps_wq = create_freezable_workqueue("rmnet_powersave_work");
+=======
+	rmnet_ps_wq = alloc_workqueue("rmnet_powersave_work",
+				      WQ_CPU_INTENSIVE, 1);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rmnet_ps_wq = alloc_workqueue("rmnet_powersave_work",
 				      WQ_CPU_INTENSIVE, 1);
@@ -1322,6 +1361,10 @@ void qmi_rmnet_work_init(void *port)
 	}
 	INIT_DEFERRABLE_WORK(&rmnet_work->work, qmi_rmnet_check_stats);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	alarm_init(&rmnet_work->atimer, ALARM_BOOTTIME, qmi_rmnet_work_alarm);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	alarm_init(&rmnet_work->atimer, ALARM_BOOTTIME, qmi_rmnet_work_alarm);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1359,6 +1402,10 @@ void qmi_rmnet_work_exit(void *port)
 
 	rmnet_work_inited = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	alarm_cancel(&rmnet_work->atimer);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	alarm_cancel(&rmnet_work->atimer);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

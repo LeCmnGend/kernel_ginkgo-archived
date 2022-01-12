@@ -22,7 +22,10 @@
 #define UFS_ANY_MODEL  "ANY_MODEL"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define UFS_VENDOR_MICRON      0x12C
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define UFS_VENDOR_TOSHIBA     0x198

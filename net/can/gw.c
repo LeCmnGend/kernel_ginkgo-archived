@@ -495,7 +495,10 @@ static int cgw_notifier(struct notifier_block *nb,
 				hlist_del(&gwj->list);
 				cgw_unregister_filter(net, gwj);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				synchronize_rcu();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				kmem_cache_free(cgw_cache, gwj);
@@ -946,7 +949,10 @@ static void cgw_remove_all_jobs(struct net *net)
 		hlist_del(&gwj->list);
 		cgw_unregister_filter(net, gwj);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		synchronize_rcu();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		kmem_cache_free(cgw_cache, gwj);
@@ -1019,7 +1025,10 @@ static int cgw_remove_job(struct sk_buff *skb, struct nlmsghdr *nlh,
 		hlist_del(&gwj->list);
 		cgw_unregister_filter(net, gwj);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		synchronize_rcu();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		kmem_cache_free(cgw_cache, gwj);

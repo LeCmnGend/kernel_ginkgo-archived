@@ -225,17 +225,23 @@ failure:
  * slots.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline int calculate_skip(u64 blocks)
 {
 	u64 skip = blocks / ((SQUASHFS_META_ENTRIES + 1)
 		 * SQUASHFS_META_INDEXES);
 	return min((u64) SQUASHFS_CACHED_BLKS - 1, skip + 1);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline int calculate_skip(int blocks)
 {
 	int skip = blocks / ((SQUASHFS_META_ENTRIES + 1)
 		 * SQUASHFS_META_INDEXES);
 	return min(SQUASHFS_CACHED_BLKS - 1, skip + 1);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

@@ -54,6 +54,7 @@
 #define I2C_PCA_CON_CR		0x07 /* Clock Rate (MASK) */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * struct pca_i2c_bus_settings - The configured PCA i2c bus settings
  * @mode: Configured i2c bus mode
@@ -70,6 +71,8 @@ struct pca_i2c_bus_settings {
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct i2c_algo_pca_data {
 	void 				*data;	/* private low level data */
 	void (*write_byte)		(void *data, int reg, int val);
@@ -82,7 +85,10 @@ struct i2c_algo_pca_data {
 	unsigned int			i2c_clock;
 	unsigned int			chip;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct pca_i2c_bus_settings		bus_settings;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

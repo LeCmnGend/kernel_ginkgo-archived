@@ -133,6 +133,7 @@ void udf_evict_inode(struct inode *inode)
 	int want_delete = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!is_bad_inode(inode)) {
 		if (!inode->i_nlink) {
 			want_delete = 1;
@@ -148,17 +149,25 @@ void udf_evict_inode(struct inode *inode)
 				 (unsigned long long)iinfo->i_lenExtents);
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!inode->i_nlink && !is_bad_inode(inode)) {
 		want_delete = 1;
 		udf_setsize(inode, 0);
 		udf_update_inode(inode, IS_SYNC(inode));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 	truncate_inode_pages_final(&inode->i_data);
 	invalidate_inode_buffers(inode);
 	clear_inode(inode);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (iinfo->i_alloc_type != ICBTAG_FLAG_AD_IN_ICB &&
 	    inode->i_size != iinfo->i_lenExtents) {
 		udf_warn(inode->i_sb, "Inode %lu (mode %o) has inode size %llu different from extent length %llu. Filesystem need not be standards compliant.\n",
@@ -166,6 +175,9 @@ void udf_evict_inode(struct inode *inode)
 			 (unsigned long long)inode->i_size,
 			 (unsigned long long)iinfo->i_lenExtents);
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kfree(iinfo->i_ext.i_data);
 	iinfo->i_ext.i_data = NULL;
@@ -558,6 +570,7 @@ static int udf_do_extend_file(struct inode *inode,
 		udf_write_aext(inode, last_pos, &last_ext->extLocation,
 				last_ext->extLength, 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		/*
 		 * We've rewritten the last extent. If we are going to add
@@ -567,11 +580,16 @@ static int udf_do_extend_file(struct inode *inode,
 		if (new_block_bytes || prealloc_len)
 			udf_next_aext(inode, last_pos, &tmploc, &tmplen, 0);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
 		 * We've rewritten the last extent but there may be empty
 		 * indirect extent after it - enter it.
 		 */
 		udf_next_aext(inode, last_pos, &tmploc, &tmplen, 0);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 

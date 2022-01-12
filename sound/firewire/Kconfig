@@ -38,7 +38,11 @@ config SND_OXFW
 	   * Mackie(Loud) Onyx Satellite
 	   * Mackie(Loud) Tapco Link.Firewire
 <<<<<<< HEAD
+<<<<<<< HEAD
 	   * Mackie(Loud) d.2 pro/d.4 pro (built-in FireWire card with OXFW971 ASIC)
+=======
+	   * Mackie(Loud) d.2 pro/d.4 pro
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	   * Mackie(Loud) d.2 pro/d.4 pro
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -88,7 +92,11 @@ config SND_BEBOB
 	  * BridgeCo RDAudio1/Audio5
 	  * Mackie Onyx 1220/1620/1640 (FireWire I/O Card)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	  * Mackie d.2 (optional FireWire card with DM1000 ASIC)
+=======
+	  * Mackie d.2 (FireWire Option)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	  * Mackie d.2 (FireWire Option)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -118,7 +126,10 @@ config SND_BEBOB
 	  * M-Audio FireWire 1814/ProjectMix IO
 	  * Digidesign Mbox 2 Pro
 <<<<<<< HEAD
+<<<<<<< HEAD
 	  * ToneWeal FW66
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

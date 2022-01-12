@@ -223,7 +223,10 @@ static struct snd_soc_dai_link tegra_wm8903_dai = {
 static struct snd_soc_card snd_soc_tegra_wm8903 = {
 	.name = "tegra-wm8903",
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.driver_name = "tegra",
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.owner = THIS_MODULE,

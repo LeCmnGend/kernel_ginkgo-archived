@@ -419,15 +419,21 @@ void batadv_interface_rx(struct net_device *soft_iface,
 	struct ethhdr *ethhdr;
 	unsigned short vid;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int packet_type;
 
 	batadv_bcast_packet = (struct batadv_bcast_packet *)skb->data;
 	packet_type = batadv_bcast_packet->packet_type;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	bool is_bcast;
 
 	batadv_bcast_packet = (struct batadv_bcast_packet *)skb->data;
 	is_bcast = (batadv_bcast_packet->packet_type == BATADV_BCAST);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	skb_pull_rcsum(skb, hdr_size);
@@ -472,7 +478,11 @@ void batadv_interface_rx(struct net_device *soft_iface,
 	 * not handle it, we can safely push it up.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (batadv_bla_rx(bat_priv, skb, vid, packet_type))
+=======
+	if (batadv_bla_rx(bat_priv, skb, vid, is_bcast))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (batadv_bla_rx(bat_priv, skb, vid, is_bcast))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -62,7 +62,11 @@ static int ingress_init(struct Qdisc *sch, struct nlattr *opt)
 	net_inc_ingress_queue();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = tcf_block_get(&q->block, &dev->ingress_cl_list, sch);
+=======
+	err = tcf_block_get(&q->block, &dev->ingress_cl_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = tcf_block_get(&q->block, &dev->ingress_cl_list);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -162,17 +166,23 @@ static int clsact_init(struct Qdisc *sch, struct nlattr *opt)
 	net_inc_egress_queue();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = tcf_block_get(&q->ingress_block, &dev->ingress_cl_list, sch);
 	if (err)
 		return err;
 
 	err = tcf_block_get(&q->egress_block, &dev->egress_cl_list, sch);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	err = tcf_block_get(&q->ingress_block, &dev->ingress_cl_list);
 	if (err)
 		return err;
 
 	err = tcf_block_get(&q->egress_block, &dev->egress_cl_list);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err)
 		return err;

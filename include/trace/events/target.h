@@ -141,7 +141,10 @@ TRACE_EVENT(target_sequencer_start,
 		__field( unsigned int,	data_length	)
 		__field( unsigned int,	task_attribute  )
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__field( unsigned char,	control		)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__array( unsigned char,	cdb, TCM_MAX_COMMAND_SIZE	)
@@ -154,7 +157,10 @@ TRACE_EVENT(target_sequencer_start,
 		__entry->data_length	= cmd->data_length;
 		__entry->task_attribute	= cmd->sam_task_attr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__entry->control	= scsi_command_control(cmd->t_task_cdb);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		memcpy(__entry->cdb, cmd->t_task_cdb, TCM_MAX_COMMAND_SIZE);
@@ -167,7 +173,13 @@ TRACE_EVENT(target_sequencer_start,
 		  __entry->data_length, __print_hex(__entry->cdb, 16),
 		  show_task_attribute_name(__entry->task_attribute),
 <<<<<<< HEAD
+<<<<<<< HEAD
 		  __entry->control
+=======
+		  scsi_command_size(__entry->cdb) <= 16 ?
+			__entry->cdb[scsi_command_size(__entry->cdb) - 1] :
+			__entry->cdb[1]
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		  scsi_command_size(__entry->cdb) <= 16 ?
 			__entry->cdb[scsi_command_size(__entry->cdb) - 1] :
@@ -188,7 +200,10 @@ TRACE_EVENT(target_cmd_complete,
 		__field( unsigned int,	data_length	)
 		__field( unsigned int,	task_attribute  )
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__field( unsigned char,	control		)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__field( unsigned char,	scsi_status	)
@@ -204,7 +219,10 @@ TRACE_EVENT(target_cmd_complete,
 		__entry->data_length	= cmd->data_length;
 		__entry->task_attribute	= cmd->sam_task_attr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__entry->control	= scsi_command_control(cmd->t_task_cdb);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__entry->scsi_status	= cmd->scsi_status;
@@ -224,7 +242,13 @@ TRACE_EVENT(target_cmd_complete,
 		  __entry->data_length, __print_hex(__entry->cdb, 16),
 		  show_task_attribute_name(__entry->task_attribute),
 <<<<<<< HEAD
+<<<<<<< HEAD
 		  __entry->control
+=======
+		  scsi_command_size(__entry->cdb) <= 16 ?
+			__entry->cdb[scsi_command_size(__entry->cdb) - 1] :
+			__entry->cdb[1]
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		  scsi_command_size(__entry->cdb) <= 16 ?
 			__entry->cdb[scsi_command_size(__entry->cdb) - 1] :

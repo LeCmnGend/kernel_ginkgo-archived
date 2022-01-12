@@ -88,15 +88,21 @@ enum power_event {
 
 /* GMAC HW ADDR regs */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define GMAC_ADDR_HIGH(reg)	((reg > 15) ? 0x00000800 + (reg - 16) * 8 : \
 				 0x00000040 + (reg * 8))
 #define GMAC_ADDR_LOW(reg)	((reg > 15) ? 0x00000804 + (reg - 16) * 8 : \
 				 0x00000044 + (reg * 8))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define GMAC_ADDR_HIGH(reg)	(((reg > 15) ? 0x00000800 : 0x00000040) + \
 				(reg * 8))
 #define GMAC_ADDR_LOW(reg)	(((reg > 15) ? 0x00000804 : 0x00000044) + \
 				(reg * 8))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define GMAC_MAX_PERFECT_ADDRESSES	1
 

@@ -159,7 +159,11 @@ int cmsghdr_from_user_compat_to_kern(struct msghdr *kmsg, struct sock *sk,
 		kcmsg_base = kcmsg = sock_kmalloc(sk, kcmlen, GFP_KERNEL);
 	if (kcmsg == NULL)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -ENOMEM;
+=======
+		return -ENOBUFS;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -ENOBUFS;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -294,7 +298,10 @@ void scm_detach_fds_compat(struct msghdr *kmsg, struct scm_cookie *scm)
 		}
 		/* Bump the usage count and install the file. */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__receive_sock(fp[i]);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		fd_install(new_fd, get_file(fp[i]));

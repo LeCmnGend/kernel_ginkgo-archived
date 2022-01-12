@@ -519,7 +519,11 @@ int ahci_platform_init_host(struct platform_device *pdev,
 
 	irq = platform_get_irq(pdev, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (irq < 0) {
+=======
+	if (irq <= 0) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (irq <= 0) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -528,8 +532,11 @@ int ahci_platform_init_host(struct platform_device *pdev,
 		return irq;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!irq)
 		return -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

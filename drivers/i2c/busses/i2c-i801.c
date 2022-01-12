@@ -380,15 +380,21 @@ static int i801_check_post(struct i801_priv *priv, int status)
 		/* try to stop the current command */
 		dev_dbg(&priv->pci_dev->dev, "Terminating the current operation\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		outb_p(SMBHSTCNT_KILL, SMBHSTCNT(priv));
 		usleep_range(1000, 2000);
 		outb_p(0, SMBHSTCNT(priv));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		outb_p(inb_p(SMBHSTCNT(priv)) | SMBHSTCNT_KILL,
 		       SMBHSTCNT(priv));
 		usleep_range(1000, 2000);
 		outb_p(inb_p(SMBHSTCNT(priv)) & (~SMBHSTCNT_KILL),
 		       SMBHSTCNT(priv));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 		/* Check if it worked */
@@ -1506,6 +1512,7 @@ static inline void i801_acpi_remove(struct i801_priv *priv) { }
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static unsigned char i801_setup_hstcfg(struct i801_priv *priv)
 {
 	unsigned char hstcfg = priv->original_hstcfg;
@@ -1516,6 +1523,8 @@ static unsigned char i801_setup_hstcfg(struct i801_priv *priv)
 	return hstcfg;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int i801_probe(struct pci_dev *dev, const struct pci_device_id *id)
@@ -1622,11 +1631,14 @@ static int i801_probe(struct pci_dev *dev, const struct pci_device_id *id)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pci_read_config_byte(priv->pci_dev, SMBHSTCFG, &priv->original_hstcfg);
 	temp = i801_setup_hstcfg(priv);
 	if (!(priv->original_hstcfg & SMBHSTCFG_HST_EN))
 		dev_info(&dev->dev, "Enabling SMBus device\n");
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pci_read_config_byte(priv->pci_dev, SMBHSTCFG, &temp);
 	priv->original_hstcfg = temp;
 	temp &= ~SMBHSTCFG_I2C_EN;	/* SMBus timing */
@@ -1635,6 +1647,9 @@ static int i801_probe(struct pci_dev *dev, const struct pci_device_id *id)
 		temp |= SMBHSTCFG_HST_EN;
 	}
 	pci_write_config_byte(priv->pci_dev, SMBHSTCFG, temp);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (temp & SMBHSTCFG_SMB_SMI_EN) {
@@ -1763,7 +1778,10 @@ static int i801_resume(struct device *dev)
 	struct i801_priv *priv = pci_get_drvdata(pci_dev);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	i801_setup_hstcfg(priv);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	i801_enable_host_notify(&priv->adapter);

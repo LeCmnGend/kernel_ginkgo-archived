@@ -284,9 +284,12 @@ static int g2d_release(struct file *file)
 	struct g2d_ctx *ctx = fh2ctx(file->private_data);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&dev->mutex);
 	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
 	mutex_unlock(&dev->mutex);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	v4l2_ctrl_handler_free(&ctx->ctrl_handler);

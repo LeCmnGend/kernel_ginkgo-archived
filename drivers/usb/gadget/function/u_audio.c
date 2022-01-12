@@ -99,12 +99,16 @@ static void u_audio_iso_complete(struct usb_ep *ep, struct usb_request *req)
 
 	/* i/f shutting down */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!prm->ep_enabled) {
 		usb_ep_free_request(ep, req);
 		return;
 	}
 
 	if (req->status == -ESHUTDOWN)
+=======
+	if (!prm->ep_enabled || req->status == -ESHUTDOWN)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!prm->ep_enabled || req->status == -ESHUTDOWN)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -370,6 +374,7 @@ static inline void free_ep(struct uac_rtd_params *prm, struct usb_ep *ep)
 	for (i = 0; i < params->req_number; i++) {
 		if (prm->ureq[i].req) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (usb_ep_dequeue(ep, prm->ureq[i].req))
 				usb_ep_free_request(ep, prm->ureq[i].req);
 			/*
@@ -378,6 +383,10 @@ static inline void free_ep(struct uac_rtd_params *prm, struct usb_ep *ep)
 			 * callback.
 			 */
 
+=======
+			usb_ep_dequeue(ep, prm->ureq[i].req);
+			usb_ep_free_request(ep, prm->ureq[i].req);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			usb_ep_dequeue(ep, prm->ureq[i].req);
 			usb_ep_free_request(ep, prm->ureq[i].req);

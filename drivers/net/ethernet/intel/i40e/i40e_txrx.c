@@ -2830,8 +2830,11 @@ static int i40e_tx_enable_csum(struct sk_buff *skb, u32 *tx_flags,
 			l4_proto = ip.v4->protocol;
 		} else if (*tx_flags & I40E_TX_FLAGS_IPV6) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			int ret;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			tunnel |= I40E_TX_CTX_EXT_IP_IPV6;
@@ -2839,10 +2842,16 @@ static int i40e_tx_enable_csum(struct sk_buff *skb, u32 *tx_flags,
 			exthdr = ip.hdr + sizeof(*ip.v6);
 			l4_proto = ip.v6->nexthdr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ret = ipv6_skip_exthdr(skb, exthdr - skb->data,
 					       &l4_proto, &frag_off);
 			if (ret < 0)
 				return -1;
+=======
+			if (l4.hdr != exthdr)
+				ipv6_skip_exthdr(skb, exthdr - skb->data,
+						 &l4_proto, &frag_off);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			if (l4.hdr != exthdr)
 				ipv6_skip_exthdr(skb, exthdr - skb->data,

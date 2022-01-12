@@ -1716,7 +1716,10 @@ static void radeon_pm_compute_clocks_dpm(struct radeon_device *rdev)
 	struct drm_crtc *crtc;
 	struct radeon_crtc *radeon_crtc;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct radeon_connector *radeon_connector;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1729,7 +1732,10 @@ static void radeon_pm_compute_clocks_dpm(struct radeon_device *rdev)
 	rdev->pm.dpm.new_active_crtcs = 0;
 	rdev->pm.dpm.new_active_crtc_count = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rdev->pm.dpm.high_pixelclock_count = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (rdev->num_crtc && rdev->mode_info.mode_config_initialized) {
@@ -1740,12 +1746,15 @@ static void radeon_pm_compute_clocks_dpm(struct radeon_device *rdev)
 				rdev->pm.dpm.new_active_crtcs |= (1 << radeon_crtc->crtc_id);
 				rdev->pm.dpm.new_active_crtc_count++;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if (!radeon_crtc->connector)
 					continue;
 
 				radeon_connector = to_radeon_connector(radeon_crtc->connector);
 				if (radeon_connector->pixelclock_for_modeset > 297000)
 					rdev->pm.dpm.high_pixelclock_count++;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			}

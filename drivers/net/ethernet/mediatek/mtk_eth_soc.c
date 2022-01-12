@@ -1042,7 +1042,11 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
 
 		if (netdev->features & NETIF_F_HW_VLAN_CTAG_RX &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 		    (trxd.rxd2 & RX_DMA_VTAG))
+=======
+		    RX_DMA_VID(trxd.rxd3))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		    RX_DMA_VID(trxd.rxd3))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2457,8 +2461,11 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
 	eth->netdev[id]->dev.of_node = np;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	eth->netdev[id]->max_mtu = MTK_MAX_RX_LENGTH - MTK_RX_ETH_HLEN;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;

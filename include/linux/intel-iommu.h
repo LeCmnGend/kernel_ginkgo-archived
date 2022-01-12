@@ -305,8 +305,13 @@ enum {
 #define QI_DEV_EIOTLB_ADDR(a)	((u64)(a) & VTD_PAGE_MASK)
 #define QI_DEV_EIOTLB_SIZE	(((u64)1) << 11)
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define QI_DEV_EIOTLB_GLOB(g)	((u64)(g) & 0x1)
 #define QI_DEV_EIOTLB_PASID(p)	((u64)((p) & 0xfffff) << 32)
+=======
+#define QI_DEV_EIOTLB_GLOB(g)	((u64)g)
+#define QI_DEV_EIOTLB_PASID(p)	(((u64)p) << 32)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define QI_DEV_EIOTLB_GLOB(g)	((u64)g)
 #define QI_DEV_EIOTLB_PASID(p)	(((u64)p) << 32)
@@ -440,8 +445,11 @@ struct intel_iommu {
 	int		node;
 	u32		flags;      /* Software defined flags */
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	struct dmar_drhd_unit *drhd;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

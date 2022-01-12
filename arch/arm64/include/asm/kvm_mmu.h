@@ -194,22 +194,29 @@ static inline pmd_t kvm_s2pmd_mkwrite(pmd_t pmd)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static inline void kvm_set_s2pte_readonly(pte_t *ptep)
 {
 	pteval_t old_pteval, pteval;
 
 	pteval = READ_ONCE(pte_val(*ptep));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void kvm_set_s2pte_readonly(pte_t *pte)
 {
 	pteval_t old_pteval, pteval;
 
 	pteval = READ_ONCE(pte_val(*pte));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	do {
 		old_pteval = pteval;
 		pteval &= ~PTE_S2_RDWR;
 		pteval |= PTE_S2_RDONLY;
+<<<<<<< HEAD
 <<<<<<< HEAD
 		pteval = cmpxchg_relaxed(&pte_val(*ptep), old_pteval, pteval);
 	} while (pteval != old_pteval);
@@ -229,6 +236,8 @@ static inline bool kvm_s2pmd_readonly(pmd_t *pmdp)
 {
 	return kvm_s2pte_readonly((pte_t *)pmdp);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		pteval = cmpxchg_relaxed(&pte_val(*pte), old_pteval, pteval);
 	} while (pteval != old_pteval);
 }
@@ -246,6 +255,9 @@ static inline void kvm_set_s2pmd_readonly(pmd_t *pmd)
 static inline bool kvm_s2pmd_readonly(pmd_t *pmd)
 {
 	return kvm_s2pte_readonly((pte_t *)pmd);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

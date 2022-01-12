@@ -50,12 +50,17 @@ static inline void can_skb_reserve(struct sk_buff *skb)
 static inline void can_skb_set_owner(struct sk_buff *skb, struct sock *sk)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* If the socket has already been closed by user space, the
 	 * refcount may already be 0 (and the socket will be freed
 	 * after the last TX skb has been freed). So only increase
 	 * socket refcount if the refcount is > 0.
 	 */
 	if (sk && refcount_inc_not_zero(&sk->sk_refcnt)) {
+=======
+	if (sk) {
+		sock_hold(sk);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (sk) {
 		sock_hold(sk);
@@ -71,6 +76,7 @@ static inline void can_skb_set_owner(struct sk_buff *skb, struct sock *sk)
 static inline struct sk_buff *can_create_echo_skb(struct sk_buff *skb)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct sk_buff *nskb;
 
 	nskb = skb_clone(skb, GFP_ATOMIC);
@@ -83,6 +89,8 @@ static inline struct sk_buff *can_create_echo_skb(struct sk_buff *skb)
 	consume_skb(skb);
 	return nskb;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (skb_shared(skb)) {
 		struct sk_buff *nskb = skb_clone(skb, GFP_ATOMIC);
 
@@ -98,6 +106,9 @@ static inline struct sk_buff *can_create_echo_skb(struct sk_buff *skb)
 
 	/* we can assume to have an unshared skb with proper owner */
 	return skb;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

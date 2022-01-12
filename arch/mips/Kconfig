@@ -857,7 +857,10 @@ config SNI_RM
 	select I8259
 	select ISA
 <<<<<<< HEAD
+<<<<<<< HEAD
 	select MIPS_L1_CACHE_SHIFT_6
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	select SWAP_IO_SPACE if CPU_BIG_ENDIAN
@@ -1045,7 +1048,10 @@ source "arch/mips/xilfpga/Kconfig"
 endmenu
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config RWSEM_GENERIC_SPINLOCK
 	bool
 	default y
@@ -1053,6 +1059,9 @@ config RWSEM_GENERIC_SPINLOCK
 config RWSEM_XCHGADD_ALGORITHM
 	bool
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 config GENERIC_HWEIGHT
 	bool

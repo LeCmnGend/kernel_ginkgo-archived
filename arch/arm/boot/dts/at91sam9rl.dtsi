@@ -275,6 +275,7 @@
 
 				trigger0 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 					trigger-name = "external-rising";
 					trigger-value = <0x1>;
 					trigger-external;
@@ -296,6 +297,8 @@
 					trigger-name = "continuous";
 					trigger-value = <0x6>;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					trigger-name = "timer-counter-0";
 					trigger-value = <0x1>;
 				};
@@ -313,6 +316,9 @@
 					trigger-name = "external";
 					trigger-value = <0x13>;
 					trigger-external;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				};
 			};

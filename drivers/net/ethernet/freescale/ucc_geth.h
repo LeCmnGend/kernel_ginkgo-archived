@@ -581,6 +581,7 @@ struct ucc_geth_tx_global_pram {
 	u32 tqptr;		/* a base pointer to the Tx Queues Memory
 				   Region */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8 res2[0x78 - 0x74];
 	u64 snums_en;
 	u32 l2l3baseptr;	/* top byte consists of a few other bit fields */
@@ -589,6 +590,9 @@ struct ucc_geth_tx_global_pram {
 	u8 res3[0xa8 - 0x94];
 	u32 wrrtablebase;	/* top byte is reserved */
 	u8 res4[0xc0 - 0xac];
+=======
+	u8 res2[0x80 - 0x74];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u8 res2[0x80 - 0x74];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

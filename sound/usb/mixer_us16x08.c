@@ -618,7 +618,11 @@ static int snd_us16x08_meter_info(struct snd_kcontrol *kcontrol,
 	struct snd_ctl_elem_info *uinfo)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	uinfo->count = 34;
+=======
+	uinfo->count = 1;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	uinfo->count = 1;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

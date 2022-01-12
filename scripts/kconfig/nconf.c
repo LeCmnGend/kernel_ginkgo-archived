@@ -505,8 +505,13 @@ static int get_mext_match(const char *match_str, match_f flag)
 		--match_start;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	match_start = (match_start + items_num) % items_num;
 	index = match_start;
+=======
+	index = match_start;
+	index = (index + items_num) % items_num;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	index = match_start;
 	index = (index + items_num) % items_num;

@@ -41,15 +41,21 @@ static u8 uniphier_clk_mux_get_parent(struct clk_hw *hw)
 {
 	struct uniphier_clk_mux *mux = to_uniphier_clk_mux(hw);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned int num_parents = clk_hw_get_num_parents(hw);
 	int ret;
 	unsigned int val;
 	unsigned int i;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int num_parents = clk_hw_get_num_parents(hw);
 	int ret;
 	unsigned int val;
 	u8 i;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	ret = regmap_read(mux->regmap, mux->reg, &val);

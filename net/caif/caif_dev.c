@@ -304,7 +304,11 @@ static void dev_flowctrl(struct net_device *dev, int on)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int caif_enroll_dev(struct net_device *dev, struct caif_dev_common *caifdev,
+=======
+void caif_enroll_dev(struct net_device *dev, struct caif_dev_common *caifdev,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 void caif_enroll_dev(struct net_device *dev, struct caif_dev_common *caifdev,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -319,7 +323,10 @@ void caif_enroll_dev(struct net_device *dev, struct caif_dev_common *caifdev,
 	struct cfcnfg *cfg = get_cfcnfg(dev_net(dev));
 	struct caif_device_entry_list *caifdevs;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int res;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -327,7 +334,11 @@ void caif_enroll_dev(struct net_device *dev, struct caif_dev_common *caifdev,
 	caifd = caif_device_alloc(dev);
 	if (!caifd)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -ENOMEM;
+=======
+		return;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -353,7 +364,11 @@ void caif_enroll_dev(struct net_device *dev, struct caif_dev_common *caifdev,
 	caifd->layer.name[sizeof(caifd->layer.name) - 1] = 0;
 	caifd->layer.transmit = transmit;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	res = cfcnfg_add_phy_layer(cfg,
+=======
+	cfcnfg_add_phy_layer(cfg,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cfcnfg_add_phy_layer(cfg,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -367,7 +382,10 @@ void caif_enroll_dev(struct net_device *dev, struct caif_dev_common *caifdev,
 	if (rcv_func)
 		*rcv_func = receive;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return res;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -385,7 +403,10 @@ static int caif_device_notify(struct notifier_block *me, unsigned long what,
 	int head_room = 0;
 	struct caif_device_entry_list *caifdevs;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int res;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -414,10 +435,15 @@ static int caif_device_notify(struct notifier_block *me, unsigned long what,
 			}
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		res = caif_enroll_dev(dev, caifdev, link_support, head_room,
 				&layer, NULL);
 		if (res)
 			cfserl_release(link_support);
+=======
+		caif_enroll_dev(dev, caifdev, link_support, head_room,
+				&layer, NULL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		caif_enroll_dev(dev, caifdev, link_support, head_room,
 				&layer, NULL);

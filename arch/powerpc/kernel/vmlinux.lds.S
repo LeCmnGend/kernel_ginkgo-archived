@@ -142,6 +142,7 @@ SECTIONS
 
 	. = ALIGN(8);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__uaccess_flush_fixup : AT(ADDR(__uaccess_flush_fixup) - LOAD_OFFSET) {
 		__start___uaccess_flush_fixup = .;
 		*(__uaccess_flush_fixup)
@@ -156,6 +157,8 @@ SECTIONS
 	}
 
 	. = ALIGN(8);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	__stf_exit_barrier_fixup : AT(ADDR(__stf_exit_barrier_fixup) - LOAD_OFFSET) {

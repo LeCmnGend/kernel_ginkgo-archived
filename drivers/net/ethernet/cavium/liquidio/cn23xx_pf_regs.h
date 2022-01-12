@@ -522,7 +522,11 @@
 
 #define    CN23XX_PEM_BAR1_INDEX_REG(port, idx)		\
 <<<<<<< HEAD
+<<<<<<< HEAD
 		(CN23XX_PEM_BAR1_INDEX_START + (((u64)port) << CN23XX_PEM_OFFSET) + \
+=======
+		(CN23XX_PEM_BAR1_INDEX_START + ((port) << CN23XX_PEM_OFFSET) + \
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		(CN23XX_PEM_BAR1_INDEX_START + ((port) << CN23XX_PEM_OFFSET) + \
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

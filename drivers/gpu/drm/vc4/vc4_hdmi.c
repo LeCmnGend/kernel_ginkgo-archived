@@ -1116,7 +1116,10 @@ static int vc4_hdmi_audio_init(struct vc4_hdmi *hdmi)
 	card->name = "vc4-hdmi";
 	card->dev = dev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	card->owner = THIS_MODULE;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

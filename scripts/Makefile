@@ -11,9 +11,12 @@
 HOST_EXTRACFLAGS += -I$(srctree)/tools/include
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 CRYPTO_LIBS = $(shell pkg-config --libs libcrypto 2> /dev/null || echo -lcrypto)
 CRYPTO_CFLAGS = $(shell pkg-config --cflags libcrypto 2> /dev/null)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 hostprogs-$(CONFIG_KALLSYMS)     += kallsyms
@@ -29,10 +32,15 @@ hostprogs-$(CONFIG_SYSTEM_EXTRA_CERTIFICATE) += insert-sys-cert
 HOSTCFLAGS_sortextable.o = -I$(srctree)/tools/include
 HOSTCFLAGS_asn1_compiler.o = -I$(srctree)/include
 <<<<<<< HEAD
+<<<<<<< HEAD
 HOSTCFLAGS_sign-file.o = $(CRYPTO_CFLAGS)
 HOSTLOADLIBES_sign-file = $(CRYPTO_LIBS)
 HOSTCFLAGS_extract-cert.o = $(CRYPTO_CFLAGS)
 HOSTLOADLIBES_extract-cert = $(CRYPTO_LIBS)
+=======
+HOSTLOADLIBES_sign-file = -lcrypto
+HOSTLOADLIBES_extract-cert = -lcrypto
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 HOSTLOADLIBES_sign-file = -lcrypto
 HOSTLOADLIBES_extract-cert = -lcrypto

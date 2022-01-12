@@ -597,8 +597,12 @@ config BATTERY_GOLDFISH
 config BATTERY_RT5033
 	tristate "RT5033 fuel gauge support"
 <<<<<<< HEAD
+<<<<<<< HEAD
 	depends on I2C
 	select REGMAP_I2C
+=======
+	depends on MFD_RT5033
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	depends on MFD_RT5033
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

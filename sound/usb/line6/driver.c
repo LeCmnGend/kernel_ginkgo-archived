@@ -699,10 +699,13 @@ static int line6_init_cap_control(struct usb_line6 *line6)
 		if (!line6->buffer_message)
 			return -ENOMEM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		ret = line6_init_midi(line6);
 		if (ret < 0)
 			return ret;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	} else {

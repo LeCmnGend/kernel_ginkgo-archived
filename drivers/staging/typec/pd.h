@@ -281,7 +281,10 @@ static inline unsigned int rdo_max_power(u32 rdo)
 #define PD_T_SRCSWAPSTDBY      625     /* Maximum of 650ms */
 #define PD_T_NEWSRC            250     /* Maximum of 275ms */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define PD_T_SWAP_SRC_START	20	/* Minimum of 20ms */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

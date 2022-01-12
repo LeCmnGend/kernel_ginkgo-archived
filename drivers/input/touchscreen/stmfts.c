@@ -485,7 +485,11 @@ static ssize_t stmfts_sysfs_hover_enable_write(struct device *dev,
 	mutex_lock(&sdata->mutex);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (value && sdata->hover_enabled)
+=======
+	if (value & sdata->hover_enabled)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (value & sdata->hover_enabled)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

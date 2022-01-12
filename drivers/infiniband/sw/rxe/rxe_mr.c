@@ -176,7 +176,11 @@ int rxe_mem_init_user(struct rxe_dev *rxe, struct rxe_pd *pd, u64 start,
 		pr_warn("err %d from rxe_umem_get\n",
 			(int)PTR_ERR(umem));
 <<<<<<< HEAD
+<<<<<<< HEAD
 		err = PTR_ERR(umem);
+=======
+		err = -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		err = -EINVAL;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -208,7 +212,10 @@ int rxe_mem_init_user(struct rxe_dev *rxe, struct rxe_pd *pd, u64 start,
 			if (!vaddr) {
 				pr_warn("null vaddr\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 				ib_umem_release(umem);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				err = -ENOMEM;

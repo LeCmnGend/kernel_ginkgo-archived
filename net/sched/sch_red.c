@@ -170,7 +170,10 @@ static int red_change(struct Qdisc *sch, struct nlattr *opt)
 	int err;
 	u32 max_P;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8 *stab;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -189,9 +192,13 @@ static int red_change(struct Qdisc *sch, struct nlattr *opt)
 
 	ctl = nla_data(tb[TCA_RED_PARMS]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	stab = nla_data(tb[TCA_RED_STAB]);
 	if (!red_check_params(ctl->qth_min, ctl->qth_max, ctl->Wlog,
 			      ctl->Scell_log, stab))
+=======
+	if (!red_check_params(ctl->qth_min, ctl->qth_max, ctl->Wlog))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!red_check_params(ctl->qth_min, ctl->qth_max, ctl->Wlog))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -220,7 +227,11 @@ static int red_change(struct Qdisc *sch, struct nlattr *opt)
 		      ctl->qth_min, ctl->qth_max, ctl->Wlog,
 		      ctl->Plog, ctl->Scell_log,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		      stab,
+=======
+		      nla_data(tb[TCA_RED_STAB]),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		      nla_data(tb[TCA_RED_STAB]),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -1581,12 +1581,18 @@ static struct sk_buff *mld_newpack(struct inet6_dev *idev, unsigned int mtu)
 
 	/* we assume size > sizeof(ra) here */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	skb = sock_alloc_send_skb(sk, size, 1, &err);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* limit our allocations to order-0 page */
 	size = min_t(int, size, SKB_MAX_ORDER(0, 0));
 	skb = sock_alloc_send_skb(sk, size, 1, &err);
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!skb)
 		return NULL;

@@ -518,6 +518,7 @@ static int clk_sam9x5_main_set_parent(struct clk_hw *hw, u8 index)
 
 	regmap_read(regmap, AT91_CKGR_MOR, &tmp);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (index && !(tmp & AT91_PMC_MOSCSEL))
 		tmp = AT91_PMC_MOSCSEL;
@@ -530,12 +531,17 @@ static int clk_sam9x5_main_set_parent(struct clk_hw *hw, u8 index)
 			   AT91_PMC_MOSCSEL | MOR_KEY_MASK,
 			   tmp | AT91_PMC_KEY);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	tmp &= ~MOR_KEY_MASK;
 
 	if (index && !(tmp & AT91_PMC_MOSCSEL))
 		regmap_write(regmap, AT91_CKGR_MOR, tmp | AT91_PMC_MOSCSEL);
 	else if (!index && (tmp & AT91_PMC_MOSCSEL))
 		regmap_write(regmap, AT91_CKGR_MOR, tmp & ~AT91_PMC_MOSCSEL);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	while (!clk_sam9x5_main_ready(regmap))

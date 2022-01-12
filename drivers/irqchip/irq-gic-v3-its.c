@@ -2200,7 +2200,10 @@ static int its_irq_domain_alloc(struct irq_domain *domain, unsigned int virq,
 	msi_alloc_info_t *info = args;
 	struct its_device *its_dev = info->scratchpad[0].ptr;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct irq_data *irqd;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	irq_hw_number_t hwirq;
@@ -2219,9 +2222,13 @@ static int its_irq_domain_alloc(struct irq_domain *domain, unsigned int virq,
 		irq_domain_set_hwirq_and_chip(domain, virq + i,
 					      hwirq + i, &its_irq_chip, its_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		irqd = irq_get_irq_data(virq + i);
 		irqd_set_single_target(irqd);
 		irqd_set_affinity_on_activate(irqd);
+=======
+		irqd_set_single_target(irq_desc_get_irq_data(irq_to_desc(virq + i)));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		irqd_set_single_target(irq_desc_get_irq_data(irq_to_desc(virq + i)));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

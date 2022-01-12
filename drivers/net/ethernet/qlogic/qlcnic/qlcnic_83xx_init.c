@@ -2252,8 +2252,12 @@ static int qlcnic_83xx_restart_hw(struct qlcnic_adapter *adapter)
 	/* Boot either flash image or firmware image from host file system */
 	if (qlcnic_load_fw_file == 1) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		err = qlcnic_83xx_load_fw_image_from_host(adapter);
 		if (err)
+=======
+		if (qlcnic_83xx_load_fw_image_from_host(adapter))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (qlcnic_83xx_load_fw_image_from_host(adapter))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

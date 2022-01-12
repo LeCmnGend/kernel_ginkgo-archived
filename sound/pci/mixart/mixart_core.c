@@ -84,6 +84,10 @@ static int get_msg(struct mixart_mgr *mgr, struct mixart_msg *resp,
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	mutex_lock(&mgr->msg_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mutex_lock(&mgr->msg_lock);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -136,6 +140,11 @@ static int get_msg(struct mixart_mgr *mgr, struct mixart_msg *resp,
 
  _clean_exit:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	mutex_unlock(&mgr->msg_lock);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	mutex_unlock(&mgr->msg_lock);
 
@@ -278,9 +287,13 @@ int snd_mixart_send_msg(struct mixart_mgr *mgr, struct mixart_msg *request, int 
 	resp.size = max_resp_size;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mutex_lock(&mgr->msg_lock);
 	err = get_msg(mgr, &resp, msg_frame);
 	mutex_unlock(&mgr->msg_lock);
+=======
+	err = get_msg(mgr, &resp, msg_frame);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = get_msg(mgr, &resp, msg_frame);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

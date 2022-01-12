@@ -90,9 +90,15 @@
  * to push cached data as well.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define CACHE_INIT        (CACHE_MODE + CACR_CINVA - CACR_EC)
 #define CACHE_INVALIDATE  (CACHE_MODE + CACR_CINVA)
 #define CACHE_INVALIDATED (CACHE_MODE + CACR_CINVA)
+=======
+#define CACHE_INIT	  CACR_CINVA
+#define CACHE_INVALIDATE  CACR_CINVA
+#define CACHE_INVALIDATED CACR_CINVA
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define CACHE_INIT	  CACR_CINVA
 #define CACHE_INVALIDATE  CACR_CINVA

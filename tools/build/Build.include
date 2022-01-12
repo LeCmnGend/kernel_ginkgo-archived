@@ -75,8 +75,12 @@ dep-cmd = $(if $(wildcard $(fixdep)),                                           
 if_changed_dep = $(if $(strip $(any-prereq) $(arg-check)),         \
                   @set -e;                                         \
 <<<<<<< HEAD
+<<<<<<< HEAD
                   $(echo-cmd) $(cmd_$(1));                         \
                   $(dep-cmd))
+=======
+                  $(echo-cmd) $(cmd_$(1)) && $(dep-cmd))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
                   $(echo-cmd) $(cmd_$(1)) && $(dep-cmd))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

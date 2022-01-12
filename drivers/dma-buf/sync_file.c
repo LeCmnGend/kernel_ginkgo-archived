@@ -125,7 +125,10 @@ struct dma_fence *sync_file_get_fence(int fd)
 EXPORT_SYMBOL(sync_file_get_fence);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  * sync_file_get_name - get the name of the sync_file
  * @sync_file:		sync_file to get the fence from
@@ -156,6 +159,9 @@ char *sync_file_get_name(struct sync_file *sync_file, char *buf, int len)
 	return buf;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int sync_file_set_fence(struct sync_file *sync_file,
 			       struct dma_fence **fences, int num_fences)
@@ -220,6 +226,7 @@ static void add_fence(struct dma_fence **fences,
  * new merged sync_file or NULL in case of error.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct sync_file *sync_file_merge(struct sync_file *a,
 					 struct sync_file *b)
 {
@@ -227,12 +234,17 @@ static struct sync_file *sync_file_merge(struct sync_file *a,
 	struct dma_fence **fences = NULL, **nfences, **a_fences, **b_fences;
 	int i = 0, i_a, i_b, num_fences, a_num_fences, b_num_fences;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct sync_file *sync_file_merge(const char *name, struct sync_file *a,
 					 struct sync_file *b)
 {
 	struct sync_file *sync_file;
 	struct dma_fence **fences, **nfences, **a_fences, **b_fences;
 	int i, i_a, i_b, num_fences, a_num_fences, b_num_fences;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	sync_file = sync_file_alloc();
@@ -258,7 +270,11 @@ static struct sync_file *sync_file_merge(const char *name, struct sync_file *a,
 	 * and sync_file_create, this is a reasonable assumption.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (i_a = i_b = 0; i_a < a_num_fences && i_b < b_num_fences; ) {
+=======
+	for (i = i_a = i_b = 0; i_a < a_num_fences && i_b < b_num_fences; ) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (i = i_a = i_b = 0; i_a < a_num_fences && i_b < b_num_fences; ) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -303,6 +319,7 @@ static struct sync_file *sync_file_merge(const char *name, struct sync_file *a,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (sync_file_set_fence(sync_file, fences, i) < 0)
 		goto err;
 
@@ -313,6 +330,8 @@ err:
 		dma_fence_put(fences[--i]);
 	kfree(fences);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (sync_file_set_fence(sync_file, fences, i) < 0) {
 		kfree(fences);
 		goto err;
@@ -322,6 +341,9 @@ err:
 	return sync_file;
 
 err:
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	fput(sync_file->file);
 	return NULL;
@@ -364,7 +386,10 @@ static long sync_file_ioctl_merge(struct sync_file *sync_file,
 	struct sync_file *fence2, *fence3;
 	struct sync_merge_data data;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	size_t len;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -372,9 +397,13 @@ static long sync_file_ioctl_merge(struct sync_file *sync_file,
 		return fd;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	arg += offsetof(typeof(data), fd2);
 	len = sizeof(data) - offsetof(typeof(data), fd2);
 	if (copy_from_user(&data.fd2, (void __user *)arg, len)) {
+=======
+	if (copy_from_user(&data, (void __user *)arg, sizeof(data))) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (copy_from_user(&data, (void __user *)arg, sizeof(data))) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -394,7 +423,12 @@ static long sync_file_ioctl_merge(struct sync_file *sync_file,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	fence3 = sync_file_merge(sync_file, fence2);
+=======
+	data.name[sizeof(data.name) - 1] = '\0';
+	fence3 = sync_file_merge(data.name, sync_file, fence2);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	data.name[sizeof(data.name) - 1] = '\0';
 	fence3 = sync_file_merge(data.name, sync_file, fence2);
@@ -406,7 +440,11 @@ static long sync_file_ioctl_merge(struct sync_file *sync_file,
 
 	data.fence = fd;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (copy_to_user((void __user *)arg, &data.fd2, len)) {
+=======
+	if (copy_to_user((void __user *)arg, &data, sizeof(data))) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (copy_to_user((void __user *)arg, &data, sizeof(data))) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -433,12 +471,18 @@ static int sync_fill_fence_info(struct dma_fence *fence,
 				 struct sync_fence_info *info)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	strlcpy(info->obj_name, fence->ops->get_timeline_name(fence),
 		sizeof(info->obj_name));
 	strlcpy(info->driver_name, fence->ops->get_driver_name(fence),
 		sizeof(info->driver_name));
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	info->status = dma_fence_get_status(fence);
 	while (test_bit(DMA_FENCE_FLAG_SIGNALED_BIT, &fence->flags) &&
@@ -457,6 +501,7 @@ static long sync_file_ioctl_fence_info(struct sync_file *sync_file,
 {
 	struct sync_file_info info;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct dma_fence **fences;
 	size_t len, offset;
 	int num_fences, i;
@@ -465,12 +510,17 @@ static long sync_file_ioctl_fence_info(struct sync_file *sync_file,
 	len = sizeof(info) - offsetof(typeof(info), status);
 	if (copy_from_user(&info.status, (void __user *)arg, len))
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct sync_fence_info *fence_info = NULL;
 	struct dma_fence **fences;
 	__u32 size;
 	int num_fences, ret, i;
 
 	if (copy_from_user(&info, (void __user *)arg, sizeof(info)))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EFAULT;
 
@@ -495,6 +545,7 @@ static long sync_file_ioctl_fence_info(struct sync_file *sync_file,
 	if (info.num_fences < num_fences)
 		return -EINVAL;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	offset = offsetof(struct sync_fence_info, status);
 	for (i = 0; i < num_fences; i++) {
@@ -522,6 +573,8 @@ no_fences:
 		return -EFAULT;
 	return 0;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	size = num_fences * sizeof(*fence_info);
 	fence_info = kzalloc(size, GFP_KERNEL);
 	if (!fence_info)
@@ -551,6 +604,9 @@ out:
 	kfree(fence_info);
 
 	return ret;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

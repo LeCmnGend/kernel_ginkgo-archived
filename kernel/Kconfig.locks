@@ -230,7 +230,11 @@ config MUTEX_SPIN_ON_OWNER
 config RWSEM_SPIN_ON_OWNER
        def_bool y
 <<<<<<< HEAD
+<<<<<<< HEAD
        depends on SMP && ARCH_SUPPORTS_ATOMIC_RMW
+=======
+       depends on SMP && RWSEM_XCHGADD_ALGORITHM && ARCH_SUPPORTS_ATOMIC_RMW
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
        depends on SMP && RWSEM_XCHGADD_ALGORITHM && ARCH_SUPPORTS_ATOMIC_RMW
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -256,6 +260,10 @@ config QUEUED_RWLOCKS
 config RWSEM_PRIO_AWARE
        def_bool y
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+       depends on RWSEM_XCHGADD_ALGORITHM
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
        depends on RWSEM_XCHGADD_ALGORITHM
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

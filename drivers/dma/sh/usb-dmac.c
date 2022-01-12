@@ -859,8 +859,13 @@ static int usb_dmac_probe(struct platform_device *pdev)
 error:
 	of_dma_controller_free(pdev->dev.of_node);
 <<<<<<< HEAD
+<<<<<<< HEAD
 error_pm:
 	pm_runtime_put(&pdev->dev);
+=======
+	pm_runtime_put(&pdev->dev);
+error_pm:
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	pm_runtime_put(&pdev->dev);
 error_pm:

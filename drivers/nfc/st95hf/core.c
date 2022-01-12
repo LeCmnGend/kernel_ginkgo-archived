@@ -982,7 +982,11 @@ static int st95hf_in_send_cmd(struct nfc_digital_dev *ddev,
 	if (rc) {
 		WARN(1, "Semaphore is not found up in st95hf_in_send_cmd\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto free_skb_resp;
+=======
+		return rc;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return rc;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

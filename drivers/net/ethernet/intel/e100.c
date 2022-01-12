@@ -1424,7 +1424,11 @@ static int e100_phy_check_without_mii(struct nic *nic)
 	int without_mii;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	phy_type = (le16_to_cpu(nic->eeprom[eeprom_phy_iface]) >> 8) & 0x0f;
+=======
+	phy_type = (nic->eeprom[eeprom_phy_iface] >> 8) & 0x0f;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	phy_type = (nic->eeprom[eeprom_phy_iface] >> 8) & 0x0f;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1548,7 +1552,11 @@ static int e100_phy_init(struct nic *nic)
 	} else if ((nic->mac >= mac_82550_D102) || ((nic->flags & ich) &&
 	   (mdio_read(netdev, nic->mii.phy_id, MII_TPISTATUS) & 0x8000) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 	   (le16_to_cpu(nic->eeprom[eeprom_cnfg_mdix]) & eeprom_mdix_enabled))) {
+=======
+		(nic->eeprom[eeprom_cnfg_mdix] & eeprom_mdix_enabled))) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		(nic->eeprom[eeprom_cnfg_mdix] & eeprom_mdix_enabled))) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2299,9 +2307,15 @@ static int e100_asf(struct nic *nic)
 	/* ASF can be enabled from eeprom */
 	return (nic->pdev->device >= 0x1050) && (nic->pdev->device <= 0x1057) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 	   (le16_to_cpu(nic->eeprom[eeprom_config_asf]) & eeprom_asf) &&
 	   !(le16_to_cpu(nic->eeprom[eeprom_config_asf]) & eeprom_gcl) &&
 	   ((le16_to_cpu(nic->eeprom[eeprom_smbus_addr]) & 0xFF) != 0xFE);
+=======
+	   (nic->eeprom[eeprom_config_asf] & eeprom_asf) &&
+	   !(nic->eeprom[eeprom_config_asf] & eeprom_gcl) &&
+	   ((nic->eeprom[eeprom_smbus_addr] & 0xFF) != 0xFE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	   (nic->eeprom[eeprom_config_asf] & eeprom_asf) &&
 	   !(nic->eeprom[eeprom_config_asf] & eeprom_gcl) &&
@@ -2963,7 +2977,11 @@ static int e100_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
 	/* Wol magic packet can be enabled from eeprom */
 	if ((nic->mac >= mac_82558_D101_A4) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 	   (le16_to_cpu(nic->eeprom[eeprom_id]) & eeprom_id_wol)) {
+=======
+	   (nic->eeprom[eeprom_id] & eeprom_id_wol)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	   (nic->eeprom[eeprom_id] & eeprom_id_wol)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

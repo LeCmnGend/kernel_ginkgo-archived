@@ -371,6 +371,10 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
 	ret = pwmchip_add(&pc->chip);
 	if (ret < 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		clk_unprepare(pc->clk);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		clk_unprepare(pc->clk);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

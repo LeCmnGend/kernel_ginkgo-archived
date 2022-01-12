@@ -32,7 +32,11 @@ temperature) and throttle appropriate devices.
 
 1.1 thermal zone device interface
 <<<<<<< HEAD
+<<<<<<< HEAD
 1.1.1 struct thermal_zone_device *thermal_zone_device_register(const char *type,
+=======
+1.1.1 struct thermal_zone_device *thermal_zone_device_register(char *type,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 1.1.1 struct thermal_zone_device *thermal_zone_device_register(char *type,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -165,9 +169,14 @@ temperature) and throttle appropriate devices.
 
 1.2 thermal cooling device interface
 <<<<<<< HEAD
+<<<<<<< HEAD
 1.2.1 struct thermal_cooling_device *thermal_cooling_device_register(
 		const char *name, void *devdata,
 		struct thermal_cooling_device_ops *ops)
+=======
+1.2.1 struct thermal_cooling_device *thermal_cooling_device_register(char *name,
+		void *devdata, struct thermal_cooling_device_ops *)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 1.2.1 struct thermal_cooling_device *thermal_cooling_device_register(char *name,
 		void *devdata, struct thermal_cooling_device_ops *)

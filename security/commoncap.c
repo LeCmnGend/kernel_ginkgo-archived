@@ -391,16 +391,22 @@ int cap_inode_getsecurity(struct inode *inode, const char *name, void **buffer,
 	int size, ret;
 	kuid_t kroot;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 nsmagic, magic;
 	uid_t root, mappedroot;
 	char *tmpbuf = NULL;
 	struct vfs_cap_data *cap;
 	struct vfs_ns_cap_data *nscap = NULL;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	uid_t root, mappedroot;
 	char *tmpbuf = NULL;
 	struct vfs_cap_data *cap;
 	struct vfs_ns_cap_data *nscap;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct dentry *dentry;
 	struct user_namespace *fs_ns;
@@ -418,7 +424,11 @@ int cap_inode_getsecurity(struct inode *inode, const char *name, void **buffer,
 	dput(dentry);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (ret < 0 || !tmpbuf)
+=======
+	if (ret < 0)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (ret < 0)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -427,6 +437,7 @@ int cap_inode_getsecurity(struct inode *inode, const char *name, void **buffer,
 	fs_ns = inode->i_sb->s_user_ns;
 	cap = (struct vfs_cap_data *) tmpbuf;
 	if (is_v2header((size_t) ret, cap)) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 		root = 0;
 	} else if (is_v3header((size_t) ret, cap)) {
@@ -438,6 +449,8 @@ int cap_inode_getsecurity(struct inode *inode, const char *name, void **buffer,
 	}
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* If this is sizeof(vfs_cap_data) then we're ok with the
 		 * on-disk value, so return that.  */
 		if (alloc)
@@ -452,6 +465,9 @@ int cap_inode_getsecurity(struct inode *inode, const char *name, void **buffer,
 
 	nscap = (struct vfs_ns_cap_data *) tmpbuf;
 	root = le32_to_cpu(nscap->rootid);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	kroot = make_kuid(fs_ns, root);
 
@@ -459,6 +475,7 @@ int cap_inode_getsecurity(struct inode *inode, const char *name, void **buffer,
 	 * this as a nscap. */
 	mappedroot = from_kuid(current_user_ns(), kroot);
 	if (mappedroot != (uid_t)-1 && mappedroot != (uid_t)0) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 		size = sizeof(struct vfs_ns_cap_data);
 		if (alloc) {
@@ -489,6 +506,8 @@ int cap_inode_getsecurity(struct inode *inode, const char *name, void **buffer,
 		size = -EOVERFLOW;
 		goto out_free;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (alloc) {
 			*buffer = tmpbuf;
 			nscap->rootid = cpu_to_le32(mappedroot);
@@ -500,12 +519,16 @@ int cap_inode_getsecurity(struct inode *inode, const char *name, void **buffer,
 	if (!rootid_owns_currentns(kroot)) {
 		kfree(tmpbuf);
 		return -EOPNOTSUPP;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
 	/* This comes from a parent namespace.  Return as a v2 capability */
 	size = sizeof(struct vfs_cap_data);
 	if (alloc) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 		if (nscap) {
 			/* v3 -> v2 conversion */
@@ -515,10 +538,15 @@ int cap_inode_getsecurity(struct inode *inode, const char *name, void **buffer,
 				goto out_free;
 			}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		*buffer = kmalloc(size, GFP_ATOMIC);
 		if (*buffer) {
 			struct vfs_cap_data *cap = *buffer;
 			__le32 nsmagic, magic;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			magic = VFS_CAP_REVISION_2;
 			nsmagic = le32_to_cpu(nscap->magic_etc);
@@ -528,12 +556,18 @@ int cap_inode_getsecurity(struct inode *inode, const char *name, void **buffer,
 			cap->magic_etc = cpu_to_le32(magic);
 		} else {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			/* use unconverted v2 */
 			tmpbuf = NULL;
 		}
 		*buffer = cap;
 	}
 out_free:
+=======
+			size = -ENOMEM;
+		}
+	}
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			size = -ENOMEM;
 		}

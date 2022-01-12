@@ -290,6 +290,7 @@ static int usblp_ctrl_msg(struct usblp *usblp, int request, int type, int dir, i
 	usblp_ctrl_msg(usblp, USBLP_REQ_RESET, USB_TYPE_CLASS, USB_DIR_OUT, USB_RECIP_OTHER, 0, NULL, 0)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int usblp_hp_channel_change_request(struct usblp *usblp, int channel, u8 *new_channel)
 {
 	u8 *buf;
@@ -309,6 +310,10 @@ static int usblp_hp_channel_change_request(struct usblp *usblp, int channel, u8 
 
 	return ret;
 }
+=======
+#define usblp_hp_channel_change_request(usblp, channel, buffer) \
+	usblp_ctrl_msg(usblp, USBLP_REQ_HP_CHANNEL_CHANGE_REQUEST, USB_TYPE_VENDOR, USB_DIR_IN, USB_RECIP_INTERFACE, channel, buffer, 1)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define usblp_hp_channel_change_request(usblp, channel, buffer) \
 	usblp_ctrl_msg(usblp, USBLP_REQ_HP_CHANNEL_CHANGE_REQUEST, USB_TYPE_VENDOR, USB_DIR_IN, USB_RECIP_INTERFACE, channel, buffer, 1)
@@ -863,11 +868,14 @@ static ssize_t usblp_read(struct file *file, char __user *buffer, size_t len, lo
 		return rv;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!usblp->present) {
 		count = -ENODEV;
 		goto done;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if ((avail = usblp->rstatus) < 0) {
@@ -1349,6 +1357,7 @@ static int usblp_set_protocol(struct usblp *usblp, int protocol)
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Don't unnecessarily set the interface if there's a single alt. */
 	if (usblp->intf->num_altsetting > 1) {
 		alts = usblp->protocol[protocol].alt_setting;
@@ -1361,6 +1370,8 @@ static int usblp_set_protocol(struct usblp *usblp, int protocol)
 			return r;
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	alts = usblp->protocol[protocol].alt_setting;
 	if (alts < 0)
 		return -EINVAL;
@@ -1369,6 +1380,9 @@ static int usblp_set_protocol(struct usblp *usblp, int protocol)
 		printk(KERN_ERR "usblp: can't set desired altsetting %d on interface %d\n",
 			alts, usblp->ifnum);
 		return r;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 

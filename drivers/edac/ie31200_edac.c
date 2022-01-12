@@ -148,8 +148,11 @@
 
 static int nr_channels;
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct pci_dev *mci_pdev;
 static int ie31200_registered = 1;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -524,6 +527,7 @@ static int ie31200_init_one(struct pci_dev *pdev,
 			    const struct pci_device_id *ent)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int rc;
 
 	edac_dbg(0, "MC:\n");
@@ -535,12 +539,17 @@ static int ie31200_init_one(struct pci_dev *pdev,
 
 	return rc;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	edac_dbg(0, "MC:\n");
 
 	if (pci_enable_device(pdev) < 0)
 		return -EIO;
 
 	return ie31200_probe1(pdev, ent->driver_data);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -551,8 +560,11 @@ static void ie31200_remove_one(struct pci_dev *pdev)
 
 	edac_dbg(0, "\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 	pci_dev_put(mci_pdev);
 	mci_pdev = NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mci = edac_mc_del_mc(&pdev->dev);
@@ -607,14 +619,18 @@ static struct pci_driver ie31200_driver = {
 static int __init ie31200_init(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int pci_rc, i;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	edac_dbg(3, "MC:\n");
 	/* Ensure that the OPSTATE is set correctly for POLL or NMI */
 	opstate_init();
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	pci_rc = pci_register_driver(&ie31200_driver);
 	if (pci_rc < 0)
@@ -652,6 +668,9 @@ fail0:
 =======
 	return pci_register_driver(&ie31200_driver);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+	return pci_register_driver(&ie31200_driver);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
 static void __exit ie31200_exit(void)
@@ -659,8 +678,11 @@ static void __exit ie31200_exit(void)
 	edac_dbg(3, "MC:\n");
 	pci_unregister_driver(&ie31200_driver);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!ie31200_registered)
 		ie31200_remove_one(mci_pdev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

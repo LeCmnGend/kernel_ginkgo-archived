@@ -707,12 +707,18 @@ int set_foreign_p2m_mapping(struct gnttab_map_grant_ref *map_ops,
 	for (i = 0; i < count; i++) {
 		unsigned long mfn, pfn;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		struct gnttab_unmap_grant_ref unmap[2];
 		int rc;
 
 		/* Do not add to override if the map failed. */
 		if (map_ops[i].status != GNTST_okay ||
 		    (kmap_ops && kmap_ops[i].status != GNTST_okay))
+=======
+
+		/* Do not add to override if the map failed. */
+		if (map_ops[i].status)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 		/* Do not add to override if the map failed. */
@@ -731,6 +737,7 @@ int set_foreign_p2m_mapping(struct gnttab_map_grant_ref *map_ops,
 
 		WARN(pfn_to_mfn(pfn) != INVALID_P2M_ENTRY, "page must be ballooned");
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 		if (likely(set_phys_to_machine(pfn, FOREIGN_FRAME(mfn))))
 			continue;
@@ -773,10 +780,15 @@ int set_foreign_p2m_mapping(struct gnttab_map_grant_ref *map_ops,
 			pr_err_once("gnttab unmap failed: rc=%d st0=%d st1=%d\n",
 				    rc, unmap[0].status, unmap[1].status);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (unlikely(!set_phys_to_machine(pfn, FOREIGN_FRAME(mfn)))) {
 			ret = -ENOMEM;
 			goto out;
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -799,6 +811,7 @@ int clear_foreign_p2m_mapping(struct gnttab_unmap_grant_ref *unmap_ops,
 		unsigned long pfn = page_to_pfn(pages[i]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (mfn != INVALID_P2M_ENTRY && (mfn & FOREIGN_FRAME_BIT))
 			set_phys_to_machine(pfn, INVALID_P2M_ENTRY);
 		else
@@ -809,6 +822,8 @@ int clear_foreign_p2m_mapping(struct gnttab_unmap_grant_ref *unmap_ops,
 						kunmap_ops, count) ?: ret;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (mfn == INVALID_P2M_ENTRY || !(mfn & FOREIGN_FRAME_BIT)) {
 			ret = -EINVAL;
 			goto out;
@@ -820,6 +835,9 @@ int clear_foreign_p2m_mapping(struct gnttab_unmap_grant_ref *unmap_ops,
 		ret = HYPERVISOR_grant_table_op(GNTTABOP_unmap_grant_ref,
 						kunmap_ops, count);
 out:
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 }

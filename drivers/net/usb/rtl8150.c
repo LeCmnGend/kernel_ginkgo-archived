@@ -278,6 +278,7 @@ static int write_mii_word(rtl8150_t * dev, u8 phy, __u8 indx, u16 reg)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void set_ethernet_addr(rtl8150_t *dev)
 {
 	u8 node_id[ETH_ALEN];
@@ -293,12 +294,17 @@ static void set_ethernet_addr(rtl8150_t *dev)
 			      dev->netdev->dev_addr);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void set_ethernet_addr(rtl8150_t * dev)
 {
 	u8 node_id[6];
 
 	get_registers(dev, IDR, sizeof(node_id), node_id);
 	memcpy(dev->netdev->dev_addr, node_id, sizeof(node_id));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

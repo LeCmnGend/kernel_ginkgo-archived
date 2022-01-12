@@ -535,7 +535,11 @@ static int m88rs6000t_get_rf_strength(struct dvb_frontend *fe, u16 *strength)
 	PGA2_crf = PGA2_GC & 0x03;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (i = 0; i <= RF_GC && i < ARRAY_SIZE(RFGS); i++)
+=======
+	for (i = 0; i <= RF_GC; i++)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (i = 0; i <= RF_GC; i++)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -551,7 +555,11 @@ static int m88rs6000t_get_rf_strength(struct dvb_frontend *fe, u16 *strength)
 		RFG += 100;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (i = 0; i <= IF_GC && i < ARRAY_SIZE(IFGS); i++)
+=======
+	for (i = 0; i <= IF_GC; i++)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (i = 0; i <= IF_GC; i++)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -560,7 +568,11 @@ static int m88rs6000t_get_rf_strength(struct dvb_frontend *fe, u16 *strength)
 	TIAG = TIA_GC * TIA_GS;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for (i = 0; i <= BB_GC && i < ARRAY_SIZE(BBGS); i++)
+=======
+	for (i = 0; i <= BB_GC; i++)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	for (i = 0; i <= BB_GC; i++)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

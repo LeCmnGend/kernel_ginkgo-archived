@@ -365,11 +365,17 @@ void *vzalloc_node(unsigned long size, int node)
 EXPORT_SYMBOL(vzalloc_node);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifndef PAGE_KERNEL_EXEC
 # define PAGE_KERNEL_EXEC PAGE_KERNEL
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /**
  *	vmalloc_exec  -  allocate virtually contiguous, executable memory
@@ -752,7 +758,11 @@ static void add_vma_to_mm(struct mm_struct *mm, struct vm_area_struct *vma)
 		prev = rb_entry(rb_prev, struct vm_area_struct, vm_rb);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__vma_link_list(mm, vma, prev);
+=======
+	__vma_link_list(mm, vma, prev, parent);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__vma_link_list(mm, vma, prev, parent);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -794,8 +804,11 @@ static void delete_vma_from_mm(struct vm_area_struct *vma)
 	rb_erase(&vma->vm_rb, &mm->mm_rb);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__vma_unlink_list(mm, vma);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (vma->vm_prev)
 		vma->vm_prev->vm_next = vma->vm_next;
 	else
@@ -803,6 +816,9 @@ static void delete_vma_from_mm(struct vm_area_struct *vma)
 
 	if (vma->vm_next)
 		vma->vm_next->vm_prev = vma->vm_prev;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -817,7 +833,11 @@ static void delete_vma(struct mm_struct *mm, struct vm_area_struct *vma)
 		fput(vma->vm_file);
 	put_nommu_region(vma->vm_region);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vm_area_free(vma);
+=======
+	kmem_cache_free(vm_area_cachep, vma);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kmem_cache_free(vm_area_cachep, vma);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1223,6 +1243,10 @@ unsigned long do_mmap(struct file *file,
 			unsigned long prot,
 			unsigned long flags,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			vm_flags_t vm_flags,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			vm_flags_t vm_flags,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1234,7 +1258,10 @@ unsigned long do_mmap(struct file *file,
 	struct vm_region *region;
 	struct rb_node *rb;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vm_flags_t vm_flags;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	unsigned long capabilities, result;
@@ -1256,7 +1283,11 @@ unsigned long do_mmap(struct file *file,
 	/* we've determined that we can make the mapping, now translate what we
 	 * now know into VMA flags */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vm_flags = determine_vm_flags(file, prot, flags, capabilities);
+=======
+	vm_flags |= determine_vm_flags(file, prot, flags, capabilities);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	vm_flags |= determine_vm_flags(file, prot, flags, capabilities);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1267,7 +1298,11 @@ unsigned long do_mmap(struct file *file,
 		goto error_getting_region;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vma = vm_area_alloc();
+=======
+	vma = kmem_cache_zalloc(vm_area_cachep, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	vma = kmem_cache_zalloc(vm_area_cachep, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1435,7 +1470,11 @@ error:
 	if (vma->vm_file)
 		fput(vma->vm_file);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vm_area_free(vma);
+=======
+	kmem_cache_free(vm_area_cachep, vma);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kmem_cache_free(vm_area_cachep, vma);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1533,7 +1572,11 @@ int split_vma(struct mm_struct *mm, struct vm_area_struct *vma,
 		return -ENOMEM;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	new = vm_area_dup(vma);
+=======
+	new = kmem_cache_alloc(vm_area_cachep, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	new = kmem_cache_alloc(vm_area_cachep, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1932,7 +1975,11 @@ EXPORT_SYMBOL_GPL(access_process_vm);
  * Check the shared mappings on an inode on behalf of a shrinking truncate to
  * make sure that that any outstanding VMAs aren't broken and then shrink the
 <<<<<<< HEAD
+<<<<<<< HEAD
  * vm_regions that extend that beyond so that do_mmap() doesn't
+=======
+ * vm_regions that extend that beyond so that do_mmap_pgoff() doesn't
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
  * vm_regions that extend that beyond so that do_mmap_pgoff() doesn't
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

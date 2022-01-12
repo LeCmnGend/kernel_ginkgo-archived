@@ -181,12 +181,15 @@ static int xenbus_probe_backend(struct xen_bus_type *bus, const char *type,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static bool frontend_will_handle(struct xenbus_watch *watch,
 				 const char *path, const char *token)
 {
 	return watch->nr_pending == 0;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void frontend_changed(struct xenbus_watch *watch,
@@ -201,7 +204,10 @@ static struct xen_bus_type xenbus_backend = {
 	.get_bus_id = backend_bus_id,
 	.probe = xenbus_probe_backend,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.otherend_will_handle = frontend_will_handle,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.otherend_changed = frontend_changed,

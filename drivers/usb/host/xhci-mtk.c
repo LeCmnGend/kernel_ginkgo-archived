@@ -488,6 +488,7 @@ static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
 	if (mtk->lpm_support)
 		xhci->quirks |= XHCI_LPM_SUPPORT;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/*
 	 * MTK xHCI 0.96: PSA is 1 by default even if doesn't support stream,
@@ -495,6 +496,8 @@ static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
 	 */
 	if (xhci->hci_version < 0x100 && HCC_MAX_PSA(xhci->hcc_params) == 4)
 		xhci->quirks |= XHCI_BROKEN_STREAMS;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -692,8 +695,12 @@ static int xhci_mtk_probe(struct platform_device *pdev)
 		goto put_usb3_hcd;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (HCC_MAX_PSA(xhci->hcc_params) >= 4 &&
 	    !(xhci->quirks & XHCI_BROKEN_STREAMS))
+=======
+	if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -28,7 +28,11 @@
  * Timeout for stopping processes
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 unsigned int __read_mostly freeze_timeout_msecs = 5 * MSEC_PER_SEC;
+=======
+unsigned int __read_mostly freeze_timeout_msecs = 20 * MSEC_PER_SEC;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 unsigned int __read_mostly freeze_timeout_msecs = 20 * MSEC_PER_SEC;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -152,7 +156,10 @@ int freeze_processes(void)
 	BUG_ON(in_atomic());
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef CONFIG_ANDROID
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
@@ -164,7 +171,10 @@ int freeze_processes(void)
 	if (!error && !oom_killer_disable(msecs_to_jiffies(freeze_timeout_msecs)))
 		error = -EBUSY;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -212,9 +222,13 @@ void thaw_processes(void)
 	pm_nosig_freezing = false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifndef CONFIG_ANDROID
 	oom_killer_enable();
 #endif
+=======
+	oom_killer_enable();
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	oom_killer_enable();
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

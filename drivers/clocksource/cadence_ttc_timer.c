@@ -420,13 +420,19 @@ static int __init ttc_setup_clockevent(struct clk *clk,
 
 	err = clk_prepare_enable(ttcce->ttc.clk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (err)
 		goto out_kfree;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err) {
 		kfree(ttcce);
 		return err;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	ttcce->ttc.clk_rate_change_nb.notifier_call =
@@ -438,7 +444,11 @@ static int __init ttc_setup_clockevent(struct clk *clk,
 	if (err) {
 		pr_warn("Unable to register clock notifier.\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_kfree;
+=======
+		return err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return err;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -471,13 +481,19 @@ static int __init ttc_setup_clockevent(struct clk *clk,
 	err = request_irq(irq, ttc_clock_event_interrupt,
 			  IRQF_TIMER, ttcce->ce.name, ttcce);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (err)
 		goto out_kfree;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (err) {
 		kfree(ttcce);
 		return err;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	clockevents_config_and_register(&ttcce->ce,
@@ -485,10 +501,13 @@ static int __init ttc_setup_clockevent(struct clk *clk,
 
 	return 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 out_kfree:
 	kfree(ttcce);
 	return err;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

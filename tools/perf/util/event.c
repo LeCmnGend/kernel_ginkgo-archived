@@ -795,11 +795,17 @@ int perf_event__synthesize_kernel_mmap(struct perf_tool *tool,
 	union perf_event *event;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (map == NULL)
 		return -1;
 
 	kmap = map__kmap(map);
 	if (!kmap->ref_reloc_sym)
+=======
+	if (symbol_conf.kptr_restrict)
+		return -1;
+	if (map == NULL)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (symbol_conf.kptr_restrict)
 		return -1;
@@ -831,6 +837,10 @@ int perf_event__synthesize_kernel_mmap(struct perf_tool *tool,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kmap = map__kmap(map);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kmap = map__kmap(map);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1532,8 +1542,11 @@ int machine__resolve(struct machine *machine, struct addr_location *al,
 
 		al->sym = map__find_symbol(al->map, al->addr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else if (symbol_conf.dso_list) {
 		al->filtered |= (1 << HIST_FILTER__DSO);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}

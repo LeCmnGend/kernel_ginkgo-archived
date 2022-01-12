@@ -545,13 +545,19 @@ static void mips_cdmm_bus_discover(struct mips_cdmm_bus *bus)
 		++id;
 		ret = device_register(&dev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ret)
 			put_device(&dev->dev);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (ret) {
 			put_device(&dev->dev);
 			kfree(dev);
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 }

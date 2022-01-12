@@ -278,9 +278,13 @@ static void dump_common_audit_data(struct audit_buffer *ab,
 
 		audit_log_format(ab, " name=");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		spin_lock(&a->u.dentry->d_lock);
 		audit_log_untrustedstring(ab, a->u.dentry->d_name.name);
 		spin_unlock(&a->u.dentry->d_lock);
+=======
+		audit_log_untrustedstring(ab, a->u.dentry->d_name.name);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		audit_log_untrustedstring(ab, a->u.dentry->d_name.name);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -302,9 +306,14 @@ static void dump_common_audit_data(struct audit_buffer *ab,
 		if (dentry) {
 			audit_log_format(ab, " name=");
 <<<<<<< HEAD
+<<<<<<< HEAD
 			spin_lock(&dentry->d_lock);
 			audit_log_untrustedstring(ab, dentry->d_name.name);
 			spin_unlock(&dentry->d_lock);
+=======
+			audit_log_untrustedstring(ab,
+					 dentry->d_name.name);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			audit_log_untrustedstring(ab,
 					 dentry->d_name.name);

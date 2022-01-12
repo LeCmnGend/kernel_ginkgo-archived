@@ -826,11 +826,14 @@ static int qat_alg_aead_dec(struct aead_request *areq)
 	int digst_size = crypto_aead_authsize(aead_tfm);
 	int ret, ctr = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 cipher_len;
 
 	cipher_len = areq->cryptlen - digst_size;
 	if (cipher_len % AES_BLOCK_SIZE != 0)
 		return -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -848,7 +851,11 @@ static int qat_alg_aead_dec(struct aead_request *areq)
 	qat_req->req.comn_mid.dest_data_addr = qat_req->buf.bloutp;
 	cipher_param = (void *)&qat_req->req.serv_specif_rqpars;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cipher_param->cipher_length = cipher_len;
+=======
+	cipher_param->cipher_length = areq->cryptlen - digst_size;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	cipher_param->cipher_length = areq->cryptlen - digst_size;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -881,9 +888,12 @@ static int qat_alg_aead_enc(struct aead_request *areq)
 	int ret, ctr = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (areq->cryptlen % AES_BLOCK_SIZE != 0)
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret = qat_alg_sgl_to_bufl(ctx->inst, areq->src, areq->dst, qat_req);

@@ -83,7 +83,11 @@ static bool zswap_enabled;
 static int zswap_enabled_param_set(const char *,
 				   const struct kernel_param *);
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const struct kernel_param_ops zswap_enabled_param_ops = {
+=======
+static struct kernel_param_ops zswap_enabled_param_ops = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static struct kernel_param_ops zswap_enabled_param_ops = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -98,7 +102,11 @@ static char *zswap_compressor = ZSWAP_COMPRESSOR_DEFAULT;
 static int zswap_compressor_param_set(const char *,
 				      const struct kernel_param *);
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const struct kernel_param_ops zswap_compressor_param_ops = {
+=======
+static struct kernel_param_ops zswap_compressor_param_ops = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static struct kernel_param_ops zswap_compressor_param_ops = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -114,7 +122,11 @@ module_param_cb(compressor, &zswap_compressor_param_ops,
 static char *zswap_zpool_type = ZSWAP_ZPOOL_DEFAULT;
 static int zswap_zpool_param_set(const char *, const struct kernel_param *);
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const struct kernel_param_ops zswap_zpool_param_ops = {
+=======
+static struct kernel_param_ops zswap_zpool_param_ops = {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static struct kernel_param_ops zswap_zpool_param_ops = {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -221,8 +233,13 @@ static const struct zpool_ops zswap_zpool_ops = {
 static bool zswap_is_full(void)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return totalram_pages() * zswap_max_pool_percent / 100 <
 			DIV_ROUND_UP(zswap_pool_total_size, PAGE_SIZE);
+=======
+	return totalram_pages * zswap_max_pool_percent / 100 <
+		DIV_ROUND_UP(zswap_pool_total_size, PAGE_SIZE);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return totalram_pages * zswap_max_pool_percent / 100 <
 		DIV_ROUND_UP(zswap_pool_total_size, PAGE_SIZE);
@@ -416,7 +433,11 @@ static int zswap_cpu_comp_prepare(unsigned int cpu, struct hlist_node *node)
 
 	tfm = crypto_alloc_comp(pool->tfm_name, 0, 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (IS_ERR(tfm)) {
+=======
+	if (IS_ERR_OR_NULL(tfm)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (IS_ERR_OR_NULL(tfm)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

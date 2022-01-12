@@ -645,6 +645,7 @@ lpfc_vport_delete(struct fc_vport *fc_vport)
 			return -EAGAIN;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/*
 	 * Take early refcount for outstanding I/O requests we schedule during
@@ -656,6 +657,8 @@ lpfc_vport_delete(struct fc_vport *fc_vport)
 		return VPORT_INVAL;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * This is a bit of a mess.  We want to ensure the shost doesn't get
 	 * torn down until we're done with the embedded lpfc_vport structure.
@@ -677,6 +680,9 @@ lpfc_vport_delete(struct fc_vport *fc_vport)
 		scsi_host_put(shost);
 		return VPORT_INVAL;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	lpfc_free_sysfs_attr(vport);
 
@@ -825,9 +831,14 @@ skip_logo:
 				lpfc_mbx_unreg_vpi(vport))
 			scsi_host_put(shost);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	} else {
 		scsi_host_put(shost);
 	}
+=======
+	} else
+		scsi_host_put(shost);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	} else
 		scsi_host_put(shost);

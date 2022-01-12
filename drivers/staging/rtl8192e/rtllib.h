@@ -1111,7 +1111,11 @@ struct rtllib_network {
 	bool	bCkipSupported;
 	bool	bCcxRmEnable;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u8	CcxRmState[2];
+=======
+	u16	CcxRmState[2];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u16	CcxRmState[2];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -3865,10 +3865,13 @@ retry:
 				free_extent_buffer(eb);
 				continue;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			} else if (ret < 0) {
 				done = 1;
 				free_extent_buffer(eb);
 				break;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			}
@@ -4320,8 +4323,11 @@ int try_release_extent_mapping(struct extent_map_tree *map,
 			/* once for us */
 			free_extent_map(em);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 			cond_resched(); /* Allow large-extent preemption. */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		}
@@ -5448,9 +5454,15 @@ void read_extent_buffer(const struct extent_buffer *eb, void *dstv,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int read_extent_buffer_to_user_nofault(const struct extent_buffer *eb,
 				       void __user *dstv,
 				       unsigned long start, unsigned long len)
+=======
+int read_extent_buffer_to_user(const struct extent_buffer *eb,
+			       void __user *dstv,
+			       unsigned long start, unsigned long len)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 int read_extent_buffer_to_user(const struct extent_buffer *eb,
 			       void __user *dstv,
@@ -5477,7 +5489,11 @@ int read_extent_buffer_to_user(const struct extent_buffer *eb,
 		cur = min(len, (PAGE_SIZE - offset));
 		kaddr = page_address(page);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (probe_user_write(dst, kaddr + offset, cur)) {
+=======
+		if (copy_to_user(dst, kaddr + offset, cur)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (copy_to_user(dst, kaddr + offset, cur)) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

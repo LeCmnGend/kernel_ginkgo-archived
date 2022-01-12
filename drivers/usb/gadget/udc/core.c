@@ -1496,6 +1496,7 @@ static ssize_t usb_udc_softconn_store(struct device *dev,
 {
 	struct usb_udc		*udc = container_of(dev, struct usb_udc, dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ssize_t			ret;
 
 	mutex_lock(&udc_lock);
@@ -1504,10 +1505,15 @@ static ssize_t usb_udc_softconn_store(struct device *dev,
 		ret = -EOPNOTSUPP;
 		goto out;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!udc->driver) {
 		dev_err(dev, "soft-connect without a gadget driver\n");
 		return -EOPNOTSUPP;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -1521,6 +1527,7 @@ static ssize_t usb_udc_softconn_store(struct device *dev,
 	} else {
 		dev_err(dev, "unsupported command '%s'\n", buf);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = -EINVAL;
 		goto out;
 	}
@@ -1530,10 +1537,15 @@ out:
 	mutex_unlock(&udc_lock);
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return -EINVAL;
 	}
 
 	return n;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 static DEVICE_ATTR(soft_connect, S_IWUSR, NULL, usb_udc_softconn_store);

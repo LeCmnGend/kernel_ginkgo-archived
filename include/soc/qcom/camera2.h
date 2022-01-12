@@ -154,7 +154,10 @@ struct msm_camera_sensor_board_info {
 	int32_t special_support_size;
 	struct msm_camera_slave_info *slave_info;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct msm_vendor_id_info_t *vendor_id_info;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct msm_camera_csi_lane_params *csi_lane_params;

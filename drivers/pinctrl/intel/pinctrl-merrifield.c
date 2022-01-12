@@ -732,10 +732,13 @@ static int mrfld_config_set_pin(struct mrfld_pinctrl *mp, unsigned int pin,
 		bits |= BUFCFG_PU_EN;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* Set default strength value in case none is given */
 		if (arg == 1)
 			arg = 20000;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		switch (arg) {
@@ -759,10 +762,13 @@ static int mrfld_config_set_pin(struct mrfld_pinctrl *mp, unsigned int pin,
 		bits |= BUFCFG_PD_EN;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* Set default strength value in case none is given */
 		if (arg == 1)
 			arg = 20000;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		switch (arg) {

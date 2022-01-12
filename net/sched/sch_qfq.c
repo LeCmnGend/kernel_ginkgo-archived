@@ -497,12 +497,18 @@ static int qfq_change_class(struct Qdisc *sch, u32 classid, u32 parentid,
 	if (cl->qdisc != &noop_qdisc)
 		qdisc_hash_add(cl->qdisc, true);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	sch_tree_lock(sch);
 	qdisc_class_hash_insert(&q->clhash, &cl->common);
 	sch_tree_unlock(sch);
 
 	qdisc_class_hash_grow(sch, &q->clhash);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 set_change_agg:
@@ -522,11 +528,16 @@ set_change_agg:
 	if (existing)
 		qfq_deact_rm_from_agg(q, cl);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	else
 		qdisc_class_hash_insert(&q->clhash, &cl->common);
 	qfq_add_to_agg(q, new_agg, cl);
 	sch_tree_unlock(sch);
 	qdisc_class_hash_grow(sch, &q->clhash);
+=======
+	qfq_add_to_agg(q, new_agg, cl);
+	sch_tree_unlock(sch);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	qfq_add_to_agg(q, new_agg, cl);
 	sch_tree_unlock(sch);
@@ -721,7 +732,10 @@ static struct qfq_class *qfq_classify(struct sk_buff *skb, struct Qdisc *sch,
 		case TC_ACT_TRAP:
 			*qerr = NET_XMIT_SUCCESS | __NET_XMIT_STOLEN;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			/* fall through */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		case TC_ACT_SHOT:
@@ -1435,7 +1449,11 @@ static int qfq_init_qdisc(struct Qdisc *sch, struct nlattr *opt)
 	u32 max_cl_shift, maxbudg_shift, max_classes;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	err = tcf_block_get(&q->block, &q->filter_list, sch);
+=======
+	err = tcf_block_get(&q->block, &q->filter_list);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	err = tcf_block_get(&q->block, &q->filter_list);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

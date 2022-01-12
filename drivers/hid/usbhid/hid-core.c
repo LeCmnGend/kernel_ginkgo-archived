@@ -374,7 +374,11 @@ static int hid_submit_ctrl(struct hid_device *hid)
 	dir = usbhid->ctrl[usbhid->ctrltail].dir;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	len = hid_report_len(report);
+=======
+	len = ((report->size - 1) >> 3) + 1 + (report->id > 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	len = ((report->size - 1) >> 3) + 1 + (report->id > 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -184,6 +184,10 @@ static inline void rt2880_pci_write_u32(unsigned long reg, u32 val)
 int pcibios_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u16 cmd;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u16 cmd;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -195,6 +199,11 @@ int pcibios_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 	switch (PCI_SLOT(dev->devfn)) {
 	case 0x00:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		rt2880_pci_write_u32(PCI_BASE_ADDRESS_0, 0x08000000);
+		(void) rt2880_pci_read_u32(PCI_BASE_ADDRESS_0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		rt2880_pci_write_u32(PCI_BASE_ADDRESS_0, 0x08000000);
 		(void) rt2880_pci_read_u32(PCI_BASE_ADDRESS_0);
@@ -211,7 +220,10 @@ int pcibios_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	pci_write_config_byte((struct pci_dev *) dev,
 		PCI_CACHE_LINE_SIZE, 0x14);
 	pci_write_config_byte((struct pci_dev *) dev, PCI_LATENCY_TIMER, 0xFF);
@@ -222,6 +234,9 @@ int pcibios_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 	pci_write_config_word((struct pci_dev *) dev, PCI_COMMAND, cmd);
 	pci_write_config_byte((struct pci_dev *) dev, PCI_INTERRUPT_LINE,
 			      dev->irq);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return irq;
 }
@@ -262,6 +277,7 @@ static int rt288x_pci_probe(struct platform_device *pdev)
 int pcibios_plat_dev_init(struct pci_dev *dev)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	static bool slot0_init;
 
 	/*
@@ -286,6 +302,8 @@ int pcibios_plat_dev_init(struct pci_dev *dev)
 		pci_bus_write_config_word(dev->bus, 0, PCI_COMMAND, cmd);
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;

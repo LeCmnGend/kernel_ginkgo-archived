@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 //SPDX-License-Identifier: GPL-2.0
 #include <linux/cgroup.h>
 #include <linux/sched.h>
@@ -317,6 +318,8 @@ void cgroup_freeze(struct cgroup *cgrp, bool freeze)
 		cgroup_file_notify(&cgrp->events_file);
 }
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
  * cgroup_freezer.c -  control group freezer subsystem
  *
@@ -798,4 +801,7 @@ struct cgroup_subsys freezer_cgrp_subsys = {
 	.fork		= freezer_fork,
 	.legacy_cftypes	= files,
 };
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

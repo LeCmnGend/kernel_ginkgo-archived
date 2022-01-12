@@ -2027,7 +2027,11 @@ void show_code(struct pt_regs *regs)
 void print_fn_code(unsigned char *code, unsigned long len)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	char buffer[128], *ptr;
+=======
+	char buffer[64], *ptr;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	char buffer[64], *ptr;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

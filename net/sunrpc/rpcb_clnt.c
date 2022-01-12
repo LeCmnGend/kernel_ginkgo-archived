@@ -982,8 +982,13 @@ static int rpcb_dec_getaddr(struct rpc_rqst *req, struct xdr_stream *xdr,
 	if (unlikely(p == NULL))
 		goto out_fail;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dprintk("RPC: %5u RPCB_%s reply: %*pE\n", req->rq_task->tk_pid,
 			req->rq_task->tk_msg.rpc_proc->p_name, len, (char *)p);
+=======
+	dprintk("RPC: %5u RPCB_%s reply: %s\n", req->rq_task->tk_pid,
+			req->rq_task->tk_msg.rpc_proc->p_name, (char *)p);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dprintk("RPC: %5u RPCB_%s reply: %s\n", req->rq_task->tk_pid,
 			req->rq_task->tk_msg.rpc_proc->p_name, (char *)p);

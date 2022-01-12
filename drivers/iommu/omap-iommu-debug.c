@@ -102,11 +102,16 @@ static ssize_t debug_read_regs(struct file *file, char __user *userbuf,
 
 	bytes = omap_iommu_dump_ctx(obj, p, count);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (bytes < 0)
 		goto err;
 	bytes = simple_read_from_buffer(userbuf, count, ppos, buf, bytes);
 
 err:
+=======
+	bytes = simple_read_from_buffer(userbuf, count, ppos, buf, bytes);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bytes = simple_read_from_buffer(userbuf, count, ppos, buf, bytes);
 

@@ -76,7 +76,10 @@ static int alloc_branch(struct inode *inode,
 	int i;
 	int parent = minix_new_block(inode);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int err = -ENOSPC;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -90,11 +93,14 @@ static int alloc_branch(struct inode *inode,
 		branch[n].key = cpu_to_block(nr);
 		bh = sb_getblk(inode->i_sb, parent);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!bh) {
 			minix_free_block(inode, nr);
 			err = -ENOMEM;
 			break;
 		}
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		lock_buffer(bh);
@@ -116,7 +122,11 @@ static int alloc_branch(struct inode *inode,
 	for (i = 0; i < n; i++)
 		minix_free_block(inode, block_to_cpu(branch[i].key));
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return err;
+=======
+	return -ENOSPC;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return -ENOSPC;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

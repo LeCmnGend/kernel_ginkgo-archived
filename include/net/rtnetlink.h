@@ -34,7 +34,10 @@ static inline int rtnl_msg_family(const struct nlmsghdr *nlh)
  *	@list: Used internally
  *	@kind: Identifier
 <<<<<<< HEAD
+<<<<<<< HEAD
  *	@netns_refund: Physical device, move to init_net on netns exit
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  *	@maxtype: Highest device specific netlink attribute number
@@ -97,7 +100,10 @@ struct rtnl_link_ops {
 	unsigned int		(*get_num_rx_queues)(void);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool			netns_refund;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int			slave_maxtype;

@@ -58,9 +58,12 @@ MODULE_DEVICE_TABLE (usb, wdm_ids);
 #define WDM_MAX			16
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* we cannot wait forever at flush() */
 #define WDM_FLUSH_TIMEOUT	(30 * HZ)
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* CDC-WMC r1.1 requires wMaxCommand to be "at least 256 decimal (0x100)" */
@@ -154,7 +157,11 @@ static void wdm_out_callback(struct urb *urb)
 	desc->outbuf = NULL;
 	clear_bit(WDM_IN_USE, &desc->flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	wake_up_all(&desc->wait);
+=======
+	wake_up(&desc->wait);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	wake_up(&desc->wait);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -401,9 +408,12 @@ static ssize_t wdm_write
 		r = -EIO;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (test_bit(WDM_DISCONNECTING, &desc->flags))
 		r = -ENODEV;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (r < 0) {
@@ -438,7 +448,10 @@ static ssize_t wdm_write
 		desc->outbuf = NULL;
 		clear_bit(WDM_IN_USE, &desc->flags);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		wake_up_all(&desc->wait); /* for wdm_wait_for_response() */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		dev_err(&desc->intf->dev, "Tx URB error: %d\n", rv);
@@ -601,6 +614,7 @@ err:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int wdm_wait_for_response(struct file *file, long timeout)
 {
 	struct wdm_device *desc = file->private_data;
@@ -654,6 +668,8 @@ static int wdm_flush(struct file *file, fl_owner_t id)
 {
 	return wdm_wait_for_response(file, WDM_FLUSH_TIMEOUT);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int wdm_flush(struct file *file, fl_owner_t id)
 {
 	struct wdm_device *desc = file->private_data;
@@ -676,6 +692,9 @@ static int wdm_flush(struct file *file, fl_owner_t id)
 			desc->werr);
 
 	return usb_translate_errors(desc->werr);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -802,7 +821,10 @@ static const struct file_operations wdm_fops = {
 	.read =		wdm_read,
 	.write =	wdm_write,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.fsync =	wdm_fsync,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	.open =		wdm_open,

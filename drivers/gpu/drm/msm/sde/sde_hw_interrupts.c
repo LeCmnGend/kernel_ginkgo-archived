@@ -887,6 +887,11 @@ static void sde_hw_intr_dispatch_irq(struct sde_hw_intr *intr,
 	spin_lock_irqsave(&intr->irq_lock, irq_flags);
 	for (reg_idx = 0; reg_idx < intr->sde_irq_size; reg_idx++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		irq_status = intr->save_irq_status[reg_idx];
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		irq_status = intr->save_irq_status[reg_idx];
 
@@ -908,9 +913,12 @@ static void sde_hw_intr_dispatch_irq(struct sde_hw_intr *intr,
 			continue;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		irq_status = SDE_REG_READ(&intr->hw,
 				intr->sde_irq_tbl[reg_idx].status_off);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/*
@@ -934,9 +942,14 @@ static void sde_hw_intr_dispatch_irq(struct sde_hw_intr *intr,
 					cbfunc(arg, irq_idx);
 				else
 <<<<<<< HEAD
+<<<<<<< HEAD
 					SDE_REG_WRITE(&intr->hw,
 						intr->sde_irq_tbl[reg_idx].clr_off,
 						sde_irq_map[irq_idx].irq_mask);
+=======
+					intr->ops.clear_intr_status_nolock(
+							intr, irq_idx);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					intr->ops.clear_intr_status_nolock(
 							intr, irq_idx);
@@ -993,6 +1006,12 @@ static int sde_hw_intr_enable_irq(struct sde_hw_intr *intr, int irq_idx)
 		SDE_REG_WRITE(&intr->hw, reg->en_off, cache_irq_mask);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		/* ensure register write goes through */
+		wmb();
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		/* ensure register write goes through */
 		wmb();
@@ -1134,7 +1153,10 @@ static int sde_hw_intr_get_interrupt_sources(struct sde_hw_intr *intr,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void sde_hw_intr_get_interrupt_statuses(struct sde_hw_intr *intr)
 {
 	int i;
@@ -1169,6 +1191,9 @@ static void sde_hw_intr_get_interrupt_statuses(struct sde_hw_intr *intr)
 	spin_unlock_irqrestore(&intr->irq_lock, irq_flags);
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void sde_hw_intr_clear_intr_status_force_mask(struct sde_hw_intr *intr,
 						 int irq_idx, u32 irq_mask)
@@ -1222,13 +1247,17 @@ static void sde_hw_intr_clear_interrupt_status(struct sde_hw_intr *intr,
 {
 	unsigned long irq_flags;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int reg_idx;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!intr)
 		return;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	reg_idx = sde_irq_map[irq_idx].reg_idx;
 	if (reg_idx < 0 || reg_idx > intr->sde_irq_size) {
@@ -1239,6 +1268,10 @@ static void sde_hw_intr_clear_interrupt_status(struct sde_hw_intr *intr,
 	spin_lock_irqsave(&intr->irq_lock, irq_flags);
 	SDE_REG_WRITE(&intr->hw, intr->sde_irq_tbl[reg_idx].clr_off,
 			sde_irq_map[irq_idx].irq_mask);
+=======
+	spin_lock_irqsave(&intr->irq_lock, irq_flags);
+	sde_hw_intr_clear_intr_status_nolock(intr, irq_idx);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spin_lock_irqsave(&intr->irq_lock, irq_flags);
 	sde_hw_intr_clear_intr_status_nolock(intr, irq_idx);
@@ -1310,6 +1343,12 @@ static u32 sde_hw_intr_get_interrupt_status(struct sde_hw_intr *intr,
 				intr_status);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/* ensure register writes go through */
+	wmb();
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* ensure register writes go through */
 	wmb();
@@ -1362,6 +1401,10 @@ static void __setup_intr_ops(struct sde_hw_intr_ops *ops)
 	ops->get_valid_interrupts = sde_hw_intr_get_valid_interrupts;
 	ops->get_interrupt_sources = sde_hw_intr_get_interrupt_sources;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	ops->get_interrupt_statuses = sde_hw_intr_get_interrupt_statuses;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ops->get_interrupt_statuses = sde_hw_intr_get_interrupt_statuses;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1513,6 +1556,10 @@ void sde_hw_intr_destroy(struct sde_hw_intr *intr)
 		kfree(intr->sde_irq_tbl);
 		kfree(intr->cache_irq_mask);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		kfree(intr->save_irq_status);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kfree(intr->save_irq_status);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1625,7 +1672,10 @@ struct sde_hw_intr *sde_hw_intr_init(void __iomem *addr,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	intr->save_irq_status = kcalloc(intr->sde_irq_size, sizeof(u32),
 			GFP_KERNEL);
 	if (intr->save_irq_status == NULL) {
@@ -1633,6 +1683,9 @@ struct sde_hw_intr *sde_hw_intr_init(void __iomem *addr,
 		goto exit;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	spin_lock_init(&intr->irq_lock);
 
@@ -1642,6 +1695,10 @@ exit:
 	kfree(intr->sde_irq_tbl);
 	kfree(intr->cache_irq_mask);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	kfree(intr->save_irq_status);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(intr->save_irq_status);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

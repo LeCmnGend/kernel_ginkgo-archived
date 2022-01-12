@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2018-2020, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2018-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2018-2021, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -125,7 +129,11 @@
 			qcom,pipe0 {
 				label = "ssusb-qdss-in-0";
 <<<<<<< HEAD
+<<<<<<< HEAD
 				qcom,usb-bam-mem-type = <2>;
+=======
+				qcom,usb-bam-mem-type = <1>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				qcom,usb-bam-mem-type = <1>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

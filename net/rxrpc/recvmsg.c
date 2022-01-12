@@ -446,7 +446,11 @@ try_again:
 	    rx->sk.sk_state != RXRPC_SERVER_LISTENING) {
 		release_sock(&rx->sk);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return -EAGAIN;
+=======
+		return -ENODATA;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		return -ENODATA;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -527,7 +531,11 @@ try_again:
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (msg->msg_name && call->peer) {
+=======
+	if (msg->msg_name) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (msg->msg_name) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

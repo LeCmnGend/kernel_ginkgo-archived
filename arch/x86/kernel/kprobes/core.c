@@ -174,8 +174,11 @@ int can_boost(struct insn *insn, void *addr)
 {
 	kprobe_opcode_t opcode;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	insn_byte_t prefix;
 	int i;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -191,6 +194,7 @@ int can_boost(struct insn *insn, void *addr)
 		return 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	for_each_insn_prefix(insn, i, prefix) {
 		insn_attr_t attr;
 
@@ -199,6 +203,11 @@ int can_boost(struct insn *insn, void *addr)
 		if (prefix == 0x2e || inat_is_address_size_prefix(attr))
 			return 0;
 	}
+=======
+	/* Can't boost Address-size override prefix */
+	if (unlikely(inat_is_address_size_prefix(insn->attr)))
+		return 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Can't boost Address-size override prefix */
 	if (unlikely(inat_is_address_size_prefix(insn->attr)))
@@ -229,8 +238,13 @@ int can_boost(struct insn *insn, void *addr)
 		return (opcode == 0xf5 || (0xf7 < opcode && opcode < 0xfe));
 	default:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* call is not boostable */
 		return opcode != 0x9a;
+=======
+		/* CS override prefix and call are not boostable */
+		return (opcode != 0x2e && opcode != 0x9a);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		/* CS override prefix and call are not boostable */
 		return (opcode != 0x2e && opcode != 0x9a);
@@ -1044,11 +1058,14 @@ int kprobe_fault_handler(struct pt_regs *regs, int trapnr)
 		 */
 		regs->flags &= ~X86_EFLAGS_TF;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/*
 		 * Since the single step (trap) has been cancelled,
 		 * we need to restore BTF here.
 		 */
 		restore_btf();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

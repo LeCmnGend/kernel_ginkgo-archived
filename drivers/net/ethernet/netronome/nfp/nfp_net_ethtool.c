@@ -272,8 +272,11 @@ nfp_net_get_link_ksettings(struct net_device *netdev,
 	/* Init to unknowns */
 	ethtool_link_ksettings_add_link_mode(cmd, supported, FIBRE);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ethtool_link_ksettings_add_link_mode(cmd, supported, Pause);
 	ethtool_link_ksettings_add_link_mode(cmd, advertising, Pause);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cmd->base.port = PORT_OTHER;

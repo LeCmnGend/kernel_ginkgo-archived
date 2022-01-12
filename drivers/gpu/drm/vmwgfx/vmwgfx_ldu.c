@@ -80,7 +80,11 @@ static int vmw_ldu_commit_list(struct vmw_private *dev_priv)
 	struct drm_framebuffer *fb = NULL;
 	struct drm_crtc *crtc = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int i;
+=======
+	int i = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int i = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -95,6 +99,10 @@ static int vmw_ldu_commit_list(struct vmw_private *dev_priv)
 			w = max(w, crtc->x + crtc->mode.hdisplay);
 			h = max(h, crtc->y + crtc->mode.vdisplay);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			i++;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			i++;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -103,7 +111,11 @@ static int vmw_ldu_commit_list(struct vmw_private *dev_priv)
 		if (crtc == NULL)
 			return 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		fb = crtc->primary->state->fb;
+=======
+		fb = entry->base.crtc.primary->state->fb;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		fb = entry->base.crtc.primary->state->fb;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

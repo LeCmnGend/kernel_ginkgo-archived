@@ -68,10 +68,13 @@ extern int proc_douintvec_capacity(struct ctl_table *table, int write,
 				   loff_t *ppos);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern int proc_douintvec_ravg_window(struct ctl_table *table, int write,
 				      void __user *buffer, size_t *lenp,
 				      loff_t *ppos);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*

@@ -358,6 +358,7 @@ out:
 	BUG_ON(get_paca()->in_nmi == 0);
 	if (get_paca()->in_nmi > 1)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		die("Unrecoverable nested System Reset", regs, SIGABRT);
 #endif
 	/* Must die if the interrupt is not recoverable */
@@ -367,11 +368,16 @@ out:
 		die("Unrecoverable System Reset", regs, SIGABRT);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		nmi_panic(regs, "Unrecoverable nested System Reset");
 #endif
 	/* Must die if the interrupt is not recoverable */
 	if (!(regs->msr & MSR_RI))
 		nmi_panic(regs, "Unrecoverable System Reset");
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (!nested)
@@ -713,7 +719,11 @@ void machine_check_exception(struct pt_regs *regs)
 	/* Must die if the interrupt is not recoverable */
 	if (!(regs->msr & MSR_RI))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		die("Unrecoverable Machine check", regs, SIGBUS);
+=======
+		nmi_panic(regs, "Unrecoverable Machine check");
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		nmi_panic(regs, "Unrecoverable Machine check");
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

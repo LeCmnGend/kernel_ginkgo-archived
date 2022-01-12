@@ -900,7 +900,11 @@ EXPORT_SYMBOL_GPL(of_dma_get_range);
 bool of_dma_is_coherent(struct device_node *np)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct device_node *node;
+=======
+	struct device_node *node = of_node_get(np);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct device_node *node = of_node_get(np);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -909,8 +913,11 @@ bool of_dma_is_coherent(struct device_node *np)
 		return true;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	node = of_node_get(np);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	while (node) {

@@ -36,7 +36,11 @@
 #include "sysfs_utils.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern struct udev *udev_context;
+=======
+struct udev *udev_context;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 struct udev *udev_context;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

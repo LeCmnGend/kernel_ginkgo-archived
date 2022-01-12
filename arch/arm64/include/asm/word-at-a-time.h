@@ -65,7 +65,11 @@ static inline unsigned long find_zero(unsigned long mask)
 static inline unsigned long load_unaligned_zeropad(const void *addr)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long ret, tmp;
+=======
+	unsigned long ret, offset;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned long ret, offset;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -77,9 +81,15 @@ static inline unsigned long load_unaligned_zeropad(const void *addr)
 	"	.pushsection .fixup,\"ax\"\n"
 	"	.align 2\n"
 <<<<<<< HEAD
+<<<<<<< HEAD
 	"3:	bic	%1, %2, #0x7\n"
 	"	ldr	%0, [%1]\n"
 	"	and	%1, %2, #0x7\n"
+=======
+	"3:	and	%1, %2, #0x7\n"
+	"	bic	%2, %2, #0x7\n"
+	"	ldr	%0, [%2]\n"
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	"3:	and	%1, %2, #0x7\n"
 	"	bic	%2, %2, #0x7\n"
@@ -95,7 +105,11 @@ static inline unsigned long load_unaligned_zeropad(const void *addr)
 	"	.popsection\n"
 	_ASM_EXTABLE(1b, 3b)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	: "=&r" (ret), "=&r" (tmp)
+=======
+	: "=&r" (ret), "=&r" (offset)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	: "=&r" (ret), "=&r" (offset)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

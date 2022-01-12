@@ -432,13 +432,19 @@ static ssize_t ocfs2_filecheck_show(struct kobject *kobj,
 			       p->fe_ino, p->fe_done,
 			       ocfs2_filecheck_error(p->fe_status));
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ret >= remain) {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (ret < 0) {
 			total = ret;
 			break;
 		}
 		if (ret == remain) {
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			/* snprintf() didn't fit */
 			total = -E2BIG;

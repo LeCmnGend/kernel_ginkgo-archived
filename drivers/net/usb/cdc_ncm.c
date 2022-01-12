@@ -1129,10 +1129,14 @@ cdc_ncm_fill_tx_frame(struct usbnet *dev, struct sk_buff *skb, __le32 sign)
 	 */
 	if (ctx->drvflags & CDC_NCM_FLAG_NDP_TO_END)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		delayed_ndp_size = ctx->max_ndp_size +
 			max_t(u32,
 			      ctx->tx_ndp_modulus,
 			      ctx->tx_modulus + ctx->tx_remainder) - 1;
+=======
+		delayed_ndp_size = ALIGN(ctx->max_ndp_size, ctx->tx_ndp_modulus);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		delayed_ndp_size = ALIGN(ctx->max_ndp_size, ctx->tx_ndp_modulus);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1317,8 +1321,12 @@ cdc_ncm_fill_tx_frame(struct usbnet *dev, struct sk_buff *skb, __le32 sign)
 	    skb_out->len > ctx->min_tx_pkt) {
 		padding_count = ctx->tx_curr_size - skb_out->len;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!WARN_ON(padding_count > ctx->tx_curr_size))
 			skb_put_zero(skb_out, padding_count);
+=======
+		skb_put_zero(skb_out, padding_count);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		skb_put_zero(skb_out, padding_count);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1600,6 +1608,7 @@ cdc_ncm_speed_change(struct usbnet *dev,
 	uint32_t tx_speed = le32_to_cpu(data->ULBitRate);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* if the speed hasn't changed, don't report it.
 	 * RTL8156 shipped before 2021 sends notification about every 32ms.
 	 */
@@ -1609,6 +1618,8 @@ cdc_ncm_speed_change(struct usbnet *dev,
 	dev->rx_speed = rx_speed;
 	dev->tx_speed = tx_speed;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
@@ -1655,13 +1666,19 @@ static void cdc_ncm_status(struct usbnet *dev, struct urb *urb)
 		 * sent by device after USB_CDC_NOTIFY_SPEED_CHANGE.
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (netif_carrier_ok(dev->net) != !!event->wValue)
 			usbnet_link_change(dev, !!event->wValue, 0);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		netif_info(dev, link, dev->net,
 			   "network connection: %sconnected\n",
 			   !!event->wValue ? "" : "dis");
 		usbnet_link_change(dev, !!event->wValue, 0);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 
@@ -1686,7 +1703,11 @@ static const struct driver_info cdc_ncm_info = {
 	.description = "CDC NCM",
 	.flags = FLAG_POINTTOPOINT | FLAG_NO_SETINT | FLAG_MULTI_PACKET
 <<<<<<< HEAD
+<<<<<<< HEAD
 			| FLAG_LINK_INTR | FLAG_ETHER,
+=======
+			| FLAG_LINK_INTR,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			| FLAG_LINK_INTR,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

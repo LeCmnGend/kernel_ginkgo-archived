@@ -393,7 +393,11 @@ static int __configfs_open_file(struct inode *inode, struct file *file, int type
 	attr = to_attr(dentry);
 	if (!attr)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_free_buffer;
+=======
+		goto out_put_item;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto out_put_item;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -410,7 +414,11 @@ static int __configfs_open_file(struct inode *inode, struct file *file, int type
 	error = -ENODEV;
 	if (!try_module_get(buffer->owner))
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto out_free_buffer;
+=======
+		goto out_put_item;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto out_put_item;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -458,6 +466,11 @@ static int __configfs_open_file(struct inode *inode, struct file *file, int type
 out_put_module:
 	module_put(buffer->owner);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+out_put_item:
+	config_item_put(buffer->item);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 out_put_item:
 	config_item_put(buffer->item);
@@ -510,6 +523,7 @@ static int configfs_release_bin_file(struct inode *inode, struct file *file)
 		}
 		up_read(&frag->frag_sem);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	}
 
 	vfree(buffer->bin_buffer);
@@ -518,6 +532,8 @@ static int configfs_release_bin_file(struct inode *inode, struct file *file)
 	buffer->needs_read_fill = 1;
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		/* vfree on NULL is safe */
 		vfree(buffer->bin_buffer);
 		buffer->bin_buffer = NULL;
@@ -525,6 +541,9 @@ static int configfs_release_bin_file(struct inode *inode, struct file *file)
 		buffer->needs_read_fill = 1;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	configfs_release(inode, file);
 	return 0;

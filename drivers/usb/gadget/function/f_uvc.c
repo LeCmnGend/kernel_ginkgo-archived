@@ -626,12 +626,16 @@ uvc_function_bind(struct usb_configuration *c, struct usb_function *f)
 	uvc_hs_streaming_ep.wMaxPacketSize =
 		cpu_to_le16(max_packet_size | ((max_packet_mult - 1) << 11));
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* A high-bandwidth endpoint must specify a bInterval value of 1 */
 	if (max_packet_mult > 1)
 		uvc_hs_streaming_ep.bInterval = 1;
 	else
 		uvc_hs_streaming_ep.bInterval = opts->streaming_interval;
+=======
+	uvc_hs_streaming_ep.bInterval = opts->streaming_interval;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	uvc_hs_streaming_ep.bInterval = opts->streaming_interval;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

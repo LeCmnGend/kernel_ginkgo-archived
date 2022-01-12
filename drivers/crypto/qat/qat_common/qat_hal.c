@@ -1256,11 +1256,15 @@ static int qat_hal_put_rel_wr_xfer(struct icp_qat_fw_loader_handle *handle,
 		return -EINVAL;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	status = qat_hal_rd_rel_reg(handle, ae, ctx, ICP_GPB_REL, gprnum, &gprval);
 	if (status) {
 		pr_err("QAT: failed to read register");
 		return status;
 	}
+=======
+	qat_hal_rd_rel_reg(handle, ae, ctx, ICP_GPB_REL, gprnum, &gprval);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	qat_hal_rd_rel_reg(handle, ae, ctx, ICP_GPB_REL, gprnum, &gprval);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

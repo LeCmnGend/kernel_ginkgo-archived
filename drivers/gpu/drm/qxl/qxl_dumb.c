@@ -58,8 +58,11 @@ int qxl_mode_dumb_create(struct drm_file *file_priv,
 	surf.stride = pitch;
 	surf.format = format;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	surf.data = 0;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	r = qxl_gem_object_create_with_handle(qdev, file_priv,

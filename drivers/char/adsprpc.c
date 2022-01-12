@@ -50,7 +50,11 @@
 #include <linux/debugfs.h>
 #include <linux/pm_qos.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/cpumask.h>
+=======
+#include <linux/stat.h>
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #include <linux/stat.h>
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -105,7 +109,12 @@
 #define PERF_KEYS \
 	"count:flush:map:copy:rpmsg:getargs:putargs:invalidate:invoke:tid:ptr"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define FASTRPC_STATIC_HANDLE_KERNEL (1)
+=======
+#define FASTRPC_STATIC_HANDLE_PROCESS_GROUP (1)
+#define FASTRPC_STATIC_HANDLE_DSP_UTILITIES (2)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define FASTRPC_STATIC_HANDLE_PROCESS_GROUP (1)
 #define FASTRPC_STATIC_HANDLE_DSP_UTILITIES (2)
@@ -194,11 +203,14 @@ struct secure_vm {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct qos_cores {
 	int *coreno;
 	int corecount;
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct fastrpc_file;
@@ -288,12 +300,18 @@ struct fastrpc_static_pd {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct fastrpc_dsp_capabilities {
 	uint32_t is_cached;	//! Flag if dsp attributes are cached
 	uint32_t dsp_attributes[FASTRPC_MAX_DSP_ATTRIBUTES];
 };
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 struct fastrpc_channel_ctx {
 	char *name;
@@ -320,6 +338,10 @@ struct fastrpc_channel_ctx {
 	/* Indicates, if channel is restricted to secure node only */
 	int secure;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct fastrpc_dsp_capabilities dsp_cap_kernel;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct fastrpc_dsp_capabilities dsp_cap_kernel;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -347,7 +369,10 @@ struct fastrpc_apps {
 	/* Non-secure subsystem like CDSP will use regular client */
 	struct wakeup_source *wake_source;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct qos_cores silvercores;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -2034,11 +2059,14 @@ static int fastrpc_internal_invoke(struct fastrpc_file *fl, uint32_t mode,
 
 	if (!kernel) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		VERIFY(err, invoke->handle != FASTRPC_STATIC_HANDLE_KERNEL);
 		if (err) {
 			pr_err("adsprpc: ERROR: %s: user application %s trying to send a kernel RPC message to channel %d",
 				__func__, current->comm, cid);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		VERIFY(err, invoke->handle !=
 			FASTRPC_STATIC_HANDLE_PROCESS_GROUP);
 		VERIFY(err, invoke->handle !=
@@ -2046,6 +2074,9 @@ static int fastrpc_internal_invoke(struct fastrpc_file *fl, uint32_t mode,
 		if (err) {
 			pr_err("adsprpc: ERROR: %s: user application %s trying to send a kernel RPC message to channel %d, handle 0x%x\n",
 				__func__, current->comm, cid, invoke->handle);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			goto bail;
 		}
@@ -2162,7 +2193,11 @@ bail:
 static int fastrpc_mmap_remove_pdr(struct fastrpc_file *fl);
 static int fastrpc_channel_open(struct fastrpc_file *fl);
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int fastrpc_mmap_remove_ssr(struct fastrpc_file *fl);
+=======
+static int fastrpc_mmap_remove_ssr(struct fastrpc_file *fl, int locked);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int fastrpc_mmap_remove_ssr(struct fastrpc_file *fl, int locked);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2190,7 +2225,11 @@ static int fastrpc_init_process(struct fastrpc_file *fl,
 		ra[0].buf.pv = (void *)&tgid;
 		ra[0].buf.len = sizeof(tgid);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ioctl.inv.handle = FASTRPC_STATIC_HANDLE_KERNEL;
+=======
+		ioctl.inv.handle = FASTRPC_STATIC_HANDLE_PROCESS_GROUP;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ioctl.inv.handle = FASTRPC_STATIC_HANDLE_PROCESS_GROUP;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2293,7 +2332,11 @@ static int fastrpc_init_process(struct fastrpc_file *fl,
 		fds[5] = -1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ioctl.inv.handle = FASTRPC_STATIC_HANDLE_KERNEL;
+=======
+		ioctl.inv.handle = FASTRPC_STATIC_HANDLE_PROCESS_GROUP;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ioctl.inv.handle = FASTRPC_STATIC_HANDLE_PROCESS_GROUP;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2386,7 +2429,11 @@ static int fastrpc_init_process(struct fastrpc_file *fl,
 		ra[2].buf.len = sizeof(*pages);
 		fds[2] = -1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ioctl.inv.handle = FASTRPC_STATIC_HANDLE_KERNEL;
+=======
+		ioctl.inv.handle = FASTRPC_STATIC_HANDLE_PROCESS_GROUP;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ioctl.inv.handle = FASTRPC_STATIC_HANDLE_PROCESS_GROUP;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2430,7 +2477,10 @@ bail:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int fastrpc_kstat(const char *filename, struct kstat *stat)
 {
 	int result;
@@ -2561,6 +2611,9 @@ bail:
 	return err;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int fastrpc_release_current_dsp_process(struct fastrpc_file *fl)
 {
@@ -2585,7 +2638,11 @@ static int fastrpc_release_current_dsp_process(struct fastrpc_file *fl)
 	ra[0].buf.pv = (void *)&tgid;
 	ra[0].buf.len = sizeof(tgid);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ioctl.inv.handle = FASTRPC_STATIC_HANDLE_KERNEL;
+=======
+	ioctl.inv.handle = FASTRPC_STATIC_HANDLE_PROCESS_GROUP;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ioctl.inv.handle = FASTRPC_STATIC_HANDLE_PROCESS_GROUP;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2638,7 +2695,11 @@ static int fastrpc_mmap_on_dsp(struct fastrpc_file *fl, uint32_t flags,
 	ra[2].buf.len = sizeof(routargs);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ioctl.inv.handle = FASTRPC_STATIC_HANDLE_KERNEL;
+=======
+	ioctl.inv.handle = FASTRPC_STATIC_HANDLE_PROCESS_GROUP;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ioctl.inv.handle = FASTRPC_STATIC_HANDLE_PROCESS_GROUP;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2679,7 +2740,11 @@ bail:
 
 static int fastrpc_munmap_on_dsp_rh(struct fastrpc_file *fl, uint64_t phys,
 <<<<<<< HEAD
+<<<<<<< HEAD
 						size_t size, uint32_t flags)
+=======
+				size_t size, uint32_t flags, int locked)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				size_t size, uint32_t flags, int locked)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2695,6 +2760,10 @@ static int fastrpc_munmap_on_dsp_rh(struct fastrpc_file *fl, uint64_t phys,
 		struct scm_desc desc = {0};
 		remote_arg_t ra[2];
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		int cid = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		int cid = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2705,6 +2774,10 @@ static int fastrpc_munmap_on_dsp_rh(struct fastrpc_file *fl, uint64_t phys,
 		if (fl == NULL)
 			goto bail;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		cid = fl->cid;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		cid = fl->cid;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2716,7 +2789,11 @@ static int fastrpc_munmap_on_dsp_rh(struct fastrpc_file *fl, uint64_t phys,
 		ra[1].buf.len = sizeof(routargs);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ioctl.inv.handle = FASTRPC_STATIC_HANDLE_KERNEL;
+=======
+		ioctl.inv.handle = FASTRPC_STATIC_HANDLE_PROCESS_GROUP;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ioctl.inv.handle = FASTRPC_STATIC_HANDLE_PROCESS_GROUP;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2727,9 +2804,12 @@ static int fastrpc_munmap_on_dsp_rh(struct fastrpc_file *fl, uint64_t phys,
 		ioctl.crc = NULL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		VERIFY(err, 0 == (err = fastrpc_internal_invoke(fl,
 				FASTRPC_MODE_PARALLEL, 1, &ioctl)));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (locked) {
 			mutex_unlock(&fl->map_mutex);
 			mutex_unlock(&me->channel[cid].smd_mutex);
@@ -2740,6 +2820,9 @@ static int fastrpc_munmap_on_dsp_rh(struct fastrpc_file *fl, uint64_t phys,
 			mutex_lock(&me->channel[cid].smd_mutex);
 			mutex_lock(&fl->map_mutex);
 		}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (err)
 			goto bail;
@@ -2786,7 +2869,11 @@ static int fastrpc_munmap_on_dsp(struct fastrpc_file *fl, uintptr_t raddr,
 	ra[0].buf.len = sizeof(inargs);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ioctl.inv.handle = FASTRPC_STATIC_HANDLE_KERNEL;
+=======
+	ioctl.inv.handle = FASTRPC_STATIC_HANDLE_PROCESS_GROUP;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ioctl.inv.handle = FASTRPC_STATIC_HANDLE_PROCESS_GROUP;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2805,7 +2892,12 @@ static int fastrpc_munmap_on_dsp(struct fastrpc_file *fl, uintptr_t raddr,
 	if (flags == ADSP_MMAP_HEAP_ADDR ||
 				flags == ADSP_MMAP_REMOTE_HEAP_ADDR) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		VERIFY(err, !fastrpc_munmap_on_dsp_rh(fl, phys, size, flags));
+=======
+		VERIFY(err, !fastrpc_munmap_on_dsp_rh(fl, phys, size, flags,
+							0));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		VERIFY(err, !fastrpc_munmap_on_dsp_rh(fl, phys, size, flags,
 							0));
@@ -2818,7 +2910,11 @@ bail:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int fastrpc_mmap_remove_ssr(struct fastrpc_file *fl)
+=======
+static int fastrpc_mmap_remove_ssr(struct fastrpc_file *fl, int locked)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int fastrpc_mmap_remove_ssr(struct fastrpc_file *fl, int locked)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2842,7 +2938,11 @@ static int fastrpc_mmap_remove_ssr(struct fastrpc_file *fl, int locked)
 		if (match) {
 			VERIFY(err, !fastrpc_munmap_on_dsp_rh(fl, match->phys,
 <<<<<<< HEAD
+<<<<<<< HEAD
 						match->size, match->flags));
+=======
+					match->size, match->flags, locked));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					match->size, match->flags, locked));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2864,6 +2964,7 @@ static int fastrpc_mmap_remove_ssr(struct fastrpc_file *fl, int locked)
 				}
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 			mutex_lock(&fl->map_mutex);
 			fastrpc_mmap_free(match, 0);
 			mutex_unlock(&fl->map_mutex);
@@ -2876,12 +2977,17 @@ bail:
 		mutex_unlock(&fl->map_mutex);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			fastrpc_mmap_free(match, 0);
 		}
 	} while (match);
 bail:
 	if (err && match)
 		fastrpc_mmap_add(match);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return err;
 }
@@ -2905,7 +3011,11 @@ static int fastrpc_mmap_remove_pdr(struct fastrpc_file *fl)
 	if (me->channel[fl->cid].spd[session].pdrcount !=
 		me->channel[fl->cid].spd[session].prevpdrcount) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (fastrpc_mmap_remove_ssr(fl))
+=======
+		if (fastrpc_mmap_remove_ssr(fl, 0))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (fastrpc_mmap_remove_ssr(fl, 0))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2958,7 +3068,13 @@ static int fastrpc_internal_munmap(struct fastrpc_file *fl,
 	VERIFY(err, fl->dsp_proc_init == 1);
 	if (err) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		err = -EHOSTDOWN;
+=======
+		pr_err("adsprpc: ERROR: %s: user application %s trying to unmap without initialization\n",
+			 __func__, current->comm);
+		err = -EBADR;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pr_err("adsprpc: ERROR: %s: user application %s trying to unmap without initialization\n",
 			 __func__, current->comm);
@@ -3034,7 +3150,13 @@ static int fastrpc_internal_munmap_fd(struct fastrpc_file *fl,
 	VERIFY(err, fl->dsp_proc_init == 1);
 	if (err) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		err = -EHOSTDOWN;
+=======
+		pr_err("adsprpc: ERROR: %s: user application %s trying to unmap without initialization\n",
+			__func__, current->comm);
+		err = -EBADR;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pr_err("adsprpc: ERROR: %s: user application %s trying to unmap without initialization\n",
 			__func__, current->comm);
@@ -3075,7 +3197,13 @@ static int fastrpc_internal_mmap(struct fastrpc_file *fl,
 	VERIFY(err, fl->dsp_proc_init == 1);
 	if (err) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		err = -EHOSTDOWN;
+=======
+		pr_err("adsprpc: ERROR: %s: user application %s trying to map without initialization\n",
+			__func__, current->comm);
+		err = -EBADR;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		pr_err("adsprpc: ERROR: %s: user application %s trying to map without initialization\n",
 			__func__, current->comm);
@@ -3651,6 +3779,7 @@ static int fastrpc_channel_open(struct fastrpc_file *fl)
 	if (cid == ADSP_DOMAIN_ID && me->channel[cid].ssrcount !=
 			 me->channel[cid].prevssrcount) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		mutex_unlock(&me->channel[cid].smd_mutex);
 		if (fastrpc_mmap_remove_ssr(fl)) {
 			pr_err("adsprpc: %s: SSR: Failed to unmap remote heap for %s\n",
@@ -3658,11 +3787,16 @@ static int fastrpc_channel_open(struct fastrpc_file *fl)
 		}
 		mutex_lock(&me->channel[cid].smd_mutex);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mutex_lock(&fl->map_mutex);
 		if (fastrpc_mmap_remove_ssr(fl, 1))
 			pr_err("adsprpc: %s: SSR: Failed to unmap remote heap for %s\n",
 				__func__, me->channel[cid].name);
 		mutex_unlock(&fl->map_mutex);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		me->channel[cid].prevssrcount =
 					me->channel[cid].ssrcount;
@@ -3820,9 +3954,12 @@ static int fastrpc_internal_control(struct fastrpc_file *fl,
 	int err = 0;
 	int latency;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cpumask_t mask;
 	struct fastrpc_apps *me = &gfa;
 	u32 len = me->silvercores.corecount, i = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -3841,11 +3978,14 @@ static int fastrpc_internal_control(struct fastrpc_file *fl,
 		if (err)
 			goto bail;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		cpumask_clear(&mask);
 		for (i = 0; i < len; i++)
 			cpumask_set_cpu(me->silvercores.coreno[i], &mask);
 		fl->pm_qos_req.type = PM_QOS_REQ_AFFINE_CORES;
 		atomic_set(&fl->pm_qos_req.cpus_affine, *cpumask_bits(&mask));
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		mutex_lock(&fl->pm_qos_mutex);
@@ -3872,7 +4012,10 @@ bail:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int fastrpc_setmode(unsigned long ioctl_param,
 				struct fastrpc_file *fl)
 {
@@ -3982,6 +4125,9 @@ bail:
 	return err;
 }
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static long fastrpc_device_ioctl(struct file *file, unsigned int ioctl_num,
 				 unsigned long ioctl_param)
@@ -3997,6 +4143,10 @@ static long fastrpc_device_ioctl(struct file *file, unsigned int ioctl_num,
 		struct fastrpc_ioctl_perf perf;
 		struct fastrpc_ioctl_control cp;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		struct fastrpc_ioctl_dsp_capabilities dsp_cap;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		struct fastrpc_ioctl_dsp_capabilities dsp_cap;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4116,6 +4266,7 @@ static long fastrpc_device_ioctl(struct file *file, unsigned int ioctl_num,
 		break;
 	case FASTRPC_IOCTL_SETMODE:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		switch ((uint32_t)ioctl_param) {
 		case FASTRPC_MODE_PARALLEL:
 		case FASTRPC_MODE_SERIAL:
@@ -4186,6 +4337,8 @@ static long fastrpc_device_ioctl(struct file *file, unsigned int ioctl_num,
 				goto bail;
 		}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		err = fastrpc_setmode(ioctl_param, fl);
 		break;
 	case FASTRPC_IOCTL_GETPERF:
@@ -4193,6 +4346,9 @@ static long fastrpc_device_ioctl(struct file *file, unsigned int ioctl_num,
 		break;
 	case FASTRPC_IOCTL_CONTROL:
 		err = fastrpc_control(&p.cp, param, fl);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		break;
 	case FASTRPC_IOCTL_GETINFO:
@@ -4230,7 +4386,13 @@ static long fastrpc_device_ioctl(struct file *file, unsigned int ioctl_num,
 			goto bail;
 		break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+	case FASTRPC_IOCTL_GET_DSP_INFO:
+		err = fastrpc_get_dsp_info(&p.dsp_cap, param, fl);
+		break;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	case FASTRPC_IOCTL_GET_DSP_INFO:
 		err = fastrpc_get_dsp_info(&p.dsp_cap, param, fl);
@@ -4516,7 +4678,11 @@ static int fastrpc_cb_probe(struct device *dev)
 
 	chan->sesscount++;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (debugfs_root && !debugfs_global_file) {
+=======
+	if (debugfs_root) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (debugfs_root) {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -4659,6 +4825,7 @@ bail:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void init_qos_cores_list(struct device *dev, char *prop_name,
 						struct qos_cores *silvercores)
 {
@@ -4692,6 +4859,8 @@ bail:
 	}
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void configure_secure_channels(uint32_t secure_domains)
@@ -4731,8 +4900,11 @@ static int fastrpc_probe(struct platform_device *pdev)
 		init_secure_vmid_list(dev, "qcom,adsp-remoteheap-vmid",
 							&gcinfo[0].rhvm);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		init_qos_cores_list(dev, "qcom,qos-cores",
 							&me->silvercores);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -4954,7 +5126,10 @@ static const struct rpmsg_device_id fastrpc_rpmsg_match[] = {
 	{ FASTRPC_GLINK_GUID },
 	{ FASTRPC_SMD_GUID },
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{ },
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

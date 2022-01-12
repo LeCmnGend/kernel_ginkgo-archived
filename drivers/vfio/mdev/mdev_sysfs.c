@@ -109,7 +109,10 @@ struct mdev_type *add_mdev_supported_type(struct mdev_parent *parent,
 
 	type->kobj.kset = parent->mdev_types_kset;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	type->parent = parent;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -140,6 +143,10 @@ struct mdev_type *add_mdev_supported_type(struct mdev_parent *parent,
 
 	type->group = group;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	type->parent = parent;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	type->parent = parent;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

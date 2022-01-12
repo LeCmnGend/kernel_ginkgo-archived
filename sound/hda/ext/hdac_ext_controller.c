@@ -156,8 +156,11 @@ struct hdac_ext_link *snd_hdac_ext_bus_get_link(struct hdac_ext_bus *ebus,
 	if (ebus->idx != bus_idx)
 		return NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (addr < 0 || addr > 31)
 		return NULL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

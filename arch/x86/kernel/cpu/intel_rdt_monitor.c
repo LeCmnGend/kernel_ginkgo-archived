@@ -226,7 +226,11 @@ void free_rmid(u32 rmid)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static u64 __mon_event_count(u32 rmid, struct rmid_read *rr)
+=======
+static int __mon_event_count(u32 rmid, struct rmid_read *rr)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int __mon_event_count(u32 rmid, struct rmid_read *rr)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -237,7 +241,12 @@ static int __mon_event_count(u32 rmid, struct rmid_read *rr)
 	tval = __rmid_read(rmid, rr->evtid);
 	if (tval & (RMID_VAL_ERROR | RMID_VAL_UNAVAIL)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return tval;
+=======
+		rr->val = tval;
+		return -EINVAL;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		rr->val = tval;
 		return -EINVAL;
@@ -254,13 +263,19 @@ static int __mon_event_count(u32 rmid, struct rmid_read *rr)
 		m = &rr->d->mbm_local[rmid];
 		break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	default:
 		/*
 		 * Code would never reach here because
 		 * an invalid event id would fail the __rmid_read.
 		 */
 		return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	}
 
@@ -290,6 +305,7 @@ void mon_event_count(void *info)
 	struct rmid_read *rr = info;
 	struct list_head *head;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64 ret_val;
 
 	rdtgrp = rr->rgrp;
@@ -301,6 +317,8 @@ void mon_event_count(void *info)
 	 * add them together. Count events which are read successfully.
 	 * Discard the rmid_read's reporting errors.
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	rdtgrp = rr->rgrp;
 
@@ -309,12 +327,16 @@ void mon_event_count(void *info)
 
 	/*
 	 * For Ctrl groups read data from child monitor groups.
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 */
 	head = &rdtgrp->mon.crdtgrp_list;
 
 	if (rdtgrp->type == RDTCTRL_GROUP) {
 		list_for_each_entry(entry, head, mon.crdtgrp_list) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 			if (__mon_event_count(entry->mon.rmid, rr) == 0)
 				ret_val = 0;
@@ -325,10 +347,15 @@ void mon_event_count(void *info)
 	if (ret_val)
 		rr->val = ret_val;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			if (__mon_event_count(entry->mon.rmid, rr))
 				return;
 		}
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 

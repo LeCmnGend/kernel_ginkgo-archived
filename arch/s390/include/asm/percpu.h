@@ -30,7 +30,11 @@
 	pcp_op_T__ old__, new__, prev__;				\
 	pcp_op_T__ *ptr__;						\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_disable_notrace();					\
+=======
+	preempt_disable();						\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	preempt_disable();						\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -42,7 +46,11 @@
 		prev__ = cmpxchg(ptr__, old__, new__);			\
 	} while (prev__ != old__);					\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_enable_notrace();					\
+=======
+	preempt_enable();						\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	preempt_enable();						\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -77,7 +85,11 @@
 	pcp_op_T__ val__ = (val);					\
 	pcp_op_T__ old__, *ptr__;					\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_disable_notrace();					\
+=======
+	preempt_disable();						\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	preempt_disable();						\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -97,7 +109,11 @@
 			: "cc");					\
 	}								\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_enable_notrace();					\
+=======
+	preempt_enable();						\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	preempt_enable();						\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -112,7 +128,11 @@
 	pcp_op_T__ val__ = (val);					\
 	pcp_op_T__ old__, *ptr__;					\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_disable_notrace();					\
+=======
+	preempt_disable();						\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	preempt_disable();						\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -123,7 +143,11 @@
 		: [val__] "d" (val__)					\
 		: "cc");						\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_enable_notrace();						\
+=======
+	preempt_enable();						\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	preempt_enable();						\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -139,7 +163,11 @@
 	pcp_op_T__ val__ = (val);					\
 	pcp_op_T__ old__, *ptr__;					\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_disable_notrace();					\
+=======
+	preempt_disable();						\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	preempt_disable();						\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -150,7 +178,11 @@
 		: [val__] "d" (val__)					\
 		: "cc");						\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_enable_notrace();					\
+=======
+	preempt_enable();						\
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	preempt_enable();						\
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -169,15 +201,21 @@
 	pcp_op_T__ ret__;						\
 	pcp_op_T__ *ptr__;						\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_disable_notrace();					\
 	ptr__ = raw_cpu_ptr(&(pcp));					\
 	ret__ = cmpxchg(ptr__, oval, nval);				\
 	preempt_enable_notrace();					\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	preempt_disable();						\
 	ptr__ = raw_cpu_ptr(&(pcp));					\
 	ret__ = cmpxchg(ptr__, oval, nval);				\
 	preempt_enable();						\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret__;								\
 })
@@ -192,15 +230,21 @@
 	typeof(pcp) *ptr__;						\
 	typeof(pcp) ret__;						\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_disable_notrace();					\
 	ptr__ = raw_cpu_ptr(&(pcp));					\
 	ret__ = xchg(ptr__, nval);					\
 	preempt_enable_notrace();					\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	preempt_disable();						\
 	ptr__ = raw_cpu_ptr(&(pcp));					\
 	ret__ = xchg(ptr__, nval);					\
 	preempt_enable();						\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret__;								\
 })
@@ -218,17 +262,23 @@
 	typeof(pcp2) *p2__;						\
 	int ret__;							\
 <<<<<<< HEAD
+<<<<<<< HEAD
 	preempt_disable_notrace();					\
 	p1__ = raw_cpu_ptr(&(pcp1));					\
 	p2__ = raw_cpu_ptr(&(pcp2));					\
 	ret__ = __cmpxchg_double(p1__, p2__, o1__, o2__, n1__, n2__);	\
 	preempt_enable_notrace();					\
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	preempt_disable();						\
 	p1__ = raw_cpu_ptr(&(pcp1));					\
 	p2__ = raw_cpu_ptr(&(pcp2));					\
 	ret__ = __cmpxchg_double(p1__, p2__, o1__, o2__, n1__, n2__);	\
 	preempt_enable();						\
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ret__;								\
 })

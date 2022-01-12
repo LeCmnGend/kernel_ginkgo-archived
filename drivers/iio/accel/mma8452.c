@@ -106,12 +106,15 @@ struct mma8452_data {
 	u8 data_cfg;
 	const struct mma_chip_info *chip_info;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	/* Ensure correct alignment of time stamp when present */
 	struct {
 		__be16 channels[3];
 		s64 ts __aligned(8);
 	} buffer;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -1013,6 +1016,7 @@ static irqreturn_t mma8452_trigger_handler(int irq, void *p)
 	struct iio_dev *indio_dev = pf->indio_dev;
 	struct mma8452_data *data = iio_priv(indio_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret;
 
 	ret = mma8452_read(data, data->buffer.channels);
@@ -1021,6 +1025,8 @@ static irqreturn_t mma8452_trigger_handler(int irq, void *p)
 
 	iio_push_to_buffers_with_timestamp(indio_dev, &data->buffer,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u8 buffer[16]; /* 3 16-bit channels + padding + ts */
 	int ret;
 
@@ -1029,6 +1035,9 @@ static irqreturn_t mma8452_trigger_handler(int irq, void *p)
 		goto done;
 
 	iio_push_to_buffers_with_timestamp(indio_dev, buffer,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					   iio_get_time_ns(indio_dev));
 

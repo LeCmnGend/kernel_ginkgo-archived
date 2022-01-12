@@ -618,6 +618,7 @@ static int transfer_objects(struct array_cache *to,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* &alien->lock must be held by alien callers. */
 static __always_inline void __free_one(struct array_cache *ac, void *objp)
 {
@@ -628,6 +629,8 @@ static __always_inline void __free_one(struct array_cache *ac, void *objp)
 	ac->entry[ac->avail++] = objp;
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifndef CONFIG_NUMA
@@ -811,7 +814,11 @@ static int __cache_free_alien(struct kmem_cache *cachep, void *objp,
 			__drain_alien_cache(cachep, ac, page_node, &list);
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__free_one(ac, objp);
+=======
+		ac->entry[ac->avail++] = objp;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		ac->entry[ac->avail++] = objp;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1258,7 +1265,11 @@ void __init kmem_cache_init(void)
 	 * not overridden on the command line.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!slab_max_order_set && totalram_pages() > (32 << 20) >> PAGE_SHIFT)
+=======
+	if (!slab_max_order_set && totalram_pages > (32 << 20) >> PAGE_SHIFT)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!slab_max_order_set && totalram_pages > (32 << 20) >> PAGE_SHIFT)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3569,7 +3580,11 @@ void ___cache_free(struct kmem_cache *cachep, void *objp,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	__free_one(ac, objp);
+=======
+	ac->entry[ac->avail++] = objp;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ac->entry[ac->avail++] = objp;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

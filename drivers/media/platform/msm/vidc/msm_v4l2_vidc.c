@@ -624,10 +624,15 @@ static int msm_vidc_probe_vidc_device(struct platform_device *pdev)
 	mutex_unlock(&vidc_driver->lock);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_DEBUG_FS
 	core->debugfs_root = msm_vidc_debugfs_init_core(
 		core, vidc_driver->debugfs_root);
 #endif
+=======
+	core->debugfs_root = msm_vidc_debugfs_init_core(
+		core, vidc_driver->debugfs_root);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	core->debugfs_root = msm_vidc_debugfs_init_core(
 		core, vidc_driver->debugfs_root);
@@ -894,7 +899,10 @@ static struct platform_driver msm_vidc_driver = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern void __init init_vidc_kmem_buf_pool(void);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int __init msm_vidc_init(void)
@@ -902,8 +910,11 @@ static int __init msm_vidc_init(void)
 	int rc = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	init_vidc_kmem_buf_pool();
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	vidc_driver = kzalloc(sizeof(*vidc_driver),

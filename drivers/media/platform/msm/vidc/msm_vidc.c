@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2012-2020, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2012-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2012-2021, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1088,6 +1092,10 @@ static inline int start_streaming(struct msm_vidc_inst *inst)
 	struct hfi_device *hdev;
 	struct hal_buffer_size_minimum b;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct hal_buffer_requirements *bufreq;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct hal_buffer_requirements *bufreq;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1170,7 +1178,10 @@ static inline int start_streaming(struct msm_vidc_inst *inst)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (inst->session_type == MSM_VIDC_DECODER &&
 		!inst->operating_rate_set && !is_realtime_session(inst)) {
 		inst->clk_data.turbo_mode = true;
@@ -1178,6 +1189,9 @@ static inline int start_streaming(struct msm_vidc_inst *inst)
 			"inst(%pK) setting turbo mode ");
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Assign Core and LP mode for current session */
 	rc = msm_vidc_decide_core_and_power_mode(inst);
@@ -1210,7 +1224,10 @@ static inline int start_streaming(struct msm_vidc_inst *inst)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (inst->session_type == MSM_VIDC_DECODER &&
 		msm_comm_get_stream_output_mode(inst) ==
 			HAL_VIDEO_DECODER_SECONDARY) {
@@ -1232,6 +1249,9 @@ static inline int start_streaming(struct msm_vidc_inst *inst)
 		}
 	}
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rc = msm_comm_set_scratch_buffers(inst);
 	if (rc) {
@@ -1948,6 +1968,10 @@ void *msm_vidc_open(int core_id, int session_type)
 	inst->clk_data.sys_cache_bw = 0;
 	inst->clk_data.bitrate = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	inst->operating_rate_set = false;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	inst->operating_rate_set = false;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2017,10 +2041,15 @@ void *msm_vidc_open(int core_id, int session_type)
 	msm_comm_scale_clocks_and_bus(inst);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_DEBUG_FS
 	inst->debugfs_root =
 		msm_vidc_debugfs_init_inst(inst, core->debugfs_root);
 #endif
+=======
+	inst->debugfs_root =
+		msm_vidc_debugfs_init_inst(inst, core->debugfs_root);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	inst->debugfs_root =
 		msm_vidc_debugfs_init_inst(inst, core->debugfs_root);

@@ -36,11 +36,16 @@ lib-y := ctype.o string.o vsprintf.o cmdline.o \
 	 is_single_threaded.o plist.o decompress.o kobject_uevent.o \
 	 earlycpio.o seq_buf.o siphash.o \
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 nodemask.o win_minmax.o
 
 CFLAGS_kobject_uevent.o += -Wframe-larger-than=3072
 
 lib-$(!CONFIG_ARM64) += nmi_backtrace.o
+=======
+	 nmi_backtrace.o nodemask.o win_minmax.o
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	 nmi_backtrace.o nodemask.o win_minmax.o
 

@@ -3478,9 +3478,12 @@ static int nl80211_del_key(struct sk_buff *skb, struct genl_info *info)
 		return err;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (key.idx < 0)
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (info->attrs[NL80211_ATTR_MAC])
@@ -11244,7 +11247,11 @@ static int nl80211_set_rekey_data(struct sk_buff *skb, struct genl_info *info)
 	struct wireless_dev *wdev = dev->ieee80211_ptr;
 	struct nlattr *tb[NUM_NL80211_REKEY_DATA];
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct cfg80211_gtk_rekey_data rekey_data = {};
+=======
+	struct cfg80211_gtk_rekey_data rekey_data;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct cfg80211_gtk_rekey_data rekey_data;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -12153,6 +12160,12 @@ static int nl80211_vendor_cmd(struct sk_buff *skb, struct genl_info *info)
 					return -ENETDOWN;
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+			if (!vcmd->doit)
+				return -EOPNOTSUPP;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 			if (!vcmd->doit)
@@ -12163,9 +12176,12 @@ static int nl80211_vendor_cmd(struct sk_buff *skb, struct genl_info *info)
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!vcmd->doit)
 			return -EOPNOTSUPP;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (info->attrs[NL80211_ATTR_VENDOR_DATA]) {

@@ -80,9 +80,13 @@ static void nft_payload_eval(const struct nft_expr *expr,
 	int offset;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (priv->len % NFT_REG32_SIZE)
 		dest[priv->len / NFT_REG32_SIZE] = 0;
 
+=======
+	dest[priv->len / NFT_REG32_SIZE] = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	dest[priv->len / NFT_REG32_SIZE] = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

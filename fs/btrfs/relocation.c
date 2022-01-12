@@ -1345,7 +1345,13 @@ static void __del_reloc_root(struct btrfs_root *root)
 		}
 		spin_unlock(&rc->reloc_root_tree.lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ASSERT(!node || (struct btrfs_root *)node->data == root);
+=======
+		if (!node)
+			return;
+		BUG_ON((struct btrfs_root *)node->data != root);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (!node)
 			return;
@@ -1815,8 +1821,13 @@ int replace_path(struct btrfs_trans_handle *trans,
 	int slot;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ASSERT(src->root_key.objectid == BTRFS_TREE_RELOC_OBJECTID);
 	ASSERT(dest->root_key.objectid != BTRFS_TREE_RELOC_OBJECTID);
+=======
+	BUG_ON(src->root_key.objectid != BTRFS_TREE_RELOC_OBJECTID);
+	BUG_ON(dest->root_key.objectid == BTRFS_TREE_RELOC_OBJECTID);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	BUG_ON(src->root_key.objectid != BTRFS_TREE_RELOC_OBJECTID);
 	BUG_ON(dest->root_key.objectid == BTRFS_TREE_RELOC_OBJECTID);
@@ -1853,7 +1864,11 @@ again:
 	while (1) {
 		level = btrfs_header_level(parent);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ASSERT(level >= lowest_level);
+=======
+		BUG_ON(level < lowest_level);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		BUG_ON(level < lowest_level);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

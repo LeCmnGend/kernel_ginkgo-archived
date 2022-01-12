@@ -44,7 +44,11 @@ obj-$(CONFIG_INTEL_IOMMU)	+= pci-dma.o
 obj-$(CONFIG_SWIOTLB)		+= pci-swiotlb.o
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 obj-$(CONFIG_ELF_CORE)		+= elfcore.o
+=======
+obj-$(CONFIG_BINFMT_ELF)	+= elfcore.o
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 obj-$(CONFIG_BINFMT_ELF)	+= elfcore.o
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

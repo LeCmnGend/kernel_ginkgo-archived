@@ -30,7 +30,10 @@ struct xcopy_op {
 	unsigned char dst_tid_wwn[XCOPY_NAA_IEEE_REGEX_LEN];
 	unsigned char local_dev_wwn[XCOPY_NAA_IEEE_REGEX_LEN];
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct percpu_ref *remote_lun_ref;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

@@ -3470,7 +3470,10 @@ slave_start:
 		if (!SRIOV_VALID_STATE(dev->flags)) {
 			mlx4_err(dev, "Invalid SRIOV state\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 			err = -EINVAL;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			goto err_close;
@@ -4195,7 +4198,10 @@ static void mlx4_shutdown(struct pci_dev *pdev)
 {
 	struct mlx4_dev_persistent *persist = pci_get_drvdata(pdev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct mlx4_dev *dev = persist->dev;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -4205,7 +4211,10 @@ static void mlx4_shutdown(struct pci_dev *pdev)
 		mlx4_unload_one(pdev);
 	mutex_unlock(&persist->interface_state_mutex);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mlx4_pci_disable_device(dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

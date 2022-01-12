@@ -218,7 +218,11 @@ static irqreturn_t apci1500_interrupt(int irq, void *d)
 	struct apci1500_private *devpriv = dev->private;
 	struct comedi_subdevice *s = dev->read_subdev;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned short status = 0;
+=======
+	unsigned int status = 0;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	unsigned int status = 0;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -252,6 +256,7 @@ static irqreturn_t apci1500_interrupt(int irq, void *d)
 	 *    Mask     Meaning
 	 * ----------  ------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * 0b00000001  Event 1 has occurred
 	 * 0b00000010  Event 2 has occurred
 	 * 0b00000100  Counter/timer 1 has run down (not implemented)
@@ -261,6 +266,8 @@ static irqreturn_t apci1500_interrupt(int irq, void *d)
 	 * 0b01000000  Voltage error
 	 * 0b10000000  Short-circuit error
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 * 0x00000001  Event 1 has occurred
 	 * 0x00000010  Event 2 has occurred
 	 * 0x00000100  Counter/timer 1 has run down (not implemented)
@@ -269,6 +276,9 @@ static irqreturn_t apci1500_interrupt(int irq, void *d)
 	 * 0x00100000  Watchdog has run down (not implemented)
 	 * 0x01000000  Voltage error
 	 * 0x10000000  Short-circuit error
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	 */
 	comedi_buf_write_samples(s, &status, 1);

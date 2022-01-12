@@ -1099,6 +1099,7 @@ static int cik_sdma_soft_reset(void *handle)
 	u32 srbm_soft_reset = 0;
 	struct amdgpu_device *adev = (struct amdgpu_device *)handle;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 tmp;
 
 	/* sdma0 */
@@ -1113,6 +1114,8 @@ static int cik_sdma_soft_reset(void *handle)
 	WREG32(mmSDMA0_F32_CNTL + SDMA1_REGISTER_OFFSET, tmp);
 	srbm_soft_reset |= SRBM_SOFT_RESET__SOFT_RESET_SDMA1_MASK;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	u32 tmp = RREG32(mmSRBM_STATUS2);
 
 	if (tmp & SRBM_STATUS2__SDMA_BUSY_MASK) {
@@ -1129,6 +1132,9 @@ static int cik_sdma_soft_reset(void *handle)
 		WREG32(mmSDMA0_F32_CNTL + SDMA1_REGISTER_OFFSET, tmp);
 		srbm_soft_reset |= SRBM_SOFT_RESET__SOFT_RESET_SDMA1_MASK;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	if (srbm_soft_reset) {

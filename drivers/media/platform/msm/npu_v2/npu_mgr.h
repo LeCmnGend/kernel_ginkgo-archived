@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Copyright (c) 2018-2020, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2018-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* Copyright (c) 2018-2021, The Linux Foundation. All rights reserved.
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -143,6 +147,10 @@ struct npu_host_ctx {
 	uint32_t wdg_irq_sts;
 	bool fw_error;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	bool dev_shuttingdown;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	bool dev_shuttingdown;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -151,6 +159,10 @@ struct npu_host_ctx {
 	struct notifier_block nb;
 	struct notifier_block panic_nb;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	struct notifier_block reboot_nb;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct notifier_block reboot_nb;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

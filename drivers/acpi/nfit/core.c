@@ -1274,7 +1274,11 @@ static ssize_t format1_show(struct device *dev,
 			break;
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (rc != -ENXIO)
+=======
+		if (rc != ENXIO)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (rc != ENXIO)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2459,9 +2463,12 @@ static int acpi_nfit_register_region(struct acpi_nfit_desc *acpi_desc,
 		struct nd_mapping_desc *mapping;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		/* range index 0 == unmapped in SPA or invalid-SPA */
 		if (memdev->range_index == 0 || spa->range_index == 0)
 			continue;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (memdev->range_index != spa->range_index)

@@ -112,6 +112,7 @@ struct task_group;
 					 (task->state & TASK_NOLOAD) == 0)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * Enum for display driver to provide varying refresh rates
  */
@@ -124,6 +125,8 @@ enum fps {
 	FPS120 = 120,
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_DEBUG_ATOMIC_SLEEP
@@ -572,9 +575,14 @@ extern void sched_update_cpu_freq_min_max(const cpumask_t *cpus, u32 fmin,
 extern int sched_set_boost(int enable);
 extern void free_task_load_ptrs(struct task_struct *p);
 <<<<<<< HEAD
+<<<<<<< HEAD
 extern void sched_set_refresh_rate(enum fps fps);
 
 #define RAVG_HIST_SIZE_MAX 5
+=======
+
+#define RAVG_HIST_SIZE_MAX  5
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 #define RAVG_HIST_SIZE_MAX  5
@@ -623,6 +631,10 @@ struct ravg {
 	u32 *curr_window_cpu, *prev_window_cpu;
 	u32 curr_window, prev_window;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	u16 active_windows;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	u16 active_windows;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -631,8 +643,11 @@ struct ravg {
 	u16 demand_scaled;
 	u16 pred_demand_scaled;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u64 active_time;
 	u64 last_win_size;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -654,8 +669,11 @@ static inline void free_task_load_ptrs(struct task_struct *p) { }
 static inline void sched_update_cpu_freq_min_max(const cpumask_t *cpus,
 					u32 fmin, u32 fmax) { }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 static inline void sched_set_refresh_rate(enum fps fps) { }
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif /* CONFIG_SCHED_WALT */
@@ -801,6 +819,7 @@ struct task_struct {
 	struct task_struct		*last_wakee;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * recent_used_cpu is initially set as the last CPU used by a task
 	 * that wakes affine another task. Waker/wakee relationships can
@@ -809,6 +828,8 @@ struct task_struct {
 	 * used CPU that may be idle.
 	 */
 	int				recent_used_cpu;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int				wake_cpu;
@@ -842,7 +863,10 @@ struct task_struct {
 	u64 cpu_cycles;
 	bool misfit;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u32 unfilter;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
@@ -851,9 +875,12 @@ struct task_struct {
 	struct task_group		*sched_task_group;
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_SCHED_TUNE
 	int				stune_idx;
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct sched_dl_entity		dl;
@@ -948,8 +975,11 @@ struct task_struct {
 	/* disallow userland-initiated cgroup migration */
 	unsigned			no_cgroup_migration:1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* task is frozen/stopped (used by the cgroup freezer) */
 	unsigned			frozen:1;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #endif
@@ -1420,6 +1450,7 @@ struct task_struct {
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_FUSE_SHORTCIRCUIT
 	int fuse_boost;
 #endif
@@ -1432,6 +1463,8 @@ struct task_struct {
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*
 	 * New fields for task_struct should be added above here, so that
 	 * they are included in the randomized portion of task_struct.
@@ -1439,8 +1472,11 @@ struct task_struct {
 	randomized_struct_fields_end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct fuse_package *fpack;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* CPU-specific state of this task: */
@@ -1455,12 +1491,15 @@ struct task_struct {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct fuse_package {
 	bool fuse_open_req;
 	struct file *filp;
 	char *iname;
 };
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline struct pid *task_pid(struct task_struct *task)
@@ -1664,7 +1703,10 @@ extern struct pid *cad_pid;
 #define PF_SWAPWRITE		0x00800000	/* Allowed to write to swap */
 #define PF_MEMSTALL		0x01000000	/* Stalled due to lack of memory */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define PF_PERF_CRITICAL	0x02000000	/* Thread is performance-critical */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #define PF_NO_SETAFFINITY	0x04000000	/* Userland is not allowed to meddle with cpus_allowed */
@@ -1792,11 +1834,14 @@ static inline bool cpupri_check_rt(void)
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void sched_migrate_to_cpumask_start(struct cpumask *old_mask,
 				    const struct cpumask *dest);
 void sched_migrate_to_cpumask_end(const struct cpumask *old_mask,
 				  const struct cpumask *dest);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifndef cpu_relax_yield
@@ -1833,7 +1878,11 @@ extern struct task_struct *idle_task(int cpu);
  * Return: 1 if @p is an idle task. 0 otherwise.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static __always_inline bool is_idle_task(const struct task_struct *p)
+=======
+static inline bool is_idle_task(const struct task_struct *p)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static inline bool is_idle_task(const struct task_struct *p)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2029,9 +2078,15 @@ static inline unsigned int task_cpu(const struct task_struct *p)
 {
 #ifdef CONFIG_THREAD_INFO_IN_TASK
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return READ_ONCE(p->cpu);
 #else
 	return READ_ONCE(task_thread_info(p)->cpu);
+=======
+	return p->cpu;
+#else
+	return task_thread_info(p)->cpu;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return p->cpu;
 #else

@@ -309,6 +309,7 @@ enum dsi_cmd_set_type {
 	DSI_CMD_SET_QSYNC_ON,
 	DSI_CMD_SET_QSYNC_OFF,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	DSI_CMD_SET_HBM_L1_ON,
 	DSI_CMD_SET_HBM_L2_ON,
 	DSI_CMD_SET_HBM_L3_ON,
@@ -317,6 +318,8 @@ enum dsi_cmd_set_type {
 	DSI_CMD_SET_CABC_STILL_ON,
 	DSI_CMD_SET_CABC_MOVIE_ON,
 	DSI_CMD_SET_CABC_OFF,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	DSI_CMD_SET_MAX

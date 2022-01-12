@@ -989,8 +989,14 @@ static int scale64_check_overflow(u64 mult, u64 div, u64 *base)
 		return -EOVERFLOW;
 	tmp *= mult;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	rem = div64_u64(rem * mult, div);
+=======
+	rem *= mult;
+
+	do_div(rem, div);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rem *= mult;
 

@@ -207,8 +207,12 @@ enum {
 #define DEF_MAX_DISCARD_ISSUE_TIME	60000	/* 60 s, if no candidates */
 #define DEF_DISCARD_URGENT_UTIL		80	/* do more discard over 80% */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define DEF_MAX_DISCARD_URGENT_ISSUE_TIME	10000	/* 10 s, if no candidates on high utilization */
 #define DEF_CP_INTERVAL			200	/* 200 secs */
+=======
+#define DEF_CP_INTERVAL			60	/* 60 secs */
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define DEF_CP_INTERVAL			60	/* 60 secs */
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -610,8 +614,13 @@ enum {
 #define DEFAULT_RETRY_IO_COUNT	8	/* maximum retry read IO count */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* congestion wait timeout value, default: 6ms */
 #define	DEFAULT_IO_TIMEOUT	(msecs_to_jiffies(6))
+=======
+/* congestion wait timeout value, default: 20ms */
+#define	DEFAULT_IO_TIMEOUT	(msecs_to_jiffies(20))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /* congestion wait timeout value, default: 20ms */
 #define	DEFAULT_IO_TIMEOUT	(msecs_to_jiffies(20))
@@ -808,7 +817,10 @@ struct f2fs_inode_info {
 	struct mutex inmem_lock;	/* lock for inmemory pages */
 	struct extent_tree *extent_tree;	/* cached extent_tree entry */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct list_head xattr_dirty_list;	/* list for xattr changed inodes */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1144,7 +1156,10 @@ enum cp_reason_type {
 	CP_SPEC_LOG_NUM,
 	CP_RECOVER_DIR,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	CP_PARENT_XATTR_SET,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -1448,7 +1463,10 @@ struct f2fs_sb_info {
 	struct mutex cp_mutex;			/* checkpoint procedure lock */
 	struct rw_semaphore cp_rwsem;		/* blocking FS operations */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct rw_semaphore cp_quota_rwsem;    	/* blocking quota sync operations */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	struct rw_semaphore node_write;		/* locking node writes */
@@ -1464,8 +1482,11 @@ struct f2fs_sb_info {
 	unsigned int fsync_seg_id;		/* sequence id */
 	unsigned int fsync_node_num;		/* number of node entries */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spinlock_t xattr_set_dir_ilist_lock;	/* lock for dir inode list*/
 	struct list_head xattr_set_dir_ilist;	/* xattr changed dir inode list */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1964,7 +1985,10 @@ static inline void f2fs_unlock_op(struct f2fs_sb_info *sbi)
 static inline void f2fs_lock_all(struct f2fs_sb_info *sbi)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	down_write(&sbi->cp_quota_rwsem);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	down_write(&sbi->cp_rwsem);
@@ -1974,7 +1998,10 @@ static inline void f2fs_unlock_all(struct f2fs_sb_info *sbi)
 {
 	up_write(&sbi->cp_rwsem);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	up_write(&sbi->cp_quota_rwsem);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
@@ -3419,7 +3446,11 @@ struct page *f2fs_get_meta_page_nofail(struct f2fs_sb_info *sbi, pgoff_t index);
 struct page *f2fs_get_tmp_page(struct f2fs_sb_info *sbi, pgoff_t index);
 bool f2fs_is_valid_blkaddr(struct f2fs_sb_info *sbi,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					block_t blkaddr, int type);
+=======
+			block_t blkaddr, int type);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			block_t blkaddr, int type);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3812,6 +3843,7 @@ int f2fs_inline_data_fiemap(struct inode *inode,
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * xattr.c
  */
 void f2fs_inode_xattr_set(struct inode *inode);
@@ -3820,6 +3852,8 @@ void f2fs_clear_xattr_set_ilist(struct f2fs_sb_info *sbi);
 int f2fs_parent_inode_xattr_set(struct inode *inode);
 
 /*
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * shrinker.c

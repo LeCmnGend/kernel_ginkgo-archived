@@ -974,7 +974,11 @@ static bool ath9k_rx_prepare(struct ath9k_htc_priv *priv,
 	struct ath_rx_status rx_stats;
 	bool decrypt_error = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	u16 rs_datalen;
+=======
+	__be16 rs_datalen;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	__be16 rs_datalen;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

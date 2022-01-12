@@ -735,10 +735,15 @@ amdgpu_connector_lvds_detect(struct drm_connector *connector, bool force)
 	if (!drm_kms_helper_is_poll_worker()) {
 		r = pm_runtime_get_sync(connector->dev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (r < 0) {
 			pm_runtime_put_autosuspend(connector->dev->dev);
 			return connector_status_disconnected;
 		}
+=======
+		if (r < 0)
+			return connector_status_disconnected;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (r < 0)
 			return connector_status_disconnected;
@@ -880,10 +885,15 @@ amdgpu_connector_vga_detect(struct drm_connector *connector, bool force)
 	if (!drm_kms_helper_is_poll_worker()) {
 		r = pm_runtime_get_sync(connector->dev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (r < 0) {
 			pm_runtime_put_autosuspend(connector->dev->dev);
 			return connector_status_disconnected;
 		}
+=======
+		if (r < 0)
+			return connector_status_disconnected;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (r < 0)
 			return connector_status_disconnected;
@@ -1011,10 +1021,15 @@ amdgpu_connector_dvi_detect(struct drm_connector *connector, bool force)
 	if (!drm_kms_helper_is_poll_worker()) {
 		r = pm_runtime_get_sync(connector->dev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (r < 0) {
 			pm_runtime_put_autosuspend(connector->dev->dev);
 			return connector_status_disconnected;
 		}
+=======
+		if (r < 0)
+			return connector_status_disconnected;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (r < 0)
 			return connector_status_disconnected;
@@ -1393,10 +1408,15 @@ amdgpu_connector_dp_detect(struct drm_connector *connector, bool force)
 	if (!drm_kms_helper_is_poll_worker()) {
 		r = pm_runtime_get_sync(connector->dev->dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (r < 0) {
 			pm_runtime_put_autosuspend(connector->dev->dev);
 			return connector_status_disconnected;
 		}
+=======
+		if (r < 0)
+			return connector_status_disconnected;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (r < 0)
 			return connector_status_disconnected;

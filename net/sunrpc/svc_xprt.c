@@ -104,6 +104,7 @@ void svc_unreg_xprt_class(struct svc_xprt_class *xcl)
 EXPORT_SYMBOL_GPL(svc_unreg_xprt_class);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * svc_print_xprts - Format the transport list for printing
  * @buf: target buffer for formatted address
@@ -115,6 +116,10 @@ EXPORT_SYMBOL_GPL(svc_unreg_xprt_class);
  * complete.
  *
  * Returns positive length of the filled-in string.
+=======
+/*
+ * Format the transport list for printing
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 /*
  * Format the transport list for printing
@@ -132,9 +137,15 @@ int svc_print_xprts(char *buf, int maxlen)
 		int slen;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		slen = snprintf(tmpstr, sizeof(tmpstr), "%s %d\n",
 				xcl->xcl_name, xcl->xcl_max_payload);
 		if (slen >= sizeof(tmpstr) || len + slen >= maxlen)
+=======
+		sprintf(tmpstr, "%s %d\n", xcl->xcl_name, xcl->xcl_max_payload);
+		slen = strlen(tmpstr);
+		if (len + slen > maxlen)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		sprintf(tmpstr, "%s %d\n", xcl->xcl_name, xcl->xcl_max_payload);
 		slen = strlen(tmpstr);
@@ -1118,7 +1129,11 @@ static int svc_close_list(struct svc_serv *serv, struct list_head *xprt_list, st
 	int ret = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock_bh(&serv->sv_lock);
+=======
+	spin_lock(&serv->sv_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spin_lock(&serv->sv_lock);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1130,7 +1145,11 @@ static int svc_close_list(struct svc_serv *serv, struct list_head *xprt_list, st
 		svc_xprt_enqueue(xprt);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_unlock_bh(&serv->sv_lock);
+=======
+	spin_unlock(&serv->sv_lock);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	spin_unlock(&serv->sv_lock);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

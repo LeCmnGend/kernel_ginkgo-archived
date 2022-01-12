@@ -145,8 +145,12 @@ static const struct reg_field *sti_cpufreq_match(void)
 {
 	if (of_machine_is_compatible("st,stih407") ||
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    of_machine_is_compatible("st,stih410") ||
 	    of_machine_is_compatible("st,stih418"))
+=======
+	    of_machine_is_compatible("st,stih410"))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	    of_machine_is_compatible("st,stih410"))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -267,8 +271,12 @@ static int sti_cpufreq_init(void)
 
 	if ((!of_machine_is_compatible("st,stih407")) &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 		(!of_machine_is_compatible("st,stih410")) &&
 		(!of_machine_is_compatible("st,stih418")))
+=======
+		(!of_machine_is_compatible("st,stih410")))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		(!of_machine_is_compatible("st,stih410")))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -304,6 +312,7 @@ register_cpufreq_dt:
 module_init(sti_cpufreq_init);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const struct of_device_id __maybe_unused sti_cpufreq_of_match[] = {
 	{ .compatible = "st,stih407" },
 	{ .compatible = "st,stih410" },
@@ -311,6 +320,8 @@ static const struct of_device_id __maybe_unused sti_cpufreq_of_match[] = {
 };
 MODULE_DEVICE_TABLE(of, sti_cpufreq_of_match);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 MODULE_DESCRIPTION("STMicroelectronics CPUFreq/OPP driver");

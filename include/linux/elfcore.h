@@ -59,7 +59,10 @@ static inline int elf_core_copy_task_xfpregs(struct task_struct *t, elf_fpxregse
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #if defined(CONFIG_UM) || defined(CONFIG_IA64)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -76,6 +79,7 @@ elf_core_write_extra_phdrs(struct coredump_params *cprm, loff_t offset);
 extern int
 elf_core_write_extra_data(struct coredump_params *cprm);
 extern size_t elf_core_extra_data_size(void);
+<<<<<<< HEAD
 <<<<<<< HEAD
 #else
 static inline Elf_Half elf_core_extra_phdrs(void)
@@ -98,6 +102,8 @@ static inline size_t elf_core_extra_data_size(void)
 	return 0;
 }
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 

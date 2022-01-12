@@ -64,7 +64,11 @@
 		};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		reserved@86680000 {
+=======
+		reserved@8668000 {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		reserved@8668000 {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -78,7 +82,11 @@
 		};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rfsa@867e0000 {
+=======
+		rfsa@867e00000 {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		rfsa@867e00000 {
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -827,7 +835,11 @@
 
 				interrupt-parent = <&mdss>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				interrupts = <0>;
+=======
+				interrupts = <0 0>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				interrupts = <0 0>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -863,7 +875,11 @@
 
 				interrupt-parent = <&mdss>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				interrupts = <4>;
+=======
+				interrupts = <4 0>;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				interrupts = <4 0>;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

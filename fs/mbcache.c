@@ -27,7 +27,11 @@
 struct mb_cache {
 	/* Hash table of entries */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct mb_bucket	*c_bucket;
+=======
+	struct hlist_bl_head	*c_hash;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct hlist_bl_head	*c_hash;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -46,6 +50,7 @@ struct mb_cache {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct mb_bucket {
 	struct hlist_bl_head hash;
 	struct list_head req_list;
@@ -59,6 +64,8 @@ struct mb_cache_req {
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static struct kmem_cache *mb_entry_cache;
 
 static unsigned long mb_cache_shrink(struct mb_cache *cache,
@@ -68,7 +75,11 @@ static inline struct hlist_bl_head *mb_cache_entry_head(struct mb_cache *cache,
 							u32 key)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return &cache->c_bucket[hash_32(key, cache->c_bucket_bits)].hash;
+=======
+	return &cache->c_hash[hash_32(key, cache->c_bucket_bits)];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return &cache->c_hash[hash_32(key, cache->c_bucket_bits)];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -99,11 +110,14 @@ int mb_cache_entry_create(struct mb_cache *cache, gfp_t mask, u32 key,
 	struct hlist_bl_node *dup_node;
 	struct hlist_bl_head *head;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct mb_cache_req *tmp_req, req = {
 		.e_key = key,
 		.e_value = value
 	};
 	struct mb_bucket *bucket;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -114,6 +128,7 @@ int mb_cache_entry_create(struct mb_cache *cache, gfp_t mask, u32 key,
 	if (cache->c_entry_count >= 2*cache->c_max_entries)
 		mb_cache_shrink(cache, SYNC_SHRINK_BATCH);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	bucket = &cache->c_bucket[hash_32(key, cache->c_bucket_bits)];
 	head = &bucket->hash;
@@ -153,6 +168,8 @@ int mb_cache_entry_create(struct mb_cache *cache, gfp_t mask, u32 key,
 	hlist_bl_lock(head);
 	list_del(&req.lnode);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	entry = kmem_cache_alloc(mb_entry_cache, mask);
 	if (!entry)
 		return -ENOMEM;
@@ -173,6 +190,9 @@ int mb_cache_entry_create(struct mb_cache *cache, gfp_t mask, u32 key,
 			return -EBUSY;
 		}
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	hlist_bl_add_head(&entry->e_hash_list, head);
 	hlist_bl_unlock(head);
@@ -180,6 +200,11 @@ int mb_cache_entry_create(struct mb_cache *cache, gfp_t mask, u32 key,
 	spin_lock(&cache->c_list_lock);
 	list_add_tail(&entry->e_list, &cache->c_list);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	/* Grab ref for LRU list */
+	atomic_inc(&entry->e_refcnt);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	/* Grab ref for LRU list */
 	atomic_inc(&entry->e_refcnt);
@@ -425,6 +450,7 @@ struct mb_cache *mb_cache_create(int bucket_bits)
 	INIT_LIST_HEAD(&cache->c_list);
 	spin_lock_init(&cache->c_list_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cache->c_bucket = kmalloc(bucket_count * sizeof(*cache->c_bucket),
 				  GFP_KERNEL);
 	if (!cache->c_bucket) {
@@ -436,6 +462,8 @@ struct mb_cache *mb_cache_create(int bucket_bits)
 		INIT_LIST_HEAD(&cache->c_bucket[i].req_list);
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	cache->c_hash = kmalloc(bucket_count * sizeof(struct hlist_bl_head),
 				GFP_KERNEL);
 	if (!cache->c_hash) {
@@ -444,6 +472,9 @@ struct mb_cache *mb_cache_create(int bucket_bits)
 	}
 	for (i = 0; i < bucket_count; i++)
 		INIT_HLIST_BL_HEAD(&cache->c_hash[i]);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	cache->c_shrink.count_objects = mb_cache_count;
@@ -451,7 +482,11 @@ struct mb_cache *mb_cache_create(int bucket_bits)
 	cache->c_shrink.seeks = DEFAULT_SEEKS;
 	if (register_shrinker(&cache->c_shrink)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		kfree(cache->c_bucket);
+=======
+		kfree(cache->c_hash);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		kfree(cache->c_hash);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -496,7 +531,11 @@ void mb_cache_destroy(struct mb_cache *cache)
 		mb_cache_entry_put(cache, entry);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	kfree(cache->c_bucket);
+=======
+	kfree(cache->c_hash);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kfree(cache->c_hash);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

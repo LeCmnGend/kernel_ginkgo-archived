@@ -141,7 +141,10 @@ intel_th_output_assigned(struct intel_th_device *thdev)
  * @assign:	match a given output type device against available outputs
  * @unassign:	deassociate an output type device from an output port
 <<<<<<< HEAD
+<<<<<<< HEAD
  * @prepare:	prepare output port for tracing
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
  * @enable:	enable tracing for a given output device
@@ -166,8 +169,11 @@ struct intel_th_driver {
 	void			(*unassign)(struct intel_th_device *thdev,
 					    struct intel_th_device *othdev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	void			(*prepare)(struct intel_th_device *thdev,
 					   struct intel_th_output *output);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	void			(*enable)(struct intel_th_device *thdev,

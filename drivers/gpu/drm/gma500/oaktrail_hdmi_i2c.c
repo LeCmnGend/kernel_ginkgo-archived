@@ -280,14 +280,20 @@ int oaktrail_hdmi_i2c_init(struct pci_dev *dev)
 
 	i2c_dev = kzalloc(sizeof(struct hdmi_i2c_dev), GFP_KERNEL);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!i2c_dev)
 		return -ENOMEM;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (i2c_dev == NULL) {
 		DRM_ERROR("Can't allocate interface\n");
 		ret = -ENOMEM;
 		goto exit;
 	}
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	i2c_dev->adap = &oaktrail_hdmi_i2c_adapter;
@@ -306,7 +312,11 @@ int oaktrail_hdmi_i2c_init(struct pci_dev *dev)
 	if (ret) {
 		DRM_ERROR("Failed to request IRQ for I2C controller\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto free_dev;
+=======
+		goto err;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto err;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -314,6 +324,7 @@ int oaktrail_hdmi_i2c_init(struct pci_dev *dev)
 
 	/* Adapter registration */
 	ret = i2c_add_numbered_adapter(&oaktrail_hdmi_i2c_adapter);
+<<<<<<< HEAD
 <<<<<<< HEAD
 	if (ret) {
 		DRM_ERROR("Failed to add I2C adapter\n");
@@ -328,11 +339,16 @@ free_dev:
 	kfree(i2c_dev);
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 
 err:
 	kfree(i2c_dev);
 exit:
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return ret;
 }

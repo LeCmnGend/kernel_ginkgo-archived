@@ -54,7 +54,11 @@
 /* ================= Device Structure ================== */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct bcm_device_private iproc_priv;
+=======
+struct device_private iproc_priv;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 struct device_private iproc_priv;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2986,6 +2990,10 @@ static int aead_gcm_ccm_setkey(struct crypto_aead *cipher,
 	ctx->enckeylen = keylen;
 	ctx->authkeylen = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	memcpy(ctx->enckey, key, ctx->enckeylen);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	memcpy(ctx->enckey, key, ctx->enckeylen);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3005,8 +3013,11 @@ static int aead_gcm_ccm_setkey(struct crypto_aead *cipher,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	memcpy(ctx->enckey, key, ctx->enckeylen);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	flow_log("  enckeylen:%u authkeylen:%u\n", ctx->enckeylen,
@@ -3070,10 +3081,13 @@ static int aead_gcm_esp_setkey(struct crypto_aead *cipher,
 
 	flow_log("%s\n", __func__);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (keylen < GCM_ESP_SALT_SIZE)
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ctx->salt_len = GCM_ESP_SALT_SIZE;
@@ -3105,10 +3119,13 @@ static int rfc4543_gcm_esp_setkey(struct crypto_aead *cipher,
 
 	flow_log("%s\n", __func__);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (keylen < GCM_ESP_SALT_SIZE)
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ctx->salt_len = GCM_ESP_SALT_SIZE;
@@ -3141,10 +3158,13 @@ static int aead_ccm_esp_setkey(struct crypto_aead *cipher,
 
 	flow_log("%s\n", __func__);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	if (keylen < CCM_ESP_SALT_SIZE)
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	ctx->salt_len = CCM_ESP_SALT_SIZE;

@@ -856,7 +856,11 @@ static int mtk_vpu_probe(struct platform_device *pdev)
 	vpu_cfg_writel(vpu, 0x2, VPU_TCM_CFG);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vpu->enable_4GB = !!(totalram_pages() > (SZ_2G >> PAGE_SHIFT));
+=======
+	vpu->enable_4GB = !!(totalram_pages > (SZ_2G >> PAGE_SHIFT));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	vpu->enable_4GB = !!(totalram_pages > (SZ_2G >> PAGE_SHIFT));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

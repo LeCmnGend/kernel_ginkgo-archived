@@ -1057,6 +1057,7 @@ struct pseries_errorlog *get_pseries_errorlog(struct rtas_error_log *log,
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_PPC_RTAS_FILTER
 
 /*
@@ -1200,6 +1201,8 @@ static bool block_rtas_call(int token, int nargs,
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /* We assume to be passed big endian arguments */
 asmlinkage int ppc_rtas(struct rtas_args __user *uargs)
 {
@@ -1238,9 +1241,12 @@ asmlinkage int ppc_rtas(struct rtas_args __user *uargs)
 	memset(args.rets, 0, nret * sizeof(rtas_arg_t));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (block_rtas_call(token, nargs, &args))
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Need to handle ibm,suspend_me call specially */
@@ -1305,9 +1311,12 @@ void __init rtas_initialize(void)
 	u32 base, size, entry;
 	int no_base, no_size, no_entry;
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_PPC_RTAS_FILTER
 	int i;
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -1346,12 +1355,15 @@ void __init rtas_initialize(void)
 	rtas_last_error_token = rtas_token("rtas-last-error");
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 #ifdef CONFIG_PPC_RTAS_FILTER
 	for (i = 0; i < ARRAY_SIZE(rtas_filters); i++) {
 		rtas_filters[i].token = rtas_token(rtas_filters[i].name);
 	}
 #endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }

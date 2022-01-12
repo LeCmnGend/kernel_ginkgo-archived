@@ -126,7 +126,11 @@ static int sq905_command(struct gspca_dev *gspca_dev, u16 index)
 
 	ret = usb_control_msg(gspca_dev->dev,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			      usb_rcvctrlpipe(gspca_dev->dev, 0),
+=======
+			      usb_sndctrlpipe(gspca_dev->dev, 0),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			      usb_sndctrlpipe(gspca_dev->dev, 0),
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -172,7 +176,11 @@ sq905_read_data(struct gspca_dev *gspca_dev, u8 *data, int size, int need_lock)
 {
 	int ret;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int act_len = 0;
+=======
+	int act_len;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int act_len;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

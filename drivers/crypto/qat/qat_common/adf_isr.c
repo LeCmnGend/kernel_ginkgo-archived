@@ -331,6 +331,7 @@ int adf_isr_resource_alloc(struct adf_accel_dev *accel_dev)
 	ret = adf_isr_alloc_msix_entry_table(accel_dev);
 	if (ret)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto err_out;
 
 	ret = adf_enable_msix(accel_dev);
@@ -359,6 +360,8 @@ err_free_msix_table:
 err_out:
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		return ret;
 	if (adf_enable_msix(accel_dev))
 		goto err_out;
@@ -373,6 +376,9 @@ err_out:
 err_out:
 	adf_isr_resource_free(accel_dev);
 	return -EFAULT;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 EXPORT_SYMBOL_GPL(adf_isr_resource_alloc);

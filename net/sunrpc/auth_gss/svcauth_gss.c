@@ -1714,7 +1714,11 @@ svcauth_gss_release(struct svc_rqst *rqstp)
 {
 	struct gss_svc_data *gsd = (struct gss_svc_data *)rqstp->rq_auth_data;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct rpc_gss_wire_cred *gc;
+=======
+	struct rpc_gss_wire_cred *gc = &gsd->clcred;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	struct rpc_gss_wire_cred *gc = &gsd->clcred;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1723,9 +1727,12 @@ svcauth_gss_release(struct svc_rqst *rqstp)
 	struct sunrpc_net *sn = net_generic(SVC_NET(rqstp), sunrpc_net_id);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (!gsd)
 		goto out;
 	gc = &gsd->clcred;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (gc->gc_proc != RPC_GSS_PROC_DATA)
@@ -1769,15 +1776,21 @@ out_err:
 		put_group_info(rqstp->rq_cred.cr_group_info);
 	rqstp->rq_cred.cr_group_info = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (gsd && gsd->rsci) {
 		cache_put(&gsd->rsci->h, sn->rsc_cache);
 		gsd->rsci = NULL;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (gsd->rsci)
 		cache_put(&gsd->rsci->h, sn->rsc_cache);
 	gsd->rsci = NULL;
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return stat;
 }

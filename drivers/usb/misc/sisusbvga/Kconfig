@@ -16,7 +16,11 @@ config USB_SISUSBVGA
 config USB_SISUSBVGA_CON
 	bool "Text console and mode switching support" if USB_SISUSBVGA
 <<<<<<< HEAD
+<<<<<<< HEAD
 	depends on VT && BROKEN
+=======
+	depends on VT
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	depends on VT
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

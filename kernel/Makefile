@@ -33,6 +33,12 @@ KASAN_SANITIZE_kcov.o := n
 CFLAGS_kcov.o := $(call cc-option, -fno-conserve-stack -fno-stack-protector)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+# cond_syscall is currently not LTO compatible
+CFLAGS_sys_ni.o = $(DISABLE_LTO)
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 # cond_syscall is currently not LTO compatible
 CFLAGS_sys_ni.o = $(DISABLE_LTO)
@@ -98,6 +104,10 @@ obj-$(CONFIG_TASKSTATS) += taskstats.o tsacct.o
 obj-$(CONFIG_TRACEPOINTS) += tracepoint.o
 obj-$(CONFIG_LATENCYTOP) += latencytop.o
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+obj-$(CONFIG_ELFCORE) += elfcore.o
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 obj-$(CONFIG_ELFCORE) += elfcore.o
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -127,6 +137,7 @@ $(obj)/configs.o: $(obj)/config_data.h
 
 targets += config_data.gz
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 ifdef CONFIG_MACH_XIAOMI_C3J
 STOCK_DEFCONFIG := arch/arm64/configs/ginkgo-stock_defconfig
@@ -135,6 +146,9 @@ STOCK_DEFCONFIG := $(KCONFIG_CONFIG)
 endif
 
 $(obj)/config_data.gz: $(STOCK_DEFCONFIG) FORCE
+=======
+$(obj)/config_data.gz: $(KCONFIG_CONFIG) FORCE
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 $(obj)/config_data.gz: $(KCONFIG_CONFIG) FORCE
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

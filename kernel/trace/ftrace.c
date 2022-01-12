@@ -1717,8 +1717,11 @@ static struct ftrace_ops *
 ftrace_find_tramp_ops_any(struct dyn_ftrace *rec);
 static struct ftrace_ops *
 <<<<<<< HEAD
+<<<<<<< HEAD
 ftrace_find_tramp_ops_any_other(struct dyn_ftrace *rec, struct ftrace_ops *op_exclude);
 static struct ftrace_ops *
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 ftrace_find_tramp_ops_next(struct dyn_ftrace *rec, struct ftrace_ops *ops);
@@ -1859,7 +1862,11 @@ static bool __ftrace_hash_rec_update(struct ftrace_ops *ops,
 			 */
 			if (ftrace_rec_count(rec) == 1 &&
 <<<<<<< HEAD
+<<<<<<< HEAD
 			    ftrace_find_tramp_ops_any_other(rec, ops))
+=======
+			    ftrace_find_tramp_ops_any(rec))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			    ftrace_find_tramp_ops_any(rec))
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2051,6 +2058,7 @@ static int ftrace_hash_ipmodify_update(struct ftrace_ops *ops,
 static void print_ip_ins(const char *fmt, const unsigned char *p)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	char ins[MCOUNT_INSN_SIZE];
 	int i;
 
@@ -2064,12 +2072,17 @@ static void print_ip_ins(const char *fmt, const unsigned char *p)
 	for (i = 0; i < MCOUNT_INSN_SIZE; i++)
 		printk(KERN_CONT "%s%02x", i ? ":" : "", ins[i]);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int i;
 
 	printk(KERN_CONT "%s", fmt);
 
 	for (i = 0; i < MCOUNT_INSN_SIZE; i++)
 		printk(KERN_CONT "%s%02x", i ? ":" : "", p[i]);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -2307,6 +2320,7 @@ ftrace_find_tramp_ops_any(struct dyn_ftrace *rec)
 
 static struct ftrace_ops *
 <<<<<<< HEAD
+<<<<<<< HEAD
 ftrace_find_tramp_ops_any_other(struct dyn_ftrace *rec, struct ftrace_ops *op_exclude)
 {
 	struct ftrace_ops *op;
@@ -2325,6 +2339,8 @@ ftrace_find_tramp_ops_any_other(struct dyn_ftrace *rec, struct ftrace_ops *op_ex
 }
 
 static struct ftrace_ops *
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 ftrace_find_tramp_ops_next(struct dyn_ftrace *rec,
@@ -5123,11 +5139,16 @@ int ftrace_regex_release(struct inode *inode, struct file *file)
 	parser = &iter->parser;
 	if (trace_parser_loaded(parser)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		int enable = !(iter->flags & FTRACE_ITER_NOTRACE);
 
 		parser->buffer[parser->idx] = 0;
 		ftrace_process_regex(iter, parser->buffer,
 				     parser->idx, enable);
+=======
+		parser->buffer[parser->idx] = 0;
+		ftrace_match_records(iter->hash, parser->buffer, parser->idx);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		parser->buffer[parser->idx] = 0;
 		ftrace_match_records(iter->hash, parser->buffer, parser->idx);
@@ -5776,11 +5797,16 @@ static int referenced_filters(struct dyn_ftrace *rec)
 
 	for (ops = ftrace_ops_list; ops != &ftrace_list_end; ops = ops->next) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (ops_references_rec(ops, rec)) {
 			cnt++;
 			if (ops->flags & FTRACE_OPS_FL_SAVE_REGS)
 				rec->flags |= FTRACE_FL_REGS;
 		}
+=======
+		if (ops_references_rec(ops, rec))
+		    cnt++;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if (ops_references_rec(ops, rec))
 		    cnt++;
@@ -5934,8 +5960,13 @@ void ftrace_module_enable(struct module *mod)
 			cnt += referenced_filters(rec);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		rec->flags &= ~FTRACE_FL_DISABLED;
 		rec->flags += cnt;
+=======
+		/* This clears FTRACE_FL_DISABLED */
+		rec->flags = cnt;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		/* This clears FTRACE_FL_DISABLED */
 		rec->flags = cnt;
@@ -6225,6 +6256,12 @@ static void ftrace_ops_assist_func(unsigned long ip, unsigned long parent_ip,
 	int bit;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if ((op->flags & FTRACE_OPS_FL_RCU) && !rcu_is_watching())
+		return;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if ((op->flags & FTRACE_OPS_FL_RCU) && !rcu_is_watching())
 		return;
@@ -6237,9 +6274,14 @@ static void ftrace_ops_assist_func(unsigned long ip, unsigned long parent_ip,
 	preempt_disable_notrace();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if ((!(op->flags & FTRACE_OPS_FL_RCU) || rcu_is_watching()) &&
 	    (!(op->flags & FTRACE_OPS_FL_PER_CPU) ||
 	     !ftrace_function_local_disabled(op))) {
+=======
+	if (!(op->flags & FTRACE_OPS_FL_PER_CPU) ||
+	    !ftrace_function_local_disabled(op)) {
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!(op->flags & FTRACE_OPS_FL_PER_CPU) ||
 	    !ftrace_function_local_disabled(op)) {
@@ -6317,7 +6359,11 @@ void ftrace_pid_follow_fork(struct trace_array *tr, bool enable)
 		register_trace_sched_process_fork(ftrace_pid_follow_sched_process_fork,
 						  tr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		register_trace_sched_process_free(ftrace_pid_follow_sched_process_exit,
+=======
+		register_trace_sched_process_exit(ftrace_pid_follow_sched_process_exit,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		register_trace_sched_process_exit(ftrace_pid_follow_sched_process_exit,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6326,7 +6372,11 @@ void ftrace_pid_follow_fork(struct trace_array *tr, bool enable)
 		unregister_trace_sched_process_fork(ftrace_pid_follow_sched_process_fork,
 						    tr);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		unregister_trace_sched_process_free(ftrace_pid_follow_sched_process_exit,
+=======
+		unregister_trace_sched_process_exit(ftrace_pid_follow_sched_process_exit,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		unregister_trace_sched_process_exit(ftrace_pid_follow_sched_process_exit,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6734,6 +6784,10 @@ static int alloc_retstack_tasklist(struct ftrace_ret_stack **ret_stack_list)
 
 		if (t->ret_stack == NULL) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			atomic_set(&t->tracing_graph_pause, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			atomic_set(&t->tracing_graph_pause, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -6949,6 +7003,10 @@ static void
 graph_init_task(struct task_struct *t, struct ftrace_ret_stack *ret_stack)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	atomic_set(&t->tracing_graph_pause, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	atomic_set(&t->tracing_graph_pause, 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

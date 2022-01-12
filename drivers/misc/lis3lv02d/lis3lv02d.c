@@ -222,7 +222,11 @@ static int lis3_3dlh_rates[4] = {50, 100, 400, 1000};
 
 /* ODR is Output Data Rate */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int lis3lv02d_get_odr_index(struct lis3lv02d *lis3)
+=======
+static int lis3lv02d_get_odr(struct lis3lv02d *lis3)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static int lis3lv02d_get_odr(struct lis3lv02d *lis3)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -234,7 +238,11 @@ static int lis3lv02d_get_odr(struct lis3lv02d *lis3)
 	ctrl &= lis3->odr_mask;
 	shift = ffs(lis3->odr_mask) - 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return (ctrl >> shift);
+=======
+	return lis3->odrs[(ctrl >> shift)];
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	return lis3->odrs[(ctrl >> shift)];
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -242,6 +250,7 @@ static int lis3lv02d_get_odr(struct lis3lv02d *lis3)
 
 static int lis3lv02d_get_pwron_wait(struct lis3lv02d *lis3)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	int odr_idx = lis3lv02d_get_odr_index(lis3);
 	int div = lis3->odrs[odr_idx];
@@ -256,10 +265,15 @@ static int lis3lv02d_get_pwron_wait(struct lis3lv02d *lis3)
 		return -ENXIO;
 	}
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int div = lis3lv02d_get_odr(lis3);
 
 	if (WARN_ONCE(div == 0, "device returned spurious data"))
 		return -ENXIO;
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	/* LIS3 power on delay is quite long */
@@ -844,12 +858,18 @@ static ssize_t lis3lv02d_rate_show(struct device *dev,
 {
 	struct lis3lv02d *lis3 = dev_get_drvdata(dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int odr_idx;
 
 	lis3lv02d_sysfs_poweron(lis3);
 
 	odr_idx = lis3lv02d_get_odr_index(lis3);
 	return sprintf(buf, "%d\n", lis3->odrs[odr_idx]);
+=======
+
+	lis3lv02d_sysfs_poweron(lis3);
+	return sprintf(buf, "%d\n", lis3lv02d_get_odr(lis3));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	lis3lv02d_sysfs_poweron(lis3);

@@ -313,7 +313,10 @@ static const struct iio_chan_spec ads1115_channels[] = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_PM
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int ads1015_set_power_state(struct ads1015_data *data, bool on)
@@ -334,6 +337,7 @@ static int ads1015_set_power_state(struct ads1015_data *data, bool on)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #else /* !CONFIG_PM */
 
 static int ads1015_set_power_state(struct ads1015_data *data, bool on)
@@ -343,6 +347,8 @@ static int ads1015_set_power_state(struct ads1015_data *data, bool on)
 
 #endif /* !CONFIG_PM */
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static
@@ -399,6 +405,7 @@ static irqreturn_t ads1015_trigger_handler(int irq, void *p)
 	struct iio_dev *indio_dev = pf->indio_dev;
 	struct ads1015_data *data = iio_priv(indio_dev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Ensure natural alignment of timestamp */
 	struct {
 		s16 chan;
@@ -408,10 +415,15 @@ static irqreturn_t ads1015_trigger_handler(int irq, void *p)
 
 	memset(&scan, 0, sizeof(scan));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	s16 buf[8]; /* 1x s16 ADC val + 3x s16 padding +  4x s16 timestamp */
 	int chan, ret, res;
 
 	memset(buf, 0, sizeof(buf));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	mutex_lock(&data->lock);
@@ -424,15 +436,21 @@ static irqreturn_t ads1015_trigger_handler(int irq, void *p)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	scan.chan = res;
 	mutex_unlock(&data->lock);
 
 	iio_push_to_buffers_with_timestamp(indio_dev, &scan,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	buf[0] = res;
 	mutex_unlock(&data->lock);
 
 	iio_push_to_buffers_with_timestamp(indio_dev, buf,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 					   iio_get_time_ns(indio_dev));
 

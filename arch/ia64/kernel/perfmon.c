@@ -2279,7 +2279,11 @@ pfm_smpl_buffer_alloc(struct task_struct *task, struct file *filp, pfm_context_t
 
 	/* allocate vma */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vma = vm_area_alloc();
+=======
+	vma = kmem_cache_zalloc(vm_area_cachep, GFP_KERNEL);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	vma = kmem_cache_zalloc(vm_area_cachep, GFP_KERNEL);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2351,7 +2355,11 @@ pfm_smpl_buffer_alloc(struct task_struct *task, struct file *filp, pfm_context_t
 
 error:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vm_area_free(vma);
+=======
+	kmem_cache_free(vm_area_cachep, vma);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	kmem_cache_free(vm_area_cachep, vma);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

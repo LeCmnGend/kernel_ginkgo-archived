@@ -95,8 +95,11 @@
 #include <linux/cpufreq_times.h>
 #include <linux/scs.h>
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include <linux/simple_lmk.h>
 #include <linux/devfreq_boost.h>
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -307,7 +310,11 @@ struct kmem_cache *fs_cachep;
 
 /* SLAB cache for vm_area_struct structures */
 <<<<<<< HEAD
+<<<<<<< HEAD
 static struct kmem_cache *vm_area_cachep;
+=======
+struct kmem_cache *vm_area_cachep;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 struct kmem_cache *vm_area_cachep;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -315,6 +322,7 @@ struct kmem_cache *vm_area_cachep;
 /* SLAB cache for mm_struct structures (tsk->mm) */
 static struct kmem_cache *mm_cachep;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 struct vm_area_struct *vm_area_alloc(void)
 {
@@ -331,6 +339,8 @@ void vm_area_free(struct vm_area_struct *vma)
 	kmem_cache_free(vm_area_cachep, vma);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static void account_kernel_stack(struct task_struct *tsk, int account)
@@ -370,7 +380,11 @@ static void account_kernel_stack(struct task_struct *tsk, int account)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void release_task_stack(struct task_struct *tsk)
+=======
+static void release_task_stack(struct task_struct *tsk)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 static void release_task_stack(struct task_struct *tsk)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -422,6 +436,7 @@ void free_task(struct task_struct *tsk)
 }
 EXPORT_SYMBOL(free_task);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #ifdef CONFIG_MMU
 static __latent_entropy int dup_mmap(struct mm_struct *mm,
@@ -596,6 +611,8 @@ static int dup_mmap(struct mm_struct *mm, struct mm_struct *oldmm)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static inline void free_signal_struct(struct signal_struct *sig)
 {
 	taskstats_tgid_free(sig);
@@ -642,7 +659,10 @@ static void set_max_threads(unsigned int max_threads_suggested)
 {
 	u64 threads;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	unsigned long nr_pages = totalram_pages();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -651,15 +671,21 @@ static void set_max_threads(unsigned int max_threads_suggested)
 	 * structures may only consume a small part of the available memory.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (fls64(nr_pages) + fls64(PAGE_SIZE) > 64)
 		threads = MAX_THREADS;
 	else
 		threads = div64_u64((u64) nr_pages * (u64) PAGE_SIZE,
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (fls64(totalram_pages) + fls64(PAGE_SIZE) > 64)
 		threads = MAX_THREADS;
 	else
 		threads = div64_u64((u64) totalram_pages * (u64) PAGE_SIZE,
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 				    (u64) THREAD_SIZE * 8UL);
 
@@ -818,7 +844,10 @@ free_tsk:
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 #ifdef CONFIG_MMU
 static __latent_entropy int dup_mmap(struct mm_struct *mm,
 					struct mm_struct *oldmm)
@@ -989,6 +1018,9 @@ static int dup_mmap(struct mm_struct *mm, struct mm_struct *oldmm)
 #define mm_free_pgd(mm)
 #endif /* CONFIG_MMU */
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 __cacheline_aligned_in_smp DEFINE_SPINLOCK(mmlist_lock);
 
@@ -1055,7 +1087,12 @@ static struct mm_struct *mm_init(struct mm_struct *mm, struct task_struct *p,
 	INIT_LIST_HEAD(&mm->mmlist);
 	mm->core_state = NULL;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	mm_pgtables_bytes_init(mm);
+=======
+	atomic_long_set(&mm->nr_ptes, 0);
+	mm_nr_pmds_init(mm);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	atomic_long_set(&mm->nr_ptes, 0);
 	mm_nr_pmds_init(mm);
@@ -1121,16 +1158,22 @@ static void check_mm(struct mm_struct *mm)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (mm_pgtables_bytes(mm))
 		pr_alert("BUG: non-zero pgtables_bytes on freeing mm: %ld\n",
 				mm_pgtables_bytes(mm));
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (atomic_long_read(&mm->nr_ptes))
 		pr_alert("BUG: non-zero nr_ptes on freeing mm: %ld\n",
 				atomic_long_read(&mm->nr_ptes));
 	if (mm_nr_pmds(mm))
 		pr_alert("BUG: non-zero nr_pmds on freeing mm: %ld\n",
 				mm_nr_pmds(mm));
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 #if defined(CONFIG_TRANSPARENT_HUGEPAGE) && !USE_SPLIT_PMD_PTLOCKS
@@ -1181,7 +1224,10 @@ static inline void __mmput(struct mm_struct *mm)
 	khugepaged_exit(mm); /* must run before exit_mmap */
 	exit_mmap(mm);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	simple_lmk_mm_freed(mm);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	mm_put_huge_zero_page(mm);
@@ -1368,9 +1414,13 @@ static int wait_for_vfork_done(struct task_struct *child,
 
 	freezer_do_not_count();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cgroup_enter_frozen();
 	killed = wait_for_completion_killable(vfork);
 	cgroup_leave_frozen(false);
+=======
+	killed = wait_for_completion_killable(vfork);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	killed = wait_for_completion_killable(vfork);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1420,8 +1470,13 @@ static void mm_release(struct task_struct *tsk, struct mm_struct *mm)
 			 */
 			put_user(0, tsk->clear_child_tid);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			do_futex(tsk->clear_child_tid, FUTEX_WAKE,
 					1, NULL, NULL, 0, 0);
+=======
+			sys_futex(tsk->clear_child_tid, FUTEX_WAKE,
+					1, NULL, NULL, 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			sys_futex(tsk->clear_child_tid, FUTEX_WAKE,
 					1, NULL, NULL, 0);
@@ -1895,6 +1950,7 @@ static __always_inline void delayed_free_task(struct task_struct *tsk)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static void copy_oom_score_adj(u64 clone_flags, struct task_struct *tsk)
 {
 	/* Skip if kernel thread */
@@ -1914,6 +1970,8 @@ static void copy_oom_score_adj(u64 clone_flags, struct task_struct *tsk)
 	mutex_unlock(&oom_adj_mutex);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 /*
@@ -2142,8 +2200,11 @@ static __latent_entropy struct task_struct *copy_process(
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	p->fpack = NULL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/* Perform scheduler related setup. Assign this task to a CPU. */
@@ -2240,10 +2301,13 @@ static __latent_entropy struct task_struct *copy_process(
 	p->pid = pid_nr(pid);
 	if (clone_flags & CLONE_THREAD) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		p->group_leader = current->group_leader;
 		p->tgid = current->tgid;
 	} else {
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		p->exit_signal = -1;
 		p->group_leader = current->group_leader;
 		p->tgid = current->tgid;
@@ -2252,6 +2316,9 @@ static __latent_entropy struct task_struct *copy_process(
 			p->exit_signal = current->group_leader->exit_signal;
 		else
 			p->exit_signal = (clone_flags & CSIGNAL);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		p->group_leader = p;
 		p->tgid = p->pid;
@@ -2298,6 +2365,7 @@ static __latent_entropy struct task_struct *copy_process(
 		p->real_parent = current->real_parent;
 		p->parent_exec_id = current->parent_exec_id;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (clone_flags & CLONE_THREAD)
 			p->exit_signal = -1;
 		else
@@ -2306,6 +2374,11 @@ static __latent_entropy struct task_struct *copy_process(
 		p->real_parent = current;
 		p->parent_exec_id = current->self_exec_id;
 		p->exit_signal = (clone_flags & CSIGNAL);
+=======
+	} else {
+		p->real_parent = current;
+		p->parent_exec_id = current->self_exec_id;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	} else {
 		p->real_parent = current;
@@ -2395,8 +2468,11 @@ static __latent_entropy struct task_struct *copy_process(
 	uprobe_copy_process(p, clone_flags);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	copy_oom_score_adj(clone_flags, p);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return p;
@@ -2502,10 +2578,13 @@ long _do_fork(unsigned long clone_flags,
 	long nr;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* Boost DDR bus to the max for 50 ms when userspace launches an app */
 	if (task_is_zygote(current) && df_boost_within_input(1000))
 		devfreq_boost_kick_max(DEVFREQ_CPU_DDR_BW, 50);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*

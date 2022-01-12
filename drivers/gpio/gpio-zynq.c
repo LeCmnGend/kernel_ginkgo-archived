@@ -901,11 +901,16 @@ static int zynq_gpio_remove(struct platform_device *pdev)
 {
 	struct zynq_gpio *gpio = platform_get_drvdata(pdev);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret;
 
 	ret = pm_runtime_get_sync(&pdev->dev);
 	if (ret < 0)
 		dev_warn(&pdev->dev, "pm_runtime_get_sync() Failed\n");
+=======
+
+	pm_runtime_get_sync(&pdev->dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	pm_runtime_get_sync(&pdev->dev);

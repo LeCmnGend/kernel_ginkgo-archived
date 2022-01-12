@@ -2,7 +2,11 @@
 VERSION = 4
 PATCHLEVEL = 14
 <<<<<<< HEAD
+<<<<<<< HEAD
 SUBLEVEL = 245
+=======
+SUBLEVEL = 190
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 SUBLEVEL = 190
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -369,7 +373,11 @@ HOSTCC       = gcc
 HOSTCXX      = g++
 HOSTCFLAGS   := -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 \
 <<<<<<< HEAD
+<<<<<<< HEAD
 		-fomit-frame-pointer -std=gnu89 -pipe $(HOST_LFS_CFLAGS)
+=======
+		-fomit-frame-pointer -std=gnu89 $(HOST_LFS_CFLAGS)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		-fomit-frame-pointer -std=gnu89 $(HOST_LFS_CFLAGS)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -380,7 +388,11 @@ HOST_LOADLIBES := $(HOST_LFS_LIBS)
 ifeq ($(shell $(HOSTCC) -v 2>&1 | grep -c "clang version"), 1)
 HOSTCFLAGS  += -Wno-unused-value -Wno-unused-parameter \
 <<<<<<< HEAD
+<<<<<<< HEAD
 		-Wno-missing-field-initializers -Wno-unknown-warning-option
+=======
+		-Wno-missing-field-initializers
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		-Wno-missing-field-initializers
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -390,7 +402,11 @@ endif
 AS		= $(CROSS_COMPILE)as
 LD		= $(CROSS_COMPILE)ld
 <<<<<<< HEAD
+<<<<<<< HEAD
 CC		= $(CROSS_COMPILE)gcc
+=======
+REAL_CC		= $(CROSS_COMPILE)gcc
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 REAL_CC		= $(CROSS_COMPILE)gcc
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -410,11 +426,17 @@ PYTHON		= python
 CHECK		= sparse
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 # Use the wrapper for the compiler.  This wrapper scans for new
 # warnings and causes the build to stop upon encountering them
 CC		= $(PYTHON) $(srctree)/scripts/gcc-wrapper.py $(REAL_CC)
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
@@ -445,16 +467,22 @@ LINUXINCLUDE    := \
 
 KBUILD_AFLAGS   := -D__ASSEMBLY__
 <<<<<<< HEAD
+<<<<<<< HEAD
 KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -pipe \
 		   -fno-strict-aliasing -fno-common -fshort-wchar \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
 		   -Wno-unknown-warning-option \
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common -fshort-wchar \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		   -std=gnu89
 ifeq ($(TARGET_BOARD_TYPE),auto)
@@ -538,7 +566,12 @@ ifneq ($(GCC_TOOLCHAIN),)
 CLANG_FLAGS	+= --gcc-toolchain=$(GCC_TOOLCHAIN)
 endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 CLANG_FLAGS	+= -integrated-as
+=======
+CLANG_FLAGS	+= -no-integrated-as
+CLANG_FLAGS	+= -Werror=unknown-warning-option
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 CLANG_FLAGS	+= -no-integrated-as
 CLANG_FLAGS	+= -Werror=unknown-warning-option
@@ -713,6 +746,7 @@ LD		:= $(LDGOLD)
 LDFLAGS		+= -plugin LLVMgold.so
 endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # use llvm-ar for building symbol tables from IR files, and llvm-dis instead
 # of objdump for processing symbol versions and exports
@@ -729,10 +763,15 @@ LLVM_NM		:= llvm-nm
 endif
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 # use llvm-ar for building symbol tables from IR files, and llvm-dis instead
 # of objdump for processing symbol versions and exports
 LLVM_AR		:= llvm-ar
 LLVM_NM		:= llvm-nm
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 export LLVM_AR LLVM_NM
 endif
@@ -756,6 +795,7 @@ ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS   += -Os
 else
 <<<<<<< HEAD
+<<<<<<< HEAD
 KBUILD_CFLAGS   += -O3
 ifeq ($(cc-name),clang)
 KBUILD_CFLAGS	+= -mcpu=cortex-a53 -mtune=cortex-a53
@@ -770,6 +810,9 @@ KBUILD_CFLAGS	+= -mllvm -polly \
 		   -mllvm -polly-invariant-load-hoisting
 endif
 endif
+=======
+KBUILD_CFLAGS   += -O2
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 KBUILD_CFLAGS   += -O2
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -829,13 +872,19 @@ KBUILD_CFLAGS += $(call cc-disable-warning, format-invalid-specifier)
 KBUILD_CFLAGS += $(call cc-disable-warning, gnu)
 KBUILD_CFLAGS += $(call cc-disable-warning, duplicate-decl-specifier)
 <<<<<<< HEAD
+<<<<<<< HEAD
 KBUILD_CFLAGS += $(call cc-option, -Wno-undefined-optimized)
 KBUILD_CFLAGS += $(call cc-option, -Wno-tautological-constant-out-of-range-compare)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 KBUILD_CFLAGS += -fno-builtin
 KBUILD_CFLAGS += $(call cc-option, -Wno-undefined-optimized)
 KBUILD_CFLAGS += $(call cc-option, -Wno-tautological-constant-out-of-range-compare)
 KBUILD_CFLAGS += $(call cc-option, -mllvm -disable-struct-const-merge)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 KBUILD_CFLAGS += $(call cc-option, -Wno-sometimes-uninitialized)
 
@@ -848,7 +897,11 @@ KBUILD_CFLAGS += $(call cc-disable-warning, tautological-compare)
 KBUILD_CFLAGS += $(call cc-option, -mno-global-merge,)
 KBUILD_CFLAGS += $(call cc-option, -fcatch-undefined-behavior)
 <<<<<<< HEAD
+<<<<<<< HEAD
 endif
+=======
+else
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 else
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -858,14 +911,20 @@ KBUILD_CFLAGS += $(call cc-option,-fno-delete-null-pointer-checks,)
 # Use make W=1 to enable them (see scripts/Makefile.extrawarn)
 KBUILD_CFLAGS += $(call cc-disable-warning, unused-but-set-variable)
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 ifeq ($(ld-name),lld)
 LDFLAGS += --lto-O3
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 endif
 
 ifeq ($(ld-name),lld)
 LDFLAGS += -O2
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 endif
 
@@ -883,6 +942,7 @@ KBUILD_CFLAGS	+= -fomit-frame-pointer
 endif
 endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Initialize all stack variables with a 0xAA pattern.
 ifdef CONFIG_INIT_STACK_ALL_PATTERN
 KBUILD_CFLAGS	+= -ftrivial-auto-var-init=pattern
@@ -896,10 +956,15 @@ ifdef CONFIG_INIT_STACK_ALL_ZERO
 KBUILD_CFLAGS  += -ftrivial-auto-var-init=zero
 KBUILD_CFLAGS  += -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 # Initialize all stack variables with a pattern, if desired.
 ifdef CONFIG_INIT_STACK_ALL
 KBUILD_CFLAGS	+= -ftrivial-auto-var-init=pattern
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 endif
 
@@ -927,6 +992,7 @@ ifndef CC_FLAGS_FTRACE
 CC_FLAGS_FTRACE := -pg
 endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 ifdef CONFIG_FTRACE_MCOUNT_RECORD
   # gcc 5 supports generating the mcount tables directly
   ifeq ($(call cc-option-yn,-mrecord-mcount),y)
@@ -934,6 +1000,8 @@ ifdef CONFIG_FTRACE_MCOUNT_RECORD
     export CC_USING_RECORD_MCOUNT := 1
   endif
 endif
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 export CC_FLAGS_FTRACE
@@ -1055,10 +1123,13 @@ KBUILD_CFLAGS += $(call cc-disable-warning, maybe-uninitialized)
 KBUILD_CFLAGS	+= $(call cc-option,-fno-strict-overflow)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Make sure -fstack-check isn't enabled (like gentoo apparently did)
 KBUILD_CFLAGS  += $(call cc-option,-fno-stack-check,)
 
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 # clang sets -fmerge-all-constants by default as optimization, but this
 # is non-conforming behavior for C and in fact breaks the kernel, so we
 # need to disable it here generally.
@@ -1074,6 +1145,9 @@ KBUILD_CFLAGS  += $(call cc-option,-fno-stack-check,)
 # conserve stack if available
 KBUILD_CFLAGS   += $(call cc-option,-fconserve-stack)
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 # disallow errors like 'EXPORT_GPL(foo);' with missing header
 KBUILD_CFLAGS   += $(call cc-option,-Werror=implicit-int)
@@ -1094,13 +1168,19 @@ KBUILD_CFLAGS   += $(call cc-option,-Werror=designated-init)
 KBUILD_CFLAGS	+= $(call cc-option,-fmacro-prefix-map=$(srctree)/=)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 # ensure -fcf-protection is disabled when using retpoline as it is
 # incompatible with -mindirect-branch=thunk-extern
 ifdef CONFIG_RETPOLINE
 KBUILD_CFLAGS += $(call cc-option,-fcf-protection=none)
 endif
 
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 # use the deterministic mode of AR if available
 KBUILD_ARFLAGS := $(call ar-option,D)
@@ -1117,7 +1197,12 @@ KBUILD_CFLAGS   += $(ARCH_CFLAGS)   $(KCFLAGS)
 
 # Use --build-id when available.
 <<<<<<< HEAD
+<<<<<<< HEAD
 LDFLAGS_BUILD_ID := $(call ld-option, --build-id)
+=======
+LDFLAGS_BUILD_ID := $(patsubst -Wl$(comma)%,%,\
+			      $(call cc-ldoption, -Wl$(comma)--build-id,))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 LDFLAGS_BUILD_ID := $(patsubst -Wl$(comma)%,%,\
 			      $(call cc-ldoption, -Wl$(comma)--build-id,))
@@ -1381,7 +1466,11 @@ endif
 
 # Disable clang-specific config options when using a different compiler
 <<<<<<< HEAD
+<<<<<<< HEAD
 clang-specific-configs := LTO_CLANG CFI_CLANG SHADOW_CALL_STACK INIT_STACK_ALL_ZERO
+=======
+clang-specific-configs := LTO_CLANG CFI_CLANG SHADOW_CALL_STACK INIT_STACK_ALL
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 clang-specific-configs := LTO_CLANG CFI_CLANG SHADOW_CALL_STACK INIT_STACK_ALL
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1516,7 +1605,11 @@ headers_install: __headers
 	$(Q)$(MAKE) $(hdr-inst)=include/uapi dst=include
 	$(Q)$(MAKE) $(hdr-inst)=arch/$(hdr-arch)/include/uapi $(hdr-dst)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	$(Q)$(MAKE) $(hdr-inst)=techpack/audio/include/uapi dst=techpack/audio/include
+=======
+	$(Q)$(MAKE) $(hdr-inst)=techpack
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	$(Q)$(MAKE) $(hdr-inst)=techpack
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -1530,7 +1623,11 @@ headers_check: headers_install
 	$(Q)$(MAKE) $(hdr-inst)=include/uapi dst=include HDRCHECK=1
 	$(Q)$(MAKE) $(hdr-inst)=arch/$(hdr-arch)/include/uapi $(hdr-dst) HDRCHECK=1
 <<<<<<< HEAD
+<<<<<<< HEAD
 	$(Q)$(MAKE) $(hdr-inst)=techpack/audio/include/uapi dst=techpack/audio/include HDRCHECK=1
+=======
+	$(Q)$(MAKE) $(hdr-inst)=techpack HDRCHECK=1
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	$(Q)$(MAKE) $(hdr-inst)=techpack HDRCHECK=1
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

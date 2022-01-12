@@ -63,9 +63,15 @@ DEFINE_EVENT(random__mix_pool_bytes, mix_pool_bytes_nolock,
 TRACE_EVENT(credit_entropy_bits,
 	TP_PROTO(const char *pool_name, int bits, int entropy_count,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		 unsigned long IP),
 
 	TP_ARGS(pool_name, bits, entropy_count, IP),
+=======
+		 int entropy_total, unsigned long IP),
+
+	TP_ARGS(pool_name, bits, entropy_count, entropy_total, IP),
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		 int entropy_total, unsigned long IP),
 
@@ -77,6 +83,10 @@ TRACE_EVENT(credit_entropy_bits,
 		__field(	  int,	bits			)
 		__field(	  int,	entropy_count		)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		__field(	  int,	entropy_total		)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		__field(	  int,	entropy_total		)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -88,6 +98,7 @@ TRACE_EVENT(credit_entropy_bits,
 		__entry->bits		= bits;
 		__entry->entropy_count	= entropy_count;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		__entry->IP		= IP;
 	),
 
@@ -95,6 +106,8 @@ TRACE_EVENT(credit_entropy_bits,
 		  __entry->pool_name, __entry->bits,
 		  __entry->entropy_count, (void *)__entry->IP)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		__entry->entropy_total	= entropy_total;
 		__entry->IP		= IP;
 	),
@@ -103,6 +116,9 @@ TRACE_EVENT(credit_entropy_bits,
 		  "caller %pS", __entry->pool_name, __entry->bits,
 		  __entry->entropy_count, __entry->entropy_total,
 		  (void *)__entry->IP)
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 );
 

@@ -3266,7 +3266,11 @@ int c4iw_connect(struct iw_cm_id *cm_id, struct iw_cm_conn_param *conn_param)
 			err = pick_local_ipaddrs(dev, cm_id);
 			if (err)
 <<<<<<< HEAD
+<<<<<<< HEAD
 				goto fail3;
+=======
+				goto fail2;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				goto fail2;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3292,7 +3296,11 @@ int c4iw_connect(struct iw_cm_id *cm_id, struct iw_cm_conn_param *conn_param)
 			err = pick_local_ip6addrs(dev, cm_id);
 			if (err)
 <<<<<<< HEAD
+<<<<<<< HEAD
 				goto fail3;
+=======
+				goto fail2;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				goto fail2;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3501,7 +3509,11 @@ int c4iw_destroy_listen(struct iw_cm_id *cm_id)
 		err = cxgb4_remove_server_filter(
 			ep->com.dev->rdev.lldi.ports[0], ep->stid,
 <<<<<<< HEAD
+<<<<<<< HEAD
 			ep->com.dev->rdev.lldi.rxq_ids[0], false);
+=======
+			ep->com.dev->rdev.lldi.rxq_ids[0], 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 			ep->com.dev->rdev.lldi.rxq_ids[0], 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -3511,8 +3523,12 @@ int c4iw_destroy_listen(struct iw_cm_id *cm_id)
 		err = cxgb4_remove_server(
 				ep->com.dev->rdev.lldi.ports[0], ep->stid,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				ep->com.dev->rdev.lldi.rxq_ids[0],
 				ep->com.local_addr.ss_family == AF_INET6);
+=======
+				ep->com.dev->rdev.lldi.rxq_ids[0], 0);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				ep->com.dev->rdev.lldi.rxq_ids[0], 0);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

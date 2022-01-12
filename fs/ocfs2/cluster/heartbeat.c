@@ -2155,7 +2155,11 @@ static struct config_item *o2hb_heartbeat_group_make_item(struct config_group *g
 			reg, NULL, &reg->hr_handler_list);
 	if (ret)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto remove_item;
+=======
+		goto free;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto free;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -2178,12 +2182,15 @@ static struct config_item *o2hb_heartbeat_group_make_item(struct config_group *g
 unregister_handler:
 	o2net_unregister_handler_list(&reg->hr_handler_list);
 <<<<<<< HEAD
+<<<<<<< HEAD
 remove_item:
 	spin_lock(&o2hb_live_lock);
 	list_del(&reg->hr_all_item);
 	if (o2hb_global_heartbeat_active())
 		clear_bit(reg->hr_region_num, o2hb_region_bitmap);
 	spin_unlock(&o2hb_live_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 free:

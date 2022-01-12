@@ -1,7 +1,11 @@
 ARCH=x86_64
 BRANCH=android-4.4
 <<<<<<< HEAD
+<<<<<<< HEAD
 CROSS_COMPILE=x86_64-linux-androidkernel-
+=======
+CROSS_COMPILE=x86_64-linux-android-
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 CROSS_COMPILE=x86_64-linux-android-
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -10,7 +14,10 @@ EXTRA_CMDS=''
 KERNEL_DIR=common
 LINUX_GCC_CROSS_COMPILE_PREBUILTS_BIN=prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/bin
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 FILES="

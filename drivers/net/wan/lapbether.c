@@ -57,8 +57,11 @@ struct lapbethdev {
 	struct net_device	*ethdev;	/* link to ethernet device */
 	struct net_device	*axdev;		/* lapbeth device (lapb#) */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	bool			up;
 	spinlock_t		up_lock;	/* Protects "up" */
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };
@@ -109,9 +112,14 @@ static int lapbeth_rcv(struct sk_buff *skb, struct net_device *dev, struct packe
 	lapbeth = lapbeth_get_x25_dev(dev);
 	if (!lapbeth)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		goto drop_unlock_rcu;
 	spin_lock_bh(&lapbeth->up_lock);
 	if (!lapbeth->up)
+=======
+		goto drop_unlock;
+	if (!netif_running(lapbeth->axdev))
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		goto drop_unlock;
 	if (!netif_running(lapbeth->axdev))
@@ -131,7 +139,10 @@ static int lapbeth_rcv(struct sk_buff *skb, struct net_device *dev, struct packe
 	}
 out:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_unlock_bh(&lapbeth->up_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rcu_read_unlock();
@@ -140,8 +151,11 @@ drop_unlock:
 	kfree_skb(skb);
 	goto out;
 <<<<<<< HEAD
+<<<<<<< HEAD
 drop_unlock_rcu:
 	rcu_read_unlock();
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 drop:
@@ -172,6 +186,7 @@ static netdev_tx_t lapbeth_xmit(struct sk_buff *skb,
 				      struct net_device *dev)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct lapbethdev *lapbeth = netdev_priv(dev);
 	int err;
 
@@ -184,6 +199,8 @@ static netdev_tx_t lapbeth_xmit(struct sk_buff *skb,
 	 */
 	if (skb->len < 1)
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int err;
 
 	/*
@@ -191,6 +208,9 @@ static netdev_tx_t lapbeth_xmit(struct sk_buff *skb,
 	 * is down, the ethernet device may have gone.
 	 */
 	if (!netif_running(dev))
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		goto drop;
 
@@ -217,7 +237,10 @@ static netdev_tx_t lapbeth_xmit(struct sk_buff *skb,
 	}
 out:
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_unlock_bh(&lapbeth->up_lock);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return NETDEV_TX_OK;
@@ -234,6 +257,11 @@ static void lapbeth_data_transmit(struct net_device *ndev, struct sk_buff *skb)
 	int size = skb->len;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	skb->protocol = htons(ETH_P_X25);
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	skb->protocol = htons(ETH_P_X25);
 
@@ -249,10 +277,13 @@ static void lapbeth_data_transmit(struct net_device *ndev, struct sk_buff *skb)
 	skb->dev = dev = lapbeth->ethdev;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	skb->protocol = htons(ETH_P_DEC);
 
 	skb_reset_network_header(skb);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dev_hard_header(skb, dev, ETH_P_DEC, bcast_addr, NULL, 0);
@@ -320,7 +351,10 @@ static const struct lapb_register_struct lapbeth_callbacks = {
 static int lapbeth_open(struct net_device *dev)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct lapbethdev *lapbeth = netdev_priv(dev);
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	int err;
@@ -331,10 +365,14 @@ static int lapbeth_open(struct net_device *dev)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	spin_lock_bh(&lapbeth->up_lock);
 	lapbeth->up = true;
 	spin_unlock_bh(&lapbeth->up_lock);
 
+=======
+	netif_start_queue(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	netif_start_queue(dev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -344,12 +382,18 @@ static int lapbeth_open(struct net_device *dev)
 static int lapbeth_close(struct net_device *dev)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	struct lapbethdev *lapbeth = netdev_priv(dev);
 	int err;
 
 	spin_lock_bh(&lapbeth->up_lock);
 	lapbeth->up = false;
 	spin_unlock_bh(&lapbeth->up_lock);
+=======
+	int err;
+
+	netif_stop_queue(dev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	int err;
 
@@ -377,7 +421,10 @@ static void lapbeth_setup(struct net_device *dev)
 	dev->needs_free_netdev = true;
 	dev->type            = ARPHRD_X25;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dev->hard_header_len = 0;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	dev->mtu             = 1000;
@@ -407,9 +454,13 @@ static int lapbeth_new_device(struct net_device *dev)
 	 * then the underlying Ethernet device prepends its own header.
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ndev->needed_headroom = -1 + 3 + 2 + dev->hard_header_len
 					   + dev->needed_headroom;
 	ndev->needed_tailroom = dev->needed_tailroom;
+=======
+	ndev->hard_header_len = -1 + 3 + 2 + dev->hard_header_len;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ndev->hard_header_len = -1 + 3 + 2 + dev->hard_header_len;
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -421,9 +472,12 @@ static int lapbeth_new_device(struct net_device *dev)
 	lapbeth->ethdev = dev;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	lapbeth->up = false;
 	spin_lock_init(&lapbeth->up_lock);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	rc = -EIO;

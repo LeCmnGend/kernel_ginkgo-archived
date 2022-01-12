@@ -3392,7 +3392,10 @@ static int rt5659_set_dai_sysclk(struct snd_soc_dai *dai,
 	struct rt5659_priv *rt5659 = snd_soc_codec_get_drvdata(codec);
 	unsigned int reg_val = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int ret;
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -3402,10 +3405,13 @@ static int rt5659_set_dai_sysclk(struct snd_soc_dai *dai,
 	switch (clk_id) {
 	case RT5659_SCLK_S_MCLK:
 <<<<<<< HEAD
+<<<<<<< HEAD
 		ret = clk_set_rate(rt5659->mclk, freq);
 		if (ret)
 			return ret;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		reg_val |= RT5659_SCLK_SRC_MCLK;

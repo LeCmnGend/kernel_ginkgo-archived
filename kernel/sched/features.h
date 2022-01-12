@@ -5,7 +5,11 @@
  * rip the spread apart.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 SCHED_FEAT(GENTLE_FAIR_SLEEPERS, false)
+=======
+SCHED_FEAT(GENTLE_FAIR_SLEEPERS, true)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 SCHED_FEAT(GENTLE_FAIR_SLEEPERS, true)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -22,7 +26,11 @@ SCHED_FEAT(START_DEBIT, true)
  * touched, increases cache locality.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 SCHED_FEAT(NEXT_BUDDY, true)
+=======
+SCHED_FEAT(NEXT_BUDDY, false)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 SCHED_FEAT(NEXT_BUDDY, false)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -39,7 +47,11 @@ SCHED_FEAT(LAST_BUDDY, true)
  * next entity is selected to run irrespective of the vruntime
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 SCHED_FEAT(STRICT_SKIP_BUDDY, false)
+=======
+SCHED_FEAT(STRICT_SKIP_BUDDY, true)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 SCHED_FEAT(STRICT_SKIP_BUDDY, true)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -63,7 +75,11 @@ SCHED_FEAT(LB_BIAS, true)
  * Decrement CPU capacity based on time not spent running tasks
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 SCHED_FEAT(NONTASK_CAPACITY, false)
+=======
+SCHED_FEAT(NONTASK_CAPACITY, true)
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 SCHED_FEAT(NONTASK_CAPACITY, true)
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -113,7 +129,10 @@ SCHED_FEAT(WA_BIAS, true)
  */
 SCHED_FEAT(UTIL_EST, true)
 <<<<<<< HEAD
+<<<<<<< HEAD
 SCHED_FEAT(UTIL_EST_FASTUP, true)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
@@ -156,6 +175,7 @@ SCHED_FEAT(FBT_STRICT_ORDER, false)
  */
 SCHED_FEAT(SCHEDTUNE_BOOST_HOLD_ALL, false)
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 /*
  * Inflate the effective utilization of SchedTune-boosted tasks, which
@@ -163,5 +183,7 @@ SCHED_FEAT(SCHEDTUNE_BOOST_HOLD_ALL, false)
  * If disabled, boosts will only bias tasks to higher-capacity CPUs.
  */
 SCHED_FEAT(SCHEDTUNE_BOOST_UTIL, false)
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

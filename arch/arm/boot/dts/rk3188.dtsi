@@ -111,8 +111,13 @@
 		reg = <0x2000e000 0x20>;
 		interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		clocks = <&cru PCLK_TIMER3>, <&cru SCLK_TIMER3>;
 		clock-names = "pclk", "timer";
+=======
+		clocks = <&cru SCLK_TIMER3>, <&cru PCLK_TIMER3>;
+		clock-names = "timer", "pclk";
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		clocks = <&cru SCLK_TIMER3>, <&cru PCLK_TIMER3>;
 		clock-names = "timer", "pclk";
@@ -124,8 +129,13 @@
 		reg = <0x200380a0 0x20>;
 		interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		clocks = <&cru PCLK_TIMER0>, <&cru SCLK_TIMER6>;
 		clock-names = "pclk", "timer";
+=======
+		clocks = <&cru SCLK_TIMER6>, <&cru PCLK_TIMER0>;
+		clock-names = "timer", "pclk";
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		clocks = <&cru SCLK_TIMER6>, <&cru PCLK_TIMER0>;
 		clock-names = "timer", "pclk";

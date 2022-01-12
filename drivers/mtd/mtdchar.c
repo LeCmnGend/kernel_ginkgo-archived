@@ -374,6 +374,12 @@ static int mtdchar_writeoob(struct file *file, struct mtd_info *mtd,
 	int ret = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	if (!(file->f_mode & FMODE_WRITE))
+		return -EPERM;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!(file->f_mode & FMODE_WRITE))
 		return -EPERM;
@@ -686,6 +692,7 @@ static int mtdchar_ioctl(struct file *file, u_int cmd, u_long arg)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*
 	 * Check the file mode to require "dangerous" commands to have write
 	 * permissions.
@@ -728,6 +735,8 @@ static int mtdchar_ioctl(struct file *file, u_int cmd, u_long arg)
 		return -ENOTTY;
 	}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	switch (cmd) {
@@ -778,6 +787,12 @@ static int mtdchar_ioctl(struct file *file, u_int cmd, u_long arg)
 		struct erase_info *erase;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		if(!(file->f_mode & FMODE_WRITE))
+			return -EPERM;
+
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 		if(!(file->f_mode & FMODE_WRITE))
 			return -EPERM;
@@ -1107,6 +1122,12 @@ static int mtdchar_ioctl(struct file *file, u_int cmd, u_long arg)
 		break;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+	default:
+		ret = -ENOTTY;
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 
 	default:
@@ -1156,11 +1177,14 @@ static long mtdchar_compat_ioctl(struct file *file, unsigned int cmd,
 		struct mtd_oob_buf32 __user *buf_user = argp;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (!(file->f_mode & FMODE_WRITE)) {
 			ret = -EPERM;
 			break;
 		}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 		if (copy_from_user(&buf, argp, sizeof(buf)))

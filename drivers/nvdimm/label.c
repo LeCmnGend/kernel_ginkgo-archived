@@ -853,6 +853,7 @@ static int __blk_label_update(struct nd_region *nd_region,
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/* release slots associated with any invalidated UUIDs */
 	mutex_lock(&nd_mapping->lock);
 	list_for_each_entry_safe(label_ent, e, &nd_mapping->labels, list)
@@ -862,6 +863,8 @@ static int __blk_label_update(struct nd_region *nd_region,
 		}
 	mutex_unlock(&nd_mapping->lock);
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	/*

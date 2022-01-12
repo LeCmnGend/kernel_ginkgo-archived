@@ -2074,8 +2074,12 @@ static int ov5670_init_controls(struct ov5670 *ov5670)
 	/* By default, V4L2_CID_PIXEL_RATE is read only */
 	ov5670->pixel_rate = v4l2_ctrl_new_std(ctrl_hdlr, &ov5670_ctrl_ops,
 <<<<<<< HEAD
+<<<<<<< HEAD
 					       V4L2_CID_PIXEL_RATE,
 					       link_freq_configs[0].pixel_rate,
+=======
+					       V4L2_CID_PIXEL_RATE, 0,
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 					       V4L2_CID_PIXEL_RATE, 0,
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4

@@ -348,9 +348,14 @@ static DEFINE_MUTEX(clock_sync_mutex);
 static unsigned long clock_sync_flags;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define CLOCK_SYNC_HAS_STP		0
 #define CLOCK_SYNC_STP			1
 #define CLOCK_SYNC_STPINFO_VALID	2
+=======
+#define CLOCK_SYNC_HAS_STP	0
+#define CLOCK_SYNC_STP		1
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 #define CLOCK_SYNC_HAS_STP	0
 #define CLOCK_SYNC_STP		1
@@ -592,6 +597,7 @@ void stp_queue_work(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 static int __store_stpinfo(void)
 {
 	int rc = chsc_sstpi(stp_page, &stp_info, sizeof(struct stp_sstpi));
@@ -608,6 +614,8 @@ static int stpinfo_valid(void)
 	return stp_online && test_bit(CLOCK_SYNC_STPINFO_VALID, &clock_sync_flags);
 }
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 static int stp_sync_clock(void *data)
@@ -632,7 +640,12 @@ static int stp_sync_clock(void *data)
 				sync->clock_delta = clock_delta;
 				clock_sync_global(clock_delta);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				rc = __store_stpinfo();
+=======
+				rc = chsc_sstpi(stp_page, &stp_info,
+						sizeof(struct stp_sstpi));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 				rc = chsc_sstpi(stp_page, &stp_info,
 						sizeof(struct stp_sstpi));
@@ -682,7 +695,11 @@ static void stp_work_fn(struct work_struct *work)
 		goto out_unlock;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	rc = __store_stpinfo();
+=======
+	rc = chsc_sstpi(stp_page, &stp_info, sizeof(struct stp_sstpi));
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	rc = chsc_sstpi(stp_page, &stp_info, sizeof(struct stp_sstpi));
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -723,6 +740,7 @@ static ssize_t stp_ctn_id_show(struct device *dev,
 				char *buf)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ssize_t ret = -ENODATA;
 
 	mutex_lock(&stp_work_mutex);
@@ -732,10 +750,15 @@ static ssize_t stp_ctn_id_show(struct device *dev,
 	mutex_unlock(&stp_work_mutex);
 	return ret;
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	if (!stp_online)
 		return -ENODATA;
 	return sprintf(buf, "%016llx\n",
 		       *(unsigned long long *) stp_info.ctnid);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 }
 
@@ -746,6 +769,7 @@ static ssize_t stp_ctn_type_show(struct device *dev,
 				char *buf)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ssize_t ret = -ENODATA;
 
 	mutex_lock(&stp_work_mutex);
@@ -753,6 +777,11 @@ static ssize_t stp_ctn_type_show(struct device *dev,
 		ret = sprintf(buf, "%i\n", stp_info.ctn);
 	mutex_unlock(&stp_work_mutex);
 	return ret;
+=======
+	if (!stp_online)
+		return -ENODATA;
+	return sprintf(buf, "%i\n", stp_info.ctn);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!stp_online)
 		return -ENODATA;
@@ -767,6 +796,7 @@ static ssize_t stp_dst_offset_show(struct device *dev,
 				   char *buf)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ssize_t ret = -ENODATA;
 
 	mutex_lock(&stp_work_mutex);
@@ -774,6 +804,11 @@ static ssize_t stp_dst_offset_show(struct device *dev,
 		ret = sprintf(buf, "%i\n", (int)(s16) stp_info.dsto);
 	mutex_unlock(&stp_work_mutex);
 	return ret;
+=======
+	if (!stp_online || !(stp_info.vbits & 0x2000))
+		return -ENODATA;
+	return sprintf(buf, "%i\n", (int)(s16) stp_info.dsto);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!stp_online || !(stp_info.vbits & 0x2000))
 		return -ENODATA;
@@ -788,6 +823,7 @@ static ssize_t stp_leap_seconds_show(struct device *dev,
 					char *buf)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ssize_t ret = -ENODATA;
 
 	mutex_lock(&stp_work_mutex);
@@ -795,6 +831,11 @@ static ssize_t stp_leap_seconds_show(struct device *dev,
 		ret = sprintf(buf, "%i\n", (int)(s16) stp_info.leaps);
 	mutex_unlock(&stp_work_mutex);
 	return ret;
+=======
+	if (!stp_online || !(stp_info.vbits & 0x8000))
+		return -ENODATA;
+	return sprintf(buf, "%i\n", (int)(s16) stp_info.leaps);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!stp_online || !(stp_info.vbits & 0x8000))
 		return -ENODATA;
@@ -809,6 +850,7 @@ static ssize_t stp_stratum_show(struct device *dev,
 				char *buf)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ssize_t ret = -ENODATA;
 
 	mutex_lock(&stp_work_mutex);
@@ -816,6 +858,11 @@ static ssize_t stp_stratum_show(struct device *dev,
 		ret = sprintf(buf, "%i\n", (int)(s16) stp_info.stratum);
 	mutex_unlock(&stp_work_mutex);
 	return ret;
+=======
+	if (!stp_online)
+		return -ENODATA;
+	return sprintf(buf, "%i\n", (int)(s16) stp_info.stratum);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!stp_online)
 		return -ENODATA;
@@ -830,6 +877,7 @@ static ssize_t stp_time_offset_show(struct device *dev,
 				char *buf)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ssize_t ret = -ENODATA;
 
 	mutex_lock(&stp_work_mutex);
@@ -837,6 +885,11 @@ static ssize_t stp_time_offset_show(struct device *dev,
 		ret = sprintf(buf, "%i\n", (int) stp_info.tto);
 	mutex_unlock(&stp_work_mutex);
 	return ret;
+=======
+	if (!stp_online || !(stp_info.vbits & 0x0800))
+		return -ENODATA;
+	return sprintf(buf, "%i\n", (int) stp_info.tto);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!stp_online || !(stp_info.vbits & 0x0800))
 		return -ENODATA;
@@ -851,6 +904,7 @@ static ssize_t stp_time_zone_offset_show(struct device *dev,
 				char *buf)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ssize_t ret = -ENODATA;
 
 	mutex_lock(&stp_work_mutex);
@@ -858,6 +912,11 @@ static ssize_t stp_time_zone_offset_show(struct device *dev,
 		ret = sprintf(buf, "%i\n", (int)(s16) stp_info.tzo);
 	mutex_unlock(&stp_work_mutex);
 	return ret;
+=======
+	if (!stp_online || !(stp_info.vbits & 0x4000))
+		return -ENODATA;
+	return sprintf(buf, "%i\n", (int)(s16) stp_info.tzo);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!stp_online || !(stp_info.vbits & 0x4000))
 		return -ENODATA;
@@ -873,6 +932,7 @@ static ssize_t stp_timing_mode_show(struct device *dev,
 				char *buf)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ssize_t ret = -ENODATA;
 
 	mutex_lock(&stp_work_mutex);
@@ -880,6 +940,11 @@ static ssize_t stp_timing_mode_show(struct device *dev,
 		ret = sprintf(buf, "%i\n", stp_info.tmd);
 	mutex_unlock(&stp_work_mutex);
 	return ret;
+=======
+	if (!stp_online)
+		return -ENODATA;
+	return sprintf(buf, "%i\n", stp_info.tmd);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!stp_online)
 		return -ENODATA;
@@ -894,6 +959,7 @@ static ssize_t stp_timing_state_show(struct device *dev,
 				char *buf)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ssize_t ret = -ENODATA;
 
 	mutex_lock(&stp_work_mutex);
@@ -901,6 +967,11 @@ static ssize_t stp_timing_state_show(struct device *dev,
 		ret = sprintf(buf, "%i\n", stp_info.tst);
 	mutex_unlock(&stp_work_mutex);
 	return ret;
+=======
+	if (!stp_online)
+		return -ENODATA;
+	return sprintf(buf, "%i\n", stp_info.tst);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	if (!stp_online)
 		return -ENODATA;

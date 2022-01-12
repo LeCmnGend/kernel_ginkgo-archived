@@ -114,7 +114,11 @@ static int da903x_led_probe(struct platform_device *pdev)
 	led->master = pdev->dev.parent;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ret = led_classdev_register(led->master, &led->cdev);
+=======
+	ret = devm_led_classdev_register(led->master, &led->cdev);
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 	ret = devm_led_classdev_register(led->master, &led->cdev);
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
@@ -123,6 +127,7 @@ static int da903x_led_probe(struct platform_device *pdev)
 		return ret;
 	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	platform_set_drvdata(pdev, led);
 
@@ -137,6 +142,8 @@ static int da903x_led_remove(struct platform_device *pdev)
 
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	return 0;
 }
 
@@ -146,7 +153,10 @@ static struct platform_driver da903x_led_driver = {
 	},
 	.probe		= da903x_led_probe,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	.remove		= da903x_led_remove,
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 };

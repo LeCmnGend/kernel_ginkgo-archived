@@ -85,17 +85,23 @@ static void est_timer(unsigned long arg)
 
 	est_fetch_counters(est, &b);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	brate = (b.bytes - est->last_bytes) << (10 - est->intvl_log);
 	brate = (brate >> est->ewma_log) - (est->avbps >> est->ewma_log);
 
 	rate = (u64)(b.packets - est->last_packets) << (10 - est->intvl_log);
 	rate = (rate >> est->ewma_log) - (est->avpps >> est->ewma_log);
 =======
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	brate = (b.bytes - est->last_bytes) << (10 - est->ewma_log - est->intvl_log);
 	brate -= (est->avbps >> est->ewma_log);
 
 	rate = (u64)(b.packets - est->last_packets) << (10 - est->ewma_log - est->intvl_log);
 	rate -= (est->avpps >> est->ewma_log);
+<<<<<<< HEAD
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
+=======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 
 	write_seqcount_begin(&est->seq);
@@ -156,9 +162,12 @@ int gen_new_estimator(struct gnet_stats_basic_packed *bstats,
 		return -EINVAL;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (parm->ewma_log == 0 || parm->ewma_log >= 31)
 		return -EINVAL;
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 	est = kzalloc(sizeof(*est), GFP_KERNEL);

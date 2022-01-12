@@ -1733,6 +1733,7 @@ int ubi_thread(void *u)
 			set_current_state(TASK_INTERRUPTIBLE);
 			spin_unlock(&ubi->wl_lock);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 			/*
 			 * Check kthread_should_stop() after we set the task
@@ -1746,6 +1747,8 @@ int ubi_thread(void *u)
 				break;
 			}
 
+=======
+>>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 =======
 >>>>>>> 169b81fd53c8c3aae4861aff8a9d502629eba3b4
 			schedule();
