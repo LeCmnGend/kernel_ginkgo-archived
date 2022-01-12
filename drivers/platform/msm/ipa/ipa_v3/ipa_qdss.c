@@ -138,7 +138,7 @@ int ipa3_conn_qdss_pipes(struct ipa_qdss_conn_in_params *in,
 				&ep_rx->gsi_chan_hdl);
 	if (result != GSI_STATUS_SUCCESS) {
 		IPA_QDSS_ERR("Failed allocating gsi_chan_hdl=%d\n",
-				&ep_rx->gsi_chan_hdl);
+				ep_rx->gsi_chan_hdl);
 		goto fail;
 	}
 
