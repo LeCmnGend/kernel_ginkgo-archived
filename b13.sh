@@ -96,7 +96,8 @@ if [ -f "out/arch/arm64/boot/Image.gz-dtb" ] && [ -f "out/arch/arm64/boot/dtbo.i
 		#Back to out folder and clean
 		cd ..
 		rm -rf AnyKernel3
-		# rm -rf out/arch/arm64/boot ##keep boot to compile rom
+		rm -rf out/arch/arm64/boot 
+		##Gen file
 		echo -e "\nCompleted in $((SECONDS / 60)) minute(s) and $((SECONDS % 60)) second(s) !"
 		echo "Zip: $ZIPNAME"
 		if ! [[ $HOSTNAME = "RyzenBeast" && $USER = "adithya" ]]; then
