@@ -1,20 +1,22 @@
+ARCH=arm64
 BRANCH=android-4.14
 KERNEL_DIR=common
 
 BUILDTOOLS_PREBUILT_BIN=build/build-tools/path/linux-x86
 
+CROSS_COMPILE=aarch64-elf-
+CROSS_COMPILE_ARM32=arm-eabi-
 
-ARCH=arm64
 
-CROSS_COMPILE=aarch64-linux-android-
-CROSS_COMPILE_ARM32=arm-linux-androideabi-
 DEFCONFIG=ginkgo-perf_defconfig
 
 CLANG_PREBUILT_BIN=prebuilts-master/clang/host/linux-x86/clang-r383902b1/bin/
 LD_LIBRARY_PATH=${ROOT_DIR}/prebuilts-master/clang/host/linux-x86/clang-r383902b1/lib64:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH
-LINUX_GCC_CROSS_COMPILE_PREBUILTS_BIN=prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin
-LINUX_GCC_CROSS_COMPILE_ARM32_PREBUILTS_BIN=prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin
+
+LINUX_GCC_CROSS_COMPILE_PREBUILTS_BIN=prebuilts/eval-gcc/aarch64/bin
+LINUX_GCC_CROSS_COMPILE_ARM32_PREBUILTS_BIN=prebuilts/eval-gcc/arm/bin
+
 
 LIBUFDT_PREBUILTS_BIN=prebuilts-master/misc/linux-x86/libufdt
 
