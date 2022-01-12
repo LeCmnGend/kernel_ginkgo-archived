@@ -58,7 +58,7 @@ if [[ $1 == "-r" || $1 == "--regen" ]]; then
 		   exit 0
 else
 		echo -e "\nStarting compilation...\n"
-		make -j5 O=out ARCH=arm64 \
+		make -j7 O=out ARCH=arm64 \
 		CC="/usr/bin/ccache clang" \
 		LD=ld.lld \
 		AR=llvm-ar \
