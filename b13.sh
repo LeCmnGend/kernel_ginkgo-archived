@@ -22,8 +22,8 @@ export CC="ccache clang"
 
 export PATH="$TC_DIR/bin:$PATH" 
 
-export KBUILD_BUILD_USER=LeCmnGend
-export KBUILD_BUILD_HOST=LeCmnGend
+#export KBUILD_BUILD_USER=LeCmnGend
+#export KBUILD_BUILD_HOST=LeCmnGend
 #export LD_LIBRARY_PATH="$TC_DIR/lib:$LD_LIBRARY_PATH"
 #export KBUILD_COMPILER_STRING="$($TC_DIR/bin/clang --version | head -n 1 | perl -pe 's/\((?:http|git).*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//' -e 's/^.*clang/clang/')"
 
