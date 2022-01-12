@@ -21,6 +21,7 @@ export CCACHE_LIMIT_MULTIPLE=0.97
 export CC="ccache clang"
 export CXX="ccache g++-9"
 export PATH="$TC_DIR/bin:$PATH" 
+export PATH="$HOME/super/prebuilts/eval-gcc/aarch64/bin:$HOME/super/prebuilts/eval-gcc/arm/bin$PATH"
 
 #export KBUILD_BUILD_USER=adithya
 #export KBUILD_BUILD_HOST=ghostrider_reborn
@@ -68,8 +69,8 @@ else
 		OBJCOPY=llvm-objcopy \
 		OBJDUMP=llvm-objdump \
 		STRIP=llvm-strip \
-		CROSS_COMPILE=aarch64-linux-gnu- \
-		CROSS_COMPILE_ARM32=arm-linux-gnueabi- Image.gz-dtb dtbo.img
+		CROSS_COMPILE=aarch64-elf- \
+		CROSS_COMPILE_ARM32=arm-eabi- Image.gz-dtb dtbo.img
 fi
 
 # Creating zip flashable file
