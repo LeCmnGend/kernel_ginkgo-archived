@@ -19,12 +19,11 @@ export CCACHE_TEMPDIR=$CCACHE_DIR/tmp
 export CCACHE_COMPRESSLEVEL=2
 export CCACHE_LIMIT_MULTIPLE=0.97
 export CC="ccache clang"
-export CXX="ccache g++-9"
-export PATH="$TC_DIR/bin:$PATH" 
-export PATH="$HOME/super/prebuilts/eval-gcc/aarch64/bin:$HOME/super/prebuilts/eval-gcc/arm/bin$PATH"
 
-#export KBUILD_BUILD_USER=adithya
-#export KBUILD_BUILD_HOST=ghostrider_reborn
+export PATH="$TC_DIR/bin:$PATH" 
+
+export KBUILD_BUILD_USER=LeCmnGend
+export KBUILD_BUILD_HOST=LeCmnGend
 #export LD_LIBRARY_PATH="$TC_DIR/lib:$LD_LIBRARY_PATH"
 #export KBUILD_COMPILER_STRING="$($TC_DIR/bin/clang --version | head -n 1 | perl -pe 's/\((?:http|git).*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//' -e 's/^.*clang/clang/')"
 
@@ -69,8 +68,8 @@ else
 		OBJCOPY=llvm-objcopy \
 		OBJDUMP=llvm-objdump \
 		STRIP=llvm-strip \
-		CROSS_COMPILE=aarch64-elf- \
-		CROSS_COMPILE_ARM32=arm-eabi- Image.gz-dtb dtbo.img
+		CROSS_COMPILE=aarch64-linux-gnu- \
+		CROSS_COMPILE_ARM32=arm-linux-gnueabi- Image.gz-dtb dtbo.img
 fi
 
 # Creating zip flashable file
