@@ -1304,7 +1304,10 @@ int hid_pidff_init(struct hid_device *hid)
 
 	if (pidff->pool[PID_DEVICE_MANAGED_POOL].value &&
 	    pidff->pool[PID_DEVICE_MANAGED_POOL].value[0] == 0) {
+<<<<<<< HEAD
 		error = -EPERM;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		hid_notice(hid,
 			   "device does not support device managed pool\n");
 		goto fail;

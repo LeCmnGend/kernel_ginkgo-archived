@@ -32,7 +32,10 @@
 #include <linux/tick.h>
 #include <linux/sched/topology.h>
 #include <linux/sched/sysctl.h>
+<<<<<<< HEAD
 #include <linux/battery_saver.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #include <trace/events/power.h>
 
@@ -237,7 +240,11 @@ struct cpufreq_policy *cpufreq_cpu_get(unsigned int cpu)
 	struct cpufreq_policy *policy = NULL;
 	unsigned long flags;
 
+<<<<<<< HEAD
 	if (cpu >= nr_cpu_ids)
+=======
+	if (WARN_ON(cpu >= nr_cpu_ids))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return NULL;
 
 	/* get the cpufreq driver */
@@ -727,10 +734,13 @@ static ssize_t store_##file_name					\
 	int ret, temp;							\
 	struct cpufreq_policy new_policy;				\
 									\
+<<<<<<< HEAD
 	if (&policy->object == &policy->min &&				\
 			is_battery_saver_on())				\
 		return count;						\
 									\
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	memcpy(&new_policy, policy, sizeof(*policy));			\
 	new_policy.min = policy->user_policy.min;			\
 	new_policy.max = policy->user_policy.max;			\
@@ -2257,7 +2267,11 @@ static int cpufreq_set_policy(struct cpufreq_policy *policy,
 	* because new_policy is a copy of policy with one field updated.
 	*/
 	if (new_policy->min > new_policy->max)
+<<<<<<< HEAD
 		new_policy->min = new_policy->max;
+=======
+		return -EINVAL;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* verify the cpu speed can be set within this limit */
 	ret = cpufreq_driver->verify(new_policy);

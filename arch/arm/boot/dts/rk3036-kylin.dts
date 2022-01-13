@@ -424,7 +424,11 @@
 		};
 	};
 
+<<<<<<< HEAD
 	suspend {
+=======
+	sleep {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		global_pwroff: global-pwroff {
 			rockchip,pins = <2 7 RK_FUNC_1 &pcfg_pull_none>;
 		};

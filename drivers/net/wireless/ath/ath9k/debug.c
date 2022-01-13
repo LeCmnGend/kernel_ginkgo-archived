@@ -1236,11 +1236,16 @@ static ssize_t write_file_nf_override(struct file *file,
 
 	ah->nf_override = val;
 
+<<<<<<< HEAD
 	if (ah->curchan) {
 		ath9k_ps_wakeup(sc);
 		ath9k_hw_loadnf(ah, ah->curchan);
 		ath9k_ps_restore(sc);
 	}
+=======
+	if (ah->curchan)
+		ath9k_hw_loadnf(ah, ah->curchan);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return count;
 }

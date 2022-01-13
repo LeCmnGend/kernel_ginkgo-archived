@@ -73,7 +73,11 @@ struct netns_ipv6 {
 	struct fib6_table       *fib6_local_tbl;
 	struct fib_rules_ops    *fib6_rules_ops;
 #endif
+<<<<<<< HEAD
 	struct sock * __percpu	*icmp_sk;
+=======
+	struct sock		**icmp_sk;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct sock             *ndisc_sk;
 	struct sock             *tcp_sk;
 	struct sock             *igmp_sk;

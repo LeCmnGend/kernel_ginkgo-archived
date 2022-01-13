@@ -553,7 +553,10 @@ int amdgpu_gem_va_ioctl(struct drm_device *dev, void *data,
 	struct ww_acquire_ctx ticket;
 	struct list_head list;
 	uint64_t va_flags;
+<<<<<<< HEAD
 	uint64_t vm_size;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int r = 0;
 
 	if (args->va_address < AMDGPU_VA_RESERVED_SIZE) {
@@ -564,6 +567,7 @@ int amdgpu_gem_va_ioctl(struct drm_device *dev, void *data,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
 	vm_size = adev->vm_manager.max_pfn * AMDGPU_GPU_PAGE_SIZE;
 	vm_size -= AMDGPU_VA_RESERVED_SIZE;
 	if (args->va_address + args->map_size > vm_size) {
@@ -573,6 +577,8 @@ int amdgpu_gem_va_ioctl(struct drm_device *dev, void *data,
 		return -EINVAL;
 	}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if ((args->flags & ~valid_flags) && (args->flags & ~prt_flags)) {
 		dev_err(&dev->pdev->dev, "invalid flags combination 0x%08X\n",
 			args->flags);

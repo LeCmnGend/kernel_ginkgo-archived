@@ -67,7 +67,10 @@ ssize_t copy_oldmem_page(unsigned long pfn, char *buf,
 ssize_t elfcorehdr_read(char *buf, size_t count, u64 *ppos)
 {
 	memcpy(buf, phys_to_virt((phys_addr_t)*ppos), count);
+<<<<<<< HEAD
 	*ppos += count;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return count;
 }

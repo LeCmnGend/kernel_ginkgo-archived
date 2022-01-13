@@ -87,7 +87,10 @@ static int goldfish_rtc_set_alarm(struct device *dev,
 		rtc_alarm64 = rtc_alarm * NSEC_PER_SEC;
 		writel((rtc_alarm64 >> 32), base + TIMER_ALARM_HIGH);
 		writel(rtc_alarm64, base + TIMER_ALARM_LOW);
+<<<<<<< HEAD
 		writel(1, base + TIMER_IRQ_ENABLED);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else {
 		/*
 		 * if this function was called with enabled=0

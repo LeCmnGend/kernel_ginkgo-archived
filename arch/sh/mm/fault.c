@@ -379,7 +379,11 @@ static inline int access_error(int error_code, struct vm_area_struct *vma)
 		return 1;
 
 	/* read, not present: */
+<<<<<<< HEAD
 	if (unlikely(!vma_is_accessible(vma)))
+=======
+	if (unlikely(!(vma->vm_flags & (VM_READ | VM_EXEC | VM_WRITE))))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return 1;
 
 	return 0;

@@ -57,6 +57,7 @@ static inline bool arch_validate_prot(unsigned long prot)
 #define arch_validate_prot arch_validate_prot
 #endif
 
+<<<<<<< HEAD
 #ifndef arch_validate_flags
 /*
  * This is called from mmap() and mprotect() with the updated vma->vm_flags.
@@ -70,6 +71,8 @@ static inline bool arch_validate_flags(unsigned long flags)
 #define arch_validate_flags arch_validate_flags
 #endif
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /*
  * Optimisation macro.  It is equivalent to:
  *      (x & bit1) ? bit2 : 0

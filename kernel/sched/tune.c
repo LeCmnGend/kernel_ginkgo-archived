@@ -5,7 +5,10 @@
 #include <linux/printk.h>
 #include <linux/rcupdate.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
 #include <linux/battery_saver.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #include <trace/events/sched.h>
 
@@ -106,7 +109,11 @@ root_schedtune = {
  *    implementation especially for the computation of the per-CPU boost
  *    value
  */
+<<<<<<< HEAD
 #define BOOSTGROUPS_COUNT 8
+=======
+#define BOOSTGROUPS_COUNT 6
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /* Array of configured boostgroups */
 static struct schedtune *allocated_group[BOOSTGROUPS_COUNT] = {
@@ -357,6 +364,10 @@ void schedtune_enqueue_task(struct task_struct *p, int cpu)
 {
 	struct boost_groups *bg = &per_cpu(cpu_boost_groups, cpu);
 	unsigned long irq_flags;
+<<<<<<< HEAD
+=======
+	struct schedtune *st;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int idx;
 
 	if (unlikely(!schedtune_initialized))
@@ -368,16 +379,101 @@ void schedtune_enqueue_task(struct task_struct *p, int cpu)
 	 * do_exit()::cgroup_exit() and task migration.
 	 */
 	raw_spin_lock_irqsave(&bg->lock, irq_flags);
+<<<<<<< HEAD
 
 	idx = p->stune_idx;
 
 	schedtune_tasks_update(p, cpu, idx, ENQUEUE_TASK);
 
+=======
+	rcu_read_lock();
+
+	st = task_schedtune(p);
+	idx = st->idx;
+
+	schedtune_tasks_update(p, cpu, idx, ENQUEUE_TASK);
+
+	rcu_read_unlock();
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	raw_spin_unlock_irqrestore(&bg->lock, irq_flags);
 }
 
 int schedtune_can_attach(struct cgroup_taskset *tset)
 {
+<<<<<<< HEAD
+=======
+	struct task_struct *task;
+	struct cgroup_subsys_state *css;
+	struct boost_groups *bg;
+	struct rq_flags rq_flags;
+	unsigned int cpu;
+	struct rq *rq;
+	int src_bg; /* Source boost group index */
+	int dst_bg; /* Destination boost group index */
+	int tasks;
+	u64 now;
+
+	if (unlikely(!schedtune_initialized))
+		return 0;
+
+
+	cgroup_taskset_for_each(task, css, tset) {
+
+		/*
+		 * Lock the CPU's RQ the task is enqueued to avoid race
+		 * conditions with migration code while the task is being
+		 * accounted
+		 */
+		rq = task_rq_lock(task, &rq_flags);
+
+		if (!task->on_rq) {
+			task_rq_unlock(rq, task, &rq_flags);
+			continue;
+		}
+
+		/*
+		 * Boost group accouting is protected by a per-cpu lock and requires
+		 * interrupt to be disabled to avoid race conditions on...
+		 */
+		cpu = cpu_of(rq);
+		bg = &per_cpu(cpu_boost_groups, cpu);
+		raw_spin_lock(&bg->lock);
+
+		dst_bg = css_st(css)->idx;
+		src_bg = task_schedtune(task)->idx;
+
+		/*
+		 * Current task is not changing boostgroup, which can
+		 * happen when the new hierarchy is in use.
+		 */
+		if (unlikely(dst_bg == src_bg)) {
+			raw_spin_unlock(&bg->lock);
+			task_rq_unlock(rq, task, &rq_flags);
+			continue;
+		}
+
+		/*
+		 * This is the case of a RUNNABLE task which is switching its
+		 * current boost group.
+		 */
+
+		/* Move task from src to dst boost group */
+		tasks = bg->group[src_bg].tasks - 1;
+		bg->group[src_bg].tasks = max(0, tasks);
+		bg->group[dst_bg].tasks += 1;
+
+		/* Update boost hold start for this group */
+		now = sched_clock_cpu(cpu);
+		bg->group[dst_bg].ts = now;
+
+		/* Force boost group re-evaluation at next boost check */
+		bg->boost_ts = now - SCHEDTUNE_BOOST_HOLD_NS;
+
+		raw_spin_unlock(&bg->lock);
+		task_rq_unlock(rq, task, &rq_flags);
+	}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 }
 
@@ -442,6 +538,10 @@ void schedtune_dequeue_task(struct task_struct *p, int cpu)
 {
 	struct boost_groups *bg = &per_cpu(cpu_boost_groups, cpu);
 	unsigned long irq_flags;
+<<<<<<< HEAD
+=======
+	struct schedtune *st;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int idx;
 
 	if (unlikely(!schedtune_initialized))
@@ -452,11 +552,22 @@ void schedtune_dequeue_task(struct task_struct *p, int cpu)
 	 * interrupt to be disabled to avoid race conditions on...
 	 */
 	raw_spin_lock_irqsave(&bg->lock, irq_flags);
+<<<<<<< HEAD
 
 	idx = p->stune_idx;
 
 	schedtune_tasks_update(p, cpu, idx, DEQUEUE_TASK);
 
+=======
+	rcu_read_lock();
+
+	st = task_schedtune(p);
+	idx = st->idx;
+
+	schedtune_tasks_update(p, cpu, idx, DEQUEUE_TASK);
+
+	rcu_read_unlock();
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	raw_spin_unlock_irqrestore(&bg->lock, irq_flags);
 }
 
@@ -475,6 +586,7 @@ int schedtune_cpu_boost(int cpu)
 	return bg->boost_max;
 }
 
+<<<<<<< HEAD
 static inline int schedtune_adj_ta(struct task_struct *p)
 {
 	struct schedtune *st;
@@ -504,16 +616,30 @@ int schedtune_task_boost(struct task_struct *p)
 	int task_boost;
 
 	if (unlikely(!schedtune_initialized) || unlikely(is_battery_saver_on()))
+=======
+int schedtune_task_boost(struct task_struct *p)
+{
+	struct schedtune *st;
+	int task_boost;
+
+	if (unlikely(!schedtune_initialized))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return 0;
 
 	/* Get task boost value */
 	rcu_read_lock();
+<<<<<<< HEAD
 	task_boost = schedtune_adj_ta(p);
+=======
+	st = task_schedtune(p);
+	task_boost = st->boost;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	rcu_read_unlock();
 
 	return task_boost;
 }
 
+<<<<<<< HEAD
 /*  The same as schedtune_task_boost except assuming the caller has the rcu read
  *  lock.
  */
@@ -530,12 +656,18 @@ int schedtune_task_boost_rcu_locked(struct task_struct *p)
 	return task_boost;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 int schedtune_prefer_idle(struct task_struct *p)
 {
 	struct schedtune *st;
 	int prefer_idle;
 
+<<<<<<< HEAD
 	if (unlikely(!schedtune_initialized) || unlikely(is_battery_saver_on()))
+=======
+	if (unlikely(!schedtune_initialized))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return 0;
 
 	/* Get prefer_idle value */
@@ -552,9 +684,12 @@ prefer_idle_read(struct cgroup_subsys_state *css, struct cftype *cft)
 {
 	struct schedtune *st = css_st(css);
 
+<<<<<<< HEAD
 	if (unlikely(is_battery_saver_on()))
 		return 0;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return st->prefer_idle;
 }
 
@@ -573,16 +708,24 @@ boost_read(struct cgroup_subsys_state *css, struct cftype *cft)
 {
 	struct schedtune *st = css_st(css);
 
+<<<<<<< HEAD
 	if (unlikely(is_battery_saver_on()))
 		return 0;
 
 	return st->boost;
 }
 
+=======
+	return st->boost;
+}
+
+#ifdef CONFIG_SCHED_WALT
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static void schedtune_attach(struct cgroup_taskset *tset)
 {
 	struct task_struct *task;
 	struct cgroup_subsys_state *css;
+<<<<<<< HEAD
 	struct boost_groups *bg;
 	struct rq_flags rq_flags;
 	unsigned int cpu;
@@ -592,6 +735,8 @@ static void schedtune_attach(struct cgroup_taskset *tset)
 	int tasks;
 	u64 now;
 #ifdef CONFIG_SCHED_WALT
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct schedtune *st;
 	bool colocate;
 
@@ -602,6 +747,7 @@ static void schedtune_attach(struct cgroup_taskset *tset)
 
 	cgroup_taskset_for_each(task, css, tset)
 		sync_cgroup_colocation(task, colocate);
+<<<<<<< HEAD
 #endif
 
 	cgroup_taskset_for_each(task, css, tset) {
@@ -663,6 +809,15 @@ static void schedtune_attach(struct cgroup_taskset *tset)
 		task_rq_unlock(rq, task, &rq_flags);
 	}
 }
+=======
+
+}
+#else
+static void schedtune_attach(struct cgroup_taskset *tset)
+{
+}
+#endif
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static int
 boost_write(struct cgroup_subsys_state *css, struct cftype *cft,
@@ -793,8 +948,13 @@ struct cgroup_subsys schedtune_cgrp_subsys = {
 	.css_alloc	= schedtune_css_alloc,
 	.css_free	= schedtune_css_free,
 	.attach		= schedtune_attach,
+<<<<<<< HEAD
 	.can_attach	= schedtune_can_attach,
 	.cancel_attach	= schedtune_cancel_attach,
+=======
+	.can_attach     = schedtune_can_attach,
+	.cancel_attach  = schedtune_cancel_attach,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.legacy_cftypes	= files,
 	.early_init	= 1,
 };

@@ -1387,7 +1387,11 @@ static int snd_ctl_elem_add(struct snd_ctl_file *file,
 
  unlock:
 	up_write(&card->controls_rwsem);
+<<<<<<< HEAD
 	return err;
+=======
+	return 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static int snd_ctl_elem_add_user(struct snd_ctl_file *file,

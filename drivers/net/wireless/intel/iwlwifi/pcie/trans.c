@@ -1927,6 +1927,7 @@ static int iwl_trans_pcie_read_mem(struct iwl_trans *trans, u32 addr,
 				   void *buf, int dwords)
 {
 	unsigned long flags;
+<<<<<<< HEAD
 	int offs = 0;
 	u32 *vals = buf;
 
@@ -1959,6 +1960,20 @@ static int iwl_trans_pcie_read_mem(struct iwl_trans *trans, u32 addr,
 	}
 
 	return 0;
+=======
+	int offs, ret = 0;
+	u32 *vals = buf;
+
+	if (iwl_trans_grab_nic_access(trans, &flags)) {
+		iwl_write32(trans, HBUS_TARG_MEM_RADDR, addr);
+		for (offs = 0; offs < dwords; offs++)
+			vals[offs] = iwl_read32(trans, HBUS_TARG_MEM_RDAT);
+		iwl_trans_release_nic_access(trans, &flags);
+	} else {
+		ret = -EBUSY;
+	}
+	return ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static int iwl_trans_pcie_write_mem(struct iwl_trans *trans, u32 addr,

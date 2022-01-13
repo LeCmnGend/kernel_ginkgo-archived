@@ -170,7 +170,11 @@ static void wdt_startup(void)
 static void wdt_turnoff(void)
 {
 	/* Stop the timer */
+<<<<<<< HEAD
 	del_timer_sync(&timer);
+=======
+	del_timer(&timer);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	wdt_change(WDT_DISABLE);
 

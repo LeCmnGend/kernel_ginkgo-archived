@@ -316,7 +316,10 @@ struct xprt_class {
 	struct rpc_xprt *	(*setup)(struct xprt_create *);
 	struct module		*owner;
 	char			name[32];
+<<<<<<< HEAD
 	const char *		netid[];
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 /*

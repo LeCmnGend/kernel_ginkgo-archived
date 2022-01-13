@@ -687,7 +687,10 @@ static int cobalt_probe(struct pci_dev *pci_dev,
 		return -ENOMEM;
 	cobalt->pci_dev = pci_dev;
 	cobalt->instance = i;
+<<<<<<< HEAD
 	mutex_init(&cobalt->pci_lock);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	retval = v4l2_device_register(&pci_dev->dev, &cobalt->v4l2_dev);
 	if (retval) {

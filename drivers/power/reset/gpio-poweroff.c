@@ -84,7 +84,10 @@ static const struct of_device_id of_gpio_poweroff_match[] = {
 	{ .compatible = "gpio-poweroff", },
 	{},
 };
+<<<<<<< HEAD
 MODULE_DEVICE_TABLE(of, of_gpio_poweroff_match);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static struct platform_driver gpio_poweroff_driver = {
 	.probe = gpio_poweroff_probe,

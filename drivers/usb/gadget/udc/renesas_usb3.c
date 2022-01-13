@@ -1442,7 +1442,11 @@ static void usb3_start_pipen(struct renesas_usb3_ep *usb3_ep,
 			     struct renesas_usb3_request *usb3_req)
 {
 	struct renesas_usb3 *usb3 = usb3_ep_to_usb3(usb3_ep);
+<<<<<<< HEAD
 	struct renesas_usb3_request *usb3_req_first;
+=======
+	struct renesas_usb3_request *usb3_req_first = usb3_get_request(usb3_ep);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	unsigned long flags;
 	int ret = -EAGAIN;
 	u32 enable_bits = 0;
@@ -1450,8 +1454,12 @@ static void usb3_start_pipen(struct renesas_usb3_ep *usb3_ep,
 	spin_lock_irqsave(&usb3->lock, flags);
 	if (usb3_ep->halt || usb3_ep->started)
 		goto out;
+<<<<<<< HEAD
 	usb3_req_first = __usb3_get_request(usb3_ep);
 	if (!usb3_req_first || usb3_req != usb3_req_first)
+=======
+	if (usb3_req != usb3_req_first)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto out;
 
 	if (usb3_pn_change(usb3, usb3_ep->num) < 0)

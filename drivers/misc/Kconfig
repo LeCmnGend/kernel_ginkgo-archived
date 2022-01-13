@@ -595,6 +595,7 @@ config TEST_IRQ_REQUESTER
 
 	  If in doubt, say N.
 
+<<<<<<< HEAD
 config BATTERY_SAVER
 	bool "Battery saver mode for kernelspace"
 	help
@@ -614,6 +615,8 @@ config FORCE_FAST_CHARGE
 	help
 	  This allows users to override default charge rate for USB
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 source "drivers/misc/c2port/Kconfig"
 source "drivers/misc/eeprom/Kconfig"
 source "drivers/misc/cb710/Kconfig"

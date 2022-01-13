@@ -429,7 +429,11 @@ static inline void cpufreq_resume(void) {}
 /* Policy Notifiers  */
 #define CPUFREQ_ADJUST			(0)
 #define CPUFREQ_NOTIFY			(1)
+<<<<<<< HEAD
 #define CPUFREQ_INCOMPATIBLE		(6)
+=======
+#define CPUFREQ_INCOMPATIBLE	(6)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #ifdef CONFIG_CPU_FREQ
 int cpufreq_register_notifier(struct notifier_block *nb, unsigned int list);
@@ -476,7 +480,11 @@ static inline unsigned long cpufreq_scale(unsigned long old, u_int div,
 	result /= div;
 	return result;
 #endif
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /*********************************************************************
  *                          CPUFREQ GOVERNORS                        *
@@ -495,6 +503,7 @@ static inline unsigned long cpufreq_scale(unsigned long old, u_int div,
  * polling frequency is 1000 times the transition latency of the processor. The
  * ondemand governor will work on any processor with transition latency <= 10ms,
  * using appropriate sampling rate.
+<<<<<<< HEAD
  *
  * For CPUs with transition latency > 10ms (mostly drivers with CPUFREQ_ETERNAL)
  * this governor will not work. All times here are in us (micro seconds).
@@ -511,6 +520,10 @@ static inline unsigned long cpufreq_scale(unsigned long old, u_int div,
 #define CPUFREQ_GOV_LIMITS	(3)
 #define CPUFREQ_GOV_POLICY_INIT	(4)
 #define CPUFREQ_GOV_POLICY_EXIT	(5)
+=======
+ */
+#define LATENCY_MULTIPLIER		(1000)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 struct cpufreq_governor {
 	char	name[CPUFREQ_NAME_LEN];
@@ -591,6 +604,7 @@ struct governor_attr {
 			 size_t count);
 };
 
+<<<<<<< HEAD
 /* CPUFREQ DEFAULT GOVERNOR */
 /*
  * Performance governor is fallback governor if any other gov failed to auto
@@ -626,6 +640,18 @@ extern struct cpufreq_governor cpufreq_gov_pegasusq;
 #define CPUFREQ_DEFAULT_GOVERNOR        (&cpufreq_gov_pegasusq)
 
 #endif
+=======
+static inline bool cpufreq_can_do_remote_dvfs(struct cpufreq_policy *policy)
+{
+	/*
+	 * Allow remote callbacks if:
+	 * - dvfs_possible_from_any_cpu flag is set
+	 * - the local and remote CPUs share cpufreq policy
+	 */
+	return policy->dvfs_possible_from_any_cpu ||
+		cpumask_test_cpu(smp_processor_id(), policy->cpus);
+}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /*********************************************************************
  *                     FREQUENCY TABLE HELPERS                       *
@@ -969,8 +995,12 @@ extern void arch_set_freq_scale(struct cpumask *cpus, unsigned long cur_freq,
 				unsigned long max_freq);
 extern void arch_set_max_freq_scale(struct cpumask *cpus,
 				    unsigned long policy_max_freq);
+<<<<<<< HEAD
 extern void arch_set_max_thermal_scale(struct cpumask *cpus,
 					unsigned long max_thermal_freq);
+=======
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /* the following are really really optional */
 extern struct freq_attr cpufreq_freq_attr_scaling_available_freqs;
 extern struct freq_attr cpufreq_freq_attr_scaling_boost_freqs;

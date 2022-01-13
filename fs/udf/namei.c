@@ -956,10 +956,13 @@ static int udf_symlink(struct inode *dir, struct dentry *dentry,
 				iinfo->i_location.partitionReferenceNum,
 				0);
 		epos.bh = udf_tgetblk(sb, block);
+<<<<<<< HEAD
 		if (unlikely(!epos.bh)) {
 			err = -ENOMEM;
 			goto out_no_entry;
 		}
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		lock_buffer(epos.bh);
 		memset(epos.bh->b_data, 0x00, bsize);
 		set_buffer_uptodate(epos.bh);

@@ -10,5 +10,8 @@ unix-$(CONFIG_SYSCTL)	+= sysctl_net_unix.o
 
 obj-$(CONFIG_UNIX_DIAG)	+= unix_diag.o
 unix_diag-y		:= diag.o
+<<<<<<< HEAD
 
 obj-$(CONFIG_UNIX_SCM)	+= scm.o
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388

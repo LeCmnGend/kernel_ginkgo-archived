@@ -418,7 +418,11 @@ void sctp_generate_proto_unreach_event(unsigned long data)
 		/* Try again later.  */
 		if (!mod_timer(&transport->proto_unreach_timer,
 				jiffies + (HZ/20)))
+<<<<<<< HEAD
 			sctp_transport_hold(transport);
+=======
+			sctp_association_hold(asoc);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto out_unlock;
 	}
 
@@ -434,7 +438,11 @@ void sctp_generate_proto_unreach_event(unsigned long data)
 
 out_unlock:
 	bh_unlock_sock(sk);
+<<<<<<< HEAD
 	sctp_transport_put(transport);
+=======
+	sctp_association_put(asoc);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
  /* Handle the timeout of the RE-CONFIG timer. */
@@ -1591,12 +1599,20 @@ static int sctp_cmd_interpreter(enum sctp_event event_type,
 			break;
 
 		case SCTP_CMD_INIT_FAILED:
+<<<<<<< HEAD
 			sctp_cmd_init_failed(commands, asoc, cmd->obj.u16);
+=======
+			sctp_cmd_init_failed(commands, asoc, cmd->obj.u32);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			break;
 
 		case SCTP_CMD_ASSOC_FAILED:
 			sctp_cmd_assoc_failed(commands, asoc, event_type,
+<<<<<<< HEAD
 					      subtype, chunk, cmd->obj.u16);
+=======
+					      subtype, chunk, cmd->obj.u32);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			break;
 
 		case SCTP_CMD_INIT_COUNTER_INC:

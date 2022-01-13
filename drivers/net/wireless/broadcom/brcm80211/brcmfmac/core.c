@@ -318,7 +318,11 @@ static int brcmf_rx_hdrpull(struct brcmf_pub *drvr, struct sk_buff *skb,
 	ret = brcmf_proto_hdrpull(drvr, true, skb, ifp);
 
 	if (ret || !(*ifp) || !(*ifp)->ndev) {
+<<<<<<< HEAD
 		if (ret != -ENODATA && *ifp && (*ifp)->ndev)
+=======
+		if (ret != -ENODATA && *ifp)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			(*ifp)->ndev->stats.rx_errors++;
 		brcmu_pkt_buf_free_skb(skb);
 		return -ENODATA;

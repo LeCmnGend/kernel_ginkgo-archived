@@ -26,6 +26,12 @@ config MMU
 config FPU
 	def_bool n
 
+<<<<<<< HEAD
+=======
+config RWSEM_GENERIC_SPINLOCK
+	def_bool y
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 config GENERIC_CALIBRATE_DELAY
 	def_bool y
 

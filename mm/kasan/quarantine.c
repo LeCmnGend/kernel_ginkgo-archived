@@ -237,7 +237,11 @@ void quarantine_reduce(void)
 	 * Update quarantine size in case of hotplug. Allocate a fraction of
 	 * the installed memory to quarantine minus per-cpu queue limits.
 	 */
+<<<<<<< HEAD
 	total_size = (totalram_pages() << PAGE_SHIFT) /
+=======
+	total_size = (READ_ONCE(totalram_pages) << PAGE_SHIFT) /
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		QUARANTINE_FRACTION;
 	percpu_quarantines = QUARANTINE_PERCPU_SIZE * num_online_cpus();
 	new_quarantine_size = (total_size < percpu_quarantines) ?

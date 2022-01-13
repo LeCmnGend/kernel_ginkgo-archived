@@ -171,8 +171,12 @@ static inline bool in_vfork(struct task_struct *tsk)
 	 * another oom-unkillable task does this it should blame itself.
 	 */
 	rcu_read_lock();
+<<<<<<< HEAD
 	ret = tsk->vfork_done &&
 			rcu_dereference(tsk->real_parent)->mm == tsk->mm;
+=======
+	ret = tsk->vfork_done && tsk->real_parent->mm == tsk->mm;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	rcu_read_unlock();
 
 	return ret;

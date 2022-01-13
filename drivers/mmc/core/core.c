@@ -67,7 +67,11 @@ static const unsigned freqs[] = { 400000, 300000, 200000, 100000 };
  * performance cost, and for other reasons may not always be desired.
  * So we allow it it to be disabled.
  */
+<<<<<<< HEAD
 bool use_spi_crc = 0;
+=======
+bool use_spi_crc = 1;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 module_param(use_spi_crc, bool, 0);
 
 static int mmc_schedule_delayed_work(struct delayed_work *work,
@@ -2453,6 +2457,7 @@ int mmc_execute_tuning(struct mmc_card *card)
 	err = host->ops->execute_tuning(host, opcode);
 	mmc_host_clk_release(host);
 
+<<<<<<< HEAD
 	if (err) {
 		pr_err("%s: tuning execution failed: %d\n",
 			mmc_hostname(host), err);
@@ -2461,6 +2466,13 @@ int mmc_execute_tuning(struct mmc_card *card)
 		host->need_retune = 0;
 		mmc_retune_enable(host);
 	}
+=======
+	if (err)
+		pr_err("%s: tuning execution failed: %d\n",
+			mmc_hostname(host), err);
+	else
+		mmc_retune_enable(host);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return err;
 }

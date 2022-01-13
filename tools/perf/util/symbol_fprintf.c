@@ -66,7 +66,11 @@ size_t dso__fprintf_symbols_by_name(struct dso *dso,
 
 	for (nd = rb_first(&dso->symbol_names[type]); nd; nd = rb_next(nd)) {
 		pos = rb_entry(nd, struct symbol_name_rb_node, rb_node);
+<<<<<<< HEAD
 		ret += fprintf(fp, "%s\n", pos->sym.name);
+=======
+		fprintf(fp, "%s\n", pos->sym.name);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	return ret;

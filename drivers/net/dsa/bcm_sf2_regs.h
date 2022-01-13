@@ -150,8 +150,11 @@ enum bcm_sf2_reg_offs {
 #define CORE_SWITCH_CTRL		0x00088
 #define  MII_DUMB_FWDG_EN		(1 << 6)
 
+<<<<<<< HEAD
 #define CORE_DIS_LEARN			0x000f0
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define CORE_SFT_LRN_CTRL		0x000f8
 #define  SW_LEARN_CNTL(x)		(1 << (x))
 

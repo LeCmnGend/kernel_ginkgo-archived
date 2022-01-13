@@ -27,11 +27,16 @@ CFLAGS_REMOVE_vdso.o = -pg
 CFLAGS_REMOVE_vgettimeofday.o = -pg -Os
 CFLAGS_vgettimeofday.o = -O2
 
+<<<<<<< HEAD
 # Disable gcov, kasan, ubsan and kcov profiling for VDSO code
 GCOV_PROFILE := n
 KASAN_SANITIZE := n
 UBSAN_SANITIZE := n
 KCOV_INSTRUMENT := n
+=======
+# Disable gcov profiling for VDSO code
+GCOV_PROFILE := n
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 # Force dependency
 $(obj)/vdso.o : $(obj)/vdso.so

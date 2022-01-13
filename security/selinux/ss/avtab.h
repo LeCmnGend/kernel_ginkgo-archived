@@ -24,6 +24,10 @@
 #define _SS_AVTAB_H_
 
 #include "security.h"
+<<<<<<< HEAD
+=======
+#include <linux/flex_array.h>
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 struct avtab_key {
 	u16 source_type;	/* source type */
@@ -83,10 +87,18 @@ struct avtab_node {
 };
 
 struct avtab {
+<<<<<<< HEAD
 	struct avtab_node **htable;
 	u32 nel;	/* number of elements */
 	u32 nslot;      /* number of hash slots */
 	u32 mask;       /* mask to compute hash func */
+=======
+	struct flex_array *htable;
+	u32 nel;	/* number of elements */
+	u32 nslot;      /* number of hash slots */
+	u32 mask;       /* mask to compute hash func */
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 int avtab_init(struct avtab *);

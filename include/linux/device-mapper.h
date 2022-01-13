@@ -596,6 +596,11 @@ do {									\
 #define DMEMIT(x...) sz += ((sz >= maxlen) ? \
 			  0 : scnprintf(result + sz, maxlen - sz, x))
 
+<<<<<<< HEAD
+=======
+#define SECTOR_SHIFT 9
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /*
  * Definitions of return values from target end_io function.
  */

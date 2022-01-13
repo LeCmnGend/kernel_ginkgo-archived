@@ -56,8 +56,11 @@ int gfs2_trans_begin(struct gfs2_sbd *sdp, unsigned int blocks,
 						   sizeof(u64));
 	INIT_LIST_HEAD(&tr->tr_databuf);
 	INIT_LIST_HEAD(&tr->tr_buf);
+<<<<<<< HEAD
 	INIT_LIST_HEAD(&tr->tr_ail1_list);
 	INIT_LIST_HEAD(&tr->tr_ail2_list);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	sb_start_intwrite(sdp->sd_vfs);
 

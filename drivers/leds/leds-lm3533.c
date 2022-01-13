@@ -698,7 +698,11 @@ static int lm3533_led_probe(struct platform_device *pdev)
 
 	platform_set_drvdata(pdev, led);
 
+<<<<<<< HEAD
 	ret = led_classdev_register(pdev->dev.parent, &led->cdev);
+=======
+	ret = devm_led_classdev_register(pdev->dev.parent, &led->cdev);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (ret) {
 		dev_err(&pdev->dev, "failed to register LED %d\n", pdev->id);
 		return ret;
@@ -708,6 +712,7 @@ static int lm3533_led_probe(struct platform_device *pdev)
 
 	ret = lm3533_led_setup(led, pdata);
 	if (ret)
+<<<<<<< HEAD
 		goto err_deregister;
 
 	ret = lm3533_ctrlbank_enable(&led->cb);
@@ -720,6 +725,15 @@ err_deregister:
 	led_classdev_unregister(&led->cdev);
 
 	return ret;
+=======
+		return ret;
+
+	ret = lm3533_ctrlbank_enable(&led->cb);
+	if (ret)
+		return ret;
+
+	return 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static int lm3533_led_remove(struct platform_device *pdev)
@@ -729,7 +743,10 @@ static int lm3533_led_remove(struct platform_device *pdev)
 	dev_dbg(&pdev->dev, "%s\n", __func__);
 
 	lm3533_ctrlbank_disable(&led->cb);
+<<<<<<< HEAD
 	led_classdev_unregister(&led->cdev);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return 0;
 }

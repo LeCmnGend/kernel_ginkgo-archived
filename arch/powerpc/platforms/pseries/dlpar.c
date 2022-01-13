@@ -139,6 +139,10 @@ void dlpar_free_cc_nodes(struct device_node *dn)
 #define NEXT_PROPERTY   3
 #define PREV_PARENT     4
 #define MORE_MEMORY     5
+<<<<<<< HEAD
+=======
+#define CALL_AGAIN	-2
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define ERR_CFG_USE     -9003
 
 struct device_node *dlpar_configure_connector(__be32 drc_index,
@@ -180,9 +184,12 @@ struct device_node *dlpar_configure_connector(__be32 drc_index,
 
 		spin_unlock(&rtas_data_buf_lock);
 
+<<<<<<< HEAD
 		if (rtas_busy_delay(rc))
 			continue;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		switch (rc) {
 		case COMPLETE:
 			break;
@@ -235,6 +242,12 @@ struct device_node *dlpar_configure_connector(__be32 drc_index,
 			parent_path = last_dn->parent->full_name;
 			break;
 
+<<<<<<< HEAD
+=======
+		case CALL_AGAIN:
+			break;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		case MORE_MEMORY:
 		case ERR_CFG_USE:
 		default:

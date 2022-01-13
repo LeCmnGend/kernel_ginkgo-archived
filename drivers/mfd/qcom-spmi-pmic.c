@@ -153,7 +153,10 @@ static struct spmi_driver pmic_spmi_driver = {
 	.driver = {
 		.name = "pmic-spmi",
 		.of_match_table = pmic_spmi_id_table,
+<<<<<<< HEAD
 		.probe_type	= PROBE_FORCE_SYNCHRONOUS,
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	},
 };
 

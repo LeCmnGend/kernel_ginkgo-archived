@@ -948,9 +948,12 @@ int mlx4_en_poll_rx_cq(struct napi_struct *napi, int budget)
 	bool clean_complete = true;
 	int done;
 
+<<<<<<< HEAD
 	if (!budget)
 		return 0;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (priv->tx_ring_num[TX_XDP]) {
 		xdp_tx_cq = priv->tx_cq[TX_XDP][cq->ring];
 		if (xdp_tx_cq->xdp_busy) {

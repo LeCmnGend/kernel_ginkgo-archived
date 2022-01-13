@@ -46,9 +46,16 @@ asmlinkage void aesbs_xts_decrypt(u8 out[], u8 const in[], u8 const rk[],
 
 /* borrowed from aes-neon-blk.ko */
 asmlinkage void neon_aes_ecb_encrypt(u8 out[], u8 const in[], u32 const rk[],
+<<<<<<< HEAD
 				     int rounds, int blocks);
 asmlinkage void neon_aes_cbc_encrypt(u8 out[], u8 const in[], u32 const rk[],
 				     int rounds, int blocks, u8 iv[]);
+=======
+				     int rounds, int blocks, int first);
+asmlinkage void neon_aes_cbc_encrypt(u8 out[], u8 const in[], u32 const rk[],
+				     int rounds, int blocks, u8 iv[],
+				     int first);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 struct aesbs_ctx {
 	u8	rk[13 * (8 * AES_BLOCK_SIZE) + 32];
@@ -156,7 +163,11 @@ static int cbc_encrypt(struct skcipher_request *req)
 	struct crypto_skcipher *tfm = crypto_skcipher_reqtfm(req);
 	struct aesbs_cbc_ctx *ctx = crypto_skcipher_ctx(tfm);
 	struct skcipher_walk walk;
+<<<<<<< HEAD
 	int err;
+=======
+	int err, first = 1;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	err = skcipher_walk_virt(&walk, req, true);
 
@@ -166,9 +177,16 @@ static int cbc_encrypt(struct skcipher_request *req)
 
 		/* fall back to the non-bitsliced NEON implementation */
 		neon_aes_cbc_encrypt(walk.dst.virt.addr, walk.src.virt.addr,
+<<<<<<< HEAD
 				     ctx->enc, ctx->key.rounds, blocks,
 				     walk.iv);
 		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
+=======
+				     ctx->enc, ctx->key.rounds, blocks, walk.iv,
+				     first);
+		err = skcipher_walk_done(&walk, walk.nbytes % AES_BLOCK_SIZE);
+		first = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	kernel_neon_end();
 	return err;
@@ -311,7 +329,11 @@ static int __xts_crypt(struct skcipher_request *req,
 	kernel_neon_begin();
 
 	neon_aes_ecb_encrypt(walk.iv, walk.iv, ctx->twkey,
+<<<<<<< HEAD
 			     ctx->key.rounds, 1);
+=======
+			     ctx->key.rounds, 1, 1);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	while (walk.nbytes >= AES_BLOCK_SIZE) {
 		unsigned int blocks = walk.nbytes / AES_BLOCK_SIZE;

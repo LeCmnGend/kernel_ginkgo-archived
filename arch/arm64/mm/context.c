@@ -256,7 +256,12 @@ static int asids_init(void)
 	 */
 	WARN_ON(NUM_USER_ASIDS - 1 <= num_possible_cpus());
 	atomic64_set(&asid_generation, ASID_FIRST_VERSION);
+<<<<<<< HEAD
 	asid_map = bitmap_zalloc(NUM_USER_ASIDS, GFP_KERNEL);
+=======
+	asid_map = kzalloc(BITS_TO_LONGS(NUM_USER_ASIDS) * sizeof(*asid_map),
+			   GFP_KERNEL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!asid_map)
 		panic("Failed to allocate bitmap for %lu ASIDs\n",
 		      NUM_USER_ASIDS);

@@ -454,7 +454,10 @@ struct request_queue;
 extern int bio_phys_segments(struct request_queue *, struct bio *);
 
 extern int submit_bio_wait(struct bio *bio);
+<<<<<<< HEAD
 extern void submit_bio_nowait(struct bio *bio);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 extern void bio_advance(struct bio *, unsigned);
 
 extern void bio_init(struct bio *bio, struct bio_vec *table,

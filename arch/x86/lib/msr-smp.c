@@ -240,7 +240,11 @@ static void __wrmsr_safe_regs_on_cpu(void *info)
 	rv->err = wrmsr_safe_regs(rv->regs);
 }
 
+<<<<<<< HEAD
 int rdmsr_safe_regs_on_cpu(unsigned int cpu, u32 regs[8])
+=======
+int rdmsr_safe_regs_on_cpu(unsigned int cpu, u32 *regs)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	int err;
 	struct msr_regs_info rv;
@@ -253,7 +257,11 @@ int rdmsr_safe_regs_on_cpu(unsigned int cpu, u32 regs[8])
 }
 EXPORT_SYMBOL(rdmsr_safe_regs_on_cpu);
 
+<<<<<<< HEAD
 int wrmsr_safe_regs_on_cpu(unsigned int cpu, u32 regs[8])
+=======
+int wrmsr_safe_regs_on_cpu(unsigned int cpu, u32 *regs)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	int err;
 	struct msr_regs_info rv;

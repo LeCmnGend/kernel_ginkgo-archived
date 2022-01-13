@@ -1150,10 +1150,13 @@ static int ks8842_probe(struct platform_device *pdev)
 	unsigned i;
 
 	iomem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+<<<<<<< HEAD
 	if (!iomem) {
 		dev_err(&pdev->dev, "Invalid resource\n");
 		return -EINVAL;
 	}
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!request_mem_region(iomem->start, resource_size(iomem), DRV_NAME))
 		goto err_mem_region;
 

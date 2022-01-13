@@ -241,7 +241,10 @@ static int zx_pwm_probe(struct platform_device *pdev)
 	ret = pwmchip_add(&zpc->chip);
 	if (ret < 0) {
 		dev_err(&pdev->dev, "failed to add PWM chip: %d\n", ret);
+<<<<<<< HEAD
 		clk_disable_unprepare(zpc->pclk);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return ret;
 	}
 

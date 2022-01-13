@@ -46,7 +46,10 @@ static inline void arch_spin_relax(arch_spinlock_t *lock)
 {
 	arch_lock_relax(lock->lock);
 }
+<<<<<<< HEAD
 #define arch_spin_relax		arch_spin_relax
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static inline u32 arch_spin_lockval(int cpu)
 {
@@ -82,7 +85,10 @@ static inline void arch_spin_lock_flags(arch_spinlock_t *lp,
 	if (!arch_spin_trylock_once(lp))
 		arch_spin_lock_wait_flags(lp, flags);
 }
+<<<<<<< HEAD
 #define arch_spin_lock_flags	arch_spin_lock_flags
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static inline int arch_spin_trylock(arch_spinlock_t *lp)
 {
@@ -128,6 +134,12 @@ static inline void arch_spin_unlock(arch_spinlock_t *lp)
 extern int _raw_read_trylock_retry(arch_rwlock_t *lp);
 extern int _raw_write_trylock_retry(arch_rwlock_t *lp);
 
+<<<<<<< HEAD
+=======
+#define arch_read_lock_flags(lock, flags) arch_read_lock(lock)
+#define arch_write_lock_flags(lock, flags) arch_write_lock(lock)
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static inline int arch_read_trylock_once(arch_rwlock_t *rw)
 {
 	int old = ACCESS_ONCE(rw->lock);
@@ -268,12 +280,18 @@ static inline void arch_read_relax(arch_rwlock_t *rw)
 {
 	arch_lock_relax(rw->owner);
 }
+<<<<<<< HEAD
 #define arch_read_relax		arch_read_relax
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static inline void arch_write_relax(arch_rwlock_t *rw)
 {
 	arch_lock_relax(rw->owner);
 }
+<<<<<<< HEAD
 #define arch_write_relax	arch_write_relax
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #endif /* __ASM_SPINLOCK_H */

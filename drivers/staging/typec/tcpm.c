@@ -2741,7 +2741,11 @@ static void run_state_machine(struct tcpm_port *port)
 		 */
 		tcpm_set_pwr_role(port, TYPEC_SOURCE);
 		tcpm_pd_send_control(port, PD_CTRL_PS_RDY);
+<<<<<<< HEAD
 		tcpm_set_state(port, SRC_STARTUP, PD_T_SWAP_SRC_START);
+=======
+		tcpm_set_state(port, SRC_STARTUP, 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		break;
 
 	case VCONN_SWAP_ACCEPT:

@@ -152,11 +152,15 @@ int ext4_sync_file(struct file *file, loff_t start, loff_t end, int datasync)
 	ret = jbd2_complete_transaction(journal, commit_tid);
 	if (needs_barrier) {
 	issue_flush:
+<<<<<<< HEAD
 		err = 0;
 		if (!blk_queue_nonrot(bdev_get_queue(inode->i_sb->s_bdev)))
 			err = blkdev_issue_flush(inode->i_sb->s_bdev, GFP_KERNEL, NULL);
 		else
 			blkdev_issue_flush_nowait(inode->i_sb->s_bdev, GFP_KERNEL);
+=======
+		err = blkdev_issue_flush(inode->i_sb->s_bdev, GFP_KERNEL, NULL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (!ret)
 			ret = err;
 	}

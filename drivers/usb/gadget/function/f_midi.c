@@ -1048,12 +1048,15 @@ static int f_midi_bind(struct usb_configuration *c, struct usb_function *f)
 		f->ss_descriptors = usb_copy_descriptors(midi_function);
 		if (!f->ss_descriptors)
 			goto fail_f_midi;
+<<<<<<< HEAD
 
 		if (gadget_is_superspeed_plus(c->cdev->gadget)) {
 			f->ssp_descriptors = usb_copy_descriptors(midi_function);
 			if (!f->ssp_descriptors)
 				goto fail_f_midi;
 		}
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	kfree(midi_function);
@@ -1374,7 +1377,11 @@ static struct usb_function *f_midi_alloc(struct usb_function_instance *fi)
 	midi->id = kstrdup(opts->id, GFP_KERNEL);
 	if (opts->id && !midi->id) {
 		status = -ENOMEM;
+<<<<<<< HEAD
 		goto midi_free;
+=======
+		goto setup_fail;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	midi->in_ports = opts->in_ports;
 	midi->out_ports = opts->out_ports;
@@ -1386,7 +1393,11 @@ static struct usb_function *f_midi_alloc(struct usb_function_instance *fi)
 
 	status = kfifo_alloc(&midi->in_req_fifo, midi->qlen, GFP_KERNEL);
 	if (status)
+<<<<<<< HEAD
 		goto midi_free;
+=======
+		goto setup_fail;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	spin_lock_init(&midi->transmit_lock);
 
@@ -1403,6 +1414,7 @@ static struct usb_function *f_midi_alloc(struct usb_function_instance *fi)
 	fi->f = &midi->func;
 	return &midi->func;
 
+<<<<<<< HEAD
 midi_free:
 	if (midi)
 		kfree(midi->id);
@@ -1410,6 +1422,11 @@ midi_free:
 setup_fail:
 	mutex_unlock(&opts->lock);
 
+=======
+setup_fail:
+	mutex_unlock(&opts->lock);
+	kfree(midi);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return ERR_PTR(status);
 }
 

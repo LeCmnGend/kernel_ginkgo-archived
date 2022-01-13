@@ -14,6 +14,7 @@ struct static_key_deferred {
 #endif
 
 #ifdef HAVE_JUMP_LABEL
+<<<<<<< HEAD
 struct static_key_true_deferred {
 	struct static_key_true key;
 	unsigned long timeout;
@@ -64,10 +65,18 @@ extern void jump_label_update_timeout(struct work_struct *work);
 
 #define static_branch_deferred_inc(x)	static_branch_inc(&(x)->key)
 
+=======
+extern void static_key_slow_dec_deferred(struct static_key_deferred *key);
+extern void static_key_deferred_flush(struct static_key_deferred *key);
+extern void
+jump_label_rate_limit(struct static_key_deferred *key, unsigned long rl);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #else	/* !HAVE_JUMP_LABEL */
 struct static_key_deferred {
 	struct static_key  key;
 };
+<<<<<<< HEAD
 struct static_key_true_deferred {
 	struct static_key_true key;
 };
@@ -81,12 +90,18 @@ struct static_key_false_deferred {
 
 #define static_branch_slow_dec_deferred(x)	static_branch_dec(&(x)->key)
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static inline void static_key_slow_dec_deferred(struct static_key_deferred *key)
 {
 	STATIC_KEY_CHECK_USE();
 	static_key_slow_dec(&key->key);
 }
+<<<<<<< HEAD
 static inline void static_key_deferred_flush(void *key)
+=======
+static inline void static_key_deferred_flush(struct static_key_deferred *key)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	STATIC_KEY_CHECK_USE();
 }

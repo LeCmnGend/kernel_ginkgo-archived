@@ -158,7 +158,11 @@ int cmsghdr_from_user_compat_to_kern(struct msghdr *kmsg, struct sock *sk,
 	if (kcmlen > stackbuf_size)
 		kcmsg_base = kcmsg = sock_kmalloc(sk, kcmlen, GFP_KERNEL);
 	if (kcmsg == NULL)
+<<<<<<< HEAD
 		return -ENOMEM;
+=======
+		return -ENOBUFS;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* Now copy them over neatly. */
 	memset(kcmsg, 0, kcmlen);
@@ -289,7 +293,10 @@ void scm_detach_fds_compat(struct msghdr *kmsg, struct scm_cookie *scm)
 			break;
 		}
 		/* Bump the usage count and install the file. */
+<<<<<<< HEAD
 		__receive_sock(fp[i]);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		fd_install(new_fd, get_file(fp[i]));
 	}
 

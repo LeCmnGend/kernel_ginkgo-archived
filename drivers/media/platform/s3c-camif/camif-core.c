@@ -475,7 +475,11 @@ static int s3c_camif_probe(struct platform_device *pdev)
 
 	ret = camif_media_dev_init(camif);
 	if (ret < 0)
+<<<<<<< HEAD
 		goto err_pm;
+=======
+		goto err_alloc;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	ret = camif_register_sensor(camif);
 	if (ret < 0)
@@ -509,9 +513,16 @@ err_sens:
 	media_device_unregister(&camif->media_dev);
 	media_device_cleanup(&camif->media_dev);
 	camif_unregister_media_entities(camif);
+<<<<<<< HEAD
 err_pm:
 	pm_runtime_put(dev);
 	pm_runtime_disable(dev);
+=======
+err_alloc:
+	pm_runtime_put(dev);
+	pm_runtime_disable(dev);
+err_pm:
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	camif_clk_put(camif);
 err_clk:
 	s3c_camif_unregister_subdev(camif);

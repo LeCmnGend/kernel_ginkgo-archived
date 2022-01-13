@@ -131,8 +131,11 @@ void kvm_arch_check_processor_compat(void *rtn)
 int kvm_arch_init_vm(struct kvm *kvm, unsigned long type)
 {
 	switch (type) {
+<<<<<<< HEAD
 	case KVM_VM_MIPS_AUTO:
 		break;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #ifdef CONFIG_KVM_MIPS_VZ
 	case KVM_VM_MIPS_VZ:
 #else

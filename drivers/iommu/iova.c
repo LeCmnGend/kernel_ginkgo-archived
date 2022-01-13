@@ -863,9 +863,13 @@ iova_magazine_free_pfns(struct iova_magazine *mag, struct iova_domain *iovad)
 	for (i = 0 ; i < mag->size; ++i) {
 		struct iova *iova = private_find_iova(iovad, mag->pfns[i]);
 
+<<<<<<< HEAD
 		if (WARN_ON(!iova))
 			continue;
 
+=======
+		BUG_ON(!iova);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		private_free_iova(iovad, iova);
 	}
 

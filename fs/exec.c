@@ -77,6 +77,7 @@ int suid_dumpable = 0;
 static LIST_HEAD(formats);
 static DEFINE_RWLOCK(binfmt_lock);
 
+<<<<<<< HEAD
 #define HWCOMPOSER_BIN_PREFIX "/vendor/bin/hw/android.hardware.graphics.composer"
 
 #define ZYGOTE32_BIN "/system/bin/app_process32"
@@ -89,6 +90,8 @@ bool task_is_zygote(struct task_struct *p)
 	return p->signal == zygote32_sig || p->signal == zygote64_sig;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 void __register_binfmt(struct linux_binfmt * fmt, int insert)
 {
 	BUG_ON(!fmt);
@@ -302,7 +305,11 @@ static int __bprm_mm_init(struct linux_binprm *bprm)
 	struct vm_area_struct *vma = NULL;
 	struct mm_struct *mm = bprm->mm;
 
+<<<<<<< HEAD
 	bprm->vma = vma = vm_area_alloc();
+=======
+	bprm->vma = vma = kmem_cache_zalloc(vm_area_cachep, GFP_KERNEL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!vma)
 		return -ENOMEM;
 
@@ -338,7 +345,11 @@ err:
 	up_write(&mm->mmap_sem);
 err_free:
 	bprm->vma = NULL;
+<<<<<<< HEAD
 	vm_area_free(vma);
+=======
+	kmem_cache_free(vm_area_cachep, vma);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return err;
 }
 
@@ -1036,6 +1047,7 @@ static int exec_mmap(struct mm_struct *mm)
 		}
 	}
 	task_lock(tsk);
+<<<<<<< HEAD
 
 	local_irq_disable();
 	active_mm = tsk->active_mm;
@@ -1053,6 +1065,12 @@ static int exec_mmap(struct mm_struct *mm)
 	activate_mm(active_mm, mm);
 	if (IS_ENABLED(CONFIG_ARCH_WANT_IRQS_OFF_ACTIVATE_MM))
 		local_irq_enable();
+=======
+	active_mm = tsk->active_mm;
+	tsk->mm = mm;
+	tsk->active_mm = mm;
+	activate_mm(active_mm, mm);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	tsk->mm->vmacache_seqnum = 0;
 	vmacache_flush(tsk);
 	task_unlock(tsk);
@@ -1828,6 +1846,7 @@ static int do_execveat_common(int fd, struct filename *filename,
 	if (retval < 0)
 		goto out;
 
+<<<<<<< HEAD
 	if (is_global_init(current->parent)) {
 		if (unlikely(!strncmp(filename->name,
 					   HWCOMPOSER_BIN_PREFIX,
@@ -1841,6 +1860,8 @@ static int do_execveat_common(int fd, struct filename *filename,
 		}
 	}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* execve succeeded */
 	current->fs->in_exec = 0;
 	current->in_execve = 0;

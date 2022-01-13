@@ -95,6 +95,17 @@ int dbg_switch_cpu;
 /* Use kdb or gdbserver mode */
 int dbg_kdb_mode = 1;
 
+<<<<<<< HEAD
+=======
+static int __init opt_kgdb_con(char *str)
+{
+	kgdb_use_con = 1;
+	return 0;
+}
+
+early_param("kgdbcon", opt_kgdb_con);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 module_param(kgdb_use_con, int, 0644);
 module_param(kgdbreboot, int, 0644);
 
@@ -808,6 +819,7 @@ static struct console kgdbcons = {
 	.index		= -1,
 };
 
+<<<<<<< HEAD
 static int __init opt_kgdb_con(char *str)
 {
 	kgdb_use_con = 1;
@@ -822,6 +834,8 @@ static int __init opt_kgdb_con(char *str)
 
 early_param("kgdbcon", opt_kgdb_con);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #ifdef CONFIG_MAGIC_SYSRQ
 static void sysrq_handle_dbg(int key)
 {

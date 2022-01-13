@@ -701,8 +701,12 @@ static int acpi_cpufreq_cpu_init(struct cpufreq_policy *policy)
 		cpumask_copy(policy->cpus, topology_core_cpumask(cpu));
 	}
 
+<<<<<<< HEAD
 	if (check_amd_hwpstate_cpu(cpu) && boot_cpu_data.x86 < 0x19 &&
 	    !acpi_pstate_strict) {
+=======
+	if (check_amd_hwpstate_cpu(cpu) && !acpi_pstate_strict) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		cpumask_clear(policy->cpus);
 		cpumask_set_cpu(cpu, policy->cpus);
 		cpumask_copy(data->freqdomain_cpus,

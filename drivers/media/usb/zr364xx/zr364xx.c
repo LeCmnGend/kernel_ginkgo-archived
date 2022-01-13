@@ -1061,7 +1061,10 @@ static int zr364xx_start_readpipe(struct zr364xx_camera *cam)
 	DBG("submitting URB %p\n", pipe_info->stream_urb);
 	retval = usb_submit_urb(pipe_info->stream_urb, GFP_KERNEL);
 	if (retval) {
+<<<<<<< HEAD
 		usb_free_urb(pipe_info->stream_urb);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		printk(KERN_ERR KBUILD_MODNAME ": start read pipe failed\n");
 		return retval;
 	}

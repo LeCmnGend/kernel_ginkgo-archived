@@ -13,4 +13,14 @@
 #include <asm/qrwlock.h>
 #include <asm/qspinlock.h>
 
+<<<<<<< HEAD
+=======
+#define arch_read_lock_flags(lock, flags) arch_read_lock(lock)
+#define arch_write_lock_flags(lock, flags) arch_write_lock(lock)
+
+#define arch_spin_relax(lock)	cpu_relax()
+#define arch_read_relax(lock)	cpu_relax()
+#define arch_write_relax(lock)	cpu_relax()
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif /* _ASM_SPINLOCK_H */

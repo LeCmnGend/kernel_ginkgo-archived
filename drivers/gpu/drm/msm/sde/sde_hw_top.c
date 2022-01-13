@@ -159,7 +159,10 @@ static void sde_hw_setup_pp_split(struct sde_hw_mdp *mdp,
 static bool sde_hw_setup_clk_force_ctrl(struct sde_hw_mdp *mdp,
 		enum sde_clk_ctrl_type clk_ctrl, bool enable)
 {
+<<<<<<< HEAD
 	struct sde_clk_ctrl_reg *ctrl_reg;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct sde_hw_blk_reg_map *c;
 	u32 reg_off, bit_off;
 	u32 reg_val, new_val;
@@ -173,12 +176,17 @@ static bool sde_hw_setup_clk_force_ctrl(struct sde_hw_mdp *mdp,
 	if (clk_ctrl <= SDE_CLK_CTRL_NONE || clk_ctrl >= SDE_CLK_CTRL_MAX)
 		return false;
 
+<<<<<<< HEAD
 	ctrl_reg = (struct sde_clk_ctrl_reg *)&mdp->caps->clk_ctrls[clk_ctrl];
 	if (cmpxchg(&ctrl_reg->val, !enable, enable) == enable)
 		return enable;
 
 	reg_off = ctrl_reg->reg_off;
 	bit_off = ctrl_reg->bit_off;
+=======
+	reg_off = mdp->caps->clk_ctrls[clk_ctrl].reg_off;
+	bit_off = mdp->caps->clk_ctrls[clk_ctrl].bit_off;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	reg_val = SDE_REG_READ(c, reg_off);
 

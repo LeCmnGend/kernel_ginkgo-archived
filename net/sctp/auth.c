@@ -493,7 +493,10 @@ int sctp_auth_init_hmacs(struct sctp_endpoint *ep, gfp_t gfp)
 out_err:
 	/* Clean up any successful allocations */
 	sctp_auth_destroy_hmacs(ep->auth_hmacs);
+<<<<<<< HEAD
 	ep->auth_hmacs = NULL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return -ENOMEM;
 }
 

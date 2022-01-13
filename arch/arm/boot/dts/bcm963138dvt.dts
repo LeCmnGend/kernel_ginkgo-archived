@@ -30,10 +30,17 @@
 	status = "okay";
 };
 
+<<<<<<< HEAD
 &nand_controller {
 	status = "okay";
 
 	nand@0 {
+=======
+&nand {
+	status = "okay";
+
+	nandcs@0 {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		compatible = "brcm,nandcs";
 		reg = <0>;
 		nand-ecc-strength = <4>;

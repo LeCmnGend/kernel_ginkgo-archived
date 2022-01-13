@@ -2341,6 +2341,7 @@ int sctp_process_init(struct sctp_association *asoc, struct sctp_chunk *chunk,
 
 	/* Process the initialization parameters.  */
 	sctp_walk_params(param, peer_init, init_hdr.params) {
+<<<<<<< HEAD
 		if (!src_match &&
 		    (param.p->type == SCTP_PARAM_IPV4_ADDRESS ||
 		     param.p->type == SCTP_PARAM_IPV6_ADDRESS)) {
@@ -2348,6 +2349,13 @@ int sctp_process_init(struct sctp_association *asoc, struct sctp_chunk *chunk,
 			if (!af->from_addr_param(&addr, param.addr,
 						 chunk->sctp_hdr->source, 0))
 				continue;
+=======
+		if (!src_match && (param.p->type == SCTP_PARAM_IPV4_ADDRESS ||
+		    param.p->type == SCTP_PARAM_IPV6_ADDRESS)) {
+			af = sctp_get_af_specific(param_type2af(param.p->type));
+			af->from_addr_param(&addr, param.addr,
+					    chunk->sctp_hdr->source, 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			if (sctp_cmp_addr_exact(sctp_source(chunk), &addr))
 				src_match = 1;
 		}
@@ -2525,8 +2533,12 @@ static int sctp_process_param(struct sctp_association *asoc,
 			break;
 do_addr_param:
 		af = sctp_get_af_specific(param_type2af(param.p->type));
+<<<<<<< HEAD
 		if (!af->from_addr_param(&addr, param.addr, htons(asoc->peer.port), 0))
 			break;
+=======
+		af->from_addr_param(&addr, param.addr, htons(asoc->peer.port), 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		scope = sctp_scope(peer_addr);
 		if (sctp_in_scope(net, &addr, scope))
 			if (!sctp_assoc_add_peer(asoc, &addr, gfp, SCTP_UNCONFIRMED))
@@ -2623,6 +2635,7 @@ do_addr_param:
 		addr_param = param.v + sizeof(struct sctp_addip_param);
 
 		af = sctp_get_af_specific(param_type2af(addr_param->p.type));
+<<<<<<< HEAD
 		if (!af)
 			break;
 
@@ -2630,6 +2643,17 @@ do_addr_param:
 					 htons(asoc->peer.port), 0))
 			break;
 
+=======
+		if (af == NULL)
+			break;
+
+		af->from_addr_param(&addr, addr_param,
+				    htons(asoc->peer.port), 0);
+
+		/* if the address is invalid, we can't process it.
+		 * XXX: see spec for what to do.
+		 */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (!af->addr_valid(&addr, NULL, NULL))
 			break;
 
@@ -3046,8 +3070,12 @@ static __be16 sctp_process_asconf_param(struct sctp_association *asoc,
 	if (unlikely(!af))
 		return SCTP_ERROR_DNS_FAILED;
 
+<<<<<<< HEAD
 	if (!af->from_addr_param(&addr, addr_param, htons(asoc->peer.port), 0))
 		return SCTP_ERROR_DNS_FAILED;
+=======
+	af->from_addr_param(&addr, addr_param, htons(asoc->peer.port), 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* ADDIP 4.2.1  This parameter MUST NOT contain a broadcast
 	 * or multicast address.
@@ -3130,7 +3158,11 @@ static __be16 sctp_process_asconf_param(struct sctp_association *asoc,
 		 * primary.
 		 */
 		if (af->is_any(&addr))
+<<<<<<< HEAD
 			memcpy(&addr, sctp_source(asconf), sizeof(addr));
+=======
+			memcpy(&addr.v4, sctp_source(asconf), sizeof(addr));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		peer = sctp_assoc_lookup_paddr(asoc, &addr);
 		if (!peer)
@@ -3312,8 +3344,12 @@ static void sctp_asconf_param_success(struct sctp_association *asoc,
 
 	/* We have checked the packet before, so we do not check again.	*/
 	af = sctp_get_af_specific(param_type2af(addr_param->p.type));
+<<<<<<< HEAD
 	if (!af->from_addr_param(&addr, addr_param, htons(bp->port), 0))
 		return;
+=======
+	af->from_addr_param(&addr, addr_param, htons(bp->port), 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	switch (asconf_param->param_hdr.type) {
 	case SCTP_PARAM_ADD_IP:

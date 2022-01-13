@@ -82,7 +82,11 @@ static u64 zswap_duplicate_entry;
 static bool zswap_enabled;
 static int zswap_enabled_param_set(const char *,
 				   const struct kernel_param *);
+<<<<<<< HEAD
 static const struct kernel_param_ops zswap_enabled_param_ops = {
+=======
+static struct kernel_param_ops zswap_enabled_param_ops = {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.set =		zswap_enabled_param_set,
 	.get =		param_get_bool,
 };
@@ -93,7 +97,11 @@ module_param_cb(enabled, &zswap_enabled_param_ops, &zswap_enabled, 0644);
 static char *zswap_compressor = ZSWAP_COMPRESSOR_DEFAULT;
 static int zswap_compressor_param_set(const char *,
 				      const struct kernel_param *);
+<<<<<<< HEAD
 static const struct kernel_param_ops zswap_compressor_param_ops = {
+=======
+static struct kernel_param_ops zswap_compressor_param_ops = {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.set =		zswap_compressor_param_set,
 	.get =		param_get_charp,
 	.free =		param_free_charp,
@@ -105,7 +113,11 @@ module_param_cb(compressor, &zswap_compressor_param_ops,
 #define ZSWAP_ZPOOL_DEFAULT "zbud"
 static char *zswap_zpool_type = ZSWAP_ZPOOL_DEFAULT;
 static int zswap_zpool_param_set(const char *, const struct kernel_param *);
+<<<<<<< HEAD
 static const struct kernel_param_ops zswap_zpool_param_ops = {
+=======
+static struct kernel_param_ops zswap_zpool_param_ops = {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.set =		zswap_zpool_param_set,
 	.get =		param_get_charp,
 	.free =		param_free_charp,
@@ -208,8 +220,13 @@ static const struct zpool_ops zswap_zpool_ops = {
 
 static bool zswap_is_full(void)
 {
+<<<<<<< HEAD
 	return totalram_pages() * zswap_max_pool_percent / 100 <
 			DIV_ROUND_UP(zswap_pool_total_size, PAGE_SIZE);
+=======
+	return totalram_pages * zswap_max_pool_percent / 100 <
+		DIV_ROUND_UP(zswap_pool_total_size, PAGE_SIZE);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void zswap_update_total_size(void)
@@ -398,7 +415,11 @@ static int zswap_cpu_comp_prepare(unsigned int cpu, struct hlist_node *node)
 		return 0;
 
 	tfm = crypto_alloc_comp(pool->tfm_name, 0, 0);
+<<<<<<< HEAD
 	if (IS_ERR(tfm)) {
+=======
+	if (IS_ERR_OR_NULL(tfm)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		pr_err("could not alloc crypto comp %s : %ld\n",
 		       pool->tfm_name, PTR_ERR(tfm));
 		return -ENOMEM;

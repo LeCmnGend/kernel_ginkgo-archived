@@ -3608,7 +3608,11 @@ static int idt77252_init_one(struct pci_dev *pcidev,
 
 	if ((err = dma_set_mask_and_coherent(&pcidev->dev, DMA_BIT_MASK(32)))) {
 		printk("idt77252: can't enable DMA for PCI device at %s\n", pci_name(pcidev));
+<<<<<<< HEAD
 		goto err_out_disable_pdev;
+=======
+		return err;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	card = kzalloc(sizeof(struct idt77252_dev), GFP_KERNEL);

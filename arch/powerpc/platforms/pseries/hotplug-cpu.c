@@ -95,6 +95,12 @@ static void rtas_stop_self(void)
 
 	BUG_ON(rtas_stop_self_token == RTAS_UNKNOWN_SERVICE);
 
+<<<<<<< HEAD
+=======
+	printk("cpu %u (hwid %u) Ready to die...\n",
+	       smp_processor_id(), hard_smp_processor_id());
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	rtas_call_unlocked(&args, rtas_stop_self_token, 0, 1, NULL);
 
 	panic("Alas, I survived.\n");

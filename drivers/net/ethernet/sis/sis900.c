@@ -441,7 +441,11 @@ static int sis900_probe(struct pci_dev *pci_dev,
 #endif
 
 	/* setup various bits in PCI command register */
+<<<<<<< HEAD
 	ret = pcim_enable_device(pci_dev);
+=======
+	ret = pci_enable_device(pci_dev);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if(ret) return ret;
 
 	i = pci_set_dma_mask(pci_dev, DMA_BIT_MASK(32));
@@ -467,7 +471,11 @@ static int sis900_probe(struct pci_dev *pci_dev,
 	ioaddr = pci_iomap(pci_dev, 0, 0);
 	if (!ioaddr) {
 		ret = -ENOMEM;
+<<<<<<< HEAD
 		goto err_out;
+=======
+		goto err_out_cleardev;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	sis_priv = netdev_priv(net_dev);
@@ -575,6 +583,11 @@ err_unmap_tx:
 		sis_priv->tx_ring_dma);
 err_out_unmap:
 	pci_iounmap(pci_dev, ioaddr);
+<<<<<<< HEAD
+=======
+err_out_cleardev:
+	pci_release_regions(pci_dev);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  err_out:
 	free_netdev(net_dev);
 	return ret;
@@ -781,9 +794,16 @@ static u16 sis900_default_phy(struct net_device * net_dev)
 static void sis900_set_capability(struct net_device *net_dev, struct mii_phy *phy)
 {
 	u16 cap;
+<<<<<<< HEAD
 
 	mdio_read(net_dev, phy->phy_addr, MII_STATUS);
 	mdio_read(net_dev, phy->phy_addr, MII_STATUS);
+=======
+	u16 status;
+
+	status = mdio_read(net_dev, phy->phy_addr, MII_STATUS);
+	status = mdio_read(net_dev, phy->phy_addr, MII_STATUS);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	cap = MII_NWAY_CSMA_CD |
 		((phy->status & MII_STAT_CAN_TX_FDX)? MII_NWAY_TX_FDX:0) |
@@ -2421,6 +2441,10 @@ static void sis900_remove(struct pci_dev *pci_dev)
 		sis_priv->tx_ring_dma);
 	pci_iounmap(pci_dev, sis_priv->ioaddr);
 	free_netdev(net_dev);
+<<<<<<< HEAD
+=======
+	pci_release_regions(pci_dev);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 #ifdef CONFIG_PM

@@ -36,9 +36,12 @@
 #include <linux/slab.h>
 #include <linux/spinlock.h>
 #include <linux/uaccess.h>
+<<<<<<< HEAD
 #ifdef CONFIG_PSTORE_LAST_KMSG
 #include <linux/proc_fs.h>
 #endif
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #include "internal.h"
 
@@ -297,6 +300,7 @@ bool pstore_is_mounted(void)
 	return pstore_sb != NULL;
 }
 
+<<<<<<< HEAD
 #ifdef CONFIG_PSTORE_LAST_KMSG
 static char *console_buffer;
 static ssize_t console_bufsize;
@@ -315,6 +319,8 @@ static const struct file_operations last_kmsg_fops = {
 };
 #endif
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /*
  * Make a regular file in the root directory of our file system.
  * Load it up with "size" bytes of data from "buf".
@@ -421,6 +427,7 @@ int pstore_mkfile(struct dentry *root, struct pstore_record *record)
 	list_add(&private->list, &allpstore);
 	spin_unlock_irqrestore(&allpstore_lock, flags);
 
+<<<<<<< HEAD
 #ifdef CONFIG_PSTORE_LAST_KMSG
 	if (record->type == PSTORE_TYPE_CONSOLE) {
 		console_buffer = record->buf;
@@ -428,6 +435,8 @@ int pstore_mkfile(struct dentry *root, struct pstore_record *record)
 	}
 #endif
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 
 fail_private:
@@ -477,7 +486,11 @@ static int pstore_fill_super(struct super_block *sb, void *data, int silent)
 
 	inode = pstore_get_inode(sb);
 	if (inode) {
+<<<<<<< HEAD
 		inode->i_mode = S_IFDIR | 0755;
+=======
+		inode->i_mode = S_IFDIR | 0750;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		inode->i_op = &pstore_dir_inode_operations;
 		inode->i_fop = &simple_dir_operations;
 		inc_nlink(inode);
@@ -513,9 +526,12 @@ static struct file_system_type pstore_fs_type = {
 static int __init init_pstore_fs(void)
 {
 	int err;
+<<<<<<< HEAD
 #ifdef CONFIG_PSTORE_LAST_KMSG
 	struct proc_dir_entry *last_kmsg_entry = NULL;
 #endif
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* Create a convenient mount point for people to access pstore */
 	err = sysfs_create_mount_point(fs_kobj, "pstore");
@@ -523,6 +539,7 @@ static int __init init_pstore_fs(void)
 		goto out;
 
 	err = register_filesystem(&pstore_fs_type);
+<<<<<<< HEAD
 	if (err < 0) {
 		sysfs_remove_mount_point(fs_kobj, "pstore");
 		goto out;
@@ -536,6 +553,10 @@ static int __init init_pstore_fs(void)
 		goto out;
 	}
 #endif
+=======
+	if (err < 0)
+		sysfs_remove_mount_point(fs_kobj, "pstore");
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 out:
 	return err;

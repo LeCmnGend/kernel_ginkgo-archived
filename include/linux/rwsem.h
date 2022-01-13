@@ -20,6 +20,7 @@
 #include <linux/osq_lock.h>
 #endif
 
+<<<<<<< HEAD
 /*
  * For an uncontended rwsem, count and owner are the only fields a task
  * needs to touch when acquiring the rwsem. So they are put next to each
@@ -45,6 +46,27 @@ struct rw_semaphore {
 #endif
 	raw_spinlock_t wait_lock;
 	struct list_head wait_list;
+=======
+struct rw_semaphore;
+
+#ifdef CONFIG_RWSEM_GENERIC_SPINLOCK
+#include <linux/rwsem-spinlock.h> /* use a generic implementation */
+#define __RWSEM_INIT_COUNT(name)	.count = RWSEM_UNLOCKED_VALUE
+#else
+/* All arch specific implementations share the same struct */
+struct rw_semaphore {
+	atomic_long_t count;
+	struct list_head wait_list;
+	raw_spinlock_t wait_lock;
+#ifdef CONFIG_RWSEM_SPIN_ON_OWNER
+	struct optimistic_spin_queue osq; /* spinner MCS lock */
+	/*
+	 * Write owner. Used as a speculative check to see
+	 * if the owner is running on the cpu.
+	 */
+	struct task_struct *owner;
+#endif
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #ifdef CONFIG_DEBUG_LOCK_ALLOC
 	struct lockdep_map	dep_map;
 #endif
@@ -55,10 +77,27 @@ struct rw_semaphore {
 };
 
 /*
+<<<<<<< HEAD
  * Setting all bits of the owner field except bit 0 will indicate
  * that the rwsem is writer-owned with an unknown owner.
  */
 #define RWSEM_OWNER_UNKNOWN	(-2L)
+=======
+ * Setting bit 0 of the owner field with other non-zero bits will indicate
+ * that the rwsem is writer-owned with an unknown owner.
+ */
+#define RWSEM_OWNER_UNKNOWN	((struct task_struct *)-1L)
+
+extern struct rw_semaphore *rwsem_down_read_failed(struct rw_semaphore *sem);
+extern struct rw_semaphore *rwsem_down_read_failed_killable(struct rw_semaphore *sem);
+extern struct rw_semaphore *rwsem_down_write_failed(struct rw_semaphore *sem);
+extern struct rw_semaphore *rwsem_down_write_failed_killable(struct rw_semaphore *sem);
+extern struct rw_semaphore *rwsem_wake(struct rw_semaphore *);
+extern struct rw_semaphore *rwsem_downgrade_wake(struct rw_semaphore *sem);
+
+/* Include the arch specific part */
+#include <asm/rwsem.h>
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /* In all implementations count != 0 means locked */
 static inline int rwsem_is_locked(struct rw_semaphore *sem)
@@ -66,8 +105,13 @@ static inline int rwsem_is_locked(struct rw_semaphore *sem)
 	return atomic_long_read(&sem->count) != 0;
 }
 
+<<<<<<< HEAD
 #define RWSEM_UNLOCKED_VALUE		0L
 #define __RWSEM_INIT_COUNT(name)	.count = ATOMIC_LONG_INIT(RWSEM_UNLOCKED_VALUE)
+=======
+#define __RWSEM_INIT_COUNT(name)	.count = ATOMIC_LONG_INIT(RWSEM_UNLOCKED_VALUE)
+#endif
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /* Common initializer macros and functions */
 
@@ -78,7 +122,11 @@ static inline int rwsem_is_locked(struct rw_semaphore *sem)
 #endif
 
 #ifdef CONFIG_RWSEM_SPIN_ON_OWNER
+<<<<<<< HEAD
 #define __RWSEM_OPT_INIT(lockname) , .osq = OSQ_LOCK_UNLOCKED, .owner = ATOMIC_LONG_INIT(0)
+=======
+#define __RWSEM_OPT_INIT(lockname) , .osq = OSQ_LOCK_UNLOCKED, .owner = NULL
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #else
 #define __RWSEM_OPT_INIT(lockname)
 #endif
@@ -125,7 +173,10 @@ static inline int rwsem_is_contended(struct rw_semaphore *sem)
  * lock for reading
  */
 extern void down_read(struct rw_semaphore *sem);
+<<<<<<< HEAD
 extern int __must_check down_read_killable(struct rw_semaphore *sem);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /*
  * trylock for reading -- returns 1 if successful, 0 if contention

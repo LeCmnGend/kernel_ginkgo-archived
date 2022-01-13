@@ -62,6 +62,7 @@ static inline int virtio_net_hdr_to_skb(struct sk_buff *skb,
 			return -EINVAL;
 	}
 
+<<<<<<< HEAD
 	skb_reset_mac_header(skb);
 
 	if (hdr->flags & VIRTIO_NET_HDR_F_NEEDS_CSUM) {
@@ -71,12 +72,21 @@ static inline int virtio_net_hdr_to_skb(struct sk_buff *skb,
 
 		if (!pskb_may_pull(skb, needed))
 			return -EINVAL;
+=======
+	if (hdr->flags & VIRTIO_NET_HDR_F_NEEDS_CSUM) {
+		u16 start = __virtio16_to_cpu(little_endian, hdr->csum_start);
+		u16 off = __virtio16_to_cpu(little_endian, hdr->csum_offset);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		if (!skb_partial_csum_set(skb, start, off))
 			return -EINVAL;
 
 		p_off = skb_transport_offset(skb) + thlen;
+<<<<<<< HEAD
 		if (!pskb_may_pull(skb, p_off))
+=======
+		if (p_off > skb_headlen(skb))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			return -EINVAL;
 	} else {
 		/* gso packets without NEEDS_CSUM do not set transport_offset.
@@ -85,6 +95,7 @@ static inline int virtio_net_hdr_to_skb(struct sk_buff *skb,
 		if (gso_type && skb->network_header) {
 			struct flow_keys keys;
 
+<<<<<<< HEAD
 			if (!skb->protocol) {
 				__be16 protocol = dev_parse_header_protocol(skb);
 
@@ -92,6 +103,10 @@ static inline int virtio_net_hdr_to_skb(struct sk_buff *skb,
 				if (protocol && protocol != skb->protocol)
 					return -EINVAL;
 			}
+=======
+			if (!skb->protocol)
+				virtio_net_hdr_set_proto(skb, hdr);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 retry:
 			if (!skb_flow_dissect_flow_keys(skb, &keys, 0)) {
 				/* UFO does not specify ipv4 or 6: try both */
@@ -104,14 +119,22 @@ retry:
 			}
 
 			p_off = keys.control.thoff + thlen;
+<<<<<<< HEAD
 			if (!pskb_may_pull(skb, p_off) ||
+=======
+			if (p_off > skb_headlen(skb) ||
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			    keys.basic.ip_proto != ip_proto)
 				return -EINVAL;
 
 			skb_set_transport_header(skb, keys.control.thoff);
 		} else if (gso_type) {
 			p_off = thlen;
+<<<<<<< HEAD
 			if (!pskb_may_pull(skb, p_off))
+=======
+			if (p_off > skb_headlen(skb))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				return -EINVAL;
 		}
 	}

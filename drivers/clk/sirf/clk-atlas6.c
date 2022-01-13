@@ -136,7 +136,11 @@ static void __init atlas6_clk_init(struct device_node *np)
 
 	for (i = pll1; i < maxclk; i++) {
 		atlas6_clks[i] = clk_register(NULL, atlas6_clk_hw_array[i]);
+<<<<<<< HEAD
 		BUG_ON(IS_ERR(atlas6_clks[i]));
+=======
+		BUG_ON(!atlas6_clks[i]);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	clk_register_clkdev(atlas6_clks[cpu], NULL, "cpu");
 	clk_register_clkdev(atlas6_clks[io],  NULL, "io");

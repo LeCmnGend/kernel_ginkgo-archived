@@ -436,7 +436,10 @@ static void hugetlb_free_pud_range(struct mmu_gather *tlb, pgd_t *pgd,
 	pud = pud_offset(pgd, start);
 	pgd_clear(pgd);
 	pud_free_tlb(tlb, pud, start);
+<<<<<<< HEAD
 	mm_dec_nr_puds(tlb->mm);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /*

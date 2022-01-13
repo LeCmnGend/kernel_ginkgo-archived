@@ -104,7 +104,11 @@ static acpi_status acpi_ged_request_interrupt(struct acpi_resource *ares,
 
 	switch (gsi) {
 	case 0 ... 255:
+<<<<<<< HEAD
 		sprintf(ev_name, "_%c%02X",
+=======
+		sprintf(ev_name, "_%c%02hhX",
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			trigger == ACPI_EDGE_SENSITIVE ? 'E' : 'L', gsi);
 
 		if (ACPI_SUCCESS(acpi_get_handle(handle, ev_name, &evt_handle)))

@@ -279,8 +279,12 @@ int kprobe_handler(struct pt_regs *regs)
 	if (user_mode(regs))
 		return 0;
 
+<<<<<<< HEAD
 	if (!IS_ENABLED(CONFIG_BOOKE) &&
 	    (!(regs->msr & MSR_IR) || !(regs->msr & MSR_DR)))
+=======
+	if (!(regs->msr & MSR_IR) || !(regs->msr & MSR_DR))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return 0;
 
 	/*

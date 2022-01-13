@@ -898,11 +898,18 @@ static int octeon_cf_probe(struct platform_device *pdev)
 					return -EINVAL;
 				}
 
+<<<<<<< HEAD
 				i = platform_get_irq(dma_dev, 0);
 				if (i > 0) {
 					irq = i;
 					irq_handler = octeon_cf_interrupt;
 				}
+=======
+				irq_handler = octeon_cf_interrupt;
+				i = platform_get_irq(dma_dev, 0);
+				if (i > 0)
+					irq = i;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			}
 			of_node_put(dma_node);
 		}

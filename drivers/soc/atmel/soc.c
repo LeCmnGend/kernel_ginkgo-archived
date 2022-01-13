@@ -246,6 +246,7 @@ struct soc_device * __init at91_soc_init(const struct at91_soc *socs)
 	return soc_dev;
 }
 
+<<<<<<< HEAD
 static const struct of_device_id at91_soc_allowed_list[] __initconst = {
 	{ .compatible = "atmel,at91rm9200", },
 	{ .compatible = "atmel,at91sam9", },
@@ -261,6 +262,10 @@ static int __init atmel_soc_device_init(void)
 	if (!of_match_node(at91_soc_allowed_list, np))
 		return 0;
 
+=======
+static int __init atmel_soc_device_init(void)
+{
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	at91_soc_init(socs);
 
 	return 0;

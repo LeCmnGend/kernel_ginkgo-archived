@@ -510,8 +510,15 @@ int snd_card_disconnect(struct snd_card *card)
 		return 0;
 	}
 	card->shutdown = 1;
+<<<<<<< HEAD
 
 	/* replace file->f_op with special dummy operations */
+=======
+	spin_unlock(&card->files_lock);
+
+	/* replace file->f_op with special dummy operations */
+	spin_lock(&card->files_lock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	list_for_each_entry(mfile, &card->files_list, list) {
 		/* it's critical part, use endless loop */
 		/* we have no room to fail */

@@ -870,12 +870,15 @@ static void decode_data(struct sixpack *sp, unsigned char inbyte)
 		return;
 	}
 
+<<<<<<< HEAD
 	if (sp->rx_count_cooked + 2 >= sizeof(sp->cooked_buf)) {
 		pr_err("6pack: cooked buffer overrun, data loss\n");
 		sp->rx_count = 0;
 		return;
 	}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	buf = sp->raw_buf;
 	sp->cooked_buf[sp->rx_count_cooked++] =
 		buf[0] | ((buf[1] << 2) & 0xc0);

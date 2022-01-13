@@ -21,15 +21,22 @@
 #define __ASM_ATOMIC_H
 
 #include <linux/compiler.h>
+<<<<<<< HEAD
 #include <linux/stringify.h>
 #include <linux/types.h>
 
 #include <asm/barrier.h>
 #include <asm/brk-imm.h>
+=======
+#include <linux/types.h>
+
+#include <asm/barrier.h>
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <asm/lse.h>
 
 #ifdef __KERNEL__
 
+<<<<<<< HEAD
 /*
  * To avoid having to allocate registers that pass the counter address and
  * address of the call site to the overflow handler, encode the register and
@@ -52,6 +59,8 @@
 #define REFCOUNT_PRE_CHECK_ZERO(reg)	"ccmp " #reg ", wzr, #8, pl\n"
 #define REFCOUNT_PRE_CHECK_NONE(reg)
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define __ARM64_IN_ATOMIC_IMPL
 
 #if defined(CONFIG_ARM64_LSE_ATOMICS) && defined(CONFIG_AS_LSE)

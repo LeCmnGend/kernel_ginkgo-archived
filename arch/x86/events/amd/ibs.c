@@ -89,7 +89,10 @@ struct perf_ibs {
 	u64				max_period;
 	unsigned long			offset_mask[1];
 	int				offset_max;
+<<<<<<< HEAD
 	unsigned int			fetch_count_reset_broken : 1;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct cpu_perf_ibs __percpu	*pcpu;
 
 	struct attribute		**format_attrs;
@@ -347,6 +350,7 @@ static u64 get_ibs_op_count(u64 config)
 {
 	u64 count = 0;
 
+<<<<<<< HEAD
 	/*
 	 * If the internal 27-bit counter rolled over, the count is MaxCnt
 	 * and the lower 7 bits of CurCnt are randomized.
@@ -356,6 +360,13 @@ static u64 get_ibs_op_count(u64 config)
 		count = (config & IBS_OP_MAX_CNT) << 4;
 	else if (ibs_caps & IBS_CAPS_RDWROPCNT)
 		count = (config & IBS_OP_CUR_CNT) >> 32;
+=======
+	if (config & IBS_OP_VAL)
+		count += (config & IBS_OP_MAX_CNT) << 4; /* cnt rolled over */
+
+	if (ibs_caps & IBS_CAPS_RDWROPCNT)
+		count += (config & IBS_OP_CUR_CNT) >> 32;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return count;
 }
@@ -380,12 +391,16 @@ perf_ibs_event_update(struct perf_ibs *perf_ibs, struct perf_event *event,
 static inline void perf_ibs_enable_event(struct perf_ibs *perf_ibs,
 					 struct hw_perf_event *hwc, u64 config)
 {
+<<<<<<< HEAD
 	u64 tmp = hwc->config | config;
 
 	if (perf_ibs->fetch_count_reset_broken)
 		wrmsrl(hwc->config_base, tmp & ~perf_ibs->enable_mask);
 
 	wrmsrl(hwc->config_base, tmp | perf_ibs->enable_mask);
+=======
+	wrmsrl(hwc->config_base, hwc->config | config | perf_ibs->enable_mask);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /*
@@ -647,6 +662,7 @@ fail:
 				       perf_ibs->offset_max,
 				       offset + 1);
 	} while (offset < offset_max);
+<<<<<<< HEAD
 	/*
 	 * Read IbsBrTarget, IbsOpData4, and IbsExtdCtl separately
 	 * depending on their availability.
@@ -665,6 +681,20 @@ fail:
 		}
 		if (perf_ibs == &perf_ibs_fetch && (ibs_caps & IBS_CAPS_FETCHCTLEXTD)) {
 			rdmsrl(MSR_AMD64_ICIBSEXTDCTL, *buf++);
+=======
+	if (event->attr.sample_type & PERF_SAMPLE_RAW) {
+		/*
+		 * Read IbsBrTarget and IbsOpData4 separately
+		 * depending on their availability.
+		 * Can't add to offset_max as they are staggered
+		 */
+		if (ibs_caps & IBS_CAPS_BRNTRGT) {
+			rdmsrl(MSR_AMD64_IBSBRTARGET, *buf++);
+			size++;
+		}
+		if (ibs_caps & IBS_CAPS_OPDATA4) {
+			rdmsrl(MSR_AMD64_IBSOPDATA4, *buf++);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			size++;
 		}
 	}
@@ -760,6 +790,7 @@ static __init void perf_event_ibs_init(void)
 {
 	struct attribute **attr = ibs_op_format_attrs;
 
+<<<<<<< HEAD
 	/*
 	 * Some chips fail to reset the fetch count when it is written; instead
 	 * they need a 0-1 transition of IbsFetchEn.
@@ -767,6 +798,8 @@ static __init void perf_event_ibs_init(void)
 	if (boot_cpu_data.x86 >= 0x16 && boot_cpu_data.x86 <= 0x18)
 		perf_ibs_fetch.fetch_count_reset_broken = 1;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	perf_ibs_pmu_init(&perf_ibs_fetch, "ibs_fetch");
 
 	if (ibs_caps & IBS_CAPS_OPCNT) {

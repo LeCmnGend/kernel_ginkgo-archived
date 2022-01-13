@@ -11,6 +11,7 @@
 #include <linux/bitops.h>
 
 /**
+<<<<<<< HEAD
  * int_sqrt - computes the integer square root
  * @x: integer of which to calculate the sqrt
  *
@@ -21,10 +22,21 @@ inline unsigned long int_sqrt(unsigned long x)
 	register unsigned long tmp;
 	register unsigned long place;
 	register unsigned long root = 0;
+=======
+ * int_sqrt - rough approximation to sqrt
+ * @x: integer of which to calculate the sqrt
+ *
+ * A very rough approximation to the sqrt() function.
+ */
+unsigned long int_sqrt(unsigned long x)
+{
+	unsigned long b, m, y = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (x <= 1)
 		return x;
 
+<<<<<<< HEAD
 	place = 1UL << (BITS_PER_LONG - 2);
 
 	do{
@@ -61,6 +73,9 @@ u32 int_sqrt64(u64 x)
 		return int_sqrt((unsigned long) x);
 
 	m = 1ULL << ((fls64(x) - 1) & ~1ULL);
+=======
+	m = 1UL << (__fls(x) & ~1UL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	while (m != 0) {
 		b = y + m;
 		y >>= 1;
@@ -74,5 +89,9 @@ u32 int_sqrt64(u64 x)
 
 	return y;
 }
+<<<<<<< HEAD
 EXPORT_SYMBOL(int_sqrt64);
 #endif
+=======
+EXPORT_SYMBOL(int_sqrt);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388

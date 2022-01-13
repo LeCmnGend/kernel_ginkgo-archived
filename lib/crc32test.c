@@ -683,6 +683,10 @@ static int __init crc32c_test(void)
 
 	/* reduce OS noise */
 	local_irq_save(flags);
+<<<<<<< HEAD
+=======
+	local_irq_disable();
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	nsec = ktime_get_ns();
 	for (i = 0; i < 100; i++) {
@@ -693,6 +697,10 @@ static int __init crc32c_test(void)
 	nsec = ktime_get_ns() - nsec;
 
 	local_irq_restore(flags);
+<<<<<<< HEAD
+=======
+	local_irq_enable();
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	pr_info("crc32c: CRC_LE_BITS = %d\n", CRC_LE_BITS);
 
@@ -766,6 +774,10 @@ static int __init crc32_test(void)
 
 	/* reduce OS noise */
 	local_irq_save(flags);
+<<<<<<< HEAD
+=======
+	local_irq_disable();
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	nsec = ktime_get_ns();
 	for (i = 0; i < 100; i++) {
@@ -780,6 +792,10 @@ static int __init crc32_test(void)
 	nsec = ktime_get_ns() - nsec;
 
 	local_irq_restore(flags);
+<<<<<<< HEAD
+=======
+	local_irq_enable();
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	pr_info("crc32: CRC_LE_BITS = %d, CRC_BE BITS = %d\n",
 		 CRC_LE_BITS, CRC_BE_BITS);

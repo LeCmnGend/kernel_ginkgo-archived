@@ -76,10 +76,33 @@ static int scsi_dev_type_resume(struct device *dev,
 	const struct dev_pm_ops *pm = dev->driver ? dev->driver->pm : NULL;
 	int err = 0;
 
+<<<<<<< HEAD
 	if (cb == do_scsi_runtime_resume || pm_runtime_active(dev)) {
 		err = cb(dev, pm);
 		scsi_device_resume(to_scsi_device(dev));
 		dev_dbg(dev, "scsi resume: %d\n", err);
+=======
+	err = cb(dev, pm);
+	scsi_device_resume(to_scsi_device(dev));
+	dev_dbg(dev, "scsi resume: %d\n", err);
+
+	if (err == 0 && (cb != do_scsi_runtime_resume)) {
+		pm_runtime_disable(dev);
+		err = pm_runtime_set_active(dev);
+		pm_runtime_enable(dev);
+
+		if (!err && scsi_is_sdev_device(dev)) {
+			struct scsi_device *sdev = to_scsi_device(dev);
+
+			/*
+			 * If scsi device runtime PM is managed by block layer
+			 * then we should update request queue's runtime status
+			 * as well.
+			 */
+			if (sdev->request_queue->dev)
+				blk_post_runtime_resume(sdev->request_queue, 0);
+		}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	return err;
@@ -149,8 +172,16 @@ static int scsi_bus_resume_common(struct device *dev,
 		 */
 		if (strncmp(scsi_scan_type, "async", 5) != 0)
 			async_synchronize_full_domain(&scsi_sd_pm_domain);
+<<<<<<< HEAD
 	}
 
+=======
+	} else {
+		pm_runtime_disable(dev);
+		pm_runtime_set_active(dev);
+		pm_runtime_enable(dev);
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 }
 

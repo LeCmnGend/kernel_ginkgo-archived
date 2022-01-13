@@ -986,10 +986,15 @@ int cx25821_riscmem_alloc(struct pci_dev *pci,
 	__le32 *cpu;
 	dma_addr_t dma = 0;
 
+<<<<<<< HEAD
 	if (risc->cpu && risc->size < size) {
 		pci_free_consistent(pci, risc->size, risc->cpu, risc->dma);
 		risc->cpu = NULL;
 	}
+=======
+	if (NULL != risc->cpu && risc->size < size)
+		pci_free_consistent(pci, risc->size, risc->cpu, risc->dma);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (NULL == risc->cpu) {
 		cpu = pci_zalloc_consistent(pci, size, &dma);
 		if (NULL == cpu)

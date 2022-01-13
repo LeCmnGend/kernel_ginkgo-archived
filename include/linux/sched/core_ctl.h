@@ -1,5 +1,9 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2016, 2019, The Linux Foundation. All rights reserved.
+=======
+ * Copyright (c) 2016, 2018, The Linux Foundation. All rights reserved.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -14,6 +18,7 @@
 #ifndef __CORE_CTL_H
 #define __CORE_CTL_H
 
+<<<<<<< HEAD
 #define MAX_CPUS_PER_CLUSTER 6
 #define MAX_CLUSTERS 3
 
@@ -22,6 +27,11 @@ struct core_ctl_notif_data {
 	unsigned int coloc_load_pct;
 	unsigned int ta_util_pct[MAX_CLUSTERS];
 	unsigned int cur_cap_pct[MAX_CLUSTERS];
+=======
+struct core_ctl_notif_data {
+	unsigned int nr_big;
+	unsigned int coloc_load_pct;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 #ifdef CONFIG_SCHED_CORE_CTL

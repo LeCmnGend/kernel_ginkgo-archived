@@ -2,7 +2,11 @@
 #ifndef _UAPI__LINUX_NETLINK_H
 #define _UAPI__LINUX_NETLINK_H
 
+<<<<<<< HEAD
 #include <linux/const.h>
+=======
+#include <linux/kernel.h>
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <linux/socket.h> /* for __kernel_sa_family_t */
 #include <linux/types.h>
 

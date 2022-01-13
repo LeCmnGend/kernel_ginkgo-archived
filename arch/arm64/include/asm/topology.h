@@ -10,7 +10,10 @@ struct cpu_topology {
 	int cluster_id;
 	cpumask_t thread_sibling;
 	cpumask_t core_sibling;
+<<<<<<< HEAD
 	cpumask_t core_possible_sibling;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 extern struct cpu_topology cpu_topology[NR_CPUS];
@@ -19,13 +22,19 @@ extern struct cpu_topology cpu_topology[NR_CPUS];
 #define topology_core_id(cpu)		(cpu_topology[cpu].core_id)
 #define topology_core_cpumask(cpu)	(&cpu_topology[cpu].core_sibling)
 #define topology_sibling_cpumask(cpu)	(&cpu_topology[cpu].thread_sibling)
+<<<<<<< HEAD
 #define topology_possible_sibling_cpumask(cpu)		\
 				(&cpu_topology[cpu].core_possible_sibling)
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 void init_cpu_topology(void);
 void store_cpu_topology(unsigned int cpuid);
 const struct cpumask *cpu_coregroup_mask(int cpu);
+<<<<<<< HEAD
 const struct cpumask *cpu_possible_coregroup_mask(int cpu);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #ifdef CONFIG_NUMA
 

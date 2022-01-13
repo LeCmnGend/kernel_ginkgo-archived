@@ -8,11 +8,14 @@ ccflags-$(CONFIG_ACPI_DEBUG)	+= -DACPI_DEBUG_OUTPUT
 #
 # ACPI Boot-Time Table Parsing
 #
+<<<<<<< HEAD
 ifeq ($(CONFIG_ACPI_CUSTOM_DSDT),y)
 tables.o: $(src)/../../include/$(subst $\",,$(CONFIG_ACPI_CUSTOM_DSDT_FILE)) ;
 
 endif
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 obj-$(CONFIG_ACPI)		+= tables.o
 obj-$(CONFIG_X86)		+= blacklist.o
 

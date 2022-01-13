@@ -1028,7 +1028,11 @@ static ssize_t tx_timeout_show(struct netdev_queue *queue, char *buf)
 	trans_timeout = queue->trans_timeout;
 	spin_unlock_irq(&queue->_xmit_lock);
 
+<<<<<<< HEAD
 	return sprintf(buf, fmt_ulong, trans_timeout);
+=======
+	return sprintf(buf, "%lu", trans_timeout);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static unsigned int get_netdev_queue_index(struct netdev_queue *queue)
@@ -1207,14 +1211,20 @@ static const struct attribute_group dql_group = {
 static ssize_t xps_cpus_show(struct netdev_queue *queue,
 			     char *buf)
 {
+<<<<<<< HEAD
 	int cpu, len, ret, num_tc = 1, tc = 0;
 	struct net_device *dev = queue->dev;
+=======
+	struct net_device *dev = queue->dev;
+	int cpu, len, num_tc = 1, tc = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct xps_dev_maps *dev_maps;
 	cpumask_var_t mask;
 	unsigned long index;
 
 	index = get_netdev_queue_index(queue);
 
+<<<<<<< HEAD
 	if (!rtnl_trylock())
 		return restart_syscall();
 
@@ -1231,6 +1241,17 @@ static ssize_t xps_cpus_show(struct netdev_queue *queue,
 		ret = -ENOMEM;
 		goto err_rtnl_unlock;
 	}
+=======
+	if (dev->num_tc) {
+		num_tc = dev->num_tc;
+		tc = netdev_txq_to_tc(dev, index);
+		if (tc < 0)
+			return -EINVAL;
+	}
+
+	if (!zalloc_cpumask_var(&mask, GFP_KERNEL))
+		return -ENOMEM;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	rcu_read_lock();
 	dev_maps = rcu_dereference(dev->xps_maps);
@@ -1253,6 +1274,7 @@ static ssize_t xps_cpus_show(struct netdev_queue *queue,
 	}
 	rcu_read_unlock();
 
+<<<<<<< HEAD
 	rtnl_unlock();
 
 	len = snprintf(buf, PAGE_SIZE, "%*pb\n", cpumask_pr_args(mask));
@@ -1262,6 +1284,11 @@ static ssize_t xps_cpus_show(struct netdev_queue *queue,
 err_rtnl_unlock:
 	rtnl_unlock();
 	return ret;
+=======
+	len = snprintf(buf, PAGE_SIZE, "%*pb\n", cpumask_pr_args(mask));
+	free_cpumask_var(mask);
+	return len < PAGE_SIZE ? len : -EINVAL;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static ssize_t xps_cpus_store(struct netdev_queue *queue,
@@ -1286,6 +1313,7 @@ static ssize_t xps_cpus_store(struct netdev_queue *queue,
 		return err;
 	}
 
+<<<<<<< HEAD
 	if (!rtnl_trylock()) {
 		free_cpumask_var(mask);
 		return restart_syscall();
@@ -1293,6 +1321,9 @@ static ssize_t xps_cpus_store(struct netdev_queue *queue,
 
 	err = netif_set_xps_queue(dev, mask, index);
 	rtnl_unlock();
+=======
+	err = netif_set_xps_queue(dev, mask, index);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	free_cpumask_var(mask);
 

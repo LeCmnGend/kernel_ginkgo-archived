@@ -734,7 +734,11 @@ static int ubifs_link(struct dentry *old_dentry, struct inode *dir,
 
 	if (ubifs_crypt_is_encrypted(dir) &&
 	    !fscrypt_has_permitted_context(dir, inode))
+<<<<<<< HEAD
 		return -EXDEV;
+=======
+		return -EPERM;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	err = fscrypt_setup_filename(dir, &dentry->d_name, 0, &nm);
 	if (err)
@@ -1313,7 +1317,11 @@ static int do_rename(struct inode *old_dir, struct dentry *old_dentry,
 	if (old_dir != new_dir) {
 		if (ubifs_crypt_is_encrypted(new_dir) &&
 		    !fscrypt_has_permitted_context(new_dir, old_inode))
+<<<<<<< HEAD
 			return -EXDEV;
+=======
+			return -EPERM;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	if (unlink && is_dir) {
@@ -1364,10 +1372,14 @@ static int do_rename(struct inode *old_dir, struct dentry *old_dentry,
 			goto out_release;
 		}
 
+<<<<<<< HEAD
 		spin_lock(&whiteout->i_lock);
 		whiteout->i_state |= I_LINKABLE;
 		spin_unlock(&whiteout->i_lock);
 
+=======
+		whiteout->i_state |= I_LINKABLE;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		whiteout_ui = ubifs_inode(whiteout);
 		whiteout_ui->data = dev;
 		whiteout_ui->data_len = ubifs_encode_dev(dev, MKDEV(0, 0));
@@ -1460,11 +1472,15 @@ static int do_rename(struct inode *old_dir, struct dentry *old_dentry,
 
 		inc_nlink(whiteout);
 		mark_inode_dirty(whiteout);
+<<<<<<< HEAD
 
 		spin_lock(&whiteout->i_lock);
 		whiteout->i_state &= ~I_LINKABLE;
 		spin_unlock(&whiteout->i_lock);
 
+=======
+		whiteout->i_state &= ~I_LINKABLE;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		iput(whiteout);
 	}
 
@@ -1542,7 +1558,11 @@ static int ubifs_xrename(struct inode *old_dir, struct dentry *old_dentry,
 	    (old_dir != new_dir) &&
 	    (!fscrypt_has_permitted_context(new_dir, fst_inode) ||
 	     !fscrypt_has_permitted_context(old_dir, snd_inode)))
+<<<<<<< HEAD
 		return -EXDEV;
+=======
+		return -EPERM;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	err = fscrypt_setup_filename(old_dir, &old_dentry->d_name, 0, &fst_nm);
 	if (err)

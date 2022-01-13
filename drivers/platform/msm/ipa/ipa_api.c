@@ -111,6 +111,7 @@ static bool running_emulation;
 static enum ipa_hw_type ipa_api_hw_type;
 static struct ipa_api_controller *ipa_api_ctrl;
 
+<<<<<<< HEAD
 #define MAX_CPY_BUFF_SZ		4096
 unsigned long
 ipa_safe_copy_from_user(char *dst, const char __user *buf, size_t count)
@@ -137,6 +138,8 @@ end:
 	return missing;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 const char *ipa_clients_strings[IPA_CLIENT_MAX] = {
 	__stringify(IPA_CLIENT_HSIC1_PROD),
 	__stringify(IPA_CLIENT_HSIC1_CONS),
@@ -2653,7 +2656,11 @@ bool ipa_has_open_aggr_frame(enum ipa_client_type client)
 
 int ipa_mhi_resume_channels_internal(enum ipa_client_type client,
 		bool LPTransitionRejected, bool brstmode_enabled,
+<<<<<<< HEAD
 		union gsi_channel_scratch ch_scratch, u8 index,
+=======
+		union __packed gsi_channel_scratch ch_scratch, u8 index,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		bool is_switch_to_dbmode)
 {
 	int ret;
@@ -3926,19 +3933,30 @@ static int ipa_pci_probe(
 	if (result && result != -EPROBE_DEFER)
 		pr_err("ipa: ipa3_pci_drv_probe failed\n");
 
+<<<<<<< HEAD
 #ifdef CONFIG_IPA_EMULATION
 	if (running_emulation)
 		ipa_ut_module_init();
 #endif
+=======
+	if (running_emulation)
+		ipa_ut_module_init();
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return result;
 }
 
 static void ipa_pci_remove(struct pci_dev *pci_dev)
 {
+<<<<<<< HEAD
 #ifdef CONFIG_IPA_EMULATION
 	if (running_emulation)
 		ipa_ut_module_exit();
 #endif
+=======
+	if (running_emulation)
+		ipa_ut_module_exit();
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void ipa_pci_shutdown(struct pci_dev *pci_dev)

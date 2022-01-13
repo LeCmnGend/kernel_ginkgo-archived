@@ -2378,12 +2378,16 @@ static int tegra_sor_init(struct host1x_client *client)
 		if (err < 0) {
 			dev_err(sor->dev, "failed to deassert SOR reset: %d\n",
 				err);
+<<<<<<< HEAD
 			clk_disable_unprepare(sor->clk);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			return err;
 		}
 	}
 
 	err = clk_prepare_enable(sor->clk_safe);
+<<<<<<< HEAD
 	if (err < 0) {
 		clk_disable_unprepare(sor->clk);
 		return err;
@@ -2395,6 +2399,14 @@ static int tegra_sor_init(struct host1x_client *client)
 		clk_disable_unprepare(sor->clk);
 		return err;
 	}
+=======
+	if (err < 0)
+		return err;
+
+	err = clk_prepare_enable(sor->clk_dp);
+	if (err < 0)
+		return err;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return 0;
 }

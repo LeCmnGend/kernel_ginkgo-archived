@@ -801,12 +801,19 @@ long amdgpu_drm_ioctl(struct file *filp,
 	dev = file_priv->minor->dev;
 	ret = pm_runtime_get_sync(dev->dev);
 	if (ret < 0)
+<<<<<<< HEAD
 		goto out;
+=======
+		return ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	ret = drm_ioctl(filp, cmd, arg);
 
 	pm_runtime_mark_last_busy(dev->dev);
+<<<<<<< HEAD
 out:
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	pm_runtime_put_autosuspend(dev->dev);
 	return ret;
 }

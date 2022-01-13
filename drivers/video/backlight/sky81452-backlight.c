@@ -207,7 +207,10 @@ static struct sky81452_bl_platform_data *sky81452_bl_parse_dt(
 					num_entry);
 		if (ret < 0) {
 			dev_err(dev, "led-sources node is invalid.\n");
+<<<<<<< HEAD
 			of_node_put(np);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			return ERR_PTR(-EINVAL);
 		}
 

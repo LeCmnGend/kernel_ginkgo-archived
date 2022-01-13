@@ -206,7 +206,11 @@ spurious_8259A_irq:
 		 * lets ACK and report it. [once per IRQ]
 		 */
 		if (!(spurious_irq_mask & irqmask)) {
+<<<<<<< HEAD
 			printk_deferred(KERN_DEBUG
+=======
+			printk(KERN_DEBUG
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			       "spurious 8259A interrupt: IRQ%d.\n", irq);
 			spurious_irq_mask |= irqmask;
 		}

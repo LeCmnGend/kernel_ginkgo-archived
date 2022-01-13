@@ -84,7 +84,10 @@ static void event_handler(struct work_struct *work)
 	while ((ud = get_event()) != NULL) {
 		usbip_dbg_eh("pending event %lx\n", ud->event);
 
+<<<<<<< HEAD
 		mutex_lock(&ud->sysfs_lock);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		/*
 		 * NOTE: shutdown must come first.
 		 * Shutdown the device.
@@ -105,7 +108,10 @@ static void event_handler(struct work_struct *work)
 			ud->eh_ops.unusable(ud);
 			unset_event(ud, USBIP_EH_UNUSABLE);
 		}
+<<<<<<< HEAD
 		mutex_unlock(&ud->sysfs_lock);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		wake_up(&ud->eh_waitq);
 	}

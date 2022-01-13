@@ -1225,13 +1225,20 @@ SYSCALL_DEFINE1(uname, struct old_utsname __user *, name)
 
 SYSCALL_DEFINE1(olduname, struct oldold_utsname __user *, name)
 {
+<<<<<<< HEAD
 	struct oldold_utsname tmp;
+=======
+	struct oldold_utsname tmp = {};
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (!name)
 		return -EFAULT;
 
+<<<<<<< HEAD
 	memset(&tmp, 0, sizeof(tmp));
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	down_read(&uts_sem);
 	memcpy(&tmp.sysname, &utsname()->sysname, __OLD_UTS_LEN);
 	memcpy(&tmp.nodename, &utsname()->nodename, __OLD_UTS_LEN);

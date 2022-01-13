@@ -42,8 +42,11 @@
 
 /* STM32F7 I2C control 1 */
 #define STM32F7_I2C_CR1_ANFOFF			BIT(12)
+<<<<<<< HEAD
 #define STM32F7_I2C_CR1_DNF_MASK		GENMASK(11, 8)
 #define STM32F7_I2C_CR1_DNF(n)			(((n) & 0xf) << 8)
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define STM32F7_I2C_CR1_ERRIE			BIT(7)
 #define STM32F7_I2C_CR1_TCIE			BIT(6)
 #define STM32F7_I2C_CR1_STOPIE			BIT(5)
@@ -97,7 +100,11 @@
 #define STM32F7_I2C_MAX_LEN			0xff
 
 #define STM32F7_I2C_DNF_DEFAULT			0
+<<<<<<< HEAD
 #define STM32F7_I2C_DNF_MAX			15
+=======
+#define STM32F7_I2C_DNF_MAX			16
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #define STM32F7_I2C_ANALOG_FILTER_ENABLE	1
 #define STM32F7_I2C_ANALOG_FILTER_DELAY_MIN	50	/* ns */
@@ -545,6 +552,7 @@ static void stm32f7_i2c_hw_config(struct stm32f7_i2c_dev *i2c_dev)
 	else
 		stm32f7_i2c_set_bits(i2c_dev->base + STM32F7_I2C_CR1,
 				     STM32F7_I2C_CR1_ANFOFF);
+<<<<<<< HEAD
 
 	/* Program the Digital Filter */
 	stm32f7_i2c_clr_bits(i2c_dev->base + STM32F7_I2C_CR1,
@@ -552,6 +560,8 @@ static void stm32f7_i2c_hw_config(struct stm32f7_i2c_dev *i2c_dev)
 	stm32f7_i2c_set_bits(i2c_dev->base + STM32F7_I2C_CR1,
 			     STM32F7_I2C_CR1_DNF(i2c_dev->setup.dnf));
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	stm32f7_i2c_set_bits(i2c_dev->base + STM32F7_I2C_CR1,
 			     STM32F7_I2C_CR1_PE);
 }

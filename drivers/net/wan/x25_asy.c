@@ -183,7 +183,11 @@ static inline void x25_asy_unlock(struct x25_asy *sl)
 	netif_wake_queue(sl->dev);
 }
 
+<<<<<<< HEAD
 /* Send an LAPB frame to the LAPB module to process. */
+=======
+/* Send one completely decapsulated IP datagram to the IP layer. */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static void x25_asy_bump(struct x25_asy *sl)
 {
@@ -195,12 +199,20 @@ static void x25_asy_bump(struct x25_asy *sl)
 	count = sl->rcount;
 	dev->stats.rx_bytes += count;
 
+<<<<<<< HEAD
 	skb = dev_alloc_skb(count);
+=======
+	skb = dev_alloc_skb(count+1);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (skb == NULL) {
 		netdev_warn(sl->dev, "memory squeeze, dropping packet\n");
 		dev->stats.rx_dropped++;
 		return;
 	}
+<<<<<<< HEAD
+=======
+	skb_push(skb, 1);	/* LAPB internal control */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	skb_put_data(skb, sl->rbuff, count);
 	skb->protocol = x25_type_trans(skb, sl->dev);
 	err = lapb_data_received(skb->dev, skb);
@@ -208,6 +220,10 @@ static void x25_asy_bump(struct x25_asy *sl)
 		kfree_skb(skb);
 		printk(KERN_DEBUG "x25_asy: data received err - %d\n", err);
 	} else {
+<<<<<<< HEAD
+=======
+		netif_rx(skb);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		dev->stats.rx_packets++;
 	}
 }
@@ -353,12 +369,18 @@ static netdev_tx_t x25_asy_xmit(struct sk_buff *skb,
  */
 
 /*
+<<<<<<< HEAD
  *	Called when I frame data arrive. We add a pseudo header for upper
  *	layers and pass it to upper layers.
+=======
+ *	Called when I frame data arrives. We did the work above - throw it
+ *	at the net layer.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  */
 
 static int x25_asy_data_indication(struct net_device *dev, struct sk_buff *skb)
 {
+<<<<<<< HEAD
 	if (skb_cow(skb, 1)) {
 		kfree_skb(skb);
 		return NET_RX_DROP;
@@ -368,6 +390,8 @@ static int x25_asy_data_indication(struct net_device *dev, struct sk_buff *skb)
 
 	skb->protocol = x25_type_trans(skb, dev);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return netif_rx(skb);
 }
 
@@ -663,7 +687,11 @@ static void x25_asy_unesc(struct x25_asy *sl, unsigned char s)
 	switch (s) {
 	case X25_END:
 		if (!test_and_clear_bit(SLF_ERROR, &sl->flags) &&
+<<<<<<< HEAD
 		    sl->rcount >= 2)
+=======
+		    sl->rcount > 2)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			x25_asy_bump(sl);
 		clear_bit(SLF_ESCAPE, &sl->flags);
 		sl->rcount = 0;

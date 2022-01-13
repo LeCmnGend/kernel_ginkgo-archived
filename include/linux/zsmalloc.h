@@ -20,6 +20,10 @@
  * zsmalloc mapping modes
  *
  * NOTE: These only make a difference when a mapped object spans pages.
+<<<<<<< HEAD
+=======
+ * They also have no effect when PGTABLE_MAPPING is selected.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  */
 enum zs_mapmode {
 	ZS_MM_RW, /* normal read-write mapping */
@@ -35,7 +39,11 @@ enum zs_mapmode {
 
 struct zs_pool_stats {
 	/* How many pages were migrated (freed) */
+<<<<<<< HEAD
 	atomic_long_t pages_compacted;
+=======
+	unsigned long pages_compacted;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 struct zs_pool;

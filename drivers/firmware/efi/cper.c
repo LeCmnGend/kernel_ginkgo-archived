@@ -380,7 +380,12 @@ static int cper_dimm_err_location(struct cper_mem_err_compact *mem, char *msg)
 	if (!msg || !(mem->validation_bits & CPER_MEM_VALID_MODULE_HANDLE))
 		return 0;
 
+<<<<<<< HEAD
 	len = CPER_REC_LEN;
+=======
+	n = 0;
+	len = CPER_REC_LEN - 1;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	dmi_memdev_name(mem->mem_dev_handle, &bank, &device);
 	if (bank && device)
 		n = snprintf(msg, len, "DIMM location: %s %s ", bank, device);
@@ -389,6 +394,10 @@ static int cper_dimm_err_location(struct cper_mem_err_compact *mem, char *msg)
 			     "DIMM location: not present. DMI handle: 0x%.4x ",
 			     mem->mem_dev_handle);
 
+<<<<<<< HEAD
+=======
+	msg[n] = '\0';
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return n;
 }
 

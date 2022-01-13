@@ -840,10 +840,15 @@ nouveau_drm_open(struct drm_device *dev, struct drm_file *fpriv)
 
 	/* need to bring up power immediately if opening device */
 	ret = pm_runtime_get_sync(dev->dev);
+<<<<<<< HEAD
 	if (ret < 0 && ret != -EACCES) {
 		pm_runtime_put_autosuspend(dev->dev);
 		return ret;
 	}
+=======
+	if (ret < 0 && ret != -EACCES)
+		return ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	get_task_comm(tmpname, current);
 	snprintf(name, sizeof(name), "%s[%d]", tmpname, pid_nr(fpriv->pid));
@@ -932,10 +937,15 @@ nouveau_drm_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 	long ret;
 
 	ret = pm_runtime_get_sync(dev->dev);
+<<<<<<< HEAD
 	if (ret < 0 && ret != -EACCES) {
 		pm_runtime_put_autosuspend(dev->dev);
 		return ret;
 	}
+=======
+	if (ret < 0 && ret != -EACCES)
+		return ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	switch (_IOC_NR(cmd) - DRM_COMMAND_BASE) {
 	case DRM_NOUVEAU_NVIF:

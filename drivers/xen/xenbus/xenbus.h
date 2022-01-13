@@ -44,8 +44,11 @@ struct xen_bus_type {
 	int (*get_bus_id)(char bus_id[XEN_BUS_ID_SIZE], const char *nodename);
 	int (*probe)(struct xen_bus_type *bus, const char *type,
 		     const char *dir);
+<<<<<<< HEAD
 	bool (*otherend_will_handle)(struct xenbus_watch *watch,
 				     const char *path, const char *token);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	void (*otherend_changed)(struct xenbus_watch *watch, const char *path,
 				 const char *token);
 	struct bus_type bus;

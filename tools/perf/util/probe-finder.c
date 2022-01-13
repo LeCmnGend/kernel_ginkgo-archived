@@ -1354,7 +1354,11 @@ int debuginfo__find_trace_events(struct debuginfo *dbg,
 	tf.ntevs = 0;
 
 	ret = debuginfo__find_probes(dbg, &tf.pf);
+<<<<<<< HEAD
 	if (ret < 0 || tf.ntevs == 0) {
+=======
+	if (ret < 0) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		for (i = 0; i < tf.ntevs; i++)
 			clear_probe_trace_event(&tf.tevs[i]);
 		zfree(tevs);

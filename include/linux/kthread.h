@@ -31,9 +31,12 @@ struct task_struct *kthread_create_on_cpu(int (*threadfn)(void *data),
 					  unsigned int cpu,
 					  const char *namefmt);
 
+<<<<<<< HEAD
 void kthread_set_per_cpu(struct task_struct *k, int cpu);
 bool kthread_is_per_cpu(struct task_struct *k);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /**
  * kthread_run - create and wake a thread.
  * @threadfn: the function to run until signal_pending(current).
@@ -52,6 +55,7 @@ bool kthread_is_per_cpu(struct task_struct *k);
 	__k;								   \
 })
 
+<<<<<<< HEAD
 /**
  * kthread_run_perf_critical - create and wake a performance-critical thread.
  *
@@ -69,6 +73,8 @@ bool kthread_is_per_cpu(struct task_struct *k);
 	__k;								   \
 })
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 void free_kthread_struct(struct task_struct *k);
 void kthread_bind(struct task_struct *k, unsigned int cpu);
 void kthread_bind_mask(struct task_struct *k, const struct cpumask *mask);
@@ -190,6 +196,7 @@ extern void __kthread_init_worker(struct kthread_worker *worker,
 			      TIMER_IRQSAFE);				\
 	} while (0)
 
+<<<<<<< HEAD
 /*
  * Returns true when the work could not be queued at the moment.
  * It happens when it is already pending in a worker list
@@ -203,6 +210,8 @@ static inline bool queuing_blocked(struct kthread_worker *worker,
         return !list_empty(&work->node) || work->canceling;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 int kthread_worker_fn(void *worker_ptr);
 
 __printf(2, 3)

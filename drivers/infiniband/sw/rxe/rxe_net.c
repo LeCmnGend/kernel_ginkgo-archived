@@ -269,8 +269,15 @@ static struct socket *rxe_setup_udp_tunnel(struct net *net, __be16 port,
 
 	/* Create UDP socket */
 	err = udp_sock_create(net, &udp_cfg, &sock);
+<<<<<<< HEAD
 	if (err < 0)
 		return ERR_PTR(err);
+=======
+	if (err < 0) {
+		pr_err("failed to create udp socket. err = %d\n", err);
+		return ERR_PTR(err);
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	tnl_cfg.encap_type = 1;
 	tnl_cfg.encap_rcv = rxe_udp_encap_recv;
@@ -694,12 +701,15 @@ static int rxe_net_ipv6_init(void)
 
 	recv_sockets.sk6 = rxe_setup_udp_tunnel(&init_net,
 						htons(ROCE_V2_UDP_DPORT), true);
+<<<<<<< HEAD
 	if (PTR_ERR(recv_sockets.sk6) == -EAFNOSUPPORT) {
 		recv_sockets.sk6 = NULL;
 		pr_warn("IPv6 is not supported, can not create a UDPv6 socket\n");
 		return 0;
 	}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (IS_ERR(recv_sockets.sk6)) {
 		recv_sockets.sk6 = NULL;
 		pr_err("Failed to create IPv6 UDP tunnel\n");

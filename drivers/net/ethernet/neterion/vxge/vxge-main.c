@@ -3537,13 +3537,22 @@ static void vxge_device_unregister(struct __vxge_hw_device *hldev)
 
 	kfree(vdev->vpaths);
 
+<<<<<<< HEAD
+=======
+	/* we are safe to free it now */
+	free_netdev(dev);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	vxge_debug_init(vdev->level_trace, "%s: ethernet device unregistered",
 			buf);
 	vxge_debug_entryexit(vdev->level_trace,	"%s: %s:%d  Exiting...", buf,
 			     __func__, __LINE__);
+<<<<<<< HEAD
 
 	/* we are safe to free it now */
 	free_netdev(dev);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /*

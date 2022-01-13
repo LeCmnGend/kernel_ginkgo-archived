@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #!/usr/bin/env python3
+=======
+#!/usr/bin/python3
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 """
 tdc_batch.py - a script to generate TC batch file

@@ -1055,7 +1055,11 @@ int iommu_take_ownership(struct iommu_table *tbl)
 
 	spin_lock_irqsave(&tbl->large_pool.lock, flags);
 	for (i = 0; i < tbl->nr_pools; i++)
+<<<<<<< HEAD
 		spin_lock_nest_lock(&tbl->pools[i].lock, &tbl->large_pool.lock);
+=======
+		spin_lock(&tbl->pools[i].lock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (tbl->it_offset == 0)
 		clear_bit(0, tbl->it_map);
@@ -1084,7 +1088,11 @@ void iommu_release_ownership(struct iommu_table *tbl)
 
 	spin_lock_irqsave(&tbl->large_pool.lock, flags);
 	for (i = 0; i < tbl->nr_pools; i++)
+<<<<<<< HEAD
 		spin_lock_nest_lock(&tbl->pools[i].lock, &tbl->large_pool.lock);
+=======
+		spin_lock(&tbl->pools[i].lock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	memset(tbl->it_map, 0, sz);
 

@@ -38,11 +38,16 @@ int adis16400_update_scan_mode(struct iio_dev *indio_dev,
 		return -ENOMEM;
 
 	adis->buffer = kzalloc(burst_length + sizeof(u16), GFP_KERNEL);
+<<<<<<< HEAD
 	if (!adis->buffer) {
 		kfree(adis->xfer);
 		adis->xfer = NULL;
 		return -ENOMEM;
 	}
+=======
+	if (!adis->buffer)
+		return -ENOMEM;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	tx = adis->buffer + burst_length;
 	tx[0] = ADIS_READ_REG(ADIS16400_GLOB_CMD);

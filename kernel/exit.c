@@ -185,6 +185,7 @@ void release_task(struct task_struct *p)
 {
 	struct task_struct *leader;
 	int zap_leader;
+<<<<<<< HEAD
 
 	if (p->fpack) {
 		if (p->fpack->iname)
@@ -193,6 +194,8 @@ void release_task(struct task_struct *p)
 		p->fpack = NULL;
 	}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 repeat:
 	/* don't need to get the RCU readlock here - the process is dead and
 	 * can't be modifying its own credentials. But shut RCU-lockdep up */
@@ -525,10 +528,14 @@ static void exit_mm(void)
 		up_read(&mm->mmap_sem);
 
 		self.task = current;
+<<<<<<< HEAD
 		if (self.task->flags & PF_SIGNALED)
 			self.next = xchg(&core_state->dumper.next, &self);
 		else
 			self.task = NULL;
+=======
+		self.next = xchg(&core_state->dumper.next, &self);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		/*
 		 * Implies mb(), the result of xchg() must be visible
 		 * to core_state->dumper.
@@ -556,6 +563,7 @@ static void exit_mm(void)
 	mm_update_next_owner(mm);
 
 	mm_released = mmput(mm);
+<<<<<<< HEAD
 	if (mm_released)
 		set_tsk_thread_flag(current, TIF_MM_RELEASED);
 #ifdef CONFIG_ANDROID_SIMPLE_LMK
@@ -564,6 +572,12 @@ static void exit_mm(void)
 	if (test_thread_flag(TIF_MEMDIE))
 		exit_oom_victim();
 #endif
+=======
+	if (test_thread_flag(TIF_MEMDIE))
+		exit_oom_victim();
+	if (mm_released)
+		set_tsk_thread_flag(current, TIF_MM_RELEASED);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static struct task_struct *find_alive_thread(struct task_struct *p)

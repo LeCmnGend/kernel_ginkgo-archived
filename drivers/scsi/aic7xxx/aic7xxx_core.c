@@ -500,7 +500,11 @@ ahc_inq(struct ahc_softc *ahc, u_int port)
 	return ((ahc_inb(ahc, port))
 	      | (ahc_inb(ahc, port+1) << 8)
 	      | (ahc_inb(ahc, port+2) << 16)
+<<<<<<< HEAD
 	      | (((uint64_t)ahc_inb(ahc, port+3)) << 24)
+=======
+	      | (ahc_inb(ahc, port+3) << 24)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	      | (((uint64_t)ahc_inb(ahc, port+4)) << 32)
 	      | (((uint64_t)ahc_inb(ahc, port+5)) << 40)
 	      | (((uint64_t)ahc_inb(ahc, port+6)) << 48)

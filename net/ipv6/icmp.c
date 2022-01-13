@@ -81,7 +81,11 @@
  */
 static inline struct sock *icmpv6_sk(struct net *net)
 {
+<<<<<<< HEAD
 	return *this_cpu_ptr(net->ipv6.icmp_sk);
+=======
+	return net->ipv6.icmp_sk[smp_processor_id()];
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void icmpv6_err(struct sk_buff *skb, struct inet6_skb_parm *opt,
@@ -312,9 +316,16 @@ static int icmpv6_getfrag(void *from, char *to, int offset, int len, int odd, st
 }
 
 #if IS_ENABLED(CONFIG_IPV6_MIP6)
+<<<<<<< HEAD
 static void mip6_addr_swap(struct sk_buff *skb, const struct inet6_skb_parm *opt)
 {
 	struct ipv6hdr *iph = ipv6_hdr(skb);
+=======
+static void mip6_addr_swap(struct sk_buff *skb)
+{
+	struct ipv6hdr *iph = ipv6_hdr(skb);
+	struct inet6_skb_parm *opt = IP6CB(skb);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct ipv6_destopt_hao *hao;
 	struct in6_addr tmp;
 	int off;
@@ -331,7 +342,11 @@ static void mip6_addr_swap(struct sk_buff *skb, const struct inet6_skb_parm *opt
 	}
 }
 #else
+<<<<<<< HEAD
 static inline void mip6_addr_swap(struct sk_buff *skb, const struct inet6_skb_parm *opt) {}
+=======
+static inline void mip6_addr_swap(struct sk_buff *skb) {}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif
 
 static struct dst_entry *icmpv6_route_lookup(struct net *net,
@@ -420,9 +435,14 @@ static int icmp6_iif(const struct sk_buff *skb)
 /*
  *	Send an ICMP message in response to a packet in error
  */
+<<<<<<< HEAD
 void icmp6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info,
 		const struct in6_addr *force_saddr,
 		const struct inet6_skb_parm *parm)
+=======
+static void icmp6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info,
+		       const struct in6_addr *force_saddr)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	struct net *net = dev_net(skb->dev);
 	struct inet6_dev *idev = NULL;
@@ -481,11 +501,16 @@ void icmp6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info,
 	if (__ipv6_addr_needs_scope_id(addr_type)) {
 		iif = icmp6_iif(skb);
 	} else {
+<<<<<<< HEAD
 		/*
 		 * The source device is used for looking up which routing table
 		 * to use for sending an ICMP error.
 		 */
 		iif = l3mdev_master_ifindex(skb->dev);
+=======
+		dst = skb_dst(skb);
+		iif = l3mdev_master_ifindex(dst ? dst->dev : skb->dev);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	/*
@@ -516,7 +541,11 @@ void icmp6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info,
 	if (!(skb->dev->flags&IFF_LOOPBACK) && !icmpv6_global_allow(type))
 		goto out_bh_enable;
 
+<<<<<<< HEAD
 	mip6_addr_swap(skb, parm);
+=======
+	mip6_addr_swap(skb);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	memset(&fl6, 0, sizeof(fl6));
 	fl6.flowi6_proto = IPPROTO_ICMPV6;
@@ -599,13 +628,20 @@ out:
 out_bh_enable:
 	local_bh_enable();
 }
+<<<<<<< HEAD
 EXPORT_SYMBOL(icmp6_send);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /* Slightly more convenient version of icmp6_send.
  */
 void icmpv6_param_prob(struct sk_buff *skb, u8 code, int pos)
 {
+<<<<<<< HEAD
 	icmp6_send(skb, ICMPV6_PARAMPROB, code, pos, NULL, IP6CB(skb));
+=======
+	icmp6_send(skb, ICMPV6_PARAMPROB, code, pos, NULL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	kfree_skb(skb);
 }
 
@@ -661,10 +697,17 @@ int ip6_err_gen_icmpv6_unreach(struct sk_buff *skb, int nhs, int type,
 	}
 	if (type == ICMP_TIME_EXCEEDED)
 		icmp6_send(skb2, ICMPV6_TIME_EXCEED, ICMPV6_EXC_HOPLIMIT,
+<<<<<<< HEAD
 			   info, &temp_saddr, IP6CB(skb2));
 	else
 		icmp6_send(skb2, ICMPV6_DEST_UNREACH, ICMPV6_ADDR_UNREACH,
 			   info, &temp_saddr, IP6CB(skb2));
+=======
+			   info, &temp_saddr);
+	else
+		icmp6_send(skb2, ICMPV6_DEST_UNREACH, ICMPV6_ADDR_UNREACH,
+			   info, &temp_saddr);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (rt)
 		ip6_rt_put(rt);
 
@@ -964,6 +1007,7 @@ void icmpv6_flow_init(struct sock *sk, struct flowi6 *fl6,
 	security_sk_classify_flow(sk, flowi6_to_flowi(fl6));
 }
 
+<<<<<<< HEAD
 static void __net_exit icmpv6_sk_exit(struct net *net)
 {
 	int i;
@@ -979,6 +1023,15 @@ static int __net_init icmpv6_sk_init(struct net *net)
 	int err, i;
 
 	net->ipv6.icmp_sk = alloc_percpu(struct sock *);
+=======
+static int __net_init icmpv6_sk_init(struct net *net)
+{
+	struct sock *sk;
+	int err, i, j;
+
+	net->ipv6.icmp_sk =
+		kzalloc(nr_cpu_ids * sizeof(struct sock *), GFP_KERNEL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!net->ipv6.icmp_sk)
 		return -ENOMEM;
 
@@ -991,7 +1044,11 @@ static int __net_init icmpv6_sk_init(struct net *net)
 			goto fail;
 		}
 
+<<<<<<< HEAD
 		*per_cpu_ptr(net->ipv6.icmp_sk, i) = sk;
+=======
+		net->ipv6.icmp_sk[i] = sk;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		/* Enough space for 2 64K ICMP packets, including
 		 * sk_buff struct overhead.
@@ -1001,10 +1058,29 @@ static int __net_init icmpv6_sk_init(struct net *net)
 	return 0;
 
  fail:
+<<<<<<< HEAD
 	icmpv6_sk_exit(net);
 	return err;
 }
 
+=======
+	for (j = 0; j < i; j++)
+		inet_ctl_sock_destroy(net->ipv6.icmp_sk[j]);
+	kfree(net->ipv6.icmp_sk);
+	return err;
+}
+
+static void __net_exit icmpv6_sk_exit(struct net *net)
+{
+	int i;
+
+	for_each_possible_cpu(i) {
+		inet_ctl_sock_destroy(net->ipv6.icmp_sk[i]);
+	}
+	kfree(net->ipv6.icmp_sk);
+}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static struct pernet_operations icmpv6_sk_ops = {
 	.init = icmpv6_sk_init,
 	.exit = icmpv6_sk_exit,

@@ -39,7 +39,11 @@ struct sunxi_priv_data {
 static int sun7i_gmac_init(struct platform_device *pdev, void *priv)
 {
 	struct sunxi_priv_data *gmac = priv;
+<<<<<<< HEAD
 	int ret = 0;
+=======
+	int ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (gmac->regulator) {
 		ret = regulator_enable(gmac->regulator);
@@ -60,11 +64,19 @@ static int sun7i_gmac_init(struct platform_device *pdev, void *priv)
 	} else {
 		clk_set_rate(gmac->tx_clk, SUN7I_GMAC_MII_RATE);
 		ret = clk_prepare(gmac->tx_clk);
+<<<<<<< HEAD
 		if (ret && gmac->regulator)
 			regulator_disable(gmac->regulator);
 	}
 
 	return ret;
+=======
+		if (ret)
+			return ret;
+	}
+
+	return 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void sun7i_gmac_exit(struct platform_device *pdev, void *priv)

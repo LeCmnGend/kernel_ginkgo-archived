@@ -13,6 +13,10 @@
 #include <linux/platform_device.h>
 #include <linux/kdev_t.h>
 #include <linux/usb/ch9.h>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #ifdef CONFIG_USB_F_NCM
 #include "function/u_ncm.h"
 #endif
@@ -276,6 +280,7 @@ static ssize_t gadget_dev_desc_bcdUSB_store(struct config_item *item,
 
 static ssize_t gadget_dev_desc_UDC_show(struct config_item *item, char *page)
 {
+<<<<<<< HEAD
 	struct gadget_info *gi = to_gadget_info(item);
 	char *udc_name;
 	int ret;
@@ -286,6 +291,11 @@ static ssize_t gadget_dev_desc_UDC_show(struct config_item *item, char *page)
 	mutex_unlock(&gi->lock);
 
 	return ret;
+=======
+	char *udc_name = to_gadget_info(item)->composite.gadget_driver.udc_name;
+
+	return sprintf(page, "%s\n", udc_name ?: "");
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static int unregister_gadget(struct gadget_info *gi)
@@ -1834,7 +1844,11 @@ static struct config_group *gadgets_make(
 	gi->composite.unbind = configfs_do_nothing;
 	gi->composite.suspend = NULL;
 	gi->composite.resume = NULL;
+<<<<<<< HEAD
 	gi->composite.max_speed = USB_SPEED_SUPER_PLUS;
+=======
+	gi->composite.max_speed = USB_SPEED_SUPER;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	spin_lock_init(&gi->spinlock);
 	mutex_init(&gi->lock);

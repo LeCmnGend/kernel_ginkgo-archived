@@ -21,7 +21,10 @@
 #define UFS_ANY_VENDOR 0xFFFF
 #define UFS_ANY_MODEL  "ANY_MODEL"
 
+<<<<<<< HEAD
 #define UFS_VENDOR_MICRON      0x12C
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define UFS_VENDOR_TOSHIBA     0x198
 #define UFS_VENDOR_SAMSUNG     0x1CE
 #define UFS_VENDOR_SKHYNIX     0x1AD

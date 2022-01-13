@@ -450,7 +450,11 @@ nouveau_bo_sync_for_device(struct nouveau_bo *nvbo)
 	struct ttm_dma_tt *ttm_dma = (struct ttm_dma_tt *)nvbo->bo.ttm;
 	int i;
 
+<<<<<<< HEAD
 	if (!ttm_dma || !ttm_dma->dma_address)
+=======
+	if (!ttm_dma)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return;
 
 	/* Don't waste time looping if the object is coherent */
@@ -470,7 +474,11 @@ nouveau_bo_sync_for_cpu(struct nouveau_bo *nvbo)
 	struct ttm_dma_tt *ttm_dma = (struct ttm_dma_tt *)nvbo->bo.ttm;
 	int i;
 
+<<<<<<< HEAD
 	if (!ttm_dma || !ttm_dma->dma_address)
+=======
+	if (!ttm_dma)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return;
 
 	/* Don't waste time looping if the object is coherent */

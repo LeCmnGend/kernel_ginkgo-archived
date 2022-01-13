@@ -133,6 +133,7 @@ static inline int timespec64_compare(const struct timespec64 *lhs, const struct 
 	return lhs->tv_nsec - rhs->tv_nsec;
 }
 
+<<<<<<< HEAD
 /**
  * set_normalized_timespec - set timespec sec and nsec parts and normalize
  *
@@ -167,6 +168,9 @@ static inline void set_normalized_timespec64(struct timespec64 *ts, time64_t sec
 	ts->tv_sec = sec;
 	ts->tv_nsec = nsec;
 }
+=======
+extern void set_normalized_timespec64(struct timespec64 *ts, time64_t sec, s64 nsec);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static inline struct timespec64 timespec64_add(struct timespec64 lhs,
 						struct timespec64 rhs)
@@ -222,15 +226,19 @@ static inline bool timespec64_valid_strict(const struct timespec64 *ts)
  */
 static inline s64 timespec64_to_ns(const struct timespec64 *ts)
 {
+<<<<<<< HEAD
 	/* Prevent multiplication overflow */
 	if ((unsigned long long)ts->tv_sec >= KTIME_SEC_MAX)
 		return KTIME_MAX;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return ((s64) ts->tv_sec * NSEC_PER_SEC) + ts->tv_nsec;
 }
 
 /**
  * ns_to_timespec64 - Convert nanoseconds to timespec64
+<<<<<<< HEAD
  * @nsec:       the nanoseconds value to be converted
  *
  * Returns the timespec64 representation of the nsec parameter.
@@ -252,6 +260,13 @@ static inline struct timespec64 ns_to_timespec64(const s64 nsec)
 
 	return ts;
 }
+=======
+ * @nsec:	the nanoseconds value to be converted
+ *
+ * Returns the timespec64 representation of the nsec parameter.
+ */
+extern struct timespec64 ns_to_timespec64(const s64 nsec);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /**
  * timespec64_add_ns - Adds nanoseconds to a timespec64

@@ -2424,14 +2424,22 @@ out:
  *	@p: pointer to result
  *
  *	Obtain the modem status bits from the tty driver if the feature
+<<<<<<< HEAD
  *	is supported. Return -ENOTTY if it is not available.
+=======
+ *	is supported. Return -EINVAL if it is not available.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  *	Locking: none (up to the driver)
  */
 
 static int tty_tiocmget(struct tty_struct *tty, int __user *p)
 {
+<<<<<<< HEAD
 	int retval = -ENOTTY;
+=======
+	int retval = -EINVAL;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (tty->ops->tiocmget) {
 		retval = tty->ops->tiocmget(tty);
@@ -2449,7 +2457,11 @@ static int tty_tiocmget(struct tty_struct *tty, int __user *p)
  *	@p: pointer to desired bits
  *
  *	Set the modem status bits from the tty driver if the feature
+<<<<<<< HEAD
  *	is supported. Return -ENOTTY if it is not available.
+=======
+ *	is supported. Return -EINVAL if it is not available.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  *	Locking: none (up to the driver)
  */
@@ -2461,7 +2473,11 @@ static int tty_tiocmset(struct tty_struct *tty, unsigned int cmd,
 	unsigned int set, clear, val;
 
 	if (tty->ops->tiocmset == NULL)
+<<<<<<< HEAD
 		return -ENOTTY;
+=======
+		return -EINVAL;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	retval = get_user(val, p);
 	if (retval)

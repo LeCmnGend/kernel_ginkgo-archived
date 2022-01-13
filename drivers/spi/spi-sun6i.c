@@ -301,10 +301,13 @@ static int sun6i_spi_transfer_one(struct spi_master *master,
 	}
 
 	sun6i_spi_write(sspi, SUN6I_CLK_CTL_REG, reg);
+<<<<<<< HEAD
 	/* Finally enable the bus - doing so before might raise SCK to HIGH */
 	reg = sun6i_spi_read(sspi, SUN6I_GBL_CTL_REG);
 	reg |= SUN6I_GBL_CTL_BUS_ENABLE;
 	sun6i_spi_write(sspi, SUN6I_GBL_CTL_REG, reg);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* Setup the transfer now... */
 	if (sspi->tx_buf)
@@ -413,7 +416,11 @@ static int sun6i_spi_runtime_resume(struct device *dev)
 	}
 
 	sun6i_spi_write(sspi, SUN6I_GBL_CTL_REG,
+<<<<<<< HEAD
 			SUN6I_GBL_CTL_MASTER | SUN6I_GBL_CTL_TP);
+=======
+			SUN6I_GBL_CTL_BUS_ENABLE | SUN6I_GBL_CTL_MASTER | SUN6I_GBL_CTL_TP);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return 0;
 

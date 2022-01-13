@@ -20,7 +20,10 @@ extern struct cputopo_arm cpu_topology[NR_CPUS];
 #define topology_core_id(cpu)		(cpu_topology[cpu].core_id)
 #define topology_core_cpumask(cpu)	(&cpu_topology[cpu].core_sibling)
 #define topology_sibling_cpumask(cpu)	(&cpu_topology[cpu].thread_sibling)
+<<<<<<< HEAD
 #define topology_possible_sibling_cpumask topology_core_cpumask
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 void init_cpu_topology(void);
 void store_cpu_topology(unsigned int cpuid);

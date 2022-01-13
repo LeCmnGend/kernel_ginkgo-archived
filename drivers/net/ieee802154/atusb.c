@@ -346,7 +346,10 @@ static int atusb_alloc_urbs(struct atusb *atusb, int n)
 			return -ENOMEM;
 		}
 		usb_anchor_urb(urb, &atusb->idle_urbs);
+<<<<<<< HEAD
 		usb_free_urb(urb);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		n--;
 	}
 	return 0;

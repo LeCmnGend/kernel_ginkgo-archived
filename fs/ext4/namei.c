@@ -1467,8 +1467,13 @@ int ext4_search_dir(struct buffer_head *bh, char *search_buf, int buf_size,
 		    ext4_match(dir, fname, de)) {
 			/* found a match - just to be sure, do
 			 * a full check */
+<<<<<<< HEAD
 			if (ext4_check_dir_entry(dir, NULL, de, bh, search_buf,
 						 buf_size, lblk, offset))
+=======
+			if (ext4_check_dir_entry(dir, NULL, de, bh, bh->b_data,
+						 bh->b_size, lblk, offset))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				return -1;
 			*res_dir = de;
 			return 1;
@@ -1938,7 +1943,11 @@ static struct ext4_dir_entry_2 *do_split(handle_t *handle, struct inode *dir,
 			     blocksize, hinfo, map);
 	map -= count;
 	dx_sort_map(map, count);
+<<<<<<< HEAD
 	/* Ensure that neither split block is over half full */
+=======
+	/* Split the existing block in the middle, size-wise */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	size = 0;
 	move = 0;
 	for (i = count-1; i >= 0; i--) {
@@ -1948,6 +1957,7 @@ static struct ext4_dir_entry_2 *do_split(handle_t *handle, struct inode *dir,
 		size += map[i].size;
 		move++;
 	}
+<<<<<<< HEAD
 	/*
 	 * map index at which we will split
 	 *
@@ -1960,6 +1970,10 @@ static struct ext4_dir_entry_2 *do_split(handle_t *handle, struct inode *dir,
 	else
 		split = count/2;
 
+=======
+	/* map index at which we will split */
+	split = count - move;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	hash2 = map[split].hash;
 	continued = hash2 == map[split - 1].hash;
 	dxtrace(printk(KERN_INFO "Split block %lu at %x, %i/%i\n",
@@ -2517,10 +2531,18 @@ again:
 						   (frame - 1)->bh);
 			if (err)
 				goto journal_error;
+<<<<<<< HEAD
 			err = ext4_handle_dirty_dx_node(handle, dir,
 							frame->bh);
 			if (restart || err)
 				goto journal_error;
+=======
+			if (restart) {
+				err = ext4_handle_dirty_dx_node(handle, dir,
+							   frame->bh);
+				goto journal_error;
+			}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		} else {
 			struct dx_root *dxroot;
 			memcpy((char *) entries2, (char *) entries,
@@ -2587,7 +2609,11 @@ int ext4_generic_delete_entry(handle_t *handle,
 	de = (struct ext4_dir_entry_2 *)entry_buf;
 	while (i < buf_size - csum_size) {
 		if (ext4_check_dir_entry(dir, NULL, de, bh,
+<<<<<<< HEAD
 					 entry_buf, buf_size, lblk, i))
+=======
+					 bh->b_data, bh->b_size, lblk, i))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			return -EFSCORRUPTED;
 		if (de == de_del)  {
 			if (pde)
@@ -3668,10 +3694,16 @@ static int ext4_setent(handle_t *handle, struct ext4_renament *ent,
 			return retval;
 		}
 	}
+<<<<<<< HEAD
+=======
+	brelse(ent->bh);
+	ent->bh = NULL;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return 0;
 }
 
+<<<<<<< HEAD
 static void ext4_resetent(handle_t *handle, struct ext4_renament *ent,
 			  unsigned ino, unsigned file_type)
 {
@@ -3697,6 +3729,8 @@ static void ext4_resetent(handle_t *handle, struct ext4_renament *ent,
 	brelse(old.bh);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static int ext4_find_delete_entry(handle_t *handle, struct inode *dir,
 				  const struct qstr *d_name)
 {
@@ -3859,14 +3893,22 @@ static int ext4_rename(struct inode *old_dir, struct dentry *old_dentry,
 	 */
 	retval = -ENOENT;
 	if (!old.bh || le32_to_cpu(old.de->inode) != old.inode->i_ino)
+<<<<<<< HEAD
 		goto release_bh;
+=======
+		goto end_rename;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	new.bh = ext4_find_entry(new.dir, &new.dentry->d_name,
 				 &new.de, &new.inlined, NULL);
 	if (IS_ERR(new.bh)) {
 		retval = PTR_ERR(new.bh);
 		new.bh = NULL;
+<<<<<<< HEAD
 		goto release_bh;
+=======
+		goto end_rename;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	if (new.bh) {
 		if (!new.inode) {
@@ -3883,17 +3925,30 @@ static int ext4_rename(struct inode *old_dir, struct dentry *old_dentry,
 		handle = ext4_journal_start(old.dir, EXT4_HT_DIR, credits);
 		if (IS_ERR(handle)) {
 			retval = PTR_ERR(handle);
+<<<<<<< HEAD
 			goto release_bh;
+=======
+			handle = NULL;
+			goto end_rename;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 	} else {
 		whiteout = ext4_whiteout_for_rename(&old, credits, &handle);
 		if (IS_ERR(whiteout)) {
 			retval = PTR_ERR(whiteout);
+<<<<<<< HEAD
 			goto release_bh;
 		}
 	}
 
 	old_file_type = old.de->file_type;
+=======
+			whiteout = NULL;
+			goto end_rename;
+		}
+	}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (IS_DIRSYNC(old.dir) || IS_DIRSYNC(new.dir))
 		ext4_handle_sync(handle);
 
@@ -3921,6 +3976,10 @@ static int ext4_rename(struct inode *old_dir, struct dentry *old_dentry,
 	force_reread = (new.dir->i_ino == old.dir->i_ino &&
 			ext4_test_inode_flag(new.dir, EXT4_INODE_INLINE_DATA));
 
+<<<<<<< HEAD
+=======
+	old_file_type = old.de->file_type;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (whiteout) {
 		/*
 		 * Do this before adding a new entry, so the old entry is sure
@@ -3992,6 +4051,7 @@ static int ext4_rename(struct inode *old_dir, struct dentry *old_dentry,
 	retval = 0;
 
 end_rename:
+<<<<<<< HEAD
 	if (whiteout) {
 		if (retval) {
 			ext4_resetent(handle, &old,
@@ -4009,6 +4069,19 @@ release_bh:
 	brelse(old.dir_bh);
 	brelse(old.bh);
 	brelse(new.bh);
+=======
+	brelse(old.dir_bh);
+	brelse(old.bh);
+	brelse(new.bh);
+	if (whiteout) {
+		if (retval)
+			drop_nlink(whiteout);
+		unlock_new_inode(whiteout);
+		iput(whiteout);
+	}
+	if (handle)
+		ext4_journal_stop(handle);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return retval;
 }
 

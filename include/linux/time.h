@@ -49,6 +49,7 @@ static inline int timeval_compare(const struct timeval *lhs, const struct timeva
 	return lhs->tv_usec - rhs->tv_usec;
 }
 
+<<<<<<< HEAD
 /*
  * mktime64 - Converts date to seconds.
  * Converts Gregorian date to seconds since 1970-01-01 00:00:00.
@@ -88,6 +89,11 @@ static inline time64_t mktime64(const unsigned int year0, const unsigned int mon
 	  )*60 + min /* now have minutes */
 	)*60 + sec; /* finally seconds */
 }
+=======
+extern time64_t mktime64(const unsigned int year, const unsigned int mon,
+			const unsigned int day, const unsigned int hour,
+			const unsigned int min, const unsigned int sec);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /**
  * Deprecated. Use mktime64().
@@ -100,6 +106,7 @@ static inline unsigned long mktime(const unsigned int year,
 	return mktime64(year, mon, day, hour, min, sec);
 }
 
+<<<<<<< HEAD
 /**
  * set_normalized_timespec - set timespec sec and nsec parts and normalize
  *
@@ -134,11 +141,15 @@ static inline void set_normalized_timespec(struct timespec *ts, time_t sec, s64 
 	ts->tv_sec = sec;
 	ts->tv_nsec = nsec;
 }
+=======
+extern void set_normalized_timespec(struct timespec *ts, time_t sec, s64 nsec);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /*
  * timespec_add_safe assumes both values are positive and checks
  * for overflow. It will return TIME_T_MAX if the reutrn would be
  * smaller then either of the arguments.
+<<<<<<< HEAD
  *
  * Add two timespec values and do a safety check for overflow.
  * It's assumed that both values are valid (>= 0)
@@ -156,6 +167,11 @@ static inline struct timespec timespec_add_safe(const struct timespec lhs,
 
 	return res;
 }
+=======
+ */
+extern struct timespec timespec_add_safe(const struct timespec lhs,
+					 const struct timespec rhs);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 
 static inline struct timespec timespec_add(struct timespec lhs,
@@ -216,6 +232,7 @@ static inline bool timeval_valid(const struct timeval *tv)
 	return true;
 }
 
+<<<<<<< HEAD
 /**
  * timespec_trunc - Truncate timespec to a granularity
  * @t: Timespec
@@ -238,6 +255,9 @@ static inline struct timespec timespec_trunc(struct timespec t, unsigned gran)
 	}
 	return t;
 }
+=======
+extern struct timespec timespec_trunc(struct timespec t, unsigned gran);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /*
  * Validates if a timespec/timeval used to inject a time offset is valid.
@@ -353,6 +373,7 @@ static inline s64 timeval_to_ns(const struct timeval *tv)
 
 /**
  * ns_to_timespec - Convert nanoseconds to timespec
+<<<<<<< HEAD
  * @nsec:       the nanoseconds value to be converted
  *
  * Returns the timespec representation of the nsec parameter.
@@ -391,6 +412,21 @@ static inline struct timeval ns_to_timeval(const s64 nsec)
 
 	return tv;
 }
+=======
+ * @nsec:	the nanoseconds value to be converted
+ *
+ * Returns the timespec representation of the nsec parameter.
+ */
+extern struct timespec ns_to_timespec(const s64 nsec);
+
+/**
+ * ns_to_timeval - Convert nanoseconds to timeval
+ * @nsec:	the nanoseconds value to be converted
+ *
+ * Returns the timeval representation of the nsec parameter.
+ */
+extern struct timeval ns_to_timeval(const s64 nsec);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /**
  * timespec_add_ns - Adds nanoseconds to a timespec

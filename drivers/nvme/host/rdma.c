@@ -655,11 +655,16 @@ static int nvme_rdma_alloc_io_queues(struct nvme_rdma_ctrl *ctrl)
 		return ret;
 
 	ctrl->ctrl.queue_count = nr_io_queues + 1;
+<<<<<<< HEAD
 	if (ctrl->ctrl.queue_count < 2) {
 		dev_err(ctrl->ctrl.device,
 			"unable to set any I/O queues\n");
 		return -ENOMEM;
 	}
+=======
+	if (ctrl->ctrl.queue_count < 2)
+		return 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	dev_info(ctrl->ctrl.device,
 		"creating %d I/O queues.\n", nr_io_queues);
@@ -1548,6 +1553,10 @@ static int nvme_rdma_cm_handler(struct rdma_cm_id *cm_id,
 		complete(&queue->cm_done);
 		return 0;
 	case RDMA_CM_EVENT_REJECTED:
+<<<<<<< HEAD
+=======
+		nvme_rdma_destroy_queue_ib(queue);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		cm_error = nvme_rdma_conn_rejected(queue, ev);
 		break;
 	case RDMA_CM_EVENT_ROUTE_ERROR:

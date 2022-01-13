@@ -9,6 +9,10 @@
  * directory of this archive for more details.
  */
 
+<<<<<<< HEAD
+=======
+#include <linux/acpi.h>
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <linux/hwmon.h>
 #include <linux/hwmon-sysfs.h>
 #include <linux/kernel.h>
@@ -137,12 +141,26 @@ static const struct spi_device_id max31722_spi_id[] = {
 	{"max31723", 0},
 	{}
 };
+<<<<<<< HEAD
+=======
+
+static const struct acpi_device_id __maybe_unused max31722_acpi_id[] = {
+	{"MAX31722", 0},
+	{"MAX31723", 0},
+	{}
+};
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 MODULE_DEVICE_TABLE(spi, max31722_spi_id);
 
 static struct spi_driver max31722_driver = {
 	.driver = {
 		.name = "max31722",
 		.pm = &max31722_pm_ops,
+<<<<<<< HEAD
+=======
+		.acpi_match_table = ACPI_PTR(max31722_acpi_id),
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	},
 	.probe =            max31722_probe,
 	.remove =           max31722_remove,

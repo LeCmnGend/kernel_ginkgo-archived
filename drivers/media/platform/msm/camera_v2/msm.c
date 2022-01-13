@@ -245,8 +245,12 @@ void msm_pm_qos_update_request(int val)
 {
 	pr_info("%s: update request %d", __func__, val);
 	msm_pm_qos_add_request();
+<<<<<<< HEAD
 	if (pm_qos_request_active(&msm_v4l2_pm_qos_request))
 		pm_qos_update_request(&msm_v4l2_pm_qos_request, val);
+=======
+	pm_qos_update_request(&msm_v4l2_pm_qos_request, val);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 struct msm_session *msm_session_find(unsigned int session_id)

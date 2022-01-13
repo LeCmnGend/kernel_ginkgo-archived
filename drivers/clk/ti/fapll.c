@@ -497,7 +497,10 @@ static struct clk * __init ti_fapll_synth_setup(struct fapll_data *fd,
 {
 	struct clk_init_data *init;
 	struct fapll_synth *synth;
+<<<<<<< HEAD
 	struct clk *clk = ERR_PTR(-ENOMEM);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	init = kzalloc(sizeof(*init), GFP_KERNEL);
 	if (!init)
@@ -520,6 +523,7 @@ static struct clk * __init ti_fapll_synth_setup(struct fapll_data *fd,
 	synth->hw.init = init;
 	synth->clk_pll = pll_clk;
 
+<<<<<<< HEAD
 	clk = clk_register(NULL, &synth->hw);
 	if (IS_ERR(clk)) {
 		pr_err("failed to register clock\n");
@@ -527,12 +531,19 @@ static struct clk * __init ti_fapll_synth_setup(struct fapll_data *fd,
 	}
 
 	return clk;
+=======
+	return clk_register(NULL, &synth->hw);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 free:
 	kfree(synth);
 	kfree(init);
 
+<<<<<<< HEAD
 	return clk;
+=======
+	return ERR_PTR(-ENOMEM);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void __init ti_fapll_setup(struct device_node *node)

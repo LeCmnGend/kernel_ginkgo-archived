@@ -3456,7 +3456,11 @@ static int __init vs_transport_axon_init(void)
 		u32 attachment;
 
 		/* We only care about zones that the page allocator is using */
+<<<<<<< HEAD
 		if (!zone_managed_pages(zone))
+=======
+		if (!zone->managed_pages)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			continue;
 
 		/* Find the segment at the start of the zone */

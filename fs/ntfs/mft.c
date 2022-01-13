@@ -507,7 +507,11 @@ int ntfs_sync_mft_mirror(ntfs_volume *vol, const unsigned long mft_no,
 	if (unlikely(!page_has_buffers(page))) {
 		struct buffer_head *tail;
 
+<<<<<<< HEAD
 		bh = head = alloc_page_buffers(page, blocksize, true);
+=======
+		bh = head = alloc_page_buffers(page, blocksize, 1);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		do {
 			set_buffer_uptodate(bh);
 			tail = bh;

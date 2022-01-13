@@ -1001,7 +1001,11 @@ struct kgsl_process_private *kgsl_process_private_find(pid_t pid)
 {
 	struct kgsl_process_private *p, *private = NULL;
 
+<<<<<<< HEAD
 	spin_lock(&kgsl_driver.proclist_lock);
+=======
+	mutex_lock(&kgsl_driver.process_mutex);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	list_for_each_entry(p, &kgsl_driver.process_list, list) {
 		if (pid_nr(p->pid) == pid) {
 			if (kgsl_process_private_get(p))
@@ -1009,7 +1013,11 @@ struct kgsl_process_private *kgsl_process_private_find(pid_t pid)
 			break;
 		}
 	}
+<<<<<<< HEAD
 	spin_unlock(&kgsl_driver.proclist_lock);
+=======
+	mutex_unlock(&kgsl_driver.process_mutex);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return private;
 }
 
@@ -1116,25 +1124,47 @@ static void kgsl_process_private_close(struct kgsl_device_private *dev_priv,
 	 * directories and garbage collect any outstanding resources
 	 */
 
+<<<<<<< HEAD
 	process_release_memory(private);
+=======
+	kgsl_process_uninit_sysfs(private);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* Release all syncsource objects from process private */
 	kgsl_syncsource_process_release_syncsources(private);
 
+<<<<<<< HEAD
 	debugfs_remove_recursive(private->debug_root);
 	kgsl_process_uninit_sysfs(private);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* When using global pagetables, do not detach global pagetable */
 	if (private->pagetable->name != KGSL_MMU_GLOBAL_PT)
 		kgsl_mmu_detach_pagetable(private->pagetable);
 
 	/* Remove the process struct from the master list */
+<<<<<<< HEAD
 	spin_lock(&kgsl_driver.proclist_lock);
 	list_del(&private->list);
 	spin_unlock(&kgsl_driver.proclist_lock);
 
 	mutex_unlock(&kgsl_driver.process_mutex);
 
+=======
+	list_del(&private->list);
+
+	/*
+	 * Unlock the mutex before releasing the memory and the debugfs
+	 * nodes - this prevents deadlocks with the IOMMU and debugfs
+	 * locks.
+	 */
+	mutex_unlock(&kgsl_driver.process_mutex);
+
+	process_release_memory(private);
+	debugfs_remove_recursive(private->debug_root);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	kgsl_process_private_put(private);
 }
 
@@ -1159,9 +1189,13 @@ static struct kgsl_process_private *kgsl_process_private_open(
 		kgsl_process_init_sysfs(device, private);
 		kgsl_process_init_debugfs(private);
 
+<<<<<<< HEAD
 		spin_lock(&kgsl_driver.proclist_lock);
 		list_add(&private->list, &kgsl_driver.process_list);
 		spin_unlock(&kgsl_driver.proclist_lock);
+=======
+		list_add(&private->list, &kgsl_driver.process_list);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 done:
@@ -4849,7 +4883,10 @@ static const struct file_operations kgsl_fops = {
 
 struct kgsl_driver kgsl_driver  = {
 	.process_mutex = __MUTEX_INITIALIZER(kgsl_driver.process_mutex),
+<<<<<<< HEAD
 	.proclist_lock = __SPIN_LOCK_UNLOCKED(kgsl_driver.proclist_lock),
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.ptlock = __SPIN_LOCK_UNLOCKED(kgsl_driver.ptlock),
 	.devlock = __MUTEX_INITIALIZER(kgsl_driver.devlock),
 	/*
@@ -4939,6 +4976,10 @@ int kgsl_device_platform_probe(struct kgsl_device *device)
 {
 	int status = -EINVAL;
 	struct resource *res;
+<<<<<<< HEAD
+=======
+	int cpu;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	status = _register_device(device);
 	if (status)
@@ -5008,8 +5049,12 @@ int kgsl_device_platform_probe(struct kgsl_device *device)
 	}
 
 	status = devm_request_irq(device->dev, device->pwrctrl.interrupt_num,
+<<<<<<< HEAD
 				  kgsl_irq_handler,
 				  IRQF_TRIGGER_HIGH | IRQF_PERF_CRITICAL,
+=======
+				  kgsl_irq_handler, IRQF_TRIGGER_HIGH,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				  device->name, device);
 	if (status) {
 		KGSL_DRV_ERR(device, "request_irq(%d) failed: %d\n",
@@ -5069,8 +5114,29 @@ int kgsl_device_platform_probe(struct kgsl_device *device)
 				PM_QOS_CPU_DMA_LATENCY,
 				PM_QOS_DEFAULT_VALUE);
 
+<<<<<<< HEAD
 	device->events_wq = alloc_workqueue("kgsl-events",
 		WQ_UNBOUND | WQ_MEM_RECLAIM | WQ_SYSFS | WQ_HIGHPRI, 0);
+=======
+	if (device->pwrctrl.l2pc_cpus_mask) {
+		struct pm_qos_request *qos = &device->pwrctrl.l2pc_cpus_qos;
+
+		qos->type = PM_QOS_REQ_AFFINE_CORES;
+
+		cpumask_empty(&qos->cpus_affine);
+		for_each_possible_cpu(cpu) {
+			if ((1 << cpu) & device->pwrctrl.l2pc_cpus_mask)
+				cpumask_set_cpu(cpu, &qos->cpus_affine);
+		}
+
+		pm_qos_add_request(&device->pwrctrl.l2pc_cpus_qos,
+				PM_QOS_CPU_DMA_LATENCY,
+				PM_QOS_DEFAULT_VALUE);
+	}
+
+	device->events_wq = alloc_workqueue("kgsl-events",
+		WQ_UNBOUND | WQ_MEM_RECLAIM | WQ_SYSFS, 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* Initialize the snapshot engine */
 	kgsl_device_snapshot_init(device);
@@ -5105,6 +5171,11 @@ void kgsl_device_platform_remove(struct kgsl_device *device)
 	kgsl_pwrctrl_uninit_sysfs(device);
 
 	pm_qos_remove_request(&device->pwrctrl.pm_qos_req_dma);
+<<<<<<< HEAD
+=======
+	if (device->pwrctrl.l2pc_cpus_mask)
+		pm_qos_remove_request(&device->pwrctrl.l2pc_cpus_qos);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	idr_destroy(&device->context_idr);
 
@@ -5149,7 +5220,11 @@ static void kgsl_core_exit(void)
 static int __init kgsl_core_init(void)
 {
 	int result = 0;
+<<<<<<< HEAD
 	struct sched_param param = { .sched_priority = 6 };
+=======
+	struct sched_param param = { .sched_priority = 2 };
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	place_marker("M - DRIVER KGSL Init");
 
@@ -5214,6 +5289,7 @@ static int __init kgsl_core_init(void)
 	INIT_LIST_HEAD(&kgsl_driver.pagetable_list);
 
 	kgsl_driver.workqueue = alloc_workqueue("kgsl-workqueue",
+<<<<<<< HEAD
 		WQ_HIGHPRI | WQ_UNBOUND | WQ_MEM_RECLAIM | WQ_SYSFS, 0);
 
 	kgsl_driver.mem_workqueue = alloc_workqueue("kgsl-mementry",
@@ -5222,6 +5298,16 @@ static int __init kgsl_core_init(void)
 	kthread_init_worker(&kgsl_driver.worker);
 
 	kgsl_driver.worker_thread = kthread_run_perf_critical(kthread_worker_fn,
+=======
+		WQ_UNBOUND | WQ_MEM_RECLAIM | WQ_SYSFS, 0);
+
+	kgsl_driver.mem_workqueue = alloc_workqueue("kgsl-mementry",
+		WQ_UNBOUND | WQ_MEM_RECLAIM, 0);
+
+	kthread_init_worker(&kgsl_driver.worker);
+
+	kgsl_driver.worker_thread = kthread_run(kthread_worker_fn,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		&kgsl_driver.worker, "kgsl_worker_thread");
 
 	if (IS_ERR(kgsl_driver.worker_thread)) {
@@ -5229,7 +5315,11 @@ static int __init kgsl_core_init(void)
 		goto err;
 	}
 
+<<<<<<< HEAD
 	sched_setscheduler(kgsl_driver.worker_thread, SCHED_RR, &param);
+=======
+	sched_setscheduler(kgsl_driver.worker_thread, SCHED_FIFO, &param);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	kgsl_events_init();
 

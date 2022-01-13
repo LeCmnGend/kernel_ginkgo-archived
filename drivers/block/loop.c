@@ -876,9 +876,14 @@ static int loop_kthread_worker_fn(void *worker_ptr)
 static int loop_prepare_queue(struct loop_device *lo)
 {
 	kthread_init_worker(&lo->worker);
+<<<<<<< HEAD
 	lo->worker_task = kthread_run_perf_critical(
 			loop_kthread_worker_fn, &lo->worker,
 			"loop%d", lo->lo_number);
+=======
+	lo->worker_task = kthread_run(loop_kthread_worker_fn,
+			&lo->worker, "loop%d", lo->lo_number);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (IS_ERR(lo->worker_task))
 		return -ENOMEM;
 	set_user_nice(lo->worker_task, MIN_NICE);

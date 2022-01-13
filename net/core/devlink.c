@@ -1031,7 +1031,11 @@ static int devlink_nl_sb_port_pool_fill(struct sk_buff *msg,
 		err = ops->sb_occ_port_pool_get(devlink_port, devlink_sb->index,
 						pool_index, &cur, &max);
 		if (err && err != -EOPNOTSUPP)
+<<<<<<< HEAD
 			goto sb_occ_get_failure;
+=======
+			return err;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (!err) {
 			if (nla_put_u32(msg, DEVLINK_ATTR_SB_OCC_CUR, cur))
 				goto nla_put_failure;
@@ -1044,10 +1048,15 @@ static int devlink_nl_sb_port_pool_fill(struct sk_buff *msg,
 	return 0;
 
 nla_put_failure:
+<<<<<<< HEAD
 	err = -EMSGSIZE;
 sb_occ_get_failure:
 	genlmsg_cancel(msg, hdr);
 	return err;
+=======
+	genlmsg_cancel(msg, hdr);
+	return -EMSGSIZE;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static int devlink_nl_cmd_sb_port_pool_get_doit(struct sk_buff *skb,

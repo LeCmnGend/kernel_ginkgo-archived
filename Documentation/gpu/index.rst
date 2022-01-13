@@ -10,6 +10,10 @@ Linux GPU Driver Developer's Guide
    drm-kms
    drm-kms-helpers
    drm-uapi
+<<<<<<< HEAD
+=======
+   drm-client
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
    i915
    meson
    pl111

@@ -120,8 +120,13 @@ int iw_handler_set_thrspy(struct net_device *	dev,
 		return -EOPNOTSUPP;
 
 	/* Just do it */
+<<<<<<< HEAD
 	spydata->spy_thr_low = threshold->low;
 	spydata->spy_thr_high = threshold->high;
+=======
+	memcpy(&(spydata->spy_thr_low), &(threshold->low),
+	       2 * sizeof(struct iw_quality));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* Clear flag */
 	memset(spydata->spy_thr_under, '\0', sizeof(spydata->spy_thr_under));
@@ -147,8 +152,13 @@ int iw_handler_get_thrspy(struct net_device *	dev,
 		return -EOPNOTSUPP;
 
 	/* Just do it */
+<<<<<<< HEAD
 	threshold->low = spydata->spy_thr_low;
 	threshold->high = spydata->spy_thr_high;
+=======
+	memcpy(&(threshold->low), &(spydata->spy_thr_low),
+	       2 * sizeof(struct iw_quality));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return 0;
 }
@@ -173,10 +183,17 @@ static void iw_send_thrspy_event(struct net_device *	dev,
 	memcpy(threshold.addr.sa_data, address, ETH_ALEN);
 	threshold.addr.sa_family = ARPHRD_ETHER;
 	/* Copy stats */
+<<<<<<< HEAD
 	threshold.qual = *wstats;
 	/* Copy also thresholds */
 	threshold.low = spydata->spy_thr_low;
 	threshold.high = spydata->spy_thr_high;
+=======
+	memcpy(&(threshold.qual), wstats, sizeof(struct iw_quality));
+	/* Copy also thresholds */
+	memcpy(&(threshold.low), &(spydata->spy_thr_low),
+	       2 * sizeof(struct iw_quality));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* Send event to user space */
 	wireless_send_event(dev, SIOCGIWTHRSPY, &wrqu, (char *) &threshold);

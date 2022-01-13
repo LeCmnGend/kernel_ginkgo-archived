@@ -989,7 +989,10 @@ static int prb_queue_frozen(struct tpacket_kbdq_core *pkc)
 }
 
 static void prb_clear_blk_fill_status(struct packet_ring_buffer *rb)
+<<<<<<< HEAD
 	__releases(&pkc->blk_fill_in_prog_lock)
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	struct tpacket_kbdq_core *pkc  = GET_PBDQC_FROM_RB(rb);
 	atomic_dec(&pkc->blk_fill_in_prog);
@@ -1037,7 +1040,10 @@ static void prb_fill_curr_block(char *curr,
 				struct tpacket_kbdq_core *pkc,
 				struct tpacket_block_desc *pbd,
 				unsigned int len)
+<<<<<<< HEAD
 	__acquires(&pkc->blk_fill_in_prog_lock)
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	struct tpacket3_hdr *ppd;
 
@@ -2201,8 +2207,12 @@ static int tpacket_rcv(struct sk_buff *skb, struct net_device *dev,
 	int skb_len = skb->len;
 	unsigned int snaplen, res;
 	unsigned long status = TP_STATUS_USER;
+<<<<<<< HEAD
 	unsigned short macoff, hdrlen;
 	unsigned int netoff;
+=======
+	unsigned short macoff, netoff, hdrlen;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct sk_buff *copy_skb = NULL;
 	struct timespec ts;
 	__u32 ts_status;
@@ -2265,12 +2275,15 @@ static int tpacket_rcv(struct sk_buff *skb, struct net_device *dev,
 		}
 		macoff = netoff - maclen;
 	}
+<<<<<<< HEAD
 	if (netoff > USHRT_MAX) {
 		spin_lock(&sk->sk_receive_queue.lock);
 		po->stats.stats1.tp_drops++;
 		spin_unlock(&sk->sk_receive_queue.lock);
 		goto drop_n_restore;
 	}
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (po->tp_version <= TPACKET_V2) {
 		if (macoff + snaplen > po->rx_ring.frame_size) {
 			if (po->copy_thresh &&
@@ -2320,11 +2333,16 @@ static int tpacket_rcv(struct sk_buff *skb, struct net_device *dev,
 	if (do_vnet &&
 	    virtio_net_hdr_from_skb(skb, h.raw + macoff -
 				    sizeof(struct virtio_net_hdr),
+<<<<<<< HEAD
 				    vio_le(), true, 0)) {
 		if (po->tp_version == TPACKET_V3)
 			prb_clear_blk_fill_status(&po->rx_ring);
 		goto drop_n_account;
 	}
+=======
+				    vio_le(), true, 0))
+		goto drop_n_account;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (po->tp_version <= TPACKET_V2) {
 		packet_increment_rx_head(po, &po->rx_ring);
@@ -2430,7 +2448,11 @@ static int tpacket_rcv(struct sk_buff *skb, struct net_device *dev,
 		__clear_bit(slot_id, po->rx_ring.rx_owner_map);
 		spin_unlock(&sk->sk_receive_queue.lock);
 		sk->sk_data_ready(sk);
+<<<<<<< HEAD
 	} else if (po->tp_version == TPACKET_V3) {
+=======
+	} else {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		prb_clear_blk_fill_status(&po->rx_ring);
 	}
 
@@ -2694,7 +2716,11 @@ static int tpacket_snd(struct packet_sock *po, struct msghdr *msg)
 	}
 	if (likely(saddr == NULL)) {
 		dev	= packet_cached_dev_get(po);
+<<<<<<< HEAD
 		proto	= READ_ONCE(po->num);
+=======
+		proto	= po->num;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else {
 		err = -EINVAL;
 		if (msg->msg_namelen < sizeof(struct sockaddr_ll))
@@ -2907,7 +2933,11 @@ static int packet_snd(struct socket *sock, struct msghdr *msg, size_t len)
 
 	if (likely(saddr == NULL)) {
 		dev	= packet_cached_dev_get(po);
+<<<<<<< HEAD
 		proto	= READ_ONCE(po->num);
+=======
+		proto	= po->num;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else {
 		err = -EINVAL;
 		if (msg->msg_namelen < sizeof(struct sockaddr_ll))
@@ -3177,7 +3207,11 @@ static int packet_do_bind(struct sock *sk, const char *name, int ifindex,
 			/* prevents packet_notifier() from calling
 			 * register_prot_hook()
 			 */
+<<<<<<< HEAD
 			WRITE_ONCE(po->num, 0);
+=======
+			po->num = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			__unregister_prot_hook(sk, true);
 			rcu_read_lock();
 			dev_curr = po->prot_hook.dev;
@@ -3187,17 +3221,29 @@ static int packet_do_bind(struct sock *sk, const char *name, int ifindex,
 		}
 
 		BUG_ON(po->running);
+<<<<<<< HEAD
 		WRITE_ONCE(po->num, proto);
+=======
+		po->num = proto;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		po->prot_hook.type = proto;
 
 		if (unlikely(unlisted)) {
 			dev_put(dev);
 			po->prot_hook.dev = NULL;
+<<<<<<< HEAD
 			WRITE_ONCE(po->ifindex, -1);
 			packet_cached_dev_reset(po);
 		} else {
 			po->prot_hook.dev = dev;
 			WRITE_ONCE(po->ifindex, dev ? dev->ifindex : 0);
+=======
+			po->ifindex = -1;
+			packet_cached_dev_reset(po);
+		} else {
+			po->prot_hook.dev = dev;
+			po->ifindex = dev ? dev->ifindex : 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			packet_cached_dev_assign(po, dev);
 		}
 	}
@@ -3512,7 +3558,11 @@ static int packet_getname_spkt(struct socket *sock, struct sockaddr *uaddr,
 	uaddr->sa_family = AF_PACKET;
 	memset(uaddr->sa_data, 0, sizeof(uaddr->sa_data));
 	rcu_read_lock();
+<<<<<<< HEAD
 	dev = dev_get_by_index_rcu(sock_net(sk), READ_ONCE(pkt_sk(sk)->ifindex));
+=======
+	dev = dev_get_by_index_rcu(sock_net(sk), pkt_sk(sk)->ifindex);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (dev)
 		strlcpy(uaddr->sa_data, dev->name, sizeof(uaddr->sa_data));
 	rcu_read_unlock();
@@ -3528,11 +3578,15 @@ static int packet_getname(struct socket *sock, struct sockaddr *uaddr,
 	struct sock *sk = sock->sk;
 	struct packet_sock *po = pkt_sk(sk);
 	DECLARE_SOCKADDR(struct sockaddr_ll *, sll, uaddr);
+<<<<<<< HEAD
 	int ifindex;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (peer)
 		return -EOPNOTSUPP;
 
+<<<<<<< HEAD
 	ifindex = READ_ONCE(po->ifindex);
 	sll->sll_family = AF_PACKET;
 	sll->sll_ifindex = ifindex;
@@ -3540,6 +3594,14 @@ static int packet_getname(struct socket *sock, struct sockaddr *uaddr,
 	sll->sll_pkttype = 0;
 	rcu_read_lock();
 	dev = dev_get_by_index_rcu(sock_net(sk), ifindex);
+=======
+	sll->sll_family = AF_PACKET;
+	sll->sll_ifindex = po->ifindex;
+	sll->sll_protocol = po->num;
+	sll->sll_pkttype = 0;
+	rcu_read_lock();
+	dev = dev_get_by_index_rcu(sock_net(sk), po->ifindex);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (dev) {
 		sll->sll_hatype = dev->type;
 		sll->sll_halen = dev->addr_len;
@@ -4119,7 +4181,11 @@ static int packet_notifier(struct notifier_block *this,
 				}
 				if (msg == NETDEV_UNREGISTER) {
 					packet_cached_dev_reset(po);
+<<<<<<< HEAD
 					WRITE_ONCE(po->ifindex, -1);
+=======
+					po->ifindex = -1;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 					if (po->prot_hook.dev)
 						dev_put(po->prot_hook.dev);
 					po->prot_hook.dev = NULL;
@@ -4431,7 +4497,11 @@ static int packet_set_ring(struct sock *sk, union tpacket_req_u *req_u,
 	was_running = po->running;
 	num = po->num;
 	if (was_running) {
+<<<<<<< HEAD
 		WRITE_ONCE(po->num, 0);
+=======
+		po->num = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		__unregister_prot_hook(sk, false);
 	}
 	spin_unlock(&po->bind_lock);
@@ -4466,7 +4536,11 @@ static int packet_set_ring(struct sock *sk, union tpacket_req_u *req_u,
 
 	spin_lock(&po->bind_lock);
 	if (was_running) {
+<<<<<<< HEAD
 		WRITE_ONCE(po->num, num);
+=======
+		po->num = num;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		register_prot_hook(sk);
 	}
 	spin_unlock(&po->bind_lock);
@@ -4637,8 +4711,13 @@ static int packet_seq_show(struct seq_file *seq, void *v)
 			   s,
 			   refcount_read(&s->sk_refcnt),
 			   s->sk_type,
+<<<<<<< HEAD
 			   ntohs(READ_ONCE(po->num)),
 			   READ_ONCE(po->ifindex),
+=======
+			   ntohs(po->num),
+			   po->ifindex,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			   po->running,
 			   atomic_read(&s->sk_rmem_alloc),
 			   from_kuid_munged(seq_user_ns(seq), sock_i_uid(s)),

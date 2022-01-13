@@ -21,6 +21,7 @@
 
 /**
  * kvm_s390_real_to_abs - convert guest real address to guest absolute address
+<<<<<<< HEAD
  * @prefix - guest prefix
  * @gra - guest real address
  *
@@ -38,6 +39,8 @@ static inline unsigned long _kvm_s390_real_to_abs(u32 prefix, unsigned long gra)
 
 /**
  * kvm_s390_real_to_abs - convert guest real address to guest absolute address
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  * @vcpu - guest virtual cpu
  * @gra - guest real address
  *
@@ -47,6 +50,7 @@ static inline unsigned long _kvm_s390_real_to_abs(u32 prefix, unsigned long gra)
 static inline unsigned long kvm_s390_real_to_abs(struct kvm_vcpu *vcpu,
 						 unsigned long gra)
 {
+<<<<<<< HEAD
 	return _kvm_s390_real_to_abs(kvm_s390_get_prefix(vcpu), gra);
 }
 
@@ -71,6 +75,15 @@ static inline unsigned long _kvm_s390_logical_to_effective(psw_t *psw,
 	if (psw_bits(*psw).eaba == PSW_BITS_AMODE_31BIT)
 		return ga & ((1UL << 31) - 1);
 	return ga & ((1UL << 24) - 1);
+=======
+	unsigned long prefix  = kvm_s390_get_prefix(vcpu);
+
+	if (gra < 2 * PAGE_SIZE)
+		gra += prefix;
+	else if (gra >= prefix && gra < prefix + 2 * PAGE_SIZE)
+		gra -= prefix;
+	return gra;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /**
@@ -89,7 +102,17 @@ static inline unsigned long _kvm_s390_logical_to_effective(psw_t *psw,
 static inline unsigned long kvm_s390_logical_to_effective(struct kvm_vcpu *vcpu,
 							  unsigned long ga)
 {
+<<<<<<< HEAD
 	return _kvm_s390_logical_to_effective(&vcpu->arch.sie_block->gpsw, ga);
+=======
+	psw_t *psw = &vcpu->arch.sie_block->gpsw;
+
+	if (psw_bits(*psw).eaba == PSW_BITS_AMODE_64BIT)
+		return ga;
+	if (psw_bits(*psw).eaba == PSW_BITS_AMODE_31BIT)
+		return ga & ((1UL << 31) - 1);
+	return ga & ((1UL << 24) - 1);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /*

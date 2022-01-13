@@ -26,7 +26,11 @@ Example (for ARM-based BeagleBone with PN544 on I2C2):
 		clock-frequency = <400000>;
 
 		interrupt-parent = <&gpio1>;
+<<<<<<< HEAD
 		interrupts = <17 IRQ_TYPE_LEVEL_HIGH>;
+=======
+		interrupts = <17 GPIO_ACTIVE_HIGH>;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		enable-gpios = <&gpio3 21 GPIO_ACTIVE_HIGH>;
 		firmware-gpios = <&gpio3 19 GPIO_ACTIVE_HIGH>;

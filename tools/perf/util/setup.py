@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #!/usr/bin/env python2
+=======
+#!/usr/bin/python2
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 from os import getenv
 

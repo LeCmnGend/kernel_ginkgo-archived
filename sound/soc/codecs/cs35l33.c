@@ -1206,7 +1206,10 @@ static int cs35l33_i2c_probe(struct i2c_client *i2c_client,
 		dev_err(&i2c_client->dev,
 			"CS35L33 Device ID (%X). Expected ID %X\n",
 			devid, CS35L33_CHIP_ID);
+<<<<<<< HEAD
 		ret = -EINVAL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto err_enable;
 	}
 

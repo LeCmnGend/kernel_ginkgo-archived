@@ -14,6 +14,15 @@ config LOCKDEP_SUPPORT
 config STACKTRACE_SUPPORT
 	def_bool y
 
+<<<<<<< HEAD
+=======
+config RWSEM_GENERIC_SPINLOCK
+	bool
+
+config RWSEM_XCHGADD_ALGORITHM
+	def_bool y
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 config ARCH_HAS_ILOG2_U32
 	def_bool n
 
@@ -886,7 +895,11 @@ config CMM_IUCV
 config APPLDATA_BASE
 	def_bool n
 	prompt "Linux - VM Monitor Stream, base infrastructure"
+<<<<<<< HEAD
 	depends on PROC_SYSCTL
+=======
+	depends on PROC_FS
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	help
 	  This provides a kernel interface for creating and updating z/VM APPLDATA
 	  monitor records. The monitor records are updated at certain time

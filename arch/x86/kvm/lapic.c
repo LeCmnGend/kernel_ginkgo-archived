@@ -1918,7 +1918,11 @@ void kvm_set_lapic_tscdeadline_msr(struct kvm_vcpu *vcpu, u64 data)
 {
 	struct kvm_lapic *apic = vcpu->arch.apic;
 
+<<<<<<< HEAD
 	if (!kvm_apic_present(vcpu) || apic_lvtt_oneshot(apic) ||
+=======
+	if (!lapic_in_kernel(vcpu) || apic_lvtt_oneshot(apic) ||
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			apic_lvtt_period(apic))
 		return;
 

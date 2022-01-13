@@ -260,8 +260,11 @@ void calibrate_delay(void)
 	pr_cont("%lu.%02lu BogoMIPS (lpj=%lu)\n",
 		loops_per_jiffy / (500000 / HZ),
 		(loops_per_jiffy / (5000 / HZ)) % 100, loops_per_jiffy);
+<<<<<<< HEAD
 
 	of_node_put(cpu);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 void __init setup_arch(char **cmdline_p)

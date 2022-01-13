@@ -553,7 +553,11 @@ static int cfg80211_sme_connect(struct wireless_dev *wdev,
 		cfg80211_sme_free(wdev);
 	}
 
+<<<<<<< HEAD
 	if (wdev->conn)
+=======
+	if (WARN_ON(wdev->conn))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return -EINPROGRESS;
 
 	wdev->conn = kzalloc(sizeof(*wdev->conn), GFP_KERNEL);

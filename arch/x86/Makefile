@@ -35,13 +35,20 @@ REALMODE_CFLAGS	:= $(M16_CFLAGS) -g -Os -D__KERNEL__ \
 		   -DDISABLE_BRANCH_PROFILING \
 		   -Wall -Wstrict-prototypes -march=i386 -mregparm=3 \
 		   -fno-strict-aliasing -fomit-frame-pointer -fno-pic \
+<<<<<<< HEAD
 		   -mno-mmx -mno-sse $(call cc-option,-fcf-protection=none)
+=======
+		   -mno-mmx -mno-sse
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 REALMODE_CFLAGS += $(call __cc-option, $(CC), $(REALMODE_CFLAGS), -ffreestanding)
 REALMODE_CFLAGS += $(call __cc-option, $(CC), $(REALMODE_CFLAGS), -fno-stack-protector)
 REALMODE_CFLAGS += $(call __cc-option, $(CC), $(REALMODE_CFLAGS), -Wno-address-of-packed-member)
 REALMODE_CFLAGS += $(call __cc-option, $(CC), $(REALMODE_CFLAGS), $(cc_stack_align4))
+<<<<<<< HEAD
 REALMODE_CFLAGS += $(CLANG_FLAGS)
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 export REALMODE_CFLAGS
 
 # BITS is used as extension for files which are available in a 32 bit
@@ -68,9 +75,12 @@ KBUILD_CFLAGS += $(call cc-option,-mno-avx,)
 # Android toolchains enable PIC, so explicitly disable it on 64-bit kernel too.
 KBUILD_CFLAGS += -fno-pic
 
+<<<<<<< HEAD
 # Intel CET isn't enabled in the kernel
 KBUILD_CFLAGS += $(call cc-option,-fcf-protection=none)
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 ifeq ($(CONFIG_X86_32),y)
         BITS := 32
         UTS_MACHINE := i386

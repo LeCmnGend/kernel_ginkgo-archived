@@ -1223,7 +1223,10 @@ static int brcms_bcma_probe(struct bcma_device *pdev)
 {
 	struct brcms_info *wl;
 	struct ieee80211_hw *hw;
+<<<<<<< HEAD
 	int ret;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	dev_info(&pdev->dev, "mfg %x core %x rev %d class %d irq %d\n",
 		 pdev->id.manuf, pdev->id.id, pdev->id.rev, pdev->id.class,
@@ -1248,16 +1251,23 @@ static int brcms_bcma_probe(struct bcma_device *pdev)
 	wl = brcms_attach(pdev);
 	if (!wl) {
 		pr_err("%s: brcms_attach failed!\n", __func__);
+<<<<<<< HEAD
 		ret = -ENODEV;
 		goto err_free_ieee80211;
+=======
+		return -ENODEV;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	brcms_led_register(wl);
 
 	return 0;
+<<<<<<< HEAD
 
 err_free_ieee80211:
 	ieee80211_free_hw(hw);
 	return ret;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static int brcms_suspend(struct bcma_device *pdev)

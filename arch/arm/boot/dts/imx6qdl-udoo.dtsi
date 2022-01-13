@@ -94,7 +94,11 @@
 &fec {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_enet>;
+<<<<<<< HEAD
 	phy-mode = "rgmii-id";
+=======
+	phy-mode = "rgmii";
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	status = "okay";
 };
 

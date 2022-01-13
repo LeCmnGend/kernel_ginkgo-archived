@@ -9,5 +9,8 @@
 #include <net/caif/caif_layer.h>
 
 struct cflayer *cfserl_create(int instance, bool use_stx);
+<<<<<<< HEAD
 void cfserl_release(struct cflayer *layer);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif

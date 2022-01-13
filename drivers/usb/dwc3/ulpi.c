@@ -10,8 +10,11 @@
  * published by the Free Software Foundation.
  */
 
+<<<<<<< HEAD
 #include <linux/delay.h>
 #include <linux/time64.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <linux/ulpi/regs.h>
 
 #include "core.h"
@@ -22,6 +25,7 @@
 		DWC3_GUSB2PHYACC_ADDR(ULPI_ACCESS_EXTENDED) | \
 		DWC3_GUSB2PHYACC_EXTEND_ADDR(a) : DWC3_GUSB2PHYACC_ADDR(a))
 
+<<<<<<< HEAD
 #define DWC3_ULPI_BASE_DELAY	DIV_ROUND_UP(NSEC_PER_SEC, 60000000L)
 
 static int dwc3_ulpi_busyloop(struct dwc3 *dwc, u8 addr, bool read)
@@ -40,6 +44,16 @@ static int dwc3_ulpi_busyloop(struct dwc3 *dwc, u8 addr, bool read)
 		ndelay(ns);
 		reg = dwc3_readl(dwc->regs, DWC3_GUSB2PHYACC(0));
 		if (reg & DWC3_GUSB2PHYACC_DONE)
+=======
+static int dwc3_ulpi_busyloop(struct dwc3 *dwc)
+{
+	unsigned count = 1000;
+	u32 reg;
+
+	while (count--) {
+		reg = dwc3_readl(dwc->regs, DWC3_GUSB2PHYACC(0));
+		if (!(reg & DWC3_GUSB2PHYACC_BUSY))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			return 0;
 		cpu_relax();
 	}
@@ -62,7 +76,11 @@ static int dwc3_ulpi_read(struct device *dev, u8 addr)
 	reg = DWC3_GUSB2PHYACC_NEWREGREQ | DWC3_ULPI_ADDR(addr);
 	dwc3_writel(dwc->regs, DWC3_GUSB2PHYACC(0), reg);
 
+<<<<<<< HEAD
 	ret = dwc3_ulpi_busyloop(dwc, addr, true);
+=======
+	ret = dwc3_ulpi_busyloop(dwc);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (ret)
 		return ret;
 
@@ -86,7 +104,11 @@ static int dwc3_ulpi_write(struct device *dev, u8 addr, u8 val)
 	reg |= DWC3_GUSB2PHYACC_WRITE | val;
 	dwc3_writel(dwc->regs, DWC3_GUSB2PHYACC(0), reg);
 
+<<<<<<< HEAD
 	return dwc3_ulpi_busyloop(dwc, addr, false);
+=======
+	return dwc3_ulpi_busyloop(dwc);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static const struct ulpi_ops dwc3_ulpi_ops = {

@@ -188,7 +188,10 @@ find_free_vf_and_create_qp_grp(struct usnic_ib_dev *us_ibdev,
 
 		}
 		usnic_uiom_free_dev_list(dev_list);
+<<<<<<< HEAD
 		dev_list = NULL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	/* Try to find resources on an unused vf */
@@ -213,8 +216,11 @@ find_free_vf_and_create_qp_grp(struct usnic_ib_dev *us_ibdev,
 qp_grp_check:
 	if (IS_ERR_OR_NULL(qp_grp)) {
 		usnic_err("Failed to allocate qp_grp\n");
+<<<<<<< HEAD
 		if (usnic_ib_share_vf)
 			usnic_uiom_free_dev_list(dev_list);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return ERR_PTR(qp_grp ? PTR_ERR(qp_grp) : -ENOMEM);
 	}
 	return qp_grp;

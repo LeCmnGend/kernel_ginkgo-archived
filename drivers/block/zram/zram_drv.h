@@ -23,6 +23,10 @@
 #include "zcomp.h"
 #include "zram_dedup.h"
 
+<<<<<<< HEAD
+=======
+#define SECTOR_SHIFT		9
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define SECTORS_PER_PAGE_SHIFT	(PAGE_SHIFT - SECTOR_SHIFT)
 #define SECTORS_PER_PAGE	(1 << SECTORS_PER_PAGE_SHIFT)
 #define ZRAM_LOGICAL_BLOCK_SHIFT 12

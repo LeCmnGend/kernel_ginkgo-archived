@@ -2446,7 +2446,11 @@ do { \
 	seq_printf(seq, "%-12s", s); \
 	for (i = 0; i < n; ++i) \
 		seq_printf(seq, " %16" fmt_spec, v); \
+<<<<<<< HEAD
 	seq_putc(seq, '\n'); \
+=======
+		seq_putc(seq, '\n'); \
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 } while (0)
 #define S(s, v) S3("s", s, v)
 #define T3(fmt_spec, s, v) S3(fmt_spec, s, tx[i].v)

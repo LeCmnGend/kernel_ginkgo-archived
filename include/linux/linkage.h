@@ -23,15 +23,28 @@
 #endif
 
 #ifndef cond_syscall
+<<<<<<< HEAD
 #define cond_syscall(x) \
 	long __attribute__((weak, alias("sys_ni_syscall"))) x(void);
+=======
+#define cond_syscall(x)	asm(				\
+	".weak " VMLINUX_SYMBOL_STR(x) "\n\t"		\
+	".set  " VMLINUX_SYMBOL_STR(x) ","		\
+		 VMLINUX_SYMBOL_STR(sys_ni_syscall))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif
 
 #ifndef SYSCALL_ALIAS
 #define SYSCALL_ALIAS(alias, name) asm(			\
+<<<<<<< HEAD
 	".globl " __stringify(alias) "\n\t"		\
 	".set   " __stringify(alias) ","		\
 		  __stringify(name))
+=======
+	".globl " VMLINUX_SYMBOL_STR(alias) "\n\t"	\
+	".set   " VMLINUX_SYMBOL_STR(alias) ","		\
+		  VMLINUX_SYMBOL_STR(name))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif
 
 #define __page_aligned_data	__section(.data..page_aligned) __aligned(PAGE_SIZE)
@@ -73,6 +86,7 @@
 
 #ifdef __ASSEMBLY__
 
+<<<<<<< HEAD
 /* SYM_T_FUNC -- type used by assembler to mark functions */
 #ifndef SYM_T_FUNC
 #define SYM_T_FUNC				STT_FUNC
@@ -97,10 +111,13 @@
 #define SYM_L_WEAK(name)			.weak name
 #define SYM_L_LOCAL(name)			/* nothing */
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #ifndef LINKER_SCRIPT
 #define ALIGN __ALIGN
 #define ALIGN_STR __ALIGN_STR
 
+<<<<<<< HEAD
 /* === DEPRECATED annotations === */
 
 #ifndef GLOBAL
@@ -114,10 +131,18 @@
 /* deprecated, use SYM_FUNC_START */
 #define ENTRY(name) \
 	SYM_FUNC_START(name)
+=======
+#ifndef ENTRY
+#define ENTRY(name) \
+	.globl name ASM_NL \
+	ALIGN ASM_NL \
+	name:
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif
 #endif /* LINKER_SCRIPT */
 
 #ifndef WEAK
+<<<<<<< HEAD
 /* deprecated, use SYM_FUNC_START_WEAK* */
 #define WEAK(name)	   \
 	SYM_FUNC_START_WEAK(name)
@@ -125,6 +150,14 @@
 
 #ifndef END
 /* deprecated, use SYM_FUNC_END, SYM_DATA_END, or SYM_END */
+=======
+#define WEAK(name)	   \
+	.weak name ASM_NL   \
+	name:
+#endif
+
+#ifndef END
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define END(name) \
 	.size name, .-name
 #endif
@@ -134,6 +167,7 @@
  * static analysis tools such as stack depth analyzer.
  */
 #ifndef ENDPROC
+<<<<<<< HEAD
 /* deprecated, use SYM_FUNC_END */
 #define ENDPROC(name) \
 	SYM_FUNC_END(name)
@@ -345,3 +379,13 @@
 #endif /* __ASSEMBLY__ */
 
 #endif /* _LINUX_LINKAGE_H */
+=======
+#define ENDPROC(name) \
+	.type name, @function ASM_NL \
+	END(name)
+#endif
+
+#endif
+
+#endif
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388

@@ -978,7 +978,10 @@ bool ping_rcv(struct sk_buff *skb)
 	struct sock *sk;
 	struct net *net = dev_net(skb->dev);
 	struct icmphdr *icmph = icmp_hdr(skb);
+<<<<<<< HEAD
 	bool rc = false;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* We assume the packet has already been checked by icmp_rcv */
 
@@ -993,6 +996,7 @@ bool ping_rcv(struct sk_buff *skb)
 		struct sk_buff *skb2 = skb_clone(skb, GFP_ATOMIC);
 
 		pr_debug("rcv on socket %p\n", sk);
+<<<<<<< HEAD
 		if (skb2 && !ping_queue_rcv_skb(sk, skb2))
 			rc = true;
 		sock_put(sk);
@@ -1002,6 +1006,16 @@ bool ping_rcv(struct sk_buff *skb)
 		pr_debug("no socket, dropping\n");
 
 	return rc;
+=======
+		if (skb2)
+			ping_queue_rcv_skb(sk, skb2);
+		sock_put(sk);
+		return true;
+	}
+	pr_debug("no socket, dropping\n");
+
+	return false;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 EXPORT_SYMBOL_GPL(ping_rcv);
 

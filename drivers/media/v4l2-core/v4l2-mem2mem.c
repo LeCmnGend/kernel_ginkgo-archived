@@ -300,7 +300,11 @@ static void v4l2_m2m_cancel_job(struct v4l2_m2m_ctx *m2m_ctx)
 		spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
 		m2m_dev->m2m_ops->job_abort(m2m_ctx->priv);
 		dprintk("m2m_ctx %p running, will wait to complete", m2m_ctx);
+<<<<<<< HEAD
 		wait_event_interruptible(m2m_ctx->finished,
+=======
+		wait_event(m2m_ctx->finished,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				!(m2m_ctx->job_flags & TRANS_RUNNING));
 	} else if (m2m_ctx->job_flags & TRANS_QUEUED) {
 		list_del(&m2m_ctx->queue);

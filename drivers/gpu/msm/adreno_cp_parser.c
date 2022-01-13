@@ -801,6 +801,12 @@ static int adreno_cp_parse_ib2(struct kgsl_device *device,
 	if (ib_level == 2)
 		return -EINVAL;
 
+<<<<<<< HEAD
+=======
+	/* Save current IB2 statically */
+	if (ib2base == gpuaddr)
+		kgsl_snapshot_push_object(process, gpuaddr, dwords);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/*
 	 * only try to find sub objects iff this IB has
 	 * not been processed already

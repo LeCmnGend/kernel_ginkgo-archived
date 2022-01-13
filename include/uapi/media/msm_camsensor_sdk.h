@@ -61,7 +61,10 @@ enum msm_sensor_camera_id_t {
 	CAMERA_1,
 	CAMERA_2,
 	CAMERA_3,
+<<<<<<< HEAD
 	CAMERA_4,
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	MAX_CAMERAS,
 };
 
@@ -76,10 +79,14 @@ enum i2c_freq_mode_t {
 enum camb_position_t {
 	BACK_CAMERA_B,
 	FRONT_CAMERA_B,
+<<<<<<< HEAD
 	AUX_CAMERA_G_B = 0x110,
 	AUX_CAMERA_W_B = 0x120,
 	AUX_CAMERA_B = 0x100,
 	AUX_CAMERA_FRONT_B = 0x101,
+=======
+	AUX_CAMERA_B = 0x100,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	INVALID_CAMERA_B,
 };
 
@@ -310,6 +317,7 @@ struct msm_camera_i2c_reg_setting {
 	unsigned short delay;
 };
 
+<<<<<<< HEAD
 enum msm_cci_i2c_master_t {
 	MSM_MASTER_0,
 	MSM_MASTER_1,
@@ -325,6 +333,8 @@ struct msm_vendor_id_info_t {
 	enum msm_cci_i2c_master_t cci_i2c_master;
 };
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 struct msm_sensor_id_info_t {
 	unsigned short sensor_id_reg_addr;
 	unsigned short sensor_id;
@@ -343,7 +353,10 @@ struct msm_camera_sensor_slave_info {
 	enum i2c_freq_mode_t i2c_freq_mode;
 	enum msm_camera_i2c_reg_addr_type addr_type;
 	struct msm_sensor_id_info_t sensor_id_info;
+<<<<<<< HEAD
 	struct msm_vendor_id_info_t vendor_id_info;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct msm_sensor_power_setting_array power_setting_array;
 	unsigned char  is_init_params_valid;
 	struct msm_sensor_init_params sensor_init_params;

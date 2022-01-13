@@ -246,6 +246,17 @@ static void ion_sc_heap_free(struct ion_buffer *buffer)
 
 static int ion_secure_carveout_pm_freeze(struct ion_heap *heap)
 {
+<<<<<<< HEAD
+=======
+	long sz;
+
+	sz = atomic_long_read(&heap->total_allocated);
+	if (sz) {
+		pr_err("%s: %lx bytes won't be saved across hibernation. Aborting.",
+		       __func__, sz);
+		return -EINVAL;
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 }
 

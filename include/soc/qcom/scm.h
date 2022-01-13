@@ -124,7 +124,11 @@ struct scm_hdcp_req {
 };
 
 extern struct mutex scm_lmh_lock;
+<<<<<<< HEAD
 extern bool under_scm_call(int cpu);
+=======
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #else
 
 static inline int scm_call2(u32 cmd_id, struct scm_desc *desc)
@@ -186,10 +190,13 @@ static inline int scm_enable_mem_protection(void)
 {
 	return 0;
 }
+<<<<<<< HEAD
 extern bool under_scm_call(int cpu)
 {
 	return false;
 }
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif
 
 #if defined(CONFIG_QCOM_SCM)

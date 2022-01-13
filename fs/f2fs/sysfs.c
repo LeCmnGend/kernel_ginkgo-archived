@@ -975,5 +975,8 @@ void f2fs_unregister_sysfs(struct f2fs_sb_info *sbi)
 	}
 	kobject_del(&sbi->s_kobj);
 	kobject_put(&sbi->s_kobj);
+<<<<<<< HEAD
 	wait_for_completion(&sbi->s_kobj_unregister);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }

@@ -44,7 +44,10 @@
 #include <linux/posix-timers.h>
 #include <linux/oom.h>
 #include <linux/capability.h>
+<<<<<<< HEAD
 #include <linux/cgroup.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #define CREATE_TRACE_POINTS
 #include <trace/events/signal.h>
@@ -153,10 +156,16 @@ static inline int has_pending_signals(sigset_t *signal, sigset_t *blocked)
 
 static int recalc_sigpending_tsk(struct task_struct *t)
 {
+<<<<<<< HEAD
 	if ((t->jobctl & (JOBCTL_PENDING_MASK | JOBCTL_TRAP_FREEZE)) ||
 	    PENDING(&t->pending, &t->blocked) ||
 	    PENDING(&t->signal->shared_pending, &t->blocked) ||
 	    cgroup_task_frozen(t)) {
+=======
+	if ((t->jobctl & JOBCTL_PENDING_MASK) ||
+	    PENDING(&t->pending, &t->blocked) ||
+	    PENDING(&t->signal->shared_pending, &t->blocked)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		set_tsk_thread_flag(t, TIF_SIGPENDING);
 		return 1;
 	}
@@ -1972,10 +1981,15 @@ static void ptrace_stop(int exit_code, int why, int clear_code, siginfo_t *info)
 		 */
 		preempt_disable();
 		read_unlock(&tasklist_lock);
+<<<<<<< HEAD
 		cgroup_enter_frozen();
 		preempt_enable_no_resched();
 		freezable_schedule();
 		cgroup_leave_frozen(true);
+=======
+		preempt_enable_no_resched();
+		freezable_schedule();
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else {
 		/*
 		 * By the time we got the lock, our tracer went away.
@@ -2153,7 +2167,10 @@ static bool do_signal_stop(int signr)
 		}
 
 		/* Now we don't run again until woken by SIGCONT or SIGKILL */
+<<<<<<< HEAD
 		cgroup_enter_frozen();
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		freezable_schedule();
 		return true;
 	} else {
@@ -2200,6 +2217,7 @@ static void do_jobctl_trap(void)
 	}
 }
 
+<<<<<<< HEAD
 /**
  * do_freezer_trap - handle the freezer jobctl trap
  *
@@ -2237,6 +2255,8 @@ static void do_freezer_trap(void)
 	freezable_schedule();
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static int ptrace_signal(int signr, siginfo_t *info)
 {
 	/*
@@ -2348,10 +2368,13 @@ relock:
 		trace_signal_deliver(SIGKILL, SEND_SIG_NOINFO,
 				&sighand->action[SIGKILL - 1]);
 		recalc_sigpending();
+<<<<<<< HEAD
 		current->jobctl &= ~JOBCTL_TRAP_FREEZE;
 		spin_unlock_irq(&sighand->siglock);
 		if (unlikely(cgroup_task_frozen(current)))
 			cgroup_leave_frozen(true);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto fatal;
 	}
 
@@ -2362,6 +2385,7 @@ relock:
 		    do_signal_stop(0))
 			goto relock;
 
+<<<<<<< HEAD
 		if (unlikely(current->jobctl &
 			     (JOBCTL_TRAP_MASK | JOBCTL_TRAP_FREEZE))) {
 			if (current->jobctl & JOBCTL_TRAP_MASK) {
@@ -2380,6 +2404,11 @@ relock:
 		if (unlikely(cgroup_task_frozen(current))) {
 			spin_unlock_irq(&sighand->siglock);
 			cgroup_leave_frozen(true);
+=======
+		if (unlikely(current->jobctl & JOBCTL_TRAP_MASK)) {
+			do_jobctl_trap();
+			spin_unlock_irq(&sighand->siglock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			goto relock;
 		}
 
@@ -2473,8 +2502,13 @@ relock:
 			continue;
 		}
 
+<<<<<<< HEAD
 		spin_unlock_irq(&sighand->siglock);
 	fatal:
+=======
+	fatal:
+		spin_unlock_irq(&sighand->siglock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		/*
 		 * Anything else is fatal, maybe with a core dump.

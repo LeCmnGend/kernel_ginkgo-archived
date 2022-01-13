@@ -108,14 +108,22 @@ struct shmem_falloc {
 #ifdef CONFIG_TMPFS
 static unsigned long shmem_default_max_blocks(void)
 {
+<<<<<<< HEAD
 	return totalram_pages() / 2;
+=======
+	return totalram_pages / 2;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static unsigned long shmem_default_max_inodes(void)
 {
+<<<<<<< HEAD
 	unsigned long nr_pages = totalram_pages();
 
 	return min(nr_pages - totalhigh_pages(), nr_pages / 2);
+=======
+	return min(totalram_pages - totalhigh_pages, totalram_pages / 2);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 #endif
 
@@ -2275,6 +2283,7 @@ static int shmem_mfill_atomic_pte(struct mm_struct *dst_mm,
 	pgoff_t offset, max_off;
 
 	ret = -ENOMEM;
+<<<<<<< HEAD
 	if (!shmem_inode_acct_block(inode, 1)) {
 		/*
 		 * We may have got a page, returned -ENOENT triggering a retry,
@@ -2287,6 +2296,10 @@ static int shmem_mfill_atomic_pte(struct mm_struct *dst_mm,
 		}
 		goto out;
 	}
+=======
+	if (!shmem_inode_acct_block(inode, 1))
+		goto out;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (!*pagep) {
 		page = shmem_alloc_page(gfp, info, pgoff);
@@ -3589,7 +3602,11 @@ static int shmem_parse_options(char *options, struct shmem_sb_info *sbinfo,
 			size = memparse(value,&rest);
 			if (*rest == '%') {
 				size <<= PAGE_SHIFT;
+<<<<<<< HEAD
 				size *= totalram_pages();
+=======
+				size *= totalram_pages;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				do_div(size, 100);
 				rest++;
 			}
@@ -4362,7 +4379,11 @@ void shmem_set_file(struct vm_area_struct *vma, struct file *file)
 
 /**
  * shmem_zero_setup - setup a shared anonymous mapping
+<<<<<<< HEAD
  * @vma: the vma to be mmapped is prepared by do_mmap
+=======
+ * @vma: the vma to be mmapped is prepared by do_mmap_pgoff
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  */
 int shmem_zero_setup(struct vm_area_struct *vma)
 {

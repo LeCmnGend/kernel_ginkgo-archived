@@ -198,7 +198,11 @@ int msm_comm_vote_bus(struct msm_vidc_core *core)
 	int rc = 0, vote_data_count = 0, i = 0;
 	struct hfi_device *hdev;
 	struct msm_vidc_inst *inst = NULL;
+<<<<<<< HEAD
 	struct vidc_bus_vote_data vote_data[MAX_SUPPORTED_INSTANCES] __aligned(8);
+=======
+	struct vidc_bus_vote_data *vote_data = NULL;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	bool is_turbo = false;
 
 	if (!core || !core->device) {
@@ -207,7 +211,23 @@ int msm_comm_vote_bus(struct msm_vidc_core *core)
 	}
 	hdev = core->device;
 
+<<<<<<< HEAD
 	memset(vote_data, 0, sizeof(struct vidc_bus_vote_data));
+=======
+	vote_data = kzalloc(sizeof(struct vidc_bus_vote_data) *
+			MAX_SUPPORTED_INSTANCES, GFP_ATOMIC);
+	if (!vote_data) {
+		dprintk(VIDC_DBG,
+			"vote_data allocation with GFP_ATOMIC failed\n");
+		vote_data = kzalloc(sizeof(struct vidc_bus_vote_data) *
+			MAX_SUPPORTED_INSTANCES, GFP_KERNEL);
+		if (!vote_data) {
+			dprintk(VIDC_DBG,
+				"vote_data allocation failed\n");
+			return -EINVAL;
+		}
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	mutex_lock(&core->lock);
 	list_for_each_entry(inst, &core->instances, list) {
@@ -338,6 +358,10 @@ int msm_comm_vote_bus(struct msm_vidc_core *core)
 		rc = call_hfi_op(hdev, vote_bus, hdev->hfi_device_data,
 			vote_data, vote_data_count);
 
+<<<<<<< HEAD
+=======
+	kfree(vote_data);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return rc;
 }
 
@@ -1571,6 +1595,10 @@ int msm_vidc_decide_core_and_power_mode(struct msm_vidc_inst *inst)
 	u32 current_inst_load = 0, current_inst_lp_load = 0,
 		min_load = 0, min_lp_load = 0;
 	u32 min_core_id, min_lp_core_id;
+<<<<<<< HEAD
+=======
+	u32 complexity;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (!inst || !inst->core || !inst->core->device) {
 		dprintk(VIDC_ERR,
@@ -1680,9 +1708,27 @@ int msm_vidc_decide_core_and_power_mode(struct msm_vidc_inst *inst)
 				inst->clk_data.core_id);
 		msm_vidc_move_core_to_power_save_mode(core, min_lp_core_id);
 	} else {
+<<<<<<< HEAD
 		rc = -EINVAL;
 		dprintk(VIDC_ERR,
 			"Sorry ... Core Can't support this load\n");
+=======
+		complexity = msm_comm_g_ctrl_for_id(inst,
+			V4L2_CID_MPEG_VIDC_VENC_COMPLEXITY);
+		if (!is_realtime_session(inst)) {
+			if (inst->session_type == MSM_VIDC_ENCODER)
+				msm_vidc_power_save_mode_enable(inst,
+					(complexity == 0));
+			inst->clk_data.core_id = min_core_id;
+			dprintk(VIDC_DBG, "Supporting NRT session");
+			goto decision_done;
+
+		} else {
+			rc = -EINVAL;
+			dprintk(VIDC_ERR,
+				"Sorry ... Core Can't support this load\n");
+		}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return rc;
 	}
 

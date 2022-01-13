@@ -27,6 +27,12 @@
 #include "sched.h"
 #include "walt.h"
 
+<<<<<<< HEAD
+=======
+#define MAX_CPUS_PER_CLUSTER 6
+#define MAX_CLUSTERS 3
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 struct cluster_data {
 	bool inited;
 	unsigned int min_cpus;
@@ -54,7 +60,10 @@ struct cluster_data {
 	unsigned int first_cpu;
 	unsigned int boost;
 	struct kobject kobj;
+<<<<<<< HEAD
 	unsigned int strict_nrrun;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 struct cpu_data {
@@ -629,6 +638,7 @@ static int prev_cluster_nr_need_assist(int index)
 	return need;
 }
 
+<<<<<<< HEAD
 /*
  * This is only implemented for min capacity cluster.
  *
@@ -672,6 +682,8 @@ static int compute_cluster_nr_strict_need(int index)
 
 	return nr_strict_need;
 }
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static void update_running_avg(void)
 {
 	struct cluster_data *cluster;
@@ -696,8 +708,11 @@ static void update_running_avg(void)
 		cluster->max_nr = compute_cluster_max_nr(index);
 		cluster->nr_prev_assist = prev_cluster_nr_need_assist(index);
 
+<<<<<<< HEAD
 		cluster->strict_nrrun = compute_cluster_nr_strict_need(index);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		trace_core_ctl_update_nr_need(cluster->first_cpu, nr_need,
 					prev_misfit_need,
 					cluster->nrrun, cluster->max_nr,
@@ -739,6 +754,7 @@ static unsigned int apply_task_need(const struct cluster_data *cluster,
 	if (cluster->max_nr > MAX_NR_THRESHOLD)
 		new_need = new_need + 1;
 
+<<<<<<< HEAD
 	/*
 	 * For little cluster, we use a bit more relaxed approach
 	 * and impose the strict nr condition. Because all tasks can
@@ -747,6 +763,8 @@ static unsigned int apply_task_need(const struct cluster_data *cluster,
 	if (new_need < cluster->strict_nrrun)
 		new_need = cluster->strict_nrrun;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return new_need;
 }
 
@@ -776,6 +794,7 @@ static bool adjustment_possible(const struct cluster_data *cluster,
 						cluster->nr_isolated_cpus));
 }
 
+<<<<<<< HEAD
 static bool need_all_cpus(const struct cluster_data *cluster)
 {
 
@@ -783,6 +802,8 @@ static bool need_all_cpus(const struct cluster_data *cluster)
 		sched_ravg_window < DEFAULT_SCHED_RAVG_WINDOW);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static bool eval_need(struct cluster_data *cluster)
 {
 	unsigned long flags;
@@ -798,7 +819,11 @@ static bool eval_need(struct cluster_data *cluster)
 
 	spin_lock_irqsave(&state_lock, flags);
 
+<<<<<<< HEAD
 	if (cluster->boost || !cluster->enable || need_all_cpus(cluster)) {
+=======
+	if (cluster->boost || !cluster->enable) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		need_cpus = cluster->max_cpus;
 	} else {
 		cluster->active_cpus = get_active_cpu_count(cluster);
@@ -927,7 +952,11 @@ void core_ctl_notifier_unregister(struct notifier_block *n)
 
 static void core_ctl_call_notifier(void)
 {
+<<<<<<< HEAD
 	struct core_ctl_notif_data ndata = {0};
+=======
+	struct core_ctl_notif_data ndata;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct notifier_block *nb;
 
 	/*
@@ -942,9 +971,13 @@ static void core_ctl_call_notifier(void)
 		return;
 
 	ndata.nr_big = last_nr_big;
+<<<<<<< HEAD
 	walt_fill_ta_data(&ndata);
 	trace_core_ctl_notif_data(ndata.nr_big, ndata.coloc_load_pct,
 			ndata.ta_util_pct, ndata.cur_cap_pct);
+=======
+	ndata.coloc_load_pct = walt_get_default_coloc_group_load();
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	atomic_notifier_call_chain(&core_ctl_notifier, 0, &ndata);
 }
@@ -1316,7 +1349,10 @@ static int cluster_init(const struct cpumask *mask)
 	cluster->nrrun = cluster->num_cpus;
 	cluster->enable = true;
 	cluster->nr_not_preferred_cpus = 0;
+<<<<<<< HEAD
 	cluster->strict_nrrun = 0;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	INIT_LIST_HEAD(&cluster->lru);
 	spin_lock_init(&cluster->pending_lock);
 

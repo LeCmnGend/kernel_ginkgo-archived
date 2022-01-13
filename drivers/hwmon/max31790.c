@@ -179,7 +179,11 @@ static int max31790_read_fan(struct device *dev, u32 attr, int channel,
 
 	switch (attr) {
 	case hwmon_fan_input:
+<<<<<<< HEAD
 		sr = get_tach_period(data->fan_dynamics[channel % NR_CHANNEL]);
+=======
+		sr = get_tach_period(data->fan_dynamics[channel]);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		rpm = RPM_FROM_REG(data->tach[channel], sr);
 		*val = rpm;
 		return 0;

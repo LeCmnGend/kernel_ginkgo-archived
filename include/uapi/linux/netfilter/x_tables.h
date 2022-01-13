@@ -1,7 +1,11 @@
 /* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
 #ifndef _UAPI_X_TABLES_H
 #define _UAPI_X_TABLES_H
+<<<<<<< HEAD
 #include <linux/const.h>
+=======
+#include <linux/kernel.h>
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <linux/types.h>
 
 #define XT_FUNCTION_MAXNAMELEN 30

@@ -91,6 +91,7 @@ enum kx_chipset {
 	KX_MAX_CHIPS /* this must be last */
 };
 
+<<<<<<< HEAD
 enum kx_acpi_type {
 	ACPI_GENERIC,
 	ACPI_SMO8500,
@@ -104,16 +105,22 @@ enum kxcjk1013_axis {
 	AXIS_MAX
 };
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 struct kxcjk1013_data {
 	struct i2c_client *client;
 	struct iio_trigger *dready_trig;
 	struct iio_trigger *motion_trig;
 	struct mutex mutex;
+<<<<<<< HEAD
 	/* Ensure timestamp naturally aligned */
 	struct {
 		s16 chans[AXIS_MAX];
 		s64 timestamp __aligned(8);
 	} scan;
+=======
+	s16 buffer[8];
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	u8 odr_bits;
 	u8 range;
 	int wake_thres;
@@ -124,7 +131,18 @@ struct kxcjk1013_data {
 	bool motion_trigger_on;
 	int64_t timestamp;
 	enum kx_chipset chipset;
+<<<<<<< HEAD
 	enum kx_acpi_type acpi_type;
+=======
+	bool is_smo8500_device;
+};
+
+enum kxcjk1013_axis {
+	AXIS_X,
+	AXIS_Y,
+	AXIS_Z,
+	AXIS_MAX,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 enum kxcjk1013_mode {
@@ -225,6 +243,7 @@ static const struct {
 				 {800, 0, 0x06},
 				 {1600, 0, 0x06} };
 
+<<<<<<< HEAD
 #ifdef CONFIG_ACPI
 enum kiox010a_fn_index {
 	KIOX010A_SET_LAPTOP_MODE = 1,
@@ -251,6 +270,8 @@ static int kiox010a_dsm(struct device *dev, int fn_index)
 }
 #endif
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static int kxcjk1013_set_mode(struct kxcjk1013_data *data,
 			      enum kxcjk1013_mode mode)
 {
@@ -328,6 +349,7 @@ static int kxcjk1013_chip_init(struct kxcjk1013_data *data)
 {
 	int ret;
 
+<<<<<<< HEAD
 #ifdef CONFIG_ACPI
 	if (data->acpi_type == ACPI_KIOX010A) {
 		/* Make sure the kbd and touchpad on 2-in-1s using 2 KXCJ91008-s work */
@@ -335,6 +357,8 @@ static int kxcjk1013_chip_init(struct kxcjk1013_data *data)
 	}
 #endif
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ret = i2c_smbus_read_byte_data(data->client, KXCJK1013_REG_WHO_AM_I);
 	if (ret < 0) {
 		dev_err(&data->client->dev, "Error reading who_am_i\n");
@@ -1009,12 +1033,20 @@ static irqreturn_t kxcjk1013_trigger_handler(int irq, void *p)
 	ret = i2c_smbus_read_i2c_block_data_or_emulated(data->client,
 							KXCJK1013_REG_XOUT_L,
 							AXIS_MAX * 2,
+<<<<<<< HEAD
 							(u8 *)data->scan.chans);
+=======
+							(u8 *)data->buffer);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	mutex_unlock(&data->mutex);
 	if (ret < 0)
 		goto err;
 
+<<<<<<< HEAD
 	iio_push_to_buffers_with_timestamp(indio_dev, &data->scan,
+=======
+	iio_push_to_buffers_with_timestamp(indio_dev, data->buffer,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 					   data->timestamp);
 err:
 	iio_trigger_notify_done(indio_dev->trig);
@@ -1187,7 +1219,11 @@ static irqreturn_t kxcjk1013_data_rdy_trig_poll(int irq, void *private)
 
 static const char *kxcjk1013_match_acpi_device(struct device *dev,
 					       enum kx_chipset *chipset,
+<<<<<<< HEAD
 					       enum kx_acpi_type *acpi_type)
+=======
+					       bool *is_smo8500_device)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	const struct acpi_device_id *id;
 
@@ -1196,9 +1232,13 @@ static const char *kxcjk1013_match_acpi_device(struct device *dev,
 		return NULL;
 
 	if (strcmp(id->id, "SMO8500") == 0)
+<<<<<<< HEAD
 		*acpi_type = ACPI_SMO8500;
 	else if (strcmp(id->id, "KIOX010A") == 0)
 		*acpi_type = ACPI_KIOX010A;
+=======
+		*is_smo8500_device = true;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	*chipset = (enum kx_chipset)id->driver_data;
 
@@ -1234,7 +1274,11 @@ static int kxcjk1013_probe(struct i2c_client *client,
 	} else if (ACPI_HANDLE(&client->dev)) {
 		name = kxcjk1013_match_acpi_device(&client->dev,
 						   &data->chipset,
+<<<<<<< HEAD
 						   &data->acpi_type);
+=======
+						   &data->is_smo8500_device);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else
 		return -ENODEV;
 
@@ -1252,7 +1296,11 @@ static int kxcjk1013_probe(struct i2c_client *client,
 	indio_dev->modes = INDIO_DIRECT_MODE;
 	indio_dev->info = &kxcjk1013_info;
 
+<<<<<<< HEAD
 	if (client->irq > 0 && data->acpi_type != ACPI_SMO8500) {
+=======
+	if (client->irq > 0 && !data->is_smo8500_device) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		ret = devm_request_threaded_irq(&client->dev, client->irq,
 						kxcjk1013_data_rdy_trig_poll,
 						kxcjk1013_event_handler,

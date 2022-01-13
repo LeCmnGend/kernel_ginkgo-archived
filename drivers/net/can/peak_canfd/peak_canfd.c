@@ -256,7 +256,12 @@ static int pucan_handle_can_rx(struct peak_canfd_priv *priv,
 		cf_len = get_can_dlc(pucan_msg_get_dlc(msg));
 
 	/* if this frame is an echo, */
+<<<<<<< HEAD
 	if (rx_msg_flags & PUCAN_MSG_LOOPED_BACK) {
+=======
+	if ((rx_msg_flags & PUCAN_MSG_LOOPED_BACK) &&
+	    !(rx_msg_flags & PUCAN_MSG_SELF_RECEIVE)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		unsigned long flags;
 
 		spin_lock_irqsave(&priv->echo_lock, flags);
@@ -270,6 +275,7 @@ static int pucan_handle_can_rx(struct peak_canfd_priv *priv,
 		netif_wake_queue(priv->ndev);
 
 		spin_unlock_irqrestore(&priv->echo_lock, flags);
+<<<<<<< HEAD
 
 		/* if this frame is only an echo, stop here. Otherwise,
 		 * continue to push this application self-received frame into
@@ -277,6 +283,9 @@ static int pucan_handle_can_rx(struct peak_canfd_priv *priv,
 		 */
 		if (!(rx_msg_flags & PUCAN_MSG_SELF_RECEIVE))
 			return 0;
+=======
+		return 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	/* otherwise, it should be pushed into rx fifo */
@@ -346,8 +355,13 @@ static int pucan_handle_status(struct peak_canfd_priv *priv,
 				return err;
 		}
 
+<<<<<<< HEAD
 		/* wake network queue up (echo_skb array is empty) */
 		netif_wake_queue(ndev);
+=======
+		/* start network queue (echo_skb array is empty) */
+		netif_start_queue(ndev);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		return 0;
 	}

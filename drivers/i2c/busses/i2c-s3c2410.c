@@ -495,10 +495,14 @@ static int i2c_s3c_irq_nextbyte(struct s3c24xx_i2c *i2c, unsigned long iicstat)
 					 * forces us to send a new START
 					 * when we change direction
 					 */
+<<<<<<< HEAD
 					dev_dbg(i2c->dev,
 						"missing START before write->read\n");
 					s3c24xx_i2c_stop(i2c, -EINVAL);
 					break;
+=======
+					s3c24xx_i2c_stop(i2c, -EINVAL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				}
 
 				goto retry_write;

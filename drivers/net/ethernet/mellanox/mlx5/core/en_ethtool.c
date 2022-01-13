@@ -1747,7 +1747,10 @@ static int set_pflag_rx_cqe_compress(struct net_device *netdev,
 {
 	struct mlx5e_priv *priv = netdev_priv(netdev);
 	struct mlx5_core_dev *mdev = priv->mdev;
+<<<<<<< HEAD
 	int err;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (!MLX5_CAP_GEN(mdev, cqe_compression))
 		return -EOPNOTSUPP;
@@ -1757,10 +1760,14 @@ static int set_pflag_rx_cqe_compress(struct net_device *netdev,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
 	err = mlx5e_modify_rx_cqe_compression_locked(priv, enable);
 	if (err)
 		return err;
 
+=======
+	mlx5e_modify_rx_cqe_compression_locked(priv, enable);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	priv->channels.params.rx_cqe_compress_def = enable;
 
 	return 0;

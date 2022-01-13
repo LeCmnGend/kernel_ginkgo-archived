@@ -181,6 +181,11 @@ static int hardidletimer_tg_create(struct hardidletimer_tg_info *info)
 		pr_debug("couldn't add file to sysfs");
 		goto out_free_attr;
 	}
+<<<<<<< HEAD
+=======
+	/*  notify userspace  */
+	kobject_uevent(hardidletimer_tg_kobj, KOBJ_ADD);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	list_add(&info->timer->entry, &hardidletimer_tg_list);
 

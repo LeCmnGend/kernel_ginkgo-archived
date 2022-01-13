@@ -1,6 +1,9 @@
 /*
  * Copyright (c) 2016-2020, The Linux Foundation. All rights reserved.
+<<<<<<< HEAD
  * Copyright (C) 2019 XiaoMi, Inc.
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  * Copyright (C) 2013 Red Hat
  * Author: Rob Clark <robdclark@gmail.com>
  *
@@ -27,7 +30,10 @@
 #include <linux/component.h>
 #include <linux/platform_device.h>
 #include <linux/pm.h>
+<<<<<<< HEAD
 #include <linux/pm_qos.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <linux/pm_runtime.h>
 #include <linux/slab.h>
 #include <linux/list.h>
@@ -75,9 +81,12 @@ struct msm_gem_vma;
 
 #define TEARDOWN_DEADLOCK_RETRY_MAX 5
 
+<<<<<<< HEAD
 extern atomic_t resume_pending;
 extern wait_queue_head_t resume_wait_q;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 struct msm_file_private {
 	/* update the refcount when user driver calls power_ctrl IOCTL */
 	unsigned short enable_refcnt;
@@ -692,10 +701,13 @@ struct msm_drm_private {
 
 	/* update the flag when msm driver receives shutdown notification */
 	bool shutdown_in_progress;
+<<<<<<< HEAD
 
 	struct pm_qos_request pm_irq_req;
 	struct delayed_work pm_unreq_dwork;
 	atomic_t pm_req_set;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 /* get struct msm_kms * from drm_device * */

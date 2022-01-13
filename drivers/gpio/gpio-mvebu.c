@@ -654,8 +654,14 @@ static void mvebu_pwm_get_state(struct pwm_chip *chip,
 
 	spin_lock_irqsave(&mvpwm->lock, flags);
 
+<<<<<<< HEAD
 	u = readl_relaxed(mvebu_pwmreg_blink_on_duration(mvpwm));
 	val = (unsigned long long) u * NSEC_PER_SEC;
+=======
+	val = (unsigned long long)
+		readl_relaxed(mvebu_pwmreg_blink_on_duration(mvpwm));
+	val *= NSEC_PER_SEC;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	do_div(val, mvpwm->clk_rate);
 	if (val > UINT_MAX)
 		state->duty_cycle = UINT_MAX;
@@ -664,6 +670,7 @@ static void mvebu_pwm_get_state(struct pwm_chip *chip,
 	else
 		state->duty_cycle = 1;
 
+<<<<<<< HEAD
 	val = (unsigned long long) u; /* on duration */
 	/* period = on + off duration */
 	val += readl_relaxed(mvebu_pwmreg_blink_off_duration(mvpwm));
@@ -675,6 +682,23 @@ static void mvebu_pwm_get_state(struct pwm_chip *chip,
 		state->period = val;
 	else
 		state->period = 1;
+=======
+	val = (unsigned long long)
+		readl_relaxed(mvebu_pwmreg_blink_off_duration(mvpwm));
+	val *= NSEC_PER_SEC;
+	do_div(val, mvpwm->clk_rate);
+	if (val < state->duty_cycle) {
+		state->period = 1;
+	} else {
+		val -= state->duty_cycle;
+		if (val > UINT_MAX)
+			state->period = UINT_MAX;
+		else if (val)
+			state->period = val;
+		else
+			state->period = 1;
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	regmap_read(mvchip->regs, GPIO_BLINK_EN_OFF + mvchip->offset, &u);
 	if (u)
@@ -1190,6 +1214,7 @@ static int mvebu_gpio_probe(struct platform_device *pdev)
 
 	devm_gpiochip_add_data(&pdev->dev, &mvchip->chip, mvchip);
 
+<<<<<<< HEAD
 	/* Some MVEBU SoCs have simple PWM support for GPIO lines */
 	if (IS_ENABLED(CONFIG_PWM)) {
 		err = mvebu_pwm_probe(pdev, mvchip, id);
@@ -1197,6 +1222,8 @@ static int mvebu_gpio_probe(struct platform_device *pdev)
 			return err;
 	}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* Some gpio controllers do not provide irq support */
 	if (!have_irqs)
 		return 0;
@@ -1206,8 +1233,12 @@ static int mvebu_gpio_probe(struct platform_device *pdev)
 	if (!mvchip->domain) {
 		dev_err(&pdev->dev, "couldn't allocate irq domain %s (DT).\n",
 			mvchip->chip.label);
+<<<<<<< HEAD
 		err = -ENODEV;
 		goto err_pwm;
+=======
+		return -ENODEV;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	err = irq_alloc_domain_generic_chips(
@@ -1255,12 +1286,22 @@ static int mvebu_gpio_probe(struct platform_device *pdev)
 						 mvchip);
 	}
 
+<<<<<<< HEAD
+=======
+	/* Some MVEBU SoCs have simple PWM support for GPIO lines */
+	if (IS_ENABLED(CONFIG_PWM))
+		return mvebu_pwm_probe(pdev, mvchip, id);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 
 err_domain:
 	irq_domain_remove(mvchip->domain);
+<<<<<<< HEAD
 err_pwm:
 	pwmchip_remove(&mvchip->mvpwm->chip);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return err;
 }

@@ -1777,6 +1777,7 @@ static void __blkdev_put(struct block_device *bdev, fmode_t mode, int for_part)
 	struct gendisk *disk = bdev->bd_disk;
 	struct block_device *victim = NULL;
 
+<<<<<<< HEAD
 	/*
 	 * Sync early if it looks like we're the last one.  If someone else
 	 * opens the block device between now and the decrement of bd_openers
@@ -1787,6 +1788,8 @@ static void __blkdev_put(struct block_device *bdev, fmode_t mode, int for_part)
 	if (bdev->bd_openers == 1)
 		sync_blockdev(bdev);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	mutex_lock_nested(&bdev->bd_mutex, for_part);
 	if (for_part)
 		bdev->bd_part_count--;
@@ -1906,7 +1909,10 @@ ssize_t blkdev_write_iter(struct kiocb *iocb, struct iov_iter *from)
 	struct inode *bd_inode = bdev_file_inode(file);
 	loff_t size = i_size_read(bd_inode);
 	struct blk_plug plug;
+<<<<<<< HEAD
 	size_t shorted = 0;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ssize_t ret;
 
 	if (bdev_read_only(I_BDEV(bd_inode)))
@@ -1924,17 +1930,24 @@ ssize_t blkdev_write_iter(struct kiocb *iocb, struct iov_iter *from)
 	if ((iocb->ki_flags & (IOCB_NOWAIT | IOCB_DIRECT)) == IOCB_NOWAIT)
 		return -EOPNOTSUPP;
 
+<<<<<<< HEAD
 	size -= iocb->ki_pos;
 	if (iov_iter_count(from) > size) {
 		shorted = iov_iter_count(from) - size;
 		iov_iter_truncate(from, size);
 	}
+=======
+	iov_iter_truncate(from, size - iocb->ki_pos);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	blk_start_plug(&plug);
 	ret = __generic_file_write_iter(iocb, from);
 	if (ret > 0)
 		ret = generic_write_sync(iocb, ret);
+<<<<<<< HEAD
 	iov_iter_reexpand(from, iov_iter_count(from) + shorted);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	blk_finish_plug(&plug);
 	return ret;
 }
@@ -1946,13 +1959,17 @@ ssize_t blkdev_read_iter(struct kiocb *iocb, struct iov_iter *to)
 	struct inode *bd_inode = bdev_file_inode(file);
 	loff_t size = i_size_read(bd_inode);
 	loff_t pos = iocb->ki_pos;
+<<<<<<< HEAD
 	size_t shorted = 0;
 	ssize_t ret;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (pos >= size)
 		return 0;
 
 	size -= pos;
+<<<<<<< HEAD
 	if (iov_iter_count(to) > size) {
 		shorted = iov_iter_count(to) - size;
 		iov_iter_truncate(to, size);
@@ -1961,6 +1978,10 @@ ssize_t blkdev_read_iter(struct kiocb *iocb, struct iov_iter *to)
 	ret = generic_file_read_iter(iocb, to);
 	iov_iter_reexpand(to, iov_iter_count(to) + shorted);
 	return ret;
+=======
+	iov_iter_truncate(to, size);
+	return generic_file_read_iter(iocb, to);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 EXPORT_SYMBOL_GPL(blkdev_read_iter);
 

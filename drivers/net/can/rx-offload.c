@@ -281,7 +281,11 @@ int can_rx_offload_queue_sorted(struct can_rx_offload *offload,
 
 	if (skb_queue_len(&offload->skb_queue) >
 	    offload->skb_queue_len_max) {
+<<<<<<< HEAD
 		dev_kfree_skb_any(skb);
+=======
+		kfree_skb(skb);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return -ENOBUFS;
 	}
 
@@ -326,7 +330,11 @@ int can_rx_offload_queue_tail(struct can_rx_offload *offload,
 {
 	if (skb_queue_len(&offload->skb_queue) >
 	    offload->skb_queue_len_max) {
+<<<<<<< HEAD
 		dev_kfree_skb_any(skb);
+=======
+		kfree_skb(skb);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return -ENOBUFS;
 	}
 

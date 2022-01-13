@@ -28,7 +28,10 @@
 #include <linux/slab.h>
 #include <linux/export.h>
 #include <linux/if_vlan.h>
+<<<<<<< HEAD
 #include <net/dsa.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <net/tcp.h>
 #include <net/udp.h>
 #include <net/addrconf.h>
@@ -180,7 +183,11 @@ static void poll_napi(struct net_device *dev)
 	struct napi_struct *napi;
 	int cpu = smp_processor_id();
 
+<<<<<<< HEAD
 	list_for_each_entry_rcu(napi, &dev->napi_list, dev_list) {
+=======
+	list_for_each_entry(napi, &dev->napi_list, dev_list) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (cmpxchg(&napi->poll_owner, -1, cpu) == -1) {
 			poll_one_napi(napi);
 			smp_store_release(&napi->poll_owner, -1);
@@ -662,15 +669,26 @@ EXPORT_SYMBOL_GPL(__netpoll_setup);
 
 int netpoll_setup(struct netpoll *np)
 {
+<<<<<<< HEAD
 	struct net_device *ndev = NULL, *dev = NULL;
 	struct net *net = current->nsproxy->net_ns;
+=======
+	struct net_device *ndev = NULL;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct in_device *in_dev;
 	int err;
 
 	rtnl_lock();
+<<<<<<< HEAD
 	if (np->dev_name[0])
 		ndev = __dev_get_by_name(net, np->dev_name);
 
+=======
+	if (np->dev_name[0]) {
+		struct net *net = current->nsproxy->net_ns;
+		ndev = __dev_get_by_name(net, np->dev_name);
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!ndev) {
 		np_err(np, "%s doesn't exist, aborting\n", np->dev_name);
 		err = -ENODEV;
@@ -678,6 +696,7 @@ int netpoll_setup(struct netpoll *np)
 	}
 	dev_hold(ndev);
 
+<<<<<<< HEAD
 	/* bring up DSA management network devices up first */
 	for_each_netdev(net, dev) {
 		if (!netdev_uses_dsa(dev))
@@ -691,6 +710,8 @@ int netpoll_setup(struct netpoll *np)
 		}
 	}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (netdev_master_upper_dev_get(ndev)) {
 		np_err(np, "%s is a slave device, aborting\n", np->dev_name);
 		err = -EBUSY;

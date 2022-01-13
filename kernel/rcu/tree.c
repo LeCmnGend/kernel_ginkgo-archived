@@ -4224,7 +4224,11 @@ void __init rcu_init(void)
 	}
 
 	/* Create workqueue for expedited GPs and for Tree SRCU. */
+<<<<<<< HEAD
 	rcu_gp_wq = alloc_workqueue("rcu_gp", WQ_POWER_EFFICIENT | WQ_MEM_RECLAIM, 0);
+=======
+	rcu_gp_wq = alloc_workqueue("rcu_gp", WQ_MEM_RECLAIM, 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	WARN_ON(!rcu_gp_wq);
 }
 

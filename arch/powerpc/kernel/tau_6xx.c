@@ -38,6 +38,11 @@ static struct tau_temp
 
 struct timer_list tau_timer;
 
+<<<<<<< HEAD
+=======
+#undef DEBUG
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /* TODO: put these in a /proc interface, with some sanity checks, and maybe
  * dynamic adjustment to minimize # of interrupts */
 /* configurable values for step size and how much to expand the window when
@@ -70,6 +75,7 @@ void set_thresholds(unsigned long cpu)
 
 void TAUupdate(int cpu)
 {
+<<<<<<< HEAD
 	u32 thrm;
 	u32 bits = THRM1_TIV | THRM1_TIN | THRM1_V;
 
@@ -97,6 +103,49 @@ void TAUupdate(int cpu)
 		tau[cpu].grew = 1;
 		pr_debug("%s: high threshold crossed\n", __func__);
 	}
+=======
+	unsigned thrm;
+
+#ifdef DEBUG
+	printk("TAUupdate ");
+#endif
+
+	/* if both thresholds are crossed, the step_sizes cancel out
+	 * and the window winds up getting expanded twice. */
+	if((thrm = mfspr(SPRN_THRM1)) & THRM1_TIV){ /* is valid? */
+		if(thrm & THRM1_TIN){ /* crossed low threshold */
+			if (tau[cpu].low >= step_size){
+				tau[cpu].low -= step_size;
+				tau[cpu].high -= (step_size - window_expand);
+			}
+			tau[cpu].grew = 1;
+#ifdef DEBUG
+			printk("low threshold crossed ");
+#endif
+		}
+	}
+	if((thrm = mfspr(SPRN_THRM2)) & THRM1_TIV){ /* is valid? */
+		if(thrm & THRM1_TIN){ /* crossed high threshold */
+			if (tau[cpu].high <= 127-step_size){
+				tau[cpu].low += (step_size - window_expand);
+				tau[cpu].high += step_size;
+			}
+			tau[cpu].grew = 1;
+#ifdef DEBUG
+			printk("high threshold crossed ");
+#endif
+		}
+	}
+
+#ifdef DEBUG
+	printk("grew = %d\n", tau[cpu].grew);
+#endif
+
+#ifndef CONFIG_TAU_INT /* tau_timeout will do this if not using interrupts */
+	set_thresholds(cpu);
+#endif
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 #ifdef CONFIG_TAU_INT
@@ -121,18 +170,30 @@ void TAUException(struct pt_regs * regs)
 static void tau_timeout(void * info)
 {
 	int cpu;
+<<<<<<< HEAD
 	int size;
 	int shrink;
 
+=======
+	unsigned long flags;
+	int size;
+	int shrink;
+
+	/* disabling interrupts *should* be okay */
+	local_irq_save(flags);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	cpu = smp_processor_id();
 
 #ifndef CONFIG_TAU_INT
 	TAUupdate(cpu);
 #endif
 
+<<<<<<< HEAD
 	/* Stop thermal sensor comparisons and interrupts */
 	mtspr(SPRN_THRM3, 0);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	size = tau[cpu].high - tau[cpu].low;
 	if (size > min_window && ! tau[cpu].grew) {
 		/* do an exponential shrink of half the amount currently over size */
@@ -154,12 +215,31 @@ static void tau_timeout(void * info)
 
 	set_thresholds(cpu);
 
+<<<<<<< HEAD
 	/* Restart thermal sensor comparisons and interrupts.
 	 * The "PowerPC 740 and PowerPC 750 Microprocessor Datasheet"
 	 * recommends that "the maximum value be set in THRM3 under all
 	 * conditions."
 	 */
 	mtspr(SPRN_THRM3, THRM3_SITV(0x1fff) | THRM3_E);
+=======
+	/*
+	 * Do the enable every time, since otherwise a bunch of (relatively)
+	 * complex sleep code needs to be added. One mtspr every time
+	 * tau_timeout is called is probably not a big deal.
+	 *
+	 * Enable thermal sensor and set up sample interval timer
+	 * need 20 us to do the compare.. until a nice 'cpu_speed' function
+	 * call is implemented, just assume a 500 mhz clock. It doesn't really
+	 * matter if we take too long for a compare since it's all interrupt
+	 * driven anyway.
+	 *
+	 * use a extra long time.. (60 us @ 500 mhz)
+	 */
+	mtspr(SPRN_THRM3, THRM3_SITV(500*60) | THRM3_E);
+
+	local_irq_restore(flags);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void tau_timeout_smp(unsigned long unused)

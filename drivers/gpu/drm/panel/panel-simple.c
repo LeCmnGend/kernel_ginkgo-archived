@@ -1253,7 +1253,11 @@ static const struct drm_display_mode lg_lb070wv8_mode = {
 static const struct panel_desc lg_lb070wv8 = {
 	.modes = &lg_lb070wv8_mode,
 	.num_modes = 1,
+<<<<<<< HEAD
 	.bpc = 8,
+=======
+	.bpc = 16,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.size = {
 		.width = 151,
 		.height = 91,

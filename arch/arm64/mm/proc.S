@@ -482,6 +482,7 @@ ENTRY(__cpu_setup)
 	 *			n	MAIR
 	 *   DEVICE_nGnRnE	000	00000000
 	 *   DEVICE_nGnRE	001	00000100
+<<<<<<< HEAD
 	 *   NORMAL_NC		011	01000100
 	 *   NORMAL		100	11111111
 	 */
@@ -489,6 +490,19 @@ ENTRY(__cpu_setup)
 		     MAIR(0x04, MT_DEVICE_nGnRE) | \
 		     MAIR(0x44, MT_NORMAL_NC) | \
 		     MAIR(0xff, MT_NORMAL)
+=======
+	 *   DEVICE_GRE		010	00001100
+	 *   NORMAL_NC		011	01000100
+	 *   NORMAL		100	11111111
+	 *   NORMAL_WT		101	10111011
+	 */
+	ldr	x5, =MAIR(0x00, MT_DEVICE_nGnRnE) | \
+		     MAIR(0x04, MT_DEVICE_nGnRE) | \
+		     MAIR(0x0c, MT_DEVICE_GRE) | \
+		     MAIR(0x44, MT_NORMAL_NC) | \
+		     MAIR(0xff, MT_NORMAL) | \
+		     MAIR(0xbb, MT_NORMAL_WT)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	msr	mair_el1, x5
 	/*
 	 * Prepare SCTLR

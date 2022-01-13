@@ -21,7 +21,10 @@ dts-dirs += renesas
 dts-dirs += rockchip
 dts-dirs += socionext
 dts-dirs += sprd
+<<<<<<< HEAD
 dts-dirs += xiaomi
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 dts-dirs += xilinx
 dts-dirs += lg
 dts-dirs += zte

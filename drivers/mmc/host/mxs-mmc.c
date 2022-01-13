@@ -659,7 +659,11 @@ static int mxs_mmc_probe(struct platform_device *pdev)
 
 	ret = mmc_of_parse(mmc);
 	if (ret)
+<<<<<<< HEAD
 		goto out_free_dma;
+=======
+		goto out_clk_disable;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	mmc->ocr_avail = MMC_VDD_32_33 | MMC_VDD_33_34;
 

@@ -32,6 +32,17 @@ static inline void arch_spin_lock(arch_spinlock_t *lock)
 	barrier();
 }
 
+<<<<<<< HEAD
+=======
+static inline void
+arch_spin_lock_flags(arch_spinlock_t *lock, unsigned long flags)
+{
+	local_irq_save(flags);
+	lock->slock = 0;
+	barrier();
+}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static inline int arch_spin_trylock(arch_spinlock_t *lock)
 {
 	char oldval = lock->slock;

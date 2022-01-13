@@ -14,6 +14,10 @@
  * We make no fairness assumptions. They have a cost.
  */
 
+<<<<<<< HEAD
+=======
+#define arch_spin_lock_flags(lock, flags) arch_spin_lock(lock)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define arch_spin_is_locked(x)	((x)->lock != 0)
 
 static inline int arch_spin_value_unlocked(arch_spinlock_t lock)
@@ -170,4 +174,10 @@ static inline void arch_write_unlock(arch_rwlock_t * lock)
 	lock->lock = 0;
 }
 
+<<<<<<< HEAD
+=======
+#define arch_read_lock_flags(lock, flags) arch_read_lock(lock)
+#define arch_write_lock_flags(lock, flags) arch_write_lock(lock)
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif /* _ALPHA_SPINLOCK_H */

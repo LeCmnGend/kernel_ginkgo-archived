@@ -126,7 +126,10 @@
 
 /* Hewlett-Packard POS Pole Displays */
 #define HP_VENDOR_ID		0x03f0
+<<<<<<< HEAD
 #define HP_LD381GC_PRODUCT_ID	0x0183
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define HP_LM920_PRODUCT_ID	0x026b
 #define HP_TD620_PRODUCT_ID	0x0956
 #define HP_LD960_PRODUCT_ID	0x0b39
@@ -157,7 +160,10 @@
 /* ADLINK ND-6530 RS232,RS485 and RS422 adapter */
 #define ADLINK_VENDOR_ID		0x0b63
 #define ADLINK_ND6530_PRODUCT_ID	0x6530
+<<<<<<< HEAD
 #define ADLINK_ND6530GC_PRODUCT_ID	0x653a
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /* SMART USB Serial Adapter */
 #define SMART_VENDOR_ID	0x0b8c

@@ -88,6 +88,10 @@ static inline int arch_dup_mmap(struct mm_struct *oldmm,
 }
 
 static inline void arch_unmap(struct mm_struct *mm,
+<<<<<<< HEAD
+=======
+			struct vm_area_struct *vma,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			unsigned long start, unsigned long end)
 {
 }

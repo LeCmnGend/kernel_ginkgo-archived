@@ -365,10 +365,14 @@ static unsigned int stm32_tx_empty(struct uart_port *port)
 	struct stm32_port *stm32_port = to_stm32_port(port);
 	struct stm32_usart_offsets *ofs = &stm32_port->info->ofs;
 
+<<<<<<< HEAD
 	if (readl_relaxed(port->membase + ofs->isr) & USART_SR_TC)
 		return TIOCSER_TEMT;
 
 	return 0;
+=======
+	return readl_relaxed(port->membase + ofs->isr) & USART_SR_TXE;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void stm32_set_mctrl(struct uart_port *port, unsigned int mctrl)
@@ -502,9 +506,14 @@ static void stm32_set_termios(struct uart_port *port, struct ktermios *termios,
 	unsigned int baud;
 	u32 usartdiv, mantissa, fraction, oversampling;
 	tcflag_t cflag = termios->c_cflag;
+<<<<<<< HEAD
 	u32 cr1, cr2, cr3, isr;
 	unsigned long flags;
 	int ret;
+=======
+	u32 cr1, cr2, cr3;
+	unsigned long flags;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (!stm32_port->hw_flow_control)
 		cflag &= ~CRTSCTS;
@@ -513,6 +522,7 @@ static void stm32_set_termios(struct uart_port *port, struct ktermios *termios,
 
 	spin_lock_irqsave(&port->lock, flags);
 
+<<<<<<< HEAD
 	ret = readl_relaxed_poll_timeout_atomic(port->membase + ofs->isr,
 						isr,
 						(isr & USART_SR_TC),
@@ -522,6 +532,8 @@ static void stm32_set_termios(struct uart_port *port, struct ktermios *termios,
 	if (ret)
 		dev_err(port->dev, "Transmission is not complete\n");
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* Stop serial port and reset value */
 	writel_relaxed(0, port->membase + ofs->cr1);
 

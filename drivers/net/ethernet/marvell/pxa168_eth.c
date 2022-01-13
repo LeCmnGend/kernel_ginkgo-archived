@@ -1553,8 +1553,13 @@ static int pxa168_eth_remove(struct platform_device *pdev)
 
 	mdiobus_unregister(pep->smi_bus);
 	mdiobus_free(pep->smi_bus);
+<<<<<<< HEAD
 	cancel_work_sync(&pep->tx_timeout_task);
 	unregister_netdev(dev);
+=======
+	unregister_netdev(dev);
+	cancel_work_sync(&pep->tx_timeout_task);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	free_netdev(dev);
 	return 0;
 }

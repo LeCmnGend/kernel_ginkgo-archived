@@ -625,7 +625,10 @@ config RTC_DRV_S5M
 	tristate "Samsung S2M/S5M series"
 	depends on MFD_SEC_CORE || COMPILE_TEST
 	select REGMAP_IRQ
+<<<<<<< HEAD
 	select REGMAP_I2C
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	help
 	  If you say yes here you will get support for the
 	  RTC of Samsung S2MPS14 and S5M PMIC series.

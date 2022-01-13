@@ -698,7 +698,11 @@ static int __gic_populate_rdist(struct redist_region *region, void __iomem *ptr)
 		gic_data_rdist_rd_base() = ptr;
 		gic_data_rdist()->phys_base = region->phys_base + offset;
 
+<<<<<<< HEAD
 		pr_debug("CPU%d: found redistributor %lx region %d:%pa\n",
+=======
+		pr_info("CPU%d: found redistributor %lx region %d:%pa\n",
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			smp_processor_id(), mpidr,
 			(int)(region - gic_data.redist_regions),
 			&gic_data_rdist()->phys_base);
@@ -861,6 +865,10 @@ static void gic_send_sgi(u64 cluster_id, u16 tlist, unsigned int irq)
 	       MPIDR_TO_SGI_AFFINITY(cluster_id, 1)	|
 	       tlist << ICC_SGI1R_TARGET_LIST_SHIFT);
 
+<<<<<<< HEAD
+=======
+	pr_devel("CPU%d: ICC_SGI1R_EL1 %llx\n", smp_processor_id(), val);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	gic_write_sgi1r(val);
 }
 

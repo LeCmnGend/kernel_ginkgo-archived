@@ -78,7 +78,10 @@ obj-$(CONFIG_LEDS_PM8058)		+= leds-pm8058.o
 obj-$(CONFIG_LEDS_MLXCPLD)		+= leds-mlxcpld.o
 obj-$(CONFIG_LEDS_NIC78BX)		+= leds-nic78bx.o
 obj-$(CONFIG_LEDS_MT6323)		+= leds-mt6323.o
+<<<<<<< HEAD
 obj-$(CONFIG_BACKLIGHT_KTD3136)		+= ktd3136_bl.o
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 obj-$(CONFIG_LEDS_QPNP_VIBRATOR_LDO)	+= leds-qpnp-vibrator-ldo.o
 
 # LED SPI Drivers

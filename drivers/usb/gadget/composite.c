@@ -2,7 +2,10 @@
  * composite.c - infrastructure for Composite USB Gadgets
  *
  * Copyright (C) 2006-2008 David Brownell
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1205,7 +1208,11 @@ static void collect_langs(struct usb_gadget_strings **sp, __le16 *buf)
 	while (*sp) {
 		s = *sp;
 		language = cpu_to_le16(s->language);
+<<<<<<< HEAD
 		for (tmp = buf; *tmp && tmp < &buf[USB_MAX_STRING_LEN]; tmp++) {
+=======
+		for (tmp = buf; *tmp && tmp < &buf[126]; tmp++) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			if (*tmp == language)
 				goto repeat;
 		}
@@ -1280,7 +1287,11 @@ static int get_string(struct usb_composite_dev *cdev,
 			collect_langs(sp, s->wData);
 		}
 
+<<<<<<< HEAD
 		for (len = 0; len <= USB_MAX_STRING_LEN && s->wData[len]; len++)
+=======
+		for (len = 0; len <= 126 && s->wData[len]; len++)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			continue;
 		if (!len)
 			return -EINVAL;
@@ -1799,7 +1810,11 @@ composite_setup(struct usb_gadget *gadget, const struct usb_ctrlrequest *ctrl)
 					cdev->desc.bcdUSB = cpu_to_le16(0x0320);
 					cdev->desc.bMaxPacketSize0 = 9;
 				} else {
+<<<<<<< HEAD
 					cdev->desc.bcdUSB = cpu_to_le16(0x0200);
+=======
+					cdev->desc.bcdUSB = cpu_to_le16(0x0210);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				}
 			} else {
 				if (gadget->lpm_capable)

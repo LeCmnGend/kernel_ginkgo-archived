@@ -418,10 +418,17 @@ void batadv_interface_rx(struct net_device *soft_iface,
 	struct vlan_ethhdr *vhdr;
 	struct ethhdr *ethhdr;
 	unsigned short vid;
+<<<<<<< HEAD
 	int packet_type;
 
 	batadv_bcast_packet = (struct batadv_bcast_packet *)skb->data;
 	packet_type = batadv_bcast_packet->packet_type;
+=======
+	bool is_bcast;
+
+	batadv_bcast_packet = (struct batadv_bcast_packet *)skb->data;
+	is_bcast = (batadv_bcast_packet->packet_type == BATADV_BCAST);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	skb_pull_rcsum(skb, hdr_size);
 	skb_reset_mac_header(skb);
@@ -464,7 +471,11 @@ void batadv_interface_rx(struct net_device *soft_iface,
 	/* Let the bridge loop avoidance check the packet. If will
 	 * not handle it, we can safely push it up.
 	 */
+<<<<<<< HEAD
 	if (batadv_bla_rx(bat_priv, skb, vid, packet_type))
+=======
+	if (batadv_bla_rx(bat_priv, skb, vid, is_bcast))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto out;
 
 	if (orig_node)

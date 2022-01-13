@@ -92,8 +92,11 @@ static void swap_copy24(u8 *dest, const u8 *source, unsigned int bytes)
 {
 	unsigned int i = 0;
 
+<<<<<<< HEAD
 	if (bytes < 2)
 		return;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	while (i < bytes - 2) {
 		dest[i] = source[i + 2];
 		dest[i + 1] = source[i + 1];

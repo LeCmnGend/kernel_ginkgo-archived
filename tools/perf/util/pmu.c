@@ -1100,6 +1100,7 @@ void perf_pmu__set_format(unsigned long *bits, long from, long to)
 		set_bit(b, bits);
 }
 
+<<<<<<< HEAD
 void perf_pmu__del_formats(struct list_head *formats)
 {
 	struct perf_pmu_format *fmt, *tmp;
@@ -1111,6 +1112,8 @@ void perf_pmu__del_formats(struct list_head *formats)
 	}
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static int sub_non_neg(int a, int b)
 {
 	if (b > a)

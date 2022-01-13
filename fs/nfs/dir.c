@@ -560,9 +560,12 @@ int nfs_readdir_page_filler(nfs_readdir_descriptor_t *desc, struct nfs_entry *en
 	xdr_set_scratch_buffer(&stream, page_address(scratch), PAGE_SIZE);
 
 	do {
+<<<<<<< HEAD
 		if (entry->label)
 			entry->label->len = NFS4_MAXLABELLEN;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		status = xdr_decode(desc, entry, &stream);
 		if (status != 0) {
 			if (status == -EAGAIN)

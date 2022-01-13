@@ -4,8 +4,11 @@
 
 #include <asm/ldt.h>
 
+<<<<<<< HEAD
 struct task_struct;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /* misc architecture specific prototypes */
 
 void syscall_init(void);

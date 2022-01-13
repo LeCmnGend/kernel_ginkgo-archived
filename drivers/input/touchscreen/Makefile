@@ -109,6 +109,9 @@ obj-$(CONFIG_TOUCHSCREEN_ST)		+= st/
 obj-$(CONFIG_TOUCHSCREEN_HIMAX_CHIPSET)	+= hxchipset/
 obj-$(CONFIG_TOUCHSCREEN_SYNAPTICS_TCM)	+= synaptics_tcm/
 obj-$(CONFIG_TOUCHSCREEN_RAYDIUM_CHIPSET)  += raydium_wt030/
+<<<<<<< HEAD
 obj-$(CONFIG_TOUCHSCREEN_XIAOMI_C3J)	+= nt36xxx_spi_c3j/
 obj-$(CONFIG_TOUCHSCREEN_XIAOMI_C3J)	+= ft8719_spi_c3j/
 obj-$(CONFIG_TOUCHSCREEN_COMMON)	+= tp_common.o
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388

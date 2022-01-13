@@ -904,10 +904,14 @@ static struct uvc_entity *uvc_alloc_entity(u16 type, u8 id,
 	unsigned int i;
 
 	extra_size = roundup(extra_size, sizeof(*entity->pads));
+<<<<<<< HEAD
 	if (num_pads)
 		num_inputs = type & UVC_TERM_OUTPUT ? num_pads : num_pads - 1;
 	else
 		num_inputs = 0;
+=======
+	num_inputs = (type & UVC_TERM_OUTPUT) ? num_pads : num_pads - 1;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	size = sizeof(*entity) + extra_size + sizeof(*entity->pads) * num_pads
 	     + num_inputs;
 	entity = kzalloc(size, GFP_KERNEL);
@@ -923,7 +927,11 @@ static struct uvc_entity *uvc_alloc_entity(u16 type, u8 id,
 
 	for (i = 0; i < num_inputs; ++i)
 		entity->pads[i].flags = MEDIA_PAD_FL_SINK;
+<<<<<<< HEAD
 	if (!UVC_ENTITY_IS_OTERM(entity) && num_pads)
+=======
+	if (!UVC_ENTITY_IS_OTERM(entity))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		entity->pads[num_pads-1].flags = MEDIA_PAD_FL_SOURCE;
 
 	entity->bNrInPins = num_inputs;

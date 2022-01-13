@@ -495,7 +495,11 @@ config SUNXI_WATCHDOG
 
 config COH901327_WATCHDOG
 	bool "ST-Ericsson COH 901 327 watchdog"
+<<<<<<< HEAD
 	depends on ARCH_U300 || (ARM && COMMON_CLK && COMPILE_TEST)
+=======
+	depends on ARCH_U300 || (ARM && COMPILE_TEST)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	default y if MACH_U300
 	select WATCHDOG_CORE
 	help
@@ -620,7 +624,10 @@ config MOXART_WDT
 
 config SIRFSOC_WATCHDOG
 	tristate "SiRFSOC watchdog"
+<<<<<<< HEAD
 	depends on HAS_IOMEM
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	depends on ARCH_SIRF || COMPILE_TEST
 	select WATCHDOG_CORE
 	default y

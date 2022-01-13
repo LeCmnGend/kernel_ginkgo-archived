@@ -446,8 +446,11 @@ static void raid1_end_write_request(struct bio *bio)
 		if (!test_bit(Faulty, &rdev->flags))
 			set_bit(R1BIO_WriteError, &r1_bio->state);
 		else {
+<<<<<<< HEAD
 			/* Fail the request */
 			set_bit(R1BIO_Degraded, &r1_bio->state);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			/* Finished with this branch */
 			r1_bio->bios[mirror] = NULL;
 			to_put = bio;

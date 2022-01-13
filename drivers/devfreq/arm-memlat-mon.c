@@ -33,7 +33,10 @@
 #include "governor_memlat.h"
 #include <linux/perf_event.h>
 #include <linux/of_device.h>
+<<<<<<< HEAD
 #include <soc/qcom/scm.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 enum ev_index {
 	INST_IDX,
@@ -49,7 +52,10 @@ enum ev_index {
 struct event_data {
 	struct perf_event *pevent;
 	unsigned long prev_count;
+<<<<<<< HEAD
 	bool any_cpu_readable;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 struct cpu_pmu_stats {
@@ -102,6 +108,7 @@ static inline unsigned long read_event(struct event_data *event)
 	if (!event->pevent)
 		return 0;
 
+<<<<<<< HEAD
 	if (event->any_cpu_readable) {
 		if (perf_event_read_local(event->pevent, &total))
 			return 0;
@@ -133,6 +140,9 @@ static inline unsigned long read_event(struct event_data *event)
 		}
 	}
 
+=======
+	total = perf_event_read_value(event->pevent, &enabled, &running);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ev_count = total - event->prev_count;
 	event->prev_count = total;
 	return ev_count;
@@ -217,7 +227,10 @@ static struct perf_event_attr *alloc_attr(void)
 
 static int set_events(struct cpu_grp_info *cpu_grp, int cpu)
 {
+<<<<<<< HEAD
 	static struct cpumask all_cpu_mask = CPU_MASK_ALL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct perf_event *pevent;
 	struct perf_event_attr *attr;
 	int err, i;
@@ -241,8 +254,11 @@ static int set_events(struct cpu_grp_info *cpu_grp, int cpu)
 			goto err_out;
 		cpustats->events[i].pevent = pevent;
 		perf_event_enable(pevent);
+<<<<<<< HEAD
 		cpustats->events[i].any_cpu_readable =
 			cpumask_equal(&pevent->readable_on_cpus, &all_cpu_mask);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	kfree(attr);

@@ -159,6 +159,7 @@ static long cec_adap_g_log_addrs(struct cec_adapter *adap,
 	struct cec_log_addrs log_addrs;
 
 	mutex_lock(&adap->lock);
+<<<<<<< HEAD
 	/*
 	 * We use memcpy here instead of assignment since there is a
 	 * hole at the end of struct cec_log_addrs that an assignment
@@ -166,6 +167,9 @@ static long cec_adap_g_log_addrs(struct cec_adapter *adap,
 	 * one byte of memory.
 	 */
 	memcpy(&log_addrs, &adap->log_addrs, sizeof(log_addrs));
+=======
+	log_addrs = adap->log_addrs;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!adap->is_configured)
 		memset(log_addrs.log_addr, CEC_LOG_ADDR_INVALID,
 		       sizeof(log_addrs.log_addr));

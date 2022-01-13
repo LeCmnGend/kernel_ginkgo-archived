@@ -255,7 +255,10 @@ cbq_classify(struct sk_buff *skb, struct Qdisc *sch, int *qerr)
 		case TC_ACT_STOLEN:
 		case TC_ACT_TRAP:
 			*qerr = NET_XMIT_SUCCESS | __NET_XMIT_STOLEN;
+<<<<<<< HEAD
 			/* fall through */
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		case TC_ACT_SHOT:
 			return NULL;
 		case TC_ACT_RECLASSIFY:
@@ -1588,7 +1591,11 @@ cbq_change_class(struct Qdisc *sch, u32 classid, u32 parentid, struct nlattr **t
 	if (cl == NULL)
 		goto failure;
 
+<<<<<<< HEAD
 	err = tcf_block_get(&cl->block, &cl->filter_list, sch);
+=======
+	err = tcf_block_get(&cl->block, &cl->filter_list);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (err) {
 		kfree(cl);
 		return err;

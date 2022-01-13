@@ -207,8 +207,11 @@ struct esd_usb2 {
 	int net_count;
 	u32 version;
 	int rxinitdone;
+<<<<<<< HEAD
 	void *rxbuf[MAX_RX_URBS];
 	dma_addr_t rxbuf_dma[MAX_RX_URBS];
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 struct esd_usb2_net_priv {
@@ -558,7 +561,10 @@ static int esd_usb2_setup_rx_urbs(struct esd_usb2 *dev)
 	for (i = 0; i < MAX_RX_URBS; i++) {
 		struct urb *urb = NULL;
 		u8 *buf = NULL;
+<<<<<<< HEAD
 		dma_addr_t buf_dma;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		/* create a URB, and a buffer for it */
 		urb = usb_alloc_urb(0, GFP_KERNEL);
@@ -568,7 +574,11 @@ static int esd_usb2_setup_rx_urbs(struct esd_usb2 *dev)
 		}
 
 		buf = usb_alloc_coherent(dev->udev, RX_BUFFER_SIZE, GFP_KERNEL,
+<<<<<<< HEAD
 					 &buf_dma);
+=======
+					 &urb->transfer_dma);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (!buf) {
 			dev_warn(dev->udev->dev.parent,
 				 "No memory left for USB buffer\n");
@@ -576,8 +586,11 @@ static int esd_usb2_setup_rx_urbs(struct esd_usb2 *dev)
 			goto freeurb;
 		}
 
+<<<<<<< HEAD
 		urb->transfer_dma = buf_dma;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		usb_fill_bulk_urb(urb, dev->udev,
 				  usb_rcvbulkpipe(dev->udev, 1),
 				  buf, RX_BUFFER_SIZE,
@@ -590,12 +603,17 @@ static int esd_usb2_setup_rx_urbs(struct esd_usb2 *dev)
 			usb_unanchor_urb(urb);
 			usb_free_coherent(dev->udev, RX_BUFFER_SIZE, buf,
 					  urb->transfer_dma);
+<<<<<<< HEAD
 			goto freeurb;
 		}
 
 		dev->rxbuf[i] = buf;
 		dev->rxbuf_dma[i] = buf_dma;
 
+=======
+		}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 freeurb:
 		/* Drop reference, USB core will take care of freeing it */
 		usb_free_urb(urb);
@@ -683,11 +701,14 @@ static void unlink_all_urbs(struct esd_usb2 *dev)
 	int i, j;
 
 	usb_kill_anchored_urbs(&dev->rx_submitted);
+<<<<<<< HEAD
 
 	for (i = 0; i < MAX_RX_URBS; ++i)
 		usb_free_coherent(dev->udev, RX_BUFFER_SIZE,
 				  dev->rxbuf[i], dev->rxbuf_dma[i]);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	for (i = 0; i < dev->net_count; i++) {
 		priv = dev->nets[i];
 		if (priv) {

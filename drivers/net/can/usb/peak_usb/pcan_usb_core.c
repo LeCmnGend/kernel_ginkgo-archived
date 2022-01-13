@@ -154,6 +154,7 @@ void peak_usb_get_ts_tv(struct peak_time_ref *time_ref, u32 ts,
 	/* protect from getting timeval before setting now */
 	if (time_ref->tv_host.tv_sec > 0) {
 		u64 delta_us;
+<<<<<<< HEAD
 		s64 delta_ts = 0;
 
 		/* General case: dev_ts_1 < dev_ts_2 < ts, with:
@@ -203,6 +204,16 @@ void peak_usb_get_ts_tv(struct peak_time_ref *time_ref, u32 ts,
 
 		/* convert ticks number into microseconds */
 		delta_us = delta_ts * time_ref->adapter->us_per_ts_scale;
+=======
+
+		delta_us = ts - time_ref->ts_dev_2;
+		if (ts < time_ref->ts_dev_2)
+			delta_us &= (1 << time_ref->adapter->ts_used_bits) - 1;
+
+		delta_us += time_ref->ts_total;
+
+		delta_us *= time_ref->adapter->us_per_ts_scale;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		delta_us >>= time_ref->adapter->us_per_ts_shift;
 
 		*tv = time_ref->tv_host_0;
@@ -882,7 +893,11 @@ static int peak_usb_create_dev(const struct peak_usb_adapter *peak_usb_adapter,
 	if (dev->adapter->dev_set_bus) {
 		err = dev->adapter->dev_set_bus(dev, 0);
 		if (err)
+<<<<<<< HEAD
 			goto adap_dev_free;
+=======
+			goto lbl_unregister_candev;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	/* get device number early */
@@ -894,10 +909,13 @@ static int peak_usb_create_dev(const struct peak_usb_adapter *peak_usb_adapter,
 
 	return 0;
 
+<<<<<<< HEAD
 adap_dev_free:
 	if (dev->adapter->dev_free)
 		dev->adapter->dev_free(dev);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 lbl_unregister_candev:
 	unregister_candev(netdev);
 

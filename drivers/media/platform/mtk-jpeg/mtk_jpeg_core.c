@@ -579,6 +579,7 @@ static int mtk_jpeg_queue_setup(struct vb2_queue *q,
 	if (!q_data)
 		return -EINVAL;
 
+<<<<<<< HEAD
 	if (*num_planes) {
 		for (i = 0; i < *num_planes; i++)
 			if (sizes[i] < q_data->sizeimage[i])
@@ -586,6 +587,8 @@ static int mtk_jpeg_queue_setup(struct vb2_queue *q,
 		return 0;
 	}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	*num_planes = q_data->fmt->colplanes;
 	for (i = 0; i < q_data->fmt->colplanes; i++) {
 		sizes[i] = q_data->sizeimage[i];

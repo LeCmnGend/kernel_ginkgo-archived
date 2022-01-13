@@ -30,6 +30,9 @@ obj-$(CONFIG_DEVFREQ_SPDM)		+= devfreq_spdm.o devfreq_spdm_debugfs.o
 
 # DEVFREQ Event Drivers
 obj-$(CONFIG_PM_DEVFREQ_EVENT)		+= event/
+<<<<<<< HEAD
 
 # DEVFREQ Boost
 obj-$(CONFIG_DEVFREQ_BOOST)		+= devfreq_boost.o
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388

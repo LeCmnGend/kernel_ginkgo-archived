@@ -84,7 +84,10 @@ static inline void arch_spin_lock_flags(arch_spinlock_t *lock,
 		: "d" (flags), "a"(&lock->slock), "i"(EPSW_IE | MN10300_CLI_LEVEL)
 		: "memory", "cc");
 }
+<<<<<<< HEAD
 #define arch_spin_lock_flags	arch_spin_lock_flags
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #ifdef __KERNEL__
 
@@ -184,6 +187,12 @@ static inline int arch_write_trylock(arch_rwlock_t *lock)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
+#define arch_read_lock_flags(lock, flags)  arch_read_lock(lock)
+#define arch_write_lock_flags(lock, flags) arch_write_lock(lock)
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define _raw_spin_relax(lock)	cpu_relax()
 #define _raw_read_relax(lock)	cpu_relax()
 #define _raw_write_relax(lock)	cpu_relax()

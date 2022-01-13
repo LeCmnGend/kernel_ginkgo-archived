@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2013-2019, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2013-2020, The Linux Foundation. All rights reserved.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -1021,6 +1025,11 @@ void msm_isp_increment_frame_id(struct vfe_device *vfe_dev,
 				ISP_EVENT_REG_UPDATE_MISSING);
 		}
 	}
+<<<<<<< HEAD
+=======
+	vfe_dev->isp_page->kernel_sofid =
+		vfe_dev->axi_data.src_info[frame_src].frame_id;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void msm_isp_update_pd_stats_idx(struct vfe_device *vfe_dev,
@@ -2137,10 +2146,13 @@ static int msm_isp_cfg_ping_pong_address(
 		buf = msm_isp_get_stream_buffer(vfe_dev, stream_info);
 
 	if (!buf) {
+<<<<<<< HEAD
 		trace_printk(
 			"%s: vfe %d stream_id %x buffer not available frame %d\n",
 			__func__, vfe_dev->pdev->id,
 			stream_info->stream_id,vfe_dev->axi_data.src_info[VFE_PIX_0].frame_id);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		msm_isp_cfg_stream_scratch(stream_info, pingpong_status);
 		if (stream_info->controllable_output)
 			return 1;
@@ -2573,7 +2585,12 @@ static void msm_isp_input_enable(struct vfe_device *vfe_dev,
 		if (axi_data->src_info[i].active)
 			continue;
 		/* activate the input since it is deactivated */
+<<<<<<< HEAD
 		axi_data->src_info[i].frame_id = 0;
+=======
+		if (!ext_read)
+			axi_data->src_info[i].frame_id = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		vfe_dev->irq_sof_id = 0;
 		if (axi_data->src_info[i].input_mux != EXTERNAL_READ)
 			axi_data->src_info[i].active = 1;
@@ -3766,7 +3783,11 @@ static int msm_isp_request_frame(struct vfe_device *vfe_dev,
 		(stream_info->undelivered_request_cnt <=
 			MAX_BUFFERS_IN_HW)
 		) {
+<<<<<<< HEAD
 		trace_printk("%s:%d invalid time to request frame %d try drop_reconfig\n",
+=======
+		pr_debug("%s:%d invalid time to request frame %d try drop_reconfig\n",
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			__func__, __LINE__, frame_id);
 		vfe_dev->isp_page->drop_reconfig = 1;
 		return 0;
@@ -3777,15 +3798,23 @@ static int msm_isp_request_frame(struct vfe_device *vfe_dev,
 			(stream_info->undelivered_request_cnt <=
 				MAX_BUFFERS_IN_HW)) {
 		vfe_dev->isp_page->drop_reconfig = 1;
+<<<<<<< HEAD
 		trace_printk("%s: vfe_%d request_frame %d cur frame id %d pix %d try drop_reconfig\n",
+=======
+		pr_debug("%s: vfe_%d request_frame %d cur frame id %d pix %d try drop_reconfig\n",
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			__func__, vfe_dev->pdev->id, frame_id,
 			vfe_dev->axi_data.src_info[VFE_PIX_0].frame_id,
 			vfe_dev->axi_data.src_info[VFE_PIX_0].active);
 		return 0;
 	} else if ((vfe_dev->axi_data.src_info[frame_src].active && (frame_id !=
 		vfe_dev->axi_data.src_info[frame_src].frame_id +
+<<<<<<< HEAD
 		vfe_dev->axi_data.src_info[frame_src].sof_counter_step)) ||
 		((!vfe_dev->axi_data.src_info[frame_src].active))) {
+=======
+		vfe_dev->axi_data.src_info[frame_src].sof_counter_step))) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		pr_debug("%s:%d invalid frame id %d cur frame id %d pix %d\n",
 			__func__, __LINE__, frame_id,
 			vfe_dev->axi_data.src_info[frame_src].frame_id,
@@ -3793,7 +3822,11 @@ static int msm_isp_request_frame(struct vfe_device *vfe_dev,
 		goto error;
 	}
 	if (stream_info->undelivered_request_cnt >= MAX_BUFFERS_IN_HW) {
+<<<<<<< HEAD
 		trace_printk("%s:%d invalid undelivered_request_cnt %d frame id %d\n",
+=======
+		pr_debug("%s:%d invalid undelivered_request_cnt %d frame id %d\n",
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			__func__, __LINE__,
 			stream_info->undelivered_request_cnt,
 			vfe_dev->axi_data.src_info[VFE_PIX_0].frame_id);
@@ -4558,8 +4591,11 @@ void msm_isp_process_axi_irq_stream(struct vfe_device *vfe_dev,
 				stream_info->bufq_handle[
 				VFE_BUF_QUEUE_DEFAULT] & 0xFF]++;
 			vfe_dev->error_info.framedrop_flag = 1;
+<<<<<<< HEAD
 			trace_printk("vfe %d stream %x frame %d drop frame\n",
 			vfe_dev->pdev->id, stream_info->stream_id, frame_id);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			if (vfe_dev->is_split) {
 				other_vfe_id = OTHER_VFE(vfe_dev->pdev->id);
 				temp_dev =

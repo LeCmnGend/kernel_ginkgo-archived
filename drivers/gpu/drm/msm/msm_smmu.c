@@ -580,7 +580,10 @@ static struct platform_driver msm_smmu_driver = {
 		.name = "msmdrm_smmu",
 		.of_match_table = msm_smmu_dt_match,
 		.suppress_bind_attrs = true,
+<<<<<<< HEAD
 		.probe_type = PROBE_FORCE_SYNCHRONOUS,
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	},
 };
 

@@ -409,6 +409,7 @@ disable_otp:
 static void ab8500_power_supply_changed(struct ab8500_charger *di,
 					struct power_supply *psy)
 {
+<<<<<<< HEAD
 	/*
 	 * This happens if we get notifications or interrupts and
 	 * the platform has been configured not to support one or
@@ -417,6 +418,8 @@ static void ab8500_power_supply_changed(struct ab8500_charger *di,
 	if (!psy)
 		return;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (di->autopower_cfg) {
 		if (!di->usb.charger_connected &&
 		    !di->ac.charger_connected &&
@@ -443,6 +446,7 @@ static void ab8500_charger_set_usb_connected(struct ab8500_charger *di,
 		if (!connected)
 			di->flags.vbus_drop_end = false;
 
+<<<<<<< HEAD
 		/*
 		 * Sometimes the platform is configured not to support
 		 * USB charging and no psy has been created, but we still
@@ -452,6 +456,9 @@ static void ab8500_charger_set_usb_connected(struct ab8500_charger *di,
 			sysfs_notify(&di->usb_chg.psy->dev.kobj, NULL,
 				     "present");
 		}
+=======
+		sysfs_notify(&di->usb_chg.psy->dev.kobj, NULL, "present");
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		if (connected) {
 			mutex_lock(&di->charger_attached_mutex);
@@ -3752,7 +3759,10 @@ static const struct of_device_id ab8500_charger_match[] = {
 	{ .compatible = "stericsson,ab8500-charger", },
 	{ },
 };
+<<<<<<< HEAD
 MODULE_DEVICE_TABLE(of, ab8500_charger_match);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static struct platform_driver ab8500_charger_driver = {
 	.probe = ab8500_charger_probe,

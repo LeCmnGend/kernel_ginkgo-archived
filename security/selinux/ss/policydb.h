@@ -24,6 +24,11 @@
 #ifndef _SS_POLICYDB_H_
 #define _SS_POLICYDB_H_
 
+<<<<<<< HEAD
+=======
+#include <linux/flex_array.h>
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include "symtab.h"
 #include "avtab.h"
 #include "sidtab.h"
@@ -237,7 +242,10 @@ struct genfs {
 struct policydb {
 	int mls_enabled;
 	int android_netlink_route;
+<<<<<<< HEAD
 	int android_netlink_getneigh;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* symbol tables */
 	struct symtab symtab[SYM_NUM];
@@ -251,13 +259,21 @@ struct policydb {
 #define p_cats symtab[SYM_CATS]
 
 	/* symbol names indexed by (value - 1) */
+<<<<<<< HEAD
 	char		**sym_val_to_name[SYM_NUM];
+=======
+	struct flex_array *sym_val_to_name[SYM_NUM];
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* class, role, and user attributes indexed by (value - 1) */
 	struct class_datum **class_val_to_struct;
 	struct role_datum **role_val_to_struct;
 	struct user_datum **user_val_to_struct;
+<<<<<<< HEAD
 	struct type_datum **type_val_to_struct_array;
+=======
+	struct flex_array *type_val_to_struct_array;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* type enforcement access vectors and transitions */
 	struct avtab te_avtab;
@@ -294,7 +310,11 @@ struct policydb {
 	struct hashtab *range_tr;
 
 	/* type -> attribute reverse mapping */
+<<<<<<< HEAD
 	struct ebitmap *type_attr_map_array;
+=======
+	struct flex_array *type_attr_map_array;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	struct ebitmap policycaps;
 
@@ -325,7 +345,10 @@ extern int policydb_write(struct policydb *p, void *fp);
 
 #define POLICYDB_CONFIG_MLS    1
 #define POLICYDB_CONFIG_ANDROID_NETLINK_ROUTE    (1 << 31)
+<<<<<<< HEAD
 #define POLICYDB_CONFIG_ANDROID_NETLINK_GETNEIGH (1 << 30)
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /* the config flags related to unknown classes/perms are bits 2 and 3 */
 #define REJECT_UNKNOWN	0x00000002
@@ -371,7 +394,13 @@ static inline int put_entry(const void *buf, size_t bytes, int num, struct polic
 
 static inline char *sym_name(struct policydb *p, unsigned int sym_num, unsigned int element_nr)
 {
+<<<<<<< HEAD
 	return p->sym_val_to_name[sym_num][element_nr];
+=======
+	struct flex_array *fa = p->sym_val_to_name[sym_num];
+
+	return flex_array_get_ptr(fa, element_nr);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 extern u16 string_to_security_class(struct policydb *p, const char *name);

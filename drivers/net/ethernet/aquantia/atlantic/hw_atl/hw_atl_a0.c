@@ -746,7 +746,11 @@ static int hw_atl_a0_hw_multicast_list_set(struct aq_hw_s *self,
 	int err = 0;
 
 	if (count > (HW_ATL_A0_MAC_MAX - HW_ATL_A0_MAC_MIN)) {
+<<<<<<< HEAD
 		err = -EBADRQC;
+=======
+		err = EBADRQC;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto err_exit;
 	}
 	for (self->aq_nic_cfg->mc_list_count = 0U;

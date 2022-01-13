@@ -1790,7 +1790,10 @@ void ip_mc_destroy_dev(struct in_device *in_dev)
 	while ((i = rtnl_dereference(in_dev->mc_list)) != NULL) {
 		in_dev->mc_list = i->next_rcu;
 		in_dev->mc_count--;
+<<<<<<< HEAD
 		ip_mc_clear_src(i);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		ip_ma_put(i);
 	}
 }

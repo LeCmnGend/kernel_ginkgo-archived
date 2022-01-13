@@ -60,8 +60,11 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 	int sockfd = 0;
 	struct socket *socket;
 	int rv;
+<<<<<<< HEAD
 	struct task_struct *tcp_rx = NULL;
 	struct task_struct *tcp_tx = NULL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (!sdev) {
 		dev_err(dev, "sdev is null\n");
@@ -77,7 +80,10 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 
 		dev_info(dev, "stub up\n");
 
+<<<<<<< HEAD
 		mutex_lock(&sdev->ud.sysfs_lock);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		spin_lock_irq(&sdev->ud.lock);
 
 		if (sdev->ud.status != SDEV_ST_AVAILABLE) {
@@ -86,6 +92,7 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 		}
 
 		socket = sockfd_lookup(sockfd, &err);
+<<<<<<< HEAD
 		if (!socket) {
 			dev_err(dev, "failed to lookup sock");
 			goto err;
@@ -129,6 +136,25 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 
 		mutex_unlock(&sdev->ud.sysfs_lock);
 
+=======
+		if (!socket)
+			goto err;
+
+		sdev->ud.tcp_socket = socket;
+		sdev->ud.sockfd = sockfd;
+
+		spin_unlock_irq(&sdev->ud.lock);
+
+		sdev->ud.tcp_rx = kthread_get_run(stub_rx_loop, &sdev->ud,
+						  "stub_rx");
+		sdev->ud.tcp_tx = kthread_get_run(stub_tx_loop, &sdev->ud,
+						  "stub_tx");
+
+		spin_lock_irq(&sdev->ud.lock);
+		sdev->ud.status = SDEV_ST_USED;
+		spin_unlock_irq(&sdev->ud.lock);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else {
 		dev_info(dev, "stub down\n");
 
@@ -139,17 +165,25 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 		spin_unlock_irq(&sdev->ud.lock);
 
 		usbip_event_add(&sdev->ud, SDEV_EVENT_DOWN);
+<<<<<<< HEAD
 		mutex_unlock(&sdev->ud.sysfs_lock);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	return count;
 
+<<<<<<< HEAD
 sock_err:
 	sockfd_put(socket);
 err:
 	spin_unlock_irq(&sdev->ud.lock);
 unlock_mutex:
 	mutex_unlock(&sdev->ud.sysfs_lock);
+=======
+err:
+	spin_unlock_irq(&sdev->ud.lock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return -EINVAL;
 }
 static DEVICE_ATTR(usbip_sockfd, S_IWUSR, NULL, store_sockfd);
@@ -315,7 +349,10 @@ static struct stub_device *stub_device_alloc(struct usb_device *udev)
 	sdev->ud.side		= USBIP_STUB;
 	sdev->ud.status		= SDEV_ST_AVAILABLE;
 	spin_lock_init(&sdev->ud.lock);
+<<<<<<< HEAD
 	mutex_init(&sdev->ud.sysfs_lock);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	sdev->ud.tcp_socket	= NULL;
 	sdev->ud.sockfd		= -1;
 

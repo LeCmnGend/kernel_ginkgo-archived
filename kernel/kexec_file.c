@@ -95,11 +95,14 @@ void kimage_file_post_load_cleanup(struct kimage *image)
 	vfree(pi->sechdrs);
 	pi->sechdrs = NULL;
 
+<<<<<<< HEAD
 #ifdef CONFIG_IMA_KEXEC
 	vfree(image->ima_buffer);
 	image->ima_buffer = NULL;
 #endif /* CONFIG_IMA_KEXEC */
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* See if architecture has anything to cleanup post load */
 	arch_kimage_file_post_load_cleanup(image);
 
@@ -554,10 +557,15 @@ static int kexec_calculate_store_digests(struct kimage *image)
 
 	sha_region_sz = KEXEC_SEGMENT_MAX * sizeof(struct kexec_sha_region);
 	sha_regions = vzalloc(sha_region_sz);
+<<<<<<< HEAD
 	if (!sha_regions) {
 		ret = -ENOMEM;
 		goto out_free_desc;
 	}
+=======
+	if (!sha_regions)
+		goto out_free_desc;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	desc->tfm   = tfm;
 	desc->flags = 0;

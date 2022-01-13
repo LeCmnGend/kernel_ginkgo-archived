@@ -457,8 +457,12 @@ static long dma_buf_ioctl(struct file *file,
 
 		return ret;
 
+<<<<<<< HEAD
 	case DMA_BUF_SET_NAME_A:
 	case DMA_BUF_SET_NAME_B:
+=======
+	case DMA_BUF_SET_NAME:
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return dma_buf_set_name(dmabuf, (const char __user *)arg);
 
 	default:
@@ -1241,6 +1245,12 @@ EXPORT_SYMBOL_GPL(dma_buf_kunmap);
 int dma_buf_mmap(struct dma_buf *dmabuf, struct vm_area_struct *vma,
 		 unsigned long pgoff)
 {
+<<<<<<< HEAD
+=======
+	struct file *oldfile;
+	int ret;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (WARN_ON(!dmabuf || !vma))
 		return -EINVAL;
 
@@ -1254,11 +1264,30 @@ int dma_buf_mmap(struct dma_buf *dmabuf, struct vm_area_struct *vma,
 		return -EINVAL;
 
 	/* readjust the vma */
+<<<<<<< HEAD
 	fput(vma->vm_file);
 	vma->vm_file = get_file(dmabuf->file);
 	vma->vm_pgoff = pgoff;
 
 	return dmabuf->ops->mmap(dmabuf, vma);
+=======
+	get_file(dmabuf->file);
+	oldfile = vma->vm_file;
+	vma->vm_file = dmabuf->file;
+	vma->vm_pgoff = pgoff;
+
+	ret = dmabuf->ops->mmap(dmabuf, vma);
+	if (ret) {
+		/* restore old parameters on failure */
+		vma->vm_file = oldfile;
+		fput(dmabuf->file);
+	} else {
+		if (oldfile)
+			fput(oldfile);
+	}
+	return ret;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 EXPORT_SYMBOL_GPL(dma_buf_mmap);
 

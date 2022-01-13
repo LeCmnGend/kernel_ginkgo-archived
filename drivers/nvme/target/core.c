@@ -208,9 +208,12 @@ static void nvmet_keep_alive_timer(struct work_struct *work)
 
 static void nvmet_start_keep_alive_timer(struct nvmet_ctrl *ctrl)
 {
+<<<<<<< HEAD
 	if (unlikely(ctrl->kato == 0))
 		return;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	pr_debug("ctrl %d start keep-alive timer for %d secs\n",
 		ctrl->cntlid, ctrl->kato);
 
@@ -220,9 +223,12 @@ static void nvmet_start_keep_alive_timer(struct nvmet_ctrl *ctrl)
 
 static void nvmet_stop_keep_alive_timer(struct nvmet_ctrl *ctrl)
 {
+<<<<<<< HEAD
 	if (unlikely(ctrl->kato == 0))
 		return;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	pr_debug("ctrl %d stop keep-alive\n", ctrl->cntlid);
 
 	cancel_delayed_work_sync(&ctrl->ka_work);
@@ -594,6 +600,7 @@ static void nvmet_start_ctrl(struct nvmet_ctrl *ctrl)
 {
 	lockdep_assert_held(&ctrl->lock);
 
+<<<<<<< HEAD
 	/*
 	 * Only I/O controllers should verify iosqes,iocqes.
 	 * Strictly speaking, the spec says a discovery controller
@@ -608,6 +615,11 @@ static void nvmet_start_ctrl(struct nvmet_ctrl *ctrl)
 	}
 
 	if (nvmet_cc_mps(ctrl->cc) != 0 ||
+=======
+	if (nvmet_cc_iosqes(ctrl->cc) != NVME_NVM_IOSQES ||
+	    nvmet_cc_iocqes(ctrl->cc) != NVME_NVM_IOCQES ||
+	    nvmet_cc_mps(ctrl->cc) != 0 ||
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	    nvmet_cc_ams(ctrl->cc) != 0 ||
 	    nvmet_cc_css(ctrl->cc) != 0) {
 		ctrl->csts = NVME_CSTS_CFS;
@@ -622,8 +634,12 @@ static void nvmet_start_ctrl(struct nvmet_ctrl *ctrl)
 	 * in case a host died before it enabled the controller.  Hence, simply
 	 * reset the keep alive timer when the controller is enabled.
 	 */
+<<<<<<< HEAD
 	if (ctrl->kato)
 		mod_delayed_work(system_wq, &ctrl->ka_work, ctrl->kato * HZ);
+=======
+	mod_delayed_work(system_wq, &ctrl->ka_work, ctrl->kato * HZ);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void nvmet_clear_ctrl(struct nvmet_ctrl *ctrl)

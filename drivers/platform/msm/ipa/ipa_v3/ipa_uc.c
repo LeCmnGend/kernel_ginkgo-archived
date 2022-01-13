@@ -695,7 +695,11 @@ send_cmd:
 				}
 			}
 			usleep_range(IPA_UC_POLL_SLEEP_USEC,
+<<<<<<< HEAD
 				IPA_UC_POLL_SLEEP_USEC * 1.2);
+=======
+				IPA_UC_POLL_SLEEP_USEC);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 
 		if (index == IPA_UC_POLL_MAX_RETRY) {

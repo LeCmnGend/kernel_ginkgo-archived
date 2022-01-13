@@ -21,7 +21,11 @@
 #define _UAPI_LINUX_LIGHTNVM_H
 
 #ifdef __KERNEL__
+<<<<<<< HEAD
 #include <linux/const.h>
+=======
+#include <linux/kernel.h>
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <linux/ioctl.h>
 #else /* __KERNEL__ */
 #include <stdio.h>

@@ -1354,10 +1354,15 @@ static struct clk_hw *bcm2835_register_pll(struct bcm2835_cprman *cprman,
 	pll->hw.init = &init;
 
 	ret = devm_clk_hw_register(cprman->dev, &pll->hw);
+<<<<<<< HEAD
 	if (ret) {
 		kfree(pll);
 		return NULL;
 	}
+=======
+	if (ret)
+		return NULL;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return &pll->hw;
 }
 

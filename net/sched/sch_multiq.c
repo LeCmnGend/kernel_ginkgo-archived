@@ -54,7 +54,10 @@ multiq_classify(struct sk_buff *skb, struct Qdisc *sch, int *qerr)
 	case TC_ACT_QUEUED:
 	case TC_ACT_TRAP:
 		*qerr = NET_XMIT_SUCCESS | __NET_XMIT_STOLEN;
+<<<<<<< HEAD
 		/* fall through */
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	case TC_ACT_SHOT:
 		return NULL;
 	}
@@ -246,7 +249,11 @@ static int multiq_init(struct Qdisc *sch, struct nlattr *opt)
 	if (opt == NULL)
 		return -EINVAL;
 
+<<<<<<< HEAD
 	err = tcf_block_get(&q->block, &q->filter_list, sch);
+=======
+	err = tcf_block_get(&q->block, &q->filter_list);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (err)
 		return err;
 

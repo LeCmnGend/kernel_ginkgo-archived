@@ -98,6 +98,7 @@ static inline u8 llc_ui_header_len(struct sock *sk, struct sockaddr_llc *addr)
 {
 	u8 rc = LLC_PDU_LEN_U;
 
+<<<<<<< HEAD
 	if (addr->sllc_test)
 		rc = LLC_PDU_LEN_U;
 	else if (addr->sllc_xid)
@@ -108,6 +109,10 @@ static inline u8 llc_ui_header_len(struct sock *sk, struct sockaddr_llc *addr)
 		 * bytes, llc_pdu_init_as_xid_cmd() will overwrite user data
 		 */
 		rc = LLC_PDU_LEN_U_XID;
+=======
+	if (addr->sllc_test || addr->sllc_xid)
+		rc = LLC_PDU_LEN_U;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	else if (sk->sk_type == SOCK_STREAM)
 		rc = LLC_PDU_LEN_I;
 	return rc;

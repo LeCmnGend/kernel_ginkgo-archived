@@ -807,8 +807,11 @@ struct nci_hci_dev *nci_hci_allocate(struct nci_dev *ndev)
 
 	return hdev;
 }
+<<<<<<< HEAD
 
 void nci_hci_deallocate(struct nci_dev *ndev)
 {
 	kfree(ndev->hci_dev);
 }
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388

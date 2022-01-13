@@ -82,8 +82,11 @@ VERSION
 	global:
 		__vdso_clock_gettime;
 		__vdso_gettimeofday;
+<<<<<<< HEAD
 		__vdso_clock_getres;
 		__vdso_time;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	local: *;
 	};
 }

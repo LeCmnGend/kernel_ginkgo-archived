@@ -44,11 +44,17 @@ xfs_sysfs_init(
 	struct xfs_kobj		*parent_kobj,
 	const char		*name)
 {
+<<<<<<< HEAD
 	struct kobject		*parent;
 
 	parent = parent_kobj ? &parent_kobj->kobject : NULL;
 	init_completion(&kobj->complete);
 	return kobject_init_and_add(&kobj->kobject, ktype, parent, "%s", name);
+=======
+	init_completion(&kobj->complete);
+	return kobject_init_and_add(&kobj->kobject, ktype,
+				    &parent_kobj->kobject, "%s", name);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static inline void

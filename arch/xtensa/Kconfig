@@ -39,6 +39,12 @@ config XTENSA
 	  with reasonable minimum requirements.  The Xtensa Linux project has
 	  a home page at <http://www.linux-xtensa.org/>.
 
+<<<<<<< HEAD
+=======
+config RWSEM_XCHGADD_ALGORITHM
+	def_bool y
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 config GENERIC_HWEIGHT
 	def_bool y
 

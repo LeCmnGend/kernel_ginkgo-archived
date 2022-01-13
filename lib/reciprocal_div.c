@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-2.0
+<<<<<<< HEAD
 #include <linux/bug.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <linux/kernel.h>
 #include <asm/div64.h>
 #include <linux/reciprocal_div.h>
@@ -27,6 +30,7 @@ struct reciprocal_value reciprocal_value(u32 d)
 	return R;
 }
 EXPORT_SYMBOL(reciprocal_value);
+<<<<<<< HEAD
 
 struct reciprocal_value_adv reciprocal_value_adv(u32 d, u8 prec)
 {
@@ -67,3 +71,5 @@ struct reciprocal_value_adv reciprocal_value_adv(u32 d, u8 prec)
 	return R;
 }
 EXPORT_SYMBOL(reciprocal_value_adv);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388

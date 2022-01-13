@@ -1976,7 +1976,11 @@ static int adv7511_remove(struct i2c_client *client)
 
 	adv7511_set_isr(sd, false);
 	adv7511_init_setup(sd);
+<<<<<<< HEAD
 	cancel_delayed_work_sync(&state->edid_handler);
+=======
+	cancel_delayed_work(&state->edid_handler);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	i2c_unregister_device(state->i2c_edid);
 	if (state->i2c_cec)
 		i2c_unregister_device(state->i2c_cec);

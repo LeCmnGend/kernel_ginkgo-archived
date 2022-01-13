@@ -341,7 +341,11 @@ static ssize_t vfio_ccw_mdev_ioctl(struct mdev_device *mdev,
 		if (ret)
 			return ret;
 
+<<<<<<< HEAD
 		return copy_to_user((void __user *)arg, &info, minsz) ? -EFAULT : 0;
+=======
+		return copy_to_user((void __user *)arg, &info, minsz);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	case VFIO_DEVICE_GET_REGION_INFO:
 	{
@@ -362,7 +366,11 @@ static ssize_t vfio_ccw_mdev_ioctl(struct mdev_device *mdev,
 		if (ret)
 			return ret;
 
+<<<<<<< HEAD
 		return copy_to_user((void __user *)arg, &info, minsz) ? -EFAULT : 0;
+=======
+		return copy_to_user((void __user *)arg, &info, minsz);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	case VFIO_DEVICE_GET_IRQ_INFO:
 	{
@@ -383,7 +391,11 @@ static ssize_t vfio_ccw_mdev_ioctl(struct mdev_device *mdev,
 		if (info.count == -1)
 			return -EINVAL;
 
+<<<<<<< HEAD
 		return copy_to_user((void __user *)arg, &info, minsz) ? -EFAULT : 0;
+=======
+		return copy_to_user((void __user *)arg, &info, minsz);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	case VFIO_DEVICE_SET_IRQS:
 	{

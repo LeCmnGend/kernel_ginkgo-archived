@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 #ifndef UTIL_H
 #define UTIL_H
+=======
+#ifndef _UTIL_H
+#define _UTIL_H
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #include <stdarg.h>
 #include <stdbool.h>
@@ -35,9 +40,12 @@
 
 #define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
 
+<<<<<<< HEAD
 #define stringify(s)	stringify_(s)
 #define stringify_(s)	#s
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static inline void NORETURN PRINTF(1, 2) die(const char *str, ...)
 {
 	va_list ap;
@@ -263,4 +271,8 @@ void NORETURN util_usage(const char *errmsg, const char *synopsis,
 	case 'V': util_version(); \
 	case '?': usage("unknown option");
 
+<<<<<<< HEAD
 #endif /* UTIL_H */
+=======
+#endif /* _UTIL_H */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388

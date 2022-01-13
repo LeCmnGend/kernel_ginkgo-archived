@@ -123,7 +123,12 @@ enum {
 	BINDER_DEBUG_PRIORITY_CAP           = 1U << 13,
 	BINDER_DEBUG_SPINLOCKS              = 1U << 14,
 };
+<<<<<<< HEAD
 static uint32_t binder_debug_mask = 0;
+=======
+static uint32_t binder_debug_mask = BINDER_DEBUG_USER_ERROR |
+	BINDER_DEBUG_FAILED_TRANSACTION | BINDER_DEBUG_DEAD_TRANSACTION;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 module_param_named(debug_mask, binder_debug_mask, uint, 0644);
 
 char *binder_devices_param = CONFIG_ANDROID_BINDER_DEVICES;
@@ -145,7 +150,10 @@ static int binder_set_stop_on_user_error(const char *val,
 module_param_call(stop_on_user_error, binder_set_stop_on_user_error,
 	param_get_int, &binder_stop_on_user_error, 0644);
 
+<<<<<<< HEAD
 #ifdef DEBUG
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define binder_debug(mask, x...) \
 	do { \
 		if (binder_debug_mask & mask) \
@@ -159,6 +167,7 @@ module_param_call(stop_on_user_error, binder_set_stop_on_user_error,
 		if (binder_stop_on_user_error) \
 			binder_stop_on_user_error = 2; \
 	} while (0)
+<<<<<<< HEAD
 #else
 static inline void binder_debug(uint32_t mask, const char *fmt, ...)
 {
@@ -169,6 +178,8 @@ static inline void binder_user_error(const char *fmt, ...)
 		binder_stop_on_user_error = 2;
 }
 #endif
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #define to_flat_binder_object(hdr) \
 	container_of(hdr, struct flat_binder_object, hdr)
@@ -193,7 +204,11 @@ enum binder_stat_types {
 };
 
 struct binder_stats {
+<<<<<<< HEAD
 	atomic_t br[_IOC_NR(BR_ONEWAY_SPAM_SUSPECT) + 1];
+=======
+	atomic_t br[_IOC_NR(BR_FAILED_REPLY) + 1];
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	atomic_t bc[_IOC_NR(BC_REPLY_SG) + 1];
 	atomic_t obj_created[BINDER_STAT_COUNT];
 	atomic_t obj_deleted[BINDER_STAT_COUNT];
@@ -214,6 +229,7 @@ static inline void binder_stats_created(enum binder_stat_types type)
 struct binder_transaction_log binder_transaction_log;
 struct binder_transaction_log binder_transaction_log_failed;
 
+<<<<<<< HEAD
 static struct kmem_cache *binder_node_pool;
 static struct kmem_cache *binder_proc_pool;
 static struct kmem_cache *binder_ref_death_pool;
@@ -222,6 +238,8 @@ static struct kmem_cache *binder_thread_pool;
 static struct kmem_cache *binder_transaction_pool;
 static struct kmem_cache *binder_work_pool;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static struct binder_transaction_log_entry *binder_transaction_log_add(
 	struct binder_transaction_log *log)
 {
@@ -252,10 +270,16 @@ static struct binder_transaction_log_entry *binder_transaction_log_add(
 struct binder_work {
 	struct list_head entry;
 
+<<<<<<< HEAD
 	enum binder_work_type {
 		BINDER_WORK_TRANSACTION = 1,
 		BINDER_WORK_TRANSACTION_COMPLETE,
 		BINDER_WORK_TRANSACTION_ONEWAY_SPAM_SUSPECT,
+=======
+	enum {
+		BINDER_WORK_TRANSACTION = 1,
+		BINDER_WORK_TRANSACTION_COMPLETE,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		BINDER_WORK_RETURN_ERROR,
 		BINDER_WORK_NODE,
 		BINDER_WORK_DEAD_BINDER,
@@ -479,6 +503,7 @@ struct binder_priority {
  *                        (protected by binder_deferred_lock)
  * @deferred_work:        bitmap of deferred work to perform
  *                        (protected by binder_deferred_lock)
+<<<<<<< HEAD
  * @outstanding_txns:     number of transactions to be transmitted before
  *                        processes in freeze_wait are woken up
  *                        (protected by @inner_lock)
@@ -492,6 +517,11 @@ struct binder_priority {
  * @freeze_wait:          waitqueue of processes waiting for all outstanding
  *                        transactions to be processed
  *                        (protected by @inner_lock)
+=======
+ * @is_dead:              process is dead and awaiting free
+ *                        when outstanding transactions are cleaned up
+ *                        (protected by @inner_lock)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  * @todo:                 list of work for this process
  *                        (protected by @inner_lock)
  * @stats:                per-process binder statistics
@@ -519,8 +549,11 @@ struct binder_priority {
  * @outer_lock:           no nesting under innor or node lock
  *                        Lock order: 1) outer, 2) node, 3) inner
  * @binderfs_entry:       process-specific binderfs log file
+<<<<<<< HEAD
  * @oneway_spam_detection_enabled: process enabled oneway spam detection
  *                        or not
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * Bookkeeping structure for binder processes
  */
@@ -537,12 +570,16 @@ struct binder_proc {
 	struct mutex files_lock;
 	struct hlist_node deferred_work_node;
 	int deferred_work;
+<<<<<<< HEAD
 	int outstanding_txns;
 	bool is_dead;
 	bool is_frozen;
 	bool sync_recv;
 	bool async_recv;
 	wait_queue_head_t freeze_wait;
+=======
+	bool is_dead;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	struct list_head todo;
 	struct binder_stats stats;
@@ -558,7 +595,10 @@ struct binder_proc {
 	spinlock_t inner_lock;
 	spinlock_t outer_lock;
 	struct dentry *binderfs_entry;
+<<<<<<< HEAD
 	bool oneway_spam_detection_enabled;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 enum {
@@ -930,6 +970,30 @@ static struct binder_work *binder_dequeue_work_head_ilocked(
 	return w;
 }
 
+<<<<<<< HEAD
+=======
+/**
+ * binder_dequeue_work_head() - Dequeues the item at head of list
+ * @proc:         binder_proc associated with list
+ * @list:         list to dequeue head
+ *
+ * Removes the head of the list if there are items on the list
+ *
+ * Return: pointer dequeued binder_work, NULL if list was empty
+ */
+static struct binder_work *binder_dequeue_work_head(
+					struct binder_proc *proc,
+					struct list_head *list)
+{
+	struct binder_work *w;
+
+	binder_inner_proc_lock(proc);
+	w = binder_dequeue_work_head_ilocked(list);
+	binder_inner_proc_unlock(proc);
+	return w;
+}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static void
 binder_defer_work(struct binder_proc *proc, enum binder_deferred_state defer);
 static void binder_free_thread(struct binder_thread *thread);
@@ -1368,9 +1432,15 @@ static struct binder_node *binder_init_node_ilocked(
 static struct binder_node *binder_new_node(struct binder_proc *proc,
 					   struct flat_binder_object *fp)
 {
+<<<<<<< HEAD
 	struct binder_node *node, *new_node;
 
 	new_node = kmem_cache_zalloc(binder_node_pool, GFP_KERNEL);
+=======
+	struct binder_node *node;
+	struct binder_node *new_node = kzalloc(sizeof(*node), GFP_KERNEL);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!new_node)
 		return NULL;
 	binder_inner_proc_lock(proc);
@@ -1380,14 +1450,22 @@ static struct binder_node *binder_new_node(struct binder_proc *proc,
 		/*
 		 * The node was already added by another thread
 		 */
+<<<<<<< HEAD
 		kmem_cache_free(binder_node_pool, new_node);
+=======
+		kfree(new_node);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return node;
 }
 
 static void binder_free_node(struct binder_node *node)
 {
+<<<<<<< HEAD
 	kmem_cache_free(binder_node_pool, node);
+=======
+	kfree(node);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	binder_stats_deleted(BINDER_STAT_NODE);
 }
 
@@ -1874,9 +1952,14 @@ static void binder_free_ref(struct binder_ref *ref)
 {
 	if (ref->node)
 		binder_free_node(ref->node);
+<<<<<<< HEAD
 	if (ref->death)
 		kmem_cache_free(binder_ref_death_pool, ref->death);
 	kmem_cache_free(binder_ref_pool, ref);
+=======
+	kfree(ref->death);
+	kfree(ref);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /**
@@ -1969,7 +2052,11 @@ static int binder_inc_ref_for_node(struct binder_proc *proc,
 	ref = binder_get_ref_for_node_olocked(proc, node, NULL);
 	if (!ref) {
 		binder_proc_unlock(proc);
+<<<<<<< HEAD
 		new_ref = kmem_cache_zalloc(binder_ref_pool, GFP_KERNEL);
+=======
+		new_ref = kzalloc(sizeof(*ref), GFP_KERNEL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (!new_ref)
 			return -ENOMEM;
 		binder_proc_lock(proc);
@@ -1983,7 +2070,11 @@ static int binder_inc_ref_for_node(struct binder_proc *proc,
 		 * Another thread created the ref first so
 		 * free the one we allocated
 		 */
+<<<<<<< HEAD
 		kmem_cache_free(binder_ref_pool, new_ref);
+=======
+		kfree(new_ref);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return ret;
 }
 
@@ -2115,10 +2206,13 @@ static void binder_free_transaction(struct binder_transaction *t)
 		spin_unlock(&t->lock);
 
 		binder_inner_proc_lock(target_proc);
+<<<<<<< HEAD
 		target_proc->outstanding_txns--;
 		BUG_ON(target_proc->outstanding_txns < 0);
 		if (!target_proc->outstanding_txns && target_proc->is_frozen)
 			wake_up_interruptible_all(&target_proc->freeze_wait);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (t->buffer)
 			t->buffer->transaction = NULL;
 		binder_inner_proc_unlock(target_proc);
@@ -2130,11 +2224,15 @@ static void binder_free_transaction(struct binder_transaction *t)
 		 */
 		spin_unlock(&t->lock);
 	}
+<<<<<<< HEAD
 	/*
 	 * If the transaction has no target_proc, then
 	 * t->buffer->transaction has already been cleared.
 	 */
 	kmem_cache_free(binder_transaction_pool, t);
+=======
+	kfree(t);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	binder_stats_deleted(BINDER_STAT_TRANSACTION);
 }
 
@@ -2876,11 +2974,18 @@ static int binder_fixup_parent(struct binder_transaction *t,
  * If the @thread parameter is not NULL, the transaction is always queued
  * to the waitlist of that specific thread.
  *
+<<<<<<< HEAD
  * Return:	0 if the transaction was successfully queued
  *		BR_DEAD_REPLY if the target process or thread is dead
  *		BR_FROZEN_REPLY if the target process or thread is frozen
  */
 static int binder_proc_transaction(struct binder_transaction *t,
+=======
+ * Return:	true if the transactions was successfully queued
+ *		false if the target process or thread is dead
+ */
+static bool binder_proc_transaction(struct binder_transaction *t,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				    struct binder_proc *proc,
 				    struct binder_thread *thread)
 {
@@ -2904,6 +3009,7 @@ static int binder_proc_transaction(struct binder_transaction *t,
 	}
 
 	binder_inner_proc_lock(proc);
+<<<<<<< HEAD
 	if (proc->is_frozen) {
 		proc->sync_recv |= !oneway;
 		proc->async_recv |= oneway;
@@ -2916,6 +3022,13 @@ static int binder_proc_transaction(struct binder_transaction *t,
 		binder_inner_proc_unlock(proc);
 		binder_node_unlock(node);
 		return proc_is_dead ? BR_DEAD_REPLY : BR_FROZEN_REPLY;
+=======
+
+	if (proc->is_dead || (thread && thread->is_dead)) {
+		binder_inner_proc_unlock(proc);
+		binder_node_unlock(node);
+		return false;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	if (!thread && !pending_async)
@@ -2934,11 +3047,18 @@ static int binder_proc_transaction(struct binder_transaction *t,
 	if (!pending_async)
 		binder_wakeup_thread_ilocked(proc, thread, !oneway /* sync */);
 
+<<<<<<< HEAD
 	proc->outstanding_txns++;
 	binder_inner_proc_unlock(proc);
 	binder_node_unlock(node);
 
 	return 0;
+=======
+	binder_inner_proc_unlock(proc);
+	binder_node_unlock(node);
+
+	return true;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /**
@@ -3173,7 +3293,11 @@ static void binder_transaction(struct binder_proc *proc,
 	e->to_proc = target_proc->pid;
 
 	/* TODO: reuse incoming transaction for reply */
+<<<<<<< HEAD
 	t = kmem_cache_zalloc(binder_transaction_pool, GFP_KERNEL);
+=======
+	t = kzalloc(sizeof(*t), GFP_KERNEL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (t == NULL) {
 		return_error = BR_FAILED_REPLY;
 		return_error_param = -ENOMEM;
@@ -3183,7 +3307,11 @@ static void binder_transaction(struct binder_proc *proc,
 	binder_stats_created(BINDER_STAT_TRANSACTION);
 	spin_lock_init(&t->lock);
 
+<<<<<<< HEAD
 	tcomplete = kmem_cache_zalloc(binder_work_pool, GFP_KERNEL);
+=======
+	tcomplete = kzalloc(sizeof(*tcomplete), GFP_KERNEL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (tcomplete == NULL) {
 		return_error = BR_FAILED_REPLY;
 		return_error_param = -ENOMEM;
@@ -3259,7 +3387,11 @@ static void binder_transaction(struct binder_proc *proc,
 
 	t->buffer = binder_alloc_new_buf(&target_proc->alloc, tr->data_size,
 		tr->offsets_size, extra_buffers_size,
+<<<<<<< HEAD
 		!reply && (t->flags & TF_ONE_WAY), current->tgid);
+=======
+		!reply && (t->flags & TF_ONE_WAY));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (IS_ERR(t->buffer)) {
 		/*
 		 * -ESRCH indicates VMA cleared. The target is dying.
@@ -3287,7 +3419,10 @@ static void binder_transaction(struct binder_proc *proc,
 	t->buffer->debug_id = t->debug_id;
 	t->buffer->transaction = t;
 	t->buffer->target_node = target_node;
+<<<<<<< HEAD
 	t->buffer->clear_on_free = !!(t->flags & TF_CLEAR_BUF);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	trace_binder_transaction_alloc_buf(t->buffer);
 
 	if (binder_alloc_copy_user_to_buffer(
@@ -3527,25 +3662,36 @@ static void binder_transaction(struct binder_proc *proc,
 			goto err_bad_object_type;
 		}
 	}
+<<<<<<< HEAD
 	if (t->buffer->oneway_spam_suspect)
 		tcomplete->type = BINDER_WORK_TRANSACTION_ONEWAY_SPAM_SUSPECT;
 	else
 		tcomplete->type = BINDER_WORK_TRANSACTION_COMPLETE;
+=======
+	tcomplete->type = BINDER_WORK_TRANSACTION_COMPLETE;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	t->work.type = BINDER_WORK_TRANSACTION;
 
 	if (reply) {
 		binder_enqueue_thread_work(thread, tcomplete);
 		binder_inner_proc_lock(target_proc);
+<<<<<<< HEAD
 		if (target_thread->is_dead || target_proc->is_frozen) {
 			return_error = target_thread->is_dead ?
 				BR_DEAD_REPLY : BR_FROZEN_REPLY;
+=======
+		if (target_thread->is_dead) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			binder_inner_proc_unlock(target_proc);
 			goto err_dead_proc_or_thread;
 		}
 		BUG_ON(t->buffer->async_transaction != 0);
 		binder_pop_transaction_ilocked(target_thread, in_reply_to);
 		binder_enqueue_thread_work_ilocked(target_thread, &t->work);
+<<<<<<< HEAD
 		target_proc->outstanding_txns++;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		binder_inner_proc_unlock(target_proc);
 		wake_up_interruptible_sync(&target_thread->wait);
 		binder_restore_priority(current, in_reply_to->saved_priority);
@@ -3565,9 +3711,13 @@ static void binder_transaction(struct binder_proc *proc,
 		t->from_parent = thread->transaction_stack;
 		thread->transaction_stack = t;
 		binder_inner_proc_unlock(proc);
+<<<<<<< HEAD
 		return_error = binder_proc_transaction(t,
 				target_proc, target_thread);
 		if (return_error) {
+=======
+		if (!binder_proc_transaction(t, target_proc, target_thread)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			binder_inner_proc_lock(proc);
 			binder_pop_transaction_ilocked(thread, t);
 			binder_inner_proc_unlock(proc);
@@ -3577,8 +3727,12 @@ static void binder_transaction(struct binder_proc *proc,
 		BUG_ON(target_node == NULL);
 		BUG_ON(t->buffer->async_transaction != 1);
 		binder_enqueue_thread_work(thread, tcomplete);
+<<<<<<< HEAD
 		return_error = binder_proc_transaction(t, target_proc, NULL);
 		if (return_error)
+=======
+		if (!binder_proc_transaction(t, target_proc, NULL))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			goto err_dead_proc_or_thread;
 	}
 	if (target_thread)
@@ -3595,6 +3749,10 @@ static void binder_transaction(struct binder_proc *proc,
 	return;
 
 err_dead_proc_or_thread:
+<<<<<<< HEAD
+=======
+	return_error = BR_DEAD_REPLY;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return_error_line = __LINE__;
 	binder_dequeue_work(proc, tcomplete);
 err_translate_failed:
@@ -3615,10 +3773,17 @@ err_bad_extra_size:
 	if (secctx)
 		security_release_secctx(secctx, secctx_sz);
 err_get_secctx_failed:
+<<<<<<< HEAD
 	kmem_cache_free(binder_work_pool, tcomplete);
 	binder_stats_deleted(BINDER_STAT_TRANSACTION_COMPLETE);
 err_alloc_tcomplete_failed:
 	kmem_cache_free(binder_transaction_pool, t);
+=======
+	kfree(tcomplete);
+	binder_stats_deleted(BINDER_STAT_TRANSACTION_COMPLETE);
+err_alloc_tcomplete_failed:
+	kfree(t);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	binder_stats_deleted(BINDER_STAT_TRANSACTION);
 err_alloc_t_failed:
 err_bad_call_stack:
@@ -3970,7 +4135,11 @@ static int binder_thread_write(struct binder_proc *proc,
 				 * Allocate memory for death notification
 				 * before taking lock
 				 */
+<<<<<<< HEAD
 				death = kmem_cache_zalloc(binder_ref_death_pool, GFP_KERNEL);
+=======
+				death = kzalloc(sizeof(*death), GFP_KERNEL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				if (death == NULL) {
 					WARN_ON(thread->return_error.cmd !=
 						BR_OK);
@@ -3995,8 +4164,12 @@ static int binder_thread_write(struct binder_proc *proc,
 					"BC_CLEAR_DEATH_NOTIFICATION",
 					target);
 				binder_proc_unlock(proc);
+<<<<<<< HEAD
 				if (death)
 					kmem_cache_free(binder_ref_death_pool, death);
+=======
+				kfree(death);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				break;
 			}
 
@@ -4017,7 +4190,11 @@ static int binder_thread_write(struct binder_proc *proc,
 						proc->pid, thread->pid);
 					binder_node_unlock(ref->node);
 					binder_proc_unlock(proc);
+<<<<<<< HEAD
 					kmem_cache_free(binder_ref_death_pool, death);
+=======
+					kfree(death);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 					break;
 				}
 				binder_stats_created(BINDER_STAT_DEATH);
@@ -4200,7 +4377,11 @@ static int binder_wait_for_work(struct binder_thread *thread,
 		binder_inner_proc_lock(proc);
 		list_del_init(&thread->waiting_thread_node);
 		if (signal_pending(current)) {
+<<<<<<< HEAD
 			ret = -EINTR;
+=======
+			ret = -ERESTARTSYS;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			break;
 		}
 	}
@@ -4314,6 +4495,7 @@ retry:
 
 			binder_stat_br(proc, thread, e->cmd);
 		} break;
+<<<<<<< HEAD
 		case BINDER_WORK_TRANSACTION_COMPLETE:
 		case BINDER_WORK_TRANSACTION_ONEWAY_SPAM_SUSPECT: {
 			if (proc->oneway_spam_detection_enabled &&
@@ -4323,6 +4505,12 @@ retry:
 				cmd = BR_TRANSACTION_COMPLETE;
 			binder_inner_proc_unlock(proc);
 			kmem_cache_free(binder_work_pool, w);
+=======
+		case BINDER_WORK_TRANSACTION_COMPLETE: {
+			binder_inner_proc_unlock(proc);
+			cmd = BR_TRANSACTION_COMPLETE;
+			kfree(w);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			binder_stats_deleted(BINDER_STAT_TRANSACTION_COMPLETE);
 			if (put_user(cmd, (uint32_t __user *)ptr))
 				return -EFAULT;
@@ -4443,7 +4631,11 @@ retry:
 				      (u64)cookie);
 			if (w->type == BINDER_WORK_CLEAR_DEATH_NOTIFICATION) {
 				binder_inner_proc_unlock(proc);
+<<<<<<< HEAD
 				kmem_cache_free(binder_ref_death_pool, death);
+=======
+				kfree(death);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				binder_stats_deleted(BINDER_STAT_DEATH);
 			} else {
 				binder_enqueue_work_ilocked(
@@ -4587,6 +4779,7 @@ static void binder_release_work(struct binder_proc *proc,
 				struct list_head *list)
 {
 	struct binder_work *w;
+<<<<<<< HEAD
 	enum binder_work_type wtype;
 
 	while (1) {
@@ -4598,6 +4791,15 @@ static void binder_release_work(struct binder_proc *proc,
 			return;
 
 		switch (wtype) {
+=======
+
+	while (1) {
+		w = binder_dequeue_work_head(proc, list);
+		if (!w)
+			return;
+
+		switch (w->type) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		case BINDER_WORK_TRANSACTION: {
 			struct binder_transaction *t;
 
@@ -4617,7 +4819,11 @@ static void binder_release_work(struct binder_proc *proc,
 		case BINDER_WORK_TRANSACTION_COMPLETE: {
 			binder_debug(BINDER_DEBUG_DEAD_TRANSACTION,
 				"undelivered TRANSACTION_COMPLETE\n");
+<<<<<<< HEAD
 			kmem_cache_free(binder_work_pool, w);
+=======
+			kfree(w);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			binder_stats_deleted(BINDER_STAT_TRANSACTION_COMPLETE);
 		} break;
 		case BINDER_WORK_DEAD_BINDER_AND_CLEAR:
@@ -4628,6 +4834,7 @@ static void binder_release_work(struct binder_proc *proc,
 			binder_debug(BINDER_DEBUG_DEAD_TRANSACTION,
 				"undelivered death notification, %016llx\n",
 				(u64)death->cookie);
+<<<<<<< HEAD
 			kmem_cache_free(binder_ref_death_pool, death);
 			binder_stats_deleted(BINDER_STAT_DEATH);
 		} break;
@@ -4636,6 +4843,14 @@ static void binder_release_work(struct binder_proc *proc,
 		default:
 			pr_err("unexpected work type, %d, not freed\n",
 			       wtype);
+=======
+			kfree(death);
+			binder_stats_deleted(BINDER_STAT_DEATH);
+		} break;
+		default:
+			pr_err("unexpected work type, %d, not freed\n",
+			       w->type);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			break;
 		}
 	}
@@ -4691,14 +4906,22 @@ static struct binder_thread *binder_get_thread(struct binder_proc *proc)
 	thread = binder_get_thread_ilocked(proc, NULL);
 	binder_inner_proc_unlock(proc);
 	if (!thread) {
+<<<<<<< HEAD
 		new_thread = kmem_cache_zalloc(binder_thread_pool, GFP_KERNEL);
+=======
+		new_thread = kzalloc(sizeof(*thread), GFP_KERNEL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (new_thread == NULL)
 			return NULL;
 		binder_inner_proc_lock(proc);
 		thread = binder_get_thread_ilocked(proc, new_thread);
 		binder_inner_proc_unlock(proc);
 		if (thread != new_thread)
+<<<<<<< HEAD
 			kmem_cache_free(binder_thread_pool, new_thread);
+=======
+			kfree(new_thread);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	return thread;
 }
@@ -4709,7 +4932,10 @@ static void binder_free_proc(struct binder_proc *proc)
 
 	BUG_ON(!list_empty(&proc->todo));
 	BUG_ON(!list_empty(&proc->delivered_death));
+<<<<<<< HEAD
 	WARN_ON(proc->outstanding_txns);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	device = container_of(proc->context, struct binder_device, context);
 	if (refcount_dec_and_test(&device->ref)) {
 		kfree(proc->context->name);
@@ -4718,7 +4944,11 @@ static void binder_free_proc(struct binder_proc *proc)
 	binder_alloc_deferred_release(&proc->alloc);
 	put_task_struct(proc->tsk);
 	binder_stats_deleted(BINDER_STAT_PROC);
+<<<<<<< HEAD
 	kmem_cache_free(binder_proc_pool, proc);
+=======
+	kfree(proc);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void binder_free_thread(struct binder_thread *thread)
@@ -4727,7 +4957,11 @@ static void binder_free_thread(struct binder_thread *thread)
 	binder_stats_deleted(BINDER_STAT_THREAD);
 	binder_proc_dec_tmpref(thread->proc);
 	put_task_struct(thread->task);
+<<<<<<< HEAD
 	kmem_cache_free(binder_thread_pool, thread);
+=======
+	kfree(thread);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static int binder_thread_release(struct binder_proc *proc,
@@ -4770,7 +5004,10 @@ static int binder_thread_release(struct binder_proc *proc,
 			     (t->to_thread == thread) ? "in" : "out");
 
 		if (t->to_thread == thread) {
+<<<<<<< HEAD
 			t->to_proc->outstanding_txns--;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			t->to_proc = NULL;
 			t->to_thread = NULL;
 			if (t->buffer) {
@@ -5017,6 +5254,7 @@ static int binder_ioctl_get_node_debug_info(struct binder_proc *proc,
 	return 0;
 }
 
+<<<<<<< HEAD
 static int binder_ioctl_freeze(struct binder_freeze_info *info,
 			       struct binder_proc *target_proc)
 {
@@ -5087,6 +5325,8 @@ static int binder_ioctl_get_freezer_info(
 	return 0;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static long binder_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 {
 	int ret;
@@ -5205,6 +5445,7 @@ static long binder_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		}
 		break;
 	}
+<<<<<<< HEAD
 	case BINDER_FREEZE: {
 		struct binder_freeze_info info;
 		struct binder_proc **target_procs = NULL, *target_proc;
@@ -5295,6 +5536,8 @@ static long binder_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		binder_inner_proc_unlock(proc);
 		break;
 	}
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	default:
 		ret = -EINVAL;
 		goto err;
@@ -5304,7 +5547,11 @@ err:
 	if (thread)
 		thread->looper_need_return = false;
 	wait_event_interruptible(binder_user_error_wait, binder_stop_on_user_error < 2);
+<<<<<<< HEAD
 	if (ret && ret != -EINTR)
+=======
+	if (ret && ret != -ERESTARTSYS)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		pr_info("%d:%d ioctl %x %lx returned %d\n", proc->pid, current->pid, cmd, arg, ret);
 err_unlocked:
 	trace_binder_ioctl_done(ret);
@@ -5399,7 +5646,11 @@ static int binder_open(struct inode *nodp, struct file *filp)
 	binder_debug(BINDER_DEBUG_OPEN_CLOSE, "%s: %d:%d\n", __func__,
 		     current->group_leader->pid, current->pid);
 
+<<<<<<< HEAD
 	proc = kmem_cache_zalloc(binder_proc_pool, GFP_KERNEL);
+=======
+	proc = kzalloc(sizeof(*proc), GFP_KERNEL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (proc == NULL)
 		return -ENOMEM;
 	spin_lock_init(&proc->inner_lock);
@@ -5409,7 +5660,10 @@ static int binder_open(struct inode *nodp, struct file *filp)
 	proc->tsk = current->group_leader;
 	mutex_init(&proc->files_lock);
 	INIT_LIST_HEAD(&proc->todo);
+<<<<<<< HEAD
 	init_waitqueue_head(&proc->freeze_wait);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (binder_supported_policy(current->policy)) {
 		proc->default_priority.sched_policy = current->policy;
 		proc->default_priority.prio = current->normal_prio;
@@ -5631,9 +5885,12 @@ static void binder_deferred_release(struct binder_proc *proc)
 	atomic_inc(&proc->tmp_ref);
 
 	proc->is_dead = true;
+<<<<<<< HEAD
 	proc->is_frozen = false;
 	proc->sync_recv = false;
 	proc->async_recv = false;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	threads = 0;
 	active_transactions = 0;
 	while ((n = rb_first(&proc->threads))) {
@@ -5999,9 +6256,13 @@ static const char * const binder_return_strings[] = {
 	"BR_FINISHED",
 	"BR_DEAD_BINDER",
 	"BR_CLEAR_DEATH_NOTIFICATION_DONE",
+<<<<<<< HEAD
 	"BR_FAILED_REPLY",
 	"BR_FROZEN_REPLY",
 	"BR_ONEWAY_SPAM_SUSPECT",
+=======
+	"BR_FAILED_REPLY"
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 static const char * const binder_command_strings[] = {
@@ -6315,6 +6576,7 @@ static int __init init_binder_device(const char *name)
 	return ret;
 }
 
+<<<<<<< HEAD
 static int __init binder_create_pools(void)
 {
 	int ret;
@@ -6382,6 +6644,8 @@ static void __init binder_destroy_pools(void)
 	kmem_cache_destroy(binder_work_pool);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static int __init binder_init(void)
 {
 	int ret;
@@ -6390,6 +6654,7 @@ static int __init binder_init(void)
 	struct hlist_node *tmp;
 	char *device_names = NULL;
 
+<<<<<<< HEAD
 	ret = binder_create_pools();
 	if (ret)
 		return ret;
@@ -6397,6 +6662,11 @@ static int __init binder_init(void)
 	ret = binder_alloc_shrinker_init();
 	if (ret)
 		goto err_alloc_shrinker_failed;
+=======
+	ret = binder_alloc_shrinker_init();
+	if (ret)
+		return ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	atomic_set(&binder_transaction_log.cur, ~0U);
 	atomic_set(&binder_transaction_log_failed.cur, ~0U);
@@ -6472,9 +6742,12 @@ err_init_binder_device_failed:
 err_alloc_device_names_failed:
 	debugfs_remove_recursive(binder_debugfs_dir_entry_root);
 
+<<<<<<< HEAD
 err_alloc_shrinker_failed:
 	binder_destroy_pools();
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return ret;
 }
 

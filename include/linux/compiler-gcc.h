@@ -90,7 +90,12 @@
  * of extern inline functions at link time.
  * A lot of inline functions can cause havoc with function tracing.
  */
+<<<<<<< HEAD
 #if !defined(CONFIG_OPTIMIZE_INLINING) || (__GNUC__ < 4)
+=======
+#if !defined(CONFIG_ARCH_SUPPORTS_OPTIMIZED_INLINING) ||		\
+    !defined(CONFIG_OPTIMIZE_INLINING) || (__GNUC__ < 4)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define inline \
 	inline __attribute__((always_inline, unused)) notrace __gnu_inline
 #else
@@ -151,12 +156,15 @@
 
 #if GCC_VERSION < 30200
 # error Sorry, your compiler is too old - please upgrade it.
+<<<<<<< HEAD
 #elif defined(CONFIG_ARM64) && GCC_VERSION < 50100 && !defined(__clang__)
 /*
  * https://gcc.gnu.org/bugzilla/show_bug.cgi?id=63293
  * https://lore.kernel.org/r/20210107111841.GN1551@shell.armlinux.org.uk
  */
 # error Sorry, your version of GCC is too old - please use 5.1 or newer.
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif
 
 #if GCC_VERSION < 30300

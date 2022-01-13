@@ -330,7 +330,11 @@ static int madvise_free_pte_range(pmd_t *pmd, unsigned long addr,
 	if (pmd_trans_unstable(pmd))
 		return 0;
 
+<<<<<<< HEAD
 	tlb_change_page_size(tlb, PAGE_SIZE);
+=======
+	tlb_remove_check_page_size_change(tlb, PAGE_SIZE);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	orig_pte = pte = pte_offset_map_lock(mm, pmd, addr, &ptl);
 	flush_tlb_batched_pending(mm);
 	arch_enter_lazy_mmu_mode();

@@ -26,7 +26,11 @@ static int throtl_quantum = 32;
 #define MAX_IDLE_TIME (5L * 1000 * 1000) /* 5 s */
 #define MIN_THROTL_BPS (320 * 1024)
 #define MIN_THROTL_IOPS (10)
+<<<<<<< HEAD
 #define DFL_LATENCY_TARGET (1000L) /* 1ms */
+=======
+#define DFL_LATENCY_TARGET (-1L)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define DFL_IDLE_THRESHOLD (0)
 #define DFL_HD_BASELINE_LATENCY (4000L) /* 4ms */
 #define LATENCY_FILTERED_SSD (0)

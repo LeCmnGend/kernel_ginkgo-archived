@@ -367,7 +367,11 @@ static int w840_probe1(struct pci_dev *pdev, const struct pci_device_id *ent)
 	int i, option = find_cnt < MAX_UNITS ? options[find_cnt] : 0;
 	void __iomem *ioaddr;
 
+<<<<<<< HEAD
 	i = pcim_enable_device(pdev);
+=======
+	i = pci_enable_device(pdev);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (i) return i;
 
 	pci_set_master(pdev);
@@ -389,7 +393,11 @@ static int w840_probe1(struct pci_dev *pdev, const struct pci_device_id *ent)
 
 	ioaddr = pci_iomap(pdev, TULIP_BAR, netdev_res_size);
 	if (!ioaddr)
+<<<<<<< HEAD
 		goto err_out_netdev;
+=======
+		goto err_out_free_res;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	for (i = 0; i < 3; i++)
 		((__le16 *)dev->dev_addr)[i] = cpu_to_le16(eeprom_read(ioaddr, i));
@@ -468,6 +476,11 @@ static int w840_probe1(struct pci_dev *pdev, const struct pci_device_id *ent)
 
 err_out_cleardev:
 	pci_iounmap(pdev, ioaddr);
+<<<<<<< HEAD
+=======
+err_out_free_res:
+	pci_release_regions(pdev);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 err_out_netdev:
 	free_netdev (dev);
 	return -ENODEV;
@@ -1535,6 +1548,10 @@ static void w840_remove1(struct pci_dev *pdev)
 	if (dev) {
 		struct netdev_private *np = netdev_priv(dev);
 		unregister_netdev(dev);
+<<<<<<< HEAD
+=======
+		pci_release_regions(pdev);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		pci_iounmap(pdev, np->base_addr);
 		free_netdev(dev);
 	}

@@ -1879,6 +1879,19 @@ imx_console_write(struct console *co, const char *s, unsigned int count)
 	unsigned int ucr1;
 	unsigned long flags = 0;
 	int locked = 1;
+<<<<<<< HEAD
+=======
+	int retval;
+
+	retval = clk_enable(sport->clk_per);
+	if (retval)
+		return;
+	retval = clk_enable(sport->clk_ipg);
+	if (retval) {
+		clk_disable(sport->clk_per);
+		return;
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (sport->port.sysrq)
 		locked = 0;
@@ -1914,6 +1927,12 @@ imx_console_write(struct console *co, const char *s, unsigned int count)
 
 	if (locked)
 		spin_unlock_irqrestore(&sport->port.lock, flags);
+<<<<<<< HEAD
+=======
+
+	clk_disable(sport->clk_ipg);
+	clk_disable(sport->clk_per);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /*
@@ -2014,6 +2033,7 @@ imx_console_setup(struct console *co, char *options)
 
 	retval = uart_set_options(&sport->port, co, baud, parity, bits, flow);
 
+<<<<<<< HEAD
 	if (retval) {
 		clk_disable_unprepare(sport->clk_ipg);
 		goto error_console;
@@ -2022,6 +2042,17 @@ imx_console_setup(struct console *co, char *options)
 	retval = clk_prepare_enable(sport->clk_per);
 	if (retval)
 		clk_disable_unprepare(sport->clk_ipg);
+=======
+	clk_disable(sport->clk_ipg);
+	if (retval) {
+		clk_unprepare(sport->clk_ipg);
+		goto error_console;
+	}
+
+	retval = clk_prepare(sport->clk_per);
+	if (retval)
+		clk_unprepare(sport->clk_ipg);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 error_console:
 	return retval;

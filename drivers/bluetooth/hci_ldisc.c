@@ -541,7 +541,10 @@ static void hci_uart_tty_close(struct tty_struct *tty)
 		clear_bit(HCI_UART_PROTO_READY, &hu->flags);
 		percpu_up_write(&hu->proto_lock);
 
+<<<<<<< HEAD
 		cancel_work_sync(&hu->init_ready);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		cancel_work_sync(&hu->write_work);
 
 		if (hdev) {

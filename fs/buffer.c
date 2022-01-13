@@ -255,6 +255,30 @@ out:
 }
 
 /*
+<<<<<<< HEAD
+=======
+ * Kick the writeback threads then try to free up some ZONE_NORMAL memory.
+ */
+static void free_more_memory(void)
+{
+	struct zoneref *z;
+	int nid;
+
+	wakeup_flusher_threads(1024, WB_REASON_FREE_MORE_MEM);
+	yield();
+
+	for_each_online_node(nid) {
+
+		z = first_zones_zonelist(node_zonelist(nid, GFP_NOFS),
+						gfp_zone(GFP_NOFS), NULL);
+		if (z->zone)
+			try_to_free_pages(node_zonelist(nid, GFP_NOFS), 0,
+						GFP_NOFS, NULL);
+	}
+}
+
+/*
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  * I/O completion handler for block_read_full_page() - pages
  * which come unlocked at the end of I/O.
  */
@@ -842,6 +866,7 @@ int remove_inode_buffers(struct inode *inode)
  * which may not fail from ordinary buffer allocations.
  */
 struct buffer_head *alloc_page_buffers(struct page *page, unsigned long size,
+<<<<<<< HEAD
 		bool retry)
 {
 	struct buffer_head *bh, *head;
@@ -855,6 +880,18 @@ struct buffer_head *alloc_page_buffers(struct page *page, unsigned long size,
 	offset = PAGE_SIZE;
 	while ((offset -= size) >= 0) {
 		bh = alloc_buffer_head(gfp);
+=======
+		int retry)
+{
+	struct buffer_head *bh, *head;
+	long offset;
+
+try_again:
+	head = NULL;
+	offset = PAGE_SIZE;
+	while ((offset -= size) >= 0) {
+		bh = alloc_buffer_head(GFP_NOFS);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (!bh)
 			goto no_grow;
 
@@ -880,7 +917,27 @@ no_grow:
 		} while (head);
 	}
 
+<<<<<<< HEAD
 	return NULL;
+=======
+	/*
+	 * Return failure for non-async IO requests.  Async IO requests
+	 * are not allowed to fail, so we have to wait until buffer heads
+	 * become available.  But we don't want tasks sleeping with 
+	 * partially complete buffers, so all were released above.
+	 */
+	if (!retry)
+		return NULL;
+
+	/* We're _really_ low on memory. Now we just
+	 * wait for old buffer heads to become free due to
+	 * finishing IO.  Since this is an async request and
+	 * the reserve list is empty, we're sure there are 
+	 * async buffer heads in use.
+	 */
+	free_more_memory();
+	goto try_again;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 EXPORT_SYMBOL_GPL(alloc_page_buffers);
 
@@ -969,6 +1026,11 @@ grow_dev_page(struct block_device *bdev, sector_t block,
 	gfp_mask |= __GFP_NOFAIL;
 
 	page = find_or_create_page(inode->i_mapping, index, gfp_mask);
+<<<<<<< HEAD
+=======
+	if (!page)
+		return ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	BUG_ON(!PageLocked(page));
 
@@ -987,7 +1049,13 @@ grow_dev_page(struct block_device *bdev, sector_t block,
 	/*
 	 * Allocate some buffers for this page
 	 */
+<<<<<<< HEAD
 	bh = alloc_page_buffers(page, size, true);
+=======
+	bh = alloc_page_buffers(page, size, 0);
+	if (!bh)
+		goto failed;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/*
 	 * Link the page to the buffers and initialise them.  Take the
@@ -1067,6 +1135,11 @@ __getblk_slow(struct block_device *bdev, sector_t block,
 		ret = grow_buffers(bdev, block, size, gfp);
 		if (ret < 0)
 			return NULL;
+<<<<<<< HEAD
+=======
+		if (ret == 0)
+			free_more_memory();
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 }
 
@@ -1584,7 +1657,11 @@ void create_empty_buffers(struct page *page,
 {
 	struct buffer_head *bh, *head, *tail;
 
+<<<<<<< HEAD
 	head = alloc_page_buffers(page, blocksize, true);
+=======
+	head = alloc_page_buffers(page, blocksize, 1);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	bh = head;
 	do {
 		bh->b_state |= b_state;
@@ -2647,7 +2724,11 @@ int nobh_write_begin(struct address_space *mapping,
 	 * Be careful: the buffer linked list is a NULL terminated one, rather
 	 * than the circular one we're used to.
 	 */
+<<<<<<< HEAD
 	head = alloc_page_buffers(page, blocksize, false);
+=======
+	head = alloc_page_buffers(page, blocksize, 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!head) {
 		ret = -ENOMEM;
 		goto out_release;
@@ -2796,6 +2877,19 @@ int nobh_writepage(struct page *page, get_block_t *get_block,
 	/* Is the page fully outside i_size? (truncate in progress) */
 	offset = i_size & (PAGE_SIZE-1);
 	if (page->index >= end_index+1 || !offset) {
+<<<<<<< HEAD
+=======
+		/*
+		 * The page may have dirty, unmapped buffers.  For example,
+		 * they may have been added in ext3_writepage().  Make them
+		 * freeable here, so the page does not leak.
+		 */
+#if 0
+		/* Not really sure about this  - do we need this ? */
+		if (page->mapping->a_ops->invalidatepage)
+			page->mapping->a_ops->invalidatepage(page, offset);
+#endif
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		unlock_page(page);
 		return 0; /* don't care */
 	}
@@ -2990,6 +3084,15 @@ int block_write_full_page(struct page *page, get_block_t *get_block,
 	/* Is the page fully outside i_size? (truncate in progress) */
 	offset = i_size & (PAGE_SIZE-1);
 	if (page->index >= end_index+1 || !offset) {
+<<<<<<< HEAD
+=======
+		/*
+		 * The page may have dirty, unmapped buffers.  For example,
+		 * they may have been added in ext3_writepage().  Make them
+		 * freeable here, so the page does not leak.
+		 */
+		do_invalidatepage(page, 0, PAGE_SIZE);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		unlock_page(page);
 		return 0; /* don't care */
 	}
@@ -3233,6 +3336,7 @@ int __sync_dirty_buffer(struct buffer_head *bh, int op_flags)
 	WARN_ON(atomic_read(&bh->b_count) < 1);
 	lock_buffer(bh);
 	if (test_clear_buffer_dirty(bh)) {
+<<<<<<< HEAD
 		/*
 		 * The bh should be mapped, but it might not be if the
 		 * device was hot-removed. Not much we can do but fail the I/O.
@@ -3242,6 +3346,8 @@ int __sync_dirty_buffer(struct buffer_head *bh, int op_flags)
 			return -EIO;
 		}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		get_bh(bh);
 		bh->b_end_io = end_buffer_write_sync;
 		ret = submit_bh(REQ_OP_WRITE, op_flags, bh);

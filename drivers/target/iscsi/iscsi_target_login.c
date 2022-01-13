@@ -1158,7 +1158,11 @@ iscsit_conn_set_transport(struct iscsi_conn *conn, struct iscsit_transport *t)
 }
 
 void iscsi_target_login_sess_out(struct iscsi_conn *conn,
+<<<<<<< HEAD
 				 bool zero_tsih, bool new_sess)
+=======
+		struct iscsi_np *np, bool zero_tsih, bool new_sess)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	if (!new_sess)
 		goto old_sess_out;
@@ -1180,6 +1184,10 @@ void iscsi_target_login_sess_out(struct iscsi_conn *conn,
 	conn->sess = NULL;
 
 old_sess_out:
+<<<<<<< HEAD
+=======
+	iscsi_stop_login_thread_timer(np);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/*
 	 * If login negotiation fails check if the Time2Retain timer
 	 * needs to be restarted.
@@ -1439,9 +1447,14 @@ static int __iscsi_target_login_thread(struct iscsi_np *np)
 new_sess_out:
 	new_sess = true;
 old_sess_out:
+<<<<<<< HEAD
 	iscsi_stop_login_thread_timer(np);
 	tpg_np = conn->tpg_np;
 	iscsi_target_login_sess_out(conn, zero_tsih, new_sess);
+=======
+	tpg_np = conn->tpg_np;
+	iscsi_target_login_sess_out(conn, np, zero_tsih, new_sess);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	new_sess = false;
 
 	if (tpg) {

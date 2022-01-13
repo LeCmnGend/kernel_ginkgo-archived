@@ -265,7 +265,11 @@ static struct feature_property {
 };
 
 #if defined(CONFIG_44x) && defined(CONFIG_PPC_FPU)
+<<<<<<< HEAD
 static __init void identical_pvr_fixup(unsigned long node)
+=======
+static inline void identical_pvr_fixup(unsigned long node)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	unsigned int pvr;
 	const char *model = of_get_flat_dt_prop(node, "model", NULL);

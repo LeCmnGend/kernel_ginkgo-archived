@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2011-2019, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2011-2019, 2021, The Linux Foundation. All rights reserved.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -327,6 +331,10 @@ struct msm_slim_ctrl {
 	u32			current_rx_buf[10];
 	int			current_count;
 	atomic_t		ssr_in_progress;
+<<<<<<< HEAD
+=======
+	struct completion	qmi_up;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 struct msm_sat_chan {

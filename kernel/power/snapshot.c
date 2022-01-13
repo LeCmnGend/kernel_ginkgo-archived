@@ -103,7 +103,11 @@ unsigned long image_size;
 
 void __init hibernate_image_size_init(void)
 {
+<<<<<<< HEAD
 	image_size = ((totalram_pages() * 2) / 5) * PAGE_SIZE;
+=======
+	image_size = ((totalram_pages * 2) / 5) * PAGE_SIZE;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /*

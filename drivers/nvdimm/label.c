@@ -852,6 +852,7 @@ static int __blk_label_update(struct nd_region *nd_region,
 		}
 	}
 
+<<<<<<< HEAD
 	/* release slots associated with any invalidated UUIDs */
 	mutex_lock(&nd_mapping->lock);
 	list_for_each_entry_safe(label_ent, e, &nd_mapping->labels, list)
@@ -861,6 +862,8 @@ static int __blk_label_update(struct nd_region *nd_region,
 		}
 	mutex_unlock(&nd_mapping->lock);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/*
 	 * Find the resource associated with the first label in the set
 	 * per the v1.2 namespace specification.

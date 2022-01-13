@@ -28,6 +28,25 @@
 #include <linux/vmpressure.h>
 
 /*
+<<<<<<< HEAD
+=======
+ * The window size (vmpressure_win) is the number of scanned pages before
+ * we try to analyze scanned/reclaimed ratio. So the window is used as a
+ * rate-limit tunable for the "low" level notification, and also for
+ * averaging the ratio for medium/critical levels. Using small window
+ * sizes can cause lot of false positives, but too big window size will
+ * delay the notifications.
+ *
+ * As the vmscan reclaimer logic works with chunks which are multiple of
+ * SWAP_CLUSTER_MAX, it makes sense to use it for the window size as well.
+ *
+ * TODO: Make the window size depend on machine size, as we do for vmstat
+ * thresholds. Currently we set it to 512 pages (2MB for 4KB pages).
+ */
+static unsigned long vmpressure_win = SWAP_CLUSTER_MAX * 16;
+
+/*
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  * These thresholds are used when we account memory pressure through
  * scanned/reclaimed ratio. The current values were chosen empirically. In
  * essence, they are percents: the higher the value, the more number
@@ -221,12 +240,19 @@ static void vmpressure_work_fn(struct work_struct *work)
 	unsigned long scanned;
 	unsigned long reclaimed;
 	unsigned long pressure;
+<<<<<<< HEAD
 	unsigned long flags;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	enum vmpressure_levels level;
 	bool ancestor = false;
 	bool signalled = false;
 
+<<<<<<< HEAD
 	spin_lock_irqsave(&vmpr->sr_lock, flags);
+=======
+	spin_lock(&vmpr->sr_lock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/*
 	 * Several contexts might be calling vmpressure(), so it is
 	 * possible that the work was rescheduled again before the old
@@ -237,14 +263,22 @@ static void vmpressure_work_fn(struct work_struct *work)
 	 */
 	scanned = vmpr->tree_scanned;
 	if (!scanned) {
+<<<<<<< HEAD
 		spin_unlock_irqrestore(&vmpr->sr_lock, flags);
+=======
+		spin_unlock(&vmpr->sr_lock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return;
 	}
 
 	reclaimed = vmpr->tree_reclaimed;
 	vmpr->tree_scanned = 0;
 	vmpr->tree_reclaimed = 0;
+<<<<<<< HEAD
 	spin_unlock_irqrestore(&vmpr->sr_lock, flags);
+=======
+	spin_unlock(&vmpr->sr_lock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	pressure = vmpressure_calc_pressure(scanned, reclaimed);
 	level = vmpressure_level(pressure);
@@ -256,6 +290,7 @@ static void vmpressure_work_fn(struct work_struct *work)
 	} while ((vmpr = vmpressure_parent(vmpr)));
 }
 
+<<<<<<< HEAD
 static unsigned long calculate_vmpressure_win(void)
 {
 	long x;
@@ -285,6 +320,27 @@ static void vmpressure_memcg(gfp_t gfp, struct mem_cgroup *memcg, bool critical,
 {
 	struct vmpressure *vmpr = memcg_to_vmpressure(memcg);
 	unsigned long flags;
+=======
+#ifdef CONFIG_MEMCG
+static void vmpressure_memcg(gfp_t gfp, struct mem_cgroup *memcg, bool tree,
+		unsigned long scanned, unsigned long reclaimed)
+{
+	struct vmpressure *vmpr = memcg_to_vmpressure(memcg);
+
+	/*
+	 * Here we only want to account pressure that userland is able to
+	 * help us with. For example, suppose that DMA zone is under
+	 * pressure; if we notify userland about that kind of pressure,
+	 * then it will be mostly a waste as it will trigger unnecessary
+	 * freeing of memory by userland (since userland is more likely to
+	 * have HIGHMEM/MOVABLE pages instead of the DMA fallback). That
+	 * is why we include only movable, highmem and FS/IO pages.
+	 * Indirect reclaim (kswapd) sets sc->gfp_mask to GFP_KERNEL, so
+	 * we account it too.
+	 */
+	if (!(gfp & (__GFP_HIGHMEM | __GFP_MOVABLE | __GFP_IO | __GFP_FS)))
+		return;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/*
 	 * If we got here with no pages scanned, then that is an indicator
@@ -294,6 +350,7 @@ static void vmpressure_memcg(gfp_t gfp, struct mem_cgroup *memcg, bool critical,
 	 * (scanning depth) goes too high (deep), we will be notified
 	 * through vmpressure_prio(). But so far, keep calm.
 	 */
+<<<<<<< HEAD
 	if (critical)
 		scanned = calculate_vmpressure_win();
 	else if (!scanned)
@@ -306,6 +363,18 @@ static void vmpressure_memcg(gfp_t gfp, struct mem_cgroup *memcg, bool critical,
 		spin_unlock_irqrestore(&vmpr->sr_lock, flags);
 
 		if (!critical && scanned < calculate_vmpressure_win())
+=======
+	if (!scanned)
+		return;
+
+	if (tree) {
+		spin_lock(&vmpr->sr_lock);
+		scanned = vmpr->tree_scanned += scanned;
+		vmpr->tree_reclaimed += reclaimed;
+		spin_unlock(&vmpr->sr_lock);
+
+		if (scanned < vmpressure_win)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			return;
 		schedule_work(&vmpr->work);
 	} else {
@@ -316,6 +385,7 @@ static void vmpressure_memcg(gfp_t gfp, struct mem_cgroup *memcg, bool critical,
 		if (!memcg || memcg == root_mem_cgroup)
 			return;
 
+<<<<<<< HEAD
 		spin_lock_irqsave(&vmpr->sr_lock, flags);
 		scanned = vmpr->scanned += scanned;
 		reclaimed = vmpr->reclaimed += reclaimed;
@@ -325,6 +395,17 @@ static void vmpressure_memcg(gfp_t gfp, struct mem_cgroup *memcg, bool critical,
 		}
 		vmpr->scanned = vmpr->reclaimed = 0;
 		spin_unlock_irqrestore(&vmpr->sr_lock, flags);
+=======
+		spin_lock(&vmpr->sr_lock);
+		scanned = vmpr->scanned += scanned;
+		reclaimed = vmpr->reclaimed += reclaimed;
+		if (scanned < vmpressure_win) {
+			spin_unlock(&vmpr->sr_lock);
+			return;
+		}
+		vmpr->scanned = vmpr->reclaimed = 0;
+		spin_unlock(&vmpr->sr_lock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		pressure = vmpressure_calc_pressure(scanned, reclaimed);
 		level = vmpressure_level(pressure);
@@ -343,6 +424,7 @@ static void vmpressure_memcg(gfp_t gfp, struct mem_cgroup *memcg, bool critical,
 	}
 }
 #else
+<<<<<<< HEAD
 static void vmpressure_memcg(gfp_t gfp, struct mem_cgroup *memcg, bool critical,
 			     bool tree, unsigned long scanned,
 			     unsigned long reclaimed) { }
@@ -381,10 +463,44 @@ void vmpressure_dec_users(void)
 
 static void vmpressure_global(gfp_t gfp, unsigned long scanned, bool critical,
 			      unsigned long reclaimed)
+=======
+static void vmpressure_memcg(gfp_t gfp, struct mem_cgroup *memcg, bool tree,
+		unsigned long scanned, unsigned long reclaimed)
+{
+}
+#endif
+
+static void calculate_vmpressure_win(void)
+{
+	long x;
+
+	x = global_node_page_state(NR_FILE_PAGES) -
+			global_node_page_state(NR_SHMEM) -
+			total_swapcache_pages() +
+			global_zone_page_state(NR_FREE_PAGES);
+	if (x < 1)
+		x = 1;
+	/*
+	 * For low (free + cached), vmpressure window should be
+	 * small, and high for higher values of (free + cached).
+	 * But it should not be linear as well. This ensures
+	 * timely vmpressure notifications when system is under
+	 * memory pressure, and optimal number of events when
+	 * cached is high. The sqaure root function is empirically
+	 * found to serve the purpose.
+	 */
+	x = int_sqrt(x);
+	vmpressure_win = x;
+}
+
+static void vmpressure_global(gfp_t gfp, unsigned long scanned,
+		unsigned long reclaimed)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	struct vmpressure *vmpr = &global_vmpressure;
 	unsigned long pressure;
 	unsigned long stall;
+<<<<<<< HEAD
 	unsigned long flags;
 
 	if (critical)
@@ -432,6 +548,44 @@ static void __vmpressure(gfp_t gfp, struct mem_cgroup *memcg, bool critical,
 		vmpressure_memcg(gfp, memcg, critical, tree, scanned, reclaimed);
 }
 
+=======
+
+	if (!(gfp & (__GFP_HIGHMEM | __GFP_MOVABLE | __GFP_IO | __GFP_FS)))
+		return;
+
+	if (!scanned)
+		return;
+
+	spin_lock(&vmpr->sr_lock);
+	if (!vmpr->scanned)
+		calculate_vmpressure_win();
+
+	vmpr->scanned += scanned;
+	vmpr->reclaimed += reclaimed;
+
+	if (!current_is_kswapd())
+		vmpr->stall += scanned;
+
+	stall = vmpr->stall;
+	scanned = vmpr->scanned;
+	reclaimed = vmpr->reclaimed;
+	spin_unlock(&vmpr->sr_lock);
+
+	if (scanned < vmpressure_win)
+		return;
+
+	spin_lock(&vmpr->sr_lock);
+	vmpr->scanned = 0;
+	vmpr->reclaimed = 0;
+	vmpr->stall = 0;
+	spin_unlock(&vmpr->sr_lock);
+
+	pressure = vmpressure_calc_pressure(scanned, reclaimed);
+	pressure = vmpressure_account_stall(pressure, stall, scanned);
+	vmpressure_notify(pressure);
+}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /**
  * vmpressure() - Account memory pressure through scanned/reclaimed ratio
  * @gfp:	reclaimer's gfp mask
@@ -454,6 +608,7 @@ static void __vmpressure(gfp_t gfp, struct mem_cgroup *memcg, bool critical,
  * This function does not return any value.
  */
 void vmpressure(gfp_t gfp, struct mem_cgroup *memcg, bool tree,
+<<<<<<< HEAD
 		unsigned long scanned, unsigned long reclaimed, int order)
 {
 	struct vmpressure *vmpr = &global_vmpressure;
@@ -476,6 +631,15 @@ void vmpressure(gfp_t gfp, struct mem_cgroup *memcg, bool tree,
 	read_unlock_irqrestore(&vmpr->users_lock, flags);
 
 	__vmpressure(gfp, memcg, false, tree, scanned, reclaimed);
+=======
+		unsigned long scanned, unsigned long reclaimed)
+{
+	if (!memcg && tree)
+		vmpressure_global(gfp, scanned, reclaimed);
+
+	if (IS_ENABLED(CONFIG_MEMCG))
+		vmpressure_memcg(gfp, memcg, tree, scanned, reclaimed);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /**
@@ -489,11 +653,16 @@ void vmpressure(gfp_t gfp, struct mem_cgroup *memcg, bool tree,
  *
  * This function does not return any value.
  */
+<<<<<<< HEAD
 void vmpressure_prio(gfp_t gfp, struct mem_cgroup *memcg, int prio, int order)
 {
 	if (order > PAGE_ALLOC_COSTLY_ORDER)
 		return;
 
+=======
+void vmpressure_prio(gfp_t gfp, struct mem_cgroup *memcg, int prio)
+{
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/*
 	 * We only use prio for accounting critical level. For more info
 	 * see comment for vmpressure_level_critical_prio variable above.
@@ -508,7 +677,11 @@ void vmpressure_prio(gfp_t gfp, struct mem_cgroup *memcg, int prio, int order)
 	 * to the vmpressure() basically means that we signal 'critical'
 	 * level.
 	 */
+<<<<<<< HEAD
 	__vmpressure(gfp, memcg, true, true, 0, 0);
+=======
+	vmpressure(gfp, memcg, true, vmpressure_win, 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static enum vmpressure_levels str_to_level(const char *arg)
@@ -643,8 +816,11 @@ void vmpressure_init(struct vmpressure *vmpr)
 	mutex_init(&vmpr->events_lock);
 	INIT_LIST_HEAD(&vmpr->events);
 	INIT_WORK(&vmpr->work, vmpressure_work_fn);
+<<<<<<< HEAD
 	atomic_long_set(&vmpr->users, 0);
 	rwlock_init(&vmpr->users_lock);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /**

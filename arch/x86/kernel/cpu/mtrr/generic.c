@@ -166,6 +166,12 @@ static u8 mtrr_type_lookup_variable(u64 start, u64 end, u64 *partial_end,
 	*repeat = 0;
 	*uniform = 1;
 
+<<<<<<< HEAD
+=======
+	/* Make end inclusive instead of exclusive */
+	end--;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	prev_match = MTRR_TYPE_INVALID;
 	for (i = 0; i < num_var_ranges; ++i) {
 		unsigned short start_state, end_state, inclusive;
@@ -257,9 +263,12 @@ u8 mtrr_type_lookup(u64 start, u64 end, u8 *uniform)
 	int repeat;
 	u64 partial_end;
 
+<<<<<<< HEAD
 	/* Make end inclusive instead of exclusive */
 	end--;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!mtrr_state_set)
 		return MTRR_TYPE_INVALID;
 

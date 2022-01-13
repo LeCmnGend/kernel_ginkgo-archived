@@ -404,7 +404,11 @@ static struct pmu xtensa_pmu = {
 	.read = xtensa_pmu_read,
 };
 
+<<<<<<< HEAD
 static int xtensa_pmu_setup(unsigned int cpu)
+=======
+static int xtensa_pmu_setup(int cpu)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	unsigned i;
 

@@ -129,7 +129,10 @@ static struct platform_driver a10sr_reset_driver = {
 	.probe	= a10sr_reset_probe,
 	.driver = {
 		.name		= "altr_a10sr_reset",
+<<<<<<< HEAD
 		.of_match_table	= a10sr_reset_of_match,
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	},
 };
 module_platform_driver(a10sr_reset_driver);

@@ -13,6 +13,10 @@ generic-y += mm-arch-hooks.h
 generic-y += parport.h
 generic-y += percpu.h
 generic-y += preempt.h
+<<<<<<< HEAD
+=======
+generic-y += rwsem.h
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 generic-y += serial.h
 generic-y += sizes.h
 generic-y += trace_clock.h

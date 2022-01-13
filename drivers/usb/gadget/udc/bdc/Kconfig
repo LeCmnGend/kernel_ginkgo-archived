@@ -15,7 +15,11 @@ if USB_BDC_UDC
 comment "Platform Support"
 config	USB_BDC_PCI
 	tristate "BDC support for PCIe based platforms"
+<<<<<<< HEAD
 	depends on USB_PCI && BROKEN
+=======
+	depends on USB_PCI
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	default USB_BDC_UDC
 	help
 		Enable support for platforms which have BDC connected through PCIe, such as Lego3 FPGA platform.

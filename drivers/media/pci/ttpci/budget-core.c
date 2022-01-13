@@ -383,25 +383,40 @@ static int budget_register(struct budget *budget)
 	ret = dvbdemux->dmx.add_frontend(&dvbdemux->dmx, &budget->hw_frontend);
 
 	if (ret < 0)
+<<<<<<< HEAD
 		goto err_release_dmx;
+=======
+		return ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	budget->mem_frontend.source = DMX_MEMORY_FE;
 	ret = dvbdemux->dmx.add_frontend(&dvbdemux->dmx, &budget->mem_frontend);
 	if (ret < 0)
+<<<<<<< HEAD
 		goto err_release_dmx;
 
 	ret = dvbdemux->dmx.connect_frontend(&dvbdemux->dmx, &budget->hw_frontend);
 	if (ret < 0)
 		goto err_release_dmx;
+=======
+		return ret;
+
+	ret = dvbdemux->dmx.connect_frontend(&dvbdemux->dmx, &budget->hw_frontend);
+	if (ret < 0)
+		return ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	dvb_net_init(&budget->dvb_adapter, &budget->dvb_net, &dvbdemux->dmx);
 
 	return 0;
+<<<<<<< HEAD
 
 err_release_dmx:
 	dvb_dmxdev_release(&budget->dmxdev);
 	dvb_dmx_release(&budget->demux);
 	return ret;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void budget_unregister(struct budget *budget)

@@ -599,7 +599,11 @@ int btrfs_del_csums(struct btrfs_trans_handle *trans,
 	u64 end_byte = bytenr + len;
 	u64 csum_end;
 	struct extent_buffer *leaf;
+<<<<<<< HEAD
 	int ret = 0;
+=======
+	int ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	u16 csum_size = btrfs_super_csum_size(fs_info->super_copy);
 	int blocksize_bits = fs_info->sb->s_blocksize_bits;
 
@@ -615,7 +619,10 @@ int btrfs_del_csums(struct btrfs_trans_handle *trans,
 		path->leave_spinning = 1;
 		ret = btrfs_search_slot(trans, root, &key, path, -1, 1);
 		if (ret > 0) {
+<<<<<<< HEAD
 			ret = 0;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			if (path->slots[0] == 0)
 				break;
 			path->slots[0]--;
@@ -672,7 +679,11 @@ int btrfs_del_csums(struct btrfs_trans_handle *trans,
 			ret = btrfs_del_items(trans, root, path,
 					      path->slots[0], del_nr);
 			if (ret)
+<<<<<<< HEAD
 				break;
+=======
+				goto out;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			if (key.offset == bytenr)
 				break;
 		} else if (key.offset < bytenr && csum_end > end_byte) {
@@ -716,9 +727,14 @@ int btrfs_del_csums(struct btrfs_trans_handle *trans,
 			ret = btrfs_split_item(trans, root, path, &key, offset);
 			if (ret && ret != -EAGAIN) {
 				btrfs_abort_transaction(trans, ret);
+<<<<<<< HEAD
 				break;
 			}
 			ret = 0;
+=======
+				goto out;
+			}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 			key.offset = end_byte - 1;
 		} else {
@@ -728,6 +744,11 @@ int btrfs_del_csums(struct btrfs_trans_handle *trans,
 		}
 		btrfs_release_path(path);
 	}
+<<<<<<< HEAD
+=======
+	ret = 0;
+out:
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	btrfs_free_path(path);
 	return ret;
 }

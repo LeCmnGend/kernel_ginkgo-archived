@@ -101,7 +101,10 @@ enum ieee80211_sta_info_flags {
 	WLAN_STA_MPSP_OWNER,
 	WLAN_STA_MPSP_RECIPIENT,
 	WLAN_STA_PS_DELIVER,
+<<<<<<< HEAD
 	WLAN_STA_USES_ENCRYPTION,
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	NUM_WLAN_STA_FLAGS,
 };
@@ -399,6 +402,7 @@ struct ieee80211_sta_rx_stats {
 	u64 msdu[IEEE80211_NUM_TIDS + 1];
 };
 
+<<<<<<< HEAD
 /*
  * IEEE 802.11-2016 (10.6 "Defragmentation") recommends support for "concurrent
  * reception of at least one MSDU per access category per associated STA"
@@ -427,6 +431,8 @@ struct ieee80211_fragment_cache {
 	unsigned int next;
 };
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /**
  * The bandwidth threshold below which the per-station CoDel parameters will be
  * scaled to be more lenient (to prevent starvation of slow stations). This
@@ -499,7 +505,10 @@ struct ieee80211_fragment_cache {
  * @pcpu_rx_stats: per-CPU RX statistics, assigned only if the driver needs
  *	this (by advertising the USES_RSS hw flag)
  * @status_stats: TX status statistics
+<<<<<<< HEAD
  * @frags: fragment cache
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  */
 struct sta_info {
 	/* General information, mostly static */
@@ -599,8 +608,11 @@ struct sta_info {
 
 	struct cfg80211_chan_def tdls_chandef;
 
+<<<<<<< HEAD
 	struct ieee80211_fragment_cache frags;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* keep last! */
 	struct ieee80211_sta sta;
 };

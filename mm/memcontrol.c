@@ -542,10 +542,46 @@ mem_cgroup_largest_soft_limit_node(struct mem_cgroup_tree_per_node *mctz)
 	return mz;
 }
 
+<<<<<<< HEAD
 static unsigned long memcg_sum_events(struct mem_cgroup *memcg,
 				      int event)
 {
 	return atomic_long_read(&memcg->events[event]);
+=======
+/*
+ * Return page count for single (non recursive) @memcg.
+ *
+ * Implementation Note: reading percpu statistics for memcg.
+ *
+ * Both of vmstat[] and percpu_counter has threshold and do periodic
+ * synchronization to implement "quick" read. There are trade-off between
+ * reading cost and precision of value. Then, we may have a chance to implement
+ * a periodic synchronization of counter in memcg's counter.
+ *
+ * But this _read() function is used for user interface now. The user accounts
+ * memory usage by memory cgroup and he _always_ requires exact value because
+ * he accounts memory. Even if we provide quick-and-fuzzy read, we always
+ * have to visit all online cpus and make sum. So, for now, unnecessary
+ * synchronization is not implemented. (just implemented for cpu hotplug)
+ *
+ * If there are kernel internal actions which can make use of some not-exact
+ * value, and reading all cpu value can be performance bottleneck in some
+ * common workload, threshold and synchronization as vmstat[] should be
+ * implemented.
+ *
+ * The parameter idx can be of type enum memcg_event_item or vm_event_item.
+ */
+
+static unsigned long memcg_sum_events(struct mem_cgroup *memcg,
+				      int event)
+{
+	unsigned long val = 0;
+	int cpu;
+
+	for_each_possible_cpu(cpu)
+		val += per_cpu(memcg->stat->events[event], cpu);
+	return val;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void mem_cgroup_charge_statistics(struct mem_cgroup *memcg,
@@ -557,20 +593,33 @@ static void mem_cgroup_charge_statistics(struct mem_cgroup *memcg,
 	 * counted as CACHE even if it's on ANON LRU.
 	 */
 	if (PageAnon(page))
+<<<<<<< HEAD
 		__mod_memcg_state(memcg, MEMCG_RSS, nr_pages);
 	else {
 		__mod_memcg_state(memcg, MEMCG_CACHE, nr_pages);
 		if (PageSwapBacked(page))
 			__mod_memcg_state(memcg, NR_SHMEM, nr_pages);
+=======
+		__this_cpu_add(memcg->stat->count[MEMCG_RSS], nr_pages);
+	else {
+		__this_cpu_add(memcg->stat->count[MEMCG_CACHE], nr_pages);
+		if (PageSwapBacked(page))
+			__this_cpu_add(memcg->stat->count[NR_SHMEM], nr_pages);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	if (compound) {
 		VM_BUG_ON_PAGE(!PageTransHuge(page), page);
+<<<<<<< HEAD
 		__mod_memcg_state(memcg, MEMCG_RSS_HUGE, nr_pages);
+=======
+		__this_cpu_add(memcg->stat->count[MEMCG_RSS_HUGE], nr_pages);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	/* pagein of a big page is an event. So, ignore page size */
 	if (nr_pages > 0)
+<<<<<<< HEAD
 		__count_memcg_events(memcg, PGPGIN, 1);
 	else {
 		__count_memcg_events(memcg, PGPGOUT, 1);
@@ -578,6 +627,15 @@ static void mem_cgroup_charge_statistics(struct mem_cgroup *memcg,
 	}
 
 	__this_cpu_add(memcg->stat_cpu->nr_page_events, nr_pages);
+=======
+		__this_cpu_inc(memcg->stat->events[PGPGIN]);
+	else {
+		__this_cpu_inc(memcg->stat->events[PGPGOUT]);
+		nr_pages = -nr_pages; /* for event */
+	}
+
+	__this_cpu_add(memcg->stat->nr_page_events, nr_pages);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 unsigned long mem_cgroup_node_nr_lru_pages(struct mem_cgroup *memcg,
@@ -613,8 +671,13 @@ static bool mem_cgroup_event_ratelimit(struct mem_cgroup *memcg,
 {
 	unsigned long val, next;
 
+<<<<<<< HEAD
 	val = __this_cpu_read(memcg->stat_cpu->nr_page_events);
 	next = __this_cpu_read(memcg->stat_cpu->targets[target]);
+=======
+	val = __this_cpu_read(memcg->stat->nr_page_events);
+	next = __this_cpu_read(memcg->stat->targets[target]);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* from time_after() in jiffies.h */
 	if ((long)(next - val) < 0) {
 		switch (target) {
@@ -630,7 +693,11 @@ static bool mem_cgroup_event_ratelimit(struct mem_cgroup *memcg,
 		default:
 			break;
 		}
+<<<<<<< HEAD
 		__this_cpu_write(memcg->stat_cpu->targets[target], next);
+=======
+		__this_cpu_write(memcg->stat->targets[target], next);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return true;
 	}
 	return false;
@@ -1722,6 +1789,14 @@ void unlock_page_memcg(struct page *page)
 }
 EXPORT_SYMBOL(unlock_page_memcg);
 
+<<<<<<< HEAD
+=======
+/*
+ * size of first charge trial. "32" comes from vmscan.c's magic value.
+ * TODO: maybe necessary to use big numbers in big irons.
+ */
+#define CHARGE_BATCH	32U
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 struct memcg_stock_pcp {
 	struct mem_cgroup *cached; /* this never be root cgroup */
 	unsigned int nr_pages;
@@ -1749,7 +1824,11 @@ static bool consume_stock(struct mem_cgroup *memcg, unsigned int nr_pages)
 	unsigned long flags;
 	bool ret = false;
 
+<<<<<<< HEAD
 	if (nr_pages > MEMCG_CHARGE_BATCH)
+=======
+	if (nr_pages > CHARGE_BATCH)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return ret;
 
 	local_irq_save(flags);
@@ -1818,7 +1897,11 @@ static void refill_stock(struct mem_cgroup *memcg, unsigned int nr_pages)
 	}
 	stock->nr_pages += nr_pages;
 
+<<<<<<< HEAD
 	if (stock->nr_pages > MEMCG_CHARGE_BATCH)
+=======
+	if (stock->nr_pages > CHARGE_BATCH)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		drain_stock(stock);
 
 	local_irq_restore(flags);
@@ -1868,6 +1951,7 @@ static void drain_all_stock(struct mem_cgroup *root_memcg)
 static int memcg_hotplug_cpu_dead(unsigned int cpu)
 {
 	struct memcg_stock_pcp *stock;
+<<<<<<< HEAD
 	struct mem_cgroup *memcg;
 
 	stock = &per_cpu(memcg_stock, cpu);
@@ -1906,6 +1990,11 @@ static int memcg_hotplug_cpu_dead(unsigned int cpu)
 		}
 	}
 
+=======
+
+	stock = &per_cpu(memcg_stock, cpu);
+	drain_stock(stock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 }
 
@@ -1916,7 +2005,11 @@ static void reclaim_high(struct mem_cgroup *memcg,
 	do {
 		if (page_counter_read(&memcg->memory) <= memcg->high)
 			continue;
+<<<<<<< HEAD
 		memcg_memory_event(memcg, MEMCG_HIGH);
+=======
+		mem_cgroup_event(memcg, MEMCG_HIGH);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		try_to_free_mem_cgroup_pages(memcg, nr_pages, gfp_mask, true);
 	} while ((memcg = parent_mem_cgroup(memcg)));
 }
@@ -1926,7 +2019,11 @@ static void high_work_func(struct work_struct *work)
 	struct mem_cgroup *memcg;
 
 	memcg = container_of(work, struct mem_cgroup, high_work);
+<<<<<<< HEAD
 	reclaim_high(memcg, MEMCG_CHARGE_BATCH, GFP_KERNEL);
+=======
+	reclaim_high(memcg, CHARGE_BATCH, GFP_KERNEL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /*
@@ -1950,7 +2047,11 @@ void mem_cgroup_handle_over_high(void)
 static int try_charge(struct mem_cgroup *memcg, gfp_t gfp_mask,
 		      unsigned int nr_pages)
 {
+<<<<<<< HEAD
 	unsigned int batch = max(MEMCG_CHARGE_BATCH, nr_pages);
+=======
+	unsigned int batch = max(CHARGE_BATCH, nr_pages);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int nr_retries = MEM_CGROUP_RECLAIM_RETRIES;
 	struct mem_cgroup *mem_over_limit;
 	struct page_counter *counter;
@@ -2009,7 +2110,11 @@ retry:
 	if (!gfpflags_allow_blocking(gfp_mask))
 		goto nomem;
 
+<<<<<<< HEAD
 	memcg_memory_event(mem_over_limit, MEMCG_MAX);
+=======
+	mem_cgroup_event(mem_over_limit, MEMCG_MAX);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	nr_reclaimed = try_to_free_mem_cgroup_pages(mem_over_limit, nr_pages,
 						    gfp_mask, may_swap);
@@ -2055,7 +2160,11 @@ retry:
 	if (fatal_signal_pending(current))
 		goto force;
 
+<<<<<<< HEAD
 	memcg_memory_event(mem_over_limit, MEMCG_OOM);
+=======
+	mem_cgroup_event(mem_over_limit, MEMCG_OOM);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/*
 	 * keep retrying as long as the memcg oom killer is able to make
@@ -2490,11 +2599,25 @@ void mem_cgroup_split_huge_fixup(struct page *head)
 	for (i = 1; i < HPAGE_PMD_NR; i++)
 		head[i].mem_cgroup = head->mem_cgroup;
 
+<<<<<<< HEAD
 	__mod_memcg_state(head->mem_cgroup, MEMCG_RSS_HUGE, -HPAGE_PMD_NR);
+=======
+	__this_cpu_sub(head->mem_cgroup->stat->count[MEMCG_RSS_HUGE],
+		       HPAGE_PMD_NR);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 #endif /* CONFIG_TRANSPARENT_HUGEPAGE */
 
 #ifdef CONFIG_MEMCG_SWAP
+<<<<<<< HEAD
+=======
+static void mem_cgroup_swap_statistics(struct mem_cgroup *memcg,
+				       int nr_entries)
+{
+	this_cpu_add(memcg->stat->count[MEMCG_SWAP], nr_entries);
+}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /**
  * mem_cgroup_move_swap_account - move swap charge and swap_cgroup's record.
  * @entry: swap entry to be moved
@@ -2518,8 +2641,13 @@ static int mem_cgroup_move_swap_account(swp_entry_t entry,
 	new_id = mem_cgroup_id(to);
 
 	if (swap_cgroup_cmpxchg(entry, old_id, new_id) == old_id) {
+<<<<<<< HEAD
 		mod_memcg_state(from, MEMCG_SWAP, -1);
 		mod_memcg_state(to, MEMCG_SWAP, 1);
+=======
+		mem_cgroup_swap_statistics(from, -1);
+		mem_cgroup_swap_statistics(to, 1);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return 0;
 	}
 	return -EINVAL;
@@ -2835,10 +2963,17 @@ static void tree_events(struct mem_cgroup *memcg, unsigned long *events)
 	struct mem_cgroup *iter;
 	int i;
 
+<<<<<<< HEAD
 	memset(events, 0, sizeof(*events) * NR_VM_EVENT_ITEMS);
 
 	for_each_mem_cgroup_tree(iter, memcg) {
 		for (i = 0; i < NR_VM_EVENT_ITEMS; i++)
+=======
+	memset(events, 0, sizeof(*events) * MEMCG_NR_EVENTS);
+
+	for_each_mem_cgroup_tree(iter, memcg) {
+		for (i = 0; i < MEMCG_NR_EVENTS; i++)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			events[i] += memcg_sum_events(iter, i);
 	}
 }
@@ -3693,8 +3828,12 @@ static int mem_cgroup_oom_control_read(struct seq_file *sf, void *v)
 
 	seq_printf(sf, "oom_kill_disable %d\n", memcg->oom_kill_disable);
 	seq_printf(sf, "under_oom %d\n", (bool)memcg->under_oom);
+<<<<<<< HEAD
 	seq_printf(sf, "oom_kill %lu\n",
 		   atomic_long_read(&memcg->memory_events[MEMCG_OOM_KILL]));
+=======
+	seq_printf(sf, "oom_kill %lu\n", memcg_sum_events(memcg, OOM_KILL));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 }
 
@@ -3746,6 +3885,7 @@ struct wb_domain *mem_cgroup_wb_domain(struct bdi_writeback *wb)
 	return &memcg->cgwb_domain;
 }
 
+<<<<<<< HEAD
 /*
  * idx can be of type enum memcg_stat_item or node_stat_item.
  * Keep in sync with memcg_exact_page().
@@ -3762,6 +3902,8 @@ static unsigned long memcg_exact_page_state(struct mem_cgroup *memcg, int idx)
 	return x;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /**
  * mem_cgroup_wb_stats - retrieve writeback related stats from its memcg
  * @wb: bdi_writeback in question
@@ -3787,10 +3929,17 @@ void mem_cgroup_wb_stats(struct bdi_writeback *wb, unsigned long *pfilepages,
 	struct mem_cgroup *memcg = mem_cgroup_from_css(wb->memcg_css);
 	struct mem_cgroup *parent;
 
+<<<<<<< HEAD
 	*pdirty = memcg_exact_page_state(memcg, NR_FILE_DIRTY);
 
 	/* this should eventually include NR_UNSTABLE_NFS */
 	*pwriteback = memcg_exact_page_state(memcg, NR_WRITEBACK);
+=======
+	*pdirty = memcg_page_state(memcg, NR_FILE_DIRTY);
+
+	/* this should eventually include NR_UNSTABLE_NFS */
+	*pwriteback = memcg_page_state(memcg, NR_WRITEBACK);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	*pfilepages = mem_cgroup_nr_lru_pages(memcg, (1 << LRU_INACTIVE_FILE) |
 						     (1 << LRU_ACTIVE_FILE));
 	*pheadroom = PAGE_COUNTER_MAX;
@@ -4266,8 +4415,13 @@ static int alloc_mem_cgroup_per_node_info(struct mem_cgroup *memcg, int node)
 	if (!pn)
 		return 1;
 
+<<<<<<< HEAD
 	pn->lruvec_stat_cpu = alloc_percpu(struct lruvec_stat);
 	if (!pn->lruvec_stat_cpu) {
+=======
+	pn->lruvec_stat = alloc_percpu(struct lruvec_stat);
+	if (!pn->lruvec_stat) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		kfree(pn);
 		return 1;
 	}
@@ -4288,7 +4442,11 @@ static void free_mem_cgroup_per_node_info(struct mem_cgroup *memcg, int node)
 	if (!pn)
 		return;
 
+<<<<<<< HEAD
 	free_percpu(pn->lruvec_stat_cpu);
+=======
+	free_percpu(pn->lruvec_stat);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	kfree(pn);
 }
 
@@ -4298,7 +4456,11 @@ static void __mem_cgroup_free(struct mem_cgroup *memcg)
 
 	for_each_node(node)
 		free_mem_cgroup_per_node_info(memcg, node);
+<<<<<<< HEAD
 	free_percpu(memcg->stat_cpu);
+=======
+	free_percpu(memcg->stat);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	kfree(memcg);
 }
 
@@ -4327,8 +4489,13 @@ static struct mem_cgroup *mem_cgroup_alloc(void)
 	if (memcg->id.id < 0)
 		goto fail;
 
+<<<<<<< HEAD
 	memcg->stat_cpu = alloc_percpu(struct mem_cgroup_stat_cpu);
 	if (!memcg->stat_cpu)
+=======
+	memcg->stat = alloc_percpu(struct mem_cgroup_stat_cpu);
+	if (!memcg->stat)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto fail;
 
 	for_each_node(node)
@@ -4570,7 +4737,11 @@ static struct page *mc_handle_swap_pte(struct vm_area_struct *vma,
 	struct page *page = NULL;
 	swp_entry_t ent = pte_to_swp_entry(ptent);
 
+<<<<<<< HEAD
 	if (!(mc.flags & MOVE_ANON))
+=======
+	if (!(mc.flags & MOVE_ANON) || non_swap_entry(ent))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return NULL;
 
 	/*
@@ -4589,9 +4760,12 @@ static struct page *mc_handle_swap_pte(struct vm_area_struct *vma,
 		return page;
 	}
 
+<<<<<<< HEAD
 	if (non_swap_entry(ent))
 		return NULL;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/*
 	 * Because lookup_swap_cache() updates some statistics counter,
 	 * we call find_get_page() with swapper_space directly.
@@ -4688,8 +4862,13 @@ static int mem_cgroup_move_account(struct page *page,
 	spin_lock_irqsave(&from->move_lock, flags);
 
 	if (!anon && page_mapped(page)) {
+<<<<<<< HEAD
 		__mod_memcg_state(from, NR_FILE_MAPPED, -nr_pages);
 		__mod_memcg_state(to, NR_FILE_MAPPED, nr_pages);
+=======
+		__this_cpu_sub(from->stat->count[NR_FILE_MAPPED], nr_pages);
+		__this_cpu_add(to->stat->count[NR_FILE_MAPPED], nr_pages);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	/*
@@ -4701,14 +4880,26 @@ static int mem_cgroup_move_account(struct page *page,
 		struct address_space *mapping = page_mapping(page);
 
 		if (mapping_cap_account_dirty(mapping)) {
+<<<<<<< HEAD
 			__mod_memcg_state(from, NR_FILE_DIRTY, -nr_pages);
 			__mod_memcg_state(to, NR_FILE_DIRTY, nr_pages);
+=======
+			__this_cpu_sub(from->stat->count[NR_FILE_DIRTY],
+				       nr_pages);
+			__this_cpu_add(to->stat->count[NR_FILE_DIRTY],
+				       nr_pages);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 	}
 
 	if (PageWriteback(page)) {
+<<<<<<< HEAD
 		__mod_memcg_state(from, NR_WRITEBACK, -nr_pages);
 		__mod_memcg_state(to, NR_WRITEBACK, nr_pages);
+=======
+		__this_cpu_sub(from->stat->count[NR_WRITEBACK], nr_pages);
+		__this_cpu_add(to->stat->count[NR_WRITEBACK], nr_pages);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	/*
@@ -5361,7 +5552,11 @@ static ssize_t memory_max_write(struct kernfs_open_file *of,
 			continue;
 		}
 
+<<<<<<< HEAD
 		memcg_memory_event(memcg, MEMCG_OOM);
+=======
+		mem_cgroup_event(memcg, MEMCG_OOM);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (!mem_cgroup_out_of_memory(memcg, GFP_KERNEL, 0))
 			break;
 	}
@@ -5374,6 +5569,7 @@ static int memory_events_show(struct seq_file *m, void *v)
 {
 	struct mem_cgroup *memcg = mem_cgroup_from_css(seq_css(m));
 
+<<<<<<< HEAD
 	seq_printf(m, "low %lu\n",
 		   atomic_long_read(&memcg->memory_events[MEMCG_LOW]));
 	seq_printf(m, "high %lu\n",
@@ -5384,6 +5580,13 @@ static int memory_events_show(struct seq_file *m, void *v)
 		   atomic_long_read(&memcg->memory_events[MEMCG_OOM]));
 	seq_printf(m, "oom_kill %lu\n",
 		   atomic_long_read(&memcg->memory_events[MEMCG_OOM_KILL]));
+=======
+	seq_printf(m, "low %lu\n", memcg_sum_events(memcg, MEMCG_LOW));
+	seq_printf(m, "high %lu\n", memcg_sum_events(memcg, MEMCG_HIGH));
+	seq_printf(m, "max %lu\n", memcg_sum_events(memcg, MEMCG_MAX));
+	seq_printf(m, "oom %lu\n", memcg_sum_events(memcg, MEMCG_OOM));
+	seq_printf(m, "oom_kill %lu\n", memcg_sum_events(memcg, OOM_KILL));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return 0;
 }
@@ -5392,7 +5595,11 @@ static int memory_stat_show(struct seq_file *m, void *v)
 {
 	struct mem_cgroup *memcg = mem_cgroup_from_css(seq_css(m));
 	unsigned long stat[MEMCG_NR_STAT];
+<<<<<<< HEAD
 	unsigned long events[NR_VM_EVENT_ITEMS];
+=======
+	unsigned long events[MEMCG_NR_EVENTS];
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int i;
 
 	/*
@@ -5749,12 +5956,21 @@ static void uncharge_batch(const struct uncharge_gather *ug)
 	}
 
 	local_irq_save(flags);
+<<<<<<< HEAD
 	__mod_memcg_state(ug->memcg, MEMCG_RSS, -ug->nr_anon);
 	__mod_memcg_state(ug->memcg, MEMCG_CACHE, -ug->nr_file);
 	__mod_memcg_state(ug->memcg, MEMCG_RSS_HUGE, -ug->nr_huge);
 	__mod_memcg_state(ug->memcg, NR_SHMEM, -ug->nr_shmem);
 	__count_memcg_events(ug->memcg, PGPGOUT, ug->pgpgout);
 	__this_cpu_add(ug->memcg->stat_cpu->nr_page_events, nr_pages);
+=======
+	__this_cpu_sub(ug->memcg->stat->count[MEMCG_RSS], ug->nr_anon);
+	__this_cpu_sub(ug->memcg->stat->count[MEMCG_CACHE], ug->nr_file);
+	__this_cpu_sub(ug->memcg->stat->count[MEMCG_RSS_HUGE], ug->nr_huge);
+	__this_cpu_sub(ug->memcg->stat->count[NR_SHMEM], ug->nr_shmem);
+	__this_cpu_add(ug->memcg->stat->events[PGPGOUT], ug->pgpgout);
+	__this_cpu_add(ug->memcg->stat->nr_page_events, nr_pages);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	memcg_check_events(ug->memcg, ug->dummy_page);
 	local_irq_restore(flags);
 
@@ -5985,7 +6201,11 @@ bool mem_cgroup_charge_skmem(struct mem_cgroup *memcg, unsigned int nr_pages)
 	if (in_softirq())
 		gfp_mask = GFP_NOWAIT;
 
+<<<<<<< HEAD
 	mod_memcg_state(memcg, MEMCG_SOCK, nr_pages);
+=======
+	this_cpu_add(memcg->stat->count[MEMCG_SOCK], nr_pages);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (try_charge(memcg, gfp_mask, nr_pages) == 0)
 		return true;
@@ -6006,7 +6226,11 @@ void mem_cgroup_uncharge_skmem(struct mem_cgroup *memcg, unsigned int nr_pages)
 		return;
 	}
 
+<<<<<<< HEAD
 	mod_memcg_state(memcg, MEMCG_SOCK, -nr_pages);
+=======
+	this_cpu_sub(memcg->stat->count[MEMCG_SOCK], nr_pages);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	refill_stock(memcg, nr_pages);
 }
@@ -6130,7 +6354,11 @@ void mem_cgroup_swapout(struct page *page, swp_entry_t entry)
 	oldid = swap_cgroup_record(entry, mem_cgroup_id(swap_memcg),
 				   nr_entries);
 	VM_BUG_ON_PAGE(oldid, page);
+<<<<<<< HEAD
 	mod_memcg_state(swap_memcg, MEMCG_SWAP, nr_entries);
+=======
+	mem_cgroup_swap_statistics(swap_memcg, nr_entries);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	page->mem_cgroup = NULL;
 
@@ -6196,7 +6424,11 @@ int mem_cgroup_try_charge_swap(struct page *page, swp_entry_t entry)
 		mem_cgroup_id_get_many(memcg, nr_pages - 1);
 	oldid = swap_cgroup_record(entry, mem_cgroup_id(memcg), nr_pages);
 	VM_BUG_ON_PAGE(oldid, page);
+<<<<<<< HEAD
 	mod_memcg_state(memcg, MEMCG_SWAP, nr_pages);
+=======
+	mem_cgroup_swap_statistics(memcg, nr_pages);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return 0;
 }
@@ -6224,7 +6456,11 @@ void mem_cgroup_uncharge_swap(swp_entry_t entry, unsigned int nr_pages)
 			else
 				page_counter_uncharge(&memcg->memsw, nr_pages);
 		}
+<<<<<<< HEAD
 		mod_memcg_state(memcg, MEMCG_SWAP, -nr_pages);
+=======
+		mem_cgroup_swap_statistics(memcg, -nr_pages);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		mem_cgroup_id_put_many(memcg, nr_pages);
 	}
 	rcu_read_unlock();

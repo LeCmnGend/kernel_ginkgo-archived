@@ -290,6 +290,11 @@ static int sched_energy_probe(struct platform_device *pdev)
 
 	kfree(max_frequencies);
 
+<<<<<<< HEAD
+=======
+	walt_map_freq_to_load();
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	dev_info(&pdev->dev, "Sched-energy-costs capacity updated\n");
 	return 0;
 

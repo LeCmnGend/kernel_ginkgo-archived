@@ -191,7 +191,11 @@
 	s2mps14_pmic@66 {
 		compatible = "samsung,s2mps14-pmic";
 		interrupt-parent = <&gpx0>;
+<<<<<<< HEAD
 		interrupts = <7 IRQ_TYPE_LEVEL_LOW>;
+=======
+		interrupts = <7 IRQ_TYPE_NONE>;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		reg = <0x66>;
 		wakeup-source;
 

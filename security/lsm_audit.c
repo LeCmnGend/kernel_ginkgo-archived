@@ -277,9 +277,13 @@ static void dump_common_audit_data(struct audit_buffer *ab,
 		struct inode *inode;
 
 		audit_log_format(ab, " name=");
+<<<<<<< HEAD
 		spin_lock(&a->u.dentry->d_lock);
 		audit_log_untrustedstring(ab, a->u.dentry->d_name.name);
 		spin_unlock(&a->u.dentry->d_lock);
+=======
+		audit_log_untrustedstring(ab, a->u.dentry->d_name.name);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		inode = d_backing_inode(a->u.dentry);
 		if (inode) {
@@ -297,9 +301,14 @@ static void dump_common_audit_data(struct audit_buffer *ab,
 		dentry = d_find_alias(inode);
 		if (dentry) {
 			audit_log_format(ab, " name=");
+<<<<<<< HEAD
 			spin_lock(&dentry->d_lock);
 			audit_log_untrustedstring(ab, dentry->d_name.name);
 			spin_unlock(&dentry->d_lock);
+=======
+			audit_log_untrustedstring(ab,
+					 dentry->d_name.name);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			dput(dentry);
 		}
 		audit_log_format(ab, " dev=");

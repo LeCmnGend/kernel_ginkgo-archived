@@ -3477,9 +3477,12 @@ static int nl80211_del_key(struct sk_buff *skb, struct genl_info *info)
 	if (err)
 		return err;
 
+<<<<<<< HEAD
 	if (key.idx < 0)
 		return -EINVAL;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (info->attrs[NL80211_ATTR_MAC])
 		mac_addr = nla_data(info->attrs[NL80211_ATTR_MAC]);
 
@@ -11240,7 +11243,11 @@ static int nl80211_set_rekey_data(struct sk_buff *skb, struct genl_info *info)
 	struct net_device *dev = info->user_ptr[1];
 	struct wireless_dev *wdev = dev->ieee80211_ptr;
 	struct nlattr *tb[NUM_NL80211_REKEY_DATA];
+<<<<<<< HEAD
 	struct cfg80211_gtk_rekey_data rekey_data = {};
+=======
+	struct cfg80211_gtk_rekey_data rekey_data;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int err;
 
 	if (!info->attrs[NL80211_ATTR_REKEY_DATA])
@@ -12145,13 +12152,22 @@ static int nl80211_vendor_cmd(struct sk_buff *skb, struct genl_info *info)
 				if (!wdev_running(wdev))
 					return -ENETDOWN;
 			}
+<<<<<<< HEAD
+=======
+
+			if (!vcmd->doit)
+				return -EOPNOTSUPP;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		} else {
 			wdev = NULL;
 		}
 
+<<<<<<< HEAD
 		if (!vcmd->doit)
 			return -EOPNOTSUPP;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (info->attrs[NL80211_ATTR_VENDOR_DATA]) {
 			data = nla_data(info->attrs[NL80211_ATTR_VENDOR_DATA]);
 			len = nla_len(info->attrs[NL80211_ATTR_VENDOR_DATA]);

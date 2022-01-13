@@ -1962,7 +1962,11 @@ static int udp_queue_rcv_one_skb(struct sock *sk, struct sk_buff *skb)
 	/*
 	 * 	UDP-Lite specific tests, ignored on UDP sockets
 	 */
+<<<<<<< HEAD
 	if ((up->pcflag & UDPLITE_RECV_CC)  &&  UDP_SKB_CB(skb)->partial_cov) {
+=======
+	if ((is_udplite & UDPLITE_RECV_CC)  &&  UDP_SKB_CB(skb)->partial_cov) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		/*
 		 * MIB statistics other than incrementing the error count are
@@ -2410,8 +2414,12 @@ int udp_v4_early_demux(struct sk_buff *skb)
 		 */
 		if (!inet_sk(sk)->inet_daddr && in_dev)
 			return ip_mc_validate_source(skb, iph->daddr,
+<<<<<<< HEAD
 						     iph->saddr,
 						     iph->tos & IPTOS_RT_MASK,
+=======
+						     iph->saddr, iph->tos,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 						     skb->dev, in_dev, &itag);
 	}
 	return 0;
@@ -2426,9 +2434,12 @@ void udp_destroy_sock(struct sock *sk)
 {
 	struct udp_sock *up = udp_sk(sk);
 	bool slow = lock_sock_fast(sk);
+<<<<<<< HEAD
 
 	/* protects from races with udp_abort() */
 	sock_set_flag(sk, SOCK_DEAD);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	udp_flush_pending_frames(sk);
 	unlock_sock_fast(sk, slow);
 	if (static_key_false(&udp_encap_needed)) {
@@ -2686,17 +2697,23 @@ int udp_abort(struct sock *sk, int err)
 {
 	lock_sock(sk);
 
+<<<<<<< HEAD
 	/* udp{v6}_destroy_sock() sets it under the sk lock, avoid racing
 	 * with close()
 	 */
 	if (sock_flag(sk, SOCK_DEAD))
 		goto out;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	sk->sk_err = err;
 	sk->sk_error_report(sk);
 	__udp_disconnect(sk, 0);
 
+<<<<<<< HEAD
 out:
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	release_sock(sk);
 
 	return 0;

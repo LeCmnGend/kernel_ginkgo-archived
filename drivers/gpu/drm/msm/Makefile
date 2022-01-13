@@ -57,8 +57,11 @@ msm_drm-y := \
 	sde_dbg.o \
 	sde_dbg_evtlog.o \
 
+<<<<<<< HEAD
 msm_drm-$(CONFIG_DRM_MSM_KCAL_CTRL) += sde/sde_hw_kcal_ctrl.o
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 msm_drm-$(CONFIG_DRM_MSM_HDMI) += hdmi/hdmi.o \
 	hdmi/hdmi_audio.o \
 	hdmi/hdmi_bridge.o \

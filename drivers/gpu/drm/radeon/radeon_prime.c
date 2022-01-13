@@ -92,6 +92,7 @@ int radeon_gem_prime_pin(struct drm_gem_object *obj)
 
 	/* pin buffer into GTT */
 	ret = radeon_bo_pin(bo, RADEON_GEM_DOMAIN_GTT, NULL);
+<<<<<<< HEAD
 	if (unlikely(ret))
 		goto error;
 
@@ -105,6 +106,11 @@ int radeon_gem_prime_pin(struct drm_gem_object *obj)
 
 	bo->prime_shared_count++;
 error:
+=======
+	if (likely(ret == 0))
+		bo->prime_shared_count++;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	radeon_bo_unreserve(bo);
 	return ret;
 }

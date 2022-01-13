@@ -187,7 +187,10 @@ extern void prep_compound_page(struct page *page, unsigned int order);
 extern void post_alloc_hook(struct page *page, unsigned int order,
 					gfp_t gfp_flags);
 extern int user_min_free_kbytes;
+<<<<<<< HEAD
 extern atomic_long_t kswapd_waiters;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #if defined CONFIG_COMPACTION || defined CONFIG_CMA
 
@@ -233,7 +236,11 @@ unsigned long
 isolate_migratepages_range(struct compact_control *cc,
 			   unsigned long low_pfn, unsigned long end_pfn);
 int find_suitable_fallback(struct free_area *area, unsigned int order,
+<<<<<<< HEAD
 			int migratetype, bool only_stealable, bool *can_steal, unsigned int start_order);
+=======
+			int migratetype, bool only_stealable, bool *can_steal);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #endif
 
@@ -302,8 +309,12 @@ static inline bool is_data_mapping(vm_flags_t flags)
 
 /* mm/util.c */
 void __vma_link_list(struct mm_struct *mm, struct vm_area_struct *vma,
+<<<<<<< HEAD
 		struct vm_area_struct *prev);
 void __vma_unlink_list(struct mm_struct *mm, struct vm_area_struct *vma);
+=======
+		struct vm_area_struct *prev, struct rb_node *rb_parent);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #ifdef CONFIG_MMU
 extern long populate_vma_page_range(struct vm_area_struct *vma,
@@ -352,6 +363,7 @@ static inline void mlock_migrate_page(struct page *newpage, struct page *page)
 extern pmd_t maybe_pmd_mkwrite(pmd_t pmd, struct vm_area_struct *vma);
 
 /*
+<<<<<<< HEAD
  * At what user virtual address is page expected in vma?
  * Returns -EFAULT if all of the page is outside the range of vma.
  * If page is a compound head, the entire compound page is considered.
@@ -398,6 +410,29 @@ vma_address_end(struct page *page, struct vm_area_struct *vma)
 	if (address < vma->vm_start || address > vma->vm_end)
 		address = vma->vm_end;
 	return address;
+=======
+ * At what user virtual address is page expected in @vma?
+ */
+static inline unsigned long
+__vma_address(struct page *page, struct vm_area_struct *vma)
+{
+	pgoff_t pgoff = page_to_pgoff(page);
+	return vma->vm_start + ((pgoff - vma->vm_pgoff) << PAGE_SHIFT);
+}
+
+static inline unsigned long
+vma_address(struct page *page, struct vm_area_struct *vma)
+{
+	unsigned long start, end;
+
+	start = __vma_address(page, vma);
+	end = start + PAGE_SIZE * (hpage_nr_pages(page) - 1);
+
+	/* page should be within @vma mapping range */
+	VM_BUG_ON_VMA(end < vma->vm_start || start >= vma->vm_end, vma);
+
+	return max(start, vma->vm_start);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 #else /* !CONFIG_MMU */

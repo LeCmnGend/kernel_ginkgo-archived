@@ -606,7 +606,11 @@ static struct afu_config_record *cxl_sysfs_afu_new_cr(struct cxl_afu *afu, int c
 	rc = kobject_init_and_add(&cr->kobj, &afu_config_record_type,
 				  &afu->dev.kobj, "cr%i", cr->cr);
 	if (rc)
+<<<<<<< HEAD
 		goto err1;
+=======
+		goto err;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	rc = sysfs_create_bin_file(&cr->kobj, &cr->config_attr);
 	if (rc)

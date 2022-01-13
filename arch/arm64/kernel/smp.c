@@ -240,7 +240,11 @@ asmlinkage notrace void secondary_start_kernel(void)
 	 * the CPU migration code to notice that the CPU is online
 	 * before we continue.
 	 */
+<<<<<<< HEAD
 	pr_debug("CPU%u: Booted secondary processor [%08x]\n",
+=======
+	pr_info("CPU%u: Booted secondary processor [%08x]\n",
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 					 cpu, read_cpuid_id());
 	update_cpu_boot_status(CPU_BOOT_SUCCESS);
 	set_cpu_online(cpu, true);
@@ -326,7 +330,11 @@ void __cpu_die(unsigned int cpu)
 		pr_crit("CPU%u: cpu didn't die\n", cpu);
 		return;
 	}
+<<<<<<< HEAD
 	pr_debug("CPU%u: shutdown\n", cpu);
+=======
+	pr_info("CPU%u: shutdown\n", cpu);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/*
 	 * Now that the dying CPU is beyond the point of no return w.r.t.
@@ -798,10 +806,18 @@ void arch_send_call_function_single_ipi(int cpu)
 	smp_cross_call_common(cpumask_of(cpu), IPI_CALL_FUNC);
 }
 
+<<<<<<< HEAD
+=======
+#ifdef CONFIG_ARM64_ACPI_PARKING_PROTOCOL
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 void arch_send_wakeup_ipi_mask(const struct cpumask *mask)
 {
 	smp_cross_call_common(mask, IPI_WAKEUP);
 }
+<<<<<<< HEAD
+=======
+#endif
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #ifdef CONFIG_IRQ_WORK
 void arch_irq_work_raise(void)
@@ -919,8 +935,18 @@ void handle_IPI(int ipinr, struct pt_regs *regs)
 		break;
 #endif
 
+<<<<<<< HEAD
 	case IPI_WAKEUP:
 		break;
+=======
+#ifdef CONFIG_ARM64_ACPI_PARKING_PROTOCOL
+	case IPI_WAKEUP:
+		WARN_ONCE(!acpi_parking_protocol_valid(cpu),
+			  "CPU%u: Wake-up IPI outside the ACPI parking protocol\n",
+			  cpu);
+		break;
+#endif
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	default:
 		pr_crit("CPU%u: Unknown IPI message 0x%x\n", cpu, ipinr);

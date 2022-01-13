@@ -33,8 +33,11 @@
 #include <uapi/drm/i915_drm.h>
 #include <uapi/drm/drm_fourcc.h>
 
+<<<<<<< HEAD
 #include <asm/hypervisor.h>
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <linux/io-mapping.h>
 #include <linux/i2c.h>
 #include <linux/i2c-algo-bit.h>
@@ -3143,9 +3146,13 @@ static inline bool intel_vtd_active(void)
 	if (intel_iommu_gfx_mapped)
 		return true;
 #endif
+<<<<<<< HEAD
 
 	/* Running as a guest, we assume the host is enforcing VT'd */
 	return !hypervisor_is_type(X86_HYPER_NATIVE);
+=======
+	return false;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static inline bool intel_scanout_needs_vtd_wa(struct drm_i915_private *dev_priv)

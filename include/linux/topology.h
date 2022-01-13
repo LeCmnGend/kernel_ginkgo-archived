@@ -193,9 +193,12 @@ static inline int cpu_to_mem(int cpu)
 #ifndef topology_core_cpumask
 #define topology_core_cpumask(cpu)		cpumask_of(cpu)
 #endif
+<<<<<<< HEAD
 #ifndef topology_possible_sibling_cpumask
 #define topology_possible_sibling_cpumask(cpu)	cpumask_of(cpu)
 #endif
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #ifdef CONFIG_SCHED_SMT
 static inline const struct cpumask *cpu_smt_mask(int cpu)

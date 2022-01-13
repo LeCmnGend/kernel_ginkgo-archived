@@ -2391,8 +2391,12 @@ static int b44_init_one(struct ssb_device *sdev,
 		goto err_out_free_dev;
 	}
 
+<<<<<<< HEAD
 	err = dma_set_mask_and_coherent(sdev->dma_dev, DMA_BIT_MASK(30));
 	if (err) {
+=======
+	if (dma_set_mask_and_coherent(sdev->dma_dev, DMA_BIT_MASK(30))) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		dev_err(sdev->dev,
 			"Required 30BIT DMA mask unsupported by the system\n");
 		goto err_out_powerdown;

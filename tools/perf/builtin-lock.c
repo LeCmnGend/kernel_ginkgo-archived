@@ -620,7 +620,11 @@ static int report_lock_release_event(struct perf_evsel *evsel,
 	case SEQ_STATE_READ_ACQUIRED:
 		seq->read_count--;
 		BUG_ON(seq->read_count < 0);
+<<<<<<< HEAD
 		if (seq->read_count) {
+=======
+		if (!seq->read_count) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			ls->nr_release++;
 			goto end;
 		}

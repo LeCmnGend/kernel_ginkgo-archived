@@ -1343,10 +1343,23 @@ static void usbtmc_interrupt(struct urb *urb)
 	case -EOVERFLOW:
 		dev_err(dev, "overflow with length %d, actual length is %d\n",
 			data->iin_wMaxPacketSize, urb->actual_length);
+<<<<<<< HEAD
 	default:
 		/* urb terminated, clean up */
 		dev_dbg(dev, "urb terminated, status: %d\n", status);
 		return;
+=======
+	case -ECONNRESET:
+	case -ENOENT:
+	case -ESHUTDOWN:
+	case -EILSEQ:
+	case -ETIME:
+		/* urb terminated, clean up */
+		dev_dbg(dev, "urb terminated, status: %d\n", status);
+		return;
+	default:
+		dev_err(dev, "unknown status received: %d\n", status);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 exit:
 	rv = usb_submit_urb(urb, GFP_ATOMIC);

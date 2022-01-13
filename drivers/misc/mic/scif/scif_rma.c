@@ -1404,8 +1404,11 @@ retry:
 				NULL);
 		up_write(&mm->mmap_sem);
 		if (nr_pages != pinned_pages->nr_pages) {
+<<<<<<< HEAD
 			if (pinned_pages->nr_pages < 0)
 				pinned_pages->nr_pages = 0;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			if (try_upgrade) {
 				if (ulimit)
 					__scif_dec_pinned_vm_lock(mm,
@@ -1426,6 +1429,10 @@ retry:
 
 	if (pinned_pages->nr_pages < nr_pages) {
 		err = -EFAULT;
+<<<<<<< HEAD
+=======
+		pinned_pages->nr_pages = nr_pages;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto dec_pinned;
 	}
 
@@ -1438,6 +1445,10 @@ dec_pinned:
 		__scif_dec_pinned_vm_lock(mm, nr_pages, 0);
 	/* Something went wrong! Rollback */
 error_unmap:
+<<<<<<< HEAD
+=======
+	pinned_pages->nr_pages = nr_pages;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	scif_destroy_pinned_pages(pinned_pages);
 	*pages = NULL;
 	dev_dbg(scif_info.mdev.this_device,

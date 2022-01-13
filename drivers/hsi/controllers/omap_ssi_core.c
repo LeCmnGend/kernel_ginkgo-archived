@@ -389,7 +389,11 @@ static int ssi_add_controller(struct hsi_controller *ssi,
 
 	err = ida_simple_get(&platform_omap_ssi_ida, 0, 0, GFP_KERNEL);
 	if (err < 0)
+<<<<<<< HEAD
 		return err;
+=======
+		goto out_err;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ssi->id = err;
 
 	ssi->owner = THIS_MODULE;

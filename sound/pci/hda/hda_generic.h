@@ -230,7 +230,10 @@ struct hda_gen_spec {
 	unsigned int power_down_unused:1; /* power down unused widgets */
 	unsigned int dac_min_mute:1; /* minimal = mute for DACs */
 	unsigned int suppress_vmaster:1; /* don't create vmaster kctls */
+<<<<<<< HEAD
 	unsigned int obey_preferred_dacs:1; /* obey preferred_dacs assignment */
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* other internal flags */
 	unsigned int no_analog:1; /* digital I/O only */

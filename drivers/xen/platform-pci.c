@@ -162,6 +162,10 @@ static int platform_pci_probe(struct pci_dev *pdev,
 	ret = gnttab_init();
 	if (ret)
 		goto grant_out;
+<<<<<<< HEAD
+=======
+	xenbus_probe(NULL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 grant_out:
 	gnttab_free_auto_xlat_frames();

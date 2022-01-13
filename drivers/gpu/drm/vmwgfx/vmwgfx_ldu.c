@@ -79,7 +79,11 @@ static int vmw_ldu_commit_list(struct vmw_private *dev_priv)
 	struct vmw_legacy_display_unit *entry;
 	struct drm_framebuffer *fb = NULL;
 	struct drm_crtc *crtc = NULL;
+<<<<<<< HEAD
 	int i;
+=======
+	int i = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* If there is no display topology the host just assumes
 	 * that the guest will set the same layout as the host.
@@ -90,11 +94,19 @@ static int vmw_ldu_commit_list(struct vmw_private *dev_priv)
 			crtc = &entry->base.crtc;
 			w = max(w, crtc->x + crtc->mode.hdisplay);
 			h = max(h, crtc->y + crtc->mode.vdisplay);
+<<<<<<< HEAD
+=======
+			i++;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 
 		if (crtc == NULL)
 			return 0;
+<<<<<<< HEAD
 		fb = crtc->primary->state->fb;
+=======
+		fb = entry->base.crtc.primary->state->fb;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		return vmw_kms_write_svga(dev_priv, w, h, fb->pitches[0],
 					  fb->format->cpp[0] * 8,

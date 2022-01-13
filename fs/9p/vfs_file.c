@@ -624,9 +624,15 @@ static void v9fs_mmap_vm_close(struct vm_area_struct *vma)
 	struct writeback_control wbc = {
 		.nr_to_write = LONG_MAX,
 		.sync_mode = WB_SYNC_ALL,
+<<<<<<< HEAD
 		.range_start = (loff_t)vma->vm_pgoff * PAGE_SIZE,
 		 /* absolute end, byte at end included */
 		.range_end = (loff_t)vma->vm_pgoff * PAGE_SIZE +
+=======
+		.range_start = vma->vm_pgoff * PAGE_SIZE,
+		 /* absolute end, byte at end included */
+		.range_end = vma->vm_pgoff * PAGE_SIZE +
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			(vma->vm_end - vma->vm_start - 1),
 	};
 

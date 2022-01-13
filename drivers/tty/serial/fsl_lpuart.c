@@ -567,7 +567,11 @@ static void lpuart32_poll_put_char(struct uart_port *port, unsigned char c)
 
 static int lpuart32_poll_get_char(struct uart_port *port)
 {
+<<<<<<< HEAD
 	if (!(lpuart32_read(port, UARTWATER) >> UARTWATER_RXCNT_OFF))
+=======
+	if (!(lpuart32_read(port, UARTSTAT) & UARTSTAT_RDRF))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return NO_POLL_CHAR;
 
 	return lpuart32_read(port, UARTDATA);
@@ -1998,9 +2002,12 @@ lpuart32_console_get_options(struct lpuart_port *sport, int *baud,
 
 	bd = lpuart32_read(&sport->port, UARTBAUD);
 	bd &= UARTBAUD_SBR_MASK;
+<<<<<<< HEAD
 	if (!bd)
 		return;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	sbr = bd;
 	uartclk = clk_get_rate(sport->clk);
 	/*

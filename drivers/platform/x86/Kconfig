@@ -183,7 +183,10 @@ config FUJITSU_LAPTOP
 	depends on BACKLIGHT_CLASS_DEVICE
 	depends on ACPI_VIDEO || ACPI_VIDEO = n
 	select INPUT_SPARSEKMAP
+<<<<<<< HEAD
 	select NEW_LEDS
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	select LEDS_CLASS
 	---help---
 	  This is a driver for laptops built by Fujitsu:

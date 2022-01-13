@@ -1338,7 +1338,10 @@ int lmLogInit(struct jfs_log * log)
 		} else {
 			if (memcmp(logsuper->uuid, log->uuid, 16)) {
 				jfs_warn("wrong uuid on JFS log device");
+<<<<<<< HEAD
 				rc = -EINVAL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				goto errout20;
 			}
 			log->size = le32_to_cpu(logsuper->size);

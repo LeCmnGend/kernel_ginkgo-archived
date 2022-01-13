@@ -39,7 +39,11 @@
 	NL80211_RRF_PASSIVE_SCAN | NL80211_RRF_NO_OFDM)
 
 static const struct ieee80211_regdomain rtw_regdom_rd = {
+<<<<<<< HEAD
 	.n_reg_rules = 2,
+=======
+	.n_reg_rules = 3,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.alpha2 = "99",
 	.reg_rules = {
 		RTW_2GHZ_CH01_11,

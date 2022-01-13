@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2011, 2013, 2015 The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2011, 2013, 2015, 2019 The Linux Foundation. All rights reserved.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -19,8 +23,17 @@
 /* Instantiate tracepoints */
 #define CREATE_TRACE_POINTS
 #include "kgsl_trace.h"
+<<<<<<< HEAD
+=======
+#include "kgsl_trace_power.h"
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 EXPORT_TRACEPOINT_SYMBOL(kgsl_regwrite);
 EXPORT_TRACEPOINT_SYMBOL(kgsl_issueibcmds);
 EXPORT_TRACEPOINT_SYMBOL(kgsl_user_pwrlevel_constraint);
 EXPORT_TRACEPOINT_SYMBOL(kgsl_constraint);
+<<<<<<< HEAD
+=======
+
+EXPORT_TRACEPOINT_SYMBOL(gpu_frequency);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388

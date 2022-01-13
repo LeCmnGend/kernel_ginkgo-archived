@@ -1341,6 +1341,7 @@ static inline void skb_zcopy_abort(struct sk_buff *skb)
 	}
 }
 
+<<<<<<< HEAD
 static inline void skb_mark_not_on_list(struct sk_buff *skb)
 {
 	skb->next = NULL;
@@ -1357,6 +1358,8 @@ static inline void skb_list_del_init(struct sk_buff *skb)
 	skb_mark_not_on_list(skb);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /**
  *	skb_queue_empty - check if a queue is empty
  *	@list: queue head
@@ -1697,6 +1700,7 @@ static inline __u32 skb_queue_len(const struct sk_buff_head *list_)
 }
 
 /**
+<<<<<<< HEAD
  *	skb_queue_len_lockless	- get queue length
  *	@list_: list to measure
  *
@@ -1709,6 +1713,8 @@ static inline __u32 skb_queue_len_lockless(const struct sk_buff_head *list_)
 }
 
 /**
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *	__skb_queue_head_init - initialize non-spinlock portions of sk_buff_head
  *	@list: queue to initialize
  *
@@ -1915,7 +1921,11 @@ static inline void __skb_unlink(struct sk_buff *skb, struct sk_buff_head *list)
 {
 	struct sk_buff *next, *prev;
 
+<<<<<<< HEAD
 	WRITE_ONCE(list->qlen, list->qlen - 1);
+=======
+	list->qlen--;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	next	   = skb->next;
 	prev	   = skb->prev;
 	skb->next  = skb->prev = NULL;
@@ -2791,6 +2801,7 @@ static inline void skb_propagate_pfmemalloc(struct page *page,
 }
 
 /**
+<<<<<<< HEAD
  * skb_frag_off() - Returns the offset of a skb fragment
  * @frag: the paged fragment
  */
@@ -2800,6 +2811,8 @@ static inline unsigned int skb_frag_off(const skb_frag_t *frag)
 }
 
 /**
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  * skb_frag_page - retrieve the page referred to by a paged fragment
  * @frag: the paged fragment
  *
@@ -3042,9 +3055,14 @@ static inline int skb_padto(struct sk_buff *skb, unsigned int len)
  *	is untouched. Otherwise it is extended. Returns zero on
  *	success. The skb is freed on error if @free_on_error is true.
  */
+<<<<<<< HEAD
 static inline int __must_check __skb_put_padto(struct sk_buff *skb,
 					       unsigned int len,
 					       bool free_on_error)
+=======
+static inline int __skb_put_padto(struct sk_buff *skb, unsigned int len,
+				  bool free_on_error)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	unsigned int size = skb->len;
 
@@ -3067,7 +3085,11 @@ static inline int __must_check __skb_put_padto(struct sk_buff *skb,
  *	is untouched. Otherwise it is extended. Returns zero on
  *	success. The skb is freed on error.
  */
+<<<<<<< HEAD
 static inline int __must_check skb_put_padto(struct sk_buff *skb, unsigned int len)
+=======
+static inline int skb_put_padto(struct sk_buff *skb, unsigned int len)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	return __skb_put_padto(skb, len, true);
 }

@@ -783,8 +783,11 @@ static int jffs2_sum_write_data(struct jffs2_sb_info *c, struct jffs2_eraseblock
 					dbg_summary("Writing unknown RWCOMPAT_COPY node type %x\n",
 						    je16_to_cpu(temp->u.nodetype));
 					jffs2_sum_disable_collecting(c->summary);
+<<<<<<< HEAD
 					/* The above call removes the list, nothing more to do */
 					goto bail_rwcompat;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				} else {
 					BUG();	/* unknown node in summary information */
 				}
@@ -796,7 +799,10 @@ static int jffs2_sum_write_data(struct jffs2_sb_info *c, struct jffs2_eraseblock
 
 		c->summary->sum_num--;
 	}
+<<<<<<< HEAD
  bail_rwcompat:
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	jffs2_sum_reset_collected(c->summary);
 

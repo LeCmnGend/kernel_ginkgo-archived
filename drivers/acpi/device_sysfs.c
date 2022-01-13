@@ -259,12 +259,29 @@ int __acpi_device_uevent_modalias(struct acpi_device *adev,
 	if (add_uevent_var(env, "MODALIAS="))
 		return -ENOMEM;
 
+<<<<<<< HEAD
 	if (adev->data.of_compatible)
 		len = create_of_modalias(adev, &env->buf[env->buflen - 1],
 					 sizeof(env->buf) - env->buflen);
 	else
 		len = create_pnp_modalias(adev, &env->buf[env->buflen - 1],
 					  sizeof(env->buf) - env->buflen);
+=======
+	len = create_pnp_modalias(adev, &env->buf[env->buflen - 1],
+				  sizeof(env->buf) - env->buflen);
+	if (len < 0)
+		return len;
+
+	env->buflen += len;
+	if (!adev->data.of_compatible)
+		return 0;
+
+	if (len > 0 && add_uevent_var(env, "MODALIAS="))
+		return -ENOMEM;
+
+	len = create_of_modalias(adev, &env->buf[env->buflen - 1],
+				 sizeof(env->buf) - env->buflen);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (len < 0)
 		return len;
 
@@ -452,7 +469,11 @@ static ssize_t description_show(struct device *dev,
 		(wchar_t *)acpi_dev->pnp.str_obj->buffer.pointer,
 		acpi_dev->pnp.str_obj->buffer.length,
 		UTF16_LITTLE_ENDIAN, buf,
+<<<<<<< HEAD
 		PAGE_SIZE - 1);
+=======
+		PAGE_SIZE);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	buf[result++] = '\n';
 

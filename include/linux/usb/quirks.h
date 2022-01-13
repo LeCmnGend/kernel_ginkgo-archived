@@ -60,7 +60,10 @@
 /* Device needs a pause after every control message. */
 #define USB_QUIRK_DELAY_CTRL_MSG		BIT(13)
 
+<<<<<<< HEAD
 /* device has blacklisted endpoints */
 #define USB_QUIRK_ENDPOINT_BLACKLIST		BIT(15)
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif /* __LINUX_USB_QUIRKS_H */

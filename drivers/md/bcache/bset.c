@@ -319,7 +319,11 @@ int bch_btree_keys_alloc(struct btree_keys *b, unsigned page_order, gfp_t gfp)
 
 	b->page_order = page_order;
 
+<<<<<<< HEAD
 	t->data = (void *) __get_free_pages(__GFP_COMP|gfp, b->page_order);
+=======
+	t->data = (void *) __get_free_pages(gfp, b->page_order);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!t->data)
 		goto err;
 

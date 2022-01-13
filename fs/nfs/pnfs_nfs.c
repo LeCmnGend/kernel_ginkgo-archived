@@ -555,16 +555,30 @@ out:
 }
 EXPORT_SYMBOL_GPL(nfs4_pnfs_ds_add);
 
+<<<<<<< HEAD
 static int nfs4_wait_ds_connect(struct nfs4_pnfs_ds *ds)
 {
 	might_sleep();
 	return wait_on_bit(&ds->ds_state, NFS4DS_CONNECTING, TASK_KILLABLE);
+=======
+static void nfs4_wait_ds_connect(struct nfs4_pnfs_ds *ds)
+{
+	might_sleep();
+	wait_on_bit(&ds->ds_state, NFS4DS_CONNECTING,
+			TASK_KILLABLE);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void nfs4_clear_ds_conn_bit(struct nfs4_pnfs_ds *ds)
 {
 	smp_mb__before_atomic();
+<<<<<<< HEAD
 	clear_and_wake_up_bit(NFS4DS_CONNECTING, &ds->ds_state);
+=======
+	clear_bit(NFS4DS_CONNECTING, &ds->ds_state);
+	smp_mb__after_atomic();
+	wake_up_bit(&ds->ds_state, NFS4DS_CONNECTING);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static struct nfs_client *(*get_v3_ds_connect)(
@@ -725,6 +739,7 @@ int nfs4_pnfs_ds_connect(struct nfs_server *mds_srv, struct nfs4_pnfs_ds *ds,
 {
 	int err;
 
+<<<<<<< HEAD
 	do {
 		err = nfs4_wait_ds_connect(ds);
 		if (err || ds->ds_clp)
@@ -752,6 +767,32 @@ int nfs4_pnfs_ds_connect(struct nfs_server *mds_srv, struct nfs4_pnfs_ds *ds,
 connect_done:
 	nfs4_clear_ds_conn_bit(ds);
 out:
+=======
+again:
+	err = 0;
+	if (test_and_set_bit(NFS4DS_CONNECTING, &ds->ds_state) == 0) {
+		if (version == 3) {
+			err = _nfs4_pnfs_v3_ds_connect(mds_srv, ds, timeo,
+						       retrans);
+		} else if (version == 4) {
+			err = _nfs4_pnfs_v4_ds_connect(mds_srv, ds, timeo,
+						       retrans, minor_version);
+		} else {
+			dprintk("%s: unsupported DS version %d\n", __func__,
+				version);
+			err = -EPROTONOSUPPORT;
+		}
+
+		nfs4_clear_ds_conn_bit(ds);
+	} else {
+		nfs4_wait_ds_connect(ds);
+
+		/* what was waited on didn't connect AND didn't mark unavail */
+		if (!ds->ds_clp && !nfs4_test_deviceid_unavailable(devid))
+			goto again;
+	}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/*
 	 * At this point the ds->ds_clp should be ready, but it might have
 	 * hit an error.

@@ -23,8 +23,11 @@
 #include <linux/backing-dev.h>
 #endif
 
+<<<<<<< HEAD
 struct kmem_cache *kmem_file_info_pool;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static ssize_t sdcardfs_read(struct file *file, char __user *buf,
 			   size_t count, loff_t *ppos)
 {
@@ -238,8 +241,11 @@ static int sdcardfs_open(struct inode *inode, struct file *file)
 	struct dentry *parent = dget_parent(dentry);
 	struct sdcardfs_sb_info *sbi = SDCARDFS_SB(dentry->d_sb);
 	const struct cred *saved_cred = NULL;
+<<<<<<< HEAD
 	struct fuse_package *fp = current->fpack;
 	char *iname;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* don't open unhashed/deleted files */
 	if (d_unhashed(dentry)) {
@@ -259,9 +265,14 @@ static int sdcardfs_open(struct inode *inode, struct file *file)
 		goto out_err;
 	}
 
+<<<<<<< HEAD
 	file->f_mode |= FMODE_NONMAPPABLE;
 	file->private_data =
 		kmem_cache_zalloc(kmem_file_info_pool, GFP_KERNEL);
+=======
+	file->private_data =
+		kzalloc(sizeof(struct sdcardfs_file_info), GFP_KERNEL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!SDCARDFS_F(file)) {
 		err = -ENOMEM;
 		goto out_revert_cred;
@@ -280,6 +291,7 @@ static int sdcardfs_open(struct inode *inode, struct file *file)
 		}
 	} else {
 		sdcardfs_set_lower_file(file, lower_file);
+<<<<<<< HEAD
 		if (!err && fp && fp->fuse_open_req && !fp->filp && fp->iname) {
 			iname = inode_name(inode);
 			if (iname && !strcasecmp(iname, fp->iname)) {
@@ -293,6 +305,12 @@ static int sdcardfs_open(struct inode *inode, struct file *file)
 
 	if (err)
 		kmem_cache_free(kmem_file_info_pool, SDCARDFS_F(file));
+=======
+	}
+
+	if (err)
+		kfree(SDCARDFS_F(file));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	else
 		sdcardfs_copy_and_fix_attrs(inode, sdcardfs_lower_inode(inode));
 
@@ -328,7 +346,11 @@ static int sdcardfs_file_release(struct inode *inode, struct file *file)
 		fput(lower_file);
 	}
 
+<<<<<<< HEAD
 	kmem_cache_free(kmem_file_info_pool, SDCARDFS_F(file));
+=======
+	kfree(SDCARDFS_F(file));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 }
 
@@ -364,11 +386,14 @@ static int sdcardfs_fasync(int fd, struct file *file, int flag)
 	return err;
 }
 
+<<<<<<< HEAD
 static struct file *sdcardfs_get_lower_file(struct file *f)
 {
 	return sdcardfs_lower_file(f);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /*
  * Sdcardfs cannot use generic_file_llseek as ->llseek, because it would
  * only set the offset of the upper file.  So we have to implement our
@@ -465,7 +490,10 @@ const struct file_operations sdcardfs_main_fops = {
 	.release	= sdcardfs_file_release,
 	.fsync		= sdcardfs_fsync,
 	.fasync		= sdcardfs_fasync,
+<<<<<<< HEAD
 	.get_lower_file = sdcardfs_get_lower_file,
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.read_iter	= sdcardfs_read_iter,
 	.write_iter	= sdcardfs_write_iter,
 };
@@ -483,6 +511,9 @@ const struct file_operations sdcardfs_dir_fops = {
 	.release	= sdcardfs_file_release,
 	.flush		= sdcardfs_flush,
 	.fsync		= sdcardfs_fsync,
+<<<<<<< HEAD
 	.get_lower_file = sdcardfs_get_lower_file,
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.fasync		= sdcardfs_fasync,
 };

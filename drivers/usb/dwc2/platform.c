@@ -459,7 +459,10 @@ static int dwc2_driver_probe(struct platform_device *dev)
 	if (hsotg->gadget_enabled) {
 		retval = usb_add_gadget_udc(hsotg->dev, &hsotg->gadget);
 		if (retval) {
+<<<<<<< HEAD
 			hsotg->gadget.udc = NULL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			dwc2_hsotg_remove(hsotg);
 			goto error;
 		}
@@ -468,8 +471,12 @@ static int dwc2_driver_probe(struct platform_device *dev)
 	return 0;
 
 error:
+<<<<<<< HEAD
 	if (hsotg->dr_mode != USB_DR_MODE_PERIPHERAL)
 		dwc2_lowlevel_hw_disable(hsotg);
+=======
+	dwc2_lowlevel_hw_disable(hsotg);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return retval;
 }
 

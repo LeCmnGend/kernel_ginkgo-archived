@@ -125,7 +125,11 @@ enum nf_tables_msg_types {
  * @NFTA_LIST_ELEM: list element (NLA_NESTED)
  */
 enum nft_list_attributes {
+<<<<<<< HEAD
 	NFTA_LIST_UNSPEC,
+=======
+	NFTA_LIST_UNPEC,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	NFTA_LIST_ELEM,
 	__NFTA_LIST_MAX
 };

@@ -215,8 +215,11 @@ source "drivers/input/sensors/smi130/Kconfig"
 
 source "drivers/input/rmi4/Kconfig"
 
+<<<<<<< HEAD
 source "drivers/input/fingerprint/Kconfig"
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 endif
 
 menu "Hardware I/O ports"

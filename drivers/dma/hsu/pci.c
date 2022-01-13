@@ -29,12 +29,28 @@
 static irqreturn_t hsu_pci_irq(int irq, void *dev)
 {
 	struct hsu_dma_chip *chip = dev;
+<<<<<<< HEAD
+=======
+	struct pci_dev *pdev = to_pci_dev(chip->dev);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	u32 dmaisr;
 	u32 status;
 	unsigned short i;
 	int ret = 0;
 	int err;
 
+<<<<<<< HEAD
+=======
+	/*
+	 * On Intel Tangier B0 and Anniedale the interrupt line, disregarding
+	 * to have different numbers, is shared between HSU DMA and UART IPs.
+	 * Thus on such SoCs we are expecting that IRQ handler is called in
+	 * UART driver only.
+	 */
+	if (pdev->device == PCI_DEVICE_ID_INTEL_MRFLD_HSU_DMA)
+		return IRQ_HANDLED;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	dmaisr = readl(chip->regs + HSU_PCI_DMAISR);
 	for (i = 0; i < chip->hsu->nr_channels; i++) {
 		if (dmaisr & 0x1) {
@@ -98,6 +114,7 @@ static int hsu_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 	if (ret)
 		goto err_register_irq;
 
+<<<<<<< HEAD
 	/*
 	 * On Intel Tangier B0 and Anniedale the interrupt line, disregarding
 	 * to have different numbers, is shared between HSU DMA and UART IPs.
@@ -109,6 +126,8 @@ static int hsu_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 	if (pdev->device == PCI_DEVICE_ID_INTEL_MRFLD_HSU_DMA)
 		disable_irq_nosync(chip->irq);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	pci_set_drvdata(pdev, chip);
 
 	return 0;

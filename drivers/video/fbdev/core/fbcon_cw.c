@@ -202,7 +202,11 @@ static void cw_clear_margins(struct vc_data *vc, struct fb_info *info,
 }
 
 static void cw_cursor(struct vc_data *vc, struct fb_info *info, int mode,
+<<<<<<< HEAD
 		      int fg, int bg)
+=======
+		      int softback_lines, int fg, int bg)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	struct fb_cursor cursor;
 	struct fbcon_ops *ops = info->fbcon_par;
@@ -219,6 +223,18 @@ static void cw_cursor(struct vc_data *vc, struct fb_info *info, int mode,
 
 	cursor.set = 0;
 
+<<<<<<< HEAD
+=======
+	if (softback_lines) {
+		if (y + softback_lines >= vc->vc_rows) {
+			mode = CM_ERASE;
+			ops->cursor_flash = 0;
+			return;
+		} else
+			y += softback_lines;
+	}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  	c = scr_readw((u16 *) vc->vc_pos);
 	attribute = get_attribute(info, c);
 	src = ops->fontbuffer + ((c & charmask) * (w * vc->vc_font.width));

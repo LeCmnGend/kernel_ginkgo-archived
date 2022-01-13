@@ -435,13 +435,19 @@ struct qcom_nand_host {
  * among different NAND controllers.
  * @ecc_modes - ecc mode for NAND
  * @is_bam - whether NAND controller is using BAM
+<<<<<<< HEAD
  * @is_qpic - whether NAND CTRL is part of qpic IP
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  * @dev_cmd_reg_start - NAND_DEV_CMD_* registers starting offset
  */
 struct qcom_nandc_props {
 	u32 ecc_modes;
 	bool is_bam;
+<<<<<<< HEAD
 	bool is_qpic;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	u32 dev_cmd_reg_start;
 };
 
@@ -2510,8 +2516,12 @@ static int qcom_nandc_setup(struct qcom_nand_controller *nandc)
 	u32 nand_ctrl;
 
 	/* kill onenand */
+<<<<<<< HEAD
 	if (!nandc->props->is_qpic)
 		nandc_write(nandc, SFLASHC_BURST_CFG, 0);
+=======
+	nandc_write(nandc, SFLASHC_BURST_CFG, 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	nandc_write(nandc, dev_cmd_reg_addr(nandc, NAND_DEV_CMD_VLD),
 		    NAND_DEV_CMD_VLD_VAL);
 
@@ -2782,14 +2792,20 @@ static const struct qcom_nandc_props ipq806x_nandc_props = {
 static const struct qcom_nandc_props ipq4019_nandc_props = {
 	.ecc_modes = (ECC_BCH_4BIT | ECC_BCH_8BIT),
 	.is_bam = true,
+<<<<<<< HEAD
 	.is_qpic = true,
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.dev_cmd_reg_start = 0x0,
 };
 
 static const struct qcom_nandc_props ipq8074_nandc_props = {
 	.ecc_modes = (ECC_BCH_4BIT | ECC_BCH_8BIT),
 	.is_bam = true,
+<<<<<<< HEAD
 	.is_qpic = true,
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.dev_cmd_reg_start = 0x7000,
 };
 

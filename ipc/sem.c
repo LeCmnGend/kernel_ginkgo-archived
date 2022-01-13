@@ -265,7 +265,11 @@ static void sem_rcu_free(struct rcu_head *head)
 	struct kern_ipc_perm *p = container_of(head, struct kern_ipc_perm, rcu);
 	struct sem_array *sma = container_of(p, struct sem_array, sem_perm);
 
+<<<<<<< HEAD
 	security_sem_free(&sma->sem_perm);
+=======
+	security_sem_free(sma);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	kvfree(sma);
 }
 
@@ -495,7 +499,11 @@ static int newary(struct ipc_namespace *ns, struct ipc_params *params)
 	sma->sem_perm.key = key;
 
 	sma->sem_perm.security = NULL;
+<<<<<<< HEAD
 	retval = security_sem_alloc(&sma->sem_perm);
+=======
+	retval = security_sem_alloc(sma);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (retval) {
 		kvfree(sma);
 		return retval;
@@ -534,7 +542,14 @@ static int newary(struct ipc_namespace *ns, struct ipc_params *params)
  */
 static inline int sem_security(struct kern_ipc_perm *ipcp, int semflg)
 {
+<<<<<<< HEAD
 	return security_sem_associate(ipcp, semflg);
+=======
+	struct sem_array *sma;
+
+	sma = container_of(ipcp, struct sem_array, sem_perm);
+	return security_sem_associate(sma, semflg);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /*
@@ -1205,7 +1220,11 @@ static int semctl_stat(struct ipc_namespace *ns, int semid,
 	if (ipcperms(ns, &sma->sem_perm, S_IRUGO))
 		goto out_unlock;
 
+<<<<<<< HEAD
 	err = security_sem_semctl(&sma->sem_perm, cmd);
+=======
+	err = security_sem_semctl(sma, cmd);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (err)
 		goto out_unlock;
 
@@ -1286,7 +1305,11 @@ static int semctl_setval(struct ipc_namespace *ns, int semid, int semnum,
 		return -EACCES;
 	}
 
+<<<<<<< HEAD
 	err = security_sem_semctl(&sma->sem_perm, SETVAL);
+=======
+	err = security_sem_semctl(sma, SETVAL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (err) {
 		rcu_read_unlock();
 		return -EACCES;
@@ -1340,7 +1363,11 @@ static int semctl_main(struct ipc_namespace *ns, int semid, int semnum,
 	if (ipcperms(ns, &sma->sem_perm, cmd == SETALL ? S_IWUGO : S_IRUGO))
 		goto out_rcu_wakeup;
 
+<<<<<<< HEAD
 	err = security_sem_semctl(&sma->sem_perm, cmd);
+=======
+	err = security_sem_semctl(sma, cmd);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (err)
 		goto out_rcu_wakeup;
 
@@ -1531,7 +1558,11 @@ static int semctl_down(struct ipc_namespace *ns, int semid,
 
 	sma = container_of(ipcp, struct sem_array, sem_perm);
 
+<<<<<<< HEAD
 	err = security_sem_semctl(&sma->sem_perm, cmd);
+=======
+	err = security_sem_semctl(sma, cmd);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (err)
 		goto out_unlock1;
 
@@ -1948,7 +1979,11 @@ static long do_semtimedop(int semid, struct sembuf __user *tsops,
 		goto out_free;
 	}
 
+<<<<<<< HEAD
 	error = security_sem_semop(&sma->sem_perm, sops, nsops, alter);
+=======
+	error = security_sem_semop(sma, sops, nsops, alter);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (error) {
 		rcu_read_unlock();
 		goto out_free;

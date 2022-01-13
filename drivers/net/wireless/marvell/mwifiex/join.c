@@ -877,8 +877,11 @@ mwifiex_cmd_802_11_ad_hoc_start(struct mwifiex_private *priv,
 
 	memset(adhoc_start->ssid, 0, IEEE80211_MAX_SSID_LEN);
 
+<<<<<<< HEAD
 	if (req_ssid->ssid_len > IEEE80211_MAX_SSID_LEN)
 		req_ssid->ssid_len = IEEE80211_MAX_SSID_LEN;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	memcpy(adhoc_start->ssid, req_ssid->ssid, req_ssid->ssid_len);
 
 	mwifiex_dbg(adapter, INFO, "info: ADHOC_S_CMD: SSID = %s\n",

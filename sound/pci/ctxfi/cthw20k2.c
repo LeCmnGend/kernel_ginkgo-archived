@@ -995,7 +995,11 @@ static int daio_mgr_dao_init(void *blk, unsigned int idx, unsigned int conf)
 
 	if (idx < 4) {
 		/* S/PDIF output */
+<<<<<<< HEAD
 		switch ((conf & 0xf)) {
+=======
+		switch ((conf & 0x7)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		case 1:
 			set_field(&ctl->txctl[idx], ATXCTL_NUC, 0);
 			break;

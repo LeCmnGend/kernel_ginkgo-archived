@@ -1754,7 +1754,11 @@ void fc_lport_flogi_resp(struct fc_seq *sp, struct fc_frame *fp,
 
 	if (mfs < FC_SP_MIN_MAX_PAYLOAD || mfs > FC_SP_MAX_MAX_PAYLOAD) {
 		FC_LPORT_DBG(lport, "FLOGI bad mfs:%hu response, "
+<<<<<<< HEAD
 			     "lport->mfs:%u\n", mfs, lport->mfs);
+=======
+			     "lport->mfs:%hu\n", mfs, lport->mfs);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		fc_lport_error(lport, fp);
 		goto out;
 	}

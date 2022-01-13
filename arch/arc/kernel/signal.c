@@ -64,6 +64,7 @@ struct rt_sigframe {
 	unsigned int sigret_magic;
 };
 
+<<<<<<< HEAD
 static int save_arcv2_regs(struct sigcontext *mctx, struct pt_regs *regs)
 {
 	int err = 0;
@@ -99,6 +100,8 @@ static int restore_arcv2_regs(struct sigcontext *mctx, struct pt_regs *regs)
 	return err;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static int
 stash_usr_regs(struct rt_sigframe __user *sf, struct pt_regs *regs,
 	       sigset_t *set)
@@ -132,6 +135,7 @@ stash_usr_regs(struct rt_sigframe __user *sf, struct pt_regs *regs,
 
 	err = __copy_to_user(&(sf->uc.uc_mcontext.regs.scratch), &uregs.scratch,
 			     sizeof(sf->uc.uc_mcontext.regs.scratch));
+<<<<<<< HEAD
 
 	if (is_isa_arcv2())
 		err |= save_arcv2_regs(&(sf->uc.uc_mcontext), regs);
@@ -139,6 +143,11 @@ stash_usr_regs(struct rt_sigframe __user *sf, struct pt_regs *regs,
 	err |= __copy_to_user(&sf->uc.uc_sigmask, set, sizeof(sigset_t));
 
 	return err ? -EFAULT : 0;
+=======
+	err |= __copy_to_user(&sf->uc.uc_sigmask, set, sizeof(sigset_t));
+
+	return err;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static int restore_usr_regs(struct pt_regs *regs, struct rt_sigframe __user *sf)
@@ -151,12 +160,17 @@ static int restore_usr_regs(struct pt_regs *regs, struct rt_sigframe __user *sf)
 	err |= __copy_from_user(&uregs.scratch,
 				&(sf->uc.uc_mcontext.regs.scratch),
 				sizeof(sf->uc.uc_mcontext.regs.scratch));
+<<<<<<< HEAD
 
 	if (is_isa_arcv2())
 		err |= restore_arcv2_regs(&(sf->uc.uc_mcontext), regs);
 
 	if (err)
 		return -EFAULT;
+=======
+	if (err)
+		return err;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	set_current_blocked(&set);
 	regs->bta	= uregs.scratch.bta;

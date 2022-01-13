@@ -107,12 +107,20 @@ void __init call_function_init(void)
  * previous function call. For multi-cpu calls its even more interesting
  * as we'll have to ensure no other cpu is observing our csd.
  */
+<<<<<<< HEAD
 static __always_inline void csd_lock_wait(struct __call_single_data *csd)
+=======
+static __always_inline void csd_lock_wait(call_single_data_t *csd)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	smp_cond_load_acquire(&csd->flags, !(VAL & CSD_FLAG_LOCK));
 }
 
+<<<<<<< HEAD
 static __always_inline void csd_lock(struct __call_single_data *csd)
+=======
+static __always_inline void csd_lock(call_single_data_t *csd)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	csd_lock_wait(csd);
 	csd->flags |= CSD_FLAG_LOCK;
@@ -125,7 +133,11 @@ static __always_inline void csd_lock(struct __call_single_data *csd)
 	smp_wmb();
 }
 
+<<<<<<< HEAD
 static __always_inline void csd_unlock(struct __call_single_data *csd)
+=======
+static __always_inline void csd_unlock(call_single_data_t *csd)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	WARN_ON(!(csd->flags & CSD_FLAG_LOCK));
 
@@ -137,14 +149,21 @@ static __always_inline void csd_unlock(struct __call_single_data *csd)
 
 static DEFINE_PER_CPU_SHARED_ALIGNED(call_single_data_t, csd_data);
 
+<<<<<<< HEAD
 extern void send_call_function_single_ipi(int cpu);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /*
  * Insert a previously allocated call_single_data_t element
  * for execution on the given CPU. data must already have
  * ->func, ->info, and ->flags set.
  */
+<<<<<<< HEAD
 static int generic_exec_single(int cpu, struct __call_single_data *csd,
+=======
+static int generic_exec_single(int cpu, call_single_data_t *csd,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			       smp_call_func_t func, void *info)
 {
 	if (cpu == smp_processor_id()) {
@@ -182,7 +201,11 @@ static int generic_exec_single(int cpu, struct __call_single_data *csd,
 	 * equipped to do the right thing...
 	 */
 	if (llist_add(&csd->llist, &per_cpu(call_single_queue, cpu)))
+<<<<<<< HEAD
 		send_call_function_single_ipi(cpu);
+=======
+		arch_send_call_function_single_ipi(cpu);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return 0;
 }
@@ -263,6 +286,7 @@ static void flush_smp_call_function_queue(bool warn_cpu_offline)
 	irq_work_run();
 }
 
+<<<<<<< HEAD
 void flush_smp_call_function_from_idle(void)
 {
 	unsigned long flags;
@@ -275,6 +299,8 @@ void flush_smp_call_function_from_idle(void)
 	local_irq_restore(flags);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /*
  * smp_call_function_single - Run a function on a specific CPU
  * @func: The function to run. This must be fast and non-blocking.
@@ -341,7 +367,11 @@ EXPORT_SYMBOL(smp_call_function_single);
  * NOTE: Be careful, there is unfortunately no current debugging facility to
  * validate the correctness of this serialization.
  */
+<<<<<<< HEAD
 int smp_call_function_single_async(int cpu, struct __call_single_data *csd)
+=======
+int smp_call_function_single_async(int cpu, call_single_data_t *csd)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	int err = 0;
 

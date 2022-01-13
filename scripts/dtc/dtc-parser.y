@@ -63,7 +63,10 @@ extern bool treesource_error;
 %token DT_BITS
 %token DT_DEL_PROP
 %token DT_DEL_NODE
+<<<<<<< HEAD
 %token DT_OMIT_NO_REF
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 %token <propnodename> DT_PROPNODENAME
 %token <integer> DT_LITERAL
 %token <integer> DT_CHAR_LITERAL
@@ -167,6 +170,7 @@ devicetree:
 		{
 			$$ = merge_nodes($1, $3);
 		}
+<<<<<<< HEAD
 	| DT_REF nodedef
 		{
 			/*
@@ -178,6 +182,9 @@ devicetree:
 				ERROR(&@2, "Label or path %s not found", $1);
 			$$ = add_orphan_node(name_node(build_node(NULL, NULL), ""), $2, $1);
 		}
+=======
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	| devicetree DT_LABEL DT_REF nodedef
 		{
 			struct node *target = get_node_by_ref($1, $3);
@@ -191,6 +198,7 @@ devicetree:
 		}
 	| devicetree DT_REF nodedef
 		{
+<<<<<<< HEAD
 			/*
 			 * We rely on the rule being always:
 			 *   versioninfo plugindecl memreserves devicetree
@@ -221,11 +229,26 @@ devicetree:
 			$$ = $1;
 		}
 	| devicetree DT_OMIT_NO_REF DT_REF ';'
+=======
+			struct node *target = get_node_by_ref($1, $2);
+
+			if (target)
+				merge_nodes(target, $3);
+			else
+				ERROR(&@2, "Label or path %s not found", $2);
+			$$ = $1;
+		}
+	| devicetree DT_DEL_NODE DT_REF ';'
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		{
 			struct node *target = get_node_by_ref($1, $3);
 
 			if (target)
+<<<<<<< HEAD
 				omit_node_if_unused(target);
+=======
+				delete_node(target);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			else
 				ERROR(&@3, "Label or path %s not found", $3);
 
@@ -536,10 +559,13 @@ subnode:
 		{
 			$$ = name_node(build_node_delete(), $2);
 		}
+<<<<<<< HEAD
 	| DT_OMIT_NO_REF subnode
 		{
 			$$ = omit_node_if_unused($2);
 		}
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	| DT_LABEL subnode
 		{
 			add_label(&$2->labels, $1);

@@ -343,6 +343,11 @@ void wb_domain_exit(struct wb_domain *dom);
 extern struct wb_domain global_wb_domain;
 
 /* These are exported to sysctl. */
+<<<<<<< HEAD
+=======
+extern int dirty_background_ratio;
+extern unsigned long dirty_background_bytes;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 extern int vm_dirty_ratio;
 extern unsigned long vm_dirty_bytes;
 extern unsigned int dirty_writeback_interval;
@@ -352,6 +357,15 @@ extern int vm_highmem_is_dirtyable;
 extern int block_dump;
 extern int laptop_mode;
 
+<<<<<<< HEAD
+=======
+extern int dirty_background_ratio_handler(struct ctl_table *table, int write,
+		void __user *buffer, size_t *lenp,
+		loff_t *ppos);
+extern int dirty_background_bytes_handler(struct ctl_table *table, int write,
+		void __user *buffer, size_t *lenp,
+		loff_t *ppos);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 extern int dirty_ratio_handler(struct ctl_table *table, int write,
 		void __user *buffer, size_t *lenp,
 		loff_t *ppos);

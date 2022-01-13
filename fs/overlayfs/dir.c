@@ -853,8 +853,13 @@ static char *ovl_get_redirect(struct dentry *dentry, bool samedir)
 
 		buflen -= thislen;
 		memcpy(&buf[buflen], name, thislen);
+<<<<<<< HEAD
 		spin_unlock(&d->d_lock);
 		tmp = dget_parent(d);
+=======
+		tmp = dget_dlock(d->d_parent);
+		spin_unlock(&d->d_lock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		dput(d);
 		d = tmp;

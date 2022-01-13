@@ -16,10 +16,14 @@
 #ifndef __ASM_PERCPU_H
 #define __ASM_PERCPU_H
 
+<<<<<<< HEAD
 #include <linux/preempt.h>
 
 #include <asm/alternative.h>
 #include <asm/cmpxchg.h>
+=======
+#include <asm/alternative.h>
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <asm/stack_pointer.h>
 
 static inline void set_my_cpu_offset(unsigned long off)
@@ -203,6 +207,7 @@ static inline unsigned long __percpu_xchg(void *ptr, unsigned long val,
 	return ret;
 }
 
+<<<<<<< HEAD
 /* this_cpu_cmpxchg */
 #define _protect_cmpxchg_local(pcp, o, n)			\
 ({								\
@@ -229,6 +234,8 @@ static inline unsigned long __percpu_xchg(void *ptr, unsigned long val,
 	__ret;								\
 })
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define _percpu_read(pcp)						\
 ({									\
 	typeof(pcp) __retval;						\

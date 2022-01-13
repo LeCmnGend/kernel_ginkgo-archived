@@ -133,7 +133,11 @@
 		compatible = "maxim,max77686";
 		reg = <0x09>;
 		interrupt-parent = <&gpx3>;
+<<<<<<< HEAD
 		interrupts = <2 IRQ_TYPE_LEVEL_LOW>;
+=======
+		interrupts = <2 IRQ_TYPE_NONE>;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		pinctrl-names = "default";
 		pinctrl-0 = <&max77686_irq>;
 		wakeup-source;

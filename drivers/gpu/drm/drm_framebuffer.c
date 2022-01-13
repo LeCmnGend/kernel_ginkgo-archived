@@ -92,21 +92,36 @@ int drm_framebuffer_check_src_coords(uint32_t src_x, uint32_t src_y,
 /**
  * drm_mode_addfb - add an FB to the graphics configuration
  * @dev: drm device for the ioctl
+<<<<<<< HEAD
  * @data: data pointer for the ioctl
  * @file_priv: drm file for the ioctl call
+=======
+ * @or: pointer to request structure
+ * @file_priv: drm file
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * Add a new FB to the specified CRTC, given a user request. This is the
  * original addfb ioctl which only supported RGB formats.
  *
+<<<<<<< HEAD
  * Called by the user via ioctl.
+=======
+ * Called by the user via ioctl, or by an in-kernel client.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * Returns:
  * Zero on success, negative errno on failure.
  */
+<<<<<<< HEAD
 int drm_mode_addfb(struct drm_device *dev,
 		   void *data, struct drm_file *file_priv)
 {
 	struct drm_mode_fb_cmd *or = data;
+=======
+int drm_mode_addfb(struct drm_device *dev, struct drm_mode_fb_cmd *or,
+		   struct drm_file *file_priv)
+{
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct drm_mode_fb_cmd2 r = {};
 	int ret;
 
@@ -131,6 +146,15 @@ int drm_mode_addfb(struct drm_device *dev,
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
+int drm_mode_addfb_ioctl(struct drm_device *dev,
+			 void *data, struct drm_file *file_priv)
+{
+	return drm_mode_addfb(dev, data, file_priv);
+}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static int fb_plane_width(int width,
 			  const struct drm_format_info *format, int plane)
 {
@@ -364,6 +388,7 @@ static void drm_mode_rmfb_work_fn(struct work_struct *w)
 
 /**
  * drm_mode_rmfb - remove an FB from the configuration
+<<<<<<< HEAD
  * @dev: drm device for the ioctl
  * @data: data pointer for the ioctl
  * @file_priv: drm file for the ioctl call
@@ -371,22 +396,43 @@ static void drm_mode_rmfb_work_fn(struct work_struct *w)
  * Remove the FB specified by the user.
  *
  * Called by the user via ioctl.
+=======
+ * @dev: drm device
+ * @fb_id: id of framebuffer to remove
+ * @file_priv: drm file
+ *
+ * Remove the specified FB.
+ *
+ * Called by the user via ioctl, or by an in-kernel client.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * Returns:
  * Zero on success, negative errno on failure.
  */
+<<<<<<< HEAD
 int drm_mode_rmfb(struct drm_device *dev,
 		   void *data, struct drm_file *file_priv)
 {
 	struct drm_framebuffer *fb = NULL;
 	struct drm_framebuffer *fbl = NULL;
 	uint32_t *id = data;
+=======
+int drm_mode_rmfb(struct drm_device *dev, u32 fb_id,
+		  struct drm_file *file_priv)
+{
+	struct drm_framebuffer *fb = NULL;
+	struct drm_framebuffer *fbl = NULL;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int found = 0;
 
 	if (!drm_core_check_feature(dev, DRIVER_MODESET))
 		return -EINVAL;
 
+<<<<<<< HEAD
 	fb = drm_framebuffer_lookup(dev, file_priv, *id);
+=======
+	fb = drm_framebuffer_lookup(dev, file_priv, fb_id);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!fb)
 		return -ENOENT;
 
@@ -432,6 +478,17 @@ fail_unref:
 	return -ENOENT;
 }
 
+<<<<<<< HEAD
+=======
+int drm_mode_rmfb_ioctl(struct drm_device *dev,
+			void *data, struct drm_file *file_priv)
+{
+	uint32_t *fb_id = data;
+
+	return drm_mode_rmfb(dev, *fb_id, file_priv);
+}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /**
  * drm_mode_getfb - get FB info
  * @dev: drm device for the ioctl
@@ -673,6 +730,10 @@ int drm_framebuffer_init(struct drm_device *dev, struct drm_framebuffer *fb,
 	INIT_LIST_HEAD(&fb->filp_head);
 
 	fb->funcs = funcs;
+<<<<<<< HEAD
+=======
+	strlcpy(fb->comm, current->comm, TASK_COMM_LEN);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	ret = __drm_mode_object_add(dev, &fb->base, DRM_MODE_OBJECT_FB,
 				    false, drm_framebuffer_free);

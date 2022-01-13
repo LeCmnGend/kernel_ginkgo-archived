@@ -664,8 +664,12 @@ next_wqe:
 	}
 
 	if (unlikely(qp_type(qp) == IB_QPT_RC &&
+<<<<<<< HEAD
 		psn_compare(qp->req.psn, (qp->comp.psn +
 				RXE_MAX_UNACKED_PSNS)) > 0)) {
+=======
+		     qp->req.psn > (qp->comp.psn + RXE_MAX_UNACKED_PSNS))) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		qp->req.wait_psn = 1;
 		goto exit;
 	}

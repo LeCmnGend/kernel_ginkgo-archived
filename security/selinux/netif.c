@@ -145,8 +145,14 @@ static int sel_netif_sid_slow(struct net *ns, int ifindex, u32 *sid)
 
 	dev = dev_get_by_index(ns, ifindex);
 	if (unlikely(dev == NULL)) {
+<<<<<<< HEAD
 		pr_warn("SELinux: failure in %s(), invalid network interface (%d)\n",
 			__func__, ifindex);
+=======
+		printk(KERN_WARNING
+		       "SELinux: failure in sel_netif_sid_slow(),"
+		       " invalid network interface (%d)\n", ifindex);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return -ENOENT;
 	}
 
@@ -176,8 +182,15 @@ out:
 	spin_unlock_bh(&sel_netif_lock);
 	dev_put(dev);
 	if (unlikely(ret)) {
+<<<<<<< HEAD
 		pr_warn("SELinux: failure in %s(), unable to determine network interface label (%d)\n",
 			__func__, ifindex);
+=======
+		printk(KERN_WARNING
+		       "SELinux: failure in sel_netif_sid_slow(),"
+		       " unable to determine network interface label (%d)\n",
+		       ifindex);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		kfree(new);
 	}
 	return ret;

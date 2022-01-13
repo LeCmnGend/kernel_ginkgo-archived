@@ -657,6 +657,11 @@ static int set_serial_info(struct gb_tty *gb_tty,
 		if ((close_delay != gb_tty->port.close_delay) ||
 		    (closing_wait != gb_tty->port.closing_wait))
 			retval = -EPERM;
+<<<<<<< HEAD
+=======
+		else
+			retval = -EOPNOTSUPP;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else {
 		gb_tty->port.close_delay = close_delay;
 		gb_tty->port.closing_wait = closing_wait;

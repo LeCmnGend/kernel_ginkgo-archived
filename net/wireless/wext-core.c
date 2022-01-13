@@ -898,9 +898,14 @@ out:
 int call_commit_handler(struct net_device *dev)
 {
 #ifdef CONFIG_WIRELESS_EXT
+<<<<<<< HEAD
 	if (netif_running(dev) &&
 	    dev->wireless_handlers &&
 	    dev->wireless_handlers->standard[0])
+=======
+	if ((netif_running(dev)) &&
+	   (dev->wireless_handlers->standard[0] != NULL))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		/* Call the commit handler on the driver */
 		return dev->wireless_handlers->standard[0](dev, NULL,
 							   NULL, NULL);

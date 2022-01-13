@@ -342,11 +342,19 @@ int probe_file__del_events(int fd, struct strfilter *filter)
 
 	ret = probe_file__get_events(fd, filter, namelist);
 	if (ret < 0)
+<<<<<<< HEAD
 		goto out;
 
 	ret = probe_file__del_strlist(fd, namelist);
 out:
 	strlist__delete(namelist);
+=======
+		return ret;
+
+	ret = probe_file__del_strlist(fd, namelist);
+	strlist__delete(namelist);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return ret;
 }
 

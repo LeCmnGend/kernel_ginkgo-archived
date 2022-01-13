@@ -2125,7 +2125,11 @@ static int sunxi_nand_chip_init(struct device *dev, struct sunxi_nfc *nfc,
 	ret = mtd_device_register(mtd, NULL, 0);
 	if (ret) {
 		dev_err(dev, "failed to register mtd device: %d\n", ret);
+<<<<<<< HEAD
 		nand_cleanup(nand);
+=======
+		nand_release(nand);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return ret;
 	}
 

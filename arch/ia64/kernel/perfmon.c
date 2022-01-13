@@ -2278,7 +2278,11 @@ pfm_smpl_buffer_alloc(struct task_struct *task, struct file *filp, pfm_context_t
 	DPRINT(("smpl_buf @%p\n", smpl_buf));
 
 	/* allocate vma */
+<<<<<<< HEAD
 	vma = vm_area_alloc();
+=======
+	vma = kmem_cache_zalloc(vm_area_cachep, GFP_KERNEL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!vma) {
 		DPRINT(("Cannot allocate vma\n"));
 		goto error_kmem;
@@ -2346,7 +2350,11 @@ pfm_smpl_buffer_alloc(struct task_struct *task, struct file *filp, pfm_context_t
 	return 0;
 
 error:
+<<<<<<< HEAD
 	vm_area_free(vma);
+=======
+	kmem_cache_free(vm_area_cachep, vma);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 error_kmem:
 	pfm_rvfree(smpl_buf, size);
 

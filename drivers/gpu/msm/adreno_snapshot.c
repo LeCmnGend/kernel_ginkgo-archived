@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2012-2021, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2012-2020, The Linux Foundation. All rights reserved.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -745,7 +749,11 @@ static void setup_fault_process(struct kgsl_device *device,
 	if (kgsl_mmu_is_perprocess(&device->mmu)) {
 		struct kgsl_process_private *tmp;
 
+<<<<<<< HEAD
 		spin_lock(&kgsl_driver.proclist_lock);
+=======
+		mutex_lock(&kgsl_driver.process_mutex);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		list_for_each_entry(tmp, &kgsl_driver.process_list, list) {
 			u64 pt_ttbr0;
 
@@ -756,7 +764,11 @@ static void setup_fault_process(struct kgsl_device *device,
 				break;
 			}
 		}
+<<<<<<< HEAD
 		spin_unlock(&kgsl_driver.proclist_lock);
+=======
+		mutex_unlock(&kgsl_driver.process_mutex);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 done:
 	snapshot->process = process;

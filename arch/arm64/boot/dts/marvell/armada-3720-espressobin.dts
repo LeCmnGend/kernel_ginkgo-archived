@@ -52,10 +52,13 @@
 	model = "Globalscale Marvell ESPRESSOBin Board";
 	compatible = "globalscale,espressobin", "marvell,armada3720", "marvell,armada3710";
 
+<<<<<<< HEAD
 	aliases {
 		ethernet0 = &eth0;
 	};
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	chosen {
 		stdout-path = "serial0:115200n8";
 	};

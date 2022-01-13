@@ -942,11 +942,16 @@ static int emmaprp_probe(struct platform_device *pdev)
 	platform_set_drvdata(pdev, pcdev);
 
 	irq = platform_get_irq(pdev, 0);
+<<<<<<< HEAD
 	if (irq < 0) {
 		ret = irq;
 		goto rel_vdev;
 	}
 
+=======
+	if (irq < 0)
+		return irq;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ret = devm_request_irq(&pdev->dev, irq, emmaprp_irq, 0,
 			       dev_name(&pdev->dev), pcdev);
 	if (ret)

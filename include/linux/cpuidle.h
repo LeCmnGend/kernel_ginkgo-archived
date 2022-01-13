@@ -277,6 +277,7 @@ static inline int cpuidle_register_governor(struct cpuidle_governor *gov)
 	__ret ? -1 : idx;					\
 })
 
+<<<<<<< HEAD
 #ifdef CONFIG_SMP
 void cpuidle_set_idle_cpu(unsigned int cpu);
 void cpuidle_clear_idle_cpu(unsigned int cpu);
@@ -285,4 +286,6 @@ static inline void cpuidle_set_idle_cpu(unsigned int cpu) { }
 static inline void cpuidle_clear_idle_cpu(unsigned int cpu) { }
 #endif
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif /* _LINUX_CPUIDLE_H */

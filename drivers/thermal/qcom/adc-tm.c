@@ -44,6 +44,7 @@ static int adc_tm_set_trip_temp(void *data, int low_temp, int high_temp)
 	return 0;
 }
 
+<<<<<<< HEAD
 static int adc_tm_set_emul_temp(void *data, int temp)
 {
 	struct adc_tm_sensor *s = data;
@@ -55,6 +56,8 @@ static int adc_tm_set_emul_temp(void *data, int temp)
 	return 0;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static int adc_tm_register_interrupts(struct adc_tm_chip *adc_tm)
 {
 	if (adc_tm->ops->interrupts_reg)
@@ -74,7 +77,10 @@ static int adc_tm_init(struct adc_tm_chip *adc_tm, uint32_t dt_chans)
 static struct thermal_zone_of_device_ops adc_tm_ops = {
 	.get_temp = adc_tm_get_temp,
 	.set_trips = adc_tm_set_trip_temp,
+<<<<<<< HEAD
 	.set_emul_temp = adc_tm_set_emul_temp,
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 static struct thermal_zone_of_device_ops adc_tm_ops_iio = {
@@ -90,7 +96,10 @@ static int adc_tm_register_tzd(struct adc_tm_chip *adc_tm, int dt_chan_num,
 	for (i = 0; i < dt_chan_num; i++) {
 		adc_tm->sensor[i].chip = adc_tm;
 		if (!adc_tm->sensor[i].non_thermal) {
+<<<<<<< HEAD
 			adc_tm->sensor[i].emul_temperature = 0;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			if (set_trips)
 				tzd = devm_thermal_zone_of_sensor_register(
 					adc_tm->dev, adc_tm->sensor[i].adc_ch,
@@ -303,7 +312,11 @@ static int adc_tm_get_dt_data(struct platform_device *pdev,
 
 		if (adc_tm->sensor[idx].non_thermal) {
 			adc_tm->sensor[idx].req_wq = alloc_workqueue(
+<<<<<<< HEAD
 				"qpnp_adc_notify_wq", 0, 0);
+=======
+				"qpnp_adc_notify_wq", WQ_HIGHPRI, 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			if (!adc_tm->sensor[idx].req_wq) {
 				pr_err("Requesting priority wq failed\n");
 				return -ENOMEM;

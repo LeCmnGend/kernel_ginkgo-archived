@@ -83,9 +83,12 @@ void hci_conn_del_sysfs(struct hci_conn *conn)
 static void bt_host_release(struct device *dev)
 {
 	struct hci_dev *hdev = to_hci_dev(dev);
+<<<<<<< HEAD
 
 	if (hci_dev_test_flag(hdev, HCI_UNREGISTER))
 		hci_cleanup_dev(hdev);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	kfree(hdev);
 	module_put(THIS_MODULE);
 }

@@ -26,8 +26,13 @@ static bool is_rtc_hctosys(struct rtc_device *rtc)
 	int size;
 	char name[NAME_SIZE];
 
+<<<<<<< HEAD
 	size = snprintf(name, NAME_SIZE, "rtc%d", rtc->id);
 	if (size >= NAME_SIZE)
+=======
+	size = scnprintf(name, NAME_SIZE, "rtc%d", rtc->id);
+	if (size > NAME_SIZE)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return false;
 
 	return !strncmp(name, CONFIG_RTC_HCTOSYS_DEVICE, NAME_SIZE);

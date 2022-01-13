@@ -272,7 +272,10 @@ static bool disable_migrate;
 static void move_to_next_cpu(void)
 {
 	struct cpumask *current_mask = &save_cpumask;
+<<<<<<< HEAD
 	struct trace_array *tr = hwlat_trace;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int next_cpu;
 
 	if (disable_migrate)
@@ -286,7 +289,11 @@ static void move_to_next_cpu(void)
 		goto disable;
 
 	get_online_cpus();
+<<<<<<< HEAD
 	cpumask_and(current_mask, cpu_online_mask, tr->tracing_cpumask);
+=======
+	cpumask_and(current_mask, cpu_online_mask, tracing_buffer_mask);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	next_cpu = cpumask_next(smp_processor_id(), current_mask);
 	put_online_cpus();
 
@@ -360,7 +367,11 @@ static int start_kthread(struct trace_array *tr)
 	/* Just pick the first CPU on first iteration */
 	current_mask = &save_cpumask;
 	get_online_cpus();
+<<<<<<< HEAD
 	cpumask_and(current_mask, cpu_online_mask, tr->tracing_cpumask);
+=======
+	cpumask_and(current_mask, cpu_online_mask, tracing_buffer_mask);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	put_online_cpus();
 	next_cpu = cpumask_first(current_mask);
 

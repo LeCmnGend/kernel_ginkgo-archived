@@ -4,11 +4,16 @@
 
 #if defined(CONFIG_AS_LSE) && defined(CONFIG_ARM64_LSE_ATOMICS)
 
+<<<<<<< HEAD
 #include <linux/compiler_types.h>
 #include <linux/export.h>
 #include <linux/stringify.h>
 #include <asm/alternative.h>
 #include <asm/cpucaps.h>
+=======
+#include <linux/stringify.h>
+#include <asm/alternative.h>
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #ifdef __ASSEMBLER__
 

@@ -522,7 +522,11 @@ ath5k_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
 		}
 		break;
 	case DISABLE_KEY:
+<<<<<<< HEAD
 		ath_key_delete(common, key->hw_key_idx);
+=======
+		ath_key_delete(common, key);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		break;
 	default:
 		ret = -EINVAL;

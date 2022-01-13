@@ -175,7 +175,11 @@ int rxe_mem_init_user(struct rxe_dev *rxe, struct rxe_pd *pd, u64 start,
 	if (IS_ERR(umem)) {
 		pr_warn("err %d from rxe_umem_get\n",
 			(int)PTR_ERR(umem));
+<<<<<<< HEAD
 		err = PTR_ERR(umem);
+=======
+		err = -EINVAL;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto err1;
 	}
 
@@ -203,7 +207,10 @@ int rxe_mem_init_user(struct rxe_dev *rxe, struct rxe_pd *pd, u64 start,
 			vaddr = page_address(sg_page(sg));
 			if (!vaddr) {
 				pr_warn("null vaddr\n");
+<<<<<<< HEAD
 				ib_umem_release(umem);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				err = -ENOMEM;
 				goto err1;
 			}

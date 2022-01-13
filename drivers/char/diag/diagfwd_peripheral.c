@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2015-2021, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2015-2019, The Linux Foundation. All rights reserved.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -1354,14 +1358,18 @@ int diagfwd_channel_open(struct diagfwd_info *fwd_info)
 
 int diagfwd_channel_close(struct diagfwd_info *fwd_info)
 {
+<<<<<<< HEAD
 	struct diag_rpmsg_info *rpmsg_info = NULL;
 	struct diag_socket_info *socket_info = NULL;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!fwd_info)
 		return -EIO;
 
 	mutex_lock(&driver->diagfwd_channel_mutex[fwd_info->peripheral]);
 	fwd_info->ch_open = 0;
+<<<<<<< HEAD
 	rpmsg_info = diag_get_rpmsg_info_ptr(fwd_info->type,
 						fwd_info->peripheral);
 	socket_info = diag_get_socket_info_ptr(fwd_info->type,
@@ -1374,6 +1382,8 @@ int diagfwd_channel_close(struct diagfwd_info *fwd_info)
 		return 0;
 	}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (fwd_info && fwd_info->c_ops && fwd_info->c_ops->close)
 		fwd_info->c_ops->close(fwd_info);
 
@@ -1464,7 +1474,10 @@ void diagfwd_write_done(uint8_t peripheral, uint8_t type, int buf_num)
 			DIAG_LOG(DIAG_DEBUG_PERIPHERALS,
 			"Buffer 1 for core PD is marked free, p: %d, t: %d, buf_num: %d\n",
 				fwd_info->peripheral, fwd_info->type, buf_num);
+<<<<<<< HEAD
 			rpmsg_mark_buffers_free(peripheral, type, buf_num);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 	} else if (buf_num == 2 && fwd_info->buf_2) {
 		/*
@@ -1491,7 +1504,10 @@ void diagfwd_write_done(uint8_t peripheral, uint8_t type, int buf_num)
 			DIAG_LOG(DIAG_DEBUG_PERIPHERALS,
 			"Buffer 2 for core PD is marked free, p: %d, t: %d, buf_num: %d\n",
 				fwd_info->peripheral, fwd_info->type, buf_num);
+<<<<<<< HEAD
 			rpmsg_mark_buffers_free(peripheral, type, buf_num);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 	} else if (buf_num >= 3 && (buf_num % 2)) {
 		/*
@@ -1527,7 +1543,10 @@ void diagfwd_write_done(uint8_t peripheral, uint8_t type, int buf_num)
 			DIAG_LOG(DIAG_DEBUG_PERIPHERALS,
 				"Buffer 1 for core PD is marked free, p: %d, t: %d, buf_num: %d\n",
 				fwd_info->peripheral, fwd_info->type, buf_num);
+<<<<<<< HEAD
 			rpmsg_mark_buffers_free(peripheral, type, 1);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 	} else if (buf_num >= 4 && !(buf_num % 2)) {
 		/*
@@ -1563,8 +1582,12 @@ void diagfwd_write_done(uint8_t peripheral, uint8_t type, int buf_num)
 			DIAG_LOG(DIAG_DEBUG_PERIPHERALS,
 			"Buffer 2 for core PD is marked free, p: %d, t: %d, buf_num: %d\n",
 			fwd_info->peripheral, fwd_info->type, buf_num);
+<<<<<<< HEAD
 			rpmsg_mark_buffers_free(peripheral, type, 2);
 		}
+=======
+			}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else
 		pr_err("diag: In %s, invalid buf_num %d\n", __func__, buf_num);
 

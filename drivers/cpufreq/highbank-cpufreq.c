@@ -104,6 +104,7 @@ out_put_node:
 }
 module_init(hb_cpufreq_driver_init);
 
+<<<<<<< HEAD
 static const struct of_device_id __maybe_unused hb_cpufreq_of_match[] = {
 	{ .compatible = "calxeda,highbank" },
 	{ .compatible = "calxeda,ecx-2000" },
@@ -111,6 +112,8 @@ static const struct of_device_id __maybe_unused hb_cpufreq_of_match[] = {
 };
 MODULE_DEVICE_TABLE(of, hb_cpufreq_of_match);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 MODULE_AUTHOR("Mark Langsdorf <mark.langsdorf@calxeda.com>");
 MODULE_DESCRIPTION("Calxeda Highbank cpufreq driver");
 MODULE_LICENSE("GPL");

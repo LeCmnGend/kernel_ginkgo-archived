@@ -3265,7 +3265,11 @@ int c4iw_connect(struct iw_cm_id *cm_id, struct iw_cm_conn_param *conn_param)
 		if (raddr->sin_addr.s_addr == htonl(INADDR_ANY)) {
 			err = pick_local_ipaddrs(dev, cm_id);
 			if (err)
+<<<<<<< HEAD
 				goto fail3;
+=======
+				goto fail2;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 
 		/* find a route */
@@ -3287,7 +3291,11 @@ int c4iw_connect(struct iw_cm_id *cm_id, struct iw_cm_conn_param *conn_param)
 		if (ipv6_addr_type(&raddr6->sin6_addr) == IPV6_ADDR_ANY) {
 			err = pick_local_ip6addrs(dev, cm_id);
 			if (err)
+<<<<<<< HEAD
 				goto fail3;
+=======
+				goto fail2;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 
 		/* find a route */
@@ -3492,14 +3500,22 @@ int c4iw_destroy_listen(struct iw_cm_id *cm_id)
 	    ep->com.local_addr.ss_family == AF_INET) {
 		err = cxgb4_remove_server_filter(
 			ep->com.dev->rdev.lldi.ports[0], ep->stid,
+<<<<<<< HEAD
 			ep->com.dev->rdev.lldi.rxq_ids[0], false);
+=======
+			ep->com.dev->rdev.lldi.rxq_ids[0], 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else {
 		struct sockaddr_in6 *sin6;
 		c4iw_init_wr_wait(&ep->com.wr_wait);
 		err = cxgb4_remove_server(
 				ep->com.dev->rdev.lldi.ports[0], ep->stid,
+<<<<<<< HEAD
 				ep->com.dev->rdev.lldi.rxq_ids[0],
 				ep->com.local_addr.ss_family == AF_INET6);
+=======
+				ep->com.dev->rdev.lldi.rxq_ids[0], 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (err)
 			goto done;
 		err = c4iw_wait_for_reply(&ep->com.dev->rdev, &ep->com.wr_wait,

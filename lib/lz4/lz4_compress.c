@@ -446,7 +446,11 @@ _last_literals:
 			*op++ = (BYTE)(lastRun << ML_BITS);
 		}
 
+<<<<<<< HEAD
 		LZ4_memcpy(op, anchor, lastRun);
+=======
+		memcpy(op, anchor, lastRun);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		op += lastRun;
 	}
@@ -708,7 +712,11 @@ _last_literals:
 		} else {
 			*op++ = (BYTE)(lastRunSize<<ML_BITS);
 		}
+<<<<<<< HEAD
 		LZ4_memcpy(op, anchor, lastRunSize);
+=======
+		memcpy(op, anchor, lastRunSize);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		op += lastRunSize;
 	}
 

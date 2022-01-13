@@ -821,7 +821,11 @@ struct blogic_ccb {
 	unsigned char cdblen;				/* Byte 2 */
 	unsigned char sense_datalen;			/* Byte 3 */
 	u32 datalen;					/* Bytes 4-7 */
+<<<<<<< HEAD
 	u32 data;					/* Bytes 8-11 */
+=======
+	void *data;					/* Bytes 8-11 */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	unsigned char:8;				/* Byte 12 */
 	unsigned char:8;				/* Byte 13 */
 	enum blogic_adapter_status adapter_status;	/* Byte 14 */

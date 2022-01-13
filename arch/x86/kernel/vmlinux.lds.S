@@ -357,7 +357,10 @@ SECTIONS
 	.bss : AT(ADDR(.bss) - LOAD_OFFSET) {
 		__bss_start = .;
 		*(.bss..page_aligned)
+<<<<<<< HEAD
 		. = ALIGN(PAGE_SIZE);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		*(BSS_MAIN)
 		. = ALIGN(PAGE_SIZE);
 		__bss_stop = .;

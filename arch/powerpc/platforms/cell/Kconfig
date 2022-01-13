@@ -46,7 +46,10 @@ config SPU_FS
 	tristate "SPU file system"
 	default m
 	depends on PPC_CELL
+<<<<<<< HEAD
 	depends on COREDUMP
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	select SPU_BASE
 	help
 	  The SPU file system is used to access Synergistic Processing

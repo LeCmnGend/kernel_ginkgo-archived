@@ -1123,8 +1123,12 @@ void phy_detach(struct phy_device *phydev)
 
 	phy_led_triggers_unregister(phydev);
 
+<<<<<<< HEAD
 	if (phydev->mdio.dev.driver)
 		module_put(phydev->mdio.dev.driver->owner);
+=======
+	module_put(phydev->mdio.dev.driver->owner);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* If the device had no specific driver before (i.e. - it
 	 * was using the generic driver), we unbind the device

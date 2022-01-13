@@ -336,6 +336,7 @@ static int put_pfn(unsigned long pfn, int prot)
 	return 0;
 }
 
+<<<<<<< HEAD
 static int follow_fault_pfn(struct vm_area_struct *vma, struct mm_struct *mm,
 			    unsigned long vaddr, unsigned long *pfn,
 			    bool write_fault)
@@ -362,6 +363,8 @@ static int follow_fault_pfn(struct vm_area_struct *vma, struct mm_struct *mm,
 	return ret;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static int vaddr_get_pfn(struct mm_struct *mm, unsigned long vaddr,
 			 int prot, unsigned long *pfn)
 {
@@ -403,6 +406,7 @@ static int vaddr_get_pfn(struct mm_struct *mm, unsigned long vaddr,
 
 	vaddr = untagged_addr(vaddr);
 
+<<<<<<< HEAD
 retry:
 	vma = find_vma_intersection(mm, vaddr, vaddr + 1);
 
@@ -413,6 +417,14 @@ retry:
 
 		if (!ret && !is_invalid_reserved_pfn(*pfn))
 			ret = -EFAULT;
+=======
+	vma = find_vma_intersection(mm, vaddr, vaddr + 1);
+
+	if (vma && vma->vm_flags & VM_PFNMAP) {
+		if (!follow_pfn(vma, vaddr, pfn) &&
+		    is_invalid_reserved_pfn(*pfn))
+			ret = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	up_read(&mm->mmap_sem);
@@ -631,8 +643,12 @@ static int vfio_iommu_type1_pin_pages(void *iommu_data,
 
 		ret = vfio_add_to_pfn_list(dma, iova, phys_pfn[i]);
 		if (ret) {
+<<<<<<< HEAD
 			if (put_pfn(phys_pfn[i], dma->prot) && do_accounting)
 				vfio_lock_acct(dma, -1, true);
+=======
+			vfio_unpin_page_external(dma, iova, do_accounting);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			goto pin_unwind;
 		}
 	}
@@ -1119,16 +1135,24 @@ static int vfio_bus_type(struct device *dev, void *data)
 static int vfio_iommu_replay(struct vfio_iommu *iommu,
 			     struct vfio_domain *domain)
 {
+<<<<<<< HEAD
 	struct vfio_domain *d = NULL;
+=======
+	struct vfio_domain *d;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct rb_node *n;
 	unsigned long limit = rlimit(RLIMIT_MEMLOCK) >> PAGE_SHIFT;
 	int ret;
 
 	/* Arbitrarily pick the first domain in the list for lookups */
+<<<<<<< HEAD
 	if (!list_empty(&iommu->domain_list))
 		d = list_first_entry(&iommu->domain_list,
 				     struct vfio_domain, next);
 
+=======
+	d = list_first_entry(&iommu->domain_list, struct vfio_domain, next);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	n = rb_first(&iommu->dma_list);
 
 	for (; n; n = rb_next(n)) {
@@ -1146,11 +1170,14 @@ static int vfio_iommu_replay(struct vfio_iommu *iommu,
 				phys_addr_t p;
 				dma_addr_t i;
 
+<<<<<<< HEAD
 				if (WARN_ON(!d)) { /* mapped w/o a domain?! */
 					ret = -EINVAL;
 					goto unwind;
 				}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				phys = iommu_iova_to_phys(d->domain, iova);
 
 				if (WARN_ON(!phys)) {
@@ -1180,7 +1207,11 @@ static int vfio_iommu_replay(struct vfio_iommu *iommu,
 				if (npage <= 0) {
 					WARN_ON(!npage);
 					ret = (int)npage;
+<<<<<<< HEAD
 					goto unwind;
+=======
+					return ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				}
 
 				phys = pfn << PAGE_SHIFT;
@@ -1189,6 +1220,7 @@ static int vfio_iommu_replay(struct vfio_iommu *iommu,
 
 			ret = iommu_map(domain->domain, iova, phys,
 					size, dma->prot | domain->prot);
+<<<<<<< HEAD
 			if (ret) {
 				if (!dma->iommu_mapped)
 					vfio_unpin_pages_remote(dma, iova,
@@ -1250,6 +1282,16 @@ unwind:
 	}
 
 	return ret;
+=======
+			if (ret)
+				return ret;
+
+			iova += size;
+		}
+		dma->iommu_mapped = true;
+	}
+	return 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /*

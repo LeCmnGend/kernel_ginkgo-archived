@@ -1057,13 +1057,20 @@ static int dspi_probe(struct platform_device *pdev)
 	ret = spi_register_master(master);
 	if (ret != 0) {
 		dev_err(&pdev->dev, "Problem registering DSPI master\n");
+<<<<<<< HEAD
 		goto out_release_dma;
+=======
+		goto out_free_irq;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	return ret;
 
+<<<<<<< HEAD
 out_release_dma:
 	dspi_release_dma(dspi);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 out_free_irq:
 	if (dspi->irq)
 		free_irq(dspi->irq, dspi);

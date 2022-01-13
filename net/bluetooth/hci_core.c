@@ -1278,10 +1278,15 @@ int hci_inquiry(void __user *arg)
 		 * cleared). If it is interrupted by a signal, return -EINTR.
 		 */
 		if (wait_on_bit(&hdev->flags, HCI_INQUIRY,
+<<<<<<< HEAD
 				TASK_INTERRUPTIBLE)) {
 			err = -EINTR;
 			goto done;
 		}
+=======
+				TASK_INTERRUPTIBLE))
+			return -EINTR;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	/* for unlimited number of responses we will use buffer with
@@ -1458,6 +1463,7 @@ static int hci_dev_do_open(struct hci_dev *hdev)
 	} else {
 		/* Init failed, cleanup */
 		flush_work(&hdev->tx_work);
+<<<<<<< HEAD
 
 		/* Since hci_rx_work() is possible to awake new cmd_work
 		 * it should be flushed first to avoid unexpected call of
@@ -1465,6 +1471,10 @@ static int hci_dev_do_open(struct hci_dev *hdev)
 		 */
 		flush_work(&hdev->rx_work);
 		flush_work(&hdev->cmd_work);
+=======
+		flush_work(&hdev->cmd_work);
+		flush_work(&hdev->rx_work);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		skb_queue_purge(&hdev->cmd_q);
 		skb_queue_purge(&hdev->rx_q);
@@ -3181,10 +3191,20 @@ EXPORT_SYMBOL(hci_register_dev);
 /* Unregister HCI device */
 void hci_unregister_dev(struct hci_dev *hdev)
 {
+<<<<<<< HEAD
+=======
+	int id;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	BT_DBG("%p name %s bus %d", hdev, hdev->name, hdev->bus);
 
 	hci_dev_set_flag(hdev, HCI_UNREGISTER);
 
+<<<<<<< HEAD
+=======
+	id = hdev->id;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	write_lock(&hci_dev_list_lock);
 	list_del(&hdev->list);
 	write_unlock(&hci_dev_list_lock);
@@ -3213,6 +3233,7 @@ void hci_unregister_dev(struct hci_dev *hdev)
 	}
 
 	device_del(&hdev->dev);
+<<<<<<< HEAD
 	/* Actual cleanup is deferred until hci_cleanup_dev(). */
 	hci_dev_put(hdev);
 }
@@ -3221,6 +3242,9 @@ EXPORT_SYMBOL(hci_unregister_dev);
 /* Cleanup HCI device */
 void hci_cleanup_dev(struct hci_dev *hdev)
 {
+=======
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	debugfs_remove_recursive(hdev->debugfs);
 	kfree_const(hdev->hw_info);
 	kfree_const(hdev->fw_info);
@@ -3242,8 +3266,16 @@ void hci_cleanup_dev(struct hci_dev *hdev)
 	hci_discovery_filter_clear(hdev);
 	hci_dev_unlock(hdev);
 
+<<<<<<< HEAD
 	ida_simple_remove(&hci_index_ida, hdev->id);
 }
+=======
+	hci_dev_put(hdev);
+
+	ida_simple_remove(&hci_index_ida, id);
+}
+EXPORT_SYMBOL(hci_unregister_dev);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /* Suspend HCI device */
 int hci_suspend_dev(struct hci_dev *hdev)

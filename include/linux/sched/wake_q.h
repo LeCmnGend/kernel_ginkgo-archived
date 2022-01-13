@@ -49,11 +49,14 @@ static inline void wake_q_init(struct wake_q_head *head)
 	head->count = 0;
 }
 
+<<<<<<< HEAD
 static inline bool wake_q_empty(struct wake_q_head *head)
 {
 	return head->first == WAKE_Q_TAIL;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 extern void wake_q_add(struct wake_q_head *head,
 		       struct task_struct *task);
 extern void wake_up_q(struct wake_q_head *head);

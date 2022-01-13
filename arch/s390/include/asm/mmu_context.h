@@ -44,8 +44,11 @@ static inline int init_new_context(struct task_struct *tsk,
 		mm->context.asce_limit = STACK_TOP_MAX;
 		mm->context.asce = __pa(mm->pgd) | _ASCE_TABLE_LENGTH |
 				   _ASCE_USER_BITS | _ASCE_TYPE_REGION3;
+<<<<<<< HEAD
 		/* pgd_alloc() did not account this pud */
 		mm_inc_nr_puds(mm);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		break;
 	case -PAGE_SIZE:
 		/* forked 5-level task, set new asce with new_mm->pgd */
@@ -61,7 +64,11 @@ static inline int init_new_context(struct task_struct *tsk,
 		/* forked 2-level compat task, set new asce with new mm->pgd */
 		mm->context.asce = __pa(mm->pgd) | _ASCE_TABLE_LENGTH |
 				   _ASCE_USER_BITS | _ASCE_TYPE_SEGMENT;
+<<<<<<< HEAD
 		/* pgd_alloc() did not account this pmd */
+=======
+		/* pgd_alloc() did not increase mm->nr_pmds */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		mm_inc_nr_pmds(mm);
 	}
 	crst_table_init((unsigned long *) mm->pgd, pgd_entry_type(mm));

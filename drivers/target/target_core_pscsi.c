@@ -633,9 +633,14 @@ static void pscsi_complete_cmd(struct se_cmd *cmd, u8 scsi_status,
 			unsigned char *buf;
 
 			buf = transport_kmap_data_sg(cmd);
+<<<<<<< HEAD
 			if (!buf) {
 				; /* XXX: TCM_LOGICAL_UNIT_COMMUNICATION_FAILURE */
 			}
+=======
+			if (!buf)
+				; /* XXX: TCM_LOGICAL_UNIT_COMMUNICATION_FAILURE */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 			if (cdb[0] == MODE_SENSE_10) {
 				if (!(buf[3] & 0x80))
@@ -950,6 +955,7 @@ new_bio:
 
 	return 0;
 fail:
+<<<<<<< HEAD
 	if (bio)
 		bio_put(bio);
 	while (req->bio) {
@@ -958,6 +964,8 @@ fail:
 		bio_put(bio);
 	}
 	req->biotail = NULL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return TCM_LOGICAL_UNIT_COMMUNICATION_FAILURE;
 }
 

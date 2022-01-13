@@ -82,6 +82,7 @@ static int dvb_usb_adapter_init(struct dvb_usb_device *d, short *adapter_nrs)
 			}
 		}
 
+<<<<<<< HEAD
 		ret = dvb_usb_adapter_stream_init(adap);
 		if (ret)
 			return ret;
@@ -93,6 +94,13 @@ static int dvb_usb_adapter_init(struct dvb_usb_device *d, short *adapter_nrs)
 		ret = dvb_usb_adapter_frontend_init(adap);
 		if (ret)
 			goto frontend_init_err;
+=======
+		if ((ret = dvb_usb_adapter_stream_init(adap)) ||
+			(ret = dvb_usb_adapter_dvb_init(adap, adapter_nrs)) ||
+			(ret = dvb_usb_adapter_frontend_init(adap))) {
+			return ret;
+		}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		/* use exclusive FE lock if there is multiple shared FEs */
 		if (adap->fe_adap[1].fe)
@@ -112,12 +120,15 @@ static int dvb_usb_adapter_init(struct dvb_usb_device *d, short *adapter_nrs)
 	}
 
 	return 0;
+<<<<<<< HEAD
 
 frontend_init_err:
 	dvb_usb_adapter_dvb_exit(adap);
 dvb_init_err:
 	dvb_usb_adapter_stream_exit(adap);
 	return ret;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static int dvb_usb_adapter_exit(struct dvb_usb_device *d)

@@ -83,10 +83,15 @@ int s5p_mfc_power_on(void)
 	int i, ret = 0;
 
 	ret = pm_runtime_get_sync(pm->device);
+<<<<<<< HEAD
 	if (ret < 0) {
 		pm_runtime_put_noidle(pm->device);
 		return ret;
 	}
+=======
+	if (ret < 0)
+		return ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* clock control */
 	for (i = 0; i < pm->num_clocks; i++) {

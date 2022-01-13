@@ -1310,7 +1310,10 @@ int extcon_dev_register(struct extcon_dev *edev)
 				sizeof(*edev->nh), GFP_KERNEL);
 	if (!edev->nh) {
 		ret = -ENOMEM;
+<<<<<<< HEAD
 		device_unregister(&edev->dev);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto err_dev;
 	}
 

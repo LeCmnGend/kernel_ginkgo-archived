@@ -339,6 +339,7 @@ static struct sk_buff *page_to_skb(struct virtnet_info *vi,
 	offset += hdr_padded_len;
 	p += hdr_padded_len;
 
+<<<<<<< HEAD
 	/* Copy all frame if it fits skb->head, otherwise
 	 * we let virtio_net_hdr_to_skb() and GRO pull headers as needed.
 	 */
@@ -346,6 +347,11 @@ static struct sk_buff *page_to_skb(struct virtnet_info *vi,
 		copy = len;
 	else
 		copy = ETH_HLEN;
+=======
+	copy = len;
+	if (copy > skb_tailroom(skb))
+		copy = skb_tailroom(skb);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	skb_put_data(skb, p, copy);
 
 	len -= copy;
@@ -1266,7 +1272,11 @@ static int xmit_skb(struct send_queue *sq, struct sk_buff *skb)
 	if (virtio_net_hdr_from_skb(skb, &hdr->hdr,
 				    virtio_is_little_endian(vi->vdev), false,
 				    0))
+<<<<<<< HEAD
 		return -EPROTO;
+=======
+		BUG();
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (vi->mergeable_rx_bufs)
 		hdr->num_buffers = 0;
@@ -1792,6 +1802,7 @@ static int virtnet_set_channels(struct net_device *dev,
 
 	get_online_cpus();
 	err = _virtnet_set_queues(vi, queue_pairs);
+<<<<<<< HEAD
 	if (err) {
 		put_online_cpus();
 		goto err;
@@ -1802,6 +1813,16 @@ static int virtnet_set_channels(struct net_device *dev,
 	netif_set_real_num_tx_queues(dev, queue_pairs);
 	netif_set_real_num_rx_queues(dev, queue_pairs);
  err:
+=======
+	if (!err) {
+		netif_set_real_num_tx_queues(dev, queue_pairs);
+		netif_set_real_num_rx_queues(dev, queue_pairs);
+
+		virtnet_set_affinity(vi);
+	}
+	put_online_cpus();
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return err;
 }
 
@@ -2769,11 +2790,16 @@ static __maybe_unused int virtnet_restore(struct virtio_device *vdev)
 	virtnet_set_queues(vi, vi->curr_queue_pairs);
 
 	err = virtnet_cpu_notif_add(vi);
+<<<<<<< HEAD
 	if (err) {
 		virtnet_freeze_down(vdev);
 		remove_vq_common(vi);
 		return err;
 	}
+=======
+	if (err)
+		return err;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return 0;
 }

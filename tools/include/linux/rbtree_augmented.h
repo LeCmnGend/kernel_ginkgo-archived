@@ -96,6 +96,7 @@ rbstatic const struct rb_augment_callbacks rbname = {			\
 	rbname ## _propagate, rbname ## _copy, rbname ## _rotate	\
 };
 
+<<<<<<< HEAD
 /*
  * Template for declaring augmented rbtree callbacks,
  * computing RBAUGMENTED scalar as max(RBCOMPUTE(node)) for all subtree nodes.
@@ -130,6 +131,8 @@ static inline RBTYPE RBNAME ## _compute_max(RBSTRUCT *node)		      \
 RB_DECLARE_CALLBACKS(RBSTATIC, RBNAME, RBSTRUCT, RBFIELD,		      \
 		     RBTYPE, RBAUGMENTED, RBNAME ## _compute_max)
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #define	RB_RED		0
 #define	RB_BLACK	1

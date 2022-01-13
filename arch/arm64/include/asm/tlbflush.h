@@ -21,7 +21,10 @@
 
 #ifndef __ASSEMBLY__
 
+<<<<<<< HEAD
 #include <linux/mm_types.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <linux/sched.h>
 #include <asm/cputype.h>
 #include <asm/mmu.h>
@@ -71,6 +74,7 @@
 	})
 
 /*
+<<<<<<< HEAD
  *	TLB Invalidation
  *	================
  *
@@ -138,6 +142,45 @@
  *	Finally, take a look at asm/tlb.h to see how tlb_flush() is implemented
  *	on top of these routines, since that is our interface to the mmu_gather
  *	API as used by munmap() and friends.
+=======
+ *	TLB Management
+ *	==============
+ *
+ *	The TLB specific code is expected to perform whatever tests it needs
+ *	to determine if it should invalidate the TLB for each call.  Start
+ *	addresses are inclusive and end addresses are exclusive; it is safe to
+ *	round these addresses down.
+ *
+ *	flush_tlb_all()
+ *
+ *		Invalidate the entire TLB.
+ *
+ *	flush_tlb_mm(mm)
+ *
+ *		Invalidate all TLB entries in a particular address space.
+ *		- mm	- mm_struct describing address space
+ *
+ *	flush_tlb_range(mm,start,end)
+ *
+ *		Invalidate a range of TLB entries in the specified address
+ *		space.
+ *		- mm	- mm_struct describing address space
+ *		- start - start address (may not be aligned)
+ *		- end	- end address (exclusive, may not be aligned)
+ *
+ *	flush_tlb_page(vaddr,vma)
+ *
+ *		Invalidate the specified page in the specified address range.
+ *		- vaddr - virtual address (may not be aligned)
+ *		- vma	- vma_struct describing address range
+ *
+ *	flush_kern_tlb_page(kaddr)
+ *
+ *		Invalidate the TLB entry for the specified page.  The address
+ *		will be in the kernels virtual memory space.  Current uses
+ *		only require the D-TLB to be invalidated.
+ *		- kaddr - Kernel virtual memory address
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  */
 static inline void local_flush_tlb_all(void)
 {
@@ -165,20 +208,28 @@ static inline void flush_tlb_mm(struct mm_struct *mm)
 	dsb(ish);
 }
 
+<<<<<<< HEAD
 static inline void flush_tlb_page_nosync(struct vm_area_struct *vma,
 					 unsigned long uaddr)
+=======
+static inline void flush_tlb_page(struct vm_area_struct *vma,
+				  unsigned long uaddr)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	unsigned long addr = __TLBI_VADDR(uaddr, ASID(vma->vm_mm));
 
 	dsb(ishst);
 	__tlbi(vale1is, addr);
 	__tlbi_user(vale1is, addr);
+<<<<<<< HEAD
 }
 
 static inline void flush_tlb_page(struct vm_area_struct *vma,
 				  unsigned long uaddr)
 {
 	flush_tlb_page_nosync(vma, uaddr);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	dsb(ish);
 }
 
@@ -186,31 +237,50 @@ static inline void flush_tlb_page(struct vm_area_struct *vma,
  * This is meant to avoid soft lock-ups on large TLB flushing ranges and not
  * necessarily a performance improvement.
  */
+<<<<<<< HEAD
 #define MAX_TLBI_OPS	PTRS_PER_PTE
 
 static inline void __flush_tlb_range(struct vm_area_struct *vma,
 				     unsigned long start, unsigned long end,
 				     unsigned long stride, bool last_level)
+=======
+#define MAX_TLB_RANGE	(1024UL << PAGE_SHIFT)
+
+static inline void __flush_tlb_range(struct vm_area_struct *vma,
+				     unsigned long start, unsigned long end,
+				     bool last_level)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	unsigned long asid = ASID(vma->vm_mm);
 	unsigned long addr;
 
+<<<<<<< HEAD
 	start = round_down(start, stride);
 	end = round_up(end, stride);
 
 	if ((end - start) >= (MAX_TLBI_OPS * stride)) {
+=======
+	if ((end - start) > MAX_TLB_RANGE) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		flush_tlb_mm(vma->vm_mm);
 		return;
 	}
 
+<<<<<<< HEAD
 	/* Convert the stride into units of 4k */
 	stride >>= 12;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	start = __TLBI_VADDR(start, asid);
 	end = __TLBI_VADDR(end, asid);
 
 	dsb(ishst);
+<<<<<<< HEAD
 	for (addr = start; addr < end; addr += stride) {
+=======
+	for (addr = start; addr < end; addr += 1 << (PAGE_SHIFT - 12)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (last_level) {
 			__tlbi(vale1is, addr);
 			__tlbi_user(vale1is, addr);
@@ -225,18 +295,26 @@ static inline void __flush_tlb_range(struct vm_area_struct *vma,
 static inline void flush_tlb_range(struct vm_area_struct *vma,
 				   unsigned long start, unsigned long end)
 {
+<<<<<<< HEAD
 	/*
 	 * We cannot use leaf-only invalidation here, since we may be invalidating
 	 * table entries as part of collapsing hugepages or moving page tables.
 	 */
 	__flush_tlb_range(vma, start, end, PAGE_SIZE, false);
+=======
+	__flush_tlb_range(vma, start, end, false);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static inline void flush_tlb_kernel_range(unsigned long start, unsigned long end)
 {
 	unsigned long addr;
 
+<<<<<<< HEAD
 	if ((end - start) > (MAX_TLBI_OPS * PAGE_SIZE)) {
+=======
+	if ((end - start) > MAX_TLB_RANGE) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		flush_tlb_all();
 		return;
 	}
@@ -246,7 +324,11 @@ static inline void flush_tlb_kernel_range(unsigned long start, unsigned long end
 
 	dsb(ishst);
 	for (addr = start; addr < end; addr += 1 << (PAGE_SHIFT - 12))
+<<<<<<< HEAD
 		__tlbi(vaale1is, addr);
+=======
+		__tlbi(vaae1is, addr);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	dsb(ish);
 	isb();
 }
@@ -255,14 +337,32 @@ static inline void flush_tlb_kernel_range(unsigned long start, unsigned long end
  * Used to invalidate the TLB (walk caches) corresponding to intermediate page
  * table levels (pgd/pud/pmd).
  */
+<<<<<<< HEAD
+=======
+static inline void __flush_tlb_pgtable(struct mm_struct *mm,
+				       unsigned long uaddr)
+{
+	unsigned long addr = __TLBI_VADDR(uaddr, ASID(mm));
+
+	__tlbi(vae1is, addr);
+	__tlbi_user(vae1is, addr);
+	dsb(ish);
+}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static inline void __flush_tlb_kernel_pgtable(unsigned long kaddr)
 {
 	unsigned long addr = __TLBI_VADDR(kaddr, 0);
 
+<<<<<<< HEAD
 	dsb(ishst);
 	__tlbi(vaae1is, addr);
 	dsb(ish);
 	isb();
+=======
+	__tlbi(vaae1is, addr);
+	dsb(ish);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 #endif
 

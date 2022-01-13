@@ -69,6 +69,14 @@ static bool entry_is_valid(const efi_memory_desc_t *in, efi_memory_desc_t *out)
 		return false;
 	}
 
+<<<<<<< HEAD
+=======
+	if (!(in->attribute & (EFI_MEMORY_RO | EFI_MEMORY_XP))) {
+		pr_warn("Entry attributes invalid: RO and XP bits both cleared\n");
+		return false;
+	}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (PAGE_SIZE > EFI_PAGE_SIZE &&
 	    (!PAGE_ALIGNED(in->phys_addr) ||
 	     !PAGE_ALIGNED(in->num_pages << EFI_PAGE_SHIFT))) {

@@ -104,7 +104,11 @@ void ima_add_kexec_buffer(struct kimage *image)
 		kexec_segment_size = ALIGN(ima_get_binary_runtime_size() +
 					   PAGE_SIZE / 2, PAGE_SIZE);
 	if ((kexec_segment_size == ULONG_MAX) ||
+<<<<<<< HEAD
 	    ((kexec_segment_size >> PAGE_SHIFT) > totalram_pages() / 2)) {
+=======
+	    ((kexec_segment_size >> PAGE_SHIFT) > totalram_pages / 2)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		pr_err("Binary measurement list too large.\n");
 		return;
 	}
@@ -122,7 +126,10 @@ void ima_add_kexec_buffer(struct kimage *image)
 	ret = kexec_add_buffer(&kbuf);
 	if (ret) {
 		pr_err("Error passing over kexec measurement buffer.\n");
+<<<<<<< HEAD
 		vfree(kexec_buffer);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return;
 	}
 
@@ -132,8 +139,11 @@ void ima_add_kexec_buffer(struct kimage *image)
 		return;
 	}
 
+<<<<<<< HEAD
 	image->ima_buffer = kexec_buffer;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	pr_debug("kexec measurement buffer for the loaded kernel at 0x%lx.\n",
 		 kbuf.mem);
 }

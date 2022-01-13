@@ -120,6 +120,7 @@ int randomize_va_space __read_mostly =
 					2;
 #endif
 
+<<<<<<< HEAD
 #ifndef arch_faults_on_old_pte
 static inline bool arch_faults_on_old_pte(void)
 {
@@ -132,6 +133,8 @@ static inline bool arch_faults_on_old_pte(void)
 }
 #endif
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static int __init disable_randmaps(char *s)
 {
 	randomize_va_space = 0;
@@ -152,7 +155,11 @@ static int __init init_zero_pfn(void)
 	zero_pfn = page_to_pfn(ZERO_PAGE(0));
 	return 0;
 }
+<<<<<<< HEAD
 early_initcall(init_zero_pfn);
+=======
+core_initcall(init_zero_pfn);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 
 #if defined(SPLIT_RSS_COUNTING)
@@ -202,6 +209,259 @@ static void check_sync_rss_stat(struct task_struct *task)
 
 #endif /* SPLIT_RSS_COUNTING */
 
+<<<<<<< HEAD
+=======
+#ifdef HAVE_GENERIC_MMU_GATHER
+
+static bool tlb_next_batch(struct mmu_gather *tlb)
+{
+	struct mmu_gather_batch *batch;
+
+	batch = tlb->active;
+	if (batch->next) {
+		tlb->active = batch->next;
+		return true;
+	}
+
+	if (tlb->batch_count == MAX_GATHER_BATCH_COUNT)
+		return false;
+
+	batch = (void *)__get_free_pages(GFP_NOWAIT | __GFP_NOWARN, 0);
+	if (!batch)
+		return false;
+
+	tlb->batch_count++;
+	batch->next = NULL;
+	batch->nr   = 0;
+	batch->max  = MAX_GATHER_BATCH;
+
+	tlb->active->next = batch;
+	tlb->active = batch;
+
+	return true;
+}
+
+void arch_tlb_gather_mmu(struct mmu_gather *tlb, struct mm_struct *mm,
+				unsigned long start, unsigned long end)
+{
+	tlb->mm = mm;
+
+	/* Is it from 0 to ~0? */
+	tlb->fullmm     = !(start | (end+1));
+	tlb->need_flush_all = 0;
+	tlb->local.next = NULL;
+	tlb->local.nr   = 0;
+	tlb->local.max  = ARRAY_SIZE(tlb->__pages);
+	tlb->active     = &tlb->local;
+	tlb->batch_count = 0;
+
+#ifdef CONFIG_HAVE_RCU_TABLE_FREE
+	tlb->batch = NULL;
+#endif
+	tlb->page_size = 0;
+
+	__tlb_reset_range(tlb);
+}
+
+static void tlb_flush_mmu_tlbonly(struct mmu_gather *tlb)
+{
+	if (!tlb->end)
+		return;
+
+	tlb_flush(tlb);
+	mmu_notifier_invalidate_range(tlb->mm, tlb->start, tlb->end);
+	__tlb_reset_range(tlb);
+}
+
+static void tlb_flush_mmu_free(struct mmu_gather *tlb)
+{
+	struct mmu_gather_batch *batch;
+
+#ifdef CONFIG_HAVE_RCU_TABLE_FREE
+	tlb_table_flush(tlb);
+#endif
+	for (batch = &tlb->local; batch && batch->nr; batch = batch->next) {
+		free_pages_and_swap_cache(batch->pages, batch->nr);
+		batch->nr = 0;
+	}
+	tlb->active = &tlb->local;
+}
+
+void tlb_flush_mmu(struct mmu_gather *tlb)
+{
+	tlb_flush_mmu_tlbonly(tlb);
+	tlb_flush_mmu_free(tlb);
+}
+
+/* tlb_finish_mmu
+ *	Called at the end of the shootdown operation to free up any resources
+ *	that were required.
+ */
+void arch_tlb_finish_mmu(struct mmu_gather *tlb,
+		unsigned long start, unsigned long end, bool force)
+{
+	struct mmu_gather_batch *batch, *next;
+
+	if (force)
+		__tlb_adjust_range(tlb, start, end - start);
+
+	tlb_flush_mmu(tlb);
+
+	/* keep the page table cache within bounds */
+	check_pgt_cache();
+
+	for (batch = tlb->local.next; batch; batch = next) {
+		next = batch->next;
+		free_pages((unsigned long)batch, 0);
+	}
+	tlb->local.next = NULL;
+}
+
+/* __tlb_remove_page
+ *	Must perform the equivalent to __free_pte(pte_get_and_clear(ptep)), while
+ *	handling the additional races in SMP caused by other CPUs caching valid
+ *	mappings in their TLBs. Returns the number of free page slots left.
+ *	When out of page slots we must call tlb_flush_mmu().
+ *returns true if the caller should flush.
+ */
+bool __tlb_remove_page_size(struct mmu_gather *tlb, struct page *page, int page_size)
+{
+	struct mmu_gather_batch *batch;
+
+	VM_BUG_ON(!tlb->end);
+	VM_WARN_ON(tlb->page_size != page_size);
+
+	batch = tlb->active;
+	/*
+	 * Add the page and check if we are full. If so
+	 * force a flush.
+	 */
+	batch->pages[batch->nr++] = page;
+	if (batch->nr == batch->max) {
+		if (!tlb_next_batch(tlb))
+			return true;
+		batch = tlb->active;
+	}
+	VM_BUG_ON_PAGE(batch->nr > batch->max, page);
+
+	return false;
+}
+
+#endif /* HAVE_GENERIC_MMU_GATHER */
+
+#ifdef CONFIG_HAVE_RCU_TABLE_FREE
+
+/*
+ * See the comment near struct mmu_table_batch.
+ */
+
+/*
+ * If we want tlb_remove_table() to imply TLB invalidates.
+ */
+static inline void tlb_table_invalidate(struct mmu_gather *tlb)
+{
+#ifdef CONFIG_HAVE_RCU_TABLE_INVALIDATE
+	/*
+	 * Invalidate page-table caches used by hardware walkers. Then we still
+	 * need to RCU-sched wait while freeing the pages because software
+	 * walkers can still be in-flight.
+	 */
+	tlb_flush_mmu_tlbonly(tlb);
+#endif
+}
+
+static void tlb_remove_table_smp_sync(void *arg)
+{
+	/* Simply deliver the interrupt */
+}
+
+static void tlb_remove_table_one(void *table)
+{
+	/*
+	 * This isn't an RCU grace period and hence the page-tables cannot be
+	 * assumed to be actually RCU-freed.
+	 *
+	 * It is however sufficient for software page-table walkers that rely on
+	 * IRQ disabling. See the comment near struct mmu_table_batch.
+	 */
+	smp_call_function(tlb_remove_table_smp_sync, NULL, 1);
+	__tlb_remove_table(table);
+}
+
+static void tlb_remove_table_rcu(struct rcu_head *head)
+{
+	struct mmu_table_batch *batch;
+	int i;
+
+	batch = container_of(head, struct mmu_table_batch, rcu);
+
+	for (i = 0; i < batch->nr; i++)
+		__tlb_remove_table(batch->tables[i]);
+
+	free_page((unsigned long)batch);
+}
+
+void tlb_table_flush(struct mmu_gather *tlb)
+{
+	struct mmu_table_batch **batch = &tlb->batch;
+
+	if (*batch) {
+		tlb_table_invalidate(tlb);
+		call_rcu_sched(&(*batch)->rcu, tlb_remove_table_rcu);
+		*batch = NULL;
+	}
+}
+
+void tlb_remove_table(struct mmu_gather *tlb, void *table)
+{
+	struct mmu_table_batch **batch = &tlb->batch;
+
+	if (*batch == NULL) {
+		*batch = (struct mmu_table_batch *)__get_free_page(GFP_NOWAIT | __GFP_NOWARN);
+		if (*batch == NULL) {
+			tlb_table_invalidate(tlb);
+			tlb_remove_table_one(table);
+			return;
+		}
+		(*batch)->nr = 0;
+	}
+
+	(*batch)->tables[(*batch)->nr++] = table;
+	if ((*batch)->nr == MAX_TABLE_BATCH)
+		tlb_table_flush(tlb);
+}
+
+#endif /* CONFIG_HAVE_RCU_TABLE_FREE */
+
+/* tlb_gather_mmu
+ *	Called to initialize an (on-stack) mmu_gather structure for page-table
+ *	tear-down from @mm. The @fullmm argument is used when @mm is without
+ *	users and we're going to destroy the full address space (exit/execve).
+ */
+void tlb_gather_mmu(struct mmu_gather *tlb, struct mm_struct *mm,
+			unsigned long start, unsigned long end)
+{
+	arch_tlb_gather_mmu(tlb, mm, start, end);
+	inc_tlb_flush_pending(tlb->mm);
+}
+
+void tlb_finish_mmu(struct mmu_gather *tlb,
+		unsigned long start, unsigned long end)
+{
+	/*
+	 * If there are parallel threads are doing PTE changes on same range
+	 * under non-exclusive lock(e.g., mmap_sem read-side) but defer TLB
+	 * flush by batching, a thread has stable TLB entry can fail to flush
+	 * the TLB by observing pte_none|!pte_dirty, for example so flush TLB
+	 * forcefully if we detect parallel PTE batching threads.
+	 */
+	bool force = mm_tlb_flush_nested(tlb->mm);
+
+	arch_tlb_finish_mmu(tlb, start, end, force);
+	dec_tlb_flush_pending(tlb->mm);
+}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /*
  * Note: this doesn't free the actual pages themselves. That
  * has been handled earlier when unmapping all the memory regions.
@@ -212,7 +472,11 @@ static void free_pte_range(struct mmu_gather *tlb, pmd_t *pmd,
 	pgtable_t token = pmd_pgtable(*pmd);
 	pmd_clear(pmd);
 	pte_free_tlb(tlb, token, addr);
+<<<<<<< HEAD
 	mm_dec_nr_ptes(tlb->mm);
+=======
+	atomic_long_dec(&tlb->mm->nr_ptes);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static inline void free_pmd_range(struct mmu_gather *tlb, pud_t *pud,
@@ -313,7 +577,10 @@ static inline void free_p4d_range(struct mmu_gather *tlb, pgd_t *pgd,
 	p4d = p4d_offset(pgd, start);
 	pgd_clear(pgd);
 	p4d_free_tlb(tlb, p4d, start);
+<<<<<<< HEAD
 	mm_dec_nr_puds(tlb->mm);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /*
@@ -371,7 +638,11 @@ void free_pgd_range(struct mmu_gather *tlb,
 	 * We add page table cache pages with PAGE_SIZE,
 	 * (see pte_free_tlb()), flush the tlb if we need
 	 */
+<<<<<<< HEAD
 	tlb_change_page_size(tlb, PAGE_SIZE);
+=======
+	tlb_remove_check_page_size_change(tlb, PAGE_SIZE);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	pgd = pgd_offset(tlb->mm, addr);
 	do {
 		next = pgd_addr_end(addr, end);
@@ -444,7 +715,11 @@ int __pte_alloc(struct mm_struct *mm, pmd_t *pmd, unsigned long address)
 
 	ptl = pmd_lock(mm, pmd);
 	if (likely(pmd_none(*pmd))) {	/* Has another populated it ? */
+<<<<<<< HEAD
 		mm_inc_nr_ptes(mm);
+=======
+		atomic_long_inc(&mm->nr_ptes);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		pmd_populate(mm, pmd, new);
 		new = NULL;
 	}
@@ -1084,7 +1359,11 @@ static unsigned long zap_pte_range(struct mmu_gather *tlb,
 	pte_t *pte;
 	swp_entry_t entry;
 
+<<<<<<< HEAD
 	tlb_change_page_size(tlb, PAGE_SIZE);
+=======
+	tlb_remove_check_page_size_change(tlb, PAGE_SIZE);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 again:
 	init_rss_vec(rss);
 	start_pte = pte_offset_map_lock(mm, pmd, addr, &ptl);
@@ -1166,6 +1445,10 @@ again:
 		if (unlikely(details))
 			continue;
 
+<<<<<<< HEAD
+=======
+		entry = pte_to_swp_entry(ptent);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (!non_swap_entry(entry))
 			rss[MM_SWAPENTS]--;
 		else if (is_migration_entry(entry)) {
@@ -1195,7 +1478,11 @@ again:
 	 */
 	if (force_flush) {
 		force_flush = 0;
+<<<<<<< HEAD
 		tlb_flush_mmu(tlb);
+=======
+		tlb_flush_mmu_free(tlb);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	if (addr != end) {
@@ -1754,11 +2041,19 @@ static int remap_pte_range(struct mm_struct *mm, pmd_t *pmd,
 			unsigned long addr, unsigned long end,
 			unsigned long pfn, pgprot_t prot)
 {
+<<<<<<< HEAD
 	pte_t *pte, *mapped_pte;
 	spinlock_t *ptl;
 	int err = 0;
 
 	mapped_pte = pte = pte_alloc_map_lock(mm, pmd, addr, &ptl);
+=======
+	pte_t *pte;
+	spinlock_t *ptl;
+	int err = 0;
+
+	pte = pte_alloc_map_lock(mm, pmd, addr, &ptl);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!pte)
 		return -ENOMEM;
 	arch_enter_lazy_mmu_mode();
@@ -1772,7 +2067,11 @@ static int remap_pte_range(struct mm_struct *mm, pmd_t *pmd,
 		pfn++;
 	} while (pte++, addr += PAGE_SIZE, addr != end);
 	arch_leave_lazy_mmu_mode();
+<<<<<<< HEAD
 	pte_unmap_unlock(mapped_pte, ptl);
+=======
+	pte_unmap_unlock(pte - 1, ptl);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return err;
 }
 
@@ -2249,6 +2548,7 @@ static inline int pte_unmap_same(struct vm_fault *vmf)
 	return ret;
 }
 
+<<<<<<< HEAD
 static inline bool cow_user_page(struct page *dst, struct page *src,
 				 struct vm_fault *vmf)
 {
@@ -2267,12 +2567,19 @@ static inline bool cow_user_page(struct page *dst, struct page *src,
 		return true;
 	}
 
+=======
+static inline void cow_user_page(struct page *dst, struct page *src, unsigned long va, struct vm_area_struct *vma)
+{
+	debug_dma_assert_idle(src);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/*
 	 * If the source page was a PFN mapping, we don't have
 	 * a "struct page" for it. We do a best-effort copy by
 	 * just copying from the original user address. If that
 	 * fails, we just zero-fill it. Live with it.
 	 */
+<<<<<<< HEAD
 	kaddr = kmap_atomic(dst);
 	uaddr = (void __user *)(addr & PAGE_MASK);
 
@@ -2344,6 +2651,24 @@ pte_unlock:
 	flush_dcache_page(dst);
 
 	return ret;
+=======
+	if (unlikely(!src)) {
+		void *kaddr = kmap_atomic(dst);
+		void __user *uaddr = (void __user *)(va & PAGE_MASK);
+
+		/*
+		 * This really shouldn't fail, because the page is there
+		 * in the page tables. But it might just be unreadable,
+		 * in which case we just give up and fill the result with
+		 * zeroes.
+		 */
+		if (__copy_from_user_inatomic(kaddr, uaddr, PAGE_SIZE))
+			clear_page(kaddr);
+		kunmap_atomic(kaddr);
+		flush_dcache_page(dst);
+	} else
+		copy_user_highpage(dst, src, va, vma);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static gfp_t __get_fault_gfp_mask(struct vm_area_struct *vma)
@@ -2502,6 +2827,7 @@ static int wp_page_copy(struct vm_fault *vmf)
 				vmf->address);
 		if (!new_page)
 			goto out;
+<<<<<<< HEAD
 
 		if (!cow_user_page(new_page, old_page, vmf)) {
 			/*
@@ -2515,6 +2841,9 @@ static int wp_page_copy(struct vm_fault *vmf)
 				put_page(old_page);
 			return 0;
 		}
+=======
+		cow_user_page(new_page, old_page, vmf->address, vma);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	if (mem_cgroup_try_charge(new_page, mm, GFP_KERNEL, &memcg, false))
@@ -3348,7 +3677,11 @@ static int pte_alloc_one_map(struct vm_fault *vmf)
 			goto map_pte;
 		}
 
+<<<<<<< HEAD
 		mm_inc_nr_ptes(vma->vm_mm);
+=======
+		atomic_long_inc(&vma->vm_mm->nr_ptes);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		pmd_populate(vma->vm_mm, vmf->pmd, vmf->prealloc_pte);
 		spin_unlock(vmf->ptl);
 		vmf->prealloc_pte = NULL;
@@ -3408,7 +3741,11 @@ static void deposit_prealloc_pte(struct vm_fault *vmf)
 	 * We are going to consume the prealloc table,
 	 * count that as nr_ptes.
 	 */
+<<<<<<< HEAD
 	mm_dec_nr_ptes(vma->vm_mm);
+=======
+	atomic_long_inc(&vma->vm_mm->nr_ptes);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	vmf->prealloc_pte = NULL;
 }
 
@@ -3994,6 +4331,14 @@ static int wp_huge_pmd(struct vm_fault *vmf, pmd_t orig_pmd)
 	return VM_FAULT_FALLBACK;
 }
 
+<<<<<<< HEAD
+=======
+static inline bool vma_is_accessible(struct vm_area_struct *vma)
+{
+	return vma->vm_flags & (VM_READ | VM_EXEC | VM_WRITE);
+}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static int create_huge_pud(struct vm_fault *vmf)
 {
 #ifdef CONFIG_TRANSPARENT_HUGEPAGE
@@ -4567,6 +4912,7 @@ int __pud_alloc(struct mm_struct *mm, p4d_t *p4d, unsigned long address)
 
 	spin_lock(&mm->page_table_lock);
 #ifndef __ARCH_HAS_5LEVEL_HACK
+<<<<<<< HEAD
 	if (p4d_present(*p4d)) {
 		/* Another has populated it */
 		pud_free(mm, new);
@@ -4582,6 +4928,17 @@ int __pud_alloc(struct mm_struct *mm, p4d_t *p4d, unsigned long address)
 		mm_inc_nr_puds(mm);
 		pgd_populate(mm, p4d, new);
 	}
+=======
+	if (p4d_present(*p4d))		/* Another has populated it */
+		pud_free(mm, new);
+	else
+		p4d_populate(mm, p4d, new);
+#else
+	if (pgd_present(*p4d))		/* Another has populated it */
+		pud_free(mm, new);
+	else
+		pgd_populate(mm, p4d, new);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif /* __ARCH_HAS_5LEVEL_HACK */
 	spin_unlock(&mm->page_table_lock);
 	return 0;
@@ -5070,6 +5427,7 @@ long copy_huge_page_from_user(struct page *dst_page,
 	void *page_kaddr;
 	unsigned long i, rc = 0;
 	unsigned long ret_val = pages_per_huge_page * PAGE_SIZE;
+<<<<<<< HEAD
 	struct page *subpage = dst_page;
 
 	for (i = 0; i < pages_per_huge_page;
@@ -5078,11 +5436,23 @@ long copy_huge_page_from_user(struct page *dst_page,
 			page_kaddr = kmap(subpage);
 		else
 			page_kaddr = kmap_atomic(subpage);
+=======
+
+	for (i = 0; i < pages_per_huge_page; i++) {
+		if (allow_pagefault)
+			page_kaddr = kmap(dst_page + i);
+		else
+			page_kaddr = kmap_atomic(dst_page + i);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		rc = copy_from_user(page_kaddr,
 				(const void __user *)(src + i * PAGE_SIZE),
 				PAGE_SIZE);
 		if (allow_pagefault)
+<<<<<<< HEAD
 			kunmap(subpage);
+=======
+			kunmap(dst_page + i);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		else
 			kunmap_atomic(page_kaddr);
 

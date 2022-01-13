@@ -10,6 +10,11 @@
 
 #ifdef CONFIG_SMP
 
+<<<<<<< HEAD
+=======
+#include <asm/paca.h>
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define __my_cpu_offset local_paca->data_offset
 
 #endif /* CONFIG_SMP */
@@ -17,6 +22,9 @@
 
 #include <asm-generic/percpu.h>
 
+<<<<<<< HEAD
 #include <asm/paca.h>
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif /* _ASM_POWERPC_PERCPU_H_ */

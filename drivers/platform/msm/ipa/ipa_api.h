@@ -306,7 +306,11 @@ struct ipa_api_controller {
 			enum ipa_client_type client,
 			bool LPTransitionRejected,
 			bool brstmode_enabled,
+<<<<<<< HEAD
 			union gsi_channel_scratch ch_scratch,
+=======
+			union __packed gsi_channel_scratch ch_scratch,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			u8 index,
 			bool is_switch_to_dbmode);
 

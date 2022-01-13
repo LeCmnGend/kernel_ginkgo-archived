@@ -8549,7 +8549,11 @@ reinit_after_soft_reset:
 	/* hook into SCSI subsystem */
 	rc = hpsa_scsi_add_host(h);
 	if (rc)
+<<<<<<< HEAD
 		goto clean8; /* lastlogicals, perf, sg, cmd, irq, shost, pci, lu, aer/h */
+=======
+		goto clean7; /* perf, sg, cmd, irq, shost, pci, lu, aer/h */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* Monitor the controller for firmware lockups */
 	h->heartbeat_sample_interval = HEARTBEAT_SAMPLE_INTERVAL;
@@ -8564,8 +8568,11 @@ reinit_after_soft_reset:
 				HPSA_EVENT_MONITOR_INTERVAL);
 	return 0;
 
+<<<<<<< HEAD
 clean8: /* lastlogicals, perf, sg, cmd, irq, shost, pci, lu, aer/h */
 	kfree(h->lastlogicals);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 clean7: /* perf, sg, cmd, irq, shost, pci, lu, aer/h */
 	hpsa_free_performant_mode(h);
 	h->access.set_intr_mask(h, HPSA_INTR_OFF);

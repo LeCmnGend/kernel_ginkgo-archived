@@ -660,8 +660,13 @@ static int palmas_adc_wakeup_configure(struct palmas_gpadc *adc)
 
 	adc_period = adc->auto_conversion_period;
 	for (i = 0; i < 16; ++i) {
+<<<<<<< HEAD
 		if (((1000 * (1 << i)) / 32) >= adc_period)
 			break;
+=======
+		if (((1000 * (1 << i)) / 32) < adc_period)
+			continue;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	if (i > 0)
 		i--;

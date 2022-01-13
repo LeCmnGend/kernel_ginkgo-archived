@@ -39,6 +39,12 @@
  * sequential memory pages only.
  */
 
+<<<<<<< HEAD
+=======
+/* XXX From arch/ia64/include/uapi/asm/gcc_intrin.h */
+#define ia64_mf()       asm volatile ("mf" ::: "memory")
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define mb()		ia64_mf()
 #define rmb()		mb()
 #define wmb()		mb()

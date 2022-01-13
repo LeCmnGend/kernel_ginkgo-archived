@@ -1809,7 +1809,10 @@ static int usdhi6_probe(struct platform_device *pdev)
 
 	version = usdhi6_read(host, USDHI6_VERSION);
 	if ((version & 0xfff) != 0xa0d) {
+<<<<<<< HEAD
 		ret = -EPERM;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		dev_err(dev, "Version not recognized %x\n", version);
 		goto e_clk_off;
 	}
@@ -1867,12 +1870,19 @@ static int usdhi6_probe(struct platform_device *pdev)
 
 	ret = mmc_add_host(mmc);
 	if (ret < 0)
+<<<<<<< HEAD
 		goto e_release_dma;
 
 	return 0;
 
 e_release_dma:
 	usdhi6_dma_release(host);
+=======
+		goto e_clk_off;
+
+	return 0;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 e_clk_off:
 	clk_disable_unprepare(host->clk);
 e_free_mmc:

@@ -2026,7 +2026,11 @@ void show_code(struct pt_regs *regs)
 
 void print_fn_code(unsigned char *code, unsigned long len)
 {
+<<<<<<< HEAD
 	char buffer[128], *ptr;
+=======
+	char buffer[64], *ptr;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int opsize, i;
 
 	while (len) {

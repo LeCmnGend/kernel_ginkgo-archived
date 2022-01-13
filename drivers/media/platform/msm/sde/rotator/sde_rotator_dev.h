@@ -260,4 +260,9 @@ struct sde_rot_mgr *sde_rot_mgr_from_device(struct device *dev)
 	return ((struct sde_rotator_device *) dev_get_drvdata(dev))->mgr;
 }
 
+<<<<<<< HEAD
+=======
+void sde_rotator_pm_qos_add(struct sde_rot_data_type *rot_mdata);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif /* __SDE_ROTATOR_DEV_H__ */

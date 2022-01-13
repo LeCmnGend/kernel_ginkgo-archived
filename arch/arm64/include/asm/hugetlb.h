@@ -22,7 +22,11 @@
 
 static inline pte_t huge_ptep_get(pte_t *ptep)
 {
+<<<<<<< HEAD
 	return READ_ONCE(*ptep);
+=======
+	return *ptep;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 

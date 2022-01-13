@@ -392,7 +392,11 @@ static int s3c_adc_bat_remove(struct platform_device *pdev)
 		gpio_free(pdata->gpio_charge_finished);
 	}
 
+<<<<<<< HEAD
 	cancel_delayed_work_sync(&bat_work);
+=======
+	cancel_delayed_work(&bat_work);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (pdata->exit)
 		pdata->exit();

@@ -166,8 +166,14 @@ skip_phy:
 	hcd->rsrc_len = resource_size(res);
 
 	irq = platform_get_irq(pdev, 0);
+<<<<<<< HEAD
 	if (irq < 0) {
 		err = irq;
+=======
+	if (!irq) {
+		dev_err(&pdev->dev, "Failed to get IRQ\n");
+		err = -ENODEV;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto fail_io;
 	}
 

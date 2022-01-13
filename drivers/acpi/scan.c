@@ -481,10 +481,17 @@ static void acpi_device_del(struct acpi_device *device)
 	list_for_each_entry(acpi_device_bus_id, &acpi_bus_id_list, node)
 		if (!strcmp(acpi_device_bus_id->bus_id,
 			    acpi_device_hid(device))) {
+<<<<<<< HEAD
 			ida_simple_remove(&acpi_device_bus_id->instance_ida, device->pnp.instance_no);
 			if (ida_is_empty(&acpi_device_bus_id->instance_ida)) {
 				list_del(&acpi_device_bus_id->node);
 				kfree_const(acpi_device_bus_id->bus_id);
+=======
+			if (acpi_device_bus_id->instance_no > 0)
+				acpi_device_bus_id->instance_no--;
+			else {
+				list_del(&acpi_device_bus_id->node);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				kfree(acpi_device_bus_id);
 			}
 			break;
@@ -584,8 +591,11 @@ static int acpi_get_device_data(acpi_handle handle, struct acpi_device **device,
 	if (!device)
 		return -EINVAL;
 
+<<<<<<< HEAD
 	*device = NULL;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	status = acpi_get_data_full(handle, acpi_scan_drop_device,
 				    (void **)device, callback);
 	if (ACPI_FAILURE(status) || !*device) {
@@ -621,6 +631,7 @@ void acpi_bus_put_acpi_device(struct acpi_device *adev)
 	put_device(&adev->dev);
 }
 
+<<<<<<< HEAD
 static struct acpi_device_bus_id *acpi_device_bus_id_match(const char *dev_id)
 {
 	struct acpi_device_bus_id *acpi_device_bus_id;
@@ -653,6 +664,14 @@ int acpi_device_add(struct acpi_device *device,
 {
 	struct acpi_device_bus_id *acpi_device_bus_id;
 	int result;
+=======
+int acpi_device_add(struct acpi_device *device,
+		    void (*release)(struct device *))
+{
+	int result;
+	struct acpi_device_bus_id *acpi_device_bus_id, *new_bus_id;
+	int found = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (device->handle) {
 		acpi_status status;
@@ -678,6 +697,7 @@ int acpi_device_add(struct acpi_device *device,
 	INIT_LIST_HEAD(&device->del_list);
 	mutex_init(&device->physical_node_lock);
 
+<<<<<<< HEAD
 	mutex_lock(&acpi_device_lock);
 
 	acpi_device_bus_id = acpi_device_bus_id_match(acpi_device_hid(device));
@@ -711,6 +731,36 @@ int acpi_device_add(struct acpi_device *device,
 
 		list_add_tail(&acpi_device_bus_id->node, &acpi_bus_id_list);
 	}
+=======
+	new_bus_id = kzalloc(sizeof(struct acpi_device_bus_id), GFP_KERNEL);
+	if (!new_bus_id) {
+		pr_err(PREFIX "Memory allocation error\n");
+		result = -ENOMEM;
+		goto err_detach;
+	}
+
+	mutex_lock(&acpi_device_lock);
+	/*
+	 * Find suitable bus_id and instance number in acpi_bus_id_list
+	 * If failed, create one and link it into acpi_bus_id_list
+	 */
+	list_for_each_entry(acpi_device_bus_id, &acpi_bus_id_list, node) {
+		if (!strcmp(acpi_device_bus_id->bus_id,
+			    acpi_device_hid(device))) {
+			acpi_device_bus_id->instance_no++;
+			found = 1;
+			kfree(new_bus_id);
+			break;
+		}
+	}
+	if (!found) {
+		acpi_device_bus_id = new_bus_id;
+		strcpy(acpi_device_bus_id->bus_id, acpi_device_hid(device));
+		acpi_device_bus_id->instance_no = 0;
+		list_add_tail(&acpi_device_bus_id->node, &acpi_bus_id_list);
+	}
+	dev_set_name(&device->dev, "%s:%02x", acpi_device_bus_id->bus_id, acpi_device_bus_id->instance_no);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (device->parent)
 		list_add_tail(&device->node, &device->parent->children);
@@ -741,10 +791,16 @@ int acpi_device_add(struct acpi_device *device,
 	if (device->parent)
 		list_del(&device->node);
 	list_del(&device->wakeup_list);
+<<<<<<< HEAD
 
  err_unlock:
 	mutex_unlock(&acpi_device_lock);
 
+=======
+	mutex_unlock(&acpi_device_lock);
+
+ err_detach:
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	acpi_detach_data(device->handle, acpi_scan_drop_device);
 	return result;
 }

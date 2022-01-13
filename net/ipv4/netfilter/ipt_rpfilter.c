@@ -94,7 +94,11 @@ static bool rpfilter_mt(const struct sk_buff *skb, struct xt_action_param *par)
 	flow.saddr = rpfilter_get_saddr(iph->daddr);
 	flow.flowi4_oif = 0;
 	flow.flowi4_mark = info->flags & XT_RPFILTER_VALID_MARK ? skb->mark : 0;
+<<<<<<< HEAD
 	flow.flowi4_tos = iph->tos & IPTOS_RT_MASK;
+=======
+	flow.flowi4_tos = RT_TOS(iph->tos);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	flow.flowi4_scope = RT_SCOPE_UNIVERSE;
 	flow.flowi4_oif = l3mdev_master_ifindex_rcu(xt_in(par));
 

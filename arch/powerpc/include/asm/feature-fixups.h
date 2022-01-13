@@ -203,6 +203,7 @@ label##3:					       	\
 	FTR_ENTRY_OFFSET 955b-956b;			\
 	.popsection;
 
+<<<<<<< HEAD
 #define UACCESS_FLUSH_FIXUP_SECTION			\
 959:							\
 	.pushsection __uaccess_flush_fixup,"a";		\
@@ -219,6 +220,8 @@ label##3:					       	\
 	FTR_ENTRY_OFFSET 957b-958b;			\
 	.popsection;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define RFI_FLUSH_FIXUP_SECTION				\
 951:							\
 	.pushsection __rfi_flush_fixup,"a";		\
@@ -251,11 +254,16 @@ label##3:					       	\
 #include <linux/types.h>
 
 extern long stf_barrier_fallback;
+<<<<<<< HEAD
 extern long entry_flush_fallback;
 extern long __start___stf_entry_barrier_fixup, __stop___stf_entry_barrier_fixup;
 extern long __start___stf_exit_barrier_fixup, __stop___stf_exit_barrier_fixup;
 extern long __start___uaccess_flush_fixup, __stop___uaccess_flush_fixup;
 extern long __start___entry_flush_fixup, __stop___entry_flush_fixup;
+=======
+extern long __start___stf_entry_barrier_fixup, __stop___stf_entry_barrier_fixup;
+extern long __start___stf_exit_barrier_fixup, __stop___stf_exit_barrier_fixup;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 extern long __start___rfi_flush_fixup, __stop___rfi_flush_fixup;
 extern long __start___barrier_nospec_fixup, __stop___barrier_nospec_fixup;
 extern long __start__btb_flush_fixup, __stop__btb_flush_fixup;

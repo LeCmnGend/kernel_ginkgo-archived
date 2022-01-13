@@ -319,11 +319,15 @@ failure:
 static void tcp_v6_mtu_reduced(struct sock *sk)
 {
 	struct dst_entry *dst;
+<<<<<<< HEAD
 	u32 mtu;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if ((1 << sk->sk_state) & (TCPF_LISTEN | TCPF_CLOSE))
 		return;
 
+<<<<<<< HEAD
 	mtu = READ_ONCE(tcp_sk(sk)->mtu_info);
 
 	/* Drop requests trying to increase our current mss.
@@ -333,6 +337,9 @@ static void tcp_v6_mtu_reduced(struct sock *sk)
 		return;
 
 	dst = inet6_csk_update_pmtu(sk, mtu);
+=======
+	dst = inet6_csk_update_pmtu(sk, tcp_sk(sk)->mtu_info);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!dst)
 		return;
 
@@ -411,8 +418,11 @@ static void tcp_v6_err(struct sk_buff *skb, struct inet6_skb_parm *opt,
 	}
 
 	if (type == ICMPV6_PKT_TOOBIG) {
+<<<<<<< HEAD
 		u32 mtu = ntohl(info);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		/* We are not interested in TCP_LISTEN and open_requests
 		 * (SYN-ACKs send out by Linux are always <576bytes so
 		 * they should go through unfragmented).
@@ -423,11 +433,15 @@ static void tcp_v6_err(struct sk_buff *skb, struct inet6_skb_parm *opt,
 		if (!ip6_sk_accept_pmtu(sk))
 			goto out;
 
+<<<<<<< HEAD
 		if (mtu < IPV6_MIN_MTU)
 			goto out;
 
 		WRITE_ONCE(tp->mtu_info, mtu);
 
+=======
+		tp->mtu_info = ntohl(info);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (!sock_owned_by_user(sk))
 			tcp_v6_mtu_reduced(sk);
 		else if (!test_and_set_bit(TCP_MTU_REDUCED_DEFERRED,
@@ -501,8 +515,12 @@ static int tcp_v6_send_synack(const struct sock *sk, struct dst_entry *dst,
 		opt = ireq->ipv6_opt;
 		if (!opt)
 			opt = rcu_dereference(np->opt);
+<<<<<<< HEAD
 		err = ip6_xmit(sk, skb, fl6, skb->mark ? : sk->sk_mark, opt,
 			       np->tclass);
+=======
+		err = ip6_xmit(sk, skb, fl6, sk->sk_mark, opt, np->tclass);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		rcu_read_unlock();
 		err = net_xmit_eval(err);
 	}
@@ -1029,11 +1047,14 @@ static int tcp_v6_conn_request(struct sock *sk, struct sk_buff *skb)
 	if (!ipv6_unicast_destination(skb))
 		goto drop;
 
+<<<<<<< HEAD
 	if (ipv6_addr_v4mapped(&ipv6_hdr(skb)->saddr)) {
 		__IP6_INC_STATS(sock_net(sk), NULL, IPSTATS_MIB_INHDRERRORS);
 		return 0;
 	}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return tcp_conn_request(&tcp6_request_sock_ops,
 				&tcp_request_sock_ipv6_ops, sk, skb);
 
@@ -1848,7 +1869,11 @@ static void get_tcp6_sock(struct seq_file *seq, struct sock *sp, int i)
 		   refcount_read(&sp->sk_refcnt), sp,
 		   jiffies_to_clock_t(icsk->icsk_rto),
 		   jiffies_to_clock_t(icsk->icsk_ack.ato),
+<<<<<<< HEAD
 		   (icsk->icsk_ack.quick << 1) | inet_csk_in_pingpong_mode(sp),
+=======
+		   (icsk->icsk_ack.quick << 1) | icsk->icsk_ack.pingpong,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		   tp->snd_cwnd,
 		   state == TCP_LISTEN ?
 			fastopenq->max_qlen :

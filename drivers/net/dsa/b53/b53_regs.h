@@ -112,7 +112,10 @@
 #define B53_UC_FLOOD_MASK		0x32
 #define B53_MC_FLOOD_MASK		0x34
 #define B53_IPMC_FLOOD_MASK		0x36
+<<<<<<< HEAD
 #define B53_DIS_LEARNING		0x3c
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /*
  * Override Ports 0-7 State on devices with xMII interfaces (8 bit)

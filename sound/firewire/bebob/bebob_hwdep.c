@@ -37,11 +37,19 @@ hwdep_read(struct snd_hwdep *hwdep, char __user *buf,  long count,
 	}
 
 	memset(&event, 0, sizeof(event));
+<<<<<<< HEAD
 	count = min_t(long, count, sizeof(event.lock_status));
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (bebob->dev_lock_changed) {
 		event.lock_status.type = SNDRV_FIREWIRE_EVENT_LOCK_STATUS;
 		event.lock_status.status = (bebob->dev_lock_count > 0);
 		bebob->dev_lock_changed = false;
+<<<<<<< HEAD
+=======
+
+		count = min_t(long, count, sizeof(event.lock_status));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	spin_unlock_irq(&bebob->lock);

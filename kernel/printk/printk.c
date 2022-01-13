@@ -760,7 +760,11 @@ struct devkmsg_user {
 
 static ssize_t devkmsg_write(struct kiocb *iocb, struct iov_iter *from)
 {
+<<<<<<< HEAD
 	char buf[LOG_LINE_MAX + 1], *line;
+=======
+	char *buf, *line;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int level = default_message_loglevel;
 	int facility = 1;	/* LOG_USER */
 	struct file *file = iocb->ki_filp;
@@ -781,9 +785,21 @@ static ssize_t devkmsg_write(struct kiocb *iocb, struct iov_iter *from)
 			return ret;
 	}
 
+<<<<<<< HEAD
 	buf[len] = '\0';
 	if (!copy_from_iter_full(buf, len, from))
 		return -EFAULT;
+=======
+	buf = kmalloc(len+1, GFP_KERNEL);
+	if (buf == NULL)
+		return -ENOMEM;
+
+	buf[len] = '\0';
+	if (!copy_from_iter_full(buf, len, from)) {
+		kfree(buf);
+		return -EFAULT;
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/*
 	 * Extract and skip the syslog prefix <[0-9]*>. Coming from userspace
@@ -811,6 +827,10 @@ static ssize_t devkmsg_write(struct kiocb *iocb, struct iov_iter *from)
 	}
 
 	printk_emit(facility, level, NULL, 0, "%s", line);
+<<<<<<< HEAD
+=======
+	kfree(buf);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return ret;
 }
 
@@ -1293,10 +1313,21 @@ static size_t msg_print_text(const struct printk_log *msg, bool syslog, char *bu
 
 static int syslog_print(char __user *buf, int size)
 {
+<<<<<<< HEAD
 	char text[LOG_LINE_MAX + PREFIX_MAX];
 	struct printk_log *msg;
 	int len = 0;
 
+=======
+	char *text;
+	struct printk_log *msg;
+	int len = 0;
+
+	text = kmalloc(LOG_LINE_MAX + PREFIX_MAX, GFP_KERNEL);
+	if (!text)
+		return -ENOMEM;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	while (size > 0) {
 		size_t n;
 		size_t skip;
@@ -1344,6 +1375,10 @@ static int syslog_print(char __user *buf, int size)
 		buf += n;
 	}
 
+<<<<<<< HEAD
+=======
+	kfree(text);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return len;
 }
 
@@ -2088,9 +2123,12 @@ static int __init console_setup(char *str)
 	char *s, *options, *brl_options = NULL;
 	int idx;
 
+<<<<<<< HEAD
 	if (str[0] == 0)
 		return 1;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (_braille_console_setup(&str, &brl_options))
 		return 1;
 

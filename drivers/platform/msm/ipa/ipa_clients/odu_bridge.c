@@ -159,7 +159,11 @@ static struct odu_bridge_ctx *odu_bridge_ctx;
 
 #ifdef CONFIG_DEBUG_FS
 #define ODU_MAX_MSG_LEN 512
+<<<<<<< HEAD
 static char *dbg_buff;
+=======
+static char dbg_buff[ODU_MAX_MSG_LEN];
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif
 
 static void odu_bridge_emb_cons_cb(void *priv, enum ipa_dp_evt_type evt,
@@ -710,10 +714,17 @@ static ssize_t odu_debugfs_hw_bridge_mode_write(struct file *file,
 	unsigned long missing;
 	enum odu_bridge_mode mode;
 
+<<<<<<< HEAD
 	if (ODU_MAX_MSG_LEN < count + 1)
 		return -EFAULT;
 
 	missing = ipa_safe_copy_from_user(dbg_buff, ubuf, count);
+=======
+	if (sizeof(dbg_buff) < count + 1)
+		return -EFAULT;
+
+	missing = copy_from_user(dbg_buff, ubuf, min(sizeof(dbg_buff), count));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (missing)
 		return -EFAULT;
 
@@ -783,10 +794,13 @@ static void odu_debugfs_init(void)
 		return;
 	}
 
+<<<<<<< HEAD
 	dbg_buff = kmalloc(ODU_MAX_MSG_LEN * sizeof(char), GFP_KERNEL);
 	if (!dbg_buff)
 		return;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	dfile_stats =
 		debugfs_create_file("stats", read_only_mode, dent,
 				    0, &odu_stats_ops);
@@ -806,14 +820,20 @@ static void odu_debugfs_init(void)
 
 	return;
 fail:
+<<<<<<< HEAD
 	kfree(dbg_buff);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	debugfs_remove_recursive(dent);
 }
 
 static void odu_debugfs_destroy(void)
 {
 	debugfs_remove_recursive(dent);
+<<<<<<< HEAD
 	kfree(dbg_buff);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 #else

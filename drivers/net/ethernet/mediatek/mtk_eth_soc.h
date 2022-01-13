@@ -283,7 +283,10 @@
 #define RX_DMA_DONE		BIT(31)
 #define RX_DMA_PLEN0(_x)	(((_x) & 0x3fff) << 16)
 #define RX_DMA_GET_PLEN0(_x)	(((_x) >> 16) & 0x3fff)
+<<<<<<< HEAD
 #define RX_DMA_VTAG		BIT(15)
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /* QDMA descriptor rxd3 */
 #define RX_DMA_VID(_x)		((_x) & 0xfff)

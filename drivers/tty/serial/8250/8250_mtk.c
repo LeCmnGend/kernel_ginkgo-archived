@@ -56,7 +56,11 @@ mtk8250_set_termios(struct uart_port *port, struct ktermios *termios,
 	 */
 	baud = tty_termios_baud_rate(termios);
 
+<<<<<<< HEAD
 	serial8250_do_set_termios(port, termios, NULL);
+=======
+	serial8250_do_set_termios(port, termios, old);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	tty_termios_encode_baud_rate(termios, baud, baud);
 

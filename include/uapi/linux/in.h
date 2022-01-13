@@ -280,9 +280,12 @@ struct sockaddr_in {
 /* Address indicating an error return. */
 #define	INADDR_NONE		((unsigned long int) 0xffffffff)
 
+<<<<<<< HEAD
 /* Dummy address for src of ICMP replies if no real address is set (RFC7600). */
 #define	INADDR_DUMMY		((unsigned long int) 0xc0000008)
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /* Network number for local host loopback. */
 #define	IN_LOOPBACKNET		127
 

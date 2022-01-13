@@ -3555,7 +3555,11 @@ static int pktgen_thread_worker(void *arg)
 	struct pktgen_dev *pkt_dev = NULL;
 	int cpu = t->cpu;
 
+<<<<<<< HEAD
 	WARN_ON(smp_processor_id() != cpu);
+=======
+	BUG_ON(smp_processor_id() != cpu);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	init_waitqueue_head(&t->queue);
 	complete(&t->start_done);

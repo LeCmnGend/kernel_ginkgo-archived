@@ -57,7 +57,10 @@
  * >	brasl	%r0,ftrace_caller	# offset 0
  */
 
+<<<<<<< HEAD
 void *ftrace_func __read_mostly = ftrace_stub;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 unsigned long ftrace_plt;
 
 static inline void ftrace_generate_orig_insn(struct ftrace_insn *insn)
@@ -167,7 +170,10 @@ int ftrace_make_call(struct dyn_ftrace *rec, unsigned long addr)
 
 int ftrace_update_ftrace_func(ftrace_func_t func)
 {
+<<<<<<< HEAD
 	ftrace_func = func;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 }
 

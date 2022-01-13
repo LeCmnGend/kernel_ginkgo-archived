@@ -81,3 +81,7 @@ int fdt_create_empty_tree(void *buf, int bufsize)
 
 	return fdt_open_into(buf, buf, bufsize);
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388

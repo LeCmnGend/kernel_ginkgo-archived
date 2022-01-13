@@ -121,8 +121,14 @@ static int do_setcpu(int cpu)
 	CPU_ZERO(&mask);
 	CPU_SET(cpu, &mask);
 	if (sched_setaffinity(0, sizeof(mask), &mask))
+<<<<<<< HEAD
 		fprintf(stderr, "cpu: unable to pin, may increase variance.\n");
 	else if (cfg_verbose)
+=======
+		error(1, 0, "setaffinity %d", cpu);
+
+	if (cfg_verbose)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		fprintf(stderr, "cpu: %u\n", cpu);
 
 	return 0;

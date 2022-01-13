@@ -1172,8 +1172,13 @@ COMPAT_SYSCALL_DEFINE2(clock_adjtime, clockid_t, which_clock,
 
 	err = kc->clock_adj(which_clock, &ktx);
 
+<<<<<<< HEAD
 	if (err >= 0 && compat_put_timex(utp, &ktx))
 		return -EFAULT;
+=======
+	if (err >= 0)
+		err = compat_put_timex(utp, &ktx);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return err;
 }

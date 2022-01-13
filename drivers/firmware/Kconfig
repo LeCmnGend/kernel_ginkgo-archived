@@ -206,7 +206,10 @@ config FW_CFG_SYSFS_CMDLINE
 config QCOM_SCM
 	bool
 	depends on ARM || ARM64
+<<<<<<< HEAD
 	depends on HAVE_ARM_SMCCC
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	select RESET_CONTROLLER
 
 config QCOM_SCM_32

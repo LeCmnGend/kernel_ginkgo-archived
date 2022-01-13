@@ -2187,6 +2187,7 @@ static void xhci_add_in_port(struct xhci_hcd *xhci, unsigned int num_ports,
 
 	if (major_revision == 0x03) {
 		rhub = &xhci->usb3_rhub;
+<<<<<<< HEAD
 		/*
 		 * Some hosts incorrectly use sub-minor version for minor
 		 * version (i.e. 0x02 instead of 0x20 for bcdUSB 0x320 and 0x01
@@ -2196,6 +2197,8 @@ static void xhci_add_in_port(struct xhci_hcd *xhci, unsigned int num_ports,
 		 */
 		if (minor_revision > 0x00 && minor_revision < 0x10)
 			minor_revision <<= 4;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else if (major_revision <= 0x02) {
 		rhub = &xhci->usb2_rhub;
 	} else {

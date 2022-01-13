@@ -85,7 +85,10 @@ config INET
 	  Short answer: say Y.
 
 if INET
+<<<<<<< HEAD
 source "net/wireguard/Kconfig"
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 source "net/ipv4/Kconfig"
 source "net/ipv6/Kconfig"
 source "net/netlabel/Kconfig"
@@ -286,7 +289,11 @@ config BQL
 config BPF_JIT
 	bool "enable BPF Just In Time compiler"
 	depends on HAVE_CBPF_JIT || HAVE_EBPF_JIT
+<<<<<<< HEAD
 	depends on MODULES || ARM64
+=======
+	depends on MODULES
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	---help---
 	  Berkeley Packet Filter filtering capabilities are normally handled
 	  by an interpreter. This option allows kernel to generate a native

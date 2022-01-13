@@ -284,7 +284,10 @@ struct lis3lv02d {
 	int			regs_size;
 	u8                      *reg_cache;
 	bool			regs_stored;
+<<<<<<< HEAD
 	bool			init_required;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	u8                      odr_mask;  /* ODR bit mask */
 	u8			whoami;    /* indicates measurement precision */
 	s16 (*read_data) (struct lis3lv02d *lis3, int reg);

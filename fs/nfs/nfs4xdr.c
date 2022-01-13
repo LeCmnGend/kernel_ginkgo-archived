@@ -4258,11 +4258,15 @@ static int decode_attr_security_label(struct xdr_stream *xdr, uint32_t *bitmap,
 			goto out_overflow;
 		if (len < NFS4_MAXLABELLEN) {
 			if (label) {
+<<<<<<< HEAD
 				if (label->len) {
 					if (label->len < len)
 						return -ERANGE;
 					memcpy(label->label, p, len);
 				}
+=======
+				memcpy(label->label, p, len);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				label->len = len;
 				label->pi = pi;
 				label->lfs = lfs;

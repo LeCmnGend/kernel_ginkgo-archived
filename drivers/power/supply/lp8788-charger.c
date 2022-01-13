@@ -529,7 +529,11 @@ static int lp8788_set_irqs(struct platform_device *pdev,
 
 		ret = request_threaded_irq(virq, NULL,
 					lp8788_charger_irq_thread,
+<<<<<<< HEAD
 					IRQF_ONESHOT, name, pchg);
+=======
+					0, name, pchg);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (ret)
 			break;
 	}

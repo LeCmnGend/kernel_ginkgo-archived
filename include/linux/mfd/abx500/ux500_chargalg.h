@@ -15,7 +15,11 @@
  * - POWER_SUPPLY_TYPE_USB,
  * because only them store as drv_data pointer to struct ux500_charger.
  */
+<<<<<<< HEAD
 #define psy_to_ux500_charger(x) power_supply_get_drvdata(x)
+=======
+#define psy_to_ux500_charger(x) power_supply_get_drvdata(psy)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /* Forward declaration */
 struct ux500_charger;

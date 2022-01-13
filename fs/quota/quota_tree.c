@@ -46,6 +46,7 @@ static int qtree_dqstr_in_blk(struct qtree_mem_dqinfo *info)
 	       / info->dqi_entry_size;
 }
 
+<<<<<<< HEAD
 #define STACK_ALLOC_SIZE SZ_1K
 #define GETDQBUF_NORET(size) \
 	char *buf; \
@@ -77,6 +78,16 @@ static int qtree_dqstr_in_blk(struct qtree_mem_dqinfo *info)
 #define FREEDQBUF() \
 	if (unlikely(buf != buf_onstack)) \
 		kfree(buf);
+=======
+static char *getdqbuf(size_t size)
+{
+	char *buf = kmalloc(size, GFP_NOFS);
+	if (!buf)
+		printk(KERN_WARNING
+		       "VFS: Not enough memory for quota buffers.\n");
+	return buf;
+}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static ssize_t read_blk(struct qtree_mem_dqinfo *info, uint blk, char *buf)
 {
@@ -84,7 +95,11 @@ static ssize_t read_blk(struct qtree_mem_dqinfo *info, uint blk, char *buf)
 
 	memset(buf, 0, info->dqi_usable_bs);
 	return sb->s_op->quota_read(sb, info->dqi_type, buf,
+<<<<<<< HEAD
 	       info->dqi_usable_bs, (loff_t)blk << info->dqi_blocksize_bits);
+=======
+	       info->dqi_usable_bs, blk << info->dqi_blocksize_bits);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static ssize_t write_blk(struct qtree_mem_dqinfo *info, uint blk, char *buf)
@@ -93,7 +108,11 @@ static ssize_t write_blk(struct qtree_mem_dqinfo *info, uint blk, char *buf)
 	ssize_t ret;
 
 	ret = sb->s_op->quota_write(sb, info->dqi_type, buf,
+<<<<<<< HEAD
 	       info->dqi_usable_bs, (loff_t)blk << info->dqi_blocksize_bits);
+=======
+	       info->dqi_usable_bs, blk << info->dqi_blocksize_bits);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (ret != info->dqi_usable_bs) {
 		quota_error(sb, "dquota write failed");
 		if (ret >= 0)
@@ -105,12 +124,21 @@ static ssize_t write_blk(struct qtree_mem_dqinfo *info, uint blk, char *buf)
 /* Remove empty block from list and return it */
 static int get_free_dqblk(struct qtree_mem_dqinfo *info)
 {
+<<<<<<< HEAD
 	struct qt_disk_dqdbheader *dh;
 	int ret, blk;
 	GETDQBUF(info->dqi_usable_bs);
 
 	dh = (struct qt_disk_dqdbheader *)buf;
 
+=======
+	char *buf = getdqbuf(info->dqi_usable_bs);
+	struct qt_disk_dqdbheader *dh = (struct qt_disk_dqdbheader *)buf;
+	int ret, blk;
+
+	if (!buf)
+		return -ENOMEM;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (info->dqi_free_blk) {
 		blk = info->dqi_free_blk;
 		ret = read_blk(info, blk, buf);
@@ -129,7 +157,11 @@ static int get_free_dqblk(struct qtree_mem_dqinfo *info)
 	mark_info_dirty(info->dqi_sb, info->dqi_type);
 	ret = blk;
 out_buf:
+<<<<<<< HEAD
 	FREEDQBUF();
+=======
+	kfree(buf);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return ret;
 }
 
@@ -151,6 +183,7 @@ static int put_free_dqblk(struct qtree_mem_dqinfo *info, char *buf, uint blk)
 }
 
 /* Remove given block from the list of blocks with free entries */
+<<<<<<< HEAD
 static int remove_free_dqentry(struct qtree_mem_dqinfo *info, char *pbuf,
 			       uint blk)
 {
@@ -167,35 +200,76 @@ static int remove_free_dqentry(struct qtree_mem_dqinfo *info, char *pbuf,
 		((struct qt_disk_dqdbheader *)buf)->dqdh_prev_free =
 							dh->dqdh_prev_free;
 		err = write_blk(info, nextblk, buf);
+=======
+static int remove_free_dqentry(struct qtree_mem_dqinfo *info, char *buf,
+			       uint blk)
+{
+	char *tmpbuf = getdqbuf(info->dqi_usable_bs);
+	struct qt_disk_dqdbheader *dh = (struct qt_disk_dqdbheader *)buf;
+	uint nextblk = le32_to_cpu(dh->dqdh_next_free);
+	uint prevblk = le32_to_cpu(dh->dqdh_prev_free);
+	int err;
+
+	if (!tmpbuf)
+		return -ENOMEM;
+	if (nextblk) {
+		err = read_blk(info, nextblk, tmpbuf);
+		if (err < 0)
+			goto out_buf;
+		((struct qt_disk_dqdbheader *)tmpbuf)->dqdh_prev_free =
+							dh->dqdh_prev_free;
+		err = write_blk(info, nextblk, tmpbuf);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (err < 0)
 			goto out_buf;
 	}
 	if (prevblk) {
+<<<<<<< HEAD
 		err = read_blk(info, prevblk, buf);
 		if (err < 0)
 			goto out_buf;
 		((struct qt_disk_dqdbheader *)buf)->dqdh_next_free =
 							dh->dqdh_next_free;
 		err = write_blk(info, prevblk, buf);
+=======
+		err = read_blk(info, prevblk, tmpbuf);
+		if (err < 0)
+			goto out_buf;
+		((struct qt_disk_dqdbheader *)tmpbuf)->dqdh_next_free =
+							dh->dqdh_next_free;
+		err = write_blk(info, prevblk, tmpbuf);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (err < 0)
 			goto out_buf;
 	} else {
 		info->dqi_free_entry = nextblk;
 		mark_info_dirty(info->dqi_sb, info->dqi_type);
 	}
+<<<<<<< HEAD
 	FREEDQBUF();
 	dh->dqdh_next_free = dh->dqdh_prev_free = cpu_to_le32(0);
 	/* No matter whether write succeeds block is out of list */
 	if (write_blk(info, blk, pbuf) < 0)
+=======
+	kfree(tmpbuf);
+	dh->dqdh_next_free = dh->dqdh_prev_free = cpu_to_le32(0);
+	/* No matter whether write succeeds block is out of list */
+	if (write_blk(info, blk, buf) < 0)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		quota_error(info->dqi_sb, "Can't write block (%u) "
 			    "with free entries", blk);
 	return 0;
 out_buf:
+<<<<<<< HEAD
 	FREEDQBUF();
+=======
+	kfree(tmpbuf);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return err;
 }
 
 /* Insert given block to the beginning of list with free entries */
+<<<<<<< HEAD
 static int insert_free_dqentry(struct qtree_mem_dqinfo *info, char *pbuf,
 			       uint blk)
 {
@@ -219,11 +293,42 @@ static int insert_free_dqentry(struct qtree_mem_dqinfo *info, char *pbuf,
 			goto out_buf;
 	}
 	FREEDQBUF();
+=======
+static int insert_free_dqentry(struct qtree_mem_dqinfo *info, char *buf,
+			       uint blk)
+{
+	char *tmpbuf = getdqbuf(info->dqi_usable_bs);
+	struct qt_disk_dqdbheader *dh = (struct qt_disk_dqdbheader *)buf;
+	int err;
+
+	if (!tmpbuf)
+		return -ENOMEM;
+	dh->dqdh_next_free = cpu_to_le32(info->dqi_free_entry);
+	dh->dqdh_prev_free = cpu_to_le32(0);
+	err = write_blk(info, blk, buf);
+	if (err < 0)
+		goto out_buf;
+	if (info->dqi_free_entry) {
+		err = read_blk(info, info->dqi_free_entry, tmpbuf);
+		if (err < 0)
+			goto out_buf;
+		((struct qt_disk_dqdbheader *)tmpbuf)->dqdh_prev_free =
+							cpu_to_le32(blk);
+		err = write_blk(info, info->dqi_free_entry, tmpbuf);
+		if (err < 0)
+			goto out_buf;
+	}
+	kfree(tmpbuf);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	info->dqi_free_entry = blk;
 	mark_info_dirty(info->dqi_sb, info->dqi_type);
 	return 0;
 out_buf:
+<<<<<<< HEAD
 	FREEDQBUF();
+=======
+	kfree(tmpbuf);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return err;
 }
 
@@ -245,11 +350,19 @@ static uint find_free_dqentry(struct qtree_mem_dqinfo *info,
 {
 	uint blk, i;
 	struct qt_disk_dqdbheader *dh;
+<<<<<<< HEAD
 	char *ddquot;
 	GETDQBUF_NORET(info->dqi_usable_bs);
 
 	*err = 0;
 	if (unlikely((buf != buf_onstack) && !buf)) {
+=======
+	char *buf = getdqbuf(info->dqi_usable_bs);
+	char *ddquot;
+
+	*err = 0;
+	if (!buf) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		*err = -ENOMEM;
 		return 0;
 	}
@@ -263,7 +376,11 @@ static uint find_free_dqentry(struct qtree_mem_dqinfo *info,
 		blk = get_free_dqblk(info);
 		if ((int)blk < 0) {
 			*err = blk;
+<<<<<<< HEAD
 			FREEDQBUF();
+=======
+			kfree(buf);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			return 0;
 		}
 		memset(buf, 0, info->dqi_usable_bs);
@@ -302,6 +419,7 @@ static uint find_free_dqentry(struct qtree_mem_dqinfo *info,
 			    blk);
 		goto out_buf;
 	}
+<<<<<<< HEAD
 	dquot->dq_off = ((loff_t)blk << info->dqi_blocksize_bits) +
 			sizeof(struct qt_disk_dqdbheader) +
 			i * info->dqi_entry_size;
@@ -309,6 +427,15 @@ static uint find_free_dqentry(struct qtree_mem_dqinfo *info,
 	return blk;
 out_buf:
 	FREEDQBUF();
+=======
+	dquot->dq_off = (blk << info->dqi_blocksize_bits) +
+			sizeof(struct qt_disk_dqdbheader) +
+			i * info->dqi_entry_size;
+	kfree(buf);
+	return blk;
+out_buf:
+	kfree(buf);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 }
 
@@ -316,11 +443,21 @@ out_buf:
 static int do_insert_tree(struct qtree_mem_dqinfo *info, struct dquot *dquot,
 			  uint *treeblk, int depth)
 {
+<<<<<<< HEAD
 	int ret = 0, newson = 0, newact = 0;
 	__le32 *ref;
 	uint newblk;
 	GETDQBUF(info->dqi_usable_bs);
 
+=======
+	char *buf = getdqbuf(info->dqi_usable_bs);
+	int ret = 0, newson = 0, newact = 0;
+	__le32 *ref;
+	uint newblk;
+
+	if (!buf)
+		return -ENOMEM;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!*treeblk) {
 		ret = get_free_dqblk(info);
 		if (ret < 0)
@@ -363,7 +500,11 @@ static int do_insert_tree(struct qtree_mem_dqinfo *info, struct dquot *dquot,
 		put_free_dqblk(info, buf, *treeblk);
 	}
 out_buf:
+<<<<<<< HEAD
 	FREEDQBUF();
+=======
+	kfree(buf);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return ret;
 }
 
@@ -391,7 +532,14 @@ int qtree_write_dquot(struct qtree_mem_dqinfo *info, struct dquot *dquot)
 	int type = dquot->dq_id.type;
 	struct super_block *sb = dquot->dq_sb;
 	ssize_t ret;
+<<<<<<< HEAD
 	GETDQBUF(info->dqi_entry_size);
+=======
+	char *ddquot = getdqbuf(info->dqi_entry_size);
+
+	if (!ddquot)
+		return -ENOMEM;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* dq_off is guarded by dqio_sem */
 	if (!dquot->dq_off) {
@@ -399,14 +547,24 @@ int qtree_write_dquot(struct qtree_mem_dqinfo *info, struct dquot *dquot)
 		if (ret < 0) {
 			quota_error(sb, "Error %zd occurred while creating "
 				    "quota", ret);
+<<<<<<< HEAD
 			FREEDQBUF();
+=======
+			kfree(ddquot);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			return ret;
 		}
 	}
 	spin_lock(&dquot->dq_dqb_lock);
+<<<<<<< HEAD
 	info->dqi_ops->mem2disk_dqblk(buf, dquot);
 	spin_unlock(&dquot->dq_dqb_lock);
 	ret = sb->s_op->quota_write(sb, type, buf, info->dqi_entry_size,
+=======
+	info->dqi_ops->mem2disk_dqblk(ddquot, dquot);
+	spin_unlock(&dquot->dq_dqb_lock);
+	ret = sb->s_op->quota_write(sb, type, ddquot, info->dqi_entry_size,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				    dquot->dq_off);
 	if (ret != info->dqi_entry_size) {
 		quota_error(sb, "dquota write failed");
@@ -416,7 +574,11 @@ int qtree_write_dquot(struct qtree_mem_dqinfo *info, struct dquot *dquot)
 		ret = 0;
 	}
 	dqstats_inc(DQST_WRITES);
+<<<<<<< HEAD
 	FREEDQBUF();
+=======
+	kfree(ddquot);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return ret;
 }
@@ -427,9 +589,17 @@ static int free_dqentry(struct qtree_mem_dqinfo *info, struct dquot *dquot,
 			uint blk)
 {
 	struct qt_disk_dqdbheader *dh;
+<<<<<<< HEAD
 	int ret = 0;
 	GETDQBUF(info->dqi_usable_bs);
 
+=======
+	char *buf = getdqbuf(info->dqi_usable_bs);
+	int ret = 0;
+
+	if (!buf)
+		return -ENOMEM;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (dquot->dq_off >> info->dqi_blocksize_bits != blk) {
 		quota_error(dquot->dq_sb, "Quota structure has offset to "
 			"other block (%u) than it should (%u)", blk,
@@ -477,7 +647,11 @@ static int free_dqentry(struct qtree_mem_dqinfo *info, struct dquot *dquot,
 	}
 	dquot->dq_off = 0;	/* Quota is now unattached */
 out_buf:
+<<<<<<< HEAD
 	FREEDQBUF();
+=======
+	kfree(buf);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return ret;
 }
 
@@ -485,12 +659,22 @@ out_buf:
 static int remove_tree(struct qtree_mem_dqinfo *info, struct dquot *dquot,
 		       uint *blk, int depth)
 {
+<<<<<<< HEAD
 	int ret = 0;
 	uint newblk;
 	__le32 *ref;
 	GETDQBUF(info->dqi_usable_bs);
 	ref = (__le32 *)buf;
 
+=======
+	char *buf = getdqbuf(info->dqi_usable_bs);
+	int ret = 0;
+	uint newblk;
+	__le32 *ref = (__le32 *)buf;
+
+	if (!buf)
+		return -ENOMEM;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ret = read_blk(info, *blk, buf);
 	if (ret < 0) {
 		quota_error(dquot->dq_sb, "Can't read quota data block %u",
@@ -524,7 +708,11 @@ static int remove_tree(struct qtree_mem_dqinfo *info, struct dquot *dquot,
 		}
 	}
 out_buf:
+<<<<<<< HEAD
 	FREEDQBUF();
+=======
+	kfree(buf);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return ret;
 }
 
@@ -543,11 +731,21 @@ EXPORT_SYMBOL(qtree_delete_dquot);
 static loff_t find_block_dqentry(struct qtree_mem_dqinfo *info,
 				 struct dquot *dquot, uint blk)
 {
+<<<<<<< HEAD
 	loff_t ret = 0;
 	int i;
 	char *ddquot;
 	GETDQBUF(info->dqi_usable_bs);
 
+=======
+	char *buf = getdqbuf(info->dqi_usable_bs);
+	loff_t ret = 0;
+	int i;
+	char *ddquot;
+
+	if (!buf)
+		return -ENOMEM;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ret = read_blk(info, blk, buf);
 	if (ret < 0) {
 		quota_error(dquot->dq_sb, "Can't read quota tree "
@@ -567,11 +765,19 @@ static loff_t find_block_dqentry(struct qtree_mem_dqinfo *info,
 		ret = -EIO;
 		goto out_buf;
 	} else {
+<<<<<<< HEAD
 		ret = ((loff_t)blk << info->dqi_blocksize_bits) + sizeof(struct
 		  qt_disk_dqdbheader) + i * info->dqi_entry_size;
 	}
 out_buf:
 	FREEDQBUF();
+=======
+		ret = (blk << info->dqi_blocksize_bits) + sizeof(struct
+		  qt_disk_dqdbheader) + i * info->dqi_entry_size;
+	}
+out_buf:
+	kfree(buf);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return ret;
 }
 
@@ -579,11 +785,20 @@ out_buf:
 static loff_t find_tree_dqentry(struct qtree_mem_dqinfo *info,
 				struct dquot *dquot, uint blk, int depth)
 {
+<<<<<<< HEAD
 	loff_t ret = 0;
 	__le32 *ref;
 	GETDQBUF(info->dqi_usable_bs);
 	ref = (__le32 *)buf;
 
+=======
+	char *buf = getdqbuf(info->dqi_usable_bs);
+	loff_t ret = 0;
+	__le32 *ref = (__le32 *)buf;
+
+	if (!buf)
+		return -ENOMEM;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ret = read_blk(info, blk, buf);
 	if (ret < 0) {
 		quota_error(dquot->dq_sb, "Can't read quota tree block %u",
@@ -599,7 +814,11 @@ static loff_t find_tree_dqentry(struct qtree_mem_dqinfo *info,
 	else
 		ret = find_block_dqentry(info, dquot, blk);
 out_buf:
+<<<<<<< HEAD
 	FREEDQBUF();
+=======
+	kfree(buf);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return ret;
 }
 
@@ -615,9 +834,14 @@ int qtree_read_dquot(struct qtree_mem_dqinfo *info, struct dquot *dquot)
 	int type = dquot->dq_id.type;
 	struct super_block *sb = dquot->dq_sb;
 	loff_t offset;
+<<<<<<< HEAD
 	int ret = 0;
 	char *buf;
 	char buf_onstack[STACK_ALLOC_SIZE] __aligned(8);
+=======
+	char *ddquot;
+	int ret = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #ifdef __QUOTA_QT_PARANOIA
 	/* Invalidated quota? */
@@ -643,8 +867,15 @@ int qtree_read_dquot(struct qtree_mem_dqinfo *info, struct dquot *dquot)
 		}
 		dquot->dq_off = offset;
 	}
+<<<<<<< HEAD
 	__GETDQBUF(info->dqi_entry_size);
 	ret = sb->s_op->quota_read(sb, type, buf, info->dqi_entry_size,
+=======
+	ddquot = getdqbuf(info->dqi_entry_size);
+	if (!ddquot)
+		return -ENOMEM;
+	ret = sb->s_op->quota_read(sb, type, ddquot, info->dqi_entry_size,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				   dquot->dq_off);
 	if (ret != info->dqi_entry_size) {
 		if (ret >= 0)
@@ -653,18 +884,30 @@ int qtree_read_dquot(struct qtree_mem_dqinfo *info, struct dquot *dquot)
 			    from_kqid(&init_user_ns, dquot->dq_id));
 		set_bit(DQ_FAKE_B, &dquot->dq_flags);
 		memset(&dquot->dq_dqb, 0, sizeof(struct mem_dqblk));
+<<<<<<< HEAD
 		FREEDQBUF();
 		goto out;
 	}
 	spin_lock(&dquot->dq_dqb_lock);
 	info->dqi_ops->disk2mem_dqblk(dquot, buf);
+=======
+		kfree(ddquot);
+		goto out;
+	}
+	spin_lock(&dquot->dq_dqb_lock);
+	info->dqi_ops->disk2mem_dqblk(dquot, ddquot);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!dquot->dq_dqb.dqb_bhardlimit &&
 	    !dquot->dq_dqb.dqb_bsoftlimit &&
 	    !dquot->dq_dqb.dqb_ihardlimit &&
 	    !dquot->dq_dqb.dqb_isoftlimit)
 		set_bit(DQ_FAKE_B, &dquot->dq_flags);
 	spin_unlock(&dquot->dq_dqb_lock);
+<<<<<<< HEAD
 	FREEDQBUF();
+=======
+	kfree(ddquot);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 out:
 	dqstats_inc(DQST_READS);
 	return ret;
@@ -685,13 +928,24 @@ EXPORT_SYMBOL(qtree_release_dquot);
 static int find_next_id(struct qtree_mem_dqinfo *info, qid_t *id,
 			unsigned int blk, int depth)
 {
+<<<<<<< HEAD
 	__le32 *ref;
+=======
+	char *buf = getdqbuf(info->dqi_usable_bs);
+	__le32 *ref = (__le32 *)buf;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ssize_t ret;
 	unsigned int epb = info->dqi_usable_bs >> 2;
 	unsigned int level_inc = 1;
 	int i;
+<<<<<<< HEAD
 	GETDQBUF(info->dqi_usable_bs);
 	ref = (__le32 *)buf;
+=======
+
+	if (!buf)
+		return -ENOMEM;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	for (i = depth; i < info->dqi_qtree_depth - 1; i++)
 		level_inc *= epb;
@@ -720,7 +974,11 @@ static int find_next_id(struct qtree_mem_dqinfo *info, qid_t *id,
 		goto out_buf;
 	}
 out_buf:
+<<<<<<< HEAD
 	FREEDQBUF();
+=======
+	kfree(buf);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return ret;
 }
 

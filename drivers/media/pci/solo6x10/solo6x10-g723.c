@@ -401,7 +401,11 @@ int solo_g723_init(struct solo_dev *solo_dev)
 
 	ret = snd_ctl_add(card, snd_ctl_new1(&kctl, solo_dev));
 	if (ret < 0)
+<<<<<<< HEAD
 		goto snd_error;
+=======
+		return ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	ret = solo_snd_pcm_init(solo_dev);
 	if (ret < 0)

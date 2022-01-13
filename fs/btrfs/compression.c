@@ -286,7 +286,11 @@ static void end_compressed_bio_write(struct bio *bio)
 					 cb->start,
 					 cb->start + cb->len - 1,
 					 NULL,
+<<<<<<< HEAD
 					 !cb->errors);
+=======
+					 bio->bi_status ? 0 : 1);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	cb->compressed_pages[0]->mapping = NULL;
 
 	end_compressed_writeback(inode, cb);

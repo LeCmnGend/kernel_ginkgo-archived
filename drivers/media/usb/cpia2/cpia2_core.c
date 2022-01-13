@@ -2176,6 +2176,7 @@ static void reset_camera_struct(struct camera_data *cam)
  *
  *  cpia2_init_camera_struct
  *
+<<<<<<< HEAD
  *  Deinitialize camera struct
  *****************************************************************************/
 void cpia2_deinit_camera_struct(struct camera_data *cam, struct usb_interface *intf)
@@ -2188,6 +2189,8 @@ void cpia2_deinit_camera_struct(struct camera_data *cam, struct usb_interface *i
  *
  *  cpia2_init_camera_struct
  *
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *  Initializes camera struct, does not call reset to fill in defaults.
  *****************************************************************************/
 struct camera_data *cpia2_init_camera_struct(struct usb_interface *intf)

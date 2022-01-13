@@ -64,7 +64,11 @@ int lzma_decompress_to_file(const char *input, int output_fd)
 
 			if (ferror(infile)) {
 				pr_err("lzma: read error: %s\n", strerror(errno));
+<<<<<<< HEAD
 				goto err_lzma_end;
+=======
+				goto err_fclose;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			}
 
 			if (feof(infile))
@@ -78,7 +82,11 @@ int lzma_decompress_to_file(const char *input, int output_fd)
 
 			if (writen(output_fd, buf_out, write_size) != write_size) {
 				pr_err("lzma: write error: %s\n", strerror(errno));
+<<<<<<< HEAD
 				goto err_lzma_end;
+=======
+				goto err_fclose;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			}
 
 			strm.next_out  = buf_out;
@@ -90,13 +98,20 @@ int lzma_decompress_to_file(const char *input, int output_fd)
 				break;
 
 			pr_err("lzma: failed %s\n", lzma_strerror(ret));
+<<<<<<< HEAD
 			goto err_lzma_end;
+=======
+			goto err_fclose;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 	}
 
 	err = 0;
+<<<<<<< HEAD
 err_lzma_end:
 	lzma_end(&strm);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 err_fclose:
 	fclose(infile);
 	return err;

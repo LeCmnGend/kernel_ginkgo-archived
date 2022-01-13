@@ -536,11 +536,18 @@ static unsigned long swapin_nr_pages(unsigned long offset)
 		return 1;
 
 	hits = atomic_xchg(&swapin_readahead_hits, 0);
+<<<<<<< HEAD
 	pages = __swapin_nr_pages(READ_ONCE(prev_offset), offset, hits,
 				  max_pages,
 				  atomic_read(&last_readahead_pages));
 	if (!hits)
 		WRITE_ONCE(prev_offset, offset);
+=======
+	pages = __swapin_nr_pages(prev_offset, offset, hits, max_pages,
+				  atomic_read(&last_readahead_pages));
+	if (!hits)
+		prev_offset = offset;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	atomic_set(&last_readahead_pages, pages);
 
 	return pages;
@@ -585,10 +592,13 @@ struct page *swap_cluster_readahead(swp_entry_t entry, gfp_t gfp_mask,
 	if (!mask)
 		goto skip;
 
+<<<<<<< HEAD
 	/* If exiting, don't do swap readahead. */
 	if (current->flags & PF_EXITING)
 		goto skip;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	do_poll = false;
 	/* Read a page_cluster sized and aligned cluster around offset. */
 	start_offset = offset & ~mask;

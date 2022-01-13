@@ -130,8 +130,16 @@ static inline bool compaction_failed(enum compact_result result)
 	return false;
 }
 
+<<<<<<< HEAD
 /* Compaction needs reclaim to be performed first, so it can continue. */
 static inline bool compaction_needs_reclaim(enum compact_result result)
+=======
+/*
+ * Compaction  has backed off for some reason. It might be throttling or
+ * lock contention. Retrying is still worthwhile.
+ */
+static inline bool compaction_withdrawn(enum compact_result result)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	/*
 	 * Compaction backed off due to watermark checks for order-0
@@ -140,6 +148,7 @@ static inline bool compaction_needs_reclaim(enum compact_result result)
 	if (result == COMPACT_SKIPPED)
 		return true;
 
+<<<<<<< HEAD
 	return false;
 }
 
@@ -150,6 +159,8 @@ static inline bool compaction_needs_reclaim(enum compact_result result)
  */
 static inline bool compaction_withdrawn(enum compact_result result)
 {
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/*
 	 * If compaction is deferred for high-order allocations, it is
 	 * because sync compaction recently failed. If this is the case
@@ -215,11 +226,14 @@ static inline bool compaction_failed(enum compact_result result)
 	return false;
 }
 
+<<<<<<< HEAD
 static inline bool compaction_needs_reclaim(enum compact_result result)
 {
 	return false;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static inline bool compaction_withdrawn(enum compact_result result)
 {
 	return true;

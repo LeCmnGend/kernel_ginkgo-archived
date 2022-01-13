@@ -77,7 +77,10 @@ struct nfs_open_context {
 #define NFS_CONTEXT_RESEND_WRITES	(1)
 #define NFS_CONTEXT_BAD			(2)
 #define NFS_CONTEXT_UNLOCK	(3)
+<<<<<<< HEAD
 #define NFS_CONTEXT_FILE_OPEN		(4)
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int error;
 
 	struct list_head list;

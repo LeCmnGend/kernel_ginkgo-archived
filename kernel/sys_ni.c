@@ -163,6 +163,10 @@ cond_syscall(compat_sys_process_vm_writev);
 cond_syscall(sys_uselib);
 cond_syscall(sys_fadvise64);
 cond_syscall(sys_fadvise64_64);
+<<<<<<< HEAD
+=======
+cond_syscall(sys_madvise);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 cond_syscall(sys_setuid);
 cond_syscall(sys_setregid);
 cond_syscall(sys_setgid);

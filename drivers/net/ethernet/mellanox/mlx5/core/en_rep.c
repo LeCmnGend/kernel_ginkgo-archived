@@ -180,7 +180,11 @@ int mlx5e_attr_get(struct net_device *dev, struct switchdev_attr *attr)
 	struct mlx5_eswitch_rep *rep = rpriv->rep;
 	struct mlx5_eswitch *esw = priv->mdev->priv.eswitch;
 
+<<<<<<< HEAD
 	if (esw->mode != SRIOV_OFFLOADS)
+=======
+	if (esw->mode == SRIOV_NONE)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return -EOPNOTSUPP;
 
 	switch (attr->id) {

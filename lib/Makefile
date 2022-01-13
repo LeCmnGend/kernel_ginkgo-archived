@@ -35,11 +35,16 @@ lib-y := ctype.o string.o vsprintf.o cmdline.o \
 	 flex_proportions.o ratelimit.o show_mem.o \
 	 is_single_threaded.o plist.o decompress.o kobject_uevent.o \
 	 earlycpio.o seq_buf.o siphash.o \
+<<<<<<< HEAD
 	 nodemask.o win_minmax.o
 
 CFLAGS_kobject_uevent.o += -Wframe-larger-than=3072
 
 lib-$(!CONFIG_ARM64) += nmi_backtrace.o
+=======
+	 nmi_backtrace.o nodemask.o win_minmax.o
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 lib-$(CONFIG_MMU) += ioremap.o
 lib-$(CONFIG_SMP) += cpumask.o
 lib-$(CONFIG_DMA_NOOP_OPS) += dma-noop.o

@@ -70,7 +70,11 @@
 #define IPHETH_USBINTF_SUBCLASS 253
 #define IPHETH_USBINTF_PROTO    1
 
+<<<<<<< HEAD
 #define IPHETH_BUF_SIZE         1514
+=======
+#define IPHETH_BUF_SIZE         1516
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define IPHETH_IP_ALIGN		2	/* padding at front of URB */
 #define IPHETH_TX_TIMEOUT       (5 * HZ)
 

@@ -1179,8 +1179,11 @@ static int wm8997_probe(struct platform_device *pdev)
 		goto err_spk_irqs;
 	}
 
+<<<<<<< HEAD
 	return ret;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 err_spk_irqs:
 	arizona_free_spk_irqs(arizona);
 

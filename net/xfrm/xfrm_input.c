@@ -420,7 +420,11 @@ resume:
 		/* only the first xfrm gets the encap type */
 		encap_type = 0;
 
+<<<<<<< HEAD
 		if (x->repl->recheck(x, skb, seq)) {
+=======
+		if (async && x->repl->recheck(x, skb, seq)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			XFRM_INC_STATS(net, LINUX_MIB_XFRMINSTATESEQERROR);
 			goto drop_unlock;
 		}

@@ -162,7 +162,11 @@ static struct ieee80211_supported_band wcn_band_5ghz = {
 		.ampdu_density = IEEE80211_HT_MPDU_DENSITY_16,
 		.mcs = {
 			.rx_mask = { 0xff, 0, 0, 0, 0, 0, 0, 0, 0, 0, },
+<<<<<<< HEAD
 			.rx_highest = cpu_to_le16(150),
+=======
+			.rx_highest = cpu_to_le16(72),
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			.tx_params = IEEE80211_HT_MCS_TX_DEFINED,
 		}
 	}

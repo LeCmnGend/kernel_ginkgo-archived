@@ -193,7 +193,11 @@ static int __init omapdss_boot_init(void)
 	dss = of_find_matching_node(NULL, omapdss_of_match);
 
 	if (dss == NULL || !of_device_is_available(dss))
+<<<<<<< HEAD
 		goto put_node;
+=======
+		return 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	omapdss_walk_device(dss, true);
 
@@ -218,8 +222,11 @@ static int __init omapdss_boot_init(void)
 		kfree(n);
 	}
 
+<<<<<<< HEAD
 put_node:
 	of_node_put(dss);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 }
 

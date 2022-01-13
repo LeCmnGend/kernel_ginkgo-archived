@@ -692,9 +692,12 @@ static bool pn533_target_type_a_is_valid(struct pn533_target_type_a *type_a,
 	if (PN533_TYPE_A_SEL_CASCADE(type_a->sel_res) != 0)
 		return false;
 
+<<<<<<< HEAD
 	if (type_a->nfcid_len > NFC_NFCID1_MAXSIZE)
 		return false;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return true;
 }
 

@@ -665,7 +665,11 @@ static void diag_rpmsg_notify_rx_work_fn(struct work_struct *work)
 		/* detach last entry */
 		rx_item = list_last_entry(&read_work_struct->rx_list_head,
 						struct rx_buff_list, list);
+<<<<<<< HEAD
 
+=======
+		list_del(&rx_item->list);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		spin_unlock_irqrestore(&read_work_struct->rx_lock, flags);
 
 		if (!rx_item)
@@ -681,7 +685,11 @@ static void diag_rpmsg_notify_rx_work_fn(struct work_struct *work)
 
 		if (!rpmsg_info->buf1 && !rpmsg_info->buf2) {
 			DIAG_LOG(DIAG_DEBUG_PERIPHERALS,
+<<<<<<< HEAD
 					"retry data send for %s len %d\n",
+=======
+					"dropping data for %s len %d\n",
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 					rpmsg_info->name, rx_item->rx_buf_size);
 			return;
 		}
@@ -715,9 +723,19 @@ static void diag_rpmsg_notify_rx_work_fn(struct work_struct *work)
 		diagfwd_channel_read_done(rpmsg_info->fwd_ctxt,
 				(unsigned char *)(buf), rx_item->rx_buf_size);
 
+<<<<<<< HEAD
 		mutex_unlock(&driver->diagfwd_channel_mutex[PERI_RPMSG]);
 
 		list_del(&rx_item->list);
+=======
+		if (buf == rpmsg_info->buf1)
+			rpmsg_info->buf1 = NULL;
+		else if (buf == rpmsg_info->buf2)
+			rpmsg_info->buf2 = NULL;
+
+		mutex_unlock(&driver->diagfwd_channel_mutex[PERI_RPMSG]);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		kfree(rx_item->rpmsg_rx_buf);
 		kfree(rx_item);
 	} else {
@@ -727,6 +745,7 @@ static void diag_rpmsg_notify_rx_work_fn(struct work_struct *work)
 	return;
 }
 
+<<<<<<< HEAD
 struct diag_rpmsg_info *diag_get_rpmsg_info_ptr(int type, int peripheral)
 {
 	if (type == TYPE_CMD)
@@ -765,6 +784,8 @@ void rpmsg_mark_buffers_free(uint8_t peripheral, uint8_t type, int buf_num)
 	}
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static void rpmsg_late_init(struct diag_rpmsg_info *rpmsg_info)
 {
 	struct diagfwd_info *fwd_info = NULL;
@@ -830,7 +851,10 @@ static void __diag_rpmsg_init(struct diag_rpmsg_info *rpmsg_info)
 	mutex_lock(&driver->rpmsginfo_mutex[PERI_RPMSG]);
 	rpmsg_info->hdl = NULL;
 	rpmsg_info->fwd_ctxt = NULL;
+<<<<<<< HEAD
 	rpmsg_info->probed = 0;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	atomic_set(&rpmsg_info->opened, 0);
 	atomic_set(&rpmsg_info->diag_state, 0);
 	DIAG_LOG(DIAG_DEBUG_PERIPHERALS,
@@ -984,7 +1008,10 @@ static int diag_rpmsg_probe(struct rpmsg_device *rpdev)
 		rpmsg_info->hdl = rpdev;
 		atomic_set(&rpmsg_info->opened, 1);
 		mutex_unlock(&driver->rpmsginfo_mutex[PERI_RPMSG]);
+<<<<<<< HEAD
 		rpmsg_info->probed = 1;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		dev_set_drvdata(&rpdev->dev, rpmsg_info);
 		diagfwd_channel_read(rpmsg_info->fwd_ctxt);
 		queue_work(rpmsg_info->wq, &rpmsg_info->open_work);
@@ -1010,7 +1037,10 @@ static void diag_rpmsg_remove(struct rpmsg_device *rpdev)
 		mutex_lock(&driver->rpmsginfo_mutex[PERI_RPMSG]);
 		atomic_set(&rpmsg_info->opened, 0);
 		mutex_unlock(&driver->rpmsginfo_mutex[PERI_RPMSG]);
+<<<<<<< HEAD
 		rpmsg_info->probed = 0;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		queue_work(rpmsg_info->wq, &rpmsg_info->close_work);
 	}
 }

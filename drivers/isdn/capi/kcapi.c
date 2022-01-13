@@ -845,7 +845,11 @@ EXPORT_SYMBOL(capi20_put_message);
  * Return value: CAPI result code
  */
 
+<<<<<<< HEAD
 u16 capi20_get_manufacturer(u32 contr, u8 buf[CAPI_MANUFACTURER_LEN])
+=======
+u16 capi20_get_manufacturer(u32 contr, u8 *buf)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	struct capi_ctr *ctr;
 	u16 ret;
@@ -915,7 +919,11 @@ EXPORT_SYMBOL(capi20_get_version);
  * Return value: CAPI result code
  */
 
+<<<<<<< HEAD
 u16 capi20_get_serial(u32 contr, u8 serial[CAPI_SERIAL_LEN])
+=======
+u16 capi20_get_serial(u32 contr, u8 *serial)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	struct capi_ctr *ctr;
 	u16 ret;

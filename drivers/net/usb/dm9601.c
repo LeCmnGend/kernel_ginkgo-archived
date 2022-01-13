@@ -625,10 +625,13 @@ static const struct usb_device_id products[] = {
 	 USB_DEVICE(0x0a46, 0x1269),	/* DM9621A USB to Fast Ethernet Adapter */
 	 .driver_info = (unsigned long)&dm9601_info,
 	},
+<<<<<<< HEAD
 	{
 	 USB_DEVICE(0x0586, 0x3427),	/* ZyXEL Keenetic Plus DSL xDSL modem */
 	 .driver_info = (unsigned long)&dm9601_info,
 	},
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	{},			// END
 };
 

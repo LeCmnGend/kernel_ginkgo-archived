@@ -98,6 +98,7 @@ int nouveau_gem_prime_pin(struct drm_gem_object *obj)
 	if (ret)
 		return -EINVAL;
 
+<<<<<<< HEAD
 	ret = ttm_bo_reserve(&nvbo->bo, false, false, NULL);
 	if (ret)
 		goto error;
@@ -114,6 +115,9 @@ int nouveau_gem_prime_pin(struct drm_gem_object *obj)
 error:
 	nouveau_bo_unpin(nvbo);
 	return ret;
+=======
+	return 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 void nouveau_gem_prime_unpin(struct drm_gem_object *obj)

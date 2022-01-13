@@ -421,7 +421,10 @@ static int elm_probe(struct platform_device *pdev)
 	pm_runtime_enable(&pdev->dev);
 	if (pm_runtime_get_sync(&pdev->dev) < 0) {
 		ret = -EINVAL;
+<<<<<<< HEAD
 		pm_runtime_put_sync(&pdev->dev);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		pm_runtime_disable(&pdev->dev);
 		dev_err(&pdev->dev, "can't enable clock\n");
 		return ret;

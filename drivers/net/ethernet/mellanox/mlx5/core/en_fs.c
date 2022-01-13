@@ -961,7 +961,10 @@ static int mlx5e_create_inner_ttc_table_groups(struct mlx5e_ttc_table *ttc)
 	in = kvzalloc(inlen, GFP_KERNEL);
 	if (!in) {
 		kfree(ft->g);
+<<<<<<< HEAD
 		ft->g = NULL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return -ENOMEM;
 	}
 
@@ -1182,7 +1185,10 @@ static int mlx5e_create_l2_table_groups(struct mlx5e_l2_table *l2_table)
 	in = kvzalloc(inlen, GFP_KERNEL);
 	if (!in) {
 		kfree(ft->g);
+<<<<<<< HEAD
 		ft->g = NULL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return -ENOMEM;
 	}
 
@@ -1228,7 +1234,10 @@ err_destroy_groups:
 	ft->g[ft->num_groups] = NULL;
 	mlx5e_destroy_groups(ft);
 	kvfree(in);
+<<<<<<< HEAD
 	kfree(ft->g);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return err;
 }

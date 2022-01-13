@@ -329,9 +329,12 @@ static struct dwc3_ep *dwc3_wIndex_to_dep(struct dwc3 *dwc, __le16 wIndex_le)
 		epnum |= 1;
 
 	dep = dwc->eps[epnum];
+<<<<<<< HEAD
 	if (dep == NULL)
 		return NULL;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (dep->flags & DWC3_EP_ENABLED)
 		return dep;
 
@@ -1120,16 +1123,23 @@ static void dwc3_ep0_xfer_complete(struct dwc3 *dwc,
 static void __dwc3_ep0_do_control_data(struct dwc3 *dwc,
 		struct dwc3_ep *dep, struct dwc3_request *req)
 {
+<<<<<<< HEAD
 	unsigned int		trb_length = 0;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int			ret;
 
 	req->direction = !!dep->number;
 
 	if (req->request.length == 0) {
+<<<<<<< HEAD
 		if (!req->direction)
 			trb_length = dep->endpoint.maxpacket;
 
 		dwc3_ep0_prepare_one_trb(dep, dwc->bounce_addr, trb_length,
+=======
+		dwc3_ep0_prepare_one_trb(dep, dwc->ep0_trb_addr, 0,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				DWC3_TRBCTL_CONTROL_DATA, false);
 		ret = dwc3_ep0_start_trans(dep);
 	} else if (!IS_ALIGNED(req->request.length, dep->endpoint.maxpacket)
@@ -1181,12 +1191,18 @@ static void __dwc3_ep0_do_control_data(struct dwc3 *dwc,
 
 		req->trb = &dwc->ep0_trb[dep->trb_enqueue - 1];
 
+<<<<<<< HEAD
 		if (!req->direction)
 			trb_length = dep->endpoint.maxpacket;
 
 		/* Now prepare one extra TRB to align transfer size */
 		dwc3_ep0_prepare_one_trb(dep, dwc->bounce_addr,
 					 trb_length, DWC3_TRBCTL_CONTROL_DATA,
+=======
+		/* Now prepare one extra TRB to align transfer size */
+		dwc3_ep0_prepare_one_trb(dep, dwc->bounce_addr,
+					 0, DWC3_TRBCTL_CONTROL_DATA,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 					 false);
 		ret = dwc3_ep0_start_trans(dep);
 	} else {

@@ -217,7 +217,11 @@ static irqreturn_t apci1500_interrupt(int irq, void *d)
 	struct comedi_device *dev = d;
 	struct apci1500_private *devpriv = dev->private;
 	struct comedi_subdevice *s = dev->read_subdev;
+<<<<<<< HEAD
 	unsigned short status = 0;
+=======
+	unsigned int status = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	unsigned int val;
 
 	val = inl(devpriv->amcc + AMCC_OP_REG_INTCSR);
@@ -247,6 +251,7 @@ static irqreturn_t apci1500_interrupt(int irq, void *d)
 	 *
 	 *    Mask     Meaning
 	 * ----------  ------------------------------------------
+<<<<<<< HEAD
 	 * 0b00000001  Event 1 has occurred
 	 * 0b00000010  Event 2 has occurred
 	 * 0b00000100  Counter/timer 1 has run down (not implemented)
@@ -255,6 +260,16 @@ static irqreturn_t apci1500_interrupt(int irq, void *d)
 	 * 0b00100000  Watchdog has run down (not implemented)
 	 * 0b01000000  Voltage error
 	 * 0b10000000  Short-circuit error
+=======
+	 * 0x00000001  Event 1 has occurred
+	 * 0x00000010  Event 2 has occurred
+	 * 0x00000100  Counter/timer 1 has run down (not implemented)
+	 * 0x00001000  Counter/timer 2 has run down (not implemented)
+	 * 0x00010000  Counter 3 has run down (not implemented)
+	 * 0x00100000  Watchdog has run down (not implemented)
+	 * 0x01000000  Voltage error
+	 * 0x10000000  Short-circuit error
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	 */
 	comedi_buf_write_samples(s, &status, 1);
 	comedi_handle_events(dev, s);

@@ -360,9 +360,12 @@ struct usb_config_descriptor {
 
 /*-------------------------------------------------------------------------*/
 
+<<<<<<< HEAD
 /* USB String descriptors can contain at most 126 characters. */
 #define USB_MAX_STRING_LEN	126
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /* USB_DT_STRING: String descriptor */
 struct usb_string_descriptor {
 	__u8  bLength;

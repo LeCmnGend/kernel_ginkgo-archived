@@ -228,10 +228,15 @@ int seq_buf_putmem_hex(struct seq_buf *s, const void *mem,
 
 	WARN_ON(s->size == 0);
 
+<<<<<<< HEAD
 	BUILD_BUG_ON(MAX_MEMHEX_BYTES * 2 >= HEX_CHARS);
 
 	while (len) {
 		start_len = min(len, MAX_MEMHEX_BYTES);
+=======
+	while (len) {
+		start_len = min(len, HEX_CHARS - 1);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #ifdef __BIG_ENDIAN
 		for (i = 0, j = 0; i < start_len; i++) {
 #else
@@ -244,14 +249,21 @@ int seq_buf_putmem_hex(struct seq_buf *s, const void *mem,
 			break;
 
 		/* j increments twice per loop */
+<<<<<<< HEAD
+=======
+		len -= j / 2;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		hex[j++] = ' ';
 
 		seq_buf_putmem(s, hex, j);
 		if (seq_buf_has_overflowed(s))
 			return -1;
+<<<<<<< HEAD
 
 		len -= start_len;
 		data += start_len;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	return 0;
 }

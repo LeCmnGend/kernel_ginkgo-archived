@@ -1,9 +1,14 @@
 /*
  *  Native support for the I/O-Warrior USB devices
  *
+<<<<<<< HEAD
  *  Copyright (c) 2003-2005, 2020  Code Mercenaries GmbH
  *  written by Christian Lucht <lucht@codemercs.com> and
  *  Christoph Jung <jung@codemercs.com>
+=======
+ *  Copyright (c) 2003-2005  Code Mercenaries GmbH
+ *  written by Christian Lucht <lucht@codemercs.com>
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  *  based on
 
@@ -822,6 +827,7 @@ static int iowarrior_probe(struct usb_interface *interface,
 
 	/* we have to check the report_size often, so remember it in the endianness suitable for our machine */
 	dev->report_size = usb_endpoint_maxp(dev->int_in_endpoint);
+<<<<<<< HEAD
 
 	/*
 	 * Some devices need the report size to be different than the
@@ -844,6 +850,16 @@ static int iowarrior_probe(struct usb_interface *interface,
 			break;
 		}
 	}
+=======
+	if ((dev->interface->cur_altsetting->desc.bInterfaceNumber == 0) &&
+	    ((dev->product_id == USB_DEVICE_ID_CODEMERCS_IOW56) ||
+	     (dev->product_id == USB_DEVICE_ID_CODEMERCS_IOW56AM) ||
+	     (dev->product_id == USB_DEVICE_ID_CODEMERCS_IOW28) ||
+	     (dev->product_id == USB_DEVICE_ID_CODEMERCS_IOW28L) ||
+	     (dev->product_id == USB_DEVICE_ID_CODEMERCS_IOW100)))
+		/* IOWarrior56 has wMaxPacketSize different from report size */
+		dev->report_size = 7;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* create the urb and buffer for reading */
 	dev->int_in_urb = usb_alloc_urb(0, GFP_KERNEL);

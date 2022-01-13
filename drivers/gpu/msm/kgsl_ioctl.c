@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2008-2017,2021, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2008-2017, The Linux Foundation. All rights reserved.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -17,7 +21,10 @@
 #include <linux/fs.h>
 #include "kgsl_device.h"
 #include "kgsl_sync.h"
+<<<<<<< HEAD
 #include "adreno.h"
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static const struct kgsl_ioctl kgsl_ioctl_funcs[] = {
 	KGSL_IOCTL_FUNC(IOCTL_KGSL_DEVICE_GETPROPERTY,
@@ -165,6 +172,7 @@ long kgsl_ioctl_helper(struct file *filep, unsigned int cmd, unsigned long arg,
 	return ret;
 }
 
+<<<<<<< HEAD
 static long __kgsl_ioctl(struct file *filep, unsigned int cmd,
 			 unsigned long arg)
 {
@@ -177,6 +185,14 @@ static long __kgsl_ioctl(struct file *filep, unsigned int cmd,
 	    READ_ONCE(device->state) != KGSL_STATE_ACTIVE)
 		kgsl_schedule_work(&adreno_dev->pwr_on_work);
 
+=======
+long kgsl_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
+{
+	struct kgsl_device_private *dev_priv = filep->private_data;
+	struct kgsl_device *device = dev_priv->device;
+	long ret;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ret = kgsl_ioctl_helper(filep, cmd, arg, kgsl_ioctl_funcs,
 		ARRAY_SIZE(kgsl_ioctl_funcs));
 
@@ -190,6 +206,7 @@ static long __kgsl_ioctl(struct file *filep, unsigned int cmd,
 			return device->ftbl->compat_ioctl(dev_priv, cmd, arg);
 		else if (device->ftbl->ioctl != NULL)
 			return device->ftbl->ioctl(dev_priv, cmd, arg);
+<<<<<<< HEAD
 	}
 
 	return ret;
@@ -212,6 +229,11 @@ long kgsl_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
 	pm_qos_add_request(&req, PM_QOS_CPU_DMA_LATENCY, 100);
 	ret = __kgsl_ioctl(filep, cmd, arg);
 	pm_qos_remove_request(&req);
+=======
+
+		KGSL_DRV_INFO(device, "invalid ioctl code 0x%08X\n", cmd);
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return ret;
 }

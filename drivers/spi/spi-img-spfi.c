@@ -771,10 +771,15 @@ static int img_spfi_resume(struct device *dev)
 	int ret;
 
 	ret = pm_runtime_get_sync(dev);
+<<<<<<< HEAD
 	if (ret) {
 		pm_runtime_put_noidle(dev);
 		return ret;
 	}
+=======
+	if (ret)
+		return ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	spfi_reset(spfi);
 	pm_runtime_put(dev);
 

@@ -1282,7 +1282,10 @@ static int cdns_uart_console_setup(struct console *co, char *options)
 	int bits = 8;
 	int parity = 'n';
 	int flow = 'n';
+<<<<<<< HEAD
 	unsigned long time_out;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (co->index < 0 || co->index >= CDNS_UART_NR_PORTS)
 		return -EINVAL;
@@ -1296,6 +1299,7 @@ static int cdns_uart_console_setup(struct console *co, char *options)
 	if (options)
 		uart_parse_options(options, &baud, &parity, &bits, &flow);
 
+<<<<<<< HEAD
 	/* Wait for tx_empty before setting up the console */
 	time_out = jiffies + usecs_to_jiffies(TX_TIMEOUT);
 
@@ -1303,6 +1307,8 @@ static int cdns_uart_console_setup(struct console *co, char *options)
 	       cdns_uart_tx_empty(port) != TIOCSER_TEMT)
 		cpu_relax();
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return uart_set_options(port, co, baud, parity, bits, flow);
 }
 

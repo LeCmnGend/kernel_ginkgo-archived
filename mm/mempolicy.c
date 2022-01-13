@@ -499,7 +499,11 @@ static int queue_pages_pte_range(pmd_t *pmd, unsigned long addr,
 	struct queue_pages *qp = walk->private;
 	unsigned long flags = qp->flags;
 	int ret;
+<<<<<<< HEAD
 	pte_t *pte, *mapped_pte;
+=======
+	pte_t *pte;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	spinlock_t *ptl;
 
 	ptl = pmd_trans_huge_lock(pmd, vma);
@@ -514,7 +518,11 @@ static int queue_pages_pte_range(pmd_t *pmd, unsigned long addr,
 	if (pmd_trans_unstable(pmd))
 		return 0;
 retry:
+<<<<<<< HEAD
 	mapped_pte = pte = pte_offset_map_lock(walk->mm, pmd, addr, &ptl);
+=======
+	pte = pte_offset_map_lock(walk->mm, pmd, addr, &ptl);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	for (; addr != end; pte++, addr += PAGE_SIZE) {
 		if (!pte_present(*pte))
 			continue;
@@ -552,7 +560,11 @@ retry:
 		} else
 			break;
 	}
+<<<<<<< HEAD
 	pte_unmap_unlock(mapped_pte, ptl);
+=======
+	pte_unmap_unlock(pte - 1, ptl);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	cond_resched();
 	return addr != end ? -EIO : 0;
 }
@@ -650,7 +662,12 @@ static int queue_pages_test_walk(unsigned long start, unsigned long end,
 
 	if (flags & MPOL_MF_LAZY) {
 		/* Similar to task_numa_work, skip inaccessible VMAs */
+<<<<<<< HEAD
 		if (!is_vm_hugetlb_page(vma) && vma_is_accessible(vma) &&
+=======
+		if (!is_vm_hugetlb_page(vma) &&
+			(vma->vm_flags & (VM_READ | VM_EXEC | VM_WRITE)) &&
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			!(vma->vm_flags & VM_MIXEDMAP))
 			change_prot_numa(vma, start, endvma);
 		return 1;

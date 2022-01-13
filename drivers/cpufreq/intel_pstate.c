@@ -1378,7 +1378,10 @@ static void intel_pstate_get_cpu_pstates(struct cpudata *cpu)
 
 		intel_pstate_get_hwp_max(cpu->cpu, &phy_max, &current_max);
 		cpu->pstate.turbo_freq = phy_max * cpu->pstate.scaling;
+<<<<<<< HEAD
 		cpu->pstate.turbo_pstate = phy_max;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else {
 		cpu->pstate.turbo_freq = cpu->pstate.turbo_pstate * cpu->pstate.scaling;
 	}
@@ -2098,6 +2101,7 @@ static int intel_pstate_update_status(const char *buf, size_t size)
 {
 	int ret;
 
+<<<<<<< HEAD
 	if (size == 3 && !strncmp(buf, "off", size)) {
 		if (!intel_pstate_driver)
 			return -EINVAL;
@@ -2107,6 +2111,11 @@ static int intel_pstate_update_status(const char *buf, size_t size)
 
 		return intel_pstate_unregister_driver();
 	}
+=======
+	if (size == 3 && !strncmp(buf, "off", size))
+		return intel_pstate_driver ?
+			intel_pstate_unregister_driver() : -EINVAL;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (size == 6 && !strncmp(buf, "active", size)) {
 		if (intel_pstate_driver) {

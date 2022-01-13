@@ -318,7 +318,11 @@ extern void syscall_unregfunc(void);
 		static const char *___tp_str __tracepoint_string = str; \
 		___tp_str;						\
 	})
+<<<<<<< HEAD
 #define __tracepoint_string	__attribute__((section("__tracepoint_str"), used))
+=======
+#define __tracepoint_string	__attribute__((section("__tracepoint_str")))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #else
 /*
  * tracepoint_string() is used to save the string address for userspace

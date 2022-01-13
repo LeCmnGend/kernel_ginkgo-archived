@@ -313,6 +313,10 @@ void workingset_activation(struct page *page);
 void workingset_update_node(struct radix_tree_node *node, void *private);
 
 /* linux/mm/page_alloc.c */
+<<<<<<< HEAD
+=======
+extern unsigned long totalram_pages;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 extern unsigned long totalreserve_pages;
 extern unsigned long nr_free_buffer_pages(void);
 extern unsigned long nr_free_pagecache_pages(void);

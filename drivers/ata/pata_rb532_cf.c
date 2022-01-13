@@ -120,12 +120,19 @@ static int rb532_pata_driver_probe(struct platform_device *pdev)
 	}
 
 	irq = platform_get_irq(pdev, 0);
+<<<<<<< HEAD
 	if (irq < 0) {
 		dev_err(&pdev->dev, "no IRQ resource found\n");
 		return irq;
 	}
 	if (!irq)
 		return -EINVAL;
+=======
+	if (irq <= 0) {
+		dev_err(&pdev->dev, "no IRQ resource found\n");
+		return -ENOENT;
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	pdata = dev_get_platdata(&pdev->dev);
 	if (!pdata) {

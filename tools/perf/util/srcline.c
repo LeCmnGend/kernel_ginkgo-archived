@@ -139,11 +139,15 @@ static void find_address_in_section(bfd *abfd, asection *section, void *data)
 	bfd_vma pc, vma;
 	bfd_size_type size;
 	struct a2l_data *a2l = data;
+<<<<<<< HEAD
 	flagword flags;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (a2l->found)
 		return;
 
+<<<<<<< HEAD
 #ifdef bfd_get_section_flags
 	flags = bfd_get_section_flags(abfd, section);
 #else
@@ -163,6 +167,14 @@ static void find_address_in_section(bfd *abfd, asection *section, void *data)
 #else
 	size = bfd_section_size(section);
 #endif
+=======
+	if ((bfd_get_section_flags(abfd, section) & SEC_ALLOC) == 0)
+		return;
+
+	pc = a2l->addr;
+	vma = bfd_get_section_vma(abfd, section);
+	size = bfd_get_section_size(section);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (pc < vma || pc >= vma + size)
 		return;

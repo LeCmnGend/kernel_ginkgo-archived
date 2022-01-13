@@ -325,8 +325,13 @@ static void vhost_vq_reset(struct vhost_dev *dev,
 	vq->call_ctx = NULL;
 	vq->call = NULL;
 	vq->log_ctx = NULL;
+<<<<<<< HEAD
 	vhost_disable_cross_endian(vq);
 	vhost_reset_is_le(vq);
+=======
+	vhost_reset_is_le(vq);
+	vhost_disable_cross_endian(vq);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	vq->busyloop_timeout = 0;
 	vq->umem = NULL;
 	vq->iotlb = NULL;
@@ -691,6 +696,7 @@ static int log_access_ok(void __user *log_base, u64 addr, unsigned long sz)
 			 (sz + VHOST_PAGE_SIZE * 8 - 1) / VHOST_PAGE_SIZE / 8);
 }
 
+<<<<<<< HEAD
 /* Make sure 64 bit math will not overflow. */
 static bool vhost_overflow(u64 uaddr, u64 size)
 {
@@ -701,6 +707,12 @@ static bool vhost_overflow(u64 uaddr, u64 size)
 		return false;
 
 	return uaddr > ULONG_MAX - size + 1;
+=======
+static bool vhost_overflow(u64 uaddr, u64 size)
+{
+	/* Make sure 64 bit math will not overflow. */
+	return uaddr > ULONG_MAX || size > ULONG_MAX || uaddr > ULONG_MAX - size;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /* Caller should have vq mutex and device mutex. */

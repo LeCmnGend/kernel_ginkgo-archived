@@ -1558,11 +1558,18 @@ static int mb_find_extent(struct ext4_buddy *e4b, int block,
 	if (ex->fe_start + ex->fe_len > EXT4_CLUSTERS_PER_GROUP(e4b->bd_sb)) {
 		/* Should never happen! (but apparently sometimes does?!?) */
 		WARN_ON(1);
+<<<<<<< HEAD
 		ext4_grp_locked_error(e4b->bd_sb, e4b->bd_group, 0, 0,
 			"corruption or bug in mb_find_extent "
 			"block=%d, order=%d needed=%d ex=%u/%d/%d@%u",
 			block, order, needed, ex->fe_group, ex->fe_start,
 			ex->fe_len, ex->fe_logical);
+=======
+		ext4_error(e4b->bd_sb, "corruption or bug in mb_find_extent "
+			   "block=%d, order=%d needed=%d ex=%u/%d/%d@%u",
+			   block, order, needed, ex->fe_group, ex->fe_start,
+			   ex->fe_len, ex->fe_logical);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		ex->fe_len = 0;
 		ex->fe_start = 0;
 		ex->fe_group = 0;
@@ -2536,7 +2543,10 @@ static int ext4_mb_init_backend(struct super_block *sb)
 	sbi->s_buddy_cache->i_ino = EXT4_BAD_INO;
 	EXT4_I(sbi->s_buddy_cache)->i_disksize = 0;
 	for (i = 0; i < ngroups; i++) {
+<<<<<<< HEAD
 		cond_resched();
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		desc = ext4_get_group_desc(sb, i, NULL);
 		if (desc == NULL) {
 			ext4_msg(sb, KERN_ERR, "can't read descriptor %u", i);
@@ -2758,7 +2768,10 @@ int ext4_mb_release(struct super_block *sb)
 
 	if (sbi->s_group_info) {
 		for (i = 0; i < ngroups; i++) {
+<<<<<<< HEAD
 			cond_resched();
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			grinfo = ext4_get_group_info(sb, i);
 #ifdef DOUBLE_CHECK
 			kfree(grinfo->bb_bitmap);
@@ -2939,10 +2952,24 @@ int __init ext4_init_mballoc(void)
 	if (ext4_pspace_cachep == NULL)
 		return -ENOMEM;
 
+<<<<<<< HEAD
+=======
+	ext4_ac_cachep = KMEM_CACHE(ext4_allocation_context,
+				    SLAB_RECLAIM_ACCOUNT);
+	if (ext4_ac_cachep == NULL) {
+		kmem_cache_destroy(ext4_pspace_cachep);
+		return -ENOMEM;
+	}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ext4_free_data_cachep = KMEM_CACHE(ext4_free_data,
 					   SLAB_RECLAIM_ACCOUNT);
 	if (ext4_free_data_cachep == NULL) {
 		kmem_cache_destroy(ext4_pspace_cachep);
+<<<<<<< HEAD
+=======
+		kmem_cache_destroy(ext4_ac_cachep);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return -ENOMEM;
 	}
 	return 0;
@@ -3012,7 +3039,11 @@ ext4_mb_mark_diskspace_used(struct ext4_allocation_context *ac,
 	block = ext4_grp_offs_to_block(sb, &ac->ac_b_ex);
 
 	len = EXT4_C2B(sbi, ac->ac_b_ex.fe_len);
+<<<<<<< HEAD
 	if (!ext4_inode_block_valid(ac->ac_inode, block, len)) {
+=======
+	if (!ext4_data_block_valid(sbi, block, len)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		ext4_error(sb, "Allocating blocks %llu-%llu which overlap "
 			   "fs metadata", block, block+len);
 		/* File system mounted not to panic on error
@@ -4514,7 +4545,11 @@ ext4_fsblk_t ext4_mb_new_blocks(handle_t *handle,
 				struct ext4_allocation_request *ar, int *errp)
 {
 	int freed;
+<<<<<<< HEAD
 	struct ext4_allocation_context ac;
+=======
+	struct ext4_allocation_context *ac = NULL;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct ext4_sb_info *sbi;
 	struct super_block *sb;
 	ext4_fsblk_t block = 0;
@@ -4567,13 +4602,25 @@ ext4_fsblk_t ext4_mb_new_blocks(handle_t *handle,
 		}
 	}
 
+<<<<<<< HEAD
 	memset(&ac, 0, sizeof(ac));
 	*errp = ext4_mb_initialize_context(&ac, ar);
+=======
+	ac = kmem_cache_zalloc(ext4_ac_cachep, GFP_NOFS);
+	if (!ac) {
+		ar->len = 0;
+		*errp = -ENOMEM;
+		goto out;
+	}
+
+	*errp = ext4_mb_initialize_context(ac, ar);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (*errp) {
 		ar->len = 0;
 		goto out;
 	}
 
+<<<<<<< HEAD
 	ac.ac_op = EXT4_MB_HISTORY_PREALLOC;
 	if (!ext4_mb_use_preallocated(&ac)) {
 		ac.ac_op = EXT4_MB_HISTORY_ALLOC;
@@ -4581,12 +4628,22 @@ ext4_fsblk_t ext4_mb_new_blocks(handle_t *handle,
 repeat:
 		/* allocate space in core */
 		*errp = ext4_mb_regular_allocator(&ac);
+=======
+	ac->ac_op = EXT4_MB_HISTORY_PREALLOC;
+	if (!ext4_mb_use_preallocated(ac)) {
+		ac->ac_op = EXT4_MB_HISTORY_ALLOC;
+		ext4_mb_normalize_request(ac, ar);
+repeat:
+		/* allocate space in core */
+		*errp = ext4_mb_regular_allocator(ac);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (*errp)
 			goto discard_and_exit;
 
 		/* as we've just preallocated more space than
 		 * user requested originally, we store allocated
 		 * space in a special descriptor */
+<<<<<<< HEAD
 		if (ac.ac_status == AC_STATUS_FOUND &&
 		    ac.ac_o_ex.fe_len < ac.ac_b_ex.fe_len)
 			*errp = ext4_mb_new_preallocation(&ac);
@@ -4607,6 +4664,28 @@ repeat:
 		}
 	} else {
 		freed  = ext4_mb_discard_preallocations(sb, ac.ac_o_ex.fe_len);
+=======
+		if (ac->ac_status == AC_STATUS_FOUND &&
+		    ac->ac_o_ex.fe_len < ac->ac_b_ex.fe_len)
+			*errp = ext4_mb_new_preallocation(ac);
+		if (*errp) {
+		discard_and_exit:
+			ext4_discard_allocated_blocks(ac);
+			goto errout;
+		}
+	}
+	if (likely(ac->ac_status == AC_STATUS_FOUND)) {
+		*errp = ext4_mb_mark_diskspace_used(ac, handle, reserv_clstrs);
+		if (*errp) {
+			ext4_discard_allocated_blocks(ac);
+			goto errout;
+		} else {
+			block = ext4_grp_offs_to_block(sb, &ac->ac_b_ex);
+			ar->len = ac->ac_b_ex.fe_len;
+		}
+	} else {
+		freed  = ext4_mb_discard_preallocations(sb, ac->ac_o_ex.fe_len);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (freed)
 			goto repeat;
 		*errp = -ENOSPC;
@@ -4614,12 +4693,23 @@ repeat:
 
 errout:
 	if (*errp) {
+<<<<<<< HEAD
 		ac.ac_b_ex.fe_len = 0;
 		ar->len = 0;
 		ext4_mb_show_ac(&ac);
 	}
 	ext4_mb_release_context(&ac);
 out:
+=======
+		ac->ac_b_ex.fe_len = 0;
+		ar->len = 0;
+		ext4_mb_show_ac(ac);
+	}
+	ext4_mb_release_context(ac);
+out:
+	if (ac)
+		kmem_cache_free(ext4_ac_cachep, ac);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (inquota && ar->len < inquota)
 		dquot_free_block(ar->inode, EXT4_C2B(sbi, inquota - ar->len));
 	if (!ar->len) {
@@ -4705,7 +4795,10 @@ ext4_mb_free_metadata(handle_t *handle, struct ext4_buddy *e4b,
 				ext4_group_first_block_no(sb, group) +
 				EXT4_C2B(sbi, cluster),
 				"Block already on to-be-freed list");
+<<<<<<< HEAD
 			kmem_cache_free(ext4_free_data_cachep, new_entry);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			return 0;
 		}
 	}
@@ -4770,7 +4863,11 @@ void ext4_free_blocks(handle_t *handle, struct inode *inode,
 
 	sbi = EXT4_SB(sb);
 	if (!(flags & EXT4_FREE_BLOCKS_VALIDATED) &&
+<<<<<<< HEAD
 	    !ext4_inode_block_valid(inode, block, count)) {
+=======
+	    !ext4_data_block_valid(sbi, block, count)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		ext4_error(sb, "Freeing blocks not in datazone - "
 			   "block = %llu, count = %lu", block, count);
 		goto error_return;

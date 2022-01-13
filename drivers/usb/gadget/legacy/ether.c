@@ -407,10 +407,15 @@ static int eth_bind(struct usb_composite_dev *cdev)
 		struct usb_descriptor_header *usb_desc;
 
 		usb_desc = usb_otg_descriptor_alloc(gadget);
+<<<<<<< HEAD
 		if (!usb_desc) {
 			status = -ENOMEM;
 			goto fail1;
 		}
+=======
+		if (!usb_desc)
+			goto fail1;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		usb_otg_descriptor_init(gadget, usb_desc);
 		otg_desc[0] = usb_desc;
 		otg_desc[1] = NULL;

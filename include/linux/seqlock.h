@@ -243,6 +243,7 @@ static inline void raw_write_seqcount_end(seqcount_t *s)
  * usual consistency guarantee. It is one wmb cheaper, because we can
  * collapse the two back-to-back wmb()s.
  *
+<<<<<<< HEAD
  * Note that, writes surrounding the barrier should be declared atomic (e.g.
  * via WRITE_ONCE): a) to ensure the writes become visible to other threads
  * atomically, avoiding compiler optimizations; b) to document which writes are
@@ -250,6 +251,8 @@ static inline void raw_write_seqcount_end(seqcount_t *s)
  * neither writes before and after the barrier are enclosed in a seq-writer
  * critical section that would ensure readers are aware of ongoing writes.
  *
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *      seqcount_t seq;
  *      bool X = true, Y = false;
  *
@@ -269,11 +272,19 @@ static inline void raw_write_seqcount_end(seqcount_t *s)
  *
  *      void write(void)
  *      {
+<<<<<<< HEAD
  *              WRITE_ONCE(Y, true);
  *
  *              raw_write_seqcount_barrier(seq);
  *
  *              WRITE_ONCE(X, false);
+=======
+ *              Y = true;
+ *
+ *              raw_write_seqcount_barrier(seq);
+ *
+ *              X = false;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *      }
  */
 static inline void raw_write_seqcount_barrier(seqcount_t *s)

@@ -406,6 +406,7 @@ fail1:
 	return rc;
 }
 
+<<<<<<< HEAD
 /* Disable SRIOV and remove VFs
  * If some VFs are attached to a guest (using Xen, only) nothing is
  * done if force=false, and vports are freed if force=true (for the non
@@ -417,6 +418,14 @@ static int efx_ef10_pci_sriov_disable(struct efx_nic *efx, bool force)
 	struct pci_dev *dev = efx->pci_dev;
 	unsigned int vfs_assigned = pci_vfs_assigned(dev);
 	int rc = 0;
+=======
+static int efx_ef10_pci_sriov_disable(struct efx_nic *efx, bool force)
+{
+	struct pci_dev *dev = efx->pci_dev;
+	unsigned int vfs_assigned = 0;
+
+	vfs_assigned = pci_vfs_assigned(dev);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (vfs_assigned && !force) {
 		netif_info(efx, drv, efx->net_dev, "VFs are assigned to guests; "
@@ -426,12 +435,19 @@ static int efx_ef10_pci_sriov_disable(struct efx_nic *efx, bool force)
 
 	if (!vfs_assigned)
 		pci_disable_sriov(dev);
+<<<<<<< HEAD
 	else
 		rc = -EBUSY;
 
 	efx_ef10_sriov_free_vf_vswitching(efx);
 	efx->vf_count = 0;
 	return rc;
+=======
+
+	efx_ef10_sriov_free_vf_vswitching(efx);
+	efx->vf_count = 0;
+	return 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 int efx_ef10_sriov_configure(struct efx_nic *efx, int num_vfs)
@@ -450,6 +466,10 @@ int efx_ef10_sriov_init(struct efx_nic *efx)
 void efx_ef10_sriov_fini(struct efx_nic *efx)
 {
 	struct efx_ef10_nic_data *nic_data = efx->nic_data;
+<<<<<<< HEAD
+=======
+	unsigned int i;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int rc;
 
 	if (!nic_data->vf) {
@@ -459,7 +479,18 @@ void efx_ef10_sriov_fini(struct efx_nic *efx)
 		return;
 	}
 
+<<<<<<< HEAD
 	/* Disable SRIOV and remove any VFs in the host */
+=======
+	/* Remove any VFs in the host */
+	for (i = 0; i < efx->vf_count; ++i) {
+		struct efx_nic *vf_efx = nic_data->vf[i].efx;
+
+		if (vf_efx)
+			vf_efx->pci_dev->driver->remove(vf_efx->pci_dev);
+	}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	rc = efx_ef10_pci_sriov_disable(efx, true);
 	if (rc)
 		netif_dbg(efx, drv, efx->net_dev,

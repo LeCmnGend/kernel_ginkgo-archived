@@ -27,7 +27,11 @@
 /*
  * Timeout for stopping processes
  */
+<<<<<<< HEAD
 unsigned int __read_mostly freeze_timeout_msecs = 5 * MSEC_PER_SEC;
+=======
+unsigned int __read_mostly freeze_timeout_msecs = 20 * MSEC_PER_SEC;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static int try_to_freeze_tasks(bool user_only)
 {
@@ -147,7 +151,10 @@ int freeze_processes(void)
 	pr_cont("\n");
 	BUG_ON(in_atomic());
 
+<<<<<<< HEAD
 #ifndef CONFIG_ANDROID
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/*
 	 * Now that the whole userspace is frozen we need to disbale
 	 * the OOM killer to disallow any further interference with
@@ -156,7 +163,10 @@ int freeze_processes(void)
 	 */
 	if (!error && !oom_killer_disable(msecs_to_jiffies(freeze_timeout_msecs)))
 		error = -EBUSY;
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (error)
 		thaw_processes();
@@ -201,9 +211,13 @@ void thaw_processes(void)
 	pm_freezing = false;
 	pm_nosig_freezing = false;
 
+<<<<<<< HEAD
 #ifndef CONFIG_ANDROID
 	oom_killer_enable();
 #endif
+=======
+	oom_killer_enable();
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	pr_info("Restarting tasks ... ");
 

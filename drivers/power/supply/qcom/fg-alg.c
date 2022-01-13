@@ -1,5 +1,8 @@
 /* Copyright (c) 2018-2019, The Linux Foundation. All rights reserved.
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -222,7 +225,10 @@ static int get_bucket_cycle_count(struct cycle_counter *counter)
  * Get average cycle count for all buckets
  *
  */
+<<<<<<< HEAD
 static int cycle_count_a = 0;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 int get_cycle_count(struct cycle_counter *counter, int *count)
 {
 	int i, rc, temp = 0;
@@ -242,6 +248,7 @@ int get_cycle_count(struct cycle_counter *counter, int *count)
 	 * the overall charge cycle count.
 	 */
 
+<<<<<<< HEAD
 	if(!cycle_count_a)
 		*count = temp / BUCKET_COUNT;
 	else
@@ -253,6 +260,9 @@ int set_cycle_count(struct cycle_counter *counter, int count)
 {
 	cycle_count_a = count;
 
+=======
+	*count = temp / BUCKET_COUNT;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 }
 

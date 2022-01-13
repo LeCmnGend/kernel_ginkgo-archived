@@ -1056,6 +1056,7 @@ struct pseries_errorlog *get_pseries_errorlog(struct rtas_error_log *log,
 	return NULL;
 }
 
+<<<<<<< HEAD
 #ifdef CONFIG_PPC_RTAS_FILTER
 
 /*
@@ -1197,6 +1198,8 @@ static bool block_rtas_call(int token, int nargs,
 
 #endif /* CONFIG_PPC_RTAS_FILTER */
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /* We assume to be passed big endian arguments */
 asmlinkage int ppc_rtas(struct rtas_args __user *uargs)
 {
@@ -1234,9 +1237,12 @@ asmlinkage int ppc_rtas(struct rtas_args __user *uargs)
 	args.rets = &args.args[nargs];
 	memset(args.rets, 0, nret * sizeof(rtas_arg_t));
 
+<<<<<<< HEAD
 	if (block_rtas_call(token, nargs, &args))
 		return -EINVAL;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* Need to handle ibm,suspend_me call specially */
 	if (token == ibm_suspend_me_token) {
 
@@ -1298,9 +1304,12 @@ void __init rtas_initialize(void)
 	unsigned long rtas_region = RTAS_INSTANTIATE_MAX;
 	u32 base, size, entry;
 	int no_base, no_size, no_entry;
+<<<<<<< HEAD
 #ifdef CONFIG_PPC_RTAS_FILTER
 	int i;
 #endif
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* Get RTAS dev node and fill up our "rtas" structure with infos
 	 * about it.
@@ -1336,12 +1345,15 @@ void __init rtas_initialize(void)
 #ifdef CONFIG_RTAS_ERROR_LOGGING
 	rtas_last_error_token = rtas_token("rtas-last-error");
 #endif
+<<<<<<< HEAD
 
 #ifdef CONFIG_PPC_RTAS_FILTER
 	for (i = 0; i < ARRAY_SIZE(rtas_filters); i++) {
 		rtas_filters[i].token = rtas_token(rtas_filters[i].name);
 	}
 #endif
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 int __init early_init_dt_scan_rtas(unsigned long node,

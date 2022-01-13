@@ -65,7 +65,10 @@ obj-$(CONFIG_FPR_FPC) 	+= fpr_FingerprintCard/
 obj-$(CONFIG_UID_SYS_STATS)	+= uid_sys_stats.o
 obj-$(CONFIG_MEMORY_STATE_TIME)	+= memory_state_time.o
 obj-$(CONFIG_QPNP_MISC) 	+= qpnp-misc.o
+<<<<<<< HEAD
 obj-$(CONFIG_BATTERY_SAVER)	+= battery_saver.o
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 obj-$(CONFIG_OKL4_USER_VIRQ)	+= okl4-virq.o
 obj-$(CONFIG_OKL4_RINGBUF)	+= okl4-ringbuf.o
@@ -92,4 +95,7 @@ $(obj)/lkdtm_rodata_objcopy.o: $(obj)/lkdtm_rodata.o FORCE
 obj-$(CONFIG_OKL4_USER_VIPC)    += okl4-vipc.o
 obj-$(CONFIG_OKL4_GUEST)        += okl4-panic.o
 obj-$(CONFIG_OKL4_LINK_SHBUF)    += okl4-link-shbuf.o
+<<<<<<< HEAD
 obj-$(CONFIG_FORCE_FAST_CHARGE) += fastchg.o
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388

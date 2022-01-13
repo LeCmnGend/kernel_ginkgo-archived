@@ -125,7 +125,10 @@ module_param_named(unmask_kbd_data, i8042_unmask_kbd_data, bool, 0600);
 MODULE_PARM_DESC(unmask_kbd_data, "Unconditional enable (may reveal sensitive data) of normally sanitize-filtered kbd data traffic debug log [pre-condition: i8042.debug=1 enabled]");
 #endif
 
+<<<<<<< HEAD
 static bool i8042_present;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static bool i8042_bypass_aux_irq_test;
 static char i8042_kbd_firmware_id[128];
 static char i8042_aux_firmware_id[128];
@@ -346,9 +349,12 @@ int i8042_command(unsigned char *param, int command)
 	unsigned long flags;
 	int retval;
 
+<<<<<<< HEAD
 	if (!i8042_present)
 		return -1;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	spin_lock_irqsave(&i8042_lock, flags);
 	retval = __i8042_command(param, command);
 	spin_unlock_irqrestore(&i8042_lock, flags);
@@ -1458,8 +1464,12 @@ static int __init i8042_setup_aux(void)
 	if (error)
 		goto err_free_ports;
 
+<<<<<<< HEAD
 	error = aux_enable();
 	if (error)
+=======
+	if (aux_enable())
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto err_free_irq;
 
 	i8042_aux_irq_registered = true;
@@ -1604,15 +1614,22 @@ static int __init i8042_init(void)
 
 	err = i8042_platform_init();
 	if (err)
+<<<<<<< HEAD
 		return (err == -ENODEV) ? 0 : err;
+=======
+		return err;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	err = i8042_controller_check();
 	if (err)
 		goto err_platform_exit;
 
+<<<<<<< HEAD
 	/* Set this before creating the dev to allow i8042_command to work right away */
 	i8042_present = true;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	pdev = platform_create_bundle(&i8042_driver, i8042_probe, NULL, 0, NULL, 0);
 	if (IS_ERR(pdev)) {
 		err = PTR_ERR(pdev);
@@ -1631,9 +1648,12 @@ static int __init i8042_init(void)
 
 static void __exit i8042_exit(void)
 {
+<<<<<<< HEAD
 	if (!i8042_present)
 		return;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	platform_device_unregister(i8042_platform_device);
 	platform_driver_unregister(&i8042_driver);
 	i8042_platform_exit();

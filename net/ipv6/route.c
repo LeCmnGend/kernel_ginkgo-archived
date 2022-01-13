@@ -3255,11 +3255,17 @@ static int ip6_route_multipath_add(struct fib6_config *cfg,
 		 * nexthops have been replaced by first new, the rest should
 		 * be added to it.
 		 */
+<<<<<<< HEAD
 		if (cfg->fc_nlinfo.nlh) {
 			cfg->fc_nlinfo.nlh->nlmsg_flags &= ~(NLM_F_EXCL |
 							     NLM_F_REPLACE);
 			cfg->fc_nlinfo.nlh->nlmsg_flags |= NLM_F_CREATE;
 		}
+=======
+		cfg->fc_nlinfo.nlh->nlmsg_flags &= ~(NLM_F_EXCL |
+						     NLM_F_REPLACE);
+		cfg->fc_nlinfo.nlh->nlmsg_flags |= NLM_F_CREATE;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		nhn++;
 	}
 

@@ -80,7 +80,10 @@ static void ext2_release_inode(struct super_block *sb, int group, int dir)
 	if (dir)
 		le16_add_cpu(&desc->bg_used_dirs_count, -1);
 	spin_unlock(sb_bgl_lock(EXT2_SB(sb), group));
+<<<<<<< HEAD
 	percpu_counter_inc(&EXT2_SB(sb)->s_freeinodes_counter);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (dir)
 		percpu_counter_dec(&EXT2_SB(sb)->s_dirs_counter);
 	mark_buffer_dirty(bh);
@@ -532,7 +535,11 @@ got:
 		goto fail;
 	}
 
+<<<<<<< HEAD
 	percpu_counter_dec(&sbi->s_freeinodes_counter);
+=======
+	percpu_counter_add(&sbi->s_freeinodes_counter, -1);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (S_ISDIR(mode))
 		percpu_counter_inc(&sbi->s_dirs_counter);
 

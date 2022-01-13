@@ -95,6 +95,7 @@ int ovl_copy_xattr(struct dentry *old, struct dentry *new)
 
 		if (ovl_is_private_xattr(name))
 			continue;
+<<<<<<< HEAD
 
 		error = security_inode_copy_up_xattr(name);
 		if (error < 0 && error != -EOPNOTSUPP)
@@ -103,6 +104,8 @@ int ovl_copy_xattr(struct dentry *old, struct dentry *new)
 			error = 0;
 			continue; /* Discard */
 		}
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 retry:
 		size = vfs_getxattr(old, name, value, value_size);
 		if (size == -ERANGE)
@@ -126,6 +129,16 @@ retry:
 			goto retry;
 		}
 
+<<<<<<< HEAD
+=======
+		error = security_inode_copy_up_xattr(name);
+		if (error < 0 && error != -EOPNOTSUPP)
+			break;
+		if (error == 1) {
+			error = 0;
+			continue; /* Discard */
+		}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		error = vfs_setxattr(new, name, value, size, 0);
 		if (error)
 			break;

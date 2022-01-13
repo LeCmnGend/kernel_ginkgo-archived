@@ -98,6 +98,10 @@ struct minstrel_sta_info {
 	u8 max_prob_rate;
 	unsigned int total_packets;
 	unsigned int sample_packets;
+<<<<<<< HEAD
+=======
+	int sample_deferred;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	unsigned int sample_row;
 	unsigned int sample_column;

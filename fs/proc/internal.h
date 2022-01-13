@@ -201,7 +201,11 @@ extern const struct inode_operations proc_link_inode_operations;
 extern const struct inode_operations proc_pid_link_inode_operations;
 extern const struct file_operations proc_reclaim_operations;
 
+<<<<<<< HEAD
 void proc_init_kmemcache(void);
+=======
+extern void proc_init_inodecache(void);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 void set_proc_pid_nlink(void);
 extern struct inode *proc_get_inode(struct super_block *, struct proc_dir_entry *);
 extern int proc_fill_super(struct super_block *);
@@ -290,7 +294,10 @@ struct proc_maps_private {
 #ifdef CONFIG_NUMA
 	struct mempolicy *task_mempolicy;
 #endif
+<<<<<<< HEAD
 	unsigned long old_cpus_allowed;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 } __randomize_layout;
 
 struct mm_struct *proc_mem_open(struct inode *inode, unsigned int mode);

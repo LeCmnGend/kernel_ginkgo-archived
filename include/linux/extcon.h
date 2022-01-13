@@ -410,6 +410,7 @@ static inline  void devm_extcon_unregister_notifier(struct device *dev,
 				struct extcon_dev *edev, unsigned int id,
 				struct notifier_block *nb) { }
 
+<<<<<<< HEAD
 static inline int extcon_register_notifier_all(struct extcon_dev *edev,
 					       struct notifier_block *nb)
 {
@@ -433,6 +434,8 @@ static inline void devm_extcon_unregister_notifier_all(struct device *dev,
 						       struct extcon_dev *edev,
 						       struct notifier_block *nb) { }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static inline struct extcon_dev *extcon_get_extcon_dev(const char *extcon_name)
 {
 	return ERR_PTR(-ENODEV);

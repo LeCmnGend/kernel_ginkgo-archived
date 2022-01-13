@@ -160,7 +160,10 @@ int __inet_inherit_port(const struct sock *sk, struct sock *child)
 				return -ENOMEM;
 			}
 		}
+<<<<<<< HEAD
 		inet_csk_update_fastreuse(tb, child);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	inet_bind_hash(child, tb, port);
 	spin_unlock(&head->lock);

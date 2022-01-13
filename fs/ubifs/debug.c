@@ -1129,7 +1129,10 @@ int dbg_check_dir(struct ubifs_info *c, const struct inode *dir)
 			err = PTR_ERR(dent);
 			if (err == -ENOENT)
 				break;
+<<<<<<< HEAD
 			kfree(pdent);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			return err;
 		}
 

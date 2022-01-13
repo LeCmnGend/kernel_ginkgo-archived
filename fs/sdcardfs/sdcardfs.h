@@ -654,6 +654,9 @@ static inline bool qstr_case_eq(const struct qstr *q1, const struct qstr *q2)
 
 #define QSTR_LITERAL(string) QSTR_INIT(string, sizeof(string)-1)
 
+<<<<<<< HEAD
 extern struct kmem_cache *kmem_file_info_pool;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif	/* not _SDCARDFS_H_ */

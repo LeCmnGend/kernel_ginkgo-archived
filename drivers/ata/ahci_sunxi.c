@@ -165,7 +165,11 @@ static void ahci_sunxi_start_engine(struct ata_port *ap)
 }
 
 static const struct ata_port_info ahci_sunxi_port_info = {
+<<<<<<< HEAD
 	.flags		= AHCI_FLAG_COMMON | ATA_FLAG_NCQ | ATA_FLAG_NO_DIPM,
+=======
+	.flags		= AHCI_FLAG_COMMON | ATA_FLAG_NCQ,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.pio_mask	= ATA_PIO4,
 	.udma_mask	= ATA_UDMA6,
 	.port_ops	= &ahci_platform_ops,

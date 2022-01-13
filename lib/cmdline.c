@@ -38,27 +38,38 @@ static int get_range(char **str, int *pint, int n)
 /**
  *	get_option - Parse integer from an option string
  *	@str: option string
+<<<<<<< HEAD
  *	@pint: (optional output) integer value parsed from @str
+=======
+ *	@pint: (output) integer value parsed from @str
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  *	Read an int from an option string; if available accept a subsequent
  *	comma as well.
  *
+<<<<<<< HEAD
  *	When @pint is NULL the function can be used as a validator of
  *	the current option in the string.
  *
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *	Return values:
  *	0 - no int in string
  *	1 - int found, no subsequent comma
  *	2 - int found including a subsequent comma
  *	3 - hyphen found to denote a range
+<<<<<<< HEAD
  *
  *	Leading hyphen without integer is no integer case, but we consume it
  *	for the sake of simplification.
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  */
 
 int get_option(char **str, int *pint)
 {
 	char *cur = *str;
+<<<<<<< HEAD
 	int value;
 
 	if (!cur || !(*cur))
@@ -69,6 +80,12 @@ int get_option(char **str, int *pint)
 		value = simple_strtoull(cur, str, 0);
 	if (pint)
 		*pint = value;
+=======
+
+	if (!cur || !(*cur))
+		return 0;
+	*pint = simple_strtol(cur, str, 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (cur == *str)
 		return 0;
 	if (**str == ',') {

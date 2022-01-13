@@ -1,10 +1,14 @@
 # This mimics the top-level Makefile. We do it explicitly here so that this
 # Makefile can operate with or without the kbuild infrastructure.
+<<<<<<< HEAD
 ifneq ($(LLVM),)
 CC := clang
 else
 CC := $(CROSS_COMPILE)gcc
 endif
+=======
+CC := $(CROSS_COMPILE)gcc
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 ifeq (0,$(MAKELEVEL))
 OUTPUT := $(shell pwd)

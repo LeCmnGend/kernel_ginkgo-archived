@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright (c) 2011-2021, The Linux Foundation. All rights reserved.
+=======
+/* Copyright (c) 2011-2020, The Linux Foundation. All rights reserved.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -47,9 +51,13 @@ void diag_cntl_channel_open(struct diagfwd_info *p_info)
 {
 	if (!p_info)
 		return;
+<<<<<<< HEAD
 	mutex_lock(&driver->cntl_lock);
 	driver->mask_update |= PERIPHERAL_MASK(p_info->peripheral);
 	mutex_unlock(&driver->cntl_lock);
+=======
+	driver->mask_update |= PERIPHERAL_MASK(p_info->peripheral);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	queue_work(driver->cntl_wq, &driver->mask_update_work);
 	diag_notify_md_client(DIAG_LOCAL_PROC, p_info->peripheral,
 				DIAG_STATUS_OPEN);
@@ -336,6 +344,7 @@ static void diag_close_transport_work_fn(struct work_struct *work)
 	uint8_t transport;
 	uint8_t peripheral;
 
+<<<<<<< HEAD
 	for (peripheral = 0; peripheral <= NUM_PERIPHERALS; peripheral++) {
 		mutex_lock(&driver->cntl_lock);
 		if (!(driver->close_transport & PERIPHERAL_MASK(peripheral))) {
@@ -348,6 +357,18 @@ static void diag_close_transport_work_fn(struct work_struct *work)
 		mutex_unlock(&driver->cntl_lock);
 		diagfwd_close_transport(transport, peripheral);
 	}
+=======
+	mutex_lock(&driver->cntl_lock);
+	for (peripheral = 0; peripheral <= NUM_PERIPHERALS; peripheral++) {
+		if (!(driver->close_transport & PERIPHERAL_MASK(peripheral)))
+			continue;
+		driver->close_transport ^= PERIPHERAL_MASK(peripheral);
+		transport = driver->feature[peripheral].sockets_enabled ?
+					TRANSPORT_RPMSG : TRANSPORT_SOCKET;
+		diagfwd_close_transport(transport, peripheral);
+	}
+	mutex_unlock(&driver->cntl_lock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void process_socket_feature(uint8_t peripheral)

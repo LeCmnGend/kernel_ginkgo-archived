@@ -94,11 +94,16 @@ u64 notrace trace_clock_global(void)
 {
 	unsigned long flags;
 	int this_cpu;
+<<<<<<< HEAD
 	u64 now, prev_time;
+=======
+	u64 now;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	local_irq_save(flags);
 
 	this_cpu = raw_smp_processor_id();
+<<<<<<< HEAD
 
 	/*
 	 * The global clock "guarantees" that the events are ordered
@@ -137,6 +142,30 @@ u64 notrace trace_clock_global(void)
 		/* The unlock acts as the wmb for the above rmb */
 		arch_spin_unlock(&trace_clock_struct.lock);
 	}
+=======
+	now = sched_clock_cpu(this_cpu);
+	/*
+	 * If in an NMI context then dont risk lockups and return the
+	 * cpu_clock() time:
+	 */
+	if (unlikely(in_nmi()))
+		goto out;
+
+	arch_spin_lock(&trace_clock_struct.lock);
+
+	/*
+	 * TODO: if this happens often then maybe we should reset
+	 * my_scd->clock to prev_time+1, to make sure
+	 * we start ticking with the local clock from now on?
+	 */
+	if ((s64)(now - trace_clock_struct.prev_time) < 0)
+		now = trace_clock_struct.prev_time + 1;
+
+	trace_clock_struct.prev_time = now;
+
+	arch_spin_unlock(&trace_clock_struct.lock);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  out:
 	local_irq_restore(flags);
 

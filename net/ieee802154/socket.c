@@ -985,11 +985,14 @@ static const struct proto_ops ieee802154_dgram_ops = {
 #endif
 };
 
+<<<<<<< HEAD
 static void ieee802154_sock_destruct(struct sock *sk)
 {
 	skb_queue_purge(&sk->sk_receive_queue);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /* Create a socket. Initialise the socket, blank the addresses
  * set the state.
  */
@@ -1030,7 +1033,11 @@ static int ieee802154_create(struct net *net, struct socket *sock,
 	sock->ops = ops;
 
 	sock_init_data(sock, sk);
+<<<<<<< HEAD
 	sk->sk_destruct = ieee802154_sock_destruct;
+=======
+	/* FIXME: sk->sk_destruct */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	sk->sk_family = PF_IEEE802154;
 
 	/* Checksums on by default */

@@ -1259,11 +1259,17 @@ int qed_dcbx_get_config_params(struct qed_hwfn *p_hwfn,
 		p_hwfn->p_dcbx_info->set.ver_num |= DCBX_CONFIG_VERSION_STATIC;
 
 	p_hwfn->p_dcbx_info->set.enabled = dcbx_info->operational.enabled;
+<<<<<<< HEAD
 	BUILD_BUG_ON(sizeof(dcbx_info->operational.params) !=
 		     sizeof(p_hwfn->p_dcbx_info->set.config.params));
 	memcpy(&p_hwfn->p_dcbx_info->set.config.params,
 	       &dcbx_info->operational.params,
 	       sizeof(p_hwfn->p_dcbx_info->set.config.params));
+=======
+	memcpy(&p_hwfn->p_dcbx_info->set.config.params,
+	       &dcbx_info->operational.params,
+	       sizeof(struct qed_dcbx_admin_params));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	p_hwfn->p_dcbx_info->set.config.valid = true;
 
 	memcpy(params, &p_hwfn->p_dcbx_info->set, sizeof(struct qed_dcbx_set));

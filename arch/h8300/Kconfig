@@ -27,6 +27,12 @@ config H8300
 config CPU_BIG_ENDIAN
 	def_bool y
 
+<<<<<<< HEAD
+=======
+config RWSEM_GENERIC_SPINLOCK
+	def_bool y
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 config GENERIC_HWEIGHT
 	def_bool y
 

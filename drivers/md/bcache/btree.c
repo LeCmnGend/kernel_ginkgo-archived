@@ -794,7 +794,11 @@ int bch_btree_cache_alloc(struct cache_set *c)
 	mutex_init(&c->verify_lock);
 
 	c->verify_ondisk = (void *)
+<<<<<<< HEAD
 		__get_free_pages(GFP_KERNEL|__GFP_COMP, ilog2(bucket_pages(c)));
+=======
+		__get_free_pages(GFP_KERNEL, ilog2(bucket_pages(c)));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	c->verify_data = mca_bucket_alloc(c, &ZERO_KEY, GFP_KERNEL);
 
@@ -840,6 +844,7 @@ out:
 
 static int mca_cannibalize_lock(struct cache_set *c, struct btree_op *op)
 {
+<<<<<<< HEAD
 	spin_lock(&c->btree_cannibalize_lock);
 	if (likely(c->btree_cache_alloc_lock == NULL)) {
 		c->btree_cache_alloc_lock = current;
@@ -851,6 +856,17 @@ static int mca_cannibalize_lock(struct cache_set *c, struct btree_op *op)
 		return -EINTR;
 	}
 	spin_unlock(&c->btree_cannibalize_lock);
+=======
+	struct task_struct *old;
+
+	old = cmpxchg(&c->btree_cache_alloc_lock, NULL, current);
+	if (old && old != current) {
+		if (op)
+			prepare_to_wait(&c->btree_cache_wait, &op->wait,
+					TASK_UNINTERRUPTIBLE);
+		return -EINTR;
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return 0;
 }
@@ -885,12 +901,18 @@ static struct btree *mca_cannibalize(struct cache_set *c, struct btree_op *op,
  */
 static void bch_cannibalize_unlock(struct cache_set *c)
 {
+<<<<<<< HEAD
 	spin_lock(&c->btree_cannibalize_lock);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (c->btree_cache_alloc_lock == current) {
 		c->btree_cache_alloc_lock = NULL;
 		wake_up(&c->btree_cache_wait);
 	}
+<<<<<<< HEAD
 	spin_unlock(&c->btree_cannibalize_lock);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static struct btree *mca_alloc(struct cache_set *c, struct btree_op *op,

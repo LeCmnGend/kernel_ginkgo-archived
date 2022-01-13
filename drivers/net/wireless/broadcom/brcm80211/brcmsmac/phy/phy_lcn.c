@@ -5090,10 +5090,15 @@ bool wlc_phy_attach_lcnphy(struct brcms_phy *pi)
 	pi->pi_fptr.radioloftget = wlc_lcnphy_get_radio_loft;
 	pi->pi_fptr.detach = wlc_phy_detach_lcnphy;
 
+<<<<<<< HEAD
 	if (!wlc_phy_txpwr_srom_read_lcnphy(pi)) {
 		kfree(pi->u.pi_lcnphy);
 		return false;
 	}
+=======
+	if (!wlc_phy_txpwr_srom_read_lcnphy(pi))
+		return false;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (LCNREV_IS(pi->pubpi.phy_rev, 1)) {
 		if (pi_lcn->lcnphy_tempsense_option == 3) {

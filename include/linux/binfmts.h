@@ -139,7 +139,10 @@ extern int prepare_bprm_creds(struct linux_binprm *bprm);
 extern void install_exec_creds(struct linux_binprm *bprm);
 extern void set_binfmt(struct linux_binfmt *new);
 extern ssize_t read_code(struct file *, unsigned long, loff_t, size_t);
+<<<<<<< HEAD
 extern bool task_is_zygote(struct task_struct *p);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 extern int do_execve(struct filename *,
 		     const char __user * const __user *,

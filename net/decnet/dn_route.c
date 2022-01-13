@@ -1881,7 +1881,11 @@ void __init dn_route_init(void)
 	dn_route_timer.expires = jiffies + decnet_dst_gc_interval * HZ;
 	add_timer(&dn_route_timer);
 
+<<<<<<< HEAD
 	goal = totalram_pages() >> (26 - PAGE_SHIFT);
+=======
+	goal = totalram_pages >> (26 - PAGE_SHIFT);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	for(order = 0; (1UL << order) < goal; order++)
 		/* NOTHING */;

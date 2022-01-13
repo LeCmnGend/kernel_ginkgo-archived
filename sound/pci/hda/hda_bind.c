@@ -46,10 +46,13 @@ static void hda_codec_unsol_event(struct hdac_device *dev, unsigned int ev)
 	if (codec->bus->shutdown)
 		return;
 
+<<<<<<< HEAD
 	/* ignore unsol events during system suspend/resume */
 	if (codec->core.dev.power.power_state.event != PM_EVENT_ON)
 		return;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (codec->patch_ops.unsol_event)
 		codec->patch_ops.unsol_event(codec, ev);
 }

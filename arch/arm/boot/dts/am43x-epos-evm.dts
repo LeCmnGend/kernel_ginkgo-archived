@@ -411,7 +411,11 @@
 	status = "okay";
 	pinctrl-names = "default";
 	pinctrl-0 = <&i2c0_pins>;
+<<<<<<< HEAD
 	clock-frequency = <100000>;
+=======
+	clock-frequency = <400000>;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	tps65218: tps65218@24 {
 		reg = <0x24>;

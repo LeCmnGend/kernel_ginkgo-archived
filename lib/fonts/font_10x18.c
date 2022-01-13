@@ -8,8 +8,13 @@
 
 #define FONTDATAMAX 9216
 
+<<<<<<< HEAD
 static const struct font_data fontdata_10x18 = {
 	{ 0, 0, FONTDATAMAX, 0 }, {
+=======
+static const unsigned char fontdata_10x18[FONTDATAMAX] = {
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* 0 0x00 '^@' */
 	0x00, 0x00, /* 0000000000 */
 	0x00, 0x00, /* 0000000000 */
@@ -5129,7 +5134,12 @@ static const struct font_data fontdata_10x18 = {
 	0x00, 0x00, /* 0000000000 */
 	0x00, 0x00, /* 0000000000 */
 	0x00, 0x00, /* 0000000000 */
+<<<<<<< HEAD
 } };
+=======
+
+};
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 
 const struct font_desc font_10x18 = {
@@ -5137,7 +5147,11 @@ const struct font_desc font_10x18 = {
 	.name	= "10x18",
 	.width	= 10,
 	.height	= 18,
+<<<<<<< HEAD
 	.data	= fontdata_10x18.data,
+=======
+	.data	= fontdata_10x18,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #ifdef __sparc__
 	.pref	= 5,
 #else

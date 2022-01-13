@@ -22,6 +22,10 @@
 
 #include <linux/types.h>
 
+<<<<<<< HEAD
 #define COMMAND_LINE_SIZE	4096
+=======
+#define COMMAND_LINE_SIZE	2048
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #endif

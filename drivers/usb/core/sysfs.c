@@ -865,11 +865,15 @@ read_descriptors(struct file *filp, struct kobject *kobj,
 	size_t srclen, n;
 	int cfgno;
 	void *src;
+<<<<<<< HEAD
 	int retval;
 
 	retval = usb_lock_device_interruptible(udev);
 	if (retval < 0)
 		return -EINTR;
+=======
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* The binary attribute begins with the device descriptor.
 	 * Following that are the raw descriptor entries for all the
 	 * configurations (config plus subsidiary descriptors).
@@ -894,7 +898,10 @@ read_descriptors(struct file *filp, struct kobject *kobj,
 			off -= srclen;
 		}
 	}
+<<<<<<< HEAD
 	usb_unlock_device(udev);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return count - nleft;
 }
 

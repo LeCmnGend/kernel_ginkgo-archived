@@ -855,7 +855,11 @@ static int mtk_vpu_probe(struct platform_device *pdev)
 	/* Set PTCM to 96K and DTCM to 32K */
 	vpu_cfg_writel(vpu, 0x2, VPU_TCM_CFG);
 
+<<<<<<< HEAD
 	vpu->enable_4GB = !!(totalram_pages() > (SZ_2G >> PAGE_SHIFT));
+=======
+	vpu->enable_4GB = !!(totalram_pages > (SZ_2G >> PAGE_SHIFT));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	dev_info(dev, "4GB mode %u\n", vpu->enable_4GB);
 
 	if (vpu->enable_4GB) {

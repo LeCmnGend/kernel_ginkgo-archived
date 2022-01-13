@@ -1155,7 +1155,11 @@ static int xol_add_vma(struct mm_struct *mm, struct xol_area *area)
 		/* Try to map as high as possible, this is only a hint. */
 		area->vaddr = get_unmapped_area(NULL, TASK_SIZE - PAGE_SIZE,
 						PAGE_SIZE, 0, 0);
+<<<<<<< HEAD
 		if (IS_ERR_VALUE(area->vaddr)) {
+=======
+		if (area->vaddr & ~PAGE_MASK) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			ret = area->vaddr;
 			goto fail;
 		}

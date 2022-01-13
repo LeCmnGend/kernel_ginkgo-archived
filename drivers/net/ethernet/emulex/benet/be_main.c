@@ -5926,7 +5926,10 @@ drv_cleanup:
 unmap_bars:
 	be_unmap_pci_bars(adapter);
 free_netdev:
+<<<<<<< HEAD
 	pci_disable_pcie_error_reporting(pdev);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	free_netdev(netdev);
 rel_reg:
 	pci_release_regions(pdev);

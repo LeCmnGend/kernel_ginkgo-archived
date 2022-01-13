@@ -973,7 +973,11 @@ static bool ath9k_rx_prepare(struct ath9k_htc_priv *priv,
 	struct ath_htc_rx_status *rxstatus;
 	struct ath_rx_status rx_stats;
 	bool decrypt_error = false;
+<<<<<<< HEAD
 	u16 rs_datalen;
+=======
+	__be16 rs_datalen;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	bool is_phyerr;
 
 	if (skb->len < HTC_RX_FRAME_HEADER_SIZE) {

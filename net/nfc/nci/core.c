@@ -1187,7 +1187,10 @@ EXPORT_SYMBOL(nci_allocate_device);
 void nci_free_device(struct nci_dev *ndev)
 {
 	nfc_free_device(ndev->nfc_dev);
+<<<<<<< HEAD
 	nci_hci_deallocate(ndev);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	kfree(ndev);
 }
 EXPORT_SYMBOL(nci_free_device);

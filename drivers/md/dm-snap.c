@@ -137,11 +137,14 @@ struct dm_snapshot {
 	 * for them to be committed.
 	 */
 	struct bio_list bios_queued_during_merge;
+<<<<<<< HEAD
 
 	/*
 	 * Flush data after merge.
 	 */
 	struct bio flush_bio;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 /*
@@ -793,7 +796,11 @@ static int dm_add_exception(void *context, chunk_t old, chunk_t new)
 static uint32_t __minimum_chunk_size(struct origin *o)
 {
 	struct dm_snapshot *snap;
+<<<<<<< HEAD
 	unsigned chunk_size = rounddown_pow_of_two(UINT_MAX);
+=======
+	unsigned chunk_size = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (o)
 		list_for_each_entry(snap, &o->snapshots, list)
@@ -1065,6 +1072,7 @@ shut:
 
 static void error_bios(struct bio *bio);
 
+<<<<<<< HEAD
 static int flush_data(struct dm_snapshot *s)
 {
 	struct bio *flush_bio = &s->flush_bio;
@@ -1076,6 +1084,8 @@ static int flush_data(struct dm_snapshot *s)
 	return submit_bio_wait(flush_bio);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static void merge_callback(int read_err, unsigned long write_err, void *context)
 {
 	struct dm_snapshot *s = context;
@@ -1089,11 +1099,14 @@ static void merge_callback(int read_err, unsigned long write_err, void *context)
 		goto shut;
 	}
 
+<<<<<<< HEAD
 	if (flush_data(s) < 0) {
 		DMERR("Flush after merge failed: shutting down merge");
 		goto shut;
 	}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (s->store->type->commit_merge(s->store,
 					 s->num_merging_chunks) < 0) {
 		DMERR("Write error in exception store: shutting down merge");
@@ -1218,7 +1231,10 @@ static int snapshot_ctr(struct dm_target *ti, unsigned int argc, char **argv)
 	s->first_merging_chunk = 0;
 	s->num_merging_chunks = 0;
 	bio_list_init(&s->bios_queued_during_merge);
+<<<<<<< HEAD
 	bio_init(&s->flush_bio, NULL, 0);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* Allocate hash table for COW data */
 	if (init_hash_tables(s)) {
@@ -1286,7 +1302,10 @@ static int snapshot_ctr(struct dm_target *ti, unsigned int argc, char **argv)
 
 	if (!s->store->chunk_size) {
 		ti->error = "Chunk size not set";
+<<<<<<< HEAD
 		r = -EINVAL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto bad_read_metadata;
 	}
 
@@ -1414,8 +1433,11 @@ static void snapshot_dtr(struct dm_target *ti)
 
 	mutex_destroy(&s->lock);
 
+<<<<<<< HEAD
 	bio_uninit(&s->flush_bio);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	dm_put_device(ti, s->cow);
 
 	dm_put_device(ti, s->origin);

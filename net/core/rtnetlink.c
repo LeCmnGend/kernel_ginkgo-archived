@@ -2733,8 +2733,12 @@ replay:
 			 */
 			if (err < 0) {
 				/* If device is not registered at all, free it now */
+<<<<<<< HEAD
 				if (dev->reg_state == NETREG_UNINITIALIZED ||
 				    dev->reg_state == NETREG_UNREGISTERED)
+=======
+				if (dev->reg_state == NETREG_UNINITIALIZED)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 					free_netdev(dev);
 				goto out;
 			}
@@ -3648,10 +3652,13 @@ static int rtnl_bridge_notify(struct net_device *dev)
 	if (err < 0)
 		goto errout;
 
+<<<<<<< HEAD
 	/* Notification info is only filled for bridge ports, not the bridge
 	 * device itself. Therefore, a zero notification length is valid and
 	 * should not result in an error.
 	 */
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!skb->len)
 		goto errout;
 

@@ -108,7 +108,10 @@ struct mdev_type *add_mdev_supported_type(struct mdev_parent *parent,
 		return ERR_PTR(-ENOMEM);
 
 	type->kobj.kset = parent->mdev_types_kset;
+<<<<<<< HEAD
 	type->parent = parent;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	ret = kobject_init_and_add(&type->kobj, &mdev_type_ktype, NULL,
 				   "%s-%s", dev_driver_string(parent->dev),
@@ -136,6 +139,10 @@ struct mdev_type *add_mdev_supported_type(struct mdev_parent *parent,
 	}
 
 	type->group = group;
+<<<<<<< HEAD
+=======
+	type->parent = parent;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return type;
 
 attrs_failed:

@@ -29,6 +29,7 @@ DEFINE_PER_CPU(unsigned long, efficiency) = SCHED_CAPACITY_SCALE;
 DEFINE_PER_CPU(unsigned long, max_cpu_freq);
 DEFINE_PER_CPU(unsigned long, max_freq_scale) = SCHED_CAPACITY_SCALE;
 
+<<<<<<< HEAD
 /*
  * Per-cpu for maximum available cap due to thermal events.
  */
@@ -73,6 +74,8 @@ void arch_set_max_thermal_scale(struct cpumask *cpus,
 	spin_unlock_irqrestore(&max_thermal_freq_lock, flags);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 void arch_set_freq_scale(struct cpumask *cpus, unsigned long cur_freq,
 			 unsigned long max_freq)
 {

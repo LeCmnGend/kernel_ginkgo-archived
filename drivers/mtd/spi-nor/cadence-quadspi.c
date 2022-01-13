@@ -465,7 +465,11 @@ static int cqspi_indirect_read_setup(struct spi_nor *nor,
 	/* Setup dummy clock cycles */
 	dummy_clk = nor->read_dummy;
 	if (dummy_clk > CQSPI_DUMMY_CLKS_MAX)
+<<<<<<< HEAD
 		return -EOPNOTSUPP;
+=======
+		dummy_clk = CQSPI_DUMMY_CLKS_MAX;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (dummy_clk / 8) {
 		reg |= (1 << CQSPI_REG_RD_INSTR_MODE_EN_LSB);

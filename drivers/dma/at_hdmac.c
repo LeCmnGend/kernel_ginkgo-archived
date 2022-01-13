@@ -1677,8 +1677,11 @@ static struct dma_chan *at_dma_xlate(struct of_phandle_args *dma_spec,
 		return NULL;
 
 	dmac_pdev = of_find_device_by_node(dma_spec->np);
+<<<<<<< HEAD
 	if (!dmac_pdev)
 		return NULL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	dma_cap_zero(mask);
 	dma_cap_set(DMA_SLAVE, mask);

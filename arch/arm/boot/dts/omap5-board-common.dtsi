@@ -29,6 +29,17 @@
 		regulator-max-microvolt = <5000000>;
 	};
 
+<<<<<<< HEAD
+=======
+	vdds_1v8_main: fixedregulator-vdds_1v8_main {
+		compatible = "regulator-fixed";
+		regulator-name = "vdds_1v8_main";
+		vin-supply = <&smps7_reg>;
+		regulator-min-microvolt = <1800000>;
+		regulator-max-microvolt = <1800000>;
+	};
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	vmmcsd_fixed: fixedregulator-mmcsd {
 		compatible = "regulator-fixed";
 		regulator-name = "vmmcsd_fixed";
@@ -474,7 +485,10 @@
 					regulator-boot-on;
 				};
 
+<<<<<<< HEAD
 				vdds_1v8_main:
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				smps7_reg: smps7 {
 					/* VDDS_1v8_OMAP over VDDS_1v8_MAIN */
 					regulator-name = "smps7";

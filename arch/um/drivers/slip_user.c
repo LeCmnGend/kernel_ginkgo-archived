@@ -145,8 +145,12 @@ static int slip_open(void *data)
 	}
 	sfd = err;
 
+<<<<<<< HEAD
 	err = set_up_tty(sfd);
 	if (err)
+=======
+	if (set_up_tty(sfd))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto out_close2;
 
 	pri->slave = sfd;

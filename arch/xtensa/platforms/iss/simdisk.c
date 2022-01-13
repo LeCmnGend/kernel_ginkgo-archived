@@ -21,6 +21,10 @@
 #include <platform/simcall.h>
 
 #define SIMDISK_MAJOR 240
+<<<<<<< HEAD
+=======
+#define SECTOR_SHIFT 9
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define SIMDISK_MINORS 1
 #define MAX_SIMDISK_COUNT 10
 

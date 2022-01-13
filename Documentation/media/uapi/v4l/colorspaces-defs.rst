@@ -29,7 +29,12 @@ whole range, 0-255, dividing the angular value by 1.41. The enum
 :c:type:`v4l2_hsv_encoding` specifies which encoding is used.
 
 .. note:: The default R'G'B' quantization is full range for all
+<<<<<<< HEAD
    colorspaces. HSV formats are always full range.
+=======
+   colorspaces except for BT.2020 which uses limited range R'G'B'
+   quantization.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 .. tabularcolumns:: |p{6.0cm}|p{11.5cm}|
 
@@ -161,8 +166,13 @@ whole range, 0-255, dividing the angular value by 1.41. The enum
       - Details
     * - ``V4L2_QUANTIZATION_DEFAULT``
       - Use the default quantization encoding as defined by the
+<<<<<<< HEAD
 	colorspace. This is always full range for R'G'B' and HSV.
 	It is usually limited range for Y'CbCr.
+=======
+	colorspace. This is always full range for R'G'B' (except for the
+	BT.2020 colorspace) and HSV. It is usually limited range for Y'CbCr.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
     * - ``V4L2_QUANTIZATION_FULL_RANGE``
       - Use the full range quantization encoding. I.e. the range [0…1] is
 	mapped to [0…255] (with possible clipping to [1…254] to avoid the
@@ -172,4 +182,8 @@ whole range, 0-255, dividing the angular value by 1.41. The enum
     * - ``V4L2_QUANTIZATION_LIM_RANGE``
       - Use the limited range quantization encoding. I.e. the range [0…1]
 	is mapped to [16…235]. Cb and Cr are mapped from [-0.5…0.5] to
+<<<<<<< HEAD
 	[16…240]. Limited Range cannot be used with HSV.
+=======
+	[16…240].
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388

@@ -909,8 +909,12 @@ static void xfrm_state_look_at(struct xfrm_policy *pol, struct xfrm_state *x,
 	 */
 	if (x->km.state == XFRM_STATE_VALID) {
 		if ((x->sel.family &&
+<<<<<<< HEAD
 		     (x->sel.family != family ||
 		      !xfrm_selector_match(&x->sel, fl, family))) ||
+=======
+		     !xfrm_selector_match(&x->sel, fl, x->sel.family)) ||
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		    !security_xfrm_state_pol_flow_match(x, pol, fl))
 			return;
 
@@ -923,9 +927,13 @@ static void xfrm_state_look_at(struct xfrm_policy *pol, struct xfrm_state *x,
 		*acq_in_progress = 1;
 	} else if (x->km.state == XFRM_STATE_ERROR ||
 		   x->km.state == XFRM_STATE_EXPIRED) {
+<<<<<<< HEAD
 		if ((!x->sel.family ||
 		     (x->sel.family == family &&
 		      xfrm_selector_match(&x->sel, fl, family))) &&
+=======
+		if (xfrm_selector_match(&x->sel, fl, x->sel.family) &&
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		    security_xfrm_state_pol_flow_match(x, pol, fl))
 			*error = -ESRCH;
 	}
@@ -965,7 +973,11 @@ xfrm_state_find(const xfrm_address_t *daddr, const xfrm_address_t *saddr,
 		    tmpl->mode == x->props.mode &&
 		    tmpl->id.proto == x->id.proto &&
 		    (tmpl->id.spi == x->id.spi || !tmpl->id.spi))
+<<<<<<< HEAD
 			xfrm_state_look_at(pol, x, fl, family,
+=======
+			xfrm_state_look_at(pol, x, fl, encap_family,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 					   &best, &acquire_in_progress, &error);
 	}
 	if (best || acquire_in_progress)
@@ -982,7 +994,11 @@ xfrm_state_find(const xfrm_address_t *daddr, const xfrm_address_t *saddr,
 		    tmpl->mode == x->props.mode &&
 		    tmpl->id.proto == x->id.proto &&
 		    (tmpl->id.spi == x->id.spi || !tmpl->id.spi))
+<<<<<<< HEAD
 			xfrm_state_look_at(pol, x, fl, family,
+=======
+			xfrm_state_look_at(pol, x, fl, encap_family,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 					   &best, &acquire_in_progress, &error);
 	}
 
@@ -1330,6 +1346,7 @@ out:
 EXPORT_SYMBOL(xfrm_state_add);
 
 #ifdef CONFIG_XFRM_MIGRATE
+<<<<<<< HEAD
 static inline int clone_security(struct xfrm_state *x, struct xfrm_sec_ctx *security)
 {
 	struct xfrm_user_sec_ctx *uctx;
@@ -1354,6 +1371,8 @@ static inline int clone_security(struct xfrm_state *x, struct xfrm_sec_ctx *secu
 	return 0;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static struct xfrm_state *xfrm_state_clone(struct xfrm_state *orig,
 					   struct xfrm_encap_tmpl *encap)
 {
@@ -1410,10 +1429,13 @@ static struct xfrm_state *xfrm_state_clone(struct xfrm_state *orig,
 			goto error;
 	}
 
+<<<<<<< HEAD
 	if (orig->security)
 		if (clone_security(x, orig->security))
 			goto error;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (orig->coaddr) {
 		x->coaddr = kmemdup(orig->coaddr, sizeof(*x->coaddr),
 				    GFP_KERNEL);
@@ -1438,7 +1460,11 @@ static struct xfrm_state *xfrm_state_clone(struct xfrm_state *orig,
 	x->tfcpad = orig->tfcpad;
 	x->replay_maxdiff = orig->replay_maxdiff;
 	x->replay_maxage = orig->replay_maxage;
+<<<<<<< HEAD
 	memcpy(&x->curlft, &orig->curlft, sizeof(x->curlft));
+=======
+	x->curlft.add_time = orig->curlft.add_time;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	x->km.state = orig->km.state;
 	x->km.seq = orig->km.seq;
 	x->replay = orig->replay;
@@ -1804,7 +1830,10 @@ int xfrm_alloc_spi(struct xfrm_state *x, u32 low, u32 high)
 	int err = -ENOENT;
 	__be32 minspi = htonl(low);
 	__be32 maxspi = htonl(high);
+<<<<<<< HEAD
 	__be32 newspi = 0;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	u32 mark = x->mark.v & x->mark.m;
 
 	spin_lock_bh(&x->lock);
@@ -1823,22 +1852,35 @@ int xfrm_alloc_spi(struct xfrm_state *x, u32 low, u32 high)
 			xfrm_state_put(x0);
 			goto unlock;
 		}
+<<<<<<< HEAD
 		newspi = minspi;
+=======
+		x->id.spi = minspi;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else {
 		u32 spi = 0;
 		for (h = 0; h < high-low+1; h++) {
 			spi = low + prandom_u32()%(high-low+1);
 			x0 = xfrm_state_lookup(net, mark, &x->id.daddr, htonl(spi), x->id.proto, x->props.family);
 			if (x0 == NULL) {
+<<<<<<< HEAD
 				newspi = htonl(spi);
+=======
+				x->id.spi = htonl(spi);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				break;
 			}
 			xfrm_state_put(x0);
 		}
 	}
+<<<<<<< HEAD
 	if (newspi) {
 		spin_lock_bh(&net->xfrm.xfrm_state_lock);
 		x->id.spi = newspi;
+=======
+	if (x->id.spi) {
+		spin_lock_bh(&net->xfrm.xfrm_state_lock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		h = xfrm_spi_hash(net, &x->id.daddr, x->id.spi, x->id.proto, x->props.family);
 		hlist_add_head_rcu(&x->byspi, net->xfrm.state_byspi + h);
 		spin_unlock_bh(&net->xfrm.xfrm_state_lock);
@@ -2099,6 +2141,7 @@ bool km_is_alive(const struct km_event *c)
 }
 EXPORT_SYMBOL(km_is_alive);
 
+<<<<<<< HEAD
 #if IS_ENABLED(CONFIG_XFRM_USER_COMPAT)
 static DEFINE_SPINLOCK(xfrm_translator_lock);
 static struct xfrm_translator __rcu *xfrm_translator;
@@ -2159,6 +2202,8 @@ int xfrm_unregister_translator(struct xfrm_translator *xtr)
 EXPORT_SYMBOL_GPL(xfrm_unregister_translator);
 #endif
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 int xfrm_user_policy(struct sock *sk, int optname, u8 __user *optval, int optlen)
 {
 	int err;
@@ -2180,6 +2225,7 @@ int xfrm_user_policy(struct sock *sk, int optname, u8 __user *optval, int optlen
 	if (IS_ERR(data))
 		return PTR_ERR(data);
 
+<<<<<<< HEAD
 	/* Use the 64-bit / untranslated format on Android, even for compat */
 	if (!IS_ENABLED(CONFIG_ANDROID) || IS_ENABLED(CONFIG_XFRM_USER_COMPAT)) {
 		if (in_compat_syscall()) {
@@ -2197,6 +2243,8 @@ int xfrm_user_policy(struct sock *sk, int optname, u8 __user *optval, int optlen
 		}
 	}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	err = -EINVAL;
 	rcu_read_lock();
 	list_for_each_entry_rcu(km, &xfrm_km_list, list) {

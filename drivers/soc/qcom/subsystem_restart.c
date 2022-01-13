@@ -1271,9 +1271,12 @@ int subsystem_restart_dev(struct subsys_device *dev)
 		return 0;
 	}
 
+<<<<<<< HEAD
 	if (!strcmp(name, "modem"))
 		dev->restart_level = RESET_SUBSYS_COUPLED;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	switch (dev->restart_level) {
 
 	case RESET_SUBSYS_COUPLED:

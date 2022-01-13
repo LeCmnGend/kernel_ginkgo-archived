@@ -518,7 +518,11 @@ static void do_inject(void)
 	 */
 	if (inj_type == DFR_INT_INJ) {
 		i_mce.status |= MCI_STATUS_DEFERRED;
+<<<<<<< HEAD
 		i_mce.status &= ~MCI_STATUS_UC;
+=======
+		i_mce.status |= (i_mce.status & ~MCI_STATUS_UC);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	/*

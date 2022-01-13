@@ -166,12 +166,16 @@ error_destroy_mc_io:
  */
 void fsl_destroy_mc_io(struct fsl_mc_io *mc_io)
 {
+<<<<<<< HEAD
 	struct fsl_mc_device *dpmcp_dev;
 
 	if (!mc_io)
 		return;
 
 	dpmcp_dev = mc_io->dpmcp_dev;
+=======
+	struct fsl_mc_device *dpmcp_dev = mc_io->dpmcp_dev;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (dpmcp_dev)
 		fsl_mc_io_unset_dpmcp(mc_io);

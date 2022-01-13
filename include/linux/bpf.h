@@ -497,7 +497,10 @@ extern const struct bpf_func_proto bpf_get_smp_processor_id_proto;
 extern const struct bpf_func_proto bpf_get_numa_node_id_proto;
 extern const struct bpf_func_proto bpf_tail_call_proto;
 extern const struct bpf_func_proto bpf_ktime_get_ns_proto;
+<<<<<<< HEAD
 extern const struct bpf_func_proto bpf_ktime_get_boot_ns_proto;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 extern const struct bpf_func_proto bpf_get_current_pid_tgid_proto;
 extern const struct bpf_func_proto bpf_get_current_uid_gid_proto;
 extern const struct bpf_func_proto bpf_get_current_comm_proto;

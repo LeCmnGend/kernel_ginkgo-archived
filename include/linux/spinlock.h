@@ -166,10 +166,13 @@ static inline void do_raw_spin_lock(raw_spinlock_t *lock) __acquires(lock)
 	arch_spin_lock(&lock->raw_lock);
 }
 
+<<<<<<< HEAD
 #ifndef arch_spin_lock_flags
 #define arch_spin_lock_flags(lock, flags)	arch_spin_lock(lock)
 #endif
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static inline void
 do_raw_spin_lock_flags(raw_spinlock_t *lock, unsigned long *flags) __acquires(lock)
 {

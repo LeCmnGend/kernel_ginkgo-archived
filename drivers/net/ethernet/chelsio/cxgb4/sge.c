@@ -1812,7 +1812,10 @@ static inline int uld_send(struct adapter *adap, struct sk_buff *skb,
 	txq_info = adap->sge.uld_txq_info[tx_uld_type];
 	if (unlikely(!txq_info)) {
 		WARN_ON(true);
+<<<<<<< HEAD
 		kfree_skb(skb);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return NET_XMIT_DROP;
 	}
 

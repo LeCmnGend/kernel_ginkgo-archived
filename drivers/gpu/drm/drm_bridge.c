@@ -1,6 +1,9 @@
 /*
  * Copyright (c) 2014 Samsung Electronics Co., Ltd
+<<<<<<< HEAD
  * Copyright (C) 2019 XiaoMi, Inc.
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -302,6 +305,7 @@ void drm_bridge_post_disable(struct drm_bridge *bridge)
 	if (!bridge)
 		return;
 
+<<<<<<< HEAD
 	if (bridge->is_dsi_drm_bridge)
 		mutex_lock(&bridge->lock);
 
@@ -311,6 +315,11 @@ void drm_bridge_post_disable(struct drm_bridge *bridge)
 	if (bridge->is_dsi_drm_bridge)
 		mutex_unlock(&bridge->lock);
 
+=======
+	if (bridge->funcs->post_disable)
+		bridge->funcs->post_disable(bridge);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	drm_bridge_post_disable(bridge->next);
 }
 EXPORT_SYMBOL(drm_bridge_post_disable);
@@ -359,6 +368,7 @@ void drm_bridge_pre_enable(struct drm_bridge *bridge)
 
 	drm_bridge_pre_enable(bridge->next);
 
+<<<<<<< HEAD
 	if (bridge->is_dsi_drm_bridge)
 		mutex_lock(&bridge->lock);
 
@@ -367,6 +377,10 @@ void drm_bridge_pre_enable(struct drm_bridge *bridge)
 
 	if (bridge->is_dsi_drm_bridge)
 		mutex_unlock(&bridge->lock);
+=======
+	if (bridge->funcs->pre_enable)
+		bridge->funcs->pre_enable(bridge);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 EXPORT_SYMBOL(drm_bridge_pre_enable);
 

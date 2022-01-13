@@ -243,6 +243,7 @@ done:
 	}
 }
 
+<<<<<<< HEAD
 static pgprot_t __acpi_get_writethrough_mem_attribute(void)
 {
 	/*
@@ -255,6 +256,8 @@ static pgprot_t __acpi_get_writethrough_mem_attribute(void)
 	return __pgprot(PROT_NORMAL_NC);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #ifdef CONFIG_ACPI_APEI
 pgprot_t arch_apei_get_mem_attribute(phys_addr_t addr)
 {
@@ -263,7 +266,11 @@ pgprot_t arch_apei_get_mem_attribute(phys_addr_t addr)
 	 * types" of UEFI 2.5 section 2.3.6.1, each EFI memory type is
 	 * mapped to a corresponding MAIR attribute encoding.
 	 * The EFI memory attribute advises all possible capabilities
+<<<<<<< HEAD
 	 * of a memory region.
+=======
+	 * of a memory region. We use the most efficient capability.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	 */
 
 	u64 attr;
@@ -271,10 +278,17 @@ pgprot_t arch_apei_get_mem_attribute(phys_addr_t addr)
 	attr = efi_mem_attributes(addr);
 	if (attr & EFI_MEMORY_WB)
 		return PAGE_KERNEL;
+<<<<<<< HEAD
 	if (attr & EFI_MEMORY_WC)
 		return __pgprot(PROT_NORMAL_NC);
 	if (attr & EFI_MEMORY_WT)
 		return __acpi_get_writethrough_mem_attribute();
+=======
+	if (attr & EFI_MEMORY_WT)
+		return __pgprot(PROT_NORMAL_WT);
+	if (attr & EFI_MEMORY_WC)
+		return __pgprot(PROT_NORMAL_NC);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return __pgprot(PROT_DEVICE_nGnRnE);
 }
 #endif

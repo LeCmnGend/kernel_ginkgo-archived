@@ -402,10 +402,15 @@ static struct sysrq_key_op sysrq_thaw_op = {
 };
 #endif
 
+<<<<<<< HEAD
 extern void msm_drm_notifier_enable(bool val);
 static void sysrq_handle_kill(int key)
 {
 	msm_drm_notifier_enable(false);
+=======
+static void sysrq_handle_kill(int key)
+{
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	send_sig_all(SIGKILL);
 	console_loglevel = CONSOLE_LOGLEVEL_DEBUG;
 }

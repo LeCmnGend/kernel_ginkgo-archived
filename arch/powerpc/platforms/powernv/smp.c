@@ -44,7 +44,11 @@
 #include <asm/udbg.h>
 #define DBG(fmt...) udbg_printf(fmt)
 #else
+<<<<<<< HEAD
 #define DBG(fmt...) do { } while (0)
+=======
+#define DBG(fmt...)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif
 
 static void pnv_smp_setup_cpu(int cpu)

@@ -531,11 +531,16 @@ int dispc_runtime_get(void)
 	DSSDBG("dispc_runtime_get\n");
 
 	r = pm_runtime_get_sync(&dispc.pdev->dev);
+<<<<<<< HEAD
 	if (WARN_ON(r < 0)) {
 		pm_runtime_put_sync(&dispc.pdev->dev);
 		return r;
 	}
 	return 0;
+=======
+	WARN_ON(r < 0);
+	return r < 0 ? r : 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 EXPORT_SYMBOL(dispc_runtime_get);
 

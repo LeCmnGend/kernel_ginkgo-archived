@@ -52,6 +52,7 @@ static inline int rt_mutex_has_waiters(struct rt_mutex *lock)
 static inline struct rt_mutex_waiter *
 rt_mutex_top_waiter(struct rt_mutex *lock)
 {
+<<<<<<< HEAD
 	struct rb_node *leftmost = rb_first_cached(&lock->waiters);
 	struct rt_mutex_waiter *w = NULL;
 
@@ -59,6 +60,14 @@ rt_mutex_top_waiter(struct rt_mutex *lock)
 		w = rb_entry(leftmost, struct rt_mutex_waiter, tree_entry);
 		BUG_ON(w->lock != lock);
 	}
+=======
+	struct rt_mutex_waiter *w;
+
+	w = rb_entry(lock->waiters.rb_leftmost,
+		     struct rt_mutex_waiter, tree_entry);
+	BUG_ON(w->lock != lock);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return w;
 }
 
@@ -133,7 +142,12 @@ enum rtmutex_chainwalk {
 extern struct task_struct *rt_mutex_next_owner(struct rt_mutex *lock);
 extern void rt_mutex_init_proxy_locked(struct rt_mutex *lock,
 				       struct task_struct *proxy_owner);
+<<<<<<< HEAD
 extern void rt_mutex_proxy_unlock(struct rt_mutex *lock);
+=======
+extern void rt_mutex_proxy_unlock(struct rt_mutex *lock,
+				  struct task_struct *proxy_owner);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 extern void rt_mutex_init_waiter(struct rt_mutex_waiter *waiter);
 extern int __rt_mutex_start_proxy_lock(struct rt_mutex *lock,
 				     struct rt_mutex_waiter *waiter,

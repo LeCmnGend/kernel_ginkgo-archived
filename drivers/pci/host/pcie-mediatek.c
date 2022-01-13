@@ -1042,14 +1042,22 @@ static int mtk_pcie_setup(struct mtk_pcie *pcie)
 		err = of_pci_get_devfn(child);
 		if (err < 0) {
 			dev_err(dev, "failed to parse devfn: %d\n", err);
+<<<<<<< HEAD
 			goto error_put_node;
+=======
+			return err;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 
 		slot = PCI_SLOT(err);
 
 		err = mtk_pcie_parse_port(pcie, child, slot);
 		if (err)
+<<<<<<< HEAD
 			goto error_put_node;
+=======
+			return err;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	err = mtk_pcie_subsys_powerup(pcie);
@@ -1065,9 +1073,12 @@ static int mtk_pcie_setup(struct mtk_pcie *pcie)
 		mtk_pcie_subsys_powerdown(pcie);
 
 	return 0;
+<<<<<<< HEAD
 error_put_node:
 	of_node_put(child);
 	return err;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static int mtk_pcie_request_resources(struct mtk_pcie *pcie)

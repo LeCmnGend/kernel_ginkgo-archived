@@ -36,6 +36,7 @@ static inline void invalidate_kernel_vmap_range(void *vaddr, int size)
 
 /* declarations for linux/mm/highmem.c */
 unsigned int nr_free_highpages(void);
+<<<<<<< HEAD
 extern atomic_long_t _totalhigh_pages;
 static inline unsigned long totalhigh_pages(void)
 {
@@ -61,6 +62,9 @@ static inline void totalhigh_pages_set(long val)
 {
 	atomic_long_set(&_totalhigh_pages, val);
 }
+=======
+extern unsigned long totalhigh_pages;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 void kmap_flush_unused(void);
 
@@ -82,7 +86,11 @@ static inline struct page *kmap_to_page(void *addr)
 	return virt_to_page(addr);
 }
 
+<<<<<<< HEAD
 static inline unsigned long totalhigh_pages(void) { return 0UL; }
+=======
+#define totalhigh_pages 0UL
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #ifndef ARCH_HAS_KMAP
 static inline void *kmap(struct page *page)

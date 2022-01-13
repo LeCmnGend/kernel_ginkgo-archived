@@ -1429,8 +1429,11 @@ static int smtc_map_smem(struct smtcfb_info *sfb,
 static void smtc_unmap_smem(struct smtcfb_info *sfb)
 {
 	if (sfb && sfb->fb->screen_base) {
+<<<<<<< HEAD
 		if (sfb->chip_id == 0x720)
 			sfb->fb->screen_base -= 0x00200000;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		iounmap(sfb->fb->screen_base);
 		sfb->fb->screen_base = NULL;
 	}

@@ -180,7 +180,10 @@ static int ti_qspi_setup(struct spi_device *spi)
 
 	ret = pm_runtime_get_sync(qspi->dev);
 	if (ret < 0) {
+<<<<<<< HEAD
 		pm_runtime_put_noidle(qspi->dev);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		dev_err(qspi->dev, "pm_runtime_get_sync() failed\n");
 		return ret;
 	}
@@ -643,6 +646,7 @@ static int ti_qspi_runtime_resume(struct device *dev)
 	return 0;
 }
 
+<<<<<<< HEAD
 static void ti_qspi_dma_cleanup(struct ti_qspi *qspi)
 {
 	if (qspi->rx_bb_addr)
@@ -654,6 +658,8 @@ static void ti_qspi_dma_cleanup(struct ti_qspi *qspi)
 		dma_release_channel(qspi->rx_chan);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static const struct of_device_id ti_qspi_match[] = {
 	{.compatible = "ti,dra7xxx-qspi" },
 	{.compatible = "ti,am4372-qspi" },
@@ -805,8 +811,11 @@ no_dma:
 	if (!ret)
 		return 0;
 
+<<<<<<< HEAD
 	ti_qspi_dma_cleanup(qspi);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	pm_runtime_disable(&pdev->dev);
 free_master:
 	spi_master_put(master);
@@ -825,7 +834,16 @@ static int ti_qspi_remove(struct platform_device *pdev)
 	pm_runtime_put_sync(&pdev->dev);
 	pm_runtime_disable(&pdev->dev);
 
+<<<<<<< HEAD
 	ti_qspi_dma_cleanup(qspi);
+=======
+	if (qspi->rx_bb_addr)
+		dma_free_coherent(qspi->dev, QSPI_DMA_BUFFER_SIZE,
+				  qspi->rx_bb_addr,
+				  qspi->rx_bb_dma_addr);
+	if (qspi->rx_chan)
+		dma_release_channel(qspi->rx_chan);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return 0;
 }

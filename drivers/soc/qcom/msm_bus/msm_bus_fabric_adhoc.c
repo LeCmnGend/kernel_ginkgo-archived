@@ -574,8 +574,12 @@ exit_disable_node_qos_clk:
 	return ret;
 }
 
+<<<<<<< HEAD
 static int msm_bus_enable_node_qos_clk(struct msm_bus_node_device_type *node,
 				       bool *no_defer)
+=======
+static int msm_bus_enable_node_qos_clk(struct msm_bus_node_device_type *node)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	struct msm_bus_node_device_type *bus_node = NULL;
 	int i;
@@ -610,6 +614,7 @@ static int msm_bus_enable_node_qos_clk(struct msm_bus_node_device_type *node,
 
 	}
 
+<<<<<<< HEAD
 	if (!bus_node->num_node_qos_clks) {
 		MSM_BUS_DBG("%s: Num of clks is zero\n", __func__);
 		ret = -EINVAL;
@@ -617,6 +622,8 @@ static int msm_bus_enable_node_qos_clk(struct msm_bus_node_device_type *node,
 		goto exit_enable_node_qos_clk;
 	}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	for (i = 0; i < bus_node->num_node_qos_clks; i++) {
 		if (!bus_node->node_qos_clks[i].enable_only_clk) {
 			rounded_rate =
@@ -722,16 +729,27 @@ static int msm_bus_dev_init_qos(struct device *dev, void *data)
 
 			if (node_dev->ap_owned &&
 				(node_dev->node_info->qos_params.mode) != -1) {
+<<<<<<< HEAD
 				bool no_defer = false;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 				if (bus_node_info->fabdev->bypass_qos_prg)
 					goto exit_init_qos;
 
+<<<<<<< HEAD
 				ret = msm_bus_enable_node_qos_clk(node_dev, &no_defer);
 				if (ret < 0) {
 					MSM_BUS_DBG("Can't Enable QoS clk %d\n",
 					node_dev->node_info->id);
 					node_dev->node_info->defer_qos = !no_defer;
+=======
+				ret = msm_bus_enable_node_qos_clk(node_dev);
+				if (ret < 0) {
+					MSM_BUS_DBG("Can't Enable QoS clk %d\n",
+					node_dev->node_info->id);
+					node_dev->node_info->defer_qos = true;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 					goto exit_init_qos;
 				}
 

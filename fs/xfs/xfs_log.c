@@ -2684,6 +2684,10 @@ xlog_state_do_callback(
 	int		   funcdidcallbacks; /* flag: function did callbacks */
 	int		   repeats;	/* for issuing console warnings if
 					 * looping too many times */
+<<<<<<< HEAD
+=======
+	int		   wake = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	spin_lock(&log->l_icloglock);
 	first_iclog = iclog = log->l_iclog;
@@ -2885,9 +2889,17 @@ xlog_state_do_callback(
 #endif
 
 	if (log->l_iclog->ic_state & (XLOG_STATE_ACTIVE|XLOG_STATE_IOERROR))
+<<<<<<< HEAD
 		wake_up_all(&log->l_flush_wait);
 
 	spin_unlock(&log->l_icloglock);
+=======
+		wake = 1;
+	spin_unlock(&log->l_icloglock);
+
+	if (wake)
+		wake_up_all(&log->l_flush_wait);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 
@@ -4049,9 +4061,13 @@ xfs_log_force_umount(
 	 * item committed callback functions will do this again under lock to
 	 * avoid races.
 	 */
+<<<<<<< HEAD
 	spin_lock(&log->l_cilp->xc_push_lock);
 	wake_up_all(&log->l_cilp->xc_commit_wait);
 	spin_unlock(&log->l_cilp->xc_push_lock);
+=======
+	wake_up_all(&log->l_cilp->xc_commit_wait);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	xlog_state_do_callback(log, XFS_LI_ABORTED, NULL);
 
 #ifdef XFSERRORDEBUG

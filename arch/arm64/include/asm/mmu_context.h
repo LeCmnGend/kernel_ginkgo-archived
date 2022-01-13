@@ -137,13 +137,21 @@ static inline void cpu_install_idmap(void)
  * Atomically replaces the active TTBR1_EL1 PGD with a new VA-compatible PGD,
  * avoiding the possibility of conflicting TLB entries being allocated.
  */
+<<<<<<< HEAD
 static inline void __nocfi cpu_replace_ttbr1(pgd_t *pgdp)
+=======
+static inline void __nocfi cpu_replace_ttbr1(pgd_t *pgd)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	typedef void (ttbr_replace_func)(phys_addr_t);
 	extern ttbr_replace_func idmap_cpu_replace_ttbr1;
 	ttbr_replace_func *replace_phys;
 
+<<<<<<< HEAD
 	phys_addr_t pgd_phys = virt_to_phys(pgdp);
+=======
+	phys_addr_t pgd_phys = virt_to_phys(pgd);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	replace_phys = (void *)__pa_function(idmap_cpu_replace_ttbr1);
 

@@ -63,8 +63,11 @@ module_param_named(max_queues, xennet_max_queues, uint, 0644);
 MODULE_PARM_DESC(max_queues,
 		 "Maximum number of queues per virtual interface");
 
+<<<<<<< HEAD
 #define XENNET_TIMEOUT  (5 * HZ)
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static const struct ethtool_ops xennet_ethtool_ops;
 
 struct netfront_cb {
@@ -1338,6 +1341,7 @@ static struct net_device *xennet_create_dev(struct xenbus_device *dev)
 
 	netif_carrier_off(netdev);
 
+<<<<<<< HEAD
 	do {
 		xenbus_switch_state(dev, XenbusStateInitialising);
 		err = wait_event_timeout(module_wq,
@@ -1347,6 +1351,14 @@ static struct net_device *xennet_create_dev(struct xenbus_device *dev)
 				 XenbusStateUnknown, XENNET_TIMEOUT);
 	} while (!err);
 
+=======
+	xenbus_switch_state(dev, XenbusStateInitialising);
+	wait_event(module_wq,
+		   xenbus_read_driver_state(dev->otherend) !=
+		   XenbusStateClosed &&
+		   xenbus_read_driver_state(dev->otherend) !=
+		   XenbusStateUnknown);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return netdev;
 
  exit:
@@ -2147,6 +2159,7 @@ static const struct attribute_group xennet_dev_group = {
 };
 #endif /* CONFIG_SYSFS */
 
+<<<<<<< HEAD
 static void xennet_bus_close(struct xenbus_device *dev)
 {
 	int ret;
@@ -2184,6 +2197,30 @@ static int xennet_remove(struct xenbus_device *dev)
 	struct netfront_info *info = dev_get_drvdata(&dev->dev);
 
 	xennet_bus_close(dev);
+=======
+static int xennet_remove(struct xenbus_device *dev)
+{
+	struct netfront_info *info = dev_get_drvdata(&dev->dev);
+
+	dev_dbg(&dev->dev, "%s\n", dev->nodename);
+
+	if (xenbus_read_driver_state(dev->otherend) != XenbusStateClosed) {
+		xenbus_switch_state(dev, XenbusStateClosing);
+		wait_event(module_wq,
+			   xenbus_read_driver_state(dev->otherend) ==
+			   XenbusStateClosing ||
+			   xenbus_read_driver_state(dev->otherend) ==
+			   XenbusStateUnknown);
+
+		xenbus_switch_state(dev, XenbusStateClosed);
+		wait_event(module_wq,
+			   xenbus_read_driver_state(dev->otherend) ==
+			   XenbusStateClosed ||
+			   xenbus_read_driver_state(dev->otherend) ==
+			   XenbusStateUnknown);
+	}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	xennet_disconnect_backend(info);
 
 	if (info->netdev->reg_state == NETREG_REGISTERED)

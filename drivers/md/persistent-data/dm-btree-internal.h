@@ -34,12 +34,20 @@ struct node_header {
 	__le32 max_entries;
 	__le32 value_size;
 	__le32 padding;
+<<<<<<< HEAD
 } __attribute__((packed, aligned(8)));
+=======
+} __packed;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 struct btree_node {
 	struct node_header header;
 	__le64 keys[0];
+<<<<<<< HEAD
 } __attribute__((packed, aligned(8)));
+=======
+} __packed;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 
 /*

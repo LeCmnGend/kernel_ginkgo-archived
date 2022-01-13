@@ -549,8 +549,14 @@ static int gtp_build_skb_ip4(struct sk_buff *skb, struct net_device *dev,
 	if (!skb_is_gso(skb) && (iph->frag_off & htons(IP_DF)) &&
 	    mtu < ntohs(iph->tot_len)) {
 		netdev_dbg(dev, "packet too big, fragmentation needed\n");
+<<<<<<< HEAD
 		icmp_ndo_send(skb, ICMP_DEST_UNREACH, ICMP_FRAG_NEEDED,
 			      htonl(mtu));
+=======
+		memset(IPCB(skb), 0, sizeof(*IPCB(skb)));
+		icmp_send(skb, ICMP_DEST_UNREACH, ICMP_FRAG_NEEDED,
+			  htonl(mtu));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto err_rt;
 	}
 
@@ -666,6 +672,13 @@ static int gtp_newlink(struct net *src_net, struct net_device *dev,
 
 	gtp = netdev_priv(dev);
 
+<<<<<<< HEAD
+=======
+	err = gtp_encap_enable(gtp, data);
+	if (err < 0)
+		return err;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!data[IFLA_GTP_PDP_HASHSIZE]) {
 		hashsize = 1024;
 	} else {
@@ -676,16 +689,24 @@ static int gtp_newlink(struct net *src_net, struct net_device *dev,
 
 	err = gtp_hashtable_new(gtp, hashsize);
 	if (err < 0)
+<<<<<<< HEAD
 		return err;
 
 	err = gtp_encap_enable(gtp, data);
 	if (err < 0)
 		goto out_hashtable;
+=======
+		goto out_encap;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	err = register_netdevice(dev);
 	if (err < 0) {
 		netdev_dbg(dev, "failed to register new netdev %d\n", err);
+<<<<<<< HEAD
 		goto out_encap;
+=======
+		goto out_hashtable;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	gn = net_generic(dev_net(dev), gtp_net_id);
@@ -696,11 +717,19 @@ static int gtp_newlink(struct net *src_net, struct net_device *dev,
 
 	return 0;
 
+<<<<<<< HEAD
 out_encap:
 	gtp_encap_disable(gtp);
 out_hashtable:
 	kfree(gtp->addr_hash);
 	kfree(gtp->tid_hash);
+=======
+out_hashtable:
+	kfree(gtp->addr_hash);
+	kfree(gtp->tid_hash);
+out_encap:
+	gtp_encap_disable(gtp);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return err;
 }
 
@@ -1186,7 +1215,10 @@ static int gtp_genl_fill_info(struct sk_buff *skb, u32 snd_portid, u32 snd_seq,
 		goto nlmsg_failure;
 
 	if (nla_put_u32(skb, GTPA_VERSION, pctx->gtp_version) ||
+<<<<<<< HEAD
 	    nla_put_u32(skb, GTPA_LINK, pctx->dev->ifindex) ||
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	    nla_put_be32(skb, GTPA_PEER_ADDRESS, pctx->peer_addr_ip4.s_addr) ||
 	    nla_put_be32(skb, GTPA_MS_ADDRESS, pctx->ms_addr_ip4.s_addr))
 		goto nla_put_failure;

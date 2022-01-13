@@ -241,7 +241,11 @@ struct mmc_queue_req;
  * MMC Physical partitions
  */
 struct mmc_part {
+<<<<<<< HEAD
 	u64		size;	/* partition size (in bytes) */
+=======
+	unsigned int	size;	/* partition size (in bytes) */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	unsigned int	part_cfg;	/* partition type */
 	char	name[MAX_MMC_PART_NAME_LEN];
 	bool	force_ro;	/* to make boot parts RO by default */

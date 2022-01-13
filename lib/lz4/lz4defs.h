@@ -75,11 +75,14 @@ typedef uintptr_t uptrval;
 #define WILDCOPYLENGTH 8
 #define LASTLITERALS 5
 #define MFLIMIT (WILDCOPYLENGTH + MINMATCH)
+<<<<<<< HEAD
 /*
  * ensure it's possible to write 2 x wildcopyLength
  * without overflowing output buffer
  */
 #define MATCH_SAFEGUARD_DISTANCE  ((2 * WILDCOPYLENGTH) - MINMATCH)
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /* Increase this value ==> compression run slower on incompressible data */
 #define LZ4_SKIPTRIGGER 6
@@ -137,6 +140,7 @@ static FORCE_INLINE void LZ4_writeLE16(void *memPtr, U16 value)
 	return put_unaligned_le16(value, memPtr);
 }
 
+<<<<<<< HEAD
 /*
  * LZ4 relies on memcpy with a constant size being inlined. In freestanding
  * environments, the compiler can't assume the implementation of memcpy() is
@@ -148,6 +152,8 @@ static FORCE_INLINE void LZ4_writeLE16(void *memPtr, U16 value)
 #define LZ4_memcpy(dst, src, size) __builtin_memcpy(dst, src, size)
 #define LZ4_memmove(dst, src, size) __builtin_memmove(dst, src, size)
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static FORCE_INLINE void LZ4_copy8(void *dst, const void *src)
 {
 #if LZ4_ARCH64
@@ -238,8 +244,12 @@ typedef enum { noDict = 0, withPrefix64k, usingExtDict } dict_directive;
 typedef enum { noDictIssue = 0, dictSmall } dictIssue_directive;
 
 typedef enum { endOnOutputSize = 0, endOnInputSize = 1 } endCondition_directive;
+<<<<<<< HEAD
 typedef enum { decode_full_block = 0, partial_decode = 1 } earlyEnd_directive;
 
 #define LZ4_STATIC_ASSERT(c)	BUILD_BUG_ON(!(c))
+=======
+typedef enum { full = 0, partial = 1 } earlyEnd_directive;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #endif

@@ -51,6 +51,12 @@ static inline int arch_spin_is_locked(arch_spinlock_t *lock)
 
 void arch_spin_lock(arch_spinlock_t *lock);
 
+<<<<<<< HEAD
+=======
+/* We cannot take an interrupt after getting a ticket, so don't enable them. */
+#define arch_spin_lock_flags(lock, flags) arch_spin_lock(lock)
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 int arch_spin_trylock(arch_spinlock_t *lock);
 
 static inline void arch_spin_unlock(arch_spinlock_t *lock)
@@ -122,4 +128,10 @@ void arch_read_unlock(arch_rwlock_t *rwlock);
  */
 void arch_write_unlock(arch_rwlock_t *rwlock);
 
+<<<<<<< HEAD
+=======
+#define arch_read_lock_flags(lock, flags) arch_read_lock(lock)
+#define arch_write_lock_flags(lock, flags) arch_write_lock(lock)
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif /* _ASM_TILE_SPINLOCK_32_H */

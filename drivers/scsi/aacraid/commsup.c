@@ -771,7 +771,11 @@ int aac_hba_send(u8 command, struct fib *fibptr, fib_callback callback,
 		hbacmd->request_id =
 			cpu_to_le32((((u32)(fibptr - dev->fibs)) << 2) + 1);
 		fibptr->flags |= FIB_CONTEXT_FLAG_SCSI_CMD;
+<<<<<<< HEAD
 	} else
+=======
+	} else if (command != HBA_IU_TYPE_SCSI_TM_REQ)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return -EINVAL;
 
 

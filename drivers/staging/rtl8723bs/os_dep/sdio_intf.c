@@ -28,7 +28,10 @@ static const struct sdio_device_id sdio_ids[] =
 	{ SDIO_DEVICE(0x024c, 0x0525), },
 	{ SDIO_DEVICE(0x024c, 0x0623), },
 	{ SDIO_DEVICE(0x024c, 0x0626), },
+<<<<<<< HEAD
 	{ SDIO_DEVICE(0x024c, 0x0627), },
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	{ SDIO_DEVICE(0x024c, 0xb723), },
 	{ /* end: all zeroes */				},
 };

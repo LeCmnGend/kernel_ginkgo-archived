@@ -1997,7 +1997,11 @@ static int csio_hw_prep_fw(struct csio_hw *hw, struct fw_info *fw_info,
 			FW_HDR_FW_VER_MICRO_G(c), FW_HDR_FW_VER_BUILD_G(c),
 			FW_HDR_FW_VER_MAJOR_G(k), FW_HDR_FW_VER_MINOR_G(k),
 			FW_HDR_FW_VER_MICRO_G(k), FW_HDR_FW_VER_BUILD_G(k));
+<<<<<<< HEAD
 		ret = -EINVAL;
+=======
+		ret = EINVAL;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto bye;
 	}
 

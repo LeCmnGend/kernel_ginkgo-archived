@@ -23,10 +23,13 @@
 #include <linux/freezer.h>
 #include <linux/page_owner.h>
 #include <linux/psi.h>
+<<<<<<< HEAD
 #include <linux/msm_drm_notify.h>
 #include <linux/moduleparam.h>
 #include <linux/time.h>
 #include <linux/workqueue.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include "internal.h"
 
 #ifdef CONFIG_COMPACTION
@@ -1386,7 +1389,11 @@ static enum compact_result __compact_finished(struct zone *zone,
 		 * other migratetype buddy lists.
 		 */
 		if (find_suitable_fallback(area, order, migratetype,
+<<<<<<< HEAD
 						true, &can_steal, cc->order) != -1) {
+=======
+						true, &can_steal) != -1) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 			/* movable pages are OK in any pageblock */
 			if (migratetype == MIGRATE_MOVABLE)
@@ -1749,7 +1756,11 @@ static enum compact_result compact_zone_order(struct zone *zone, int order,
 	return ret;
 }
 
+<<<<<<< HEAD
 int sysctl_extfrag_threshold = 750;
+=======
+int sysctl_extfrag_threshold = 500;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /**
  * try_to_compact_pages - Direct compact to satisfy a high-order allocation
@@ -1829,6 +1840,7 @@ enum compact_result try_to_compact_pages(gfp_t gfp_mask, unsigned int order,
 	return rc;
 }
 
+<<<<<<< HEAD
 static struct workqueue_struct *compaction_wq;
 static struct delayed_work compaction_work;
 static bool screen_on = true;
@@ -1876,6 +1888,8 @@ static int msm_drm_notifier_callback(struct notifier_block *self, unsigned long 
 static struct notifier_block compaction_notifier_block = {
 	.notifier_call = msm_drm_notifier_callback,
 };
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /* Compact all zones within a node */
 static void compact_node(int nid)
@@ -1919,6 +1933,7 @@ static void compact_nodes(void)
 		compact_node(nid);
 }
 
+<<<<<<< HEAD
 void zram_compact(void);
 
 static void do_compaction(struct work_struct *work)
@@ -1941,6 +1956,8 @@ static void do_compaction(struct work_struct *work)
 	pr_info("Scheduled memory compaction is completed\n");
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /* The written value is actually unused, all memory is compacted */
 int sysctl_compact_memory;
 
@@ -2226,6 +2243,7 @@ static int __init kcompactd_init(void)
 }
 subsys_initcall(kcompactd_init)
 
+<<<<<<< HEAD
 static int  __init scheduled_compaction_init(void)
 {
 	compaction_wq = create_freezable_workqueue("compaction_wq");
@@ -2241,4 +2259,6 @@ static int  __init scheduled_compaction_init(void)
 }
 late_initcall(scheduled_compaction_init);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif /* CONFIG_COMPACTION */

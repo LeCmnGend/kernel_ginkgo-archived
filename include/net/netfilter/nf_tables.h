@@ -136,8 +136,11 @@ static inline u8 nft_reg_load8(u32 *sreg)
 static inline void nft_data_copy(u32 *dst, const struct nft_data *src,
 				 unsigned int len)
 {
+<<<<<<< HEAD
 	if (len % NFT_REG32_SIZE)
 		dst[len / NFT_REG32_SIZE] = 0;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	memcpy(dst, src, len);
 }
 

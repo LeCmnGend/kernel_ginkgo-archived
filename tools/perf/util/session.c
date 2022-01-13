@@ -492,7 +492,10 @@ static void perf_event__mmap2_swap(union perf_event *event,
 	event->mmap2.maj   = bswap_32(event->mmap2.maj);
 	event->mmap2.min   = bswap_32(event->mmap2.min);
 	event->mmap2.ino   = bswap_64(event->mmap2.ino);
+<<<<<<< HEAD
 	event->mmap2.ino_generation = bswap_64(event->mmap2.ino_generation);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (sample_id_all) {
 		void *data = &event->mmap2.filename;
@@ -1475,7 +1478,10 @@ int perf_session__peek_event(struct perf_session *session, off_t file_offset,
 	if (event->header.size < hdr_sz || event->header.size > buf_sz)
 		return -1;
 
+<<<<<<< HEAD
 	buf += hdr_sz;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	rest = event->header.size - hdr_sz;
 
 	if (readn(fd, buf, rest) != (ssize_t)rest)

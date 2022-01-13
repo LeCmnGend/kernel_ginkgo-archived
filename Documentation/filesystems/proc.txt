@@ -251,6 +251,10 @@ Table 1-2: Contents of the status files (as of 4.8)
  VmExe                       size of text segment
  VmLib                       size of shared library code
  VmPTE                       size of page table entries
+<<<<<<< HEAD
+=======
+ VmPMD                       size of second level page tables
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  VmSwap                      amount of swap used by anonymous private data
                              (shmem swap usage is not included)
  HugetlbPages                size of hugetlb memory portions

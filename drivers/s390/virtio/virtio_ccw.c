@@ -106,7 +106,11 @@ struct virtio_rev_info {
 };
 
 /* the highest virtio-ccw revision we support */
+<<<<<<< HEAD
 #define VIRTIO_CCW_REV_MAX 2
+=======
+#define VIRTIO_CCW_REV_MAX 1
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 struct virtio_ccw_vq_info {
 	struct virtqueue *vq;
@@ -911,7 +915,11 @@ static u8 virtio_ccw_get_status(struct virtio_device *vdev)
 	u8 old_status = *vcdev->status;
 	struct ccw1 *ccw;
 
+<<<<<<< HEAD
 	if (vcdev->revision < 2)
+=======
+	if (vcdev->revision < 1)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return *vcdev->status;
 
 	ccw = kzalloc(sizeof(*ccw), GFP_DMA | GFP_KERNEL);

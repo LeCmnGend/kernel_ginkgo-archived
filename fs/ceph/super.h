@@ -752,7 +752,11 @@ static inline int default_congestion_kb(void)
 	 * This allows larger machines to have larger/more transfers.
 	 * Limit the default to 256M
 	 */
+<<<<<<< HEAD
 	congestion_kb = (16*int_sqrt(totalram_pages())) << (PAGE_SHIFT-10);
+=======
+	congestion_kb = (16*int_sqrt(totalram_pages)) << (PAGE_SHIFT-10);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (congestion_kb > 256*1024)
 		congestion_kb = 256*1024;
 

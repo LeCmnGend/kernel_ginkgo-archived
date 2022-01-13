@@ -580,10 +580,15 @@ nouveau_connector_detect(struct drm_connector *connector, bool force)
 		pm_runtime_get_noresume(dev->dev);
 	} else {
 		ret = pm_runtime_get_sync(dev->dev);
+<<<<<<< HEAD
 		if (ret < 0 && ret != -EACCES) {
 			pm_runtime_put_autosuspend(dev->dev);
 			return conn_status;
 		}
+=======
+		if (ret < 0 && ret != -EACCES)
+			return conn_status;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	nv_encoder = nouveau_connector_ddc_detect(connector);

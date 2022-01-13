@@ -66,6 +66,11 @@ struct kgsl_drawobj {
  * for easy access
  * @profile_index: Index to store the start/stop ticks in the kernel profiling
  * buffer
+<<<<<<< HEAD
+=======
+ * @submit_ticks: Variable to hold ticks at the time of
+ *     command obj submit.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
  */
 struct kgsl_drawobj_cmd {
@@ -80,6 +85,10 @@ struct kgsl_drawobj_cmd {
 	struct kgsl_mem_entry *profiling_buf_entry;
 	uint64_t profiling_buffer_gpuaddr;
 	unsigned int profile_index;
+<<<<<<< HEAD
+=======
+	uint64_t submit_ticks;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 /**
@@ -104,6 +113,7 @@ struct kgsl_drawobj_sync {
 
 #define KGSL_FENCE_NAME_LEN 74
 
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
 struct fence_info {
 	char name[KGSL_FENCE_NAME_LEN];
@@ -114,6 +124,14 @@ struct event_fence_info {
 #ifdef CONFIG_FENCE_DEBUG
 	struct fence_info *fences;
 #endif
+=======
+struct fence_info {
+	char name[KGSL_FENCE_NAME_LEN];
+};
+
+struct event_fence_info {
+	struct fence_info *fences;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int num_fences;
 };
 

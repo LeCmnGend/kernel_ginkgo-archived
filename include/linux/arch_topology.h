@@ -45,13 +45,20 @@ unsigned long topology_get_freq_scale(struct sched_domain *sd, int cpu)
 }
 
 DECLARE_PER_CPU(unsigned long, max_freq_scale);
+<<<<<<< HEAD
 DECLARE_PER_CPU(unsigned long, max_thermal_scale);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static inline
 unsigned long topology_get_max_freq_scale(struct sched_domain *sd, int cpu)
 {
+<<<<<<< HEAD
 	return min(per_cpu(max_freq_scale, cpu),
 		   per_cpu(max_thermal_scale, cpu));
+=======
+	return per_cpu(max_freq_scale, cpu);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 #endif /* _LINUX_ARCH_TOPOLOGY_H_ */

@@ -1285,8 +1285,11 @@ static void digital_tg_recv_dep_req(struct nfc_digital_dev *ddev, void *arg,
 	}
 
 	rc = nfc_tm_data_received(ddev->nfc_dev, resp);
+<<<<<<< HEAD
 	if (rc)
 		resp = NULL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 exit:
 	kfree_skb(ddev->chaining_skb);

@@ -213,8 +213,11 @@ source "drivers/hwtracing/stm/Kconfig"
 
 source "drivers/hwtracing/intel_th/Kconfig"
 
+<<<<<<< HEAD
 source "drivers/hwtracing/google/Kconfig"
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 source "drivers/fpga/Kconfig"
 
 source "drivers/fsi/Kconfig"

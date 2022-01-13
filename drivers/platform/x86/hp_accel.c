@@ -101,9 +101,12 @@ MODULE_DEVICE_TABLE(acpi, lis3lv02d_device_ids);
 static int lis3lv02d_acpi_init(struct lis3lv02d *lis3)
 {
 	struct acpi_device *dev = lis3->bus_priv;
+<<<<<<< HEAD
 	if (!lis3->init_required)
 		return 0;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (acpi_evaluate_object(dev->handle, METHOD_NAME__INI,
 				 NULL, NULL) != AE_OK)
 		return -EINVAL;
@@ -370,7 +373,10 @@ static int lis3lv02d_add(struct acpi_device *device)
 	}
 
 	/* call the core layer do its init */
+<<<<<<< HEAD
 	lis3_dev.init_required = true;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ret = lis3lv02d_init_device(&lis3_dev);
 	if (ret)
 		return ret;
@@ -418,6 +424,7 @@ static int lis3lv02d_suspend(struct device *dev)
 
 static int lis3lv02d_resume(struct device *dev)
 {
+<<<<<<< HEAD
 	lis3_dev.init_required = false;
 	lis3lv02d_poweron(&lis3_dev);
 	return 0;
@@ -426,10 +433,13 @@ static int lis3lv02d_resume(struct device *dev)
 static int lis3lv02d_restore(struct device *dev)
 {
 	lis3_dev.init_required = true;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	lis3lv02d_poweron(&lis3_dev);
 	return 0;
 }
 
+<<<<<<< HEAD
 static const struct dev_pm_ops hp_accel_pm = {
 	.suspend = lis3lv02d_suspend,
 	.resume = lis3lv02d_resume,
@@ -439,6 +449,9 @@ static const struct dev_pm_ops hp_accel_pm = {
 	.restore = lis3lv02d_restore,
 };
 
+=======
+static SIMPLE_DEV_PM_OPS(hp_accel_pm, lis3lv02d_suspend, lis3lv02d_resume);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define HP_ACCEL_PM (&hp_accel_pm)
 #else
 #define HP_ACCEL_PM NULL

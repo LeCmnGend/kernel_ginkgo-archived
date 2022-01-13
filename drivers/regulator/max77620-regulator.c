@@ -792,6 +792,7 @@ static int max77620_regulator_probe(struct platform_device *pdev)
 	config.dev = dev;
 	config.driver_data = pmic;
 
+<<<<<<< HEAD
 	/*
 	 * Set of_node_reuse flag to prevent driver core from attempting to
 	 * claim any pinmux resources already claimed by the parent device.
@@ -799,6 +800,8 @@ static int max77620_regulator_probe(struct platform_device *pdev)
 	 */
 	device_set_of_node_from_dev(&pdev->dev, pdev->dev.parent);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	for (id = 0; id < MAX77620_NUM_REGS; id++) {
 		struct regulator_dev *rdev;
 		struct regulator_desc *rdesc;

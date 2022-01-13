@@ -142,12 +142,32 @@ static inline const char *get_task_state(struct task_struct *tsk)
 	return task_state_array[__get_task_state(tsk)];
 }
 
+<<<<<<< HEAD
+=======
+static inline int get_task_umask(struct task_struct *tsk)
+{
+	struct fs_struct *fs;
+	int umask = -ENOENT;
+
+	task_lock(tsk);
+	fs = tsk->fs;
+	if (fs)
+		umask = fs->umask;
+	task_unlock(tsk);
+	return umask;
+}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static inline void task_state(struct seq_file *m, struct pid_namespace *ns,
 				struct pid *pid, struct task_struct *p)
 {
 	struct user_namespace *user_ns = seq_user_ns(m);
 	struct group_info *group_info;
+<<<<<<< HEAD
 	int g, umask = -1;
+=======
+	int g, umask;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct task_struct *tracer;
 	const struct cred *cred;
 	pid_t ppid, tpid = 0, tgid, ngid;
@@ -165,18 +185,30 @@ static inline void task_state(struct seq_file *m, struct pid_namespace *ns,
 	ngid = task_numa_group_id(p);
 	cred = get_task_cred(p);
 
+<<<<<<< HEAD
 	task_lock(p);
 	if (p->fs)
 		umask = p->fs->umask;
+=======
+	umask = get_task_umask(p);
+	if (umask >= 0)
+		seq_printf(m, "Umask:\t%#04o\n", umask);
+
+	task_lock(p);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (p->files)
 		max_fds = files_fdtable(p->files)->max_fds;
 	task_unlock(p);
 	rcu_read_unlock();
 
+<<<<<<< HEAD
 	if (umask >= 0)
 		seq_printf(m, "Umask:\t%#04o\n", umask);
 	seq_puts(m, "State:\t");
 	seq_puts(m, get_task_state(p));
+=======
+	seq_printf(m, "State:\t%s", get_task_state(p));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	seq_put_decimal_ull(m, "\nTgid:\t", tgid);
 	seq_put_decimal_ull(m, "\nNgid:\t", ngid);
@@ -302,8 +334,13 @@ static void render_cap_t(struct seq_file *m, const char *header,
 
 	seq_puts(m, header);
 	CAP_FOR_EACH_U32(__capi) {
+<<<<<<< HEAD
 		seq_put_hex_ll(m, NULL,
 			   a->cap[CAP_LAST_U32 - __capi], 8);
+=======
+		seq_printf(m, "%08x",
+			   a->cap[CAP_LAST_U32 - __capi]);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	seq_putc(m, '\n');
 }
@@ -511,11 +548,15 @@ static int do_task_stat(struct seq_file *m, struct pid_namespace *ns,
 	/* convert nsec -> ticks */
 	start_time = nsec_to_clock_t(task->real_start_time);
 
+<<<<<<< HEAD
 	seq_put_decimal_ull(m, "", pid_nr_ns(pid, ns));
 	seq_puts(m, " (");
 	seq_puts(m, tcomm);
 	seq_puts(m, ") ");
 	seq_putc(m, state);
+=======
+	seq_printf(m, "%d (%s) %c", pid_nr_ns(pid, ns), tcomm, state);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	seq_put_decimal_ll(m, " ", ppid);
 	seq_put_decimal_ll(m, " ", pgid);
 	seq_put_decimal_ll(m, " ", sid);

@@ -179,7 +179,10 @@ int icp_hv_init(void)
 
 	icp_ops = &icp_hv_ops;
 
+<<<<<<< HEAD
 	of_node_put(np);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 }
 

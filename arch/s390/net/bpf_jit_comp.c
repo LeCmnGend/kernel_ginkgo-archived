@@ -117,7 +117,11 @@ static inline void reg_set_seen(struct bpf_jit *jit, u32 b1)
 {
 	u32 r1 = reg2hex[b1];
 
+<<<<<<< HEAD
 	if (r1 >= 6 && r1 <= 15 && !jit->seen_reg[r1])
+=======
+	if (!jit->seen_reg[r1] && r1 >= 6 && r1 <= 15)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		jit->seen_reg[r1] = 1;
 }
 

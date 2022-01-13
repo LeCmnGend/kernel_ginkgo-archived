@@ -151,7 +151,11 @@ static int alg_bind(struct socket *sock, struct sockaddr *uaddr, int addr_len)
 	const u32 allowed = CRYPTO_ALG_KERN_DRIVER_ONLY;
 	struct sock *sk = sock->sk;
 	struct alg_sock *ask = alg_sk(sk);
+<<<<<<< HEAD
 	struct sockaddr_alg_new *sa = (void *)uaddr;
+=======
+	struct sockaddr_alg *sa = (void *)uaddr;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	const struct af_alg_type *type;
 	void *private;
 	int err;
@@ -159,11 +163,15 @@ static int alg_bind(struct socket *sock, struct sockaddr *uaddr, int addr_len)
 	if (sock->state == SS_CONNECTED)
 		return -EINVAL;
 
+<<<<<<< HEAD
 	BUILD_BUG_ON(offsetof(struct sockaddr_alg_new, salg_name) !=
 		     offsetof(struct sockaddr_alg, salg_name));
 	BUILD_BUG_ON(offsetof(struct sockaddr_alg, salg_name) != sizeof(*sa));
 
 	if (addr_len < sizeof(*sa) + 1)
+=======
+	if (addr_len < sizeof(*sa))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return -EINVAL;
 
 	/* If caller uses non-allowed flag, return error. */
@@ -171,7 +179,11 @@ static int alg_bind(struct socket *sock, struct sockaddr *uaddr, int addr_len)
 		return -EINVAL;
 
 	sa->salg_type[sizeof(sa->salg_type) - 1] = 0;
+<<<<<<< HEAD
 	sa->salg_name[addr_len - sizeof(*sa) - 1] = 0;
+=======
+	sa->salg_name[sizeof(sa->salg_name) + addr_len - sizeof(*sa) - 1] = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	type = alg_get_type(sa->salg_type);
 	if (IS_ERR(type) && PTR_ERR(type) == -ENOENT) {

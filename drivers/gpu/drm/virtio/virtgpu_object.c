@@ -107,7 +107,11 @@ static void virtio_gpu_init_ttm_placement(struct virtio_gpu_object *vgbo)
 
 	u32 cache_type = (vgbo->blob_mem & VIRTGPU_BLOB_MEM_CACHE_MASK);
 	bool has_guest = (vgbo->blob_mem == VIRTGPU_BLOB_MEM_GUEST ||
+<<<<<<< HEAD
 			  vgbo->blob_mem == VIRTGPU_BLOB_MEM_HOST3D_GUEST);
+=======
+			  vgbo->blob_mem == VIRTGPU_BLOB_MEM_HOST_GUEST);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	vgbo->placement.placement = &vgbo->placement_code;
 	vgbo->placement.busy_placement = &vgbo->placement_code;

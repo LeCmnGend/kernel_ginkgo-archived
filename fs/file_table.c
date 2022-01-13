@@ -466,11 +466,18 @@ void __init files_init(void)
 void __init files_maxfiles_init(void)
 {
 	unsigned long n;
+<<<<<<< HEAD
 	unsigned long nr_pages = totalram_pages();
 	unsigned long memreserve = (nr_pages - nr_free_pages()) * 3/2;
 
 	memreserve = min(memreserve, nr_pages - 1);
 	n = ((nr_pages - memreserve) * (PAGE_SIZE / 1024)) / 10;
+=======
+	unsigned long memreserve = (totalram_pages - nr_free_pages()) * 3/2;
+
+	memreserve = min(memreserve, totalram_pages - 1);
+	n = ((totalram_pages - memreserve) * (PAGE_SIZE / 1024)) / 10;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	files_stat.max_files = max_t(unsigned long, n, NR_FILE);
 }

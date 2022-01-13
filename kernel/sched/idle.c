@@ -66,8 +66,12 @@ static noinline int __cpuidle cpu_idle_poll(void)
 	local_irq_enable();
 	stop_critical_timings();
 	while (!tif_need_resched() &&
+<<<<<<< HEAD
 		(cpu_idle_force_poll || tick_check_broadcast_expired() ||
 		is_reserved(smp_processor_id())))
+=======
+		(cpu_idle_force_poll || tick_check_broadcast_expired()))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		cpu_relax();
 	start_critical_timings();
 	trace_cpu_idle_rcuidle(PWR_EVENT_EXIT, smp_processor_id());
@@ -197,7 +201,11 @@ static void cpuidle_idle_call(void)
 		 */
 		next_state = cpuidle_select(drv, dev, &stop_tick);
 
+<<<<<<< HEAD
 		if (stop_tick || tick_nohz_tick_stopped())
+=======
+		if (stop_tick)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			tick_nohz_idle_stop_tick();
 		else
 			tick_nohz_idle_retain_tick();
@@ -230,7 +238,10 @@ exit_idle:
  */
 static void do_idle(void)
 {
+<<<<<<< HEAD
 	int cpu = smp_processor_id();
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/*
 	 * If the arch has a polling bit, we maintain an invariant:
 	 *
@@ -241,20 +252,33 @@ static void do_idle(void)
 	 */
 
 	__current_set_polling();
+<<<<<<< HEAD
+=======
+	quiet_vmstat();
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	tick_nohz_idle_enter();
 
 	while (!need_resched()) {
 		check_pgt_cache();
 		rmb();
 
+<<<<<<< HEAD
 		local_irq_disable();
 
                 if (cpu_is_offline(cpu)) {
 			tick_nohz_idle_stop_tick();
+=======
+		if (cpu_is_offline(smp_processor_id())) {
+			tick_nohz_idle_stop_tick_protected();
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			cpuhp_report_idle_dead();
 			arch_cpu_idle_dead();
 		}
 
+<<<<<<< HEAD
+=======
+		local_irq_disable();
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		arch_cpu_idle_enter();
 
 		/*
@@ -263,8 +287,12 @@ static void do_idle(void)
 		 * broadcast device expired for us, we don't want to go deep
 		 * idle as we know that the IPI is going to arrive right away.
 		 */
+<<<<<<< HEAD
 		if (cpu_idle_force_poll || tick_check_broadcast_expired() ||
 				is_reserved(smp_processor_id())) {
+=======
+		if (cpu_idle_force_poll || tick_check_broadcast_expired()) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			tick_nohz_idle_restart_tick();
 			cpu_idle_poll();
 		} else {
@@ -291,11 +319,14 @@ static void do_idle(void)
 	 */
 	smp_mb__after_atomic();
 
+<<<<<<< HEAD
 	/*
 	 * RCU relies on this call to be done outside of an RCU read-side
 	 * critical section.
 	 */
 	flush_smp_call_function_from_idle();
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	sched_ttwu_pending();
 	schedule_idle();
 

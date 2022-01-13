@@ -28,9 +28,12 @@
 #ifndef __ASSEMBLY__
 
 #include <generated/vdso-offsets.h>
+<<<<<<< HEAD
 #ifdef CONFIG_VDSO32
 #include <generated/vdso32-offsets.h>
 #endif
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #define VDSO_SYMBOL(base, name)						   \
 ({									   \

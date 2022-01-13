@@ -127,8 +127,11 @@ struct ieee80211_key {
 	} debugfs;
 #endif
 
+<<<<<<< HEAD
 	unsigned int color;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/*
 	 * key config, must be last because it contains key
 	 * material as variable length member

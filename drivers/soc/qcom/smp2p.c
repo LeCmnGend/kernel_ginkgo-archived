@@ -1,6 +1,10 @@
 /*
  * Copyright (c) 2015, Sony Mobile Communications AB.
+<<<<<<< HEAD
  * Copyright (c) 2012-2013, 2018-2020 The Linux Foundation. All rights reserved.
+=======
+ * Copyright (c) 2012-2013, 2018-2019 The Linux Foundation. All rights reserved.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -288,7 +292,15 @@ static void qcom_smp2p_notify_in(struct qcom_smp2p *smp2p)
 			    (!(val & BIT(i)) && test_bit(i, entry->irq_falling))) {
 				irq_pin = irq_find_mapping(entry->domain, i);
 				handle_nested_irq(irq_pin);
+<<<<<<< HEAD
 				clear_bit(i, entry->irq_pending);
+=======
+
+				if (test_bit(i, entry->irq_enabled))
+					clear_bit(i, entry->irq_pending);
+				else
+					set_bit(i, entry->irq_pending);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			}
 		}
 	}
@@ -387,6 +399,7 @@ static int smp2p_set_irq_type(struct irq_data *irqd, unsigned int type)
 	return 0;
 }
 
+<<<<<<< HEAD
 static int smp2p_retrigger_irq(struct irq_data *irqd)
 {
 	struct smp2p_entry *entry = irq_data_get_irq_chip_data(irqd);
@@ -398,12 +411,17 @@ static int smp2p_retrigger_irq(struct irq_data *irqd)
 	return 0;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static struct irq_chip smp2p_irq_chip = {
 	.name           = "smp2p",
 	.irq_mask       = smp2p_mask_irq,
 	.irq_unmask     = smp2p_unmask_irq,
 	.irq_set_type	= smp2p_set_irq_type,
+<<<<<<< HEAD
 	.irq_retrigger	= smp2p_retrigger_irq,
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 static int smp2p_irq_map(struct irq_domain *d,
@@ -443,16 +461,27 @@ static int qcom_smp2p_inbound_entry(struct qcom_smp2p *smp2p,
 static int smp2p_update_bits(void *data, u32 mask, u32 value)
 {
 	struct smp2p_entry *entry = data;
+<<<<<<< HEAD
 	unsigned long flags;
 	u32 orig;
 	u32 val;
 
 	spin_lock_irqsave(&entry->lock, flags);
+=======
+	u32 orig;
+	u32 val;
+
+	spin_lock(&entry->lock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	val = orig = readl(entry->value);
 	val &= ~mask;
 	val |= value;
 	writel(val, entry->value);
+<<<<<<< HEAD
 	spin_unlock_irqrestore(&entry->lock, flags);
+=======
+	spin_unlock(&entry->lock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	SMP2P_INFO("%d: %s: orig:0x%0x new:0x%0x\n",
 		   entry->smp2p->remote_pid, entry->name, orig, val);
 
@@ -686,7 +715,11 @@ static int qcom_smp2p_probe(struct platform_device *pdev)
 
 	ret = devm_request_threaded_irq(&pdev->dev, smp2p->irq,
 					qcom_smp2p_isr, qcom_smp2p_intr,
+<<<<<<< HEAD
 					IRQF_ONESHOT,
+=======
+					IRQF_NO_SUSPEND | IRQF_ONESHOT,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 					"smp2p", (void *)smp2p);
 	if (ret) {
 		dev_err(&pdev->dev, "failed to request interrupt\n");

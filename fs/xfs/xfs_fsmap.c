@@ -273,9 +273,12 @@ xfs_getfsmap_helper(
 
 	/* Are we just counting mappings? */
 	if (info->head->fmh_count == 0) {
+<<<<<<< HEAD
 		if (info->head->fmh_entries == UINT_MAX)
 			return -ECANCELED;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (rec_daddr > info->next_daddr)
 			info->head->fmh_entries++;
 

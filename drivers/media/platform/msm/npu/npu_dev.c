@@ -2230,8 +2230,11 @@ static int npu_probe(struct platform_device *pdev)
 			res->start, npu_dev->qfprom_io.base);
 	}
 
+<<<<<<< HEAD
 	mutex_init(&npu_dev->dev_lock);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	rc = npu_parse_dt_regulator(npu_dev);
 	if (rc)
 		goto error_get_dev_num;

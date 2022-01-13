@@ -1114,6 +1114,10 @@ nj_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
 		card->typ = NETJET_S_TJ300;
 
 	card->base = pci_resource_start(pdev, 0);
+<<<<<<< HEAD
+=======
+	card->irq = pdev->irq;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	pci_set_drvdata(pdev, card);
 	err = setup_instance(card);
 	if (err)

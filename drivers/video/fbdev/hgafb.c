@@ -286,7 +286,11 @@ static int hga_card_detect(void)
 
 	hga_vram = ioremap(0xb0000, hga_vram_len);
 	if (!hga_vram)
+<<<<<<< HEAD
 		return -ENOMEM;
+=======
+		goto error;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (request_region(0x3b0, 12, "hgafb"))
 		release_io_ports = 1;
@@ -346,18 +350,26 @@ static int hga_card_detect(void)
 			hga_type_name = "Hercules";
 			break;
 	}
+<<<<<<< HEAD
 	return 0;
+=======
+	return 1;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 error:
 	if (release_io_ports)
 		release_region(0x3b0, 12);
 	if (release_io_port)
 		release_region(0x3bf, 1);
+<<<<<<< HEAD
 
 	iounmap(hga_vram);
 
 	pr_err("hgafb: HGA card not detected.\n");
 
 	return -EINVAL;
+=======
+	return 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /**
@@ -555,11 +567,21 @@ static struct fb_ops hgafb_ops = {
 static int hgafb_probe(struct platform_device *pdev)
 {
 	struct fb_info *info;
+<<<<<<< HEAD
 	int ret;
 
 	ret = hga_card_detect();
 	if (ret)
 		return ret;
+=======
+
+	if (! hga_card_detect()) {
+		printk(KERN_INFO "hgafb: HGA card not detected.\n");
+		if (hga_vram)
+			iounmap(hga_vram);
+		return -EINVAL;
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	printk(KERN_INFO "hgafb: %s with %ldK of memory detected.\n",
 		hga_type_name, hga_vram_len/1024);

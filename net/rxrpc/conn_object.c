@@ -196,11 +196,17 @@ void rxrpc_disconnect_call(struct rxrpc_call *call)
 
 	call->peer->cong_cwnd = call->cong_cwnd;
 
+<<<<<<< HEAD
 	if (!hlist_unhashed(&call->error_link)) {
 		spin_lock_bh(&conn->params.peer->lock);
 		hlist_del_init(&call->error_link);
 		spin_unlock_bh(&conn->params.peer->lock);
 	}
+=======
+	spin_lock_bh(&conn->params.peer->lock);
+	hlist_del_init(&call->error_link);
+	spin_unlock_bh(&conn->params.peer->lock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (rxrpc_is_client_call(call))
 		return rxrpc_disconnect_client_call(call);

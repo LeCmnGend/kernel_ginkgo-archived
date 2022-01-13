@@ -963,6 +963,7 @@ __gfn_to_memslot(struct kvm_memslots *slots, gfn_t gfn)
 static inline unsigned long
 __gfn_to_hva_memslot(struct kvm_memory_slot *slot, gfn_t gfn)
 {
+<<<<<<< HEAD
 	/*
 	 * The index was checked originally in search_memslots.  To avoid
 	 * that a malicious guest builds a Spectre gadget out of e.g. page
@@ -972,6 +973,9 @@ __gfn_to_hva_memslot(struct kvm_memory_slot *slot, gfn_t gfn)
 	unsigned long offset = gfn - slot->base_gfn;
 	offset = array_index_nospec(offset, slot->npages);
 	return slot->userspace_addr + offset * PAGE_SIZE;
+=======
+	return slot->userspace_addr + (gfn - slot->base_gfn) * PAGE_SIZE;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static inline int memslot_id(struct kvm *kvm, gfn_t gfn)

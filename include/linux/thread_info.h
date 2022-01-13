@@ -11,7 +11,10 @@
 #include <linux/types.h>
 #include <linux/bug.h>
 #include <linux/restart_block.h>
+<<<<<<< HEAD
 #include <linux/errno.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #ifdef CONFIG_THREAD_INFO_IN_TASK
 /*
@@ -40,6 +43,7 @@ enum {
 
 #ifdef __KERNEL__
 
+<<<<<<< HEAD
 #ifndef arch_set_restart_data
 #define arch_set_restart_data(restart) do { } while (0)
 #endif
@@ -52,6 +56,8 @@ static inline long set_restart_fn(struct restart_block *restart,
 	return -ERESTART_RESTARTBLOCK;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #ifndef THREAD_ALIGN
 #define THREAD_ALIGN	THREAD_SIZE
 #endif

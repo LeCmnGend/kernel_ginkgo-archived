@@ -424,13 +424,20 @@ next2:
 			break;
 	}
 out:
+<<<<<<< HEAD
 	btrfs_free_path(path);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	fs_info->qgroup_flags |= flags;
 	if (!(fs_info->qgroup_flags & BTRFS_QGROUP_STATUS_FLAG_ON))
 		clear_bit(BTRFS_FS_QUOTA_ENABLED, &fs_info->flags);
 	else if (fs_info->qgroup_flags & BTRFS_QGROUP_STATUS_FLAG_RESCAN &&
 		 ret >= 0)
 		ret = qgroup_rescan_init(fs_info, rescan_progress, 0);
+<<<<<<< HEAD
+=======
+	btrfs_free_path(path);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (ret < 0) {
 		ulist_free(fs_info->qgroup_ulist);
@@ -2614,12 +2621,15 @@ out:
 	return ret;
 }
 
+<<<<<<< HEAD
 static bool rescan_should_stop(struct btrfs_fs_info *fs_info)
 {
 	return btrfs_fs_closing(fs_info) ||
 		test_bit(BTRFS_FS_STATE_REMOUNTING, &fs_info->fs_state);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static void btrfs_qgroup_rescan_worker(struct btrfs_work *work)
 {
 	struct btrfs_fs_info *fs_info = container_of(work, struct btrfs_fs_info,
@@ -2628,14 +2638,21 @@ static void btrfs_qgroup_rescan_worker(struct btrfs_work *work)
 	struct btrfs_trans_handle *trans = NULL;
 	int err = -ENOMEM;
 	int ret = 0;
+<<<<<<< HEAD
 	bool stopped = false;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	path = btrfs_alloc_path();
 	if (!path)
 		goto out;
 
 	err = 0;
+<<<<<<< HEAD
 	while (!err && !(stopped = rescan_should_stop(fs_info))) {
+=======
+	while (!err && !btrfs_fs_closing(fs_info)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		trans = btrfs_start_transaction(fs_info->fs_root, 0);
 		if (IS_ERR(trans)) {
 			err = PTR_ERR(trans);
@@ -2678,7 +2695,11 @@ out:
 	}
 
 	mutex_lock(&fs_info->qgroup_rescan_lock);
+<<<<<<< HEAD
 	if (!stopped)
+=======
+	if (!btrfs_fs_closing(fs_info))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		fs_info->qgroup_flags &= ~BTRFS_QGROUP_STATUS_FLAG_RESCAN;
 	if (trans) {
 		ret = update_qgroup_status_item(trans);
@@ -2697,7 +2718,11 @@ out:
 
 	btrfs_end_transaction(trans);
 
+<<<<<<< HEAD
 	if (stopped) {
+=======
+	if (btrfs_fs_closing(fs_info)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		btrfs_info(fs_info, "qgroup scan paused");
 	} else if (err >= 0) {
 		btrfs_info(fs_info, "qgroup scan completed%s",

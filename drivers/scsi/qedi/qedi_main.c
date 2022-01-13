@@ -628,7 +628,11 @@ static struct qedi_ctx *qedi_host_alloc(struct pci_dev *pdev)
 		goto exit_setup_shost;
 	}
 
+<<<<<<< HEAD
 	shost->max_id = QEDI_MAX_ISCSI_CONNS_PER_HBA - 1;
+=======
+	shost->max_id = QEDI_MAX_ISCSI_CONNS_PER_HBA;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	shost->max_channel = 0;
 	shost->max_lun = ~0;
 	shost->max_cmd_len = 16;
@@ -1354,7 +1358,10 @@ static int qedi_alloc_global_queues(struct qedi_ctx *qedi)
 		if (!qedi->global_queues[i]) {
 			QEDI_ERR(&qedi->dbg_ctx,
 				 "Unable to allocation global queue %d.\n", i);
+<<<<<<< HEAD
 			status = -ENOMEM;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			goto mem_alloc_failure;
 		}
 
@@ -2388,7 +2395,11 @@ static int __qedi_probe(struct pci_dev *pdev, int mode)
 			QEDI_ERR(&qedi->dbg_ctx,
 				 "Unable to start offload thread!\n");
 			rc = -ENODEV;
+<<<<<<< HEAD
 			goto free_tmf_thread;
+=======
+			goto free_cid_que;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 
 		/* F/w needs 1st task context memory entry for performance */
@@ -2408,8 +2419,11 @@ static int __qedi_probe(struct pci_dev *pdev, int mode)
 
 	return 0;
 
+<<<<<<< HEAD
 free_tmf_thread:
 	destroy_workqueue(qedi->tmf_thread);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 free_cid_que:
 	qedi_release_cid_que(qedi);
 free_uio:

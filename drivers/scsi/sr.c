@@ -216,8 +216,11 @@ static unsigned int sr_get_events(struct scsi_device *sdev)
 		return DISK_EVENT_EJECT_REQUEST;
 	else if (med->media_event_code == 2)
 		return DISK_EVENT_MEDIA_CHANGE;
+<<<<<<< HEAD
 	else if (med->media_event_code == 3)
 		return DISK_EVENT_MEDIA_CHANGE;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 }
 

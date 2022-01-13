@@ -59,6 +59,7 @@ struct xenbus_watch
 	/* Path being watched. */
 	const char *node;
 
+<<<<<<< HEAD
 	unsigned int nr_pending;
 
 	/*
@@ -68,6 +69,8 @@ struct xenbus_watch
 	bool (*will_handle)(struct xenbus_watch *,
 			      const char *path, const char *token);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* Callback (executed in a process context with no locks held). */
 	void (*callback)(struct xenbus_watch *,
 			 const char *path, const char *token);
@@ -187,6 +190,11 @@ void xs_suspend_cancel(void);
 
 struct work_struct;
 
+<<<<<<< HEAD
+=======
+void xenbus_probe(struct work_struct *);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define XENBUS_IS_ERR_READ(str) ({			\
 	if (!IS_ERR(str) && strlen(str) == 0) {		\
 		kfree(str);				\
@@ -199,6 +207,7 @@ struct work_struct;
 
 int xenbus_watch_path(struct xenbus_device *dev, const char *path,
 		      struct xenbus_watch *watch,
+<<<<<<< HEAD
 		      bool (*will_handle)(struct xenbus_watch *,
 					  const char *, const char *),
 		      void (*callback)(struct xenbus_watch *,
@@ -207,6 +216,12 @@ __printf(5, 6)
 int xenbus_watch_pathfmt(struct xenbus_device *dev, struct xenbus_watch *watch,
 			 bool (*will_handle)(struct xenbus_watch *,
 					     const char *, const char *),
+=======
+		      void (*callback)(struct xenbus_watch *,
+				       const char *, const char *));
+__printf(4, 5)
+int xenbus_watch_pathfmt(struct xenbus_device *dev, struct xenbus_watch *watch,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			 void (*callback)(struct xenbus_watch *,
 					  const char *, const char *),
 			 const char *pathfmt, ...);

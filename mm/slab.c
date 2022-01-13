@@ -617,6 +617,7 @@ static int transfer_objects(struct array_cache *to,
 	return nr;
 }
 
+<<<<<<< HEAD
 /* &alien->lock must be held by alien callers. */
 static __always_inline void __free_one(struct array_cache *ac, void *objp)
 {
@@ -627,6 +628,8 @@ static __always_inline void __free_one(struct array_cache *ac, void *objp)
 	ac->entry[ac->avail++] = objp;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #ifndef CONFIG_NUMA
 
 #define drain_alien_cache(cachep, alien) do { } while (0)
@@ -807,7 +810,11 @@ static int __cache_free_alien(struct kmem_cache *cachep, void *objp,
 			STATS_INC_ACOVERFLOW(cachep);
 			__drain_alien_cache(cachep, ac, page_node, &list);
 		}
+<<<<<<< HEAD
 		__free_one(ac, objp);
+=======
+		ac->entry[ac->avail++] = objp;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		spin_unlock(&alien->lock);
 		slabs_destroy(cachep, &list);
 	} else {
@@ -1250,7 +1257,11 @@ void __init kmem_cache_init(void)
 	 * page orders on machines with more than 32MB of memory if
 	 * not overridden on the command line.
 	 */
+<<<<<<< HEAD
 	if (!slab_max_order_set && totalram_pages() > (32 << 20) >> PAGE_SHIFT)
+=======
+	if (!slab_max_order_set && totalram_pages > (32 << 20) >> PAGE_SHIFT)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		slab_max_order = SLAB_MAX_ORDER_HI;
 
 	/* Bootstrap is tricky, because several objects are allocated
@@ -3557,7 +3568,11 @@ void ___cache_free(struct kmem_cache *cachep, void *objp,
 		}
 	}
 
+<<<<<<< HEAD
 	__free_one(ac, objp);
+=======
+	ac->entry[ac->avail++] = objp;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /**

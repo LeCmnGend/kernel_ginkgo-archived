@@ -13,7 +13,10 @@
 #include <linux/threads.h>
 #include <linux/atomic.h>
 #include <linux/cpumask.h>
+<<<<<<< HEAD
 #include <linux/rcupdate.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 struct workqueue_struct;
 
@@ -121,6 +124,7 @@ struct delayed_work {
 	int cpu;
 };
 
+<<<<<<< HEAD
 struct rcu_work {
 	struct work_struct work;
 	struct rcu_head rcu;
@@ -129,6 +133,8 @@ struct rcu_work {
 	struct workqueue_struct *wq;
 };
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /**
  * struct workqueue_attrs - A struct for workqueue attributes.
  *
@@ -160,11 +166,14 @@ static inline struct delayed_work *to_delayed_work(struct work_struct *work)
 	return container_of(work, struct delayed_work, work);
 }
 
+<<<<<<< HEAD
 static inline struct rcu_work *to_rcu_work(struct work_struct *work)
 {
 	return container_of(work, struct rcu_work, work);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 struct execute_work {
 	struct work_struct work;
 };
@@ -282,12 +291,15 @@ static inline unsigned int work_static(struct work_struct *work) { return 0; }
 #define INIT_DEFERRABLE_WORK_ONSTACK(_work, _func)			\
 	__INIT_DELAYED_WORK_ONSTACK(_work, _func, TIMER_DEFERRABLE)
 
+<<<<<<< HEAD
 #define INIT_RCU_WORK(_work, _func)					\
 	INIT_WORK(&(_work)->work, (_func))
 
 #define INIT_RCU_WORK_ONSTACK(_work, _func)				\
 	INIT_WORK_ONSTACK(&(_work)->work, (_func))
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /**
  * work_pending - Find out whether a work item is currently pending
  * @work: The work item in question
@@ -469,7 +481,10 @@ extern bool queue_delayed_work_on(int cpu, struct workqueue_struct *wq,
 			struct delayed_work *work, unsigned long delay);
 extern bool mod_delayed_work_on(int cpu, struct workqueue_struct *wq,
 			struct delayed_work *dwork, unsigned long delay);
+<<<<<<< HEAD
 extern bool queue_rcu_work(struct workqueue_struct *wq, struct rcu_work *rwork);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 extern void flush_workqueue(struct workqueue_struct *wq);
 extern void drain_workqueue(struct workqueue_struct *wq);
@@ -486,8 +501,11 @@ extern bool flush_delayed_work(struct delayed_work *dwork);
 extern bool cancel_delayed_work(struct delayed_work *dwork);
 extern bool cancel_delayed_work_sync(struct delayed_work *dwork);
 
+<<<<<<< HEAD
 extern bool flush_rcu_work(struct rcu_work *rwork);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 extern void workqueue_set_max_active(struct workqueue_struct *wq,
 				     int max_active);
 extern struct work_struct *current_work(void);
@@ -630,6 +648,7 @@ static inline bool schedule_delayed_work(struct delayed_work *dwork,
 	return queue_delayed_work(system_wq, dwork, delay);
 }
 
+<<<<<<< HEAD
 /**
  * delayed_work_busy - See work_busy()
  * @dwork: the delayed work to be tested
@@ -639,6 +658,8 @@ static inline unsigned int delayed_work_busy(struct delayed_work *dwork)
 	return work_busy(&dwork->work);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #ifndef CONFIG_SMP
 static inline long work_on_cpu(int cpu, long (*fn)(void *), void *arg)
 {

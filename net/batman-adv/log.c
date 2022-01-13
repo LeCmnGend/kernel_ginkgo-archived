@@ -195,7 +195,10 @@ static const struct file_operations batadv_log_fops = {
 	.read           = batadv_log_read,
 	.poll           = batadv_log_poll,
 	.llseek         = no_llseek,
+<<<<<<< HEAD
 	.owner          = THIS_MODULE,
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 int batadv_debug_log_setup(struct batadv_priv *bat_priv)

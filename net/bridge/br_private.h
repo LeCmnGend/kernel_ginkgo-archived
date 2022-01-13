@@ -93,8 +93,13 @@ struct br_vlan_stats {
 };
 
 struct br_tunnel_info {
+<<<<<<< HEAD
 	__be64				tunnel_id;
 	struct metadata_dst __rcu	*tunnel_dst;
+=======
+	__be64			tunnel_id;
+	struct metadata_dst	*tunnel_dst;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 /**

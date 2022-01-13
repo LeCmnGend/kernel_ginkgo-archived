@@ -27,6 +27,10 @@
  */
 
 /*-------------------------------------------------------------------------*/
+<<<<<<< HEAD
+=======
+#include <linux/usb/otg.h>
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #define	PORT_WAKE_BITS	(PORT_WKOC_E|PORT_WKDISC_E|PORT_WKCONN_E)
 
@@ -358,9 +362,12 @@ static int ehci_bus_suspend (struct usb_hcd *hcd)
 
 	unlink_empty_async_suspended(ehci);
 
+<<<<<<< HEAD
 	/* Some Synopsys controllers mistakenly leave IAA turned on */
 	ehci_writel(ehci, STS_IAA, &ehci->regs->status);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* Any IAA cycle that started before the suspend is now invalid */
 	end_iaa_cycle(ehci);
 	ehci_handle_start_intr_unlinks(ehci);

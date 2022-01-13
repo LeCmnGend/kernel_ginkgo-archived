@@ -2432,7 +2432,11 @@ void rtw_cfg80211_indicate_sta_assoc(struct adapter *padapter, u8 *pmgmt_frame, 
 	DBG_871X(FUNC_ADPT_FMT"\n", FUNC_ADPT_ARG(padapter));
 
 	{
+<<<<<<< HEAD
 		struct station_info sinfo = {};
+=======
+		struct station_info sinfo;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		u8 ie_offset;
 		if (GetFrameSubType(pmgmt_frame) == WIFI_ASSOCREQ)
 			ie_offset = _ASOCREQ_IE_OFFSET_;

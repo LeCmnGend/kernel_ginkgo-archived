@@ -152,16 +152,23 @@ static int panel_connector_get_modes(struct drm_connector *connector)
 	int i;
 
 	for (i = 0; i < timings->num_timings; i++) {
+<<<<<<< HEAD
 		struct drm_display_mode *mode;
+=======
+		struct drm_display_mode *mode = drm_mode_create(dev);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		struct videomode vm;
 
 		if (videomode_from_timings(timings, &vm, i))
 			break;
 
+<<<<<<< HEAD
 		mode = drm_mode_create(dev);
 		if (!mode)
 			break;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		drm_display_mode_from_videomode(&vm, mode);
 
 		mode->type = DRM_MODE_TYPE_DRIVER;

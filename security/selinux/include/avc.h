@@ -131,7 +131,10 @@ static inline int avc_audit(struct selinux_state *state,
 			    struct common_audit_data *a,
 			    int flags)
 {
+<<<<<<< HEAD
 #ifdef CONFIG_AUDIT
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	u32 audited, denied;
 	audited = avc_audit_required(requested, avd, result, 0, &denied);
 	if (likely(!audited))
@@ -139,9 +142,12 @@ static inline int avc_audit(struct selinux_state *state,
 	return slow_avc_audit(state, ssid, tsid, tclass,
 			      requested, audited, denied, result,
 			      a, flags);
+<<<<<<< HEAD
 #else
 	return 0;
 #endif
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 #define AVC_STRICT 1 /* Ignore permissive mode. */

@@ -5343,8 +5343,12 @@ static int snd_hdsp_free(struct hdsp *hdsp)
 	if (hdsp->port)
 		pci_release_regions(hdsp->pci);
 
+<<<<<<< HEAD
 	if (pci_is_enabled(hdsp->pci))
 		pci_disable_device(hdsp->pci);
+=======
+	pci_disable_device(hdsp->pci);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 }
 

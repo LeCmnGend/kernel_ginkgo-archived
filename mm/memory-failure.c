@@ -1267,12 +1267,16 @@ int memory_failure(unsigned long pfn, int trapno, int flags)
 		return 0;
 	}
 
+<<<<<<< HEAD
 	/*
 	 * __munlock_pagevec may clear a writeback page's LRU flag without
 	 * page_lock. We need wait writeback completion for this page or it
 	 * may trigger vfs BUG while evict inode.
 	 */
 	if (!PageTransTail(p) && !PageLRU(p) && !PageWriteback(p))
+=======
+	if (!PageTransTail(p) && !PageLRU(p))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto identify_page_state;
 
 	/*

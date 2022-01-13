@@ -7032,7 +7032,11 @@ lpfc_sli4_hba_setup(struct lpfc_hba *phba)
 				"0393 Error %d during rpi post operation\n",
 				rc);
 		rc = -ENODEV;
+<<<<<<< HEAD
 		goto out_free_iocblist;
+=======
+		goto out_destroy_queue;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	lpfc_sli4_node_prep(phba);
 
@@ -7157,9 +7161,14 @@ lpfc_sli4_hba_setup(struct lpfc_hba *phba)
 out_unset_queue:
 	/* Unset all the queues set up in this routine when error out */
 	lpfc_sli4_queue_unset(phba);
+<<<<<<< HEAD
 out_free_iocblist:
 	lpfc_free_iocb_list(phba);
 out_destroy_queue:
+=======
+out_destroy_queue:
+	lpfc_free_iocb_list(phba);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	lpfc_sli4_queue_destroy(phba);
 out_stop_timers:
 	lpfc_stop_hba_timers(phba);
@@ -16638,6 +16647,10 @@ lpfc_sli4_seq_abort_rsp_cmpl(struct lpfc_hba *phba,
 	if (cmd_iocbq) {
 		ndlp = (struct lpfc_nodelist *)cmd_iocbq->context1;
 		lpfc_nlp_put(ndlp);
+<<<<<<< HEAD
+=======
+		lpfc_nlp_not_used(ndlp);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		lpfc_sli_release_iocbq(phba, cmd_iocbq);
 	}
 
@@ -17038,10 +17051,13 @@ lpfc_prep_seq(struct lpfc_vport *vport, struct hbq_dmabuf *seq_dmabuf)
 			list_add_tail(&iocbq->list, &first_iocbq->list);
 		}
 	}
+<<<<<<< HEAD
 	/* Free the sequence's header buffer */
 	if (!first_iocbq)
 		lpfc_in_buf_free(vport->phba, &seq_dmabuf->dbuf);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return first_iocbq;
 }
 

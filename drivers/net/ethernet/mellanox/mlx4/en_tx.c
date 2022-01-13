@@ -343,7 +343,11 @@ u32 mlx4_en_recycle_tx_desc(struct mlx4_en_priv *priv,
 		.dma = tx_info->map0_dma,
 	};
 
+<<<<<<< HEAD
 	if (!napi_mode || !mlx4_en_rx_recycle(ring->recycle_ring, &frame)) {
+=======
+	if (!mlx4_en_rx_recycle(ring->recycle_ring, &frame)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		dma_unmap_page(priv->ddev, tx_info->map0_dma,
 			       PAGE_SIZE, priv->dma_dir);
 		put_page(tx_info->page);
@@ -385,6 +389,7 @@ int mlx4_en_free_tx_buf(struct net_device *dev, struct mlx4_en_tx_ring *ring)
 	return cnt;
 }
 
+<<<<<<< HEAD
 static void mlx4_en_handle_err_cqe(struct mlx4_en_priv *priv, struct mlx4_err_cqe *err_cqe,
 				   u16 cqe_index, struct mlx4_en_tx_ring *ring)
 {
@@ -414,6 +419,8 @@ static void mlx4_en_handle_err_cqe(struct mlx4_en_priv *priv, struct mlx4_err_cq
 	queue_work(mdev->workqueue, &priv->restart_task);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 bool mlx4_en_process_tx_cq(struct net_device *dev,
 			   struct mlx4_en_cq *cq, int napi_budget)
 {
@@ -460,10 +467,20 @@ bool mlx4_en_process_tx_cq(struct net_device *dev,
 		dma_rmb();
 
 		if (unlikely((cqe->owner_sr_opcode & MLX4_CQE_OPCODE_MASK) ==
+<<<<<<< HEAD
 			     MLX4_CQE_OPCODE_ERROR))
 			if (!test_and_set_bit(MLX4_EN_TX_RING_STATE_RECOVERING, &ring->state))
 				mlx4_en_handle_err_cqe(priv, (struct mlx4_err_cqe *)cqe, index,
 						       ring);
+=======
+			     MLX4_CQE_OPCODE_ERROR)) {
+			struct mlx4_err_cqe *cqe_err = (struct mlx4_err_cqe *)cqe;
+
+			en_err(priv, "CQE error - vendor syndrome: 0x%x syndrome: 0x%x\n",
+			       cqe_err->vendor_err_syndrome,
+			       cqe_err->syndrome);
+		}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		/* Skip over last polled CQE */
 		new_index = be16_to_cpu(cqe->wqe_index) & size_mask;
@@ -861,7 +878,10 @@ netdev_tx_t mlx4_en_xmit(struct sk_buff *skb, struct net_device *dev)
 	struct mlx4_en_tx_desc *tx_desc;
 	struct mlx4_wqe_data_seg *data;
 	struct mlx4_en_tx_info *tx_info;
+<<<<<<< HEAD
 	u32 __maybe_unused ring_cons;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int tx_ind;
 	int nr_txbb;
 	int desc_size;
@@ -875,6 +895,10 @@ netdev_tx_t mlx4_en_xmit(struct sk_buff *skb, struct net_device *dev)
 	bool stop_queue;
 	bool inline_ok;
 	u8 data_offset;
+<<<<<<< HEAD
+=======
+	u32 ring_cons;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	bool bf_ok;
 
 	tx_ind = skb_get_queue_mapping(skb);

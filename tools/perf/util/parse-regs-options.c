@@ -41,7 +41,11 @@ parse_regs(const struct option *opt, const char *str, int unset)
 				}
 				fputc('\n', stderr);
 				/* just printing available regs */
+<<<<<<< HEAD
 				goto error;
+=======
+				return -1;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			}
 			for (r = sample_reg_masks; r->name; r++) {
 				if (!strcasecmp(s, r->name))

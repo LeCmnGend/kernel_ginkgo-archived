@@ -272,8 +272,12 @@ static int register_vlan_device(struct net_device *real_dev, u16 vlan_id)
 	return 0;
 
 out_free_newdev:
+<<<<<<< HEAD
 	if (new_dev->reg_state == NETREG_UNINITIALIZED ||
 	    new_dev->reg_state == NETREG_UNREGISTERED)
+=======
+	if (new_dev->reg_state == NETREG_UNINITIALIZED)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		free_netdev(new_dev);
 	return err;
 }

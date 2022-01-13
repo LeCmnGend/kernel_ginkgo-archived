@@ -137,10 +137,13 @@ static int mmc_cmdq_thread(void *d)
 
 	struct mmc_host *host = card->host;
 
+<<<<<<< HEAD
 	struct sched_param scheduler_params = {0};
 	scheduler_params.sched_priority = 1;
 	sched_setscheduler(current, SCHED_FIFO, &scheduler_params);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	current->flags |= PF_MEMALLOC;
 	if (card->host->wakeup_on_idle)
 		set_wake_up_idle(true);

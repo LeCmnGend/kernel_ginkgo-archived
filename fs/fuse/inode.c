@@ -49,10 +49,13 @@ MODULE_PARM_DESC(max_user_congthresh,
  "Global limit for the maximum congestion threshold an "
  "unprivileged user can set");
 
+<<<<<<< HEAD
 static bool shortcircuit = true;
 module_param(shortcircuit, bool, 0644);
 MODULE_PARM_DESC(shortcircuit, "Enable or disable fuse shortcircuit. Default: y/Y/1");
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define FUSE_SUPER_MAGIC 0x65735546
 
 #define FUSE_DEFAULT_BLKSIZE 512
@@ -823,7 +826,11 @@ static const struct super_operations fuse_super_operations = {
 static void sanitize_global_limit(unsigned *limit)
 {
 	if (*limit == 0)
+<<<<<<< HEAD
 		*limit = ((totalram_pages() << PAGE_SHIFT) >> 13) /
+=======
+		*limit = ((totalram_pages << PAGE_SHIFT) >> 13) /
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			 sizeof(struct fuse_req);
 
 	if (*limit >= 1 << 16)
@@ -914,6 +921,7 @@ static void process_init_reply(struct fuse_conn *fc, struct fuse_req *req)
 				fc->async_dio = 1;
 			if (arg->flags & FUSE_WRITEBACK_CACHE)
 				fc->writeback_cache = 1;
+<<<<<<< HEAD
 			if (arg->flags & FUSE_SHORTCIRCUIT || fc->writeback_cache) {
 				/** an ugly way to determine FuseDaemon by writeback_cache
 				 *  since currently only FuseDaemon enable WBC
@@ -921,6 +929,8 @@ static void process_init_reply(struct fuse_conn *fc, struct fuse_req *req)
 				fc->shortcircuit_io = shortcircuit ? 1 : 0;
 				pr_info("fuse sct flag: %d\n", shortcircuit);
 			}
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			if (arg->flags & FUSE_PARALLEL_DIROPS)
 				fc->parallel_dirops = 1;
 			if (arg->flags & FUSE_HANDLE_KILLPRIV)
@@ -962,8 +972,12 @@ static void fuse_send_init(struct fuse_conn *fc, struct fuse_req *req)
 		FUSE_FLOCK_LOCKS | FUSE_HAS_IOCTL_DIR | FUSE_AUTO_INVAL_DATA |
 		FUSE_DO_READDIRPLUS | FUSE_READDIRPLUS_AUTO | FUSE_ASYNC_DIO |
 		FUSE_WRITEBACK_CACHE | FUSE_NO_OPEN_SUPPORT |
+<<<<<<< HEAD
 		FUSE_PARALLEL_DIROPS | FUSE_HANDLE_KILLPRIV | FUSE_POSIX_ACL |
 		FUSE_SHORTCIRCUIT;
+=======
+		FUSE_PARALLEL_DIROPS | FUSE_HANDLE_KILLPRIV | FUSE_POSIX_ACL;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	req->in.h.opcode = FUSE_INIT;
 	req->in.numargs = 1;
 	req->in.args[0].size = sizeof(*arg);

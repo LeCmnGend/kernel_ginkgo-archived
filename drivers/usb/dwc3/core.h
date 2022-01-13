@@ -248,7 +248,10 @@
 
 /* Global USB2 PHY Vendor Control Register */
 #define DWC3_GUSB2PHYACC_NEWREGREQ	BIT(25)
+<<<<<<< HEAD
 #define DWC3_GUSB2PHYACC_DONE		BIT(24)
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define DWC3_GUSB2PHYACC_BUSY		BIT(23)
 #define DWC3_GUSB2PHYACC_WRITE		BIT(22)
 #define DWC3_GUSB2PHYACC_ADDR(n)	(n << 16)

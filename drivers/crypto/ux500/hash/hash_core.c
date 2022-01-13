@@ -1006,7 +1006,10 @@ static int hash_hw_final(struct ahash_request *req)
 			goto out;
 		}
 	} else if (req->nbytes == 0 && ctx->keylen > 0) {
+<<<<<<< HEAD
 		ret = -EPERM;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		dev_err(device_data->dev, "%s: Empty message with keylength > 0, NOT supported\n",
 			__func__);
 		goto out;

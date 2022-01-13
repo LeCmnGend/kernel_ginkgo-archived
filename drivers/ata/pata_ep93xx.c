@@ -927,7 +927,11 @@ static int ep93xx_pata_probe(struct platform_device *pdev)
 	/* INT[3] (IRQ_EP93XX_EXT3) line connected as pull down */
 	irq = platform_get_irq(pdev, 0);
 	if (irq < 0) {
+<<<<<<< HEAD
 		err = irq;
+=======
+		err = -ENXIO;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto err_rel_gpio;
 	}
 

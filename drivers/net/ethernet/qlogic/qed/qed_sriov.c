@@ -96,7 +96,10 @@ static int qed_sp_vf_start(struct qed_hwfn *p_hwfn, struct qed_vf_info *p_vf)
 		p_ramrod->personality = PERSONALITY_ETH;
 		break;
 	case QED_PCI_ETH_ROCE:
+<<<<<<< HEAD
 	case QED_PCI_ETH_IWARP:
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		p_ramrod->personality = PERSONALITY_RDMA_AND_ETH;
 		break;
 	default:

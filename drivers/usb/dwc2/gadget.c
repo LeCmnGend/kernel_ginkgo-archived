@@ -413,7 +413,11 @@ static void dwc2_hsotg_unmap_dma(struct dwc2_hsotg *hsotg,
 {
 	struct usb_request *req = &hs_req->req;
 
+<<<<<<< HEAD
 	usb_gadget_unmap_request(&hsotg->gadget, req, hs_ep->map_dir);
+=======
+	usb_gadget_unmap_request(&hsotg->gadget, req, hs_ep->dir_in);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /*
@@ -704,11 +708,16 @@ static u32 dwc2_hsotg_read_frameno(struct dwc2_hsotg *hsotg)
  */
 static unsigned int dwc2_gadget_get_chain_limit(struct dwc2_hsotg_ep *hs_ep)
 {
+<<<<<<< HEAD
 	const struct usb_endpoint_descriptor *ep_desc = hs_ep->ep.desc;
 	int is_isoc = hs_ep->isochronous;
 	unsigned int maxsize;
 	u32 mps = hs_ep->ep.maxpacket;
 	int dir_in = hs_ep->dir_in;
+=======
+	int is_isoc = hs_ep->isochronous;
+	unsigned int maxsize;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (is_isoc)
 		maxsize = hs_ep->dir_in ? DEV_DMA_ISOC_TX_NBYTES_LIMIT :
@@ -719,11 +728,14 @@ static unsigned int dwc2_gadget_get_chain_limit(struct dwc2_hsotg_ep *hs_ep)
 	/* Above size of one descriptor was chosen, multiple it */
 	maxsize *= MAX_DMA_DESC_NUM_GENERIC;
 
+<<<<<<< HEAD
 	/* Interrupt OUT EP with mps not multiple of 4 */
 	if (hs_ep->index)
 		if (usb_endpoint_xfer_int(ep_desc) && !dir_in && (mps % 4))
 			maxsize = mps * MAX_DMA_DESC_NUM_GENERIC;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return maxsize;
 }
 
@@ -739,14 +751,20 @@ static unsigned int dwc2_gadget_get_chain_limit(struct dwc2_hsotg_ep *hs_ep)
  * Isochronous - descriptor rx/tx bytes bitfield limit,
  * Control In/Bulk/Interrupt - multiple of mps. This will allow to not
  * have concatenations from various descriptors within one packet.
+<<<<<<< HEAD
  * Interrupt OUT - if mps not multiple of 4 then a single packet corresponds
  * to a single descriptor.
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * Selects corresponding mask for RX/TX bytes as well.
  */
 static u32 dwc2_gadget_get_desc_params(struct dwc2_hsotg_ep *hs_ep, u32 *mask)
 {
+<<<<<<< HEAD
 	const struct usb_endpoint_descriptor *ep_desc = hs_ep->ep.desc;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	u32 mps = hs_ep->ep.maxpacket;
 	int dir_in = hs_ep->dir_in;
 	u32 desc_size = 0;
@@ -770,6 +788,7 @@ static u32 dwc2_gadget_get_desc_params(struct dwc2_hsotg_ep *hs_ep, u32 *mask)
 		desc_size -= desc_size % mps;
 	}
 
+<<<<<<< HEAD
 	/* Interrupt OUT EP with mps not multiple of 4 */
 	if (hs_ep->index)
 		if (usb_endpoint_xfer_int(ep_desc) && !dir_in && (mps % 4)) {
@@ -777,6 +796,8 @@ static u32 dwc2_gadget_get_desc_params(struct dwc2_hsotg_ep *hs_ep, u32 *mask)
 			*mask = DEV_DMA_NBYTES_MASK;
 		}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return desc_size;
 }
 
@@ -1112,7 +1133,17 @@ static void dwc2_hsotg_start_req(struct dwc2_hsotg *hsotg,
 				length += (mps - (length % mps));
 		}
 
+<<<<<<< HEAD
 		if (continuing)
+=======
+		/*
+		 * If more data to send, adjust DMA for EP0 out data stage.
+		 * ureq->dma stays unchanged, hence increment it by already
+		 * passed passed data count before starting new transaction.
+		 */
+		if (!index && hsotg->ep0_state == DWC2_EP0_DATA_OUT &&
+		    continuing)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			offset = ureq->actual;
 
 		/* Fill DDMA chain entries */
@@ -1213,7 +1244,10 @@ static int dwc2_hsotg_map_dma(struct dwc2_hsotg *hsotg,
 {
 	int ret;
 
+<<<<<<< HEAD
 	hs_ep->map_dir = hs_ep->dir_in;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ret = usb_gadget_map_request(&hsotg->gadget, req, hs_ep->dir_in);
 	if (ret)
 		goto dma_error;
@@ -1471,6 +1505,10 @@ static void dwc2_hsotg_complete_oursetup(struct usb_ep *ep,
 static struct dwc2_hsotg_ep *ep_from_windex(struct dwc2_hsotg *hsotg,
 					    u32 windex)
 {
+<<<<<<< HEAD
+=======
+	struct dwc2_hsotg_ep *ep;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int dir = (windex & USB_DIR_IN) ? 1 : 0;
 	int idx = windex & 0x7F;
 
@@ -1480,7 +1518,16 @@ static struct dwc2_hsotg_ep *ep_from_windex(struct dwc2_hsotg *hsotg,
 	if (idx > hsotg->num_of_eps)
 		return NULL;
 
+<<<<<<< HEAD
 	return index_to_ep(hsotg, idx, dir);
+=======
+	ep = index_to_ep(hsotg, idx, dir);
+
+	if (idx && ep->dir_in != dir)
+		return NULL;
+
+	return ep;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /**
@@ -2267,6 +2314,7 @@ static void dwc2_hsotg_change_ep_iso_parity(struct dwc2_hsotg *hsotg,
  */
 static unsigned int dwc2_gadget_get_xfersize_ddma(struct dwc2_hsotg_ep *hs_ep)
 {
+<<<<<<< HEAD
 	const struct usb_endpoint_descriptor *ep_desc = hs_ep->ep.desc;
 	struct dwc2_hsotg *hsotg = hs_ep->parent;
 	unsigned int bytes_rem = 0;
@@ -2276,10 +2324,18 @@ static unsigned int dwc2_gadget_get_xfersize_ddma(struct dwc2_hsotg_ep *hs_ep)
 	u32 status;
 	u32 mps = hs_ep->ep.maxpacket;
 	int dir_in = hs_ep->dir_in;
+=======
+	struct dwc2_hsotg *hsotg = hs_ep->parent;
+	unsigned int bytes_rem = 0;
+	struct dwc2_dma_desc *desc = hs_ep->desc_list;
+	int i;
+	u32 status;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (!desc)
 		return -EINVAL;
 
+<<<<<<< HEAD
 	/* Interrupt OUT EP with mps not multiple of 4 */
 	if (hs_ep->index)
 		if (usb_endpoint_xfer_int(ep_desc) && !dir_in && (mps % 4))
@@ -2289,14 +2345,22 @@ static unsigned int dwc2_gadget_get_xfersize_ddma(struct dwc2_hsotg_ep *hs_ep)
 		status = desc->status;
 		bytes_rem += status & DEV_DMA_NBYTES_MASK;
 		bytes_rem -= bytes_rem_correction;
+=======
+	for (i = 0; i < hs_ep->desc_count; ++i) {
+		status = desc->status;
+		bytes_rem += status & DEV_DMA_NBYTES_MASK;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		if (status & DEV_DMA_STS_MASK)
 			dev_err(hsotg->dev, "descriptor %d closed with %x\n",
 				i, status & DEV_DMA_STS_MASK);
+<<<<<<< HEAD
 
 		if (status & DEV_DMA_L)
 			break;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		desc++;
 	}
 
@@ -2702,6 +2766,7 @@ static void dwc2_hsotg_complete_in(struct dwc2_hsotg *hsotg,
 		return;
 	}
 
+<<<<<<< HEAD
 	/* Zlp for all endpoints in non DDMA, for ep0 only in DATA IN stage */
 	if (hs_ep->send_zlp) {
 		hs_ep->send_zlp = 0;
@@ -2710,6 +2775,14 @@ static void dwc2_hsotg_complete_in(struct dwc2_hsotg *hsotg,
 			/* transfer will be completed on next complete interrupt */
 			return;
 		}
+=======
+	/* Zlp for all endpoints, for ep0 only in DATA IN stage */
+	if (hs_ep->send_zlp) {
+		dwc2_hsotg_program_zlp(hsotg, hs_ep);
+		hs_ep->send_zlp = 0;
+		/* transfer will be completed on next complete interrupt */
+		return;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	if (hs_ep->index == 0 && hsotg->ep0_state == DWC2_EP0_DATA_IN) {

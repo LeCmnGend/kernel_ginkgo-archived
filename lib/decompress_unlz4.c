@@ -115,9 +115,12 @@ STATIC inline int INIT unlz4(u8 *input, long in_len,
 				error("data corrupted");
 				goto exit_2;
 			}
+<<<<<<< HEAD
 		} else if (size < 4) {
 			/* empty or end-of-file */
 			goto exit_3;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 
 		chunksize = get_unaligned_le32(inp);
@@ -131,10 +134,13 @@ STATIC inline int INIT unlz4(u8 *input, long in_len,
 			continue;
 		}
 
+<<<<<<< HEAD
 		if (!fill && chunksize == 0) {
 			/* empty or end-of-file */
 			goto exit_3;
 		}
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		if (posp)
 			*posp += 4;
@@ -194,7 +200,10 @@ STATIC inline int INIT unlz4(u8 *input, long in_len,
 		}
 	}
 
+<<<<<<< HEAD
 exit_3:
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ret = 0;
 exit_2:
 	if (!input)

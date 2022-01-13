@@ -125,7 +125,11 @@ struct bcm_sock {
 	struct sock sk;
 	int bound;
 	int ifindex;
+<<<<<<< HEAD
 	struct list_head notifier;
+=======
+	struct notifier_block notifier;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct list_head rx_ops;
 	struct list_head tx_ops;
 	unsigned long dropped_usr_msgs;
@@ -133,10 +137,13 @@ struct bcm_sock {
 	char procname [32]; /* inode number in decimal with \0 */
 };
 
+<<<<<<< HEAD
 static LIST_HEAD(bcm_notifier_list);
 static DEFINE_SPINLOCK(bcm_notifier_lock);
 static struct bcm_sock *bcm_busy_notifier;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static inline struct bcm_sock *bcm_sk(const struct sock *sk)
 {
 	return (struct bcm_sock *)sk;
@@ -410,7 +417,10 @@ static void bcm_tx_timeout_tsklet(unsigned long data)
 		if (!op->count && (op->flags & TX_COUNTEVT)) {
 
 			/* create notification to user */
+<<<<<<< HEAD
 			memset(&msg_head, 0, sizeof(msg_head));
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			msg_head.opcode  = TX_EXPIRED;
 			msg_head.flags   = op->flags;
 			msg_head.count   = op->count;
@@ -458,7 +468,10 @@ static void bcm_rx_changed(struct bcm_op *op, struct canfd_frame *data)
 	/* this element is not throttled anymore */
 	data->flags &= (BCM_CAN_FLAGS_MASK|RX_RECV);
 
+<<<<<<< HEAD
 	memset(&head, 0, sizeof(head));
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	head.opcode  = RX_CHANGED;
 	head.flags   = op->flags;
 	head.count   = op->count;
@@ -573,7 +586,10 @@ static void bcm_rx_timeout_tsklet(unsigned long data)
 	struct bcm_msg_head msg_head;
 
 	/* create notification to user */
+<<<<<<< HEAD
 	memset(&msg_head, 0, sizeof(msg_head));
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	msg_head.opcode  = RX_TIMEOUT;
 	msg_head.flags   = op->flags;
 	msg_head.count   = op->count;
@@ -841,7 +857,10 @@ static int bcm_delete_rx_op(struct list_head *ops, struct bcm_msg_head *mh,
 						  bcm_rx_handler, op);
 
 			list_del(&op->list);
+<<<<<<< HEAD
 			synchronize_rcu();
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			bcm_remove_op(op);
 			return 1; /* done */
 		}
@@ -1447,15 +1466,30 @@ static int bcm_sendmsg(struct socket *sock, struct msghdr *msg, size_t size)
 /*
  * notification handler for netdevice status changes
  */
+<<<<<<< HEAD
 static void bcm_notify(struct bcm_sock *bo, unsigned long msg,
 		       struct net_device *dev)
 {
+=======
+static int bcm_notifier(struct notifier_block *nb, unsigned long msg,
+			void *ptr)
+{
+	struct net_device *dev = netdev_notifier_info_to_dev(ptr);
+	struct bcm_sock *bo = container_of(nb, struct bcm_sock, notifier);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct sock *sk = &bo->sk;
 	struct bcm_op *op;
 	int notify_enodev = 0;
 
 	if (!net_eq(dev_net(dev), sock_net(sk)))
+<<<<<<< HEAD
 		return;
+=======
+		return NOTIFY_DONE;
+
+	if (dev->type != ARPHRD_CAN)
+		return NOTIFY_DONE;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	switch (msg) {
 
@@ -1490,6 +1524,7 @@ static void bcm_notify(struct bcm_sock *bo, unsigned long msg,
 				sk->sk_error_report(sk);
 		}
 	}
+<<<<<<< HEAD
 }
 
 static int bcm_notifier(struct notifier_block *nb, unsigned long msg,
@@ -1512,6 +1547,9 @@ static int bcm_notifier(struct notifier_block *nb, unsigned long msg,
 	}
 	bcm_busy_notifier = NULL;
 	spin_unlock(&bcm_notifier_lock);
+=======
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return NOTIFY_DONE;
 }
 
@@ -1531,9 +1569,15 @@ static int bcm_init(struct sock *sk)
 	INIT_LIST_HEAD(&bo->rx_ops);
 
 	/* set notifier */
+<<<<<<< HEAD
 	spin_lock(&bcm_notifier_lock);
 	list_add_tail(&bo->notifier, &bcm_notifier_list);
 	spin_unlock(&bcm_notifier_lock);
+=======
+	bo->notifier.notifier_call = bcm_notifier;
+
+	register_netdevice_notifier(&bo->notifier);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return 0;
 }
@@ -1556,6 +1600,7 @@ static int bcm_release(struct socket *sock)
 
 	/* remove bcm_ops, timer, rx_unregister(), etc. */
 
+<<<<<<< HEAD
 	spin_lock(&bcm_notifier_lock);
 	while (bcm_busy_notifier == bo) {
 		spin_unlock(&bcm_notifier_lock);
@@ -1564,6 +1609,9 @@ static int bcm_release(struct socket *sock)
 	}
 	list_del(&bo->notifier);
 	spin_unlock(&bcm_notifier_lock);
+=======
+	unregister_netdevice_notifier(&bo->notifier);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	lock_sock(sk);
 
@@ -1595,12 +1643,17 @@ static int bcm_release(struct socket *sock)
 					  REGMASK(op->can_id),
 					  bcm_rx_handler, op);
 
+<<<<<<< HEAD
 	}
 
 	synchronize_rcu();
 
 	list_for_each_entry_safe(op, next, &bo->rx_ops, list)
 		bcm_remove_op(op);
+=======
+		bcm_remove_op(op);
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #if IS_ENABLED(CONFIG_PROC_FS)
 	/* remove procfs entry */
@@ -1782,10 +1835,13 @@ static struct pernet_operations canbcm_pernet_ops __read_mostly = {
 	.exit = canbcm_pernet_exit,
 };
 
+<<<<<<< HEAD
 static struct notifier_block canbcm_notifier = {
 	.notifier_call = bcm_notifier
 };
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static int __init bcm_module_init(void)
 {
 	int err;
@@ -1799,14 +1855,20 @@ static int __init bcm_module_init(void)
 	}
 
 	register_pernet_subsys(&canbcm_pernet_ops);
+<<<<<<< HEAD
 	register_netdevice_notifier(&canbcm_notifier);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 }
 
 static void __exit bcm_module_exit(void)
 {
 	can_proto_unregister(&bcm_can_proto);
+<<<<<<< HEAD
 	unregister_netdevice_notifier(&canbcm_notifier);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	unregister_pernet_subsys(&canbcm_pernet_ops);
 }
 

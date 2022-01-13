@@ -85,6 +85,11 @@ enum virtio_gpu_ctrl_type {
 	VIRTIO_GPU_CMD_GET_EDID,
 	VIRTIO_GPU_CMD_RESOURCE_ASSIGN_UUID,
 	VIRTIO_GPU_CMD_RESOURCE_CREATE_BLOB,
+<<<<<<< HEAD
+=======
+	VIRTIO_GPU_CMD_RESOURCE_MAP,
+	VIRTIO_GPU_CMD_RESOURCE_UNMAP,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* 3d commands */
 	VIRTIO_GPU_CMD_CTX_CREATE = 0x0200,
@@ -95,8 +100,11 @@ enum virtio_gpu_ctrl_type {
 	VIRTIO_GPU_CMD_TRANSFER_TO_HOST_3D,
 	VIRTIO_GPU_CMD_TRANSFER_FROM_HOST_3D,
 	VIRTIO_GPU_CMD_SUBMIT_3D,
+<<<<<<< HEAD
 	VIRTIO_GPU_CMD_RESOURCE_MAP,
 	VIRTIO_GPU_CMD_RESOURCE_UNMAP,
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* cursor commands */
 	VIRTIO_GPU_CMD_UPDATE_CURSOR = 0x0300,
@@ -409,9 +417,15 @@ struct virtio_gpu_resource_create_blob {
 	/* zero is invalid blob mem */
 	__le32 blob_mem;
 	__le32 blob_flags;
+<<<<<<< HEAD
 	__le32 nr_entries;
 	__le64 blob_id;
 	__le64 size;
+=======
+	__le64 blob_id;
+	__le64 size;
+	__le32 nr_entries;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/*
 	 * sizeof(nr_entries * virtio_gpu_mem_entry) bytes follow
 	 */

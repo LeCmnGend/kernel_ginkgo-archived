@@ -981,7 +981,11 @@ static int st95hf_in_send_cmd(struct nfc_digital_dev *ddev,
 	rc = down_killable(&stcontext->exchange_lock);
 	if (rc) {
 		WARN(1, "Semaphore is not found up in st95hf_in_send_cmd\n");
+<<<<<<< HEAD
 		goto free_skb_resp;
+=======
+		return rc;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	rc = st95hf_spi_send(&stcontext->spicontext, skb->data,

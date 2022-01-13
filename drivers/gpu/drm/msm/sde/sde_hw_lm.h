@@ -104,11 +104,14 @@ struct sde_hw_mixer {
 
 	/* store mixer info specific to display */
 	struct sde_hw_mixer_cfg cfg;
+<<<<<<< HEAD
 
 	struct {
 		bool enabled;
 		bool stage[SDE_STAGE_MAX];
 	} dim;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 /**

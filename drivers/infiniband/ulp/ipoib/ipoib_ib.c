@@ -809,7 +809,11 @@ timeout:
 	return 0;
 }
 
+<<<<<<< HEAD
 void ipoib_ib_dev_stop(struct net_device *dev)
+=======
+int ipoib_ib_dev_stop(struct net_device *dev)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	struct ipoib_dev_priv *priv = ipoib_priv(dev);
 
@@ -817,6 +821,11 @@ void ipoib_ib_dev_stop(struct net_device *dev)
 
 	clear_bit(IPOIB_FLAG_INITIALIZED, &priv->flags);
 	ipoib_flush_ah(dev);
+<<<<<<< HEAD
+=======
+
+	return 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 void ipoib_ib_tx_timer_func(unsigned long ctx)

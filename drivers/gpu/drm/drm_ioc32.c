@@ -96,8 +96,11 @@ static int compat_drm_version(struct file *file, unsigned int cmd,
 	if (copy_from_user(&v32, (void __user *)arg, sizeof(v32)))
 		return -EFAULT;
 
+<<<<<<< HEAD
 	memset(&v, 0, sizeof(v));
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	v = (struct drm_version) {
 		.name_len = v32.name_len,
 		.name = compat_ptr(v32.name),
@@ -136,9 +139,12 @@ static int compat_drm_getunique(struct file *file, unsigned int cmd,
 
 	if (copy_from_user(&uq32, (void __user *)arg, sizeof(uq32)))
 		return -EFAULT;
+<<<<<<< HEAD
 
 	memset(&uq, 0, sizeof(uq));
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	uq = (struct drm_unique){
 		.unique_len = uq32.unique_len,
 		.unique = compat_ptr(uq32.unique),
@@ -265,8 +271,11 @@ static int compat_drm_getclient(struct file *file, unsigned int cmd,
 	if (copy_from_user(&c32, argp, sizeof(c32)))
 		return -EFAULT;
 
+<<<<<<< HEAD
 	memset(&client, 0, sizeof(client));
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	client.idx = c32.idx;
 
 	err = drm_ioctl_kernel(file, drm_getclient, &client, DRM_UNLOCKED);
@@ -849,8 +858,11 @@ static int compat_drm_wait_vblank(struct file *file, unsigned int cmd,
 	if (copy_from_user(&req32, argp, sizeof(req32)))
 		return -EFAULT;
 
+<<<<<<< HEAD
 	memset(&req, 0, sizeof(req));
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	req.request.type = req32.request.type;
 	req.request.sequence = req32.request.sequence;
 	req.request.signal = req32.request.signal;
@@ -888,8 +900,11 @@ static int compat_drm_mode_addfb2(struct file *file, unsigned int cmd,
 	struct drm_mode_fb_cmd2 req64;
 	int err;
 
+<<<<<<< HEAD
 	memset(&req64, 0, sizeof(req64));
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (copy_from_user(&req64, argp,
 			   offsetof(drm_mode_fb_cmd232_t, modifier)))
 		return -EFAULT;

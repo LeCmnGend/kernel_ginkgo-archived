@@ -47,21 +47,48 @@
  * @fmt: Pointer to format string
  */
 #define SDE_DEBUG(fmt, ...)                                                \
+<<<<<<< HEAD
 	no_printk(fmt, ##__VA_ARGS__)
+=======
+	do {                                                               \
+		if (unlikely(drm_debug & DRM_UT_KMS))                      \
+			DRM_DEBUG(fmt, ##__VA_ARGS__); \
+		else                                                       \
+			pr_debug(fmt, ##__VA_ARGS__);                      \
+	} while (0)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /**
  * SDE_INFO - macro for kms/plane/crtc/encoder/connector logs
  * @fmt: Pointer to format string
  */
 #define SDE_INFO(fmt, ...)                                                \
+<<<<<<< HEAD
 	no_printk(fmt, ##__VA_ARGS__)
+=======
+	do {                                                               \
+		if (unlikely(drm_debug & DRM_UT_KMS))                      \
+			DRM_INFO(fmt, ##__VA_ARGS__); \
+		else                                                       \
+			pr_info(fmt, ##__VA_ARGS__);                      \
+	} while (0)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /**
  * SDE_DEBUG_DRIVER - macro for hardware driver logging
  * @fmt: Pointer to format string
  */
 #define SDE_DEBUG_DRIVER(fmt, ...)                                         \
+<<<<<<< HEAD
 	no_printk(fmt, ##__VA_ARGS__)
+=======
+	do {                                                               \
+		if (unlikely(drm_debug & DRM_UT_DRIVER))                   \
+			DRM_ERROR(fmt, ##__VA_ARGS__); \
+		else                                                       \
+			pr_debug(fmt, ##__VA_ARGS__);                      \
+	} while (0)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #define SDE_ERROR(fmt, ...) pr_err("[sde error]" fmt, ##__VA_ARGS__)
 
@@ -260,8 +287,11 @@ struct sde_kms {
 
 	bool first_kickoff;
 	bool qdss_enabled;
+<<<<<<< HEAD
 
 	struct pm_qos_request pm_qos_irq_req;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 struct vsync_info {
@@ -668,6 +698,7 @@ int sde_kms_handle_recovery(struct drm_encoder *encoder);
 void sde_kms_release_splash_resource(struct sde_kms *sde_kms,
 		struct drm_crtc *crtc);
 
+<<<<<<< HEAD
 /*
  * sde_kms_update_pm_qos_irq_request - Update Qos vote for CPU receiving
  *					display IRQ
@@ -677,4 +708,6 @@ void sde_kms_release_splash_resource(struct sde_kms *sde_kms,
  */
 void sde_kms_update_pm_qos_irq_request(struct sde_kms *sde_kms,
 	 bool enable, bool skip_lock);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif /* __sde_kms_H__ */

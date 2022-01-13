@@ -321,7 +321,10 @@ config IPV6_SEG6_LWTUNNEL
 config IPV6_SEG6_HMAC
 	bool "IPv6: Segment Routing HMAC support"
 	depends on IPV6
+<<<<<<< HEAD
 	select CRYPTO
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	select CRYPTO_HMAC
 	select CRYPTO_SHA1
 	select CRYPTO_SHA256

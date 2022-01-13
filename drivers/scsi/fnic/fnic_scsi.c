@@ -1034,8 +1034,12 @@ static void fnic_fcpio_icmnd_cmpl_handler(struct fnic *fnic,
 		atomic64_inc(&fnic_stats->io_stats.io_completions);
 
 
+<<<<<<< HEAD
 	io_duration_time = jiffies_to_msecs(jiffies) -
 						jiffies_to_msecs(start_time);
+=======
+	io_duration_time = jiffies_to_msecs(jiffies) - jiffies_to_msecs(io_req->start_time);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if(io_duration_time <= 10)
 		atomic64_inc(&fnic_stats->io_stats.io_btw_0_to_10_msec);

@@ -47,6 +47,10 @@ struct bq27xxx_reg_cache {
 	int capacity;
 	int energy;
 	int flags;
+<<<<<<< HEAD
+=======
+	int power_avg;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int health;
 };
 

@@ -183,7 +183,11 @@ int ti_thermal_expose_sensor(struct ti_bandgap *bgp, int id,
 
 	data = ti_bandgap_get_sensor_data(bgp, id);
 
+<<<<<<< HEAD
 	if (IS_ERR_OR_NULL(data))
+=======
+	if (!IS_ERR_OR_NULL(data))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		data = ti_thermal_build_data(bgp, id);
 
 	if (!data)

@@ -193,6 +193,10 @@ struct msm_vidc_platform_resources {
 	const char *hfi_version;
 	bool never_unload_fw;
 	bool debug_timeout;
+<<<<<<< HEAD
+=======
+	uint32_t pm_qos_latency_us;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	uint32_t max_inst_count;
 	uint32_t max_secure_inst_count;
 	int msm_vidc_hw_rsp_timeout;

@@ -1517,12 +1517,18 @@ void qlt_stop_phase2(struct qla_tgt *tgt)
 		return;
 	}
 
+<<<<<<< HEAD
 	mutex_lock(&tgt->ha->optrom_mutex);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	mutex_lock(&vha->vha_tgt.tgt_mutex);
 	tgt->tgt_stop = 0;
 	tgt->tgt_stopped = 1;
 	mutex_unlock(&vha->vha_tgt.tgt_mutex);
+<<<<<<< HEAD
 	mutex_unlock(&tgt->ha->optrom_mutex);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	ql_dbg(ql_dbg_tgt_mgt, vha, 0xf00c, "Stop of tgt %p finished\n",
 	    tgt);

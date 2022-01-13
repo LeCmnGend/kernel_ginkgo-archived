@@ -62,7 +62,11 @@ const struct exception_table_entry *search_exception_tables(unsigned long addr)
 	return e;
 }
 
+<<<<<<< HEAD
 int init_kernel_text(unsigned long addr)
+=======
+static inline int init_kernel_text(unsigned long addr)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	if (addr >= (unsigned long)_sinittext &&
 	    addr < (unsigned long)_einittext)

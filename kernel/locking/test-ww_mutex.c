@@ -26,7 +26,11 @@
 #include <linux/slab.h>
 #include <linux/ww_mutex.h>
 
+<<<<<<< HEAD
 static DEFINE_WD_CLASS(ww_class);
+=======
+static DEFINE_WW_CLASS(ww_class);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 struct workqueue_struct *wq;
 
 struct test_mutex {
@@ -326,7 +330,11 @@ static int __test_cycle(unsigned int nthreads)
 		if (!cycle->result)
 			continue;
 
+<<<<<<< HEAD
 		pr_err("cyclic deadlock not resolved, ret[%d/%d] = %d\n",
+=======
+		pr_err("cylic deadlock not resolved, ret[%d/%d] = %d\n",
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		       n, nthreads, cycle->result);
 		ret = -EINVAL;
 		break;

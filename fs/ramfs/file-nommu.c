@@ -228,7 +228,11 @@ static unsigned long ramfs_nommu_get_unmapped_area(struct file *file,
 	if (!pages)
 		goto out_free;
 
+<<<<<<< HEAD
 	nr = find_get_pages_contig(inode->i_mapping, pgoff, lpages, pages);
+=======
+	nr = find_get_pages(inode->i_mapping, &pgoff, lpages, pages);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (nr != lpages)
 		goto out_free_pages; /* leave if some pages were missing */
 

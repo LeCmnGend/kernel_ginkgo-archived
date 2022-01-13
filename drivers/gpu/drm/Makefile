@@ -18,7 +18,11 @@ drm-y       :=	drm_auth.o drm_bufs.o drm_cache.o \
 		drm_encoder.o drm_mode_object.o drm_property.o \
 		drm_plane.o drm_color_mgmt.o drm_print.o \
 		drm_dumb_buffers.o drm_mode_config.o drm_vblank.o \
+<<<<<<< HEAD
 		drm_syncobj.o drm_lease.o
+=======
+		drm_syncobj.o drm_lease.o drm_client.o drm_client_modeset.o
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 drm-$(CONFIG_DRM_LIB_RANDOM) += lib/drm_random.o
 drm-$(CONFIG_DRM_VM) += drm_vm.o

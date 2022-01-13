@@ -216,9 +216,13 @@ int ovl_xattr_set(struct dentry *dentry, struct inode *inode, const char *name,
 		goto out;
 
 	if (!value && !upperdentry) {
+<<<<<<< HEAD
 		old_cred = ovl_override_creds(dentry->d_sb);
 		err = vfs_getxattr(realdentry, name, NULL, 0);
 		revert_creds(old_cred);
+=======
+		err = vfs_getxattr(realdentry, name, NULL, 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (err < 0)
 			goto out_drop_write;
 	}

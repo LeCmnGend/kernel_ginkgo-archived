@@ -1276,7 +1276,11 @@ int gsi_alloc_evt_ring(struct gsi_evt_ring_props *props, unsigned long dev_hdl,
  * @Return gsi_status
  */
 int gsi_write_evt_ring_scratch(unsigned long evt_ring_hdl,
+<<<<<<< HEAD
 		union gsi_evt_scratch val);
+=======
+		union __packed gsi_evt_scratch val);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /**
  * gsi_dealloc_evt_ring - Peripheral should call this function to
@@ -1403,7 +1407,11 @@ int gsi_alloc_channel(struct gsi_chan_props *props, unsigned long dev_hdl,
  * @Return gsi_status
  */
 int gsi_write_channel_scratch(unsigned long chan_hdl,
+<<<<<<< HEAD
 		union gsi_channel_scratch val);
+=======
+		union __packed gsi_channel_scratch val);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /**
  * gsi_write_channel_scratch3_reg - Peripheral should call this function to
@@ -1416,7 +1424,11 @@ int gsi_write_channel_scratch(unsigned long chan_hdl,
  * @Return gsi_status
  */
 int gsi_write_channel_scratch3_reg(unsigned long chan_hdl,
+<<<<<<< HEAD
 		union gsi_wdi_channel_scratch3_reg val);
+=======
+		union __packed gsi_wdi_channel_scratch3_reg val);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /**
  * gsi_write_wdi3_channel_scratch2_reg - Peripheral should call this function
@@ -1454,7 +1466,11 @@ int gsi_write_channel_scratch2_reg(unsigned long chan_hdl,
  * @Return gsi_status
  */
 int gsi_read_channel_scratch(unsigned long chan_hdl,
+<<<<<<< HEAD
 		union gsi_channel_scratch *val);
+=======
+		union __packed gsi_channel_scratch *val);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /**
  * gsi_read_wdi3_channel_scratch2_reg - Peripheral should call this function to
@@ -1482,7 +1498,11 @@ int gsi_read_wdi3_channel_scratch2_reg(unsigned long chan_hdl,
  * @Return gsi_status
  */
 int gsi_update_mhi_channel_scratch(unsigned long chan_hdl,
+<<<<<<< HEAD
 		struct gsi_mhi_channel_scratch mscr);
+=======
+		struct __packed gsi_mhi_channel_scratch mscr);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /**
  * gsi_start_channel - Peripheral should call this function to
@@ -1888,7 +1908,11 @@ static inline int gsi_alloc_evt_ring(struct gsi_evt_ring_props *props,
 }
 
 static inline int gsi_write_evt_ring_scratch(unsigned long evt_ring_hdl,
+<<<<<<< HEAD
 		union gsi_evt_scratch val)
+=======
+		union __packed gsi_evt_scratch val)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	return -GSI_STATUS_UNSUPPORTED_OP;
 }
@@ -1928,12 +1952,20 @@ static inline int gsi_alloc_channel(struct gsi_chan_props *props,
 }
 
 static inline int gsi_write_channel_scratch(unsigned long chan_hdl,
+<<<<<<< HEAD
 		union gsi_channel_scratch val)
+=======
+		union __packed gsi_channel_scratch val)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	return -GSI_STATUS_UNSUPPORTED_OP;
 }
 static inline int gsi_write_channel_scratch3_reg(unsigned long chan_hdl,
+<<<<<<< HEAD
 		union gsi_wdi_channel_scratch3_reg val)
+=======
+		union __packed gsi_wdi_channel_scratch3_reg val)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	return -GSI_STATUS_UNSUPPORTED_OP;
 }
@@ -1945,13 +1977,21 @@ static inline int gsi_write_channel_scratch2_reg(unsigned long chan_hdl,
 }
 
 static inline int gsi_read_channel_scratch(unsigned long chan_hdl,
+<<<<<<< HEAD
 		union gsi_channel_scratch *val)
+=======
+		union __packed gsi_channel_scratch *val)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	return -GSI_STATUS_UNSUPPORTED_OP;
 }
 
 static inline int gsi_update_mhi_channel_scratch(unsigned long chan_hdl,
+<<<<<<< HEAD
 		struct gsi_mhi_channel_scratch mscr)
+=======
+		struct __packed gsi_mhi_channel_scratch mscr)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	return -GSI_STATUS_UNSUPPORTED_OP;
 }

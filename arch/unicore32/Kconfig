@@ -37,6 +37,15 @@ config STACKTRACE_SUPPORT
 config LOCKDEP_SUPPORT
 	def_bool y
 
+<<<<<<< HEAD
+=======
+config RWSEM_GENERIC_SPINLOCK
+	def_bool y
+
+config RWSEM_XCHGADD_ALGORITHM
+	bool
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 config ARCH_HAS_ILOG2_U32
 	bool
 

@@ -507,6 +507,13 @@ acpi_status acpi_ex_prep_field_value(struct acpi_create_field_info *info)
 				    (u8)access_byte_width;
 			}
 		}
+<<<<<<< HEAD
+=======
+		/* An additional reference for the container */
+
+		acpi_ut_add_reference(obj_desc->field.region_obj);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		ACPI_DEBUG_PRINT((ACPI_DB_BFIELD,
 				  "RegionField: BitOff %X, Off %X, Gran %X, Region %p\n",
 				  obj_desc->field.start_field_bit_offset,

@@ -267,9 +267,15 @@ static void fcoe_sysfs_fcf_del(struct fcoe_fcf *new)
 		WARN_ON(!fcf_dev);
 		new->fcf_dev = NULL;
 		fcoe_fcf_device_delete(fcf_dev);
+<<<<<<< HEAD
 		mutex_unlock(&cdev->lock);
 	}
 	kfree(new);
+=======
+		kfree(new);
+		mutex_unlock(&cdev->lock);
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /**

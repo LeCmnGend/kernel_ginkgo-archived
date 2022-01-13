@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #! /usr/bin/env python
+=======
+#! /usr/bin/python
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 # -*- python -*-
 # -*- coding: utf-8 -*-
 #   twatch - Experimental use of the perf python interface

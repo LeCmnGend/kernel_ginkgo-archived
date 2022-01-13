@@ -1,6 +1,9 @@
 /*
  * Copyright (c) 2015-2020, The Linux Foundation.All rights reserved.
+<<<<<<< HEAD
  * Copyright (C) 2019 XiaoMi, Inc.
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -203,7 +206,10 @@ struct dsi_display {
 	struct drm_connector *ext_conn;
 
 	const char *name;
+<<<<<<< HEAD
 	bool is_prim_display;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	const char *display_type;
 	const char *dsi_type;
 	struct list_head list;

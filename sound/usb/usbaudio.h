@@ -66,8 +66,11 @@ struct snd_usb_audio {
 	void (*disconnect_cb)(struct snd_usb_audio *chip);
 };
 
+<<<<<<< HEAD
 #define USB_AUDIO_IFACE_UNUSED	((void *)-1L)
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define usb_audio_err(chip, fmt, args...) \
 	dev_err(&(chip)->dev->dev, fmt, ##args)
 #define usb_audio_warn(chip, fmt, args...) \

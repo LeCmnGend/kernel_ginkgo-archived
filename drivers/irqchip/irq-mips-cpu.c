@@ -201,6 +201,7 @@ static int mips_cpu_ipi_alloc(struct irq_domain *domain, unsigned int virq,
 		if (ret)
 			return ret;
 
+<<<<<<< HEAD
 		ret = irq_domain_set_hwirq_and_chip(domain->parent, virq + i, hwirq,
 						    &mips_mt_cpu_irq_controller,
 						    NULL);
@@ -208,6 +209,8 @@ static int mips_cpu_ipi_alloc(struct irq_domain *domain, unsigned int virq,
 		if (ret)
 			return ret;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		ret = irq_set_irq_type(virq + i, IRQ_TYPE_LEVEL_HIGH);
 		if (ret)
 			return ret;

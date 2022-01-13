@@ -88,7 +88,10 @@
 #include <linux/io.h>
 #include <linux/cache.h>
 #include <linux/rodata_test.h>
+<<<<<<< HEAD
 #include <linux/jump_label.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #include <asm/io.h>
 #include <asm/bugs.h>
@@ -497,6 +500,7 @@ static void __init report_meminit(void)
 {
 	const char *stack;
 
+<<<<<<< HEAD
 	if (IS_ENABLED(CONFIG_INIT_STACK_ALL_PATTERN))
 		stack = "all(pattern)";
 	else if (IS_ENABLED(CONFIG_INIT_STACK_ALL_ZERO))
@@ -507,6 +511,16 @@ static void __init report_meminit(void)
 		stack = "byref(zero)";
 	else if (IS_ENABLED(CONFIG_GCC_PLUGIN_STRUCTLEAK_USER))
 		stack = "__user(zero)";
+=======
+	if (IS_ENABLED(CONFIG_INIT_STACK_ALL))
+		stack = "all";
+	else if (IS_ENABLED(CONFIG_GCC_PLUGIN_STRUCTLEAK_BYREF_ALL))
+		stack = "byref_all";
+	else if (IS_ENABLED(CONFIG_GCC_PLUGIN_STRUCTLEAK_BYREF))
+		stack = "byref";
+	else if (IS_ENABLED(CONFIG_GCC_PLUGIN_STRUCTLEAK_USER))
+		stack = "__user";
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	else
 		stack = "off";
 
@@ -539,8 +553,11 @@ static void __init mm_init(void)
 	pti_init();
 }
 
+<<<<<<< HEAD
 int fpsensor;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 asmlinkage __visible void __init start_kernel(void)
 {
 	char *command_line;
@@ -583,8 +600,11 @@ asmlinkage __visible void __init start_kernel(void)
 	pr_notice("Kernel command line: %s\n", boot_command_line);
 	/* parameters may set static keys */
 	jump_label_init();
+<<<<<<< HEAD
 
 	fpsensor = strstr(command_line, "androidboot.fpsensor=fpc") ? 1 : 2;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	parse_early_param();
 	after_dashes = parse_args("Booting kernel",
 				  static_command_line, __start___param,
@@ -721,7 +741,10 @@ asmlinkage __visible void __init start_kernel(void)
 	vfs_caches_init();
 	pagecache_init();
 	signals_init();
+<<<<<<< HEAD
 	seq_file_init();
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	proc_root_init();
 	nsfs_init();
 	cpuset_init();
@@ -931,11 +954,16 @@ static void __init do_initcalls(void)
 {
 	int level;
 
+<<<<<<< HEAD
 	for (level = 0; level < ARRAY_SIZE(initcall_levels) - 1; level++) {
 		do_initcall_level(level);
 		/* finish all async calls before going into next level */
 		async_synchronize_full();
 	}
+=======
+	for (level = 0; level < ARRAY_SIZE(initcall_levels) - 1; level++)
+		do_initcall_level(level);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /*
@@ -1104,7 +1132,11 @@ static noinline void __init kernel_init_freeable(void)
 	 */
 	set_mems_allowed(node_states[N_MEMORY]);
 
+<<<<<<< HEAD
 	cad_pid = get_pid(task_pid(current));
+=======
+	cad_pid = task_pid(current);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	smp_prepare_cpus(setup_max_cpus);
 

@@ -173,7 +173,10 @@ static int htc_config_pipe_credits(struct htc_target *target)
 	time_left = wait_for_completion_timeout(&target->cmd_wait, HZ);
 	if (!time_left) {
 		dev_err(target->dev, "HTC credit config timeout\n");
+<<<<<<< HEAD
 		kfree_skb(skb);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return -ETIMEDOUT;
 	}
 
@@ -209,7 +212,10 @@ static int htc_setup_complete(struct htc_target *target)
 	time_left = wait_for_completion_timeout(&target->cmd_wait, HZ);
 	if (!time_left) {
 		dev_err(target->dev, "HTC start timeout\n");
+<<<<<<< HEAD
 		kfree_skb(skb);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return -ETIMEDOUT;
 	}
 
@@ -282,7 +288,10 @@ int htc_connect_service(struct htc_target *target,
 	if (!time_left) {
 		dev_err(target->dev, "Service connection timeout for: %d\n",
 			service_connreq->service_id);
+<<<<<<< HEAD
 		kfree_skb(skb);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return -ETIMEDOUT;
 	}
 
@@ -342,8 +351,11 @@ void ath9k_htc_txcompletion_cb(struct htc_target *htc_handle,
 
 	if (skb) {
 		htc_hdr = (struct htc_frame_hdr *) skb->data;
+<<<<<<< HEAD
 		if (htc_hdr->endpoint_id >= ARRAY_SIZE(htc_handle->endpoint))
 			goto ret;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		endpoint = &htc_handle->endpoint[htc_hdr->endpoint_id];
 		skb_pull(skb, sizeof(struct htc_frame_hdr));
 

@@ -659,6 +659,7 @@ out:
  * Takes the lock on the TOKEN lock resource so no other
  * node can communicate while the operation is underway.
  */
+<<<<<<< HEAD
 static int lock_token(struct md_cluster_info *cinfo)
 {
 	int error;
@@ -680,6 +681,11 @@ static int lock_token(struct md_cluster_info *cinfo)
 static int lock_comm(struct md_cluster_info *cinfo, bool mddev_locked)
 {
 	int rv, set_bit = 0;
+=======
+static int lock_token(struct md_cluster_info *cinfo, bool mddev_locked)
+{
+	int error, set_bit = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct mddev *mddev = cinfo->mddev;
 
 	/*
@@ -690,6 +696,7 @@ static int lock_comm(struct md_cluster_info *cinfo, bool mddev_locked)
 	 */
 	if (mddev_locked && !test_bit(MD_CLUSTER_HOLDING_MUTEX_FOR_RECVD,
 				      &cinfo->state)) {
+<<<<<<< HEAD
 		rv = test_and_set_bit_lock(MD_CLUSTER_HOLDING_MUTEX_FOR_RECVD,
 					      &cinfo->state);
 		WARN_ON_ONCE(rv);
@@ -703,6 +710,36 @@ static int lock_comm(struct md_cluster_info *cinfo, bool mddev_locked)
 	if (set_bit)
 		clear_bit_unlock(MD_CLUSTER_HOLDING_MUTEX_FOR_RECVD, &cinfo->state);
 	return rv;
+=======
+		error = test_and_set_bit_lock(MD_CLUSTER_HOLDING_MUTEX_FOR_RECVD,
+					      &cinfo->state);
+		WARN_ON_ONCE(error);
+		md_wakeup_thread(mddev->thread);
+		set_bit = 1;
+	}
+	error = dlm_lock_sync(cinfo->token_lockres, DLM_LOCK_EX);
+	if (set_bit)
+		clear_bit_unlock(MD_CLUSTER_HOLDING_MUTEX_FOR_RECVD, &cinfo->state);
+
+	if (error)
+		pr_err("md-cluster(%s:%d): failed to get EX on TOKEN (%d)\n",
+				__func__, __LINE__, error);
+
+	/* Lock the receive sequence */
+	mutex_lock(&cinfo->recv_mutex);
+	return error;
+}
+
+/* lock_comm()
+ * Sets the MD_CLUSTER_SEND_LOCK bit to lock the send channel.
+ */
+static int lock_comm(struct md_cluster_info *cinfo, bool mddev_locked)
+{
+	wait_event(cinfo->wait,
+		   !test_and_set_bit(MD_CLUSTER_SEND_LOCK, &cinfo->state));
+
+	return lock_token(cinfo, mddev_locked);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void unlock_comm(struct md_cluster_info *cinfo)
@@ -782,11 +819,17 @@ static int sendmsg(struct md_cluster_info *cinfo, struct cluster_msg *cmsg,
 {
 	int ret;
 
+<<<<<<< HEAD
 	ret = lock_comm(cinfo, mddev_locked);
 	if (!ret) {
 		ret = __sendmsg(cinfo, cmsg);
 		unlock_comm(cinfo);
 	}
+=======
+	lock_comm(cinfo, mddev_locked);
+	ret = __sendmsg(cinfo, cmsg);
+	unlock_comm(cinfo);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return ret;
 }
 
@@ -1058,7 +1101,11 @@ static int metadata_update_start(struct mddev *mddev)
 		return 0;
 	}
 
+<<<<<<< HEAD
 	ret = lock_token(cinfo);
+=======
+	ret = lock_token(cinfo, 1);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	clear_bit_unlock(MD_CLUSTER_HOLDING_MUTEX_FOR_RECVD, &cinfo->state);
 	return ret;
 }
@@ -1176,10 +1223,14 @@ static void update_size(struct mddev *mddev, sector_t old_dev_sectors)
 	int raid_slot = -1;
 
 	md_update_sb(mddev, 1);
+<<<<<<< HEAD
 	if (lock_comm(cinfo, 1)) {
 		pr_err("%s: lock_comm failed\n", __func__);
 		return;
 	}
+=======
+	lock_comm(cinfo, 1);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	memset(&cmsg, 0, sizeof(cmsg));
 	cmsg.type = cpu_to_le32(METADATA_UPDATED);
@@ -1318,8 +1369,12 @@ static int add_new_disk(struct mddev *mddev, struct md_rdev *rdev)
 	cmsg.type = cpu_to_le32(NEWDISK);
 	memcpy(cmsg.uuid, uuid, 16);
 	cmsg.raid_slot = cpu_to_le32(rdev->desc_nr);
+<<<<<<< HEAD
 	if (lock_comm(cinfo, 1))
 		return -EAGAIN;
+=======
+	lock_comm(cinfo, 1);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ret = __sendmsg(cinfo, &cmsg);
 	if (ret) {
 		unlock_comm(cinfo);
@@ -1432,7 +1487,10 @@ static void unlock_all_bitmaps(struct mddev *mddev)
 			}
 		}
 		kfree(cinfo->other_bitmap_lockres);
+<<<<<<< HEAD
 		cinfo->other_bitmap_lockres = NULL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 }
 

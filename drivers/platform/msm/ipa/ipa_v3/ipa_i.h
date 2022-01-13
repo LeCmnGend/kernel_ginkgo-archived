@@ -84,7 +84,11 @@
 
 #define IPA_MAX_NUM_REQ_CACHE 10
 
+<<<<<<< HEAD
 #define NAPI_WEIGHT 64
+=======
+#define NAPI_WEIGHT 60
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /* Bit pattern for SW to identify in middle of PC saving */
 #define PC_SAVE_CONTEXT_SAVE_ENTERED            0xDEAFDEAF
@@ -930,7 +934,11 @@ struct ipa3_ep_context {
 	unsigned long gsi_chan_hdl;
 	unsigned long gsi_evt_ring_hdl;
 	struct ipa_gsi_ep_mem_info gsi_mem_info;
+<<<<<<< HEAD
 	union gsi_channel_scratch chan_scratch;
+=======
+	union __packed gsi_channel_scratch chan_scratch;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct gsi_chan_xfer_notify xfer_notify;
 	bool xfer_notify_valid;
 	struct ipa_ep_cfg cfg;
@@ -985,9 +993,15 @@ struct ipa_request_gsi_channel_params {
 	bool skip_ep_cfg;
 	bool keep_ipa_awake;
 	struct gsi_evt_ring_props evt_ring_params;
+<<<<<<< HEAD
 	union gsi_evt_scratch evt_scratch;
 	struct gsi_chan_props chan_params;
 	union gsi_channel_scratch chan_scratch;
+=======
+	union __packed gsi_evt_scratch evt_scratch;
+	struct gsi_chan_props chan_params;
+	union __packed gsi_channel_scratch chan_scratch;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 enum ipa3_sys_pipe_policy {
@@ -2770,7 +2784,11 @@ bool ipa3_has_open_aggr_frame(enum ipa_client_type client);
 
 int ipa3_mhi_resume_channels_internal(enum ipa_client_type client,
 		bool LPTransitionRejected, bool brstmode_enabled,
+<<<<<<< HEAD
 		union gsi_channel_scratch ch_scratch, u8 index,
+=======
+		union __packed gsi_channel_scratch ch_scratch, u8 index,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		bool is_switch_to_dbmode);
 
 int ipa3_mhi_destroy_channel(enum ipa_client_type client);
@@ -3035,7 +3053,10 @@ int ipa_hw_stats_init(void);
 int ipa_init_flt_rt_stats(void);
 
 int ipa_debugfs_init_stats(struct dentry *parent);
+<<<<<<< HEAD
 void ipa_debugfs_remove_stats(void);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 int ipa_init_quota_stats(u32 pipe_bitmask);
 

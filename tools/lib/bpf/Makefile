@@ -183,7 +183,11 @@ define do_install
 	if [ ! -d '$(DESTDIR_SQ)$2' ]; then		\
 		$(INSTALL) -d -m 755 '$(DESTDIR_SQ)$2';	\
 	fi;						\
+<<<<<<< HEAD
 	$(INSTALL) $(if $3,-m $3,) $1 '$(DESTDIR_SQ)$2'
+=======
+	$(INSTALL) $1 $(if $3,-m $3,) '$(DESTDIR_SQ)$2'
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 endef
 
 install_lib: all_cmd

@@ -321,6 +321,11 @@ static int idletimer_tg_create(struct idletimer_tg_info *info)
 		pr_debug("couldn't add file to sysfs");
 		goto out_free_attr;
 	}
+<<<<<<< HEAD
+=======
+	/* notify userspace */
+	kobject_uevent(idletimer_tg_kobj, KOBJ_ADD);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	list_add(&info->timer->entry, &idletimer_tg_list);
 

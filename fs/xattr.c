@@ -204,6 +204,7 @@ int __vfs_setxattr_noperm(struct dentry *dentry, const char *name,
 	return error;
 }
 
+<<<<<<< HEAD
 /**
  * __vfs_setxattr_locked: set an extended attribute while holding the inode
  * lock
@@ -220,6 +221,12 @@ int
 __vfs_setxattr_locked(struct dentry *dentry, const char *name,
 		const void *value, size_t size, int flags,
 		struct inode **delegated_inode)
+=======
+
+int
+vfs_setxattr(struct dentry *dentry, const char *name, const void *value,
+		size_t size, int flags)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	struct inode *inode = dentry->d_inode;
 	int error;
@@ -228,10 +235,15 @@ __vfs_setxattr_locked(struct dentry *dentry, const char *name,
 	if (error)
 		return error;
 
+<<<<<<< HEAD
+=======
+	inode_lock(inode);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	error = security_inode_setxattr(dentry, name, value, size, flags);
 	if (error)
 		goto out;
 
+<<<<<<< HEAD
 	error = try_break_deleg(inode, delegated_inode);
 	if (error)
 		goto out;
@@ -262,6 +274,12 @@ retry_deleg:
 		if (!error)
 			goto retry_deleg;
 	}
+=======
+	error = __vfs_setxattr_noperm(dentry, name, value, size, flags);
+
+out:
+	inode_unlock(inode);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return error;
 }
 EXPORT_SYMBOL_GPL(vfs_setxattr);
@@ -426,6 +444,7 @@ __vfs_removexattr(struct dentry *dentry, const char *name)
 }
 EXPORT_SYMBOL(__vfs_removexattr);
 
+<<<<<<< HEAD
 /**
  * __vfs_removexattr_locked: set an extended attribute while holding the inode
  * lock
@@ -438,6 +457,10 @@ EXPORT_SYMBOL(__vfs_removexattr);
 int
 __vfs_removexattr_locked(struct dentry *dentry, const char *name,
 		struct inode **delegated_inode)
+=======
+int
+vfs_removexattr(struct dentry *dentry, const char *name)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	struct inode *inode = dentry->d_inode;
 	int error;
@@ -446,14 +469,21 @@ __vfs_removexattr_locked(struct dentry *dentry, const char *name,
 	if (error)
 		return error;
 
+<<<<<<< HEAD
+=======
+	inode_lock(inode);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	error = security_inode_removexattr(dentry, name);
 	if (error)
 		goto out;
 
+<<<<<<< HEAD
 	error = try_break_deleg(inode, delegated_inode);
 	if (error)
 		goto out;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	error = __vfs_removexattr(dentry, name);
 
 	if (!error) {
@@ -462,6 +492,7 @@ __vfs_removexattr_locked(struct dentry *dentry, const char *name,
 	}
 
 out:
+<<<<<<< HEAD
 	return error;
 }
 EXPORT_SYMBOL_GPL(__vfs_removexattr_locked);
@@ -484,10 +515,17 @@ retry_deleg:
 			goto retry_deleg;
 	}
 
+=======
+	inode_unlock(inode);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return error;
 }
 EXPORT_SYMBOL_GPL(vfs_removexattr);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /*
  * Extended attribute SET operations
  */
@@ -601,7 +639,10 @@ getxattr(struct dentry *d, const char __user *name, void __user *value,
 	ssize_t error;
 	void *kvalue = NULL;
 	char kname[XATTR_NAME_MAX + 1];
+<<<<<<< HEAD
 	char kvalue_onstack[255];
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	error = strncpy_from_user(kname, name, sizeof(kname));
 	if (error == 0 || error == sizeof(kname))
@@ -610,6 +651,7 @@ getxattr(struct dentry *d, const char __user *name, void __user *value,
 		return error;
 
 	if (size) {
+<<<<<<< HEAD
 		if (size <= ARRAY_SIZE(kvalue_onstack)) {
 			kvalue = kvalue_onstack;
 			memset(kvalue, 0, size);
@@ -620,6 +662,13 @@ getxattr(struct dentry *d, const char __user *name, void __user *value,
 			if (!kvalue)
 				return -ENOMEM;
 		}
+=======
+		if (size > XATTR_SIZE_MAX)
+			size = XATTR_SIZE_MAX;
+		kvalue = kvzalloc(size, GFP_KERNEL);
+		if (!kvalue)
+			return -ENOMEM;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	error = vfs_getxattr(d, kname, kvalue, size);
@@ -635,8 +684,12 @@ getxattr(struct dentry *d, const char __user *name, void __user *value,
 		error = -E2BIG;
 	}
 
+<<<<<<< HEAD
 	if (kvalue != kvalue_onstack)
 		kvfree(kvalue);
+=======
+	kvfree(kvalue);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return error;
 }

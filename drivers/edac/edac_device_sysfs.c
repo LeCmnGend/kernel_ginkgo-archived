@@ -301,7 +301,10 @@ int edac_device_register_sysfs_main_kobj(struct edac_device_ctl_info *edac_dev)
 
 	/* Error exit stack */
 err_kobj_reg:
+<<<<<<< HEAD
 	kobject_put(&edac_dev->kobj);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	module_put(edac_dev->owner);
 
 err_out:

@@ -257,8 +257,13 @@ static int ep93xx_keypad_probe(struct platform_device *pdev)
 	}
 
 	keypad->irq = platform_get_irq(pdev, 0);
+<<<<<<< HEAD
 	if (keypad->irq < 0) {
 		err = keypad->irq;
+=======
+	if (!keypad->irq) {
+		err = -ENXIO;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto failed_free;
 	}
 

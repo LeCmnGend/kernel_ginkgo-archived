@@ -207,7 +207,10 @@ static int do_ipv6_setsockopt(struct sock *sk, int level, int optname,
 
 			fl6_free_socklist(sk);
 			__ipv6_sock_mc_close(sk);
+<<<<<<< HEAD
 			__ipv6_sock_ac_close(sk);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 			/*
 			 * Sock is moving from IPv6 to IPv4 (sk_prot), so

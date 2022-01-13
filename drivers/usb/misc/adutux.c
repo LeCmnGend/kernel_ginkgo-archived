@@ -209,7 +209,10 @@ static void adu_interrupt_out_callback(struct urb *urb)
 
 	if (status != 0) {
 		if ((status != -ENOENT) &&
+<<<<<<< HEAD
 		    (status != -ESHUTDOWN) &&
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		    (status != -ECONNRESET)) {
 			dev_dbg(&dev->udev->dev,
 				"%s :nonzero status received: %d\n", __func__,

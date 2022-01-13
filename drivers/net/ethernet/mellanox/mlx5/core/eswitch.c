@@ -1921,6 +1921,7 @@ static u32 calculate_vports_min_rate_divider(struct mlx5_eswitch *esw)
 		max_guarantee = evport->info.min_rate;
 	}
 
+<<<<<<< HEAD
 	if (max_guarantee)
 		return max_t(u32, max_guarantee / fw_max_bw_share, 1);
 	return 0;
@@ -1930,6 +1931,14 @@ static int normalize_vports_min_rate(struct mlx5_eswitch *esw)
 {
 	u32 fw_max_bw_share = MLX5_CAP_QOS(esw->dev, max_tsar_bw_share);
 	u32 divider = calculate_vports_min_rate_divider(esw);
+=======
+	return max_t(u32, max_guarantee / fw_max_bw_share, 1);
+}
+
+static int normalize_vports_min_rate(struct mlx5_eswitch *esw, u32 divider)
+{
+	u32 fw_max_bw_share = MLX5_CAP_QOS(esw->dev, max_tsar_bw_share);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct mlx5_vport *evport;
 	u32 vport_max_rate;
 	u32 vport_min_rate;
@@ -1943,9 +1952,15 @@ static int normalize_vports_min_rate(struct mlx5_eswitch *esw)
 			continue;
 		vport_min_rate = evport->info.min_rate;
 		vport_max_rate = evport->info.max_rate;
+<<<<<<< HEAD
 		bw_share = 0;
 
 		if (divider)
+=======
+		bw_share = MLX5_MIN_BW_SHARE;
+
+		if (vport_min_rate)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			bw_share = MLX5_RATE_TO_BW_SHARE(vport_min_rate,
 							 divider,
 							 fw_max_bw_share);
@@ -1970,6 +1985,10 @@ int mlx5_eswitch_set_vport_rate(struct mlx5_eswitch *esw, int vport,
 	struct mlx5_vport *evport;
 	u32 fw_max_bw_share;
 	u32 previous_min_rate;
+<<<<<<< HEAD
+=======
+	u32 divider;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	bool min_rate_supported;
 	bool max_rate_supported;
 	int err = 0;
@@ -1995,7 +2014,12 @@ int mlx5_eswitch_set_vport_rate(struct mlx5_eswitch *esw, int vport,
 
 	previous_min_rate = evport->info.min_rate;
 	evport->info.min_rate = min_rate;
+<<<<<<< HEAD
 	err = normalize_vports_min_rate(esw);
+=======
+	divider = calculate_vports_min_rate_divider(esw);
+	err = normalize_vports_min_rate(esw, divider);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (err) {
 		evport->info.min_rate = previous_min_rate;
 		goto unlock;

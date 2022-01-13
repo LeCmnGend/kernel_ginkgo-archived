@@ -96,6 +96,7 @@ void device_links_read_unlock(int not_used)
 }
 #endif /* !CONFIG_SRCU */
 
+<<<<<<< HEAD
 static bool device_is_ancestor(struct device *dev, struct device *target)
 {
 	while (target->parent) {
@@ -106,6 +107,8 @@ static bool device_is_ancestor(struct device *dev, struct device *target)
 	return false;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /**
  * device_is_dependent - Check if one device depends on another one
  * @dev: Device to check dependencies for.
@@ -119,12 +122,16 @@ static int device_is_dependent(struct device *dev, void *target)
 	struct device_link *link;
 	int ret;
 
+<<<<<<< HEAD
 	/*
 	 * The "ancestors" check is needed to catch the case when the target
 	 * device has not been completely initialized yet and it is still
 	 * missing from the list of children of its parent device.
 	 */
 	if (dev == target || device_is_ancestor(dev, target))
+=======
+	if (WARN_ON(dev == target))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return 1;
 
 	ret = device_for_each_child(dev, target, device_is_dependent);
@@ -132,7 +139,11 @@ static int device_is_dependent(struct device *dev, void *target)
 		return ret;
 
 	list_for_each_entry(link, &dev->links.consumers, s_node) {
+<<<<<<< HEAD
 		if (link->consumer == target)
+=======
+		if (WARN_ON(link->consumer == target))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			return 1;
 
 		ret = device_is_dependent(link->consumer, target);
@@ -300,7 +311,11 @@ struct device_link *device_link_add(struct device *consumer,
 	list_add_tail_rcu(&link->s_node, &supplier->links.consumers);
 	list_add_tail_rcu(&link->c_node, &consumer->links.suppliers);
 
+<<<<<<< HEAD
 	dev_dbg(consumer, "Linked as a consumer to %s\n", dev_name(supplier));
+=======
+	dev_info(consumer, "Linked as a consumer to %s\n", dev_name(supplier));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
  out:
 	device_pm_unlock();
@@ -328,7 +343,11 @@ static void __device_link_free_srcu(struct rcu_head *rhead)
 
 static void __device_link_del(struct device_link *link)
 {
+<<<<<<< HEAD
 	dev_dbg(link->consumer, "Dropping the link to %s\n",
+=======
+	dev_info(link->consumer, "Dropping the link to %s\n",
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		 dev_name(link->supplier));
 
 	if (link->flags & DL_FLAG_PM_RUNTIME)
@@ -341,7 +360,11 @@ static void __device_link_del(struct device_link *link)
 #else /* !CONFIG_SRCU */
 static void __device_link_del(struct device_link *link)
 {
+<<<<<<< HEAD
 	dev_dbg(link->consumer, "Dropping the link to %s\n",
+=======
+	dev_info(link->consumer, "Dropping the link to %s\n",
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		 dev_name(link->supplier));
 
 	if (link->flags & DL_FLAG_PM_RUNTIME)
@@ -1450,14 +1473,20 @@ void device_initialize(struct device *dev)
 	device_pm_init(dev);
 	set_dev_node(dev, -1);
 #ifdef CONFIG_GENERIC_MSI_IRQ
+<<<<<<< HEAD
 	raw_spin_lock_init(&dev->msi_lock);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	INIT_LIST_HEAD(&dev->msi_list);
 #endif
 	INIT_LIST_HEAD(&dev->links.consumers);
 	INIT_LIST_HEAD(&dev->links.suppliers);
 	dev->links.status = DL_DEV_NO_DRIVER;
+<<<<<<< HEAD
 	INIT_LIST_HEAD(&dev->iommu_map_list);
 	mutex_init(&dev->iommu_map_lock);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 EXPORT_SYMBOL_GPL(device_initialize);
 
@@ -3097,9 +3126,15 @@ static inline bool fwnode_is_primary(struct fwnode_handle *fwnode)
  */
 void set_primary_fwnode(struct device *dev, struct fwnode_handle *fwnode)
 {
+<<<<<<< HEAD
 	struct fwnode_handle *fn = dev->fwnode;
 
 	if (fwnode) {
+=======
+	if (fwnode) {
+		struct fwnode_handle *fn = dev->fwnode;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (fwnode_is_primary(fn))
 			fn = fn->secondary;
 

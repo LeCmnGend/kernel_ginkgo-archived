@@ -328,7 +328,12 @@ int main(int argc, char **argv)
 	bool all_tests = true;
 	int arg_index = 0;
 	int failures = 0;
+<<<<<<< HEAD
 	int s, t, opt;
+=======
+	int s, t;
+	char opt;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	while ((opt = getopt_long(argc, argv, "", long_options,
 				  &arg_index)) != -1) {

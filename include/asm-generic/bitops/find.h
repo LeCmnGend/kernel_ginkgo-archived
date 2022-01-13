@@ -16,6 +16,7 @@ extern unsigned long find_next_bit(const unsigned long *addr, unsigned long
 		size, unsigned long offset);
 #endif
 
+<<<<<<< HEAD
 #ifndef find_next_and_bit
 /**
  * find_next_and_bit - find the next set bit in both memory regions
@@ -32,6 +33,8 @@ extern unsigned long find_next_and_bit(const unsigned long *addr1,
 		unsigned long offset);
 #endif
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #ifndef find_next_zero_bit
 /**
  * find_next_zero_bit - find the next cleared bit in a memory region
@@ -71,12 +74,17 @@ extern unsigned long find_first_zero_bit(const unsigned long *addr,
 					 unsigned long size);
 #else /* CONFIG_GENERIC_FIND_FIRST_BIT */
 
+<<<<<<< HEAD
 #ifndef find_first_bit
 #define find_first_bit(addr, size) find_next_bit((addr), (size), 0)
 #endif
 #ifndef find_first_zero_bit
 #define find_first_zero_bit(addr, size) find_next_zero_bit((addr), (size), 0)
 #endif
+=======
+#define find_first_bit(addr, size) find_next_bit((addr), (size), 0)
+#define find_first_zero_bit(addr, size) find_next_zero_bit((addr), (size), 0)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #endif /* CONFIG_GENERIC_FIND_FIRST_BIT */
 

@@ -1864,6 +1864,7 @@ static void musb_pm_runtime_check_session(struct musb *musb)
 		MUSB_DEVCTL_HR;
 	switch (devctl & ~s) {
 	case MUSB_QUIRK_B_DISCONNECT_99:
+<<<<<<< HEAD
 		if (musb->quirk_retries && !musb->flush_irq_work) {
 			musb_dbg(musb, "Poll devctl in case of suspend after disconnect\n");
 			schedule_delayed_work(&musb->irq_work,
@@ -1872,6 +1873,12 @@ static void musb_pm_runtime_check_session(struct musb *musb)
 			break;
 		}
 		/* fall through */
+=======
+		musb_dbg(musb, "Poll devctl in case of suspend after disconnect\n");
+		schedule_delayed_work(&musb->irq_work,
+				      msecs_to_jiffies(1000));
+		break;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	case MUSB_QUIRK_B_INVALID_VBUS_91:
 		if (musb->quirk_retries && !musb->flush_irq_work) {
 			musb_dbg(musb,
@@ -2108,12 +2115,16 @@ int musb_queue_resume_work(struct musb *musb,
 {
 	struct musb_pending_work *w;
 	unsigned long flags;
+<<<<<<< HEAD
 	bool is_suspended;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int error;
 
 	if (WARN_ON(!callback))
 		return -EINVAL;
 
+<<<<<<< HEAD
 	spin_lock_irqsave(&musb->list_lock, flags);
 	is_suspended = musb->is_runtime_suspended;
 
@@ -2137,6 +2148,29 @@ out_unlock:
 	if (!is_suspended)
 		error = callback(musb, data);
 
+=======
+	if (pm_runtime_active(musb->controller))
+		return callback(musb, data);
+
+	w = devm_kzalloc(musb->controller, sizeof(*w), GFP_ATOMIC);
+	if (!w)
+		return -ENOMEM;
+
+	w->callback = callback;
+	w->data = data;
+	spin_lock_irqsave(&musb->list_lock, flags);
+	if (musb->is_runtime_suspended) {
+		list_add_tail(&w->node, &musb->pending_list);
+		error = 0;
+	} else {
+		dev_err(musb->controller, "could not add resume work %p\n",
+			callback);
+		devm_kfree(musb->controller, w);
+		error = -EINPROGRESS;
+	}
+	spin_unlock_irqrestore(&musb->list_lock, flags);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return error;
 }
 EXPORT_SYMBOL_GPL(musb_queue_resume_work);

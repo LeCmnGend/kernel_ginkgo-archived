@@ -101,7 +101,11 @@ static int decode_nfs_fh(struct xdr_stream *xdr, struct nfs_fh *fh)
 	if (unlikely(!p))
 		return -ENOBUFS;
 	fh->size = be32_to_cpup(p++);
+<<<<<<< HEAD
 	if (fh->size > NFS_MAXFHSIZE) {
+=======
+	if (fh->size > sizeof(struct nfs_fh)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		printk(KERN_ERR "NFS flexfiles: Too big fh received %d\n",
 		       fh->size);
 		return -EOVERFLOW;

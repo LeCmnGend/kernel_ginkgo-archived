@@ -1662,4 +1662,8 @@ out:
 	return err;
 }
 arch_initcall(init_cpum_sampling_pmu);
+<<<<<<< HEAD
 core_param(cpum_sfb_size, CPUM_SF_MAX_SDB, sfb_size, 0644);
+=======
+core_param(cpum_sfb_size, CPUM_SF_MAX_SDB, sfb_size, 0640);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388

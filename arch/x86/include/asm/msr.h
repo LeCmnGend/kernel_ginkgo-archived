@@ -88,7 +88,11 @@ static inline void do_trace_rdpmc(unsigned int msr, u64 val, int failed) {}
  * think of extending them - you will be slapped with a stinking trout or a frozen
  * shark will reach you, wherever you are! You've been warned.
  */
+<<<<<<< HEAD
 static __always_inline unsigned long long __rdmsr(unsigned int msr)
+=======
+static inline unsigned long long notrace __rdmsr(unsigned int msr)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	DECLARE_ARGS(val, low, high);
 
@@ -100,7 +104,11 @@ static __always_inline unsigned long long __rdmsr(unsigned int msr)
 	return EAX_EDX_VAL(val, low, high);
 }
 
+<<<<<<< HEAD
 static __always_inline void __wrmsr(unsigned int msr, u32 low, u32 high)
+=======
+static inline void notrace __wrmsr(unsigned int msr, u32 low, u32 high)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	asm volatile("1: wrmsr\n"
 		     "2:\n"

@@ -1044,8 +1044,11 @@ static void handle_error(struct mesh_state *ms)
 		while ((in_8(&mr->bus_status1) & BS1_RST) != 0)
 			udelay(1);
 		printk("done\n");
+<<<<<<< HEAD
 		if (ms->dma_started)
 			halt_dma(ms);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		handle_reset(ms);
 		/* request_q is empty, no point in mesh_start() */
 		return;
@@ -1358,8 +1361,12 @@ static void halt_dma(struct mesh_state *ms)
 		       ms->conn_tgt, ms->data_ptr, scsi_bufflen(cmd),
 		       ms->tgts[ms->conn_tgt].data_goes_out);
 	}
+<<<<<<< HEAD
 	if (cmd)
 		scsi_dma_unmap(cmd);
+=======
+	scsi_dma_unmap(cmd);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ms->dma_started = 0;
 }
 
@@ -1714,9 +1721,12 @@ static int mesh_host_reset(struct scsi_cmnd *cmd)
 
 	spin_lock_irqsave(ms->host->host_lock, flags);
 
+<<<<<<< HEAD
 	if (ms->dma_started)
 		halt_dma(ms);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* Reset the controller & dbdma channel */
 	out_le32(&md->control, (RUN|PAUSE|FLUSH|WAKE) << 16);	/* stop dma */
 	out_8(&mr->exception, 0xff);	/* clear all exception bits */

@@ -269,7 +269,10 @@
 		status = "okay";
 		compatible = "ethernet-phy-id0141.0DD1", "ethernet-phy-ieee802.3-c22";
 		reg = <1>;
+<<<<<<< HEAD
 		marvell,reg-init = <3 18 0 0x4985>;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		/* irq is connected to &pcawan pin 7 */
 	};

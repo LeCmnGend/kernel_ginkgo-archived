@@ -715,9 +715,18 @@ static bool proc_sys_link_fill_cache(struct file *file,
 	if (IS_ERR(head))
 		return false;
 
+<<<<<<< HEAD
 	/* It is not an error if we can not follow the link ignore it */
 	if (sysctl_follow_link(&head, &table))
 		goto out;
+=======
+	if (S_ISLNK(table->mode)) {
+		/* It is not an error if we can not follow the link ignore it */
+		int err = sysctl_follow_link(&head, &table);
+		if (err)
+			goto out;
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	ret = proc_sys_fill_cache(file, ctx, head, table);
 out:

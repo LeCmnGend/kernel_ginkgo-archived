@@ -26,7 +26,11 @@
 			label = "blue:heartbeat";
 			pwms = <&pwm 2 2000000 0>;
 			pwm-names = "pwm2";
+<<<<<<< HEAD
 			max-brightness = <255>;
+=======
+			max_brightness = <255>;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			linux,default-trigger = "heartbeat";
 		};
 	};

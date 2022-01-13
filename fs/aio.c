@@ -116,7 +116,12 @@ struct kioctx {
 	struct page		**ring_pages;
 	long			nr_pages;
 
+<<<<<<< HEAD
 	struct rcu_work		free_rwork;	/* see free_ioctx() */
+=======
+	struct rcu_head		free_rcu;
+	struct work_struct	free_work;	/* see free_ioctx() */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/*
 	 * signals when all in-flight requests are done
@@ -317,16 +322,23 @@ static void aio_free_ring(struct kioctx *ctx)
 	}
 }
 
+<<<<<<< HEAD
 static int aio_ring_mremap(struct vm_area_struct *vma, unsigned long flags)
+=======
+static int aio_ring_mremap(struct vm_area_struct *vma)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	struct file *file = vma->vm_file;
 	struct mm_struct *mm = vma->vm_mm;
 	struct kioctx_table *table;
 	int i, res = -EINVAL;
 
+<<<<<<< HEAD
 	if (flags & MREMAP_DONTUNMAP)
 		return -EINVAL;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	spin_lock(&mm->ioctx_lock);
 	rcu_read_lock();
 	table = rcu_dereference(mm->ioctx_table);
@@ -521,9 +533,15 @@ static int aio_setup_ring(struct kioctx *ctx, unsigned int nr_events)
 		return -EINTR;
 	}
 
+<<<<<<< HEAD
 	ctx->mmap_base = do_mmap(ctx->aio_ring_file, 0, ctx->mmap_size,
 				 PROT_READ | PROT_WRITE,
 				 MAP_SHARED, 0, &unused, NULL);
+=======
+	ctx->mmap_base = do_mmap_pgoff(ctx->aio_ring_file, 0, ctx->mmap_size,
+				       PROT_READ | PROT_WRITE,
+				       MAP_SHARED, 0, &unused, NULL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	up_write(&mm->mmap_sem);
 	if (IS_ERR((void *)ctx->mmap_base)) {
 		ctx->mmap_size = 0;
@@ -594,12 +612,22 @@ static int kiocb_cancel(struct aio_kiocb *kiocb)
 /*
  * free_ioctx() should be RCU delayed to synchronize against the RCU
  * protected lookup_ioctx() and also needs process context to call
+<<<<<<< HEAD
  * aio_free_ring().  Use rcu_work.
  */
 static void free_ioctx(struct work_struct *work)
 {
 	struct kioctx *ctx = container_of(to_rcu_work(work), struct kioctx,
 					  free_rwork);
+=======
+ * aio_free_ring(), so the double bouncing through kioctx->free_rcu and
+ * ->free_work.
+ */
+static void free_ioctx(struct work_struct *work)
+{
+	struct kioctx *ctx = container_of(work, struct kioctx, free_work);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	pr_debug("freeing %p\n", ctx);
 
 	aio_free_ring(ctx);
@@ -609,6 +637,17 @@ static void free_ioctx(struct work_struct *work)
 	kmem_cache_free(kioctx_cachep, ctx);
 }
 
+<<<<<<< HEAD
+=======
+static void free_ioctx_rcufn(struct rcu_head *head)
+{
+	struct kioctx *ctx = container_of(head, struct kioctx, free_rcu);
+
+	INIT_WORK(&ctx->free_work, free_ioctx);
+	schedule_work(&ctx->free_work);
+}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static void free_ioctx_reqs(struct percpu_ref *ref)
 {
 	struct kioctx *ctx = container_of(ref, struct kioctx, reqs);
@@ -618,8 +657,12 @@ static void free_ioctx_reqs(struct percpu_ref *ref)
 		complete(&ctx->rq_wait->comp);
 
 	/* Synchronize against RCU protected table->table[] dereferences */
+<<<<<<< HEAD
 	INIT_RCU_WORK(&ctx->free_rwork, free_ioctx);
 	queue_rcu_work(system_wq, &ctx->free_rwork);
+=======
+	call_rcu(&ctx->free_rcu, free_ioctx_rcufn);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /*
@@ -1653,6 +1696,10 @@ static long do_io_submit(aio_context_t ctx_id, long nr,
 	struct kioctx *ctx;
 	long ret = 0;
 	int i = 0;
+<<<<<<< HEAD
+=======
+	struct blk_plug plug;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (unlikely(nr < 0))
 		return -EINVAL;
@@ -1669,6 +1716,11 @@ static long do_io_submit(aio_context_t ctx_id, long nr,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+=======
+	blk_start_plug(&plug);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/*
 	 * AKPM: should this return a partial result if some of the IOs were
 	 * successfully submitted?
@@ -1691,6 +1743,10 @@ static long do_io_submit(aio_context_t ctx_id, long nr,
 		if (ret)
 			break;
 	}
+<<<<<<< HEAD
+=======
+	blk_finish_plug(&plug);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	percpu_ref_put(&ctx->users);
 	return i ? i : ret;

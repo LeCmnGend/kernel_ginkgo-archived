@@ -99,6 +99,7 @@ static int change_memblock_state(struct memory_block *mem, void *arg)
 	return 0;
 }
 
+<<<<<<< HEAD
 static void memtrace_clear_range(unsigned long start_pfn,
 				 unsigned long nr_pages)
 {
@@ -116,6 +117,8 @@ static void memtrace_clear_range(unsigned long start_pfn,
 	}
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /* called with device_hotplug_lock held */
 static bool memtrace_offline_pages(u32 nid, u64 start_pfn, u64 nr_pages)
 {
@@ -161,11 +164,14 @@ static u64 memtrace_alloc_node(u32 nid, u64 size)
 	for (base_pfn = end_pfn; base_pfn > start_pfn; base_pfn -= nr_pages) {
 		if (memtrace_offline_pages(nid, base_pfn, nr_pages) == true) {
 			/*
+<<<<<<< HEAD
 			 * Clear the range while we still have a linear
 			 * mapping.
 			 */
 			memtrace_clear_range(base_pfn, nr_pages);
 			/*
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			 * Remove memory in memory block size chunks so that
 			 * iomem resources are always split to the same size and
 			 * we never try to remove memory that spans two iomem

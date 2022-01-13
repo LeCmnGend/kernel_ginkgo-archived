@@ -2780,7 +2780,10 @@ process_dynamic_array_len(struct event_format *event, struct print_arg *arg,
 	if (read_expected(EVENT_DELIM, ")") < 0)
 		goto out_err;
 
+<<<<<<< HEAD
 	free_token(token);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	type = read_token(&token);
 	*tok = token;
 

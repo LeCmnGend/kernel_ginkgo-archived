@@ -250,6 +250,13 @@ static int auxtrace_queues__add_buffer(struct auxtrace_queues *queues,
 		queue->set = true;
 		queue->tid = buffer->tid;
 		queue->cpu = buffer->cpu;
+<<<<<<< HEAD
+=======
+	} else if (buffer->cpu != queue->cpu || buffer->tid != queue->tid) {
+		pr_err("auxtrace queue conflict: cpu %d, tid %d vs cpu %d, tid %d\n",
+		       queue->cpu, queue->tid, buffer->cpu, buffer->tid);
+		return -EINVAL;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	buffer->buffer_nr = queues->next_buffer_nr++;

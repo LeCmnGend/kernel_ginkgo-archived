@@ -548,7 +548,10 @@ struct cache_set {
 	 */
 	wait_queue_head_t	btree_cache_wait;
 	struct task_struct	*btree_cache_alloc_lock;
+<<<<<<< HEAD
 	spinlock_t		btree_cannibalize_lock;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/*
 	 * When we free a btree node, we increment the gen of the bucket the

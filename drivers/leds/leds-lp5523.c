@@ -320,7 +320,11 @@ static int lp5523_init_program_engine(struct lp55xx_chip *chip)
 	usleep_range(3000, 6000);
 	ret = lp55xx_read(chip, LP5523_REG_STATUS, &status);
 	if (ret)
+<<<<<<< HEAD
 		goto out;
+=======
+		return ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	status &= LP5523_ENG_STATUS_MASK;
 
 	if (status != LP5523_ENG_STATUS_MASK) {

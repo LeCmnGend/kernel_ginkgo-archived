@@ -114,22 +114,31 @@ EXPORT_SYMBOL_GPL(xenbus_strstate);
  */
 int xenbus_watch_path(struct xenbus_device *dev, const char *path,
 		      struct xenbus_watch *watch,
+<<<<<<< HEAD
 		      bool (*will_handle)(struct xenbus_watch *,
 					  const char *, const char *),
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		      void (*callback)(struct xenbus_watch *,
 				       const char *, const char *))
 {
 	int err;
 
 	watch->node = path;
+<<<<<<< HEAD
 	watch->will_handle = will_handle;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	watch->callback = callback;
 
 	err = register_xenbus_watch(watch);
 
 	if (err) {
 		watch->node = NULL;
+<<<<<<< HEAD
 		watch->will_handle = NULL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		watch->callback = NULL;
 		xenbus_dev_fatal(dev, err, "adding watch on %s", path);
 	}
@@ -156,8 +165,11 @@ EXPORT_SYMBOL_GPL(xenbus_watch_path);
  */
 int xenbus_watch_pathfmt(struct xenbus_device *dev,
 			 struct xenbus_watch *watch,
+<<<<<<< HEAD
 			 bool (*will_handle)(struct xenbus_watch *,
 					const char *, const char *),
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			 void (*callback)(struct xenbus_watch *,
 					  const char *, const char *),
 			 const char *pathfmt, ...)
@@ -174,7 +186,11 @@ int xenbus_watch_pathfmt(struct xenbus_device *dev,
 		xenbus_dev_fatal(dev, -ENOMEM, "allocating path for watch");
 		return -ENOMEM;
 	}
+<<<<<<< HEAD
 	err = xenbus_watch_path(dev, path, watch, will_handle, callback);
+=======
+	err = xenbus_watch_path(dev, path, watch, callback);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (err)
 		kfree(path);
@@ -371,6 +387,7 @@ int xenbus_grant_ring(struct xenbus_device *dev, void *vaddr,
 	int i, j;
 
 	for (i = 0; i < nr_pages; i++) {
+<<<<<<< HEAD
 		unsigned long gfn;
 
 		if (is_vmalloc_addr(vaddr))
@@ -379,6 +396,10 @@ int xenbus_grant_ring(struct xenbus_device *dev, void *vaddr,
 			gfn = virt_to_gfn(vaddr);
 
 		err = gnttab_grant_foreign_access(dev->otherend_id, gfn, 0);
+=======
+		err = gnttab_grant_foreign_access(dev->otherend_id,
+						  virt_to_gfn(vaddr), 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (err < 0) {
 			xenbus_dev_fatal(dev, err,
 					 "granting access to ring page");

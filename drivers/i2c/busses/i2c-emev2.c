@@ -400,10 +400,14 @@ static int em_i2c_probe(struct platform_device *pdev)
 
 	em_i2c_reset(&priv->adap);
 
+<<<<<<< HEAD
 	ret = platform_get_irq(pdev, 0);
 	if (ret < 0)
 		goto err_clk;
 	priv->irq = ret;
+=======
+	priv->irq = platform_get_irq(pdev, 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ret = devm_request_irq(&pdev->dev, priv->irq, em_i2c_irq_handler, 0,
 				"em_i2c", priv);
 	if (ret)

@@ -1582,7 +1582,11 @@ static int atmel_spi_probe(struct platform_device *pdev)
 		if (ret == 0) {
 			as->use_dma = true;
 		} else if (ret == -EPROBE_DEFER) {
+<<<<<<< HEAD
 			goto out_unmap_regs;
+=======
+			return ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 	} else if (as->caps.has_pdc_support) {
 		as->use_pdc = true;

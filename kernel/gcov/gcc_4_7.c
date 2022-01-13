@@ -19,9 +19,13 @@
 #include <linux/vmalloc.h>
 #include "gcov.h"
 
+<<<<<<< HEAD
 #if (__GNUC__ >= 10)
 #define GCOV_COUNTERS			8
 #elif (__GNUC__ >= 7)
+=======
+#if (__GNUC__ >= 7)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define GCOV_COUNTERS			9
 #elif (__GNUC__ > 5) || (__GNUC__ == 5 && __GNUC_MINOR__ >= 1)
 #define GCOV_COUNTERS			10

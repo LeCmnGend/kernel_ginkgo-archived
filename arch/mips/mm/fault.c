@@ -142,7 +142,11 @@ good_area:
 				goto bad_area;
 			}
 		} else {
+<<<<<<< HEAD
 			if (!vma_is_accessible(vma))
+=======
+			if (!(vma->vm_flags & (VM_READ | VM_WRITE | VM_EXEC)))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				goto bad_area;
 		}
 	}

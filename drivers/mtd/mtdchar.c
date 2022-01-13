@@ -373,6 +373,12 @@ static int mtdchar_writeoob(struct file *file, struct mtd_info *mtd,
 	uint32_t retlen;
 	int ret = 0;
 
+<<<<<<< HEAD
+=======
+	if (!(file->f_mode & FMODE_WRITE))
+		return -EPERM;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (length > 4096)
 		return -EINVAL;
 
@@ -679,6 +685,7 @@ static int mtdchar_ioctl(struct file *file, u_int cmd, u_long arg)
 			return -EFAULT;
 	}
 
+<<<<<<< HEAD
 	/*
 	 * Check the file mode to require "dangerous" commands to have write
 	 * permissions.
@@ -721,6 +728,8 @@ static int mtdchar_ioctl(struct file *file, u_int cmd, u_long arg)
 		return -ENOTTY;
 	}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	switch (cmd) {
 	case MEMGETREGIONCOUNT:
 		if (copy_to_user(argp, &(mtd->numeraseregions), sizeof(int)))
@@ -768,6 +777,12 @@ static int mtdchar_ioctl(struct file *file, u_int cmd, u_long arg)
 	{
 		struct erase_info *erase;
 
+<<<<<<< HEAD
+=======
+		if(!(file->f_mode & FMODE_WRITE))
+			return -EPERM;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		erase=kzalloc(sizeof(struct erase_info),GFP_KERNEL);
 		if (!erase)
 			ret = -ENOMEM;
@@ -1091,6 +1106,12 @@ static int mtdchar_ioctl(struct file *file, u_int cmd, u_long arg)
 		ret = 0;
 		break;
 	}
+<<<<<<< HEAD
+=======
+
+	default:
+		ret = -ENOTTY;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	return ret;
@@ -1134,11 +1155,14 @@ static long mtdchar_compat_ioctl(struct file *file, unsigned int cmd,
 		struct mtd_oob_buf32 buf;
 		struct mtd_oob_buf32 __user *buf_user = argp;
 
+<<<<<<< HEAD
 		if (!(file->f_mode & FMODE_WRITE)) {
 			ret = -EPERM;
 			break;
 		}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (copy_from_user(&buf, argp, sizeof(buf)))
 			ret = -EFAULT;
 		else

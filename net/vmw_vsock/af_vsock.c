@@ -635,9 +635,14 @@ struct sock *__vsock_create(struct net *net,
 		vsk->trusted = psk->trusted;
 		vsk->owner = get_cred(psk->owner);
 		vsk->connect_timeout = psk->connect_timeout;
+<<<<<<< HEAD
 		security_sk_clone(parent, sk);
 	} else {
 		vsk->trusted = ns_capable_noaudit(&init_user_ns, CAP_NET_ADMIN);
+=======
+	} else {
+		vsk->trusted = capable(CAP_NET_ADMIN);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		vsk->owner = get_current_cred();
 		vsk->connect_timeout = VSOCK_DEFAULT_CONNECT_TIMEOUT;
 	}
@@ -824,12 +829,19 @@ static int vsock_shutdown(struct socket *sock, int mode)
 	 */
 
 	sk = sock->sk;
+<<<<<<< HEAD
 
 	lock_sock(sk);
 	if (sock->state == SS_UNCONNECTED) {
 		err = -ENOTCONN;
 		if (sk->sk_type == SOCK_STREAM)
 			goto out;
+=======
+	if (sock->state == SS_UNCONNECTED) {
+		err = -ENOTCONN;
+		if (sk->sk_type == SOCK_STREAM)
+			return err;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else {
 		sock->state = SS_DISCONNECTING;
 		err = 0;
@@ -838,8 +850,15 @@ static int vsock_shutdown(struct socket *sock, int mode)
 	/* Receive and send shutdowns are treated alike. */
 	mode = mode & (RCV_SHUTDOWN | SEND_SHUTDOWN);
 	if (mode) {
+<<<<<<< HEAD
 		sk->sk_shutdown |= mode;
 		sk->sk_state_change(sk);
+=======
+		lock_sock(sk);
+		sk->sk_shutdown |= mode;
+		sk->sk_state_change(sk);
+		release_sock(sk);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		if (sk->sk_type == SOCK_STREAM) {
 			sock_reset_flag(sk, SOCK_DONE);
@@ -847,8 +866,11 @@ static int vsock_shutdown(struct socket *sock, int mode)
 		}
 	}
 
+<<<<<<< HEAD
 out:
 	release_sock(sk);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return err;
 }
 
@@ -1117,6 +1139,10 @@ static void vsock_connect_timeout(struct work_struct *work)
 {
 	struct sock *sk;
 	struct vsock_sock *vsk;
+<<<<<<< HEAD
+=======
+	int cancel = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	vsk = container_of(work, struct vsock_sock, connect_work.work);
 	sk = sk_vsock(vsk);
@@ -1127,9 +1153,17 @@ static void vsock_connect_timeout(struct work_struct *work)
 		sk->sk_state = TCP_CLOSE;
 		sk->sk_err = ETIMEDOUT;
 		sk->sk_error_report(sk);
+<<<<<<< HEAD
 		vsock_transport_cancel_pkt(vsk);
 	}
 	release_sock(sk);
+=======
+		cancel = 1;
+	}
+	release_sock(sk);
+	if (cancel)
+		vsock_transport_cancel_pkt(vsk);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	sock_put(sk);
 }
@@ -1232,7 +1266,11 @@ static int vsock_stream_connect(struct socket *sock, struct sockaddr *addr,
 
 		if (signal_pending(current)) {
 			err = sock_intr_errno(timeout);
+<<<<<<< HEAD
 			sk->sk_state = sk->sk_state == TCP_ESTABLISHED ? TCP_CLOSING : TCP_CLOSE;
+=======
+			sk->sk_state = TCP_CLOSE;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			sock->state = SS_UNCONNECTED;
 			vsock_transport_cancel_pkt(vsk);
 			goto out_wait;

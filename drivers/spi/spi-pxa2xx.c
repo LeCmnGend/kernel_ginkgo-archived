@@ -1660,7 +1660,11 @@ static int pxa2xx_spi_probe(struct platform_device *pdev)
 		return -ENODEV;
 	}
 
+<<<<<<< HEAD
 	master = devm_spi_alloc_master(dev, sizeof(*drv_data));
+=======
+	master = spi_alloc_master(dev, sizeof(struct driver_data));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!master) {
 		dev_err(&pdev->dev, "cannot alloc spi_master\n");
 		pxa_ssp_free(ssp);
@@ -1841,6 +1845,10 @@ out_error_clock_enabled:
 	free_irq(ssp->irq, drv_data);
 
 out_error_master_alloc:
+<<<<<<< HEAD
+=======
+	spi_master_put(master);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	pxa_ssp_free(ssp);
 	return status;
 }

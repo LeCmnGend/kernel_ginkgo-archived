@@ -48,7 +48,11 @@ static void ion_page_pool_free_pages(struct ion_page_pool *pool,
 
 static int ion_page_pool_add(struct ion_page_pool *pool, struct page *page)
 {
+<<<<<<< HEAD
 	spin_lock(&pool->lock);
+=======
+	mutex_lock(&pool->mutex);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (PageHighMem(page)) {
 		list_add_tail(&page->lru, &pool->high_items);
 		pool->high_count++;
@@ -60,7 +64,11 @@ static int ion_page_pool_add(struct ion_page_pool *pool, struct page *page)
 	nr_total_pages += 1 << pool->order;
 	mod_node_page_state(page_pgdat(page), NR_KERNEL_MISC_RECLAIMABLE,
 							1 << pool->order);
+<<<<<<< HEAD
 	spin_unlock(&pool->lock);
+=======
+	mutex_unlock(&pool->mutex);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 }
 
@@ -94,12 +102,20 @@ struct page *ion_page_pool_alloc(struct ion_page_pool *pool, bool *from_pool)
 	if (fatal_signal_pending(current))
 		return ERR_PTR(-EINTR);
 
+<<<<<<< HEAD
 	if (*from_pool && spin_trylock(&pool->lock)) {
+=======
+	if (*from_pool && mutex_trylock(&pool->mutex)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (pool->high_count)
 			page = ion_page_pool_remove(pool, true);
 		else if (pool->low_count)
 			page = ion_page_pool_remove(pool, false);
+<<<<<<< HEAD
 		spin_unlock(&pool->lock);
+=======
+		mutex_unlock(&pool->mutex);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	if (!page) {
 		page = ion_page_pool_alloc_pages(pool);
@@ -121,12 +137,20 @@ struct page *ion_page_pool_alloc_pool_only(struct ion_page_pool *pool)
 	if (!pool)
 		return ERR_PTR(-EINVAL);
 
+<<<<<<< HEAD
 	if (spin_trylock(&pool->lock)) {
+=======
+	if (mutex_trylock(&pool->mutex)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (pool->high_count)
 			page = ion_page_pool_remove(pool, true);
 		else if (pool->low_count)
 			page = ion_page_pool_remove(pool, false);
+<<<<<<< HEAD
 		spin_unlock(&pool->lock);
+=======
+		mutex_unlock(&pool->mutex);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	if (!page)
@@ -185,16 +209,27 @@ int ion_page_pool_shrink(struct ion_page_pool *pool, gfp_t gfp_mask,
 	while (freed < nr_to_scan) {
 		struct page *page;
 
+<<<<<<< HEAD
 		spin_lock(&pool->lock);
+=======
+		mutex_lock(&pool->mutex);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (pool->low_count) {
 			page = ion_page_pool_remove(pool, false);
 		} else if (high && pool->high_count) {
 			page = ion_page_pool_remove(pool, true);
 		} else {
+<<<<<<< HEAD
 			spin_unlock(&pool->lock);
 			break;
 		}
 		spin_unlock(&pool->lock);
+=======
+			mutex_unlock(&pool->mutex);
+			break;
+		}
+		mutex_unlock(&pool->mutex);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		ion_page_pool_free_pages(pool, page);
 		freed += (1 << pool->order);
 	}
@@ -215,7 +250,11 @@ struct ion_page_pool *ion_page_pool_create(gfp_t gfp_mask, unsigned int order,
 	INIT_LIST_HEAD(&pool->high_items);
 	pool->gfp_mask = gfp_mask;
 	pool->order = order;
+<<<<<<< HEAD
 	spin_lock_init(&pool->lock);
+=======
+	mutex_init(&pool->mutex);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	plist_node_init(&pool->list, order);
 	if (cached)
 		pool->cached = true;

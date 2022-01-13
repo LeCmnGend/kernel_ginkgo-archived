@@ -515,6 +515,10 @@
 			clocks = <&clockgen 4 3>;
 			clock-names = "dspi";
 			spi-num-chipselects = <5>;
+<<<<<<< HEAD
+=======
+			bus-num = <0>;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		};
 
 		esdhc: esdhc@2140000 {

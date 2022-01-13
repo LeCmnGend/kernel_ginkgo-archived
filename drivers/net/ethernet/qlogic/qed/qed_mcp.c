@@ -497,6 +497,7 @@ _qed_mcp_cmd_and_union(struct qed_hwfn *p_hwfn,
 
 		spin_lock_bh(&p_hwfn->mcp_info->cmd_lock);
 
+<<<<<<< HEAD
 		if (!qed_mcp_has_pending_cmd(p_hwfn)) {
 			spin_unlock_bh(&p_hwfn->mcp_info->cmd_lock);
 			break;
@@ -509,6 +510,16 @@ _qed_mcp_cmd_and_union(struct qed_hwfn *p_hwfn,
 		} else if (rc != -EAGAIN) {
 			goto err;
 		}
+=======
+		if (!qed_mcp_has_pending_cmd(p_hwfn))
+			break;
+
+		rc = qed_mcp_update_pending_cmd(p_hwfn, p_ptt);
+		if (!rc)
+			break;
+		else if (rc != -EAGAIN)
+			goto err;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		spin_unlock_bh(&p_hwfn->mcp_info->cmd_lock);
 
@@ -525,8 +536,11 @@ _qed_mcp_cmd_and_union(struct qed_hwfn *p_hwfn,
 		return -EAGAIN;
 	}
 
+<<<<<<< HEAD
 	spin_lock_bh(&p_hwfn->mcp_info->cmd_lock);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* Send the mailbox command */
 	qed_mcp_reread_offsets(p_hwfn, p_ptt);
 	seq_num = ++p_hwfn->mcp_info->drv_mb_seq;
@@ -553,6 +567,7 @@ _qed_mcp_cmd_and_union(struct qed_hwfn *p_hwfn,
 
 		spin_lock_bh(&p_hwfn->mcp_info->cmd_lock);
 
+<<<<<<< HEAD
 		if (p_cmd_elem->b_is_completed) {
 			spin_unlock_bh(&p_hwfn->mcp_info->cmd_lock);
 			break;
@@ -565,6 +580,16 @@ _qed_mcp_cmd_and_union(struct qed_hwfn *p_hwfn,
 		} else if (rc != -EAGAIN) {
 			goto err;
 		}
+=======
+		if (p_cmd_elem->b_is_completed)
+			break;
+
+		rc = qed_mcp_update_pending_cmd(p_hwfn, p_ptt);
+		if (!rc)
+			break;
+		else if (rc != -EAGAIN)
+			goto err;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		spin_unlock_bh(&p_hwfn->mcp_info->cmd_lock);
 	} while (++cnt < max_retries);
@@ -585,7 +610,10 @@ _qed_mcp_cmd_and_union(struct qed_hwfn *p_hwfn,
 		return -EAGAIN;
 	}
 
+<<<<<<< HEAD
 	spin_lock_bh(&p_hwfn->mcp_info->cmd_lock);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	qed_mcp_cmd_del_elem(p_hwfn, p_cmd_elem);
 	spin_unlock_bh(&p_hwfn->mcp_info->cmd_lock);
 

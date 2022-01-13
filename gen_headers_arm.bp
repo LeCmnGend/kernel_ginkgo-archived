@@ -396,7 +396,10 @@ gen_headers_out_arm = [
     "linux/ncp_fs.h",
     "linux/ncp_mount.h",
     "linux/ncp_no.h",
+<<<<<<< HEAD
     "linux/ncsi.h",
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
     "linux/ndctl.h",
     "linux/neighbour.h",
     "linux/net.h",
@@ -528,6 +531,10 @@ gen_headers_out_arm = [
     "linux/shm.h",
     "linux/signal.h",
     "linux/signalfd.h",
+<<<<<<< HEAD
+=======
+    "linux/slatecom_interface.h",
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
     "linux/smc.h",
     "linux/smc_diag.h",
     "linux/smcinvoke.h",

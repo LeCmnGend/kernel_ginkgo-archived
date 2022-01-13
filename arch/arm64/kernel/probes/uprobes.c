@@ -41,7 +41,11 @@ int arch_uprobe_analyze_insn(struct arch_uprobe *auprobe, struct mm_struct *mm,
 
 	/* TODO: Currently we do not support AARCH32 instruction probing */
 	if (mm->context.flags & MMCF_AARCH32)
+<<<<<<< HEAD
 		return -EOPNOTSUPP;
+=======
+		return -ENOTSUPP;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	else if (!IS_ALIGNED(addr, AARCH64_INSN_SIZE))
 		return -EINVAL;
 
@@ -195,7 +199,12 @@ static int uprobe_single_step_handler(struct pt_regs *regs,
 
 /* uprobe breakpoint handler hook */
 static struct break_hook uprobes_break_hook = {
+<<<<<<< HEAD
 	.imm = BRK64_ESR_UPROBES,
+=======
+	.esr_mask = BRK64_ESR_MASK,
+	.esr_val = BRK64_ESR_UPROBES,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.fn = uprobe_breakpoint_handler,
 };
 
@@ -206,8 +215,13 @@ static struct step_hook uprobes_step_hook = {
 
 static int __init arch_init_uprobes(void)
 {
+<<<<<<< HEAD
 	register_user_break_hook(&uprobes_break_hook);
 	register_user_step_hook(&uprobes_step_hook);
+=======
+	register_break_hook(&uprobes_break_hook);
+	register_step_hook(&uprobes_step_hook);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return 0;
 }

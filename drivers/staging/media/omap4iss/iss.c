@@ -1244,10 +1244,15 @@ static int iss_probe(struct platform_device *pdev)
 	if (ret < 0)
 		goto error;
 
+<<<<<<< HEAD
 	if (!omap4iss_get(iss)) {
 		ret = -EINVAL;
 		goto error;
 	}
+=======
+	if (!omap4iss_get(iss))
+		goto error;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	ret = iss_reset(iss);
 	if (ret < 0)

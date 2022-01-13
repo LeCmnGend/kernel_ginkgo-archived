@@ -588,6 +588,10 @@ static struct clk_rcg2 cam_cc_cci_0_clk_src = {
 	.hid_width = 5,
 	.parent_map = cam_cc_parent_map_0,
 	.freq_tbl = ftbl_cam_cc_cci_0_clk_src,
+<<<<<<< HEAD
+=======
+	.enable_safe_config = true,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.clkr.hw.init = &(struct clk_init_data){
 		.name = "cam_cc_cci_0_clk_src",
 		.parent_names = cam_cc_parent_names_0,
@@ -608,6 +612,10 @@ static struct clk_rcg2 cam_cc_cci_1_clk_src = {
 	.hid_width = 5,
 	.parent_map = cam_cc_parent_map_0,
 	.freq_tbl = ftbl_cam_cc_cci_0_clk_src,
+<<<<<<< HEAD
+=======
+	.enable_safe_config = true,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.clkr.hw.init = &(struct clk_init_data){
 		.name = "cam_cc_cci_1_clk_src",
 		.parent_names = cam_cc_parent_names_0,
@@ -634,6 +642,10 @@ static struct clk_rcg2 cam_cc_cphy_rx_clk_src = {
 	.hid_width = 5,
 	.parent_map = cam_cc_parent_map_0,
 	.freq_tbl = ftbl_cam_cc_cphy_rx_clk_src,
+<<<<<<< HEAD
+=======
+	.enable_safe_config = true,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.clkr.hw.init = &(struct clk_init_data){
 		.name = "cam_cc_cphy_rx_clk_src",
 		.parent_names = cam_cc_parent_names_0,
@@ -660,6 +672,10 @@ static struct clk_rcg2 cam_cc_csi0phytimer_clk_src = {
 	.hid_width = 5,
 	.parent_map = cam_cc_parent_map_0,
 	.freq_tbl = ftbl_cam_cc_csi0phytimer_clk_src,
+<<<<<<< HEAD
+=======
+	.enable_safe_config = true,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.clkr.hw.init = &(struct clk_init_data){
 		.name = "cam_cc_csi0phytimer_clk_src",
 		.parent_names = cam_cc_parent_names_0,
@@ -680,6 +696,10 @@ static struct clk_rcg2 cam_cc_csi1phytimer_clk_src = {
 	.hid_width = 5,
 	.parent_map = cam_cc_parent_map_0,
 	.freq_tbl = ftbl_cam_cc_csi0phytimer_clk_src,
+<<<<<<< HEAD
+=======
+	.enable_safe_config = true,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.clkr.hw.init = &(struct clk_init_data){
 		.name = "cam_cc_csi1phytimer_clk_src",
 		.parent_names = cam_cc_parent_names_0,
@@ -700,6 +720,10 @@ static struct clk_rcg2 cam_cc_csi2phytimer_clk_src = {
 	.hid_width = 5,
 	.parent_map = cam_cc_parent_map_0,
 	.freq_tbl = ftbl_cam_cc_csi0phytimer_clk_src,
+<<<<<<< HEAD
+=======
+	.enable_safe_config = true,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.clkr.hw.init = &(struct clk_init_data){
 		.name = "cam_cc_csi2phytimer_clk_src",
 		.parent_names = cam_cc_parent_names_0,
@@ -720,6 +744,10 @@ static struct clk_rcg2 cam_cc_csi3phytimer_clk_src = {
 	.hid_width = 5,
 	.parent_map = cam_cc_parent_map_0,
 	.freq_tbl = ftbl_cam_cc_csi0phytimer_clk_src,
+<<<<<<< HEAD
+=======
+	.enable_safe_config = true,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.clkr.hw.init = &(struct clk_init_data){
 		.name = "cam_cc_csi3phytimer_clk_src",
 		.parent_names = cam_cc_parent_names_0,
@@ -750,6 +778,10 @@ static struct clk_rcg2 cam_cc_fast_ahb_clk_src = {
 	.hid_width = 5,
 	.parent_map = cam_cc_parent_map_0,
 	.freq_tbl = ftbl_cam_cc_fast_ahb_clk_src,
+<<<<<<< HEAD
+=======
+	.enable_safe_config = true,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.clkr.hw.init = &(struct clk_init_data){
 		.name = "cam_cc_fast_ahb_clk_src",
 		.parent_names = cam_cc_parent_names_0,
@@ -983,6 +1015,10 @@ static struct clk_rcg2 cam_cc_ife_lite_0_clk_src = {
 	.hid_width = 5,
 	.parent_map = cam_cc_parent_map_0,
 	.freq_tbl = ftbl_cam_cc_ife_lite_0_clk_src,
+<<<<<<< HEAD
+=======
+	.enable_safe_config = true,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.clkr.hw.init = &(struct clk_init_data){
 		.name = "cam_cc_ife_lite_0_clk_src",
 		.parent_names = cam_cc_parent_names_0,
@@ -1029,6 +1065,10 @@ static struct clk_rcg2 cam_cc_ife_lite_1_clk_src = {
 	.hid_width = 5,
 	.parent_map = cam_cc_parent_map_0,
 	.freq_tbl = ftbl_cam_cc_ife_lite_0_clk_src,
+<<<<<<< HEAD
+=======
+	.enable_safe_config = true,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.clkr.hw.init = &(struct clk_init_data){
 		.name = "cam_cc_ife_lite_1_clk_src",
 		.parent_names = cam_cc_parent_names_0,
@@ -1183,6 +1223,10 @@ static struct clk_rcg2 cam_cc_mclk0_clk_src = {
 	.hid_width = 5,
 	.parent_map = cam_cc_parent_map_1,
 	.freq_tbl = ftbl_cam_cc_mclk0_clk_src,
+<<<<<<< HEAD
+=======
+	.enable_safe_config = true,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.clkr.hw.init = &(struct clk_init_data){
 		.name = "cam_cc_mclk0_clk_src",
 		.parent_names = cam_cc_parent_names_1,
@@ -1203,6 +1247,10 @@ static struct clk_rcg2 cam_cc_mclk1_clk_src = {
 	.hid_width = 5,
 	.parent_map = cam_cc_parent_map_1,
 	.freq_tbl = ftbl_cam_cc_mclk0_clk_src,
+<<<<<<< HEAD
+=======
+	.enable_safe_config = true,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.clkr.hw.init = &(struct clk_init_data){
 		.name = "cam_cc_mclk1_clk_src",
 		.parent_names = cam_cc_parent_names_1,
@@ -1223,6 +1271,10 @@ static struct clk_rcg2 cam_cc_mclk2_clk_src = {
 	.hid_width = 5,
 	.parent_map = cam_cc_parent_map_1,
 	.freq_tbl = ftbl_cam_cc_mclk0_clk_src,
+<<<<<<< HEAD
+=======
+	.enable_safe_config = true,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.clkr.hw.init = &(struct clk_init_data){
 		.name = "cam_cc_mclk2_clk_src",
 		.parent_names = cam_cc_parent_names_1,
@@ -1243,6 +1295,10 @@ static struct clk_rcg2 cam_cc_mclk3_clk_src = {
 	.hid_width = 5,
 	.parent_map = cam_cc_parent_map_1,
 	.freq_tbl = ftbl_cam_cc_mclk0_clk_src,
+<<<<<<< HEAD
+=======
+	.enable_safe_config = true,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.clkr.hw.init = &(struct clk_init_data){
 		.name = "cam_cc_mclk3_clk_src",
 		.parent_names = cam_cc_parent_names_1,
@@ -1271,6 +1327,10 @@ static struct clk_rcg2 cam_cc_qdss_debug_clk_src = {
 	.hid_width = 5,
 	.parent_map = cam_cc_parent_map_0,
 	.freq_tbl = ftbl_cam_cc_qdss_debug_clk_src,
+<<<<<<< HEAD
+=======
+	.enable_safe_config = true,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.clkr.hw.init = &(struct clk_init_data){
 		.name = "cam_cc_qdss_debug_clk_src",
 		.parent_names = cam_cc_parent_names_0,

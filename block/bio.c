@@ -315,7 +315,11 @@ static struct bio *__bio_chain_endio(struct bio *bio)
 {
 	struct bio *parent = bio->bi_private;
 
+<<<<<<< HEAD
 	if (bio->bi_status && !parent->bi_status)
+=======
+	if (!parent->bi_status)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		parent->bi_status = bio->bi_status;
 	bio_put(bio);
 	return parent;
@@ -1021,6 +1025,7 @@ int submit_bio_wait(struct bio *bio)
 }
 EXPORT_SYMBOL(submit_bio_wait);
 
+<<<<<<< HEAD
 static void submit_bio_nowait_endio(struct bio *bio)
 {
 	bio_put(bio);
@@ -1040,6 +1045,8 @@ void submit_bio_nowait(struct bio *bio)
 }
 EXPORT_SYMBOL(submit_bio_nowait);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /**
  * bio_advance - increment/complete a bio by some number of bytes
  * @bio:	bio to advance

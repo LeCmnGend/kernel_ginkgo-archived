@@ -213,7 +213,11 @@ int arm_pmu_device_probe(struct platform_device *pdev,
 
 	ret = armpmu_register(pmu);
 	if (ret)
+<<<<<<< HEAD
 		goto out_free_irqs;
+=======
+		goto out_free;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return 0;
 

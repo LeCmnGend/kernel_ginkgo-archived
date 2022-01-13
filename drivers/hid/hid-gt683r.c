@@ -64,7 +64,10 @@ static const struct hid_device_id gt683r_led_id[] = {
 	{ HID_USB_DEVICE(USB_VENDOR_ID_MSI, USB_DEVICE_ID_MSI_GT683R_LED_PANEL) },
 	{ }
 };
+<<<<<<< HEAD
 MODULE_DEVICE_TABLE(hid, gt683r_led_id);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static void gt683r_brightness_set(struct led_classdev *led_cdev,
 				enum led_brightness brightness)

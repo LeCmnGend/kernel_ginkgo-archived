@@ -407,11 +407,15 @@ struct sk_buff *__netdev_alloc_skb(struct net_device *dev, unsigned int len,
 	if (IS_ENABLED(CONFIG_FORCE_ALLOC_FROM_DMA_ZONE))
 		gfp_mask |= GFP_DMA;
 
+<<<<<<< HEAD
 	/* If requested length is either too small or too big,
 	 * we use kmalloc() for skb->head allocation.
 	 */
 	if (len <= SKB_WITH_OVERHEAD(1024) ||
 	    len > SKB_WITH_OVERHEAD(PAGE_SIZE) ||
+=======
+	if ((len > SKB_WITH_OVERHEAD(PAGE_SIZE)) ||
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	    (gfp_mask & (__GFP_DIRECT_RECLAIM | GFP_DMA))) {
 		skb = __alloc_skb(len, gfp_mask, SKB_ALLOC_RX, NUMA_NO_NODE);
 		if (!skb)
@@ -472,17 +476,25 @@ EXPORT_SYMBOL(__netdev_alloc_skb);
 struct sk_buff *__napi_alloc_skb(struct napi_struct *napi, unsigned int len,
 				 gfp_t gfp_mask)
 {
+<<<<<<< HEAD
 	struct napi_alloc_cache *nc;
+=======
+	struct napi_alloc_cache *nc = this_cpu_ptr(&napi_alloc_cache);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct sk_buff *skb;
 	void *data;
 
 	len += NET_SKB_PAD + NET_IP_ALIGN;
 
+<<<<<<< HEAD
 	/* If requested length is either too small or too big,
 	 * we use kmalloc() for skb->head allocation.
 	 */
 	if (len <= SKB_WITH_OVERHEAD(1024) ||
 	    len > SKB_WITH_OVERHEAD(PAGE_SIZE) ||
+=======
+	if ((len > SKB_WITH_OVERHEAD(PAGE_SIZE)) ||
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	    (gfp_mask & (__GFP_DIRECT_RECLAIM | GFP_DMA))) {
 		skb = __alloc_skb(len, gfp_mask, SKB_ALLOC_RX, NUMA_NO_NODE);
 		if (!skb)
@@ -490,7 +502,10 @@ struct sk_buff *__napi_alloc_skb(struct napi_struct *napi, unsigned int len,
 		goto skb_success;
 	}
 
+<<<<<<< HEAD
 	nc = this_cpu_ptr(&napi_alloc_cache);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	len += SKB_DATA_ALIGN(sizeof(struct skb_shared_info));
 	len = SKB_DATA_ALIGN(len);
 
@@ -1872,12 +1887,15 @@ int pskb_trim_rcsum_slow(struct sk_buff *skb, unsigned int len)
 		skb->csum = csum_block_sub(skb->csum,
 					   skb_checksum(skb, len, delta, 0),
 					   len);
+<<<<<<< HEAD
 	} else if (skb->ip_summed == CHECKSUM_PARTIAL) {
 		int hdlen = (len > skb_headlen(skb)) ? skb_headlen(skb) : len;
 		int offset = skb_checksum_start_offset(skb) + skb->csum_offset;
 
 		if (offset + sizeof(__sum16) > hdlen)
 			return -EINVAL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	return __pskb_trim(skb, len);
 }
@@ -2715,11 +2733,16 @@ skb_zerocopy_headlen(const struct sk_buff *from)
 
 	if (!from->head_frag ||
 	    skb_headlen(from) < L1_CACHE_BYTES ||
+<<<<<<< HEAD
 	    skb_shinfo(from)->nr_frags >= MAX_SKB_FRAGS) {
 		hlen = skb_headlen(from);
 		if (!hlen)
 			hlen = from->len;
 	}
+=======
+	    skb_shinfo(from)->nr_frags >= MAX_SKB_FRAGS)
+		hlen = skb_headlen(from);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (skb_has_frag_list(from))
 		hlen = from->len;
@@ -3105,6 +3128,7 @@ EXPORT_SYMBOL(skb_split);
  */
 static int skb_prepare_for_shift(struct sk_buff *skb)
 {
+<<<<<<< HEAD
 	int ret = 0;
 
 	if (skb_cloned(skb)) {
@@ -3118,6 +3142,9 @@ static int skb_prepare_for_shift(struct sk_buff *skb)
 		skb->truesize = save_truesize;
 	}
 	return ret;
+=======
+	return skb_cloned(skb) && pskb_expand_head(skb, 0, 0, GFP_ATOMIC);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /**
@@ -4282,7 +4309,11 @@ struct sk_buff *sock_dequeue_err_skb(struct sock *sk)
 	if (skb && (skb_next = skb_peek(q))) {
 		icmp_next = is_icmp_err_skb(skb_next);
 		if (icmp_next)
+<<<<<<< HEAD
 			sk->sk_err = SKB_EXT_ERR(skb_next)->ee.ee_errno;
+=======
+			sk->sk_err = SKB_EXT_ERR(skb_next)->ee.ee_origin;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	spin_unlock_irqrestore(&q->lock, flags);
 
@@ -5098,8 +5129,13 @@ struct sk_buff *skb_vlan_untag(struct sk_buff *skb)
 	skb = skb_share_check(skb, GFP_ATOMIC);
 	if (unlikely(!skb))
 		goto err_free;
+<<<<<<< HEAD
 	/* We may access the two bytes after vlan_hdr in vlan_set_encap_proto(). */
 	if (unlikely(!pskb_may_pull(skb, VLAN_HLEN + sizeof(unsigned short))))
+=======
+
+	if (unlikely(!pskb_may_pull(skb, VLAN_HLEN)))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto err_free;
 
 	vhdr = (struct vlan_hdr *)skb->data;
@@ -5492,6 +5528,7 @@ static int pskb_carve_inside_nonlinear(struct sk_buff *skb, const u32 off,
 	if (skb_has_frag_list(skb))
 		skb_clone_fraglist(skb);
 
+<<<<<<< HEAD
 	/* split line is in frag list */
 	if (k == 0 && pskb_carve_frag_list(skb, shinfo, off - pos, gfp_mask)) {
 		/* skb_frag_unref() is not needed here as shinfo->nr_frags = 0. */
@@ -5499,6 +5536,11 @@ static int pskb_carve_inside_nonlinear(struct sk_buff *skb, const u32 off,
 			kfree_skb_list(skb_shinfo(skb)->frag_list);
 		kfree(data);
 		return -ENOMEM;
+=======
+	if (k == 0) {
+		/* split line is in frag list */
+		pskb_carve_frag_list(skb, shinfo, off - pos, gfp_mask);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	skb_release_data(skb);
 

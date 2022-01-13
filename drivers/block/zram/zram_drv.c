@@ -41,7 +41,11 @@ static DEFINE_IDR(zram_index_idr);
 static DEFINE_MUTEX(zram_index_mutex);
 
 static int zram_major;
+<<<<<<< HEAD
 static const char *default_compressor = "lz4";
+=======
+static const char *default_compressor = "lzo";
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /* Module params (documentation at end) */
 static unsigned int num_devices = 1;
@@ -51,8 +55,11 @@ static unsigned int num_devices = 1;
  */
 static size_t huge_class_size;
 
+<<<<<<< HEAD
 static struct zram *zram0;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static void zram_free_page(struct zram *zram, size_t index);
 static int zram_bvec_read(struct zram *zram, struct bio_vec *bvec,
 				u32 index, int offset, struct bio *bio);
@@ -210,17 +217,27 @@ static inline void zram_fill_page(void *ptr, unsigned long len,
 
 static bool page_same_filled(void *ptr, unsigned long *element)
 {
+<<<<<<< HEAD
 	unsigned long *page;
 	unsigned long val;
 	unsigned int pos, last_pos = PAGE_SIZE / sizeof(*page) - 1;
+=======
+	unsigned int pos;
+	unsigned long *page;
+	unsigned long val;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	page = (unsigned long *)ptr;
 	val = page[0];
 
+<<<<<<< HEAD
 	if (val != page[last_pos])
 		return false;
 
 	for (pos = 1; pos < last_pos; pos++) {
+=======
+	for (pos = 1; pos < PAGE_SIZE / sizeof(*page); pos++) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (val != page[pos])
 			return false;
 	}
@@ -296,8 +313,23 @@ static ssize_t idle_store(struct device *dev,
 	struct zram *zram = dev_to_zram(dev);
 	unsigned long nr_pages = zram->disksize >> PAGE_SHIFT;
 	int index;
+<<<<<<< HEAD
 
 	if (!sysfs_streq(buf, "all"))
+=======
+	char mode_buf[8];
+	ssize_t sz;
+
+	sz = strscpy(mode_buf, buf, sizeof(mode_buf));
+	if (sz <= 0)
+		return -EINVAL;
+
+	/* ignore trailing new line */
+	if (mode_buf[sz - 1] == '\n')
+		mode_buf[sz - 1] = 0x00;
+
+	if (strcmp(mode_buf, "all"))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return -EINVAL;
 
 	down_read(&zram->init_lock);
@@ -619,6 +651,7 @@ static ssize_t writeback_store(struct device *dev,
 	struct bio bio;
 	struct bio_vec bio_vec;
 	struct page *page;
+<<<<<<< HEAD
 	ssize_t ret = len;
 	int mode;
 	unsigned long blk_idx = 0;
@@ -628,6 +661,27 @@ static ssize_t writeback_store(struct device *dev,
 	else if (sysfs_streq(buf, "huge"))
 		mode = HUGE_WRITEBACK;
 	else
+=======
+	ssize_t ret, sz;
+	char mode_buf[8];
+	int mode = -1;
+	unsigned long blk_idx = 0;
+
+	sz = strscpy(mode_buf, buf, sizeof(mode_buf));
+	if (sz <= 0)
+		return -EINVAL;
+
+	/* ignore trailing newline */
+	if (mode_buf[sz - 1] == '\n')
+		mode_buf[sz - 1] = 0x00;
+
+	if (!strcmp(mode_buf, "idle"))
+		mode = IDLE_WRITEBACK;
+	else if (!strcmp(mode_buf, "huge"))
+		mode = HUGE_WRITEBACK;
+
+	if (mode == -1)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return -EINVAL;
 
 	down_read(&zram->init_lock);
@@ -755,6 +809,10 @@ next:
 
 	if (blk_idx)
 		free_block_bdev(zram, blk_idx);
+<<<<<<< HEAD
+=======
+	ret = len;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	__free_page(page);
 release_init_lock:
 	up_read(&zram->init_lock);
@@ -1037,6 +1095,7 @@ static ssize_t use_dedup_store(struct device *dev,
 }
 #endif
 
+<<<<<<< HEAD
 void zram_compact(void)
 {
 	if (!zram0)
@@ -1056,6 +1115,22 @@ static ssize_t compact_store(struct device *dev,
 		struct device_attribute *attr, const char *buf, size_t len)
 {
 	zram_compact();
+=======
+static ssize_t compact_store(struct device *dev,
+		struct device_attribute *attr, const char *buf, size_t len)
+{
+	struct zram *zram = dev_to_zram(dev);
+
+	down_read(&zram->init_lock);
+	if (!init_done(zram)) {
+		up_read(&zram->init_lock);
+		return -EINVAL;
+	}
+
+	zs_compact(zram->mem_pool);
+	up_read(&zram->init_lock);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return len;
 }
 
@@ -1105,7 +1180,11 @@ static ssize_t mm_stat_show(struct device *dev,
 			zram->limit_pages << PAGE_SHIFT,
 			max_used << PAGE_SHIFT,
 			(u64)atomic64_read(&zram->stats.same_pages),
+<<<<<<< HEAD
 			atomic_long_read(&pool_stats.pages_compacted),
+=======
+			pool_stats.pages_compacted,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			zram_dedup_dup_size(zram),
 			zram_dedup_meta_size(zram),
 			(u64)atomic64_read(&zram->stats.huge_pages));
@@ -1999,11 +2078,14 @@ static int zram_add(void)
 		goto out_free_dev;
 	device_id = ret;
 
+<<<<<<< HEAD
 	if (device_id >= 1) {
 		ret = -ENOMEM;
 		goto out_free_idr;
 	}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	init_rwsem(&zram->init_lock);
 #ifdef CONFIG_ZRAM_WRITEBACK
 	spin_lock_init(&zram->wb_limit_lock);
@@ -2073,7 +2155,10 @@ static int zram_add(void)
 	strlcpy(zram->compressor, default_compressor, sizeof(zram->compressor));
 
 	zram_debugfs_register(zram);
+<<<<<<< HEAD
 	zram0 = zram;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	pr_info("Added device: %s\n", zram->disk->disk_name);
 	return device_id;
 
@@ -2115,7 +2200,10 @@ static int zram_remove(struct zram *zram)
 	del_gendisk(zram->disk);
 	blk_cleanup_queue(zram->disk->queue);
 	put_disk(zram->disk);
+<<<<<<< HEAD
 	zram0 = NULL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	kfree(zram);
 	return 0;
 }

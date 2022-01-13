@@ -1,8 +1,13 @@
 ARCH=arm64
 
 CLANG_TRIPLE=aarch64-linux-gnu-
+<<<<<<< HEAD
 CROSS_COMPILE=aarch64-linux-gnu-
 CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+=======
+CROSS_COMPILE=aarch64-linux-androidkernel-
+LINUX_GCC_CROSS_COMPILE_PREBUILTS_BIN=prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 FILES="
 arch/arm64/boot/Image.gz

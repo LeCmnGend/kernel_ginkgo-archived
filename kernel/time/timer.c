@@ -44,7 +44,10 @@
 #include <linux/sched/debug.h>
 #include <linux/slab.h>
 #include <linux/compat.h>
+<<<<<<< HEAD
 #include <linux/random.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #include <linux/uaccess.h>
 #include <asm/unistd.h>
@@ -945,6 +948,10 @@ static struct timer_base *lock_timer_base(struct timer_list *timer,
 			raw_spin_unlock_irqrestore(&base->lock, *flags);
 		}
 		cpu_relax();
+<<<<<<< HEAD
+=======
+		ndelay(TIMER_LOCK_TIGHT_LOOP_DELAY_NS);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 }
 
@@ -1267,6 +1274,10 @@ int del_timer_sync(struct timer_list *timer)
 		if (ret >= 0)
 			return ret;
 		cpu_relax();
+<<<<<<< HEAD
+=======
+		ndelay(TIMER_LOCK_TIGHT_LOOP_DELAY_NS);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 }
 EXPORT_SYMBOL(del_timer_sync);
@@ -1729,6 +1740,7 @@ void run_local_timers(void)
 	raise_softirq(TIMER_SOFTIRQ);
 }
 
+<<<<<<< HEAD
 /*
  * Since schedule_timeout()'s timer is defined on the stack, it must store
  * the target task on the stack as well.
@@ -1743,6 +1755,11 @@ static void process_timeout(struct timer_list *t)
 	struct process_timer *timeout = from_timer(timeout, t, timer);
 
 	wake_up_process(timeout->task);
+=======
+static void process_timeout(unsigned long __data)
+{
+	wake_up_process((struct task_struct *)__data);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /**
@@ -1776,7 +1793,11 @@ static void process_timeout(struct timer_list *t)
  */
 signed long __sched schedule_timeout(signed long timeout)
 {
+<<<<<<< HEAD
 	struct process_timer timer;
+=======
+	struct timer_list timer;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	unsigned long expire;
 
 	switch (timeout)
@@ -1810,6 +1831,7 @@ signed long __sched schedule_timeout(signed long timeout)
 
 	expire = timeout + jiffies;
 
+<<<<<<< HEAD
 	timer.task = current;
 	timer_setup_on_stack(&timer.timer, process_timeout, 0);
 	__mod_timer(&timer.timer, expire, false);
@@ -1818,6 +1840,15 @@ signed long __sched schedule_timeout(signed long timeout)
 
 	/* Remove the timer from the object tracker */
 	destroy_timer_on_stack(&timer.timer);
+=======
+	setup_timer_on_stack(&timer, process_timeout, (unsigned long)current);
+	__mod_timer(&timer, expire, false);
+	schedule();
+	del_singleshot_timer_sync(&timer);
+
+	/* Remove the timer from the object tracker */
+	destroy_timer_on_stack(&timer);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	timeout = expire - jiffies;
 

@@ -413,7 +413,11 @@ static irqreturn_t dmm32at_isr(int irq, void *d)
 {
 	struct comedi_device *dev = d;
 	unsigned char intstat;
+<<<<<<< HEAD
 	unsigned short val;
+=======
+	unsigned int val;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int i;
 
 	if (!dev->attached) {

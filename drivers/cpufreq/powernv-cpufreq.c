@@ -846,6 +846,7 @@ static int powernv_cpufreq_reboot_notifier(struct notifier_block *nb,
 				unsigned long action, void *unused)
 {
 	int cpu;
+<<<<<<< HEAD
 	struct cpufreq_policy *cpu_policy;
 
 	rebooting = true;
@@ -855,6 +856,14 @@ static int powernv_cpufreq_reboot_notifier(struct notifier_block *nb,
 			continue;
 		powernv_cpufreq_target_index(cpu_policy, get_nominal_index());
 		cpufreq_cpu_put(cpu_policy);
+=======
+	struct cpufreq_policy cpu_policy;
+
+	rebooting = true;
+	for_each_online_cpu(cpu) {
+		cpufreq_get_policy(&cpu_policy, cpu);
+		powernv_cpufreq_target_index(&cpu_policy, get_nominal_index());
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	return NOTIFY_DONE;
@@ -867,7 +876,10 @@ static struct notifier_block powernv_cpufreq_reboot_nb = {
 void powernv_cpufreq_work_fn(struct work_struct *work)
 {
 	struct chip *chip = container_of(work, struct chip, throttle);
+<<<<<<< HEAD
 	struct cpufreq_policy *policy;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	unsigned int cpu;
 	cpumask_t mask;
 
@@ -882,6 +894,7 @@ void powernv_cpufreq_work_fn(struct work_struct *work)
 	chip->restore = false;
 	for_each_cpu(cpu, &mask) {
 		int index;
+<<<<<<< HEAD
 
 		policy = cpufreq_cpu_get(cpu);
 		if (!policy)
@@ -890,6 +903,14 @@ void powernv_cpufreq_work_fn(struct work_struct *work)
 		powernv_cpufreq_target_index(policy, index);
 		cpumask_andnot(&mask, &mask, policy->cpus);
 		cpufreq_cpu_put(policy);
+=======
+		struct cpufreq_policy policy;
+
+		cpufreq_get_policy(&policy, cpu);
+		index = cpufreq_table_find_index_c(&policy, policy.cur);
+		powernv_cpufreq_target_index(&policy, index);
+		cpumask_andnot(&mask, &mask, policy.cpus);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 out:
 	put_online_cpus();

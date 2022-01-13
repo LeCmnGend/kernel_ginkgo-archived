@@ -1013,7 +1013,10 @@ static int fs_open(struct atm_vcc *atm_vcc)
 				error = make_rate (pcr, r, &tmc0, NULL);
 				if (error) {
 					kfree(tc);
+<<<<<<< HEAD
 					kfree(vcc);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 					return error;
 				}
 			}

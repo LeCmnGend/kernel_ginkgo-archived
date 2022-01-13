@@ -716,8 +716,11 @@ void f2fs_evict_inode(struct inode *inode)
 
 	f2fs_destroy_extent_tree(inode);
 
+<<<<<<< HEAD
 	f2fs_remove_xattr_set_inode(inode);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (inode->i_nlink || is_bad_inode(inode))
 		goto no_delete;
 

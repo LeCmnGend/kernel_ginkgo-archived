@@ -178,6 +178,12 @@
 #define MSG_SIZE        34                      /* size of message structure */
 #define MSG_REQUEST     0                       /* async. event: message */
 
+<<<<<<< HEAD
+=======
+/* cacheservice defines */
+#define SECTOR_SIZE     0x200                   /* always 512 bytes per sec. */
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /* DPMEM constants */
 #define DPMEM_MAGIC     0xC0FFEE11
 #define IC_HEADER_BYTES 48

@@ -1669,7 +1669,11 @@ s64 dbDiscardAG(struct inode *ip, int agno, s64 minlen)
 		} else if (rc == -ENOSPC) {
 			/* search for next smaller log2 block */
 			l2nb = BLKSTOL2(nblocks) - 1;
+<<<<<<< HEAD
 			nblocks = 1LL << l2nb;
+=======
+			nblocks = 1 << l2nb;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		} else {
 			/* Trim any already allocated blocks */
 			jfs_error(bmp->db_ipbmap->i_sb, "-EIO\n");

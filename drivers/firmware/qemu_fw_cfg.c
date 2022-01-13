@@ -192,13 +192,24 @@ static int fw_cfg_do_platform_probe(struct platform_device *pdev)
 /* fw_cfg revision attribute, in /sys/firmware/qemu_fw_cfg top-level dir. */
 static u32 fw_cfg_rev;
 
+<<<<<<< HEAD
 static ssize_t fw_cfg_showrev(struct kobject *k, struct kobj_attribute *a,
 			      char *buf)
+=======
+static ssize_t fw_cfg_showrev(struct kobject *k, struct attribute *a, char *buf)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	return sprintf(buf, "%u\n", fw_cfg_rev);
 }
 
+<<<<<<< HEAD
 static const struct kobj_attribute fw_cfg_rev_attr = {
+=======
+static const struct {
+	struct attribute attr;
+	ssize_t (*show)(struct kobject *k, struct attribute *a, char *buf);
+} fw_cfg_rev_attr = {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.attr = { .name = "rev", .mode = S_IRUSR },
 	.show = fw_cfg_showrev,
 };

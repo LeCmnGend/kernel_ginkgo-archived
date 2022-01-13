@@ -24,7 +24,10 @@
 #include <linux/sysfs.h>
 #include <linux/module.h>
 #include <linux/input.h>
+<<<<<<< HEAD
 #include <linux/battery_saver.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <linux/kthread.h>
 #include <linux/sched/core_ctl.h>
 
@@ -59,11 +62,15 @@ static int set_cpu_min_freq(const char *buf, const struct kernel_param *kp)
 	int i, j, ntokens = 0;
 	unsigned int val, cpu;
 	const char *cp = buf;
+<<<<<<< HEAD
 	const char *disable = "0:0 4:0";
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct cpu_status *i_cpu_stats;
 	struct cpufreq_policy policy;
 	cpumask_var_t limit_mask;
 
+<<<<<<< HEAD
 	if (is_battery_saver_on())
 		cp = disable;
 
@@ -72,10 +79,19 @@ static int set_cpu_min_freq(const char *buf, const struct kernel_param *kp)
 
 	cp = is_battery_saver_on() ? disable : buf;
 
+=======
+	while ((cp = strpbrk(cp + 1, " :")))
+		ntokens++;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* CPU:value pair */
 	if (!(ntokens % 2))
 		return -EINVAL;
 
+<<<<<<< HEAD
+=======
+	cp = buf;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	cpumask_clear(limit_mask);
 	for (i = 0; i < ntokens; i += 2) {
 		if (sscanf(cp, "%u:%u", &cpu, &val) != 2)

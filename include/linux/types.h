@@ -4,7 +4,10 @@
 
 #define __EXPORTED_HEADERS__
 #include <uapi/linux/types.h>
+<<<<<<< HEAD
 #include <generated/autoconf.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #ifndef __ASSEMBLY__
 

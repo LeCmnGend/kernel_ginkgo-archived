@@ -144,9 +144,12 @@ static int mmc_decode_csd(struct mmc_card *card)
 			csd->erase_size = UNSTUFF_BITS(resp, 39, 7) + 1;
 			csd->erase_size <<= csd->write_blkbits - 9;
 		}
+<<<<<<< HEAD
 
 		if (UNSTUFF_BITS(resp, 13, 1))
 			mmc_card_set_readonly(card);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		break;
 	case 1:
 		/*
@@ -181,9 +184,12 @@ static int mmc_decode_csd(struct mmc_card *card)
 		csd->write_blkbits = 9;
 		csd->write_partial = 0;
 		csd->erase_size = 1;
+<<<<<<< HEAD
 
 		if (UNSTUFF_BITS(resp, 13, 1))
 			mmc_card_set_readonly(card);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		break;
 	default:
 		pr_err("%s: unrecognised CSD structure version %d\n",
@@ -857,6 +863,7 @@ try_again:
 		return err;
 
 	/*
+<<<<<<< HEAD
 	 * In case the S18A bit is set in the response, let's start the signal
 	 * voltage switch procedure. SPI mode doesn't support CMD11.
 	 * Note that, according to the spec, the S18A bit is not valid unless
@@ -864,6 +871,13 @@ try_again:
 	 * regards to this, which allows UHS-I to be supported for SDSC cards.
 	 */
 	if (!mmc_host_is_spi(host) && rocr && (*rocr & 0x01000000)) {
+=======
+	 * In case CCS and S18A in the response is set, start Signal Voltage
+	 * Switch procedure. SPI mode doesn't support CMD11.
+	 */
+	if (!mmc_host_is_spi(host) && rocr &&
+	   ((*rocr & 0x41000000) == 0x41000000)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		err = mmc_set_uhs_voltage(host, pocr);
 		if (err == -EAGAIN) {
 			retries--;

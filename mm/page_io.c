@@ -39,6 +39,10 @@ static struct bio *get_swap_bio(gfp_t gfp_flags,
 
 		bio->bi_iter.bi_sector = map_swap_page(page, &bdev);
 		bio_set_dev(bio, bdev);
+<<<<<<< HEAD
+=======
+		bio->bi_iter.bi_sector <<= PAGE_SHIFT - 9;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		bio->bi_end_io = end_io;
 
 		for (i = 0; i < nr; i++)
@@ -263,6 +267,14 @@ out:
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
+static sector_t swap_page_sector(struct page *page)
+{
+	return (sector_t)__page_file_index(page) << (PAGE_SHIFT - 9);
+}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static inline void count_swpout_vm_event(struct page *page)
 {
 #ifdef CONFIG_TRANSPARENT_HUGEPAGE
@@ -321,8 +333,12 @@ int __swap_writepage(struct page *page, struct writeback_control *wbc,
 		return ret;
 	}
 
+<<<<<<< HEAD
 	ret = bdev_write_page(sis->bdev, map_swap_page(page, &sis->bdev),
 			      page, wbc);
+=======
+	ret = bdev_write_page(sis->bdev, swap_page_sector(page), page, wbc);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!ret) {
 		count_swpout_vm_event(page);
 		return 0;
@@ -381,7 +397,11 @@ int swap_readpage(struct page *page, bool synchronous)
 		goto out;
 	}
 
+<<<<<<< HEAD
 	ret = bdev_read_page(sis->bdev, map_swap_page(page, &sis->bdev), page);
+=======
+	ret = bdev_read_page(sis->bdev, swap_page_sector(page), page);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!ret) {
 		if (trylock_page(page)) {
 			swap_slot_free_notify(page);

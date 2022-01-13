@@ -39,6 +39,7 @@ SECTIONS
 	.gnu.version_d	: { *(.gnu.version_d) }
 	.gnu.version_r	: { *(.gnu.version_r) }
 
+<<<<<<< HEAD
 	/*
 	 * Discard .note.gnu.property sections which are unused and have
 	 * different alignment requirement from vDSO note sections.
@@ -46,6 +47,8 @@ SECTIONS
 	/DISCARD/	: {
 		*(.note.GNU-stack .note.gnu.property)
 	}
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	.note		: { *(.note.*) }		:text	:note
 
 	. = ALIGN(16);
@@ -66,6 +69,10 @@ SECTIONS
 	PROVIDE(end = .);
 
 	/DISCARD/	: {
+<<<<<<< HEAD
+=======
+		*(.note.GNU-stack)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		*(.data .data.* .gnu.linkonce.d.* .sdata*)
 		*(.bss .sbss .dynbss .dynsbss)
 	}
@@ -94,7 +101,10 @@ VERSION
 		__kernel_gettimeofday;
 		__kernel_clock_gettime;
 		__kernel_clock_getres;
+<<<<<<< HEAD
 		__kernel_time;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	local: *;
 	};
 }

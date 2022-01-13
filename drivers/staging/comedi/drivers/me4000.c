@@ -933,7 +933,11 @@ static irqreturn_t me4000_ai_isr(int irq, void *dev_id)
 	struct comedi_subdevice *s = dev->read_subdev;
 	int i;
 	int c = 0;
+<<<<<<< HEAD
 	unsigned short lval;
+=======
+	unsigned int lval;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (!dev->attached)
 		return IRQ_NONE;

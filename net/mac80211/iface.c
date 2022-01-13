@@ -1127,12 +1127,23 @@ static void ieee80211_set_multicast_list(struct net_device *dev)
  */
 static void ieee80211_teardown_sdata(struct ieee80211_sub_if_data *sdata)
 {
+<<<<<<< HEAD
+=======
+	int i;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* free extra data */
 	ieee80211_free_keys(sdata, false);
 
 	ieee80211_debugfs_remove_netdev(sdata);
 
+<<<<<<< HEAD
 	ieee80211_destroy_frag_cache(&sdata->frags);
+=======
+	for (i = 0; i < IEEE80211_FRAGMENT_MAX; i++)
+		__skb_queue_purge(&sdata->fragments[i].skb_list);
+	sdata->fragment_next = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (ieee80211_vif_is_mesh(&sdata->vif))
 		ieee80211_mesh_teardown_sdata(sdata);
@@ -1555,10 +1566,13 @@ static int ieee80211_runtime_change_iftype(struct ieee80211_sub_if_data *sdata,
 	if (ret)
 		return ret;
 
+<<<<<<< HEAD
 	ieee80211_stop_vif_queues(local, sdata,
 				  IEEE80211_QUEUE_STOP_REASON_IFTYPE_CHANGE);
 	synchronize_net();
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ieee80211_do_stop(sdata, false);
 
 	ieee80211_teardown_sdata(sdata);
@@ -1579,8 +1593,11 @@ static int ieee80211_runtime_change_iftype(struct ieee80211_sub_if_data *sdata,
 	err = ieee80211_do_open(&sdata->wdev, false);
 	WARN(err, "type change: do_open returned %d", err);
 
+<<<<<<< HEAD
 	ieee80211_wake_vif_queues(local, sdata,
 				  IEEE80211_QUEUE_STOP_REASON_IFTYPE_CHANGE);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return ret;
 }
 
@@ -1842,7 +1859,12 @@ int ieee80211_if_add(struct ieee80211_local *local, const char *name,
 	sdata->wdev.wiphy = local->hw.wiphy;
 	sdata->local = local;
 
+<<<<<<< HEAD
 	ieee80211_init_frag_cache(&sdata->frags);
+=======
+	for (i = 0; i < IEEE80211_FRAGMENT_MAX; i++)
+		skb_queue_head_init(&sdata->fragments[i].skb_list);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	INIT_LIST_HEAD(&sdata->key_list);
 

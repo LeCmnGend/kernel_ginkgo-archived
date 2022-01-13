@@ -297,7 +297,11 @@ static int tcindex_alloc_perfect_hash(struct tcindex_data *cp)
 	int i, err = 0;
 
 	cp->perfect = kcalloc(cp->hash, sizeof(struct tcindex_filter_result),
+<<<<<<< HEAD
 			      GFP_KERNEL | __GFP_NOWARN);
+=======
+			      GFP_KERNEL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!cp->perfect)
 		return -ENOMEM;
 
@@ -357,6 +361,7 @@ tcindex_set_parms(struct net *net, struct tcf_proto *tp, unsigned long base,
 	if (tb[TCA_TCINDEX_MASK])
 		cp->mask = nla_get_u16(tb[TCA_TCINDEX_MASK]);
 
+<<<<<<< HEAD
 	if (tb[TCA_TCINDEX_SHIFT]) {
 		cp->shift = nla_get_u32(tb[TCA_TCINDEX_SHIFT]);
 		if (cp->shift > 16) {
@@ -364,6 +369,11 @@ tcindex_set_parms(struct net *net, struct tcf_proto *tp, unsigned long base,
 			goto errout;
 		}
 	}
+=======
+	if (tb[TCA_TCINDEX_SHIFT])
+		cp->shift = nla_get_u32(tb[TCA_TCINDEX_SHIFT]);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!cp->hash) {
 		/* Hash not specified, use perfect hash if the upper limit
 		 * of the hashing index is below the threshold.

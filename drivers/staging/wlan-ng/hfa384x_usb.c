@@ -531,8 +531,18 @@ static void hfa384x_usb_defer(struct work_struct *data)
  */
 void hfa384x_create(struct hfa384x *hw, struct usb_device *usb)
 {
+<<<<<<< HEAD
 	hw->usb = usb;
 
+=======
+	memset(hw, 0, sizeof(*hw));
+	hw->usb = usb;
+
+	/* set up the endpoints */
+	hw->endp_in = usb_rcvbulkpipe(usb, 1);
+	hw->endp_out = usb_sndbulkpipe(usb, 2);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* Set up the waitq */
 	init_waitqueue_head(&hw->cmdq);
 

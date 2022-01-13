@@ -8,7 +8,10 @@
 #include <linux/syscalls.h>
 #include <linux/mm.h>
 #include <linux/capability.h>
+<<<<<<< HEAD
 #include <linux/compat.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <linux/file.h>
 #include <linux/fs.h>
 #include <linux/security.h>
@@ -703,6 +706,7 @@ SYSCALL_DEFINE3(ioctl, unsigned int, fd, unsigned int, cmd, unsigned long, arg)
 	fdput(f);
 	return error;
 }
+<<<<<<< HEAD
 
 #ifdef CONFIG_COMPAT
 /**
@@ -737,3 +741,5 @@ long compat_ptr_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 }
 EXPORT_SYMBOL(compat_ptr_ioctl);
 #endif
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388

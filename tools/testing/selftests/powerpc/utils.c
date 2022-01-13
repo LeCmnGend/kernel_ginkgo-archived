@@ -12,7 +12,10 @@
 #include <sched.h>
 #include <stdio.h>
 #include <sys/stat.h>
+<<<<<<< HEAD
 #include <sys/sysinfo.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <sys/types.h>
 #include <unistd.h>
 
@@ -82,6 +85,7 @@ void *get_auxv_entry(int type)
 
 int pick_online_cpu(void)
 {
+<<<<<<< HEAD
 	int ncpus, cpu = -1;
 	cpu_set_t *mask;
 	size_t size;
@@ -116,4 +120,28 @@ int pick_online_cpu(void)
 done:
 	CPU_FREE(mask);
 	return cpu;
+=======
+	cpu_set_t mask;
+	int cpu;
+
+	CPU_ZERO(&mask);
+
+	if (sched_getaffinity(0, sizeof(mask), &mask)) {
+		perror("sched_getaffinity");
+		return -1;
+	}
+
+	/* We prefer a primary thread, but skip 0 */
+	for (cpu = 8; cpu < CPU_SETSIZE; cpu += 8)
+		if (CPU_ISSET(cpu, &mask))
+			return cpu;
+
+	/* Search for anything, but in reverse */
+	for (cpu = CPU_SETSIZE - 1; cpu >= 0; cpu--)
+		if (CPU_ISSET(cpu, &mask))
+			return cpu;
+
+	printf("No cpus in affinity mask?!\n");
+	return -1;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }

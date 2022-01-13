@@ -410,8 +410,14 @@ struct mm_struct {
 	 */
 	atomic_t mm_count;
 
+<<<<<<< HEAD
 #ifdef CONFIG_MMU
 	atomic_long_t pgtables_bytes;		/* PTE page table pages */
+=======
+	atomic_long_t nr_ptes;			/* PTE page table pages */
+#if CONFIG_PGTABLE_LEVELS > 2
+	atomic_long_t nr_pmds;			/* PMD page table pages */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif
 	int map_count;				/* number of VMAs */
 

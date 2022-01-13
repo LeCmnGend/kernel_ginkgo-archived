@@ -471,10 +471,14 @@ static int sh7760_i2c_probe(struct platform_device *pdev)
 		goto out2;
 	}
 
+<<<<<<< HEAD
 	ret = platform_get_irq(pdev, 0);
 	if (ret < 0)
 		goto out3;
 	id->irq = ret;
+=======
+	id->irq = platform_get_irq(pdev, 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	id->adap.nr = pdev->id;
 	id->adap.algo = &sh7760_i2c_algo;

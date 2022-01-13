@@ -50,6 +50,7 @@ static void pca_reset(struct i2c_algo_pca_data *adap)
 		pca_outw(adap, I2C_PCA_INDPTR, I2C_PCA_IPRESET);
 		pca_outw(adap, I2C_PCA_IND, 0xA5);
 		pca_outw(adap, I2C_PCA_IND, 0x5A);
+<<<<<<< HEAD
 
 		/*
 		 * After a reset we need to re-apply any configuration
@@ -66,6 +67,10 @@ static void pca_reset(struct i2c_algo_pca_data *adap)
 	} else {
 		adap->reset_chip(adap->data);
 		pca_set_con(adap, I2C_PCA_CON_ENSIO | adap->bus_settings.clock_freq);
+=======
+	} else {
+		adap->reset_chip(adap->data);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 }
 
@@ -449,14 +454,23 @@ static int pca_init(struct i2c_adapter *adap)
 				" Use the nominal frequency.\n", adap->name);
 		}
 
+<<<<<<< HEAD
+=======
+		pca_reset(pca_data);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		clock = pca_clock(pca_data);
 		printk(KERN_INFO "%s: Clock frequency is %dkHz\n",
 		     adap->name, freqs[clock]);
 
+<<<<<<< HEAD
 		/* Store settings as these will be needed when the PCA chip is reset */
 		pca_data->bus_settings.clock_freq = clock;
 
 		pca_reset(pca_data);
+=======
+		pca_set_con(pca_data, I2C_PCA_CON_ENSIO | clock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else {
 		int clock;
 		int mode;
@@ -523,15 +537,30 @@ static int pca_init(struct i2c_adapter *adap)
 			thi = tlow * min_thi / min_tlow;
 		}
 
+<<<<<<< HEAD
 		/* Store settings as these will be needed when the PCA chip is reset */
 		pca_data->bus_settings.mode = mode;
 		pca_data->bus_settings.tlow = tlow;
 		pca_data->bus_settings.thi = thi;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		pca_reset(pca_data);
 
 		printk(KERN_INFO
 		     "%s: Clock frequency is %dHz\n", adap->name, clock * 100);
+<<<<<<< HEAD
+=======
+
+		pca_outw(pca_data, I2C_PCA_INDPTR, I2C_PCA_IMODE);
+		pca_outw(pca_data, I2C_PCA_IND, mode);
+		pca_outw(pca_data, I2C_PCA_INDPTR, I2C_PCA_ISCLL);
+		pca_outw(pca_data, I2C_PCA_IND, tlow);
+		pca_outw(pca_data, I2C_PCA_INDPTR, I2C_PCA_ISCLH);
+		pca_outw(pca_data, I2C_PCA_IND, thi);
+
+		pca_set_con(pca_data, I2C_PCA_CON_ENSIO);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	udelay(500); /* 500 us for oscillator to stabilise */
 

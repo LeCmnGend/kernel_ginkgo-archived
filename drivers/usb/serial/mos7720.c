@@ -640,8 +640,11 @@ static void parport_mos7715_restore_state(struct parport *pp,
 		spin_unlock(&release_lock);
 		return;
 	}
+<<<<<<< HEAD
 	mos_parport->shadowDCR = s->u.pc.ctr;
 	mos_parport->shadowECR = s->u.pc.ecr;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	write_parport_reg_nonblock(mos_parport, MOS7720_DCR,
 				   mos_parport->shadowDCR);
 	write_parport_reg_nonblock(mos_parport, MOS7720_ECR,
@@ -1252,10 +1255,15 @@ static int mos7720_write(struct tty_struct *tty, struct usb_serial_port *port,
 	if (urb->transfer_buffer == NULL) {
 		urb->transfer_buffer = kmalloc(URB_TRANSFER_BUFFER_SIZE,
 					       GFP_ATOMIC);
+<<<<<<< HEAD
 		if (!urb->transfer_buffer) {
 			bytes_sent = -ENOMEM;
 			goto exit;
 		}
+=======
+		if (!urb->transfer_buffer)
+			goto exit;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	transfer_size = min(count, URB_TRANSFER_BUFFER_SIZE);
 

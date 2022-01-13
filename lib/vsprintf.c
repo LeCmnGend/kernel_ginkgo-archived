@@ -48,6 +48,7 @@
 #include <linux/string_helpers.h>
 #include "kstrtox.h"
 
+<<<<<<< HEAD
 static unsigned long long simple_strntoull(const char *startp, size_t max_chars,
 					   char **endp, unsigned int base)
 {
@@ -73,6 +74,8 @@ static unsigned long long simple_strntoull(const char *startp, size_t max_chars,
 	return result;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /**
  * simple_strtoull - convert a string to an unsigned long long
  * @cp: The start of the string
@@ -83,7 +86,22 @@ static unsigned long long simple_strntoull(const char *startp, size_t max_chars,
  */
 unsigned long long simple_strtoull(const char *cp, char **endp, unsigned int base)
 {
+<<<<<<< HEAD
 	return simple_strntoull(cp, INT_MAX, endp, base);
+=======
+	unsigned long long result;
+	unsigned int rv;
+
+	cp = _parse_integer_fixup_radix(cp, &base);
+	rv = _parse_integer(cp, base, &result);
+	/* FIXME */
+	cp += (rv & ~KSTRTOX_OVERFLOW);
+
+	if (endp)
+		*endp = (char *)cp;
+
+	return result;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 EXPORT_SYMBOL(simple_strtoull);
 
@@ -118,6 +136,7 @@ long simple_strtol(const char *cp, char **endp, unsigned int base)
 }
 EXPORT_SYMBOL(simple_strtol);
 
+<<<<<<< HEAD
 static long long simple_strntoll(const char *cp, size_t max_chars, char **endp,
 				 unsigned int base)
 {
@@ -133,6 +152,8 @@ static long long simple_strntoll(const char *cp, size_t max_chars, char **endp,
 	return simple_strntoull(cp, max_chars, endp, base);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /**
  * simple_strtoll - convert a string to a signed long long
  * @cp: The start of the string
@@ -143,7 +164,14 @@ static long long simple_strntoll(const char *cp, size_t max_chars, char **endp,
  */
 long long simple_strtoll(const char *cp, char **endp, unsigned int base)
 {
+<<<<<<< HEAD
 	return simple_strntoll(cp, INT_MAX, endp, base);
+=======
+	if (*cp == '-')
+		return -simple_strtoull(cp + 1, endp, base);
+
+	return simple_strtoull(cp, endp, base);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 EXPORT_SYMBOL(simple_strtoll);
 
@@ -363,7 +391,11 @@ char *put_dec(char *buf, unsigned long long n)
  *
  * If speed is not important, use snprintf(). It's easy to read the code.
  */
+<<<<<<< HEAD
 int num_to_str(char *buf, int size, unsigned long long num, unsigned int width)
+=======
+int num_to_str(char *buf, int size, unsigned long long num)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	/* put_dec requires 2-byte alignment of the buffer. */
 	char tmp[sizeof(num) * 3] __aligned(2);
@@ -377,6 +409,7 @@ int num_to_str(char *buf, int size, unsigned long long num, unsigned int width)
 		len = put_dec(tmp, num) - tmp;
 	}
 
+<<<<<<< HEAD
 	if (len > size || width > size)
 		return 0;
 
@@ -392,6 +425,13 @@ int num_to_str(char *buf, int size, unsigned long long num, unsigned int width)
 		buf[idx + width] = tmp[len - idx - 1];
 
 	return len + width;
+=======
+	if (len > size)
+		return 0;
+	for (idx = 0; idx < len; ++idx)
+		buf[idx] = tmp[len - idx - 1];
+	return len;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 #define SIGN	1		/* unsigned/signed, must be 1 */
@@ -3081,6 +3121,7 @@ int vsscanf(const char *buf, const char *fmt, va_list args)
 			break;
 
 		if (is_sign)
+<<<<<<< HEAD
 			val.s = simple_strntoll(str,
 						field_width >= 0 ? field_width : INT_MAX,
 						&next, base);
@@ -3088,6 +3129,27 @@ int vsscanf(const char *buf, const char *fmt, va_list args)
 			val.u = simple_strntoull(str,
 						 field_width >= 0 ? field_width : INT_MAX,
 						 &next, base);
+=======
+			val.s = qualifier != 'L' ?
+				simple_strtol(str, &next, base) :
+				simple_strtoll(str, &next, base);
+		else
+			val.u = qualifier != 'L' ?
+				simple_strtoul(str, &next, base) :
+				simple_strtoull(str, &next, base);
+
+		if (field_width > 0 && next - str > field_width) {
+			if (base == 0)
+				_parse_integer_fixup_radix(str, &base);
+			while (next - str > field_width) {
+				if (is_sign)
+					val.s = div_s64(val.s, base);
+				else
+					val.u = div_u64(val.u, base);
+				--next;
+			}
+		}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		switch (qualifier) {
 		case 'H':	/* that's 'hh' in format */

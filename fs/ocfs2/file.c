@@ -1250,24 +1250,38 @@ int ocfs2_setattr(struct dentry *dentry, struct iattr *attr)
 				goto bail_unlock;
 			}
 		}
+<<<<<<< HEAD
 		down_write(&OCFS2_I(inode)->ip_alloc_sem);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		handle = ocfs2_start_trans(osb, OCFS2_INODE_UPDATE_CREDITS +
 					   2 * ocfs2_quota_trans_credits(sb));
 		if (IS_ERR(handle)) {
 			status = PTR_ERR(handle);
 			mlog_errno(status);
+<<<<<<< HEAD
 			goto bail_unlock_alloc;
+=======
+			goto bail_unlock;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 		status = __dquot_transfer(inode, transfer_to);
 		if (status < 0)
 			goto bail_commit;
 	} else {
+<<<<<<< HEAD
 		down_write(&OCFS2_I(inode)->ip_alloc_sem);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		handle = ocfs2_start_trans(osb, OCFS2_INODE_UPDATE_CREDITS);
 		if (IS_ERR(handle)) {
 			status = PTR_ERR(handle);
 			mlog_errno(status);
+<<<<<<< HEAD
 			goto bail_unlock_alloc;
+=======
+			goto bail_unlock;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 	}
 
@@ -1280,8 +1294,11 @@ int ocfs2_setattr(struct dentry *dentry, struct iattr *attr)
 
 bail_commit:
 	ocfs2_commit_trans(osb, handle);
+<<<<<<< HEAD
 bail_unlock_alloc:
 	up_write(&OCFS2_I(inode)->ip_alloc_sem);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 bail_unlock:
 	if (status && inode_locked) {
 		ocfs2_inode_unlock_tracker(inode, 1, &oh, had_lock);
@@ -1535,6 +1552,7 @@ static void ocfs2_truncate_cluster_pages(struct inode *inode, u64 byte_start,
 	}
 }
 
+<<<<<<< HEAD
 /*
  * zero out partial blocks of one cluster.
  *
@@ -1574,6 +1592,8 @@ static int ocfs2_zeroout_partial_cluster(struct inode *inode,
 	return sb_issue_zeroout(sb, p_block, nr_blocks, GFP_NOFS);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static int ocfs2_zero_partial_clusters(struct inode *inode,
 				       u64 start, u64 len)
 {
@@ -1583,7 +1603,10 @@ static int ocfs2_zero_partial_clusters(struct inode *inode,
 	struct ocfs2_super *osb = OCFS2_SB(inode->i_sb);
 	unsigned int csize = osb->s_clustersize;
 	handle_t *handle;
+<<<<<<< HEAD
 	loff_t isize = i_size_read(inode);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/*
 	 * The "start" and "end" values are NOT necessarily part of
@@ -1604,6 +1627,7 @@ static int ocfs2_zero_partial_clusters(struct inode *inode,
 	if ((start & (csize - 1)) == 0 && (end & (csize - 1)) == 0)
 		goto out;
 
+<<<<<<< HEAD
 	/* No page cache for EOF blocks, issue zero out to disk. */
 	if (end > isize) {
 		/*
@@ -1624,6 +1648,8 @@ static int ocfs2_zero_partial_clusters(struct inode *inode,
 			goto out;
 		end = isize;
 	}
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	handle = ocfs2_start_trans(osb, OCFS2_INODE_UPDATE_CREDITS);
 	if (IS_ERR(handle)) {
 		ret = PTR_ERR(handle);
@@ -1931,7 +1957,11 @@ static int __ocfs2_change_file_space(struct file *file, struct inode *inode,
 {
 	int ret;
 	s64 llen;
+<<<<<<< HEAD
 	loff_t size, orig_isize;
+=======
+	loff_t size;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct ocfs2_super *osb = OCFS2_SB(inode->i_sb);
 	struct buffer_head *di_bh = NULL;
 	handle_t *handle;
@@ -2023,6 +2053,7 @@ static int __ocfs2_change_file_space(struct file *file, struct inode *inode,
 	default:
 		ret = -EINVAL;
 	}
+<<<<<<< HEAD
 
 	orig_isize = i_size_read(inode);
 	/* zeroout eof blocks in the cluster. */
@@ -2032,6 +2063,8 @@ static int __ocfs2_change_file_space(struct file *file, struct inode *inode,
 		if (!ret)
 			i_size_write(inode, size);
 	}
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	up_write(&OCFS2_I(inode)->ip_alloc_sem);
 	if (ret) {
 		mlog_errno(ret);
@@ -2048,6 +2081,12 @@ static int __ocfs2_change_file_space(struct file *file, struct inode *inode,
 		goto out_inode_unlock;
 	}
 
+<<<<<<< HEAD
+=======
+	if (change_size && i_size_read(inode) < size)
+		i_size_write(inode, size);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	inode->i_ctime = inode->i_mtime = current_time(inode);
 	ret = ocfs2_mark_inode_dirty(handle, inode, di_bh);
 	if (ret < 0)

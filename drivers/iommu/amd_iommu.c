@@ -1347,26 +1347,42 @@ static void increase_address_space(struct protection_domain *domain,
 	unsigned long flags;
 	u64 *pte;
 
+<<<<<<< HEAD
 	pte = (void *)get_zeroed_page(gfp);
 	if (!pte)
 		return;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	spin_lock_irqsave(&domain->lock, flags);
 
 	if (WARN_ON_ONCE(domain->mode == PAGE_MODE_6_LEVEL))
 		/* address space already 64 bit large */
 		goto out;
 
+<<<<<<< HEAD
+=======
+	pte = (void *)get_zeroed_page(gfp);
+	if (!pte)
+		goto out;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	*pte             = PM_LEVEL_PDE(domain->mode,
 					iommu_virt_to_phys(domain->pt_root));
 	domain->pt_root  = pte;
 	domain->mode    += 1;
 	domain->updated  = true;
+<<<<<<< HEAD
 	pte              = NULL;
 
 out:
 	spin_unlock_irqrestore(&domain->lock, flags);
 	free_page((unsigned long)pte);
+=======
+
+out:
+	spin_unlock_irqrestore(&domain->lock, flags);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return;
 }

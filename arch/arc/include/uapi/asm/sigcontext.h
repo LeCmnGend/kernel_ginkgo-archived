@@ -18,7 +18,10 @@
  */
 struct sigcontext {
 	struct user_regs_struct regs;
+<<<<<<< HEAD
 	struct user_regs_arcv2 v2abi;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 #endif /* _ASM_ARC_SIGCONTEXT_H */

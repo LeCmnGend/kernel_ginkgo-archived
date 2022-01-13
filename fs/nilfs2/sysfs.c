@@ -1064,7 +1064,10 @@ void nilfs_sysfs_delete_device_group(struct the_nilfs *nilfs)
 	nilfs_sysfs_delete_superblock_group(nilfs);
 	nilfs_sysfs_delete_segctor_group(nilfs);
 	kobject_del(&nilfs->ns_dev_kobj);
+<<<<<<< HEAD
 	kobject_put(&nilfs->ns_dev_kobj);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	kfree(nilfs->ns_dev_subgroups);
 }
 

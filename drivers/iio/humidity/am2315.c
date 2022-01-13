@@ -36,11 +36,15 @@
 struct am2315_data {
 	struct i2c_client *client;
 	struct mutex lock;
+<<<<<<< HEAD
 	/* Ensure timestamp is naturally aligned */
 	struct {
 		s16 chans[2];
 		s64 timestamp __aligned(8);
 	} scan;
+=======
+	s16 buffer[8]; /* 2x16-bit channels + 2x16 padding + 4x16 timestamp */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 struct am2315_sensor_data {
@@ -174,20 +178,34 @@ static irqreturn_t am2315_trigger_handler(int irq, void *p)
 
 	mutex_lock(&data->lock);
 	if (*(indio_dev->active_scan_mask) == AM2315_ALL_CHANNEL_MASK) {
+<<<<<<< HEAD
 		data->scan.chans[0] = sensor_data.hum_data;
 		data->scan.chans[1] = sensor_data.temp_data;
+=======
+		data->buffer[0] = sensor_data.hum_data;
+		data->buffer[1] = sensor_data.temp_data;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else {
 		i = 0;
 		for_each_set_bit(bit, indio_dev->active_scan_mask,
 				 indio_dev->masklength) {
+<<<<<<< HEAD
 			data->scan.chans[i] = (bit ? sensor_data.temp_data :
 					       sensor_data.hum_data);
+=======
+			data->buffer[i] = (bit ? sensor_data.temp_data :
+						 sensor_data.hum_data);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			i++;
 		}
 	}
 	mutex_unlock(&data->lock);
 
+<<<<<<< HEAD
 	iio_push_to_buffers_with_timestamp(indio_dev, &data->scan,
+=======
+	iio_push_to_buffers_with_timestamp(indio_dev, data->buffer,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 					   pf->timestamp);
 err:
 	iio_trigger_notify_done(indio_dev->trig);

@@ -129,10 +129,15 @@ static int anon_release_pages(char *rel_area)
 
 static void anon_allocate_area(void **alloc_area)
 {
+<<<<<<< HEAD
 	*alloc_area = mmap(NULL, nr_pages * page_size, PROT_READ | PROT_WRITE,
 			   MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
 	if (*alloc_area == MAP_FAILED) {
 		fprintf(stderr, "mmap of anonymous memory failed");
+=======
+	if (posix_memalign(alloc_area, page_size, nr_pages * page_size)) {
+		fprintf(stderr, "out of memory\n");
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		*alloc_area = NULL;
 	}
 }

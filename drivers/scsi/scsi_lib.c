@@ -976,7 +976,10 @@ void scsi_io_completion(struct scsi_cmnd *cmd, unsigned int good_bytes)
 				case 0x07: /* operation in progress */
 				case 0x08: /* Long write in progress */
 				case 0x09: /* self test in progress */
+<<<<<<< HEAD
 				case 0x11: /* notify (enable spinup) required */
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				case 0x14: /* space allocation in progress */
 					action = ACTION_DELAYED_RETRY;
 					break;
@@ -3377,6 +3380,7 @@ void sdev_enable_disk_events(struct scsi_device *sdev)
 }
 EXPORT_SYMBOL(sdev_enable_disk_events);
 
+<<<<<<< HEAD
 static unsigned char designator_prio(const unsigned char *d)
 {
 	if (d[1] & 0x30)
@@ -3449,6 +3453,8 @@ static unsigned char designator_prio(const unsigned char *d)
 	return 0;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /**
  * scsi_vpd_lun_id - return a unique device identification
  * @sdev: SCSI device
@@ -3465,7 +3471,11 @@ static unsigned char designator_prio(const unsigned char *d)
  */
 int scsi_vpd_lun_id(struct scsi_device *sdev, char *id, size_t id_len)
 {
+<<<<<<< HEAD
 	u8 cur_id_prio = 0;
+=======
+	u8 cur_id_type = 0xff;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	u8 cur_id_size = 0;
 	const unsigned char *d, *cur_id_str;
 	const struct scsi_vpd *vpd_pg83;
@@ -3478,6 +3488,23 @@ int scsi_vpd_lun_id(struct scsi_device *sdev, char *id, size_t id_len)
 		return -ENXIO;
 	}
 
+<<<<<<< HEAD
+=======
+	/*
+	 * Look for the correct descriptor.
+	 * Order of preference for lun descriptor:
+	 * - SCSI name string
+	 * - NAA IEEE Registered Extended
+	 * - EUI-64 based 16-byte
+	 * - EUI-64 based 12-byte
+	 * - NAA IEEE Registered
+	 * - NAA IEEE Extended
+	 * - T10 Vendor ID
+	 * as longer descriptors reduce the likelyhood
+	 * of identification clashes.
+	 */
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* The id string must be at least 20 bytes + terminating NULL byte */
 	if (id_len < 21) {
 		rcu_read_unlock();
@@ -3487,9 +3514,14 @@ int scsi_vpd_lun_id(struct scsi_device *sdev, char *id, size_t id_len)
 	memset(id, 0, id_len);
 	d = vpd_pg83->data + 4;
 	while (d < vpd_pg83->data + vpd_pg83->len) {
+<<<<<<< HEAD
 		u8 prio = designator_prio(d);
 
 		if (prio == 0 || cur_id_prio > prio)
+=======
+		/* Skip designators not referring to the LUN */
+		if ((d[1] & 0x30) != 0x00)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			goto next_desig;
 
 		switch (d[1] & 0xf) {
@@ -3497,19 +3529,41 @@ int scsi_vpd_lun_id(struct scsi_device *sdev, char *id, size_t id_len)
 			/* T10 Vendor ID */
 			if (cur_id_size > d[3])
 				break;
+<<<<<<< HEAD
 			cur_id_prio = prio;
+=======
+			/* Prefer anything */
+			if (cur_id_type > 0x01 && cur_id_type != 0xff)
+				break;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			cur_id_size = d[3];
 			if (cur_id_size + 4 > id_len)
 				cur_id_size = id_len - 4;
 			cur_id_str = d + 4;
+<<<<<<< HEAD
+=======
+			cur_id_type = d[1] & 0xf;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			id_size = snprintf(id, id_len, "t10.%*pE",
 					   cur_id_size, cur_id_str);
 			break;
 		case 0x2:
 			/* EUI-64 */
+<<<<<<< HEAD
 			cur_id_prio = prio;
 			cur_id_size = d[3];
 			cur_id_str = d + 4;
+=======
+			if (cur_id_size > d[3])
+				break;
+			/* Prefer NAA IEEE Registered Extended */
+			if (cur_id_type == 0x3 &&
+			    cur_id_size == d[3])
+				break;
+			cur_id_size = d[3];
+			cur_id_str = d + 4;
+			cur_id_type = d[1] & 0xf;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			switch (cur_id_size) {
 			case 8:
 				id_size = snprintf(id, id_len,
@@ -3527,14 +3581,26 @@ int scsi_vpd_lun_id(struct scsi_device *sdev, char *id, size_t id_len)
 						   cur_id_str);
 				break;
 			default:
+<<<<<<< HEAD
+=======
+				cur_id_size = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				break;
 			}
 			break;
 		case 0x3:
 			/* NAA */
+<<<<<<< HEAD
 			cur_id_prio = prio;
 			cur_id_size = d[3];
 			cur_id_str = d + 4;
+=======
+			if (cur_id_size > d[3])
+				break;
+			cur_id_size = d[3];
+			cur_id_str = d + 4;
+			cur_id_type = d[1] & 0xf;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			switch (cur_id_size) {
 			case 8:
 				id_size = snprintf(id, id_len,
@@ -3547,11 +3613,16 @@ int scsi_vpd_lun_id(struct scsi_device *sdev, char *id, size_t id_len)
 						   cur_id_str);
 				break;
 			default:
+<<<<<<< HEAD
+=======
+				cur_id_size = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				break;
 			}
 			break;
 		case 0x8:
 			/* SCSI name string */
+<<<<<<< HEAD
 			if (cur_id_size > d[3])
 				break;
 			/* Prefer others for truncated descriptor */
@@ -3566,6 +3637,22 @@ int scsi_vpd_lun_id(struct scsi_device *sdev, char *id, size_t id_len)
 			if (cur_id_size >= id_len)
 				cur_id_size = id_len - 1;
 			memcpy(id, cur_id_str, cur_id_size);
+=======
+			if (cur_id_size + 4 > d[3])
+				break;
+			/* Prefer others for truncated descriptor */
+			if (cur_id_size && d[3] > id_len)
+				break;
+			cur_id_size = id_size = d[3];
+			cur_id_str = d + 4;
+			cur_id_type = d[1] & 0xf;
+			if (cur_id_size >= id_len)
+				cur_id_size = id_len - 1;
+			memcpy(id, cur_id_str, cur_id_size);
+			/* Decrease priority for truncated descriptor */
+			if (cur_id_size != id_size)
+				cur_id_size = 6;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			break;
 		default:
 			break;

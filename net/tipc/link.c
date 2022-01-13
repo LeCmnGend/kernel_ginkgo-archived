@@ -882,7 +882,13 @@ void tipc_link_reset(struct tipc_link *l)
 int tipc_link_xmit(struct tipc_link *l, struct sk_buff_head *list,
 		   struct sk_buff_head *xmitq)
 {
+<<<<<<< HEAD
 	unsigned int maxwin = l->window;
+=======
+	struct tipc_msg *hdr = buf_msg(skb_peek(list));
+	unsigned int maxwin = l->window;
+	int imp = msg_importance(hdr);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	unsigned int mtu = l->mtu;
 	u16 ack = l->rcv_nxt - 1;
 	u16 seqno = l->snd_nxt;
@@ -891,6 +897,7 @@ int tipc_link_xmit(struct tipc_link *l, struct sk_buff_head *list,
 	struct sk_buff_head *backlogq = &l->backlogq;
 	struct sk_buff *skb, *_skb, **tskb;
 	int pkt_cnt = skb_queue_len(list);
+<<<<<<< HEAD
 	struct tipc_msg *hdr;
 	int rc = 0;
 	int imp;
@@ -899,12 +906,19 @@ int tipc_link_xmit(struct tipc_link *l, struct sk_buff_head *list,
 		return 0;
 
 	hdr = buf_msg(skb_peek(list));
+=======
+	int rc = 0;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (unlikely(msg_size(hdr) > mtu)) {
 		skb_queue_purge(list);
 		return -EMSGSIZE;
 	}
 
+<<<<<<< HEAD
 	imp = msg_importance(hdr);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* Allow oversubscription of one data msg per source at congestion */
 	if (unlikely(l->backlog[imp].len >= l->backlog[imp].limit)) {
 		if (imp == TIPC_SYSTEM_IMPORTANCE) {

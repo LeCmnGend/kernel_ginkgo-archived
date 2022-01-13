@@ -131,13 +131,19 @@ static void sync_event_print(struct seq_file *s,
 		break;
 	}
 	case KGSL_CMD_SYNCPOINT_TYPE_FENCE: {
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		int i;
 
 		for (i = 0; i < sync_event->info.num_fences; i++)
 			seq_printf(s, "sync: %s",
 				sync_event->info.fences[i].name);
+<<<<<<< HEAD
 #endif
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		break;
 	}
 	default:

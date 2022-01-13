@@ -113,7 +113,10 @@ struct kernfs_node *kernfs_find_and_get_node_by_ino(struct kernfs_root *root,
  */
 extern const struct file_operations kernfs_file_fops;
 
+<<<<<<< HEAD
 void __init init_kernfs_file_pool(void);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 void kernfs_drain_open_files(struct kernfs_node *kn);
 
 /*

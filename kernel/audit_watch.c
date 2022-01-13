@@ -316,6 +316,11 @@ static void audit_update_watch(struct audit_parent *parent,
 			if (oentry->rule.exe)
 				audit_remove_mark(oentry->rule.exe);
 
+<<<<<<< HEAD
+=======
+			audit_watch_log_rule_change(r, owatch, "updated_rules");
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			call_rcu(&oentry->rcu, audit_free_rule_rcu);
 		}
 

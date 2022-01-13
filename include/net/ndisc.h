@@ -39,7 +39,11 @@ enum {
 	ND_OPT_DNSSL = 31,		/* RFC6106 */
 	ND_OPT_6CO = 34,		/* RFC6775 */
 	ND_OPT_CAPTIVE_PORTAL = 37,	/* RFC7710 */
+<<<<<<< HEAD
 	ND_OPT_PREF64 = 38,		/* RFC8781 */
+=======
+	ND_OPT_PREF64 = 38,		/* RFC-ietf-6man-ra-pref64-09 */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	__ND_OPT_MAX
 };
 

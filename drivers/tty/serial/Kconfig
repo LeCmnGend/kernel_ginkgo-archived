@@ -9,7 +9,10 @@ menu "Serial drivers"
 
 config SERIAL_EARLYCON
 	bool
+<<<<<<< HEAD
 	depends on SERIAL_CORE
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	help
 	  Support for early consoles with the earlycon parameter. This enables
 	  the console before standard serial driver is probed. The console is

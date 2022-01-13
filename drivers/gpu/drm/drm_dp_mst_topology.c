@@ -2762,13 +2762,22 @@ bool drm_dp_mst_allocate_vcpi(struct drm_dp_mst_topology_mgr *mgr,
 {
 	int ret;
 
+<<<<<<< HEAD
 	if (slots < 0)
 		return false;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	port = drm_dp_get_validated_port_ref(mgr, port);
 	if (!port)
 		return false;
 
+<<<<<<< HEAD
+=======
+	if (slots < 0)
+		return false;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (port->vcpi.vcpi > 0) {
 		DRM_DEBUG_KMS("payload: vcpi %d already allocated for pbn %d - requested pbn %d\n", port->vcpi.vcpi, port->vcpi.pbn, pbn);
 		if (pbn == port->vcpi.pbn) {
@@ -2781,7 +2790,10 @@ bool drm_dp_mst_allocate_vcpi(struct drm_dp_mst_topology_mgr *mgr,
 	if (ret) {
 		DRM_DEBUG_KMS("failed to init vcpi slots=%d max=63 ret=%d\n",
 				DIV_ROUND_UP(pbn, mgr->pbn_div), ret);
+<<<<<<< HEAD
 		drm_dp_put_port(port);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto out;
 	}
 	DRM_DEBUG_KMS("initing vcpi for pbn=%d slots=%d\n",

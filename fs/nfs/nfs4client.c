@@ -417,8 +417,13 @@ struct nfs_client *nfs4_init_client(struct nfs_client *clp,
 		 */
 		nfs_mark_client_ready(clp, -EPERM);
 	}
+<<<<<<< HEAD
 	clear_bit(NFS_CS_TSM_POSSIBLE, &clp->cl_flags);
 	nfs_put_client(clp);
+=======
+	nfs_put_client(clp);
+	clear_bit(NFS_CS_TSM_POSSIBLE, &clp->cl_flags);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return old;
 
 error:

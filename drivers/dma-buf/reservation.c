@@ -46,7 +46,11 @@
  * write-side updates.
  */
 
+<<<<<<< HEAD
 DEFINE_WD_CLASS(reservation_ww_class);
+=======
+DEFINE_WW_CLASS(reservation_ww_class);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 EXPORT_SYMBOL(reservation_ww_class);
 
 struct lock_class_key reservation_seqcount_class;

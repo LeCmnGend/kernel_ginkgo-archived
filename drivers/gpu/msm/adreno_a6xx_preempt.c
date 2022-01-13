@@ -35,8 +35,11 @@ static void _update_wptr(struct adreno_device *adreno_dev, bool reset_timer)
 {
 	struct adreno_ringbuffer *rb = adreno_dev->cur_rb;
 	unsigned long flags;
+<<<<<<< HEAD
 	bool write = false;
 	unsigned int val;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int ret = 0;
 	struct kgsl_device *device = KGSL_DEVICE(adreno_dev);
 
@@ -63,8 +66,14 @@ static void _update_wptr(struct adreno_device *adreno_dev, bool reset_timer)
 				gmu_core_regrmw(device, A6XX_GMU_AO_SPARE_CNTL,
 					0x0, 0x2);
 
+<<<<<<< HEAD
 			write = true;
 			val = rb->wptr;
+=======
+			ret = adreno_gmu_fenced_write(adreno_dev,
+				ADRENO_REG_CP_RB_WPTR, rb->wptr,
+				FENCE_STATUS_WRITEDROPPED0_MASK);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 			/* Clear the keep alive */
 			if (gmu_core_isenabled(device))
@@ -91,10 +100,13 @@ static void _update_wptr(struct adreno_device *adreno_dev, bool reset_timer)
 
 	spin_unlock_irqrestore(&rb->preempt_lock, flags);
 
+<<<<<<< HEAD
 	if (write)
 		ret = adreno_gmu_fenced_write(adreno_dev, ADRENO_REG_CP_RB_WPTR,
 			val, FENCE_STATUS_WRITEDROPPED0_MASK);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (in_interrupt() == 0) {
 		/* If WPTR update fails, set the fault and trigger recovery */
 		if (ret) {

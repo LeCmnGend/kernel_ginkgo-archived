@@ -408,7 +408,11 @@ static inline struct page *read_mapping_page(struct address_space *mapping,
 }
 
 /*
+<<<<<<< HEAD
  * Get index of the page within radix-tree (but not for hugetlb pages).
+=======
+ * Get index of the page with in radix-tree
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  * (TODO: remove once hugetlb pages will have ->index in PAGE_SIZE)
  */
 static inline pgoff_t page_to_index(struct page *page)
@@ -427,6 +431,7 @@ static inline pgoff_t page_to_index(struct page *page)
 	return pgoff;
 }
 
+<<<<<<< HEAD
 extern pgoff_t hugetlb_basepage_index(struct page *page);
 
 /*
@@ -437,6 +442,17 @@ static inline pgoff_t page_to_pgoff(struct page *page)
 {
 	if (unlikely(PageHuge(page)))
 		return hugetlb_basepage_index(page);
+=======
+/*
+ * Get the offset in PAGE_SIZE.
+ * (TODO: hugepage should have ->index in PAGE_SIZE)
+ */
+static inline pgoff_t page_to_pgoff(struct page *page)
+{
+	if (unlikely(PageHeadHuge(page)))
+		return page->index << compound_order(page);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return page_to_index(page);
 }
 
@@ -467,9 +483,15 @@ static inline pgoff_t linear_page_index(struct vm_area_struct *vma,
 	return pgoff;
 }
 
+<<<<<<< HEAD
 extern void __sched __lock_page(struct page *page);
 extern int __sched __lock_page_killable(struct page *page);
 extern int __sched __lock_page_or_retry(struct page *page, struct mm_struct *mm,
+=======
+extern void __lock_page(struct page *page);
+extern int __lock_page_killable(struct page *page);
+extern int __lock_page_or_retry(struct page *page, struct mm_struct *mm,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				unsigned int flags);
 extern void unlock_page(struct page *page);
 
@@ -482,7 +504,11 @@ static inline int trylock_page(struct page *page)
 /*
  * lock_page may only be called if we have the page's inode pinned.
  */
+<<<<<<< HEAD
 static inline __sched void lock_page(struct page *page)
+=======
+static inline void lock_page(struct page *page)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	might_sleep();
 	if (!trylock_page(page))
@@ -494,7 +520,11 @@ static inline __sched void lock_page(struct page *page)
  * signals.  It returns 0 if it locked the page and -EINTR if it was
  * killed while waiting.
  */
+<<<<<<< HEAD
 static inline __sched int lock_page_killable(struct page *page)
+=======
+static inline int lock_page_killable(struct page *page)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	might_sleep();
 	if (!trylock_page(page))
@@ -509,7 +539,11 @@ static inline __sched int lock_page_killable(struct page *page)
  * Return value and mmap_sem implications depend on flags; see
  * __lock_page_or_retry().
  */
+<<<<<<< HEAD
 static inline __sched int lock_page_or_retry(struct page *page, struct mm_struct *mm,
+=======
+static inline int lock_page_or_retry(struct page *page, struct mm_struct *mm,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				     unsigned int flags)
 {
 	might_sleep();
@@ -520,8 +554,13 @@ static inline __sched int lock_page_or_retry(struct page *page, struct mm_struct
  * This is exported only for wait_on_page_locked/wait_on_page_writeback, etc.,
  * and should not be used directly.
  */
+<<<<<<< HEAD
 extern void __sched wait_on_page_bit(struct page *page, int bit_nr);
 extern int __sched wait_on_page_bit_killable(struct page *page, int bit_nr);
+=======
+extern void wait_on_page_bit(struct page *page, int bit_nr);
+extern int wait_on_page_bit_killable(struct page *page, int bit_nr);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /* 
  * Wait for a page to be unlocked.
@@ -530,13 +569,21 @@ extern int __sched wait_on_page_bit_killable(struct page *page, int bit_nr);
  * ie with increased "page->count" so that the page won't
  * go away during the wait..
  */
+<<<<<<< HEAD
 static inline __sched void wait_on_page_locked(struct page *page)
+=======
+static inline void wait_on_page_locked(struct page *page)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	if (PageLocked(page))
 		wait_on_page_bit(compound_head(page), PG_locked);
 }
 
+<<<<<<< HEAD
 static inline __sched int wait_on_page_locked_killable(struct page *page)
+=======
+static inline int wait_on_page_locked_killable(struct page *page)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	if (!PageLocked(page))
 		return 0;
@@ -546,7 +593,11 @@ static inline __sched int wait_on_page_locked_killable(struct page *page)
 /* 
  * Wait for a page to complete writeback
  */
+<<<<<<< HEAD
 static inline __sched void wait_on_page_writeback(struct page *page)
+=======
+static inline void wait_on_page_writeback(struct page *page)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	if (PageWriteback(page))
 		wait_on_page_bit(page, PG_writeback);

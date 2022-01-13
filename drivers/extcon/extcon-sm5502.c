@@ -92,6 +92,10 @@ static struct reg_data sm5502_reg_data[] = {
 			| SM5502_REG_INTM2_MHL_MASK,
 		.invert = true,
 	},
+<<<<<<< HEAD
+=======
+	{ }
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 /* List of detectable cables */

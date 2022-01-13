@@ -4922,11 +4922,19 @@ mii_get_oui(u_char phyaddr, u_long ioaddr)
 	u_char breg[2];
     } a;
     int i, r2, r3, ret=0;*/
+<<<<<<< HEAD
     int r2;
 
     /* Read r2 and r3 */
     r2 = mii_rd(MII_ID0, phyaddr, ioaddr);
     mii_rd(MII_ID1, phyaddr, ioaddr);
+=======
+    int r2, r3;
+
+    /* Read r2 and r3 */
+    r2 = mii_rd(MII_ID0, phyaddr, ioaddr);
+    r3 = mii_rd(MII_ID1, phyaddr, ioaddr);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
                                                 /* SEEQ and Cypress way * /
     / * Shuffle r2 and r3 * /
     a.reg=0;

@@ -42,7 +42,10 @@
 #include <asm/x86_init.h>
 #include <asm/pgalloc.h>
 #include <linux/atomic.h>
+<<<<<<< HEAD
 #include <asm/barrier.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <asm/mpspec.h>
 #include <asm/i8259.h>
 #include <asm/proto.h>
@@ -474,9 +477,12 @@ static int lapic_next_deadline(unsigned long delta,
 {
 	u64 tsc;
 
+<<<<<<< HEAD
 	/* This MSR is special and need a special fence: */
 	weak_wrmsr_fence();
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	tsc = rdtsc();
 	wrmsrl(MSR_IA32_TSC_DEADLINE, tsc + (((u64) delta) * TSC_DIVISOR));
 	return 0;

@@ -47,7 +47,10 @@ static inline int __pure __get_cpu_type(const int cpu_type)
 	case CPU_34K:
 	case CPU_1004K:
 	case CPU_74K:
+<<<<<<< HEAD
 	case CPU_1074K:
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	case CPU_M14KC:
 	case CPU_M14KEC:
 	case CPU_INTERAPTIV:

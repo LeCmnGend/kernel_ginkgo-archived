@@ -231,8 +231,11 @@ static int compress_page(struct compress *c,
 
 		if (zlib_deflate(zstream, Z_SYNC_FLUSH) != Z_OK)
 			return -EIO;
+<<<<<<< HEAD
 
 		cond_resched();
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} while (zstream->avail_in);
 
 	/* Fallback to uncompressed if we increase size? */
@@ -289,7 +292,10 @@ static int compress_page(struct compress *c,
 	if (!i915_memcpy_from_wc(ptr, src, PAGE_SIZE))
 		memcpy(ptr, src, PAGE_SIZE);
 	dst->pages[dst->page_count++] = ptr;
+<<<<<<< HEAD
 	cond_resched();
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return 0;
 }

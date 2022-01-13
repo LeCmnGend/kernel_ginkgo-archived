@@ -39,22 +39,34 @@ const char *_parse_integer_fixup_radix(const char *s, unsigned int *base)
 
 /*
  * Convert non-negative integer string representation in explicitly given radix
+<<<<<<< HEAD
  * to an integer. A maximum of max_chars characters will be converted.
  *
+=======
+ * to an integer.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  * Return number of characters consumed maybe or-ed with overflow bit.
  * If overflow occurs, result integer (incorrect) is still returned.
  *
  * Don't you dare use this function.
  */
+<<<<<<< HEAD
 unsigned int _parse_integer_limit(const char *s, unsigned int base, unsigned long long *p,
 				  size_t max_chars)
+=======
+unsigned int _parse_integer(const char *s, unsigned int base, unsigned long long *p)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	unsigned long long res;
 	unsigned int rv;
 
 	res = 0;
 	rv = 0;
+<<<<<<< HEAD
 	while (max_chars--) {
+=======
+	while (1) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		unsigned int c = *s;
 		unsigned int lc = c | 0x20; /* don't tolower() this line */
 		unsigned int val;
@@ -84,11 +96,14 @@ unsigned int _parse_integer_limit(const char *s, unsigned int base, unsigned lon
 	return rv;
 }
 
+<<<<<<< HEAD
 unsigned int _parse_integer(const char *s, unsigned int base, unsigned long long *p)
 {
 	return _parse_integer_limit(s, base, p, INT_MAX);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static int _kstrtoull(const char *s, unsigned int base, unsigned long long *res)
 {
 	unsigned long long _res;

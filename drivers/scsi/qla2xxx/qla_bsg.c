@@ -19,11 +19,18 @@ qla2x00_bsg_job_done(void *ptr, int res)
 	struct bsg_job *bsg_job = sp->u.bsg_job;
 	struct fc_bsg_reply *bsg_reply = bsg_job->reply;
 
+<<<<<<< HEAD
 	sp->free(sp);
 
 	bsg_reply->result = res;
 	bsg_job_done(bsg_job, bsg_reply->result,
 		       bsg_reply->reply_payload_rcv_len);
+=======
+	bsg_reply->result = res;
+	bsg_job_done(bsg_job, bsg_reply->result,
+		       bsg_reply->reply_payload_rcv_len);
+	sp->free(sp);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 void

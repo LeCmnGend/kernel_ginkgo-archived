@@ -43,6 +43,10 @@
 #define CTOP_AUX_DPC				(CTOP_AUX_BASE + 0x02C)
 #define CTOP_AUX_LPC				(CTOP_AUX_BASE + 0x030)
 #define CTOP_AUX_EFLAGS				(CTOP_AUX_BASE + 0x080)
+<<<<<<< HEAD
+=======
+#define CTOP_AUX_IACK				(CTOP_AUX_BASE + 0x088)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define CTOP_AUX_GPA1				(CTOP_AUX_BASE + 0x08C)
 #define CTOP_AUX_UDMC				(CTOP_AUX_BASE + 0x300)
 

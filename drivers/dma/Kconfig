@@ -58,7 +58,10 @@ config DMA_OF
 #devices
 config ALTERA_MSGDMA
 	tristate "Altera / Intel mSGDMA Engine"
+<<<<<<< HEAD
 	depends on HAS_IOMEM
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	select DMA_ENGINE
 	help
 	  Enable support for Altera / Intel mSGDMA controller.

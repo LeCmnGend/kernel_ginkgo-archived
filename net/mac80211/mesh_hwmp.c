@@ -355,7 +355,11 @@ static u32 airtime_link_metric_get(struct ieee80211_local *local,
 	 */
 	tx_time = (device_constant + 10 * test_frame_len / rate);
 	estimated_retx = ((1 << (2 * ARITH_SHIFT)) / (s_unit - err));
+<<<<<<< HEAD
 	result = ((u64)tx_time * estimated_retx) >> (2 * ARITH_SHIFT);
+=======
+	result = (tx_time * estimated_retx) >> (2 * ARITH_SHIFT);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return (u32)result;
 }
 

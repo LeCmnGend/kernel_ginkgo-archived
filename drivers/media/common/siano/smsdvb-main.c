@@ -1180,12 +1180,17 @@ static int smsdvb_hotplug(struct smscore_device_t *coredev,
 	rc = dvb_create_media_graph(&client->adapter, true);
 	if (rc < 0) {
 		pr_err("dvb_create_media_graph failed %d\n", rc);
+<<<<<<< HEAD
 		goto media_graph_error;
+=======
+		goto client_error;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	pr_info("DVB interface registered.\n");
 	return 0;
 
+<<<<<<< HEAD
 media_graph_error:
 	mutex_lock(&g_smsdvb_clientslock);
 	list_del(&client->entry);
@@ -1193,6 +1198,8 @@ media_graph_error:
 
 	smsdvb_debugfs_release(client);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 client_error:
 	dvb_unregister_frontend(&client->frontend);
 

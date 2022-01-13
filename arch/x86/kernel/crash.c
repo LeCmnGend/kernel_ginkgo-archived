@@ -23,7 +23,10 @@
 #include <linux/export.h>
 #include <linux/slab.h>
 #include <linux/vmalloc.h>
+<<<<<<< HEAD
 #include <linux/overflow.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #include <asm/processor.h>
 #include <asm/hardirq.h>
@@ -566,7 +569,11 @@ int crash_setup_memmap_entries(struct kimage *image, struct boot_params *params)
 	struct crash_memmap_data cmd;
 	struct crash_mem *cmem;
 
+<<<<<<< HEAD
 	cmem = vzalloc(struct_size(cmem, ranges, 1));
+=======
+	cmem = vzalloc(sizeof(struct crash_mem));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!cmem)
 		return -ENOMEM;
 

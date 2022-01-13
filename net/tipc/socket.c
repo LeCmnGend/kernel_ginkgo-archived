@@ -840,9 +840,12 @@ void tipc_sk_mcast_rcv(struct net *net, struct sk_buff_head *arrvq,
 		spin_lock_bh(&inputq->lock);
 		if (skb_peek(arrvq) == skb) {
 			skb_queue_splice_tail_init(&tmpq, inputq);
+<<<<<<< HEAD
 			/* Decrease the skb's refcnt as increasing in the
 			 * function tipc_skb_peek
 			 */
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			kfree_skb(__skb_dequeue(arrvq));
 		}
 		spin_unlock_bh(&inputq->lock);
@@ -2001,7 +2004,11 @@ static int tipc_listen(struct socket *sock, int len)
 static int tipc_wait_for_accept(struct socket *sock, long timeo)
 {
 	struct sock *sk = sock->sk;
+<<<<<<< HEAD
 	DEFINE_WAIT_FUNC(wait, woken_wake_function);
+=======
+	DEFINE_WAIT(wait);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int err;
 
 	/* True wake-one mechanism for incoming connections: only
@@ -2010,12 +2017,21 @@ static int tipc_wait_for_accept(struct socket *sock, long timeo)
 	 * anymore, the common case will execute the loop only once.
 	*/
 	for (;;) {
+<<<<<<< HEAD
 		if (timeo && skb_queue_empty(&sk->sk_receive_queue)) {
 			add_wait_queue(sk_sleep(sk), &wait);
 			release_sock(sk);
 			timeo = wait_woken(&wait, TASK_INTERRUPTIBLE, timeo);
 			lock_sock(sk);
 			remove_wait_queue(sk_sleep(sk), &wait);
+=======
+		prepare_to_wait_exclusive(sk_sleep(sk), &wait,
+					  TASK_INTERRUPTIBLE);
+		if (timeo && skb_queue_empty(&sk->sk_receive_queue)) {
+			release_sock(sk);
+			timeo = schedule_timeout(timeo);
+			lock_sock(sk);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 		err = 0;
 		if (!skb_queue_empty(&sk->sk_receive_queue))
@@ -2027,6 +2043,10 @@ static int tipc_wait_for_accept(struct socket *sock, long timeo)
 		if (signal_pending(current))
 			break;
 	}
+<<<<<<< HEAD
+=======
+	finish_wait(sk_sleep(sk), &wait);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return err;
 }
 
@@ -2128,18 +2148,30 @@ static int tipc_shutdown(struct socket *sock, int how)
 	lock_sock(sk);
 
 	__tipc_shutdown(sock, TIPC_CONN_SHUTDOWN);
+<<<<<<< HEAD
 	sk->sk_shutdown = SHUTDOWN_MASK;
+=======
+	sk->sk_shutdown = SEND_SHUTDOWN;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (sk->sk_state == TIPC_DISCONNECTING) {
 		/* Discard any unreceived messages */
 		__skb_queue_purge(&sk->sk_receive_queue);
 
+<<<<<<< HEAD
+=======
+		/* Wake up anyone sleeping in poll */
+		sk->sk_state_change(sk);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		res = 0;
 	} else {
 		res = -ENOTCONN;
 	}
+<<<<<<< HEAD
 	/* Wake up anyone sleeping in poll. */
 	sk->sk_state_change(sk);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	release_sock(sk);
 	return res;

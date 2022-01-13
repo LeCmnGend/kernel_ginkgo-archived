@@ -5236,10 +5236,15 @@ _scsih_expander_add(struct MPT3SAS_ADAPTER *ioc, u16 handle)
 	    handle, parent_handle, (unsigned long long)
 	    sas_expander->sas_address, sas_expander->num_phys);
 
+<<<<<<< HEAD
 	if (!sas_expander->num_phys) {
 		rc = -1;
 		goto out_fail;
 	}
+=======
+	if (!sas_expander->num_phys)
+		goto out_fail;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	sas_expander->phy = kcalloc(sas_expander->num_phys,
 	    sizeof(struct _sas_phy), GFP_KERNEL);
 	if (!sas_expander->phy) {

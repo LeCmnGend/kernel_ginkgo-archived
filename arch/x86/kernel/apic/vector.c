@@ -368,10 +368,13 @@ static int x86_vector_alloc_irqs(struct irq_domain *domain, unsigned int virq,
 		irq_data->chip = &lapic_controller;
 		irq_data->chip_data = data;
 		irq_data->hwirq = virq + i;
+<<<<<<< HEAD
 
 		/* Don't invoke affinity setter on deactivated interrupts */
 		irqd_set_affinity_on_activate(irq_data);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		err = assign_irq_vector_policy(virq + i, node, data, info,
 					       irq_data);
 		if (err) {

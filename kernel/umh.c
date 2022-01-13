@@ -13,7 +13,10 @@
 #include <linux/cred.h>
 #include <linux/file.h>
 #include <linux/fdtable.h>
+<<<<<<< HEAD
 #include <linux/fs_struct.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <linux/workqueue.h>
 #include <linux/security.h>
 #include <linux/mount.h>
@@ -72,6 +75,7 @@ static int call_usermodehelper_exec_async(void *data)
 	spin_unlock_irq(&current->sighand->siglock);
 
 	/*
+<<<<<<< HEAD
 	 * Initial kernel threads share ther FS with init, in order to
 	 * get the init root directory. But we've now created a new
 	 * thread that is going to execve a user process and has its own
@@ -80,6 +84,8 @@ static int call_usermodehelper_exec_async(void *data)
 	current->fs->umask = 0022;
 
 	/*
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	 * Our parent (unbound workqueue) runs with elevated scheduling
 	 * priority. Avoid propagating that into the userspace child.
 	 */

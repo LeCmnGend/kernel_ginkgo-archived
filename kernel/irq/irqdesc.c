@@ -43,7 +43,11 @@ static void __init init_irq_default_affinity(void)
 	if (!cpumask_available(irq_default_affinity))
 		zalloc_cpumask_var(&irq_default_affinity, GFP_NOWAIT);
 	if (cpumask_empty(irq_default_affinity))
+<<<<<<< HEAD
 		cpumask_set_cpu(0, irq_default_affinity);
+=======
+		cpumask_setall(irq_default_affinity);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 #else
 static void __init init_irq_default_affinity(void)

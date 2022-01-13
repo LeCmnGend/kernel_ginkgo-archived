@@ -3081,11 +3081,19 @@ static int blogic_qcmd_lck(struct scsi_cmnd *command,
 		ccb->opcode = BLOGIC_INITIATOR_CCB_SG;
 		ccb->datalen = count * sizeof(struct blogic_sg_seg);
 		if (blogic_multimaster_type(adapter))
+<<<<<<< HEAD
 			ccb->data = (unsigned int) ccb->dma_handle +
 					((unsigned long) &ccb->sglist -
 					(unsigned long) ccb);
 		else
 			ccb->data = virt_to_32bit_virt(ccb->sglist);
+=======
+			ccb->data = (void *)((unsigned int) ccb->dma_handle +
+					((unsigned long) &ccb->sglist -
+					(unsigned long) ccb));
+		else
+			ccb->data = ccb->sglist;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		scsi_for_each_sg(command, sg, count, i) {
 			ccb->sglist[i].segbytes = sg_dma_len(sg);

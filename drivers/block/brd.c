@@ -29,6 +29,10 @@
 
 #include <linux/uaccess.h>
 
+<<<<<<< HEAD
+=======
+#define SECTOR_SHIFT		9
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define PAGE_SECTORS_SHIFT	(PAGE_SHIFT - SECTOR_SHIFT)
 #define PAGE_SECTORS		(1 << PAGE_SECTORS_SHIFT)
 

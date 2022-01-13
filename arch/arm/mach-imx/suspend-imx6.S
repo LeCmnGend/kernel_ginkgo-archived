@@ -73,7 +73,10 @@
 #define MX6Q_CCM_CCR	0x0
 
 	.align 3
+<<<<<<< HEAD
 	.arm
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	.macro  sync_l2_cache
 

@@ -529,7 +529,11 @@ static int list_devices(struct file *filp, struct dm_ioctl *param, size_t param_
 	 * Grab our output buffer.
 	 */
 	nl = orig_nl = get_result_buffer(param, param_size, &len);
+<<<<<<< HEAD
 	if (len < needed || len < sizeof(nl->dev)) {
+=======
+	if (len < needed) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		param->flags |= DM_BUFFER_FULL_FLAG;
 		goto out;
 	}
@@ -1574,7 +1578,10 @@ static int target_message(struct file *filp, struct dm_ioctl *param, size_t para
 
 	if (!argc) {
 		DMWARN("Empty message received.");
+<<<<<<< HEAD
 		r = -EINVAL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto out_argv;
 	}
 

@@ -411,6 +411,10 @@ static void ssb_sdio_block_write(struct ssb_device *dev, const void *buffer,
 	sdio_claim_host(bus->host_sdio);
 	if (unlikely(ssb_sdio_switch_core(bus, dev))) {
 		error = -EIO;
+<<<<<<< HEAD
+=======
+		memset((void *)buffer, 0xff, count);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		goto err_out;
 	}
 	offset |= bus->sdio_sbaddr & 0xffff;

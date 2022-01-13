@@ -18,7 +18,11 @@ struct zcomp_strm {
 
 /* dynamic per-device compression frontend */
 struct zcomp {
+<<<<<<< HEAD
 	struct zcomp_strm __percpu *stream;
+=======
+	struct zcomp_strm * __percpu *stream;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	const char *name;
 	struct hlist_node node;
 };

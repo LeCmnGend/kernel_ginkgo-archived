@@ -384,7 +384,11 @@ static int gab_remove(struct platform_device *pdev)
 	}
 
 	kfree(adc_bat->psy_desc.properties);
+<<<<<<< HEAD
 	cancel_delayed_work_sync(&adc_bat->bat_work);
+=======
+	cancel_delayed_work(&adc_bat->bat_work);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 }
 

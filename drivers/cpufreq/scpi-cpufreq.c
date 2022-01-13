@@ -85,7 +85,10 @@ static struct platform_driver scpi_cpufreq_platdrv = {
 };
 module_platform_driver(scpi_cpufreq_platdrv);
 
+<<<<<<< HEAD
 MODULE_ALIAS("platform:scpi-cpufreq");
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 MODULE_AUTHOR("Sudeep Holla <sudeep.holla@arm.com>");
 MODULE_DESCRIPTION("ARM SCPI CPUFreq interface driver");
 MODULE_LICENSE("GPL v2");

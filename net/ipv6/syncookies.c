@@ -141,7 +141,11 @@ struct sock *cookie_v6_check(struct sock *sk, struct sk_buff *skb)
 	__u32 cookie = ntohl(th->ack_seq) - 1;
 	struct sock *ret = sk;
 	struct request_sock *req;
+<<<<<<< HEAD
 	int full_space, mss;
+=======
+	int mss;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct dst_entry *dst;
 	__u8 rcv_wscale;
 	u32 tsoff = 0;
@@ -244,6 +248,7 @@ struct sock *cookie_v6_check(struct sock *sk, struct sk_buff *skb)
 	}
 
 	req->rsk_window_clamp = tp->window_clamp ? :dst_metric(dst, RTAX_WINDOW);
+<<<<<<< HEAD
 	/* limit the window selection if the user enforce a smaller rx buffer */
 	full_space = tcp_full_space(sk);
 	if (sk->sk_userlocks & SOCK_RCVBUF_LOCK &&
@@ -251,6 +256,9 @@ struct sock *cookie_v6_check(struct sock *sk, struct sk_buff *skb)
 		req->rsk_window_clamp = full_space;
 
 	tcp_select_initial_window(sock_net(sk), full_space, req->mss,
+=======
+	tcp_select_initial_window(sock_net(sk), tcp_full_space(sk), req->mss,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				  &req->rsk_rcv_wnd, &req->rsk_window_clamp,
 				  ireq->wscale_ok, &rcv_wscale,
 				  dst_metric(dst, RTAX_INITRWND));

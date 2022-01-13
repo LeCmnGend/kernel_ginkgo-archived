@@ -156,7 +156,11 @@ int calculate_normal_threshold(struct zone *zone)
 	 * 125		1024		10	16-32 GB	9
 	 */
 
+<<<<<<< HEAD
 	mem = zone_managed_pages(zone) >> (27 - PAGE_SHIFT);
+=======
+	mem = zone->managed_pages >> (27 - PAGE_SHIFT);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	threshold = 2 * fls(num_online_cpus()) * (1 + fls(mem));
 
@@ -1322,9 +1326,12 @@ static void pagetypeinfo_showfree_print(struct seq_file *m,
 			list_for_each(curr, &area->free_list[mtype])
 				freecount++;
 			seq_printf(m, "%6lu ", freecount);
+<<<<<<< HEAD
 			spin_unlock_irq(&zone->lock);
 			cond_resched();
 			spin_lock_irq(&zone->lock);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 		seq_putc(m, '\n');
 	}
@@ -1531,7 +1538,11 @@ static void zoneinfo_show_print(struct seq_file *m, pg_data_t *pgdat,
 		   high_wmark_pages(zone),
 		   zone->spanned_pages,
 		   zone->present_pages,
+<<<<<<< HEAD
 		   zone_managed_pages(zone));
+=======
+		   zone->managed_pages);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	seq_printf(m,
 		   "\n        protection: (%ld",
@@ -1578,9 +1589,17 @@ static void zoneinfo_show_print(struct seq_file *m, pg_data_t *pgdat,
 	}
 	seq_printf(m,
 		   "\n  node_unreclaimable:  %u"
+<<<<<<< HEAD
 		   "\n  start_pfn:           %lu",
 		   pgdat->kswapd_failures >= MAX_RECLAIM_RETRIES,
 		   zone->zone_start_pfn);
+=======
+		   "\n  start_pfn:           %lu"
+		   "\n  node_inactive_ratio: %u",
+		   pgdat->kswapd_failures >= MAX_RECLAIM_RETRIES,
+		   zone->zone_start_pfn,
+		   zone->zone_pgdat->inactive_ratio);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	seq_putc(m, '\n');
 }
 
@@ -1716,7 +1735,11 @@ static const struct file_operations vmstat_file_operations = {
 
 #ifdef CONFIG_SMP
 static DEFINE_PER_CPU(struct delayed_work, vmstat_work);
+<<<<<<< HEAD
 int sysctl_stat_interval __read_mostly = 30 * HZ;
+=======
+int sysctl_stat_interval __read_mostly = HZ;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #ifdef CONFIG_PROC_FS
 static void refresh_vm_stats(struct work_struct *work)
@@ -1831,13 +1854,21 @@ static bool need_update(int cpu)
  */
 void quiet_vmstat(void)
 {
+<<<<<<< HEAD
 	if (unlikely(system_state != SYSTEM_RUNNING))
+=======
+	if (system_state != SYSTEM_RUNNING)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return;
 
 	if (!delayed_work_pending(this_cpu_ptr(&vmstat_work)))
 		return;
 
+<<<<<<< HEAD
 	if (likely(!need_update(smp_processor_id())))
+=======
+	if (!need_update(smp_processor_id()))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return;
 
 	/*
@@ -1874,7 +1905,11 @@ static void vmstat_shepherd(struct work_struct *w)
 	}
 	put_online_cpus();
 
+<<<<<<< HEAD
 	queue_delayed_work(system_power_efficient_wq, &shepherd,
+=======
+	schedule_delayed_work(&shepherd,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		round_jiffies_relative(sysctl_stat_interval));
 }
 
@@ -1886,7 +1921,11 @@ static void __init start_shepherd_timer(void)
 		INIT_DEFERRABLE_WORK(per_cpu_ptr(&vmstat_work, cpu),
 			vmstat_update);
 
+<<<<<<< HEAD
 	queue_delayed_work(system_power_efficient_wq, &shepherd,
+=======
+	schedule_delayed_work(&shepherd,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		round_jiffies_relative(sysctl_stat_interval));
 }
 

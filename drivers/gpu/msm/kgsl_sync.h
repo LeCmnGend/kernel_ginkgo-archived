@@ -32,9 +32,13 @@
  */
 struct kgsl_sync_timeline {
 	struct kref kref;
+<<<<<<< HEAD
 #ifdef CONFIG_FENCE_DEBUG
 	char name[KGSL_TIMELINE_NAME_LEN];
 #endif
+=======
+	char name[KGSL_TIMELINE_NAME_LEN];
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	u64 fence_context;
 

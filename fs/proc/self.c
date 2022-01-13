@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-2.0
+<<<<<<< HEAD
 #include <linux/cache.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <linux/sched.h>
 #include <linux/slab.h>
 #include <linux/pid_namespace.h>
@@ -16,6 +19,7 @@ static const char *proc_self_get_link(struct dentry *dentry,
 	pid_t tgid = task_tgid_nr_ns(current, ns);
 	char *name;
 
+<<<<<<< HEAD
 	/*
 	 * Not currently supported. Once we can inherit all of struct pid,
 	 * we can allow this.
@@ -23,6 +27,8 @@ static const char *proc_self_get_link(struct dentry *dentry,
 	if (current->flags & PF_KTHREAD)
 		return ERR_PTR(-EOPNOTSUPP);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!tgid)
 		return ERR_PTR(-ENOENT);
 	/* 11 for max length of signed int in decimal + NULL term */
@@ -38,7 +44,11 @@ static const struct inode_operations proc_self_inode_operations = {
 	.get_link	= proc_self_get_link,
 };
 
+<<<<<<< HEAD
 static unsigned self_inum __ro_after_init;
+=======
+static unsigned self_inum;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 int proc_setup_self(struct super_block *s)
 {

@@ -1,13 +1,35 @@
+<<<<<<< HEAD
 /* SPDX-License-Identifier: GPL-2.0-only */
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /*
  * Copyright (C) 2013 ARM Ltd.
  * Copyright (C) 2013 Linaro.
  *
  * This code is based on glibc cortex strings work originally authored by Linaro
+<<<<<<< HEAD
+=======
+ * and re-licensed under GPLv2 for the Linux kernel. The original code can
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  * be found @
  *
  * http://bazaar.launchpad.net/~linaro-toolchain-dev/cortex-strings/trunk/
  * files/head:/src/aarch64/
+<<<<<<< HEAD
+=======
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  */
 
 #include <linux/linkage.h>
@@ -42,8 +64,14 @@ dst		.req	x8
 tmp3w		.req	w9
 tmp3		.req	x9
 
+<<<<<<< HEAD
 SYM_FUNC_START_ALIAS(__memset)
 SYM_FUNC_START_WEAK_PI(memset)
+=======
+	.weak memset
+ENTRY(__memset)
+ENTRY(memset)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	mov	dst, dstin	/* Preserve return value.  */
 	and	A_lw, val, #255
 	orr	A_lw, A_lw, A_lw, lsl #8
@@ -202,5 +230,10 @@ SYM_FUNC_START_WEAK_PI(memset)
 	ands	count, count, zva_bits_x
 	b.ne	.Ltail_maybe_long
 	ret
+<<<<<<< HEAD
 SYM_FUNC_END_PI(memset)
 SYM_FUNC_END_ALIAS(__memset)
+=======
+ENDPIPROC(memset)
+ENDPROC(__memset)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388

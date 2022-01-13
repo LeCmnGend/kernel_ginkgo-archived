@@ -91,7 +91,11 @@ static int tegra_bpmp_xlate_flags(u16 flags, u16 *out)
 		flags &= ~I2C_M_RECV_LEN;
 	}
 
+<<<<<<< HEAD
 	return 0;
+=======
+	return (flags != 0) ? -EINVAL : 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /**

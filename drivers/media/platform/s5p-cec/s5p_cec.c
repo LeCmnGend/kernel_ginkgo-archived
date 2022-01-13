@@ -55,7 +55,11 @@ static int s5p_cec_adap_enable(struct cec_adapter *adap, bool enable)
 	} else {
 		s5p_cec_mask_tx_interrupts(cec);
 		s5p_cec_mask_rx_interrupts(cec);
+<<<<<<< HEAD
 		pm_runtime_put(cec->dev);
+=======
+		pm_runtime_disable(cec->dev);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	return 0;

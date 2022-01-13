@@ -83,7 +83,11 @@ static int crypto_aead_copy_sgl(struct crypto_skcipher *null_tfm,
 	SKCIPHER_REQUEST_ON_STACK(skreq, null_tfm);
 
 	skcipher_request_set_tfm(skreq, null_tfm);
+<<<<<<< HEAD
 	skcipher_request_set_callback(skreq, CRYPTO_TFM_REQ_MAY_SLEEP,
+=======
+	skcipher_request_set_callback(skreq, CRYPTO_TFM_REQ_MAY_BACKLOG,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				      NULL, NULL);
 	skcipher_request_set_crypt(skreq, src, dst, len, NULL);
 
@@ -296,20 +300,31 @@ static int _aead_recvmsg(struct socket *sock, struct msghdr *msg,
 		areq->outlen = outlen;
 
 		aead_request_set_callback(&areq->cra_u.aead_req,
+<<<<<<< HEAD
 					  CRYPTO_TFM_REQ_MAY_SLEEP,
+=======
+					  CRYPTO_TFM_REQ_MAY_BACKLOG,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 					  af_alg_async_cb, areq);
 		err = ctx->enc ? crypto_aead_encrypt(&areq->cra_u.aead_req) :
 				 crypto_aead_decrypt(&areq->cra_u.aead_req);
 
 		/* AIO operation in progress */
+<<<<<<< HEAD
 		if (err == -EINPROGRESS)
+=======
+		if (err == -EINPROGRESS || err == -EBUSY)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			return -EIOCBQUEUED;
 
 		sock_put(sk);
 	} else {
 		/* Synchronous operation */
 		aead_request_set_callback(&areq->cra_u.aead_req,
+<<<<<<< HEAD
 					  CRYPTO_TFM_REQ_MAY_SLEEP |
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 					  CRYPTO_TFM_REQ_MAY_BACKLOG,
 					  af_alg_complete, &ctx->completion);
 		err = af_alg_wait_for_completion(ctx->enc ?

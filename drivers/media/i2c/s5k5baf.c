@@ -238,7 +238,11 @@ struct s5k5baf_gpio {
 
 enum s5k5baf_gpio_id {
 	STBY,
+<<<<<<< HEAD
 	RSET,
+=======
+	RST,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	NUM_GPIOS,
 };
 
@@ -973,7 +977,11 @@ static int s5k5baf_power_on(struct s5k5baf *state)
 
 	s5k5baf_gpio_deassert(state, STBY);
 	usleep_range(50, 100);
+<<<<<<< HEAD
 	s5k5baf_gpio_deassert(state, RSET);
+=======
+	s5k5baf_gpio_deassert(state, RST);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 
 err_reg_dis:
@@ -991,7 +999,11 @@ static int s5k5baf_power_off(struct s5k5baf *state)
 	state->apply_cfg = 0;
 	state->apply_crop = 0;
 
+<<<<<<< HEAD
 	s5k5baf_gpio_assert(state, RSET);
+=======
+	s5k5baf_gpio_assert(state, RST);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	s5k5baf_gpio_assert(state, STBY);
 
 	if (!IS_ERR(state->clock))

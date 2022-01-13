@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+GCC_VERSION      := $(shell $(CONFIG_SHELL) $(srctree)/scripts/gcc-version.sh $(CROSS_COMPILE)gcc)
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 ccflags-y += -Idrivers/media/platform/msm/camera_v2/jpeg_10
 ccflags-y += -Idrivers/media/platform/msm/camera_v2/sensor/io
 ccflags-y += -Idrivers/media/platform/msm/camera_v2/common

@@ -309,7 +309,11 @@ int asix_read_phy_addr(struct usbnet *dev, int internal)
 
 	netdev_dbg(dev->net, "asix_get_phy_addr()\n");
 
+<<<<<<< HEAD
 	if (ret < 2) {
+=======
+	if (ret < 0) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		netdev_err(dev->net, "Error reading PHYID register: %02x\n", ret);
 		goto out;
 	}

@@ -169,6 +169,7 @@ void pci_load_of_ranges(struct pci_controller *hose, struct device_node *node)
 			res = hose->mem_resource;
 			break;
 		}
+<<<<<<< HEAD
 		if (res != NULL) {
 			res->name = node->full_name;
 			res->flags = range.flags;
@@ -176,6 +177,10 @@ void pci_load_of_ranges(struct pci_controller *hose, struct device_node *node)
 			res->end = range.cpu_addr + range.size - 1;
 			res->parent = res->child = res->sibling = NULL;
 		}
+=======
+		if (res != NULL)
+			of_pci_range_to_resource(&range, node, res);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 }
 

@@ -103,7 +103,20 @@ struct bictcp {
 
 static inline void bictcp_reset(struct bictcp *ca)
 {
+<<<<<<< HEAD
 	memset(ca, 0, offsetof(struct bictcp, unused));
+=======
+	ca->cnt = 0;
+	ca->last_max_cwnd = 0;
+	ca->last_cwnd = 0;
+	ca->last_time = 0;
+	ca->bic_origin_point = 0;
+	ca->bic_K = 0;
+	ca->delay_min = 0;
+	ca->epoch_start = 0;
+	ca->ack_cnt = 0;
+	ca->tcp_cwnd = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ca->found = 0;
 }
 

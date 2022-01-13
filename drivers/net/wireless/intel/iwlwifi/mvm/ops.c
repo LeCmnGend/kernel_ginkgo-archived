@@ -1169,7 +1169,10 @@ static void iwl_mvm_reprobe_wk(struct work_struct *wk)
 	reprobe = container_of(wk, struct iwl_mvm_reprobe, work);
 	if (device_reprobe(reprobe->dev))
 		dev_err(reprobe->dev, "reprobe failed!\n");
+<<<<<<< HEAD
 	put_device(reprobe->dev);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	kfree(reprobe);
 	module_put(THIS_MODULE);
 }
@@ -1220,7 +1223,11 @@ void iwl_mvm_nic_restart(struct iwl_mvm *mvm, bool fw_error)
 			module_put(THIS_MODULE);
 			return;
 		}
+<<<<<<< HEAD
 		reprobe->dev = get_device(mvm->trans->dev);
+=======
+		reprobe->dev = mvm->trans->dev;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		INIT_WORK(&reprobe->work, iwl_mvm_reprobe_wk);
 		schedule_work(&reprobe->work);
 	} else if (mvm->fwrt.cur_fw_img == IWL_UCODE_REGULAR &&

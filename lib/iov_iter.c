@@ -417,7 +417,11 @@ int iov_iter_fault_in_readable(struct iov_iter *i, size_t bytes)
 	int err;
 	struct iovec v;
 
+<<<<<<< HEAD
 	if (iter_is_iovec(i)) {
+=======
+	if (!(i->type & (ITER_BVEC|ITER_KVEC))) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		iterate_iovec(i, bytes, v, iov, skip, ({
 			err = fault_in_pages_readable(v.iov_base, v.iov_len);
 			if (unlikely(err))

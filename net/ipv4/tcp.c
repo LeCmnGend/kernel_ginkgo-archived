@@ -1570,7 +1570,11 @@ static void tcp_cleanup_rbuf(struct sock *sk, int copied)
 		    (copied > 0 &&
 		     ((icsk->icsk_ack.pending & ICSK_ACK_PUSHED2) ||
 		      ((icsk->icsk_ack.pending & ICSK_ACK_PUSHED) &&
+<<<<<<< HEAD
 		       !inet_csk_in_pingpong_mode(sk))) &&
+=======
+		       !icsk->icsk_ack.pingpong)) &&
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		      !atomic_read(&sk->sk_rmem_alloc)))
 			time_to_ack = true;
 	}
@@ -2753,16 +2757,26 @@ static int do_tcp_setsockopt(struct sock *sk, int level,
 
 	case TCP_QUICKACK:
 		if (!val) {
+<<<<<<< HEAD
 			inet_csk_enter_pingpong_mode(sk);
 		} else {
 			inet_csk_exit_pingpong_mode(sk);
+=======
+			icsk->icsk_ack.pingpong = 1;
+		} else {
+			icsk->icsk_ack.pingpong = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			if ((1 << sk->sk_state) &
 			    (TCPF_ESTABLISHED | TCPF_CLOSE_WAIT) &&
 			    inet_csk_ack_scheduled(sk)) {
 				icsk->icsk_ack.pending |= ICSK_ACK_PUSHED;
 				tcp_cleanup_rbuf(sk, 1);
 				if (!(val & 1))
+<<<<<<< HEAD
 					inet_csk_enter_pingpong_mode(sk);
+=======
+					icsk->icsk_ack.pingpong = 1;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			}
 		}
 		break;
@@ -3113,7 +3127,11 @@ static int do_tcp_getsockopt(struct sock *sk, int level,
 		return 0;
 	}
 	case TCP_QUICKACK:
+<<<<<<< HEAD
 		val = !inet_csk_in_pingpong_mode(sk);
+=======
+		val = !icsk->icsk_ack.pingpong;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		break;
 
 	case TCP_CONGESTION:
@@ -3569,16 +3587,26 @@ void __init tcp_init(void)
 	tcp_init_mem();
 	/* Set per-socket limits to no more than 1/128 the pressure threshold */
 	limit = nr_free_buffer_pages() << (PAGE_SHIFT - 7);
+<<<<<<< HEAD
 	max_wshare = min(16UL*1024*1024, limit);
 	max_rshare = min(16UL*1024*1024, limit);
+=======
+	max_wshare = min(4UL*1024*1024, limit);
+	max_rshare = min(6UL*1024*1024, limit);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	sysctl_tcp_wmem[0] = SK_MEM_QUANTUM;
 	sysctl_tcp_wmem[1] = 16*1024;
 	sysctl_tcp_wmem[2] = max(64*1024, max_wshare);
 
 	sysctl_tcp_rmem[0] = SK_MEM_QUANTUM;
+<<<<<<< HEAD
 	sysctl_tcp_rmem[1] = 131072;
 	sysctl_tcp_rmem[2] = max(131072, max_rshare);
+=======
+	sysctl_tcp_rmem[1] = 87380;
+	sysctl_tcp_rmem[2] = max(87380, max_rshare);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	pr_info("Hash tables configured (established %u bind %u)\n",
 		tcp_hashinfo.ehash_mask + 1, tcp_hashinfo.bhash_size);

@@ -806,6 +806,12 @@ int read_platform_resources_from_drv_data(
 	res->debug_timeout = find_key_value(platform_data,
 			"qcom,debug-timeout");
 
+<<<<<<< HEAD
+=======
+	res->pm_qos_latency_us = find_key_value(platform_data,
+			"qcom,pm-qos-latency-us");
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	res->max_secure_inst_count = find_key_value(platform_data,
 			"qcom,max-secure-instances");
 

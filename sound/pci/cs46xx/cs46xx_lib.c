@@ -780,7 +780,11 @@ static void snd_cs46xx_set_capture_sample_rate(struct snd_cs46xx *chip, unsigned
 		rate = 48000 / 9;
 
 	/*
+<<<<<<< HEAD
 	 *  We can not capture at a rate greater than the Input Rate (48000).
+=======
+	 *  We can not capture at at rate greater than the Input Rate (48000).
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	 *  Return an error if an attempt is made to stray outside that limit.
 	 */
 	if (rate > 48000)

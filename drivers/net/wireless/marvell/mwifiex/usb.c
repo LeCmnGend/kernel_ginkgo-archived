@@ -1335,8 +1335,12 @@ static void mwifiex_usb_cleanup_tx_aggr(struct mwifiex_adapter *adapter)
 				skb_dequeue(&port->tx_aggr.aggr_list)))
 				mwifiex_write_data_complete(adapter, skb_tmp,
 							    0, -1);
+<<<<<<< HEAD
 		if (port->tx_aggr.timer_cnxt.hold_timer.function)
 			del_timer_sync(&port->tx_aggr.timer_cnxt.hold_timer);
+=======
+		del_timer_sync(&port->tx_aggr.timer_cnxt.hold_timer);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		port->tx_aggr.timer_cnxt.is_hold_timer_set = false;
 		port->tx_aggr.timer_cnxt.hold_tmo_msecs = 0;
 	}

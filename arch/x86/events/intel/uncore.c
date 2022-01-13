@@ -90,8 +90,13 @@ end:
 	return map;
 }
 
+<<<<<<< HEAD
 ssize_t uncore_event_show(struct device *dev,
 			  struct device_attribute *attr, char *buf)
+=======
+ssize_t uncore_event_show(struct kobject *kobj,
+			  struct kobj_attribute *attr, char *buf)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	struct uncore_event_desc *event =
 		container_of(attr, struct uncore_event_desc, attr);

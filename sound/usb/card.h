@@ -126,7 +126,10 @@ struct snd_usb_substream {
 	unsigned int tx_length_quirk:1;	/* add length specifier to transfers */
 	unsigned int fmt_type;		/* USB audio format type (1-3) */
 	unsigned int pkt_offset_adj;	/* Bytes to drop from beginning of packets (for non-compliant devices) */
+<<<<<<< HEAD
 	unsigned int stream_offset_adj;	/* Bytes to drop from beginning of stream (for non-compliant devices) */
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	unsigned int running: 1;	/* running status */
 

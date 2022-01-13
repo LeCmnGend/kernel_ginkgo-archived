@@ -356,12 +356,26 @@ static int ion_system_secure_heap_pm_freeze(struct ion_heap *heap)
 {
 	struct ion_system_secure_heap *secure_heap;
 	unsigned long count;
+<<<<<<< HEAD
+=======
+	long sz;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct shrink_control sc = {
 		.gfp_mask = GFP_HIGHUSER,
 	};
 
 	secure_heap = container_of(heap, struct ion_system_secure_heap, heap);
 
+<<<<<<< HEAD
+=======
+	sz = atomic_long_read(&heap->total_allocated);
+	if (sz) {
+		pr_err("%s: %lx bytes won't be saved across hibernation. Aborting.",
+		       __func__, sz);
+		return -EINVAL;
+	}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* Since userspace is frozen, no more requests will be queued */
 	cancel_delayed_work_sync(&secure_heap->prefetch_work);
 

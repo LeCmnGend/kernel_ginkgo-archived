@@ -2249,7 +2249,10 @@ static int fwserial_create(struct fw_unit *unit)
 		err = fw_core_add_address_handler(&port->rx_handler,
 						  &fw_high_memory_region);
 		if (err) {
+<<<<<<< HEAD
 			tty_port_destroy(&port->port);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			kfree(port);
 			goto free_ports;
 		}
@@ -2332,7 +2335,10 @@ unregister_ttys:
 
 free_ports:
 	for (--i; i >= 0; --i) {
+<<<<<<< HEAD
 		fw_core_remove_address_handler(&serial->ports[i]->rx_handler);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		tty_port_destroy(&serial->ports[i]->port);
 		kfree(serial->ports[i]);
 	}

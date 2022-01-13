@@ -255,6 +255,13 @@ void ovs_ct_fill_key(const struct sk_buff *skb, struct sw_flow_key *key)
 	ovs_ct_update_key(skb, NULL, key, false, false);
 }
 
+<<<<<<< HEAD
+=======
+#define IN6_ADDR_INITIALIZER(ADDR) \
+	{ (ADDR).s6_addr32[0], (ADDR).s6_addr32[1], \
+	  (ADDR).s6_addr32[2], (ADDR).s6_addr32[3] }
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 int ovs_ct_put_key(const struct sw_flow_key *swkey,
 		   const struct sw_flow_key *output, struct sk_buff *skb)
 {
@@ -276,6 +283,7 @@ int ovs_ct_put_key(const struct sw_flow_key *swkey,
 
 	if (swkey->ct_orig_proto) {
 		if (swkey->eth.type == htons(ETH_P_IP)) {
+<<<<<<< HEAD
 			struct ovs_key_ct_tuple_ipv4 orig;
 
 			memset(&orig, 0, sizeof(orig));
@@ -285,10 +293,20 @@ int ovs_ct_put_key(const struct sw_flow_key *swkey,
 			orig.dst_port = output->ct.orig_tp.dst;
 			orig.ipv4_proto = output->ct_orig_proto;
 
+=======
+			struct ovs_key_ct_tuple_ipv4 orig = {
+				output->ipv4.ct_orig.src,
+				output->ipv4.ct_orig.dst,
+				output->ct.orig_tp.src,
+				output->ct.orig_tp.dst,
+				output->ct_orig_proto,
+			};
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			if (nla_put(skb, OVS_KEY_ATTR_CT_ORIG_TUPLE_IPV4,
 				    sizeof(orig), &orig))
 				return -EMSGSIZE;
 		} else if (swkey->eth.type == htons(ETH_P_IPV6)) {
+<<<<<<< HEAD
 			struct ovs_key_ct_tuple_ipv6 orig;
 
 			memset(&orig, 0, sizeof(orig));
@@ -300,6 +318,15 @@ int ovs_ct_put_key(const struct sw_flow_key *swkey,
 			orig.dst_port = output->ct.orig_tp.dst;
 			orig.ipv6_proto = output->ct_orig_proto;
 
+=======
+			struct ovs_key_ct_tuple_ipv6 orig = {
+				IN6_ADDR_INITIALIZER(output->ipv6.ct_orig.src),
+				IN6_ADDR_INITIALIZER(output->ipv6.ct_orig.dst),
+				output->ct.orig_tp.src,
+				output->ct.orig_tp.dst,
+				output->ct_orig_proto,
+			};
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			if (nla_put(skb, OVS_KEY_ATTR_CT_ORIG_TUPLE_IPV6,
 				    sizeof(orig), &orig))
 				return -EMSGSIZE;
@@ -881,6 +908,7 @@ static int ovs_ct_nat(struct net *net, struct sw_flow_key *key,
 	}
 	err = ovs_ct_nat_execute(skb, ct, ctinfo, &info->range, maniptype);
 
+<<<<<<< HEAD
 	if (err == NF_ACCEPT && ct->status & IPS_DST_NAT) {
 		if (ct->status & IPS_SRC_NAT) {
 			if (maniptype == NF_NAT_MANIP_SRC)
@@ -894,6 +922,17 @@ static int ovs_ct_nat(struct net *net, struct sw_flow_key *key,
 			err = ovs_ct_nat_execute(skb, ct, ctinfo, NULL,
 						 NF_NAT_MANIP_SRC);
 		}
+=======
+	if (err == NF_ACCEPT &&
+	    ct->status & IPS_SRC_NAT && ct->status & IPS_DST_NAT) {
+		if (maniptype == NF_NAT_MANIP_SRC)
+			maniptype = NF_NAT_MANIP_DST;
+		else
+			maniptype = NF_NAT_MANIP_SRC;
+
+		err = ovs_ct_nat_execute(skb, ct, ctinfo, &info->range,
+					 maniptype);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	/* Mark NAT done if successful and update the flow key. */

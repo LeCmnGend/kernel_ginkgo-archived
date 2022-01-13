@@ -5,9 +5,14 @@
 #include <asm/mman.h>
 #include <asm-generic/hugetlb_encode.h>
 
+<<<<<<< HEAD
 #define MREMAP_MAYMOVE		1
 #define MREMAP_FIXED		2
 #define MREMAP_DONTUNMAP	4
+=======
+#define MREMAP_MAYMOVE	1
+#define MREMAP_FIXED	2
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #define OVERCOMMIT_GUESS		0
 #define OVERCOMMIT_ALWAYS		1

@@ -129,6 +129,10 @@ static void thunder_mdiobus_pci_remove(struct pci_dev *pdev)
 			continue;
 
 		mdiobus_unregister(bus->mii_bus);
+<<<<<<< HEAD
+=======
+		mdiobus_free(bus->mii_bus);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		oct_mdio_writeq(0, bus->register_base + SMI_EN);
 	}
 	pci_set_drvdata(pdev, NULL);

@@ -538,8 +538,15 @@ static int moxart_mac_probe(struct platform_device *pdev)
 	SET_NETDEV_DEV(ndev, &pdev->dev);
 
 	ret = register_netdev(ndev);
+<<<<<<< HEAD
 	if (ret)
 		goto init_fail;
+=======
+	if (ret) {
+		free_netdev(ndev);
+		goto init_fail;
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	netdev_dbg(ndev, "%s: IRQ=%d address=%pM\n",
 		   __func__, ndev->irq, ndev->dev_addr);

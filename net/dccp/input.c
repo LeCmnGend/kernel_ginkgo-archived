@@ -480,7 +480,11 @@ static int dccp_rcv_request_sent_state_process(struct sock *sk,
 			sk_wake_async(sk, SOCK_WAKE_IO, POLL_OUT);
 		}
 
+<<<<<<< HEAD
 		if (sk->sk_write_pending || inet_csk_in_pingpong_mode(sk) ||
+=======
+		if (sk->sk_write_pending || icsk->icsk_ack.pingpong ||
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		    icsk->icsk_accept_queue.rskq_defer_accept) {
 			/* Save one ACK. Data will be ready after
 			 * several ticks, if write_pending is set.

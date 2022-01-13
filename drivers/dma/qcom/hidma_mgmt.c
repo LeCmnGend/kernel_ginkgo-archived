@@ -454,6 +454,7 @@ static int __init hidma_mgmt_init(void)
 		hidma_mgmt_of_populate_channels(child);
 	}
 #endif
+<<<<<<< HEAD
 	/*
 	 * We do not check for return value here, as it is assumed that
 	 * platform_driver_register must not fail. The reason for this is that
@@ -468,6 +469,8 @@ static int __init hidma_mgmt_init(void)
 	 * no module_exit function defined which does the needed cleanup. For
 	 * this reason, we have to assume success here.
 	 */
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	platform_driver_register(&hidma_mgmt_driver);
 
 	return 0;

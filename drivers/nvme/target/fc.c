@@ -1994,9 +1994,15 @@ nvmet_fc_fod_op_done(struct nvmet_fc_fcp_iod *fod)
 			return;
 		if (fcpreq->fcp_error ||
 		    fcpreq->transferred_length != fcpreq->transfer_length) {
+<<<<<<< HEAD
 			spin_lock_irqsave(&fod->flock, flags);
 			fod->abort = true;
 			spin_unlock_irqrestore(&fod->flock, flags);
+=======
+			spin_lock(&fod->flock);
+			fod->abort = true;
+			spin_unlock(&fod->flock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 			nvmet_req_complete(&fod->req, NVME_SC_INTERNAL);
 			return;

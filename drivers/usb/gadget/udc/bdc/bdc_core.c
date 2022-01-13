@@ -288,7 +288,10 @@ static void bdc_mem_init(struct bdc *bdc, bool reinit)
 	 * in that case reinit is passed as 1
 	 */
 	if (reinit) {
+<<<<<<< HEAD
 		int i;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		/* Enable interrupts */
 		temp = bdc_readl(bdc->regs, BDC_BDCSC);
 		temp |= BDC_GIE;
@@ -298,9 +301,12 @@ static void bdc_mem_init(struct bdc *bdc, bool reinit)
 		/* Initialize SRR to 0 */
 		memset(bdc->srr.sr_bds, 0,
 					NUM_SR_ENTRIES * sizeof(struct bdc_bd));
+<<<<<<< HEAD
 		/* clear ep flags to avoid post disconnect stops/deconfigs */
 		for (i = 1; i < bdc->num_eps; ++i)
 			bdc->bdc_ep_array[i]->flags = 0;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else {
 		/* One time initiaization only */
 		/* Enable status report function pointers */
@@ -613,6 +619,7 @@ static int bdc_remove(struct platform_device *pdev)
 static int bdc_suspend(struct device *dev)
 {
 	struct bdc *bdc = dev_get_drvdata(dev);
+<<<<<<< HEAD
 	int ret;
 
 	/* Halt the controller */
@@ -621,6 +628,11 @@ static int bdc_suspend(struct device *dev)
 		clk_disable_unprepare(bdc->clk);
 
 	return ret;
+=======
+
+	clk_disable_unprepare(bdc->clk);
+	return 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static int bdc_resume(struct device *dev)

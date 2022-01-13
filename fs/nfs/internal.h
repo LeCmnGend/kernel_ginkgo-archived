@@ -575,6 +575,7 @@ extern int nfs4_test_session_trunk(struct rpc_clnt *,
 
 static inline struct inode *nfs_igrab_and_active(struct inode *inode)
 {
+<<<<<<< HEAD
 	struct super_block *sb = inode->i_sb;
 
 	if (sb && nfs_sb_active(sb)) {
@@ -583,6 +584,14 @@ static inline struct inode *nfs_igrab_and_active(struct inode *inode)
 		nfs_sb_deactive(sb);
 	}
 	return NULL;
+=======
+	inode = igrab(inode);
+	if (inode != NULL && !nfs_sb_active(inode->i_sb)) {
+		iput(inode);
+		inode = NULL;
+	}
+	return inode;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static inline void nfs_iput_and_deactive(struct inode *inode)

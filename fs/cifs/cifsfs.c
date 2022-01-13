@@ -214,7 +214,11 @@ cifs_statfs(struct dentry *dentry, struct kstatfs *buf)
 		rc = server->ops->queryfs(xid, tcon, buf);
 
 	free_xid(xid);
+<<<<<<< HEAD
 	return rc;
+=======
+	return 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static long cifs_fallocate(struct file *file, int mode, loff_t off, loff_t len)

@@ -22,7 +22,10 @@
 #include <limits.h>
 #include <sys/time.h>
 #include <sys/syscall.h>
+<<<<<<< HEAD
 #include <sys/sysinfo.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <sys/types.h>
 #include <sys/shm.h>
 #include <linux/futex.h>
@@ -98,9 +101,14 @@ static void start_thread_on(void *(*fn)(void *), void *arg, unsigned long cpu)
 
 static void start_process_on(void *(*fn)(void *), void *arg, unsigned long cpu)
 {
+<<<<<<< HEAD
 	int pid, ncpus;
 	cpu_set_t *cpuset;
 	size_t size;
+=======
+	int pid;
+	cpu_set_t cpuset;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	pid = fork();
 	if (pid == -1) {
@@ -111,6 +119,7 @@ static void start_process_on(void *(*fn)(void *), void *arg, unsigned long cpu)
 	if (pid)
 		return;
 
+<<<<<<< HEAD
 	ncpus = get_nprocs();
 	size = CPU_ALLOC_SIZE(ncpus);
 	cpuset = CPU_ALLOC(ncpus);
@@ -128,6 +137,16 @@ static void start_process_on(void *(*fn)(void *), void *arg, unsigned long cpu)
 	}
 
 	CPU_FREE(cpuset);
+=======
+	CPU_ZERO(&cpuset);
+	CPU_SET(cpu, &cpuset);
+
+	if (sched_setaffinity(0, sizeof(cpuset), &cpuset)) {
+		perror("sched_setaffinity");
+		exit(1);
+	}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	fn(arg);
 
 	exit(0);

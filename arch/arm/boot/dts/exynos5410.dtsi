@@ -381,8 +381,11 @@
 &usbdrd3_0 {
 	clocks = <&clock CLK_USBD300>;
 	clock-names = "usbdrd30";
+<<<<<<< HEAD
 	pinctrl-names = "default";
 	pinctrl-0 = <&usb3_0_oc>, <&usb3_0_vbusctrl>;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 &usbdrd_phy0 {
@@ -394,8 +397,11 @@
 &usbdrd3_1 {
 	clocks = <&clock CLK_USBD301>;
 	clock-names = "usbdrd30";
+<<<<<<< HEAD
 	pinctrl-names = "default";
 	pinctrl-0 = <&usb3_1_oc>, <&usb3_1_vbusctrl>;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 &usbdrd_dwc3_1 {

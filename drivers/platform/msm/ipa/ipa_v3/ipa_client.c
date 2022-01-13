@@ -677,7 +677,11 @@ int ipa3_request_gsi_channel(struct ipa_request_gsi_channel_params *params,
 	}
 
 	memcpy(&ep->chan_scratch, &params->chan_scratch,
+<<<<<<< HEAD
 		sizeof(union gsi_channel_scratch));
+=======
+		sizeof(union __packed gsi_channel_scratch));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/*
 	 * Update scratch for MCS smart prefetch:

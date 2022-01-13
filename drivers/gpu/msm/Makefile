@@ -2,12 +2,20 @@ ccflags-y := -Iinclude/linux
 
 msm_kgsl_core-y = \
 	kgsl.o \
+<<<<<<< HEAD
+=======
+	kgsl_trace.o \
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	kgsl_drawobj.o \
 	kgsl_ioctl.o \
 	kgsl_sharedmem.o \
 	kgsl_pwrctrl.o \
 	kgsl_pwrscale.o \
 	kgsl_mmu.o \
+<<<<<<< HEAD
+=======
+	kgsl_snapshot.o \
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	kgsl_events.o \
 	kgsl_pool.o \
 	kgsl_gmu_core.o \
@@ -25,7 +33,23 @@ msm_adreno-y += \
 	adreno_ringbuffer.o \
 	adreno_drawctxt.o \
 	adreno_dispatch.o \
+<<<<<<< HEAD
 	adreno_a6xx.o \
+=======
+	adreno_snapshot.o \
+	adreno_coresight.o \
+	adreno_trace.o \
+	adreno_a3xx.o \
+	adreno_a4xx.o \
+	adreno_a5xx.o \
+	adreno_a6xx.o \
+	adreno_a3xx_snapshot.o \
+	adreno_a4xx_snapshot.o \
+	adreno_a5xx_snapshot.o \
+	adreno_a6xx_snapshot.o \
+	adreno_a4xx_preempt.o \
+	adreno_a5xx_preempt.o \
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	adreno_a6xx_preempt.o \
 	adreno_a6xx_gmu.o \
 	adreno_a6xx_rgmu.o \

@@ -353,9 +353,12 @@ extern const char *ipa_clients_strings[];
 				## args); \
 	} while (0)
 
+<<<<<<< HEAD
 unsigned long
 ipa_safe_copy_from_user(char *dst, const char __user *buf, size_t count);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 void ipa_inc_client_enable_clks(struct ipa_active_client_logging_info *id);
 void ipa_dec_client_disable_clks(struct ipa_active_client_logging_info *id);
 int ipa_inc_client_enable_clks_no_block(
@@ -386,7 +389,11 @@ int ipa_mhi_start_channel_internal(enum ipa_client_type client);
 bool ipa_mhi_sps_channel_empty(enum ipa_client_type client);
 int ipa_mhi_resume_channels_internal(enum ipa_client_type client,
 		bool LPTransitionRejected, bool brstmode_enabled,
+<<<<<<< HEAD
 		union gsi_channel_scratch ch_scratch, u8 index,
+=======
+		union __packed gsi_channel_scratch ch_scratch, u8 index,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		bool is_switch_to_dbmode);
 int ipa_mhi_handle_ipa_config_req(struct ipa_config_req_msg_v01 *config_req);
 int ipa_mhi_query_ch_info(enum ipa_client_type client,

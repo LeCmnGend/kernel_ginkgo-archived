@@ -1029,7 +1029,11 @@
 				 <&mmsys CLK_MM_DSI1_DIGITAL>,
 				 <&mipi_tx1>;
 			clock-names = "engine", "digital", "hs";
+<<<<<<< HEAD
 			phys = <&mipi_tx1>;
+=======
+			phy = <&mipi_tx1>;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			phy-names = "dphy";
 			status = "disabled";
 		};

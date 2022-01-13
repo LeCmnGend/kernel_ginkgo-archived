@@ -43,7 +43,11 @@ endif
 obj-$(CONFIG_INTEL_IOMMU)	+= pci-dma.o
 obj-$(CONFIG_SWIOTLB)		+= pci-swiotlb.o
 
+<<<<<<< HEAD
 obj-$(CONFIG_ELF_CORE)		+= elfcore.o
+=======
+obj-$(CONFIG_BINFMT_ELF)	+= elfcore.o
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 # fp_emulate() expects f2-f5,f16-f31 to contain the user-level state.
 CFLAGS_traps.o  += -mfixed-range=f2-f5,f16-f31

@@ -651,7 +651,10 @@ static int vmd_enable_domain(struct vmd_dev *vmd)
 	if (!vmd->bus) {
 		pci_free_resource_list(&resources);
 		irq_domain_remove(vmd->irq_domain);
+<<<<<<< HEAD
 		irq_domain_free_fwnode(fn);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return -ENODEV;
 	}
 
@@ -754,7 +757,10 @@ static void vmd_cleanup_srcu(struct vmd_dev *vmd)
 static void vmd_remove(struct pci_dev *dev)
 {
 	struct vmd_dev *vmd = pci_get_drvdata(dev);
+<<<<<<< HEAD
 	struct fwnode_handle *fn = vmd->irq_domain->fwnode;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	sysfs_remove_link(&vmd->dev->dev.kobj, "domain");
 	pci_stop_root_bus(vmd->bus);
@@ -763,7 +769,10 @@ static void vmd_remove(struct pci_dev *dev)
 	vmd_teardown_dma_ops(vmd);
 	vmd_detach_resources(vmd);
 	irq_domain_remove(vmd->irq_domain);
+<<<<<<< HEAD
 	irq_domain_free_fwnode(fn);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 #ifdef CONFIG_PM_SLEEP

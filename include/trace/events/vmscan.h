@@ -78,6 +78,7 @@ TRACE_EVENT(mm_vmscan_kswapd_wake,
 
 TRACE_EVENT(mm_vmscan_wakeup_kswapd,
 
+<<<<<<< HEAD
 	TP_PROTO(int nid, int zid, int order, gfp_t gfp_flags),
 
 	TP_ARGS(nid, zid, order, gfp_flags),
@@ -87,12 +88,23 @@ TRACE_EVENT(mm_vmscan_wakeup_kswapd,
 		__field(	int,	zid		)
 		__field(	int,	order		)
 		__field(	gfp_t,	gfp_flags	)
+=======
+	TP_PROTO(int nid, int zid, int order),
+
+	TP_ARGS(nid, zid, order),
+
+	TP_STRUCT__entry(
+		__field(	int,		nid	)
+		__field(	int,		zid	)
+		__field(	int,		order	)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	),
 
 	TP_fast_assign(
 		__entry->nid		= nid;
 		__entry->zid		= zid;
 		__entry->order		= order;
+<<<<<<< HEAD
 		__entry->gfp_flags	= gfp_flags;
 	),
 
@@ -101,6 +113,14 @@ TRACE_EVENT(mm_vmscan_wakeup_kswapd,
 		__entry->zid,
 		__entry->order,
 		show_gfp_flags(__entry->gfp_flags))
+=======
+	),
+
+	TP_printk("nid=%d zid=%d order=%d",
+		__entry->nid,
+		__entry->zid,
+		__entry->order)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 );
 
 DECLARE_EVENT_CLASS(mm_vmscan_direct_reclaim_begin_template,

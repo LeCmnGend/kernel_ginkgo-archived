@@ -243,35 +243,59 @@ int cam_cdm_stream_ops_internal(void *hw_priv,
 		return -EINVAL;
 
 	core = (struct cam_cdm *)cdm_hw->core_info;
+<<<<<<< HEAD
+=======
+	mutex_lock(&cdm_hw->hw_mutex);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	client_idx = CAM_CDM_GET_CLIENT_IDX(*handle);
 	client = core->clients[client_idx];
 	if (!client) {
 		CAM_ERR(CAM_CDM, "Invalid client %pK hdl=%x", client, *handle);
+<<<<<<< HEAD
+=======
+		mutex_unlock(&cdm_hw->hw_mutex);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return -EINVAL;
 	}
 	cam_cdm_get_client_refcount(client);
 	if (*handle != client->handle) {
 		CAM_ERR(CAM_CDM, "client id given handle=%x invalid", *handle);
+<<<<<<< HEAD
 		cam_cdm_put_client_refcount(client);
 		return -EINVAL;
+=======
+		rc = -EINVAL;
+		goto end;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	if (operation == true) {
 		if (true == client->stream_on) {
 			CAM_ERR(CAM_CDM,
 				"Invalid CDM client is already streamed ON");
+<<<<<<< HEAD
 			cam_cdm_put_client_refcount(client);
 			return rc;
+=======
+			goto end;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 	} else {
 		if (client->stream_on == false) {
 			CAM_ERR(CAM_CDM,
 				"Invalid CDM client is already streamed Off");
+<<<<<<< HEAD
 			cam_cdm_put_client_refcount(client);
 			return rc;
 		}
 	}
 
 	mutex_lock(&cdm_hw->hw_mutex);
+=======
+			goto end;
+		}
+	}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (operation == true) {
 		if (!cdm_hw->open_count) {
 			struct cam_ahb_vote ahb_vote;

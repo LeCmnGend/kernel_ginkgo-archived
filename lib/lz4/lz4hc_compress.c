@@ -570,7 +570,11 @@ _Search3:
 			*op++ = (BYTE) lastRun;
 		} else
 			*op++ = (BYTE)(lastRun<<ML_BITS);
+<<<<<<< HEAD
 		LZ4_memcpy(op, anchor, iend - anchor);
+=======
+		memcpy(op, anchor, iend - anchor);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		op += iend - anchor;
 	}
 
@@ -663,6 +667,10 @@ static void LZ4HC_setExternalDict(
 	/* match referencing will resume from there */
 	ctxPtr->nextToUpdate = ctxPtr->dictLimit;
 }
+<<<<<<< HEAD
+=======
+EXPORT_SYMBOL(LZ4HC_setExternalDict);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static int LZ4_compressHC_continue_generic(
 	LZ4_streamHC_t *LZ4_streamHCPtr,

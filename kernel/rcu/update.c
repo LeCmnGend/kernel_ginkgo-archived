@@ -718,7 +718,10 @@ static int __noreturn rcu_tasks_kthread(void *arg)
 	struct rcu_head *list;
 	struct rcu_head *next;
 	LIST_HEAD(rcu_tasks_holdouts);
+<<<<<<< HEAD
 	int fract;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* Run on housekeeping CPUs by default.  Sysadm can move if desired. */
 	housekeeping_affine(current);
@@ -800,16 +803,21 @@ static int __noreturn rcu_tasks_kthread(void *arg)
 		 * holdouts.  When the list is empty, we are done.
 		 */
 		lastreport = jiffies;
+<<<<<<< HEAD
 
 		/* Start off with HZ/10 wait and slowly back off to 1 HZ wait*/
 		fract = 10;
 
 		for (;;) {
+=======
+		while (!list_empty(&rcu_tasks_holdouts)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			bool firstreport;
 			bool needreport;
 			int rtst;
 			struct task_struct *t1;
 
+<<<<<<< HEAD
 			if (list_empty(&rcu_tasks_holdouts))
 				break;
 
@@ -819,6 +827,9 @@ static int __noreturn rcu_tasks_kthread(void *arg)
 			if (fract > 1)
 				fract--;
 
+=======
+			schedule_timeout_interruptible(HZ);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			rtst = READ_ONCE(rcu_task_stall_timeout);
 			needreport = rtst > 0 &&
 				     time_after(jiffies, lastreport + rtst);
@@ -883,8 +894,12 @@ static void rcu_spawn_tasks_kthread(void)
 		mutex_unlock(&rcu_tasks_kthread_mutex);
 		return;
 	}
+<<<<<<< HEAD
 	t = kthread_run_perf_critical(rcu_tasks_kthread,
 				NULL, "rcu_tasks_kthread");
+=======
+	t = kthread_run(rcu_tasks_kthread, NULL, "rcu_tasks_kthread");
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	BUG_ON(IS_ERR(t));
 	smp_mb(); /* Ensure others see full kthread. */
 	WRITE_ONCE(rcu_tasks_kthread_ptr, t);

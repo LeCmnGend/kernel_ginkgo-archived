@@ -250,7 +250,11 @@ static int tps65217_charger_probe(struct platform_device *pdev)
 	for (i = 0; i < NUM_CHARGER_IRQS; i++) {
 		ret = devm_request_threaded_irq(&pdev->dev, irq[i], NULL,
 						tps65217_charger_irq,
+<<<<<<< HEAD
 						IRQF_ONESHOT, "tps65217-charger",
+=======
+						0, "tps65217-charger",
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 						charger);
 		if (ret) {
 			dev_err(charger->dev,

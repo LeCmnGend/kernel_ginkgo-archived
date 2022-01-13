@@ -65,7 +65,11 @@
  * lists and lookup data structures.
  */
 
+<<<<<<< HEAD
 static DEFINE_WD_CLASS(crtc_ww_class);
+=======
+static DEFINE_WW_CLASS(crtc_ww_class);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 /**
  * drm_modeset_lock_all - take all modeset locks

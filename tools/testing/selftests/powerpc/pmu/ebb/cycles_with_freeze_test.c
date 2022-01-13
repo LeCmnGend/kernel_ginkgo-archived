@@ -99,6 +99,11 @@ int cycles_with_freeze(void)
 	ebb_global_disable();
 	ebb_freeze_pmcs();
 
+<<<<<<< HEAD
+=======
+	count_pmc(1, sample_period);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	dump_ebb_state();
 
 	printf("EBBs while frozen %d\n", ebbs_while_frozen);

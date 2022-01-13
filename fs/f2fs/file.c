@@ -195,8 +195,11 @@ static inline enum cp_reason_type need_do_checkpoint(struct inode *inode)
 		cp_reason = CP_HARDLINK;
 	else if (is_sbi_flag_set(sbi, SBI_NEED_CP))
 		cp_reason = CP_SB_NEED_CP;
+<<<<<<< HEAD
 	else if (f2fs_parent_inode_xattr_set(inode))
 		cp_reason = CP_PARENT_XATTR_SET;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	else if (file_wrong_pino(inode))
 		cp_reason = CP_WRONG_PINO;
 	else if (!f2fs_space_for_roll_forward(sbi))
@@ -874,8 +877,12 @@ static void __setattr_copy(struct inode *inode, const struct iattr *attr)
 	if (ia_valid & ATTR_MODE) {
 		umode_t mode = attr->ia_mode;
 
+<<<<<<< HEAD
 		if (!in_group_p(inode->i_gid) &&
 			!capable_wrt_inode_uidgid(inode, CAP_FSETID))
+=======
+		if (!in_group_p(inode->i_gid) && !capable(CAP_FSETID))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			mode &= ~S_ISGID;
 		set_acl_inode(inode, mode);
 	}

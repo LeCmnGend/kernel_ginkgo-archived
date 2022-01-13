@@ -1,6 +1,9 @@
 /*
  * Copyright (c) 2014-2019, The Linux Foundation. All rights reserved.
+<<<<<<< HEAD
  * Copyright (C) 2021 XiaoMi, Inc.
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -135,7 +138,11 @@ MODULE_PARM_DESC(tune5, "QUSB PHY TUNE5");
 static bool eud_connected;
 module_param(eud_connected, bool, 0644);
 MODULE_PARM_DESC(eud_connected, "EUD_CONNECTED");
+<<<<<<< HEAD
 unsigned long panel_info = 0;
+=======
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 struct qusb_phy {
 	struct usb_phy		phy;
 	void __iomem		*base;
@@ -388,6 +395,7 @@ static void qusb_phy_get_tune2_param(struct qusb_phy *qphy)
 	 * If efuse register shows value as 0x0, then use previous value
 	 * as it is. Otherwise use efuse register based value for this purpose.
 	 */
+<<<<<<< HEAD
 	//add for different usb tunning parameters judged by panal info //add for different usb tuning parameters
 	if(panel_info == 1)
 			qphy->tune2_efuse_correction = -1;
@@ -395,6 +403,8 @@ static void qusb_phy_get_tune2_param(struct qusb_phy *qphy)
 			 qphy->tune2_efuse_correction = 3; 
 	else 
 			 qphy->tune2_efuse_correction = 0;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (qphy->tune2_efuse_num_of_bits < HSTX_TRIMSIZE) {
 		qphy->tune2_val =
 		     TUNE2_HIGH_NIBBLE_VAL(readl_relaxed(qphy->tune2_efuse_reg),
@@ -1264,11 +1274,15 @@ static int qusb_phy_probe(struct platform_device *pdev)
 	}
 
 	size = 0;
+<<<<<<< HEAD
 	pr_info("panel_info %x\n",panel_info);
 	if(panel_info == 1)
 		of_get_property(dev->of_node, "qcom,qusb-phy-init-seq", &size);
 	else if (panel_info == 0)
 		of_get_property(dev->of_node, "qcom,qusb-phy-init-seq-no-panel", &size);
+=======
+	of_get_property(dev->of_node, "qcom,qusb-phy-init-seq", &size);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (size) {
 		qphy->qusb_phy_init_seq = devm_kzalloc(dev,
 						size, GFP_KERNEL);
@@ -1279,6 +1293,7 @@ static int qusb_phy_probe(struct platform_device *pdev)
 				dev_err(dev, "invalid init_seq_len\n");
 				return -EINVAL;
 			}
+<<<<<<< HEAD
 			if(panel_info == 1)
 				of_property_read_u32_array(dev->of_node,
 					"qcom,qusb-phy-init-seq",
@@ -1289,6 +1304,13 @@ static int qusb_phy_probe(struct platform_device *pdev)
 					"qcom,qusb-phy-init-seq-no-panel",
 					qphy->qusb_phy_init_seq,
 					qphy->init_seq_len);
+=======
+
+			of_property_read_u32_array(dev->of_node,
+				"qcom,qusb-phy-init-seq",
+				qphy->qusb_phy_init_seq,
+				qphy->init_seq_len);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		} else {
 			dev_err(dev, "error allocating memory for phy_init_seq\n");
 		}
@@ -1400,6 +1422,7 @@ static int qusb_phy_remove(struct platform_device *pdev)
 	return 0;
 }
 
+<<<<<<< HEAD
 static int __init parameter_select(char *str){
 	int ret = 0;
 
@@ -1413,6 +1436,8 @@ static int __init parameter_select(char *str){
 }
 __setup("panel_info=",parameter_select);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static const struct of_device_id qusb_phy_id_table[] = {
 	{ .compatible = "qcom,qusb2phy", },
 	{ },

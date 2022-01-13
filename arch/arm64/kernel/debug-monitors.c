@@ -62,7 +62,11 @@ NOKPROBE_SYMBOL(mdscr_read);
  * Allow root to disable self-hosted debug from userspace.
  * This is useful if you want to connect an external JTAG debugger.
  */
+<<<<<<< HEAD
 static bool debug_enabled;
+=======
+static bool debug_enabled = true;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static int create_debug_debugfs_entry(void)
 {
@@ -165,6 +169,7 @@ NOKPROBE_SYMBOL(clear_user_regs_spsr_ss);
 #define set_regs_spsr_ss(r)	set_user_regs_spsr_ss(&(r)->user_regs)
 #define clear_regs_spsr_ss(r)	clear_user_regs_spsr_ss(&(r)->user_regs)
 
+<<<<<<< HEAD
 static DEFINE_SPINLOCK(debug_hook_lock);
 static LIST_HEAD(user_step_hook);
 static LIST_HEAD(kernel_step_hook);
@@ -205,6 +210,27 @@ void unregister_kernel_step_hook(struct step_hook *hook)
 	unregister_debug_hook(&hook->node);
 }
 
+=======
+/* EL1 Single Step Handler hooks */
+static LIST_HEAD(step_hook);
+static DEFINE_SPINLOCK(step_hook_lock);
+
+void register_step_hook(struct step_hook *hook)
+{
+	spin_lock(&step_hook_lock);
+	list_add_rcu(&hook->node, &step_hook);
+	spin_unlock(&step_hook_lock);
+}
+
+void unregister_step_hook(struct step_hook *hook)
+{
+	spin_lock(&step_hook_lock);
+	list_del_rcu(&hook->node);
+	spin_unlock(&step_hook_lock);
+	synchronize_rcu();
+}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /*
  * Call registered single step handlers
  * There is no Syndrome info to check for determining the handler.
@@ -214,6 +240,7 @@ void unregister_kernel_step_hook(struct step_hook *hook)
 static int call_step_hook(struct pt_regs *regs, unsigned int esr)
 {
 	struct step_hook *hook;
+<<<<<<< HEAD
 	struct list_head *list;
 	int retval = DBG_HOOK_ERROR;
 
@@ -222,6 +249,13 @@ static int call_step_hook(struct pt_regs *regs, unsigned int esr)
 	rcu_read_lock();
 
 	list_for_each_entry_rcu(hook, list, node)	{
+=======
+	int retval = DBG_HOOK_ERROR;
+
+	rcu_read_lock();
+
+	list_for_each_entry_rcu(hook, &step_hook, node)	{
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		retval = hook->fn(regs, esr);
 		if (retval == DBG_HOOK_HANDLED)
 			break;
@@ -299,6 +333,7 @@ NOKPROBE_SYMBOL(single_step_handler);
  * hit within breakpoint handler, especically in kprobes.
  * Use reader/writer locks instead of plain spinlock.
  */
+<<<<<<< HEAD
 static LIST_HEAD(user_break_hook);
 static LIST_HEAD(kernel_break_hook);
 
@@ -320,11 +355,30 @@ void register_kernel_break_hook(struct break_hook *hook)
 void unregister_kernel_break_hook(struct break_hook *hook)
 {
 	unregister_debug_hook(&hook->node);
+=======
+static LIST_HEAD(break_hook);
+static DEFINE_SPINLOCK(break_hook_lock);
+
+void register_break_hook(struct break_hook *hook)
+{
+	spin_lock(&break_hook_lock);
+	list_add_rcu(&hook->node, &break_hook);
+	spin_unlock(&break_hook_lock);
+}
+
+void unregister_break_hook(struct break_hook *hook)
+{
+	spin_lock(&break_hook_lock);
+	list_del_rcu(&hook->node);
+	spin_unlock(&break_hook_lock);
+	synchronize_rcu();
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static int call_break_hook(struct pt_regs *regs, unsigned int esr)
 {
 	struct break_hook *hook;
+<<<<<<< HEAD
 	struct list_head *list;
 	int (*fn)(struct pt_regs *regs, unsigned int esr) = NULL;
 
@@ -337,6 +391,14 @@ static int call_break_hook(struct pt_regs *regs, unsigned int esr)
 		if ((comment & ~hook->mask) == hook->imm)
 			fn = hook->fn;
 	}
+=======
+	int (*fn)(struct pt_regs *regs, unsigned int esr) = NULL;
+
+	rcu_read_lock();
+	list_for_each_entry_rcu(hook, &break_hook, node)
+		if ((esr & hook->esr_mask) == hook->esr_val)
+			fn = hook->fn;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	rcu_read_unlock();
 
 	return fn ? fn(regs, esr) : DBG_HOOK_ERROR;

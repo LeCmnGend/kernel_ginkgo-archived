@@ -358,12 +358,23 @@ static int menu_select(struct cpuidle_driver *drv, struct cpuidle_device *dev,
 		 * If the tick is already stopped, the cost of possible short
 		 * idle duration misprediction is much higher, because the CPU
 		 * may be stuck in a shallow idle state for a long time as a
+<<<<<<< HEAD
 		 * result of it.  In that case say we might mispredict and use
 		 * the known time till the closest timer event for the idle
 		 * state selection.
 		 */
 		if (data->predicted_us < TICK_USEC)
 			data->predicted_us = ktime_to_us(delta_next);
+=======
+		 * result of it.  In that case say we might mispredict and try
+		 * to force the CPU into a state for which we would have stopped
+		 * the tick, unless a timer is going to expire really soon
+		 * anyway.
+		 */
+		if (data->predicted_us < TICK_USEC)
+			data->predicted_us = min_t(unsigned int, TICK_USEC,
+						   ktime_to_us(delta_next));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else {
 		/*
 		 * Use the performance multiplier and the user-configurable
@@ -388,6 +399,7 @@ static int menu_select(struct cpuidle_driver *drv, struct cpuidle_device *dev,
 			continue;
 		if (idx == -1)
 			idx = i; /* first enabled state */
+<<<<<<< HEAD
 		if (s->target_residency > data->predicted_us) {
 			if (!tick_nohz_tick_stopped())
 				break;
@@ -404,6 +416,10 @@ static int menu_select(struct cpuidle_driver *drv, struct cpuidle_device *dev,
 
 			goto out;
 		}
+=======
+		if (s->target_residency > data->predicted_us)
+			break;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (s->exit_latency > latency_req) {
 			/*
 			 * If we break out of the loop for latency reasons, use
@@ -424,13 +440,23 @@ static int menu_select(struct cpuidle_driver *drv, struct cpuidle_device *dev,
 	 * Don't stop the tick if the selected state is a polling one or if the
 	 * expected idle duration is shorter than the tick period length.
 	 */
+<<<<<<< HEAD
 	if (((drv->states[idx].flags & CPUIDLE_FLAG_POLLING) ||
 	     expected_interval < TICK_USEC) && !tick_nohz_tick_stopped()) {
+=======
+	if ((drv->states[idx].flags & CPUIDLE_FLAG_POLLING) ||
+	    expected_interval < TICK_USEC) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		unsigned int delta_next_us = ktime_to_us(delta_next);
 
 		*stop_tick = false;
 
+<<<<<<< HEAD
 		if (idx > 0 && drv->states[idx].target_residency > delta_next_us) {
+=======
+		if (!tick_nohz_tick_stopped() && idx > 0 &&
+		    drv->states[idx].target_residency > delta_next_us) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			/*
 			 * The tick is not going to be stopped and the target
 			 * residency of the state to be returned is not within
@@ -449,7 +475,10 @@ static int menu_select(struct cpuidle_driver *drv, struct cpuidle_device *dev,
 		}
 	}
 
+<<<<<<< HEAD
 out:
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	data->last_state_idx = idx;
 
 	return data->last_state_idx;

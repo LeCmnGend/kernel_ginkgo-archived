@@ -293,11 +293,16 @@ static int empress_init(struct saa7134_dev *dev)
 	q->lock = &dev->lock;
 	q->dev = &dev->pci->dev;
 	err = vb2_queue_init(q);
+<<<<<<< HEAD
 	if (err) {
 		video_device_release(dev->empress_dev);
 		dev->empress_dev = NULL;
 		return err;
 	}
+=======
+	if (err)
+		return err;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	dev->empress_dev->queue = q;
 
 	video_set_drvdata(dev->empress_dev, dev);

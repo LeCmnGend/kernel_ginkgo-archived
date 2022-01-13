@@ -913,14 +913,22 @@ static int __init inet6_init(void)
 
 	err = proto_register(&pingv6_prot, 1);
 	if (err)
+<<<<<<< HEAD
 		goto out_unregister_raw_proto;
+=======
+		goto out_unregister_ping_proto;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* We MUST register RAW sockets before we create the ICMP6,
 	 * IGMP6, or NDISC control sockets.
 	 */
 	err = rawv6_init();
 	if (err)
+<<<<<<< HEAD
 		goto out_unregister_ping_proto;
+=======
+		goto out_unregister_raw_proto;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* Register the family here so that the init calls below will
 	 * be able to create sockets. (?? is this dangerous ??)

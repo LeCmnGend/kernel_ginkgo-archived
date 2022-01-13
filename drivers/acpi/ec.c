@@ -1063,13 +1063,29 @@ void acpi_ec_unblock_transactions(void)
                                 Event Management
    -------------------------------------------------------------------------- */
 static struct acpi_ec_query_handler *
+<<<<<<< HEAD
 acpi_ec_get_query_handler_by_value(struct acpi_ec *ec, u8 value)
 {
 	struct acpi_ec_query_handler *handler;
+=======
+acpi_ec_get_query_handler(struct acpi_ec_query_handler *handler)
+{
+	if (handler)
+		kref_get(&handler->kref);
+	return handler;
+}
+
+static struct acpi_ec_query_handler *
+acpi_ec_get_query_handler_by_value(struct acpi_ec *ec, u8 value)
+{
+	struct acpi_ec_query_handler *handler;
+	bool found = false;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	mutex_lock(&ec->mutex);
 	list_for_each_entry(handler, &ec->list, node) {
 		if (value == handler->query_bit) {
+<<<<<<< HEAD
 			kref_get(&handler->kref);
 			mutex_unlock(&ec->mutex);
 			return handler;
@@ -1077,6 +1093,14 @@ acpi_ec_get_query_handler_by_value(struct acpi_ec *ec, u8 value)
 	}
 	mutex_unlock(&ec->mutex);
 	return NULL;
+=======
+			found = true;
+			break;
+		}
+	}
+	mutex_unlock(&ec->mutex);
+	return found ? acpi_ec_get_query_handler(handler) : NULL;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void acpi_ec_query_handler_release(struct kref *kref)
@@ -1886,6 +1910,7 @@ static const struct dmi_system_id ec_dmi_table[] __initconst = {
 	DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
 	DMI_MATCH(DMI_PRODUCT_NAME, "GL702VMK"),}, NULL},
 	{
+<<<<<<< HEAD
 	ec_honor_ecdt_gpe, "ASUSTeK COMPUTER INC. X505BA", {
 	DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
 	DMI_MATCH(DMI_PRODUCT_NAME, "X505BA"),}, NULL},
@@ -1902,6 +1927,8 @@ static const struct dmi_system_id ec_dmi_table[] __initconst = {
 	DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
 	DMI_MATCH(DMI_PRODUCT_NAME, "X542BP"),}, NULL},
 	{
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ec_honor_ecdt_gpe, "ASUS X550VXK", {
 	DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
 	DMI_MATCH(DMI_PRODUCT_NAME, "X550VXK"),}, NULL},

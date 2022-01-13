@@ -281,12 +281,21 @@ static int  klsi_105_open(struct tty_struct *tty, struct usb_serial_port *port)
 	priv->cfg.unknown2 = cfg->unknown2;
 	spin_unlock_irqrestore(&priv->lock, flags);
 
+<<<<<<< HEAD
 	kfree(cfg);
 
 	/* READ_ON and urb submission */
 	rc = usb_serial_generic_open(tty, port);
 	if (rc)
 		return rc;
+=======
+	/* READ_ON and urb submission */
+	rc = usb_serial_generic_open(tty, port);
+	if (rc) {
+		retval = rc;
+		goto err_free_cfg;
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	rc = usb_control_msg(port->serial->dev,
 			     usb_sndctrlpipe(port->serial->dev, 0),
@@ -329,6 +338,11 @@ err_disable_read:
 			     KLSI_TIMEOUT);
 err_generic_close:
 	usb_serial_generic_close(port);
+<<<<<<< HEAD
+=======
+err_free_cfg:
+	kfree(cfg);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return retval;
 }

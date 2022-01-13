@@ -113,8 +113,12 @@ static int usbtv_probe(struct usb_interface *intf,
 
 usbtv_audio_fail:
 	/* we must not free at this point */
+<<<<<<< HEAD
 	v4l2_device_get(&usbtv->v4l2_dev);
 	/* this will undo the v4l2_device_get() */
+=======
+	usb_get_dev(usbtv->udev);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	usbtv_video_free(usbtv);
 
 usbtv_video_fail:

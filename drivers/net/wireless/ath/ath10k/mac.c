@@ -3591,6 +3591,7 @@ bool ath10k_mac_tx_frm_has_freq(struct ath10k *ar)
 static int ath10k_mac_tx_wmi_mgmt(struct ath10k *ar, struct sk_buff *skb)
 {
 	struct sk_buff_head *q = &ar->wmi_mgmt_tx_queue;
+<<<<<<< HEAD
 
 	if (skb_queue_len_lockless(q) >= ATH10K_MAX_NUM_MGMT_PENDING) {
 		ath10k_warn(ar, "wmi mgmt tx queue is full\n");
@@ -3601,6 +3602,25 @@ static int ath10k_mac_tx_wmi_mgmt(struct ath10k *ar, struct sk_buff *skb)
 	ieee80211_queue_work(ar->hw, &ar->wmi_mgmt_tx_work);
 
 	return 0;
+=======
+	int ret = 0;
+
+	spin_lock_bh(&ar->data_lock);
+
+	if (skb_queue_len(q) == ATH10K_MAX_NUM_MGMT_PENDING) {
+		ath10k_warn(ar, "wmi mgmt tx queue is full\n");
+		ret = -ENOSPC;
+		goto unlock;
+	}
+
+	__skb_queue_tail(q, skb);
+	ieee80211_queue_work(ar->hw, &ar->wmi_mgmt_tx_work);
+
+unlock:
+	spin_unlock_bh(&ar->data_lock);
+
+	return ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static enum ath10k_mac_tx_path
@@ -5109,7 +5129,10 @@ static int ath10k_add_interface(struct ieee80211_hw *hw,
 
 	if (arvif->nohwcrypt &&
 	    !test_bit(ATH10K_FLAG_RAW_MODE, &ar->dev_flags)) {
+<<<<<<< HEAD
 		ret = -EINVAL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		ath10k_warn(ar, "cryptmode module param needed for sw crypto\n");
 		goto err;
 	}
@@ -6785,7 +6808,11 @@ ath10k_mac_update_bss_chan_survey(struct ath10k *ar,
 				  struct ieee80211_channel *channel)
 {
 	int ret;
+<<<<<<< HEAD
 	enum wmi_bss_survey_req_type type = WMI_BSS_SURVEY_REQ_TYPE_READ;
+=======
+	enum wmi_bss_survey_req_type type = WMI_BSS_SURVEY_REQ_TYPE_READ_CLEAR;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	lockdep_assert_held(&ar->conf_mutex);
 

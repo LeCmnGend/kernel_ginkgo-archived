@@ -760,7 +760,11 @@ static int sisusb_write_mem_bulk(struct sisusb_usb_data *sisusb, u32 addr,
 	u8   swap8, fromkern = kernbuffer ? 1 : 0;
 	u16  swap16;
 	u32  swap32, flag = (length >> 28) & 1;
+<<<<<<< HEAD
 	u8 buf[4];
+=======
+	char buf[4];
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* if neither kernbuffer not userbuffer are given, assume
 	 * data in obuf

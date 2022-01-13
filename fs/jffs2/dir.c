@@ -590,6 +590,7 @@ static int jffs2_rmdir (struct inode *dir_i, struct dentry *dentry)
 	int ret;
 	uint32_t now = get_seconds();
 
+<<<<<<< HEAD
 	mutex_lock(&f->sem);
 	for (fd = f->dents ; fd; fd = fd->next) {
 		if (fd->ino) {
@@ -598,6 +599,12 @@ static int jffs2_rmdir (struct inode *dir_i, struct dentry *dentry)
 		}
 	}
 	mutex_unlock(&f->sem);
+=======
+	for (fd = f->dents ; fd; fd = fd->next) {
+		if (fd->ino)
+			return -ENOTEMPTY;
+	}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	ret = jffs2_do_unlink(c, dir_f, dentry->d_name.name,
 			      dentry->d_name.len, f, now);

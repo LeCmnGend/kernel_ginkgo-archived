@@ -494,6 +494,7 @@ static int fsl_esai_startup(struct snd_pcm_substream *substream,
 				   ESAI_SAICR_SYNC, esai_priv->synchronous ?
 				   ESAI_SAICR_SYNC : 0);
 
+<<<<<<< HEAD
 		/* Set slots count */
 		regmap_update_bits(esai_priv->regmap, REG_ESAI_TCCR,
 				   ESAI_xCCR_xDC_MASK,
@@ -501,6 +502,13 @@ static int fsl_esai_startup(struct snd_pcm_substream *substream,
 		regmap_update_bits(esai_priv->regmap, REG_ESAI_RCCR,
 				   ESAI_xCCR_xDC_MASK,
 				   ESAI_xCCR_xDC(esai_priv->slots));
+=======
+		/* Set a default slot number -- 2 */
+		regmap_update_bits(esai_priv->regmap, REG_ESAI_TCCR,
+				   ESAI_xCCR_xDC_MASK, ESAI_xCCR_xDC(2));
+		regmap_update_bits(esai_priv->regmap, REG_ESAI_RCCR,
+				   ESAI_xCCR_xDC_MASK, ESAI_xCCR_xDC(2));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	return 0;

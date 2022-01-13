@@ -80,7 +80,10 @@ static bool arch_timer_mem_use_virtual;
 static bool arch_counter_suspend_stop;
 static bool vdso_default = true;
 
+<<<<<<< HEAD
 static cpumask_t evtstrm_available = CPU_MASK_NONE;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static bool evtstrm_enable = IS_ENABLED(CONFIG_ARM_ARCH_TIMER_EVTSTREAM);
 
 static int __init early_evtstrm_cfg(char *buf)
@@ -759,11 +762,15 @@ static void arch_timer_evtstrm_enable(int divider)
 #ifdef CONFIG_COMPAT
 	compat_elf_hwcap |= COMPAT_HWCAP_EVTSTRM;
 #endif
+<<<<<<< HEAD
 	cpumask_set_cpu(smp_processor_id(), &evtstrm_available);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void arch_timer_configure_evtstream(void)
 {
+<<<<<<< HEAD
 	int evt_stream_div, lsb;
 
 	/*
@@ -782,6 +789,17 @@ static void arch_timer_configure_evtstream(void)
 
 	/* enable event stream */
 	arch_timer_evtstrm_enable(max(0, min(lsb, 15)));
+=======
+	int evt_stream_div, pos;
+
+	/* Find the closest power of two to the divisor */
+	evt_stream_div = arch_timer_rate / ARCH_TIMER_EVT_STREAM_FREQ;
+	pos = fls(evt_stream_div);
+	if (pos > 1 && !(evt_stream_div & (1 << (pos - 2))))
+		pos--;
+	/* enable event stream */
+	arch_timer_evtstrm_enable(min(pos, 15));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void arch_counter_set_user_access(void)
@@ -910,6 +928,7 @@ void arch_timer_mem_get_cval(u32 *lo, u32 *hi)
 	}
 }
 
+<<<<<<< HEAD
 bool arch_timer_evtstrm_available(void)
 {
 	/*
@@ -920,6 +939,8 @@ bool arch_timer_evtstrm_available(void)
 	return cpumask_test_cpu(raw_smp_processor_id(), &evtstrm_available);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static u64 arch_counter_get_cntvct_mem(void)
 {
 	u32 vct_lo, vct_hi, tmp_hi;
@@ -985,8 +1006,11 @@ static int arch_timer_dying_cpu(unsigned int cpu)
 {
 	struct clock_event_device *clk = this_cpu_ptr(arch_timer_evt);
 
+<<<<<<< HEAD
 	cpumask_clear_cpu(smp_processor_id(), &evtstrm_available);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	arch_timer_stop(clk);
 	return 0;
 }
@@ -996,6 +1020,7 @@ static DEFINE_PER_CPU(unsigned long, saved_cntkctl);
 static int arch_timer_cpu_pm_notify(struct notifier_block *self,
 				    unsigned long action, void *hcpu)
 {
+<<<<<<< HEAD
 	if (action == CPU_PM_ENTER) {
 		__this_cpu_write(saved_cntkctl, arch_timer_get_cntkctl());
 
@@ -1006,6 +1031,12 @@ static int arch_timer_cpu_pm_notify(struct notifier_block *self,
 		if (elf_hwcap & HWCAP_EVTSTRM)
 			cpumask_set_cpu(smp_processor_id(), &evtstrm_available);
 	}
+=======
+	if (action == CPU_PM_ENTER)
+		__this_cpu_write(saved_cntkctl, arch_timer_get_cntkctl());
+	else if (action == CPU_PM_ENTER_FAILED || action == CPU_PM_EXIT)
+		arch_timer_set_cntkctl(__this_cpu_read(saved_cntkctl));
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return NOTIFY_OK;
 }
 
@@ -1081,6 +1112,10 @@ static int __init arch_timer_register(void)
 	if (err)
 		goto out_unreg_notify;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* Register and immediately configure the timer on the boot CPU */
 	err = cpuhp_setup_state(CPUHP_AP_ARM_ARCH_TIMER_STARTING,
 				"clockevents/arm/arch_timer:starting",

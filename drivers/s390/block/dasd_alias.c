@@ -256,6 +256,10 @@ void dasd_alias_disconnect_device_from_lcu(struct dasd_device *device)
 		return;
 	device->discipline->get_uid(device, &uid);
 	spin_lock_irqsave(&lcu->lock, flags);
+<<<<<<< HEAD
+=======
+	list_del_init(&device->alias_list);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* make sure that the workers don't use this device */
 	if (device == lcu->suc_data.device) {
 		spin_unlock_irqrestore(&lcu->lock, flags);
@@ -282,7 +286,10 @@ void dasd_alias_disconnect_device_from_lcu(struct dasd_device *device)
 
 	spin_lock_irqsave(&aliastree.lock, flags);
 	spin_lock(&lcu->lock);
+<<<<<<< HEAD
 	list_del_init(&device->alias_list);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (list_empty(&lcu->grouplist) &&
 	    list_empty(&lcu->active_devices) &&
 	    list_empty(&lcu->inactive_devices)) {
@@ -462,6 +469,7 @@ static int read_unit_address_configuration(struct dasd_device *device,
 	spin_unlock_irqrestore(&lcu->lock, flags);
 
 	rc = dasd_sleep_on(cqr);
+<<<<<<< HEAD
 	if (!rc)
 		goto out;
 
@@ -470,11 +478,17 @@ static int read_unit_address_configuration(struct dasd_device *device,
 		rc = -EOPNOTSUPP;
 	} else {
 		/* IO failed but should be retried */
+=======
+	if (rc && !suborder_not_supported(cqr)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		spin_lock_irqsave(&lcu->lock, flags);
 		lcu->flags |= NEED_UAC_UPDATE;
 		spin_unlock_irqrestore(&lcu->lock, flags);
 	}
+<<<<<<< HEAD
 out:
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	dasd_kfree_request(cqr, cqr->memdev);
 	return rc;
 }
@@ -511,6 +525,7 @@ static int _lcu_update(struct dasd_device *refdev, struct alias_lcu *lcu)
 		return rc;
 
 	spin_lock_irqsave(&lcu->lock, flags);
+<<<<<<< HEAD
 	/*
 	 * there is another update needed skip the remaining handling
 	 * the data might already be outdated
@@ -519,6 +534,8 @@ static int _lcu_update(struct dasd_device *refdev, struct alias_lcu *lcu)
 	 */
 	if (lcu->flags & NEED_UAC_UPDATE)
 		goto out;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	lcu->pav = NO_PAV;
 	for (i = 0; i < MAX_DEVICES_PER_LCU; ++i) {
 		switch (lcu->uac->unit[i].ua_type) {
@@ -537,7 +554,10 @@ static int _lcu_update(struct dasd_device *refdev, struct alias_lcu *lcu)
 				 alias_list) {
 		_add_device_to_lcu(lcu, device, refdev);
 	}
+<<<<<<< HEAD
 out:
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	spin_unlock_irqrestore(&lcu->lock, flags);
 	return 0;
 }
@@ -642,7 +662,10 @@ int dasd_alias_add_device(struct dasd_device *device)
 	}
 	if (lcu->flags & UPDATE_PENDING) {
 		list_move(&device->alias_list, &lcu->active_devices);
+<<<<<<< HEAD
 		private->pavgroup = NULL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		_schedule_lcu_update(lcu, device);
 	}
 	spin_unlock_irqrestore(&lcu->lock, flags);

@@ -87,8 +87,18 @@ static int gpio_ir_tx(struct rc_dev *dev, unsigned int *txbuf,
 			// space
 			edge = ktime_add_us(edge, txbuf[i]);
 			delta = ktime_us_delta(edge, ktime_get());
+<<<<<<< HEAD
 			if (delta > 0)
 				udelay(delta);
+=======
+			if (delta > 10) {
+				spin_unlock_irqrestore(&gpio_ir->lock, flags);
+				usleep_range(delta, delta + 10);
+				spin_lock_irqsave(&gpio_ir->lock, flags);
+			} else if (delta > 0) {
+				udelay(delta);
+			}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		} else {
 			// pulse
 			ktime_t last = ktime_add_us(edge, txbuf[i]);

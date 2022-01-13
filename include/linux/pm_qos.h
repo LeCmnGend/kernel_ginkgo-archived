@@ -8,6 +8,10 @@
 #include <linux/plist.h>
 #include <linux/notifier.h>
 #include <linux/device.h>
+<<<<<<< HEAD
+=======
+#include <linux/workqueue.h>
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <linux/cpumask.h>
 #include <linux/interrupt.h>
 
@@ -53,7 +57,11 @@ enum pm_qos_req_type {
 
 struct pm_qos_request {
 	enum pm_qos_req_type type;
+<<<<<<< HEAD
 	atomic_t cpus_affine;
+=======
+	struct cpumask cpus_affine;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #ifdef CONFIG_SMP
 	uint32_t irq;
 	/* Internal structure members */
@@ -61,6 +69,10 @@ struct pm_qos_request {
 #endif
 	struct plist_node node;
 	int pm_qos_class;
+<<<<<<< HEAD
+=======
+	struct delayed_work work; /* for pm_qos_update_request_timeout */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 struct pm_qos_flags_request {
@@ -140,6 +152,11 @@ void pm_qos_add_request(struct pm_qos_request *req, int pm_qos_class,
 			s32 value);
 void pm_qos_update_request(struct pm_qos_request *req,
 			   s32 new_value);
+<<<<<<< HEAD
+=======
+void pm_qos_update_request_timeout(struct pm_qos_request *req,
+				   s32 new_value, unsigned long timeout_us);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 void pm_qos_remove_request(struct pm_qos_request *req);
 
 int pm_qos_request(int pm_qos_class);

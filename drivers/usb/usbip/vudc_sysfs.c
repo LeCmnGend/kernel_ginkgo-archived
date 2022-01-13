@@ -24,7 +24,10 @@
 #include <linux/usb/ch9.h>
 #include <linux/sysfs.h>
 #include <linux/kthread.h>
+<<<<<<< HEAD
 #include <linux/file.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <linux/byteorder/generic.h>
 
 #include "usbip_common.h"
@@ -103,9 +106,14 @@ unlock:
 }
 static BIN_ATTR_RO(dev_desc, sizeof(struct usb_device_descriptor));
 
+<<<<<<< HEAD
 static ssize_t store_sockfd(struct device *dev,
 				 struct device_attribute *attr,
 				 const char *in, size_t count)
+=======
+static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
+		     const char *in, size_t count)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	struct vudc *udc = (struct vudc *) dev_get_drvdata(dev);
 	int rv;
@@ -114,8 +122,11 @@ static ssize_t store_sockfd(struct device *dev,
 	struct socket *socket;
 	unsigned long flags;
 	int ret;
+<<<<<<< HEAD
 	struct task_struct *tcp_rx = NULL;
 	struct task_struct *tcp_tx = NULL;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	rv = kstrtoint(in, 0, &sockfd);
 	if (rv != 0)
@@ -125,7 +136,10 @@ static ssize_t store_sockfd(struct device *dev,
 		dev_err(dev, "no device");
 		return -ENODEV;
 	}
+<<<<<<< HEAD
 	mutex_lock(&udc->ud.sysfs_lock);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	spin_lock_irqsave(&udc->lock, flags);
 	/* Don't export what we don't have */
 	if (!udc->driver || !udc->pullup) {
@@ -155,6 +169,7 @@ static ssize_t store_sockfd(struct device *dev,
 			goto unlock_ud;
 		}
 
+<<<<<<< HEAD
 		if (socket->type != SOCK_STREAM) {
 			dev_err(dev, "Expecting SOCK_STREAM - found %d",
 				socket->type);
@@ -191,11 +206,27 @@ static ssize_t store_sockfd(struct device *dev,
 		udc->ud.tcp_tx = tcp_tx;
 		udc->ud.status = SDEV_ST_USED;
 
+=======
+		udc->ud.tcp_socket = socket;
+
+		spin_unlock_irq(&udc->ud.lock);
+		spin_unlock_irqrestore(&udc->lock, flags);
+
+		udc->ud.tcp_rx = kthread_get_run(&v_rx_loop,
+						    &udc->ud, "vudc_rx");
+		udc->ud.tcp_tx = kthread_get_run(&v_tx_loop,
+						    &udc->ud, "vudc_tx");
+
+		spin_lock_irqsave(&udc->lock, flags);
+		spin_lock_irq(&udc->ud.lock);
+		udc->ud.status = SDEV_ST_USED;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		spin_unlock_irq(&udc->ud.lock);
 
 		do_gettimeofday(&udc->start_time);
 		v_start_timer(udc);
 		udc->connected = 1;
+<<<<<<< HEAD
 
 		spin_unlock_irqrestore(&udc->lock, flags);
 
@@ -205,6 +236,8 @@ static ssize_t store_sockfd(struct device *dev,
 		mutex_unlock(&udc->ud.sysfs_lock);
 		return count;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else {
 		if (!udc->connected) {
 			dev_err(dev, "Device not connected");
@@ -223,17 +256,26 @@ static ssize_t store_sockfd(struct device *dev,
 	}
 
 	spin_unlock_irqrestore(&udc->lock, flags);
+<<<<<<< HEAD
 	mutex_unlock(&udc->ud.sysfs_lock);
 
 	return count;
 
 sock_err:
 	sockfd_put(socket);
+=======
+
+	return count;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 unlock_ud:
 	spin_unlock_irq(&udc->ud.lock);
 unlock:
 	spin_unlock_irqrestore(&udc->lock, flags);
+<<<<<<< HEAD
 	mutex_unlock(&udc->ud.sysfs_lock);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return ret;
 }

@@ -564,9 +564,12 @@ static void configure_bark_dump(struct msm_watchdog_data *wdog_dd)
 	int cpu;
 	void *cpu_buf;
 
+<<<<<<< HEAD
 	if (!IS_ENABLED(CONFIG_QCOM_MEMORY_DUMP_V2))
 		return;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	cpu_data = kcalloc(num_present_cpus(), sizeof(struct msm_dump_data),
 								GFP_KERNEL);
 	if (!cpu_data)

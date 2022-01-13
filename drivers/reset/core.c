@@ -398,10 +398,14 @@ static struct reset_control *__reset_control_get_internal(
 	if (!rstc)
 		return ERR_PTR(-ENOMEM);
 
+<<<<<<< HEAD
 	if (!try_module_get(rcdev->owner)) {
 		kfree(rstc);
 		return ERR_PTR(-ENODEV);
 	}
+=======
+	try_module_get(rcdev->owner);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	rstc->rcdev = rcdev;
 	list_add(&rstc->list, &rcdev->reset_control_head);

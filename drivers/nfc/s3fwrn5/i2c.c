@@ -37,8 +37,13 @@ struct s3fwrn5_i2c_phy {
 	struct i2c_client *i2c_dev;
 	struct nci_dev *ndev;
 
+<<<<<<< HEAD
 	int gpio_en;
 	int gpio_fw_wake;
+=======
+	unsigned int gpio_en;
+	unsigned int gpio_fw_wake;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	struct mutex mutex;
 

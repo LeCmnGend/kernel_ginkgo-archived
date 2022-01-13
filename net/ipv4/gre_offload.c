@@ -19,12 +19,19 @@ static struct sk_buff *gre_gso_segment(struct sk_buff *skb,
 				       netdev_features_t features)
 {
 	int tnl_hlen = skb_inner_mac_header(skb) - skb_transport_header(skb);
+<<<<<<< HEAD
 	bool need_csum, need_recompute_csum, gso_partial;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct sk_buff *segs = ERR_PTR(-EINVAL);
 	u16 mac_offset = skb->mac_header;
 	__be16 protocol = skb->protocol;
 	u16 mac_len = skb->mac_len;
 	int gre_offset, outer_hlen;
+<<<<<<< HEAD
+=======
+	bool need_csum, gso_partial;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (!skb->encapsulation)
 		goto out;
@@ -45,7 +52,10 @@ static struct sk_buff *gre_gso_segment(struct sk_buff *skb,
 	skb->protocol = skb->inner_protocol;
 
 	need_csum = !!(skb_shinfo(skb)->gso_type & SKB_GSO_GRE_CSUM);
+<<<<<<< HEAD
 	need_recompute_csum = skb->csum_not_inet;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	skb->encap_hdr_csum = need_csum;
 
 	features &= skb->dev->hw_enc_features;
@@ -103,6 +113,7 @@ static struct sk_buff *gre_gso_segment(struct sk_buff *skb,
 		}
 
 		*(pcsum + 1) = 0;
+<<<<<<< HEAD
 		if (need_recompute_csum && !skb_is_gso(skb)) {
 			__wsum csum;
 
@@ -112,6 +123,9 @@ static struct sk_buff *gre_gso_segment(struct sk_buff *skb,
 		} else {
 			*pcsum = gso_make_checksum(skb, 0);
 		}
+=======
+		*pcsum = gso_make_checksum(skb, 0);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} while ((skb = skb->next));
 out:
 	return segs;

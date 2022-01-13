@@ -5942,19 +5942,28 @@ static void e1000_reset_task(struct work_struct *work)
 	struct e1000_adapter *adapter;
 	adapter = container_of(work, struct e1000_adapter, reset_task);
 
+<<<<<<< HEAD
 	rtnl_lock();
 	/* don't run the task if already down */
 	if (test_bit(__E1000_DOWN, &adapter->state)) {
 		rtnl_unlock();
 		return;
 	}
+=======
+	/* don't run the task if already down */
+	if (test_bit(__E1000_DOWN, &adapter->state))
+		return;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (!(adapter->flags & FLAG_RESTART_NOW)) {
 		e1000e_dump(adapter);
 		e_err("Reset adapter unexpectedly\n");
 	}
 	e1000e_reinit_locked(adapter);
+<<<<<<< HEAD
 	rtnl_unlock();
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /**
@@ -7392,7 +7401,10 @@ err_flashmap:
 err_ioremap:
 	free_netdev(netdev);
 err_alloc_etherdev:
+<<<<<<< HEAD
 	pci_disable_pcie_error_reporting(pdev);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	pci_release_mem_regions(pdev);
 err_pci_reg:
 err_dma:

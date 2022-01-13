@@ -2924,7 +2924,10 @@ static int i40evf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
 err_ioremap:
 	free_netdev(netdev);
 err_alloc_etherdev:
+<<<<<<< HEAD
 	pci_disable_pcie_error_reporting(pdev);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	pci_release_regions(pdev);
 err_pci_reg:
 err_dma:

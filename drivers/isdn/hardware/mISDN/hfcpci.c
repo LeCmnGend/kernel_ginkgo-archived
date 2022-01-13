@@ -2349,7 +2349,11 @@ static void __exit
 HFC_cleanup(void)
 {
 	if (timer_pending(&hfc_tl))
+<<<<<<< HEAD
 		del_timer_sync(&hfc_tl);
+=======
+		del_timer(&hfc_tl);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	pci_unregister_driver(&hfc_driver);
 }

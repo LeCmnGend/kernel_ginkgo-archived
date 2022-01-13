@@ -1989,10 +1989,13 @@ int register_kretprobe(struct kretprobe *rp)
 	if (!kprobe_on_func_entry(rp->kp.addr, rp->kp.symbol_name, rp->kp.offset))
 		return -EINVAL;
 
+<<<<<<< HEAD
 	/* If only rp->kp.addr is specified, check reregistering kprobes */
 	if (rp->kp.addr && check_kprobe_rereg(&rp->kp))
 		return -EINVAL;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (kretprobe_blacklist_size) {
 		addr = kprobe_addr(&rp->kp);
 		if (IS_ERR(addr))
@@ -2121,9 +2124,12 @@ static void kill_kprobe(struct kprobe *p)
 {
 	struct kprobe *kp;
 
+<<<<<<< HEAD
 	if (WARN_ON_ONCE(kprobe_gone(p)))
 		return;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	p->flags |= KPROBE_FLAG_GONE;
 	if (kprobe_aggrprobe(p)) {
 		/*
@@ -2141,6 +2147,7 @@ static void kill_kprobe(struct kprobe *p)
 	 * the original probed function (which will be freed soon) any more.
 	 */
 	arch_remove_kprobe(p);
+<<<<<<< HEAD
 
 	/*
 	 * The module is going away. We should disarm the kprobe which
@@ -2149,6 +2156,8 @@ static void kill_kprobe(struct kprobe *p)
 	 */
 	if (kprobe_ftrace(p) && !kprobe_disabled(p) && !kprobes_all_disarmed)
 		disarm_kprobe_ftrace(p);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 /* Disable one kprobe */
@@ -2267,10 +2276,14 @@ static int kprobes_module_callback(struct notifier_block *nb,
 	mutex_lock(&kprobe_mutex);
 	for (i = 0; i < KPROBE_TABLE_SIZE; i++) {
 		head = &kprobe_table[i];
+<<<<<<< HEAD
 		hlist_for_each_entry_rcu(p, head, hlist) {
 			if (kprobe_gone(p))
 				continue;
 
+=======
+		hlist_for_each_entry_rcu(p, head, hlist)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			if (within_module_init((unsigned long)p->addr, mod) ||
 			    (checkcore &&
 			     within_module_core((unsigned long)p->addr, mod))) {
@@ -2287,7 +2300,10 @@ static int kprobes_module_callback(struct notifier_block *nb,
 				 */
 				kill_kprobe(p);
 			}
+<<<<<<< HEAD
 		}
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	mutex_unlock(&kprobe_mutex);
 	return NOTIFY_DONE;

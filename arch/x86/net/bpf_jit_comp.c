@@ -1107,6 +1107,7 @@ common_load:
 		}
 
 		if (image) {
+<<<<<<< HEAD
 			/*
 			 * When populating the image, assert that:
 			 *
@@ -1117,6 +1118,9 @@ common_load:
 			 */
 			if (unlikely(proglen + ilen > oldproglen ||
 				     proglen + ilen != addrs[i])) {
+=======
+			if (unlikely(proglen + ilen > oldproglen)) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				pr_err("bpf_jit: fatal error\n");
 				return -EFAULT;
 			}

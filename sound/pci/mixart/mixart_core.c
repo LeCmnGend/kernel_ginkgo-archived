@@ -83,6 +83,10 @@ static int get_msg(struct mixart_mgr *mgr, struct mixart_msg *resp,
 	unsigned int i;
 #endif
 
+<<<<<<< HEAD
+=======
+	mutex_lock(&mgr->msg_lock);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	err = 0;
 
 	/* copy message descriptor from miXart to driver */
@@ -131,6 +135,11 @@ static int get_msg(struct mixart_mgr *mgr, struct mixart_msg *resp,
 	writel_be(headptr, MIXART_MEM(mgr, MSG_OUTBOUND_FREE_HEAD));
 
  _clean_exit:
+<<<<<<< HEAD
+=======
+	mutex_unlock(&mgr->msg_lock);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return err;
 }
 
@@ -268,9 +277,13 @@ int snd_mixart_send_msg(struct mixart_mgr *mgr, struct mixart_msg *request, int 
 	resp.data = resp_data;
 	resp.size = max_resp_size;
 
+<<<<<<< HEAD
 	mutex_lock(&mgr->msg_lock);
 	err = get_msg(mgr, &resp, msg_frame);
 	mutex_unlock(&mgr->msg_lock);
+=======
+	err = get_msg(mgr, &resp, msg_frame);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if( request->message_id != resp.message_id )
 		dev_err(&mgr->pci->dev, "RESPONSE ERROR!\n");

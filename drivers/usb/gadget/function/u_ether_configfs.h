@@ -207,11 +207,20 @@ out:									\
 						size_t len)		\
 	{								\
 		struct f_##_f_##_opts *opts = to_f_##_f_##_opts(item);	\
+<<<<<<< HEAD
 		int ret = -EINVAL;					\
 		u8 val;							\
 									\
 		mutex_lock(&opts->lock);				\
 		if (sscanf(page, "%02hhx", &val) > 0) {			\
+=======
+		int ret;						\
+		u8 val;							\
+									\
+		mutex_lock(&opts->lock);				\
+		ret = sscanf(page, "%02hhx", &val);			\
+		if (ret > 0) {						\
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			opts->_n_ = val;				\
 			ret = len;					\
 		}							\

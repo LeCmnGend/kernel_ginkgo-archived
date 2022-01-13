@@ -697,6 +697,7 @@ static int vfat_find(struct inode *dir, const struct qstr *qname,
 	return fat_search_long(dir, qname->name, len, sinfo);
 }
 
+<<<<<<< HEAD
 /*
  * (nfsd's) anonymous disconnected dentry?
  * NOTE: !IS_ROOT() is not anonymous (I.e. d_splice_alias() did the job).
@@ -706,6 +707,8 @@ static int vfat_d_anon_disconn(struct dentry *dentry)
 	return IS_ROOT(dentry) && (dentry->d_flags & DCACHE_DISCONNECTED);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static struct dentry *vfat_lookup(struct inode *dir, struct dentry *dentry,
 				  unsigned int flags)
 {
@@ -738,8 +741,12 @@ static struct dentry *vfat_lookup(struct inode *dir, struct dentry *dentry,
 	 * Checking "alias->d_parent == dentry->d_parent" to make sure
 	 * FS is not corrupted (especially double linked dir).
 	 */
+<<<<<<< HEAD
 	if (alias && alias->d_parent == dentry->d_parent &&
 	    !vfat_d_anon_disconn(alias)) {
+=======
+	if (alias && alias->d_parent == dentry->d_parent) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		/*
 		 * This inode has non anonymous-DCACHE_DISCONNECTED
 		 * dentry. This means, the user did ->lookup() by an
@@ -747,7 +754,10 @@ static struct dentry *vfat_lookup(struct inode *dir, struct dentry *dentry,
 		 *
 		 * Switch to new one for reason of locality if possible.
 		 */
+<<<<<<< HEAD
 		BUG_ON(d_unhashed(alias));
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (!S_ISDIR(inode->i_mode))
 			d_move(alias, dentry);
 		iput(inode);

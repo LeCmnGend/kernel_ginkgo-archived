@@ -18,12 +18,15 @@
 #include <asm/unistd.h>
 #include <asm/vdso.h>
 
+<<<<<<< HEAD
 #if MIPS_ISA_REV < 6
 #define VDSO_SYSCALL_CLOBBERS "hi", "lo",
 #else
 #define VDSO_SYSCALL_CLOBBERS
 #endif
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #ifdef CONFIG_MIPS_CLOCK_VSYSCALL
 
 static __always_inline long gettimeofday_fallback(struct timeval *_tv,
@@ -40,9 +43,13 @@ static __always_inline long gettimeofday_fallback(struct timeval *_tv,
 	: "=r" (ret), "=r" (error)
 	: "r" (tv), "r" (tz), "r" (nr)
 	: "$1", "$3", "$8", "$9", "$10", "$11", "$12", "$13",
+<<<<<<< HEAD
 	  "$14", "$15", "$24", "$25",
 	  VDSO_SYSCALL_CLOBBERS
 	  "memory");
+=======
+	  "$14", "$15", "$24", "$25", "hi", "lo", "memory");
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return error ? -ret : ret;
 }
@@ -63,9 +70,13 @@ static __always_inline long clock_gettime_fallback(clockid_t _clkid,
 	: "=r" (ret), "=r" (error)
 	: "r" (clkid), "r" (ts), "r" (nr)
 	: "$1", "$3", "$8", "$9", "$10", "$11", "$12", "$13",
+<<<<<<< HEAD
 	  "$14", "$15", "$24", "$25",
 	  VDSO_SYSCALL_CLOBBERS
 	  "memory");
+=======
+	  "$14", "$15", "$24", "$25", "hi", "lo", "memory");
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	return error ? -ret : ret;
 }

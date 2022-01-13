@@ -32,6 +32,11 @@
 #define FASTRPC_IOCTL_INVOKE_CRC _IOWR('R', 11, struct fastrpc_ioctl_invoke_crc)
 #define FASTRPC_IOCTL_CONTROL   _IOWR('R', 12, struct fastrpc_ioctl_control)
 #define FASTRPC_IOCTL_MUNMAP_FD _IOWR('R', 13, struct fastrpc_ioctl_munmap_fd)
+<<<<<<< HEAD
+=======
+#define FASTRPC_IOCTL_GET_DSP_INFO \
+			_IOWR('R', 16, struct fastrpc_ioctl_dsp_capabilities)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #define FASTRPC_GLINK_GUID "fastrpcglink-apps-dsp"
 #define FASTRPC_SMD_GUID "fastrpcsmd-apps-dsp"
@@ -270,6 +275,15 @@ struct fastrpc_ioctl_control {
 	};
 };
 
+<<<<<<< HEAD
+=======
+#define FASTRPC_MAX_DSP_ATTRIBUTES            (7)
+struct fastrpc_ioctl_dsp_capabilities {
+	uint32_t domain;	//! DSP domain to query capabilities
+	uint32_t dsp_attributes[FASTRPC_MAX_DSP_ATTRIBUTES];
+};
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 struct smq_null_invoke {
 	uint64_t ctx;			/* invoke caller context */
 	uint32_t handle;	    /* handle to invoke */

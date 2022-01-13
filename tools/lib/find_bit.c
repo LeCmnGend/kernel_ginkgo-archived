@@ -22,6 +22,7 @@
 #include <linux/bitmap.h>
 #include <linux/kernel.h>
 
+<<<<<<< HEAD
 #if !defined(find_next_bit) || !defined(find_next_zero_bit) || \
 		!defined(find_next_and_bit)
 
@@ -35,16 +36,31 @@
 static inline unsigned long _find_next_bit(const unsigned long *addr1,
 		const unsigned long *addr2, unsigned long nbits,
 		unsigned long start, unsigned long invert)
+=======
+#if !defined(find_next_bit)
+
+/*
+ * This is a common helper function for find_next_bit and
+ * find_next_zero_bit.  The difference is the "invert" argument, which
+ * is XORed with each fetched word before searching it for one bits.
+ */
+static unsigned long _find_next_bit(const unsigned long *addr,
+		unsigned long nbits, unsigned long start, unsigned long invert)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	unsigned long tmp;
 
 	if (unlikely(start >= nbits))
 		return nbits;
 
+<<<<<<< HEAD
 	tmp = addr1[start / BITS_PER_LONG];
 	if (addr2)
 		tmp &= addr2[start / BITS_PER_LONG];
 	tmp ^= invert;
+=======
+	tmp = addr[start / BITS_PER_LONG] ^ invert;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* Handle 1st word. */
 	tmp &= BITMAP_FIRST_WORD_MASK(start);
@@ -55,10 +71,14 @@ static inline unsigned long _find_next_bit(const unsigned long *addr1,
 		if (start >= nbits)
 			return nbits;
 
+<<<<<<< HEAD
 		tmp = addr1[start / BITS_PER_LONG];
 		if (addr2)
 			tmp &= addr2[start / BITS_PER_LONG];
 		tmp ^= invert;
+=======
+		tmp = addr[start / BITS_PER_LONG] ^ invert;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	return min(start + __ffs(tmp), nbits);
@@ -72,7 +92,11 @@ static inline unsigned long _find_next_bit(const unsigned long *addr1,
 unsigned long find_next_bit(const unsigned long *addr, unsigned long size,
 			    unsigned long offset)
 {
+<<<<<<< HEAD
 	return _find_next_bit(addr, NULL, size, offset, 0UL);
+=======
+	return _find_next_bit(addr, size, offset, 0UL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 #endif
 
@@ -114,6 +138,7 @@ unsigned long find_first_zero_bit(const unsigned long *addr, unsigned long size)
 unsigned long find_next_zero_bit(const unsigned long *addr, unsigned long size,
 				 unsigned long offset)
 {
+<<<<<<< HEAD
 	return _find_next_bit(addr, NULL, size, offset, ~0UL);
 }
 #endif
@@ -124,5 +149,8 @@ unsigned long find_next_and_bit(const unsigned long *addr1,
 		unsigned long offset)
 {
 	return _find_next_bit(addr1, addr2, size, offset, 0UL);
+=======
+	return _find_next_bit(addr, size, offset, ~0UL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 #endif

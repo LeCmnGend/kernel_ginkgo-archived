@@ -2829,16 +2829,25 @@ static int i40e_tx_enable_csum(struct sk_buff *skb, u32 *tx_flags,
 
 			l4_proto = ip.v4->protocol;
 		} else if (*tx_flags & I40E_TX_FLAGS_IPV6) {
+<<<<<<< HEAD
 			int ret;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			tunnel |= I40E_TX_CTX_EXT_IP_IPV6;
 
 			exthdr = ip.hdr + sizeof(*ip.v6);
 			l4_proto = ip.v6->nexthdr;
+<<<<<<< HEAD
 			ret = ipv6_skip_exthdr(skb, exthdr - skb->data,
 					       &l4_proto, &frag_off);
 			if (ret < 0)
 				return -1;
+=======
+			if (l4.hdr != exthdr)
+				ipv6_skip_exthdr(skb, exthdr - skb->data,
+						 &l4_proto, &frag_off);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 
 		/* define outer transport */

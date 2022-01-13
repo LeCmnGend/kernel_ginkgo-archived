@@ -119,17 +119,24 @@ static inline bool bvec_iter_rewind(const struct bio_vec *bv,
 	return true;
 }
 
+<<<<<<< HEAD
 static inline void bvec_iter_skip_zero_bvec(struct bvec_iter *iter)
 {
 	iter->bi_bvec_done = 0;
 	iter->bi_idx++;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define for_each_bvec(bvl, bio_vec, iter, start)			\
 	for (iter = (start);						\
 	     (iter).bi_size &&						\
 		((bvl = bvec_iter_bvec((bio_vec), (iter))), 1);	\
+<<<<<<< HEAD
 	     (bvl).bv_len ? (void)bvec_iter_advance((bio_vec), &(iter),	\
 		     (bvl).bv_len) : bvec_iter_skip_zero_bvec(&(iter)))
+=======
+	     bvec_iter_advance((bio_vec), &(iter), (bvl).bv_len))
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #endif /* __LINUX_BVEC_ITER_H */

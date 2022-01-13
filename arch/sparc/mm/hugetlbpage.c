@@ -397,7 +397,11 @@ static void hugetlb_free_pte_range(struct mmu_gather *tlb, pmd_t *pmd,
 
 	pmd_clear(pmd);
 	pte_free_tlb(tlb, token, addr);
+<<<<<<< HEAD
 	mm_dec_nr_ptes(tlb->mm);
+=======
+	atomic_long_dec(&tlb->mm->nr_ptes);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void hugetlb_free_pmd_range(struct mmu_gather *tlb, pud_t *pud,
@@ -472,7 +476,10 @@ static void hugetlb_free_pud_range(struct mmu_gather *tlb, pgd_t *pgd,
 	pud = pud_offset(pgd, start);
 	pgd_clear(pgd);
 	pud_free_tlb(tlb, pud, start);
+<<<<<<< HEAD
 	mm_dec_nr_puds(tlb->mm);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 void hugetlb_free_pgd_range(struct mmu_gather *tlb,

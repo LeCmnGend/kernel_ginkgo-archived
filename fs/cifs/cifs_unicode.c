@@ -501,6 +501,7 @@ cifsConvertToUTF16(__le16 *target, const char *source, int srclen,
 		else if (map_chars == SFM_MAP_UNI_RSVD) {
 			bool end_of_string;
 
+<<<<<<< HEAD
 			/**
 			 * Remap spaces and periods found at the end of every
 			 * component of the path. The special cases of '.' and
@@ -508,6 +509,9 @@ cifsConvertToUTF16(__le16 *target, const char *source, int srclen,
 			 * they are addressed in namei.c:link_path_walk().
 			 **/
 			if ((i == srclen - 1) || (source[i+1] == '\\'))
+=======
+			if (i == srclen - 1)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				end_of_string = true;
 			else
 				end_of_string = false;

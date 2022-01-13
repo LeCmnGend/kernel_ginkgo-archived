@@ -974,7 +974,10 @@ static int vxlan_fdb_dump(struct sk_buff *skb, struct netlink_callback *cb,
 	for (h = 0; h < FDB_HASH_SIZE; ++h) {
 		struct vxlan_fdb *f;
 
+<<<<<<< HEAD
 		rcu_read_lock();
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		hlist_for_each_entry_rcu(f, &vxlan->fdb_head[h], hlist) {
 			struct vxlan_rdst *rd;
 
@@ -987,15 +990,23 @@ static int vxlan_fdb_dump(struct sk_buff *skb, struct netlink_callback *cb,
 						     cb->nlh->nlmsg_seq,
 						     RTM_NEWNEIGH,
 						     NLM_F_MULTI, rd);
+<<<<<<< HEAD
 				if (err < 0) {
 					rcu_read_unlock();
 					goto out;
 				}
+=======
+				if (err < 0)
+					goto out;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 skip:
 				*idx += 1;
 			}
 		}
+<<<<<<< HEAD
 		rcu_read_unlock();
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 out:
 	return err;
@@ -1681,7 +1692,10 @@ static int neigh_reduce(struct net_device *dev, struct sk_buff *skb, __be32 vni)
 	struct neighbour *n;
 	struct nd_msg *msg;
 
+<<<<<<< HEAD
 	rcu_read_lock();
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	in6_dev = __in6_dev_get(dev);
 	if (!in6_dev)
 		goto out;
@@ -1733,7 +1747,10 @@ static int neigh_reduce(struct net_device *dev, struct sk_buff *skb, __be32 vni)
 	}
 
 out:
+<<<<<<< HEAD
 	rcu_read_unlock();
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	consume_skb(skb);
 	return NETDEV_TX_OK;
 }
@@ -2224,7 +2241,11 @@ static void vxlan_xmit_one(struct sk_buff *skb, struct net_device *dev,
 			skb_dst_update_pmtu(skb, mtu);
 		}
 
+<<<<<<< HEAD
 		tos = ip_tunnel_ecn_encap(tos, old_iph, skb);
+=======
+		tos = ip_tunnel_ecn_encap(RT_TOS(tos), old_iph, skb);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		ttl = ttl ? : ip4_dst_hoplimit(&rt->dst);
 		err = vxlan_build_skb(skb, ndst, sizeof(struct iphdr),
 				      vni, md, flags, udp_sum);
@@ -2265,7 +2286,11 @@ static void vxlan_xmit_one(struct sk_buff *skb, struct net_device *dev,
 			skb_dst_update_pmtu(skb, mtu);
 		}
 
+<<<<<<< HEAD
 		tos = ip_tunnel_ecn_encap(tos, old_iph, skb);
+=======
+		tos = ip_tunnel_ecn_encap(RT_TOS(tos), old_iph, skb);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		ttl = ttl ? : ip6_dst_hoplimit(ndst);
 		skb_scrub_packet(skb, xnet);
 		err = vxlan_build_skb(skb, ndst, sizeof(struct ipv6hdr),
@@ -3186,9 +3211,12 @@ static void vxlan_config_apply(struct net_device *dev,
 		dev->gso_max_segs = lowerdev->gso_max_segs;
 
 		needed_headroom = lowerdev->hard_header_len;
+<<<<<<< HEAD
 		needed_headroom += lowerdev->needed_headroom;
 
 		dev->needed_tailroom = lowerdev->needed_tailroom;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		max_mtu = lowerdev->mtu - (use_ipv6 ? VXLAN6_HEADROOM :
 					   VXLAN_HEADROOM);

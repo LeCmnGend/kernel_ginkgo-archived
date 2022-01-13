@@ -20,6 +20,7 @@
 #include <linux/sched/task.h>
 #include <uapi/linux/sched/types.h>
 #include <linux/task_work.h>
+<<<<<<< HEAD
 #include <linux/cpu.h>
 
 #include "internals.h"
@@ -33,6 +34,11 @@ struct irq_desc_list {
 
 static DEFINE_RAW_SPINLOCK(perf_irqs_lock);
 
+=======
+
+#include "internals.h"
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #ifdef CONFIG_IRQ_FORCED_THREADING
 __read_mostly bool force_irqthreads;
 
@@ -118,7 +124,11 @@ void synchronize_irq(unsigned int irq)
 		 * running. Now verify that no threaded handlers are
 		 * active.
 		 */
+<<<<<<< HEAD
 		wait_event_interruptible(desc->wait_for_threads,
+=======
+		wait_event(desc->wait_for_threads,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			   !atomic_read(&desc->threads_active));
 	}
 }
@@ -178,9 +188,15 @@ void irq_set_thread_affinity(struct irq_desc *desc)
 			set_bit(IRQTF_AFFINITY, &action->thread_flags);
 }
 
+<<<<<<< HEAD
 #ifdef CONFIG_GENERIC_IRQ_EFFECTIVE_AFF_MASK
 static void irq_validate_effective_affinity(struct irq_data *data)
 {
+=======
+static void irq_validate_effective_affinity(struct irq_data *data)
+{
+#ifdef CONFIG_GENERIC_IRQ_EFFECTIVE_AFF_MASK
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	const struct cpumask *m = irq_data_get_effective_affinity_mask(data);
 	struct irq_chip *chip = irq_data_get_irq_chip(data);
 
@@ -188,6 +204,7 @@ static void irq_validate_effective_affinity(struct irq_data *data)
 		return;
 	pr_warn_once("irq_chip %s did not update eff. affinity mask of irq %u\n",
 		     chip->name, data->irq);
+<<<<<<< HEAD
 }
 
 static inline void irq_init_effective_affinity(struct irq_data *data,
@@ -200,6 +217,10 @@ static inline void irq_validate_effective_affinity(struct irq_data *data) { }
 static inline void irq_init_effective_affinity(struct irq_data *data,
 					       const struct cpumask *mask) { }
 #endif
+=======
+#endif
+}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 int irq_do_set_affinity(struct irq_data *data, const struct cpumask *mask,
 			bool force)
@@ -211,8 +232,11 @@ int irq_do_set_affinity(struct irq_data *data, const struct cpumask *mask,
 	if (!chip || !chip->irq_set_affinity)
 		return -EINVAL;
 
+<<<<<<< HEAD
 	/* IRQs only run on the first CPU in the affinity mask; reflect that */
 	mask = cpumask_of(cpumask_first(mask));
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ret = chip->irq_set_affinity(data, mask, force);
 	switch (ret) {
 	case IRQ_SET_MASK_OK:
@@ -227,6 +251,7 @@ int irq_do_set_affinity(struct irq_data *data, const struct cpumask *mask,
 	return ret;
 }
 
+<<<<<<< HEAD
 static bool irq_set_affinity_deactivated(struct irq_data *data,
 					 const struct cpumask *mask, bool force)
 {
@@ -251,6 +276,8 @@ static bool irq_set_affinity_deactivated(struct irq_data *data,
 	return true;
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 int irq_set_affinity_locked(struct irq_data *data, const struct cpumask *mask,
 			    bool force)
 {
@@ -261,9 +288,12 @@ int irq_set_affinity_locked(struct irq_data *data, const struct cpumask *mask,
 	if (!chip || !chip->irq_set_affinity)
 		return -EINVAL;
 
+<<<<<<< HEAD
 	if (irq_set_affinity_deactivated(data, mask, force))
 		return 0;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (irq_can_move_pcntxt(data)) {
 		ret = irq_do_set_affinity(data, mask, force);
 	} else {
@@ -421,9 +451,12 @@ int irq_setup_affinity(struct irq_desc *desc)
 	if (cpumask_empty(&mask))
 		cpumask_copy(&mask, cpu_online_mask);
 
+<<<<<<< HEAD
 	if (irqd_has_set(&desc->irq_data, IRQF_PERF_CRITICAL))
 		cpumask_copy(&mask, cpu_perf_mask);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (node != NUMA_NO_NODE) {
 		const struct cpumask *nodemask = cpumask_of_node(node);
 
@@ -931,15 +964,21 @@ irq_forced_thread_fn(struct irq_desc *desc, struct irqaction *action)
 	irqreturn_t ret;
 
 	local_bh_disable();
+<<<<<<< HEAD
 	if (!IS_ENABLED(CONFIG_PREEMPT_RT_BASE))
 		local_irq_disable();
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	ret = action->thread_fn(action->irq, action->dev_id);
 	if (ret == IRQ_HANDLED)
 		atomic_inc(&desc->threads_handled);
 
 	irq_finalize_oneshot(desc, action);
+<<<<<<< HEAD
 	if (!IS_ENABLED(CONFIG_PREEMPT_RT_BASE))
 		local_irq_enable();
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	local_bh_enable();
 	return ret;
 }
@@ -1179,6 +1218,7 @@ setup_irq_thread(struct irqaction *new, unsigned int irq, bool secondary)
 	return 0;
 }
 
+<<<<<<< HEAD
 static void add_desc_to_perf_list(struct irq_desc *desc)
 {
 	struct irq_desc_list *item;
@@ -1266,6 +1306,8 @@ void reaffine_perf_irqs(void)
 	raw_spin_unlock_irqrestore(&perf_irqs_lock, flags);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 /*
  * Internal function to register an irqaction - typically used to
  * allocate special interrupts that are part of the architecture.
@@ -1523,9 +1565,12 @@ __setup_irq(unsigned int irq, struct irq_desc *desc, struct irqaction *new)
 			irqd_set(&desc->irq_data, IRQD_NO_BALANCING);
 		}
 
+<<<<<<< HEAD
 		if (new->flags & IRQF_PERF_CRITICAL) 
 			setup_perf_irq_locked(desc);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (irq_settings_can_autoenable(desc)) {
 			irq_startup(desc, IRQ_RESEND, IRQ_START_COND);
 		} else {
@@ -1539,6 +1584,10 @@ __setup_irq(unsigned int irq, struct irq_desc *desc, struct irqaction *new)
 			/* Undo nested disables: */
 			desc->depth = 1;
 		}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	} else if (new->flags & IRQF_TRIGGER_MASK) {
 		unsigned int nmsk = new->flags & IRQF_TRIGGER_MASK;
 		unsigned int omsk = irqd_get_trigger_type(&desc->irq_data);
@@ -1694,6 +1743,7 @@ static struct irqaction *__free_irq(unsigned int irq, void *dev_id)
 		action_ptr = &action->next;
 	}
 
+<<<<<<< HEAD
 	if (action->flags & IRQF_PERF_CRITICAL) {
 		struct irq_desc_list *data;
 
@@ -1708,6 +1758,8 @@ static struct irqaction *__free_irq(unsigned int irq, void *dev_id)
 		raw_spin_unlock(&perf_irqs_lock);
 	}
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* Found it - now remove it from the list of entries: */
 	*action_ptr = action->next;
 

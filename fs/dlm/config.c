@@ -80,9 +80,12 @@ struct dlm_cluster {
 	unsigned int cl_new_rsb_count;
 	unsigned int cl_recover_callbacks;
 	char cl_cluster_name[DLM_LOCKSPACE_LEN];
+<<<<<<< HEAD
 
 	struct dlm_spaces *sps;
 	struct dlm_comms *cms;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 static struct dlm_cluster *config_item_to_cluster(struct config_item *i)
@@ -221,7 +224,10 @@ struct dlm_space {
 	struct list_head members;
 	struct mutex members_lock;
 	int members_count;
+<<<<<<< HEAD
 	struct dlm_nodes *nds;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 struct dlm_comms {
@@ -359,9 +365,12 @@ static struct config_group *make_cluster(struct config_group *g,
 	if (!cl || !sps || !cms)
 		goto fail;
 
+<<<<<<< HEAD
 	cl->sps = sps;
 	cl->cms = cms;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	config_group_init_type_name(&cl->group, name, &cluster_type);
 	config_group_init_type_name(&sps->ss_group, "spaces", &spaces_type);
 	config_group_init_type_name(&cms->cs_group, "comms", &comms_type);
@@ -411,9 +420,12 @@ static void drop_cluster(struct config_group *g, struct config_item *i)
 static void release_cluster(struct config_item *i)
 {
 	struct dlm_cluster *cl = config_item_to_cluster(i);
+<<<<<<< HEAD
 
 	kfree(cl->sps);
 	kfree(cl->cms);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	kfree(cl);
 }
 
@@ -436,7 +448,10 @@ static struct config_group *make_space(struct config_group *g, const char *name)
 	INIT_LIST_HEAD(&sp->members);
 	mutex_init(&sp->members_lock);
 	sp->members_count = 0;
+<<<<<<< HEAD
 	sp->nds = nds;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return &sp->group;
 
  fail:
@@ -458,7 +473,10 @@ static void drop_space(struct config_group *g, struct config_item *i)
 static void release_space(struct config_item *i)
 {
 	struct dlm_space *sp = config_item_to_space(i);
+<<<<<<< HEAD
 	kfree(sp->nds);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	kfree(sp);
 }
 

@@ -6,8 +6,12 @@
 
 static int cmdline_proc_show(struct seq_file *m, void *v)
 {
+<<<<<<< HEAD
 	seq_puts(m, saved_command_line);
 	seq_putc(m, '\n');
+=======
+	seq_printf(m, "%s\n", saved_command_line);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	return 0;
 }
 

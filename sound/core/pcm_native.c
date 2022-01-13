@@ -721,6 +721,7 @@ static int snd_pcm_hw_params(struct snd_pcm_substream *substream,
 		runtime->boundary *= 2;
 
 	/* clear the buffer for avoiding possible kernel info leaks */
+<<<<<<< HEAD
 	if (runtime->dma_area && !substream->ops->copy_user) {
 		size_t size = runtime->dma_bytes;
 
@@ -728,6 +729,10 @@ static int snd_pcm_hw_params(struct snd_pcm_substream *substream,
 			size = PAGE_ALIGN(size);
 		memset(runtime->dma_area, 0, size);
 	}
+=======
+	if (runtime->dma_area && !substream->ops->copy_user)
+		memset(runtime->dma_area, 0, runtime->dma_bytes);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	snd_pcm_timer_resolution_change(substream);
 	snd_pcm_set_state(substream, SNDRV_PCM_STATE_SETUP);

@@ -211,7 +211,11 @@ autoconf_fail:
 	ss_loop_sink_desc.bEndpointAddress = fs_loop_sink_desc.bEndpointAddress;
 
 	ret = usb_assign_descriptors(f, fs_loopback_descs, hs_loopback_descs,
+<<<<<<< HEAD
 			ss_loopback_descs, ss_loopback_descs);
+=======
+			ss_loopback_descs, NULL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (ret)
 		return ret;
 

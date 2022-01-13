@@ -112,7 +112,10 @@ int sysctl_tcp_invalid_ratelimit __read_mostly = HZ/2;
 #define FLAG_SACK_RENEGING	0x2000 /* snd_una advanced to a sacked seq */
 #define FLAG_UPDATE_TS_RECENT	0x4000 /* tcp_replace_ts_recent() */
 #define FLAG_NO_CHALLENGE_ACK	0x8000 /* do not call tcp_send_challenge_ack()	*/
+<<<<<<< HEAD
 #define FLAG_ACK_MAYBE_DELAYED	0x10000 /* Likely a delayed ACK */
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #define FLAG_ACKED		(FLAG_DATA_ACKED|FLAG_SYN_ACKED)
 #define FLAG_NOT_DUP		(FLAG_DATA|FLAG_WIN_UPDATE|FLAG_ACKED)
@@ -216,7 +219,11 @@ void tcp_enter_quickack_mode(struct sock *sk, unsigned int max_quickacks)
 	struct inet_connection_sock *icsk = inet_csk(sk);
 
 	tcp_incr_quickack(sk, max_quickacks);
+<<<<<<< HEAD
 	inet_csk_exit_pingpong_mode(sk);
+=======
+	icsk->icsk_ack.pingpong = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	icsk->icsk_ack.ato = TCP_ATO_MIN;
 }
 EXPORT_SYMBOL(tcp_enter_quickack_mode);
@@ -231,7 +238,11 @@ static bool tcp_in_quickack_mode(struct sock *sk)
 	const struct dst_entry *dst = __sk_dst_get(sk);
 
 	return (dst && dst_metric(dst, RTAX_QUICKACK)) ||
+<<<<<<< HEAD
 		(icsk->icsk_ack.quick && !inet_csk_in_pingpong_mode(sk));
+=======
+		(icsk->icsk_ack.quick && !icsk->icsk_ack.pingpong);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void tcp_ecn_queue_cwr(struct tcp_sock *tp)
@@ -414,7 +425,30 @@ static void tcp_grow_window(struct sock *sk, const struct sk_buff *skb)
 	}
 }
 
+<<<<<<< HEAD
 /* 3. Try to fixup all. It is made immediately after connection enters
+=======
+/* 3. Tuning rcvbuf, when connection enters established state. */
+static void tcp_fixup_rcvbuf(struct sock *sk)
+{
+	u32 mss = tcp_sk(sk)->advmss;
+	int rcvmem;
+
+	rcvmem = 2 * SKB_TRUESIZE(mss + MAX_TCP_HEADER) *
+		 tcp_default_init_rwnd(sock_net(sk), mss);
+
+	/* Dynamic Right Sizing (DRS) has 2 to 3 RTT latency
+	 * Allow enough cushion so that sender is not limited by our window
+	 */
+	if (sysctl_tcp_moderate_rcvbuf)
+		rcvmem <<= 2;
+
+	if (sk->sk_rcvbuf < rcvmem)
+		sk->sk_rcvbuf = min(rcvmem, sysctl_tcp_rmem[2]);
+}
+
+/* 4. Try to fixup all. It is made immediately after connection enters
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *    established state.
  */
 void tcp_init_buffer_space(struct sock *sk)
@@ -422,6 +456,11 @@ void tcp_init_buffer_space(struct sock *sk)
 	struct tcp_sock *tp = tcp_sk(sk);
 	int maxwin;
 
+<<<<<<< HEAD
+=======
+	if (!(sk->sk_userlocks & SOCK_RCVBUF_LOCK))
+		tcp_fixup_rcvbuf(sk);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!(sk->sk_userlocks & SOCK_SNDBUF_LOCK))
 		tcp_sndbuf_expand(sk);
 
@@ -451,7 +490,11 @@ void tcp_init_buffer_space(struct sock *sk)
 	tp->snd_cwnd_stamp = tcp_jiffies32;
 }
 
+<<<<<<< HEAD
 /* 4. Recalculate window clamp after socket hit its memory bounds. */
+=======
+/* 5. Recalculate window clamp after socket hit its memory bounds. */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static void tcp_clamp_window(struct sock *sk)
 {
 	struct tcp_sock *tp = tcp_sk(sk);
@@ -2783,8 +2826,12 @@ static void tcp_rack_identify_loss(struct sock *sk, int *ack_flag)
 	if (sysctl_tcp_recovery & TCP_RACK_LOSS_DETECTION) {
 		u32 prior_retrans = tp->retrans_out;
 
+<<<<<<< HEAD
 		if (tcp_rack_mark_lost(sk))
 			*ack_flag &= ~FLAG_SET_XMIT_TIMER;
+=======
+		tcp_rack_mark_lost(sk);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		if (prior_retrans > tp->retrans_out)
 			*ack_flag |= FLAG_LOST_RETRANS;
 	}
@@ -2918,11 +2965,16 @@ static void tcp_fastretrans_alert(struct sock *sk, const int acked,
 	*rexmit = REXMIT_LOST;
 }
 
+<<<<<<< HEAD
 static void tcp_update_rtt_min(struct sock *sk, u32 rtt_us, const int flag)
+=======
+static void tcp_update_rtt_min(struct sock *sk, u32 rtt_us)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	struct tcp_sock *tp = tcp_sk(sk);
 	u32 wlen = sysctl_tcp_min_rtt_wlen * HZ;
 
+<<<<<<< HEAD
 	if ((flag & FLAG_ACK_MAYBE_DELAYED) && rtt_us > tcp_min_rtt(tp)) {
 		/* If the remote keeps returning delayed ACKs, eventually
 		 * the min filter would pick it up and overestimate the
@@ -2930,6 +2982,8 @@ static void tcp_update_rtt_min(struct sock *sk, u32 rtt_us, const int flag)
 		 */
 		return;
 	}
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	minmax_running_min(&tp->rtt_min, wlen, tcp_jiffies32,
 			   rtt_us ? : jiffies_to_usecs(1));
 }
@@ -2969,7 +3023,11 @@ static bool tcp_ack_update_rtt(struct sock *sk, const int flag,
 	 * always taken together with ACK, SACK, or TS-opts. Any negative
 	 * values will be skipped with the seq_rtt_us < 0 check above.
 	 */
+<<<<<<< HEAD
 	tcp_update_rtt_min(sk, ca_rtt_us, flag);
+=======
+	tcp_update_rtt_min(sk, ca_rtt_us);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	tcp_rtt_estimator(sk, seq_rtt_us);
 	tcp_set_rto(sk);
 
@@ -3093,6 +3151,10 @@ static int tcp_clean_rtx_queue(struct sock *sk, int prior_fackets,
 	long ca_rtt_us = -1L;
 	struct sk_buff *skb;
 	u32 pkts_acked = 0;
+<<<<<<< HEAD
+=======
+	u32 last_in_flight = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	bool rtt_update;
 	int flag = 0;
 
@@ -3131,6 +3193,10 @@ static int tcp_clean_rtx_queue(struct sock *sk, int prior_fackets,
 			if (!first_ackt)
 				first_ackt = last_ackt;
 
+<<<<<<< HEAD
+=======
+			last_in_flight = TCP_SKB_CB(skb)->tx.in_flight;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			reord = min(pkts_acked, reord);
 			if (!after(scb->end_seq, tp->high_seq))
 				flag |= FLAG_ORIG_SACK_ACKED;
@@ -3188,6 +3254,7 @@ static int tcp_clean_rtx_queue(struct sock *sk, int prior_fackets,
 	if (likely(first_ackt) && !(flag & FLAG_RETRANS_DATA_ACKED)) {
 		seq_rtt_us = tcp_stamp_us_delta(tp->tcp_mstamp, first_ackt);
 		ca_rtt_us = tcp_stamp_us_delta(tp->tcp_mstamp, last_ackt);
+<<<<<<< HEAD
 
 		if (pkts_acked == 1 && fully_acked && !prior_sacked &&
 		    (tp->snd_una - prior_snd_una) < tp->mss_cache &&
@@ -3199,6 +3266,8 @@ static int tcp_clean_rtx_queue(struct sock *sk, int prior_fackets,
 			 */
 			flag |= FLAG_ACK_MAYBE_DELAYED;
 		}
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	if (sack->first_sackt) {
 		sack_rtt_us = tcp_stamp_us_delta(tp->tcp_mstamp, sack->first_sackt);
@@ -3250,10 +3319,16 @@ static int tcp_clean_rtx_queue(struct sock *sk, int prior_fackets,
 
 	if (icsk->icsk_ca_ops->pkts_acked) {
 		struct ack_sample sample = { .pkts_acked = pkts_acked,
+<<<<<<< HEAD
 					     .rtt_us = sack->rate->rtt_us };
 
 		sample.in_flight = tp->mss_cache *
 			(tp->delivered - sack->rate->prior_delivered);
+=======
+					     .rtt_us = sack->rate->rtt_us,
+					     .in_flight = last_in_flight };
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		icsk->icsk_ca_ops->pkts_acked(sk, &sample);
 	}
 
@@ -3514,8 +3589,15 @@ static void tcp_replace_ts_recent(struct tcp_sock *tp, u32 seq)
 	}
 }
 
+<<<<<<< HEAD
 /* This routine deals with acks during a TLP episode and ends an episode by
  * resetting tlp_high_seq. Ref: TLP algorithm in draft-ietf-tcpm-rack
+=======
+/* This routine deals with acks during a TLP episode.
+ * We mark the end of a TLP episode on receiving TLP dupack or when
+ * ack is after tlp_high_seq.
+ * Ref: loss detection algorithm in draft-dukkipati-tcpm-tcp-loss-probe.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  */
 static void tcp_process_tlp_ack(struct sock *sk, u32 ack, int flag)
 {
@@ -3524,10 +3606,14 @@ static void tcp_process_tlp_ack(struct sock *sk, u32 ack, int flag)
 	if (before(ack, tp->tlp_high_seq))
 		return;
 
+<<<<<<< HEAD
 	if (!tp->tlp_retrans) {
 		/* TLP of new data has been acknowledged */
 		tp->tlp_high_seq = 0;
 	} else if (flag & FLAG_DSACKING_ACK) {
+=======
+	if (flag & FLAG_DSACKING_ACK) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		/* This DSACK means original and TLP probe arrived; no loss */
 		tp->tlp_high_seq = 0;
 	} else if (after(ack, tp->tlp_high_seq)) {
@@ -3627,7 +3713,10 @@ static int tcp_ack(struct sock *sk, const struct sk_buff *skb, int flag)
 
 	prior_fackets = tp->fackets_out;
 	rs.prior_in_flight = tcp_packets_in_flight(tp);
+<<<<<<< HEAD
 	tcp_rate_check_app_limited(sk);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* ts_recent update must be made after we are sure that the packet
 	 * is in window.
@@ -3687,22 +3776,34 @@ static int tcp_ack(struct sock *sk, const struct sk_buff *skb, int flag)
 
 	if (tp->tlp_high_seq)
 		tcp_process_tlp_ack(sk, ack, flag);
+<<<<<<< HEAD
+=======
+	/* If needed, reset TLP/RTO timer; RACK may later override this. */
+	if (flag & FLAG_SET_XMIT_TIMER)
+		tcp_set_xmit_timer(sk);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	if (tcp_ack_is_dubious(sk, flag)) {
 		is_dupack = !(flag & (FLAG_SND_UNA_ADVANCED | FLAG_NOT_DUP));
 		tcp_fastretrans_alert(sk, acked, is_dupack, &flag, &rexmit);
 	}
 
+<<<<<<< HEAD
 	/* If needed, reset TLP/RTO timer when RACK doesn't set. */
 	if (flag & FLAG_SET_XMIT_TIMER)
 		tcp_set_xmit_timer(sk);
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if ((flag & FLAG_FORWARD_PROGRESS) || !(flag & FLAG_NOT_DUP))
 		sk_dst_confirm(sk);
 
 	delivered = tp->delivered - delivered;	/* freshly ACKed or SACKed */
 	lost = tp->lost - lost;			/* freshly marked lost */
+<<<<<<< HEAD
 	rs.is_ack_delayed = !!(flag & FLAG_ACK_MAYBE_DELAYED);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	tcp_rate_gen(sk, delivered, lost, is_sack_reneg, sack_state.rate);
 	tcp_cong_control(sk, ack, delivered, flag, sack_state.rate);
 	tcp_xmit_recovery(sk, rexmit);
@@ -4081,7 +4182,11 @@ void tcp_fin(struct sock *sk)
 	case TCP_ESTABLISHED:
 		/* Move to CLOSE_WAIT */
 		tcp_set_state(sk, TCP_CLOSE_WAIT);
+<<<<<<< HEAD
 		inet_csk_enter_pingpong_mode(sk);
+=======
+		inet_csk(sk)->icsk_ack.pingpong = 1;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		break;
 
 	case TCP_CLOSE_WAIT:
@@ -5541,8 +5646,11 @@ void tcp_rcv_established(struct sock *sk, struct sk_buff *skb,
 				tcp_data_snd_check(sk);
 				if (!inet_csk_ack_scheduled(sk))
 					goto no_ack;
+<<<<<<< HEAD
 			} else {
 				tcp_update_wl(tp, TCP_SKB_CB(skb)->seq);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			}
 
 			__tcp_ack_snd_check(sk, 0);
@@ -5810,7 +5918,11 @@ static int tcp_rcv_synsent_state_process(struct sock *sk, struct sk_buff *skb,
 			return -1;
 		if (sk->sk_write_pending ||
 		    icsk->icsk_accept_queue.rskq_defer_accept ||
+<<<<<<< HEAD
 		    inet_csk_in_pingpong_mode(sk)) {
+=======
+		    icsk->icsk_ack.pingpong) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			/* Save one ACK. Data will be ready after
 			 * several ticks, if write_pending is set.
 			 *

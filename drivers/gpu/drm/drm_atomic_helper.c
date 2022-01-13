@@ -2608,7 +2608,11 @@ int drm_atomic_helper_set_config(struct drm_mode_set *set,
 
 	ret = handle_conflicting_encoders(state, true);
 	if (ret)
+<<<<<<< HEAD
 		goto fail;
+=======
+		return ret;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	ret = drm_atomic_commit(state);
 

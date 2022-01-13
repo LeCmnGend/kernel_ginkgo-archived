@@ -614,7 +614,11 @@ static void verity_end_io(struct bio *bio)
 	struct dm_verity_io *io = bio->bi_private;
 
 	if (bio->bi_status &&
+<<<<<<< HEAD
 	    (!verity_fec_is_enabled(io->v) || verity_is_system_shutting_down())) {
+=======
+		(!verity_fec_is_enabled(io->v) || verity_is_system_shutting_down())) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		verity_finish_io(io, bio->bi_status);
 		return;
 	}

@@ -128,7 +128,11 @@ static inline void print_drs_error(unsigned dsr)
 
 	if (!(dsr & DSR_AVAILABLE))
 		printk(KERN_NOTICE"DSR.15: (0) Device not Available\n");
+<<<<<<< HEAD
 	if ((prog_status & 0x03) == 0x03)
+=======
+	if (prog_status & 0x03)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		printk(KERN_NOTICE"DSR.9,8: (11) Attempt to program invalid "
 						"half with 41h command\n");
 	else if (prog_status & 0x02)

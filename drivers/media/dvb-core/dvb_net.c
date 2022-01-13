@@ -56,7 +56,10 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/netdevice.h>
+<<<<<<< HEAD
 #include <linux/nospec.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <linux/etherdevice.h>
 #include <linux/dvb/net.h>
 #include <linux/uio.h>
@@ -1483,6 +1486,7 @@ static int dvb_net_do_ioctl(struct file *file,
 		struct net_device *netdev;
 		struct dvb_net_priv *priv_data;
 		struct dvb_net_if *dvbnetif = parg;
+<<<<<<< HEAD
 		int if_num = dvbnetif->if_num;
 
 		if (if_num >= DVB_NET_DEVICES_MAX) {
@@ -1497,6 +1501,16 @@ static int dvb_net_do_ioctl(struct file *file,
 		}
 
 		netdev = dvbnet->device[if_num];
+=======
+
+		if (dvbnetif->if_num >= DVB_NET_DEVICES_MAX ||
+		    !dvbnet->state[dvbnetif->if_num]) {
+			ret = -EINVAL;
+			goto ioctl_error;
+		}
+
+		netdev = dvbnet->device[dvbnetif->if_num];
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		priv_data = netdev_priv(netdev);
 		dvbnetif->pid=priv_data->pid;
@@ -1549,6 +1563,7 @@ static int dvb_net_do_ioctl(struct file *file,
 		struct net_device *netdev;
 		struct dvb_net_priv *priv_data;
 		struct __dvb_net_if_old *dvbnetif = parg;
+<<<<<<< HEAD
 		int if_num = dvbnetif->if_num;
 
 		if (if_num >= DVB_NET_DEVICES_MAX) {
@@ -1558,11 +1573,20 @@ static int dvb_net_do_ioctl(struct file *file,
 		if_num = array_index_nospec(if_num, DVB_NET_DEVICES_MAX);
 
 		if (!dvbnet->state[if_num]) {
+=======
+
+		if (dvbnetif->if_num >= DVB_NET_DEVICES_MAX ||
+		    !dvbnet->state[dvbnetif->if_num]) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			ret = -EINVAL;
 			goto ioctl_error;
 		}
 
+<<<<<<< HEAD
 		netdev = dvbnet->device[if_num];
+=======
+		netdev = dvbnet->device[dvbnetif->if_num];
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 		priv_data = netdev_priv(netdev);
 		dvbnetif->pid=priv_data->pid;

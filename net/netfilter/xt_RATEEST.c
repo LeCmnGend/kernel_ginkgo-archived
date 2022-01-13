@@ -106,9 +106,12 @@ static int xt_rateest_tg_checkentry(const struct xt_tgchk_param *par)
 	} cfg;
 	int ret;
 
+<<<<<<< HEAD
 	if (strnlen(info->name, sizeof(est->name)) >= sizeof(est->name))
 		return -ENAMETOOLONG;
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	net_get_random_once(&jhash_rnd, sizeof(jhash_rnd));
 
 	mutex_lock(&xt_rateest_mutex);

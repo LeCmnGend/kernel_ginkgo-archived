@@ -45,6 +45,10 @@ static inline void signal_event(struct kgsl_device *device,
 static void _kgsl_event_worker(struct work_struct *work)
 {
 	struct kgsl_event *event = container_of(work, struct kgsl_event, work);
+<<<<<<< HEAD
+=======
+	int id = KGSL_CONTEXT_ID(event->context);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	trace_kgsl_fire_event(id, event->timestamp, event->result,
 		jiffies - event->created, event->func);

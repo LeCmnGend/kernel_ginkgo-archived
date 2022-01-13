@@ -28,7 +28,46 @@
 #include <asm/signal32.h>
 #include <linux/uaccess.h>
 #include <asm/unistd.h>
+<<<<<<< HEAD
 #include <asm/vdso.h>
+=======
+
+struct compat_sigcontext {
+	/* We always set these two fields to 0 */
+	compat_ulong_t			trap_no;
+	compat_ulong_t			error_code;
+
+	compat_ulong_t			oldmask;
+	compat_ulong_t			arm_r0;
+	compat_ulong_t			arm_r1;
+	compat_ulong_t			arm_r2;
+	compat_ulong_t			arm_r3;
+	compat_ulong_t			arm_r4;
+	compat_ulong_t			arm_r5;
+	compat_ulong_t			arm_r6;
+	compat_ulong_t			arm_r7;
+	compat_ulong_t			arm_r8;
+	compat_ulong_t			arm_r9;
+	compat_ulong_t			arm_r10;
+	compat_ulong_t			arm_fp;
+	compat_ulong_t			arm_ip;
+	compat_ulong_t			arm_sp;
+	compat_ulong_t			arm_lr;
+	compat_ulong_t			arm_pc;
+	compat_ulong_t			arm_cpsr;
+	compat_ulong_t			fault_address;
+};
+
+struct compat_ucontext {
+	compat_ulong_t			uc_flags;
+	compat_uptr_t			uc_link;
+	compat_stack_t			uc_stack;
+	struct compat_sigcontext	uc_mcontext;
+	compat_sigset_t			uc_sigmask;
+	int		__unused[32 - (sizeof (compat_sigset_t) / sizeof (int))];
+	compat_ulong_t	uc_regspace[128] __attribute__((__aligned__(8)));
+};
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 struct compat_vfp_sigframe {
 	compat_ulong_t	magic;
@@ -56,6 +95,19 @@ struct compat_aux_sigframe {
 	unsigned long			end_magic;
 } __attribute__((__aligned__(8)));
 
+<<<<<<< HEAD
+=======
+struct compat_sigframe {
+	struct compat_ucontext	uc;
+	compat_ulong_t		retcode[2];
+};
+
+struct compat_rt_sigframe {
+	struct compat_siginfo info;
+	struct compat_sigframe sig;
+};
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define _BLOCKABLE (~(sigmask(SIGKILL) | sigmask(SIGSTOP)))
 
 static inline int put_sigset_t(compat_sigset_t __user *uset, sigset_t *set)
@@ -437,6 +489,7 @@ static void compat_setup_return(struct pt_regs *regs, struct k_sigaction *ka,
 		retcode = ptr_to_compat(ka->sa.sa_restorer);
 	} else {
 		/* Set up sigreturn pointer */
+<<<<<<< HEAD
 #ifdef CONFIG_VDSO32
 		void *vdso_base = current->mm->context.vdso;
 		void *trampoline =
@@ -451,13 +504,21 @@ static void compat_setup_return(struct pt_regs *regs, struct k_sigaction *ka,
 		retcode = ptr_to_compat(trampoline) + thumb;
 #else
 		void *sigreturn_base = current->mm->context.vdso;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		unsigned int idx = thumb << 1;
 
 		if (ka->sa.sa_flags & SA_SIGINFO)
 			idx += 3;
 
+<<<<<<< HEAD
 		retcode = ptr_to_compat(sigreturn_base) + (idx << 2) + thumb;
 #endif
+=======
+		retcode = AARCH32_VECTORS_BASE +
+			  AARCH32_KERN_SIGRET_CODE_OFFSET +
+			  (idx << 2) + thumb;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	regs->regs[0]	= usig;

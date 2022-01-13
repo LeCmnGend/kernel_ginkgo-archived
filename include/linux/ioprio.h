@@ -3,7 +3,10 @@
 #define IOPRIO_H
 
 #include <linux/sched.h>
+<<<<<<< HEAD
 #include <linux/sched/rt.h>
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #include <linux/iocontext.h>
 
 /*
@@ -64,7 +67,11 @@ static inline int task_nice_ioclass(struct task_struct *task)
 {
 	if (task->policy == SCHED_IDLE)
 		return IOPRIO_CLASS_IDLE;
+<<<<<<< HEAD
 	else if (task_is_realtime(task))
+=======
+	else if (task->policy == SCHED_FIFO || task->policy == SCHED_RR)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		return IOPRIO_CLASS_RT;
 	else
 		return IOPRIO_CLASS_BE;

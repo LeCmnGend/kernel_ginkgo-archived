@@ -339,7 +339,11 @@ TRACE_EVENT(
 		/* These depend on page entry type, so compute them now.  */
 		__field(bool, r)
 		__field(bool, x)
+<<<<<<< HEAD
 		__field(signed char, u)
+=======
+		__field(u8, u)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	),
 
 	TP_fast_assign(

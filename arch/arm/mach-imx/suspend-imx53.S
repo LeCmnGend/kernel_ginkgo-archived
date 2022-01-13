@@ -33,11 +33,19 @@
  *                              ^
  *                              ^
  *                      imx53_suspend code
+<<<<<<< HEAD
  *              PM_INFO structure(imx5_cpu_suspend_info)
  * ======================== low address =======================
  */
 
 /* Offsets of members of struct imx5_cpu_suspend_info */
+=======
+ *              PM_INFO structure(imx53_suspend_info)
+ * ======================== low address =======================
+ */
+
+/* Offsets of members of struct imx53_suspend_info */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #define SUSPEND_INFO_MX53_M4IF_V_OFFSET		0x0
 #define SUSPEND_INFO_MX53_IOMUXC_V_OFFSET	0x4
 #define SUSPEND_INFO_MX53_IO_COUNT_OFFSET	0x8

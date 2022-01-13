@@ -370,6 +370,10 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
 
 	ret = pwmchip_add(&pc->chip);
 	if (ret < 0) {
+<<<<<<< HEAD
+=======
+		clk_unprepare(pc->clk);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		dev_err(&pdev->dev, "pwmchip_add() failed: %d\n", ret);
 		goto err_pclk;
 	}

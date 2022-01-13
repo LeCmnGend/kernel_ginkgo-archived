@@ -285,7 +285,11 @@ static bool ath9k_hw_read_revisions(struct ath_hw *ah)
 
 	srev = REG_READ(ah, AR_SREV);
 
+<<<<<<< HEAD
 	if (srev == -1) {
+=======
+	if (srev == -EIO) {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		ath_err(ath9k_hw_common(ah),
 			"Failed to read SREV register");
 		return false;

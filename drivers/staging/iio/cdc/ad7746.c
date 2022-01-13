@@ -703,6 +703,10 @@ static int ad7746_probe(struct i2c_client *client,
 		indio_dev->num_channels = ARRAY_SIZE(ad7746_channels);
 	else
 		indio_dev->num_channels =  ARRAY_SIZE(ad7746_channels) - 2;
+<<<<<<< HEAD
+=======
+	indio_dev->num_channels = ARRAY_SIZE(ad7746_channels);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	indio_dev->modes = INDIO_DIRECT_MODE;
 
 	if (pdata) {

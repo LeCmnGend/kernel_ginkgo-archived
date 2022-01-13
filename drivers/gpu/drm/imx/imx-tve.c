@@ -498,6 +498,7 @@ static int imx_tve_register(struct drm_device *drm, struct imx_tve *tve)
 	return 0;
 }
 
+<<<<<<< HEAD
 static void imx_tve_disable_regulator(void *data)
 {
 	struct imx_tve *tve = data;
@@ -505,6 +506,8 @@ static void imx_tve_disable_regulator(void *data)
 	regulator_disable(tve->dac_reg);
 }
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 static bool imx_tve_readable_reg(struct device *dev, unsigned int reg)
 {
 	return (reg % 4 == 0) && (reg <= 0xdc);
@@ -629,9 +632,12 @@ static int imx_tve_bind(struct device *dev, struct device *master, void *data)
 		ret = regulator_enable(tve->dac_reg);
 		if (ret)
 			return ret;
+<<<<<<< HEAD
 		ret = devm_add_action_or_reset(dev, imx_tve_disable_regulator, tve);
 		if (ret)
 			return ret;
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 
 	tve->clk = devm_clk_get(dev, "tve");
@@ -678,8 +684,23 @@ static int imx_tve_bind(struct device *dev, struct device *master, void *data)
 	return 0;
 }
 
+<<<<<<< HEAD
 static const struct component_ops imx_tve_ops = {
 	.bind	= imx_tve_bind,
+=======
+static void imx_tve_unbind(struct device *dev, struct device *master,
+	void *data)
+{
+	struct imx_tve *tve = dev_get_drvdata(dev);
+
+	if (!IS_ERR(tve->dac_reg))
+		regulator_disable(tve->dac_reg);
+}
+
+static const struct component_ops imx_tve_ops = {
+	.bind	= imx_tve_bind,
+	.unbind	= imx_tve_unbind,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 static int imx_tve_probe(struct platform_device *pdev)

@@ -49,6 +49,10 @@ struct fq_codel_flow {
 	struct sk_buff	  *tail;
 	struct list_head  flowchain;
 	int		  deficit;
+<<<<<<< HEAD
+=======
+	u32		  dropped; /* number of drops (or ECN marks) on this flow */
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct codel_vars cvars;
 }; /* please try to keep this structure <= 64 bytes */
 
@@ -104,7 +108,10 @@ static unsigned int fq_codel_classify(struct sk_buff *skb, struct Qdisc *sch,
 		case TC_ACT_QUEUED:
 		case TC_ACT_TRAP:
 			*qerr = NET_XMIT_SUCCESS | __NET_XMIT_STOLEN;
+<<<<<<< HEAD
 			/* fall through */
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		case TC_ACT_SHOT:
 			return 0;
 		}
@@ -176,8 +183,12 @@ static unsigned int fq_codel_drop(struct Qdisc *sch, unsigned int max_packets,
 		__qdisc_drop(skb, to_free);
 	} while (++i < max_packets && len < threshold);
 
+<<<<<<< HEAD
 	/* Tell codel to increase its signal strength also */
 	flow->cvars.count += i;
+=======
+	flow->dropped += i;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	q->backlogs[idx] -= len;
 	q->memory_usage -= mem;
 	sch->qstats.drops += i;
@@ -215,6 +226,10 @@ static int fq_codel_enqueue(struct sk_buff *skb, struct Qdisc *sch,
 		list_add_tail(&flow->flowchain, &q->new_flows);
 		q->new_flow_count++;
 		flow->deficit = q->quantum;
+<<<<<<< HEAD
+=======
+		flow->dropped = 0;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	get_codel_cb(skb)->mem_usage = skb->truesize;
 	q->memory_usage += get_codel_cb(skb)->mem_usage;
@@ -289,6 +304,10 @@ static struct sk_buff *fq_codel_dequeue(struct Qdisc *sch)
 	struct sk_buff *skb;
 	struct fq_codel_flow *flow;
 	struct list_head *head;
+<<<<<<< HEAD
+=======
+	u32 prev_drop_count, prev_ecn_mark;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 begin:
 	head = &q->new_flows;
@@ -305,10 +324,22 @@ begin:
 		goto begin;
 	}
 
+<<<<<<< HEAD
+=======
+	prev_drop_count = q->cstats.drop_count;
+	prev_ecn_mark = q->cstats.ecn_mark;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	skb = codel_dequeue(sch, &sch->qstats.backlog, &q->cparams,
 			    &flow->cvars, &q->cstats, qdisc_pkt_len,
 			    codel_get_enqueue_time, drop_func, dequeue_func);
 
+<<<<<<< HEAD
+=======
+	flow->dropped += q->cstats.drop_count - prev_drop_count;
+	flow->dropped += q->cstats.ecn_mark - prev_ecn_mark;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (!skb) {
 		/* force a pass through old_flows to prevent starvation */
 		if ((head == &q->new_flows) && !list_empty(&q->old_flows))
@@ -474,7 +505,11 @@ static int fq_codel_init(struct Qdisc *sch, struct nlattr *opt)
 			return err;
 	}
 
+<<<<<<< HEAD
 	err = tcf_block_get(&q->block, &q->filter_list, sch);
+=======
+	err = tcf_block_get(&q->block, &q->filter_list);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (err)
 		return err;
 
@@ -641,7 +676,11 @@ static int fq_codel_dump_class_stats(struct Qdisc *sch, unsigned long cl,
 			sch_tree_unlock(sch);
 		}
 		qs.backlog = q->backlogs[idx];
+<<<<<<< HEAD
 		qs.drops = 0;
+=======
+		qs.drops = flow->dropped;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	}
 	if (gnet_stats_copy_queue(d, NULL, &qs, qs.qlen) < 0)
 		return -1;

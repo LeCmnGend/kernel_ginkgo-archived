@@ -1322,6 +1322,10 @@ int msm_vdec_s_ctrl(struct msm_vidc_inst *inst, struct v4l2_ctrl *ctrl)
 					"inst(%pK) operating rate capped from %d to %d\n",
 					inst, ctrl->val >> 16,
 					inst->clk_data.operating_rate >> 16);
+<<<<<<< HEAD
+=======
+				inst->operating_rate_set = true;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			} else {
 				dprintk(VIDC_ERR, "Invalid operating rate %u\n",
 					(ctrl->val >> 16));
@@ -1331,6 +1335,10 @@ int msm_vdec_s_ctrl(struct msm_vidc_inst *inst, struct v4l2_ctrl *ctrl)
 			dprintk(VIDC_DBG,
 				"inst(%pK) Request for turbo mode\n", inst);
 			inst->clk_data.turbo_mode = true;
+<<<<<<< HEAD
+=======
+			inst->operating_rate_set = true;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		} else if (msm_vidc_validate_operating_rate(inst, ctrl->val)) {
 			dprintk(VIDC_ERR, "Failed to set operating rate\n");
 			rc = -ENOTSUPP;
@@ -1340,6 +1348,10 @@ int msm_vdec_s_ctrl(struct msm_vidc_inst *inst, struct v4l2_ctrl *ctrl)
 				inst, inst->clk_data.operating_rate >> 16,
 					ctrl->val >> 16);
 			inst->clk_data.operating_rate = ctrl->val;
+<<<<<<< HEAD
+=======
+			inst->operating_rate_set = true;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			inst->clk_data.turbo_mode = false;
 		}
 		break;

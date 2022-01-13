@@ -48,7 +48,11 @@ static inline bool net_busy_loop_on(void)
 
 static inline bool sk_can_busy_loop(const struct sock *sk)
 {
+<<<<<<< HEAD
 	return READ_ONCE(sk->sk_ll_usec) && !signal_pending(current);
+=======
+	return sk->sk_ll_usec && !signal_pending(current);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 bool sk_busy_loop_end(void *p, unsigned long start_time);

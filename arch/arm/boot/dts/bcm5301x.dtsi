@@ -426,12 +426,17 @@
 	};
 
 	spi@18029200 {
+<<<<<<< HEAD
 		compatible = "brcm,spi-nsp-qspi", "brcm,spi-bcm-qspi";
+=======
+		compatible = "brcm,spi-bcm-qspi", "brcm,spi-nsp-qspi";
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		reg = <0x18029200 0x184>,
 		      <0x18029000 0x124>,
 		      <0x1811b408 0x004>,
 		      <0x180293a0 0x01c>;
 		reg-names = "mspi", "bspi", "intr_regs", "intr_status_reg";
+<<<<<<< HEAD
 		interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_HIGH>,
 			     <GIC_SPI 78 IRQ_TYPE_LEVEL_HIGH>,
 			     <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>,
@@ -446,13 +451,33 @@
 				  "spi_lr_impatient",
 				  "spi_lr_session_done",
 				  "spi_lr_overread";
+=======
+		interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 73 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 75 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 77 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 78 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "spi_lr_fullness_reached",
+				  "spi_lr_session_aborted",
+				  "spi_lr_impatient",
+				  "spi_lr_session_done",
+				  "spi_lr_overhead",
+				  "mspi_done",
+				  "mspi_halted";
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		clocks = <&iprocmed>;
 		clock-names = "iprocmed";
 		num-cs = <2>;
 		#address-cells = <1>;
 		#size-cells = <0>;
 
+<<<<<<< HEAD
 		spi_nor: flash@0 {
+=======
+		spi_nor: spi-nor@0 {
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			compatible = "jedec,spi-nor";
 			reg = <0>;
 			spi-max-frequency = <20000000>;

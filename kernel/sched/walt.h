@@ -1,5 +1,9 @@
 /*
+<<<<<<< HEAD
  * Copyright (c) 2016-2019, The Linux Foundation. All rights reserved.
+=======
+ * Copyright (c) 2016-2018, The Linux Foundation. All rights reserved.
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -17,6 +21,7 @@
 #ifdef CONFIG_SCHED_WALT
 
 #include <linux/sched/sysctl.h>
+<<<<<<< HEAD
 #include <linux/sched/core_ctl.h>
 
 #define MAX_NR_CLUSTERS			3
@@ -35,6 +40,8 @@
 /* Max window size (in ns) = 1s */
 #define MAX_SCHED_RAVG_WINDOW 1000000000
 #define NR_WINDOWS_PER_SEC (NSEC_PER_SEC / DEFAULT_SCHED_RAVG_WINDOW)
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 #define WINDOW_STATS_RECENT		0
 #define WINDOW_STATS_MAX		1
@@ -51,6 +58,7 @@
 #define for_each_related_thread_group(grp) \
 	list_for_each_entry(grp, &active_related_thread_groups, list)
 
+<<<<<<< HEAD
 #define NEW_TASK_ACTIVE_TIME 100000000
 
 extern unsigned int sched_ravg_window;
@@ -60,14 +68,34 @@ extern unsigned int min_possible_efficiency;
 extern unsigned int max_possible_freq;
 extern unsigned int __read_mostly sched_load_granule;
 extern u64 sched_ravg_window_change_time;
+=======
+#define SCHED_NEW_TASK_WINDOWS 5
+
+extern unsigned int sched_ravg_window;
+extern unsigned int max_possible_efficiency;
+extern unsigned int min_possible_efficiency;
+extern unsigned int max_possible_freq;
+extern unsigned int sched_major_task_runtime;
+extern unsigned int __read_mostly sched_init_task_load_windows;
+extern unsigned int __read_mostly sched_load_granule;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 extern struct mutex cluster_lock;
 extern rwlock_t related_thread_group_lock;
 extern __read_mostly unsigned int sched_ravg_hist_size;
 extern __read_mostly unsigned int sched_freq_aggregate;
+<<<<<<< HEAD
 extern __read_mostly unsigned int sched_group_upmigrate;
 extern __read_mostly unsigned int sched_group_downmigrate;
 
+=======
+extern __read_mostly unsigned int sched_window_stats_policy;
+extern __read_mostly unsigned int sched_group_upmigrate;
+extern __read_mostly unsigned int sched_group_downmigrate;
+
+extern struct sched_cluster init_cluster;
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 extern void update_task_ravg(struct task_struct *p, struct rq *rq, int event,
 						u64 wallclock, u64 irqtime);
 
@@ -217,7 +245,11 @@ scale_load_to_freq(u64 load, unsigned int src_freq, unsigned int dst_freq)
 
 static inline bool is_new_task(struct task_struct *p)
 {
+<<<<<<< HEAD
 	return p->ravg.active_time < NEW_TASK_ACTIVE_TIME;
+=======
+	return p->ravg.active_windows < SCHED_NEW_TASK_WINDOWS;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static inline void clear_top_tasks_table(u8 *table)
@@ -298,8 +330,11 @@ static inline void assign_cluster_ids(struct list_head *head)
 		cluster->id = pos;
 		sched_cluster[pos++] = cluster;
 	}
+<<<<<<< HEAD
 
 	WARN_ON(pos > MAX_NR_CLUSTERS);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static inline int same_cluster(int src_cpu, int dst_cpu)
@@ -320,7 +355,11 @@ static inline void walt_update_last_enqueue(struct task_struct *p)
 extern void walt_rotate_work_init(void);
 extern void walt_rotation_checkpoint(int nr_big);
 extern unsigned int walt_rotation_enabled;
+<<<<<<< HEAD
 extern void walt_fill_ta_data(struct core_ctl_notif_data *data);
+=======
+extern unsigned int walt_get_default_coloc_group_load(void);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 extern __read_mostly bool sched_freq_aggr_en;
 static inline void walt_enable_frequency_aggregation(bool enable)
@@ -328,6 +367,7 @@ static inline void walt_enable_frequency_aggregation(bool enable)
 	sched_freq_aggr_en = enable;
 }
 
+<<<<<<< HEAD
 static inline bool is_suh_max(void)
 {
 	return sysctl_sched_user_hint == sched_user_hint_max;
@@ -443,6 +483,8 @@ static int in_sched_bug;
 	}						\
 })
 
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #else /* CONFIG_SCHED_WALT */
 
 static inline void walt_sched_init_rq(struct rq *rq) { }
@@ -450,6 +492,13 @@ static inline void walt_sched_init_rq(struct rq *rq) { }
 static inline void walt_rotate_work_init(void) { }
 static inline void walt_rotation_checkpoint(int nr_big) { }
 static inline void walt_update_last_enqueue(struct task_struct *p) { }
+<<<<<<< HEAD
+=======
+static inline unsigned int walt_get_default_coloc_group_load(void)
+{
+	return 0;
+}
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static inline void update_task_ravg(struct task_struct *p, struct rq *rq,
 				int event, u64 wallclock, u64 irqtime) { }
@@ -523,6 +572,7 @@ static inline u64 sched_irqload(int cpu)
 {
 	return 0;
 }
+<<<<<<< HEAD
 
 static inline bool walt_should_kick_upmigrate(struct task_struct *p, int cpu)
 {
@@ -533,6 +583,8 @@ static inline u64 get_rtgb_active_time(void)
 {
 	return 0;
 }
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 #endif /* CONFIG_SCHED_WALT */
 
 #endif

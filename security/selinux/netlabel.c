@@ -115,7 +115,11 @@ static struct netlbl_lsm_secattr *selinux_netlbl_sock_getattr(
 							const struct sock *sk,
 							u32 sid)
 {
+<<<<<<< HEAD
 	const struct sk_security_struct *sksec = sk->sk_security;
+=======
+	struct sk_security_struct *sksec = sk->sk_security;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	struct netlbl_lsm_secattr *secattr = sksec->nlbl_secattr;
 
 	if (secattr == NULL)

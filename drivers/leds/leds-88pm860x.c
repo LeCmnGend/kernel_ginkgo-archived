@@ -207,12 +207,17 @@ static int pm860x_led_probe(struct platform_device *pdev)
 	data->cdev.brightness_set_blocking = pm860x_led_set;
 	mutex_init(&data->lock);
 
+<<<<<<< HEAD
 	ret = led_classdev_register(chip->dev, &data->cdev);
+=======
+	ret = devm_led_classdev_register(chip->dev, &data->cdev);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	if (ret < 0) {
 		dev_err(&pdev->dev, "Failed to register LED: %d\n", ret);
 		return ret;
 	}
 	pm860x_led_set(&data->cdev, 0);
+<<<<<<< HEAD
 
 	platform_set_drvdata(pdev, data);
 
@@ -227,13 +232,21 @@ static int pm860x_led_remove(struct platform_device *pdev)
 
 	return 0;
 }
+=======
+	return 0;
+}
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static struct platform_driver pm860x_led_driver = {
 	.driver	= {
 		.name	= "88pm860x-led",
 	},
 	.probe	= pm860x_led_probe,
+<<<<<<< HEAD
 	.remove	= pm860x_led_remove,
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 };
 
 module_platform_driver(pm860x_led_driver);

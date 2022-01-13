@@ -626,7 +626,11 @@ static struct hso_serial *get_serial_by_index(unsigned index)
 	return serial;
 }
 
+<<<<<<< HEAD
 static int obtain_minor(struct hso_serial *serial)
+=======
+static int get_free_serial_index(void)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	int index;
 	unsigned long flags;
@@ -634,10 +638,15 @@ static int obtain_minor(struct hso_serial *serial)
 	spin_lock_irqsave(&serial_table_lock, flags);
 	for (index = 0; index < HSO_SERIAL_TTY_MINORS; index++) {
 		if (serial_table[index] == NULL) {
+<<<<<<< HEAD
 			serial_table[index] = serial->parent;
 			serial->minor = index;
 			spin_unlock_irqrestore(&serial_table_lock, flags);
 			return 0;
+=======
+			spin_unlock_irqrestore(&serial_table_lock, flags);
+			return index;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 	}
 	spin_unlock_irqrestore(&serial_table_lock, flags);
@@ -646,12 +655,23 @@ static int obtain_minor(struct hso_serial *serial)
 	return -1;
 }
 
+<<<<<<< HEAD
 static void release_minor(struct hso_serial *serial)
+=======
+static void set_serial_by_index(unsigned index, struct hso_serial *serial)
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 {
 	unsigned long flags;
 
 	spin_lock_irqsave(&serial_table_lock, flags);
+<<<<<<< HEAD
 	serial_table[serial->minor] = NULL;
+=======
+	if (serial)
+		serial_table[index] = serial->parent;
+	else
+		serial_table[index] = NULL;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	spin_unlock_irqrestore(&serial_table_lock, flags);
 }
 
@@ -1401,9 +1421,14 @@ static void hso_serial_set_termios(struct tty_struct *tty, struct ktermios *old)
 	unsigned long flags;
 
 	if (old)
+<<<<<<< HEAD
 		hso_dbg(0x16, "Termios called with: cflags new[%u] - old[%u]\n",
 			(unsigned int)tty->termios.c_cflag,
 			(unsigned int)old->c_cflag);
+=======
+		hso_dbg(0x16, "Termios called with: cflags new[%d] - old[%d]\n",
+			tty->termios.c_cflag, old->c_cflag);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	/* the actual setup */
 	spin_lock_irqsave(&serial->serial_lock, flags);
@@ -1701,7 +1726,11 @@ static int hso_serial_tiocmset(struct tty_struct *tty,
 	spin_unlock_irqrestore(&serial->serial_lock, flags);
 
 	return usb_control_msg(serial->parent->usb,
+<<<<<<< HEAD
 			       usb_sndctrlpipe(serial->parent->usb, 0), 0x22,
+=======
+			       usb_rcvctrlpipe(serial->parent->usb, 0), 0x22,
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 			       0x21, val, if_num, NULL, 0,
 			       USB_CTRL_SET_TIMEOUT);
 }
@@ -2240,7 +2269,10 @@ static int hso_stop_serial_device(struct hso_device *hso_dev)
 static void hso_serial_tty_unregister(struct hso_serial *serial)
 {
 	tty_unregister_device(tty_drv, serial->minor);
+<<<<<<< HEAD
 	release_minor(serial);
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 }
 
 static void hso_serial_common_free(struct hso_serial *serial)
@@ -2265,10 +2297,15 @@ static int hso_serial_common_create(struct hso_serial *serial, int num_urbs,
 				    int rx_size, int tx_size)
 {
 	struct device *dev;
+<<<<<<< HEAD
+=======
+	int minor;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	int i;
 
 	tty_port_init(&serial->port);
 
+<<<<<<< HEAD
 	if (obtain_minor(serial))
 		goto exit2;
 
@@ -2282,6 +2319,20 @@ static int hso_serial_common_create(struct hso_serial *serial, int num_urbs,
 	}
 	dev = serial->parent->dev;
 
+=======
+	minor = get_free_serial_index();
+	if (minor < 0)
+		goto exit;
+
+	/* register our minor number */
+	serial->parent->dev = tty_port_register_device_attr(&serial->port,
+			tty_drv, minor, &serial->parent->interface->dev,
+			serial->parent, hso_serial_dev_groups);
+	dev = serial->parent->dev;
+
+	/* fill in specific data for later use */
+	serial->minor = minor;
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	serial->magic = HSO_SERIAL_MAGIC;
 	spin_lock_init(&serial->serial_lock);
 	serial->num_rx_urbs = num_urbs;
@@ -2323,7 +2374,10 @@ static int hso_serial_common_create(struct hso_serial *serial, int num_urbs,
 	return 0;
 exit:
 	hso_serial_tty_unregister(serial);
+<<<<<<< HEAD
 exit2:
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	hso_serial_common_free(serial);
 	return -1;
 }
@@ -2449,7 +2503,11 @@ static int hso_rfkill_set_block(void *data, bool blocked)
 	if (hso_dev->usb_gone)
 		rv = 0;
 	else
+<<<<<<< HEAD
 		rv = usb_control_msg(hso_dev->usb, usb_sndctrlpipe(hso_dev->usb, 0),
+=======
+		rv = usb_control_msg(hso_dev->usb, usb_rcvctrlpipe(hso_dev->usb, 0),
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 				       enabled ? 0x82 : 0x81, 0x40, 0, 0, NULL, 0,
 				       USB_CTRL_SET_TIMEOUT);
 	mutex_unlock(&hso_dev->mutex);
@@ -2674,6 +2732,12 @@ static struct hso_device *hso_create_bulk_serial_device(
 
 	serial->write_data = hso_std_serial_write_data;
 
+<<<<<<< HEAD
+=======
+	/* and record this serial */
+	set_serial_by_index(serial->minor, serial);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* setup the proc dirs and files if needed */
 	hso_log_port(hso_dev);
 
@@ -2730,6 +2794,12 @@ struct hso_device *hso_create_mux_serial_device(struct usb_interface *interface,
 	serial->shared_int->ref_count++;
 	mutex_unlock(&serial->shared_int->shared_int_lock);
 
+<<<<<<< HEAD
+=======
+	/* and record this serial */
+	set_serial_by_index(serial->minor, serial);
+
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 	/* setup the proc dirs and files if needed */
 	hso_log_port(hso_dev);
 
@@ -3113,7 +3183,12 @@ static void hso_free_interface(struct usb_interface *interface)
 			cancel_work_sync(&serial_table[i]->async_put_intf);
 			cancel_work_sync(&serial_table[i]->async_get_intf);
 			hso_serial_tty_unregister(serial);
+<<<<<<< HEAD
 			kref_put(&serial->parent->ref, hso_serial_ref_free);
+=======
+			kref_put(&serial_table[i]->ref, hso_serial_ref_free);
+			set_serial_by_index(i, NULL);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 		}
 	}
 

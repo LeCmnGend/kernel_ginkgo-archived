@@ -29,7 +29,11 @@
  */
 static unsigned int debug_locks_verbose;
 
+<<<<<<< HEAD
 static DEFINE_WD_CLASS(ww_lockdep);
+=======
+static DEFINE_WW_CLASS(ww_lockdep);
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 static int __init setup_debug_locks_verbose(char *str)
 {

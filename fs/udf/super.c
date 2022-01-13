@@ -1385,12 +1385,15 @@ static int udf_load_sparable_map(struct super_block *sb,
 			(int)spm->numSparingTables);
 		return -EIO;
 	}
+<<<<<<< HEAD
 	if (le32_to_cpu(spm->sizeSparingTable) > sb->s_blocksize) {
 		udf_err(sb, "error loading logical volume descriptor: "
 			"Too big sparing table size (%u)\n",
 			le32_to_cpu(spm->sizeSparingTable));
 		return -EIO;
 	}
+=======
+>>>>>>> 89a4cb10f32fdd42680f4e95820adf5690e66388
 
 	for (i = 0; i < spm->numSparingTables; i++) {
 		loc = le32_to_cpu(spm->locSparingTable[i]);
